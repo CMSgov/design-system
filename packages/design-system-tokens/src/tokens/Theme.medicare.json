@@ -1132,7 +1132,7 @@
       },
       "family": {
         "Headings": {
-          "$value": "{font.family.Montserrat}",
+          "$value": "{font.family.montserrat}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1144,7 +1144,7 @@
           }
         },
         "Body": {
-          "$value": "{font.family.Rubik}",
+          "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1156,7 +1156,7 @@
           }
         },
         "Button": {
-          "$value": "{font.family.Rubik}",
+          "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1168,7 +1168,7 @@
           }
         },
         "Link": {
-          "$value": "{font.family.Rubik}",
+          "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -1183,7 +1183,7 @@
       "weight": {
         "heading": {
           "5xl": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1195,7 +1195,7 @@
             }
           },
           "4xl": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1207,7 +1207,7 @@
             }
           },
           "3xl": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1219,7 +1219,7 @@
             }
           },
           "2xl": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1231,7 +1231,7 @@
             }
           },
           "xl": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1243,7 +1243,7 @@
             }
           },
           "lg": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1255,7 +1255,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1267,7 +1267,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.SemiBold}",
+            "$value": "{font.weight.600}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1281,7 +1281,7 @@
         },
         "body": {
           "lg": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1293,7 +1293,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1305,7 +1305,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1319,7 +1319,7 @@
         },
         "button": {
           "lg": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1331,7 +1331,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1343,45 +1343,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.Regular}",
-            "$extensions": {
-              "com.figma": {
-                "hiddenFromPublishing": false,
-                "scopes": [
-                  "ALL_SCOPES"
-                ],
-                "codeSyntax": {}
-              }
-            }
-          }
-        },
-        "link": {
-          "lg": {
-            "$value": "{font.weight.Regular}",
-            "$extensions": {
-              "com.figma": {
-                "hiddenFromPublishing": false,
-                "scopes": [
-                  "ALL_SCOPES"
-                ],
-                "codeSyntax": {}
-              }
-            }
-          },
-          "sm": {
-            "$value": "{font.weight.Regular}",
-            "$extensions": {
-              "com.figma": {
-                "hiddenFromPublishing": false,
-                "scopes": [
-                  "ALL_SCOPES"
-                ],
-                "codeSyntax": {}
-              }
-            }
-          },
-          "md": {
-            "$value": "{font.weight.Regular}",
+            "$value": "{font.weight.400}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -4681,6 +4643,20 @@
         }
       }
     },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "ALL_SCOPES"
+            ],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4789,20 +4765,6 @@
               ],
               "codeSyntax": {}
             }
-          }
-        }
-      }
-    },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": [
-              "ALL_SCOPES"
-            ],
-            "codeSyntax": {}
           }
         }
       }

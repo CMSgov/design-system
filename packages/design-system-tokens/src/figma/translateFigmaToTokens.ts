@@ -1,10 +1,19 @@
 import * as fs from 'fs';
 import c from 'chalk';
 import { rgbToHex } from '../lib/colorUtils';
-import { NumberType, pixelNumberToEx, pixelNumberToRem } from '../lib/unitConversion';
+import { pixelNumberToEx, pixelNumberToRem } from '../lib/conversions';
 import { ApiGetLocalVariablesResponse, Variable } from './FigmaApi';
 import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
 import { select } from '@inquirer/prompts';
+
+export type NumberType =
+  | 'dimension_px'
+  | 'dimension_ex'
+  | 'dimension_rem'
+  | 'dimension_%'
+  | 'duration_ms'
+  | 'font_weight'
+  | 'number';
 
 export type ResolveNumberTypeFunction = (
   variableName: string,
@@ -62,7 +71,7 @@ export function guessNumberType(variableName: string): NumberType | undefined {
     pxVars.includes(variableName)
   ) {
     return 'dimension_px';
-  } else if (variableName.startsWith('font') || remVars.includes(variableName)) {
+  } else if (variableName.startsWith('font/size') || remVars.includes(variableName)) {
     return 'dimension_rem';
   } else if (variableName.startsWith('measure')) {
     return 'dimension_ex';
@@ -93,6 +102,7 @@ export async function promptNumberType(
       { value: 'dimension_rem', name: 'rem (dimension)' },
       { value: 'dimension_%', name: '% (dimension)' },
       { value: 'duration_ms', name: 'ms (duration)' },
+      { value: 'font_weight', name: 'font weight' },
       { value: 'number', name: 'number' },
     ],
   })) as NumberType;
@@ -203,6 +213,9 @@ async function tokenFromVariable(
       case 'duration_ms':
         $type = 'duration';
         $value = `${$value}ms`;
+        break;
+      case 'font_weight':
+        $type = 'fontWeight';
         break;
       case 'number':
         break;

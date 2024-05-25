@@ -19,7 +19,7 @@ export interface Token {
    * to align with the resolved types for Figma variables. Note that it doesn't need a $type if it's an
    * alias, because the type will come from the aliased variable.
    */
-  $type?: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration';
+  $type?: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration' | 'fontWeight';
   $value: string | number | boolean;
   $description?: string;
   $extensions?: {
@@ -168,11 +168,14 @@ export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
 
 const ALIAS_REGEX = /{(.*)}/;
 
+/**
+ * Whether or not this token value is an alias of another token.
+ */
 export function isAlias(value: string): boolean {
   return !!value.match(ALIAS_REGEX);
 }
 
-function getAliasKey(aliasString: string) {
+export function getAliasKey(aliasString: string) {
   const matches = aliasString.match(ALIAS_REGEX);
   if (!matches) {
     throw new Error(`"${aliasString}" is not a valid token alias.`);

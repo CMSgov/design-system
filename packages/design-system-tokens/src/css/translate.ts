@@ -1,4 +1,4 @@
-import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
+import { FlattenedTokens, FlattenedTokensByFile, Token, getAliasKey, isAlias } from '../lib/tokens';
 import { OutputFiles } from './writeFiles';
 
 /**
@@ -39,13 +39,6 @@ function isIncludedSystemToken(tokenName: string): boolean {
 }
 
 /**
- * Whether or not this token value is an alias of another token.
- */
-function isAlias(value: string) {
-  return value.toString().trim().charAt(0) === '{';
-}
-
-/**
  * Resolves the value of the token to one we actually want to print in our output file.
  *
  * By supplying a `renderVariableAlias` function, we're telling the resolver how to
@@ -64,7 +57,7 @@ function resolveTokenValue(
 ): string {
   if (typeof token.$value === 'string' && isAlias(token.$value)) {
     // Assume aliases are in the format {group.subgroup.token} with any number of optional groups/subgroups
-    const aliasedTokenName = token.$value.trim().replace(/[{}]/g, '');
+    const aliasedTokenName = getAliasKey(token.$value);
     const { themeTokens, systemTokens, renderVariableAlias } = resolveConfig;
 
     // Token aliases are assumed to be unique
@@ -83,7 +76,7 @@ function resolveTokenValue(
     }
 
     return resolveTokenValue(aliasedToken, resolveConfig);
-  } else if (token.$type === 'number') {
+  } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
   } else if (typeof token.$value === 'string') {
     // TODO: Actually try to convert the value into an appropriate string base on the $type

@@ -1,11 +1,3 @@
-export type NumberType =
-  | 'dimension_px'
-  | 'dimension_ex'
-  | 'dimension_rem'
-  | 'dimension_%'
-  | 'duration_ms'
-  | 'number';
-
 const PIXELS_PER_REM = 16;
 const PIXELS_PER_EX = 8.5625;
 

@@ -15,7 +15,7 @@ import {
   isAlias,
   resolveTokenAlias,
 } from '../lib/tokens';
-import { dimensionToPixelNumber, durationToNumber } from '../lib/unitConversion';
+import { dimensionToPixelNumber, durationToNumber } from '../lib/conversions';
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
@@ -27,6 +27,7 @@ function variableResolvedTypeFromToken(token: Token) {
       return 'COLOR';
     case 'number':
     case 'dimension':
+    case 'fontWeight':
       return 'FLOAT';
     case 'string':
       return 'STRING';
