@@ -1131,7 +1131,7 @@
         }
       },
       "family": {
-        "Headings": {
+        "headings": {
           "$value": "{font.family.montserrat}",
           "$extensions": {
             "com.figma": {
@@ -1143,7 +1143,7 @@
             }
           }
         },
-        "Body": {
+        "body": {
           "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
@@ -1155,7 +1155,7 @@
             }
           }
         },
-        "Button": {
+        "button": {
           "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
@@ -1167,7 +1167,7 @@
             }
           }
         },
-        "Link": {
+        "link": {
           "$value": "{font.family.rubik}",
           "$extensions": {
             "com.figma": {
