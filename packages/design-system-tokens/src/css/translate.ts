@@ -68,17 +68,20 @@ function resolveTokenValue(
 
     // TODO: Enable this after we've merged a version of this that has been verified to
     // be 1-1 with the previous script
-    if (
-      renderVariableAlias &&
-      (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
-    ) {
-      return renderVariableAlias(aliasedTokenName);
-    }
+    // if (
+    //   renderVariableAlias &&
+    //   (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
+    // ) {
+    //   return renderVariableAlias(aliasedTokenName);
+    // }
 
     return resolveTokenValue(aliasedToken, resolveConfig);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
   } else if (typeof token.$value === 'string') {
+    if (token.$value.match(/#[a-z0-9]{6}00/i)) {
+      return 'transparent';
+    }
     // TODO: Actually try to convert the value into an appropriate string base on the $type
     return token.$value;
   } else {

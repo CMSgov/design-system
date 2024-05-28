@@ -5,9 +5,9 @@ Object {
   "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: #e6f1f8;
 --color-primary: #b3d4eb;
---alert__background-color: var(--color-primary-light);
---alert__border-color: var(--color-primary);
---button__border-radius: var(--radius-small);
+--alert__background-color: #e6f1f8;
+--alert__border-color: #b3d4eb;
+--button__border-radius: 2px;
 --radius-circle: 100%;
 --radius-default: 3px;
 --radius-large: 8px;
@@ -19,9 +19,9 @@ Object {
   "core-theme.css": ":root, ::before, ::after, ::backdrop {
 --color-primary-light: #4d9cd0;
 --color-primary: #0071bc;
---alert__background-color: var(--color-primary-light);
---alert__border-color: var(--color-primary);
---button__border-radius: var(--radius-small);
+--alert__background-color: #4d9cd0;
+--alert__border-color: #0071bc;
+--button__border-radius: 2px;
 --radius-circle: 100%;
 --radius-default: 3px;
 --radius-large: 8px;
@@ -37,9 +37,9 @@ exports[`tokenFilesToScssFiles matches snapshot 1`] = `
 Object {
   "cmsgov-theme.scss": "$color-primary-light: #e6f1f8;
 $color-primary: #b3d4eb;
-$alert__background-color: $color-primary-light;
-$alert__border-color: $color-primary;
-$button__border-radius: $radius-small;
+$alert__background-color: #e6f1f8;
+$alert__border-color: #b3d4eb;
+$button__border-radius: 2px;
 $radius-circle: 100%;
 $radius-default: 3px;
 $radius-large: 8px;
@@ -49,9 +49,9 @@ $radius-pill: 9999px;
 $spacer-1: 8px;",
   "core-theme.scss": "$color-primary-light: #4d9cd0 !default;
 $color-primary: #0071bc !default;
-$alert__background-color: $color-primary-light !default;
-$alert__border-color: $color-primary !default;
-$button__border-radius: $radius-small !default;
+$alert__background-color: #4d9cd0 !default;
+$alert__border-color: #0071bc !default;
+$button__border-radius: 2px !default;
 $radius-circle: 100% !default;
 $radius-default: 3px !default;
 $radius-large: 8px !default;
