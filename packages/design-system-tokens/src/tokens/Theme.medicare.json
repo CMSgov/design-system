@@ -97,30 +97,6 @@
           }
         }
       },
-      "background-dialog": {
-        "$value": "{color.white.solid}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": [
-              "ALL_SCOPES"
-            ],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "background-dialog-mask": {
-        "$value": "{color.black.alpha50}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": [
-              "ALL_SCOPES"
-            ],
-            "codeSyntax": {}
-          }
-        }
-      },
       "background-inverse": {
         "$value": "{color.teal.500}",
         "$extensions": {
@@ -2057,21 +2033,6 @@
               "ALL_SCOPES"
             ],
             "codeSyntax": {}
-          }
-        }
-      },
-      "icon": {
-        "fill": {
-          "$value": "#6d0000",
-          "$type": "color",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": [
-                "ALL_SCOPES"
-              ],
-              "codeSyntax": {}
-            }
           }
         }
       },
@@ -4629,20 +4590,6 @@
         }
       }
     },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": [
-              "ALL_SCOPES"
-            ],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4751,6 +4698,20 @@
               ],
               "codeSyntax": {}
             }
+          }
+        }
+      }
+    },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": [
+              "ALL_SCOPES"
+            ],
+            "codeSyntax": {}
           }
         }
       }
