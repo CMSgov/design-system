@@ -4577,20 +4577,6 @@
           }
         }
       },
-      "current": {
-        "color": {
-          "$value": "{theme.color.base}",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": [
-                "ALL_SCOPES"
-              ],
-              "codeSyntax": {}
-            }
-          }
-        }
-      },
       "overflow": {
         "color": {
           "$value": "{theme.color.gray-dark}",
