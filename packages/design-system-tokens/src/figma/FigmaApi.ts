@@ -1,3 +1,10 @@
+/**
+ * This file mirrors https://github.com/figma/variables-github-action-example/blob/main/src/figma_api.ts
+ *
+ * The actual transformation code has been significantly altered, but there's currently
+ * no need to mess with their example process of talking to their API.
+ */
+
 import axios from 'axios';
 import {
   GetLocalVariablesResponse,

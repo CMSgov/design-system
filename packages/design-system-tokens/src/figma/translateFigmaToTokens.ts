@@ -6,6 +6,11 @@ import { GetLocalVariablesResponse, LocalVariable as Variable } from '@figma/res
 import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
 import { select } from '@inquirer/prompts';
 
+/**
+ * An internal representation of the kind of dimensional unit we're dealing with when
+ * we're processing a number-type token (which all gets shoved into the same FLOAT type
+ * on the Figma side)
+ */
 export type NumberType =
   | 'dimension_px'
   | 'dimension_ex'
@@ -15,6 +20,10 @@ export type NumberType =
   | 'font_weight'
   | 'number';
 
+/**
+ * A function that can figure out what kind of number type a specific variable is
+ * supposed to be
+ */
 export type ResolveNumberTypeFunction = (
   variableName: string,
   variableValue: string
