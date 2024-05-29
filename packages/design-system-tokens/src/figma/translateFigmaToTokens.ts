@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import c from 'chalk';
 import { rgbToHex } from '../lib/colorUtils';
 import { pixelNumberToEx, pixelNumberToRem } from '../lib/conversions';
-import { ApiGetLocalVariablesResponse, Variable } from './FigmaApi';
+import { GetLocalVariablesResponse, LocalVariable as Variable } from '@figma/rest-api-spec';
 import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
 import { select } from '@inquirer/prompts';
 
@@ -246,7 +246,7 @@ type TokensByFile = { [fileName: string]: any };
  * our JSON token format, merging with existing JSON tokens where necessary.
  */
 export async function tokenFilesFromLocalVariables(
-  localVariablesResponse: ApiGetLocalVariablesResponse,
+  localVariablesResponse: GetLocalVariablesResponse,
   existingTokens: FlattenedTokensByFile,
   resolveNumberType: ResolveNumberTypeFunction
 ): Promise<TokensByFile> {

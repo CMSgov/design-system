@@ -1,6 +1,6 @@
-import { ApiGetLocalVariablesResponse } from '../FigmaApi';
+import { GetLocalVariablesResponse } from '@figma/rest-api-spec';
 
-const response: ApiGetLocalVariablesResponse = {
+const response: GetLocalVariablesResponse = {
   status: 200,
   error: false,
   meta: {
@@ -11,7 +11,24 @@ const response: ApiGetLocalVariablesResponse = {
         modes: [{ modeId: 'ModeId:1', name: 'Value' }],
         defaultModeId: 'ModeId:1',
         remote: false,
+        key: 'variableKey',
         hiddenFromPublishing: false,
+        variableIds: [
+          'aaa111',
+          'oce050',
+          'oce100',
+          'oce200',
+          'oce300',
+          'oce400',
+          'oce500',
+          'rad804',
+          'rad805',
+          'rad806',
+          'rad807',
+          'rad808',
+          'rad809',
+          'spa001',
+        ],
       },
       'VariableCollectionId:222': {
         id: 'VariableCollectionId:222',
@@ -22,7 +39,9 @@ const response: ApiGetLocalVariablesResponse = {
         ],
         defaultModeId: 'ModeId:21',
         remote: false,
+        key: 'variableKey',
         hiddenFromPublishing: false,
+        variableIds: ['but100', 'pri300', 'pri500', 'ale001', 'ale002'],
       },
     },
     variables: {
@@ -338,7 +357,7 @@ const response: ApiGetLocalVariablesResponse = {
 
 export default response;
 
-export const emptyResponse = {
+export const emptyResponse: GetLocalVariablesResponse = {
   status: 200,
   error: false,
   meta: {

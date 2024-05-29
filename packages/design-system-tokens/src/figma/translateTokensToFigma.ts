@@ -1,12 +1,13 @@
 import {
-  VariableCollection,
-  Variable,
-  ApiPostVariablesPayload,
+  LocalVariableCollection as VariableCollection,
+  LocalVariable as Variable,
+  PostVariablesRequestBody,
   VariableValue,
-  ApiGetLocalVariablesResponse,
-  VariableChange,
+  GetLocalVariablesResponse,
+  VariableCreate,
+  VariableUpdate,
   VariableCodeSyntax,
-} from './FigmaApi.js';
+} from '@figma/rest-api-spec';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
 import {
   FlattenedTokensByFile,
@@ -128,7 +129,10 @@ function isCodeSyntaxEqual(a: VariableCodeSyntax, b: VariableCodeSyntax) {
  */
 function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
   const differences: Partial<
-    Omit<VariableChange, 'id' | 'name' | 'variableCollectionId' | 'resolvedType' | 'action'>
+    Omit<
+      VariableCreate | VariableUpdate,
+      'id' | 'name' | 'variableCollectionId' | 'resolvedType' | 'action'
+    >
   > = {};
 
   if (
@@ -169,9 +173,7 @@ function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
 type CollectionsByName = {
   [name: string]: VariableCollection;
 };
-export function getCollectionsByName(
-  localVariables: ApiGetLocalVariablesResponse
-): CollectionsByName {
+export function getCollectionsByName(localVariables: GetLocalVariablesResponse): CollectionsByName {
   const localVariableCollectionsByName: CollectionsByName = {};
   Object.values(localVariables.meta.variableCollections).forEach((collection) => {
     // Skip over remote collections because we can't modify them
@@ -192,7 +194,7 @@ type VariablesByCollection = {
   [variableCollectionId: string]: { [variableName: string]: Variable };
 };
 export function getVariablesByCollection(
-  localVariables: ApiGetLocalVariablesResponse
+  localVariables: GetLocalVariablesResponse
 ): VariablesByCollection {
   const localVariablesByCollectionAndName: VariablesByCollection = {};
   Object.values(localVariables.meta.variables).forEach((variable) => {
@@ -212,12 +214,12 @@ export function getVariablesByCollection(
 
 export function generatePostVariablesPayload(
   tokensByFile: FlattenedTokensByFile,
-  localVariables: ApiGetLocalVariablesResponse
+  localVariables: GetLocalVariablesResponse
 ) {
   const localVariableCollectionsByName = getCollectionsByName(localVariables);
   const localVariablesByCollectionAndName = getVariablesByCollection(localVariables);
 
-  const postVariablesPayload: ApiPostVariablesPayload = {
+  const postVariablesPayload: PostVariablesRequestBody = {
     variableCollections: [],
     variableModes: [],
     variables: [],
@@ -259,7 +261,7 @@ export function generatePostVariablesPayload(
     if (
       !variableMode &&
       !postVariablesPayload.variableCollections!.find(
-        (c) => c.id === variableCollectionId && c.initialModeId === modeId
+        (c) => c.id === variableCollectionId && 'initialModeId' in c && c.initialModeId === modeId
       )
     ) {
       postVariablesPayload.variableModes!.push({
@@ -278,7 +280,10 @@ export function generatePostVariablesPayload(
       const variable = localVariablesByName[variableName];
       const variableId = variable ? variable.id : variableName;
       const variableInPayload = postVariablesPayload.variables!.find(
-        (v) => v.id === variableId && v.variableCollectionId === variableCollectionId
+        (v) =>
+          v.id === variableId &&
+          'variableCollectionId' in v &&
+          v.variableCollectionId === variableCollectionId
       );
       const differences = tokenAndVariableDifferences(token, variable);
 

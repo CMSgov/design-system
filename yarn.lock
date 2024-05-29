@@ -2571,6 +2571,11 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
+"@figma/rest-api-spec@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@figma/rest-api-spec/-/rest-api-spec-0.13.0.tgz#8697ec9d2b930c5f167fda72899cb6873dd90d9b"
+  integrity sha512-MxkWwH1POcqniItTXVYtUZQJUtrFpF6g93+eTbop52U/ffEP/vt9SqAmDyhOT0S75hscIGMiimPbMrPM5KyMiw==
+
 "@formatjs/ecma402-abstract@1.17.0":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.17.0.tgz#2ce191a3bde4c65c6684e03fa247062a4a294b9e"
