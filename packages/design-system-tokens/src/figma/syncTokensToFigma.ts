@@ -8,6 +8,11 @@ import { readTokenFiles } from '../lib/tokens';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 
+/**
+ * Reads local JSON tokens and pushes them to our Figma design file via Figma's Variables
+ * API, overwriting what's in the design file. This requires both a Figma file key and a
+ * personal access token to work.
+ */
 async function main() {
   if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.FILE_KEY) {
     throw new Error('PERSONAL_ACCESS_TOKEN and FILE_KEY environemnt variables are required');

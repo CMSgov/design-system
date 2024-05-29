@@ -66,6 +66,11 @@ export type FlattenedTokensByFile = {
   [fileName: string]: FlattenedTokens;
 };
 
+/**
+ * Tokens are nested into groups, but this flattens all of them into a JSON file's root
+ * object, producing a key that contains each group and property in dot notation (e.g.,
+ * `color.crimson.500`). This makes each token easier to reference and transform.
+ */
 function flattenTokensFile(tokensFile: TokensFile) {
   const flattenedTokens: { [tokenName: string]: Token } = {};
 
@@ -76,10 +81,16 @@ function flattenTokensFile(tokensFile: TokensFile) {
   return flattenedTokens;
 }
 
+/**
+ * Decides whether an object is an actual token or just a group
+ */
 function isToken(obj: TokenOrTokenGroup): obj is Token {
   return obj.$value !== undefined;
 }
 
+/**
+ * Helper function used for flattening token files
+ */
 function traverseCollection({
   key,
   object,
@@ -169,12 +180,16 @@ export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
 const ALIAS_REGEX = /{(.*)}/;
 
 /**
- * Whether or not this token value is an alias of another token.
+ * Whether or not this token value is an alias of another token (like `{radius.small}`)
  */
 export function isAlias(value: string): boolean {
   return !!value.match(ALIAS_REGEX);
 }
 
+/**
+ * Returns the dot-notation key in an alias string. For an input of `{radius.small}`,
+ * this function would return `radius.small`.
+ */
 export function getAliasKey(aliasString: string) {
   const matches = aliasString.match(ALIAS_REGEX);
   if (!matches) {
@@ -183,6 +198,12 @@ export function getAliasKey(aliasString: string) {
   return matches[1];
 }
 
+/**
+ * Resolves a token alias all the way to a token that no longer references another token.
+ * Many aliases will start in a theme-tokens file and end up in the system-tokens file by
+ * resolving multiple aliases. It will not resolve circular dependencies and will instead
+ * quit when it reaches a max depth of 10.
+ */
 export function resolveTokenAlias(
   aliasToken: Token,
   tokensByFile: FlattenedTokensByFile,

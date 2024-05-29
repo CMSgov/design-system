@@ -241,6 +241,10 @@ async function tokenFromVariable(
 
 type TokensByFile = { [fileName: string]: any };
 
+/**
+ * Takes Figma's "local variables" retrieved via their REST API and translates them into
+ * our JSON token format, merging with existing JSON tokens where necessary.
+ */
 export async function tokenFilesFromLocalVariables(
   localVariablesResponse: ApiGetLocalVariablesResponse,
   existingTokens: FlattenedTokensByFile,
