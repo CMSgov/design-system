@@ -3,10 +3,20 @@ import 'dotenv/config';
 import FigmaApi from './FigmaApi';
 import c from 'chalk';
 import path from 'path';
-import { tokenFilesFromLocalVariables, writeTokenFiles } from './translateFigmaToTokens';
+import {
+  determineNumberType,
+  tokenFilesFromLocalVariables,
+  writeTokenFiles,
+} from './translateFigmaToTokens';
+import { readTokenFiles } from '../lib/tokens';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 
+/**
+ * Pulls down tokens from our Figma design file and updates our local representation of
+ * tokens, which in a standard JSON format. This requires both a Figma file key and a
+ * personal access token to work.
+ */
 async function main() {
   if (!process.env.PERSONAL_ACCESS_TOKEN || !process.env.FILE_KEY) {
     throw new Error('PERSONAL_ACCESS_TOKEN and FILE_KEY environemnt variables are required');
@@ -16,7 +26,12 @@ async function main() {
   const api = new FigmaApi(process.env.PERSONAL_ACCESS_TOKEN);
   const localVariables = await api.getLocalVariables(fileKey);
 
-  const tokensByFile = tokenFilesFromLocalVariables(localVariables);
+  const existingTokens = readTokenFiles(TOKENS_DIR);
+  const tokensByFile = await tokenFilesFromLocalVariables(
+    localVariables,
+    existingTokens,
+    determineNumberType
+  );
 
   console.log('Writing token files:', Object.keys(tokensByFile));
   writeTokenFiles(TOKENS_DIR, tokensByFile);

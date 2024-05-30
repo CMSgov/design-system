@@ -1,11 +1,11 @@
 import path from 'path';
-import testGetResponse, { emptyResponse } from './test/test-get-response';
+import testGetResponse, { emptyResponse } from './__mocks__/test-get-response';
 import {
   generatePostVariablesPayload,
   getCollectionsByName,
   getVariablesByCollection,
-  readTokenFiles,
 } from './translateTokensToFigma';
+import { readTokenFiles } from '../lib/tokens';
 
 describe('getCollectionsByName', () => {
   it('returns an object of collections keyed by name', () => {
@@ -27,13 +27,13 @@ describe('getVariablesByCollection', () => {
 
 describe('generatePostVariablesPayload', () => {
   it('uploads nothing new when variables already match tokens', () => {
-    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const tokens = readTokenFiles(path.resolve(__dirname, '..', '__mocks__', 'tokens'));
     const payload = generatePostVariablesPayload(tokens, testGetResponse);
     expect(payload).toMatchSnapshot();
   });
 
   it('includes actions for adding everything when variables are empty', () => {
-    const tokens = readTokenFiles(path.resolve(__dirname, 'test', 'tokens'));
+    const tokens = readTokenFiles(path.resolve(__dirname, '..', '__mocks__', 'tokens'));
     const payload = generatePostVariablesPayload(tokens, emptyResponse);
     expect(payload).toMatchSnapshot();
   });

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenFilesToCssFiles matches snapshot 1`] = `
+Object {
+  "cmsgov-theme.css": ":root, ::before, ::after, ::backdrop {
+--color-primary-light: #e6f1f8;
+--color-primary: #b3d4eb;
+--alert__background-color: #e6f1f8;
+--alert__border-color: #b3d4eb;
+--button__border-radius: 2px;
+--radius-circle: 100%;
+--radius-default: 3px;
+--radius-large: 8px;
+--radius-medium: 4px;
+--radius-small: 2px;
+--radius-pill: 9999px;
+--spacer-1: 8px;
+}",
+  "core-theme.css": ":root, ::before, ::after, ::backdrop {
+--color-primary-light: #4d9cd0;
+--color-primary: #0071bc;
+--alert__background-color: #4d9cd0;
+--alert__border-color: #0071bc;
+--button__border-radius: 2px;
+--radius-circle: 100%;
+--radius-default: 3px;
+--radius-large: 8px;
+--radius-medium: 4px;
+--radius-small: 2px;
+--radius-pill: 9999px;
+--spacer-1: 8px;
+}",
+}
+`;
+
+exports[`tokenFilesToScssFiles matches snapshot 1`] = `
+Object {
+  "cmsgov-theme.scss": "$color-primary-light: #e6f1f8;
+$color-primary: #b3d4eb;
+$alert__background-color: #e6f1f8;
+$alert__border-color: #b3d4eb;
+$button__border-radius: 2px;
+$radius-circle: 100%;
+$radius-default: 3px;
+$radius-large: 8px;
+$radius-medium: 4px;
+$radius-small: 2px;
+$radius-pill: 9999px;
+$spacer-1: 8px;",
+  "core-theme.scss": "$color-primary-light: #4d9cd0 !default;
+$color-primary: #0071bc !default;
+$alert__background-color: #4d9cd0 !default;
+$alert__border-color: #0071bc !default;
+$button__border-radius: 2px !default;
+$radius-circle: 100% !default;
+$radius-default: 3px !default;
+$radius-large: 8px !default;
+$radius-medium: 4px !default;
+$radius-small: 2px !default;
+$radius-pill: 9999px !default;
+$spacer-1: 8px !default;",
+}
+`;
+
+exports[`tokenFilesToScssLayoutFiles matches snapshot 1`] = `
+Object {
+  "layout.scss": "$spacer-1: 8px;
+$spacer-1: 8px;",
+}
+`;

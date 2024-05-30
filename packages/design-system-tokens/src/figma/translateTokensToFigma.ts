@@ -1,120 +1,25 @@
-import * as fs from 'fs';
-import * as path from 'path';
-
 import {
-  VariableCollection,
-  Variable,
-  ApiPostVariablesPayload,
+  LocalVariableCollection as VariableCollection,
+  LocalVariable as Variable,
+  PostVariablesRequestBody,
   VariableValue,
-  ApiGetLocalVariablesResponse,
-  VariableChange,
+  GetLocalVariablesResponse,
+  VariableCreate,
+  VariableUpdate,
   VariableCodeSyntax,
-} from './FigmaApi.js';
+} from '@figma/rest-api-spec';
 import { RgbaObject, hexToRgba, isHex, rgbToHex } from '../lib/colorUtils';
-import { Token, TokensFile, TokenOrTokenGroup } from './tokenTypes.js';
-
-export type FlattenedTokensByFile = {
-  [fileName: string]: {
-    [tokenName: string]: Token;
-  };
-};
+import {
+  FlattenedTokensByFile,
+  Token,
+  collectionAndModeFromFileName,
+  isAlias,
+  resolveTokenAlias,
+} from '../lib/tokens';
+import { dimensionToPixelNumber, durationToNumber } from '../lib/conversions';
 
 function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((item) => b.has(item));
-}
-
-export function readTokenFiles(tokensDir: string): FlattenedTokensByFile {
-  const files = fs
-    .readdirSync(tokensDir)
-    .filter(isValidTokenFileName)
-    .map((fileName: string) => `${tokensDir}/${fileName}`);
-
-  const tokensJsonByFile: FlattenedTokensByFile = {};
-
-  const seenCollectionsAndModes = new Set<string>();
-
-  files.forEach((file) => {
-    const baseFileName = path.basename(file);
-    const { collectionName, modeName } = collectionAndModeFromFileName(baseFileName);
-
-    if (seenCollectionsAndModes.has(`${collectionName}.${modeName}`)) {
-      throw new Error(`Duplicate collection and mode in file: ${file}`);
-    }
-
-    seenCollectionsAndModes.add(`${collectionName}.${modeName}`);
-
-    const fileContent = fs.readFileSync(file, { encoding: 'utf-8' });
-
-    if (!fileContent) {
-      throw new Error(`Invalid tokens file: ${file}. File is empty.`);
-    }
-    const tokensFile: TokensFile = JSON.parse(fileContent);
-
-    tokensJsonByFile[baseFileName] = flattenTokensFile(tokensFile);
-  });
-
-  return tokensJsonByFile;
-}
-
-function flattenTokensFile(tokensFile: TokensFile) {
-  const flattenedTokens: { [tokenName: string]: Token } = {};
-
-  Object.entries(tokensFile).forEach(([tokenGroup, groupValues]) => {
-    traverseCollection({ key: tokenGroup, object: groupValues, tokens: flattenedTokens });
-  });
-
-  return flattenedTokens;
-}
-
-function isToken(obj: TokenOrTokenGroup): obj is Token {
-  return obj.$value !== undefined;
-}
-
-function traverseCollection({
-  key,
-  object,
-  tokens,
-}: {
-  key: string;
-  object: TokenOrTokenGroup;
-  tokens: { [tokenName: string]: Token };
-}) {
-  // if key is a meta field, move on
-  if (key.charAt(0) === '$') {
-    return;
-  }
-
-  if (isToken(object)) {
-    tokens[key] = object;
-  } else {
-    Object.entries<TokenOrTokenGroup>(object).forEach(([key2, object2]) => {
-      if (key2.charAt(0) !== '$' && typeof object2 === 'object') {
-        traverseCollection({
-          key: `${key}/${key2}`,
-          object: object2,
-          tokens,
-        });
-      }
-    });
-  }
-}
-
-function isValidTokenFileName(fileName: string) {
-  const fileNameParts = fileName.split('.');
-  if (fileNameParts.length < 3 || fileNameParts[2]?.toLowerCase() !== 'json') {
-    return false;
-  }
-  return true;
-}
-
-function collectionAndModeFromFileName(fileName: string) {
-  if (!isValidTokenFileName(fileName)) {
-    throw new Error(
-      `Invalid tokens file name: ${fileName}. File names must be in the format: {collectionName}.{modeName}.json`
-    );
-  }
-  const [collectionName, modeName] = fileName.split('.');
-  return { collectionName, modeName };
 }
 
 function variableResolvedTypeFromToken(token: Token) {
@@ -122,6 +27,8 @@ function variableResolvedTypeFromToken(token: Token) {
     case 'color':
       return 'COLOR';
     case 'number':
+    case 'dimension':
+    case 'fontWeight':
       return 'FLOAT';
     case 'string':
       return 'STRING';
@@ -130,10 +37,6 @@ function variableResolvedTypeFromToken(token: Token) {
     default:
       throw new Error(`Invalid token $type: ${token.$type}`);
   }
-}
-
-function isAlias(value: string) {
-  return value.toString().trim().charAt(0) === '{';
 }
 
 function parseColor(color: string): RgbaObject {
@@ -175,6 +78,10 @@ function variableValueFromToken(
     };
   } else if (typeof token.$value === 'string' && token.$type === 'color') {
     return parseColor(token.$value);
+  } else if (token.$type === 'dimension') {
+    return dimensionToPixelNumber(token.$value + '');
+  } else if (token.$type === 'duration') {
+    return durationToNumber(token.$value + '');
   } else {
     return token.$value;
   }
@@ -222,7 +129,10 @@ function isCodeSyntaxEqual(a: VariableCodeSyntax, b: VariableCodeSyntax) {
  */
 function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
   const differences: Partial<
-    Omit<VariableChange, 'id' | 'name' | 'variableCollectionId' | 'resolvedType' | 'action'>
+    Omit<
+      VariableCreate | VariableUpdate,
+      'id' | 'name' | 'variableCollectionId' | 'resolvedType' | 'action'
+    >
   > = {};
 
   if (
@@ -263,9 +173,7 @@ function tokenAndVariableDifferences(token: Token, variable: Variable | null) {
 type CollectionsByName = {
   [name: string]: VariableCollection;
 };
-export function getCollectionsByName(
-  localVariables: ApiGetLocalVariablesResponse
-): CollectionsByName {
+export function getCollectionsByName(localVariables: GetLocalVariablesResponse): CollectionsByName {
   const localVariableCollectionsByName: CollectionsByName = {};
   Object.values(localVariables.meta.variableCollections).forEach((collection) => {
     // Skip over remote collections because we can't modify them
@@ -286,7 +194,7 @@ type VariablesByCollection = {
   [variableCollectionId: string]: { [variableName: string]: Variable };
 };
 export function getVariablesByCollection(
-  localVariables: ApiGetLocalVariablesResponse
+  localVariables: GetLocalVariablesResponse
 ): VariablesByCollection {
   const localVariablesByCollectionAndName: VariablesByCollection = {};
   Object.values(localVariables.meta.variables).forEach((variable) => {
@@ -306,12 +214,12 @@ export function getVariablesByCollection(
 
 export function generatePostVariablesPayload(
   tokensByFile: FlattenedTokensByFile,
-  localVariables: ApiGetLocalVariablesResponse
+  localVariables: GetLocalVariablesResponse
 ) {
   const localVariableCollectionsByName = getCollectionsByName(localVariables);
   const localVariablesByCollectionAndName = getVariablesByCollection(localVariables);
 
-  const postVariablesPayload: ApiPostVariablesPayload = {
+  const postVariablesPayload: PostVariablesRequestBody = {
     variableCollections: [],
     variableModes: [],
     variables: [],
@@ -353,7 +261,7 @@ export function generatePostVariablesPayload(
     if (
       !variableMode &&
       !postVariablesPayload.variableCollections!.find(
-        (c) => c.id === variableCollectionId && c.initialModeId === modeId
+        (c) => c.id === variableCollectionId && 'initialModeId' in c && c.initialModeId === modeId
       )
     ) {
       postVariablesPayload.variableModes!.push({
@@ -367,10 +275,15 @@ export function generatePostVariablesPayload(
     const localVariablesByName = localVariablesByCollectionAndName[variableCollection?.id] || {};
 
     Object.entries(tokens).forEach(([tokenName, token]) => {
-      const variable = localVariablesByName[tokenName];
-      const variableId = variable ? variable.id : tokenName;
+      // In the W3C Tokens spec, nesting is represented by `.`, but Figma uses `/`
+      const variableName = tokenName.replace(/\./g, '/');
+      const variable = localVariablesByName[variableName];
+      const variableId = variable ? variable.id : variableName;
       const variableInPayload = postVariablesPayload.variables!.find(
-        (v) => v.id === variableId && v.variableCollectionId === variableCollectionId
+        (v) =>
+          v.id === variableId &&
+          'variableCollectionId' in v &&
+          v.variableCollectionId === variableCollectionId
       );
       const differences = tokenAndVariableDifferences(token, variable);
 
@@ -380,9 +293,13 @@ export function generatePostVariablesPayload(
         postVariablesPayload.variables!.push({
           action: 'CREATE',
           id: variableId,
-          name: tokenName,
+          name: variableName,
           variableCollectionId,
-          resolvedType: variableResolvedTypeFromToken(token),
+          resolvedType: variableResolvedTypeFromToken(
+            isAlias(token.$value.toString())
+              ? resolveTokenAlias(token, tokensByFile, fileName)
+              : token
+          ),
           ...differences,
         });
       } else if (variable && Object.keys(differences).length > 0) {

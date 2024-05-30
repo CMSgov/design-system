@@ -1,6 +1,6 @@
-import { ApiGetLocalVariablesResponse } from '../FigmaApi';
+import { GetLocalVariablesResponse } from '@figma/rest-api-spec';
 
-const response: ApiGetLocalVariablesResponse = {
+const response: GetLocalVariablesResponse = {
   status: 200,
   error: false,
   meta: {
@@ -11,7 +11,24 @@ const response: ApiGetLocalVariablesResponse = {
         modes: [{ modeId: 'ModeId:1', name: 'Value' }],
         defaultModeId: 'ModeId:1',
         remote: false,
+        key: 'variableKey',
         hiddenFromPublishing: false,
+        variableIds: [
+          'aaa111',
+          'oce050',
+          'oce100',
+          'oce200',
+          'oce300',
+          'oce400',
+          'oce500',
+          'rad804',
+          'rad805',
+          'rad806',
+          'rad807',
+          'rad808',
+          'rad809',
+          'spa001',
+        ],
       },
       'VariableCollectionId:222': {
         id: 'VariableCollectionId:222',
@@ -22,7 +39,9 @@ const response: ApiGetLocalVariablesResponse = {
         ],
         defaultModeId: 'ModeId:21',
         remote: false,
+        key: 'variableKey',
         hiddenFromPublishing: false,
+        variableIds: ['but100', 'pri300', 'pri500', 'ale001', 'ale002'],
       },
     },
     variables: {
@@ -239,6 +258,22 @@ const response: ApiGetLocalVariablesResponse = {
         hiddenFromPublishing: false,
         codeSyntax: {},
       },
+      but100: {
+        id: 'but100',
+        name: 'component/button/border-radius',
+        key: 'component/button/border-radius',
+        remote: false,
+        description: '',
+        variableCollectionId: 'VariableCollectionId:222',
+        resolvedType: 'FLOAT',
+        valuesByMode: {
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'rad809' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'rad809' },
+        },
+        scopes: ['CORNER_RADIUS'],
+        hiddenFromPublishing: false,
+        codeSyntax: {},
+      },
       pri300: {
         id: 'pri300',
         name: 'theme/color/primary-light',
@@ -256,7 +291,7 @@ const response: ApiGetLocalVariablesResponse = {
         codeSyntax: {},
       },
       pri500: {
-        id: 'pri300',
+        id: 'pri500',
         name: 'theme/color/primary',
         key: 'theme/color/primary',
         remote: false,
@@ -271,13 +306,58 @@ const response: ApiGetLocalVariablesResponse = {
         hiddenFromPublishing: false,
         codeSyntax: {},
       },
+      ale001: {
+        id: 'ale001',
+        name: 'component/alert/background-color',
+        key: 'component/alert/background-color',
+        remote: false,
+        description: '',
+        variableCollectionId: 'VariableCollectionId:222',
+        resolvedType: 'COLOR',
+        valuesByMode: {
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'pri300' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'pri300' },
+        },
+        scopes: ['ALL_SCOPES'],
+        hiddenFromPublishing: false,
+        codeSyntax: {},
+      },
+      ale002: {
+        id: 'ale002',
+        name: 'component/alert/border-color',
+        key: 'component/alert/border-color',
+        remote: false,
+        description: '',
+        variableCollectionId: 'VariableCollectionId:222',
+        resolvedType: 'COLOR',
+        valuesByMode: {
+          'ModeId:21': { type: 'VARIABLE_ALIAS', id: 'pri500' },
+          'ModeId:22': { type: 'VARIABLE_ALIAS', id: 'pri500' },
+        },
+        scopes: ['ALL_SCOPES'],
+        hiddenFromPublishing: false,
+        codeSyntax: {},
+      },
+      spa001: {
+        id: 'spa001',
+        name: 'spacer/1',
+        key: 'spacer/1',
+        remote: false,
+        description: '',
+        resolvedType: 'FLOAT',
+        variableCollectionId: 'VariableCollectionId:111',
+        valuesByMode: { 'ModeId:1': 8 },
+        scopes: ['ALL_SCOPES'],
+        hiddenFromPublishing: false,
+        codeSyntax: {},
+      },
     },
   },
 };
 
 export default response;
 
-export const emptyResponse = {
+export const emptyResponse: GetLocalVariablesResponse = {
   status: 200,
   error: false,
   meta: {
