@@ -11,6 +11,7 @@ export * from './Dropdown';
 export * from './FilterChip';
 export * from './FormLabel';
 export * from './HelpDrawer';
+export * from './Hint';
 export * from './IdleTimeout';
 export * from './InlineError';
 export * from './Label';
