@@ -1,4 +1,7 @@
 const PIXELS_PER_REM = 16;
+// Using a fixed scale here to convert into pixels for Figma, but in real applications in
+// the browser, element widths defined in `ex` will vary in width depending on the font
+// being used, which just means they could be slightly different than the designs.
 const PIXELS_PER_EX = 8.5625;
 
 export function pixelNumberToRem(pixels: number): string {
