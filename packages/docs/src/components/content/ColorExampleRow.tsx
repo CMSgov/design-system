@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
 import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/colorUtils';
-import { HexValue } from 'design-system-tokens/src/lib/types';
+import { HexValue } from 'design-system-tokens/src/lib/colorUtils';
 
 const DARK_TEXT = 'var(--color-base)';
 const LIGHT_TEXT = 'var(--color-base-inverse)';

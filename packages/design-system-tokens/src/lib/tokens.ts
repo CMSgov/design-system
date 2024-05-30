@@ -71,7 +71,7 @@ export type FlattenedTokensByFile = {
  * object, producing a key that contains each group and property in dot notation (e.g.,
  * `color.crimson.500`). This makes each token easier to reference and transform.
  */
-function flattenTokensFile(tokensFile: TokensFile) {
+export function flattenTokensFile(tokensFile: TokensFile) {
   const flattenedTokens: { [tokenName: string]: Token } = {};
 
   Object.entries(tokensFile).forEach(([tokenGroup, groupValues]) => {

@@ -9,7 +9,7 @@ import {
   TableCaption,
 } from '@cmsgov/design-system';
 import ColorSwatch from './ColorSwatch';
-import { getComponentVariables, getThemeColorName, ThemeName } from '../../helpers/themeTokens';
+import { getComponentVariables, ThemeName } from '../../helpers/themeTokens';
 
 interface ComponentThemeOptionsProps {
   /**
@@ -21,25 +21,6 @@ interface ComponentThemeOptionsProps {
    */
   componentname: string;
 }
-
-/**
- * Looks up the value found in the component mapping and returns where it maps to along with the specific
- * theme color variable name and swatch for colors.
- */
-const lookupThemeValue = (theme: string, value: string): any => {
-  const keyName = getThemeColorName(theme as ThemeName, value);
-  const elem = keyName ? (
-    <span>
-      <ColorSwatch colorTokenName={keyName} title={`hex value: ${value}`} />
-      <code>--color-{keyName}</code>
-    </span>
-  ) : (
-    <span>
-      <code>{value}</code>
-    </span>
-  );
-  return elem;
-};
 
 /**
  * Takes a js object with name-value pairs and creates a list of configuration configuration
@@ -64,19 +45,24 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
         </TableRow>
       </TableHead>
       <TableBody role="rowgroup">
-        {Object.keys(componentVariables).map((key) => (
+        {componentVariables.map((variableInfo) => (
           <TableRow role="row" key={uniqueId('config_option_')}>
             <TableCell stackedTitle="Variable" headers="columnvariable">
-              <code className="ds-u-font-weight--bold">
-                --{componentname}
-                {key}
-              </code>
+              <code className="ds-u-font-weight--bold">{variableInfo.variableName}</code>
             </TableCell>
             <TableCell
               stackedTitle={`Default ${capitalize(theme)} Theme Value`}
               headers="columnthemevalue"
             >
-              {lookupThemeValue(theme, componentVariables[key])}
+              <span>
+                {variableInfo.token.$type === 'color' && (
+                  <ColorSwatch
+                    cssVariable={variableInfo.value}
+                    title={`hex value: ${variableInfo.resolvedValue}`}
+                  />
+                )}
+                <code>{variableInfo.value}</code>
+              </span>
             </TableCell>
           </TableRow>
         ))}
