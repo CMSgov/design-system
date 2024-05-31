@@ -1,5 +1,5 @@
 import path from 'path';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 import {
   tokenFilesToCssFiles,
   tokenFilesToScssFiles,

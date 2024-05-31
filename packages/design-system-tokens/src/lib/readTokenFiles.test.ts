@@ -1,5 +1,5 @@
 import path from 'path';
-import { readTokenFiles } from './tokens';
+import { readTokenFiles } from './readTokenFiles';
 
 describe('readTokenFiles', () => {
   const tokens = readTokenFiles(path.resolve(__dirname, '..', '__mocks__', 'tokens'));

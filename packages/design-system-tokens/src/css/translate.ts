@@ -47,9 +47,9 @@ function isIncludedSystemToken(tokenName: string): boolean {
  * will only reference a system token by name if it's one of the system tokens that is
  * being included in the exported theme files.
  */
-function resolveTokenValue(
+export function tokenToCssValue(
   token: Token,
-  resolveConfig: {
+  config: {
     themeTokens: FlattenedTokens;
     systemTokens: FlattenedTokens;
     renderVariableAlias?: (name: string) => string;
@@ -58,7 +58,7 @@ function resolveTokenValue(
   if (typeof token.$value === 'string' && isAlias(token.$value)) {
     // Assume aliases are in the format {group.subgroup.token} with any number of optional groups/subgroups
     const aliasedTokenName = getAliasKey(token.$value);
-    const { themeTokens, systemTokens, renderVariableAlias } = resolveConfig;
+    const { themeTokens, systemTokens, renderVariableAlias } = config;
 
     // Token aliases are assumed to be unique
     const aliasedToken = themeTokens[aliasedTokenName] ?? systemTokens[aliasedTokenName];
@@ -66,16 +66,14 @@ function resolveTokenValue(
       throw new Error(`No token found for alias {${aliasedTokenName}}`);
     }
 
-    // TODO: Enable this after we've merged a version of this that has been verified to
-    // be 1-1 with the previous script
-    // if (
-    //   renderVariableAlias &&
-    //   (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
-    // ) {
-    //   return renderVariableAlias(aliasedTokenName);
-    // }
+    if (
+      renderVariableAlias &&
+      (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
+    ) {
+      return renderVariableAlias(aliasedTokenName);
+    }
 
-    return resolveTokenValue(aliasedToken, resolveConfig);
+    return tokenToCssValue(aliasedToken, config);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
   } else if (typeof token.$value === 'string') {
@@ -116,10 +114,12 @@ export function tokensToCssProperties(
 ): string {
   // When we're resolving token values, we need some additional information that doesn't
   // change from token to token.
-  const resolveConfig = {
+  const valueRenderConfig = {
     themeTokens,
     systemTokens,
-    renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
+    // TODO: Enable this after we've merged a version of this that has been verified to
+    // be 1-1 with the previous script
+    // renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
   };
 
   // We actually do include some of the system tokens but only a subset
@@ -130,7 +130,7 @@ export function tokensToCssProperties(
 
   const vars = tokenEntries.map(([key, token]) => {
     const varName = tokenNameToVarName(key);
-    const varValue = resolveTokenValue(token, resolveConfig);
+    const varValue = tokenToCssValue(token, valueRenderConfig);
     return `--${varName}: ${varValue};`;
   });
 
@@ -148,7 +148,7 @@ export function tokensToSassVars(
 ): string {
   // When we're resolving token values, we need some additional information that doesn't
   // change from token to token.
-  const resolveConfig = {
+  const valueRenderConfig = {
     themeTokens,
     systemTokens,
     renderVariableAlias: (name: string) => `$${tokenNameToVarName(name)}`,
@@ -164,7 +164,7 @@ export function tokensToSassVars(
 
   const vars = tokenEntries.map(([key, token]) => {
     const varName = tokenNameToVarName(key);
-    const varValue = resolveTokenValue(token, resolveConfig);
+    const varValue = tokenToCssValue(token, valueRenderConfig);
     return `$${varName}: ${varValue}${defaultFlag};`;
   });
 

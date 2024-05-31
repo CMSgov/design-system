@@ -4,7 +4,7 @@ import FigmaApi from './FigmaApi';
 import c from 'chalk';
 import path from 'path';
 import { generatePostVariablesPayload } from './translateTokensToFigma';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 
