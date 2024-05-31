@@ -57,6 +57,7 @@ export function getComponentVariables(
   variableName: string;
   value: string;
   resolvedValue: string;
+  resolvedToken: Token;
 }> {
   const filename = filenameFromTheme(themeName);
   const tokenKeys = Object.keys(tokensByFile[filename]).filter((key) =>
