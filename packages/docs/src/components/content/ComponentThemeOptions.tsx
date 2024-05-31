@@ -29,6 +29,7 @@ interface ComponentThemeOptionsProps {
 const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsProps) => {
   componentname = componentname.toLowerCase();
   const componentVariables = getComponentVariables(theme as ThemeName, componentname);
+
   const componentOptions = (
     <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
@@ -55,9 +56,9 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
               headers="columnthemevalue"
             >
               <span>
-                {variableInfo.token.$type === 'color' && (
+                {variableInfo.resolvedToken.$type === 'color' && (
                   <ColorSwatch
-                    cssVariable={variableInfo.value}
+                    fill={variableInfo.resolvedValue}
                     title={`hex value: ${variableInfo.resolvedValue}`}
                   />
                 )}

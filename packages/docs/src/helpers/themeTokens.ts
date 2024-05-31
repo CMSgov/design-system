@@ -21,7 +21,7 @@ function filenameFromTheme(themeName: ThemeName): string {
 }
 
 const tokensByFile: FlattenedTokensByFile = {
-  'System.value.json': flattenTokens(systemTokens as any),
+  'System.Value.json': flattenTokens(systemTokens as any),
   [filenameFromTheme('core')]: flattenTokens(coreTokens as any),
   [filenameFromTheme('cmsgov')]: flattenTokens(cmsgovTokens as any),
   [filenameFromTheme('healthcare')]: flattenTokens(healthcareTokens as any),
@@ -77,6 +77,7 @@ export function getComponentVariables(
       variableName: valueRenderConfig.renderVariableAlias(tokenKey),
       value: tokenToCssValue(token, valueRenderConfig),
       resolvedValue: tokenToCssValue(resolvedToken, valueRenderConfig),
+      resolvedToken,
     };
   });
 }

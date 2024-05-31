@@ -66,14 +66,12 @@ export function tokenToCssValue(
       throw new Error(`No token found for alias {${aliasedTokenName}}`);
     }
 
-    // TODO: Enable this after we've merged a version of this that has been verified to
-    // be 1-1 with the previous script
-    // if (
-    //   renderVariableAlias &&
-    //   (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
-    // ) {
-    //   return renderVariableAlias(aliasedTokenName);
-    // }
+    if (
+      renderVariableAlias &&
+      (aliasedTokenName in themeTokens || isIncludedSystemToken(aliasedTokenName))
+    ) {
+      return renderVariableAlias(aliasedTokenName);
+    }
 
     return tokenToCssValue(aliasedToken, config);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
@@ -119,7 +117,9 @@ export function tokensToCssProperties(
   const valueRenderConfig = {
     themeTokens,
     systemTokens,
-    renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
+    // TODO: Enable this after we've merged a version of this that has been verified to
+    // be 1-1 with the previous script
+    // renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
   };
 
   // We actually do include some of the system tokens but only a subset

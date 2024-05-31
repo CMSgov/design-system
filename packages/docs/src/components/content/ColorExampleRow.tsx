@@ -33,7 +33,7 @@ const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampl
       };
 
   if (!displayValue) {
-    displayValue = getSystemColorTokenFromValue(value);
+    displayValue = getSystemColorTokenFromValue(value).replace('.', ' ');
   }
 
   return (
