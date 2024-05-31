@@ -248,7 +248,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...useLabelProps({
       ...props,
       labelClassName: classNames('ds-c-label', 'ds-c-dropdown__label', props.labelClassName),
-      fieldId: id,
     }),
   };
 
