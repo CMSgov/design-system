@@ -1,12 +1,49 @@
 import { VariableCodeSyntax, VariableScope } from '@figma/rest-api-spec';
 
 /**
- * This file defines what design tokens and design token files look like in the codebase.
- *
- * Tokens are distinct from variables, in that a [token](https://tr.designtokens.org/format/#design-token)
- * is a name/value pair (with other properties), while a variable in Figma stores multiple values,
- * one for each mode.
+ * We're attempting to align with this standard: https://tr.designtokens.org/, but we're
+ * also supporting an additional `boolean` type because Figma has a boolean type.
  */
+// interface BaseToken {
+//   $description?: string;
+//   $extensions?: {
+//     /**
+//      * The `com.figma` namespace stores Figma-specific variable properties
+//      */
+//     'com.figma'?: {
+//       hiddenFromPublishing?: boolean;
+//       scopes?: VariableScope[];
+//       codeSyntax?: VariableCodeSyntax;
+//     };
+//   };
+// }
+
+// interface AliasToken extends BaseToken {
+//   $type?: undefined;
+//   $value: string;
+// }
+
+// interface StringToken extends BaseToken {
+//   $type: 'color' | 'dimension' | 'duration';
+//   $value: string;
+// }
+
+// interface NumberToken extends BaseToken {
+//   $type: 'number' | 'fontWeight';
+//   $value: number;
+// }
+
+// interface BooleanToken extends BaseToken {
+//   $type: 'boolean';
+//   $value: boolean;
+// }
+
+// interface FontFamilyToken extends BaseToken {
+//   $type: 'fontFamily';
+//   $value: string | string[];
+// }
+
+// export type Token = AliasToken | StringToken | NumberToken | BooleanToken | FontFamilyToken;
 
 export interface Token {
   /**
@@ -16,7 +53,15 @@ export interface Token {
    * to align with the resolved types for Figma variables. Note that it doesn't need a $type if it's an
    * alias, because the type will come from the aliased variable.
    */
-  $type?: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration' | 'fontWeight';
+  $type?:
+    | 'color'
+    | 'number'
+    | 'string'
+    | 'boolean'
+    | 'dimension'
+    | 'duration'
+    | 'fontWeight'
+    | 'fontFamily';
   $value: string | number | boolean;
   $description?: string;
   $extensions?: {

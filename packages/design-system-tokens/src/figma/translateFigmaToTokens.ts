@@ -146,7 +146,7 @@ function tokenTypeFromVariable(variable: Variable): Token['$type'] {
     case 'FLOAT':
       return 'number';
     case 'STRING':
-      return 'string';
+      return 'fontFamily';
   }
 }
 
@@ -229,6 +229,10 @@ async function tokenFromVariable(
       case 'number':
         break;
     }
+  } else if ($type === 'fontFamily') {
+    const fontList = Array.isArray(existingToken?.$value) ? existingToken.$value : [];
+    fontList[0] = $value;
+    $value = fontList;
   }
 
   const $description = variable.description;

@@ -3525,8 +3525,10 @@
     },
     "family": {
       "open-sans": {
-        "$value": "Open Sans",
-        "$type": "string",
+        "$value": [
+          "Open Sans"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3538,8 +3540,10 @@
         }
       },
       "montserrat": {
-        "$value": "Montserrat",
-        "$type": "string",
+        "$value": [
+          "Montserrat"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3551,8 +3555,10 @@
         }
       },
       "rubik": {
-        "$value": "Rubik",
-        "$type": "string",
+        "$value": [
+          "Rubik"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,

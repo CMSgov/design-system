@@ -28,14 +28,15 @@ function variableResolvedTypeFromToken(token: Token) {
       return 'COLOR';
     case 'number':
     case 'dimension':
+    case 'duration':
     case 'fontWeight':
       return 'FLOAT';
-    case 'string':
+    case 'fontFamily':
       return 'STRING';
     case 'boolean':
       return 'BOOLEAN';
     default:
-      throw new Error(`Invalid token $type: ${token.$type}`);
+      throw new Error(`Invalid token $type: ${(token as any)?.$type}`);
   }
 }
 
@@ -82,6 +83,8 @@ function variableValueFromToken(
     return dimensionToPixelNumber(token.$value + '');
   } else if (token.$type === 'duration') {
     return durationToNumber(token.$value + '');
+  } else if (token.$type === 'fontFamily') {
+    return Array.isArray(token.$value) ? token.$value[0] : token.$value;
   } else {
     return token.$value;
   }
