@@ -1,57 +1,12 @@
 import { VariableCodeSyntax, VariableScope } from '@figma/rest-api-spec';
 
 /**
- * We're attempting to align with this standard: https://tr.designtokens.org/, but we're
- * also supporting an additional `boolean` type because Figma has a boolean type.
+ * Using this draft Design Token JSON format standard: https://tr.designtokens.org/
  */
-// interface BaseToken {
-//   $description?: string;
-//   $extensions?: {
-//     /**
-//      * The `com.figma` namespace stores Figma-specific variable properties
-//      */
-//     'com.figma'?: {
-//       hiddenFromPublishing?: boolean;
-//       scopes?: VariableScope[];
-//       codeSyntax?: VariableCodeSyntax;
-//     };
-//   };
-// }
-
-// interface AliasToken extends BaseToken {
-//   $type?: undefined;
-//   $value: string;
-// }
-
-// interface StringToken extends BaseToken {
-//   $type: 'color' | 'dimension' | 'duration';
-//   $value: string;
-// }
-
-// interface NumberToken extends BaseToken {
-//   $type: 'number' | 'fontWeight';
-//   $value: number;
-// }
-
-// interface BooleanToken extends BaseToken {
-//   $type: 'boolean';
-//   $value: boolean;
-// }
-
-// interface FontFamilyToken extends BaseToken {
-//   $type: 'fontFamily';
-//   $value: string | string[];
-// }
-
-// export type Token = AliasToken | StringToken | NumberToken | BooleanToken | FontFamilyToken;
-
 export interface Token {
   /**
-   * The [type](https://tr.designtokens.org/format/#type-0) of the token.
-   *
-   * We allow `string` and `boolean` types in addition to the draft W3C spec's `color` and `number` types
-   * to align with the resolved types for Figma variables. Note that it doesn't need a $type if it's an
-   * alias, because the type will come from the aliased variable.
+   * In addition to the standard, we're also supporting an additional `boolean` type
+   * because Figma has a boolean type.
    */
   $type?:
     | 'color'
