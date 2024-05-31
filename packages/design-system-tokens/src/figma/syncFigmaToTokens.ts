@@ -8,7 +8,7 @@ import {
   tokenFilesFromLocalVariables,
   writeTokenFiles,
 } from './translateFigmaToTokens';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 

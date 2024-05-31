@@ -3,7 +3,7 @@
 // and integrating with Figma. - Patrick
 
 import path from 'path';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 import { tokenFilesToCssFiles } from './translate';
 
 const realTokensByFile = readTokenFiles(path.resolve(__dirname, '..', 'tokens'));

@@ -1,6 +1,6 @@
 import path from 'path';
 import writeFiles from './writeFiles';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 import {
   tokenFilesToCssFiles,
   tokenFilesToScssFiles,

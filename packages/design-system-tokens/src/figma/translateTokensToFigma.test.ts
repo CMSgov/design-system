@@ -5,7 +5,7 @@ import {
   getCollectionsByName,
   getVariablesByCollection,
 } from './translateTokensToFigma';
-import { readTokenFiles } from '../lib/tokens';
+import { readTokenFiles } from '../lib/readTokenFiles';
 
 describe('getCollectionsByName', () => {
   it('returns an object of collections keyed by name', () => {

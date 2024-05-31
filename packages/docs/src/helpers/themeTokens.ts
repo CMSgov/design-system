@@ -8,7 +8,7 @@ import themes from '../../../../themes.json';
 import {
   FlattenedTokensByFile,
   Token,
-  flattenTokensFile,
+  flattenTokens,
   isAlias,
   resolveTokenAlias,
 } from 'design-system-tokens/src/lib/tokens';
@@ -21,11 +21,11 @@ function filenameFromTheme(themeName: ThemeName): string {
 }
 
 const tokensByFile: FlattenedTokensByFile = {
-  'System.value.json': flattenTokensFile(systemTokens as any),
-  [filenameFromTheme('core')]: flattenTokensFile(coreTokens as any),
-  [filenameFromTheme('cmsgov')]: flattenTokensFile(cmsgovTokens as any),
-  [filenameFromTheme('healthcare')]: flattenTokensFile(healthcareTokens as any),
-  [filenameFromTheme('medicare')]: flattenTokensFile(medicareTokens as any),
+  'System.value.json': flattenTokens(systemTokens as any),
+  [filenameFromTheme('core')]: flattenTokens(coreTokens as any),
+  [filenameFromTheme('cmsgov')]: flattenTokens(cmsgovTokens as any),
+  [filenameFromTheme('healthcare')]: flattenTokens(healthcareTokens as any),
+  [filenameFromTheme('medicare')]: flattenTokens(medicareTokens as any),
 };
 
 const tokensByTheme = {
