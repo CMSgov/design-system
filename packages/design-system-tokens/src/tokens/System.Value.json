@@ -3526,7 +3526,14 @@
     "family": {
       "open-sans": {
         "$value": [
-          "Open Sans"
+          "Open Sans",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
         ],
         "$type": "fontFamily",
         "$extensions": {
@@ -3541,7 +3548,8 @@
       },
       "montserrat": {
         "$value": [
-          "Montserrat"
+          "Montserrat",
+          "Avenir", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"
         ],
         "$type": "fontFamily",
         "$extensions": {
@@ -3556,7 +3564,8 @@
       },
       "rubik": {
         "$value": [
-          "Rubik"
+          "Rubik",
+          "Seravek", "Gill Sans Nova", "Ubuntu", "Calibri", "DejaVu Sans", "source-sans-pro", "sans-serif"
         ],
         "$type": "fontFamily",
         "$extensions": {
