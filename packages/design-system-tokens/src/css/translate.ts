@@ -127,8 +127,8 @@ export function tokensToCssProperties(
 
   // We actually do include some of the system tokens but only a subset
   const tokenEntries = [
-    ...Object.entries(themeTokens),
     ...Object.entries(systemTokens).filter(([name]) => isIncludedSystemToken(name)),
+    ...Object.entries(themeTokens),
   ];
 
   const vars = tokenEntries.map(([key, token]) => {
@@ -159,8 +159,8 @@ export function tokensToSassVars(
 
   // We actually do include some of the system tokens but only a subset
   const tokenEntries = [
-    ...Object.entries(themeTokens),
     ...Object.entries(systemTokens).filter(([name]) => isIncludedSystemToken(name)),
+    ...Object.entries(themeTokens),
   ];
 
   const defaultFlag = useDefaultFlag ? ' !default' : '';
