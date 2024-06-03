@@ -248,7 +248,12 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...useLabelProps({
       ...props,
       id,
-      labelClassName: classNames('ds-c-label', 'ds-c-dropdown__label', props.labelClassName),
+      labelClassName: classNames(
+        'ds-c-label',
+        'ds-c-dropdown__label',
+        props.inversed && 'ds-c-label--inverse',
+        props.labelClassName
+      ),
     }),
   };
 
