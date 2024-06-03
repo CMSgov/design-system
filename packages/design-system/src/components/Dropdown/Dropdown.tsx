@@ -138,7 +138,7 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  const id = useId('dropdown__button--', props.id);
+  const id = useId('dropdown--', props.id);
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
 
