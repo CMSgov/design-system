@@ -949,7 +949,7 @@
         }
       },
       "family": {
-        "headings": {
+        "heading": {
           "$value": "{font.family.montserrat}",
           "$extensions": {
             "com.figma": {
@@ -1154,6 +1154,36 @@
       },
       "color--inverse": {
         "$value": "{theme.color.base-inverse}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-family": {
+        "$value": "{theme.font.family.body}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-size": {
+        "$value": "{theme.font.size.base}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "line-height": {
+        "$value": "{theme.font.line-height.base}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
