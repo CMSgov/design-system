@@ -31,7 +31,9 @@ function variableResolvedTypeFromToken(token: Token) {
     case 'duration':
     case 'fontWeight':
       return 'FLOAT';
+    case 'string':
     case 'fontFamily':
+    case 'textTransform':
       return 'STRING';
     case 'boolean':
       return 'BOOLEAN';
