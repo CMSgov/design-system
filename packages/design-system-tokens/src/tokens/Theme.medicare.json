@@ -3299,6 +3299,17 @@
               "codeSyntax": {}
             }
           }
+        },
+        "top-margin": {
+          "$value": "0.125rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
         }
       },
       "background-color--disabled": {

@@ -37,14 +37,9 @@ label,
     cursor: pointer;
     font-weight: var(--font-weight-normal);
     grid-area: label;
-
-    // Medicare has a different `translateY` for choice labels
-    // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
-    margin-block-start: var(--choice__translateY, 0.25em);
+    margin-block-start: var(--choice-label__top-margin);
   }
 
-  // Medicare has a different `translateY` for small choice labels
-  // If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
   .ds-c-choice--small + & {
     margin-block-start: -0.125em;
   }
