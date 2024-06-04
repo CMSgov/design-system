@@ -3216,7 +3216,7 @@
         }
       },
       "border-width": {
-        "$value": "4px",
+        "$value": "2px",
         "$type": "dimension",
         "$extensions": {
           "com.figma": {
