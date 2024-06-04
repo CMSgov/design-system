@@ -3699,6 +3699,60 @@
         }
       }
     },
+    "label": {
+      "font-family": {
+        "$value": "{theme.font.family.body}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-size": {
+        "$value": "{theme.font.size.md}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-weight": {
+        "$value": "{font.weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "letter-spacing": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text-transform": {
+        "$value": "inherit",
+        "$type": "textTransform",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "inline-error": {
       "color": {
         "$value": "{theme.color.error}",
@@ -3928,18 +3982,6 @@
         }
       }
     },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4030,6 +4072,18 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
+          }
+        }
+      }
+    },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
           }
         }
       }

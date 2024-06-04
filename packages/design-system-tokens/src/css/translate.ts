@@ -76,6 +76,10 @@ export function tokenToCssValue(
     return tokenToCssValue(aliasedToken, config);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
+  } else if (token.$type === 'string') {
+    return `'${token.$value}'`;
+  } else if (token.$type === 'textTransform') {
+    return token.$value + '';
   } else if (token.$type === 'fontFamily') {
     const fontList = Array.isArray(token.$value) ? token.$value : [token.$value];
     return fontList.map((fontFamily) => `'${fontFamily}'`).join(', ');
