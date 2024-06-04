@@ -37,7 +37,7 @@ label,
     cursor: pointer;
     font-weight: var(--font-weight-normal);
     grid-area: label;
-    margin-block-start: var(--choice-label__top-margin);
+    margin-block-start: var(--choice-label__margin-top);
   }
 
   .ds-c-choice--small + & {

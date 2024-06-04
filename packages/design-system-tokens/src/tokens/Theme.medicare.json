@@ -3300,7 +3300,7 @@
             }
           }
         },
-        "top-margin": {
+        "margin-top": {
           "$value": "0.125rem",
           "$type": "dimension",
           "$extensions": {

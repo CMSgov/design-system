@@ -3293,7 +3293,7 @@
             }
           }
         },
-        "top-margin": {
+        "margin-top": {
           "$value": "0.25rem",
           "$type": "dimension",
           "$extensions": {
