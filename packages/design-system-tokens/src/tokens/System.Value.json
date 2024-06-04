@@ -3525,8 +3525,17 @@
     },
     "family": {
       "open-sans": {
-        "$value": "Open Sans",
-        "$type": "string",
+        "$value": [
+          "Open Sans",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3538,8 +3547,11 @@
         }
       },
       "montserrat": {
-        "$value": "Montserrat",
-        "$type": "string",
+        "$value": [
+          "Montserrat",
+          "Avenir", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3551,8 +3563,11 @@
         }
       },
       "rubik": {
-        "$value": "Rubik",
-        "$type": "string",
+        "$value": [
+          "Rubik",
+          "Seravek", "Gill Sans Nova", "Ubuntu", "Calibri", "DejaVu Sans", "source-sans-pro", "sans-serif"
+        ],
+        "$type": "fontFamily",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,

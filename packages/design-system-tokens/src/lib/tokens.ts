@@ -1,22 +1,22 @@
 import { VariableCodeSyntax, VariableScope } from '@figma/rest-api-spec';
 
 /**
- * This file defines what design tokens and design token files look like in the codebase.
- *
- * Tokens are distinct from variables, in that a [token](https://tr.designtokens.org/format/#design-token)
- * is a name/value pair (with other properties), while a variable in Figma stores multiple values,
- * one for each mode.
+ * Using this draft Design Token JSON format standard: https://tr.designtokens.org/
  */
-
 export interface Token {
   /**
-   * The [type](https://tr.designtokens.org/format/#type-0) of the token.
-   *
-   * We allow `string` and `boolean` types in addition to the draft W3C spec's `color` and `number` types
-   * to align with the resolved types for Figma variables. Note that it doesn't need a $type if it's an
-   * alias, because the type will come from the aliased variable.
+   * In addition to the standard, we're also supporting an additional `boolean` type
+   * because Figma has a boolean type.
    */
-  $type?: 'color' | 'number' | 'string' | 'boolean' | 'dimension' | 'duration' | 'fontWeight';
+  $type?:
+    | 'color'
+    | 'number'
+    | 'string'
+    | 'boolean'
+    | 'dimension'
+    | 'duration'
+    | 'fontWeight'
+    | 'fontFamily';
   $value: string | number | boolean;
   $description?: string;
   $extensions?: {

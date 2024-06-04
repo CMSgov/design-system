@@ -76,6 +76,9 @@ export function tokenToCssValue(
     return tokenToCssValue(aliasedToken, config);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
+  } else if (token.$type === 'fontFamily') {
+    const fontList = Array.isArray(token.$value) ? token.$value : [token.$value];
+    return fontList.map((fontFamily) => `'${fontFamily}'`).join(', ');
   } else if (typeof token.$value === 'string') {
     if (token.$value.match(/#[a-z0-9]{6}00/i)) {
       return 'transparent';
