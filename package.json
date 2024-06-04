@@ -29,7 +29,6 @@
     "lint:stylelint": "yarn stylelint --custom-formatter stylelint-formatter-pretty ./packages/**/*.scss",
     "precommit": "lint-staged",
     "prepare": "husky install",
-    "prettier": "yarn prettier --write 'packages/**/*.{js,jsx,tsx,scss,html,md,mdx,json}'",
     "release": "ts-node ./scripts/release.ts",
     "release:notes": "ts-node ./scripts/notes.ts",
     "release:patch": "ts-node ./scripts/patch.ts",
