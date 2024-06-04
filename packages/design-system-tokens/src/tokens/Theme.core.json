@@ -3353,6 +3353,30 @@
             "codeSyntax": {}
           }
         }
+      },
+      "wrapper": {
+        "gap": {
+          "$value": "0.5rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "gap--small": {
+          "$value": "0.5rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        }
       }
     },
     "day-picker": {
@@ -3893,6 +3917,18 @@
         }
       }
     },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -3983,18 +4019,6 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
-          }
-        }
-      }
-    },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
           }
         }
       }

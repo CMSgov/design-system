@@ -3125,7 +3125,7 @@
         }
       },
       "background-color--checked": {
-        "$value": "{theme.color.primary}",
+        "$value": "{theme.color.secondary}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3155,7 +3155,7 @@
         }
       },
       "border-color--checked": {
-        "$value": "{theme.color.primary}",
+        "$value": "{theme.color.secondary}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3195,7 +3195,7 @@
         }
       },
       "border-color--left": {
-        "$value": "{theme.color.primary}",
+        "$value": "{theme.color.secondary}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3322,7 +3322,7 @@
         }
       },
       "border-color--focus": {
-        "$value": "{theme.color.primary-darker}",
+        "$value": "{theme.color.secondary-darker}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3360,6 +3360,30 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
+          }
+        }
+      },
+      "wrapper": {
+        "gap": {
+          "$value": "1rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "gap--small": {
+          "$value": "0.75rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
           }
         }
       }
@@ -3902,6 +3926,18 @@
         }
       }
     },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -3992,18 +4028,6 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
-          }
-        }
-      }
-    },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
           }
         }
       }
