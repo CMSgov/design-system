@@ -2531,39 +2531,6 @@
       }
     }
   },
-  "article-max-width": {
-    "$value": "600px",
-    "$type": "dimension",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["ALL_SCOPES"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "lead-max-width": {
-    "$value": "77rem",
-    "$type": "dimension",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["ALL_SCOPES"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "nav-width": {
-    "$value": "951px",
-    "$type": "dimension",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["ALL_SCOPES"],
-        "codeSyntax": {}
-      }
-    }
-  },
   "site-margins": {
     "$value": "3rem",
     "$type": "dimension",
@@ -2588,17 +2555,6 @@
   },
   "site-max-width": {
     "$value": "1104px",
-    "$type": "dimension",
-    "$extensions": {
-      "com.figma": {
-        "hiddenFromPublishing": false,
-        "scopes": ["ALL_SCOPES"],
-        "codeSyntax": {}
-      }
-    }
-  },
-  "text-max-width": {
-    "$value": "53rem",
     "$type": "dimension",
     "$extensions": {
       "com.figma": {
