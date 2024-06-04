@@ -6,6 +6,10 @@ export type OutputFiles = {
 };
 
 export async function writeFiles(outputDir: string, files: OutputFiles): Promise<string[]> {
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
   // Write the files for each theme concurrently
   const filesWritten = await Promise.all(
     Object.keys(files).map(async (fileName) => {

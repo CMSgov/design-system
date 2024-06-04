@@ -225,6 +225,7 @@ export function tokenFilesToScssLayoutFiles(tokensByFile: FlattenedTokensByFile)
     Object.entries(systemTokens).filter(([name]) => layoutTokenNames.includes(name))
   );
   return {
-    'layout.scss': tokensToSassVars(filteredTokens, filteredTokens, false),
+    'layout.scss': tokensToSassVars({}, filteredTokens, false),
+    'layout-default.scss': tokensToSassVars({}, filteredTokens, true),
   };
 }
