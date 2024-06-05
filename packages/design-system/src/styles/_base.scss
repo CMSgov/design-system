@@ -198,6 +198,7 @@ $breakpoints: (
   @include heading-margins;
 
   font-size: var(--font-size-2xl--mobile);
+  font-weight: var(--font-weight-heading-2xl);
 
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-2xl);
