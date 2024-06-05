@@ -891,7 +891,7 @@
           }
         },
         "5xl": {
-          "$value": "2.5rem",
+          "$value": "3.125rem",
           "$type": "dimension",
           "$extensions": {
             "com.figma": {
