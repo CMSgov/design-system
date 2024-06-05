@@ -102,6 +102,7 @@ export const Drawer = (props: DrawerProps) => {
       showModal={true}
       backdropClickExits={backdropClickExits}
       isOpen={isOpen}
+      aria-labelledby={headingId}
       {...otherProps}
     >
       <div className="ds-c-drawer__window" tabIndex={-1}>
