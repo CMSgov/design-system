@@ -138,8 +138,7 @@ $breakpoints: (
  */
 
 @mixin heading {
-  font-family: var(--font-family-headings);
-  font-weight: var(--typography-heading__font-weight);
+  font-family: var(--font-family-heading);
   line-height: var(--font-line-height-heading);
   margin: 0;
 }
@@ -160,6 +159,7 @@ $breakpoints: (
   @include heading;
 
   font-size: var(--font-size-5xl--mobile);
+  font-weight: var(--font-weight-heading-5xl);
 
   @media (min-width: $media-width-sm) {
     font-size: var(--font-size-5xl--tablet);
@@ -209,6 +209,7 @@ $breakpoints: (
   @include heading-margins;
 
   font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-heading-xl);
 }
 
 @mixin heading--lg {
@@ -324,12 +325,15 @@ $breakpoints: (
 
 .ds-text-body--lg {
   font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-body-lg);
 }
 
 .ds-text-body--md {
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-body-md);
 }
 
 .ds-text-body--sm {
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-body-sm);
 }
