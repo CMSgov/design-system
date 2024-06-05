@@ -41,6 +41,7 @@ describe('Pagination', () => {
       totalPages: 3,
       currentPage: 1,
       onPageChange: onPageChange,
+      id: 'static-id',
       renderHref: (currentPage) => `#${currentPage}`,
       ...overrideProps,
     };

@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-alert';
 
 export default {
-  title: 'Web Components/Alert',
+  title: 'Web Components/ds-alert',
   argTypes: {
     children: {
       table: {
@@ -49,6 +49,7 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/alert/).`,
       },
+      sharedAttrLists: ['analytics'],
     },
   },
   decorators: [webComponentDecorator],

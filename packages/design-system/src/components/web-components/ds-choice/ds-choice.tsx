@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
   'checked-children',
@@ -9,22 +10,15 @@ const attributes = [
   'checked',
   'default-checked',
   'disabled',
-  'error-message',
-  'error-id',
-  'hint-id',
-  'hint',
   'input-class-name',
   'inversed',
-  'label-class-name',
-  'label-id',
-  'label',
   'name',
-  'requirement-label',
   'root-id',
   'size',
   'type',
   'unchecked-children',
   'value',
+  ...formAttrs,
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -62,4 +56,4 @@ const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProp
   ></Choice>
 );
 
-define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] } as any);
+define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });

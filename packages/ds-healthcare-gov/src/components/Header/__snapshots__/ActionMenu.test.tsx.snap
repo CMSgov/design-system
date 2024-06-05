@@ -3,12 +3,8 @@
 exports[`ActionMenu analytics sends analytics event when logged-in menu closed 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "menu closed",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "text": "menu closed",
 }
 `;
@@ -16,12 +12,8 @@ Object {
 exports[`ActionMenu analytics sends analytics event when logged-in menu opened 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "menu opened",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "text": "menu opened",
 }
 `;
@@ -29,12 +21,8 @@ Object {
 exports[`ActionMenu analytics sends analytics event when logged-out action menu link clicked 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "ZOMBO",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "link_url": "https://www.zombo.com",
   "text": "ZOMBO",
 }
@@ -43,12 +31,8 @@ Object {
 exports[`ActionMenu analytics sends analytics event when logged-out menu closed 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "menu closed",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "text": "menu closed",
 }
 `;
@@ -56,12 +40,8 @@ Object {
 exports[`ActionMenu analytics sends analytics event when logged-out menu opened 1`] = `
 Object {
   "category": "consistent header",
-  "event_action": "click",
-  "event_category": "consistent header",
   "event_extension": "Design system integration",
-  "event_label": "menu opened",
   "event_name": "header_click",
-  "event_type": "ui interaction",
   "text": "menu opened",
 }
 `;

@@ -3,12 +3,8 @@
 exports[`Alert Analytics event tracking overrides analytics event content 1`] = `
 Array [
   Object {
-    "event_action": "alert impression",
-    "event_category": "ui components",
     "event_extension": "Design system integration",
-    "event_label": "other heading",
     "event_name": "alert_impression",
-    "event_type": "ui interaction",
     "heading": "other heading",
     "type": "success",
   },
@@ -18,12 +14,8 @@ Array [
 exports[`Alert Analytics event tracking sends analytics event with body-content fallback 1`] = `
 Array [
   Object {
-    "event_action": "alert impression",
-    "event_category": "ui components",
     "event_extension": "Design system integration",
-    "event_label": "Warning: Ruhroh",
     "event_name": "alert_impression",
-    "event_type": "ui interaction",
     "heading": "Warning: Ruhroh",
     "type": "warn",
   },
@@ -33,12 +25,8 @@ Array [
 exports[`Alert Analytics event tracking sends analytics event with heading 1`] = `
 Array [
   Object {
-    "event_action": "alert impression",
-    "event_category": "ui components",
     "event_extension": "Design system integration",
-    "event_label": "Alert: Ahhh!",
     "event_name": "alert_impression",
-    "event_type": "ui interaction",
     "heading": "Alert: Ahhh!",
     "type": "error",
   },

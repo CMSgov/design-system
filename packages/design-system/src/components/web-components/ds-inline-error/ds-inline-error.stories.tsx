@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-inline-error';
 
 export default {
-  title: 'Web Components/InlineError',
+  title: 'Web Components/ds-inline-error',
   argTypes: {
     'text content': {
       control: 'text',
@@ -28,7 +28,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/inline-error/).`,
       },
-      underlyingHtmlElements: ['span'],
     },
   },
   decorators: [webComponentDecorator],

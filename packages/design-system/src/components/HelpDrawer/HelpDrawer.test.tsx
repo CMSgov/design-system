@@ -16,11 +16,21 @@ const defaultProps = {
 };
 
 function renderHelpDrawer(props: Partial<HelpDrawerProps> = {}) {
-  return render(
+  const result = render(
     <HelpDrawer {...defaultProps} {...props}>
       <p>content</p>
     </HelpDrawer>
   );
+  return {
+    ...result,
+    rerenderHelpDrawer(newProps = {}) {
+      return result.rerender(
+        <HelpDrawer {...defaultProps} {...newProps}>
+          <p>content</p>
+        </HelpDrawer>
+      );
+    },
+  };
 }
 
 describe('HelpDrawer', () => {
@@ -34,6 +44,17 @@ describe('HelpDrawer', () => {
   it('renders a snapshot', () => {
     const { asFragment } = renderHelpDrawer();
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('passes arbitrary attributes to `<dialog>` element', () => {
+    const screen = render(
+      <HelpDrawer {...defaultProps} data-testid="foo">
+        <p>content</p>
+      </HelpDrawer>
+    );
+
+    const dialogEl = screen.queryByRole('dialog');
+    expect(dialogEl).toHaveAttribute('data-testid');
   });
 
   describe('Analytics event tracking', () => {
@@ -52,9 +73,31 @@ describe('HelpDrawer', () => {
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking on open help drawer', () => {
-      renderHelpDrawer();
+    it("does not send analytics event when help drawer isn't open", () => {
+      renderHelpDrawer({ isOpen: false });
+      expect(tealiumMock).not.toHaveBeenCalled();
+    });
+
+    it('sends analytics event when help drawer starts open', () => {
+      renderHelpDrawer({ isOpen: true });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('sends analytics event when opening help drawer', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer({ isOpen: false });
+      expect(tealiumMock).not.toHaveBeenCalled();
+      rerenderHelpDrawer({ isOpen: true });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('sends analytics event when closing help drawer', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+      rerenderHelpDrawer({ isOpen: false });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(2);
     });
 
     it('sends analytics event when heading is non-string', () => {

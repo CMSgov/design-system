@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-hint';
 
 export default {
-  title: 'Web Components/Hint',
+  title: 'Web Components/ds-hint',
   argTypes: {
     'text content': {
       control: 'text',
@@ -33,7 +33,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/hint/).`,
       },
-      underlyingHtmlElements: ['span'],
     },
   },
   decorators: [webComponentDecorator],

@@ -77,7 +77,6 @@ const SingleDrawerWithToggle = (...args) => {
   return (
     <>
       <Drawer
-        {...args}
         onCloseClick={closeDrawer}
         footerTitle="Footer Title"
         footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}

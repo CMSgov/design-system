@@ -1,9 +1,10 @@
 import CustomDayPickerCaption from './CustomDayPickerCaption';
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 import { DayPicker, DayPickerSingleProps } from 'react-day-picker';
 import { ArrowsStackedIcon } from '../Icons';
 import { t } from '../i18n';
 import type { Locale } from 'date-fns';
+import { CustomDayPickerDayContent } from './CustomDayPickerDayContent';
 
 /**
  * The default formatter for the Month caption.
@@ -35,7 +36,11 @@ export function CustomDayPicker(props: CustomDayPickerProps) {
         </span>
       }
       captionLayout="dropdown"
-      components={{ Caption: CustomDayPickerCaption, IconDropdown: ArrowsStackedIcon }}
+      components={{
+        Caption: CustomDayPickerCaption,
+        IconDropdown: ArrowsStackedIcon,
+        DayContent: CustomDayPickerDayContent,
+      }}
       formatters={{ formatMonthCaption }}
       {...props}
     />

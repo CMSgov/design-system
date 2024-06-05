@@ -18,7 +18,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/contact-us"
           >
-            footer.contactUs
+            Contact us
           </a>
           <span
             aria-hidden="true"
@@ -31,7 +31,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/archive"
           >
-            footer.archive
+            Archive
           </a>
           <span
             aria-hidden="true"
@@ -44,7 +44,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
           >
-            footer.a11y
+            Accessibility
           </a>
           <span
             aria-hidden="true"
@@ -57,384 +57,6 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <button>
             Privacy settings
           </button>
-          <dialog
-            aria-labelledby="dialog--1__heading"
-            class="ds-c-dialog ds-c-dialog--full"
-            id="dialog--1"
-            role="dialog"
-          >
-            <div
-              class="ds-c-dialog__window"
-              tabindex="-1"
-            >
-              <div
-                class="ds-c-dialog__header"
-              >
-                <h2
-                  class="ds-c-dialog__heading"
-                  id="dialog--1__heading"
-                >
-                  HealthCare.gov privacy settings
-                </h2>
-                <button
-                  aria-label="Close modal dialog"
-                  class="ds-c-close-button ds-c-dialog__close"
-                  id="dialog--1__close"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="false"
-                    aria-labelledby="dialog--1__close__icon__title"
-                    class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-                    id="dialog--1__close__icon"
-                    role="img"
-                    viewBox="-2 -2 18 18"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="dialog--1__close__icon__title"
-                    >
-                      Close
-                    </title>
-                    <path
-                      d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="ds-c-dialog__body"
-              >
-                <div
-                  id="dialog--1__content"
-                >
-                  <p
-                    class="ds-u-margin-top--0"
-                  >
-                    We take your privacy seriously. You can change the settings for each category to choose how we collect and use information while you’re on HealthCare.gov. For details, 
-                    <a
-                      href="https://www.healthcare.gov/privacy/"
-                    >
-                      review our full privacy policy
-                    </a>
-                     or 
-                    <a
-                      href="https://www.healthcare.gov/third-party-privacy-policies/"
-                    >
-                      get the list of specific tools in each category
-                    </a>
-                    .
-                  </p>
-                  <table
-                    class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
-                  >
-                    <thead
-                      role="rowgroup"
-                    >
-                      <tr
-                        role="row"
-                      >
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-category"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Category
-                        </th>
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-description"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Description
-                        </th>
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-status"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Status
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody
-                      role="rowgroup"
-                    >
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Advertising
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--3__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Advertising
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--3__choice--0"
-                                  name="cookie-c3"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--3__choice--0"
-                                  id="choice-list--3__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--3__choice--1"
-                                  name="cookie-c3"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--3__choice--1"
-                                  id="choice-list--3__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Social Media
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          If you share our content on Facebook, Twitter, or other social media accounts, we may track what HealthCare.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--4__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Social Media
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--4__choice--0"
-                                  name="cookie-c4"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--4__choice--0"
-                                  id="choice-list--4__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--4__choice--1"
-                                  name="cookie-c4"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--4__choice--1"
-                                  id="choice-list--4__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Web Analytics
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          We use a variety of tools to count, track, and analyze visits to HealthCare.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--5__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Web Analytics
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--5__choice--0"
-                                  name="cookie-c2"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--5__choice--0"
-                                  id="choice-list--5__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--5__choice--1"
-                                  name="cookie-c2"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--5__choice--1"
-                                  id="choice-list--5__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div
-                  class="ds-c-dialog__actions"
-                >
-                  <button
-                    class="ds-c-button ds-c-button--solid"
-                    type="button"
-                  >
-                    Update my settings
-                  </button>
-                </div>
-              </div>
-            </div>
-          </dialog>
           <span
             aria-hidden="true"
             class="hc-c-footer__delimiter"
@@ -446,7 +68,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/privacy"
           >
-            footer.privacyPolicy
+            Privacy policy
           </a>
           <span
             aria-hidden="true"
@@ -459,7 +81,7 @@ exports[`InlineLinkLists renders lists of links 1`] = `
           <a
             href="/using-this-site"
           >
-            footer.usingThisSite
+            Using this site
           </a>
         </li>
       </ul>
@@ -652,7 +274,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/contact-us"
           >
-            footer.contactUs
+            Contact us
           </a>
           <span
             aria-hidden="true"
@@ -665,7 +287,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/archive"
           >
-            footer.archive
+            Archive
           </a>
           <span
             aria-hidden="true"
@@ -678,7 +300,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html"
           >
-            footer.a11y
+            Accessibility
           </a>
           <span
             aria-hidden="true"
@@ -691,384 +313,6 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <button>
             Privacy settings
           </button>
-          <dialog
-            aria-labelledby="dialog--11__heading"
-            class="ds-c-dialog ds-c-dialog--full"
-            id="dialog--11"
-            role="dialog"
-          >
-            <div
-              class="ds-c-dialog__window"
-              tabindex="-1"
-            >
-              <div
-                class="ds-c-dialog__header"
-              >
-                <h2
-                  class="ds-c-dialog__heading"
-                  id="dialog--11__heading"
-                >
-                  HealthCare.gov privacy settings
-                </h2>
-                <button
-                  aria-label="Close modal dialog"
-                  class="ds-c-close-button ds-c-dialog__close"
-                  id="dialog--11__close"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="false"
-                    aria-labelledby="dialog--11__close__icon__title"
-                    class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-                    id="dialog--11__close__icon"
-                    role="img"
-                    viewBox="-2 -2 18 18"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <title
-                      id="dialog--11__close__icon__title"
-                    >
-                      Close
-                    </title>
-                    <path
-                      d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </button>
-              </div>
-              <div
-                class="ds-c-dialog__body"
-              >
-                <div
-                  id="dialog--11__content"
-                >
-                  <p
-                    class="ds-u-margin-top--0"
-                  >
-                    We take your privacy seriously. You can change the settings for each category to choose how we collect and use information while you’re on HealthCare.gov. For details, 
-                    <a
-                      href="https://www.healthcare.gov/privacy/"
-                    >
-                      review our full privacy policy
-                    </a>
-                     or 
-                    <a
-                      href="https://www.healthcare.gov/third-party-privacy-policies/"
-                    >
-                      get the list of specific tools in each category
-                    </a>
-                    .
-                  </p>
-                  <table
-                    class="ds-c-table ds-c-table--borderless ds-c-md-table--stacked ds-c-privacy-settings-table ds-u-margin-top--2 ds-u-lg-margin--0"
-                  >
-                    <thead
-                      role="rowgroup"
-                    >
-                      <tr
-                        role="row"
-                      >
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-category"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Category
-                        </th>
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-description"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Description
-                        </th>
-                        <th
-                          class="ds-u-text-align--left"
-                          id="privacy-settings-header-status"
-                          role="columnheader"
-                          scope="col"
-                        >
-                          Status
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody
-                      role="rowgroup"
-                    >
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Advertising
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          We use digital advertising tools, such as web beacons, to track the effectiveness of our digital advertising outreach efforts. This helps us identify ads that are helpful to consumers and efficient for outreach. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--13__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Advertising
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--13__choice--0"
-                                  name="cookie-c3"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--13__choice--0"
-                                  id="choice-list--13__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--13__choice--1"
-                                  name="cookie-c3"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--13__choice--1"
-                                  id="choice-list--13__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Social Media
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          If you share our content on Facebook, Twitter, or other social media accounts, we may track what HealthCare.gov content you share. This helps us improve our social media outreach. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--14__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Social Media
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--14__choice--0"
-                                  name="cookie-c4"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--14__choice--0"
-                                  id="choice-list--14__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--14__choice--1"
-                                  name="cookie-c4"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--14__choice--1"
-                                  id="choice-list--14__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                      <tr
-                        role="row"
-                      >
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Category"
-                          headers="privacy-settings-header-category"
-                          role="cell"
-                        >
-                          Web Analytics
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Description"
-                          headers="privacy-settings-header-description"
-                          role="cell"
-                        >
-                          We use a variety of tools to count, track, and analyze visits to HealthCare.gov. This helps us understand how people use the site and where we should make improvements. Select “Don’t allow” to block this tracking.
-                        </td>
-                        <td
-                          class="ds-u-text-align--left"
-                          data-title="Status"
-                          headers="privacy-settings-header-status"
-                          role="cell"
-                        >
-                          <fieldset
-                            aria-invalid="false"
-                            class="ds-c-fieldset ds-u-margin-top--0"
-                            role="radiogroup"
-                          >
-                            <legend
-                              class="ds-c-label"
-                              id="choice-list--15__label"
-                            >
-                              <span
-                                class="ds-u-visibility--screen-reader"
-                              >
-                                Web Analytics
-                              </span>
-                            </legend>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  checked=""
-                                  class="ds-c-choice"
-                                  id="choice-list--15__choice--0"
-                                  name="cookie-c2"
-                                  type="radio"
-                                  value="0"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--15__choice--0"
-                                  id="choice-list--15__choice--0__label"
-                                >
-                                  Allow
-                                </label>
-                              </div>
-                            </div>
-                            <div>
-                              <div
-                                class="ds-c-choice-wrapper"
-                              >
-                                <input
-                                  class="ds-c-choice"
-                                  id="choice-list--15__choice--1"
-                                  name="cookie-c2"
-                                  type="radio"
-                                  value="1"
-                                />
-                                <label
-                                  class="ds-c-label"
-                                  for="choice-list--15__choice--1"
-                                  id="choice-list--15__choice--1__label"
-                                >
-                                  Don't allow
-                                </label>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div
-                  class="ds-c-dialog__actions"
-                >
-                  <button
-                    class="ds-c-button ds-c-button--solid"
-                    type="button"
-                  >
-                    Update my settings
-                  </button>
-                </div>
-              </div>
-            </div>
-          </dialog>
           <span
             aria-hidden="true"
             class="hc-c-footer__delimiter"
@@ -1080,7 +324,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/privacy"
           >
-            footer.privacyPolicy
+            Privacy policy
           </a>
           <span
             aria-hidden="true"
@@ -1093,7 +337,7 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
           <a
             href="https://www.healthcare.gov/using-this-site"
           >
-            footer.usingThisSite
+            Using this site
           </a>
         </li>
       </ul>
