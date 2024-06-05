@@ -859,7 +859,7 @@
           }
         },
         "4xl": {
-          "$value": "2.5rem",
+          "$value": "2.75rem",
           "$type": "dimension",
           "$extensions": {
             "com.figma": {
@@ -880,7 +880,7 @@
           }
         },
         "5xl--tablet": {
-          "$value": "2.5rem",
+          "$value": "2.75rem",
           "$type": "dimension",
           "$extensions": {
             "com.figma": {
