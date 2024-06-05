@@ -993,7 +993,7 @@
       "weight": {
         "heading": {
           "5xl": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1003,7 +1003,7 @@
             }
           },
           "4xl": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1013,7 +1013,7 @@
             }
           },
           "3xl": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1023,7 +1023,7 @@
             }
           },
           "2xl": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1033,7 +1033,7 @@
             }
           },
           "xl": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1043,7 +1043,7 @@
             }
           },
           "lg": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1053,7 +1053,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1063,7 +1063,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.600}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1075,7 +1075,7 @@
         },
         "body": {
           "lg": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1085,7 +1085,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1095,7 +1095,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1107,7 +1107,7 @@
         },
         "button": {
           "lg": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1117,7 +1117,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1127,13 +1127,33 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
                 "scopes": ["ALL_SCOPES"],
                 "codeSyntax": {}
               }
+            }
+          }
+        },
+        "normal": {
+          "$value": "{font.weight.400}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "bold": {
+          "$value": "{font.weight.600}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
             }
           }
         }
@@ -3730,7 +3750,7 @@
         }
       },
       "font-weight": {
-        "$value": "{font.weight.600}",
+        "$value": "{theme.font.weight.bold}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
