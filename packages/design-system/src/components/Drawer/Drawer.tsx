@@ -99,7 +99,7 @@ export const Drawer = (props: DrawerProps) => {
     <NativeDialog
       className={classNames(className, 'ds-c-drawer')}
       exit={onCloseClick}
-      showModal={true}
+      showModal={hasFocusTrap}
       backdropClickExits={backdropClickExits}
       isOpen={isOpen}
       aria-labelledby={headingId}
