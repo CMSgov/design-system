@@ -3421,6 +3421,19 @@
         }
       }
     },
+    "date-field": {
+      "show-separators": {
+        "$value": false,
+        "$type": "boolean",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "day-picker": {
       "button": {
         "background-color--hover": {
@@ -4013,18 +4026,6 @@
         }
       }
     },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4115,6 +4116,18 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
+          }
+        }
+      }
+    },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
           }
         }
       }

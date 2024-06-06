@@ -83,6 +83,11 @@ export function tokenToCssValue(
   } else if (token.$type === 'fontFamily') {
     const fontList = Array.isArray(token.$value) ? token.$value : [token.$value];
     return fontList.map((fontFamily) => `'${fontFamily}'`).join(', ');
+  } else if (token.$type === 'boolean') {
+    if (!token.$value) {
+      throw new Error('False boolean tokens should not be rendered to CSS');
+    }
+    return '1';
   } else if (typeof token.$value === 'string') {
     if (token.$value.match(/#[a-z0-9]{6}00/i)) {
       return 'transparent';
@@ -91,7 +96,7 @@ export function tokenToCssValue(
     return token.$value;
   } else {
     console.error(token);
-    throw new Error("We don't support non-string values yet. Implement it!");
+    throw new Error('Missing support for this token type. Implement it!');
   }
 }
 
@@ -135,11 +140,13 @@ export function tokensToCssProperties(
     ...Object.entries(themeTokens),
   ];
 
-  const vars = tokenEntries.map(([key, token]) => {
-    const varName = tokenNameToVarName(key);
-    const varValue = tokenToCssValue(token, valueRenderConfig);
-    return `--${varName}: ${varValue};`;
-  });
+  const vars = tokenEntries
+    .filter(([_key, token]) => !(token.$type === 'boolean' && !token.$value))
+    .map(([key, token]) => {
+      const varName = tokenNameToVarName(key);
+      const varValue = tokenToCssValue(token, valueRenderConfig);
+      return `--${varName}: ${varValue};`;
+    });
 
   return vars.join('\n');
 }
@@ -169,11 +176,13 @@ export function tokensToSassVars(
 
   const defaultFlag = useDefaultFlag ? ' !default' : '';
 
-  const vars = tokenEntries.map(([key, token]) => {
-    const varName = tokenNameToVarName(key);
-    const varValue = tokenToCssValue(token, valueRenderConfig);
-    return `$${varName}: ${varValue}${defaultFlag};`;
-  });
+  const vars = tokenEntries
+    .filter(([_key, token]) => !(token.$type === 'boolean' && !token.$value))
+    .map(([key, token]) => {
+      const varName = tokenNameToVarName(key);
+      const varValue = tokenToCssValue(token, valueRenderConfig);
+      return `$${varName}: ${varValue}${defaultFlag};`;
+    });
 
   return vars.join('\n');
 }
