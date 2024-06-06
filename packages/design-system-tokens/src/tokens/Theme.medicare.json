@@ -4374,6 +4374,17 @@
           }
         }
       },
+      "border-width--disabled": {
+        "$value": "1px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
       "border-width--error": {
         "$value": "3px",
         "$type": "dimension",
