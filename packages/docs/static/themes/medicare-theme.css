@@ -232,9 +232,9 @@
 --filter-chip-icon__color: #404040;
 --filter-chip-icon__color-active: #ffffff;
 --filter-chip-icon__container-size: 18px;
---form__max-width: 460px;
---form__max-width--small: 6em;
---form__max-width--medium: 12em;
+--field-max-width: 460px;
+--field-max-width--small: 6em;
+--field-max-width--medium: 12em;
 --hint__color: #5a5a5a;
 --hint__color--inverse: #e9ecf1;
 --hint__font-size: 0.875rem;
