@@ -4013,6 +4013,18 @@
         }
       }
     },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4103,18 +4115,6 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
-          }
-        }
-      }
-    },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
           }
         }
       }
@@ -4470,6 +4470,29 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
+          }
+        }
+      },
+      "currency-icon": {
+        "line-height": {
+          "$value": "{theme.font.line-height.reset}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "spacing": {
+          "$value": "32px",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
           }
         }
       }
