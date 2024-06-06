@@ -3028,5 +3028,38 @@
         }
       }
     }
+  },
+  "field-max-width": {
+    "$value": "460px",
+    "$type": "dimension",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["ALL_SCOPES"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "field-max-width--small": {
+    "$value": "6rem",
+    "$type": "dimension",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["ALL_SCOPES"],
+        "codeSyntax": {}
+      }
+    }
+  },
+  "field-max-width--medium": {
+    "$value": "12rem",
+    "$type": "dimension",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["ALL_SCOPES"],
+        "codeSyntax": {}
+      }
+    }
   }
 }
