@@ -3421,6 +3421,19 @@
         }
       }
     },
+    "date-field": {
+      "show-separators": {
+        "$value": false,
+        "$type": "boolean",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "day-picker": {
       "button": {
         "background-color--hover": {
@@ -4361,6 +4374,17 @@
           }
         }
       },
+      "border-width--disabled": {
+        "$value": "1px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
       "border-width--error": {
         "$value": "3px",
         "$type": "dimension",
@@ -4470,6 +4494,29 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
+          }
+        }
+      },
+      "currency-icon": {
+        "line-height": {
+          "$value": "{theme.font.line-height.reset}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "spacing": {
+          "$value": "32px",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
           }
         }
       }
