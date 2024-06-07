@@ -15,7 +15,7 @@
   --security-icon__color: #12890e; // spring-500
 
   background-color: var(--usa-banner__background-color);
-  color: var(--usa-banner-color, --usa-banner__color);
+  color: var(--usa-banner-color);
   font-family: var(--font-family);
 }
 
@@ -23,10 +23,10 @@
 .ds-c-usa-banner__guidance-container {
   margin-inline: auto;
   max-width: var(--usa-banner__max-width);
-  padding-inline: calc(var(--usa-banner-gutter-width, --usa-banner__gutter-width) * 0.5);
+  padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
-    padding-inline: var(--usa-banner-gutter-width, --usa-banner__gutter-width);
+    padding-inline: var(--usa-banner-gutter-width);
   }
 }
 
