@@ -942,7 +942,7 @@
         }
       },
       "family": {
-        "headings": {
+        "heading": {
           "$value": "{font.family.open-sans}",
           "$extensions": {
             "com.figma": {
@@ -986,7 +986,7 @@
       "weight": {
         "heading": {
           "5xl": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -996,7 +996,7 @@
             }
           },
           "4xl": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1006,7 +1006,7 @@
             }
           },
           "3xl": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1016,7 +1016,7 @@
             }
           },
           "2xl": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1026,7 +1026,7 @@
             }
           },
           "xl": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1036,7 +1036,7 @@
             }
           },
           "lg": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1046,7 +1046,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1056,7 +1056,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1068,7 +1068,7 @@
         },
         "body": {
           "lg": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1078,7 +1078,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1088,7 +1088,7 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1100,7 +1100,7 @@
         },
         "button": {
           "lg": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1110,7 +1110,7 @@
             }
           },
           "md": {
-            "$value": "{font.weight.700}",
+            "$value": "{theme.font.weight.bold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1120,13 +1120,33 @@
             }
           },
           "sm": {
-            "$value": "{font.weight.400}",
+            "$value": "{theme.font.weight.normal}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
                 "scopes": ["ALL_SCOPES"],
                 "codeSyntax": {}
               }
+            }
+          }
+        },
+        "normal": {
+          "$value": "{font.weight.400}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "bold": {
+          "$value": "{font.weight.700}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
             }
           }
         }
@@ -1147,6 +1167,36 @@
       },
       "color--inverse": {
         "$value": "{theme.color.base-inverse}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-family": {
+        "$value": "{theme.font.family.body}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-size": {
+        "$value": "{theme.font.size.base}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "line-height": {
+        "$value": "{theme.font.line-height.base}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3262,6 +3312,17 @@
               "codeSyntax": {}
             }
           }
+        },
+        "top-offset": {
+          "$value": "0.25rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
         }
       },
       "background-color--disabled": {
@@ -3323,6 +3384,30 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
+          }
+        }
+      },
+      "wrapper": {
+        "gap": {
+          "$value": "0.5rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "gap--small": {
+          "$value": "0.5rem",
+          "$type": "dimension",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
           }
         }
       }
@@ -3627,6 +3712,60 @@
       },
       "color--inverse": {
         "$value": "{theme.color.muted-inverse}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
+    "label": {
+      "font-family": {
+        "$value": "{theme.font.family.body}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-size": {
+        "$value": "{theme.font.size.md}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "font-weight": {
+        "$value": "{theme.font.weight.bold}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "letter-spacing": {
+        "$value": "0px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "text-transform": {
+        "$value": "inherit",
+        "$type": "textTransform",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,

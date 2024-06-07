@@ -76,6 +76,10 @@ export function tokenToCssValue(
     return tokenToCssValue(aliasedToken, config);
   } else if (token.$type === 'number' || token.$type === 'fontWeight') {
     return token.$value + '';
+  } else if (token.$type === 'string') {
+    return `'${token.$value}'`;
+  } else if (token.$type === 'textTransform') {
+    return token.$value + '';
   } else if (token.$type === 'fontFamily') {
     const fontList = Array.isArray(token.$value) ? token.$value : [token.$value];
     return fontList.map((fontFamily) => `'${fontFamily}'`).join(', ');
@@ -127,8 +131,8 @@ export function tokensToCssProperties(
 
   // We actually do include some of the system tokens but only a subset
   const tokenEntries = [
-    ...Object.entries(themeTokens),
     ...Object.entries(systemTokens).filter(([name]) => isIncludedSystemToken(name)),
+    ...Object.entries(themeTokens),
   ];
 
   const vars = tokenEntries.map(([key, token]) => {
@@ -159,8 +163,8 @@ export function tokensToSassVars(
 
   // We actually do include some of the system tokens but only a subset
   const tokenEntries = [
-    ...Object.entries(themeTokens),
     ...Object.entries(systemTokens).filter(([name]) => isIncludedSystemToken(name)),
+    ...Object.entries(themeTokens),
   ];
 
   const defaultFlag = useDefaultFlag ? ' !default' : '';

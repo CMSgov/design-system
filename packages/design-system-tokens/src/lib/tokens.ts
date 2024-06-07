@@ -16,7 +16,8 @@ export interface Token {
     | 'dimension'
     | 'duration'
     | 'fontWeight'
-    | 'fontFamily';
+    | 'fontFamily'
+    | 'textTransform';
   $value: string | number | boolean;
   $description?: string;
   $extensions?: {

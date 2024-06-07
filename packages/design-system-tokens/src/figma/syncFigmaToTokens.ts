@@ -5,6 +5,7 @@ import c from 'chalk';
 import path from 'path';
 import {
   determineNumberType,
+  determineStringType,
   tokenFilesFromLocalVariables,
   writeTokenFiles,
 } from './translateFigmaToTokens';
@@ -27,11 +28,10 @@ async function main() {
   const localVariables = await api.getLocalVariables(fileKey);
 
   const existingTokens = readTokenFiles(TOKENS_DIR);
-  const tokensByFile = await tokenFilesFromLocalVariables(
-    localVariables,
-    existingTokens,
-    determineNumberType
-  );
+  const tokensByFile = await tokenFilesFromLocalVariables(localVariables, existingTokens, {
+    number: determineNumberType,
+    string: determineStringType,
+  });
 
   console.log('Writing token files:', Object.keys(tokensByFile));
   writeTokenFiles(TOKENS_DIR, tokensByFile);

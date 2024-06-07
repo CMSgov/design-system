@@ -22,6 +22,10 @@ const meta: Meta<typeof ChoiceList> = {
     errorMessage: { control: 'text' },
     hint: { control: 'text' },
     requirementLabel: { control: 'text' },
+    size: {
+      options: [undefined, 'small'],
+      control: { type: 'radio' },
+    },
   },
 };
 export default meta;
