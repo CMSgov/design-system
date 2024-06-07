@@ -4718,26 +4718,6 @@
           }
         }
       },
-      "gutter-width": {
-        "$value": "{grid.gutter-width}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "max-width": {
-        "$value": "{site-max-width}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
       "link": {
         "color": {
           "$value": "{theme.color.primary}",
