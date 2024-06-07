@@ -4718,6 +4718,17 @@
           }
         }
       },
+      "no-max-width": {
+        "$value": false,
+        "$type": "boolean",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
       "link": {
         "color": {
           "$value": "{theme.color.primary}",

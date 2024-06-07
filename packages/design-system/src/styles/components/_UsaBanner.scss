@@ -24,7 +24,11 @@
   --gutter-width: var(--usa-banner-gutter-width, var(--grid-gutter-width));
 
   margin-inline: auto;
-  max-width: var(--usa-banner__max-width, var(--site-max-width));
+
+  // Use `--usa-banner__max-width` if an application has provided a value or fall back to
+  // reading the `--usa-banner__no-max-width` boolean to determine decide if we should
+  // set the max width to the `--site-max-width`.
+  max-width: var(--usa-banner__max-width, var(--usa-banner__no-max-width, var(--site-max-width)));
   padding-inline: calc(var(--gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
