@@ -8,6 +8,11 @@ export function pixelNumberToRem(pixels: number): string {
   return `${pixels / PIXELS_PER_REM}rem`;
 }
 
+export function pixelNumberToEm(pixels: number): string {
+  // For Figma, count rem and em as equal
+  return `${pixels / PIXELS_PER_REM}em`;
+}
+
 export function pixelNumberToEx(pixels: number): string {
   return `${Math.round(pixels / PIXELS_PER_EX)}ex`;
 }

@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import c from 'chalk';
 import { rgbToHex } from '../lib/colorUtils';
-import { pixelNumberToEx, pixelNumberToRem } from '../lib/conversions';
+import { pixelNumberToEm, pixelNumberToEx, pixelNumberToRem } from '../lib/conversions';
 import { GetLocalVariablesResponse, LocalVariable as Variable } from '@figma/rest-api-spec';
 import { FlattenedTokens, FlattenedTokensByFile, Token } from '../lib/tokens';
 import { select } from '@inquirer/prompts';
@@ -17,6 +17,7 @@ export type NumberType =
   | 'dimension--px'
   | 'dimension--ex'
   | 'dimension--rem'
+  | 'dimension--em'
   | 'dimension--%'
   | 'duration--ms'
   | 'fontWeight'
@@ -64,6 +65,8 @@ function disambiguateTokenNumberType(token: Token): NumberType {
       return 'dimension--ex';
     } else if ($value.includes('rem')) {
       return 'dimension--rem';
+    } else if ($value.includes('em')) {
+      return 'dimension--em';
     } else if ($value.includes('%')) {
       return 'dimension--%';
     } else {
@@ -130,6 +133,7 @@ export async function promptNumberType(
       { value: 'dimension--px', name: 'px (dimension)' },
       { value: 'dimension--ex', name: 'ex (dimension)' },
       { value: 'dimension--rem', name: 'rem (dimension)' },
+      { value: 'dimension--em', name: 'em (dimension)' },
       { value: 'dimension--%', name: '% (dimension)' },
       { value: 'duration--ms', name: 'ms (duration)' },
       { value: 'fontWeight', name: 'font weight' },
@@ -279,6 +283,10 @@ async function tokenFromVariable(
       case 'dimension--rem':
         $type = 'dimension';
         $value = pixelNumberToRem($value as number);
+        break;
+      case 'dimension--em':
+        $type = 'dimension';
+        $value = pixelNumberToEm($value as number);
         break;
       case 'dimension--%':
         $type = 'dimension';
