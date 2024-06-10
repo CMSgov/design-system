@@ -9,7 +9,6 @@ import mergeRefs from '../utilities/mergeRefs';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
-import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
@@ -139,7 +138,7 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  const id = useId('dropdown__button--', props.id);
+  const id = useId('dropdown--', props.id);
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
 
@@ -246,8 +245,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const labelProps = {
     ...useSelectProps.labelProps,
-    ...useLabelProps({ ...props, id }),
-    fieldId: id,
+    ...useLabelProps({
+      ...props,
+      id,
+      labelClassName: classNames(
+        'ds-c-label',
+        'ds-c-dropdown__label',
+        props.inversed && 'ds-c-label--inverse',
+        props.labelClassName
+      ),
+    }),
   };
 
   const buttonProps = {
@@ -286,7 +293,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       className={classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open')}
       ref={wrapperRef}
     >
-      <Label {...labelProps} />
+      {/* `<div>` is used instead of `<label>` to satisfy a11y issue. Because dropdown is a `<button>`, a `<label>` is inappropriate to use with it. */}
+      <div {...labelProps} />
       {hintElement}
       {topError}
       <HiddenSelect
