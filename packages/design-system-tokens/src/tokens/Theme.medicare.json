@@ -4719,16 +4719,6 @@
           }
         }
       },
-      "color": {
-        "$value": "{theme.color.base}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
       "no-max-width": {
         "$value": true,
         "$type": "boolean",
@@ -4737,18 +4727,6 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
-          }
-        }
-      },
-      "link": {
-        "color": {
-          "$value": "{theme.color.primary}",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
           }
         }
       },

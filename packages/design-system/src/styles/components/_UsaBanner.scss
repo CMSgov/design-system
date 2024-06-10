@@ -15,7 +15,9 @@
   --security-icon__color: #12890e; // spring-500
 
   background-color: var(--usa-banner__background-color);
-  color: var(--usa-banner-color, var(--usa-banner__color));
+
+  // Allow applications to override this color. We don't define this variable
+  color: var(--usa-banner-color, inherit);
   font-family: var(--font-family);
 }
 
@@ -147,7 +149,7 @@
 // When these elements are visible, they should look the same
 .ds-c-usa-banner__action,
 .ds-c-usa-banner__button-text {
-  color: var(--usa-banner-link__color);
+  color: var(--usa-banner-link__color, var(--link__color));
   text-decoration: underline;
 }
 
