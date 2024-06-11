@@ -54,7 +54,7 @@ export interface DrawerProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user activates the close button or presses the ESC key if
    * focus trapping is enabled. The parent of this component is responsible for
