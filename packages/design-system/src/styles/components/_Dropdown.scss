@@ -69,7 +69,7 @@
   max-height: var(--max-height);
   position: absolute;
   width: 100%;
-  z-index: var(--z-dialog);
+  z-index: 1000;
 
   .ds-c-field--inverse + & {
     color: var(--color-base);
