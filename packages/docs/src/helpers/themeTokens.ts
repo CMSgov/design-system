@@ -68,19 +68,22 @@ export function getComponentVariables(
     systemTokens: tokensByFile['System.Value.json'],
     renderVariableAlias: (name: string) => `--${tokenNameToVarName(name)}`,
   };
-  return tokenKeys.map((tokenKey) => {
-    const token = tokensByFile[filename][tokenKey];
-    const resolvedToken = isAlias(token.$value.toString())
-      ? resolveTokenAlias(token, tokensByFile, filename)
-      : token;
-    return {
-      token,
-      variableName: valueRenderConfig.renderVariableAlias(tokenKey),
-      value: tokenToCssValue(token, valueRenderConfig),
-      resolvedValue: tokenToCssValue(resolvedToken, valueRenderConfig),
-      resolvedToken,
-    };
-  });
+  return tokenKeys
+    .map((tokenKey) => {
+      const token = tokensByFile[filename][tokenKey];
+      const resolvedToken = isAlias(token.$value.toString())
+        ? resolveTokenAlias(token, tokensByFile, filename)
+        : token;
+      if (resolvedToken.$type === 'boolean') return null;
+      return {
+        token,
+        variableName: valueRenderConfig.renderVariableAlias(tokenKey),
+        value: tokenToCssValue(token, valueRenderConfig),
+        resolvedValue: tokenToCssValue(resolvedToken, valueRenderConfig),
+        resolvedToken,
+      };
+    })
+    .filter((data) => data);
 }
 
 export function getSystemColorTokenFromValue(colorValue: string): string {
