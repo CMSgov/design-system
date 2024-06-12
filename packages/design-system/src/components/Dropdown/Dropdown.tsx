@@ -155,7 +155,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
-    inversed,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
@@ -257,6 +256,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     }),
   };
 
+  // Excluding `inversed` prop from `<div>` label because it's not a valid attr
+  const { inversed, ...divLabelProps } = labelProps;
+
   const buttonProps = {
     ...useButtonProps.buttonProps,
     ...cleanFieldProps(extraProps),
@@ -266,7 +268,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      inversed && 'ds-c-field--inverse',
+      props.inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
@@ -294,7 +296,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       ref={wrapperRef}
     >
       {/* `<div>` is used instead of `<label>` to satisfy a11y issue. Because dropdown is a `<button>`, a `<label>` is inappropriate to use with it. */}
-      <div {...labelProps} />
+      <div {...divLabelProps} />
       {hintElement}
       {topError}
       <HiddenSelect
