@@ -35,7 +35,8 @@ export const SingleError = () => {
         headingId="single-alert"
       >
         <p className="ds-u-measure--base">
-          <a href="#single-last-name">Last Name</a>: Check your last name.
+          <a href="#single-last-name">Last Name</a>: Enter a last name that&apos;s more than 1
+          character.
         </p>
       </Alert>
 
@@ -44,7 +45,7 @@ export const SingleError = () => {
         id="single-last-name"
         label="Last Name"
         name="last-name"
-        errorMessage="Check your last name."
+        errorMessage="Enter a last name that's more than 1 character."
       />
       <Button type="submit" className="ds-u-margin-top--5" variation="solid">
         Submit
@@ -68,7 +69,7 @@ export const MultipleErrors = () => {
               Last Name
             </a>
             <span aria-hidden id="multi-error-desc-1">
-              : Check your last name.
+              : Enter a last name that&apos;s more than 1 character.
             </span>
           </li>
           <li>
@@ -76,7 +77,7 @@ export const MultipleErrors = () => {
               Date of birth
             </a>
             <span aria-hidden id="multi-error-desc-2">
-              : Enter your date of birth.
+              : Enter birthdate as MM/DD/YYYY.
             </span>
           </li>
         </ul>
@@ -86,14 +87,14 @@ export const MultipleErrors = () => {
         id="multi-last-name"
         label="Last Name"
         name="last-name"
-        errorMessage="Check your last name."
+        errorMessage="Enter a last name that's more than 1 character."
       />
 
       <MultiInputDateField
         id="multi-date"
         label="Date"
         hint=""
-        errorMessage="Enter your date of birth."
+        errorMessage="Enter birthdate as MM/DD/YYYY."
         monthInvalid
         dayDefaultValue="1"
         yearDefaultValue="1990"
