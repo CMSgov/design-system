@@ -8,61 +8,57 @@ import anatomyImage from '../../../src/images/error-validation-anatomy.png';
 
 <img
   src={anatomyImage}
-  width="800"
-  style="aspect-ratio: 4/3"
+  width="700"
+  style="aspect-ratio: 7/6"
   alt="Diagram showing anatomy of error validation in a form. Displayed are an alert with a heading and two links within, two text fields (with the last one having an error message), a date input field with an error message, and a submit button."
 />
 
-### 1. Summary heading
+### 1. Summary error heading
 
-- Heading content can help to group or frame the information in the alert.
-- The heading content should not end in a period.
-- Recommended heading content is "Complete these items to...". For example: Complete these items to create your account:
-- Icon, layout, design tokens, and UI are the same as Error Alert. Do not use the warning alert if the error needs to be fixed for the user to continue.
-- Error summary should match the width of the form container. Form container width can be set to `.ds-u-measure--base` to keep components at a readable width.
+- Content helps frame the information in the alert and reminds the user of what they're trying to accomplish by fixing the errors.
+- Always end in a colon because it's leading into the bulleted list of items to fix.
+- Recommended heading content is "Complete these items to..."
 
 ### 2. Summary error list
 
 #### a. Error link
 
-- Provide a jump link from the item in the error summary to each corresponding answer.
-- When a user has to enter their answer into multiple fields, such as the day, month and year fields in the date input component, link to the first field that contains an error.
-- For questions that require a user to select one or more options from a list using radios or checkboxes, link to the first radio or checkbox.
-- Link text should list specific error field with the error. For example, "Date of Birth" or "Last Name".
+- Include bullets for each item listed.
+- Link to corresponding input fields via an `aria-describedby` attribute on the input.
+  - When a user has to enter their answer into multiple fields, such as the day, month and year fields in the date input component, link to the first field that contains an error.
+  - For questions that require a user to select one or more options from a list using radios or checkboxes, link to the first radio or checkbox.
+- Link text should match the field title.
 
 #### b. Error description
 
-- Use the same language for error messages in the error summary as those which appear next to the inputs with errors.
-- Don't use generic language to list errors. Make sure the error messages in the error summary are worded the same as those which appear next to the inputs with errors.
-- Include education or guidance on what action to take in your error message.
+- Use the same language as the inline error message.
 
-### 3. Form field error
+### 3. Inline error
 
-- Provide the same error description by the invalid form field as well.
+- Content used for inline error messages will also appear in the summary error description.
 - Inline error text should be outside of the label element.
 - Inline error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
 
 ### 4. Active submit button
 
-- Buttons at the end of forms work best with clear labels that reflect the overall user goal.
-- The buttons on the bottom of other pages in a multi-page form should read "Continue"/"Next page".
-- Do not use disabled submit buttons for the following reasons:
-  - Users may not realize there is a problem.
-  - Disabled buttons can"t be focused.
-  - Disabled buttons have poor contrast.
-  - The disabled button may not be in view for the user to see it's been disabled.
-- Allow the user to submit and then receive guidance through error summary and messages.
+- Buttons at the end of forms work best with clear labels that reflect the overall user goal. _Examples:_ "Submit" or "Submit application"
+- The buttons on the bottom of other pages in a multi-page form should read "Next" or "Continue".
+- Do not use disabled submit buttons. Allow the user to submit and then receive guidance through error summary and messages.
 
 ## Guidance for all errors
 
 ### Do
 
-- Default to [validation on submit](#validation-on-submit-default-error-validation-type) for most use cases.
-- Tell users what went wrong and how they can fix it (see [error message guidance](#error-message-content)).
-- Visually associate inline validation messages with the input fields (e.g., place validation closely to the input field).
-- Place an icon in front of an error to draw attention to an error.
+- Use the [Validation on Submit](#validation-on-submit-default) for most use cases. Use [Instant Validation](#instant-validation) when the answers aren't obvious or when input fields are difficult to complete.
+- Inline errors are built into all design system form fields but can be used on their own to create custom fields. See [Inline Error](/components/inline-error/) for more information.
+- Inline errors should sit either directly above or below the input, depending on the theme defaults.
+- Visually align inline validation messages with the input fields so people using screen magnifiers can read them quickly.
+- The form field should have an `aria-describedby` attribute that references the `id` of the error message.
 - Use color as a secondary way to draw attention to an error. Do not rely on color alone to indicate an error.
 - Include icons and messaging for each error field.
+- Place an icon in front of an error to draw attention to an error.
+  - Hide the error icon from assistive technology by using `aria-hidden="true"` and provide screen reader text to indicate an error ahead of the error message, typically done with "Error" as the screen reader text.
+- Build your [error message guidance](#error-message-content) alongside the form fields and form content, not as an afterthought.
 - Test to validate that users understand what went wrong and how to fix it.
 
 ### Do not
@@ -73,39 +69,53 @@ import anatomyImage from '../../../src/images/error-validation-anatomy.png';
 
 ## Error message content
 
-An error message, in both error summaries and inline errors, should include what went wrong and what (if anything) the user can do to fix, or when they can try again (if we know).
+An error message, in both inline errors and error summaries, must include what the user can do to fix the error.
 
-The message must be use plain language, use positive language and get to the point. Use the same language for error messages in the error summary as those which appear next to the inputs with errors.
+- Inline errors only state how to fix the issue so the user completes the field correctly.
+- Summary error messages include introduction text that reminds the user what's needed in order to complete the action. It also lists the fields to fix and their corresponding inline error messages - the exact same content should be used for the field title and inline error message.
 
-### Do
+### All messages must:
 
 - Be specific, short, and consistent.
-- If fields are related to the same thing, like date (month, day, year), use 1 error message.
-- Include education or guidance on what action to take in your error message. Give enough detail to help the user solve the problem or continue to the next step, while using the fewest words possible (i.e., don't use "please").
+- Be in plain English/plain language.
+- Use imperative style.
+- Specify what the user needs to do to fix the issue (using positive framing).
+- Give enough detail to help the user solve the problem or continue to the next step, while using the fewest words possible.
+  - _Examples:_
+    - "Enter a 10-digit United States phone number."
+    - "Enter an email address with @ symbol and email domain, like ".com"."
+    - "Enter birthdate as MM/DD/YYYY."
+- Use a single error message when there are multiple fields related to the same thing, like date (month, day, year).
 - Use sentence case.
 - End with a period.
-- Use direct language from the question or fieldset label — this helps match up the error message with the relevant form field.
+- Include language from the question or fieldset label - this helps match up the error message with the relevant form field.
+  - _Example:_
+    - Field label is "Street address." Inline error message is "Enter a street address with building number and road name." Both the label and error message include "street address" for better user comprehension on how to fix the error.
+- Sound human - read the message out loud to see if it sounds like something you would say.
+- Be tested to validation that users understand what went wrong and how to fix the error.
 
-### Do not
+### Error messages should never:
 
-- General error messages do not help the user to fix the problem. Avoid messages like: "An error occurred", "Answer the question", "Select an option", "Fill in the field", or "This field is required".
-- Avoid using the verbs "see" and "view" unless it would be awkward to use another verb. These can be used, but they should be the last choice.
-- Do not use words like "please" or "sorry" because it does not help fix the problem.
-- Do not use technical jargon like "unspecified error".
-- Do not use negative words like "forbidden", "illegal", "you forgot" or "prohibited".
-- Avoid using "valid" or "invalid", as these words can mean a lot of different things and are not commonly used words for non-native English speakers.
-- Do not use informal language like "oops".
+- Be too generic: General error messages don't help the user to fix the problem.
+  - _Example:_
+    - "An error occurred."
+    - "Answer the question."
+    - "Select an option."
+    - "Required field."
+- Use the verbs "see and "view" unless it would be awkward to use another verb. These can be used, but they should be the last choice (accessibility issue).
+- Use words like "please" or "sorry."
+- Use technical jargon like, "Unspecified error," and "Issue 567 error."
+- Use negative words like, "forbidden," "illegal," "you forgot," "you didn't," and "prohibited."
+- Use "valid" and "invalid," as these words can mean a lot of different things and are not commonly used words for non-native English speakers.
+- Use informal language like "oops."
 
-For example, an error message should state "Enter a last name that is more than 1 character." rather than "Enter more than 1 character."
-
-- Read the message out loud to see if it sounds like something you would say.
-- Test to validate that users understand what went wrong and how to fix the error.
-
-## Validation on submit (default error validation type)
+## Validation on Submit (default)
 
 **This is the recommended type of error validation for most use cases.**
 
-Provides a clear list of errors when "submit" is clicked. When errors are found, feedback is returned and displayed to the user in an error summary at the top of the page, allowing users to fill out the form without interruptions and guiding them in fixing errors.
+Validation on Submit uses the error summary message and inline errors to provide a clear list of errors after "submit" is clicked. When errors are found, feedback is returned and displayed to the user in an error summary at the top of the page with corresponding inline messages next to the incorrect fields. This allows users to fill out the form without interruptions and guides them in finding and fixing errors.
+
+The [Validation on Submit](#validation-on-submit-default) pattern is composed of an error summary, form fields, and an active button.
 
 ### When to use
 
@@ -113,7 +123,7 @@ Provides a clear list of errors when "submit" is clicked. When errors are found,
 
 ### When to consider alternatives
 
-- Only use [instant validation](#instant-validation) if your user research shows that it solves more problems than it causes. This should be limited to very specific and short use cases. For example, single, complicated form fields, such as creating secure passwords, can benefit from instant validation.
+- Use [Instant Validation](#instant-validation) only if your user research shows that it solves more problems than it causes. This should be limited to very specific and short use cases. For example, single, complicated form fields, such as creating secure passwords, can benefit from instant validation.
 
 ### Do
 
@@ -136,38 +146,41 @@ Provides a clear list of errors when "submit" is clicked. When errors are found,
 
 ### Screen reader testing
 
-- When the input field gets focus, its label should be read first, followed by its hint (if it has one) and then its error message.
+- When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
 
-## Instant validation
+## Instant Validation
 
-Instant validation, or dynamic validation, allows the user to fix the error immediately rather than after the form has been submitted. Instant validation should be implemented carefully and in appropriate cases because it might be distracting if overused or misused. Only add instant validation if your user research shows that it solves more problems than it causes. This should be limited to very specific and short use cases. When used appropriately, dynamic validation can greatly reduce cognitive load of the user by avoiding the task of locating the incorrect input.
+Instant Validation, or dynamic validation, shows an inline error next to the incorrect field after the user has moved focus away from the form field. This allows the user to fix the error immediately rather than after the form has been submitted.
+
+Instant Validation should be implemented carefully and in appropriate cases because it might be distracting if overused or misused. Only add Instant Validation if your user research shows that it solves more problems than it causes. This should be limited to very specific and short use cases. When used appropriately, Instant Validation can greatly reduce cognitive load of the user by avoiding the task of locating the incorrect input.
 
 ### When to use
 
-- Single, complicated form fields, such as creating usernames or secure passwords or confirming email addresses and dates.
+- Use Instant Validation when the answers aren't obvious or when input fields are difficult to complete. For example, single, complicated form fields, such as creating usernames or secure passwords or confirming email addresses and dates.
 
 ### When to consider alternatives
 
-- When in doubt, default to [validation on submit](#validation-on-submit-default-error-validation-type). Instant validation should be implemented carefully and in appropriate cases because it might be distracting if overused or misused.
-- Use [validation on submit](#validation-on-submit-default-error-validation-type) for services which cannot use JavaScript for dynamic approach.
+- When in doubt, default to [Validation on Submit](#validation-on-submit-default). Instant validation should be implemented carefully and in appropriate cases because it might be distracting if overused or misused.
+- Use [Validation on Submit](#validation-on-submit-default) for services which cannot use JavaScript for dynamic approach.
 
 ### Do
 
+- Wait until a user has moved focus away from the form field before raising an Error Message.
 - Display error messaging after a user has changed the value of a given field _and_ has moved focus away from said field.
   - Raising error messages after a user has changed the value of a field prevents errors from appearing if someone is tabbing through fields to gain context of what information is needed.
   - Premature error messaging can confuse users if they already know what they need to do.
 - Error messages are removed as individual fields are corrected.
 - Upon all individual errors being corrected, the general error message is removed.
-- The same validation needs to take place when the submit button is clicked, as input-by-input validation takes place in the `onBlur` event and most users may click submit before the final input is blurred.
 
 ### Do not
 
-- Don't use dynamic validation for multiple form fields. This can create a frustrating user experience.
+- Do not raise an error message before the user has moved away from the form field. Premature error messaging can confuse users if they already know what they need to do.
+- Avoid use of dynamic validation for multiple form fields unless needed for multiple complicated form fields.
 
 ### Accessibility
 
 - Include an `aria-live` attribute value of "polite" so that the validation is presented by the screen reader after the user has completed all queued announcements.
-- Validate an individual input in the `onBlur` event (i.e., as soon as the user tabs away from it) and only if a user has changed the value of an input.
+  - For requirement criteria with dynamic hint iconography (for example, updating with "checkmark" or "X" icons as the user sets a password), images should be hidden with the `aria-hidden` attribute. Each list item should utilize `aria-live="polite"` and `aria-atomic="true"` attributes so the entire line of criteria gets announced when updated.
 - If the input is invalid, we will set the `aria-invalid` attribute, add an error message directly below the input, and announce the error to the user.
 - Remove an input's associated error message once the error requirement is met.
-- Every input requires a related element with an `alert` role, to announce any validation errors.
+- Error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
