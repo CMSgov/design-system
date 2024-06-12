@@ -3698,17 +3698,6 @@
               "codeSyntax": {}
             }
           }
-        },
-        "container-size": {
-          "$value": "0px",
-          "$type": "dimension",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
-          }
         }
       }
     },
