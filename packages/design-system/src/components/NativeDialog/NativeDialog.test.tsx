@@ -32,12 +32,14 @@ describe('NativeDialog', function () {
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
-  // TODO: Remove this when we remove this functionality in v10
-  it('opens if the isOpen prop is undefined', () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
-    renderNativeDialog({ isOpen: undefined });
+  it('can be open at the start', () => {
+    renderNativeDialog({ isOpen: true });
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
-    expect(warn).toHaveBeenCalled();
-    warn.mockReset();
+  });
+
+  it('throws an error if the isOpen prop is undefined', () => {
+    const error = jest.spyOn(console, 'error').mockImplementation(() => null);
+    expect(() => renderNativeDialog({ isOpen: undefined })).toThrow();
+    error.mockReset();
   });
 });

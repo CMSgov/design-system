@@ -44,7 +44,7 @@ export interface FilterDialogProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user triggers an exit event, like by pressing the ESC key.
    * The parent of this component is responsible for showing or not showing the

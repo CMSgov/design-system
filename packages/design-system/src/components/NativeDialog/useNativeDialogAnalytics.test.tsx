@@ -13,7 +13,7 @@ const defaultProps = {
   onClose: jest.fn(),
 };
 
-function renderDialog(props = {}) {
+function renderDialog(props: { isOpen: boolean }) {
   const TestDialog = ({ onOpen, onClose, ...dialogProps }: TestDialogProps) => {
     const headingRef = useNativeDialogAnalytics({
       isOpen: dialogProps.isOpen,
@@ -30,7 +30,7 @@ function renderDialog(props = {}) {
   const result = render(<TestDialog {...defaultProps} {...props} />);
   return {
     ...result,
-    rerenderDialog(newProps = {}) {
+    rerenderDialog(newProps: { isOpen: boolean }) {
       return result.rerender(<TestDialog {...defaultProps} {...newProps} />);
     },
   };

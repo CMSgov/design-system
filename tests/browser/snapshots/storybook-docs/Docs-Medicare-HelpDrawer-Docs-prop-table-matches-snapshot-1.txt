@@ -83,7 +83,7 @@
     "-"
   ],
   [
-    "isOpen",
+    "isOpen*",
     "Controls whether the dialog is in an open state\nboolean",
     "-"
   ],

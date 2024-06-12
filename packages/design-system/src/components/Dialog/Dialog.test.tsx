@@ -56,13 +56,9 @@ describe('Dialog', function () {
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
-  // TODO: Remove this when we remove this functionality in v10
-  it('opens if the isOpen prop is undefined', () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
-    renderDialog({ isOpen: undefined });
+  it('opens if the isOpen prop is true', () => {
+    renderDialog({ isOpen: true });
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
-    expect(warn).toHaveBeenCalled();
-    warn.mockReset();
   });
 
   describe('Analytics event tracking', () => {
