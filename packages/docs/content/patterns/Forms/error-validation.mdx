@@ -132,7 +132,7 @@ Provides a clear list of errors when "submit" is clicked. When errors are found,
 
 - Place error summary below the `<h1>` and above the form fields.
 - Shift focus to the error summary heading at the top of the page and use the `aria-labelledby` attribute to give it an accessible name. This should not be in the tab order and it also should not include a visible focus ring.
-- Add "Error: " to the beginning of the page `<title>` so screen readers read it out as soon as possible.
+- If the page is reloaded on form submission, add "Error: " to the beginning of the page `<title>`.
 
 ### Screen reader testing
 
@@ -153,9 +153,12 @@ Instant validation, or dynamic validation, allows the user to fix the error imme
 
 ### Do
 
-- Wait until a user has moved focus away from the form field before raising an error message. Premature error messaging can confuse users if they already know what they need to do.
+- Display error messaging after a user has changed the value of a given field _and_ has moved focus away from said field.
+  - Raising error messages after a user has changed the value of a field prevents errors from appearing if someone is tabbing through fields to gain context of what information is needed.
+  - Premature error messaging can confuse users if they already know what they need to do.
 - Error messages are removed as individual fields are corrected.
 - Upon all individual errors being corrected, the general error message is removed.
+- The same validation needs to take place when the submit button is clicked, as input-by-input validation takes place in the `onBlur` event and most users may click submit before the final input is blurred.
 
 ### Do not
 
@@ -164,9 +167,7 @@ Instant validation, or dynamic validation, allows the user to fix the error imme
 ### Accessibility
 
 - Include an `aria-live` attribute value of "polite" so that the validation is presented by the screen reader after the user has completed all queued announcements.
-- Validate an individual input in the `onBlur` event (i.e. as soon as the user tabs away from it)
+- Validate an individual input in the `onBlur` event (i.e., as soon as the user tabs away from it) and only if a user has changed the value of an input.
 - If the input is invalid, we will set the `aria-invalid` attribute, add an error message directly below the input, and announce the error to the user.
 - Remove an input's associated error message once the error requirement is met.
-- Every input requires a related element with an `alert` role, to announce any validation errors
-- Any validation error needs to be cleared as soon as the input value is changed (otherwise the submit button may be incorrectly disabled). This is particularly important for non-screen-reader users, as they are unlikely to tab away from the input or click elsewhere on the page before clicking submit.
-- The same validation needs to take place when the submit button is clicked, as input-by-input validation takes place in the `onBlur` event and most users (especially those not using a screen-reader) may click submit before the final input is blurred.
+- Every input requires a related element with an `alert` role, to announce any validation errors.

@@ -7,8 +7,13 @@ export default {
 
 export const ErrorSummary = () => {
   return (
-    <Alert variation="error" heading="The form contains the following errors">
-      <ul className="ds-u-measure--base">
+    <Alert
+      autoFocus
+      variation="error"
+      heading="The form contains the following errors"
+      headingId="example-alert"
+    >
+      <ul aria-labelledby="example-alert" className="ds-u-measure--base">
         <li>
           <a href="#!">Error Link</a>: Error Description
         </li>
@@ -23,7 +28,12 @@ export const ErrorSummary = () => {
 export const SingleError = () => {
   return (
     <form>
-      <Alert variation="error" heading="Complete these items to create your account:">
+      <Alert
+        autoFocus
+        variation="error"
+        heading="Complete these items to create your account:"
+        headingId="single-alert"
+      >
         <p className="ds-u-measure--base">
           <a href="#single-last-name">Last Name</a>: Check your last name.
         </p>
@@ -46,19 +56,34 @@ export const SingleError = () => {
 export const MultipleErrors = () => {
   return (
     <form>
-      <Alert variation="error" heading="Complete these items to create your account:">
-        <ul>
+      <Alert
+        autoFocus
+        variation="error"
+        heading="Complete these items to create your account:"
+        headingId="multi-alert"
+      >
+        <ul aria-labelledby="multi-alert">
           <li>
-            <a href="#mult-last-name">Last Name</a>: Check your last name.
+            <a href="#multi-last-name" aria-describedby="multi-error-desc-1">
+              Last Name
+            </a>
+            <span aria-hidden id="multi-error-desc-1">
+              : Check your last name.
+            </span>
           </li>
           <li>
-            <a href="#multi-date__month">Date of birth</a>: Enter your date of birth.
+            <a href="#multi-date__month" aria-describedby="multi-error-desc-2">
+              Date of birth
+            </a>
+            <span aria-hidden id="multi-error-desc-2">
+              : Enter your date of birth.
+            </span>
           </li>
         </ul>
       </Alert>
       <TextField label="First Name" name="first-name" defaultValue={'Lisa'} />
       <TextField
-        id="mult-last-name"
+        id="multi-last-name"
         label="Last Name"
         name="last-name"
         errorMessage="Check your last name."
