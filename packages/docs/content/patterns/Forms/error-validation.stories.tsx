@@ -15,10 +15,10 @@ export const ErrorSummary = () => {
     >
       <ul aria-labelledby="example-alert" className="ds-u-measure--base">
         <li>
-          <a href="#!">Error Link</a>: Error Description
+          <a href="#!">Error link</a>: Error description.
         </li>
         <li>
-          <a href="#!">Error Link</a>: Error Description
+          <a href="#!">Error link</a>: Error description.
         </li>
       </ul>
     </Alert>
@@ -35,15 +35,15 @@ export const SingleError = () => {
         headingId="single-alert"
       >
         <p className="ds-u-measure--base">
-          <a href="#single-last-name">Last Name</a>: Enter a last name that&apos;s more than 1
+          <a href="#single-last-name">Last name</a>: Enter a last name that&apos;s more than 1
           character.
         </p>
       </Alert>
 
-      <TextField label="First Name" name="first-name" defaultValue={'Lisa'} />
+      <TextField label="Enter your first name." name="first-name" defaultValue={'Lisa'} />
       <TextField
         id="single-last-name"
-        label="Last Name"
+        label="Enter your last name."
         name="last-name"
         errorMessage="Enter a last name that's more than 1 character."
       />
@@ -66,7 +66,7 @@ export const MultipleErrors = () => {
         <ul aria-labelledby="multi-alert">
           <li>
             <a href="#multi-last-name" aria-describedby="multi-error-desc-1">
-              Last Name
+              Last name
             </a>
             <span aria-hidden id="multi-error-desc-1">
               : Enter a last name that&apos;s more than 1 character.
@@ -82,17 +82,17 @@ export const MultipleErrors = () => {
           </li>
         </ul>
       </Alert>
-      <TextField label="First Name" name="first-name" defaultValue={'Lisa'} />
+      <TextField label="Enter your first name." name="first-name" defaultValue={'Lisa'} />
       <TextField
         id="multi-last-name"
-        label="Last Name"
+        label="Enter your last name."
         name="last-name"
         errorMessage="Enter a last name that's more than 1 character."
       />
 
       <MultiInputDateField
         id="multi-date"
-        label="Date"
+        label="Enter your date of birth."
         hint=""
         errorMessage="Enter birthdate as MM/DD/YYYY."
         monthInvalid
