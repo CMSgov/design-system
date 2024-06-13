@@ -152,6 +152,32 @@ The [Validation on Submit](#validation-on-submit-default) pattern is composed of
 
 - When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
 
+### Examples
+
+#### Error summary
+
+<StorybookExample
+  componentName="autocomplete"
+  storyId="patterns-error-validation-examples--error-summary"
+  minHeight={200}
+/>
+
+#### Single error
+
+<StorybookExample
+  componentName="autocomplete"
+  storyId="patterns-error-validation-examples--single-error"
+  minHeight={600}
+/>
+
+#### Multiple errors
+
+<StorybookExample
+  componentName="autocomplete"
+  storyId="patterns-error-validation-examples--multiple-errors"
+  minHeight={800}
+/>
+
 ## Instant Validation
 
 Instant Validation, or dynamic validation, shows an inline error next to the incorrect field after the user has moved focus away from the form field. This allows the user to fix the error immediately rather than after the form has been submitted.
@@ -188,29 +214,3 @@ Instant Validation should be implemented carefully and in appropriate cases beca
 - If the input is invalid, we will set the `aria-invalid` attribute, add an error message directly below the input, and announce the error to the user.
 - Remove an input's associated error message once the error requirement is met.
 - Error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
-
-## Examples
-
-### Error summary
-
-<StorybookExample
-  componentName="autocomplete"
-  storyId="patterns-error-validation-examples--error-summary"
-  minHeight={200}
-/>
-
-### Single error
-
-<StorybookExample
-  componentName="autocomplete"
-  storyId="patterns-error-validation-examples--single-error"
-  minHeight={600}
-/>
-
-### Multiple errors
-
-<StorybookExample
-  componentName="autocomplete"
-  storyId="patterns-error-validation-examples--multiple-errors"
-  minHeight={800}
-/>
