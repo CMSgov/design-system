@@ -3839,7 +3839,7 @@
         }
       },
       "text-decoration-offset": {
-        "$value": "4px",
+        "$value": "0.0390625rem",
         "$type": "dimension",
         "$extensions": {
           "com.figma": {
@@ -3850,7 +3850,7 @@
         }
       },
       "text-decoration-thickness": {
-        "$value": "1px",
+        "$value": "0.0625rem",
         "$type": "dimension",
         "$extensions": {
           "com.figma": {
@@ -3861,7 +3861,7 @@
         }
       },
       "text-decoration-thickness--hover": {
-        "$value": "1px",
+        "$value": "0.0625rem",
         "$type": "dimension",
         "$extensions": {
           "com.figma": {
