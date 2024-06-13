@@ -155,7 +155,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
-    inversed: dropdownInverse,
+    inversed,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
@@ -258,7 +258,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   // Excluding `inversed` prop from `<div>` label because it's not a valid attr
-  const { inversed, ...divLabelProps } = labelProps;
+  const { inversed: _removeInversed, ...divLabelProps } = labelProps;
 
   const buttonProps = {
     ...useButtonProps.buttonProps,
@@ -269,7 +269,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      dropdownInverse && 'ds-c-field--inverse',
+      inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
