@@ -155,6 +155,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     defaultValue,
     value,
     inputRef,
+    inversed: dropdownInverse,
     getA11yStatusMessage,
     getA11ySelectionMessage,
     ...extraProps
@@ -268,7 +269,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       'ds-c-dropdown__button',
       'ds-c-field',
       props.errorMessage && 'ds-c-field--error',
-      props.inversed && 'ds-c-field--inverse',
+      dropdownInverse && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
