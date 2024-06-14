@@ -56,7 +56,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user triggers an exit event, like by clicking the close
    * button or pressing the ESC key. The parent of this component is
