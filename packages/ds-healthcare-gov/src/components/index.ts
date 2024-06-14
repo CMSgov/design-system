@@ -17,5 +17,5 @@ export * from './Accordion';
 export * from './Footer';
 export * from './Header';
 export * from './Logo';
-
+export * from './ThirdPartyExternalLink';
 export * from './config';
