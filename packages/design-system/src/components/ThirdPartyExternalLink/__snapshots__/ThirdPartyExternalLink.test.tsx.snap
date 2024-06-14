@@ -28,7 +28,7 @@ Array [
 ]
 `;
 
-exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
+exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog without learnMoreUrl link 1`] = `
 <dialog
   class="ds-c-dialog"
   id="dialog--8"
@@ -89,12 +89,6 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
       >
         <p>
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
-        </p>
-        <p>
-          <a>
-            Learn more about links to third-party sites
-          </a>
-          .
         </p>
       </div>
       <div

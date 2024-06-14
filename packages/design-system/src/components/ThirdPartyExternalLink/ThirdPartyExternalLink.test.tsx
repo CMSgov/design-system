@@ -36,7 +36,7 @@ describe('ThirdPartyExternalLink', () => {
   });
 
   describe('ThirdPartyExternalLink dialog', () => {
-    it('renders external link dialog', () => {
+    it('renders external link dialog without learnMoreUrl link', () => {
       renderThirdPartyExternalLink();
 
       userEvent.click(getLink());
