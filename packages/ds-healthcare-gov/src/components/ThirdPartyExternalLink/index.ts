@@ -1,1 +1,1 @@
-export { default as ThirdPartyExternalLink } from './ThirdPartyExternalLink';
+import './ThirdPartyExternalLink';
