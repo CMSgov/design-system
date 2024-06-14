@@ -43,13 +43,4 @@ describe('IdleTimeoutDialog', () => {
     const endSessionBtn = screen.queryByText('Logout');
     expect(endSessionBtn).toBeNull();
   });
-
-  // TODO: Remove this when we remove this functionality in v10
-  it('opens if the isOpen prop is undefined', () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
-    renderDialog({ isOpen: undefined });
-    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
-    expect(warn).toHaveBeenCalled();
-    warn.mockReset();
-  });
 });
