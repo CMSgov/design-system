@@ -84,7 +84,6 @@ export const Dialog = (props: DialogProps) => {
     alert,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ariaCloseLabel,
     children,

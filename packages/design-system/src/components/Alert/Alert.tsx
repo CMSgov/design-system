@@ -97,7 +97,6 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ...alertProps
   } = props;
