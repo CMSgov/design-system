@@ -35,10 +35,10 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
   id="dialog--8"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   <div
     class="ds-c-dialog__window"
-    tabindex="-1"
   >
     <div
       class="ds-c-dialog__header"
@@ -56,19 +56,12 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         type="button"
       >
         <svg
-          aria-hidden="false"
-          aria-labelledby="dialog--8__close__icon__title"
+          aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           id="dialog--8__close__icon"
-          role="img"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title
-            id="dialog--8__close__icon__title"
-          >
-            Close
-          </title>
           <path
             d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
             fill="none"

@@ -105,7 +105,7 @@ export const Drawer = (props: DrawerProps) => {
       aria-labelledby={headingId}
       {...otherProps}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1}>
+      <div className="ds-c-drawer__window" tabIndex={isFooterSticky && -1}>
         <div className="ds-c-drawer__header">
           <Heading
             id={headingId}

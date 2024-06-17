@@ -7,10 +7,10 @@ exports[`Dialog renders with additional classNames and size 1`] = `
   id="static-id"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   <div
     class="ds-c-dialog__window"
-    tabindex="-1"
   >
     <div
       class="ds-c-dialog__header test-header"
@@ -28,19 +28,12 @@ exports[`Dialog renders with additional classNames and size 1`] = `
         type="button"
       >
         <svg
-          aria-hidden="false"
-          aria-labelledby="static-id__close__icon__title"
+          aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           id="static-id__close__icon"
-          role="img"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title
-            id="static-id__close__icon__title"
-          >
-            Close
-          </title>
           <path
             d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
             fill="none"

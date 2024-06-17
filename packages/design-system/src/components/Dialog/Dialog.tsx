@@ -125,7 +125,7 @@ export const Dialog = (props: DialogProps) => {
       boundingBoxRef={containerRef}
       aria-labelledby={headingId}
     >
-      <div className="ds-c-dialog__window" ref={containerRef} tabIndex={-1}>
+      <div className="ds-c-dialog__window" ref={containerRef}>
         <div className={headerClassNames}>
           {heading && (
             <h2 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
@@ -134,6 +134,7 @@ export const Dialog = (props: DialogProps) => {
           )}
           <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
+            ariaHidden={true}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
             onClick={onExit}

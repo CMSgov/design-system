@@ -57,10 +57,10 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     class="ds-c-help-drawer ds-c-drawer"
     open=""
     role="dialog"
+    tabindex="-1"
   >
     <div
       class="ds-c-drawer__window"
-      tabindex="-1"
     >
       <div
         class="ds-c-drawer__header"
