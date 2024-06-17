@@ -72,6 +72,7 @@ exports[`ChoiceList is a radio button group 1`] = `
       aria-describedby="choice-list--1__error choice-list--1__hint"
       aria-invalid="true"
       class="ds-c-fieldset"
+      role="radiogroup"
     >
       <legend
         class="ds-c-label"

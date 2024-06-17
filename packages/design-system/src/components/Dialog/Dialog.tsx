@@ -122,31 +122,27 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
       id={rootId}
       boundingBoxRef={containerRef}
+      aria-labelledby={headingId}
     >
-      <div
-        className="ds-c-dialog__window"
-        role="document"
-        ref={containerRef}
-        tabIndex={-1}
-        aria-labelledby={headingId}
-      >
-        <header className={headerClassNames}>
+      <div className="ds-c-dialog__window" ref={containerRef}>
+        <div className={headerClassNames}>
           {heading && (
-            <h1 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
+            <h2 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
               {heading}
-            </h1>
+            </h2>
           )}
           <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
+            ariaHidden={true}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
             onClick={onExit}
           />
-        </header>
-        <main role="main" className="ds-c-dialog__body">
+        </div>
+        <div className="ds-c-dialog__body">
           <div id={contentId}>{children}</div>
           {actions && <div className={actionsClassNames}>{actions}</div>}
-        </main>
+        </div>
       </div>
     </NativeDialog>
   );

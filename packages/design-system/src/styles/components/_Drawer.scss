@@ -68,14 +68,11 @@
 }
 
 .ds-c-drawer__window {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
-
-  @supports (display: flex) {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 /* Help drawer header */
@@ -83,13 +80,10 @@
   align-items: center;
   background-color: var(--drawer-header__background-color);
   display: flex;
+  flex: 0 0 auto;
   gap: $spacer-2;
   justify-content: space-between;
   padding: $spacer-2;
-
-  @supports (display: flex) {
-    flex: 0 0 auto;
-  }
 
   @media (forced-colors: active) {
     border-block-end: 1px solid ButtonText;
@@ -119,6 +113,7 @@
 
 /* Help drawer body content */
 .ds-c-drawer__body {
+  flex: 1 1 auto;
   padding: $spacer-2;
 
   @media (min-width: $media-width-md) {
@@ -129,10 +124,6 @@
     font-size: var(--font-size-base);
   }
 
-  @supports (display: flex) {
-    flex: 1 1 auto;
-  }
-
   @media (forced-colors: active) {
     border-block-start: 1px solid ButtonText;
   }
@@ -141,11 +132,8 @@
 /* Help drawer footer */
 .ds-c-drawer__footer {
   background-color: var(--drawer-footer__background-color);
+  flex: 0 0 auto;
   padding: $spacer-2;
-
-  @supports (display: flex) {
-    flex: 0 0 auto;
-  }
 }
 
 .ds-c-drawer__footer-title {

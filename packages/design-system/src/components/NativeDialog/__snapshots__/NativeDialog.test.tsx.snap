@@ -5,6 +5,7 @@ exports[`NativeDialog renders with custom className 1`] = `
   class="custom-class"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   Foo
 </dialog>

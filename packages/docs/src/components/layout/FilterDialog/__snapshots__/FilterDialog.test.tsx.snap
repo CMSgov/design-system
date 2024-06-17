@@ -6,6 +6,7 @@ exports[`FilterDialog renders a dialog 1`] = `
   id="filter-dialog-1"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   <div
     aria-labelledby="filter-dialog-1__heading"
