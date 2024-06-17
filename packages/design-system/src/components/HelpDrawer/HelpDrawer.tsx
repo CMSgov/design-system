@@ -10,14 +10,7 @@ export interface HelpDrawerProps extends DrawerProps, AnalyticsOverrideProps {}
  * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
  */
 export const HelpDrawer = (props: HelpDrawerProps) => {
-  const {
-    analytics,
-    analyticsLabelOverride,
-    analyticsEventTypeOverride,
-    children,
-    className,
-    ...others
-  } = props;
+  const { analytics, analyticsLabelOverride, children, className, ...others } = props;
   const headingRef = useHelpDrawerAnalytics(props);
 
   return (
