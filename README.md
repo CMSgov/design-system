@@ -40,13 +40,21 @@ These scripts can all be run from the root level of the repo:
   - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 
 - `yarn build`
-  - Compile/transpile/uglify everything and makes things release-ready.
-  - `yarn build:healthcare` to build the Healthcare.gov Design System
-  - `yarn build:medicare` to build the Medicare.gov Design System
-- `yarn build:storybook:docs && yarn build:docs`
-
-  - Builds the docs site statically
-
+  - Compiles everything and makes things release-ready
+  - Building is required to get TypeScript completion for the core package in child design system packages
+- `yarn build:{core,cmsgov,healthcare,medicare}`
+  - Builds a specific brand of the design system and its corresponding package
+- `yarn build:docs`
+  - Statically builds a copy of the doc site
+  - You can then serve it with `yarn serve:docs`
+- `yarn build:storybook`
+  - Statically builds a copy of Storybook to `./storybook-static`
+  - You can then serve it with `yarn serve:storybook`
+  - For development, just use `yarn storybook`
+- `yarn build:examples`
+  - Statically builds a copy of the example projects in `./examples`
+  - You can then serve them with `yarn serve:examples`
+  - Alternatively you can build and run individual examples. See the README in [examples directory](examples/) for more details.
 - `yarn start`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
@@ -59,6 +67,8 @@ These scripts can all be run from the root level of the repo:
 - `yarn test:unit`
   - Runs JS unit tests for all packages
   - `yarn test:unit -u` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+  - `yarn test:unit:preact` runs the unit tests in Preact mode
+  - `yarn test:unit:wc` runs the unit tests for the web components, which have to run in Preact mode
 - `yarn test:browser`
   - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details. This is the base command that defaults to the basic tests that cover Storybook stories, but we have several different kinds of browser tests under different sub-commands.
   - Note that this command will [accept any arguments that Playwright accepts](https://playwright.dev/docs/test-cli).
@@ -71,6 +81,8 @@ These scripts can all be run from the root level of the repo:
   - `yarn test:browser:all` runs all of our visual regression tests.
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
+- `yarn type-check`
+  - Checks static TypeScript types. Note that the core package must build successfully for downstream type checks to work.
 - `yarn deploy-demo`
   - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
