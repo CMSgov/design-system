@@ -1,4 +1,4 @@
-import { Reducer, useReducer, useLayoutEffect } from 'react';
+import { Reducer, useReducer, useEffect, useLayoutEffect } from 'react';
 
 const CLASS_NAME = 'ds--dialog-open';
 const PROPERTY_NAME = '--body_top--dialog-open';
@@ -13,6 +13,7 @@ interface ClosedState {
 }
 
 const OPEN = (_state: ClosedState): OpenState => {
+  console.log('opening')
   // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
   const y = window.scrollY ?? 0;
   document.body.classList.add(CLASS_NAME);
@@ -25,6 +26,7 @@ const OPEN = (_state: ClosedState): OpenState => {
 };
 
 const CLOSE = (state: OpenState): ClosedState => {
+  console.log('closing')
   document.body.classList.remove(CLASS_NAME);
   document.body.style.removeProperty(PROPERTY_NAME);
   window.scrollTo({ top: state.bodyScrollY, behavior: 'auto' });
@@ -56,4 +58,23 @@ export function useBodyScrollPrevention(isOpen: boolean) {
   useLayoutEffect(() => {
     dispatch(isOpen ? OPEN : CLOSE);
   }, [isOpen]);
+
+  useEffect(() => {
+    // Component mounts
+    console.log('mount')
+    return () => {
+      // Component unmounts, which does not result in isOpen=false, so we need to make
+      // sure we clean up after ourselves.
+      console.log('unmount')
+      // dispatch(CLOSE); Doesn't actually get called
+      if (_state.name === 'open') {
+        console.log('about to call CLOSE')
+        CLOSE(_state);
+      } else {
+        // For some reason we're in the closed state here even though "closing" was never
+        // printed to the console before this and "opening" was.
+        console.log('did not call CLOSE', _state)
+      }
+    }
+  }, [])
 }
