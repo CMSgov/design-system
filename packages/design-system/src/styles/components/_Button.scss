@@ -237,6 +237,8 @@
 
   text-decoration: underline;
   text-decoration-color: currentColor;
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
 
   &:is(a) {
     text-decoration: underline;
@@ -245,7 +247,7 @@
     &:active {
       text-decoration: underline;
       text-decoration-color: inherit;
-      text-decoration-thickness: inherit;
+      text-decoration-thickness: var(--link__text-decoration-thickness--hover);
     }
   }
 
