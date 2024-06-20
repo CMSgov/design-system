@@ -35,6 +35,7 @@
     "release:patch": "ts-node ./scripts/patch.ts",
     "serve:docs": "yarn --cwd ./packages/docs serve",
     "serve:examples": "yarn http-server -p 8080 examples",
+    "serve:storybook": "yarn http-server -p 8080 storybook-static",
     "start": "yarn build:storybook:docs && yarn --cwd ./packages/docs develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
