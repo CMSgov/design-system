@@ -102,7 +102,6 @@ body {
 blockquote {
   background-color: var(--color-gray-lightest);
   border-left: 4px solid var(--color-gray-light);
-  font-family: var(--font-sans);
   font-style: italic;
   margin-left: 0;
   padding: $spacer-2 $spacer-2 $spacer-2 $spacer-6;
@@ -111,7 +110,6 @@ blockquote {
   &::before {
     color: var(--color-gray-light);
     content: '\201C';
-    font-family: var(--font-serif);
     font-size: 4em;
     left: 10px;
     position: absolute;
