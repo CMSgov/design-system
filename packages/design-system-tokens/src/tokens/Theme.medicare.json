@@ -1643,7 +1643,7 @@
         }
       },
       "border-color--hover": {
-        "$value": "{theme.color.white}",
+        "$value": "{theme.color.secondary-dark}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
