@@ -129,9 +129,7 @@ export function tokensToCssProperties(
   const valueRenderConfig = {
     themeTokens,
     systemTokens,
-    // TODO: Enable this after we've merged a version of this that has been verified to
-    // be 1-1 with the previous script
-    // renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
+    renderVariableAlias: (name: string) => `var(--${tokenNameToVarName(name)})`,
   };
 
   // We actually do include some of the system tokens but only a subset
