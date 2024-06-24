@@ -27,4 +27,12 @@
   .ds-u-font-weight--semibold {
     @include deprecate;
   }
+
+  .ds-u-sans {
+    @include deprecate;
+  }
+
+  .ds-u-serif {
+    @include deprecate;
+  }
 }

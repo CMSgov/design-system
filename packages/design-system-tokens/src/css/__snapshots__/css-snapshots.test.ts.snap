@@ -314,8 +314,6 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --font-line-height-heading: 1.3;
 --font-line-height-lead: 1.7;
 --font-line-height-reset: 1;
---font-sans: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
---font-serif: Bitter, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
 --font-size-2xl--mobile: 1.5rem;
 --font-size-2xl: 1.5rem;
 --font-size-3xl--mobile: 1.875rem;
@@ -824,8 +822,6 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --font-line-height-heading: 1.3;
 --font-line-height-lead: 1.7;
 --font-line-height-reset: 1;
---font-sans: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
---font-serif: Bitter, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
 --font-size-2xl--mobile: 1.5rem;
 --font-size-2xl: 1.5rem;
 --font-size-3xl--mobile: 1.875rem;
@@ -1335,8 +1331,6 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --font-line-height-heading: 1.3;
 --font-line-height-lead: 1.7;
 --font-line-height-reset: 1;
---font-sans: 'Open Sans', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
---font-serif: Bitter, Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
 --font-size-2xl--mobile: 1.5rem;
 --font-size-2xl: 1.5rem;
 --font-size-3xl--mobile: 1.875rem;
