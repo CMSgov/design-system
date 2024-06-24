@@ -1460,75 +1460,6 @@
         }
       }
     },
-    "autocomplete": {
-      "background-color": {
-        "$value": "{theme.color.white}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "item": {
-        "font-color": {
-          "$value": "#ffffff",
-          "$type": "color",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
-          }
-        },
-        "background-color--active": {
-          "$value": "#ffffff",
-          "$type": "color",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
-          }
-        },
-        "font-color--active": {
-          "$value": "{theme.color.white}",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
-          }
-        }
-      },
-      "item-message": {
-        "font-color": {
-          "$value": "#ffffff",
-          "$type": "color",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
-          }
-        }
-      },
-      "border-color": {
-        "$value": "{theme.color.gray-lighter}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
     "badge": {
       "background-color--alert": {
         "$value": "{theme.color.error}",
@@ -3579,30 +3510,6 @@
             "hiddenFromPublishing": false,
             "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "dropdown": {
-      "background-color": {
-        "$value": "{theme.color.white}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "option-group": {
-        "padding": {
-          "$value": "{spacer.3}",
-          "$extensions": {
-            "com.figma": {
-              "hiddenFromPublishing": false,
-              "scopes": ["ALL_SCOPES"],
-              "codeSyntax": {}
-            }
           }
         }
       }
