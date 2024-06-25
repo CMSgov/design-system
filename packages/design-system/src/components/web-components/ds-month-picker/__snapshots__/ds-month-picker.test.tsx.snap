@@ -81,6 +81,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--1__error"
                   aria-label="January"
                   class="ds-c-choice"
                   id="month-picker--1__choice--1"
@@ -95,6 +96,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Jan
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--1__error"
+                />
               </div>
             </div>
           </li>
@@ -106,6 +113,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--2__error"
                   aria-label="February"
                   class="ds-c-choice"
                   id="month-picker--1__choice--2"
@@ -120,6 +128,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Feb
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--2__error"
+                />
               </div>
             </div>
           </li>
@@ -131,6 +145,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--3__error"
                   aria-label="March"
                   class="ds-c-choice"
                   id="month-picker--1__choice--3"
@@ -145,6 +160,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Mar
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--3__error"
+                />
               </div>
             </div>
           </li>
@@ -156,6 +177,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--4__error"
                   aria-label="April"
                   class="ds-c-choice"
                   id="month-picker--1__choice--4"
@@ -170,6 +192,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Apr
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--4__error"
+                />
               </div>
             </div>
           </li>
@@ -181,6 +209,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--5__error"
                   aria-label="May"
                   class="ds-c-choice"
                   id="month-picker--1__choice--5"
@@ -195,6 +224,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   May
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--5__error"
+                />
               </div>
             </div>
           </li>
@@ -206,6 +241,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--6__error"
                   aria-label="June"
                   class="ds-c-choice"
                   id="month-picker--1__choice--6"
@@ -220,6 +256,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Jun
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--6__error"
+                />
               </div>
             </div>
           </li>
@@ -231,6 +273,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--7__error"
                   aria-label="July"
                   class="ds-c-choice"
                   id="month-picker--1__choice--7"
@@ -245,6 +288,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Jul
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--7__error"
+                />
               </div>
             </div>
           </li>
@@ -256,6 +305,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--8__error"
                   aria-label="August"
                   class="ds-c-choice"
                   id="month-picker--1__choice--8"
@@ -270,6 +320,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Aug
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--8__error"
+                />
               </div>
             </div>
           </li>
@@ -281,6 +337,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--9__error"
                   aria-label="September"
                   class="ds-c-choice"
                   id="month-picker--1__choice--9"
@@ -295,6 +352,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Sep
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--9__error"
+                />
               </div>
             </div>
           </li>
@@ -306,6 +369,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--10__error"
                   aria-label="October"
                   class="ds-c-choice"
                   id="month-picker--1__choice--10"
@@ -320,6 +384,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Oct
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--10__error"
+                />
               </div>
             </div>
           </li>
@@ -331,6 +401,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--11__error"
                   aria-label="November"
                   class="ds-c-choice"
                   id="month-picker--1__choice--11"
@@ -345,6 +416,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Nov
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--11__error"
+                />
               </div>
             </div>
           </li>
@@ -356,6 +433,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 class="ds-c-choice-wrapper"
               >
                 <input
+                  aria-describedby="month-picker--1__choice--12__error"
                   aria-label="December"
                   class="ds-c-choice"
                   id="month-picker--1__choice--12"
@@ -370,6 +448,12 @@ exports[`MonthPicker renders a snapshot 1`] = `
                 >
                   Dec
                 </label>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="month-picker--1__choice--12__error"
+                />
               </div>
             </div>
           </li>

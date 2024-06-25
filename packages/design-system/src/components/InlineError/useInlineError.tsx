@@ -51,7 +51,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
     inversed,
   } = props;
 
-  const errorElement = errorMessage ? (
+  const errorElement = (
     <InlineError
       id={errorId}
       inversed={inversed}
@@ -62,7 +62,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
     >
       {errorMessage}
     </InlineError>
-  ) : undefined;
+  );
 
   let topError;
   let bottomError;

@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Dropdown>;
 
 const dropdownOptions = [
   { label: '- Select an option -', value: '' },
-  { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
+  { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1', key: 'foo' },
   { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
   { label: 'Confederated Tribes of the Colville Reservation', value: '3' },
   { label: 'Cowlitz Indian Tribe', value: '4' },
@@ -38,6 +38,8 @@ const dropdownOptions = [
     label:
       'Nisqually Indian Tribe (formerly the Nisqually Indian Tribe of the Nisqually Reservation)',
     value: '6',
+    isDisabled: true,
+    disabled: true,
   },
   { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
 ];
@@ -47,7 +49,9 @@ const htmlOptGroups = (
     <option value="">- Select an option -</option>
     <optgroup label="Group A">
       <option value="a-1">Option A-1</option>
-      <option value="a-2">Option A-2</option>
+      <option disabled value="a-2">
+        Option A-2
+      </option>
       <option value="a-3">Option A-3</option>
     </optgroup>
     <optgroup label="Group B" data-extra-attribute="something">
@@ -61,7 +65,9 @@ const htmlOptGroups = (
 const htmlOptions = (
   <>
     <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
+    <option disabled value="2">
+      Option 2
+    </option>
     <option value="3">Option 3</option>
     <option value="4">Option 4</option>
     <option value="5">Option 5</option>

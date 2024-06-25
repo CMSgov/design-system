@@ -48,6 +48,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
+          aria-describedby="static-id__choice--0__error"
           class="ds-c-choice--error ds-c-choice"
           id="static-id__choice--0"
           name="spec-field"
@@ -61,6 +62,12 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         >
           Choice 1
         </label>
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error"
+          id="static-id__choice--0__error"
+        />
       </div>
     </div>
     <div>
@@ -68,6 +75,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
+          aria-describedby="static-id__choice--1__error"
           class="ds-c-choice--error ds-c-choice"
           id="static-id__choice--1"
           name="spec-field"
@@ -81,6 +89,12 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
         >
           Choice 2
         </label>
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error"
+          id="static-id__choice--1__error"
+        />
       </div>
     </div>
   </fieldset>
