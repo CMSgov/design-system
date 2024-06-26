@@ -24,7 +24,6 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           class="ds-c-choice-wrapper"
         >
           <input
-            aria-describedby="choice-list--11__choice--0__error"
             class="ds-c-choice"
             id="choice-list--11__choice--0"
             type="checkbox"
@@ -37,12 +36,6 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           >
             Foo
           </label>
-          <p
-            aria-atomic="true"
-            aria-live="assertive"
-            class="ds-c-inline-error"
-            id="choice-list--11__choice--0__error"
-          />
         </div>
       </div>
       <div>
@@ -50,7 +43,6 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           class="ds-c-choice-wrapper"
         >
           <input
-            aria-describedby="choice-list--11__choice--1__error"
             class="ds-c-choice"
             id="choice-list--11__choice--1"
             type="checkbox"
@@ -63,12 +55,6 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           >
             Bar
           </label>
-          <p
-            aria-atomic="true"
-            aria-live="assertive"
-            class="ds-c-inline-error"
-            id="choice-list--11__choice--1__error"
-          />
         </div>
       </div>
     </fieldset>
@@ -134,7 +120,6 @@ exports[`ChoiceList is a radio button group 1`] = `
           class="ds-c-choice-wrapper"
         >
           <input
-            aria-describedby="choice-list--1__choice--0__error"
             class="ds-c-choice--error ds-c-choice"
             id="choice-list--1__choice--0"
             name="spec-field"
@@ -148,12 +133,6 @@ exports[`ChoiceList is a radio button group 1`] = `
           >
             Choice 1
           </label>
-          <p
-            aria-atomic="true"
-            aria-live="assertive"
-            class="ds-c-inline-error"
-            id="choice-list--1__choice--0__error"
-          />
         </div>
       </div>
       <div>
@@ -161,7 +140,6 @@ exports[`ChoiceList is a radio button group 1`] = `
           class="ds-c-choice-wrapper"
         >
           <input
-            aria-describedby="choice-list--1__choice--1__error"
             class="ds-c-choice--error ds-c-choice"
             id="choice-list--1__choice--1"
             name="spec-field"
@@ -175,12 +153,6 @@ exports[`ChoiceList is a radio button group 1`] = `
           >
             Choice 2
           </label>
-          <p
-            aria-atomic="true"
-            aria-live="assertive"
-            class="ds-c-inline-error"
-            id="choice-list--1__choice--1__error"
-          />
         </div>
       </div>
     </fieldset>

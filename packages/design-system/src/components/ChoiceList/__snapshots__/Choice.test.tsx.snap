@@ -7,7 +7,6 @@ exports[`Choice accepts a node as innerHTML 1`] = `
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -26,12 +25,6 @@ exports[`Choice accepts a node as innerHTML 1`] = `
            World
         </p>
       </label>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
   </div>
 </DocumentFragment>
@@ -93,7 +86,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error static-id__hint"
+        aria-describedby="static-id__hint"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -113,12 +106,6 @@ exports[`Choice has a hint and requirementLabel 1`] = `
       >
         Optional. Hello world
       </p>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
   </div>
 </DocumentFragment>
@@ -131,7 +118,6 @@ exports[`Choice is a checkbox 1`] = `
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -145,12 +131,6 @@ exports[`Choice is a checkbox 1`] = `
       >
         George Washington
       </label>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
   </div>
 </DocumentFragment>
@@ -163,7 +143,6 @@ exports[`Choice is a radio 1`] = `
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -177,12 +156,6 @@ exports[`Choice is a radio 1`] = `
       >
         George Washington
       </label>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
   </div>
 </DocumentFragment>
@@ -199,7 +172,6 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -213,12 +185,6 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
       >
         George Washington
       </label>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
     <strong
       class="checked-child"
@@ -241,7 +207,6 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
       class="ds-c-choice-wrapper"
     >
       <input
-        aria-describedby="static-id__error"
         class="ds-c-choice"
         id="static-id"
         name="foo"
@@ -255,12 +220,6 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
       >
         George Washington
       </label>
-      <p
-        aria-atomic="true"
-        aria-live="assertive"
-        class="ds-c-inline-error"
-        id="static-id__error"
-      />
     </div>
     <strong
       class="unchecked-child"

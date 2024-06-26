@@ -110,12 +110,15 @@ export const Choice = (props: ChoiceProps) => {
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
-  const errorId = props.errorId ?? `${props.id}__error`;
-  const errorElement = (
-    <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
-      {props.errorMessage}
-    </InlineError>
-  );
+  let errorId, errorElement;
+  if (props.errorMessage) {
+    errorId = props.errorId ?? `${props.id}__error`;
+    errorElement = (
+      <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
+        {props.errorMessage}
+      </InlineError>
+    );
+  }
 
   // Subscribe to changes from other radio buttons in the same group
   useEffect(() => {
