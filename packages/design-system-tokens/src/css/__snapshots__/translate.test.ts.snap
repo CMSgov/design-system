@@ -12,9 +12,9 @@ Object {
 --spacer-1: 8px;
 --color-primary-light: #e6f1f8;
 --color-primary: #b3d4eb;
---alert__background-color: #e6f1f8;
---alert__border-color: #b3d4eb;
---button__border-radius: 2px;
+--alert__background-color: var(--color-primary-light);
+--alert__border-color: var(--color-primary);
+--button__border-radius: var(--radius-small);
 }",
   "core-theme.css": ":root, ::before, ::after, ::backdrop {
 --radius-circle: 100%;
@@ -26,9 +26,9 @@ Object {
 --spacer-1: 8px;
 --color-primary-light: #4d9cd0;
 --color-primary: #0071bc;
---alert__background-color: #4d9cd0;
---alert__border-color: #0071bc;
---button__border-radius: 2px;
+--alert__background-color: var(--color-primary-light);
+--alert__border-color: var(--color-primary);
+--button__border-radius: var(--radius-small);
 }",
 }
 `;
