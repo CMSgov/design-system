@@ -110,7 +110,8 @@ export const Choice = (props: ChoiceProps) => {
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
-  let errorId, errorElement;
+  let errorId;
+  let errorElement;
   if (props.errorMessage) {
     errorId = props.errorId ?? `${props.id}__error`;
     errorElement = (
