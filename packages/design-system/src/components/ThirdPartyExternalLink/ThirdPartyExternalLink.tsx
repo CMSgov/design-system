@@ -59,7 +59,6 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
             variation="solid"
             key="external-link__confirm"
             href={href}
-            target="_blank"
             analytics
             onAnalyticsEvent={buttonAnalyticsHandler}
           >

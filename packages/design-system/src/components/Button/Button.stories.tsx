@@ -55,8 +55,7 @@ export const SpinnerButton: Story = {
 
 export const AnchorButton: Story = {
   args: {
-    href: 'https://google.com',
-    target: '_blank',
+    href: '!#',
   },
 };
 
