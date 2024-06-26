@@ -53,9 +53,13 @@ export function InlineError({
       aria-live="assertive"
       aria-atomic="true"
     >
-      <AlertCircleIcon viewBox={viewbox} />
-      <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
-      {children}
+      {children && (
+        <>
+          <AlertCircleIcon viewBox={viewbox} />
+          <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
+          {children}
+        </>
+      )}
     </p>
   );
 }
