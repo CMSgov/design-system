@@ -76,9 +76,7 @@ describe('ChoiceList', () => {
 
     it('is enclosed by a fieldset', () => {
       renderChoiceList();
-      // a fieldset's default aria role is 'group' per MDN
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#technical_summary
-      const fieldsetEl = screen.getByRole('group');
+      const fieldsetEl = screen.getByRole('radiogroup');
 
       expect(fieldsetEl).toBeDefined();
     });

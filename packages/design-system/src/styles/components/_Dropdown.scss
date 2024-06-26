@@ -28,6 +28,13 @@
   }
 }
 
+// This class is applied to a `<div>` that acts as a label
+// Because the dropdown is a `<button>` element, a `<label>` element
+// breaks for some a11y checkers. Using a `<div>` is correct.
+.ds-c-dropdown__label {
+  margin-block: 1.5em 0;
+}
+
 .ds-c-dropdown__label-text {
   max-width: 100%;
   overflow: hidden;

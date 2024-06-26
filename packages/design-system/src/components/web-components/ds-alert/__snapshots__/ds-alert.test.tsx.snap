@@ -23,7 +23,6 @@ exports[`Alert renders alert 1`] = `
       </svg>
       <div
         class="ds-c-alert__body"
-        id="alert--1__heading"
       >
         <span
           class="ds-c-alert__a11y-label ds-u-visibility--screen-reader"

@@ -80,7 +80,6 @@ export const Button = (props: ButtonProps) => {
   const {
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     analyticsParentHeading,
     analyticsParentType,
     onAnalyticsEvent,

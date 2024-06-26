@@ -137,12 +137,12 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
   class="ds-c-dropdown"
 >
-  <label
-    class="ds-c-label"
+  <div
+    class="ds-c-label ds-c-dropdown__label"
     id="static-id__label"
   >
     Select an option
-  </label>
+  </div>
   <div
     aria-hidden="true"
     data-a11y-ignore="aria-hidden-focus"
