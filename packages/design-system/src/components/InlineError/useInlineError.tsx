@@ -51,18 +51,18 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
     inversed,
   } = props;
 
-  const errorElement = errorMessage ? (
+  const errorElement = (
     <InlineError
       id={errorId}
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === 'bottom' && 'ds-c-inline-error--bottom'
+        errorPlacement === 'bottom' && errorMessage && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}
     </InlineError>
-  ) : undefined;
+  );
 
   let topError;
   let bottomError;

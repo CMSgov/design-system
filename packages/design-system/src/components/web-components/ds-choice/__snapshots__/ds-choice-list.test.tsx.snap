@@ -13,6 +13,12 @@ exports[`ChoiceList accepts HTML as children 1`] = `
         class="ds-c-label"
         id="choice-list--11__label"
       />
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        class="ds-c-inline-error"
+        id="choice-list--11__error"
+      />
       <div>
         <div
           class="ds-c-choice-wrapper"
