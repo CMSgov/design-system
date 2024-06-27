@@ -502,10 +502,6 @@
 
   .ds-c-field {
     max-width: 12ch;
-    padding: var(
-      --datefield__padding,
-      0.5em
-    ); // override the padding from the field component to use relative sizing
   }
 
   .ds-c-single-input-date-field__button {

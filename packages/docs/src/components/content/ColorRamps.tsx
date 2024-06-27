@@ -1,16 +1,15 @@
-import { color as colorTokens } from 'design-system-tokens/src/tokens/color';
+import systemTokens from 'design-system-tokens/src/tokens/System.Value.json';
 import ColorExampleRow from './ColorExampleRow';
 
-interface SwatchColor {
-  name: string;
-  value: string;
-}
-
-const swatches: Record<string, SwatchColor[]> = Object.keys(colorTokens).reduce((swatches, key) => {
-  const colorName = key.split('-')[0];
-  swatches[colorName] = [...(swatches[colorName] ?? []), { name: key, value: colorTokens[key] }];
-  return swatches;
-}, {});
+const swatches = Object.keys(systemTokens.color).map((swatchName) => {
+  const color = systemTokens.color[swatchName];
+  return {
+    swatchName,
+    swatchColors: color.$value
+      ? [{ name: swatchName, value: color.$value }]
+      : Object.keys(color).map((name) => ({ name, value: color[name].$value })),
+  };
+});
 
 const renderTransparencyPattern = (id: string) => (
   <pattern id={id} x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
@@ -26,7 +25,7 @@ const renderTransparencyPattern = (id: string) => (
  */
 const ColorRamps = () => (
   <div className="ds-u-display--flex ds-u-flex-wrap--wrap c-color-ramps">
-    {Object.entries(swatches).map(([swatchName, swatchColors], i) => {
+    {swatches.map(({ swatchName, swatchColors }, i) => {
       const patternId = `pattern-checkers-${i}`;
       return (
         <div className="c-color-ramp__wrapper" key={swatchName}>

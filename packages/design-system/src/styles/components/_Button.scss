@@ -9,7 +9,8 @@
   border-radius: var(--button__border-radius);
   color: var(--color, var(--button__color));
   display: inline-block;
-  font-weight: var(--fontWeight, var(--button__font-weight));
+  font-family: var(--font-family-body);
+  font-weight: var(--fontWeight, var(--font-weight-button-md));
   line-height: 1.3;
   padding: var(--space, #{$spacer-1 $spacer-3});
   text-align: center;
@@ -236,6 +237,8 @@
 
   text-decoration: underline;
   text-decoration-color: currentColor;
+  text-decoration-thickness: var(--link__text-decoration-thickness);
+  text-underline-offset: var(--link__text-decoration-offset);
 
   &:is(a) {
     text-decoration: underline;
@@ -244,7 +247,7 @@
     &:active {
       text-decoration: underline;
       text-decoration-color: inherit;
-      text-decoration-thickness: inherit;
+      text-decoration-thickness: var(--link__text-decoration-thickness--hover);
     }
   }
 
@@ -323,13 +326,14 @@
 }
 
 .ds-c-button--big {
+  --fontWeight: var(--font-weight-button-lg);
   --space: #{$spacer-2 $spacer-3};
 
   font-size: var(--font-size-xl);
 }
 
 .ds-c-button--small {
-  --fontWeight: var(--font-weight-normal);
+  --fontWeight: var(--font-weight-button-sm);
   --space: #{$spacer-half $spacer-1};
 
   font-size: var(--font-size-sm);
