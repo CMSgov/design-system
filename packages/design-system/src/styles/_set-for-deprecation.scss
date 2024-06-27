@@ -22,7 +22,17 @@
   }
 }
 
-/* stylelint-disable block-no-empty -- Ignore until new deprecation rules are added */
 @container style(--debugger: true) {
+  // Remove in v12
+  .ds-u-font-weight--semibold {
+    @include deprecate;
+  }
+
+  .ds-u-sans {
+    @include deprecate;
+  }
+
+  .ds-u-serif {
+    @include deprecate;
+  }
 }
-/* stylelint-enable */

@@ -1,8 +1,0 @@
-export { default as CoreTheme } from './core'
-export { default as CoreComponentTheme } from './core-component'
-export { default as HealthcareTheme } from './healthcare'
-export { default as HealthcareComponentTheme } from './healthcare-component'
-export { default as MedicareTheme } from './medicare'
-export { default as MedicareComponentTheme } from './medicare-component'
-export { default as CmsgovTheme } from './cmsgov'
-export { default as CmsgovComponentTheme } from './cmsgov-component'
