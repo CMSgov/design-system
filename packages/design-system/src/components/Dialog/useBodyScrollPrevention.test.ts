@@ -21,7 +21,7 @@ describe('useBodyScrollPrevention', () => {
     expect(document.body).not.toHaveClass(CLASS_NAME);
   });
 
-  it.only('should clean up when unmounted', () => {
+  it('should clean up when unmounted', () => {
     const {unmount} = renderHook(() => useBodyScrollPrevention(true));
     unmount();
     expect(document.body).not.toHaveClass(CLASS_NAME);
