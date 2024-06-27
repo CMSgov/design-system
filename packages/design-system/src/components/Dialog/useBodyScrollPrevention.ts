@@ -1,7 +1,7 @@
-import { Reducer, useReducer, useEffect, useLayoutEffect } from 'react';
+import { Reducer, useReducer, useEffect, useLayoutEffect, useState } from 'react';
 
-const CLASS_NAME = 'ds--dialog-open';
-const PROPERTY_NAME = '--body_top--dialog-open';
+export const CLASS_NAME = 'ds--dialog-open';
+export const PROPERTY_NAME = '--body_top--dialog-open';
 
 interface OpenState {
   name: 'open';
@@ -40,6 +40,7 @@ type FiniteState = OpenState | ClosedState;
 type FiniteStateTransition = typeof OPEN | typeof CLOSE;
 
 const reducer: Reducer<FiniteState, FiniteStateTransition> = (state, transition) => {
+  console.log('hitting the reducer', state, transition)
   if (state.name === 'open' && transition === CLOSE) {
     return transition(state);
   } else if (state.name === 'closed' && transition === OPEN) {
@@ -52,12 +53,21 @@ const reducer: Reducer<FiniteState, FiniteStateTransition> = (state, transition)
  * Prevents scrolling the page behind the dialog
  */
 export function useBodyScrollPrevention(isOpen: boolean) {
-  const [_state, dispatch] = useReducer(reducer, { name: 'closed' });
+  // const [state, dispatch] = useReducer(reducer, { name: 'closed' });
+  const [state, setState] = useState<FiniteState>({name: 'closed'});
+
+
   // Needs to use useLayoutEffect because we need to grab the window scroll position
   // before the dialog renders and messes it up.
   useLayoutEffect(() => {
-    dispatch(isOpen ? OPEN : CLOSE);
-  }, [isOpen]);
+    console.log('in useLayoutEffect', state, isOpen)
+    // dispatch(isOpen ? OPEN : CLOSE);
+    if (state.name === 'open' && !isOpen) {
+      setState(CLOSE(state));
+    } else if (state.name === 'closed' && isOpen) {
+      setState(OPEN(state));
+    }
+  }, [isOpen, state, setState]);
 
   useEffect(() => {
     // Component mounts
@@ -66,15 +76,19 @@ export function useBodyScrollPrevention(isOpen: boolean) {
       // Component unmounts, which does not result in isOpen=false, so we need to make
       // sure we clean up after ourselves.
       console.log('unmount')
+      console.log(state)
       // dispatch(CLOSE); Doesn't actually get called
-      if (_state.name === 'open') {
-        console.log('about to call CLOSE')
-        CLOSE(_state);
-      } else {
-        // For some reason we're in the closed state here even though "closing" was never
-        // printed to the console before this and "opening" was.
-        console.log('did not call CLOSE', _state)
-      }
+
+      // if (_state.name === 'open') {
+      //   console.log('about to call CLOSE')
+      //   CLOSE(_state);
+      // } else {
+      //   // For some reason we're in the closed state here even though "closing" was never
+      //   // printed to the console before this and "opening" was.
+      //   console.log('did not call CLOSE', _state)
+      // }
     }
-  }, [])
+  }, []);
+
+  console.log('state during render:', state)
 }
