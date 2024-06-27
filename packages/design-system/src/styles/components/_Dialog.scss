@@ -50,7 +50,7 @@ dialog.fixed {
 .ds-c-dialog__window {
   background-color: var(--dialog__background-color);
   border: none;
-  box-shadow: var(--shadow-base);
+  box-shadow: 2px 2px 4px;
   box-sizing: border-box;
   color: var(--color-base); // Needed to override user-agent styles `canvasText`
   display: block;

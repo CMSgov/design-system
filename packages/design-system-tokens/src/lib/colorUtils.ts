@@ -2,7 +2,7 @@
  * Token utilities that do not require any outside dependencies (node, npm, etc..)
  */
 
-import { HexValue } from './types';
+export type HexValue = `#${string}`;
 
 export interface RgbaObject {
   r: number;
