@@ -9,7 +9,7 @@
 
 // Layout styles for wrapping choice container
 .ds-c-choice-wrapper {
-  column-gap: var(--choice-wrapper__gap, 0.5rem);
+  column-gap: var(--choice-wrapper__gap);
   display: grid;
   grid-template-areas:
     'check label'
@@ -20,7 +20,7 @@
   max-width: var(--measure-wide);
 
   &:has(.ds-c-choice--small) {
-    column-gap: var(--choice-wrapper__gap--small, 0.5rem);
+    column-gap: var(--choice-wrapper__gap--small);
   }
 
   .ds-c-label,
@@ -37,14 +37,9 @@ label,
     cursor: pointer;
     font-weight: var(--font-weight-normal);
     grid-area: label;
-
-    // Medicare has a different `translateY` for choice labels
-    // If a theme doesn't have a `translateY` for choice labels defined, it will fall back to the normal `translateY`
-    margin-block-start: var(--choice__translateY, 0.25em);
+    margin-block-start: var(--choice-label__top-offset);
   }
 
-  // Medicare has a different `translateY` for small choice labels
-  // If a theme doesn't have a `translateY` for small choice labels defined, it will fall back to the normal `translateY`
   .ds-c-choice--small + & {
     margin-block-start: -0.125em;
   }

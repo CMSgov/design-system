@@ -3,7 +3,7 @@
 
 // Wraps all label and dropdown markup
 .ds-c-dropdown {
-  max-width: var(--form__max-width);
+  max-width: var(--field-max-width);
   position: relative;
 }
 
@@ -76,7 +76,7 @@
   max-height: var(--max-height);
   position: absolute;
   width: 100%;
-  z-index: var(--z-dialog);
+  z-index: 1000;
 
   .ds-c-field--inverse + & {
     color: var(--color-base);

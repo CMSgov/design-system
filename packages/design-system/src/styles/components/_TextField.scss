@@ -9,7 +9,7 @@
   display: block;
   line-height: var(--text-input__line-height); // Needed to overwrite user agent heading tag styles
   margin-block-start: $spacer-half;
-  max-width: var(--form__max-width);
+  max-width: var(--field-max-width);
   outline: none;
   padding: var(--text-input__padding);
   width: 100%;
@@ -43,11 +43,11 @@
 }
 
 .ds-c-field--small {
-  max-width: var(--form__max-width--small);
+  max-width: var(--field-max-width--small);
 }
 
 .ds-c-field--medium {
-  max-width: var(--form__max-width--medium);
+  max-width: var(--field-max-width--medium);
 }
 
 .ds-c-field-mask {
