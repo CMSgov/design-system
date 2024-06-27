@@ -70,39 +70,14 @@ export const DialogExample: Story = {
   },
 };
 
-const DialogParent = ({ derender }) => {
-  const [dialogOpen, updateOpen] = useState(false);
-  const showModal = () => updateOpen(true);
-  const hideModal = (...params) => {
-    action('onExit')(...params);
-    updateOpen(false);
-  };
-
-  return (
-    <>
-      <Dialog
-        heading="Hey"
-        onExit={hideModal}
-        isOpen={dialogOpen}
-        actions={
-          <Button variation="solid" onClick={derender}>
-            De-render the modal
-          </Button>
-        }
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-        lacinia, eget tempor purus placerat.
-      </Dialog>
-      <Button onClick={showModal} size="big" variation="solid">
-        Click to show modal
-      </Button>
-    </>
-  );
-};
-
 export const PreventScrollExample: Story = {
-  render: function Component() {
-    const [shouldRenderDialogParent, setShouldRendeDialogParent] = useState(true);
+  render: function Component(args) {
+    const [dialogOpen, updateOpen] = useState(false);
+    const showModal = () => updateOpen(true);
+    const hideModal = (...params) => {
+      action('onExit')(...params);
+      updateOpen(false);
+    };
 
     return (
       <div className="ds-u-measure--base">
@@ -120,9 +95,10 @@ export const PreventScrollExample: Story = {
           which shall consist of a Senate and House of Representatives.
         </p>
 
-        {shouldRenderDialogParent && (
-          <DialogParent derender={() => setShouldRendeDialogParent(false)} />
-        )}
+        <Dialog {...args} onExit={hideModal} isOpen={dialogOpen} />
+        <Button onClick={showModal} size="big" variation="solid">
+          Click to show modal
+        </Button>
 
         <h3>Section 2: The House of Representatives</h3>
         <p>
