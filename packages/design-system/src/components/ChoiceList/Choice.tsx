@@ -45,6 +45,10 @@ export interface BaseChoiceProps {
    */
   className?: string;
   /**
+   * @hide-prop Internal prop used to determine if a Choice is the child of a ChoiceList. Used to hide excessive error messages.
+   */
+  _choiceListChild?: boolean;
+  /**
    * Additional classes to be added to the `input` element.
    */
   inputClassName?: string;
@@ -112,7 +116,7 @@ export const Choice = (props: ChoiceProps) => {
 
   let errorId;
   let errorElement;
-  if (props.errorMessage) {
+  if (!props._choiceListChild) {
     errorId = props.errorId ?? `${props.id}__error`;
     errorElement = (
       <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
@@ -196,6 +200,10 @@ export const Choice = (props: ChoiceProps) => {
       {checked ? checkedChildren : uncheckedChildren}
     </div>
   );
+};
+
+Choice.defaultProps = {
+  _choiceListChild: false,
 };
 
 export default Choice;
