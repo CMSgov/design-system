@@ -15,7 +15,6 @@ export interface Link {
   // TODO: I don't think this is necessary to require - PW
   ariaLabel: string;
   className?: string;
-  id?: string;
   onClick?: (...args: any[]) => any;
 }
 
