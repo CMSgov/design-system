@@ -23,7 +23,7 @@ export function DropdownMenuOption<T>({
 }: DropdownMenuOptionProps<T>) {
   const ref = useRef(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
-    { key: item.key },
+    { key: item.key, shouldSelectOnPressUp: false },
     state,
     ref
   );
