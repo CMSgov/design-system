@@ -136,7 +136,7 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
           choiceProps.inputRef(ref);
         }
       },
-      // _choiceListChild: true,
+      _choiceChild: true,
     };
 
     if (process.env.NODE_ENV !== 'production') {
