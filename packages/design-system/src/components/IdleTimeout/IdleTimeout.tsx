@@ -1,14 +1,15 @@
-import React from 'react';
+import type * as React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import useInterval from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { checkPassiveSupport } from './utilities/checkPassive';
+import { t } from '../i18n';
 
 export interface IdleTimeoutProps {
   /**
    * The text for the 'continue session' button in warning dialog.
    */
-  continueSessionText?: string;
+  continueSessionText?: React.ReactNode;
   /**
    * The heading text for the warning dialog.
    */
@@ -16,7 +17,7 @@ export interface IdleTimeoutProps {
   /**
    * The text for the button that ends the session in warning dialog.
    */
-  endSessionButtonText?: string;
+  endSessionButtonText?: React.ReactNode;
   /**
    * The URL to direct to when the user intentionally ends the session.
    */
@@ -60,20 +61,21 @@ export interface IdleTimeoutProps {
  * @returns {string | ReactNode}
  */
 const defaultMessageFormatter = (timeTilTimeout: number): React.ReactNode => {
-  const unitOfTime = timeTilTimeout === 1 ? 'minute' : 'minutes';
+  const unitOfTime =
+    timeTilTimeout === 1 ? t('idleTimeoutDialog.min') : t('idleTimeoutDialog.mins');
 
   return (
     <p>
-      You&apos;ve been inactive for a while.
+      {t('idleTimeoutDialog.messageLine1')}
       <br />
-      Your session will end in{' '}
+      {t('idleTimeoutDialog.messageLine2')}
       <strong>
         {timeTilTimeout} {unitOfTime}
       </strong>
       .
       <br />
       <br />
-      Select &quot;Continue session&quot; below if you want more time.
+      {t('idleTimeoutDialog.continueSessionMessage')}
     </p>
   );
 };
@@ -86,9 +88,9 @@ const lastActiveCookieName = 'CMS_DS_IT_LAST_ACTIVE';
  * [refer to its full documentation page](https://design.cms.gov/components/idle-timeout/).
  */
 export const IdleTimeout = ({
-  continueSessionText = 'Continue session',
-  heading = 'Are you still there?',
-  endSessionButtonText = 'Logout',
+  continueSessionText = t('idleTimeoutDialog.continueSessionButtonText'),
+  heading = t('idleTimeoutDialog.heading'),
+  endSessionButtonText = t('idleTimeoutDialog.endSessionButtonText'),
   endSessionUrl = '/logout',
   formatMessage = defaultMessageFormatter,
   onSessionContinue,
@@ -220,7 +222,7 @@ export const IdleTimeout = ({
     setShowWarning(false);
   };
 
-  return showWarning ? (
+  return (
     <IdleTimeoutDialog
       continueSessionText={continueSessionText}
       heading={heading}
@@ -231,8 +233,9 @@ export const IdleTimeout = ({
       onSessionForcedEnd={handleSessionForcedEnd}
       showSessionEndButton={showSessionEndButton}
       onClose={handleSessionContinue}
+      isOpen={showWarning}
     />
-  ) : null;
+  );
 };
 
 export default IdleTimeout;

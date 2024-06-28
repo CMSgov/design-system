@@ -3,9 +3,9 @@
 exports[`NativeDialog renders with custom className 1`] = `
 <dialog
   class="custom-class"
-  data-testid="test-dialog"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   Foo
 </dialog>

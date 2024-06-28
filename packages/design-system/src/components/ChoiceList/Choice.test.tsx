@@ -1,4 +1,3 @@
-import React from 'react';
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -196,6 +195,62 @@ describe('Choice', () => {
 
       expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('radio groups', () => {
+    it('uncontrolled radios uncheck when sibling checked', () => {
+      const commonProps = {
+        name: 'foo',
+        type: 'radio' as const,
+      };
+
+      render(
+        <>
+          <Choice {...commonProps} label="A" value="a" id="a" defaultChecked />
+          <Choice {...commonProps} label="B" value="b" id="b" />
+          <Choice {...commonProps} label="C" value="c" id="c" />
+        </>
+      );
+
+      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
+
+      userEvent.click(getRadio('B'));
+
+      expect(getRadio('A').checked).toBe(false);
+      expect(getRadio('B').checked).toBe(true);
+      expect(getRadio('C').checked).toBe(false);
+    });
+
+    it('controlled radios do not uncheck when sibling checked', () => {
+      const commonProps = {
+        name: 'foo',
+        type: 'radio' as const,
+      };
+
+      render(
+        <>
+          <Choice {...commonProps} label="A" value="a" id="a" checked />
+          <Choice {...commonProps} label="B" value="b" id="b" checked={false} />
+          <Choice {...commonProps} label="C" value="c" id="c" checked={false} />
+        </>
+      );
+
+      const getRadio = (label: string) => screen.getByLabelText(label) as HTMLInputElement;
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
+
+      userEvent.click(getRadio('B'));
+
+      expect(getRadio('A').checked).toBe(true);
+      expect(getRadio('B').checked).toBe(false);
+      expect(getRadio('C').checked).toBe(false);
     });
   });
 

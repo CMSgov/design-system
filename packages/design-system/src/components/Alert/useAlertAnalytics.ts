@@ -1,24 +1,17 @@
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
+import { useAnalyticsContent, eventExtensionText } from '../analytics';
 import { AlertProps } from './Alert';
-import { alertSendsAnalytics } from '../flags';
+import { config } from '../config';
 
 export default function useAlertAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
   variation,
 }: AlertProps) {
   // Order matters! Content comes from the heading first and falls back to body if heading doesn't exist
   const [headingRef, bodyRef] = useAnalyticsContent({
-    componentName: 'Alert',
     onMount: (content: string | undefined) => {
-      if (analytics !== true && (!alertSendsAnalytics() || analytics === false)) {
+      if (analytics !== true && (!config().alertSendsAnalytics || analytics === false)) {
         return;
       }
 
@@ -35,11 +28,7 @@ export default function useAlertAnalytics({
 
       onAnalyticsEvent({
         event_name: 'alert_impression',
-        event_type: EventType.UI_INTERACTION,
-        event_action: 'alert impression',
         event_extension: eventExtensionText,
-        event_category: EventCategory.UI_COMPONENTS,
-        event_label: eventHeadingText,
         heading: eventHeadingText,
         type: variation,
       });

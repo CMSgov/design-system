@@ -14,19 +14,12 @@ exports[`AccordionItem renders an accordion item 1`] = `
     >
       Heading for accordion item
       <svg
-        aria-hidden="false"
-        aria-labelledby="static-id__icon__title"
+        aria-hidden="true"
         class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
         id="static-id__icon"
-        role="img"
         viewBox="3 3 18 18"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title
-          id="static-id__icon__title"
-        >
-          Open
-        </title>
         <path
           d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
         />
@@ -34,7 +27,6 @@ exports[`AccordionItem renders an accordion item 1`] = `
     </button>
   </h2>
   <div
-    aria-labelledby="static-id__button"
     class="ds-c-accordion__content"
     hidden=""
     id="static-id"

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
@@ -23,7 +23,7 @@ interface LayoutProps {
   /**
    * The elements to appear in the main page content, below the page heading
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
   /**
    * page metadata
    */
@@ -73,7 +73,7 @@ const Layout = ({
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
-    <div className="ds-base" data-theme={theme} id={pageId}>
+    <div data-theme={theme} id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{
@@ -112,17 +112,17 @@ const Layout = ({
               {children}
             </article>
           ) : (
-            <article className="ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3 ds-u-md-display--flex page-body">
+            <article className="ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3 page-body">
               <div className="ds-l-row">
                 <div className="ds-l-lg-col--9">
-                  <div className="ds-u-display--block ds-u-lg-display--none ds-u-margin-bottom--3">
+                  <div className="ds-u-lg-display--none ds-u-margin-bottom--3">
                     <TableOfContentsMobile
                       title={frontmatter.title}
                       items={tableOfContentsData || []}
                       slug={slug}
                     />
                   </div>
-                  <div className="page-body__content">{children}</div>
+                  <div className="page-body__content ds-u-measure--wide">{children}</div>
                 </div>
                 <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
                   <TableOfContents

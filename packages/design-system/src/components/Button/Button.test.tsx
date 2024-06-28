@@ -1,7 +1,6 @@
-import React from 'react';
 import Button from './Button';
 import { UtagContainer } from '../analytics';
-import { setButtonSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -87,7 +86,7 @@ describe('Button', () => {
     let tealiumMock;
 
     beforeEach(() => {
-      setButtonSendsAnalytics(true);
+      config({ buttonSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -95,7 +94,7 @@ describe('Button', () => {
     });
 
     afterEach(() => {
-      setButtonSendsAnalytics(false);
+      config({ buttonSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -118,7 +117,7 @@ describe('Button', () => {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setButtonSendsAnalytics(false);
+      config({ buttonSendsAnalytics: false });
       renderButton({ analytics: true });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).toHaveBeenCalled();

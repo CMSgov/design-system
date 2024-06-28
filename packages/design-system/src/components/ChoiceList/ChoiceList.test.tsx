@@ -1,4 +1,3 @@
-import React from 'react';
 import ChoiceList, { ChoiceListType } from './ChoiceList';
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -26,7 +25,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
-    onChange: () => {},
+    onChange: () => null,
     ...customProps,
   };
   return render(<ChoiceList {...props} />);
@@ -77,9 +76,7 @@ describe('ChoiceList', () => {
 
     it('is enclosed by a fieldset', () => {
       renderChoiceList();
-      // a fieldset's default aria role is 'group' per MDN
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#technical_summary
-      const fieldsetEl = screen.getByRole('group');
+      const fieldsetEl = screen.getByRole('radiogroup');
 
       expect(fieldsetEl).toBeDefined();
     });

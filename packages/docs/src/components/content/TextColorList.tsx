@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import ColorSwatch from './ColorSwatch';
 import { getThemeColorValue, ThemeName } from '../../helpers/themeTokens';
@@ -40,7 +39,7 @@ const TextColorList = ({ backgroundClass, colorNames, preface, theme }: TextColo
       return (
         <article className="c-text-color-list__item" key={name}>
           <div>
-            <ColorSwatch colorTokenName={name} aria-labelledby={`${nameId} ${valueId}`} />
+            <ColorSwatch fill={`var(--color-${name})`} aria-labelledby={`${nameId} ${valueId}`} />
             <code
               className={classNames(
                 'c-text-color-list__name',

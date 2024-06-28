@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import LabelMask from './LabelMask';
 import {
@@ -79,7 +78,7 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
 allMasks.forEach((currentMask) => {
   describe(`${currentMask.name} Label mask`, function () {
     it(`renders default mask, ${currentMask.default}, when no input value set`, () => {
-      const { container, asFragment } = render(<TestLabelMask mask={currentMask.mask} />);
+      const { container } = render(<TestLabelMask mask={currentMask.mask} />);
 
       const input = container.querySelector('input');
       expect(input).toHaveValue('');

@@ -2,14 +2,14 @@
 
 exports[`Drawer renders a dialog 1`] = `
 <dialog
+  aria-labelledby="drawer--1"
   class="ds-c-drawer"
   open=""
   role="dialog"
+  tabindex="-1"
 >
   <div
-    aria-labelledby="drawer--1"
     class="ds-c-drawer__window"
-    tabindex="-1"
   >
     <div
       class="ds-c-drawer__header"

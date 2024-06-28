@@ -2,85 +2,76 @@
   [
     "ariaLabel",
     "Gives more context to screen readers on the Drawer close button.\nstring",
-    "-",
-    "Set string"
+    "-"
   ],
   [
     "className",
     "string",
-    "-",
-    "Set string"
+    "-"
   ],
   [
     "closeButtonText",
     "ReactNode",
-    "-",
-    "Set object"
+    "-"
   ],
   [
     "closeButtonVariation",
     "\"solid\"\n\"ghost\"",
-    "-",
-    "solid\nghost"
+    "-"
   ],
   [
     "footerBody",
     "ReactNode",
-    "-",
-    "RAW\nfooterBody : {\ntype : \"p\"\nprops : {...} 3 keys\nkey : undefined\nref : undefined\n__k : null\n__ : null\n__b : 0\n__e : null\n__d : undefined\n__c : null\n__h : null\nconstructor : undefined\n__v : -1\n__source : undefined\n__self : undefined\n$$typeof : Symbol(react.element)\n}"
+    "-"
   ],
   [
     "footerTitle",
     "ReactNode",
-    "-",
-    ""
+    "-"
   ],
   [
     "hasFocusTrap",
     "Enables focus trap functionality within Drawer.\nboolean",
-    "false",
-    "Set boolean"
+    "false"
   ],
   [
     "heading*",
     "Text for the Drawer heading. Required because the heading will be focused on mount.\nReactNode",
-    "-",
-    ""
+    "-"
   ],
   [
     "headingId",
     "A unique id to be used on heading element to label multiple instances of Drawer.\nstring",
-    "-",
-    "Set string"
+    "-"
   ],
   [
     "headingLevel",
     "Heading type to override default <h3>\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"",
-    "\"3\"",
-    "1\n2\n3\n4\n5"
+    "\"3\""
   ],
   [
     "headingRef",
     "Ref to heading element\nMutableRefObject<any>",
-    "-",
-    "Set object"
+    "-"
   ],
   [
     "isFooterSticky",
     "Enables \"sticky\" position of Drawer footer element.\nboolean",
-    "-",
-    "Set boolean"
+    "-"
   ],
   [
     "isHeaderSticky",
     "Enables \"sticky\" position of Drawer header element.\nboolean",
-    "-",
-    "Set boolean"
+    "-"
+  ],
+  [
+    "isOpen*",
+    "Controls whether the dialog is in an open state\nboolean",
+    "-"
   ],
   [
     "onCloseClick*",
     "Called when the user activates the close button or presses the ESC key if focus trapping is enabled. The parent of this component is responsible for showing or not showing the drawer, so you need to use this callback to make that happen. The dialog does not hide itself.\n\n(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
-    "-",
     "-"
   ]
 ]

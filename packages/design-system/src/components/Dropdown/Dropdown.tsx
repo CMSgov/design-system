@@ -1,4 +1,5 @@
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import type * as React from 'react';
 import DropdownMenu from './DropdownMenu';
 import debounce from '../utilities/debounce';
 import describeField from '../utilities/describeField';
@@ -8,7 +9,6 @@ import mergeRefs from '../utilities/mergeRefs';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
-import { Label } from '../Label';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
 import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
@@ -138,7 +138,7 @@ export type DropdownProps = BaseDropdownProps &
 export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   validateProps(props);
 
-  const id = useId('dropdown__button--', props.id);
+  const id = useId('dropdown--', props.id);
   const buttonContentId = `${id}__button-content`;
   const menuId = `${id}__menu`;
 
@@ -245,9 +245,20 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const labelProps = {
     ...useSelectProps.labelProps,
-    ...useLabelProps({ ...props, id }),
-    fieldId: id,
+    ...useLabelProps({
+      ...props,
+      id,
+      labelClassName: classNames(
+        'ds-c-label',
+        'ds-c-dropdown__label',
+        props.inversed && 'ds-c-label--inverse',
+        props.labelClassName
+      ),
+    }),
   };
+
+  // Excluding `inversed` prop from `<div>` label because it's not a valid attr
+  const { inversed: _removeInversed, ...divLabelProps } = labelProps;
 
   const buttonProps = {
     ...useButtonProps.buttonProps,
@@ -274,6 +285,9 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // likely ran into the same issue, since they leave it off for `useSelect` buttons.
     // Adding the combobox role in the future can help because screen reader users are more
     // familiar with the combobox pattern.
+    // Another possible issue with this role - you should be able to select an option by typing
+    // a character from that option. Without this role set, VO reads whatever option is closest
+    // to the character typed. With this role set, VO reads nothing.
     // role: 'combobox',
   };
 
@@ -285,7 +299,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       className={classNames('ds-c-dropdown', className, state.isOpen && 'ds-c-dropdown--open')}
       ref={wrapperRef}
     >
-      <Label {...labelProps} />
+      {/* `<div>` is used instead of `<label>` to satisfy a11y issue. Because dropdown is a `<button>`, a `<label>` is inappropriate to use with it. */}
+      <div {...divLabelProps} />
       {hintElement}
       {topError}
       <HiddenSelect
@@ -296,7 +311,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         name={props.name}
       />
       <button {...buttonProps}>
-        <span id={buttonContentId} className="ds-u-truncate">
+        <span id={buttonContentId} className="ds-c-dropdown__label-text">
           {state.selectedItem ? state.selectedItem.rendered : ''}
         </span>
         <span className="ds-c-dropdown__caret">{caretIcon}</span>

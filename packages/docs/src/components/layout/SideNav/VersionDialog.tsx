@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog';
 import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
@@ -6,6 +6,7 @@ import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
 export interface ThemeVersionDialogProps {
   theme: string;
   version: string;
+  isOpen?: boolean;
   onExit(...args: any[]): void;
 }
 
@@ -51,6 +52,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
           </Button>
         </>
       }
+      isOpen={props.isOpen}
       onExit={props.onExit}
     >
       <Dropdown

@@ -23,15 +23,13 @@ Note that any _undocumented_ props that you pass to this component will be passe
 
 <SeeStorybookForGuidance storyId={'components-dropdown--docs'} />
 
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-dropdown--docs'} />
+
 ### Style customization
 
 The following CSS variables can be overridden to customize Dropdown components:
-
-<ComponentThemeOptions componentname="dropdown" />
-
-#### Text Input Options
-
-This component also makes use of some text input styles, which can be customized by the following variables:
 
 <ComponentThemeOptions componentname="text-input" />
 
@@ -128,8 +126,10 @@ This component also makes use of some text input styles, which can be customized
 
 ## Component maturity
 
+Because Dropdown is now a custom built solution using Adobe Spectrum instead of a native `<select>` element, [Axe flags the use of a hidden input as a false positive](https://github.com/adobe/react-spectrum/wiki/Known-accessibility-false-positives#picker). This is a known issue but not considered a problem.
+
 <MaturityChecklist
-  a11yStandards={true}
+  a11yStandards={false}
   color={true}
   forcedColors={true}
   screenReaders={true}

@@ -1,4 +1,3 @@
-import React from 'react';
 import SimpleFooter from './SimpleFooter';
 import type { Meta, StoryObj } from '@storybook/react';
 

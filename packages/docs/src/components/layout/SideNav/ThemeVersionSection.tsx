@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef } from 'react';
 import useTheme from '../../../helpers/useTheme';
 import ThemeDialog from './ThemeDialog';
 import VersionDialog from './VersionDialog';
@@ -28,15 +28,14 @@ export const ThemeVersionSection = () => {
           {themeDisplayName} <span className="ds-u-visibility--screen-reader">(Change theme)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
-        {themeDialogProps.isOpen && (
-          <ThemeDialog
-            theme={theme}
-            onExit={() => {
-              themeDialogProps.closeClick();
-              themeButtonRef.current?.focus();
-            }}
-          />
-        )}
+        <ThemeDialog
+          theme={theme}
+          isOpen={themeDialogProps.isOpen}
+          onExit={() => {
+            themeDialogProps.closeClick();
+            themeButtonRef.current?.focus();
+          }}
+        />
       </div>
       <div>
         Version:{' '}
@@ -49,16 +48,15 @@ export const ThemeVersionSection = () => {
           {version} <span className="ds-u-visibility--screen-reader">(Change version)</span>{' '}
           <ArrowIcon direction="down" />
         </button>
-        {versionDialogProps.isOpen && (
-          <VersionDialog
-            theme={theme}
-            version={version}
-            onExit={() => {
-              versionDialogProps.closeClick();
-              versionButtonRef.current?.focus();
-            }}
-          />
-        )}
+        <VersionDialog
+          theme={theme}
+          version={version}
+          isOpen={versionDialogProps.isOpen}
+          onExit={() => {
+            versionDialogProps.closeClick();
+            versionButtonRef.current?.focus();
+          }}
+        />
       </div>
     </>
   );

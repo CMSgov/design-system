@@ -10,6 +10,7 @@
   text-decoration-style: dashed;
   text-decoration-thickness: var(--link__text-decoration-thickness);
   text-underline-offset: var(--link__text-decoration-offset);
+
   &:hover {
     color: var(--color-black);
     text-decoration-color: var(--color-primary-darker);
@@ -22,6 +23,7 @@
     cursor: default;
     text-decoration-style: dashed;
     text-decoration-thickness: var(--link__text-decoration-thickness);
+
     &:hover {
       text-decoration-color: var(--color-gray-lighter);
       text-decoration-thickness: var(--link__text-decoration-thickness--hover);

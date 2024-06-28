@@ -1,15 +1,11 @@
 .ds-c-hint {
-  color: var(--form-hint__color);
+  color: var(--hint__color);
   display: block;
-
-  // Medicare uses a smaller font size for hint messages
-  // If a theme doesn't have a font size for hint messages defined, it will fall back to inheriting the font size from its parent
-  font-size: var(--form-hint__font-size, inherit);
   font-weight: var(--font-weight-normal);
-
-  max-width: var(--form__max-width);
+  margin-block: 0;
+  max-width: var(--field-max-width);
 }
 
 .ds-c-hint--inverse {
-  color: var(--form-hint__color--inverse);
+  color: var(--hint__color--inverse);
 }

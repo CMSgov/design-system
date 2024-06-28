@@ -1,4 +1,3 @@
-import React from 'react';
 import TabPanel from './TabPanel';
 import { render, screen } from '@testing-library/react';
 

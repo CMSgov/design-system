@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
@@ -13,14 +13,6 @@ export interface VerticalNavItemProps {
    * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId?: string;
-  /**
-   * Aria label for the toggle button when the sub-navigation is collapsed
-   */
-  ariaCollapsedStateButtonLabel?: string;
-  /**
-   * Aria label for the toggle button when the sub-navigation is expanded
-   */
-  ariaExpandedStateButtonLabel?: string;
   /**
    * Additional classes to be added to the root element
    */
@@ -158,8 +150,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
   return (
     <li className={classes}>
       <VerticalNavItemLabel
-        ariaCollapsedStateButtonLabel={props.ariaCollapsedStateButtonLabel}
-        ariaExpandedStateButtonLabel={props.ariaExpandedStateButtonLabel}
         collapsed={collapsed}
         component={props.component}
         label={props.label}
@@ -184,11 +174,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 };
 
 VerticalNavItem.defaultProps = {
-  // Unfortunately, we're defining these default ARIA props here and in
-  // VerticalNavItemLabel. We define them here so they show in the docs.
-  // TODO(sawyer): Update react-docgen so we don't have to do this
-  ariaCollapsedStateButtonLabel: 'Expand sub-navigation',
-  ariaExpandedStateButtonLabel: 'Collapse sub-navigation',
   defaultCollapsed: false,
 };
 

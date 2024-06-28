@@ -53,6 +53,7 @@ coverage-data/
 playwright-report/
 tests/browser/test-results/
 tests/a11y/test-results/
+dist/
 
 # Doc Site ignores
 .cache/

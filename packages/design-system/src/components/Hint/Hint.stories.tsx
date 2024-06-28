@@ -1,4 +1,3 @@
-import React from 'react';
 import { Hint } from './Hint';
 import type { Meta, StoryObj } from '@storybook/react';
 

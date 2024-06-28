@@ -16,6 +16,7 @@ exports[`Choice accepts a node as innerHTML 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         <p>
           <strong>
@@ -46,10 +47,11 @@ exports[`Choice applies errorMessage to label 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
-      <span
+      <p
         aria-atomic="true"
         aria-live="assertive"
         class="ds-c-inline-error"
@@ -71,7 +73,7 @@ exports[`Choice applies errorMessage to label 1`] = `
           Error: 
         </span>
         Hey! You can't do that!
-      </span>
+      </p>
     </div>
   </div>
 </DocumentFragment>
@@ -94,15 +96,16 @@ exports[`Choice has a hint and requirementLabel 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
-      <div
+      <p
         class="ds-c-hint"
         id="static-id__hint"
       >
         Optional. Hello world
-      </div>
+      </p>
     </div>
   </div>
 </DocumentFragment>
@@ -124,6 +127,7 @@ exports[`Choice is a checkbox 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -148,6 +152,7 @@ exports[`Choice is a radio 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -176,6 +181,7 @@ exports[`Choice nested content renders \`checkedChildren\` when checked 1`] = `
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>
@@ -210,6 +216,7 @@ exports[`Choice nested content renders \`uncheckedChildren\` when not checked 1`
       <label
         class="ds-c-label"
         for="static-id"
+        id="static-id__label"
       >
         George Washington
       </label>

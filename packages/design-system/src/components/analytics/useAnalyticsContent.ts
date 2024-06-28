@@ -2,10 +2,6 @@ import { RefObject, useRef, useEffect } from 'react';
 import getAnalyticsContentFromRefs from './getAnalyticsContentFromRefs';
 
 export interface UseAnalyticsContentProps {
-  /**
-   * Optional name of component for error messages
-   */
-  componentName?: string;
   onMount: (content?: string) => any;
   onUnmount?: (content?: string) => any;
 }
@@ -26,10 +22,6 @@ export interface UseAnalyticsContentProps {
  *     }
  *     sendLinkEvent({
  *       event_name: 'alert_impression',
- *       event_type: EventType.UI_INTERACTION,
- *       ga_eventAction: 'alert impression',
- *       ga_eventCategory: EventCategory.UI_COMPONENTS,
- *       ga_eventLabel: content,
  *       heading: content,
  *       type: variation,
  *     });
@@ -45,11 +37,7 @@ export interface UseAnalyticsContentProps {
  *   </div>
  * )
  */
-export function useAnalyticsContent({
-  componentName,
-  onMount,
-  onUnmount,
-}: UseAnalyticsContentProps) {
+export function useAnalyticsContent({ onMount, onUnmount }: UseAnalyticsContentProps) {
   // Three refs should be enough to support fallback content. Add more in the future if needed
   const refs: RefObject<any>[] = [useRef(), useRef(), useRef()];
 
@@ -61,7 +49,7 @@ export function useAnalyticsContent({
   // have dependencies that should be listed but are unknown. This assumes that the onMount and
   // onUnmount do not have a reason to change between renders.
   useEffect(() => {
-    const content = getAnalyticsContentFromRefs(refs, componentName);
+    const content = getAnalyticsContentFromRefs(refs);
     onMount(content);
     return () => {
       if (onUnmount) onUnmount(content);

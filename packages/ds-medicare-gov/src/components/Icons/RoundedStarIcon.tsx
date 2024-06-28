@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconCommonProps } from '@cmsgov/design-system';
 import FilledStar from './RoundedStarFilledIcon';
 import HalfStar from './RoundedStarHalfIcon';

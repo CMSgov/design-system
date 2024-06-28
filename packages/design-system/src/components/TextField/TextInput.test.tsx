@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -67,7 +67,7 @@ describe('TextInput', function () {
 
   it('has a value', () => {
     const value = 'Yay';
-    renderInput({ value, onChange: () => {} });
+    renderInput({ value, onChange: () => null });
     expect(getInput()).toHaveValue(value);
   });
 

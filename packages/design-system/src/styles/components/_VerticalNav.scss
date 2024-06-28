@@ -49,6 +49,7 @@
   &:hover {
     @extend %nav-item-hover;
   }
+
   &:focus,
   &.ds-c-vertical-nav__label--current:focus {
     @extend %nav-item-focus;

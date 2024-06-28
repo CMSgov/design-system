@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Alert } from '../Alert';
 import ChoiceList from './ChoiceList';
@@ -23,6 +22,10 @@ const meta: Meta<typeof ChoiceList> = {
     errorMessage: { control: 'text' },
     hint: { control: 'text' },
     requirementLabel: { control: 'text' },
+    size: {
+      options: [undefined, 'small'],
+      control: { type: 'radio' },
+    },
   },
 };
 export default meta;

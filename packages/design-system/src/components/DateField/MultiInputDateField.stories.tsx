@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
 import type { Meta, StoryObj } from '@storybook/react';

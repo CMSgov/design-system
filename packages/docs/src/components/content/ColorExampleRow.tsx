@@ -1,7 +1,7 @@
-import React from 'react';
+import type * as React from 'react';
 import { getSystemColorTokenFromValue } from '../../helpers/themeTokens';
-import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/utility';
-import { HexValue } from 'design-system-tokens/src/lib/types';
+import { hexHasTransparency, pickTextColor } from 'design-system-tokens/src/lib/colorUtils';
+import { HexValue } from 'design-system-tokens/src/lib/colorUtils';
 
 const DARK_TEXT = 'var(--color-base)';
 const LIGHT_TEXT = 'var(--color-base-inverse)';
@@ -33,7 +33,7 @@ const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampl
       };
 
   if (!displayValue) {
-    displayValue = getSystemColorTokenFromValue(value);
+    displayValue = getSystemColorTokenFromValue(value).replace('.', ' ');
   }
 
   return (

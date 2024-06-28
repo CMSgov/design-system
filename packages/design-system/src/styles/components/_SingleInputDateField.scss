@@ -31,12 +31,11 @@
 
 .rdp {
   margin: 1em;
+  z-index: 1;
 }
 
 /* Hide elements for devices that are not screen readers */
 .rdp-vhidden {
-  -moz-appearance: none;
-  -webkit-appearance: none;
   appearance: none;
   background: transparent;
   border: 0 !important;
@@ -53,8 +52,6 @@
 
 /* Buttons */
 .rdp-button_reset {
-  -moz-appearance: none;
-  -webkit-appearance: none;
   appearance: none;
   background: none;
   color: inherit;
@@ -70,12 +67,7 @@
   border: 2px solid transparent;
 }
 
-.rdp-button[aria-disabled='true'] {
-  opacity: 0.25;
-  pointer-events: none;
-}
-
-.rdp-button:not([aria-disabled='true']) {
+.rdp-button:not(:disabled) {
   cursor: pointer;
 }
 
@@ -86,7 +78,7 @@
   color: inherit;
 }
 
-.rdp-button:hover:not([aria-disabled='true']) {
+.rdp-button:hover:not(:disabled) {
   background-color: var(--rdp-background-color);
 }
 
@@ -210,13 +202,13 @@
   z-index: 2;
 }
 
-.rdp-dropdown[disabled] {
+.rdp-dropdown:disabled {
   color: unset;
   opacity: unset;
 }
 
-.rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
-.rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
+.rdp-dropdown:focus:not(:disabled) + .rdp-caption_label,
+.rdp-dropdown:active:not(:disabled) + .rdp-caption_label {
   background-color: var(--rdp-background-color);
   border: var(--rdp-outline);
   border-radius: 6px;
@@ -285,16 +277,35 @@
   font-weight: bold;
 }
 
-.rdp-day_selected:not([aria-disabled='true']),
-.rdp-day_selected:focus:not([aria-disabled='true']),
-.rdp-day_selected:active:not([aria-disabled='true']),
-.rdp-day_selected:hover:not([aria-disabled='true']) {
+.rdp-day_selected:not(:disabled),
+.rdp-day_selected:focus:not(:disabled),
+.rdp-day_selected:active:not(:disabled),
+.rdp-day_selected:hover:not(:disabled) {
   background-color: var(--rdp-accent-color);
   color: white;
 }
 
-.rdp-day_selected:focus:not([aria-disabled='true']) {
+.rdp-day_selected:focus:not(:disabled) {
   border: var(--rdp-outline-selected);
+}
+
+.rdp-day_disabled {
+  overflow: visible;
+  color: var(--color-muted);
+
+  &::after {
+    background: var(--color-muted);
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% + 4px);
+    height: 2px;
+
+    @media (forced-colors: active) {
+      background-color: GrayText;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .rdp:not([dir='rtl']) .rdp-day_range_start:not(.rdp-day_range_end) {
@@ -339,6 +350,7 @@
   // Take up as much space between the nav buttons as we have
   flex-grow: 1;
 }
+
 // Due to a bug, the library currently only uses "rdp-dropdown_month"
 .rdp-dropdown_month,
 .rdp-dropdown_year {
@@ -358,24 +370,26 @@
 .rdp-button:active {
   @include mixins.focus-styles;
 }
+
 .rdp-button:active,
-.rdp-button:active:hover:not([aria-disabled='true']),
-.rdp-day_selected:active:not([aria-disabled='true']),
-.rdp-day_selected:active:hover:not([aria-disabled='true']) {
+.rdp-button:active:hover:not(:disabled),
+.rdp-day_selected:active:not(:disabled),
+.rdp-day_selected:active:hover:not(:disabled) {
   background-color: var(--rdp-active-color);
   color: white;
 }
+
 @media (forced-colors: active) {
-  .rdp-button[aria-disabled='true'] {
+  .rdp-button:disabled {
     border-color: GrayText;
     color: GrayText;
     opacity: 1;
   }
 
-  .rdp-day_selected:not([aria-disabled='true']),
-  .rdp-day_selected:focus:not([aria-disabled='true']),
-  .rdp-day_selected:active:not([aria-disabled='true']),
-  .rdp-day_selected:hover:not([aria-disabled='true']) {
+  .rdp-day_selected:not(:disabled),
+  .rdp-day_selected:focus:not(:disabled),
+  .rdp-day_selected:active:not(:disabled),
+  .rdp-day_selected:hover:not(:disabled) {
     background-color: Highlight;
     border-color: Highlight;
     color: Field;
@@ -390,11 +404,14 @@
   font-size: var(--font-size-xl);
   padding: 0 $spacer-1;
 }
-.rdp-dropdown:focus:not([disabled]) + .rdp-caption_label,
-.rdp-dropdown:active:not([disabled]) + .rdp-caption_label {
+
+.rdp-dropdown:focus:not(:disabled) + .rdp-caption_label,
+.rdp-dropdown:active:not(:disabled) + .rdp-caption_label {
   @include mixins.focus-styles;
+
   background-color: initial;
 }
+
 .rdp-dropdown_icon.ds-c-icon--arrows-stacked {
   height: 14px;
   width: 14px;
@@ -433,25 +450,8 @@
   }
 
   &:disabled {
-    color: var(--pagination-link__color--disabled);
     pointer-events: none;
-
-    @media (forced-colors: active) {
-      border: 0;
-      color: GrayText;
-      cursor: not-allowed;
-
-      .ds-c-icon {
-        color: GrayText;
-        fill: GrayText;
-
-        path {
-          color: GrayText;
-          fill: GrayText;
-          stroke: GrayText;
-        }
-      }
-    }
+    visibility: hidden;
   }
 }
 
@@ -460,7 +460,7 @@
   position: relative;
 
   .rdp {
-    background-color: var(--color-background-dialog);
+    background-color: var(--color-background);
     border: 1px solid var(--color-gray-dark);
     border-radius: 8px;
     box-shadow: 0 0 17px 0 var(--color-gray-light);
@@ -501,7 +501,7 @@
   }
 
   .ds-c-field {
-    max-width: 108px;
+    max-width: 12ch;
   }
 
   .ds-c-single-input-date-field__button {
@@ -519,7 +519,7 @@
     text-align: center;
     text-decoration: none;
 
-    &:after {
+    &::after {
       background: var(--text-input__divider-color);
       bottom: 0;
       content: '';
@@ -534,7 +534,7 @@
     &:active {
       @include mixins.focus-styles;
 
-      &:after {
+      &::after {
         display: none;
       }
     }
@@ -543,7 +543,7 @@
   .ds-c-field--error + .ds-c-single-input-date-field__button {
     border: var(--text-input__border-width--error) solid var(--text-input__border-color--error);
 
-    &:after {
+    &::after {
       left: calc(-1 * var(--text-input__border-width--error));
       width: var(--text-input__border-width--error);
     }

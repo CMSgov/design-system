@@ -1,6 +1,6 @@
-import React from 'react';
+import type * as React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
-import dialogPolyfill from './polyfill';
+import { shimDialogElement } from './shim';
 
 export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
@@ -9,6 +9,10 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
    */
   backdropClickExits?: boolean;
   boundingBoxRef?: React.MutableRefObject<any>;
+  /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen: boolean;
   /**
    * Function called to close dialog.
    */
@@ -27,9 +31,13 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   showModal?: boolean;
 }
 
+/**
+ * This is an internal component and may change without warning. Use at your own risk!
+ */
 export const NativeDialog = ({
   children,
   exit,
+  isOpen,
   showModal,
   backdropClickExits,
   boundingBoxRef,
@@ -37,35 +45,62 @@ export const NativeDialog = ({
 }: NativeDialogProps) => {
   const dialogRef = useRef(null);
 
+  if (isOpen === undefined) {
+    const missingPropMessage =
+      "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility.";
+    if (process.env.NODE_ENV !== 'production') {
+      throw new Error(missingPropMessage);
+    } else {
+      console.error(missingPropMessage);
+      isOpen = true;
+    }
+  }
+
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
-    // The registerDialog function itself determines if the polyfill needs to be applied
-    dialogPolyfill.registerDialog(dialogRef.current);
+    shimDialogElement(dialogRef.current);
   });
 
-  // Open and close the dialog with the appropriate method on mount and unmount
+  // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
-    showModal ? dialogNode.showModal() : dialogNode.show();
-    return () => {
-      dialogNode.close();
-    };
-  }, [showModal]);
 
-  // Bind and unbind cancel event listeners on mount and unmount
-  useEffect(() => {
-    const dialogNode = dialogRef.current;
-    const handleCancel = (event) => {
+    // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
+    // a read-only value that will tell us if our dialog DOM element is actually in the
+    // open state.
+    let closingBecauseOfProp = false;
+    if (isOpen) {
+      if (!dialogNode.open) {
+        showModal ? dialogNode.showModal() : dialogNode.show();
+        // For a11y reasons, focus needs to be specified:
+        // 1. `<dialog>` receives focus first
+        // 2. `<dialog>` close button receives focus next
+        // 3. If `<dialog>` has some sorta sticky positioning requiring keyboard navigation, that wrapping element should receive focus next.
+        dialogNode.focus();
+      }
+    } else {
+      if (dialogNode.open) {
+        dialogNode.close();
+        closingBecauseOfProp = true;
+      }
+    }
+
+    // Bind close event listener for ESC press
+    const handleClose = (event) => {
       event.preventDefault();
-      exit();
+      // Only call the exit handler if the parent didn't close it by setting isOpen to false
+      if (!closingBecauseOfProp) {
+        exit(event);
+      }
     };
-    dialogNode.addEventListener('cancel', handleCancel);
-    return () => {
-      dialogNode.removeEventListener('cancel', handleCancel);
-    };
-  }, [exit]);
+    dialogNode.addEventListener('close', handleClose);
 
-  // Bind and unbind click event listeners on mount and unmount
+    return () => {
+      dialogNode.removeEventListener('close', handleClose);
+    };
+  }, [isOpen, showModal, exit]);
+
+  // Bind and unbind backdrop click event listeners on mount and unmount
   useEffect(() => {
     if (!backdropClickExits) {
       return;
@@ -91,7 +126,7 @@ export const NativeDialog = ({
   }, [exit, backdropClickExits]);
 
   return (
-    <dialog ref={dialogRef} {...dialogProps}>
+    <dialog ref={dialogRef} {...dialogProps} tabIndex={-1}>
       {children}
     </dialog>
   );

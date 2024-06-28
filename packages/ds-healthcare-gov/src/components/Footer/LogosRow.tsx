@@ -1,11 +1,9 @@
-import React from 'react';
 import Logo from './Logo';
 import { Logo as HCgovLogo } from '../Logo';
 import { getLanguage } from '@cmsgov/design-system';
+import { t } from '../i18n';
 
 interface LogosRowProps {
-  t: (string) => string;
-  logoId?: string;
   logoClassName?: string;
 }
 
@@ -18,11 +16,7 @@ const LogosRow = function (props: LogosRowProps) {
             getLanguage() === 'es' ? 'https://www.cuidadodesalud.gov' : 'https://www.healthcare.gov'
           }
         >
-          <HCgovLogo
-            titleId="hc-c-footer__logo-title"
-            wrapperId={props.logoId}
-            className={props.logoClassName ?? ''}
-          />
+          <HCgovLogo titleId="hc-c-footer__logo-title" className={props.logoClassName ?? ''} />
         </Logo>
         <div className="hc-c-footer__disclaimer">
           {/* Trademark language is only for the English translation of footer */}
@@ -32,7 +26,8 @@ const LogosRow = function (props: LogosRowProps) {
               Department of Health &amp; Human Services.
             </p>
           )}
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer') }} />
+          {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
+          <p dangerouslySetInnerHTML={{ __html: t('footer.disclaimer') }} />
         </div>
       </div>
     </div>

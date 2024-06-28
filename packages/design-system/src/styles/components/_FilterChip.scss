@@ -29,6 +29,7 @@
     border: 1px solid var(--filter-chip__border-color--active);
     color: var(--filter-chip__color--active);
   }
+
   &:focus {
     @include mixins.focus-styles;
   }
@@ -39,10 +40,12 @@
 }
 
 .ds-c-filter-chip__clear-icon-container {
+  --size: 18px;
+
   border: 1px solid var(--filter-chip__color);
   border-radius: 50%;
   display: inline-block;
-  height: var(--filter-chip-icon__container-size);
+  height: var(--size);
   margin-inline-start: $spacer-1;
   padding: 0;
   position: absolute;
@@ -50,7 +53,7 @@
   top: 50%;
   transform: translateY(-50%);
   vertical-align: middle;
-  width: var(--filter-chip-icon__container-size);
+  width: var(--size);
 
   &.ds-c-filter-chip__clear-icon-alternate-container {
     border: 0;

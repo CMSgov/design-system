@@ -13,13 +13,13 @@ exports[`MonthPicker renders a snapshot 1`] = `
     >
       Months
     </legend>
-    <div
+    <p
       class="ds-c-hint"
       id="month-picker--1__hint"
     >
       Guess and test
-    </div>
-    <span
+    </p>
+    <p
       aria-atomic="true"
       aria-live="assertive"
       class="ds-c-inline-error"
@@ -41,7 +41,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
         Error: 
       </span>
       Only odd-numbered months accepted until July, except on leap years, then only prime-numbered months that have an "A" in them
-    </span>
+    </p>
     <div
       class="ds-c-month-picker__buttons ds-u-clearfix"
     >
@@ -85,6 +85,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--1"
+                id="month-picker--1__choice--1__label"
               >
                 Jan
               </label>
@@ -109,6 +110,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--2"
+                id="month-picker--1__choice--2__label"
               >
                 Feb
               </label>
@@ -133,6 +135,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--3"
+                id="month-picker--1__choice--3__label"
               >
                 Mar
               </label>
@@ -157,6 +160,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--4"
+                id="month-picker--1__choice--4__label"
               >
                 Apr
               </label>
@@ -181,6 +185,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--5"
+                id="month-picker--1__choice--5__label"
               >
                 May
               </label>
@@ -205,6 +210,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--6"
+                id="month-picker--1__choice--6__label"
               >
                 Jun
               </label>
@@ -229,6 +235,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--7"
+                id="month-picker--1__choice--7__label"
               >
                 Jul
               </label>
@@ -253,6 +260,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--8"
+                id="month-picker--1__choice--8__label"
               >
                 Aug
               </label>
@@ -277,6 +285,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--9"
+                id="month-picker--1__choice--9__label"
               >
                 Sep
               </label>
@@ -301,6 +310,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--10"
+                id="month-picker--1__choice--10__label"
               >
                 Oct
               </label>
@@ -325,6 +335,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--11"
+                id="month-picker--1__choice--11__label"
               >
                 Nov
               </label>
@@ -349,6 +360,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 class="ds-c-label"
                 for="month-picker--1__choice--12"
+                id="month-picker--1__choice--12__label"
               >
                 Dec
               </label>

@@ -3,7 +3,7 @@ $font-path: '../fonts' !default;
 /* montserrat-600normal - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
   src: url('#{$font-path}/montserrat/montserrat-latin-600.woff2') format('woff2');
@@ -12,7 +12,7 @@ $font-path: '../fonts' !default;
 /* rubik-400normal - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Rubik';
+  font-family: Rubik;
   font-style: normal;
   font-weight: 400;
   src: url('#{$font-path}/rubik/rubik-latin-400.woff2') format('woff2');
@@ -21,7 +21,7 @@ $font-path: '../fonts' !default;
 /* rubik-400italic - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Rubik';
+  font-family: Rubik;
   font-style: italic;
   font-weight: 400;
   src: url('#{$font-path}/rubik/rubik-latin-400italic.woff2') format('woff2');
@@ -30,7 +30,7 @@ $font-path: '../fonts' !default;
 /* rubik-600normal - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Rubik';
+  font-family: Rubik;
   font-style: normal;
   font-weight: 600;
   src: url('#{$font-path}/rubik/rubik-latin-600.woff2') format('woff2');
@@ -39,7 +39,7 @@ $font-path: '../fonts' !default;
 /* rubik-600italic - latin */
 @font-face {
   font-display: swap;
-  font-family: 'Rubik';
+  font-family: Rubik;
   font-style: italic;
   font-weight: 600;
   src: url('#{$font-path}/rubik/rubik-latin-600italic.woff2') format('woff2');

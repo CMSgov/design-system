@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
 import cleanFieldProps from '../utilities/cleanFieldProps';
@@ -151,12 +151,12 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
   const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
   const fieldProps = {
-    ...cleanFieldProps(props),
-    id,
     dayName: 'day',
     monthName: 'month',
     yearName: 'year',
     dateFormatter: defaultDateFormatter,
+    ...cleanFieldProps(props),
+    id,
   };
 
   return (

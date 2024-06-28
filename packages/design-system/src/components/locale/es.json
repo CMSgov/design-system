@@ -1,8 +1,4 @@
 {
-  "accordion": {
-    "close": "Cerrar",
-    "open": "Abrir"
-  },
   "alert": {
     "defaultLabel": "Aviso",
     "error": "Alerta",
@@ -69,6 +65,16 @@
     "usaLogo": "USA.gov – Gobierno más simple",
     "warning": "Advertencia"
   },
+  "idleTimeoutDialog": {
+    "heading": "¿Sigue ahí?",
+    "messageLine1": "Ha estado inactivo por un tiempo.",
+    "messageLine2": "Su sesión terminará en ",
+    "min": "minuto",
+    "mins": "minutos",
+    "continueSessionMessage": "Seleccione \"Continuar sesión\" a continuación si desea más tiempo.",
+    "continueSessionButtonText": "Continuar sesión",
+    "endSessionButtonText": "Salir"
+  },
   "inlineError": {
     "prefix": "Error"
   },
@@ -128,10 +134,6 @@
     "confirmationButtonText": "Continuar",
     "cancelButtonText": "Cancelar",
     "learnMoreText": "Más información sobre enlaces a sitios de terceros"
-  },
-  "verticalNav": {
-    "expand": "expandir subnavegación",
-    "collapse": "cerrar subnavegación"
   },
   "usaBanner": {
     "flagIconTitle": "U.S. Bandera",

@@ -17,12 +17,14 @@
   text-decoration-style: dotted;
   text-underline-position: under;
 }
-// Chrome needs this offset because it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y.
+
+/* stylelint-disable media-feature-name-no-vendor-prefix, media-feature-range-notation -- Chrome needs this offset because it handles text-underline-position differently and without this the underline runs into descending letters like g,j,q,p,y. */
 @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
   %trigger-underline-styles {
     text-underline-offset: $spacer-half;
   }
 }
+/* stylelint-enable */
 
 // Tooltip trigger style
 .ds-c-tooltip__trigger {
@@ -32,7 +34,9 @@
 
 .ds-c-tooltip__trigger-icon {
   @extend %trigger-reset-styles;
+
   padding: $spacer-half;
+
   &:focus {
     @include mixins.focus-styles;
   }
@@ -41,6 +45,7 @@
 .ds-c-tooltip__trigger-link {
   @extend %trigger-reset-styles;
   @extend %trigger-underline-styles;
+
   color: var(--tooltip-trigger__color);
   padding: 0;
 
@@ -88,6 +93,7 @@
   &:first-child {
     margin-block-start: 0;
   }
+
   &:last-child {
     margin-block-end: 0;
   }
@@ -167,6 +173,7 @@
 // Tooltip arrow positioning based on placement of trigger
 .ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
   top: 100%;
+
   &::after {
     border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
     border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
@@ -177,6 +184,7 @@
 
 .ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
   top: -8px;
+
   &::after {
     border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
     border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
@@ -187,6 +195,7 @@
 
 .ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
   right: -8px;
+
   &::after {
     border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
     border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
@@ -197,6 +206,7 @@
 
 .ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
   left: -8px;
+
   &::after {
     border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
     border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);

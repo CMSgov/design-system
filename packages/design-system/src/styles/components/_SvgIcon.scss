@@ -20,7 +20,7 @@
 
 // Icon color variations
 .ds-c-icon-color--primary {
-  color: var(--icon__color--primary);
+  color: var(--color-primary);
 
   @media (forced-colors: active) {
     color: WindowText;
@@ -28,19 +28,19 @@
 }
 
 .ds-c-icon-color--inverse {
-  color: var(--icon__color--inverse);
+  color: var(--color-base-inverse);
 }
 
 .ds-c-icon-color--error {
-  color: var(--icon__color--error);
+  color: var(--color-error);
 }
 
 .ds-c-icon-color--warn {
-  color: var(--icon__color--warn);
+  color: var(--color-warn);
 }
 
 .ds-c-icon-color--success {
-  color: var(--icon__color--success);
+  color: var(--color-success);
 }
 
 // Specific icon variations
@@ -90,7 +90,7 @@
 
     path:nth-of-type(1),
     path:nth-of-type(5) {
-      fill: #ffffff;
+      fill: #fff;
     }
 
     path:nth-of-type(2),

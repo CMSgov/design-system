@@ -1,9 +1,4 @@
-import {
-  UtagContainer,
-  sendLinkEvent,
-  defaultAnalyticsFunction,
-  setDefaultAnalyticsFunction,
-} from './events';
+import { UtagContainer, sendLinkEvent } from './events';
 
 describe('sendLinkEvent', () => {
   beforeEach(() => {
@@ -11,11 +6,7 @@ describe('sendLinkEvent', () => {
   });
 
   const eventProps = {
-    event_type: 'ui interaction',
     event_name: 'test event',
-    event_category: 'test category',
-    event_action: 'test action',
-    event_label: 'test label',
     event_extension: 'Design system integration',
   };
 
@@ -41,13 +32,7 @@ describe('sendLinkEvent', () => {
 
     it('calls window.utag.link with event', () => {
       sendLinkEvent(eventProps);
-      expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith({
-        ...eventProps,
-        ga_eventValue: '',
-        ga_eventAction: eventProps.event_action,
-        ga_eventCategory: eventProps.event_category,
-        ga_eventLabel: eventProps.event_label,
-      });
+      expect((window as any as UtagContainer).utag?.link).toHaveBeenCalledWith(eventProps);
     });
   });
 
@@ -94,17 +79,6 @@ describe('sendLinkEvent', () => {
       expect(setTimeout).toHaveBeenCalledTimes(3);
       expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 300);
       expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 900);
-    });
-  });
-
-  describe('setDefaultAnalyticsFunction', () => {
-    it('sets the defaultAnalyticsFunction', () => {
-      const original = defaultAnalyticsFunction;
-      const analyticsFunction = jest.fn();
-      setDefaultAnalyticsFunction(analyticsFunction);
-      defaultAnalyticsFunction(eventProps);
-      expect(analyticsFunction).toHaveBeenCalledWith(eventProps);
-      setDefaultAnalyticsFunction(original);
     });
   });
 });

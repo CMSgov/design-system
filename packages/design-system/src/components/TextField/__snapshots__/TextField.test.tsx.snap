@@ -12,6 +12,12 @@ exports[`TextField renders 1`] = `
     >
       Foo
     </label>
+    <p
+      aria-atomic="true"
+      aria-live="assertive"
+      class="ds-c-inline-error"
+      id="static-id__error"
+    />
     <input
       aria-invalid="false"
       class="ds-c-field"

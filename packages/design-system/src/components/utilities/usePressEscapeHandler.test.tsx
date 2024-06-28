@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRef } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { usePressEscapeHandler } from './usePressEscapeHandler';

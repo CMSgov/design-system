@@ -12,7 +12,7 @@ medicare:
   sketchLink: ZOarvL7
 ---
 
-import { Alert, Badge } from '@cmsgov/design-system';
+import { Alert, Badge, CloseIconThin } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 <Alert heading="Typography sizing updates!">
@@ -25,9 +25,7 @@ import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
 <ThemeContent onlyThemes={['healthcare']}>
 
-Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel.
-
-Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
+Open Sans serves as the base font for the site. Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
 
 **Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif
 
@@ -165,20 +163,21 @@ This is an optional header design.
 
 <Alert variation="warn" heading="First and last children">
 
-  The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
+The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
 
-  ```html
-    <main>
-      <h1>I'm the first child of my parent.</h1>
-      <h2>I'm not the first child of my parent</h2>
-      <div>
-        <h2>I'm actually the first child of my parent even
-          though I'm not the first heading on the page</h2>
-        <h2>I'm the last child of my parent</h2>
-      </div>
-      <h2>I'm also the last child of my parent</h2>
-    </main>
-  ```
+```html
+<main>
+  <h1>I'm the first child of my parent.</h1>
+  <h2>I'm not the first child of my parent</h2>
+  <div>
+    <h2>
+      I'm actually the first child of my parent even though I'm not the first heading on the page
+    </h2>
+    <h2>I'm the last child of my parent</h2>
+  </div>
+  <h2>I'm also the last child of my parent</h2>
+</main>
+```
 
 </Alert>
 

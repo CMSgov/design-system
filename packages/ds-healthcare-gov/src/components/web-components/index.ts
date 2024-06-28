@@ -10,13 +10,6 @@
  * modules during tree-shaking.
  */
 
-import { ErrorPlacement, setErrorPlacementDefault } from '@cmsgov/design-system';
+import '../config';
 
 export * from '@cmsgov/design-system/web-components';
-
-export * from '../flags';
-
-/**
- * Healthcare.gov Flags
- */
-setErrorPlacementDefault(ErrorPlacement.Bottom);

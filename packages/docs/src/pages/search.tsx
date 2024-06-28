@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { TextField } from '@cmsgov/design-system';
 import { useFlexSearch } from 'react-use-flexsearch';
@@ -68,6 +67,7 @@ const SearchPage = ({ location }: MdxQuery) => {
               return (
                 <li key={result.id}>
                   <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
+                  {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
                   <p dangerouslySetInnerHTML={{ __html: body }} />
                 </li>
               );

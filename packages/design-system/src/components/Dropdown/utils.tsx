@@ -1,4 +1,5 @@
-import React, { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement } from 'react';
+import { findElementsOfType } from '../utilities/findElementsOfType';
 import { DropdownProps, DropdownOption, DropdownOptGroup, DropdownValue } from './Dropdown';
 
 export function validateProps(props: DropdownProps) {
@@ -30,40 +31,15 @@ export function getFirstOptionValue(
   console.warn('Dropdown component could not determine a default selected option');
 }
 
-function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
-  types: T[],
-  node: ReactNode
-): ReactElement<any, T>[] {
-  if (!node || !(React.isValidElement(node) || Array.isArray(node))) {
-    // There's nothing to recurse on, and this is not the droid we're looking for
-    return [];
-  }
-
-  if (React.isValidElement(node) && types.includes(node.type as T)) {
-    // We found it! Return an array because it will be flattened
-    return [node as ReactElement<any, T>];
-  }
-
-  if (Array.isArray(node)) {
-    // Recurse on each member of the array and flatten the result
-    return node.reduce(
-      (acc: ReactElement<any, T>[], child: ReactNode) => [
-        ...acc,
-        ...findElementsOfType(types, child),
-      ],
-      []
-    ) as ReactElement<any, T>[];
-  }
-
-  // It's a React element, so recurse on its children (a ReactNode)
-  return findElementsOfType(types, (node as ReactElement).props?.children);
-}
-
 function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption {
   const { value, children, ...extraAttributes } = option.props;
+  // The web-component Preact parser sometimes wraps text content in an array, but
+  // react-aria doesn't like that because it wants its labels/children to only be
+  // strings, or it will warn "<Item> with non-plain text contents is unsupported".
+  const label = children.length === 1 ? children[0] : children;
   return {
     value,
-    label: children,
+    label,
     ...extraAttributes,
   };
 }

@@ -1,5 +1,4 @@
-import React from 'react';
-import { useRef } from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useAutofocus from '../utilities/useAutoFocus';
@@ -98,7 +97,6 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ...alertProps
   } = props;
@@ -153,9 +151,9 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
       {...alertProps}
     >
       {getIcon()}
-      <div className="ds-c-alert__body" id={headingId} ref={bodyRef}>
+      <div className="ds-c-alert__body" ref={bodyRef}>
         {heading ? (
-          <div className="ds-c-alert__header ds-c-alert__heading" ref={headingRef}>
+          <div id={headingId} className="ds-c-alert__header ds-c-alert__heading" ref={headingRef}>
             {a11yLabel}
             {headingElement}
           </div>

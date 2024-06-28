@@ -11,7 +11,7 @@ medicare:
   sketchLink: 1K9gg0y
 ---
 
-import { Badge } from '@cmsgov/design-system';
+import { Badge, CloseIconThin } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -182,11 +182,12 @@ Used to show important but not as urgent messages as standard alerts.
 
 ### Accessibility
 
-- Use alerts sparingly as to avoid creating too much “noise” in screen readers, making it difficult to understand the overall layout of the page.
+- Use alerts sparingly as to avoid creating too much "noise" in screen readers, making it difficult to understand the overall layout of the page.
 - Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
-- Users who hear this content through assistive technology, such as a screen reader, will need to be alerted at the right time, and that can be managed with code.
+- Users who hear this content through assistive technology, such as a screen reader, will need to be alerted when the alert component visually appears, and that can be done using `aria-live`.
+- Users who are using a keyboard to navigate the page will need to be able to access the alert and its content in the right order.
 - Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
-- Use the <abbr title="Accessible rich internet applications">ARIA</abbr> `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead. Both include an implicit use of `aria-live=”assertive”`. Refer to the [Dialog component’s full documentation](/components/modal-dialog/) when using `role=”alertdialog”`.
+- Use the <abbr title="Accessible rich internet applications">ARIA</abbr> `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead. Both include an implicit use of `aria-live="assertive"`. Refer to the [Dialog component’s full documentation](/components/modal-dialog/) when using `role="alertdialog"`.
 - If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an `aria-label` or `aria-labelledby` attribute.
 
 <ThemeContent onlyThemes={['healthcare']}>
@@ -194,11 +195,27 @@ Used to show important but not as urgent messages as standard alerts.
 #### For dynamic alerts
 
 - If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert could appear on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
-- For dynamic alert content that is injected into the page when it changes, use the `aria-live` attribute, set on an empty element available on page load. The value of the `aria-live` attribute is used to update assistive technologies on the degree of importance.
-  - `aria-live=”polite”` will notify users of updates but generally do not interrupt the current task, with the updates having a low priority.
-  - `aria-live=”assertive”` will immediately notify the user, potentially clearing the speech queue of previous updates. Don't use the assertive value unless the interruption is imperative
+- When a user's actions require dynamically displaying an alert, such as with success or error states, inject the alert inside an already existing `<div>` with `aria-live="polite"` and `aria-relevant="additions removals"` or `role="alert"`. These ARIA attributes ensure screen readers will announce alerts that have been added or updated dynamically.
+
+  - For example, your empty `<div>` on page load would appear as:
+
+  ```html
+  <div aria-live="polite" aria-relevant="additions removals"></div>
+  ```
+
+  And when the user performs an action that displays an alert, add the alert to the existing `<div>`:
+
+  ```html
+  <div aria-live="polite" aria-relevant="additions removals">
+    <div role="region" class="ds-c-alert ds-c-alert--error">...</div>
+  </div>
+  ```
+
+- The value of the `aria-live` attribute is used to update assistive technologies on the degree of importance.
+  - `aria-live="polite"` will notify users of updates but generally do not interrupt the current task, with the updates having a low priority.
+  - `aria-live="assertive"` will immediately notify the user, potentially clearing the speech queue of previous updates. Don't use the assertive value unless the interruption is imperative.
   - Use `aria-relevant="additions removals"` (tailored to the appropriate value) to communicate the types of changes that have occurred to an `aria-live` region. Assistive technologies only need to be informed of content removal when its removal represents an important change.
-- If you choose to shift focus to the Alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
+- If you choose to shift focus to the alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
 
 </ThemeContent>
 
@@ -306,7 +323,7 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
 <SeeStorybookForGuidance storyId={'components-alert--docs'} />
 
-### Experimental Web Components
+### Web Component
 
 <SeeStorybookForGuidance tech="wc" storyId={'web-components-alert--docs'} />
 

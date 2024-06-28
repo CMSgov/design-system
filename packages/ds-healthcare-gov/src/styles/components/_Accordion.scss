@@ -12,6 +12,7 @@
 
     &:hover {
       --ds-c-accordion__button__color: var(--color-primary-darker);
+
       text-decoration: underline;
 
       .ds-c-icon--minus-circle__circle,
@@ -59,7 +60,7 @@
 
     // This variable only exists for the Healthcare Accordion CSS override
     // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
-    font-size: var(--accordion-icon__size);
+    font-size: 0.875rem;
   }
 
   .ds-c-accordion__content {

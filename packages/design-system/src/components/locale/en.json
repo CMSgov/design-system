@@ -1,8 +1,4 @@
 {
-  "accordion": {
-    "close": "Close",
-    "open": "Open"
-  },
   "alert": {
     "defaultLabel": "Notice",
     "error": "Alert",
@@ -69,6 +65,16 @@
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning"
   },
+  "idleTimeoutDialog": {
+    "heading": "Are you still there?",
+    "messageLine1": "You've been inactive for a while.",
+    "messageLine2": "Your session will end in ",
+    "min": "minute",
+    "mins": "minutes",
+    "continueSessionMessage": "Select \"Continue session\" below if you want more time.",
+    "continueSessionButtonText": "Continue session",
+    "endSessionButtonText": "Logout"
+  },
   "inlineError": {
     "prefix": "Error"
   },
@@ -128,10 +134,6 @@
     "confirmationButtonText": "Continue",
     "cancelButtonText": "Cancel",
     "learnMoreText": "Learn more about links to third-party sites"
-  },
-  "verticalNav": {
-    "expand": "Expand sub-navigation",
-    "collapse": "Collapse sub-navigation"
   },
   "usaBanner": {
     "flagIconTitle": "U.S. Flag",

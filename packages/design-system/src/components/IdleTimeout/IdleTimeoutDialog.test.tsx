@@ -1,4 +1,3 @@
-import React from 'react';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { render, screen, fireEvent } from '@testing-library/react';
 
@@ -10,6 +9,7 @@ describe('IdleTimeoutDialog', () => {
     onSessionContinue: jest.fn(),
     endSessionButtonText: 'Logout',
     onClose: jest.fn(),
+    isOpen: true,
   };
   const renderDialog = (overrideProps?) => {
     return render(<IdleTimeoutDialog {...defaultProps} {...overrideProps} />);

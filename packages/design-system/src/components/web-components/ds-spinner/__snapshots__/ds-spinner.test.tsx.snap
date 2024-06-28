@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner renders spinner 1`] = `
+<span
+  class="ds-c-spinner"
+  role="status"
+>
+  <span
+    class="ds-u-visibility--screen-reader"
+  >
+    Loading
+  </span>
+</span>
+`;

@@ -1,12 +1,13 @@
-import React from 'react';
+import { useEffect, useRef, DialogHTMLAttributes } from 'react';
+import type * as React from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
 import useDialogAnalytics from './useDialogAnalytics';
 import useId from '../utilities/useId';
-import { useEffect, useLayoutEffect, useRef, DialogHTMLAttributes } from 'react';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
+import { useBodyScrollPrevention } from './useBodyScrollPrevention';
 
 export type DialogSize = 'narrow' | 'wide' | 'full';
 
@@ -53,9 +54,9 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
    */
   id?: string;
   /**
-   * This function is called after the modal opens
+   * Controls whether the dialog is in an open state
    */
-  onEnter?(): void;
+  isOpen: boolean;
   /**
    * Called when the user triggers an exit event, like by clicking the close
    * button or pressing the ESC key. The parent of this component is
@@ -83,7 +84,6 @@ export const Dialog = (props: DialogProps) => {
     alert,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ariaCloseLabel,
     children,
@@ -91,7 +91,6 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     heading,
     id,
-    onEnter,
     onExit,
     size,
     ...modalProps
@@ -100,6 +99,7 @@ export const Dialog = (props: DialogProps) => {
   const rootId = useId('dialog--', id);
   const headingRef = useDialogAnalytics(props);
   const headingId = `${rootId}__heading`;
+  const contentId = `${rootId}__content`;
 
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
@@ -107,31 +107,12 @@ export const Dialog = (props: DialogProps) => {
 
   const containerRef = useRef<HTMLDivElement>();
 
-  useEffect(() => {
-    if (onEnter) onEnter();
-  }, []);
-
   // Set initial focus
   useEffect(() => {
     containerRef.current?.focus();
   }, [containerRef]);
 
-  // Prevent scrolling the page behind the dialog. Needs to use useLayoutEffect
-  // because we need to grab the window scroll position before the dialog renders
-  // and messes it up.
-  useLayoutEffect(() => {
-    // https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
-    const y = window.scrollY ?? 0;
-    const bodyClass = 'ds--dialog-open';
-    document.body.classList.add(bodyClass);
-    document.body.style.setProperty('--body_top--dialog-open', `-${y}px`);
-    document.documentElement.style.setProperty('scroll-behavior', 'auto');
-    return () => {
-      document.body.classList.remove(bodyClass);
-      window.scrollTo({ top: y, behavior: 'auto' });
-      document.documentElement.style.removeProperty('scroll-behavior');
-    };
-  }, []);
+  useBodyScrollPrevention(modalProps.isOpen ?? true);
 
   return (
     <NativeDialog
@@ -141,31 +122,27 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
       id={rootId}
       boundingBoxRef={containerRef}
+      aria-labelledby={headingId}
     >
-      <div
-        className="ds-c-dialog__window"
-        role="document"
-        ref={containerRef}
-        tabIndex={-1}
-        aria-labelledby={headingId}
-      >
-        <header className={headerClassNames}>
+      <div className="ds-c-dialog__window" ref={containerRef}>
+        <div className={headerClassNames}>
           {heading && (
-            <h1 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
+            <h2 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
               {heading}
-            </h1>
+            </h2>
           )}
           <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
+            ariaHidden={true}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
             onClick={onExit}
           />
-        </header>
-        <main role="main" className="ds-c-dialog__body">
-          <div id="dialog-content">{children}</div>
+        </div>
+        <div className="ds-c-dialog__body">
+          <div id={contentId}>{children}</div>
           {actions && <div className={actionsClassNames}>{actions}</div>}
-        </main>
+        </div>
       </div>
     </NativeDialog>
   );

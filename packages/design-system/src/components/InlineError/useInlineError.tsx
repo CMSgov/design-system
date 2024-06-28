@@ -1,9 +1,9 @@
-import React from 'react';
+import type * as React from 'react';
 import InlineError from './InlineError';
 import classNames from 'classnames';
-import { ErrorPlacement, errorPlacementDefault } from '../flags';
+import { config } from '../config';
 
-export { ErrorPlacement };
+export type ErrorPlacement = 'top' | 'bottom';
 
 // TODO: We should conditionally return an errorId, because we want to be able
 // to include it in the aria-describedby without conditional logic in the component
@@ -47,26 +47,26 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
   const {
     errorMessage,
     errorMessageClassName,
-    errorPlacement = errorPlacementDefault(),
+    errorPlacement = config().errorPlacementDefault,
     inversed,
   } = props;
 
-  const errorElement = errorMessage ? (
+  const errorElement = (
     <InlineError
       id={errorId}
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === ErrorPlacement.Bottom && 'ds-c-inline-error--bottom'
+        errorPlacement === 'bottom' && errorMessage && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}
     </InlineError>
-  ) : undefined;
+  );
 
   let topError;
   let bottomError;
-  if (errorPlacement === ErrorPlacement.Top) {
+  if (errorPlacement === 'top') {
     topError = errorElement;
   } else {
     bottomError = errorElement;

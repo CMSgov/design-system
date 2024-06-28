@@ -1,31 +1,13 @@
-import React from 'react';
 import PrivacySettingsLink from './PrivacySettingsLink';
 import languages from './languages';
-import { TFunction } from '@cmsgov/design-system';
+import { t } from '../i18n';
+import { sendFooterLinkEvent } from './analytics';
 
 interface InlineLinkListsProps {
-  t: TFunction;
   primaryDomain: string;
 }
 
 const inlineLiClasses = 'hc-c-footer__inline-item';
-
-/**
- * Create <li> nodes and inline links
- */
-const renderBasicList = function (t, links) {
-  return Object.getOwnPropertyNames(links).map(function (key, index) {
-    const link = typeof links[key] === 'string' ? <a href={links[key]}>{t(key)}</a> : links[key];
-    return (
-      <li key={key} className={inlineLiClasses}>
-        {link}
-        {index !== Object.getOwnPropertyNames(links).length - 1 ? (
-          <span aria-hidden="true" className="hc-c-footer__delimiter" />
-        ) : null}
-      </li>
-    );
-  });
-};
 
 /**
  * Inline link lists are always rendered in the footer, no matter
@@ -50,24 +32,44 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
     <div className="ds-l-container">
       <div className="hc-c-footer__site-links-row">
         <ul role="list" className="hc-c-footer__list">
-          {renderBasicList(props.t, inlineLinksTop)}
+          {Object.getOwnPropertyNames(inlineLinksTop).map(function (key, index) {
+            const entry = inlineLinksTop[key];
+            const isUrl = typeof entry === 'string';
+            const linkText = t(key);
+            const isLastItem = index !== Object.getOwnPropertyNames(inlineLinksTop).length - 1;
+            return (
+              <li key={key} className={inlineLiClasses}>
+                {isUrl ? (
+                  <a href={entry} onClick={() => sendFooterLinkEvent(linkText, entry)}>
+                    {linkText}
+                  </a>
+                ) : (
+                  entry
+                )}
+                {isLastItem ? <span aria-hidden="true" className="hc-c-footer__delimiter" /> : null}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
       <div className="hc-c-footer__language-resource-links-row">
-        <h4 id="hc-c-footer__language-resources" className="ds-u-visibility--screen-reader">
+        <p id="hc-c-footer__language-resources" className="ds-u-visibility--screen-reader">
           Language resources
-        </h4>
+        </p>
         <ul
           role="list"
           aria-labelledby="hc-c-footer__language-resources"
           className="hc-c-footer__list"
         >
-          {Object.getOwnPropertyNames(languages).map(function (lang, index) {
+          {Object.getOwnPropertyNames(languages).map(function (lang) {
+            const linkUrl = primaryDomain + languages[lang].href;
+            const linkText = languages[lang].label;
+            const handleClick = () => sendFooterLinkEvent(linkText, linkUrl, 'Language resources');
             return (
-              <li key={lang} className={inlineLiClasses}>
-                <a lang={lang} href={primaryDomain + languages[lang].href}>
-                  {languages[lang].label}
+              <li key={lang} className={inlineLiClasses} onClick={handleClick}>
+                <a lang={lang} href={linkUrl}>
+                  {linkText}
                 </a>
               </li>
             );

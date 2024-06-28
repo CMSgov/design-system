@@ -1,4 +1,3 @@
-import React from 'react';
 import ThirdPartyExternalLink from './ThirdPartyExternalLink';
 import type { Meta, StoryObj } from '@storybook/react';
 

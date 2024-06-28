@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import Label from './Label';
 import { render, screen } from '@testing-library/react';
 
@@ -18,7 +18,7 @@ describe('Label', () => {
     let warn;
 
     beforeEach(() => {
-      warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
     });
 
     afterEach(() => {

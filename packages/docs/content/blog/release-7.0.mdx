@@ -7,6 +7,17 @@ intro: Normalizing CSS, standardizing spacing & colors, a new Dropdown, and more
 import newDropdown from '../../src/images/new-dropdown.png';
 import versionSwitcher from '../../src/images/version-switcher.png';
 
+import { Alert } from '@cmsgov/design-system';
+
+<Alert
+  variation="warn"
+  heading="Skip to v8"
+>
+
+  If you’re just now planning to upgrade to v7, consider upgrading [straight to v8](/blog/release-8.0) or higher. The `Autocomplete` and `Dropdown` components underwent some API changes that didn't stabilize until v8, so skip this version to avoid changing your code twice.
+
+</Alert>
+
 ## What's new in 7.0
 
 ### Normalized browser styles
@@ -25,8 +36,13 @@ With the expansion of the design system themes to include a fourth theme (CMS.go
 
 ### New dropdown component
 
-<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
-  <img src={newDropdown} width={494} className="ds-u-display--inline-block" alt="Screenshot of new dropdown component, where the dropdown menu is styled and branded instead of the browser default for HTML select elements" />
+<div className="ds-u-text-align--center ds-u-margin-top--3">
+  <img
+    src={newDropdown}
+    width={494}
+    className="ds-u-display--inline-block"
+    alt="Screenshot of new dropdown component, where the dropdown menu is styled and branded instead of the browser default for HTML select elements"
+  />
 </div>
 
 Several major versions ago we started abstracting the idea of a dropdown menu behind the Dropdown component, which has always been implemented with a native HTML select element. [This has been the U.S. Web Design System’s strategy as well](https://designsystem.digital.gov/components/select/). While the HTML select element tends to perform better with assistive tech than custom drop-down-menu solutions, it actually provides a poor user experience when applied to some of our applications’ use cases. Most notably, options with long text cause trouble in some browser and operating-system combinations where they are either truncated or clipped at the edge of screens.
@@ -44,7 +60,7 @@ Please [check out our new example projects on GitHub](https://github.com/CMSgov/
 
 ### New version switcher for our docs
 
-<div className="ds-u-measure--wide ds-u-text-align--center ds-u-margin-top--3">
+<div className="ds-u-text-align--center ds-u-margin-top--3">
   <img src={versionSwitcher} width={475} className="ds-u-display--inline-block" alt="" />
 </div>
 

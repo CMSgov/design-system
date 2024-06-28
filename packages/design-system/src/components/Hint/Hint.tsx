@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 
 export interface HintProps {
@@ -59,10 +59,10 @@ export const Hint = ({
   }
 
   return (
-    <div {...otherProps} id={id} className={hintClasses}>
+    <p {...otherProps} id={id} className={hintClasses}>
       {requirementLabel}
       {hintPadding}
       {children}
-    </div>
+    </p>
   );
 };

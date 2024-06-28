@@ -21,7 +21,7 @@
   ],
   [
     "component",
-    "When provided, this will render the passed in component for all link elements. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each step object also accepts a component prop.\n\nComponentType<StepLinkComponentProps> | keyof IntrinsicElements",
+    "When provided, this will render the passed in component for all link elements. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each step object also accepts a component prop.\n\n\"a\" | ComponentType<StepLinkComponentProps>",
     "-"
   ],
   [

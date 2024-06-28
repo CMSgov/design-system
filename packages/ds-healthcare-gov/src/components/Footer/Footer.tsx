@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
@@ -43,8 +43,8 @@ export const Footer = (props: FooterProps) => {
   return (
     <footer className={classes} role="contentinfo">
       {props.footerTop}
-      <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={t} logoId={props.logoId} logoClassName={props.logoClassName} />
+      <InlineLinkLists primaryDomain={props.primaryDomain} />
+      <LogosRow logoClassName={props.logoClassName} />
     </footer>
   );
 };

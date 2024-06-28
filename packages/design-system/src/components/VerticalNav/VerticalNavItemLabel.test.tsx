@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import VerticalNavItemLabel, { VerticalNavItemLabelProps } from './VerticalNavItemLabel';
@@ -78,7 +77,6 @@ describe('VerticalNavItemLabel', () => {
       renderVerticalNavItemLabel();
       const labelEl = screen.getByText('Foo');
 
-      expect(labelEl.getAttribute('title')).toBeNull();
       expect(labelEl.getAttribute('aria-controls')).toBeNull();
       expect(labelEl.getAttribute('aria-expanded')).toBeNull();
     });
@@ -116,40 +114,6 @@ describe('VerticalNavItemLabel', () => {
 
       expect(labelEl.getAttribute('aria-controls')).toBe('foo-subnav');
       expect(labelEl.getAttribute('aria-expanded')).toBe('false');
-    });
-
-    it('has default collapsed state title', () => {
-      props.collapsed = true;
-      renderVerticalNavItemLabel(props);
-      const labelEl = screen.getByRole('button');
-
-      expect(labelEl.getAttribute('title')).toBe('Expand sub-navigation');
-    });
-
-    it('has default expanded state title', () => {
-      props.collapsed = false;
-      renderVerticalNavItemLabel(props);
-      const labelEl = screen.getByRole('button');
-
-      expect(labelEl.getAttribute('title')).toBe('Collapse sub-navigation');
-    });
-
-    it('uses provided collapsed state title', () => {
-      props.collapsed = true;
-      props.ariaCollapsedStateButtonLabel = 'Expand me';
-      renderVerticalNavItemLabel(props);
-      const labelEl = screen.getByRole('button');
-
-      expect(labelEl.getAttribute('title')).toBe(props.ariaCollapsedStateButtonLabel);
-    });
-
-    it('uses provided expanded state title', () => {
-      props.collapsed = false;
-      props.ariaExpandedStateButtonLabel = 'Collapse me';
-      renderVerticalNavItemLabel(props);
-      const labelEl = screen.getByRole('button');
-
-      expect(labelEl.getAttribute('title')).toBe(props.ariaExpandedStateButtonLabel);
     });
 
     it('shows a down arrow when collapsed', () => {

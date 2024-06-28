@@ -3,7 +3,7 @@
 
 // Wraps all label and dropdown markup
 .ds-c-dropdown {
-  max-width: var(--form__max-width);
+  max-width: var(--field-max-width);
   position: relative;
 }
 
@@ -12,17 +12,11 @@
 .ds-c-dropdown__button.ds-c-field {
   align-items: center;
   appearance: none;
-  background-color: var(--dropdown__background-color);
+  background-color: var(--color-background);
   display: flex;
   gap: 2ch;
   justify-content: space-between;
   text-align: start;
-
-  // Removes inner outline on select elements in Firefox.
-  &:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-  }
 
   // Due to the shadow overlay, the border needs to be transparent to avoid a light gray line divider
   &[aria-expanded='true'] {
@@ -32,6 +26,20 @@
   .ds-c-dropdown--open & {
     @include mixins.focus-styles;
   }
+}
+
+// This class is applied to a `<div>` that acts as a label
+// Because the dropdown is a `<button>` element, a `<label>` element
+// breaks for some a11y checkers. Using a `<div>` is correct.
+.ds-c-dropdown__label {
+  margin-block: 1.5em 0;
+}
+
+.ds-c-dropdown__label-text {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // Dropdown previously used a background image for the caret
@@ -55,19 +63,20 @@
   --clip-path-value: calc(-1 * var(--blur-radius));
   --max-height: 320px;
 
-  background-color: var(--autocomplete__background-color);
+  background-color: var(--color-background);
   border: var(--text-input__border-width) solid var(--text-input__border-color);
   border-block-start: none;
   border-end-end-radius: var(--text-input__border-radius);
   border-end-start-radius: var(--text-input__border-radius);
   box-shadow: 0 0 var(--blur-radius) 0 var(--color-gray-light);
+
   // `clip-path` needed to hide `box-shadow` overlap in field. 17px is the `box-shadow` blur radius.
-  clip-path: inset(0px var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
+  clip-path: inset(0 var(--clip-path-value) var(--clip-path-value) var(--clip-path-value));
   margin-block-start: calc(-1 * var(--text-input__border-width));
   max-height: var(--max-height);
   position: absolute;
   width: 100%;
-  z-index: var(--z-dialog);
+  z-index: 1000;
 
   .ds-c-field--inverse + & {
     color: var(--color-base);
@@ -76,6 +85,7 @@
 
 .ds-c-dropdown__menu {
   @include mixins.unstyled-list;
+
   // Allows for keyboard navigation of dropdown options, i.e., scrolling through options via arrow keys
   max-height: calc(var(--max-height) - var(--text-input__border-width));
   overflow-y: auto;
@@ -97,7 +107,8 @@
 }
 
 .ds-c-dropdown__menu-item-group .ds-c-dropdown__menu-item {
-  padding-inline-start: var(--dropdown-option-group__padding);
+  // We should actually make this a multiple of text input padding probably
+  padding-inline-start: calc(var(--text-input__padding) + var(--spacer-2));
 }
 
 // Styles for dropdown elements that are highlighted

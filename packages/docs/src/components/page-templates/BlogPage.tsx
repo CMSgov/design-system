@@ -1,4 +1,3 @@
-import React from 'react';
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
 import avoidRefresh from '../../helpers/avoidRefresh';
@@ -39,11 +38,9 @@ const BlogPage = ({ data, location }: MdxQuery) => {
         </header>
       }
     >
-      <div className="ds-u-measure--wide">
-        <ContentRenderer data={body} theme={theme} />
-        <PageFeedback />
-        <div className="ds-u-margin-top--4">{backLink}</div>
-      </div>
+      <ContentRenderer data={body} theme={theme} />
+      <PageFeedback />
+      <div className="ds-u-margin-top--4">{backLink}</div>
     </Layout>
   );
 };

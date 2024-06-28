@@ -1,4 +1,3 @@
-import React from 'react';
 import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
@@ -155,34 +154,32 @@ describe('Idle Timeout', () => {
   });
 
   it('should update message time if timeToTimeout changes', () => {
-    const formatMessage = jest.fn();
-    const { rerender } = renderIdleTimeout({ formatMessage });
-    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} formatMessage={formatMessage} />);
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToTimeout={10} />);
     showWarning();
-    expect(formatMessage).toHaveBeenNthCalledWith(1, 7);
+    expect(screen.getByRole('dialog')).toHaveTextContent('Your session will end in 7 minutes');
   });
 
   it('should update message time if timeToWarning changes', () => {
-    const formatMessage = jest.fn();
-    const { rerender } = renderIdleTimeout({ formatMessage });
-    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} formatMessage={formatMessage} />);
+    const { rerender } = renderIdleTimeout();
+    rerender(<IdleTimeout {...defaultProps} timeToWarning={4} />);
     showWarning(1644051720); // start time + (4 * 60000ms) (4 minutes)
-    expect(formatMessage).toHaveBeenNthCalledWith(1, 1);
+    expect(screen.getByRole('dialog')).toHaveTextContent('Your session will end in 1 minute');
   });
 
   it('default formatMessage should replace time in message', () => {
-    renderIdleTimeout();
+    const { container } = renderIdleTimeout();
     showWarning();
-    const dialogBodyText = screen.getByRole('main');
+    const dialogBodyText = container.querySelector('.ds-c-dialog__body');
     expect(dialogBodyText.firstChild.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 2 minutes.Select "Continue session" below if you want more time.`
     );
   });
 
   it('default formatMessage should adjust message for singular minute vs multiple', () => {
-    renderIdleTimeout({ timeToWarning: 4 });
+    const { container } = renderIdleTimeout({ timeToWarning: 4 });
     showWarning(MOCK_START_TIME + 4 * 60000); // setting time to match timeToWarning in this test
-    const dialogBodyText = screen.getByRole('main');
+    const dialogBodyText = container.querySelector('.ds-c-dialog__body');
     expect(dialogBodyText.firstChild.textContent).toEqual(
       `You've been inactive for a while.Your session will end in 1 minute.Select "Continue session" below if you want more time.`
     );
@@ -190,13 +187,19 @@ describe('Idle Timeout', () => {
 
   it('should replace token in message every minute', () => {
     const formatMessage = (time) => `Your session will end in ${time}.`;
-    renderIdleTimeout({ formatMessage, timeToWarning: 2 });
+    const { container } = renderIdleTimeout({ formatMessage, timeToWarning: 2 });
     showWarning(MOCK_START_TIME + 2 * 60000);
-    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 3.');
+    expect(container.querySelector('.ds-c-dialog__body').firstChild.textContent).toEqual(
+      'Your session will end in 3.'
+    );
     showWarning(MOCK_START_TIME + 3 * 60000);
-    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 2.');
+    expect(container.querySelector('.ds-c-dialog__body').firstChild.textContent).toEqual(
+      'Your session will end in 2.'
+    );
     showWarning(MOCK_START_TIME + 4 * 60000);
-    expect(screen.getByRole('main').firstChild.textContent).toEqual('Your session will end in 1.');
+    expect(container.querySelector('.ds-c-dialog__body').firstChild.textContent).toEqual(
+      'Your session will end in 1.'
+    );
   });
 
   it('should cleanup timers on unmount', () => {

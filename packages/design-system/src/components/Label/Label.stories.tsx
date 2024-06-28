@@ -1,4 +1,3 @@
-import React from 'react';
 import Label from './Label';
 import type { Meta, StoryObj } from '@storybook/react';
 

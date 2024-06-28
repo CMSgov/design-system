@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import TabPanel from './TabPanel';
 import Tabs from './Tabs';
 import { render, screen } from '@testing-library/react';

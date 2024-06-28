@@ -1,5 +1,5 @@
 import c from 'chalk';
-import { execSync, spawnSync } from 'node:child_process';
+import { execSync, spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'node:child_process';
 import { select } from '@inquirer/prompts';
 
 /**
@@ -16,8 +16,12 @@ export function sh(command: string, hideOutput?: boolean): string {
  * you must pass all args as an array instead of including them in the command
  * string.
  */
-export function shI(command: string, args: string[]) {
-  spawnSync(command, args, { stdio: 'inherit' });
+export function shI(
+  command: string,
+  args: string[],
+  config: SpawnSyncOptionsWithBufferEncoding = {}
+) {
+  return spawnSync(command, args, { stdio: 'inherit', ...config });
 }
 
 export function verifyGhInstalled() {

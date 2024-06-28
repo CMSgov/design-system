@@ -137,12 +137,18 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 <div
   class="ds-c-dropdown"
 >
-  <label
-    class="ds-c-label"
+  <div
+    class="ds-c-label ds-c-dropdown__label"
     id="static-id__label"
   >
     Select an option
-  </label>
+  </div>
+  <p
+    aria-atomic="true"
+    aria-live="assertive"
+    class="ds-c-inline-error"
+    id="static-id__error"
+  />
   <div
     aria-hidden="true"
     data-a11y-ignore="aria-hidden-focus"
@@ -196,7 +202,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
     type="button"
   >
     <span
-      class="ds-u-truncate"
+      class="ds-c-dropdown__label-text"
       id="static-id__button-content"
     >
       2
@@ -220,7 +226,7 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 `;
 
 exports[`Dropdown shows error message 1`] = `
-<span
+<p
   aria-atomic="true"
   aria-live="assertive"
   class="ds-c-inline-error"
@@ -242,5 +248,5 @@ exports[`Dropdown shows error message 1`] = `
     Error: 
   </span>
   Error
-</span>
+</p>
 `;
