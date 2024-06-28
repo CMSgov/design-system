@@ -1,40 +1,6 @@
 @use '../layout' as *;
 @use '../base';
 
-// Start polyfill styles
-// dialog {
-//   background-color: var(--dialog__background-color);
-//   height: fit-content;
-//   left: 0;
-//   margin: auto;
-//   padding: 1em;
-//   position: absolute;
-//   right: 0;
-// }
-
-// dialog:not([open]) {
-//   display: none;
-// }
-
-// dialog + .backdrop {
-//   background: var(--dialog-overlay__background-color);
-//   inset: 0;
-//   position: fixed;
-// }
-
-// ._dialog_overlay {
-//   inset: 0;
-//   position: fixed;
-// }
-
-// dialog.fixed {
-//   position: fixed;
-//   top: 50%;
-//   transform: translate(0, -50%);
-// }
-
-// End polyfill styles
-
 .ds-c-dialog {
   background: transparent;
   border: none;
