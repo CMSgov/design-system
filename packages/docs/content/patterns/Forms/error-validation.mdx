@@ -76,13 +76,13 @@ Use the [Validation on Submit](#validation-on-submit-default) pattern for most u
 An error message, in both inline errors and error summaries, must include what the user can do to fix the error.
 
 - Inline errors only state how to fix the issue so the user completes the field correctly.
-- Summary error messages include introduction text that reminds the user what's needed in order to complete the action. It also lists the fields to fix and their corresponding inline error messages - the exact same content should be used for the field title and inline error message.
+- Summary error messages include introduction text that reminds the user what's needed in order to complete the action. It also lists the fields to fix and their corresponding inline error messages&mdash;the exact same content should be used for the field title and inline error message.
 
 ### All messages must:
 
 - Be specific, short, and consistent.
 - Be in plain English/plain language.
-- Use imperative style.
+- Use imperative style (give a direct command to the user).
 - Specify what the user needs to do to fix the issue (using positive framing).
 - Give enough detail to help the user solve the problem or continue to the next step, while using the fewest words possible.
   - _Examples:_
@@ -92,11 +92,11 @@ An error message, in both inline errors and error summaries, must include what t
 - Use a single error message when there are multiple fields related to the same thing, like date (month, day, year).
 - Use sentence case.
 - End with a period.
-- Include language from the question or fieldset label - this helps match up the error message with the relevant form field.
+- Include language from the question or fieldset label&mdash;this helps match up the error message with the relevant form field.
   - _Example:_
     - Field label is "Street address." Inline error message is "Enter a street address with building number and road name." Both the label and error message include "street address" for better user comprehension on how to fix the error.
-- Sound human - read the message out loud to see if it sounds like something you would say.
-- Be tested to validation that users understand what went wrong and how to fix the error.
+- Sound human&mdash;read the message out loud to see if it sounds like something you would say.
+- Test error messages to validate that users understand what went wrong and how to fix the error.
 
 ### Error messages should never:
 
