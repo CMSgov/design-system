@@ -124,7 +124,8 @@ export const Choice = (props: ChoiceProps) => {
       </InlineError>
     );
   } else {
-    delete props._choiceChild;
+    const { _choiceChild, ...rest } = props;
+    props = rest;
   }
 
   // Subscribe to changes from other radio buttons in the same group
