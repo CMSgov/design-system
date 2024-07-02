@@ -29,7 +29,9 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
-  logoId?: string;
+  /**
+   * CSS classes to apply to the logo element
+   */
   logoClassName?: string;
 }
 
