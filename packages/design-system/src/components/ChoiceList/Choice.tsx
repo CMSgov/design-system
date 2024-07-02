@@ -123,6 +123,8 @@ export const Choice = (props: ChoiceProps) => {
         {props.errorMessage}
       </InlineError>
     );
+  } else {
+    delete props._choiceChild;
   }
 
   // Subscribe to changes from other radio buttons in the same group
