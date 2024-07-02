@@ -142,6 +142,26 @@ describe('Header', function () {
     expect(logo.className.includes(customClass)).toBe(true);
   });
 
+  it('should render custom class and id provided for language switch link', () => {
+    const customClass = 'custom-class-lang';
+    makeHeader({
+      languageLinkClassName: customClass,
+    });
+
+    const languageSwitch = screen.getAllByText('Español')[0];
+    expect(languageSwitch).toBeInTheDocument();
+    expect(languageSwitch.className.includes(customClass)).toBe(true);
+  });
+
+  it('should render custom class and id provided for login link', () => {
+    const customClass = 'custom-class-login';
+    makeHeader({ loginLinkClassName: customClass });
+
+    const loginLink = screen.queryAllByText('Log in')[0];
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink.className.includes(customClass)).toBe(true);
+  });
+
   it('should render custom classes provided within links', () => {
     const customClass = 'custom-class-link';
     const { baseElement } = makeHeader({

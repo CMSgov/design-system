@@ -122,10 +122,9 @@ export interface HeaderProps {
    */
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;
-  /**
-   * Additional classes to be added to the Logo component
-   */
   logoClassName?: string;
+  loginLinkClassName?: string;
+  languageLinkClassName?: string;
 }
 
 export const VARIATION_NAMES = {
@@ -167,6 +166,8 @@ export const Header = (props: HeaderProps) => {
     hideLogoutLink: props.hideLogoutLink,
     hideLanguageSwitch: props.hideLanguageSwitch,
     customLinksPassedIn: hasCustomLinks,
+    loginLinkClassName: props.loginLinkClassName,
+    languageLinkClassName: props.languageLinkClassName,
   })[variation];
 
   const links = hasCustomLinks
@@ -193,7 +194,7 @@ export const Header = (props: HeaderProps) => {
               href={props.primaryDomain ? props.primaryDomain : '/'}
               className="hc-c-logo-link ds-l-col ds-l-col--auto"
             >
-              <Logo className={props.logoClassName ?? ''} />
+              <Logo className={props.logoClassName} />
             </a>
 
             <nav
