@@ -122,8 +122,6 @@ There are a lot of tests, so it can be helpful to constrain the tests you run lo
 
 The CMS Design System provides a Sketch file and Sketch Library containing components, styles, and symbols. These are regularly updated alongside our code, and updates are automatically synced for designers using the Sketch Library.
 
-[Read more on using Sketch with the CMS Design System](/design-assets/README.md)
-
 ## Examples
 
 Examples of the design system in use can be found in the [`examples` directory](examples/).
