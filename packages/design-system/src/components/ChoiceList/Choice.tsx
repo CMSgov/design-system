@@ -118,7 +118,7 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
   let errorId;
   let errorElement;
   if (!_choiceChild) {
-    errorId = props.errorId ?? `${props.id}__error`;
+    errorId = props.errorId ?? `${id}__error`;
     errorElement = (
       <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
         {props.errorMessage}
