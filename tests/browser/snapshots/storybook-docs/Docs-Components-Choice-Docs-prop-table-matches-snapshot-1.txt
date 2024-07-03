@@ -1,5 +1,10 @@
 [
   [
+    "_choiceChild",
+    "boolean",
+    "false"
+  ],
+  [
     "checked",
     "Sets the input's checked state. Use this in combination with onChange for a controlled component; otherwise, set defaultChecked.\n\nboolean",
     "-"

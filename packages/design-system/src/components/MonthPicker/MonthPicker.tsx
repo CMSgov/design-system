@@ -204,6 +204,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
                 value={i + 1}
                 label={month}
                 id={`${id}__choice--${i + 1}`}
+                _choiceChild={true}
               />
             </li>
           ))}
