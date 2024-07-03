@@ -45,6 +45,11 @@
     "-"
   ],
   [
+    "languageLinkClassName",
+    "string",
+    "-"
+  ],
+  [
     "links",
     "Optionally pass in an array of link objects to override the default set of menu links. This may be useful if you need to customize the links on a page-by-page basis. To reference the default set of menu links, you can import the defaultMenuLinks method.\n\nLink[]",
     "-"
@@ -55,8 +60,13 @@
     "-"
   ],
   [
+    "loginLinkClassName",
+    "string",
+    "-"
+  ],
+  [
     "logoClassName",
-    "Additional classes to be added to the Logo component\nstring",
+    "string",
     "-"
   ],
   [
