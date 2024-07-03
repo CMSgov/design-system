@@ -15,7 +15,7 @@ exports[`Choice applies errorMessage to label 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error"
+          aria-describedby="choice--11__error"
           class="ds-c-choice"
           id="choice--11"
           name="foo"
@@ -34,7 +34,7 @@ exports[`Choice applies errorMessage to label 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--11__error"
         >
           <svg
             aria-hidden="true"
@@ -76,7 +76,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error choice--8__hint"
+          aria-describedby="choice--8__error choice--8__hint"
           class="ds-c-choice"
           id="choice--8"
           name="foo"
@@ -101,7 +101,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--8__error"
         />
       </div>
     </div>
@@ -124,7 +124,7 @@ exports[`Choice is a checkbox 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error"
+          aria-describedby="choice--2__error"
           class="ds-c-choice"
           id="choice--2"
           name="foo"
@@ -143,7 +143,7 @@ exports[`Choice is a checkbox 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--2__error"
         />
       </div>
     </div>
@@ -166,7 +166,7 @@ exports[`Choice is a radio 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error"
+          aria-describedby="choice--1__error"
           class="ds-c-choice"
           id="choice--1"
           name="foo"
@@ -185,7 +185,7 @@ exports[`Choice is a radio 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--1__error"
         />
       </div>
     </div>
@@ -212,7 +212,7 @@ exports[`Choice nested content renders checked and unchecked children appropriat
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error"
+          aria-describedby="choice--23__error"
           class="ds-c-choice"
           id="choice--23"
           name="foo"
@@ -231,7 +231,7 @@ exports[`Choice nested content renders checked and unchecked children appropriat
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--23__error"
         />
       </div>
       <strong
