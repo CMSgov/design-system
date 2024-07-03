@@ -15,7 +15,7 @@ exports[`Choice applies errorMessage to label 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="undefined__error"
+          aria-describedby="choice--11__error"
           class="ds-c-choice"
           id="choice--11"
           name="foo"
@@ -34,7 +34,7 @@ exports[`Choice applies errorMessage to label 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="undefined__error"
+          id="choice--11__error"
         >
           <svg
             aria-hidden="true"

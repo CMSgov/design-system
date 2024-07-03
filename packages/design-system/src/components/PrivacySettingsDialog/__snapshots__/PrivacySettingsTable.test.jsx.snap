@@ -71,6 +71,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -82,6 +83,12 @@ Object {
                     Advertising
                   </span>
                 </legend>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="choice-list--2__error"
+                />
                 <div>
                   <div
                     class="ds-c-choice-wrapper"
@@ -153,6 +160,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -164,6 +172,12 @@ Object {
                     Social Media
                   </span>
                 </legend>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="choice-list--3__error"
+                />
                 <div>
                   <div
                     class="ds-c-choice-wrapper"
@@ -235,6 +249,7 @@ Object {
               <fieldset
                 aria-invalid="false"
                 class="ds-c-fieldset ds-u-margin-top--0"
+                role="radiogroup"
               >
                 <legend
                   class="ds-c-label"
@@ -246,6 +261,12 @@ Object {
                     Web Analytics
                   </span>
                 </legend>
+                <p
+                  aria-atomic="true"
+                  aria-live="assertive"
+                  class="ds-c-inline-error"
+                  id="choice-list--4__error"
+                />
                 <div>
                   <div
                     class="ds-c-choice-wrapper"
@@ -360,6 +381,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"
@@ -371,6 +393,12 @@ Object {
                   Advertising
                 </span>
               </legend>
+              <p
+                aria-atomic="true"
+                aria-live="assertive"
+                class="ds-c-inline-error"
+                id="choice-list--2__error"
+              />
               <div>
                 <div
                   class="ds-c-choice-wrapper"
@@ -442,6 +470,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"
@@ -453,6 +482,12 @@ Object {
                   Social Media
                 </span>
               </legend>
+              <p
+                aria-atomic="true"
+                aria-live="assertive"
+                class="ds-c-inline-error"
+                id="choice-list--3__error"
+              />
               <div>
                 <div
                   class="ds-c-choice-wrapper"
@@ -524,6 +559,7 @@ Object {
             <fieldset
               aria-invalid="false"
               class="ds-c-fieldset ds-u-margin-top--0"
+              role="radiogroup"
             >
               <legend
                 class="ds-c-label"
@@ -535,6 +571,12 @@ Object {
                   Web Analytics
                 </span>
               </legend>
+              <p
+                aria-atomic="true"
+                aria-live="assertive"
+                class="ds-c-inline-error"
+                id="choice-list--4__error"
+              />
               <div>
                 <div
                   class="ds-c-choice-wrapper"

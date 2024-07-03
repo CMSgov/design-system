@@ -35,6 +35,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
   id="dialog--8"
   open=""
   role="dialog"
+  style="z-index: 100149; top: 384px;"
   tabindex="-1"
 >
   <div

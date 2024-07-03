@@ -8,25 +8,24 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
     Custom modal trigger
   </button>
   <dialog
+    aria-labelledby="dialog--6__heading"
     class="ds-c-dialog ds-c-dialog--full"
     id="dialog--6"
     role="dialog"
+    tabindex="-1"
   >
     <div
-      aria-labelledby="dialog--6__heading"
       class="ds-c-dialog__window"
-      role="document"
-      tabindex="-1"
     >
-      <header
+      <div
         class="ds-c-dialog__header"
       >
-        <h1
+        <h2
           class="ds-c-dialog__heading"
           id="dialog--6__heading"
         >
           HealthCare.gov privacy settings
-        </h1>
+        </h2>
         <button
           aria-label="Close modal dialog"
           class="ds-c-close-button ds-c-dialog__close"
@@ -34,19 +33,12 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
           type="button"
         >
           <svg
-            aria-hidden="false"
-            aria-labelledby="dialog--6__close__icon__title"
+            aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
             id="dialog--6__close__icon"
-            role="img"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title
-              id="dialog--6__close__icon__title"
-            >
-              Close
-            </title>
             <path
               d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
               fill="none"
@@ -56,10 +48,9 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
             />
           </svg>
         </button>
-      </header>
-      <main
+      </div>
+      <div
         class="ds-c-dialog__body"
-        role="main"
       >
         <div
           id="dialog--6__content"
@@ -147,6 +138,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -158,6 +150,12 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         Advertising
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--8__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -230,6 +228,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -241,6 +240,12 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         Social Media
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--9__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -313,6 +318,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -324,6 +330,12 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
                         Web Analytics
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--10__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -381,7 +393,7 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
             Update my settings
           </button>
         </div>
-      </main>
+      </div>
     </div>
   </dialog>
 </div>
@@ -393,25 +405,24 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
     Privacy settings
   </button>
   <dialog
+    aria-labelledby="dialog--1__heading"
     class="ds-c-dialog ds-c-dialog--full"
     id="dialog--1"
     role="dialog"
+    tabindex="-1"
   >
     <div
-      aria-labelledby="dialog--1__heading"
       class="ds-c-dialog__window"
-      role="document"
-      tabindex="-1"
     >
-      <header
+      <div
         class="ds-c-dialog__header"
       >
-        <h1
+        <h2
           class="ds-c-dialog__heading"
           id="dialog--1__heading"
         >
           HealthCare.gov privacy settings
-        </h1>
+        </h2>
         <button
           aria-label="Close modal dialog"
           class="ds-c-close-button ds-c-dialog__close"
@@ -419,19 +430,12 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
           type="button"
         >
           <svg
-            aria-hidden="false"
-            aria-labelledby="dialog--1__close__icon__title"
+            aria-hidden="true"
             class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
             id="dialog--1__close__icon"
-            role="img"
             viewBox="-2 -2 18 18"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title
-              id="dialog--1__close__icon__title"
-            >
-              Close
-            </title>
             <path
               d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
               fill="none"
@@ -441,10 +445,9 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
             />
           </svg>
         </button>
-      </header>
-      <main
+      </div>
+      <div
         class="ds-c-dialog__body"
-        role="main"
       >
         <div
           id="dialog--1__content"
@@ -532,6 +535,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -543,6 +547,12 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         Advertising
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--3__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -615,6 +625,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -626,6 +637,12 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         Social Media
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--4__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -698,6 +715,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                   <fieldset
                     aria-invalid="false"
                     class="ds-c-fieldset ds-u-margin-top--0"
+                    role="radiogroup"
                   >
                     <legend
                       class="ds-c-label"
@@ -709,6 +727,12 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
                         Web Analytics
                       </span>
                     </legend>
+                    <p
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      class="ds-c-inline-error"
+                      id="choice-list--5__error"
+                    />
                     <div>
                       <div
                         class="ds-c-choice-wrapper"
@@ -766,7 +790,7 @@ exports[`PrivacySettingsLink should render with default options 1`] = `
             Update my settings
           </button>
         </div>
-      </main>
+      </div>
     </div>
   </dialog>
 </div>

@@ -57,6 +57,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
     class="ds-c-help-drawer ds-c-drawer"
     open=""
     role="dialog"
+    style="z-index: 100149; top: 384px;"
     tabindex="-1"
   >
     <div
@@ -107,5 +108,13 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       </div>
     </div>
   </dialog>
+  <div
+    class="backdrop"
+    style="z-index: 100148;"
+  />
+  <div
+    class="_dialog_overlay"
+    style="z-index: 100147;"
+  />
 </DocumentFragment>
 `;
