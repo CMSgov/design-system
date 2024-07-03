@@ -11,12 +11,7 @@
   ],
   [
     "logoClassName",
-    "string",
-    "-"
-  ],
-  [
-    "logoId",
-    "string",
+    "CSS classes to apply to the logo element\nstring",
     "-"
   ],
   [
