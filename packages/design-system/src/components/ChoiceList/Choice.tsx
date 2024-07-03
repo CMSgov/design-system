@@ -102,7 +102,8 @@ const dsChoiceEmitter = new EvEmitter();
  * [checkbox](https://design.cms.gov/components/checkbox/) and
  * [radio](https://design.cms.gov/components/radio/) documentation pages.
  */
-export const Choice = (props: ChoiceProps) => {
+
+export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
   const initialCheckedState = props.checked ?? props.defaultChecked;
   const [internalCheckedState, setChecked] = useState(initialCheckedState);
   const isControlled = props.checked !== undefined;
@@ -116,16 +117,13 @@ export const Choice = (props: ChoiceProps) => {
 
   let errorId;
   let errorElement;
-  if (!props._choiceChild) {
+  if (!_choiceChild) {
     errorId = props.errorId ?? `${props.id}__error`;
     errorElement = (
       <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
         {props.errorMessage}
       </InlineError>
     );
-  } else {
-    const { _choiceChild, ...rest } = props;
-    props = rest;
   }
 
   // Subscribe to changes from other radio buttons in the same group
