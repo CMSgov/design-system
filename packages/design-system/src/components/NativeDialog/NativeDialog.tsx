@@ -71,6 +71,11 @@ export const NativeDialog = ({
     if (isOpen) {
       if (!dialogNode.open) {
         showModal ? dialogNode.showModal() : dialogNode.show();
+        // For a11y reasons, focus needs to be specified:
+        // 1. `<dialog>` receives focus first
+        // 2. `<dialog>` close button receives focus next
+        // 3. If `<dialog>` has some sorta sticky positioning requiring keyboard navigation, that wrapping element should receive focus next.
+        dialogNode.focus();
       }
     } else {
       if (dialogNode.open) {
@@ -120,7 +125,7 @@ export const NativeDialog = ({
   }, [exit, backdropClickExits]);
 
   return (
-    <dialog ref={dialogRef} {...dialogProps}>
+    <dialog ref={dialogRef} {...dialogProps} tabIndex={-1}>
       {children}
     </dialog>
   );

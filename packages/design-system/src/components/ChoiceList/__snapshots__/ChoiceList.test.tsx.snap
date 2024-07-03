@@ -6,6 +6,7 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
     aria-describedby="static-id__error static-id__hint"
     aria-invalid="true"
     class="ds-c-fieldset"
+    role="radiogroup"
   >
     <legend
       class="ds-c-label"

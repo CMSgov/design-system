@@ -39,7 +39,8 @@ describe('Dialog', function () {
       headerClassName: 'test-header',
       size: 'full',
     });
-    expect(screen.getByRole('document')).toMatchSnapshot();
+
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('calls onExit when close button is clicked', () => {
