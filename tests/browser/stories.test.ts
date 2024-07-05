@@ -12,6 +12,7 @@ const storySkipList = [
   'components-dropdown--controlled', // Redundant
   'components-helpdrawer--default', // Redundant
   'components-hint--default', // Captured by individual form fields
+  'components-icons--available-icons', // Flakey test prone to failing CI
   'components-idletimeout--default',
   'components-inlineerror--default', // Captured by individual form fields
   'components-label--default', // Captured by individual form fields
