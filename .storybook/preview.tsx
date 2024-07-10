@@ -7,6 +7,7 @@ import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
 import type { Preview } from '@storybook/react';
+import cmsTheme from './cmsTheme';
 
 // Rewire analytics events to log to the console
 let originalUtag;
@@ -206,6 +207,7 @@ const preview: Preview = {
     },
     docs: {
       page: DocumentationTemplate,
+      theme: cmsTheme,
     },
   },
   decorators: [
