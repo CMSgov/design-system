@@ -1,7 +1,7 @@
 // Named import from main entry file. This example has been configured to use Webpack's tree shaking
 // to only bundle imported components. Without this optimization, all components will be imported
 // your build process.
-import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
+import { Alert, Button, Drawer, TextField, UsaBanner } from '@cmsgov/ds-healthcare-gov';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -36,6 +36,11 @@ const Example = function () {
               Learn more
             </Button>
           </Alert>
+          <TextField
+            name="hello"
+            label="Hello world"
+            errorMessage="I should be below the text field on healthcare.gov"
+          />
         </div>
       </div>
     </div>
