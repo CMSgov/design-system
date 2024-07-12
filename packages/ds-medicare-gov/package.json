@@ -47,7 +47,9 @@
   "sideEffects": [
     "./src/components/web-components/**/*",
     "./dist/preact-components/esm/web-components/**/*.js",
-    "./dist/web-components/**/*.js"
+    "./dist/web-components/**/*.js",
+    "./dist/{react,preact}-components/esm/HelpDrawer/*.js",
+    "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*.js"
   ],
   "files": [
     "dist",

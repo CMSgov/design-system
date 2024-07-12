@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * This is the main entry file for a child design system's React components. It should
  * contain all exported JS from the core CMS design system and all additional child
@@ -18,5 +16,5 @@ export * from './Logo';
 // file's `sideEffects` property in order for build systems to know not to tree-shake
 // these modules out of bundles.
 export * from './config';
-import './ThirdPartyExternalLink';
 import './Accordion';
+import './ThirdPartyExternalLink';

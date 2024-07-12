@@ -5,5 +5,3 @@ HelpDrawer.defaultProps = {
   closeButtonText: <CloseIconThin className="ds-u-font-size--lg" />,
   closeButtonVariation: 'ghost',
 };
-
-export default HelpDrawer;
