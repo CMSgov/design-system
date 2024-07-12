@@ -46,8 +46,8 @@
   ],
   "dependencies": {
     "@cmsgov/design-system": "10.0.0",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^17.0.10",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "classnames": "^2.2.5"
   }
 }

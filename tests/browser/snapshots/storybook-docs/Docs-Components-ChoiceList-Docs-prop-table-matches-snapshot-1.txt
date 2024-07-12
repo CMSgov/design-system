@@ -106,7 +106,7 @@
   ],
   [
     "type*",
-    "Sets the type to render checkbox fields or radio buttons\n\"checkbox\"\n\"radio\"",
+    "Sets the type to render checkbox fields or radio buttons\n\"radio\"\n\"checkbox\"",
     "-"
   ]
 ]

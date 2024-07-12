@@ -1,4 +1,4 @@
-import { h, Fragment, ComponentFactory } from 'preact';
+import { h, ComponentFactory } from 'preact';
 import { render } from '@testing-library/preact';
 import { define } from './define';
 
@@ -32,11 +32,11 @@ interface IProps {
 
 function Message({ customTitle, value, children }: IProps) {
   return (
-    <Fragment>
+    <>
       {customTitle && <h2>{customTitle}</h2>}
       <em>{value}</em>
       {children}
-    </Fragment>
+    </>
   );
 }
 
