@@ -3,14 +3,12 @@
 // your build process.
 import {
   Alert,
-  Accordion,
-  AccordionItem,
-  Button,
-  Drawer,
+  HelpDrawer,
+  HelpDrawerToggle,
   TextField,
   ThirdPartyExternalLink,
   UsaBanner,
-} from '@cmsgov/ds-healthcare-gov';
+} from '@cmsgov/ds-medicare-gov';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -31,7 +29,7 @@ const Example = function () {
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
             {open && (
-              <Drawer
+              <HelpDrawer
                 footerTitle="Footer Title"
                 footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
                 heading="Drawer Heading"
@@ -39,11 +37,15 @@ const Example = function () {
                 hasFocusTrap={true}
               >
                 Test
-              </Drawer>
+              </HelpDrawer>
             )}
-            <Button onClick={() => setOpen(true)} className="ds-u-margin-top--2">
+            <HelpDrawerToggle
+              showDrawer={() => setOpen(true)}
+              helpDrawerOpen={open}
+              className="ds-u-margin-top--2"
+            >
               Learn more
-            </Button>
+            </HelpDrawerToggle>
           </Alert>
           <TextField
             name="hello"
@@ -53,27 +55,6 @@ const Example = function () {
           <p className="ds-u-margin-y--2">
             <ThirdPartyExternalLink href="https://www.zombo.com/">Zombo COM</ThirdPartyExternalLink>
           </p>
-          <Accordion>
-            <AccordionItem
-              key="1"
-              contentClassName="first-amendment"
-              defaultOpen
-              heading="First Amendment"
-            >
-              <p>
-                We the People of the United States, in Order to form a more perfect Union, establish
-                Justice, insure domestic Tranquility, provide for the common defence, promote the
-                general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity,
-                do ordain and establish this Constitution for the United States of America.
-              </p>
-            </AccordionItem>
-            <AccordionItem key="2" defaultOpen heading="Second Amendment">
-              <p>
-                A well regulated Militia, being necessary to the security of a free State, the right
-                of the people to keep and bear Arms, shall not be infringed.
-              </p>
-            </AccordionItem>
-          </Accordion>
         </div>
       </div>
     </div>

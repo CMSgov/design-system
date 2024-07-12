@@ -10,7 +10,7 @@ const dsDist = path.resolve(
   '..',
   'node_modules',
   '@cmsgov',
-  'ds-healthcare-gov',
+  'ds-medicare-gov',
   'dist'
 );
 

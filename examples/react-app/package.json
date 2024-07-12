@@ -3,7 +3,7 @@
   "version": "10.1.2",
   "private": true,
   "dependencies": {
-    "@cmsgov/ds-healthcare-gov": "14.1.2",
+    "@cmsgov/ds-medicare-gov": "12.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
