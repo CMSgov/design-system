@@ -43,10 +43,10 @@
     "./src/components/web-components/**/*",
     "./dist/preact-components/esm/web-components/**/*.js",
     "./dist/web-components/**/*.js",
-    "./dist/react-components/esm/index.js",
-    "./dist/preact-components/esm/index.js",
-    "./dist/react-components/esm/config.js",
-    "./dist/preact-components/esm/config.js"
+    "./dist/{react,preact}-components/esm/index.js",
+    "./dist/{react,preact}-components/esm/config.js",
+    "./dist/{react,preact}-components/esm/Accordion/*.js",
+    "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*.js"
   ],
   "files": [
     "dist",

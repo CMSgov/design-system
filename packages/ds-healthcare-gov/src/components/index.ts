@@ -1,21 +1,22 @@
 'use strict';
 
 /**
- * This is the main entry file for a child design system's React components.
- * It should contain all exported JS from the core CMS design system
- * and all additional child design system code.
- *
- * The CMSDS build scripts rely on this entry file's location (`src/components/index.js`) to transpile JS.
- * Modify `babel.config.js` to configure the build files.
- *
- * Also included here are default flag settings for each subsystem
- *
+ * This is the main entry file for a child design system's React components. It should
+ * contain all exported JS from the core CMS design system and all additional child
+ * design system code.
  */
 
+// Export everything from the core design system
 export * from '@cmsgov/design-system';
-export * from './Accordion';
+
+// Export new components that are specific to this child design system
 export * from './Footer';
 export * from './Header';
 export * from './Logo';
-export * from './ThirdPartyExternalLink';
+
+// The following modules have side effects and must be accounted for in the package
+// file's `sideEffects` property in order for build systems to know not to tree-shake
+// these modules out of bundles.
 export * from './config';
+import './ThirdPartyExternalLink';
+import './Accordion';

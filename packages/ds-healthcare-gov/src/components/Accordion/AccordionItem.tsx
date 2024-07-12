@@ -5,5 +5,3 @@ AccordionItem.defaultProps = {
   closeIconComponent: MinusCircleIcon,
   openIconComponent: PlusCircleIcon,
 };
-
-export default AccordionItem;
