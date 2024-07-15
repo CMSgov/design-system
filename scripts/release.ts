@@ -75,10 +75,12 @@ async function bumpVersions() {
   }
   console.log(c.green('Bumped package versions.'));
 
+  // Update versions.json
   const currentVersionsByPackage = updateVersions();
   sh('git add -u');
   console.log(c.green('Updated versions.json.'));
 
+  // Determine our tag names and create the publish commit
   const tags = Object.keys(currentVersionsByPackage).map(
     (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
   );
@@ -86,12 +88,13 @@ async function bumpVersions() {
   sh(`git commit -m "${commitMessage}"`);
   console.log(c.green('Wrote publish commit.'));
 
+  // Tag the publish commit
   for (const tag of tags) {
     sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
   }
-  console.log(c.green('Created git tags.'));
-  process.exit(0);
+  console.log(c.green('Tagged publish commit.'));
 
+  // Push everything to origin
   console.log(c.green('Pushing to origin...'));
   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
   console.log(c.green('Pushed bump commit to origin.'));
