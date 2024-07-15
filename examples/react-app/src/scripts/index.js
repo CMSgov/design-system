@@ -1,7 +1,7 @@
 // Named import from main entry file. This example has been configured to use Webpack's tree shaking
 // to only bundle imported components. Without this optimization, all components will be imported
 // your build process.
-import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
+import { Alert, Button, Drawer, Header } from '@cmsgov/ds-healthcare-gov';
 import { useState } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -9,7 +9,7 @@ const Example = function () {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <UsaBanner />
+      <Header />
       <header className="ds-base--inverse ds-u-padding-y--3">
         <div className="ds-l-container">
           <span className="ds-text-heading--xl">ExampleWebsite.gov</span>
