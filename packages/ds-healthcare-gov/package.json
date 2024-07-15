@@ -46,6 +46,7 @@
     "./dist/{react,preact}-components/esm/index.js",
     "./dist/{react,preact}-components/esm/config.js",
     "./dist/{react,preact}-components/esm/Accordion/*.js",
+    "./src/components/Accordion/*",
     "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*.js"
   ],
   "files": [
