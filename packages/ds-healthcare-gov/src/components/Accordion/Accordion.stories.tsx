@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Accordion, AccordionItem } from '@cmsgov/design-system';
-import './AccordionItem';
+import { Accordion } from '@cmsgov/design-system';
+import AccordionItem from './AccordionItem';
 import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Accordion> = {

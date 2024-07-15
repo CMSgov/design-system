@@ -1,14 +1,15 @@
 import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
-import { HelpDrawer, HelpDrawerToggle } from '@cmsgov/design-system';
-import './HelpDrawerToggle';
-import './HelpDrawer';
+import HelpDrawerToggle from './HelpDrawerToggle';
+import HelpDrawer from './HelpDrawer';
+// Need this in order for the generated ArgsTable to work
+import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Medicare/HelpDrawer',
-  component: HelpDrawer,
+  component: CoreHelpDrawer,
   argTypes: {
     // @ts-ignore - Types are messed up for this story
     backdropClickExits: {
@@ -102,9 +103,11 @@ export const HelpDrawerToggleOnDark: Story = {
 
     return (
       <>
-        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
-          {drawerContent}
-        </HelpDrawer>
+        {isDrawerVisible && (
+          <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading">
+            {drawerContent}
+          </HelpDrawer>
+        )}
         <HelpDrawerToggle
           showDrawer={showDrawer}
           helpDrawerOpen={isDrawerVisible || false}
