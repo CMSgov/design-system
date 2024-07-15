@@ -1,7 +1,7 @@
 import c from 'chalk';
 import yargs from 'yargs';
 import { updateVersions } from './versions';
-import { confirm } from '@inquirer/prompts';
+import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
 
@@ -56,14 +56,20 @@ async function undoLastCommit() {
 
 async function bumpVersions() {
   console.log(c.green('Bumping package versions for release...'));
-  const preBumpHash = getCurrentCommit();
-  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
-  const postBumpHash = getCurrentCommit();
+  const changeLevel = await select({
+    message: 'Select a release type',
+    choices: ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'].map(
+      (level: any) => ({ name: level, value: level })
+    ),
+  });
+  sh(
+    `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
+  );
+  sh('git add -u **/package.json');
+  sh('git checkout -- .');
+  // shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
 
-  if (preBumpHash === postBumpHash) {
-    console.log(c.yellow('No version bump occurred. Exiting...'));
-    process.exit(1);
-  }
+  process.exit(0);
 
   console.log(c.green('Package versions bumped successfully.'));
   console.log(c.green('Updating versions.json for reference in docs...'));
