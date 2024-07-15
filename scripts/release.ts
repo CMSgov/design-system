@@ -65,26 +65,45 @@ async function bumpVersions() {
   sh(
     `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
   );
+  // Only stage changes to package files
   sh('git add -u **/package.json');
+  // And discard all other changes
   sh('git checkout -- .');
-  // shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
+  // Verify that there are actually changes staged
+  if (!sh('git status -s')) {
+    console.log(c.yellow('No version changes made. Exiting...'));
+    process.exit(1);
+  }
 
-  process.exit(0);
+  // process.exit(0);
 
   console.log(c.green('Package versions bumped successfully.'));
   console.log(c.green('Updating versions.json for reference in docs...'));
-  updateVersions();
+  const currentVersionsByPackage = updateVersions();
   sh('git add -u');
-  // Note that this creates a new commit hash that will not match the tag that Lerna
-  // created. That tagged commit will no longer have a branch associated with it.
-  // This is possibly something that could be improved in the future. - Patrick
-  sh('git commit --amend --no-edit');
   console.log(c.green('Updated versions.json.'));
+
+  console.log(c.green('Writing publish commit...'));
+  /*
+Publish
+ - @cmsgov/design-system@10.1.2
+ - @cmsgov/cms-design-system-docs@10.1.2
+ - @cmsgov/ds-cms-gov@10.1.2
+ - @cmsgov/ds-healthcare-gov@14.1.2
+ - @cmsgov/ds-medicare-gov@12.1.2
+ */
+  const tags = Object.keys(currentVersionsByPackage).map(
+    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  );
+  const commitMessage = 'Publish\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  sh(`git commit -m "${commitMessage}"`);
+  console.log(c.green('Commited.'));
+  process.exit(0);
 
   console.log(c.green('Pushing to origin...'));
   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
   console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${readLastPublishCommit().tags.join(' ')}`);
+  sh(`git push origin ${tags.join(' ')}`);
   console.log(c.green('Pushed tags to origin.'));
 }
 
