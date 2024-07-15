@@ -2,7 +2,6 @@ import type * as React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
-import { t } from '../i18n';
 
 export interface FooterProps {
   /**
