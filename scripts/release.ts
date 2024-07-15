@@ -55,7 +55,6 @@ async function undoLastCommit() {
 }
 
 async function bumpVersions() {
-  console.log(c.green('Bumping package versions for release...'));
   const changeLevel = await select({
     message: 'Select a release type',
     choices: ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'].map(
@@ -74,30 +73,23 @@ async function bumpVersions() {
     console.log(c.yellow('No version changes made. Exiting...'));
     process.exit(1);
   }
+  console.log(c.green('Bumped package versions.'));
 
-  // process.exit(0);
-
-  console.log(c.green('Package versions bumped successfully.'));
-  console.log(c.green('Updating versions.json for reference in docs...'));
   const currentVersionsByPackage = updateVersions();
   sh('git add -u');
   console.log(c.green('Updated versions.json.'));
 
-  console.log(c.green('Writing publish commit...'));
-  /*
-Publish
- - @cmsgov/design-system@10.1.2
- - @cmsgov/cms-design-system-docs@10.1.2
- - @cmsgov/ds-cms-gov@10.1.2
- - @cmsgov/ds-healthcare-gov@14.1.2
- - @cmsgov/ds-medicare-gov@12.1.2
- */
   const tags = Object.keys(currentVersionsByPackage).map(
     (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
   );
-  const commitMessage = 'Publish\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
   sh(`git commit -m "${commitMessage}"`);
-  console.log(c.green('Commited.'));
+  console.log(c.green('Wrote publish commit.'));
+
+  for (const tag of tags) {
+    sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+  }
+  console.log(c.green('Created git tags.'));
   process.exit(0);
 
   console.log(c.green('Pushing to origin...'));
