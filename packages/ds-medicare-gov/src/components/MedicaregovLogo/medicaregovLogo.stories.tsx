@@ -1,4 +1,4 @@
-import MedicaregovLogo from './index';
+import { MedicaregovLogo } from './index';
 
 export default {
   title: 'Medicare/Logo',

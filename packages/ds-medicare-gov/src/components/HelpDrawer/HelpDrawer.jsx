@@ -6,4 +6,6 @@ HelpDrawer.defaultProps = {
   closeButtonVariation: 'ghost',
 };
 
-export default HelpDrawer;
+// We need this for the medicare story to work, and we also need to declare the side
+// effects for the src path.
+export { HelpDrawer };
