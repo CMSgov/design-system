@@ -36,9 +36,7 @@ _Note_: When you create a Git commit, any staged scripts will be automatically r
 These scripts can all be run from the root level of the repo:
 
 - `yarn install`
-
-  - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
-
+  - Note that because we use [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/), our design system packages are symlinked in the root `node_modules` directory to be used directly by our other packages. This means that the `ds-healthcare-gov` package always uses the most up-to-date version of our local `design-system` package, and so on.
 - `yarn build`
   - Compiles everything and makes things release-ready
   - Building is required to get TypeScript completion for the core package in child design system packages

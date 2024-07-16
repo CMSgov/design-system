@@ -137,7 +137,6 @@
     "humanize-react": "^1.0.0",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
-    "lerna": "^5.6.2",
     "lint-staged": "^10.0.8",
     "marked": "4.2.4",
     "mini-css-extract-plugin": "^1",
