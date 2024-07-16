@@ -1,7 +1,7 @@
 /**
  * @file Adds translations to core translation module and exports the i18n-related
- * functions. We want components in this child design system that usetranslation to
- * import their translation functions from this module so weget the side-effects of
+ * functions. We want components in this child design system that use translation to
+ * import their translation functions from this module so we get the side-effects of
  * adding our package-specific translations. Note that even though the components in this
  * child design system import their i18n functions directly from this module, we still
  * need to declare that this module has side effects in our package.json in order to keep
