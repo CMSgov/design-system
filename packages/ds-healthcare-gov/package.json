@@ -39,7 +39,18 @@
   "main": "dist/react-components/cjs/index.js",
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
-  "sideEffects": true,
+  "sideEffects": [
+    "./src/components/web-components/**/*",
+    "./dist/preact-components/esm/web-components/**/*.js",
+    "./dist/web-components/**/*.js",
+    "./dist/{react,preact}-components/esm/index.js",
+    "./dist/{react,preact}-components/esm/config.js",
+    "./dist/{react,preact}-components/esm/i18n.js",
+    "./src/components/i18n.ts",
+    "./dist/{react,preact}-components/esm/Accordion/*.js",
+    "./src/components/Accordion/*",
+    "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*.js"
+  ],
   "files": [
     "dist",
     "src"
