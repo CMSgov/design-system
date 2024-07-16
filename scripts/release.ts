@@ -7,6 +7,18 @@ import { sh, shI, verifyGhInstalled } from './utils';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
 
+async function verifyNoUnstagedChanges() {
+  if (sh('git status -s')) {
+    const yesContinue = await confirm({
+      message: 'You have unstaged changes that will be lost. Would you like to continue anyway?',
+    });
+    if (!yesContinue) {
+      console.log(c.yellow('Exiting...'));
+      process.exit(1);
+    }
+  }
+}
+
 function getCurrentCommit() {
   return sh('git rev-parse HEAD');
 }
@@ -182,6 +194,7 @@ function printNextSteps() {
       await undoLastCommit();
     } else {
       verifyGhInstalled();
+      await verifyNoUnstagedChanges();
       await bumpVersions();
       await bumpMain();
       await draftReleaseNotes();
