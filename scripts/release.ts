@@ -109,7 +109,7 @@ async function bumpVersions() {
     console.log(c.green('Tagged publish commit.'));
   } catch (error) {
     // Most likely we've failed to sign the commits due to GPG not being configured, so
-    // we need to roll back our policy so far.
+    // we need to roll back our progress so far.
     console.log(c.yellow('Rolling back publish commit.'));
     sh(`git reset --hard ${preBumpHash}`);
     process.exit(1);
