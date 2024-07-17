@@ -5,6 +5,9 @@ import { formAttrs } from '../shared-attributes/form';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from '../../TextField/useLabelMask';
 
 const attributes = [
+  // Using the lowercase HTML attribute name rather than `auto-focus` so it's
+  // more natural. There's no reason for us to worry about name collisions.
+  'autofocus',
   'aria-disabled',
   'class-name',
   'default-value',
@@ -37,7 +40,11 @@ function getMaskFunction(value: string) {
 }
 
 interface WrapperProps
-  extends Omit<TextFieldProps, 'disabled' | 'ariaDisabled' | 'inversed' | 'labelMask'> {
+  extends Omit<
+    TextFieldProps,
+    'autoFocus' | 'ariaDisabled' | 'disabled' | 'inversed' | 'labelMask'
+  > {
+  autofocus?: string;
   ariaDisabled?: string;
   disabled?: string;
   inversed?: string;
@@ -48,8 +55,9 @@ interface WrapperProps
 const Wrapper = ({ rootId, ...otherProps }: WrapperProps) => (
   <TextField
     {...otherProps}
-    disabled={parseBooleanAttr(otherProps.disabled)}
+    autoFocus={parseBooleanAttr(otherProps.autofocus)}
     aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
+    disabled={parseBooleanAttr(otherProps.disabled)}
     id={rootId}
     inversed={parseBooleanAttr(otherProps.inversed)}
     labelMask={getMaskFunction(otherProps.labelMask)}
