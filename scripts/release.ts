@@ -104,7 +104,6 @@ async function bumpVersions() {
   // Tag the publish commit
   try {
     for (const tag of tags) {
-      sh('git checkout a-branch-that-does-not-exist');
       sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
     }
     console.log(c.green('Tagged publish commit.'));
