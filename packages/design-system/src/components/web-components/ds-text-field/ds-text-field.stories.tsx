@@ -63,7 +63,7 @@ export default {
     'label-mask': {
       description:
         'Applies date format masking to the input value entered and renders to a text field above the input. Passing `true` to `valueOnly` will return just the formatted value entered.',
-      options: [undefined, 'DATE_MASK', 'PHONE_MASK', 'ZIP_MASK', 'SSN_MASK', 'CURRENCY_MASK'],
+      options: [undefined, 'phone', 'zip', 'ssn', 'currency'],
       control: { type: 'radio' },
     },
     name: {

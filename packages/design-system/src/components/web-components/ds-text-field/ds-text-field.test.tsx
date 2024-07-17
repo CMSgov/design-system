@@ -120,4 +120,15 @@ describe('ds-text-field', function () {
     textFieldRoot.removeEventListener('ds-blur', onBlur);
     textFieldRoot.removeEventListener('ds-change', onChange);
   });
+
+  it('formats a phone number on blur', () => {
+    renderTextField({ 'label-mask': 'phone' });
+
+    const input = screen.getByRole('textbox') as HTMLInputElement;
+    userEvent.click(input);
+    userEvent.type(input, '1234567890');
+    userEvent.tab();
+
+    expect(input.value).toEqual('123-456-7890');
+  });
 });

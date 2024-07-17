@@ -27,13 +27,13 @@ const attributes = [
 
 function getMaskFunction(value: string) {
   switch (value) {
-    case 'PHONE_MASK':
+    case 'phone':
       return PHONE_MASK;
-    case 'ZIP_MASK':
+    case 'zip':
       return ZIP_MASK;
-    case 'SSN_MASK':
+    case 'ssn':
       return SSN_MASK;
-    case 'CURRENCY_MASK':
+    case 'currency':
       return CURRENCY_MASK;
   }
   return undefined;
