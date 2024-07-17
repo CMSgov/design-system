@@ -67,6 +67,7 @@ async function undoLastCommit() {
 }
 
 async function bumpVersions() {
+  const preBumpHash = getCurrentCommit();
   const changeLevel = await select({
     message: 'Select a release type',
     choices: ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'].map(
@@ -101,10 +102,19 @@ async function bumpVersions() {
   console.log(c.green('Wrote publish commit.'));
 
   // Tag the publish commit
-  for (const tag of tags) {
-    sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+  try {
+    for (const tag of tags) {
+      sh('git checkout a-branch-that-does-not-exist');
+      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+    }
+    console.log(c.green('Tagged publish commit.'));
+  } catch (error) {
+    // Most likely we've failed to sign the commits due to GPG not being configured, so
+    // we need to roll back our policy so far.
+    console.log(c.yellow('Rolling back publish commit.'));
+    sh(`git reset --hard ${preBumpHash}`);
+    process.exit(1);
   }
-  console.log(c.green('Tagged publish commit.'));
 
   // Push everything to origin
   console.log(c.green('Pushing to origin...'));
