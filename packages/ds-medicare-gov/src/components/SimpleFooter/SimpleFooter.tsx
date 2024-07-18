@@ -1,4 +1,3 @@
-import React from 'react';
 import { FunctionComponent, useEffect, useRef } from 'react';
 import { HHSLogo, Button } from '@cmsgov/design-system';
 import MedicaregovLogo from '../MedicaregovLogo/MedicaregovLogo';
@@ -21,7 +20,7 @@ interface SimpleFooterProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/footer/medicare-footer/?theme=medicare).
  */
-const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
+export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   aboutMedicareLabel = 'About',
   nondiscriminationLabel = 'Accessibility',
   privacyPolicyLabel = 'Privacy policy',

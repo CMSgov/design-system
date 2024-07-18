@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, TextInput } from '@cmsgov/design-system';
 
 const SearchForm = ({ className }) => {

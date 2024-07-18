@@ -11,7 +11,61 @@ medicare:
   sketchLink: 1K9gg0y
 ---
 
-import { Accordion, Badge } from '@cmsgov/design-system';
+import { Accordion, Badge, CloseIconThin } from '@cmsgov/design-system';
+
+## Examples
+
+### Informational (Default)
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Does not require an icon.
+
+Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
+
+</ThemeContent>
+
+<StorybookExample componentName="alert" storyId="components-alert--default" />
+
+### Error
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon.
+
+Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
+
+</ThemeContent>
+
+<StorybookExample componentName="error alert" storyId="components-alert--error" />
+
+### Warning
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Requires an icon.
+
+Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
+
+</ThemeContent>
 
 <StorybookExample componentName="alert" storyId="components-alert--default" hideFooter="true" />
 

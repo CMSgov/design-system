@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 import { CloseIconThin } from '../Icons';
@@ -8,6 +8,10 @@ interface BaseCloseButtonProps {
    * An aria-label is required since the button content is only an X
    */
   'aria-label': string;
+  /**
+   * Hides or shows icon's aria text.
+   */
+  ariaHidden?: boolean;
   /**
    * Additional classes to be added to the button element.
    */
@@ -27,7 +31,12 @@ export type CloseButtonProps = Omit<
 /**
  *
  */
-export const CloseButton = ({ className, id: idProp, ...buttonAttributes }: CloseButtonProps) => {
+export const CloseButton = ({
+  className,
+  id: idProp,
+  ariaHidden = false,
+  ...buttonAttributes
+}: CloseButtonProps) => {
   const id = useId('close-button--', idProp);
   return (
     <button
@@ -36,7 +45,7 @@ export const CloseButton = ({ className, id: idProp, ...buttonAttributes }: Clos
       className={classNames('ds-c-close-button', className)}
       id={id}
     >
-      <CloseIconThin ariaHidden={false} id={`${id}__icon`} />
+      <CloseIconThin ariaHidden={ariaHidden} id={`${id}__icon`} />
     </button>
   );
 };

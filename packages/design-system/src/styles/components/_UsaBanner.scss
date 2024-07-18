@@ -5,27 +5,36 @@
 .ds-c-usa-banner {
   // The following local CSS vars aren't meant to be themed; they're meant to be consistent across all CMS properties.
   // System font stack was chosen to avoid having users download unnecessary fonts just for the banner.
-  --font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --font-family: 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial',
+    sans-serif;
   --heading__line-height: 1.1;
 
-  // Hardcoding colors to prevent themeing
+  // Hardcoding colors to prevent theming
   // Couldn't use util classes because each theme has a different color scheme
   --domain-icon__color: #0071bc; // ocean-500
   --security-icon__color: #12890e; // spring-500
 
   background-color: var(--usa-banner__background-color);
-  color: var(--usa-banner-color);
+
+  // Allow applications to override this color. We don't define this variable
+  color: var(--usa-banner-color, inherit);
   font-family: var(--font-family);
 }
 
 .ds-c-usa-banner__header,
 .ds-c-usa-banner__guidance-container {
+  --gutter-width: var(--usa-banner-gutter-width, var(--grid-gutter-width));
+
   margin-inline: auto;
-  max-width: var(--usa-banner__max-width);
-  padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
+
+  // Use `--usa-banner__max-width` if an application has provided a value or fall back to
+  // reading the `--usa-banner__no-max-width` boolean to determine decide if we should
+  // set the max width to the `--site-max-width`.
+  max-width: var(--usa-banner__max-width, var(--usa-banner__no-max-width, var(--site-max-width)));
+  padding-inline: calc(var(--gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
-    padding-inline: var(--usa-banner-gutter-width);
+    padding-inline: var(--gutter-width);
   }
 }
 
@@ -33,11 +42,10 @@
   // Applying display:grid to account for flag icon alignment with text elements in mobile/table viewports
   display: grid;
   gap: 2px 1ch;
+  grid-template: repeat(2, min-content) / 1.5em auto;
   grid-template-areas:
     'icon text'
     'spacer action';
-  grid-template-columns: 1.5em auto;
-  grid-template-rows: min-content min-content;
   line-height: var(--heading__line-height);
   min-height: 3rem;
   padding-block: 0.5rem;
@@ -56,6 +64,7 @@
   // Need to target viewport 1px larger than $media-width-md to ensure the layout is correct on the breakpoint
   @media (min-width: ($media-width-md + 1)) {
     align-items: center;
+
     // Changing display:grid to flex for larger viewports
     // The button goes from being a full-width element on mobile/tablet to something that looks like it's an inline link with text and needs to flow appropriately. Flex accomplishes this.
     display: flex;
@@ -88,6 +97,7 @@
   color: currentColor;
   height: 0.75em;
   margin-inline-start: 0.5ch;
+
   // Needed to overwrite the vertical alignment of the icon so the action text appears aligned with the banner text. Applied utility flex classes on the action text to re-implement vertical alignment.
   vertical-align: initial;
   width: 0.75em;
@@ -100,11 +110,20 @@
   inset: 0;
   inset-inline-start: initial;
   position: absolute;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  padding: 0;
+
   // Mobile/tablet, button is full-size of banner
   width: 100%;
 
   &:focus {
     @include mixins.focus-styles;
+
+    @media (max-width: ($media-width-md - 1px)) {
+      @include mixins.focus-styles-inset;
+    }
   }
 
   @media (min-width: $media-width-md) {
@@ -112,7 +131,6 @@
     grid-area: action;
     height: fit-content;
     line-height: 1.1;
-    padding: 0;
     position: relative;
     text-align: start;
     width: fit-content;
@@ -131,7 +149,7 @@
 // When these elements are visible, they should look the same
 .ds-c-usa-banner__action,
 .ds-c-usa-banner__button-text {
-  color: var(--usa-banner-link__color);
+  color: var(--usa-banner-link__color, var(--link__color));
   text-decoration: underline;
 }
 
@@ -139,12 +157,8 @@
   [aria-expanded='true'] & {
     background-color: var(--usa-banner-close-button__background-color--mobile);
     display: flex;
-    inset: 0;
-    inset-inline-start: initial;
-    min-height: 3rem;
     place-content: center;
     place-items: center;
-    position: absolute;
     width: 3rem;
 
     @media (min-width: $media-width-md) {
@@ -153,12 +167,14 @@
   }
 }
 
+/* stylelint-disable declaration-no-important -- This is needed to overwrite mgov's custom CSS targeting this particular icon's class */
 .ds-c-usa-banner__button-icon {
   color: var(--usa-banner-close-button__color--mobile);
-  font-size: inherit !important; // This is needed to overwrite mgov's custom CSS targeting this particular icon's class.
+  font-size: inherit !important;
   height: 1em;
   width: 1em;
 }
+/* stylelint-enable */
 
 .ds-c-usa-banner__guidance-container {
   padding-block: 3rem 1.5rem;

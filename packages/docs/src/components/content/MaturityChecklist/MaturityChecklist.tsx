@@ -1,4 +1,3 @@
-import React from 'react';
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
 import { Accordion, SvgIcon } from '@cmsgov/design-system';
 import AccordionItem from '../AccordionItem';

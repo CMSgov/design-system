@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import type * as React from 'react';
 import NativeDialog from '@cmsgov/design-system/src/components/NativeDialog/NativeDialog.tsx';
 import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
@@ -43,7 +44,7 @@ export interface FilterDialogProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user triggers an exit event, like by pressing the ESC key.
    * The parent of this component is responsible for showing or not showing the

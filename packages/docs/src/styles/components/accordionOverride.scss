@@ -2,9 +2,9 @@
 // SCSS file includes logic, but lacks variable values
 .ds-c-accordion {
   // Need to locally define variable values because Hgov variables are no longer being imported into the docs site
-  --accordion__background-color: #ffffff00;
+  --accordion__background-color: #fff0;
   --accordion-button__color: #0071bc;
-  --accordion-content__background-color: #ffffff00;
+  --accordion-content__background-color: #fff0;
   --accordion-icon__size: 0.875rem;
 
   .ds-c-accordion__button {
@@ -18,6 +18,7 @@
 
     &:hover {
       --ds-c-accordion__button__color: var(--color-primary-darker);
+
       text-decoration: underline;
 
       .ds-c-icon--minus-circle__circle,

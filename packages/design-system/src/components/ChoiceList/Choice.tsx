@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import type * as React from 'react';
 import EvEmitter from 'ev-emitter';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
@@ -43,6 +44,10 @@ export interface BaseChoiceProps {
    * Additional classes to be added to the root `div` element.
    */
   className?: string;
+  /**
+   * @hide-prop Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
+   */
+  _choiceChild?: boolean;
   /**
    * Additional classes to be added to the `input` element.
    */
@@ -97,7 +102,8 @@ const dsChoiceEmitter = new EvEmitter();
  * [checkbox](https://design.cms.gov/components/checkbox/) and
  * [radio](https://design.cms.gov/components/radio/) documentation pages.
  */
-export const Choice = (props: ChoiceProps) => {
+
+export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
   const initialCheckedState = props.checked ?? props.defaultChecked;
   const [internalCheckedState, setChecked] = useState(initialCheckedState);
   const isControlled = props.checked !== undefined;
@@ -111,8 +117,8 @@ export const Choice = (props: ChoiceProps) => {
 
   let errorId;
   let errorElement;
-  if (props.errorMessage) {
-    errorId = props.errorId ?? `${props.id}__error`;
+  if (!_choiceChild) {
+    errorId = props.errorId ?? `${id}__error`;
     errorElement = (
       <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
         {props.errorMessage}
@@ -195,6 +201,10 @@ export const Choice = (props: ChoiceProps) => {
       {checked ? checkedChildren : uncheckedChildren}
     </div>
   );
+};
+
+Choice.defaultProps = {
+  _choiceChild: false,
 };
 
 export default Choice;

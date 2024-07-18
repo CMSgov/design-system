@@ -28,12 +28,13 @@
 }
 
 .ds-c-autocomplete__menu-item-message {
-  color: var(--autocomplete-item-message__font-color);
+  color: var(--color-muted);
   padding: var(--text-input__padding);
 }
 
 .ds-c-autocomplete__menu-item--highlighted {
   @extend .ds-c-dropdown__menu-item--highlighted;
+
   @media (forced-colors: active) {
     background-color: Highlight;
     color: HighlightText;

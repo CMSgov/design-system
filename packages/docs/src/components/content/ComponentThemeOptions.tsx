@@ -1,4 +1,3 @@
-import React from 'react';
 import capitalize from 'lodash/capitalize';
 import uniqueId from 'lodash/uniqueId';
 import {
@@ -10,7 +9,7 @@ import {
   TableCaption,
 } from '@cmsgov/design-system';
 import ColorSwatch from './ColorSwatch';
-import { getComponentVariables, getThemeColorName, ThemeName } from '../../helpers/themeTokens';
+import { getComponentVariables, ThemeName } from '../../helpers/themeTokens';
 
 interface ComponentThemeOptionsProps {
   /**
@@ -24,31 +23,13 @@ interface ComponentThemeOptionsProps {
 }
 
 /**
- * Looks up the value found in the component mapping and returns where it maps to along with the specific
- * theme color variable name and swatch for colors.
- */
-const lookupThemeValue = (theme: string, value: string): any => {
-  const keyName = getThemeColorName(theme as ThemeName, value);
-  const elem = keyName ? (
-    <span>
-      <ColorSwatch colorTokenName={keyName} title={`hex value: ${value}`} />
-      <code>--color-{keyName}</code>
-    </span>
-  ) : (
-    <span>
-      <code>{value}</code>
-    </span>
-  );
-  return elem;
-};
-
-/**
  * Takes a js object with name-value pairs and creates a list of configuration configuration
  * options with values from the token component theme loaded.
  */
 const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsProps) => {
   componentname = componentname.toLowerCase();
   const componentVariables = getComponentVariables(theme as ThemeName, componentname);
+
   const componentOptions = (
     <Table scrollable stackable borderless>
       <TableCaption className="ds-u-visibility--screen-reader">
@@ -65,19 +46,24 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
         </TableRow>
       </TableHead>
       <TableBody role="rowgroup">
-        {Object.keys(componentVariables).map((key) => (
+        {componentVariables.map((variableInfo) => (
           <TableRow role="row" key={uniqueId('config_option_')}>
             <TableCell stackedTitle="Variable" headers="columnvariable">
-              <code className="ds-u-font-weight--bold">
-                --{componentname}
-                {key}
-              </code>
+              <code className="ds-u-font-weight--bold">{variableInfo.variableName}</code>
             </TableCell>
             <TableCell
               stackedTitle={`Default ${capitalize(theme)} Theme Value`}
               headers="columnthemevalue"
             >
-              {lookupThemeValue(theme, componentVariables[key])}
+              <span>
+                {variableInfo.resolvedToken.$type === 'color' && (
+                  <ColorSwatch
+                    fill={variableInfo.resolvedValue}
+                    title={`hex value: ${variableInfo.resolvedValue}`}
+                  />
+                )}
+                <code>{variableInfo.value}</code>
+              </span>
             </TableCell>
           </TableRow>
         ))}

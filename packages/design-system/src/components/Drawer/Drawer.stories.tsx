@@ -1,17 +1,24 @@
-import React from 'react';
-import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
+import { useState } from 'react';
+import { ArgsTable, Description, Subtitle, Title } from '@storybook/blocks';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
 import { Button } from '../Button';
 import type { Meta, StoryObj } from '@storybook/react';
-import { useArgs } from '@storybook/preview-api';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
   component: Drawer as any,
+  argTypes: {
+    backdropClickExits: {
+      // Until this pattern has solidified, we're not going to advertize this feature.
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text ds-u-margin--0">Footer content</p>,
+    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
     heading: 'Drawer Heading',
   },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
@@ -22,9 +29,10 @@ const meta: Meta<typeof Drawer> = {
           <Title />
           <Subtitle />
           <Description />
-          <ArgsTable />
+          <ArgsTable exclude={['backdropClickExits']} />
         </>
       ),
+      underlyingHtmlElements: ['dialog'],
     },
   },
 };
@@ -62,7 +70,11 @@ const drawerContent = (
 
 export const DrawerDefault: Story = {
   render: function Component(args) {
-    return <Drawer {...args}>{drawerContent}</Drawer>;
+    return (
+      <Drawer isOpen={true} {...args}>
+        {drawerContent}
+      </Drawer>
+    );
   },
 };
 export const DrawerWithStickyPositioning: Story = {
@@ -74,12 +86,16 @@ export const DrawerWithStickyPositioning: Story = {
 };
 
 export const DrawerToggleWithDrawer: Story = {
-  render: function Component() {
-    const [{ isDrawerVisible, ...args }, updateArgs] = useArgs();
-    const showDrawer = () => updateArgs({ isDrawerVisible: true });
+  render: function Component(args) {
+    const [drawerOpen, updateOpen] = useState(false);
+
+    const showDrawer = () => {
+      updateOpen(true);
+    };
+
     const hideDrawer = (...params) => {
       action('onCloseClick')(...params);
-      updateArgs({ isDrawerVisible: false });
+      updateOpen(false);
     };
 
     return (
@@ -88,9 +104,9 @@ export const DrawerToggleWithDrawer: Story = {
           {...args}
           onCloseClick={hideDrawer}
           footerTitle="Footer Title"
-          footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="Drawer Heading"
-          isOpen={isDrawerVisible ?? false}
+          isOpen={drawerOpen}
         >
           {drawerContent}
         </Drawer>

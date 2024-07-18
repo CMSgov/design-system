@@ -18,7 +18,8 @@ function getCurrentBranch() {
 function readLastPublishCommit() {
   const commitHash = getCurrentCommit();
   const commitMessage = sh('git log -1 --pretty=%B');
-  const tags = commitMessage.match(/@.*$/gm);
+  // Only make tags for the actual design system packages
+  const tags = commitMessage.match(/@cmsgov\/(?:design-system@|ds-).*$/gm);
 
   if (!tags) {
     throw Error('The previous commit was not a publish commit. Cannot read tags!');
@@ -143,8 +144,8 @@ function printNextSteps() {
 
 (async () => {
   // Get command line args
-  const argv = yargs(hideBin(process.argv))
-    .scriptName('npx release')
+  const argv = await yargs(hideBin(process.argv))
+    .scriptName('yarn release')
     .options({
       undo: {
         alias: 'u',

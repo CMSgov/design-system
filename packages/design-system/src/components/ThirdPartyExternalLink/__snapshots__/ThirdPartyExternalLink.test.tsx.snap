@@ -1,28 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ThirdPartyExternalLink Analytics event tracking overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "external_link_click",
+    "link_type": "link_external",
+    "link_url": "foo",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "other text",
+  },
+]
+`;
+
+exports[`ThirdPartyExternalLink Analytics event tracking sends analytics event when continue button is clicked 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "external_link_click",
+    "link_type": "link_external",
+    "link_url": "foo",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "External site linkThis link goes to an external site",
+  },
+]
+`;
+
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
+  aria-labelledby="dialog--8__heading"
   class="ds-c-dialog"
   id="dialog--8"
   open=""
   role="dialog"
-  style="z-index: 100149; top: 384px;"
+  tabindex="-1"
 >
   <div
-    aria-labelledby="dialog--8__heading"
     class="ds-c-dialog__window"
-    role="document"
-    tabindex="-1"
   >
-    <header
+    <div
       class="ds-c-dialog__header"
     >
-      <h1
+      <h2
         class="ds-c-dialog__heading"
         id="dialog--8__heading"
       >
         You are leaving bar.
-      </h1>
+      </h2>
       <button
         aria-label="Close modal dialog"
         class="ds-c-close-button ds-c-dialog__close"
@@ -30,19 +56,12 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         type="button"
       >
         <svg
-          aria-hidden="false"
-          aria-labelledby="dialog--8__close__icon__title"
+          aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
           id="dialog--8__close__icon"
-          role="img"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <title
-            id="dialog--8__close__icon__title"
-          >
-            Close
-          </title>
           <path
             d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
             fill="none"
@@ -52,21 +71,18 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           />
         </svg>
       </button>
-    </header>
-    <main
+    </div>
+    <div
       class="ds-c-dialog__body"
-      role="main"
     >
       <div
-        id="dialog-content"
+        id="dialog--8__content"
       >
         <p>
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
         </p>
         <p>
-          <a
-            href=""
-          >
+          <a>
             Learn more about links to third-party sites
           </a>
           .
@@ -88,7 +104,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
           Cancel
         </button>
       </div>
-    </main>
+    </div>
   </div>
 </dialog>
 `;

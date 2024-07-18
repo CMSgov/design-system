@@ -1,8 +1,4 @@
 {
-  "accordion": {
-    "close": "Close",
-    "open": "Open"
-  },
   "alert": {
     "defaultLabel": "Notice",
     "error": "Alert",
@@ -138,10 +134,6 @@
     "confirmationButtonText": "Continue",
     "cancelButtonText": "Cancel",
     "learnMoreText": "Learn more about links to third-party sites"
-  },
-  "verticalNav": {
-    "expand": "Expand sub-navigation",
-    "collapse": "Collapse sub-navigation"
   },
   "usaBanner": {
     "flagIconTitle": "U.S. Flag",

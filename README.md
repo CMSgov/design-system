@@ -40,13 +40,21 @@ These scripts can all be run from the root level of the repo:
   - This will also run [Lerna](https://lerna.js.org/) `bootstrap` which allows us to have multiple packages within the same repo (a monorepo). Lerna installs all our dependencies and symlinks any cross-dependencies.
 
 - `yarn build`
-  - Compile/transpile/uglify everything and makes things release-ready.
-  - `yarn build:healthcare` to build the Healthcare.gov Design System
-  - `yarn build:medicare` to build the Medicare.gov Design System
-- `yarn build:storybook:docs && yarn build:docs`
-
-  - Builds the docs site statically
-
+  - Compiles everything and makes things release-ready
+  - Building is required to get TypeScript completion for the core package in child design system packages
+- `yarn build:{core,cmsgov,healthcare,medicare}`
+  - Builds a specific brand of the design system and its corresponding package
+- `yarn build:docs`
+  - Statically builds a copy of the doc site
+  - You can then serve it with `yarn serve:docs`
+- `yarn build:storybook`
+  - Statically builds a copy of Storybook to `./storybook-static`
+  - You can then serve it with `yarn serve:storybook`
+  - For development, just use `yarn storybook`
+- `yarn build:examples`
+  - Statically builds a copy of the example projects in `./examples`
+  - You can then serve them with `yarn serve:examples`
+  - Alternatively you can build and run individual examples. See the README in [examples directory](examples/) for more details.
 - `yarn start`
   - Starts local server running the documentation site
   - Regenerates documentation when files change
@@ -58,17 +66,23 @@ These scripts can all be run from the root level of the repo:
   - Alias of `yarn test:unit`
 - `yarn test:unit`
   - Runs JS unit tests for all packages
-  - `yarn test:unit:update` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+  - `yarn test:unit -u` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+  - `yarn test:unit:preact` runs the unit tests in Preact mode
+  - `yarn test:unit:wc` runs the unit tests for the web components, which have to run in Preact mode
 - `yarn test:browser`
-  - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details.
-  - Note that you need to build Storybook statically (`yarn build:storybook`) before you can run the tests
-  - `yarn test:browser:update` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes
-  - `yarn test:browser --project <name>` runs only one of the named projects found in [playwright.config.ts](/tests/browser/playwright.config.ts)
+  - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details. This is the base command that defaults to the basic tests that cover Storybook stories, but we have several different kinds of browser tests under different sub-commands.
+  - Note that this command will [accept any arguments that Playwright accepts](https://playwright.dev/docs/test-cli).
+  - `yarn test:browser -u` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes. You can use this argument on any of the browser-test sub-commands to update snapshots for specific kinds of tests.
+  - `yarn test:browser --no-build` will skip building the tests' pre-requisites. This is useful if you've already done it and haven't made any changes to the source.
+  - `yarn test:browser --grep "Alert"` will only run tests with "Alert" in the name.
   - `yarn test:browser:interaction` runs VRT interaction tests to validate visual state of components after interaction.
-  - `yarn test:browser:all` runs all VRT, static and interactive.
-  - `yarn test:browser:storybook-docs` checks for regressions in prop tables in storybook docs
+  - `yarn test:browser:examples` runs VRT tests for our example projects.
+  - `yarn test:browser:storybook-docs` checks for regressions in prop tables in storybook docs.
+  - `yarn test:browser:all` runs all of our visual regression tests.
 - `yarn lint`
   - Runs just the linting portion of the tests, eslint and stylelint
+- `yarn type-check`
+  - Checks static TypeScript types. Note that the core package must build successfully for downstream type checks to work.
 - `yarn deploy-demo`
   - Builds the doc site locally and deploys it to a branch-specific path on GitHub Pages. The terminal will display the URL where the demo was deployed to after it is done running.
 - `yarn release`
@@ -80,30 +94,33 @@ These scripts can all be run from the root level of the repo:
 
 ### Visual regression testing
 
-We use [Playwright](https://playwright.dev/) to test our components for visual regressions. It uses our existing Storybook stories, taking screenshots of them within a docker container and comparing those screenshots with ones previously taken and committed to version control. The tests assume that Storybook has been built to `./storybook-static` using `yarn build:storybook`.
+We use [Playwright](https://playwright.dev/) to test our components for visual regressions. We have several suites of visual regression tests, but our main suite uses Storybook stories as references. These tests will load a story or other reference material, take a screenshot within a docker container (for consistency), and compare those screenshots with ones previously taken and committed to version control.
 
-Running the browser tests locally requires that you be signed into Docker or have playwright installed locally.
+Tests can be run in a docker container or out, but we only check in VRT reference images taken inside the docker container, because taking them outside of a container will produce inconsistent results from machine to machine. The reason you might run them outside of docker is if you're working on the tests themselves and want to run in headful mode so you can see what's happening and troubleshoot Note that updating the visual regression test reference images locally requires that you be signed into Docker.
 
-#### If using Docker:
+There are a lot of tests, so it can be helpful to constrain the tests you run locally by [using Playwright's `--grep` argument](https://playwright.dev/docs/test-cli).
 
-1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now)
+#### Updating the visual regression tests with Docker:
+
+1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now).
 2. Run `yarn test:browser` to begin comparing component images
-   1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected
-   2. If differences are detected and expected, run `yarn test:browser:update`
+   1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected.
+   2. If differences are detected and expected, run `yarn test:browser -u`, verify the changes, and then commit them.
 
-#### If running Locally:
+#### Development outside of Docker:
 
-**Note that running without using the docker image will occasionally throw false positives, depending on your system configuration. It's recommended that you utilize Docker when running DS visual regression tests.**
-
-1. If you have run `npx playwright install` and installed the playwright dependencies locally you can run the tests using their yarn commands directly.
-2. For example, to run the CMSDS VRT Tests for inteaction states: `yarn playwright test --config tests/browser/interaction.config.ts`
-3. The `-u` flag can be added to the `yarn playwright test` command to update snapshots.
+- Run any of the browser-test sub-commands with the `--no-docker` flag, like `yarn test:browser:examples --no-docker`.
+- If you've never installed Playwright, running the `yarn test:browser` command will prompt you to install it, which you will want to do. The reason we don't need it installed when running it in Docker is because the Docker image contains all of its own dependencies.
+- Because snapshots will probably fail outside of the Docker container, pass `--ignore-snapshots` if you want to just see that the tests execute properly.
+- You can turn off headless mode by using Playwright's `--headed` flag.
+- Playwright's `--debug` flag is another helpful argument because it will pause and allow you to step through the tests.
+- Don't forget that you can run a subset of tests by using Playwright's `--grep` argument.
+- Remember that passing `--no-build` will skip re-building the source material like Storybook stories if you haven't made any changes to them and are only changing the tests themselves.
+- Here's an example of a command you might run to debug the dropdown tests: `yarn test:browser:interaction --no-docker --no-build --headed --debug --ignore-snapshots --grep "Dropdown"`
 
 ## Design Assets
 
 The CMS Design System provides a Sketch file and Sketch Library containing components, styles, and symbols. These are regularly updated alongside our code, and updates are automatically synced for designers using the Sketch Library.
-
-[Read more on using Sketch with the CMS Design System](/design-assets/README.md)
 
 ## Examples
 

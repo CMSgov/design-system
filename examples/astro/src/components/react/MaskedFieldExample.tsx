@@ -1,0 +1,21 @@
+import { TextField } from '@cmsgov/design-system';
+
+function MaskedFieldExample() {
+  return (
+    <>
+      <h2>Masked Field Example</h2>
+      <TextField
+        ariaLabel="Enter monthly income amount in dollars."
+        labelClassName="ds-u-margin-top--0"
+        label="Currency"
+        mask="currency"
+        inputMode="numeric"
+        type="text"
+        name="currency_example"
+        defaultValue="2,500"
+      />
+    </>
+  );
+}
+
+export default MaskedFieldExample;

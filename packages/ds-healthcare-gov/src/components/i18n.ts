@@ -1,11 +1,11 @@
 /**
- * @file Adds translations to core translation module and exports the i18n-
- * related functions. We want components in this child design system that use
- * translation to import their translation functions from this module so we
- * get the side-effects of adding our package-specific translations. It's not
- * the cleanest way to do things, probably, but it's compatible with unit
- * tests and Storybook, which expect each component to get everything it
- * needs from its imports.
+ * @file Adds translations to core translation module and exports the i18n-related
+ * functions. We want components in this child design system that use translation to
+ * import their translation functions from this module so we get the side-effects of
+ * adding our package-specific translations. Note that even though the components in this
+ * child design system import their i18n functions directly from this module, we still
+ * need to declare that this module has side effects in our package.json in order to keep
+ * compilers from tree-shaking out the calls to `addTranslations`.
  */
 import en from './locale/en.json';
 import es from './locale/es.json';

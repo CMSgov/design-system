@@ -1,0 +1,35 @@
+---
+title: Release 10.1
+date: 2024-05-13
+intro: New web components, à la carte web component bundles, further bundle-size reductions, and analytics updates
+---
+
+We're happy to say that there are no breaking changes this time. This feature release focuses on adding to and improving our web components, further reducing the JavaScript required by our components, and supporting analytics changes for CMS application teams. As always, you can find more technical details in [our GitHub release notes](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%4010.1.0), but we've highlighted the big-ticket items below. Enjoy!
+
+## New web components
+
+We've been working on a fresh batch of web components! Here is the list of what's newly available in this release:
+
+- [`<ds-accordion>`](/storybook?path=/docs/web-components-ds-accordion--docs)
+- [`<ds-accordion-item>`](/storybook?path=/docs/web-components-ds-accordion-item--docs)
+- [`<ds-choice>`](/storybook?path=/docs/web-components-ds-choice--docs)
+- [`<ds-choice-list>`](/storybook?path=/docs/web-components-ds-choice-list--docs)
+- [`<ds-hint>`](/storybook?path=/docs/web-components-ds-hint--docs)
+- [`<ds-inline-error>`](/storybook?path=/docs/web-components-ds-inline-error--docs)
+- [`<ds-label>`](/storybook?path=/docs/web-components-ds-label--docs)
+- [`<ds-month-picker>`](/storybook?path=/docs/web-components-ds-month-picker--docs)
+- [`<ds-pagination>`](/storybook?path=/docs/web-components-ds-pagination--docs)
+- [`<ds-skip-nav>`](/storybook?path=/docs/web-components-ds-skip-nav--docs)
+- [`<ds-spinner>`](/storybook?path=/docs/web-components-ds-spinner--docs)
+
+## À la carte web component bundles
+
+Previously if you included the web components into your website through [our CDN](https://design.cms.gov/cdn/), your only option was to include every web component, which could be more JavaScript than you need. You still have the option of including them through one script tag, but we now provide an option for picking and choosing which web components you want to include. [Read the instructions for how to do so here](/getting-started/for-developers/#using-web-components).
+
+## Further bundle-size reductions
+
+In the 10.0 release, we [shared about some reductions to our bundle sizes](/blog/release-10.0#reduced-javascript-bundle-sizes) and mentioned some more that were coming up. We've included one of those larger reductions in this feature release, which cuts off another 5% from the previous release! You can read more about the technical details in the release notes.
+
+## Analytics updates
+
+Analytics updates are being made across various programs at CMS, and we've made changes to support them. Besides making requested updates to the analytics event objects, we've also added analytics capabilities to the [third-party external link](/components/third-party-external-link/) and [Healthcare footer](/components/footer/healthcare-footer/) components. Remember that all analytics must be opted into, and there are [instructions for turning on analytics here](/components/analytics/).

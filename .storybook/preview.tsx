@@ -1,15 +1,30 @@
 import './storybookStyles.scss';
-import React from 'react';
 import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
+import { action } from '@storybook/addon-actions';
 import { config } from '../packages/design-system/src/components/config';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
 import type { Preview } from '@storybook/react';
+import cmsTheme from './cmsTheme';
 
 // Rewire analytics events to log to the console
-(window as UtagContainer).utag = { link: console.log };
+let originalUtag;
+function mockUtag() {
+  originalUtag = (window as UtagContainer).utag;
+  (window as UtagContainer).utag = {
+    link: (event) => {
+      // Convert to JSON first so it can persist in logs between page loads, for testing
+      // analytics fired when a navigation occurs.
+      console.log(JSON.stringify(event, null, 2));
+      action('analytics event')(event);
+    },
+  };
+}
+function resetUtag() {
+  (window as UtagContainer).utag = originalUtag;
+}
 
 const breakpointViewportSizes = {
   extraSmall: {
@@ -104,7 +119,25 @@ const languageSettingDecorator = (Story, context) => {
 const analyticsSettingsDecorator = (Story, context) => {
   const { analytics } = context.globals;
 
-  const on = analytics === 'on';
+  let on = false;
+
+  if (analytics === 'on') {
+    // Make sure Tealium is loaded and hooked up
+    if ((window as any).tealiumEnvironment === undefined) {
+      delete (window as UtagContainer).utag;
+      (window as any).tealiumEnvironment = 'dev';
+      const newScript = document.createElement('script');
+      // This is the script that the analytics team wants us to use for testing for now
+      newScript.src = '//tags.tiqcdn.com/utag/cmsgov/healthcare-learn/dev/utag.js';
+      document.body.append(newScript);
+    } else {
+      resetUtag();
+    }
+    on = true;
+  } else if (analytics === 'log') {
+    mockUtag();
+    on = true;
+  }
 
   config({
     alertSendsAnalytics: on,
@@ -112,6 +145,8 @@ const analyticsSettingsDecorator = (Story, context) => {
     dialogSendsAnalytics: on,
     helpDrawerSendsAnalytics: on,
     headerSendsAnalytics: on,
+    footerSendsAnalytics: on,
+    thirdPartyExternalLinkSendsAnalytics: on,
   });
 
   return <Story {...context} />;
@@ -138,7 +173,8 @@ const preview: Preview = {
       toolbar: {
         icon: 'graphline',
         items: [
-          { value: 'on', title: 'Log to Actions' },
+          { value: 'log', title: 'Log to Actions (Debug)' },
+          { value: 'on', title: 'On (Live)' },
           { value: 'off', title: 'Off' },
         ],
       },
@@ -157,7 +193,7 @@ const preview: Preview = {
     },
   },
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
+    actions: { argTypesRegex: '^on(?!AnalyticsEvent)[A-Z].*' },
     backgrounds: { disable: true },
     controls: {
       expanded: true,
@@ -171,6 +207,7 @@ const preview: Preview = {
     },
     docs: {
       page: DocumentationTemplate,
+      theme: cmsTheme,
     },
   },
   decorators: [

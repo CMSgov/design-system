@@ -34,10 +34,10 @@ html:focus-within {
 
 body {
   background-color: var(--color-background);
-  color: var(--color-base);
-  font-family: var(--typography-body__font-family);
-  font-size: var(--font-size-base);
-  line-height: var(--font-line-height-base);
+  color: var(--global__color);
+  font-family: var(--global__font-family);
+  font-size: var(--global__font-size);
+  line-height: var(--global__line-height);
   margin: 0;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -138,6 +138,7 @@ ul:not(:where([role])) {
   // `gap` ensures even spacing and doesn't interfere with layout
   // if list given a `row` direction
   @include mixins.flex-list;
+
   margin-block: 1em 0;
   padding-inline-start: 2em;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FunctionComponent } from 'react';
 import { useId } from '@cmsgov/design-system';
 
@@ -14,7 +13,7 @@ export interface MedicaregovLogoProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/logos/medicare-logo/?theme=medicare).
  */
-const MedicaregovLogo: FunctionComponent<MedicaregovLogoProps> = ({
+export const MedicaregovLogo: FunctionComponent<MedicaregovLogoProps> = ({
   width = '273',
   height = '39',
   className = '',

@@ -1,30 +1,38 @@
 // @styles is aliased in gatsby-node.js
 @import '@styles/layout';
-@import '@styles/index.scss';
+@import '@styles/index';
+@import 'pages/contact';
+@import 'pages/layout';
+@import 'pages/search';
+@import 'components/accordionOverride';
+@import 'components/buttonMigrationTable';
+@import 'components/buttonVariationsTable';
+@import 'components/codeSnippet';
+@import 'components/colorExampleRow';
+@import 'components/colorSwatch';
+@import 'components/colorRamps';
+@import 'components/colorMigrationTable';
+@import 'components/embeddedExamples';
+@import 'components/exampleGrid';
+@import 'components/filterDialog';
+@import 'components/footer';
+@import 'components/maturityChecklist';
+@import 'components/navigation';
+@import 'components/pageHeader';
+@import 'components/responsiveExample';
+@import 'components/storybookExample';
+@import 'components/syntaxHighlighting';
+@import 'components/textColorList';
+@import 'components/tableOfContents';
+@import 'components/spacingUtilityExampleList';
+@import 'components/video';
 
-@import 'pages/contact.scss';
-@import 'pages/layout.scss';
-@import 'pages/search.scss';
+/* stylelint-disable no-invalid-position-at-import-rule -- Theming imported after base styles */
+[data-theme='healthcare'] {
+  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
+}
 
-@import 'components/accordionOverride.scss';
-@import 'components/buttonMigrationTable.scss';
-@import 'components/buttonVariationsTable.scss';
-@import 'components/codeSnippet.scss';
-@import 'components/colorExampleRow.scss';
-@import 'components/colorSwatch.scss';
-@import 'components/colorRamps.scss';
-@import 'components/colorMigrationTable.scss';
-@import 'components/embeddedExamples.scss';
-@import 'components/exampleGrid.scss';
-@import 'components/filterDialog.scss';
-@import 'components/footer.scss';
-@import 'components/maturityChecklist.scss';
-@import 'components/navigation.scss';
-@import 'components/pageHeader.scss';
-@import 'components/responsiveExample.scss';
-@import 'components/storybookExample.scss';
-@import 'components/syntaxHighlighting.scss';
-@import 'components/textColorList.scss';
-@import 'components/tableOfContents.scss';
-@import 'components/spacingUtilityExampleList.scss';
-@import 'components/video.scss';
+[data-theme='medicare'] {
+  @import '@cmsgov/ds-medicare-gov/src/styles/components/index';
+}
+/* stylelint-enable */

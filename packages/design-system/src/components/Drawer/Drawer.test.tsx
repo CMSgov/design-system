@@ -1,4 +1,3 @@
-import React from 'react';
 import Drawer from './Drawer';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -38,15 +37,6 @@ describe('Drawer', () => {
     expect(screen.queryByRole('dialog')).toBe(null);
     rerenderDrawer({ isOpen: true });
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
-  });
-
-  // TODO: Remove this when we remove this functionality in v10
-  it('opens if the isOpen prop is undefined', () => {
-    const warn = jest.spyOn(console, 'warn').mockImplementation(() => null);
-    renderDrawer({ isOpen: undefined });
-    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
-    expect(warn).toHaveBeenCalled();
-    warn.mockReset();
   });
 
   describe('onCloseClick', () => {

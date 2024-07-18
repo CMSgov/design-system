@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '@cmsgov/design-system';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 import ExampleFooter from './ExampleFooter';

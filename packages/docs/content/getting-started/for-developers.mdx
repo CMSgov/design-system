@@ -299,7 +299,7 @@ Design system styles can be broken down into the following categories:
 
 Most of our CSS classes follow a specific naming pattern, outlined below:
 
-<div className="ds-u-measure--wide ds-u-margin-top--2">
+<div className="ds-u-margin-top--2">
   <img
     src={namingConventionsImg}
     alt="Diagram explaining the parts of an example CSS class '.ds-c-button--outline' where DS is namespace, C is the type prefix, and the rest follows BEM syntax"
@@ -412,6 +412,13 @@ import { Button, TextField } from 'ds-medicare-gov/preact';
 ### Using web components
 
 We've also begun offering [web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) as a framework-agnostic alternative to our React or Preact components. We will be working on expanding this library over time, but at a moment only a subset of our JavaScript components are represented in this library. The easiest way to consume these components is by [loading them from the CDN](https://github.com/CMSgov/design-system/tree/main/examples/cdn-web-components); however, they can also be installed via npm and imported by appending `/web-components` to your import path.
+
+From the CDN, there are two ways of importing the web components:
+
+1. Import all of them at once using the `all.js` file.
+2. Pick and choose which ones you want by importing the `base.js` file first and then the file that matches the component you want to use (like `ds-alert.js`).
+
+See further instructions for both of these on your version's [CDN](https://design.cms.gov/cdn/) page.
 
 ### Applying component CSS classes manually
 

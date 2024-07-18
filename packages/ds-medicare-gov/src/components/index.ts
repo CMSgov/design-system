@@ -1,17 +1,21 @@
 /**
- * This is the main entry file for a child design system's React components.
- * It should contain all exported JS from the core CMS design system
- * and all additional child design system code.
- *
- * The CMSDS build scripts rely on this entry file's location (`src/components/index.js`) to generate
- * CommonJS (`dist/components/`)  and ES module (`dist/esnext/`) versions of components.
- * ES modules code is necessary for webpack tree shaking bundle optimizations
+ * This is the main entry file for a child design system's React components. It should
+ * contain all exported JS from the core CMS design system and all additional child
+ * design system code.
  */
+
+// Export everything from the core design system
 export * from '@cmsgov/design-system';
 
-export { default as MedicaregovLogo } from './MedicaregovLogo';
-export { default as SimpleFooter } from './SimpleFooter';
-export { default as Card } from './Card';
-export { default as Stars } from './Stars';
-export * from './HelpDrawer';
+// Export new components that are specific to this child design system
+export * from './MedicaregovLogo';
+export * from './SimpleFooter';
+export * from './Card';
+export * from './Stars';
 export * from './Icons';
+
+// The following modules have side effects and must be accounted for in the package
+// file's `sideEffects` property in order for build systems to know not to tree-shake
+// these modules out of bundles.
+import './HelpDrawer';
+import './ThirdPartyExternalLink';

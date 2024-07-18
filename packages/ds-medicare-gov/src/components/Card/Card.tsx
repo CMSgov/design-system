@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { FunctionComponent } from 'react';
 
 interface CardProps {
@@ -12,7 +12,7 @@ interface CardProps {
   className?: string;
 }
 
-const Card: FunctionComponent<CardProps> = ({ children, className }: CardProps) => {
+export const Card: FunctionComponent<CardProps> = ({ children, className }: CardProps) => {
   return <div className={`m-c-card ${className}`}>{children}</div>;
 };
 

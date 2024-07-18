@@ -6,17 +6,20 @@
 }
 
 .ds-c-accordion__heading {
-  margin-block-start: 0;
+  font: inherit;
+  margin-block: 0;
+}
 
-  &:not(:first-child) {
-    margin-block-start: $spacer-1;
-  }
+.ds-c-accordion__heading:not(:first-child),
+ds-accordion-item:not(:first-child) {
+  margin-block-start: $spacer-1;
 }
 
 .ds-c-accordion__button {
   background-color: var(--accordion__background-color);
   border: 0;
-  border-radius: var(--accordion__border-radius);
+  border-radius: var(--accordion__border-top-left-radius) var(--accordion__border-top-right-radius)
+    var(--accordion__border-bottom-right-radius) var(--accordion__border-bottom-left-radius);
   color: var(--accordion-button__color);
   display: flex;
   font-weight: var(--font-weight-bold);
@@ -71,6 +74,7 @@
   > :first-child {
     margin-block-start: 0;
   }
+
   > :last-child {
     margin-block-end: 0;
   }

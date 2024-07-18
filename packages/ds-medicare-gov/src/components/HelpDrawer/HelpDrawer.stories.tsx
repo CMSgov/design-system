@@ -1,19 +1,41 @@
-import React, { useState } from 'react';
-import HelpDrawerToggle from './HelpDrawerToggle';
-import HelpDrawer from './HelpDrawer';
+import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
+import { useState } from 'react';
 // Need this in order for the generated ArgsTable to work
 import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
+import { HelpDrawer } from './HelpDrawer';
+import { HelpDrawerToggle } from './HelpDrawerToggle';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Medicare/HelpDrawer',
   component: CoreHelpDrawer,
+  argTypes: {
+    // @ts-ignore - Types are messed up for this story
+    backdropClickExits: {
+      // Until this pattern has solidified, we're not going to advertize this feature.
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     heading: 'Drawer Heading',
   },
   parameters: {
     theme: 'medicare',
+    docs: {
+      // Customize so we can exclude the backdropClickExits
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <ArgsTable exclude={['backdropClickExits']} />
+        </>
+      ),
+    },
   },
 };
 export default meta;

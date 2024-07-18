@@ -1,6 +1,6 @@
-import React from 'react';
+import type * as React from 'react';
 import { useRef, useEffect, useLayoutEffect, DialogHTMLAttributes } from 'react';
-import dialogPolyfill from './polyfill';
+import { shimDialogElement } from './shim';
 
 export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement>, 'children'> {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Function called to close dialog.
    */
@@ -46,18 +46,19 @@ export const NativeDialog = ({
   const dialogRef = useRef(null);
 
   if (isOpen === undefined) {
+    const missingPropMessage =
+      "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility.";
     if (process.env.NODE_ENV !== 'production') {
-      console.warn(
-        "The 'isOpen' prop is now used to control the state of Dialogs and Drawers. Please do not conditionally render these components to control their state. All Dialogs and Drawers will become invisible without this prop in the next major release. Using this prop will fix a focus-management issue that affects accessibility."
-      );
+      throw new Error(missingPropMessage);
+    } else {
+      console.error(missingPropMessage);
+      isOpen = true;
     }
-    isOpen = true;
   }
 
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
-    // The registerDialog function itself determines if the polyfill needs to be applied
-    dialogPolyfill.registerDialog(dialogRef.current);
+    shimDialogElement(dialogRef.current);
   });
 
   // Call imperative show and close functions on mount/unmount
@@ -71,6 +72,11 @@ export const NativeDialog = ({
     if (isOpen) {
       if (!dialogNode.open) {
         showModal ? dialogNode.showModal() : dialogNode.show();
+        // For a11y reasons, focus needs to be specified:
+        // 1. `<dialog>` receives focus first
+        // 2. `<dialog>` close button receives focus next
+        // 3. If `<dialog>` has some sorta sticky positioning requiring keyboard navigation, that wrapping element should receive focus next.
+        dialogNode.focus();
       }
     } else {
       if (dialogNode.open) {
@@ -120,7 +126,7 @@ export const NativeDialog = ({
   }, [exit, backdropClickExits]);
 
   return (
-    <dialog ref={dialogRef} {...dialogProps}>
+    <dialog ref={dialogRef} {...dialogProps} tabIndex={-1}>
       {children}
     </dialog>
   );

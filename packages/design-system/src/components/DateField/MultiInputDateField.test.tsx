@@ -1,7 +1,7 @@
-import React from 'react';
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
 import { MultiInputDateField } from './MultiInputDateField';
 import defaultDateFormatter from './defaultDateFormatter';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
 describe('MultiInputDateField', () => {
@@ -34,6 +34,26 @@ describe('MultiInputDateField', () => {
       expect(input).toHaveAttribute('pattern', '[0-9]*');
       expect(input).toHaveAttribute('type', 'text');
     });
+  });
+
+  it('accepts a custom dateFormatter', () => {
+    const dateFormatter = ({ day, month, year }) => `${year}-${month}-${day}`;
+    const onChange = jest.fn();
+    render(
+      <MultiInputDateField
+        label="hi"
+        dateFormatter={dateFormatter}
+        monthValue=""
+        dayValue="3"
+        yearValue="1111"
+        onChange={onChange}
+      />
+    );
+
+    const monthInput = screen.getByLabelText(/month/i);
+    userEvent.type(monthInput, '2');
+
+    expect(onChange.mock.calls[0][1]).toEqual('1111-2-3');
   });
 
   describe('defaultDateFormatter', () => {

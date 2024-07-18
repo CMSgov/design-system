@@ -1,4 +1,3 @@
-import React from 'react';
 import ColorExampleRow, { ColorExampleRowProps } from '../ColorExampleRow';
 
 const nullBefore = <div className="ds-u-text-align--center">did not exist</div>;

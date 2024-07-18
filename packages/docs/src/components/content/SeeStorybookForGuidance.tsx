@@ -1,4 +1,3 @@
-import React from 'react';
 import { withPrefix } from 'gatsby';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 

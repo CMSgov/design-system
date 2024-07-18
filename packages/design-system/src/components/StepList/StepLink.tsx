@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 export interface StepLinkComponentProps {
   href?: string;
   onClick: (event: React.SyntheticEvent<any>) => any;
@@ -16,7 +16,7 @@ export interface StepLinkProps {
   screenReaderText?: string;
   className?: string;
   onClick?: (href?: string, stepId?: string) => any;
-  component?: React.ComponentType<StepLinkComponentProps> | keyof JSX.IntrinsicElements;
+  component?: React.ComponentType<StepLinkComponentProps> | 'a';
 }
 
 export const StepLink = (props: StepLinkProps) => {

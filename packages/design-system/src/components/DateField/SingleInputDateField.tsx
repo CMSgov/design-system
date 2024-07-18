@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import type * as React from 'react';
 import CustomDayPicker from './CustomDayPicker';
 import classNames from 'classnames';
 import cleanFieldProps from '../utilities/cleanFieldProps';
 import describeField from '../utilities/describeField';
-import isMatch from 'date-fns/isMatch';
+import { isMatch } from 'date-fns';
 import mergeIds from '../utilities/mergeIds';
 import useLabelMask from '../TextField/useLabelMask';
 import useClickOutsideHandler from '../utilities/useClickOutsideHandler';

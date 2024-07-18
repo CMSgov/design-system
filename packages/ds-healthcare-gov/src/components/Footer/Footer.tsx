@@ -1,8 +1,7 @@
-import React from 'react';
+import type * as React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
-import { t } from '../i18n';
 
 export interface FooterProps {
   /**
@@ -29,6 +28,10 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
+  /**
+   * CSS classes to apply to the logo element
+   */
+  logoClassName?: string;
 }
 
 /**
@@ -41,8 +44,8 @@ export const Footer = (props: FooterProps) => {
   return (
     <footer className={classes} role="contentinfo">
       {props.footerTop}
-      <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={t} />
+      <InlineLinkLists primaryDomain={props.primaryDomain} />
+      <LogosRow logoClassName={props.logoClassName} />
     </footer>
   );
 };

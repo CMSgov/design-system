@@ -4,5 +4,3 @@ ThirdPartyExternalLink.defaultProps = {
   ...ThirdPartyExternalLink.defaultProps,
   learnMoreUrl: 'https://www.healthcare.gov/links-to-other-sites/',
 };
-
-export default ThirdPartyExternalLink;

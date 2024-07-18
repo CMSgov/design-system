@@ -1,9 +1,7 @@
-import React from 'react';
 import humanizeList from 'humanize-react';
 import { useOf } from '@storybook/blocks';
 
 interface HtmlElementArgsProps {
-  attributes?: boolean;
   of?: any;
 }
 
@@ -13,10 +11,10 @@ interface HtmlElementArgsProps {
  * additional attributes for those HTML elements in our props table, we will add
  * some explanatory text with MDN documentation links to the bottom of our props
  * table. Looks for a `underlyingHtmlElements` array in `story.parameters.docs` to
- * determine if it should show this addtional text and what elements' documentation
+ * determine if it should show this additional text and what elements' documentation
  * it should link to.
  */
-export const HtmlElementArgs = ({ attributes, of }) => {
+export const HtmlElementArgs = ({ of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;
@@ -38,7 +36,7 @@ export const HtmlElementArgs = ({ attributes, of }) => {
 
   return (
     <>
-      <h3 id="additional-props">Additional {attributes ? 'attributes' : 'props'}</h3>
+      <h3 id="additional-props">Additional props</h3>
       <p>
         This component passes any additional props to its underlying {formattedElementNames} element
         as attributes. See the corresponding MDN documentation for {formattedElementLinks} for a

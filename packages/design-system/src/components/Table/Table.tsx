@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
+import type * as React from 'react';
 import Alert from '../Alert/Alert';
 import TableCaption from './TableCaption';
 import TableContext from './TableContext';
@@ -10,7 +11,7 @@ import useId from '../utilities/useId';
  * Determine if a ReactNode is a TableCaption
  */
 function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
-  if (!child || !React.isValidElement(child)) {
+  if (!child || !isValidElement(child)) {
     return false;
   }
 
@@ -100,7 +101,8 @@ export const Table = ({
   ...tableProps
 }: TableProps) => {
   const [scrollActive, setScrollActive] = useState(false);
-  const captionId = useId('table-caption--', id);
+  const fallbackCaptionId = useId('table-caption--');
+  const captionId = id ? `${id}__caption` : fallbackCaptionId;
 
   if (process.env.NODE_ENV !== 'production') {
     if (
@@ -157,11 +159,11 @@ export const Table = ({
   };
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
-  const renderedChildren = React.Children.map(children, (child: React.ReactElement) => {
+  const renderedChildren = Children.map(children, (child: React.ReactElement) => {
     if (isTableCaption(child)) {
       // Extend props on TableCaption before rendering.
       if (scrollable) {
-        return React.cloneElement(child, {
+        return cloneElement(child, {
           _id: captionId,
           _scrollActive: scrollActive,
           _scrollableNotice: scrollableNotice,
@@ -173,7 +175,7 @@ export const Table = ({
 
   const table = (
     <TableContext.Provider value={contextValue}>
-      <table className={classes} {...tableProps}>
+      <table className={classes} id={id} {...tableProps}>
         {renderedChildren}
       </table>
     </TableContext.Provider>

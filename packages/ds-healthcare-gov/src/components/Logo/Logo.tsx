@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import LogoEnSvg from './LogoEnSvg';
 import LogoEsSvg from './LogoEsSvg';

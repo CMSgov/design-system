@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 
 interface ReactDocsLinkProps {

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';

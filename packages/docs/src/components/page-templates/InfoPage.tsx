@@ -1,4 +1,3 @@
-import React from 'react';
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
 import avoidRefresh from '../../helpers/avoidRefresh';

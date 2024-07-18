@@ -7,23 +7,6 @@
   display: flex;
   padding: var(--alert__padding);
 
-  a:not(.ds-c-button),
-  .ds-c-link {
-    color: var(--alert-link__font-color);
-
-    &:hover {
-      color: var(--alert-link__font-color--hover);
-    }
-
-    &:focus {
-      color: var(--alert-link__font-color--focus);
-    }
-
-    &:active {
-      color: var(--alert-link__font-color--active);
-    }
-  }
-
   ul {
     &:last-child {
       margin-block-end: 0;
@@ -56,6 +39,7 @@
     padding: 0 !important;
     position: relative !important;
     width: auto !important;
+
     // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
     word-wrap: normal !important;
     /* stylelint-enable */
@@ -66,10 +50,15 @@
   display: flex;
 }
 
-.ds-c-alert__icon {
+.ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--alert__icon-size);
+
+  // Make height and width directly relative to the font size so the alert icon-size
+  // variable can be used accurately in Figma too.
+  height: 1em;
   margin-inline-start: $spacer-1;
+  width: 1em;
 }
 
 .ds-c-alert__body {

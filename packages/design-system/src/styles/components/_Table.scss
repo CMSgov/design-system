@@ -50,16 +50,9 @@
 }
 
 .ds-c-table--striped {
-  thead {
-    th,
-    tr {
-      background-color: var(--table-striped-header__background-color);
-    }
-  }
-
   tbody {
     tr:nth-child(even) {
-      background-color: var(--table-striped__background-color);
+      background-color: var(--table__background-color--striped);
     }
 
     tr:nth-child(odd)::before {

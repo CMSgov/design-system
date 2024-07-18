@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, DialogHTMLAttributes } from 'react';
+import { useEffect, useRef, DialogHTMLAttributes } from 'react';
+import type * as React from 'react';
 import CloseButton from '../CloseButton/CloseButton';
 import NativeDialog from '../NativeDialog/NativeDialog';
 import classNames from 'classnames';
@@ -55,11 +56,7 @@ export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
-  /**
-   * This function is called after the modal opens
-   */
-  onEnter?(): void;
+  isOpen: boolean;
   /**
    * Called when the user triggers an exit event, like by clicking the close
    * button or pressing the ESC key. The parent of this component is
@@ -87,7 +84,6 @@ export const Dialog = (props: DialogProps) => {
     alert,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ariaCloseLabel,
     children,
@@ -95,7 +91,6 @@ export const Dialog = (props: DialogProps) => {
     headerClassName,
     heading,
     id,
-    onEnter,
     onExit,
     size,
     ...modalProps
@@ -104,16 +99,13 @@ export const Dialog = (props: DialogProps) => {
   const rootId = useId('dialog--', id);
   const headingRef = useDialogAnalytics(props);
   const headingId = `${rootId}__heading`;
+  const contentId = `${rootId}__content`;
 
   const dialogClassNames = classNames('ds-c-dialog', className, size && `ds-c-dialog--${size}`);
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
   const containerRef = useRef<HTMLDivElement>();
-
-  useEffect(() => {
-    if (onEnter) onEnter();
-  }, []);
 
   // Set initial focus
   useEffect(() => {
@@ -130,31 +122,27 @@ export const Dialog = (props: DialogProps) => {
       {...modalProps}
       id={rootId}
       boundingBoxRef={containerRef}
+      aria-labelledby={headingId}
     >
-      <div
-        className="ds-c-dialog__window"
-        role="document"
-        ref={containerRef}
-        tabIndex={-1}
-        aria-labelledby={headingId}
-      >
-        <header className={headerClassNames}>
+      <div className="ds-c-dialog__window" ref={containerRef}>
+        <div className={headerClassNames}>
           {heading && (
-            <h1 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
+            <h2 className="ds-c-dialog__heading" id={headingId} ref={headingRef}>
               {heading}
-            </h1>
+            </h2>
           )}
           <CloseButton
             aria-label={ariaCloseLabel ?? t('dialog.ariaCloseLabel')}
+            ariaHidden={true}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
             onClick={onExit}
           />
-        </header>
-        <main role="main" className="ds-c-dialog__body">
-          <div id="dialog-content">{children}</div>
+        </div>
+        <div className="ds-c-dialog__body">
+          <div id={contentId}>{children}</div>
           {actions && <div className={actionsClassNames}>{actions}</div>}
-        </main>
+        </div>
       </div>
     </NativeDialog>
   );

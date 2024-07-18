@@ -13,7 +13,7 @@ function writeJson(filename: string, json: { [key: string]: any }) {
   writeFileSync(filename, JSON.stringify(json, null, 2));
 }
 
-function getPackageVersion(packageName: string): string {
+export function getPackageVersion(packageName: string): string {
   const packageFileName = path.join(root, 'packages', packageName, 'package.json');
   const packageData = readJson(packageFileName);
   return packageData.version;

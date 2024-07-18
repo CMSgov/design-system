@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-healthcare-gov",
-  "version": "13.0.0",
+  "version": "14.1.2",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -39,14 +39,24 @@
   "main": "dist/react-components/cjs/index.js",
   "module": "dist/react-components/esm/index.js",
   "types": "dist/react-components/types/index.d.ts",
-  "sideEffects": true,
+  "sideEffects": [
+    "./src/components/web-components/**/*",
+    "./dist/preact-components/esm/web-components/**/*.js",
+    "./dist/web-components/**/*.js",
+    "./dist/{react,preact}-components/esm/index.js",
+    "./dist/{react,preact}-components/esm/config.js",
+    "./dist/{react,preact}-components/esm/i18n.js",
+    "./src/components/i18n.ts",
+    "./dist/{react,preact}-components/esm/Accordion/*.js",
+    "./src/components/Accordion/*",
+    "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*.js"
+  ],
   "files": [
     "dist",
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "9.0.0",
-    "@types/js-cookie": "^3.0.2",
+    "@cmsgov/design-system": "10.1.2",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^17.0.10",
     "classnames": "^2.2.5"

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Accordion } from '@cmsgov/design-system';
 import AccordionItem from '../content/AccordionItem';
 import {
