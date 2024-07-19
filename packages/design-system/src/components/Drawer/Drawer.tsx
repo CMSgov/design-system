@@ -54,7 +54,7 @@ export interface DrawerProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * Called when the user activates the close button or presses the ESC key if
    * focus trapping is enabled. The parent of this component is responsible for
@@ -99,12 +99,13 @@ export const Drawer = (props: DrawerProps) => {
     <NativeDialog
       className={classNames(className, 'ds-c-drawer')}
       exit={onCloseClick}
-      showModal={true}
+      showModal={hasFocusTrap}
       backdropClickExits={backdropClickExits}
       isOpen={isOpen}
+      aria-labelledby={headingId}
       {...otherProps}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={headingId}>
+      <div className="ds-c-drawer__window" tabIndex={isFooterSticky && -1}>
         <div className="ds-c-drawer__header">
           <Heading
             id={headingId}

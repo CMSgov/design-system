@@ -56,7 +56,7 @@ describe('parse', () => {
         expect(slots).toEqual({ [testKey]: slotValue });
       });
 
-      it('should ignore slots of nested custom elements>', () => {
+      it('should ignore slots of nested custom elements', () => {
         const testHtml = `
           <section>
             <div slot="parent-slot">Hello</div>

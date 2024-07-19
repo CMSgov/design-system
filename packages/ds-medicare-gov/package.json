@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-medicare-gov",
-  "version": "12.0.0",
+  "version": "12.1.2",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
@@ -47,14 +47,18 @@
   "sideEffects": [
     "./src/components/web-components/**/*",
     "./dist/preact-components/esm/web-components/**/*.js",
-    "./dist/web-components/**/*.js"
+    "./dist/web-components/**/*.js",
+    "./dist/{react,preact}-components/esm/index.js",
+    "./dist/{react,preact}-components/esm/HelpDrawer/*",
+    "./src/components/HelpDrawer/*",
+    "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*"
   ],
   "files": [
     "dist",
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "10.0.0",
+    "@cmsgov/design-system": "10.1.2",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0"
   }

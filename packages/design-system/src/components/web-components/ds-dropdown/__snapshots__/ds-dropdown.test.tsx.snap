@@ -9,12 +9,18 @@ exports[`Dropdown renders a dropdown 1`] = `
     <div
       class="ds-c-dropdown"
     >
-      <label
-        class="ds-c-label"
-        id="dropdown__button--1__label"
+      <div
+        class="ds-c-label ds-c-dropdown__label"
+        id="dropdown--1__label"
       >
         Dropdown label
-      </label>
+      </div>
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        class="ds-c-inline-error"
+        id="dropdown--1__error"
+      />
       <div
         aria-hidden="true"
         data-a11y-ignore="aria-hidden-focus"
@@ -52,20 +58,20 @@ exports[`Dropdown renders a dropdown 1`] = `
         </label>
       </div>
       <button
-        aria-controls="dropdown__button--1__menu"
+        aria-controls="dropdown--1__menu"
         aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-invalid="false"
-        aria-labelledby="dropdown__button--1__button-content dropdown__button--1__label"
+        aria-labelledby="dropdown--1__button-content dropdown--1__label"
         class="ds-c-dropdown__button ds-c-field"
-        id="dropdown__button--1"
+        id="dropdown--1"
         parent="[object HTMLElement]"
         type="button"
       >
         <span
           class="ds-c-dropdown__label-text"
-          id="dropdown__button--1__button-content"
+          id="dropdown--1__button-content"
         >
           Option 1
         </span>
@@ -98,12 +104,18 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
     <div
       class="ds-c-dropdown"
     >
-      <label
-        class="ds-c-label"
-        id="dropdown__button--5__label"
+      <div
+        class="ds-c-label ds-c-dropdown__label"
+        id="dropdown--5__label"
       >
         Dropdown label
-      </label>
+      </div>
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        class="ds-c-inline-error"
+        id="dropdown--5__error"
+      />
       <div
         aria-hidden="true"
         data-a11y-ignore="aria-hidden-focus"
@@ -146,20 +158,20 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         </label>
       </div>
       <button
-        aria-controls="dropdown__button--5__menu"
+        aria-controls="dropdown--5__menu"
         aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-invalid="false"
-        aria-labelledby="dropdown__button--5__button-content dropdown__button--5__label"
+        aria-labelledby="dropdown--5__button-content dropdown--5__label"
         class="ds-c-dropdown__button ds-c-field"
-        id="dropdown__button--5"
+        id="dropdown--5"
         parent="[object HTMLElement]"
         type="button"
       >
         <span
           class="ds-c-dropdown__label-text"
-          id="dropdown__button--5__button-content"
+          id="dropdown--5__button-content"
         >
           Option A-1
         </span>

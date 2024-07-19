@@ -1,5 +1,5 @@
 import { render, cleanup } from '@testing-library/react';
-import MedicaregovLogo from './MedicaregovLogo';
+import { MedicaregovLogo } from './MedicaregovLogo';
 
 afterEach(cleanup);
 

@@ -1,9 +1,9 @@
 import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
-import HelpDrawerToggle from './HelpDrawerToggle';
-import HelpDrawer from './HelpDrawer';
 // Need this in order for the generated ArgsTable to work
 import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
+import { HelpDrawer } from './HelpDrawer';
+import { HelpDrawerToggle } from './HelpDrawerToggle';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 

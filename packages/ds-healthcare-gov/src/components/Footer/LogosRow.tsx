@@ -3,7 +3,11 @@ import { Logo as HCgovLogo } from '../Logo';
 import { getLanguage } from '@cmsgov/design-system';
 import { t } from '../i18n';
 
-const LogosRow = function () {
+interface LogosRowProps {
+  logoClassName?: string;
+}
+
+const LogosRow = function (props: LogosRowProps) {
   return (
     <div className="ds-l-container">
       <div className="hc-c-footer__logo-row">
@@ -12,7 +16,7 @@ const LogosRow = function () {
             getLanguage() === 'es' ? 'https://www.cuidadodesalud.gov' : 'https://www.healthcare.gov'
           }
         >
-          <HCgovLogo titleId="hc-c-footer__logo-title" />
+          <HCgovLogo titleId="hc-c-footer__logo-title" className={props.logoClassName ?? ''} />
         </Logo>
         <div className="hc-c-footer__disclaimer">
           {/* Trademark language is only for the English translation of footer */}

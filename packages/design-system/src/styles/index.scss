@@ -19,7 +19,6 @@
 @use 'utilities/flexbox';
 @use 'utilities/float';
 @use 'utilities/focus';
-@use 'utilities/font-family';
 @use 'utilities/font-size';
 @use 'utilities/font-style';
 @use 'utilities/font-weight';
@@ -56,7 +55,6 @@
 @use 'components/List';
 @use 'components/MonthPicker';
 @use 'components/Pagination';
-@use 'components/PrivacySettings';
 @use 'components/Review';
 @use 'components/SingleInputDateField';
 @use 'components/SkipNav';

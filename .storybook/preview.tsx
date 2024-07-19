@@ -1,11 +1,13 @@
 import './storybookStyles.scss';
 import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
+import { action } from '@storybook/addon-actions';
 import { config } from '../packages/design-system/src/components/config';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
 import type { Preview } from '@storybook/react';
+import cmsTheme from './cmsTheme';
 
 // Rewire analytics events to log to the console
 let originalUtag;
@@ -16,6 +18,7 @@ function mockUtag() {
       // Convert to JSON first so it can persist in logs between page loads, for testing
       // analytics fired when a navigation occurs.
       console.log(JSON.stringify(event, null, 2));
+      action('analytics event')(event);
     },
   };
 }
@@ -121,6 +124,7 @@ const analyticsSettingsDecorator = (Story, context) => {
   if (analytics === 'on') {
     // Make sure Tealium is loaded and hooked up
     if ((window as any).tealiumEnvironment === undefined) {
+      delete (window as UtagContainer).utag;
       (window as any).tealiumEnvironment = 'dev';
       const newScript = document.createElement('script');
       // This is the script that the analytics team wants us to use for testing for now
@@ -129,10 +133,6 @@ const analyticsSettingsDecorator = (Story, context) => {
     } else {
       resetUtag();
     }
-
-    // Disable the automatic routing to Storybook Actions
-    delete context.args.onAnalyticsEvent;
-
     on = true;
   } else if (analytics === 'log') {
     mockUtag();
@@ -206,6 +206,7 @@ const preview: Preview = {
     },
     docs: {
       page: DocumentationTemplate,
+      theme: cmsTheme,
     },
   },
   decorators: [

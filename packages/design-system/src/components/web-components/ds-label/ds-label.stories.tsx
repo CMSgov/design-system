@@ -3,7 +3,7 @@ import { webComponentDecorator } from '../storybook';
 import './ds-label';
 
 export default {
-  title: 'Web Components/Label',
+  title: 'Web Components/ds-label',
   argTypes: {
     'text content': {
       control: 'text',
@@ -32,7 +32,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/label/).`,
       },
-      underlyingHtmlElements: ['label'],
     },
   },
   decorators: [webComponentDecorator],

@@ -15,18 +15,26 @@
   --security-icon__color: #12890e; // spring-500
 
   background-color: var(--usa-banner__background-color);
-  color: var(--usa-banner-color);
+
+  // Allow applications to override this color. We don't define this variable
+  color: var(--usa-banner-color, inherit);
   font-family: var(--font-family);
 }
 
 .ds-c-usa-banner__header,
 .ds-c-usa-banner__guidance-container {
+  --gutter-width: var(--usa-banner-gutter-width, var(--grid-gutter-width));
+
   margin-inline: auto;
-  max-width: var(--usa-banner__max-width);
-  padding-inline: calc(var(--usa-banner-gutter-width) * 0.5);
+
+  // Use `--usa-banner__max-width` if an application has provided a value or fall back to
+  // reading the `--usa-banner__no-max-width` boolean to determine decide if we should
+  // set the max width to the `--site-max-width`.
+  max-width: var(--usa-banner__max-width, var(--usa-banner__no-max-width, var(--site-max-width)));
+  padding-inline: calc(var(--gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
-    padding-inline: var(--usa-banner-gutter-width);
+    padding-inline: var(--gutter-width);
   }
 }
 
@@ -104,7 +112,7 @@
   position: absolute;
   display: flex;
   align-items: stretch;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 0;
 
   // Mobile/tablet, button is full-size of banner
@@ -141,7 +149,7 @@
 // When these elements are visible, they should look the same
 .ds-c-usa-banner__action,
 .ds-c-usa-banner__button-text {
-  color: var(--usa-banner-link__color);
+  color: var(--usa-banner-link__color, var(--link__color));
   text-decoration: underline;
 }
 

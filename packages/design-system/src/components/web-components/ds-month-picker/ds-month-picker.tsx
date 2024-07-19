@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { define } from '../preactement/define';
 import { MonthPicker, MonthPickerProps } from '../../MonthPicker';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
   'button-variation',
@@ -9,20 +10,11 @@ const attributes = [
   'clear-all-text',
   'default-selected-months',
   'disabled-months',
-  'error-id',
-  'error-message-class-name',
-  'error-message',
-  'error-placement',
-  'hint-id',
-  'hint',
   'inversed',
-  'label-class-name',
-  'label-id',
-  'label',
   'name',
-  'requirement-label',
   'root-id',
   'select-all-text',
+  ...formAttrs,
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */

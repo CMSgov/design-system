@@ -20,7 +20,7 @@ export function renderReactStatelyItems(
 
 export function renderStatusMessage(message: ReactNode) {
   return (
-    <li aria-selected="false" className="ds-c-autocomplete__menu-item-message" role="option">
+    <li className="ds-c-autocomplete__menu-item-message" role="option">
       {message}
     </li>
   );

@@ -15,7 +15,7 @@
   padding: var(--spacer-4);
   position: absolute;
   right: unset;
-  z-index: var(--z-drawer);
+  z-index: 500;
 
   @media (forced-colors: active) {
     outline: $spacer-2 solid WindowText;

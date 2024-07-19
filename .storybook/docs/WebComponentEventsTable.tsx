@@ -46,6 +46,7 @@ export const WebComponentEventsTable = ({ of }) => {
         </thead>
         <tbody className="docblock-argstable-body">{rows}</tbody>
       </table>
+      <br />
     </>
   );
 };

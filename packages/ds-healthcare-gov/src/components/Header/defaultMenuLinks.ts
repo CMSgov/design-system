@@ -19,6 +19,8 @@ export interface DefaultMenuLinkOptions {
   hideLogoutLink?: boolean;
   hideLanguageSwitch?: boolean;
   customLinksPassedIn?: boolean;
+  loginLinkClassName?: string;
+  languageLinkClassName?: string;
 }
 
 /**
@@ -36,6 +38,8 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     hideLogoutLink,
     hideLanguageSwitch,
     customLinksPassedIn,
+    loginLinkClassName,
+    languageLinkClassName,
   } = options;
   const isSpanish = languageMatches('es');
 
@@ -67,6 +71,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
       label: isSpanish ? t('header.english') : t('header.español'),
       ariaLabel: t('header.langAriaLabel'),
       href: switchLocaleLink ?? defaultLocaleLink,
+      className: languageLinkClassName,
     };
 
     loggedOut.push(locLink);
@@ -78,6 +83,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
       identifier: LinkIdentifier.LOGIN,
       label: t('header.login'),
       href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
+      className: loginLinkClassName,
     });
   }
 
