@@ -76,7 +76,7 @@
   ],
   [
     "size",
-    "The Dialog's size parameter.\n\"narrow\"\n\"wide\"\n\"full\"",
+    "The Dialog's size parameter.\n\"full\"\n\"narrow\"\n\"wide\"",
     "-"
   ]
 ]

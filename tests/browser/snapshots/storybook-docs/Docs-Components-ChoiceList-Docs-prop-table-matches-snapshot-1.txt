@@ -31,7 +31,7 @@
   ],
   [
     "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "Location of the error message relative to the field input\n\"bottom\"\n\"top\"",
     "-"
   ],
   [
@@ -106,7 +106,7 @@
   ],
   [
     "type*",
-    "Sets the type to render checkbox fields or radio buttons\n\"radio\"\n\"checkbox\"",
+    "Sets the type to render checkbox fields or radio buttons\n\"checkbox\"\n\"radio\"",
     "-"
   ]
 ]
