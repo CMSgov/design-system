@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Description, Subtitle, Title } from '@storybook/blocks';
+import { Button } from '../Button';
 import { action } from '@storybook/addon-actions';
 import Drawer from './Drawer';
-import { Button } from '../Button';
+import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
-  component: Drawer as any,
+  component: Drawer,
   argTypes: {
     backdropClickExits: {
       // Until this pattern has solidified, we're not going to advertize this feature.
@@ -24,13 +24,7 @@ const meta: Meta<typeof Drawer> = {
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-        </>
-      ),
+      page: NoStoryDocTemplate,
       underlyingHtmlElements: ['dialog'],
     },
   },
