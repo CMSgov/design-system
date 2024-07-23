@@ -1,11 +1,23 @@
 import c from 'chalk';
 import yargs from 'yargs';
 import { updateVersions } from './versions';
-import { confirm } from '@inquirer/prompts';
+import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
+
+async function verifyNoUnstagedChanges() {
+  if (sh('git status -s')) {
+    const yesContinue = await confirm({
+      message: 'You have unstaged changes that will be lost. Would you like to continue anyway?',
+    });
+    if (!yesContinue) {
+      console.log(c.yellow('Exiting...'));
+      process.exit(1);
+    }
+  }
+}
 
 function getCurrentCommit() {
   return sh('git rev-parse HEAD');
@@ -55,30 +67,59 @@ async function undoLastCommit() {
 }
 
 async function bumpVersions() {
-  console.log(c.green('Bumping package versions for release...'));
   const preBumpHash = getCurrentCommit();
-  shI('./node_modules/.bin/lerna', ['version', '--no-push', '--exact']);
-  const postBumpHash = getCurrentCommit();
+  const changeLevel = await select({
+    message: 'Select a release type',
+    choices: ['major', 'minor', 'patch', 'premajor', 'preminor', 'prepatch', 'prerelease'].map(
+      (level: any) => ({ name: level, value: level })
+    ),
+  });
+  sh(
+    `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
+  );
+  // Only stage changes to package files
+  sh('git add -u **/package.json');
+  // And discard all other changes
+  sh('git checkout -- .');
+  // Verify that there are actually changes staged
+  if (!sh('git status -s')) {
+    console.log(c.yellow('No version changes made. Exiting...'));
+    process.exit(1);
+  }
+  console.log(c.green('Bumped package versions.'));
 
-  if (preBumpHash === postBumpHash) {
-    console.log(c.yellow('No version bump occurred. Exiting...'));
+  // Update versions.json
+  const currentVersionsByPackage = updateVersions();
+  sh('git add -u');
+  console.log(c.green('Updated versions.json.'));
+
+  // Determine our tag names and create the publish commit
+  const tags = Object.keys(currentVersionsByPackage).map(
+    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  );
+  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  sh(`git commit -m "${commitMessage}"`);
+  console.log(c.green('Wrote publish commit.'));
+
+  // Tag the publish commit
+  try {
+    for (const tag of tags) {
+      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+    }
+    console.log(c.green('Tagged publish commit.'));
+  } catch (error) {
+    // Most likely we've failed to sign the commits due to GPG not being configured, so
+    // we need to roll back our progress so far.
+    console.log(c.yellow('Rolling back publish commit.'));
+    sh(`git reset --hard ${preBumpHash}`);
     process.exit(1);
   }
 
-  console.log(c.green('Package versions bumped successfully.'));
-  console.log(c.green('Updating versions.json for reference in docs...'));
-  updateVersions();
-  sh('git add -u');
-  // Note that this creates a new commit hash that will not match the tag that Lerna
-  // created. That tagged commit will no longer have a branch associated with it.
-  // This is possibly something that could be improved in the future. - Patrick
-  sh('git commit --amend --no-edit');
-  console.log(c.green('Updated versions.json.'));
-
+  // Push everything to origin
   console.log(c.green('Pushing to origin...'));
   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
   console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${readLastPublishCommit().tags.join(' ')}`);
+  sh(`git push origin ${tags.join(' ')}`);
   console.log(c.green('Pushed tags to origin.'));
 }
 
@@ -162,6 +203,7 @@ function printNextSteps() {
       await undoLastCommit();
     } else {
       verifyGhInstalled();
+      await verifyNoUnstagedChanges();
       await bumpVersions();
       await bumpMain();
       await draftReleaseNotes();
