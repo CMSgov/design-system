@@ -26,7 +26,7 @@
   ],
   [
     "closeButtonVariation",
-    "\"solid\"\n\"ghost\"",
+    "\"ghost\"\n\"solid\"",
     "-"
   ],
   [

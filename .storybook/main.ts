@@ -1,5 +1,6 @@
 import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import { typescript as typescriptPresets } from '@storybook/core-server/dist/presets/common-preset';
 
 const extensionGlob = '*.stories.@(js|jsx|ts|tsx)';
 
@@ -23,6 +24,10 @@ const config: StorybookConfig = {
   staticDirs: ['../packages/design-system-tokens/dist/css-vars'],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      ...typescriptPresets().reactDocgenTypescriptOptions,
+      shouldSortUnions: true,
+    },
   },
   framework: {
     name: getAbsolutePath('@storybook/react-webpack5'),
