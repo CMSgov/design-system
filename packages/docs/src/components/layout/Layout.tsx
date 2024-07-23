@@ -2,6 +2,7 @@ import type * as React from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
+import CmsLogo from '../icons/CmsLogo';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 import HeaderFullWidth from './HeaderFullWidth';
@@ -80,6 +81,17 @@ const Layout = ({
           lang: 'en',
         }}
       >
+        <meta property="og:title" content={frontmatter ? frontmatter.title : baseTitle} />
+        <meta property="og:type" content={frontmatter ? 'article' : 'website'} />
+        <meta property="og:url" content={slug} />
+        <meta
+          property="og:description"
+          content={
+            frontmatter
+              ? frontmatter.intro
+              : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
+          }
+        />
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
         <link
