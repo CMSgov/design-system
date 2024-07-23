@@ -2,7 +2,6 @@ import type * as React from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
-import CmsLogo from '../icons/CmsLogo';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 import HeaderFullWidth from './HeaderFullWidth';
