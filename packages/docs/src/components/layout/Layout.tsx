@@ -83,11 +83,11 @@ const Layout = ({
       >
         <meta
           property="og:title"
-          content={slug.includes('not-in-sidebar') ? baseTitle : frontmatter?.title}
+          content={slug?.includes('not-in-sidebar') ? baseTitle : frontmatter?.title}
         />
         <meta
           property="og:type"
-          content={slug.includes('not-in-sidebar') ? 'website' : 'article'}
+          content={slug?.includes('not-in-sidebar') ? 'website' : 'article'}
         />
         <meta property="og:url" content={location.origin + location.pathname} />
         <meta
