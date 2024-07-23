@@ -19,18 +19,28 @@ export function getPackageVersion(packageName: string): string {
   return packageData.version;
 }
 
+export function getPackageVersions(): Record<string, string> {
+  const currentVersionsByPackage: Record<string, string> = {};
+
+  for (const theme of Object.values(themes)) {
+    const currentVersion = getPackageVersion(theme.packageName);
+    currentVersionsByPackage[theme.packageName] = currentVersion;
+  }
+
+  return currentVersionsByPackage;
+}
+
 // We only care about the first digit in the version string (the major version)
 const getMajorVersion = parseInt;
 const isBetaVersion = (version: string) => version.includes('beta');
 
 export function updateVersions() {
   const versions = readJson(versionsFileName);
-
-  for (const theme of Object.values(themes)) {
-    const currentVersion = getPackageVersion(theme.packageName);
-
+  const currentVersionsByPackage = getPackageVersions();
+  for (const packageName in currentVersionsByPackage) {
+    const currentVersion = currentVersionsByPackage[packageName];
     // Add the new version to the beginning of the list
-    versions[theme.packageName].unshift(currentVersion);
+    versions[packageName].unshift(currentVersion);
 
     // Cull old beta versions in the list
     const isOldBeta = (version: string) => {
@@ -45,10 +55,10 @@ export function updateVersions() {
 
       return isOld || isBetaForReleasedVersion;
     };
-    versions[theme.packageName] = versions[theme.packageName].filter(
-      (version: string) => !isOldBeta(version)
-    );
+    versions[packageName] = versions[packageName].filter((version: string) => !isOldBeta(version));
   }
 
   writeJson(versionsFileName, versions);
+
+  return currentVersionsByPackage;
 }
