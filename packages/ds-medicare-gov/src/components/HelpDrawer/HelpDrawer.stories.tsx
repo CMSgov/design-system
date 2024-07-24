@@ -1,4 +1,4 @@
-import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
+import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
 // Need this in order for the generated ArgsTable to work
 import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
@@ -32,7 +32,7 @@ const meta: Meta<typeof HelpDrawer> = {
           <Subtitle />
           <Description />
           <Primary />
-          <ArgsTable exclude={['backdropClickExits']} />
+          <ArgTypes exclude={['backdropClickExits']} />
         </>
       ),
     },

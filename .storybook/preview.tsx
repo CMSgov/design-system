@@ -193,7 +193,6 @@ const preview: Preview = {
     },
   },
   parameters: {
-    actions: { argTypesRegex: '^on(?!AnalyticsEvent)[A-Z].*' },
     backgrounds: { disable: true },
     controls: {
       expanded: true,
