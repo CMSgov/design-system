@@ -82,7 +82,9 @@ const Layout = ({
       >
         <meta
           property="og:title"
-          content={slug?.includes('not-in-sidebar') ? baseTitle : frontmatter?.title}
+          content={
+            slug?.includes('not-in-sidebar') ? baseTitle : `${frontmatter?.title} - ${baseTitle}`
+          }
         />
         <meta
           property="og:type"
