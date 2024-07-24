@@ -61,24 +61,7 @@ const drawerContent = (
   </>
 );
 
-export const DrawerDefault: Story = {
-  render: function Component(args) {
-    return (
-      <Drawer isOpen={true} {...args}>
-        {drawerContent}
-      </Drawer>
-    );
-  },
-};
-export const DrawerWithStickyPositioning: Story = {
-  ...DrawerDefault,
-  args: {
-    isFooterSticky: true,
-    isHeaderSticky: true,
-  },
-};
-
-export const DrawerToggleWithDrawer: Story = {
+export const Default: Story = {
   render: function Component(args) {
     const [drawerOpen, updateOpen] = useState(false);
 
@@ -104,7 +87,7 @@ export const DrawerToggleWithDrawer: Story = {
           {drawerContent}
         </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
-          Drawer Toggle
+          Click to toggle drawer
         </Button>
       </>
     );
