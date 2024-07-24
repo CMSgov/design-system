@@ -80,7 +80,7 @@ export type ChoiceListProps = BaseChoiceListProps &
  * props table below, including all valid attributes of the
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
-export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
+export const ChoiceList = (props: ChoiceListProps) => {
   const { onBlur, onComponentBlur, choices } = props;
   const id = useId('choice-list--', props.id);
 

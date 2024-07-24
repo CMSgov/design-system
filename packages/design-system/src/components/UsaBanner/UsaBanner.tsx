@@ -1,4 +1,3 @@
-import type * as React from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import useCssDebugger from '../utilities/useCssDebugger';
@@ -28,7 +27,7 @@ export interface UsaBannerProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/usa-banner/).
  */
-export const UsaBanner: React.FunctionComponent<UsaBannerProps> = (props: UsaBannerProps) => {
+export const UsaBanner = (props: UsaBannerProps) => {
   useCssDebugger();
 
   const [isBannerOpen, setBannerOpen] = useState<boolean>(false);
