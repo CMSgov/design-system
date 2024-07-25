@@ -1,1 +1,12 @@
-no args table
+[
+  [
+    "bordered",
+    "boolean",
+    "-"
+  ],
+  [
+    "openItems",
+    "array",
+    "-"
+  ]
+]
