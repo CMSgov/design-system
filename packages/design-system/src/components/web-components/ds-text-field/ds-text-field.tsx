@@ -10,7 +10,6 @@ const attributes = [
   'autofocus',
   'aria-disabled',
   'class-name',
-  'default-value',
   'disabled',
   'field-class-name',
   'inversed',

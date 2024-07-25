@@ -1,12 +1,7 @@
 [
   [
     "class-name",
-    "Additional classes to be added to the root button element.",
-    "string"
-  ],
-  [
-    "default-value",
-    "Sets the initial selected state. Using this attribute instead of `value` means that the select will maintain its own internal selection state.",
+    "Additional classes to be added to the root element.",
     "string"
   ],
   [
@@ -31,7 +26,7 @@
   ],
   [
     "field-class-name",
-    "Additional classes to be added to the dropdown button element",
+    "Additional classes to be added to the input element",
     "string"
   ],
   [
@@ -71,7 +66,7 @@
   ],
   [
     "name",
-    "The `name` is applied to a hidden select element that holds the selected value for the purpose of native HTML form support",
+    "The `input` field's `name` attribute.",
     "string"
   ],
   [
@@ -91,7 +86,7 @@
   ],
   [
     "value",
-    "Sets the selected value. Using this attribute instead of `default-value` means the dropdown will not maintain its own internal selection state.",
+    "The `input` field's `value` attribute",
     "string"
   ]
 ]

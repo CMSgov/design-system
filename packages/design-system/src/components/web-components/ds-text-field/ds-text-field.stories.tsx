@@ -8,12 +8,7 @@ export default {
   title: 'Web Components/ds-text-field',
   argTypes: {
     'class-name': {
-      description: 'Additional classes to be added to the root button element.',
-      control: 'text',
-    },
-    'default-value': {
-      description:
-        'Sets the initial selected state. Using this attribute instead of `value` means that the select will maintain its own internal selection state.',
+      description: 'Additional classes to be added to the root element.',
       control: 'text',
     },
     disabled: { description: 'Disables the entire field.', control: 'boolean' },
@@ -32,7 +27,7 @@ export default {
       control: { type: 'radio' },
     },
     'field-class-name': {
-      description: 'Additional classes to be added to the dropdown button element',
+      description: 'Additional classes to be added to the input element',
       control: 'text',
     },
     hint: {
@@ -67,8 +62,7 @@ export default {
       control: { type: 'radio' },
     },
     name: {
-      description:
-        'The `name` is applied to a hidden select element that holds the selected value for the purpose of native HTML form support',
+      description: "The `input` field's `name` attribute.",
       control: 'text',
     },
     'requirement-label': { control: 'text' },
@@ -78,8 +72,7 @@ export default {
       control: { type: 'radio' },
     },
     value: {
-      description:
-        'Sets the selected value. Using this attribute instead of `default-value` means the dropdown will not maintain its own internal selection state.',
+      description: "The `input` field's `value` attribute",
       control: 'text',
     },
     'root-id': {
@@ -96,7 +89,7 @@ export default {
     docs: {
       page: WebComponentDocTemplate,
       description: {
-        component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/alert/).`,
+        component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/text-field/).`,
       },
     },
   },
@@ -111,12 +104,12 @@ const Template = (args) => {
     const onBlur = (event) => {
       action('ds-blur')(event);
     };
-    const dropdown = document.querySelector('ds-text-field');
-    dropdown.addEventListener('ds-change', onChange);
-    dropdown.addEventListener('ds-blur', onBlur);
+    const textField = document.querySelector('ds-text-field');
+    textField.addEventListener('ds-change', onChange);
+    textField.addEventListener('ds-blur', onBlur);
     return () => {
-      dropdown.removeEventListener('ds-change', onChange);
-      dropdown.removeEventListener('ds-blur', onBlur);
+      textField.removeEventListener('ds-change', onChange);
+      textField.removeEventListener('ds-blur', onBlur);
     };
   });
 
