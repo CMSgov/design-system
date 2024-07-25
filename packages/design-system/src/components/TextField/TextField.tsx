@@ -106,7 +106,7 @@ export type TextFieldProps = BaseTextFieldProps &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
  */
-export const TextField: React.FC<TextFieldProps> = (props: TextFieldProps) => {
+export const TextField = (props: TextFieldProps) => {
   const { id: originalId, mask, labelMask, className, ...remainingProps } = props;
   const id = useId('text-field--', originalId);
 

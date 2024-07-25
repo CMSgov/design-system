@@ -1,6 +1,6 @@
 import sortBy from 'lodash/sortBy';
 import { test, expect } from '@playwright/test';
-import { stories as storiesObject } from '../../storybook-static/stories.json';
+import { entries as storiesObject } from '../../storybook-static/index.json';
 
 const docs = Object.values(storiesObject).filter((story) => story.name === 'Docs');
 

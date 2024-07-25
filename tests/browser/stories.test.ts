@@ -1,11 +1,13 @@
 import { test, expect, BrowserContext, Page } from '@playwright/test';
-import { stories as storiesObject } from '../../storybook-static/stories.json';
+import { entries as storiesObject } from '../../storybook-static/index.json';
 import themes from '../../themes.json';
 import expectNoAxeViolations from './expectNoAxeViolations';
 
 const storySkipList = [
-  'components-dialog--prevent-scroll-example', // Redundant
-  'components-dialog--use-dialog-example', // Redundant
+  'components-dialog--default', // Doesn't show the open dialog
+  'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
+  'components-dialog--use-dialog-example', // Doesn't show the open dialog
+  'components-drawer--default', // Doesn't show the open drawer
   'components-dropdown--option-groups', // Redundant in its unopened state
   'components-dropdown--html-option-groups', // Redundant
   'components-dropdown--html-options', // Redundant

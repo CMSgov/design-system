@@ -1,4 +1,3 @@
-import { ArgsTable, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
 import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
@@ -20,20 +19,6 @@ const meta: Meta<typeof HelpDrawer> = {
     footerTitle: 'Footer Title',
     footerBody: 'Footer content',
     heading: 'HelpDrawer Heading',
-  },
-  parameters: {
-    docs: {
-      // Customize so we can exclude the backdropClickExits
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgsTable exclude={['backdropClickExits']} />
-        </>
-      ),
-    },
   },
 };
 export default meta;
