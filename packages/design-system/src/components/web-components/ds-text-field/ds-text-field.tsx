@@ -51,10 +51,10 @@ interface WrapperProps
   rootId?: string;
 }
 
-const Wrapper = ({ rootId, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ autofocus, rootId, ...otherProps }: WrapperProps) => (
   <TextField
     {...otherProps}
-    autoFocus={parseBooleanAttr(otherProps.autofocus)}
+    autoFocus={parseBooleanAttr(autofocus)}
     aria-disabled={parseBooleanAttr(otherProps.ariaDisabled)}
     disabled={parseBooleanAttr(otherProps.disabled)}
     id={rootId}
