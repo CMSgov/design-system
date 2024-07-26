@@ -117,7 +117,7 @@ const Template = (args) => {
     };
   });
 
-  return <ds-text-field {...args} autofocus />;
+  return <ds-text-field {...args} />;
 };
 
 export const Default = Template.bind({});
