@@ -93,7 +93,11 @@ export default {
         "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
       control: 'text',
     },
-    'requirement-label': { control: 'text' },
+    'requirement-label': {
+      control: 'text',
+      description:
+        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
+    },
   },
   args: {
     type: 'checkbox',
