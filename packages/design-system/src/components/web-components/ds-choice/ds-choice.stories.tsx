@@ -95,13 +95,8 @@ export default {
     },
     'requirement-label': {
       control: 'text',
-      description: (
-        <>
-          Text showing the requirement (ie. &quot;Optional&quot;, or &quot;Required&quot;).\nIn most
-          cases, this should be used to indicate which fields are optional.\nSee the{' '}
-          <a href="https://design.cms.gov/patterns/Forms/forms/">form guidelines</a> for more info.
-        </>
-      ),
+      description:
+        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
     },
   },
   args: {
