@@ -33,16 +33,19 @@ export const query = graphql`
         title
         intro
         core {
+          figmaLink
           githubLink
           sketchLink
           storybookLink
         }
         healthcare {
+          figmaLink
           sketchLink
           storybookLink
           githubLink
         }
         medicare {
+          figmaLink
           sketchLink
           storybookLink
           githubLink

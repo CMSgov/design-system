@@ -20,6 +20,20 @@ export function makeSketchUrl(pathname = '', theme) {
   return join(sketchUrl, sketchBoardIds[theme], 'a', pathname, '#Inspect');
 }
 
+const figmaDocumentIdAndLibraryName = {
+  // cmsgov is not currently used; to do so update gql in `components/page-templates/InfoPage.tsx`
+  cmsgov: 'p2z3UL1N4fP10z47F7am1v/CMS-Design-System-Library',
+  core: 'OYkYP4pC9jwS7j2qafwmiv/CMS-Global-Library',
+  healthcare: '4Z66yMTWr5rlEhYBvLx58j/HCgov-Design-System-Library',
+  medicare: 'gwpXhAmk5noyDiDEs9DXCq/Mgov-Design-System-Library',
+};
+
+// creates links to Figma pages in specific libaries based on theme
+export function makeFigmaUrl(nodeId = '', theme) {
+  const figmaURL = 'https://www.figma.com/design/';
+  return join(figmaURL, figmaDocumentIdAndLibraryName[theme], '?node-id=', nodeId);
+}
+
 // creates links to storybook story
 export function makeStorybookUrl(storyId, theme, storyType = 'story') {
   return withPrefix(`/storybook/?path=/${storyType}/${storyId}&globals=theme:${theme}`);

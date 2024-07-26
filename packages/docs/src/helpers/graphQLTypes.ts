@@ -6,6 +6,7 @@ export interface TableOfContentsItem {
 }
 
 export interface ComponentLinksInterface {
+  figmaLink?: string;
   githubLink?: string;
   sketchLink?: string;
   storybookLink?: string;
@@ -23,6 +24,7 @@ export interface LocationInterface {
 export interface FrontmatterInterface {
   title: string;
   date?: string;
+  cmsgov?: ComponentLinksInterface;
   core?: ComponentLinksInterface;
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
