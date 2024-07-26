@@ -51,16 +51,14 @@ interface BaseTextFieldProps {
    */
   inversed?: boolean;
   /**
-   * Applies date format masking to the input value entered
-   * and renders to a text field above the input.
-   * Passing `true` to `valueOnly` will return just the
-   * formatted value entered.
+   * Applies date format masking to the input value entered and renders to a text field
+   * above the input. Passing `true` to `valueOnly` will return just the formatted value
+   * entered.
    */
   labelMask?: (rawInput: string, valueOnly?: boolean) => string;
   /**
-   * Apply formatting to the field that's unique to the value
-   * you expect to be entered. Depending on the mask, the
-   * field's appearance and functionality may be affected.
+   * Apply formatting to the field that's unique to the value you expect to be entered.
+   * Depending on the mask, the field's appearance and functionality may be affected.
    */
   mask?: TextFieldMask;
   /**
