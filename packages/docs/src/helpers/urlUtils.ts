@@ -31,7 +31,7 @@ const figmaDocumentIdAndLibraryName = {
 // creates links to Figma pages in specific libaries based on theme
 export function makeFigmaUrl(nodeId = '', theme) {
   const figmaURL = 'https://www.figma.com/design/';
-  return join(figmaURL, figmaDocumentIdAndLibraryName[theme], '?node-id=', nodeId);
+  return join(figmaURL, figmaDocumentIdAndLibraryName[theme], `?node-id=${nodeId}`);
 }
 
 // creates links to storybook story
