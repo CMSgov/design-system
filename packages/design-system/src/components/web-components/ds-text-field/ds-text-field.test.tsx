@@ -34,10 +34,10 @@ describe('ds-text-field', function () {
     expect(input).not.toHaveAttribute('disabled');
   });
 
-  it('applies additional classes to the wrapper', () => {
+  it('applies additional classes to the root element', () => {
     const { container } = renderTextField({ 'class-name': 'foobar' });
-    const wrapper = container.querySelector('.ds-u-clearfix');
-    expect(wrapper).toHaveClass('foobar');
+    const root = container.querySelector('.ds-u-clearfix');
+    expect(root).toHaveClass('foobar');
   });
 
   it('applies additional classes to the input', () => {
