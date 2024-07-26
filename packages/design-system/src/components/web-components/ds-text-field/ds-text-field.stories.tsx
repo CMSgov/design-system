@@ -65,7 +65,11 @@ export default {
       description: "The `input` field's `name` attribute.",
       control: 'text',
     },
-    'requirement-label': { control: 'text' },
+    'requirement-label': {
+      control: 'text',
+      description:
+        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
+    },
     size: {
       description: 'Sets the max-width of the input either to `"small"` or `"medium"`',
       options: [undefined, 'medium', 'small'],
@@ -113,7 +117,7 @@ const Template = (args) => {
     };
   });
 
-  return <ds-text-field {...args} />;
+  return <ds-text-field {...args} autofocus />;
 };
 
 export const Default = Template.bind({});
