@@ -119,8 +119,6 @@ There are a lot of tests, so it can be helpful to constrain the tests you run lo
 
 ## Design Assets
 
-As of {MONTH}, 2024 the CMS Design System is using Figma as its primary design software. Designs existing in Sketch will continue to exist for a period of time. No new designs will be represented in Sketch, and links to Sketch design files will remain on the Doc Site until all teams are using Figma.
-
 The CMS Design System provides a Figma file and library containing components, styles, and design tokens. These assets are regularly updated alongside the codebase, and updates are automatically synced for designers using the Figma Library, across all CMS brands.
 
 We use Figma's multi-mode variable system to define theme variants for each of our theme-level tokens. These theme-level tokens can be used in our shared design library. Tokens can be edited by developers comfortable with JSON, and by designers using Figma's variable tables. Changes to tokens can be synced both ways: from the code repository to Figma, and from Figma to the code repository.
