@@ -56,8 +56,17 @@ export default {
       control: 'text',
     },
     'label-mask': {
-      description:
-        'Applies date format masking to the input value entered and renders to a text field above the input. Passing `true` to `valueOnly` will return just the formatted value entered.',
+      description: (
+        <>
+          Providing a mask type here will turn the text field into a label-masked field, where the
+          user input is formatted in a label as the user types and then the input field itself is
+          automatically formatted when the user shifts focus away from the input. See{' '}
+          <a href="https://design.cms.gov/components/text-field/label-masked-field/">
+            Label-masked field
+          </a>{' '}
+          documentation page for more information.
+        </>
+      ),
       options: [undefined, 'phone', 'zip', 'ssn', 'currency'],
       control: { type: 'radio' },
     },
@@ -67,8 +76,13 @@ export default {
     },
     'requirement-label': {
       control: 'text',
-      description:
-        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
+      description: (
+        <>
+          Text showing the requirement (ie. &quot;Optional&quot;, or &quot;Required&quot;).\nIn most
+          cases, this should be used to indicate which fields are optional.\nSee the{' '}
+          <a href="https://design.cms.gov/patterns/Forms/forms/">form guidelines</a> for more info.
+        </>
+      ),
     },
     size: {
       description: 'Sets the max-width of the input either to `"small"` or `"medium"`',
