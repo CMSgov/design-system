@@ -82,6 +82,13 @@ describe('ds-text-field', function () {
     expect(input.classList.contains('ds-c-field--small')).toBe(true);
   });
 
+  it('supports multiline text fields', () => {
+    renderTextField({ multiline: 'true', rows: '3' });
+    const textArea = screen.getByRole('textbox');
+    expect(textArea.tagName).toEqual('TEXTAREA');
+    expect(textArea).toHaveAttribute('rows', '3');
+  });
+
   it('fires a custom ds-change event', () => {
     renderTextField();
 

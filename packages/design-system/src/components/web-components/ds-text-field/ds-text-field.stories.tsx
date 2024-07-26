@@ -121,3 +121,11 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+
+export const MultilineField = {
+  render: Template,
+  args: {
+    multiline: 'true',
+    rows: '3',
+  },
+};

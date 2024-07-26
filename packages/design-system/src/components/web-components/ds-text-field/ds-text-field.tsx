@@ -19,6 +19,7 @@ const attributes = [
   'numeric',
   'value',
   'root-id',
+  'rows',
   'size',
   'type',
   ...formAttrs,
@@ -41,13 +42,14 @@ function getMaskFunction(value: string) {
 interface WrapperProps
   extends Omit<
     TextFieldProps,
-    'autoFocus' | 'ariaDisabled' | 'disabled' | 'inversed' | 'labelMask'
+    'autoFocus' | 'ariaDisabled' | 'disabled' | 'inversed' | 'labelMask' | 'multiline'
   > {
   autofocus?: string;
   ariaDisabled?: string;
   disabled?: string;
   inversed?: string;
   labelMask?: string;
+  multiline?: string;
   rootId?: string;
 }
 
@@ -60,6 +62,7 @@ const Wrapper = ({ autofocus, rootId, ...otherProps }: WrapperProps) => (
     id={rootId}
     inversed={parseBooleanAttr(otherProps.inversed)}
     labelMask={getMaskFunction(otherProps.labelMask)}
+    multiline={parseBooleanAttr(otherProps.multiline)}
   />
 );
 
