@@ -1,33 +1,13 @@
 [
   [
-    "button-variation",
-    "Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs).",
-    "undefined\"solid\"\"ghost\""
-  ],
-  [
-    "children",
-    "",
-    "See description"
-  ],
-  [
     "class-name",
     "Additional classes to be added to the root element.",
     "string"
   ],
   [
-    "clear-all-text",
-    "The text for the \"Clear all\" button for internationalization.",
-    "string"
-  ],
-  [
-    "default-selected-months",
-    "Array of month numbers, where `1` is January, and any month included is selected by default. Sets the initial checked state for the 12 month checkboxes. Use this for an uncontrolled component; otherwise, use the `selectedMonths` property. Alternatively, you can apply `checked` to `<input>` element children.",
-    "string"
-  ],
-  [
-    "disabled-months",
-    "Array of month numbers, where `1` is January, and any month included is disabled for selection. Alternatively, you can apply `disabled` to `<input>` element children.",
-    "string"
+    "disabled",
+    "Disables the entire field.",
+    "\"true\"\"false\""
   ],
   [
     "error-id",
@@ -36,18 +16,18 @@
   ],
   [
     "error-message",
-    "Enable the error state by providing an error message.",
-    "string"
-  ],
-  [
-    "error-message-class-name",
-    "Additional classes to be added to the error message.",
+    "Enable the error state by providing an error message",
     "string"
   ],
   [
     "error-placement",
     "Location of the error message relative to the field input",
     "undefined\"top\"\"bottom\""
+  ],
+  [
+    "field-class-name",
+    "Additional classes to be added to the input element",
+    "string"
   ],
   [
     "hint",
@@ -61,7 +41,7 @@
   ],
   [
     "inversed",
-    "Set to \"true\" to apply the \"inverse\" scheme",
+    "Set to \"true\" to apply the \"inverse\" theme",
     "\"true\"\"false\""
   ],
   [
@@ -80,6 +60,11 @@
     "string"
   ],
   [
+    "label-mask",
+    "Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See [Label-masked field](https://design.cms.gov/components/text-field/label-masked-field/) documentation page for more information.",
+    "undefined\"phone\"\"zip\"\"ssn\"\"currency\""
+  ],
+  [
     "name",
     "The `input` field's `name` attribute.",
     "string"
@@ -95,8 +80,13 @@
     "string"
   ],
   [
-    "select-all-text",
-    "The text for the \"Select all\" button for internationalization.",
+    "size",
+    "Sets the max-width of the input either to `\"small\"` or `\"medium\"`",
+    "undefined\"medium\"\"small\""
+  ],
+  [
+    "value",
+    "The `input` field's `value` attribute",
     "string"
   ]
 ]

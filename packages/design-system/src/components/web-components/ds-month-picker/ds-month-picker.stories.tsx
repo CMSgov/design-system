@@ -87,7 +87,11 @@ export default {
       description: "The `input` field's `name` attribute.",
       control: 'text',
     },
-    'requirement-label': { control: 'text' },
+    'requirement-label': {
+      control: 'text',
+      description:
+        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
+    },
     'root-id': {
       description:
         "A unique ID for this element. A unique ID will be generated if one isn't provided.",

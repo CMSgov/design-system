@@ -81,7 +81,11 @@ export default {
         'The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a `label` and `value`.',
       control: 'object',
     },
-    'requirement-label': { control: 'text' },
+    'requirement-label': {
+      control: 'text',
+      description:
+        'Text showing the requirement (ie. "Optional", or "Required").\nIn most cases, this should be used to indicate which fields are optional.\nSee the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
+    },
     size: {
       description: 'Sets the max-width of the input either to `"small"` or `"medium"`',
       options: [undefined, 'medium', 'small'],
