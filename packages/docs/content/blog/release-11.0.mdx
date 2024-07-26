@@ -1,12 +1,14 @@
 ---
 title: Release 11.0
 date: 2024-08-20
-intro: Blah
+intro: Figma migration, further bundle-size reductions, and replacement of privacy settings dialog
 ---
 
 import sketchToFigmaImg from '../../src/images/sketch-to-figma.jpg';
 
 ## The Figma migration is complete!
+
+By now most of you have heard about the migration from Sketch to Figma. This move benefits both product teams and our own design system team. For us, we get to leverage Figma's  multi-mode variable system to build and maintain only a single, shared design library and theme it for all CMS brands. That saves us a tremendous amount of time and heartache. For product teams, they'll get our updates faster and with less pain. This isn't a commercial for Figma, but designers just seem to like it better.
 
 <div className="ds-u-text-align--center ds-u-margin-top--3">
   <img
@@ -15,8 +17,6 @@ import sketchToFigmaImg from '../../src/images/sketch-to-figma.jpg';
     alt="HealthCare.gov header with the USA banner above it"
   />
 </div>
-
-By now most of you have heard about the migration from Sketch to Figma. This move benefits both product teams and our own design system team. For us, we get to leverage Figma's  multi-mode variable system to build and maintain only a single, shared design library and theme it for all CMS brands. That saves us a tremendous amount of time and heartache. For product teams, they'll get our updates faster and with less pain. This isn't a commercial for Figma, but designers just seem to like it better.
 
 Our migration to Figma also prompted us to evolve our own tokens system in order to achieve greater parity and integration between code and design. We developed some internal tools to facilitate bi-directional syncing, enabling our design team to update tokens within Figma and sync them back to our code repository effortlessly. Any synchronization with code happens through version control, which is easy to audit and means engineers can discuss changes on GitHub. It creates a conversation between design and engineering with a better paper trail that is easier to document. Ultimately that's a benefit to product teams.
 
@@ -27,6 +27,7 @@ Our transition to Figma marks a significant milestone in our journey to create a
 ## Further bundle-size reductions
 
 In the past several releases, we've been talking about the progress we're making towards reducing the amount of JavaScript needed for our components. We've further reduced this amount by about 3.5% in this release, due to [a change that you can read more about here](https://github.com/CMSgov/design-system/pull/2996).
+
 ## Removed the privacy settings dialog from the design system
 
 The analytics team at CMS is taking over the UI for users' privacy settings, so we've removed our own privacy settings dialog from this version. The healthcare.gov footer and our own doc-site footer that used to use our version now invoke the privacy settings dialog from the analytics script. For most product teams, this will require no changes on your end. It would only require a change if you were rendering our privacy settings dialog component directly.
