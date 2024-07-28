@@ -1,94 +1,67 @@
-import { define } from '../preactement/define';
-import { SingleInputDateFieldProps } from '../../DateField/SingleInputDateField';
-import { SingleInputDateField } from '../../DateField';
-import { parseBooleanAttr, parseDateAttr, parseIntegerAttr } from '../wrapperUtils';
+import { useEffect, useRef, useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import type { Meta } from '@storybook/react';
+import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../storybook';
+import './ds-date-field';
 
-const attributes = [
-  'name',
-  'root-id',
-  'inversed',
-  'value',
-  'default-month',
-  'from-date',
-  'from-month',
-  'from-year',
-  'to-date',
-  'to-month',
-  'to-year',
-  'hint',
-  'label',
-] as const;
-
-type IncompatibleProps =
-  | 'inversed'
-  | 'defaultMonth'
-  | 'fromDate'
-  | 'fromMonth'
-  | 'fromYear'
-  | 'toDate'
-  | 'toDate'
-  | 'toMonth'
-  | 'toYear';
-
-interface WrapperProps extends Omit<SingleInputDateFieldProps, IncompatibleProps> {
-  name: string;
-  rootId: string;
-  inversed?: string;
-  value?: string;
-  defaultMonth?: string;
-  fromDate?: string;
-  fromMonth?: string;
-  fromYear?: string;
-  toDate?: string;
-  toMonth?: string;
-  toYear?: string;
-}
-
-const Wrapper = ({
-  name,
-  rootId,
-  inversed,
-  value,
-  defaultMonth,
-  fromDate,
-  fromMonth,
-  fromYear,
-  toDate,
-  toMonth,
-  toYear,
-  ...otherProps
-}: WrapperProps) => {
-  return (
-    <SingleInputDateField
-      name={name}
-      id={rootId}
-      inversed={parseBooleanAttr(inversed)}
-      value={value}
-      defaultMonth={parseDateAttr(defaultMonth)}
-      fromDate={parseDateAttr(fromDate)}
-      fromMonth={parseDateAttr(fromMonth)}
-      fromYear={parseIntegerAttr(fromYear)}
-      toDate={parseDateAttr(toDate)}
-      toMonth={parseDateAttr(toMonth)}
-      toYear={parseIntegerAttr(fromYear)}
-      {...otherProps}
-    />
-  );
+const meta: Meta = {
+  title: 'Web Components/ds-date-field',
+  decorators: [webComponentDecorator],
+  parameters: {
+    docs: {
+      page: WebComponentDocTemplate,
+    },
+  },
+  args: {
+    hint: 'If you were born on a leap day, entering the date will either crash our servers or open a portal to an alternate dimension.',
+    label: 'Enter your date of birth.',
+    name: 'ds-date-field',
+  },
+  argTypes: {
+    errorMessage: { control: 'text' },
+    hint: { control: 'text' },
+    requirementLabel: { control: 'text' },
+  },
 };
+export default meta;
 
-/* eslint-disable @typescript-eslint/no-namespace */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-date-field': JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+const Template = (args) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [dateString, updateDate] = useState<string>('');
+
+  useEffect(() => {
+    const element = ref.current;
+    if (element) {
+      const handleChange = (event: CustomEvent) => {
+        action('ds-change')(event);
+        updateDate(event.detail.value);
+      };
+      element.addEventListener('ds-change', handleChange as EventListener);
+      return () => {
+        element.removeEventListener('ds-change', handleChange as EventListener);
       };
     }
-  }
-}
-/* eslint-enable */
+  }, []);
 
-define('ds-date-field', () => Wrapper, {
-  attributes,
-  events: ['onChange', 'onBlur'],
-} as any);
+  return <ds-date-field ref={ref} {...args} value={dateString ?? ''} />;
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  name: 'ds-date-field',
+};
+
+export const WithPicker = Template.bind({});
+WithPicker.args = {
+  label: 'What day did you move?',
+  hint: 'This date should be within the past 60 days in order to qualify.',
+  fromYear: '2023',
+  toDate: new Date('2023-02-15T21:56:34.272Z').toISOString(),
+};
+
+export const WithError = Template.bind({});
+WithError.args = {
+  errorMessage: 'This is an example error message.',
+  ...WithPicker.args,
+};
