@@ -33,13 +33,13 @@ const Template = (args) => {
   useEffect(() => {
     const element = ref.current;
     if (element) {
-      const handleChange = (event: CustomEvent) => {
+      const handleStoryBookChange = (event: CustomEvent) => {
         action('ds-change')(event);
         updateDate(event.detail.value);
       };
-      element.addEventListener('ds-change', handleChange as EventListener);
+      element.addEventListener('ds-change', handleStoryBookChange as EventListener);
       return () => {
-        element.removeEventListener('ds-change', handleChange as EventListener);
+        element.removeEventListener('ds-change', handleStoryBookChange as EventListener);
       };
     }
   }, []);
@@ -56,12 +56,12 @@ export const WithPicker = Template.bind({});
 WithPicker.args = {
   label: 'What day did you move?',
   hint: 'This date should be within the past 60 days in order to qualify.',
-  fromYear: '2023',
-  toDate: new Date('2023-02-15T21:56:34.272Z').toISOString(),
+  'from-year': '2023',
+  'to-date': new Date('2023-02-15T21:56:34.272Z').toISOString(),
 };
 
 export const WithError = Template.bind({});
 WithError.args = {
-  errorMessage: 'This is an example error message.',
+  'error-message': 'This is an example error message.',
   ...WithPicker.args,
 };

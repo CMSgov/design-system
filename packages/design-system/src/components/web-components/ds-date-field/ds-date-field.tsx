@@ -17,6 +17,7 @@ const attributes = [
   'to-year',
   'hint',
   'label',
+  'error-message',
 ] as const;
 
 type IncompatibleProps =
