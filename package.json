@@ -23,7 +23,7 @@
     "clean": "yarn clean:cache && yarn clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
-    "deploy-demo": "ts-node ./scripts/deployDemo.ts",
+    "deploy-demo": "ts-node ./scripts/deploy-demo.ts",
     "lint": "yarn lint:stylelint && yarn lint:eslint",
     "lint:eslint": "yarn eslint ./packages/",
     "lint:stylelint": "yarn stylelint --custom-formatter stylelint-formatter-pretty ./packages/**/*.scss",
