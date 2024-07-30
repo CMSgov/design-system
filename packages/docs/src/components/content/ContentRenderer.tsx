@@ -2,6 +2,7 @@ import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { withPrefix } from 'gatsby';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
@@ -73,6 +74,8 @@ const customComponents = (theme) => ({
   ColorRamps,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   EmbeddedExample,
+  // Hack to fix missing path prefixes on static images imported from src
+  img: (props) => <img {...props} src={withPrefix(props.src)} />,
   MaturityChecklist,
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   p: (props) => TextWithMaxWidth(props, 'p'),
