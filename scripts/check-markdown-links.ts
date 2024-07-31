@@ -91,7 +91,7 @@ if (!foundFiles) {
   process.exit(0);
 } else {
   const allFiles = foundFiles.split('\n');
-  const searchExpression = /[http]*[s]*:\/\/[\S]*?[^\)\]\(\"' \n]*/g;
+  const searchExpression = /https?:\/\/[\S]*?[^\)\]\(\"' \n]*/g;
   allFiles.forEach((file) => findLinks(file, searchExpression));
 }
 
