@@ -8,6 +8,9 @@ interface FilesAndLinks {
 
 const appDir = path.resolve(__dirname, '..');
 const fileExtensions = ['.md', '.mdx'];
+const outputFileName = `${appDir}/brokenLinkReport.html`;
+let foundFiles: string | undefined;
+const urlsToCheck: FilesAndLinks = {};
 
 // Construct our find command:
 const findCommand = (): string => {
@@ -57,16 +60,13 @@ const findLinks = (filePath: string, regex: RegExp): void => {
   }
 };
 
-// Output file is a text file:
-const outputFileName = `${appDir}/brokenLinkReport.txt`;
-
 // Use node-fetch to query urls and return a status code:
 const curl = (file: string, url: string): void => {
   const spliceFrom = file.split('/').indexOf('design-system');
   const filePath: string = file.split('/').splice(spliceFrom).join('/');
   fetch(url).then((res) => {
     if (res.status !== 200) {
-      const content = `Filepath: ${filePath}\n\tURL: ${url} Code: ${res.status}\n`;
+      const content = `<div><h4>Filepath: <a href="${file}" target="_blank">${filePath}</a></h4><div style="margin-left:.5rem"><a href="${url}" target="_blank">${url}</a> <p>Code: ${res.status}</p></div><br/></div>\n`;
       fs.writeFile(outputFileName, content, { flag: 'a+' }, (err) => {
         if (err) {
           console.error(`Could not write line to file.\nContent: ${content}. Error: ${err}`);
@@ -77,14 +77,11 @@ const curl = (file: string, url: string): void => {
 };
 
 // Run our command and plop string output into a variable:
-let foundFiles: string | undefined;
 try {
   foundFiles = sh(findCommand());
 } catch (error) {
   console.log('Your find command failed with the following error:', error);
 }
-
-const urlsToCheck: FilesAndLinks = {};
 
 if (!foundFiles) {
   console.log(`No files found with the extensions ${fileExtensions.join(', ')} in ${appDir}.`);
