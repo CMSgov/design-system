@@ -74,9 +74,9 @@ When the component has no interactive elements like a button or text input a 'No
 
 Testing is a manual process and takes some time to understand how screen readers work. Here are some resources on learning to use screen readers:
 
-- [WebAIM's "Testing with Screen Readers"](https://webaim.org/articles/screenreader_testing/)
-- [David A. Kennedy's "Screen Reader Tips for Web Designers and Developers"](https://davidakennedy.com/blog/screen-reader-tips/)
-- [Deque University's screen reader guides](https://dequeuniversity.com/screenreaders/)
+- [WebAIM's "Testing with Screen Readers" (external link)](https://webaim.org/articles/screenreader_testing/)
+- [David A. Kennedy's "Screen Reader Tips for Web Designers and Developers" (external link)](https://davidakennedy.com/blog/screen-reader-tips/)
+- [Deque University's screen reader guides (external link)](https://dequeuniversity.com/screenreaders/)
 
 Components are tested in the following screen readers:
 
