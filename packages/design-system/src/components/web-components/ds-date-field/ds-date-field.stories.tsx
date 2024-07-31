@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
@@ -27,11 +27,10 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
-  const ref = useRef<HTMLDivElement>(null);
   const [dateString, updateDate] = useState<string>('');
 
   useEffect(() => {
-    const element = ref.current;
+    const element = document.querySelector('ds-date-field');
     if (element) {
       const handleStoryBookChange = (event: CustomEvent) => {
         action('ds-change')(event);
@@ -44,7 +43,7 @@ const Template = (args) => {
     }
   }, []);
 
-  return <ds-date-field ref={ref} {...args} value={dateString ?? ''} />;
+  return <ds-date-field {...args} value={dateString ?? ''} />;
 };
 
 export const Default = Template.bind({});
