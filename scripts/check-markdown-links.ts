@@ -6,20 +6,23 @@ interface FilesAndLinks {
   [key: string]: Array<string>;
 }
 
-// Construct our find command:
 const appDir = path.resolve(__dirname, '..');
 const fileExtensions = ['.md', '.mdx'];
-const commandBase = `find ${appDir} `;
-const commandArgs = fileExtensions
-  .map((ext) => {
-    return `-type f -name '*${ext}' -not -path '*/node_modules/*' -not -path '*/.github/*'`;
-  })
-  .join(` -or `);
 
-const findCommand = commandBase.concat(commandArgs);
+// Construct our find command:
+const findCommand = (): string => {
+  const commandBase = `find ${appDir} `;
+  const commandArgs = fileExtensions
+    .map((ext) => {
+      return `-type f -name '*${ext}' -not -path '*/node_modules/*' -not -path '*/.github/*'`;
+    })
+    .join(` -or `);
+
+  return commandBase.concat(commandArgs);
+};
 
 // Prevents us trying to call localhost urls.
-function isValidUrl(url: string): boolean {
+const isValidUrl = (url: string): boolean => {
   let urlHolder: URL;
   try {
     urlHolder = new URL(url);
@@ -33,10 +36,10 @@ function isValidUrl(url: string): boolean {
     return false;
   }
   return true;
-}
+};
 
 // Extract links from a particular md/mdx file and place into predefined object:
-function findLinks(filePath: string, regex: RegExp): void {
+const findLinks = (filePath: string, regex: RegExp): void => {
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const matches: RegExpMatchArray | null = fileContent.match(regex);
@@ -52,13 +55,13 @@ function findLinks(filePath: string, regex: RegExp): void {
       `An error occurred when parsing this file: ${filePath}. \nHere's the error:\n ${error}`
     );
   }
-}
+};
 
 // Output file is a text file:
 const outputFileName = `${appDir}/brokenLinkReport.txt`;
 
 // Use node-fetch to query urls and return a status code:
-function curl(file: string, url: string): void {
+const curl = (file: string, url: string): void => {
   const spliceFrom = file.split('/').indexOf('design-system');
   const filePath: string = file.split('/').splice(spliceFrom).join('/');
   fetch(url).then((res) => {
@@ -71,12 +74,12 @@ function curl(file: string, url: string): void {
       });
     }
   });
-}
+};
 
 // Run our command and plop string output into a variable:
 let foundFiles: string | undefined;
 try {
-  foundFiles = sh(findCommand);
+  foundFiles = sh(findCommand());
 } catch (error) {
   console.log('Your find command failed with the following error:', error);
 }
@@ -92,7 +95,7 @@ if (!foundFiles) {
   allFiles.forEach((file) => findLinks(file, searchExpression));
 }
 
-// Create our file/blow away existing content:
+// Create our file/blow away existing content so we can overwrite:
 fs.writeFile(outputFileName, '', (err) => {
   if (err) {
     console.error(`File not cleaned: ${err}`);
