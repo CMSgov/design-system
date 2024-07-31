@@ -148,7 +148,7 @@ When the component has no text to apply a translation to.
 
 #### How to test?
 
-[Read more about Internationalization (internal link)](https://design.cms.gov/getting-started/developers/internationalization/?theme=core 'Internationalization') in the CMSDS.
+[Read more about Internationalization (internal link)](https://design.cms.gov/getting-started/for-developers/#internationalization) in the CMSDS.
 
 Changing the language in the [Storybook controls (internal link)](https://design.cms.gov/storybook/ 'CMSDS Storybook') should change all English content that isn’t provided through a prop
 
