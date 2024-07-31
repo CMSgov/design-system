@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/preact';
+import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-date-field';
 
@@ -11,12 +11,7 @@ const defaultProps = {
 };
 
 function renderField(props = {}) {
-  const element = document.createElement('ds-date-field');
-  Object.keys(props).forEach((key) => {
-    element.setAttribute(key, props[key]);
-  });
-  document.body.appendChild(element);
-  return element;
+  return render(<ds-date-field {...props} />);
 }
 
 function renderPicker(props = {}) {
@@ -50,6 +45,7 @@ describe('DateField', () => {
     expect(mask).toBeInTheDocument();
 
     const input = getInput();
+    expect(input).toMatchSnapshot();
     expect(input).toBeInTheDocument();
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('inputmode', 'numeric');
@@ -59,12 +55,14 @@ describe('DateField', () => {
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
   it('masks in label', () => {
-    const container = renderField({ value: '11-01' });
+    renderField({ value: '11-01' });
 
     userEvent.click(getInput());
 
-    const mask = container.querySelector('.ds-c-label-mask');
-    expect(mask.textContent).toContain('11/01/YYYY');
+    const mask = screen.getByText(/11\/01\/YYYY/, {
+      selector: 'span:not(.ds-u-visibility--screen-reader)',
+    });
+    expect(mask).toBeInTheDocument();
   });
 
   it('generates ids when no id is provided', () => {
@@ -76,6 +74,7 @@ describe('DateField', () => {
       value: '',
     });
     const inputElement = getInput();
+    expect(inputElement).toMatchSnapshot();
     expect(inputElement.id).toMatch(/date-field--\d+/);
   });
 
@@ -137,6 +136,7 @@ describe('DateField', () => {
       expect(wrapper.querySelector('.ds-c-field')).toBeInTheDocument();
 
       const button = screen.getByRole('button');
+      expect(button).toMatchSnapshot();
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('ds-c-single-input-date-field__button');
       expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
@@ -159,7 +159,9 @@ describe('DateField', () => {
       renderError(defaultErrorProps);
       const errorMessage = screen.getByText('This is an example error message.');
       expect(errorMessage).toBeInTheDocument();
+      expect(errorMessage).toMatchSnapshot();
       const inputElement = getInput();
+      expect(inputElement).toMatchSnapshot();
       expect(inputElement).toHaveAttribute('aria-invalid', 'true');
       expect(errorMessage).toHaveAttribute('id', expect.stringContaining('static-id__error'));
       expect(inputElement).toHaveAttribute(
