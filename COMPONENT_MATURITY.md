@@ -97,7 +97,7 @@ When the component has no interactive elements like a button or text input a 'No
 
 #### How to test?
 
-Keyboard navigation is tested using this [keyboard acceptance criteria (Confluence document)](https://confluence.cms.gov/display/CMSWDS/Keyboard+Navigation+Testing 'Keyboard acceptance criteria').
+Keyboard navigation is tested using this [keyboard acceptance criteria (Confluence document)](https://confluence.cms.gov/x/a5yzKQ).
 
 Use this [guidance from WebAIM (external link)](https://webaim.org/techniques/keyboard/ 'WebAIM keyboard navigation guidance') to navigate components using a keyboard.
 
