@@ -20,7 +20,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={body} theme={theme} />
+      <ContentRenderer frontmatter={frontmatter} data={body} theme={theme} />
     </Layout>
   );
 };

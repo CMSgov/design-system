@@ -22,6 +22,7 @@ interface StorybookExampleProps {
    * Current theme
    */
   theme: string;
+  hideFooter?: boolean;
 }
 
 /**
@@ -31,7 +32,13 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({ theme, componentName, minHeight, storyId }: StorybookExampleProps) => {
+const StorybookExample = ({
+  theme,
+  componentName,
+  minHeight,
+  storyId,
+  hideFooter = false,
+}: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
@@ -108,7 +115,7 @@ const StorybookExample = ({ theme, componentName, minHeight, storyId }: Storyboo
           />
         </div>
       </section>
-      <StorybookExampleFooter storyId={storyId} theme={theme} />
+      <StorybookExampleFooter hidden={hideFooter} storyId={storyId} theme={theme} />
     </>
   );
 };
