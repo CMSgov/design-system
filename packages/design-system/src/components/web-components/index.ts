@@ -22,4 +22,5 @@ import './ds-dropdown';
 import './ds-month-picker';
 import './ds-skip-nav';
 import './ds-spinner';
+import './ds-text-field';
 import './ds-usa-banner';

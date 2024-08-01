@@ -1,26 +1,16 @@
 import IdleTimeout from './IdleTimeout';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-import { Title, Subtitle, Description, ArgsTable } from '@storybook/blocks';
+import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useArgs } from '@storybook/preview-api';
-
-const DocsPage = () => (
-  <>
-    <Title />
-    <Subtitle />
-    <Description />
-    <ArgsTable />
-  </>
-);
 
 const meta: Meta<typeof IdleTimeout> = {
   title: 'Components/IdleTimeout',
   component: IdleTimeout,
   parameters: {
     docs: {
-      inlineStories: false,
-      page: DocsPage,
+      page: NoStoryDocTemplate,
     },
   },
   args: {

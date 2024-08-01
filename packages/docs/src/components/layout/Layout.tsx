@@ -80,6 +80,25 @@ const Layout = ({
           lang: 'en',
         }}
       >
+        <meta
+          property="og:title"
+          content={
+            slug?.includes('not-in-sidebar') ? baseTitle : `${frontmatter?.title} - ${baseTitle}`
+          }
+        />
+        <meta
+          property="og:type"
+          content={slug?.includes('not-in-sidebar') ? 'website' : 'article'}
+        />
+        <meta property="og:url" content={location.origin + location.pathname} />
+        <meta
+          property="og:description"
+          content={
+            frontmatter.intro
+              ? frontmatter.intro
+              : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
+          }
+        />
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
         <link

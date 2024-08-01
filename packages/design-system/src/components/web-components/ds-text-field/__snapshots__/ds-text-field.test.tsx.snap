@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ds-text-field renders text-field 1`] = `
+<DocumentFragment>
+  <ds-text-field
+    id="static-id"
+  >
+    <div
+      class="ds-u-clearfix"
+    >
+      <label
+        class="ds-c-label"
+        for="text-field--1"
+        id="text-field--1__label"
+      />
+      <p
+        aria-atomic="true"
+        aria-live="assertive"
+        class="ds-c-inline-error"
+        id="text-field--1__error"
+      />
+      <input
+        aria-disabled="false"
+        aria-invalid="false"
+        class="ds-c-field"
+        id="text-field--1"
+        parent="[object HTMLElement]"
+        type="text"
+      />
+    </div>
+    <template />
+  </ds-text-field>
+</DocumentFragment>
+`;
