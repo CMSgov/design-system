@@ -5,6 +5,10 @@ import { TextInputProps } from './TextInput';
 import mergeIds from '../utilities/mergeIds';
 import useId from '../utilities/useId';
 
+/**
+ * Function for taking raw input and formatting it for a label mask. Passing `true` to
+ * `valueOnly` will return just the formatted value entered.
+ */
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
 /**

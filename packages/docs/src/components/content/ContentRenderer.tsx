@@ -2,6 +2,7 @@ import Prism from 'prismjs';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { withPrefix } from 'gatsby';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
@@ -62,6 +63,20 @@ const TextWithMaxWidth = (props: any, Component) => {
 };
 
 /**
+ * Hack to fix missing path prefixes on static images imported from src
+ */
+const PrefixedImg = (props) => {
+  // When navigating from another page, the Gatsby client dynamically pulls the new page
+  // information and renders with the prefix correctly, so we only want to apply the
+  // path prefix manually if it isn't already there. When we load fresh with a new HTTP
+  // request to a static HTML file, it'll use what's in the HTML, so we add the prefix
+  // when statically rendering, which seems to be where Gatsby fails to use it normally.
+  const pathPrefix = withPrefix('/');
+  const src = props.src.includes(pathPrefix) ? props.src : withPrefix(props.src);
+  return <img {...props} src={src} />;
+};
+
+/**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
@@ -73,6 +88,7 @@ const customComponents = (theme) => ({
   ColorRamps,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   EmbeddedExample,
+  img: PrefixedImg,
   MaturityChecklist,
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   p: (props) => TextWithMaxWidth(props, 'p'),
