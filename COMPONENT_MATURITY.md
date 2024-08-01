@@ -72,7 +72,11 @@ When the component has no interactive elements like a button or text input a 'No
 
 #### How to test?
 
-Testing is a manual process and takes some time to understand how screen readers work. Use the instructions provided in the [Accessibility Champions guidance (Google docs)](https://docs.google.com/document/d/1-2W9Gm97lBWWv8ljjjQ20JJEHS4DF8ldqHBIY4yWhFs/edit#bookmark=id.649z7zqdm5au 'Accessibility Champions guide') to learn how to use a screen reader. Deque University also provides some guidance and demos on [how to use a screen reader (external link)](https://dequeuniversity.com/screenreaders/ 'How to use a screen reader').
+Testing is a manual process and takes some time to understand how screen readers work. Here are some resources on learning to use screen readers:
+
+- [WebAIM's "Testing with Screen Readers" (external link)](https://webaim.org/articles/screenreader_testing/)
+- [David A. Kennedy's "Screen Reader Tips for Web Designers and Developers" (external link)](https://davidakennedy.com/blog/screen-reader-tips/)
+- [Deque University's screen reader guides (external link)](https://dequeuniversity.com/screenreaders/)
 
 Components are tested in the following screen readers:
 
@@ -93,7 +97,7 @@ When the component has no interactive elements like a button or text input a 'No
 
 #### How to test?
 
-Keyboard navigation is tested using this [keyboard acceptance criteria (Confluence document)](https://confluence.cms.gov/display/CMSWDS/Keyboard+Navigation+Testing 'Keyboard acceptance criteria').
+Keyboard navigation is tested using this [keyboard acceptance criteria (Confluence document)](https://confluence.cms.gov/x/a5yzKQ).
 
 Use this [guidance from WebAIM (external link)](https://webaim.org/techniques/keyboard/ 'WebAIM keyboard navigation guidance') to navigate components using a keyboard.
 
@@ -144,7 +148,7 @@ When the component has no text to apply a translation to.
 
 #### How to test?
 
-[Read more about Internationalization (internal link)](https://design.cms.gov/getting-started/developers/internationalization/?theme=core 'Internationalization') in the CMSDS.
+[Read more about Internationalization (internal link)](https://design.cms.gov/getting-started/for-developers/#internationalization) in the CMSDS.
 
 Changing the language in the [Storybook controls (internal link)](https://design.cms.gov/storybook/ 'CMSDS Storybook') should change all English content that isn’t provided through a prop
 
