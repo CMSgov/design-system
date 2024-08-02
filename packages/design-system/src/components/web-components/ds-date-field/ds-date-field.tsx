@@ -32,10 +32,8 @@ type IncompatibleProps =
   | 'toYear';
 
 interface WrapperProps extends Omit<SingleInputDateFieldProps, IncompatibleProps> {
-  name: string;
   rootId: string;
   inversed?: string;
-  value?: string;
   defaultMonth?: string;
   fromDate?: string;
   fromMonth?: string;
@@ -46,10 +44,8 @@ interface WrapperProps extends Omit<SingleInputDateFieldProps, IncompatibleProps
 }
 
 const Wrapper = ({
-  name,
   rootId,
   inversed,
-  value,
   defaultMonth,
   fromDate,
   fromMonth,
@@ -57,21 +53,21 @@ const Wrapper = ({
   toDate,
   toMonth,
   toYear,
+  value,
   ...otherProps
 }: WrapperProps) => {
   return (
     <SingleInputDateField
-      name={name}
       id={rootId}
       inversed={parseBooleanAttr(inversed)}
-      value={value}
+      defaultValue={value}
       defaultMonth={parseDateAttr(defaultMonth)}
       fromDate={parseDateAttr(fromDate)}
       fromMonth={parseDateAttr(fromMonth)}
       fromYear={parseIntegerAttr(fromYear)}
       toDate={parseDateAttr(toDate)}
       toMonth={parseDateAttr(toMonth)}
-      toYear={parseIntegerAttr(fromYear)}
+      toYear={parseIntegerAttr(toYear)}
       {...otherProps}
     />
   );
@@ -91,5 +87,13 @@ declare global {
 
 define('ds-date-field', () => Wrapper, {
   attributes,
-  events: ['onChange', 'onBlur'],
+  events: [
+    [
+      'onChange',
+      (updatedValue: string, formattedValue: string) => ({
+        detail: { updatedValue, formattedValue },
+      }),
+    ],
+    'onBlur',
+  ],
 } as any);

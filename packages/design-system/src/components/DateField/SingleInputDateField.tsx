@@ -55,6 +55,11 @@ interface BaseSingleInputDateFieldProps {
    * handler).
    */
   value?: string;
+  /**
+   * Sets the initial value. Use this for an uncontrolled component; otherwise,
+   * use the `value` property.
+   */
+  defaultValue?: string;
 
   // From DayPicker
   // -------------------------
@@ -122,15 +127,25 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     (toDate != null || toMonth != null || Number.isInteger(toYear));
   const [pickerVisible, setPickerVisible] = useState(false);
   const id = useId('date-field--', props.id);
+  const isControlled = remainingProps.value !== undefined;
+  const [internalValueState, setInternalValueState] = useState(remainingProps.defaultValue);
+  const value = isControlled ? remainingProps.value : internalValueState;
 
   // Set up change handlers
   function handleInputChange(event) {
     const updatedValue = event.currentTarget.value;
     onChange(updatedValue, DATE_MASK(updatedValue, true));
+    if (!isControlled) {
+      setInternalValueState(updatedValue);
+    }
   }
   function handlePickerChange(date: Date) {
     const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    onChange(DATE_MASK(updatedValue), DATE_MASK(updatedValue, true));
+    const maskedValue = DATE_MASK(updatedValue);
+    onChange(maskedValue, DATE_MASK(updatedValue, true));
+    if (!isControlled) {
+      setInternalValueState(maskedValue);
+    }
     setPickerVisible(false);
     inputRef.current?.focus();
   }
@@ -142,6 +157,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const inputRef = useRef<HTMLInputElement>();
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
     ...cleanFieldProps(remainingProps),
+    value,
     id,
     onChange: handleInputChange,
     type: 'text',

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
@@ -27,14 +27,16 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
-  const [dateString, updateDate] = useState<string>('');
+  // const [dateString, updateDate] = useState<string>('');
+  // console.log('story render', dateString)
 
   useEffect(() => {
     const element = document.querySelector('ds-date-field');
     if (element) {
       const handleStoryBookChange = (event: CustomEvent) => {
+        console.log('useEffect', event);
         action('ds-change')(event);
-        updateDate(event.detail.value);
+        // updateDate(event.detail.updatedValue);
       };
       element.addEventListener('ds-change', handleStoryBookChange as EventListener);
       return () => {
@@ -43,7 +45,7 @@ const Template = (args) => {
     }
   }, []);
 
-  return <ds-date-field {...args} value={dateString ?? ''} />;
+  return <ds-date-field {...args} /*value={dateString ?? ''}*/ />;
 };
 
 export const Default = Template.bind({});
