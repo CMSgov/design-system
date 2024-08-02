@@ -7,21 +7,7 @@ export function makeGithubUrl(pathname = '') {
   return join(ghUrl, pathname);
 }
 
-const sketchBoardIds = {
-  core: 'bffbfeb1-59a1-48dd-842f-a1e0566e457f',
-  healthcare: '4da17849-4fab-4684-b2ef-fe63ba7ff10b',
-  medicare: 'c242aee5-25e9-4684-ac7d-0f084ffeb782',
-};
-
-// creates links to sketch assets
-// in sketch, we are using the art board in 'inspect' mode for each component
-export function makeSketchUrl(pathname = '', theme) {
-  const sketchUrl = 'https://www.sketch.com/s/';
-  return join(sketchUrl, sketchBoardIds[theme], 'a', pathname, '#Inspect');
-}
-
 const figmaDocumentIdAndLibraryName = {
-  // cmsgov is not currently used; to do so update gql in `components/page-templates/InfoPage.tsx`
   cmsgov: 'p2z3UL1N4fP10z47F7am1v/CMS-Design-System-Library',
   core: 'OYkYP4pC9jwS7j2qafwmiv/CMS-Global-Library',
   healthcare: '4Z66yMTWr5rlEhYBvLx58j/HCgov-Design-System-Library',

@@ -32,21 +32,21 @@ export const query = graphql`
       frontmatter {
         title
         intro
+        cmsgov {
+          figmaNodeId
+        }
         core {
-          figmaLink
+          figmaNodeId
           githubLink
-          sketchLink
           storybookLink
         }
         healthcare {
-          figmaLink
-          sketchLink
+          figmaNodeId
           storybookLink
           githubLink
         }
         medicare {
-          figmaLink
-          sketchLink
+          figmaNodeId
           storybookLink
           githubLink
         }

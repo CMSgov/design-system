@@ -1,11 +1,6 @@
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
-import {
-  makeFigmaUrl,
-  makeGithubUrl,
-  makeSketchUrl,
-  makeStorybookUrl,
-} from '../../helpers/urlUtils';
+import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
 import classNames from 'classnames';
 
@@ -21,11 +16,10 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const { title, core, intro } = frontmatter;
   const themeLinks = frontmatter[theme];
 
-  const figmaId = themeLinks?.figmaLink || core?.figmaLink || null;
+  const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
-  const sketchId = themeLinks?.sketchLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
-  const showLinkBar = Boolean(figmaId || ghPath || sketchId || storyId);
+  const showLinkBar = Boolean(figmaNodeId || ghPath || storyId);
 
   const headerClassNames = classNames(
     'ds-u-padding-x--3',
@@ -44,8 +38,8 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
       )}
       {showLinkBar && (
         <div className="ds-u-margin-top--1 ds-u-margin-bottom--0">
-          {figmaId && (
-            <a href={makeFigmaUrl(figmaId, theme)} className="c-page-header__link">
+          {figmaNodeId && (
+            <a href={makeFigmaUrl(figmaNodeId, theme)} className="c-page-header__link">
               <img
                 alt="Figma logo"
                 src={withPrefix('/images/figma-icon.png')}
@@ -68,16 +62,6 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
                 className="ds-u-display--inline c-page-header__icon"
               />
               Storybook
-            </a>
-          )}
-          {sketchId && (
-            <a href={makeSketchUrl(sketchId, theme)} className="c-page-header__link">
-              <img
-                alt="Sketch logo"
-                src={withPrefix('/images/sketch-icon.png')}
-                className="ds-u-display--inline c-page-header__icon"
-              />
-              Sketch
             </a>
           )}
         </div>

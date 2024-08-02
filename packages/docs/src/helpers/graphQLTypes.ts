@@ -6,9 +6,8 @@ export interface TableOfContentsItem {
 }
 
 export interface ComponentLinksInterface {
-  figmaLink?: string;
+  figmaNodeId?: string;
   githubLink?: string;
-  sketchLink?: string;
   storybookLink?: string;
 }
 
