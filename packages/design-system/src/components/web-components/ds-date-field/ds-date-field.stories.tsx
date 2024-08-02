@@ -27,25 +27,25 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
-  // const [dateString, updateDate] = useState<string>('');
-  // console.log('story render', dateString)
-
   useEffect(() => {
     const element = document.querySelector('ds-date-field');
     if (element) {
       const handleStoryBookChange = (event: CustomEvent) => {
-        console.log('useEffect', event);
         action('ds-change')(event);
-        // updateDate(event.detail.updatedValue);
+      };
+      const handleStoryBookBlur = (event: CustomEvent) => {
+        action('ds-blur')(event);
       };
       element.addEventListener('ds-change', handleStoryBookChange as EventListener);
+      element.addEventListener('ds-blur', handleStoryBookBlur as EventListener);
       return () => {
         element.removeEventListener('ds-change', handleStoryBookChange as EventListener);
+        element.removeEventListener('ds-blur', handleStoryBookBlur as EventListener);
       };
     }
   }, []);
 
-  return <ds-date-field {...args} /*value={dateString ?? ''}*/ />;
+  return <ds-date-field {...args} />;
 };
 
 export const Default = Template.bind({});
