@@ -17,6 +17,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const themeLinks = frontmatter[theme];
 
   const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
+  const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
   const showLinkBar = Boolean(figmaNodeId || ghPath || storyId);
@@ -39,7 +40,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
       {showLinkBar && (
         <div className="ds-u-margin-top--1 ds-u-margin-bottom--0">
           {figmaNodeId && (
-            <a href={makeFigmaUrl(figmaNodeId, theme)} className="c-page-header__link">
+            <a href={makeFigmaUrl(figmaNodeId, figmaTheme)} className="c-page-header__link">
               <img
                 alt="Figma logo"
                 src={withPrefix('/images/figma-icon.png')}
