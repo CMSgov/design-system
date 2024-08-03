@@ -1,6 +1,6 @@
 import { sh } from './utils';
 import path from 'node:path';
-import fs from 'node:fs';
+import fs, { WriteFileOptions } from 'node:fs';
 import fetch from 'node-fetch';
 interface FilesAndLinks {
   [key: string]: Array<string>;
@@ -41,6 +41,21 @@ const isValidUrl = (url: string): boolean => {
   return true;
 };
 
+const writeToFile = (
+  outputFileName: string,
+  content = '',
+  flag: WriteFileOptions,
+  errorMessage = 'Error!',
+  successMessage?: string
+) => {
+  try {
+    fs.writeFileSync(outputFileName, content, flag);
+    successMessage && console.log(successMessage);
+  } catch (err) {
+    console.error(errorMessage.concat(` ${err}`));
+  }
+};
+
 // Extract links from a particular md/mdx file and place into predefined object:
 const findLinks = (filePath: string, regex: RegExp): void => {
   try {
@@ -61,17 +76,18 @@ const findLinks = (filePath: string, regex: RegExp): void => {
 };
 
 // Use node-fetch to query urls and return a status code:
-const curl = (file: string, url: string): void => {
+const curl = async (file: string, url: string): Promise<any> => {
   const spliceFrom = file.split('/').indexOf('design-system');
   const filePath: string = file.split('/').splice(spliceFrom).join('/');
   fetch(url).then((res) => {
     if (res.status !== 200) {
-      const content = `<div><h4>Filepath: <a href="${file}" target="_blank">${filePath}</a></h4><div style="margin-left:.5rem"><a href="${url}" target="_blank">${url}</a> <p>Code: ${res.status}</p></div><br/></div>\n`;
-      fs.writeFile(outputFileName, content, { flag: 'a+' }, (err) => {
-        if (err) {
-          console.error(`Could not write line to file.\nContent: ${content}. Error: ${err}`);
-        }
-      });
+      const content = `<div><h4>File that needs fixing: <a href="${file}" target="_blank">${filePath}</a></h4><div style="margin-left:.5rem"><p><strong>Broken</strong> 🔗</p><a href="${url}" target="_blank"><code>${url}</code></a> <p><strong>Status code:</strong> ${res.status}</p></div><br/></div>\n`;
+      writeToFile(
+        outputFileName,
+        content,
+        { flag: 'a+' },
+        `Could not write line to file.\nContent: ${content}. Error: `
+      );
     }
   });
 };
@@ -93,13 +109,7 @@ if (!foundFiles) {
 }
 
 // Create our file/blow away existing content so we can overwrite:
-fs.writeFile(outputFileName, '', (err) => {
-  if (err) {
-    console.error(`File not cleaned: ${err}`);
-  } else {
-    console.log('Cleaned file. Preparing to write.');
-  }
-});
+writeToFile(outputFileName, '', {}, 'File not cleaned:', 'Cleaned file. Preparing to write.');
 
 for (const [file, links] of Object.entries(urlsToCheck)) {
   links.forEach((link) => {
