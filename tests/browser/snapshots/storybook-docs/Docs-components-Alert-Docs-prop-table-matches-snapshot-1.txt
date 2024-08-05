@@ -41,7 +41,7 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
+    "Heading type to override default <h2>.\n\"3\"\n\"1\"\n\"2\"\n\"4\"\n\"5\"\n\"6\"",
     "\"2\""
   ],
   [
@@ -71,7 +71,7 @@
   ],
   [
     "variation",
-    "A string corresponding to the Alert variation classes (error, warn, success)\n\"error\"\n\"success\"\n\"warn\"",
+    "A string corresponding to the Alert variation classes (error, warn, success)\n\"success\"\n\"warn\"\n\"error\"",
     "-"
   ]
 ]

@@ -76,12 +76,12 @@
   ],
   [
     "type",
-    "Button type attribute\n\"button\"\n\"reset\"\n\"submit\"",
+    "Button type attribute\n\"button\"\n\"submit\"\n\"reset\"",
     "\"'button' as const\""
   ],
   [
     "variation",
-    "A string corresponding to Button variation classes.\n\"ghost\"\n\"solid\"",
+    "A string corresponding to Button variation classes.\n\"solid\"\n\"ghost\"",
     "-"
   ]
 ]

@@ -1,0 +1,27 @@
+[
+  [
+    "errorMessage",
+    "",
+    "string"
+  ],
+  [
+    "hint",
+    "",
+    "string"
+  ],
+  [
+    "label",
+    "",
+    "string"
+  ],
+  [
+    "name",
+    "",
+    "string"
+  ],
+  [
+    "requirementLabel",
+    "",
+    "string"
+  ]
+]

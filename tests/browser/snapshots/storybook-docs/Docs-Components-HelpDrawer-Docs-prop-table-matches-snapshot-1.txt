@@ -26,7 +26,7 @@
   ],
   [
     "closeButtonVariation",
-    "\"ghost\"\n\"solid\"",
+    "\"solid\"\n\"ghost\"",
     "-"
   ],
   [
@@ -56,7 +56,7 @@
   ],
   [
     "headingLevel",
-    "Heading type to override default <h3>\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"",
+    "Heading type to override default <h3>\n\"3\"\n\"1\"\n\"2\"\n\"4\"\n\"5\"",
     "-"
   ],
   [

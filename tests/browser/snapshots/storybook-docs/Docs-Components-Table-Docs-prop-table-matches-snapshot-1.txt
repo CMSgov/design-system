@@ -36,7 +36,7 @@
   ],
   [
     "stackableBreakpoint",
-    "Applies responsive styles to vertically stacked rows at different viewport sizes.\n\"lg\"\n\"md\"\n\"sm\"",
+    "Applies responsive styles to vertically stacked rows at different viewport sizes.\n\"sm\"\n\"md\"\n\"lg\"",
     "\"sm\""
   ],
   [
