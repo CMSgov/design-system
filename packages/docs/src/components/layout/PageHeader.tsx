@@ -3,6 +3,7 @@ import { withPrefix } from 'gatsby';
 import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 type PageHeaderProps = {
   frontmatter?: FrontmatterInterface;
@@ -13,14 +14,21 @@ type PageHeaderProps = {
  * Page header component that shows the page title and other details
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
+  const [themeLinks, setThemeLinks] = useState(undefined);
   const { title, core, intro } = frontmatter;
-  const themeLinks = frontmatter[theme];
 
   const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
   const showLinkBar = Boolean(figmaNodeId || ghPath || storyId);
+
+  // Tricks gatsby into re-rendering based on updated theme and frontmatter data
+  // Similar issue and debugging strategies found here: https://github.com/gatsbyjs/gatsby/issues/12413
+  useEffect(() => {
+    const links = frontmatter[theme];
+    setThemeLinks(links);
+  }, [frontmatter, theme]);
 
   const headerClassNames = classNames(
     'ds-u-padding-x--3',
