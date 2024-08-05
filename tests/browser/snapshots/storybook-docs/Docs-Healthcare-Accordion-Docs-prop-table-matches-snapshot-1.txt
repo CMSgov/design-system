@@ -1,12 +1,12 @@
 [
   [
     "bordered",
-    "",
+    "boolean",
     "-"
   ],
   [
     "openItems",
-    "",
+    "array",
     "-"
   ]
 ]

@@ -31,7 +31,7 @@
   ],
   [
     "errorPlacement",
-    "Location of the error message relative to the field input\n\"top\"\n\"bottom\"",
+    "Location of the error message relative to the field input\n\"bottom\"\n\"top\"",
     "-"
   ],
   [
@@ -135,7 +135,7 @@
   ],
   [
     "size",
-    "Set the max-width of the input either to 'small' or 'medium'.\n\"small\"\n\"medium\"",
+    "Set the max-width of the input either to 'small' or 'medium'.\n\"medium\"\n\"small\"",
     "-"
   ],
   [
