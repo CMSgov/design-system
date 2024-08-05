@@ -92,8 +92,7 @@ describe('DateField', () => {
 
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
     expect(input.value).toBe('1');
-    const event = mockChangeHandler.mock.calls[0][0];
-    expect(event.detail).toEqual({
+    expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
       updatedValue: '1',
       formattedValue: '01',
     });
@@ -101,7 +100,7 @@ describe('DateField', () => {
     dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('calls ds-change (onChange) when input loses focus', () => {
+  it('calls ds-change and ds-blur when input loses focus', () => {
     renderField({ value: '01-02-2000' });
 
     const dateFieldElement = document.querySelector('ds-date-field');
@@ -119,8 +118,7 @@ describe('DateField', () => {
     expect(input).not.toHaveFocus();
     expect(mockBlurHandler).toHaveBeenCalledTimes(1);
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
-    const event = mockChangeHandler.mock.calls[0][0];
-    expect(event.detail).toEqual({
+    expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
       updatedValue: '01/02/2000',
       formattedValue: '01/02/2000',
     });
