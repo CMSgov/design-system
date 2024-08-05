@@ -8,6 +8,7 @@ const defaultProps = {
   name: 'ds-date-field',
   value: '',
   'root-id': 'static-id',
+  // 'ds-change': jest.fn(),
 };
 
 function renderField(props = {}) {
@@ -78,7 +79,7 @@ describe('DateField', () => {
     expect(inputElement.id).toMatch(/date-field--\d+/);
   });
 
-  it('calls onChange when input changes', () => {
+  it('calls ds-change (onChange) when input changes', () => {
     renderField(defaultProps);
 
     const dateFieldElement = document.querySelector('ds-date-field');
@@ -87,21 +88,27 @@ describe('DateField', () => {
     dateFieldElement.addEventListener('ds-change', mockChangeHandler);
 
     const input = getInput() as HTMLInputElement;
-    expect(input.value).toBe('');
     userEvent.type(input, '1');
 
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
     expect(input.value).toBe('1');
+    const event = mockChangeHandler.mock.calls[0][0];
+    expect(event.detail).toEqual({
+      updatedValue: '1',
+      formattedValue: '01',
+    });
 
     dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('calls onChange when input loses focus', () => {
+  it('calls ds-change (onChange) when input loses focus', () => {
     renderField({ value: '01-02-2000' });
 
     const dateFieldElement = document.querySelector('ds-date-field');
     const mockChangeHandler = jest.fn();
+    const mockBlurHandler = jest.fn();
     dateFieldElement.addEventListener('ds-change', mockChangeHandler);
+    dateFieldElement.addEventListener('ds-blur', mockBlurHandler);
 
     const input = getInput() as HTMLInputElement;
 
@@ -110,9 +117,16 @@ describe('DateField', () => {
 
     userEvent.tab();
     expect(input).not.toHaveFocus();
+    expect(mockBlurHandler).toHaveBeenCalledTimes(1);
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
+    const event = mockChangeHandler.mock.calls[0][0];
+    expect(event.detail).toEqual({
+      updatedValue: '01/02/2000',
+      formattedValue: '01/02/2000',
+    });
 
     dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
+    dateFieldElement.removeEventListener('ds-blur', mockBlurHandler);
   });
 
   describe('DateField with picker', () => {
