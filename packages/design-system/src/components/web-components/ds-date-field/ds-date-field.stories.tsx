@@ -19,9 +19,9 @@ const meta: Meta = {
     name: 'ds-date-field',
   },
   argTypes: {
-    errorMessage: { control: 'text' },
+    'error-message': { control: 'text' },
     hint: { control: 'text' },
-    requirementLabel: { control: 'text' },
+    'requirement-label': { control: 'text' },
   },
 };
 export default meta;
