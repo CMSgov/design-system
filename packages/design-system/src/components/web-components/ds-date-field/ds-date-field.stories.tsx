@@ -85,6 +85,19 @@ const meta: Meta = {
       description: 'Label text or HTML.',
       control: 'text',
     },
+    'hint-id': {
+      description: 'The ID of the hint element',
+      control: 'text',
+    },
+    'label-class-name': {
+      description: 'Additional classes to be added to the field label',
+      control: 'text',
+    },
+    'label-id': {
+      description:
+        "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+      control: 'text',
+    },
     'requirement-label': {
       description:
         'Text showing the requirement (e.g., "Optional", or "Required"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
@@ -93,6 +106,16 @@ const meta: Meta = {
     'error-message': {
       description: 'Enable the error state by providing an error message.',
       control: 'text',
+    },
+    'error-id': {
+      description:
+        'The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.',
+      control: 'text',
+    },
+    'error-placement': {
+      description: 'Location of the error message relative to the field input',
+      options: ['top', 'bottom'],
+      control: { type: 'radio' },
     },
   },
 };

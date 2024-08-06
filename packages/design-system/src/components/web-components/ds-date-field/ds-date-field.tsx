@@ -2,6 +2,7 @@ import { define } from '../preactement/define';
 import { SingleInputDateFieldProps } from '../../DateField/SingleInputDateField';
 import { SingleInputDateField } from '../../DateField';
 import { parseBooleanAttr, parseDateAttr, parseIntegerAttr } from '../wrapperUtils';
+import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
   'name',
@@ -15,10 +16,7 @@ const attributes = [
   'to-date',
   'to-month',
   'to-year',
-  'hint',
-  'label',
-  'requirement-label',
-  'error-message',
+  ...formAttrs,
 ] as const;
 
 type IncompatibleProps =
