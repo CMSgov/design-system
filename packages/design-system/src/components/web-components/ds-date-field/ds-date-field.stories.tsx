@@ -30,10 +30,12 @@ const Template = (args) => {
   useEffect(() => {
     const element = document.querySelector('ds-date-field');
     if (element) {
-      const handleStoryBookChange = (event: CustomEvent) => {
+      const handleStoryBookChange = (
+        event: CustomEvent<{ updatedValue: string; formattedValue: string }>
+      ) => {
         action('ds-change')(event);
       };
-      const handleStoryBookBlur = (event: CustomEvent) => {
+      const handleStoryBookBlur = (event: Event) => {
         action('ds-blur')(event);
       };
       element.addEventListener('ds-change', handleStoryBookChange as EventListener);
