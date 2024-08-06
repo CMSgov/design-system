@@ -28,14 +28,7 @@ type Story = StoryObj<typeof SingleInputDateField>;
 
 const UncontrolledTemplate: Story = {
   render: function Component(args) {
-    const [dateString, updateDate] = useState('');
-
-    const onChange = (...params) => {
-      action('onChange')(...params);
-      updateDate(params[0]);
-    };
-
-    return <SingleInputDateField {...args} onChange={onChange} defaultValue={dateString ?? ''} />;
+    return <SingleInputDateField {...args} />;
   },
 };
 

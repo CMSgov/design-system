@@ -39,7 +39,7 @@ interface BaseSingleInputDateFieldProps {
    *   for convenience. Do not use this value as the component's `value` prop. An appropriate
    *   use for this value would be to run date-validation checks against it.
    */
-  onChange: (updatedValue: string, formattedValue: string) => any;
+  onChange?: (updatedValue: string, formattedValue: string) => any;
   /**
    * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
@@ -132,23 +132,28 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const value = isControlled ? remainingProps.value : internalValueState;
 
   // Set up change handlers
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     const updatedValue = event.currentTarget.value;
-    onChange(updatedValue, DATE_MASK(updatedValue, true));
+    if (onChange) {
+      onChange(updatedValue, DATE_MASK(updatedValue, true));
+    }
     if (!isControlled) {
       setInternalValueState(updatedValue);
     }
-  }
-  function handlePickerChange(date: Date) {
+  };
+
+  const handlePickerChange = (date: Date) => {
     const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     const maskedValue = DATE_MASK(updatedValue);
-    onChange(maskedValue, DATE_MASK(updatedValue, true));
+    if (onChange) {
+      onChange(maskedValue, DATE_MASK(updatedValue, true));
+    }
     if (!isControlled) {
       setInternalValueState(maskedValue);
     }
     setPickerVisible(false);
     inputRef.current?.focus();
-  }
+  };
 
   // Collect all the props and elements for the input and its labels
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
