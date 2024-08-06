@@ -60,7 +60,7 @@ const meta: Meta = {
     'from-year': {
       description:
         'Earliest year to start month navigation in the calendar picker. (This does not restrict dates entered manually.)',
-      control: 'number',
+      control: 'text',
     },
     'to-date': {
       description:
@@ -75,7 +75,7 @@ const meta: Meta = {
     'to-year': {
       description:
         'Latest year to end month navigation in the calendar picker. (This does not restrict dates entered manually.)',
-      control: 'number',
+      control: 'text',
     },
     hint: {
       description: 'Hint text or HTML.',
