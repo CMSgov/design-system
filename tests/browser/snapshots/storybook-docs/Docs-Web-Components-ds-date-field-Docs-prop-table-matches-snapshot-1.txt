@@ -1,6 +1,6 @@
 [
   [
-    "errorMessage",
+    "error-message",
     "",
     "string"
   ],
@@ -20,7 +20,7 @@
     "string"
   ],
   [
-    "requirementLabel",
+    "requirement-label",
     "",
     "string"
   ]
