@@ -11,6 +11,14 @@ const fileExtensions = ['.md', '.mdx'];
 const outputFileName = `${appDir}/brokenLinkReport.html`;
 let foundFiles: string | undefined;
 const urlsToCheck: FilesAndLinks = {};
+const githubPrefix = 'https://github.com/CMSgov/design-system/blob/main/';
+const docSitePrefix = 'https://design.cms.gov/';
+const tableHeaders = [
+  'Where on the web?',
+  'Where on my computer?',
+  "Link that's broken",
+  'Priority',
+];
 
 // Construct our find command:
 const findCommand = (): string => {
@@ -22,6 +30,53 @@ const findCommand = (): string => {
     .join(` -or `);
 
   return commandBase.concat(commandArgs);
+};
+
+// Create a table:
+const table = (header: string, body: string): string => {
+  return `<table>${header}${body}</table`;
+};
+
+// Create a table header:
+const tableHeader = () => {
+  const columnNames = tableHeaders.map((header) => `<th scope="col">${header}</th>`).join('\n');
+  return `<thead><tr>${columnNames}</tr></thead>`;
+};
+
+const tableBodyContainer: Array<string> = [];
+
+const createExternalLink = (linkUrl: string): string => {
+  // Find both on Github and the docsite
+  const githubUrlSuffix = linkUrl
+    .split('/')
+    .filter((link) => {
+      if (!link.includes('design-system')) return true;
+    })
+    .join('/');
+  const gHubUrl = githubPrefix + githubUrlSuffix;
+  let externalLink = `<td><strong>Github: </strong><a href="${gHubUrl}" target="_blank">${gHubUrl}</a></td>`;
+  if (linkUrl.includes('/content/')) {
+    const spliceFrom = linkUrl.split('/').indexOf('content');
+    const docSiteUrlSuffix = linkUrl
+      .split('/')
+      .splice(spliceFrom + 1)
+      .join('/');
+    const dSiteUrlSansExt = docSiteUrlSuffix.split('.md')[0];
+    const dSiteUrl = docSitePrefix + dSiteUrlSansExt;
+    externalLink = `<td><strong>Github: </strong><a href="${gHubUrl}" target="_blank">${gHubUrl}</a><br/><strong>Doc Site: </strong><a href="${dSiteUrl}" target="_blank">${dSiteUrl}</a></td>`;
+  }
+  return externalLink;
+};
+
+const tableBodyContent = (file: string, filePath: string, status: number, url: string) => {
+  const externalLink = createExternalLink(filePath);
+  const internalLink = `<td><a href="${file}" target="_blank">${filePath}</a></td>`;
+  const brokenLink = `<td><a href="${url}" target="_blank">${url}</a></td>`;
+  const priority = `<td>${
+    status === 404 ? `High priority: 404 broken link.` : `Response status ${status}. Investigate.`
+  }</td>`;
+  const content = `<tr> ${externalLink + internalLink + brokenLink + priority}</tr>`;
+  return content;
 };
 
 // Prevents us trying to call localhost urls.
@@ -41,6 +96,7 @@ const isValidUrl = (url: string): boolean => {
   return true;
 };
 
+// Wrapper function for Synchronous file writing.
 const writeToFile = (
   outputFileName: string,
   content = '',
@@ -76,15 +132,20 @@ const findLinks = (filePath: string, regex: RegExp): void => {
 };
 
 // Use node-fetch to query urls and return a status code:
-const curl = async (file: string, url: string): Promise<any> => {
+const curl = async (file: string, url: string, lastItem: boolean): Promise<void> => {
   const spliceFrom = file.split('/').indexOf('design-system');
   const filePath: string = file.split('/').splice(spliceFrom).join('/');
+  const content = '';
   fetch(url).then((res) => {
     if (res.status !== 200) {
-      const content = `<div><h4>File that needs fixing: <a href="${file}" target="_blank">${filePath}</a></h4><div style="margin-left:.5rem"><p><strong>Broken</strong> 🔗</p><a href="${url}" target="_blank"><code>${url}</code></a> <p><strong>Status code:</strong> ${res.status}</p></div><br/></div>\n`;
+      const rowContent = tableBodyContent(file, filePath, res.status, url);
+      tableBodyContainer.push(rowContent);
+    }
+    if (lastItem) {
+      const outputTable = table(tableHeader(), tableBodyContainer.join(''));
       writeToFile(
         outputFileName,
-        content,
+        outputTable,
         { flag: 'a+' },
         `Could not write line to file.\nContent: ${content}. Error: `
       );
@@ -111,8 +172,12 @@ if (!foundFiles) {
 // Create our file/blow away existing content so we can overwrite:
 writeToFile(outputFileName, '', {}, 'File not cleaned:', 'Cleaned file. Preparing to write.');
 
+// Loop over all files and links and write the broken links into an HTML file:
+let iter = 0;
 for (const [file, links] of Object.entries(urlsToCheck)) {
-  links.forEach((link) => {
-    curl(file, link);
+  links.forEach((link, index) => {
+    const isLastItem = links.length - 1 === index && Object.keys(urlsToCheck).length - 1 === iter;
+    curl(file, link, isLastItem);
   });
+  iter++;
 }
