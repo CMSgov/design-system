@@ -1,4 +1,3 @@
-import React from 'react';
 import uniqueId from 'lodash/uniqueId';
 
 export default {
@@ -12,7 +11,6 @@ export default {
   },
 };
 
-// an example for responsive layout grid -- referenced in doc site
 export const EqualWidths = () => (
   <section className="ds-l-container">
     <div className="ds-l-row">

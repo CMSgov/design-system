@@ -1,9 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
 
-export interface SvgIconProps {
+export interface BaseSvgIconProps {
   /**
    * Describes the value of the `aria-hidden` attribute on the SVG. Defaulted to true with the assumption that most icons are decorative.
    * If the icon does not have any associated label text, set this to `false` and ensure a `title` is provided for improved accessibility.
@@ -42,12 +41,13 @@ export interface SvgIconProps {
   viewBox?: string;
 }
 
+export type SvgIconProps = BaseSvgIconProps &
+  Omit<React.SVGProps<SVGSVGElement>, keyof BaseSvgIconProps>;
+
 // a type for react icon components that makes the 'title' prop optional & removes 'children' from type
 export type IconCommonProps = Partial<Omit<SvgIconProps, 'children'>>;
 
-type OmitProps = 'className' | 'children' | 'id' | 'title' | 'viewBox';
-
-export function SvgIcon({
+export const SvgIcon = ({
   ariaHidden,
   className,
   children,
@@ -57,12 +57,12 @@ export function SvgIcon({
   title,
   viewBox,
   ...otherProps
-}: Omit<React.SVGProps<SVGSVGElement>, OmitProps> & SvgIconProps): React.ReactElement {
+}: SvgIconProps) => {
   const svgClasses = classNames('ds-c-icon', { 'ds-c-icon--inverse': inversed }, className);
 
-  const [iconId] = useState(id || uniqueId('icon-'));
-  const titleId = `${iconId}__title`;
-  const descriptionId = `${iconId}__desc`;
+  const rootId = useId('icon--', id);
+  const titleId = `${rootId}__title`;
+  const descriptionId = `${rootId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
   const isSrVisible = !ariaHidden;
   const screenReaderProps = {};
@@ -75,8 +75,7 @@ export function SvgIcon({
     <svg
       aria-hidden={ariaHidden}
       className={svgClasses}
-      focusable={false}
-      id={iconId}
+      id={id ?? isSrVisible ? rootId : undefined}
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       {...screenReaderProps}
@@ -87,7 +86,7 @@ export function SvgIcon({
       {children}
     </svg>
   );
-}
+};
 
 SvgIcon.defaultProps = {
   ariaHidden: true,

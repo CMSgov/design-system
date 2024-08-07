@@ -1,10 +1,10 @@
-import React from 'react';
+import { useRef } from 'react';
+import type * as React from 'react';
 import Button, { ButtonVariation } from '../Button/Button';
 import NativeDialog from '../NativeDialog/NativeDialog';
-import { useRef } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { t } from '../i18n';
+import useId from '../utilities/useId';
 
 // TODO: closeButtonText, heading should be a string, but it is being used as a node in MCT,
 // until we provide a better solution for customization, we type it as a node.
@@ -13,12 +13,16 @@ export interface DrawerProps {
    * Gives more context to screen readers on the Drawer close button.
    */
   ariaLabel?: string;
+  /**
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   */
+  backdropClickExits?: boolean;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
   className?: string;
   footerBody?: React.ReactNode;
-  footerTitle?: string;
+  footerTitle?: React.ReactNode;
   /**
    * Enables focus trap functionality within Drawer.
    */
@@ -26,7 +30,7 @@ export interface DrawerProps {
   /**
    * Text for the Drawer heading. Required because the `heading` will be focused on mount.
    */
-  heading: string | React.ReactNode;
+  heading: React.ReactNode;
   /**
    * A unique `id` to be used on heading element to label multiple instances of Drawer.
    */
@@ -47,57 +51,96 @@ export interface DrawerProps {
    * Enables "sticky" position of Drawer footer element.
    */
   isFooterSticky?: boolean;
+  /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen: boolean;
+  /**
+   * Called when the user activates the close button or presses the ESC key if
+   * focus trapping is enabled. The parent of this component is responsible for
+   * showing or not showing the drawer, so you need to use this callback to
+   * make that happen. The dialog does not hide itself.
+   */
   onCloseClick: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/drawer/).
+ */
 export const Drawer = (props: DrawerProps) => {
-  const headingRef = useRef(null);
-  const id = useRef(props.headingId || uniqueId('drawer_'));
+  const {
+    ariaLabel,
+    backdropClickExits,
+    children,
+    className,
+    closeButtonText,
+    closeButtonVariation,
+    footerBody,
+    footerTitle,
+    hasFocusTrap,
+    heading,
+    headingId: userHeadingId,
+    headingLevel,
+    headingRef: userHeadingRef,
+    isFooterSticky,
+    isHeaderSticky,
+    isOpen,
+    onCloseClick,
+    ...otherProps
+  } = props;
 
-  const Heading = `h${props.headingLevel}` as const;
+  const headingRef = useRef(null);
+  const headingId = useId('drawer--', userHeadingId);
+
+  const Heading = `h${headingLevel}` as const;
 
   return (
     <NativeDialog
-      className={classNames(props.className, 'ds-c-drawer')}
-      exit={props.onCloseClick}
-      showModal={props.hasFocusTrap}
+      className={classNames(className, 'ds-c-drawer')}
+      exit={onCloseClick}
+      showModal={hasFocusTrap}
+      backdropClickExits={backdropClickExits}
+      isOpen={isOpen}
+      aria-labelledby={headingId}
+      {...otherProps}
     >
-      <div className="ds-c-drawer__window" tabIndex={-1} aria-labelledby={id.current}>
+      <div className="ds-c-drawer__window" tabIndex={isFooterSticky && -1}>
         <div className="ds-c-drawer__header">
           <Heading
-            id={id.current}
+            id={headingId}
             className="ds-c-drawer__header-heading"
             ref={(el) => {
               headingRef.current = el;
-              if (props.headingRef) {
-                props.headingRef.current = el;
+              if (userHeadingRef) {
+                userHeadingRef.current = el;
               }
             }}
           >
-            {props.heading}
+            {heading}
           </Heading>
           <Button
-            aria-label={props.ariaLabel ?? t('drawer.ariaLabel')}
+            aria-label={ariaLabel ?? t('drawer.ariaLabel')}
             className="ds-c-drawer__close-button"
             size="small"
-            onClick={props.onCloseClick}
-            variation={props.closeButtonVariation}
+            onClick={onCloseClick}
+            variation={closeButtonVariation}
           >
-            {props.closeButtonText ?? t('drawer.closeButtonText')}
+            {closeButtonText ?? t('drawer.closeButtonText')}
           </Button>
         </div>
         <div
           className={classNames('ds-c-drawer__body', {
-            'ds-c-drawer--is-sticky': props.isHeaderSticky || props.isFooterSticky,
+            'ds-c-drawer--is-sticky': isHeaderSticky || isFooterSticky,
           })}
           tabIndex={0}
         >
-          {props.children}
+          {children}
         </div>
-        {(props.footerTitle || props.footerBody) && (
+        {(footerTitle || footerBody) && (
           <div className="ds-c-drawer__footer">
-            <h4 className="ds-c-drawer__footer-title">{props.footerTitle}</h4>
-            <div className="ds-c-drawer__footer-body">{props.footerBody}</div>
+            <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>
+            <div className="ds-c-drawer__footer-body">{footerBody}</div>
           </div>
         )}
       </div>
@@ -106,8 +149,8 @@ export const Drawer = (props: DrawerProps) => {
 };
 
 Drawer.defaultProps = {
-  headingLevel: '3',
   hasFocusTrap: false,
+  headingLevel: '3' as const,
 };
 
 export default Drawer;

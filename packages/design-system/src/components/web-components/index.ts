@@ -9,10 +9,18 @@
  */
 
 export * from '../analytics';
-export * from '../flags';
+export * from '../config';
 export * from '../i18n';
 
-export * from './ds-alert';
-export * from './ds-badge';
-export * from './ds-button';
-export * from './ds-usa-banner';
+import './ds-accordion';
+import './ds-alert';
+import './ds-badge';
+import './ds-button';
+import './ds-choice';
+import './ds-date-field';
+import './ds-dropdown';
+import './ds-month-picker';
+import './ds-skip-nav';
+import './ds-spinner';
+import './ds-text-field';
+import './ds-usa-banner';

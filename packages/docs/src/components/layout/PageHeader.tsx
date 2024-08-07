@@ -1,9 +1,9 @@
-import React from 'react';
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
-import { makeGithubUrl, makeSketchUrl, makeStorybookUrl } from '../../helpers/urlUtils';
+import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
 import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 type PageHeaderProps = {
   frontmatter?: FrontmatterInterface;
@@ -14,13 +14,21 @@ type PageHeaderProps = {
  * Page header component that shows the page title and other details
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
+  const [themeLinks, setThemeLinks] = useState(undefined);
   const { title, core, intro } = frontmatter;
-  const themeLinks = frontmatter[theme];
 
+  const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
+  const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
-  const sketchId = themeLinks?.sketchLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
-  const showLinkBar = Boolean(ghPath || sketchId || storyId);
+  const showLinkBar = Boolean(figmaNodeId || ghPath || storyId);
+
+  // Tricks gatsby into re-rendering based on updated theme and frontmatter data
+  // Similar issue and debugging strategies found here: https://github.com/gatsbyjs/gatsby/issues/12413
+  useEffect(() => {
+    const links = frontmatter[theme];
+    setThemeLinks(links);
+  }, [frontmatter, theme]);
 
   const headerClassNames = classNames(
     'ds-u-padding-x--3',
@@ -33,12 +41,22 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
     <header className={headerClassNames}>
       <h1 className="ds-text-heading--4xl">{title}</h1>
       {intro && (
-        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--0">
+        <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--1">
           {intro}
         </p>
       )}
       {showLinkBar && (
         <div className="ds-u-margin-top--1 ds-u-margin-bottom--0">
+          {figmaNodeId && (
+            <a href={makeFigmaUrl(figmaNodeId, figmaTheme)} className="c-page-header__link">
+              <img
+                alt="Figma logo"
+                src={withPrefix('/images/figma-icon.png')}
+                className="ds-u-display--inline c-page-header__icon"
+              />
+              Figma
+            </a>
+          )}
           {ghPath && (
             <a href={makeGithubUrl(`tree/main/packages/${ghPath}`)} className="c-page-header__link">
               <GithubIcon />
@@ -53,16 +71,6 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
                 className="ds-u-display--inline c-page-header__icon"
               />
               Storybook
-            </a>
-          )}
-          {sketchId && (
-            <a href={makeSketchUrl(sketchId, theme)} className="c-page-header__link">
-              <img
-                alt="Sketch logo"
-                src={withPrefix('/images/sketch-icon.png')}
-                className="ds-u-display--inline c-page-header__icon"
-              />
-              Sketch
             </a>
           )}
         </div>

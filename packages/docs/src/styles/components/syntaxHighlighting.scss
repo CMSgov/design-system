@@ -22,9 +22,22 @@ a code {
   text-decoration: underline;
 }
 
-.ds-c-alert code {
+.ds-c-alert code,
+kbd {
   // Semi-transparent so it matches the color of the alert better
   background-color: #c4c4c44f;
+}
+
+kbd {
+  border: 1px solid #b4b4b44f;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 2px 0 0 rgb(255 255 255 / 70%) inset;
+  color: var(--color-black);
+  display: inline-block;
+  font-size: 0.85em;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
 }
 
 /**
@@ -43,7 +56,6 @@ pre[class*='language-'] {
   color: #545454;
   hyphens: none;
   line-height: 1.5;
-
   tab-size: 4;
   text-align: left;
   white-space: pre;
@@ -134,6 +146,7 @@ pre[class*='language-'] {
 .token.bold {
   font-weight: bold;
 }
+
 .token.italic {
   font-style: italic;
 }
@@ -148,7 +161,7 @@ pre[class*='language-'] {
 
 /* Line highlight */
 .line-highlight {
-  background: rgba(183, 134, 11, 0.075);
+  background: rgb(183 134 11 / 7.5%);
   border-bottom: 1px solid #b8860b;
   border-top: 1px solid #b8860b;
 }
@@ -158,14 +171,14 @@ pre[class*='language-'] {
   border-right: 1px solid #aa5d00;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows > span::before {
   color: #696969;
 }
 
 /*
  High contrast mode support
 */
-@media screen and (-ms-high-contrast: active) {
+@media (forced-colors: active) {
   code[class*='language-'],
   pre[class*='language-'] {
     background: window;

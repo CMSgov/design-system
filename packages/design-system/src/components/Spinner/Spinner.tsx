@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -32,7 +31,11 @@ export interface SpinnerProps {
   size?: SpinnerSize;
 }
 
-export const Spinner: React.FunctionComponent<SpinnerProps> = (props: SpinnerProps) => {
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/spinner/).
+ */
+export const Spinner = (props: SpinnerProps) => {
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,

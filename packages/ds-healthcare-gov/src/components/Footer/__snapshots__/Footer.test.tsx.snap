@@ -1,5 +1,272 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Footer analytics all links send analytics when analytics are enabled 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "Contact us",
+    "link_url": "/contact-us",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 2`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "Archive",
+    "link_url": "/archive",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 3`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "Accessibility",
+    "link_url": "http://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/CMSNondiscriminationNotice.html",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 4`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "Privacy policy",
+    "link_url": "/privacy",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 5`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "Using this site",
+    "link_url": "/using-this-site",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 6`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "中文",
+    "link_url": "/language-resource/#chinese",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 7`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Kreyòl",
+    "link_url": "/language-resource/#creole",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 8`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Français",
+    "link_url": "/language-resource/#french",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 9`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Deutsch",
+    "link_url": "/language-resource/#german",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 10`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "ગુજરાતી",
+    "link_url": "/language-resource/#gujarati",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 11`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "हिंदी",
+    "link_url": "/language-resource/#hindi",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 12`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Italiano",
+    "link_url": "/language-resource/#italian",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 13`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "日本語",
+    "link_url": "/language-resource/#japanese",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 14`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "한국어",
+    "link_url": "/language-resource/#korean",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 15`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Polski",
+    "link_url": "/language-resource/#polish",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 16`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Português",
+    "link_url": "/language-resource/#portuguese",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 17`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Русский",
+    "link_url": "/language-resource/#russian",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 18`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Español",
+    "link_url": "/language-resource/#spanish",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 19`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Tagalog",
+    "link_url": "/language-resource/#tagalog",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 20`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "heading": "Language resources",
+    "link_text": "Tiếng Việt",
+    "link_url": "/language-resource/#vietnamese",
+    "navigation_type": "footer",
+  },
+]
+`;
+
+exports[`Footer analytics all links send analytics when analytics are enabled 21`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "navigation_clicked",
+    "link_text": "HealthCare.gov",
+    "link_url": "https://www.healthcare.gov",
+    "navigation_type": "footer",
+  },
+]
+`;
+
 exports[`Footer renders basic footer 1`] = `
 <div>
   <footer
@@ -93,14 +360,14 @@ exports[`Footer renders basic footer 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
-          id="global-footer-language-resources"
+          id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
-          aria-labelledby="global-footer-language-resources"
+          aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
           role="list"
         >
@@ -251,7 +518,7 @@ exports[`Footer renders basic footer 1`] = `
               href="/language-resource/#vietnamese"
               lang="vi"
             >
-              tiếng việt
+              Tiếng Việt
             </a>
           </li>
         </ul>
@@ -273,6 +540,7 @@ exports[`Footer renders basic footer 1`] = `
             <svg
               aria-labelledby="hc-c-footer__logo-title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"
@@ -454,14 +722,14 @@ exports[`Footer renders basic footer with props 1`] = `
       <div
         class="hc-c-footer__language-resource-links-row"
       >
-        <h4
+        <p
           class="ds-u-visibility--screen-reader"
-          id="global-footer-language-resources"
+          id="hc-c-footer__language-resources"
         >
           Language resources
-        </h4>
+        </p>
         <ul
-          aria-labelledby="global-footer-language-resources"
+          aria-labelledby="hc-c-footer__language-resources"
           class="hc-c-footer__list"
           role="list"
         >
@@ -612,7 +880,7 @@ exports[`Footer renders basic footer with props 1`] = `
               href="https://www.healthcare.gov/language-resource/#vietnamese"
               lang="vi"
             >
-              tiếng việt
+              Tiếng Việt
             </a>
           </li>
         </ul>
@@ -634,6 +902,7 @@ exports[`Footer renders basic footer with props 1`] = `
             <svg
               aria-labelledby="hc-c-footer__logo-title"
               height="25"
+              role="img"
               viewBox="0 0 253.05 31.65"
               width="200"
               xmlns="http://www.w3.org/2000/svg"

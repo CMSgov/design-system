@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "jsx": "react",
-    "module": "esnext",
+    "jsx": "react-jsx",
+    "module": "nodenext",
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
@@ -10,5 +10,5 @@
     "baseUrl": ".",
     "skipLibCheck": true
   },
-  "include": ["packages/**/src/**/*"]
+  "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }

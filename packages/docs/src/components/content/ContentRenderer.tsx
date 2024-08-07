@@ -1,9 +1,9 @@
-import React from 'react';
 import Prism from 'prismjs';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
+import { withPrefix } from 'gatsby';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
@@ -12,14 +12,14 @@ import ColorRamps from './ColorRamps';
 import ComponentThemeOptions from './ComponentThemeOptions';
 import EmbeddedExample from './EmbeddedExample';
 import MaturityChecklist from './MaturityChecklist';
-import PropTable from './PropTable';
-import PropTableHtmlElementRow from './PropTableHtmlElementRow';
 import ResponsiveExample from './ResponsiveExample';
-import SeeStorybookForReactGuidance from './SeeStorybookForReactGuidance';
+import SeeStorybookForGuidance from './SeeStorybookForGuidance';
 import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
+import ReactDocsLinks from './ReactDocsLinks';
+import ReactDocsLink from './ReactDocsLink';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -59,8 +59,22 @@ const PreformattedWithLanguageClass = (props: any) => {
 };
 
 const TextWithMaxWidth = (props: any, Component) => {
-  const className = `ds-u-measure--wide ${props.className || ''}`;
+  const className = props.className ? `${props.className}` : null;
   return <Component {...props} className={className} />;
+};
+
+/**
+ * Hack to fix missing path prefixes on static images imported from src
+ */
+const PrefixedImg = (props) => {
+  // When navigating from another page, the Gatsby client dynamically pulls the new page
+  // information and renders with the prefix correctly, so we only want to apply the
+  // path prefix manually if it isn't already there. When we load fresh with a new HTTP
+  // request to a static HTML file, it'll use what's in the HTML, so we add the prefix
+  // when statically rendering, which seems to be where Gatsby fails to use it normally.
+  const pathPrefix = withPrefix('/');
+  const src = props.src.includes(pathPrefix) ? props.src : withPrefix(props.src);
+  return <img {...props} src={src} />;
 };
 
 /**
@@ -81,16 +95,15 @@ const customComponents = (theme) => ({
   ColorRamps,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   EmbeddedExample,
+  img: PrefixedImg,
   MaturityChecklist,
   ol: (props) => TextWithMaxWidth(props, 'ol'),
   p: (props) => TextWithMaxWidth(props, 'p'),
   pre: PreformattedWithLanguageClass,
-  PropTable: (props) => <PropTable theme={theme} {...props} />,
-  PropTableHtmlElementRow: (props) => <PropTableHtmlElementRow theme={theme} {...props} />,
+  ReactDocsLinks,
+  ReactDocsLink: (props) => <ReactDocsLink theme={theme} {...props} />,
   ResponsiveExample: (props) => <ResponsiveExample theme={theme} {...props} />,
-  SeeStorybookForReactGuidance: (props) => (
-    <SeeStorybookForReactGuidance theme={theme} {...props} />
-  ),
+  SeeStorybookForGuidance: (props) => <SeeStorybookForGuidance theme={theme} {...props} />,
   SpacingUtilityExampleList: (props) => <SpacingUtilityExampleList theme={theme} {...props} />,
   StorybookExample: (props) => <StorybookExample theme={theme} {...props} />,
   table: TableWithClassnames,

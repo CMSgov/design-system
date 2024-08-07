@@ -1,0 +1,17 @@
+[
+  [
+    "bordered",
+    "Applies a border to the accordion content.\nboolean",
+    "-"
+  ],
+  [
+    "children",
+    "Children should consist of AccordionItems\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Class to be applied to the outer <div> that contains all accordion items.\nstring",
+    "-"
+  ]
+]

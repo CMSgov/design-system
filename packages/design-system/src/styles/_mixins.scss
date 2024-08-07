@@ -7,6 +7,7 @@
 
 @mixin focus-styles {
   box-shadow: 0 0 0 3px var(--color-focus-light), 0 0 4px 6px var(--color-focus-dark);
+
   // Add support for Windows High Contrast Mode (WHCM)
   // The transparent color only shows when WHCM is triggered
   outline: 3px solid transparent;
@@ -27,11 +28,25 @@
   text-decoration: underline;
 }
 
+@mixin focus-styles-inset {
+  box-shadow: none;
+  outline: 0.25em solid var(--color-focus-dark);
+  outline-offset: -0.25em;
+}
+
 /**
  * Lists
  */
 
-@mixin ds-unstyled-list {
+// Base properties for styling lists with flexbox, including a standard gap
+// between items
+@mixin flex-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+@mixin unstyled-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -55,8 +70,8 @@
 }
 
 @mixin flexbox-col($size) {
-  flex: 0 0 percentage(math.div($size, $grid-columns));
-  max-width: percentage(math.div($size, $grid-columns)); // IE10+ and Firefox
+  flex: 0 0 math.percentage(math.div($size, $grid-columns));
+  max-width: math.percentage(math.div($size, $grid-columns)); // IE10+ and Firefox
 }
 
 @mixin equal-width-flexbox-col() {
@@ -84,7 +99,24 @@
   vertical-align: middle;
   width: 1em;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     fill: ButtonText;
   }
+}
+
+/**
+ * Utilities
+ */
+
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
+  word-wrap: normal;
 }

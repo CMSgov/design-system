@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Badge from './Badge';
 
@@ -14,6 +13,11 @@ const meta: Meta = {
       control: { type: 'radio' },
     },
     children: { control: 'text' },
+  },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['span'],
+    },
   },
 };
 

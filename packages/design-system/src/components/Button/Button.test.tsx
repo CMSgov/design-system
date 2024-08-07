@@ -1,7 +1,6 @@
-import React from 'react';
 import Button from './Button';
 import { UtagContainer } from '../analytics';
-import { setButtonSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -67,17 +66,19 @@ describe('Button', () => {
     expect(button.classList.contains('ds-c-button--small')).toBe(true);
   });
 
-  it('applies disabled, inverse, and variation classes together', () => {
+  it('applies disabled, inverse, alternate, and variation classes together', () => {
     renderButton({
       href: '#!',
       disabled: true,
       onDark: true,
+      isAlternate: true,
       variation: 'ghost',
     });
     const link = screen.getByRole('link');
     expect(link.hasAttribute('href')).toBe(false);
     expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
     expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
+    expect(link.classList.contains('ds-c-button--alternate')).toBe(true);
     expect(link.classList.contains('ds-c-button')).toBe(true);
   });
 
@@ -85,7 +86,7 @@ describe('Button', () => {
     let tealiumMock;
 
     beforeEach(() => {
-      setButtonSendsAnalytics(true);
+      config({ buttonSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -93,7 +94,7 @@ describe('Button', () => {
     });
 
     afterEach(() => {
-      setButtonSendsAnalytics(false);
+      config({ buttonSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
@@ -116,7 +117,7 @@ describe('Button', () => {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setButtonSendsAnalytics(false);
+      config({ buttonSendsAnalytics: false });
       renderButton({ analytics: true });
       fireEvent.click(screen.getByRole('button'));
       expect(tealiumMock).toHaveBeenCalled();

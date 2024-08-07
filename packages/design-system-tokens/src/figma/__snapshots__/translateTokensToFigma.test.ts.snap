@@ -1,0 +1,512 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generatePostVariablesPayload includes actions for adding everything when variables are empty 1`] = `
+Object {
+  "variableCollections": Array [
+    Object {
+      "action": "CREATE",
+      "id": "System",
+      "initialModeId": "Value",
+      "name": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "id": "Theme",
+      "initialModeId": "cmsgov",
+      "name": "Theme",
+    },
+  ],
+  "variableModeValues": Array [
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "a": 0,
+        "b": 1,
+        "g": 1,
+        "r": 1,
+      },
+      "variableId": "color/transparent",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.9725490196078431,
+        "g": 0.9450980392156862,
+        "r": 0.9019607843137255,
+      },
+      "variableId": "color/ocean/50",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.9215686274509803,
+        "g": 0.8313725490196079,
+        "r": 0.7019607843137254,
+      },
+      "variableId": "color/ocean/100",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.8705882352941177,
+        "g": 0.7215686274509804,
+        "r": 0.5019607843137255,
+      },
+      "variableId": "color/ocean/200",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.8156862745098039,
+        "g": 0.611764705882353,
+        "r": 0.30196078431372547,
+      },
+      "variableId": "color/ocean/300",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.7647058823529411,
+        "g": 0.4980392156862745,
+        "r": 0.10196078431372549,
+      },
+      "variableId": "color/ocean/400",
+    },
+    Object {
+      "modeId": "Value",
+      "value": Object {
+        "b": 0.7372549019607844,
+        "g": 0.44313725490196076,
+        "r": 0,
+      },
+      "variableId": "color/ocean/500",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 100,
+      "variableId": "radius/circle",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 3,
+      "variableId": "radius/default",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 8,
+      "variableId": "radius/large",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 4,
+      "variableId": "radius/medium",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 2,
+      "variableId": "radius/small",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 9999,
+      "variableId": "radius/pill",
+    },
+    Object {
+      "modeId": "Value",
+      "value": 8,
+      "variableId": "spacer/1",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "color/ocean/50",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "theme/color/primary-light",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "color/ocean/100",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "theme/color/primary",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
+    },
+    Object {
+      "modeId": "cmsgov",
+      "value": Object {
+        "id": "radius/small",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/button/border-radius",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "color/ocean/300",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "theme/color/primary-light",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "color/ocean/500",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "theme/color/primary",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary-light",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/background-color",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "theme/color/primary",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/alert/border-color",
+    },
+    Object {
+      "modeId": "core",
+      "value": Object {
+        "id": "radius/small",
+        "type": "VARIABLE_ALIAS",
+      },
+      "variableId": "component/button/border-radius",
+    },
+  ],
+  "variableModes": Array [
+    Object {
+      "action": "UPDATE",
+      "id": "Value",
+      "name": "Value",
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "UPDATE",
+      "id": "cmsgov",
+      "name": "cmsgov",
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "id": "core",
+      "name": "core",
+      "variableCollectionId": "Theme",
+    },
+  ],
+  "variables": Array [
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/transparent",
+      "name": "color/transparent",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/50",
+      "name": "color/ocean/50",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/100",
+      "name": "color/ocean/100",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/200",
+      "name": "color/ocean/200",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/300",
+      "name": "color/ocean/300",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/400",
+      "name": "color/ocean/400",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "color/ocean/500",
+      "name": "color/ocean/500",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/circle",
+      "name": "radius/circle",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/default",
+      "name": "radius/default",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/large",
+      "name": "radius/large",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/medium",
+      "name": "radius/medium",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/small",
+      "name": "radius/small",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "radius/pill",
+      "name": "radius/pill",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "spacer/1",
+      "name": "spacer/1",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "System",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "theme/color/primary-light",
+      "name": "theme/color/primary-light",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "theme/color/primary",
+      "name": "theme/color/primary",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "component/alert/background-color",
+      "name": "component/alert/background-color",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "component/alert/border-color",
+      "name": "component/alert/border-color",
+      "resolvedType": "COLOR",
+      "scopes": Array [
+        "ALL_SCOPES",
+      ],
+      "variableCollectionId": "Theme",
+    },
+    Object {
+      "action": "CREATE",
+      "codeSyntax": Object {},
+      "hiddenFromPublishing": false,
+      "id": "component/button/border-radius",
+      "name": "component/button/border-radius",
+      "resolvedType": "FLOAT",
+      "scopes": Array [
+        "CORNER_RADIUS",
+      ],
+      "variableCollectionId": "Theme",
+    },
+  ],
+}
+`;
+
+exports[`generatePostVariablesPayload uploads nothing new when variables already match tokens 1`] = `
+Object {
+  "variableCollections": Array [],
+  "variableModeValues": Array [],
+  "variableModes": Array [],
+  "variables": Array [],
+}
+`;
+
+exports[`getVariablesByCollection returns a nested object organizing variables into collections 1`] = `
+Object {
+  "codeSyntax": Object {},
+  "description": "",
+  "hiddenFromPublishing": false,
+  "id": "oce050",
+  "key": "color/ocean/50",
+  "name": "color/ocean/50",
+  "remote": false,
+  "resolvedType": "COLOR",
+  "scopes": Array [
+    "ALL_SCOPES",
+  ],
+  "valuesByMode": Object {
+    "ModeId:1": Object {
+      "a": 1,
+      "b": 0.9725490212440491,
+      "g": 0.9450980424880981,
+      "r": 0.9019607901573181,
+    },
+  },
+  "variableCollectionId": "VariableCollectionId:111",
+}
+`;
+
+exports[`getVariablesByCollection returns a nested object organizing variables into collections 2`] = `
+Object {
+  "codeSyntax": Object {},
+  "description": "",
+  "hiddenFromPublishing": false,
+  "id": "pri500",
+  "key": "theme/color/primary",
+  "name": "theme/color/primary",
+  "remote": false,
+  "resolvedType": "COLOR",
+  "scopes": Array [
+    "ALL_SCOPES",
+  ],
+  "valuesByMode": Object {
+    "ModeId:21": Object {
+      "id": "oce500",
+      "type": "VARIABLE_ALIAS",
+    },
+    "ModeId:22": Object {
+      "id": "oce100",
+      "type": "VARIABLE_ALIAS",
+    },
+  },
+  "variableCollectionId": "VariableCollectionId:222",
+}
+`;

@@ -1,4 +1,3 @@
-import React from 'react';
 import UsaBanner from './UsaBanner';
 import { fireEvent, render, screen } from '@testing-library/react';
 
@@ -9,7 +8,7 @@ function renderBanner(customProps = {}) {
 
 describe('UsaBanner', function () {
   it('renders correctly', () => {
-    renderBanner();
+    renderBanner({ id: 'static-id' });
     const header = screen.getByRole('banner');
     expect(header).toMatchSnapshot();
   });
@@ -24,6 +23,8 @@ describe('UsaBanner', function () {
 
   it('adds className to root element', () => {
     renderBanner({ className: 'bar' });
-    expect(screen.getByLabelText('Official government website').className).toContain('bar');
+    expect(
+      screen.getByLabelText('Official website of the United States government').className
+    ).toContain('bar');
   });
 });

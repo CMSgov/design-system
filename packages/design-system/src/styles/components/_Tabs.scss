@@ -39,8 +39,9 @@
   padding: $spacer-2 $spacer-1;
   position: relative;
   text-decoration: none;
+
   // Temporarily disable animation
-  //transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
+  // transition: border-bottom-color $animation-speed-2 $ease-in-out-expo;
 
   @media (min-width: $media-width-sm) {
     padding-inline: $spacer-2;
@@ -73,6 +74,7 @@
     border-block-end-color: var(
       --tabs__background-color--selected
     ); // Essentially turning off the bottom border
+
     color: var(--tabs__color--selected);
     pointer-events: none;
 
@@ -81,7 +83,7 @@
       transform: scale3d(1, 1, 1);
     }
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: windowText;
       border-bottom-color: window;
       color: windowText;
@@ -111,7 +113,7 @@
     border-color: var(--tabs__border-color--disabled);
     color: var(--tabs__color--disabled);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       color: GrayText;
       cursor: not-allowed;
     }

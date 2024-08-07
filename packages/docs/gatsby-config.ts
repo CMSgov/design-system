@@ -119,6 +119,7 @@ const config: GatsbyConfig = {
           })),
       },
     },
+    'gatsby-plugin-client-side-redirect',
   ],
 };
 

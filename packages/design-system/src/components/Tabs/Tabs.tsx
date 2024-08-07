@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import { Children, cloneElement, isValidElement, useState, useRef } from 'react';
+import type * as React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import classnames from 'classnames';
@@ -10,10 +11,17 @@ export interface TabsProps {
    */
   children: React.ReactNode;
   /**
-   * Sets the initial selected `TabPanel` state. If this isn't set, the first
-   * `TabPanel` will be selected.
+   * Sets the initial selected state to the specified `TabPanel` id. Use this
+   * for an uncontrolled component; otherwise, use the `selectedId` property.
+   * If no selected id is specified, the first `TabPanel` will be selected.
    */
   defaultSelectedId?: string;
+  /**
+   * Sets the initial selected state to the specified `TabPanel` id. Use this
+   * in combination with `onChange` for a controlled component; otherwise, set
+   * `defaultSelectedId`.
+   */
+  selectedId?: string;
   /**
    * A callback function that's invoked when the selected tab is changed.
    * `(selectedId, prevSelectedId) => void`
@@ -54,7 +62,7 @@ const getDefaultSelectedId = (props): string => {
 
   // TODO: Use the panelChildren method to pass in an array
   // of panels, instead of doing it here...
-  React.Children.forEach(props.children, function (child) {
+  Children.forEach(props.children, function (child) {
     if (isTabPanel(child) && !selectedId) {
       selectedId = child.props.id;
     }
@@ -69,12 +77,26 @@ const getDefaultSelectedId = (props): string => {
  * @return {String} Tab ID
  */
 const panelTabId = (panel): string => {
-  return panel.props.tabId || `ds-c-tabs__item--${panel.props.id}`;
+  return panel.props.tabId ?? `${panel.props.id}__tab`;
 };
 
+/**
+ * `Tabs` is a container component that manages the state of your tabs for you.
+ * In most cases, you'll want to use this component rather than the
+ * presentational components (`Tab`, `TabPanel`) on their own.
+ *
+ * A `TabPanel` is a presentational component which accepts a tab's content as
+ * its `children`.
+ *
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/tabs/).
+ */
 export const Tabs = (props: TabsProps) => {
   const initialSelectedId = props.defaultSelectedId || getDefaultSelectedId(props);
-  const [selectedId, setSelectedId] = useState(initialSelectedId);
+  const [internalSelectedId, setSelectedId] = useState(initialSelectedId);
+  const isControlled = props.selectedId !== undefined;
+  const selectedId = isControlled ? props.selectedId : internalSelectedId;
+
   const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
   const tabsRef = useRef({});
@@ -90,7 +112,7 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const panelChildren = (): React.ReactNode[] => {
-    return React.Children.toArray(props.children).filter(isTabPanel);
+    return Children.toArray(props.children).filter(isTabPanel);
   };
 
   const handleSelectedTabChange = (newSelectedId: string): void => {
@@ -143,12 +165,12 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderChildren = (): React.ReactNode => {
-    return React.Children.map(props.children, (child) => {
-      if (isTabPanel(child) && React.isValidElement(child)) {
+    return Children.map(props.children, (child) => {
+      if (isTabPanel(child) && isValidElement(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
-        return React.cloneElement(child as React.ReactElement<TabPanelProps>, {
+        return cloneElement(child as React.ReactElement<TabPanelProps>, {
           selected: selectedId === child.props.id,
           tab: undefined,
           tabHref: undefined,

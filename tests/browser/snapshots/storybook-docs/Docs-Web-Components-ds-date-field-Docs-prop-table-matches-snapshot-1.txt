@@ -1,0 +1,107 @@
+[
+  [
+    "default-month",
+    "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.",
+    ""
+  ],
+  [
+    "default-value",
+    "Sets the initial value for the component. This value will be used until the user changes the input, at which point the new value will be handled by the component's internal state. The `onChange` event will still be triggered with the updated value, but the component will manage the state internally.",
+    "string"
+  ],
+  [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "string"
+  ],
+  [
+    "error-message",
+    "Enable the error state by providing an error message.",
+    "string"
+  ],
+  [
+    "error-placement",
+    "Location of the error message relative to the field input",
+    "\"top\"\"bottom\""
+  ],
+  [
+    "from-date",
+    "Earliest day to start month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    ""
+  ],
+  [
+    "from-month",
+    "Earliest month to start month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    ""
+  ],
+  [
+    "from-year",
+    "Earliest year to start month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    "string"
+  ],
+  [
+    "hint",
+    "Hint text or HTML.",
+    "string"
+  ],
+  [
+    "hint-id",
+    "The ID of the hint element",
+    "string"
+  ],
+  [
+    "inversed",
+    "Set to `true` to apply the \"inverse\" color scheme.",
+    "\"true\"\"false\""
+  ],
+  [
+    "label",
+    "Label text or HTML.",
+    "string"
+  ],
+  [
+    "label-class-name",
+    "Additional classes to be added to the field label",
+    "string"
+  ],
+  [
+    "label-id",
+    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "string"
+  ],
+  [
+    "name",
+    "The `input` field's `name` attribute.",
+    "string"
+  ],
+  [
+    "requirement-label",
+    "Text showing the requirement (e.g., \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "string"
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ],
+  [
+    "to-date",
+    "Latest day to end month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    ""
+  ],
+  [
+    "to-month",
+    "Latest month to end month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    ""
+  ],
+  [
+    "to-year",
+    "Latest year to end month navigation in the calendar picker. (This does not restrict dates entered manually.)",
+    "string"
+  ],
+  [
+    "value",
+    "The `input` field's `value` attribute. Typically not used for uncontrolled components (web components).",
+    "string"
+  ]
+]

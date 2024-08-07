@@ -1,7 +1,5 @@
 import { Link, VARIATION_NAMES } from './Header';
-import localeLink from './localeLink';
-import loginLink from './loginLink';
-import { t, getLanguage, languageMatches } from '../i18n';
+import { t, languageMatches } from '../i18n';
 
 export enum LinkIdentifier {
   LOGIN = 'login',
@@ -21,6 +19,8 @@ export interface DefaultMenuLinkOptions {
   hideLogoutLink?: boolean;
   hideLanguageSwitch?: boolean;
   customLinksPassedIn?: boolean;
+  loginLinkClassName?: string;
+  languageLinkClassName?: string;
 }
 
 /**
@@ -31,16 +31,17 @@ export interface DefaultMenuLinkOptions {
 export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const {
     deConsumer,
-    subpath,
+    subpath = '',
     primaryDomain = '',
     switchLocaleLink,
     hideLoginLink,
     hideLogoutLink,
     hideLanguageSwitch,
     customLinksPassedIn,
+    loginLinkClassName,
+    languageLinkClassName,
   } = options;
-  const isSpanish = languageMatches('es', getLanguage());
-  const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
+  const isSpanish = languageMatches('es');
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
   const loggedOut = [];
@@ -50,6 +51,7 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   // respective variations. This means the language and login will show even if a custom set
   // of links is passed in.
   if (!customLinksPassedIn) {
+    const ffmLocalePath = isSpanish ? 'es_MX' : 'en_US';
     loggedIn.push({
       label: t('header.myApplicationsAndCoverage'),
       href: `${primaryDomain}/marketplace/auth/global/${ffmLocalePath}/myProfile#landingPage`,
@@ -61,14 +63,28 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   }
 
   if (!hideLanguageSwitch) {
-    const locLink = localeLink(t, getLanguage() ?? getLanguage(), subpath, switchLocaleLink);
+    const defaultLocaleLink = isSpanish
+      ? `https://www.healthcare.gov/${subpath}`
+      : `https://www.cuidadodesalud.gov/es/${subpath}`;
+
+    const locLink = {
+      label: isSpanish ? t('header.english') : t('header.español'),
+      ariaLabel: t('header.langAriaLabel'),
+      href: switchLocaleLink ?? defaultLocaleLink,
+      className: languageLinkClassName,
+    };
+
     loggedOut.push(locLink);
     loggedIn.push(locLink);
   }
 
   if (!hideLoginLink) {
-    const logLink = loginLink(t, deConsumer, primaryDomain);
-    loggedOut.push(Object.assign({ identifier: LinkIdentifier.LOGIN }, logLink));
+    loggedOut.push({
+      identifier: LinkIdentifier.LOGIN,
+      label: t('header.login'),
+      href: deConsumer ? `${primaryDomain}/login?check_de=1` : `${primaryDomain}/login`,
+      className: loginLinkClassName,
+    });
   }
 
   if (!hideLogoutLink) {

@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
@@ -15,7 +14,7 @@ interface MenuLinksProps {
  * when the "Menu" button is toggled and displayed as a stacked list.
  */
 const MenuLinks = (props: MenuLinksProps) => (
-  <ul className="hc-c-menu__links ds-c-list ds-c-list--bare">
+  <ul role="list" className="hc-c-menu__links ds-c-list ds-c-list--bare">
     {props.links.map(function (link) {
       const isLoginLogoutLink =
         (link as DefaultLink).identifier === LinkIdentifier.LOGIN ||

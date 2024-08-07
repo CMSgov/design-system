@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import InlineError from './InlineError';
 
@@ -20,7 +19,7 @@ describe('InlineError', function () {
     makeInlineError();
 
     const error = screen.getByText('Error message');
-    expect(error).toHaveClass('ds-c-field__error-message');
+    expect(error).toHaveClass('ds-c-inline-error');
     expect(error).toMatchSnapshot();
   });
 
@@ -28,7 +27,7 @@ describe('InlineError', function () {
     makeInlineError({ inversed: true });
 
     const error = screen.getByText('Error message');
-    expect(error).toHaveClass('ds-c-field__error-message--inverse');
+    expect(error).toHaveClass('ds-c-inline-error--inverse');
     expect(error).toMatchSnapshot();
   });
 });

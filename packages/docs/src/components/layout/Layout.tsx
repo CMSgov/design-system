@@ -1,6 +1,6 @@
-import React from 'react';
+import type * as React from 'react';
 import Footer from './DocSiteFooter';
-import Navigation from './DocSiteNavigation';
+import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
@@ -15,12 +15,15 @@ import {
 import { withPrefix } from 'gatsby';
 
 import '../../styles/index.scss';
+import { getThemeData } from './SideNav/themeVersionData';
+import ThemeVersionSection from './SideNav/ThemeVersionSection';
+import FilterDialogManager from './FilterDialog/FilterDialogManager';
 
 interface LayoutProps {
   /**
    * The elements to appear in the main page content, below the page heading
    */
-  children: React.ReactElement;
+  children: React.ReactNode;
   /**
    * page metadata
    */
@@ -45,11 +48,18 @@ interface LayoutProps {
    * list of heading items to be used in table of contents
    */
   tableOfContentsData?: TableOfContentsItem[];
+  /**
+   * Just used for designer-tools right now. This is a messy way of doing it.
+   * The whole layout thing needs to be refactored, and I've done that in the
+   * Astro branch.
+   */
+  fullWidth?: boolean;
 }
 
 const Layout = ({
   children,
   frontmatter,
+  fullWidth,
   pageHeader,
   location,
   slug,
@@ -57,21 +67,38 @@ const Layout = ({
   tableOfContentsData,
 }: LayoutProps) => {
   const env = 'prod';
-
-  const tabTitle = frontmatter?.title
-    ? `${frontmatter.title} - CMS Design System`
-    : 'CMS Design System';
+  const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
+  const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
-    <div className="ds-base" data-theme={theme} id={pageId}>
+    <div data-theme={theme} id={pageId}>
       <Helmet
         title={tabTitle}
         htmlAttributes={{
           lang: 'en',
         }}
       >
+        <meta
+          property="og:title"
+          content={
+            slug?.includes('not-in-sidebar') ? baseTitle : `${frontmatter?.title} - ${baseTitle}`
+          }
+        />
+        <meta
+          property="og:type"
+          content={slug?.includes('not-in-sidebar') ? 'website' : 'article'}
+        />
+        <meta property="og:url" content={location.origin + location.pathname} />
+        <meta
+          property="og:description"
+          content={
+            frontmatter.intro
+              ? frontmatter.intro
+              : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
+          }
+        />
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
         <link
@@ -88,33 +115,44 @@ const Layout = ({
       <HeaderFullWidth />
 
       <div className="ds-l-row ds-u-margin--0 full-height">
-        <Navigation location={location} />
+        <FilterDialogManager>
+          <SideNav location={location} />
+          <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
+            <ThemeVersionSection />
+          </div>
+        </FilterDialogManager>
         <main
           id="main"
           className="ds-l-md-col ds-u-padding--0 ds-u-padding-bottom--4 ds-u-padding-top--2 page-main"
         >
           {pageHeader ? pageHeader : <PageHeader frontmatter={frontmatter} theme={theme} />}
-          <article className="ds-u-md-display--flex ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-sm-padding-top--1 ds-u-padding-bottom--3 page-body">
-            <div className="ds-l-row">
-              <div className="ds-l-lg-col--9">
-                <div className="ds-u-display--block ds-u-lg-display--none ds-u-margin-bottom--3">
-                  <TableOfContentsMobile
+          {fullWidth ? (
+            <article className="ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3">
+              {children}
+            </article>
+          ) : (
+            <article className="ds-u-padding-x--3 ds-u-sm-padding-x--6 ds-u-sm-padding-bottom--6 ds-u-padding-top--1 ds-u-padding-bottom--3 page-body">
+              <div className="ds-l-row">
+                <div className="ds-l-lg-col--9">
+                  <div className="ds-u-lg-display--none ds-u-margin-bottom--3">
+                    <TableOfContentsMobile
+                      title={frontmatter.title}
+                      items={tableOfContentsData || []}
+                      slug={slug}
+                    />
+                  </div>
+                  <div className="page-body__content ds-u-measure--wide">{children}</div>
+                </div>
+                <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
+                  <TableOfContents
                     title={frontmatter.title}
                     items={tableOfContentsData || []}
                     slug={slug}
                   />
                 </div>
-                <div className="page-body__content">{children}</div>
               </div>
-              <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
-                <TableOfContents
-                  title={frontmatter.title}
-                  items={tableOfContentsData || []}
-                  slug={slug}
-                />
-              </div>
-            </div>
-          </article>
+            </article>
+          )}
           <Footer />
         </main>
       </div>

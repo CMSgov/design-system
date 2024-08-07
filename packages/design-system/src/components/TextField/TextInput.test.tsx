@@ -1,15 +1,15 @@
-import React from 'react';
+import type * as React from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
   TextInputProps = {
   name: 'spec-field',
   inputRef: jest.fn(),
-  id: '1',
+  id: 'static-id',
   type: 'text',
-  errorPlacement: 'top',
 };
 
 function renderInput(props = {}) {
@@ -51,23 +51,8 @@ describe('TextInput', function () {
   });
 
   it('has error', () => {
-    renderInput({ errorMessage: 'Error' });
-    expect(getInput().getAttribute('aria-invalid')).toBe('true');
+    renderInput({ 'aria-invalid': true });
     expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
-  });
-
-  it('handles bottom placed error', () => {
-    renderInput({
-      errorMessage: 'Error',
-      errorPlacement: 'bottom',
-      errorId: '1_error',
-      'aria-describedby': '1_label',
-    });
-
-    expect(getInput().getAttribute('aria-invalid')).toBe('true');
-    expect(getInput().getAttribute('aria-describedby')).toBe('1_label 1_error');
-    expect(getInput().classList.contains('ds-c-field--error')).toBe(true);
-    expect(getInput()).toMatchSnapshot();
   });
 
   it('has inversed theme', () => {
@@ -82,8 +67,8 @@ describe('TextInput', function () {
 
   it('has a value', () => {
     const value = 'Yay';
-    renderInput({ value, onChange: () => {} });
-    expect(getInput().getAttribute('value')).toBe(value);
+    renderInput({ value, onChange: () => null });
+    expect(getInput()).toHaveValue(value);
   });
 
   it('shows 5 rows of text', () => {
@@ -142,7 +127,7 @@ describe('TextInput', function () {
   it('calls onChange', () => {
     const onChange = jest.fn();
     renderInput({ onChange });
-    fireEvent.change(getInput(), { target: { value: 'hello world' } });
+    userEvent.type(getInput(), 'hello world');
     expect(onChange).toHaveBeenCalled();
   });
 });

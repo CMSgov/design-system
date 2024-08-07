@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import Table from './Table';
@@ -6,7 +5,11 @@ import TableCaption from './TableCaption';
 
 const makeTable = (customProps = {}) => {
   const children = <TableCaption>A great caption</TableCaption>;
-  render(<Table {...customProps}>{children}</Table>);
+  render(
+    <Table id="static-id" {...customProps}>
+      {children}
+    </Table>
+  );
 };
 
 describe('Table', function () {
@@ -38,6 +41,21 @@ describe('Table', function () {
   it('applies zebra stripe classes', () => {
     makeTable({ striped: true });
     expect(screen.getByRole('table')).toHaveClass('ds-c-table--striped');
+  });
+
+  it('accepts custom id', () => {
+    // Only scrollable tables put ids on the table captions
+    makeTable({ scrollable: true });
+    const el = screen.getByRole('region');
+    expect(el).toMatchSnapshot();
+  });
+
+  it('generates caption id when no id is provided', () => {
+    // Only scrollable tables put ids on the table captions
+    makeTable({ scrollable: true, id: undefined });
+    const table = screen.getByRole('table');
+    const caption = table.querySelector('caption');
+    expect(caption.id).toMatch(/table-caption--\d+/);
   });
 
   it('applies responsive stacked table', () => {

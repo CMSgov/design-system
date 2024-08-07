@@ -1,3 +1,5 @@
+@use 'mixins';
+
 /* Core root defaults */
 *,
 *::before,
@@ -16,6 +18,7 @@ html:focus-within {
     scroll-behavior: auto;
   }
 
+  /* stylelint-disable declaration-no-important -- Override animations */
   *,
   *::before,
   *::after {
@@ -25,15 +28,16 @@ html:focus-within {
     transition-duration: 0.01ms !important;
   }
 }
+/* stylelint-enable declaration-no-important */
 
 /* Core body defaults */
 
 body {
   background-color: var(--color-background);
-  color: var(--color-base);
-  font-family: var(--typography-body__font-family);
-  font-size: var(--font-size-base);
-  line-height: var(--font-line-height-base);
+  color: var(--global__color);
+  font-family: var(--global__font-family);
+  font-size: var(--global__font-size);
+  line-height: var(--global__line-height);
   margin: 0;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -59,20 +63,11 @@ h6 {
   // Heading tags inherit all font style rules to match body text;
   // This ensures semantics are distinct from appearance.
   font: inherit;
-  // margin applied to top of heading, informed by current margin size
   margin-block: 1.5em 0;
-
-  &:first-child {
-    margin-block-start: 0;
-  }
 }
 
 p {
   margin-block: 1em 0;
-
-  &:first-child {
-    margin-block-start: 0;
-  }
 }
 
 // These tags will naturally use 700 weight as bold
@@ -124,28 +119,39 @@ hr {
 
 /* Lists */
 
-// Relying on `flex` to set `gap` spacing size on li elements
-// `gap` ensures even spacing and doesn't interfere with layout
-// if list given a `row` direction
-ol,
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+// Default list styles will be applied to lists that don't have a `role`
+// attribute present to ensure that...
+//
+//   1. Lists used in text content will be consistently styled across
+//      applications and browsers
+//   2. Lists that shouldn't be styled have the proper role="list" attribute
+//      according to our list guidance, because Safari will not recognize
+//      unstyled lists as lists without that role attribute
+//
+// Note that we did not specify `role="list"` explicitly in the selectors
+// that create the exception to the default styling because there are other
+// legitimate roles that could be applied like `role="listbox"`.
+
+ol:not(:where([role])),
+ul:not(:where([role])) {
+  // Relying on `flex` to set `gap` spacing size on li elements
+  // `gap` ensures even spacing and doesn't interfere with layout
+  // if list given a `row` direction
+  @include mixins.flex-list;
+
   margin-block: 1em 0;
   padding-inline-start: 2em;
 }
 
-// Tying unstyled list styles to a required a11y attribute
-// ensures proper markup structure
-[role='list'] {
-  list-style: none;
-  padding: 0;
+// Tie the application of unstyled-list styles to inclusion of a role attribute
+// that will "fix" Safari behavior outlined in the guidance. See above comment.
+[role='list']:where(ul, ol) {
+  @include mixins.unstyled-list;
 }
 
 li {
-  > ul,
-  > ol {
+  > ul:not(:where([role])),
+  > ol:not(:where([role])) {
     margin-block: 0.5em 0;
   }
 }

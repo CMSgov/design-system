@@ -1,23 +1,16 @@
 import { DialogProps } from './Dialog';
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  useAnalyticsContent,
-  eventExtensionText,
-} from '../analytics';
-import { dialogSendsAnalytics } from '../flags';
+import { eventExtensionText } from '../analytics';
+import { config } from '../config';
+import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
 
 export function useDialogAnalytics({
   analytics,
   analyticsLabelOverride,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
+  isOpen,
 }: DialogProps) {
-  function sendDialogEvent(
-    content: string | undefined,
-    eventAttributes: { event_name: string; event_action: string }
-  ) {
-    if (analytics !== true && (!dialogSendsAnalytics() || analytics === false)) {
+  function sendDialogEvent(content: string | undefined, eventAttributes: { event_name: string }) {
+    if (analytics !== true && (!config().dialogSendsAnalytics || analytics === false)) {
       return;
     }
 
@@ -29,27 +22,24 @@ export function useDialogAnalytics({
     }
 
     onAnalyticsEvent({
-      event_type: EventType.UI_INTERACTION,
-      event_category: EventCategory.UI_COMPONENTS,
-      event_label: eventHeadingText,
       event_extension: eventExtensionText,
       heading: eventHeadingText,
       ...eventAttributes,
     });
   }
 
-  const [headingRef] = useAnalyticsContent({
-    componentName: 'Dialog',
-    onMount: (content: string | undefined) => {
+  // We need to send modal_impression when it's open once and only once.
+  // We need to send modal_closed only when it was open and then closed.
+  const headingRef = useNativeDialogAnalytics({
+    isOpen,
+    onOpen: (content?: string) => {
       sendDialogEvent(content, {
         event_name: 'modal_impression',
-        event_action: 'modal impression',
       });
     },
-    onUnmount: (content: string | undefined) => {
+    onClose: (content?: string) => {
       sendDialogEvent(content, {
         event_name: 'modal_closed',
-        event_action: 'closed modal',
       });
     },
   });

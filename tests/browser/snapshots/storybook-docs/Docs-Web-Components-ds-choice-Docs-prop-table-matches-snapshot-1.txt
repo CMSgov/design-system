@@ -1,0 +1,107 @@
+[
+  [
+    "checked",
+    "Sets the input's `checked` state. Use this in combination with `onChange` for a controlled component; otherwise, set `defaultChecked`.",
+    "\"true\"\"false\""
+  ],
+  [
+    "checked-children",
+    "Content to be shown when the choice is checked. See **Checked children and the expose within pattern** on the Guidance tab for detailed instructions.",
+    "string"
+  ],
+  [
+    "class-name",
+    "Additional classes to be added to the root div element.",
+    "string"
+  ],
+  [
+    "default-checked",
+    "Sets the initial `checked` state. Use this for an uncontrolled component otherwise, use the `checked` property.",
+    "\"true\"\"false\""
+  ],
+  [
+    "disabled",
+    "Disables the entire field.",
+    "\"true\"\"false\""
+  ],
+  [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "string"
+  ],
+  [
+    "error-message",
+    "Enable the error state by providing an error message",
+    "string"
+  ],
+  [
+    "hint",
+    "Hint text or HTML",
+    "string"
+  ],
+  [
+    "hint-id",
+    "The ID of the hint element",
+    "string"
+  ],
+  [
+    "id",
+    "A unique ID to be used for the input field, as well as the label's `for` attribute. A unique ID will be generated if one isn't provided.",
+    "string"
+  ],
+  [
+    "input-class-name",
+    "Additional classes to be added to the input element.",
+    "string"
+  ],
+  [
+    "inversed",
+    "Applies the \"inverse\" UI theme",
+    "\"true\"\"false\""
+  ],
+  [
+    "label",
+    "Label text or HTML.",
+    "string"
+  ],
+  [
+    "label-class-name",
+    "Additional classes to be added to the field label",
+    "string"
+  ],
+  [
+    "label-id",
+    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "string"
+  ],
+  [
+    "name",
+    "The `input` field's `name` attribute",
+    "string"
+  ],
+  [
+    "requirement-label",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "string"
+  ],
+  [
+    "size",
+    "Sets the size of the input to `\"small\"`",
+    "undefined\"small\""
+  ],
+  [
+    "type",
+    "Sets the type to render `checkbox` fields or `radio` buttons",
+    "\"radio\"\"checkbox\""
+  ],
+  [
+    "unchecked-children",
+    "Content to be shown when the choice is not checked",
+    "string"
+  ],
+  [
+    "value",
+    "The `input` `value` attribute",
+    "string"
+  ]
+]

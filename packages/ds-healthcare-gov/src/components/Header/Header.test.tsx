@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './Header';
 import { setLanguage } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';
@@ -141,6 +140,26 @@ describe('Header', function () {
     });
     const logo = baseElement.querySelector('.hc-c-logo');
     expect(logo.className.includes(customClass)).toBe(true);
+  });
+
+  it('should render custom class and id provided for language switch link', () => {
+    const customClass = 'custom-class-lang';
+    makeHeader({
+      languageLinkClassName: customClass,
+    });
+
+    const languageSwitch = screen.getAllByText('Español')[0];
+    expect(languageSwitch).toBeInTheDocument();
+    expect(languageSwitch.className.includes(customClass)).toBe(true);
+  });
+
+  it('should render custom class and id provided for login link', () => {
+    const customClass = 'custom-class-login';
+    makeHeader({ loginLinkClassName: customClass });
+
+    const loginLink = screen.queryAllByText('Log in')[0];
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink.className.includes(customClass)).toBe(true);
   });
 
   it('should render custom classes provided within links', () => {

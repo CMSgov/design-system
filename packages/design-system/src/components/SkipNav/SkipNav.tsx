@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import { t } from '../i18n';
 
 export interface SkipNavProps {
@@ -18,6 +18,10 @@ export interface SkipNavProps {
   onClick?: (...args: any[]) => any;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/skip-nav/).
+ */
 export const SkipNav = ({ children, href, onClick }: SkipNavProps) => {
   return (
     <a className="ds-c-skip-nav" href={href} onClick={onClick}>

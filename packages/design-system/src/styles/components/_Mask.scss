@@ -16,6 +16,7 @@
   // Medicare needs special layout adjustments for the currency icon within this field
   // If theme doesn't have a value for this token, use the value inherited by its parent
   line-height: var(--text-input-currency-icon__line-height, inherit);
+
   // Adjust to better align icon with value's baseline
   padding-block-start: 1px;
 }

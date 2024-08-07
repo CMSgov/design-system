@@ -1,0 +1,27 @@
+[
+  [
+    "button-class-name",
+    "Class to be applied to the header `<button>` of an accordion item.",
+    "string"
+  ],
+  [
+    "content-class-name",
+    "Class to be applied to the content `<div>` tag of an accordion item.",
+    "string"
+  ],
+  [
+    "default-open",
+    "Set to \"true\" to apply a border to the accordion content.",
+    "\"true\"\"false\""
+  ],
+  [
+    "heading",
+    "Class to be applied to the outer `<div>` that contains all accordion items.",
+    "string"
+  ],
+  [
+    "heading-level",
+    "Heading type to override default `<h2>`",
+    "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
+  ]
+]

@@ -1,33 +1,33 @@
-import React from 'react';
+import type * as React from 'react';
 import { Dialog } from '../Dialog';
 import { Button } from '../Button';
 
 export interface IdleTimeoutDialogProps {
   /**
-   *  The text for the dialog's 'close' button
-   */
-  closeButtonText?: string;
-  /**
    * The text for the 'continue session' button in warning dialog.
    */
-  continueSessionText: string;
+  continueSessionText: React.ReactNode;
   /**
    * The heading text for the warning dialog.
    */
-  heading?: string;
+  heading?: React.ReactNode;
   /**
    * The text for the button that ends the session in warning dialog.
    */
-  endSessionButtonText?: string;
+  endSessionButtonText?: React.ReactNode;
   /**
    *
    */
   endSessionUrl?: string;
   /**
+   * Controls whether the dialog is in an open state
+   */
+  isOpen?: boolean;
+  /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
    */
-  message: string | React.ReactNode;
+  message: React.ReactNode;
   /**
    * Function that is called when the user select the 'close' button for the dialog
    */
@@ -49,11 +49,11 @@ export interface IdleTimeoutDialogProps {
 }
 
 export const IdleTimeoutDialog = ({
-  closeButtonText,
   continueSessionText,
   heading,
   endSessionButtonText,
   endSessionUrl,
+  isOpen,
   message,
   onClose,
   onSessionContinue,
@@ -85,10 +85,10 @@ export const IdleTimeoutDialog = ({
     <Dialog
       alert
       id="session-timeout-dialog"
+      isOpen={isOpen}
       heading={heading}
       actions={renderDialogActions()}
       onExit={onClose}
-      closeButtonText={closeButtonText}
     >
       {message}
     </Dialog>

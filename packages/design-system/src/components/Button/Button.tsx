@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useButtonAnalytics from './useButtonAnalytics';
@@ -72,11 +72,14 @@ type OtherProps = Omit<
 
 export type ButtonProps = CommonButtonProps & OtherProps;
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/button/).
+ */
 export const Button = (props: ButtonProps) => {
   const {
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     analyticsParentHeading,
     analyticsParentType,
     onAnalyticsEvent,

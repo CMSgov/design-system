@@ -1,14 +1,16 @@
 ---
 title: Button
 intro: Buttons allow users to take actions from a current state to a future state.
+cmsgov:
+  figmaNodeId: 6-83
 core:
+  figmaNodeId: 6-83
   githubLink: design-system/src/components/Button
-  sketchLink: zx4Ybra
   storybookLink: components-button--docs
 healthcare:
-  sketchLink: bgkyK0V
+  figmaNodeId: 6-83
 medicare:
-  sketchLink: 9POn0mM
+  figmaNodeId: 6-83
 ---
 
 import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
@@ -232,9 +234,13 @@ In addition to the supported props listed, you can also pass in additional
 props, which will be passed to the rendered root component. For example,
 you could pass in a `target` prop to pass to the rendered anchor element.
 
-<SeeStorybookForReactGuidance storyId={'components-button--docs'} />
+<SeeStorybookForGuidance storyId={'components-button--docs'} />
 
-### Styles
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-button--docs'} />
+
+### Style customization
 
 The following CSS variables can be overridden to customize Button components:
 
@@ -299,17 +305,6 @@ When pairing 2 CTAs:
 - Confirm the user meant to trigger a destructive action before following through with the action.
 - Provide a method for a user to undo a destructive action.
 
-**Avoid using disabled buttons**
-
-Disabling a "button" to act as a guide to the level of form completion is a common anti-pattern (e.g., you aren't able to proceed in the next step until the form contains enough data). Why it's a problem:
-
-- Buttons tend to have call-to-action text that matches what users want to do, so people try to interact with them.
-- They have terrible color contrast.
-- They don’t provide feedback and tell the user why they're disabled. They communicate that something is off, but very often that is not enough information. As a result, users are left wondering what’s actually missing, and consequently are locked out entirely.
-- Assistive technologies like [screen readers](https://www.nngroup.com/articles/touchscreen-screen-readers/) and [switches](https://en.wikipedia.org/wiki/Switch_access) are usually not even able to navigate to disabled buttons.
-
-For these reasons, disabled buttons can be frustrating for all users but especially those with cognitive disabilities and those who use assistive technologies.
-
 <ThemeContent onlyThemes={['healthcare']}>
 
 ### Design guidelines
@@ -324,19 +319,90 @@ For these reasons, disabled buttons can be frustrating for all users but especia
 
 ### Accessibility
 
-<ThemeContent onlyThemes={['healthcare']}>
+- Make sure the `type` attribute has the correct value. By default, this is set to `submit` but in most you’ll need to set this to `button` to prevent unwanted behavior when pressed.
 
-Consider when to use links vs. when to use buttons. Links and buttons are read differently using a screen readers. For screen readers buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
+#### Links vs. buttons
 
-</ThemeContent>
+Links and buttons are read differently when using a screen reader. In its most basic form, the rules are:
 
+- If it goes somewhere, use a link in the form of `<a>`.
+- If it does something on the page such as submitting a form, opening a dialog, canceling an action, or deleting an item, then use a button in the form of `<button>`.
+
+##### Navigating with a screen reader
+
+Web browsers and assistive technology aid users by providing lists of common elements like headings, buttons, links, and images, and let you navigate directly to the element of your choosing. This allows screen reader users to speed up their comprehension of the page.
+
+One example of this collection of lists in a screen reader is the [VoiceOver rotor](https://support.apple.com/guide/voiceover/with-the-voiceover-rotor-mchlp2719/mac) on a Mac. To turn on VoiceOver’s rotor, use the keyboard shortcut: **control + alt + U**.
+
+If elements are not coded semantically (a link as a button or a button as a link), then users won't be able to navigate a page as easily.
+
+##### Navigating with a keyboard
+
+For users who navigate pages with keyboards instead of a mouse, buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
+
+#### Icon buttons
+
+An element's name, or accessible name, is how it is identified by browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). Accessible names provide information for assistive technology, such as screen readers, and so icon buttons must include an accessible name*.* If there is no text beside the icon then an `aria-label` or `aria-labelledby` attribute can be used to give the button its accessible name.
+
+#### Size
+
+The click/tap target area must be no smaller than 44x44px.
+
+#### Avoid using disabled buttons
+
+Disabling or making a "button" unavailable until a form or input field is complete can confuse some users.
+
+Why it's a problem:
+
+- They don’t provide feedback and tell the user why they're disabled. They communicate that something isn’t right, but very often that is not enough information.
+- Buttons should have call-to-action text that matches what users want to do, so people try to interact with them yet they aren’t able to be interacted with.
+- They typically have terrible color contrast.
+- Assistive technologies like [screen readers](https://www.nngroup.com/articles/touchscreen-screen-readers/) and [switches](https://en.wikipedia.org/wiki/Switch_access) are usually not able to navigate to disabled buttons.
+
+For these reasons, disabled buttons can be frustrating for all users but especially to those with cognitive disabilities and those who use assistive technologies.
+
+If you have a use case where you **must** use a disabled button, take note:
+
+- If using the `<a>` tag
+  - Add `aria-disabled` attribute set to true as this helps to describe the disabled state to screen reader users.
+  - Remove its `href` attribute. When a link has no `href`, it has no role, no focusability, and no keyboard events.
+  - Do not use the disabled attribute as it is not a valid attribute for `<a>`.
+
+Unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+
+#### State
+
+If a toggle-able button is needed, add `aria-pressed` to the button. Examples of this use case could be: buttons to change settings, buttons to sort with, etc.
+
+#### Accessibility testing
+
+##### General
+
+- The click/tap target area is no smaller than 44x44px.
+- There is a visible focus state.
+
+##### Keyboard
+
+- The spacebar and/or enter key are used to activate the button.
 - Buttons should display a visible focus state when users tab to them.
-- Create a button with a `<button>` or `<a>` element to retain the native click functionality. Avoid using `<div>` or `<img>` tags to create buttons. Screen readers don't automatically know either is a usable button.
-- When styling links to look like buttons, remember that screen readers handle links slightly differently than they do buttons. Pressing the `Space` key triggers a button, but pressing the `Enter` key triggers a link.
-- Dimmed or unavailable buttons using the `<a>` tag must have the `aria-disabled` attribute set to true and its `href` attribute removed.
-  - Unlike the `<button>`, `disabled` is not a valid attribute for `<a>`. To describe the disabled state to screen reader users, use the `aria-disabled` attribute instead.
-  - The `href` attribute is not required on `<a>`, and when it's absent it doesn't create a hyperlink.
-- Dimmed or unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+
+##### Screen reader
+
+###### Desktop
+
+When I navigate to the button:
+
+- Its purpose and/or resulting action is read.
+- The text content within the button is clear as to what it does.
+- If applicable, the state (for example: pressed, expanded, etc.) is is read.
+
+###### Mobile
+
+When I swipe to focus on a button:
+
+- Its purpose and/or resulting action is read.
+- The text content within the button is clear as to what it does.
+- If applicable, the state (for example: pressed, expanded, etc.) is is read.
 
 <ThemeContent onlyThemes={['medicare']}>
 

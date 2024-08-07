@@ -1,11 +1,11 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
 export type BadgeSize = 'big';
 export type BadgeVariation = 'info' | 'success' | 'warn' | 'alert';
 
-export interface BadgeProps {
+interface BaseBadgeProps {
   /**
    * Additional classes to be added to the root badge element.
    * Useful for adding utility classes.
@@ -25,9 +25,13 @@ export interface BadgeProps {
   variation?: BadgeVariation;
 }
 
-export const Badge: React.FC<React.ComponentPropsWithRef<'span'> & BadgeProps> = (
-  props: BadgeProps
-) => {
+export type BadgeProps = BaseBadgeProps & React.ComponentPropsWithRef<'span'>;
+
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/badge/).
+ */
+export const Badge = (props: BadgeProps) => {
   const { className = '', children, size, variation, ...others } = props;
   const sizeClasses = { big: 'ds-c-badge--big' };
 

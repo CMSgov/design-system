@@ -1,0 +1,79 @@
+---
+title: Inline Error
+intro: Inline errors give validation feedback for specific form fields.
+core:
+  githubLink: design-system/src/components/InlineError
+  storybookLink: components-inlineerror--docs
+---
+
+## Examples
+
+<StorybookExample
+  componentName="inline-error"
+  sourceFilePath="components/InlineError/InlineError.tsx"
+  storyId="components-inlineerror--default"
+/>
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-inlineerror--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-inlineerror--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Form components:
+
+<ComponentThemeOptions componentname="form" />
+
+## Guidance
+
+- Inline errors are built in to all design-system form fields but can be used on their own to create custom fields.
+- Inline errors should sit either directly above or below the input, depending on the theme defaults.
+- Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
+- The form field should have an `aria-describedby` attribute that references the `id` of the error message.
+
+#### Content
+
+- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered,  or answered incorrectly.
+- Repeat what the form label is asking the user to do, but with slightly more detail.
+- Use the fewest words possible (i.e., don't use "please").
+- Use sentence case.
+- End with a period.
+
+### Accessibility testing
+
+#### General observations
+
+- Inline error text should be outside of the label element.
+- Inline error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+- Inline error text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+#### Screen reader testing
+
+- When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
+
+## Learn More
+
+- [Form Guidelines](/patterns/Forms/forms/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

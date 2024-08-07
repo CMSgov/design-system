@@ -1,4 +1,3 @@
-import React from 'react';
 export default {
   title: 'Utilities/Flexbox',
   parameters: {
@@ -10,7 +9,6 @@ export default {
   },
 };
 
-// an example for responsive flexbox -- referenced in doc site
 export const flexbox = () => (
   <div>
     <article className="ds-u-sm-justify-content--center ds-u-md-justify-content--between ds-u-lg-justify-content--around ds-u-display--flex ds-u-padding--1 ds-u-border--1">

@@ -1,1 +1,1 @@
-export { default } from './MedicaregovLogo';
+export * from './MedicaregovLogo';

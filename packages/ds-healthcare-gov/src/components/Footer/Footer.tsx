@@ -1,8 +1,7 @@
-import React from 'react';
+import type * as React from 'react';
 import InlineLinkLists from './InlineLinkLists';
 import LogosRow from './LogosRow';
 import classnames from 'classnames';
-import { t } from '../i18n';
 
 export interface FooterProps {
   /**
@@ -29,16 +28,24 @@ export interface FooterProps {
    * Element to be added to display content for top footer section changes
    */
   footerTop?: React.ReactNode;
+  /**
+   * CSS classes to apply to the logo element
+   */
+  logoClassName?: string;
 }
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/footer/healthcare-footer/?theme=healthcare).
+ */
 export const Footer = (props: FooterProps) => {
   const classes = classnames('hc-c-footer', props.className);
 
   return (
     <footer className={classes} role="contentinfo">
       {props.footerTop}
-      <InlineLinkLists t={t} primaryDomain={props.primaryDomain} />
-      <LogosRow t={t} />
+      <InlineLinkLists primaryDomain={props.primaryDomain} />
+      <LogosRow logoClassName={props.logoClassName} />
     </footer>
   );
 };

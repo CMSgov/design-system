@@ -1,4 +1,3 @@
-import React from 'react';
 import { FunctionComponent } from 'react';
 import { RoundedStarIcon } from '../Icons';
 
@@ -17,7 +16,11 @@ export interface StarsProps {
   ariaHidden?: boolean;
 }
 
-const Stars: FunctionComponent<StarsProps> = ({
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/stars/?theme=medicare).
+ */
+export const Stars: FunctionComponent<StarsProps> = ({
   number,
   total,
   ariaHidden = false,

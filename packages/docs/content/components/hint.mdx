@@ -1,0 +1,82 @@
+---
+title: Hint
+intro: Hint text is used in combination with a Label to provide extra instructions or context for form fields.
+core:
+  githubLink: design-system/src/components/Hint
+  storybookLink: components-hint--docs
+---
+
+## Examples
+
+<StorybookExample
+  componentName="hint"
+  sourceFilePath="components/Hint/Hint.tsx"
+  storyId="components-hint--default"
+/>
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-hint--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-hint--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Form components:
+
+<ComponentThemeOptions componentname="form" />
+
+## Guidance
+
+- Hints are built in to all design-system form fields but can be used on their own to create custom fields.
+- Use hint text for supporting contextual help that is always visible.
+- Hint text should sit between a form label and the input.
+- Use lower visual style (i.e., lighter gray than the form label or the input option) so it won't compete for users' attention with the field label.
+- Use hint text to indicate which inputs are optional when there are more required fields than optional.
+- Hint text can also appear after an input box when the text is being used to show the value someone should be entering in the field (e.g., income amount input box displays text after the input box to highlight the amount should be "monthly income".)
+
+### Content
+
+- Use when appropriate to support a field [label](/components/label).
+- Describe how to best answer the question/form label.
+- Use the fewest words possible (i.e. don't use "please").
+- Use sentence case.
+- End with a period.
+- Be consistent with phrase and sentence structure.
+
+### Accessibility testing
+
+#### General observations
+
+- Hint text should be outside of the label element.
+- Hints should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+- Hint text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+#### Screen reader testing
+
+- When the input field gets focus, its label should be read first and then its hint after a slight delay.
+
+## Learn More
+
+- [Form Guidelines](/patterns/Forms/forms/)
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>

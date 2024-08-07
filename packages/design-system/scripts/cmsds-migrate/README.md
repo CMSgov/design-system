@@ -7,10 +7,10 @@ A bit more friendly than using unix command line tools.
 
 - Stored in `design-system/scripts/cmsds-migrate/configs`
 - Configuration files are JS modules that contain a single default export with the following keys:
-  - description : A description of the config, what it will do, presented to user before changes occur
-  - patterns : An array of glob patterns to search for, minimatch compatible
-  - globbyConfig : A configuration object passed to globby, defaults provided, `optional`
-  - expressions : An array of expression objects in the format `{ from: RegExp to: replacement }`
+  - **description** : A description of the config, what it will do, presented to user before changes occur
+  - **patterns** : An array of glob patterns to search for, minimatch compatible
+  - **globbyConfig** : A configuration object passed to globby, defaults provided, `optional`
+  - **expressions** : An array of expression objects in the format `{ from: RegExp to: String }`
 - Can be specified from the command line with the `--file` option.
 
 ## Command Line Options

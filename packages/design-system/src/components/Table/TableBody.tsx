@@ -1,5 +1,6 @@
-import React from 'react';
-export interface TableBodyProps {
+import type * as React from 'react';
+
+interface BaseTableBodyProps {
   /**
    * The table body contents, usually `TableRow`.
    */
@@ -8,9 +9,13 @@ export interface TableBodyProps {
 
 type OmitProps = 'children';
 
-export const TableBody: React.FC<
-  Omit<React.ComponentPropsWithoutRef<'tbody'>, OmitProps> & TableBodyProps
-> = ({ children, ...tableBodyProps }: TableBodyProps) => {
+export type TableBodyProps = Omit<React.ComponentPropsWithoutRef<'tbody'>, OmitProps> &
+  BaseTableBodyProps;
+
+/**
+ * `TableBody` renders the `<tbody>` element and will typically contain `TableRow` elements to define table data.
+ */
+export const TableBody = ({ children, ...tableBodyProps }: TableBodyProps) => {
   return (
     <tbody role="rowgroup" {...tableBodyProps}>
       {children}

@@ -1,10 +1,10 @@
-import React from 'react';
 import { Header, Footer } from '../../../../ds-healthcare-gov/src/components';
 
 export default {
   title: 'Patterns/One column page layout',
   parameters: {
     layout: 'fullscreen',
+    theme: 'healthcare',
   },
 };
 

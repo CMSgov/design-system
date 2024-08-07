@@ -1,34 +1,27 @@
-/**
- * https://www.levelaccess.com/differences-aria-1-0-1-1-changes-rolecombobox/
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
- * https://www.digitala11y.com/aria-autocomplete-properties/
- *
- * We have opted to retain the ARIA 1.0 markup pattern for comboboxes.
- * This was done because the ARIA 1.1 markup pattern triggers a different
- * behavior on containers with a role="combobox" attribute. WCAG refers to
- * this as a composite widget: https://www.w3.org/TR/wai-aria-1.1/#h-composite
- *
- * Our testing with screen readers, specifically JAWS, has been the deciding
- * factor in going back to the ARIA 1.0 markup pattern. There were a number
- * of conflicting interactions using the 1.1 markup pattern that felt like
- * an unacceptable regression of the user experience.
- */
-
-import { UseComboboxProps, UseComboboxStateChangeOptions, useCombobox } from 'downshift';
+import { cloneElement, useRef } from 'react';
+import type * as React from 'react';
 import Button from '../Button/Button';
-import React, { useRef } from 'react';
-import TextField from '../TextField/TextField';
+import DropdownMenu from '../Dropdown/DropdownMenu';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
-import { errorPlacementDefault } from '../flags';
+import mergeRefs from '../utilities/mergeRefs';
+import useId from '../utilities/useId';
+import { config } from '../config';
+import {
+  renderReactStatelyItems,
+  renderStatusMessage,
+  getTextFieldChild,
+  getActiveDescendant,
+  removeUndefined,
+} from './utils';
 import { t } from '../i18n';
-import createFilteredA11yStatusMessageFn from './createFilteredA11yStatusMessageFn';
+import { useComboBox } from '../react-aria'; // from react-aria
+import { useComboBoxState } from '../react-aria'; // from react-stately
 
-export interface AutocompleteItem {
+export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
    * Unique identifier for this item
    */
-  id?: string;
+  id: string;
   /**
    * Displayed value of the item. May alternatively provide a `children` value
    */
@@ -38,19 +31,15 @@ export interface AutocompleteItem {
    */
   children?: React.ReactNode;
   /**
-   * Additional classes to be added to the root element.
-   * Useful for adding utility classes.
-   */
-  className?: string;
-  /**
    * Whether this item should be counted as one of the results for the purpose of announcing the
    * result count to screen readers
+   * @deprecated This is no longer used, as we no longer have custom messaging for screen readers
+   * @hide-prop [Deprecated]
    */
   isResult?: boolean;
 }
 
-export interface AutocompleteProps
-  extends Omit<UseComboboxProps<any>, 'items' | 'onInputValueChange'> {
+export interface AutocompleteProps {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
    */
@@ -93,19 +82,25 @@ export interface AutocompleteProps
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated. [Read more on downshift docs.](https://github.com/downshift-js/downshift/tree/master/src/hooks/useCombobox#geta11ystatusmessage)
+   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.
+   * @deprecated This is no longer used
+   * @hide-prop [Deprecated]
    */
-  getA11yStatusMessage?: UseComboboxProps<any>['getA11yStatusMessage'];
+  getA11yStatusMessage?: any;
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
   inputRef?: (...args: any[]) => any;
   /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`). [Read more on downshift docs.](https://github.com/paypal/downshift#itemtostring)
+   * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
+   * @deprecated Please provide a `name` property to each item instead.
+   * @hide-prop [Deprecated]
    */
-  itemToString?: UseComboboxProps<any>['itemToString'];
+  itemToString?: (item: AutocompleteItem) => string;
   /**
-   * Array of objects used to populate the suggestion list that appears below the input as users type. This array of objects is intended for an async data callback, and should conform to the prescribed shape to avoid errors.
+   * Array of objects used to populate the suggestion list that appears below the input as users type.
+   * Passing an empty array will show a "No results" message. If you do not yet want to show results,
+   * this props should be undefined.
    */
   items?: AutocompleteItem[];
   /**
@@ -129,39 +124,39 @@ export interface AutocompleteProps
    */
   noResultsMessage?: React.ReactNode;
   /**
-   * Called when the user selects an item and the selected item has changed. Called with the item that was selected and the new state. [Read more on downshift docs.](https://github.com/paypal/downshift#onchange)
+   * Called when the user selects an item and the selected item has changed. Called with the item that was selected.
    */
-  onChange?: (
-    selectedItem: AutocompleteItem,
-    stateAndHelpers: UseComboboxStateChangeOptions<any>
-  ) => void;
+  onChange?: (selectedItem: AutocompleteItem) => void;
   /**
-   * Called when the child `TextField` value changes. Returns a String `inputValue`. [Read more on downshift docs.](https://github.com/downshift-js/downshift#oninputvaluechange)
+   * Called when the child `TextField` value changes. Is called with a string representing the input value.
    */
-  onInputValueChange?: (
-    inputValue: string,
-    stateAndHelpers: UseComboboxStateChangeOptions<any>
-  ) => void;
+  onInputValueChange?: (inputValue: string) => void;
 }
 
 /**
- * Determine if a React component is a TextField
- * @param {React.Node} child - a React component
- * @return {Boolean} Is this a TextField component?
+ * The Autocomplete component wraps a TextField component and turns it into a combobox,
+ * where a user can type into the text field and see matching results. They can then
+ * select one of these results from the list, which will trigger an `onChange` event on
+ * the Autocomplete.
+ *
+ * The two event handlers that should be used when this is a controlled component are
+ * `onChange` and `onInputValueChange`. They are defined on the Autocomplete component
+ * and not its child TextField component.
+ *
+ * As the user types and `onInputValueChange` is called, you should be supplying relevant
+ * results to the Autocomplete through the `items` prop. The `items` prop is an array of
+ * objects. Passing an empty array will show a "No results" message. If you do not yet
+ * want to show results—for instance, because they haven't typed enough characters yet to
+ * make a database call—the `items` prop should remain be undefined. If you are still
+ * loading the results, use the `loading` boolean prop to display the loading message to
+ * the user.
+ *
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/autocomplete/).
  */
-function isTextField(child: React.ReactElement): boolean {
-  const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-
-  // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TextField || componentName === 'TextField');
-}
-
 export const Autocomplete = (props: AutocompleteProps) => {
-  const id = useRef(props.id ?? uniqueId('autocomplete__input--')).current;
-  const labelId = useRef(props.labelId ?? uniqueId('autocomplete__label--')).current;
-  const menuId = useRef(uniqueId('autocomplete__menu--')).current;
-  const menuContainerId = useRef(uniqueId('autocomplete__menu-container--')).current;
-  const menuHeadingId = useRef(uniqueId('autocomplete__header--')).current;
+  const id = useId('autocomplete--', props.id);
+  const menuId = `${id}__menu`;
 
   const {
     ariaClearLabel,
@@ -172,167 +167,168 @@ export const Autocomplete = (props: AutocompleteProps) => {
     clearInputText,
     clearSearchButton,
     focusTrigger,
-    id: _id,
-    inputRef,
+    inputRef: userInputRef,
     items,
     itemToString,
-    label,
-    labelId: _labelId,
+    label: menuHeading,
+    labelId: menuHeadingId,
     loading,
     loadingMessage,
     noResultsMessage,
     onChange,
     onInputValueChange,
-    getA11yStatusMessage,
     ...autocompleteProps
   } = props;
 
-  const { isOpen, getMenuProps, getInputProps, getItemProps, highlightedIndex, selectItem } =
-    useCombobox({
-      items: items ?? [],
-      itemToString,
-      inputId: id,
-      labelId,
-      menuId,
-      onSelectedItemChange:
-        onChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onChange(changes.selectedItem, changes);
-        }),
-      onInputValueChange:
-        onInputValueChange &&
-        ((changes: UseComboboxStateChangeOptions<any>) => {
-          // Map to old API where the first parameter is input value
-          onInputValueChange(changes.inputValue, changes);
-        }),
-      getA11yStatusMessage: createFilteredA11yStatusMessageFn(getA11yStatusMessage, items),
-      ...autocompleteProps,
-    });
-
-  function renderItems() {
-    // If we have results, create a mapped list
-    if (items?.length) {
-      return items.map((item, index) => (
-        <li
-          aria-selected={highlightedIndex === index}
-          className={classNames(item.className, 'ds-c-autocomplete__list-item', {
-            'ds-c-autocomplete__list-item--active': highlightedIndex === index,
-          })}
-          key={item.id}
-          role="option"
-          {...getItemProps({ item })}
-        >
-          {item.children ?? props.itemToString(item)}
-        </li>
-      ));
-    }
-
+  // Determine what we'll show based on state
+  let reactStatelyItems = [];
+  let statusMessage;
+  if (items?.length) {
+    reactStatelyItems = renderReactStatelyItems(items, itemToString);
+  } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
-    if (loading) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {loadingMessage ?? t('autocomplete.loadingMessage')}
-        </li>
-      );
-    }
-
+    statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
+  } else if (items) {
     // If we have no results (empty array), show the non-selected message
-    if (items) {
-      return (
-        <li aria-selected="false" className="ds-c-autocomplete__list-item--message" role="option">
-          {noResultsMessage ?? t('autocomplete.noResultsMessage')}
-        </li>
-      );
-    }
-
-    return null;
+    statusMessage = renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
   }
 
-  function renderChildren(): React.ReactNode[] {
-    // Extend props on the TextField, by passing them
-    // through Downshift's `getInputProps` method
-    return React.Children.map(children, (child: React.ReactElement) => {
-      if (!isTextField(child)) {
-        return child;
-      }
+  const textField = getTextFieldChild(children);
+  const size = textField.props.size;
+  const labelId = textField.props.labelId ?? `${id}__label`;
 
-      // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
-      // Add errorMessageClassName to fix the styles for bottom placed errors
-      const bottomError =
-        (child.props.errorPlacement === 'bottom' || errorPlacementDefault() === 'bottom') &&
-        child.props.errorMessage != null;
+  const state = useComboBoxState({
+    ...autocompleteProps,
+    allowsCustomValue: true,
+    allowsEmptyCollection: true,
+    children: reactStatelyItems,
+    inputValue: textField.props.value,
+    onInputChange: onInputValueChange
+      ? (value) => {
+          onInputValueChange(value);
+        }
+      : undefined,
+    onSelectionChange: onChange
+      ? (selectedKey) => {
+          const selectedItem = items ? items.find((item) => selectedKey === item.id) : undefined;
+          // We don't call onChange when the user deletes text, even though react-aria will call
+          // this function with `null` if the input is cleared out. This is to maintain backwards
+          // compatability, but we could consider changing this behavior in the future. If we
+          // decide to remove this check, we can also remove the explicit `onChange` call in the
+          // clear button handler.
+          if (selectedItem) {
+            onChange(selectedItem);
+          }
+        }
+      : undefined,
+  });
 
-      const errorMessageClassName = classNames(
-        child.props.errorMessageClassName,
-        bottomError && 'ds-c-autocomplete__error-message',
-        bottomError && clearSearchButton && 'ds-c-autocomplete__error-message--clear-btn'
-      );
+  const inputRef = useRef<HTMLInputElement>();
+  const listBoxRef = useRef<HTMLElement>();
+  const wrapperRef = useRef<HTMLDivElement>();
+  const useComboboxProps = useComboBox(
+    {
+      ...autocompleteProps,
+      name: textField.props.name,
+      label: textField.props.label,
+      isDisabled: textField.props.disabled,
+      inputRef,
+      listBoxRef,
+      popoverRef: listBoxRef,
+    },
+    state
+  );
 
-      const propOverrides = getInputProps({
-        autoComplete: autoCompleteLabel,
-        autoFocus: autoFocus || focusTrigger,
-        id,
-        ref: inputRef,
-        onBlur: child.props.onBlur,
-        onChange: child.props.onChange,
-        onKeyDown: child.props.onKeyDown,
-      });
+  // The display of bottom placed errorMessages in TextField breaks the Autocomplete's UI design.
+  // Add errorMessageClassName to fix the styles for bottom placed errors
+  const bottomError =
+    (textField.props.errorPlacement === 'bottom' || config().errorPlacementDefault === 'bottom') &&
+    textField.props.errorMessage != null;
 
-      // Downshift wants to put a ref on the input, but we call it `inputRef` in
-      // the TextField component.
-      propOverrides.inputRef = propOverrides.ref;
-      delete propOverrides.ref;
+  const errorMessageClassName = classNames(
+    textField.props.errorMessageClassName,
+    bottomError && 'ds-c-autocomplete__error-message',
+    bottomError && clearSearchButton && 'ds-c-autocomplete__error-message-clear-btn'
+  );
 
-      // TypeScript doesn't want us to pass these to getInputProps because they're unknown
-      // to Downshift. They're part of our TextField prop definitions.
-      propOverrides.errorMessageClassName = errorMessageClassName;
-      propOverrides.labelId = labelId;
+  const textFieldProps = removeUndefined({
+    ...useComboboxProps.inputProps,
+    autoComplete: autoCompleteLabel,
+    autoFocus: autoFocus || focusTrigger,
+    'aria-activedescendant': useComboboxProps.inputProps['aria-activedescendant']
+      ? getActiveDescendant(id, state, items)
+      : undefined,
+    'aria-controls': menuId,
+    'aria-labelledby': labelId,
+    errorMessageClassName,
+    id,
+    labelId,
+    inputRef: mergeRefs([inputRef, userInputRef]),
+    // Restores previous functionality where if you had typed characters into the text
+    // field to get results and then blur away and come back, it'll open the results
+    // list again without having to press anything on the keyboard.
+    onFocus: (event) => {
+      useComboboxProps.inputProps.onFocus?.(event);
+      textField.props.onFocus?.(event);
+      state.open();
+    },
+    // Allow the user to continue to attach their own event handlers to the TextField.
+    // The following event handlers would normally be overwritten by useCombobox.
+    onChange: (event) => {
+      useComboboxProps.inputProps.onChange?.(event);
+      textField.props.onChange?.(event);
+    },
+    onBlur: (event) => {
+      useComboboxProps.inputProps.onBlur?.(event);
+      textField.props.onBlur?.(event);
+    },
+    onTouchEnd: (event) => {
+      useComboboxProps.inputProps.onTouchEnd?.(event);
+      textField.props.onTouchEnd?.(event);
+    },
+    onKeyDown: (event) => {
+      useComboboxProps.inputProps.onKeyDown?.(event);
+      textField.props.onKeyDown?.(event);
+    },
+  });
 
-      return React.cloneElement(child, propOverrides);
-    });
-  }
-
-  const rootClassName = classNames('ds-u-clearfix', 'ds-c-autocomplete', className);
-
-  let menuHeading;
-  const menuProps = getMenuProps();
-  if (label && !loading) {
-    menuHeading = (
-      <h5 className="ds-c-autocomplete__label" id={menuHeadingId}>
-        {label}
-      </h5>
-    );
-    menuProps['aria-labelledby'] = `${menuHeadingId} ${menuProps['aria-labelledby'] ?? ''}`;
-  }
-
-  const menuContent = renderItems();
+  const rootClassName = classNames('ds-c-autocomplete', className);
 
   return (
-    <div className={rootClassName}>
-      {renderChildren()}
+    <div className={rootClassName} ref={wrapperRef}>
+      {cloneElement(textField, textFieldProps)}
 
-      <div
-        className="ds-c-autocomplete__list"
-        id={menuContainerId}
-        hidden={!(isOpen && menuContent)}
-      >
-        {menuHeading}
-        <ul className="ds-c-list--bare" {...menuProps}>
-          {menuContent}
-        </ul>
-      </div>
+      {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
+        <DropdownMenu
+          {...useComboboxProps.listBoxProps}
+          componentClass="ds-c-autocomplete"
+          heading={menuHeading}
+          labelId={menuHeadingId}
+          menuId={menuId}
+          rootId={id}
+          size={size}
+          state={state}
+          triggerRef={wrapperRef}
+          listBoxRef={listBoxRef}
+        >
+          {statusMessage}
+        </DropdownMenu>
+      )}
 
       {clearSearchButton && (
         <Button
           aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
-            // How they clear selection in the docs
-            selectItem(null);
+            state.setSelectedKey(null);
+            state.setInputValue('');
+            if (state.selectedKey) {
+              onChange?.(null);
+            }
           }}
           size="small"
           variation="ghost"
+          disabled={textField.props.disabled}
         >
           {clearInputText ?? t('autocomplete.clearInputText')}
         </Button>
@@ -344,7 +340,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 Autocomplete.defaultProps = {
   autoCompleteLabel: 'off',
   clearSearchButton: true,
-  itemToString: (item): string => (item ? item.name : ''),
 };
 
 export default Autocomplete;

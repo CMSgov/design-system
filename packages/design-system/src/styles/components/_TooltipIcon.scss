@@ -2,7 +2,7 @@
 
 // Icon container is the border that appears on hover or focus
 .ds-c-tooltip-icon__container {
-  border: $spacer-half solid rgba(0, 0, 0, 0);
+  border: $spacer-half solid rgb(0 0 0 / 0%);
   border-radius: 100%;
   display: inline-block;
   height: $spacer-3;
@@ -10,7 +10,7 @@
   vertical-align: middle;
   width: $spacer-3;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-color: Window;
   }
 }
@@ -27,7 +27,7 @@
   top: 0;
   width: $spacer-2;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     path {
       fill: ButtonText;
     }

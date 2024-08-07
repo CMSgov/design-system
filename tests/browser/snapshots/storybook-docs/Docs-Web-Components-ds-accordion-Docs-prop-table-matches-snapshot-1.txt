@@ -1,0 +1,12 @@
+[
+  [
+    "bordered",
+    "Set to \"true\" to apply a border to the accordion content.",
+    "\"true\"\"false\""
+  ],
+  [
+    "class-name",
+    "Class to be applied to the outer `<div>` that contains all accordion items.",
+    "string"
+  ]
+]

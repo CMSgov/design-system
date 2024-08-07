@@ -1,20 +1,11 @@
-import React from 'react';
 import UsaBanner from './UsaBanner';
-import { setLanguage } from '../i18n';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
-  title: 'Components/USA Banner',
+const meta: Meta<typeof UsaBanner> = {
   component: UsaBanner,
 };
+export default meta;
 
-const Template = (args) => <UsaBanner {...args} />;
+type Story = StoryObj<typeof UsaBanner>;
 
-export const EnglishBanner = Template.bind({});
-
-export const SpanishBanner = Template.bind({});
-SpanishBanner.decorators = [
-  (Story) => {
-    setLanguage('es');
-    return <Story />;
-  },
-];
+export const Default: Story = {};

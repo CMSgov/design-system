@@ -12,8 +12,13 @@
 - [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[WNMGDS-####] Title` or [NO-TICKET] if this is unticketed work.
 - [ ] Selected appropriate `Type` (only one) label for this PR, if it is a breaking change, label should only be `Type: Breaking`
 - [ ] Selected appropriate `Impacts`, multiple can be selected.
+- [ ] Selected appropriate release milestone
 
 <!-- Feel free to remove items or sections that are not applicable -->
+
+### If this is a change to design:
+
+- [ ] If visual regression image references have been changed, design **MUST** be assigned to review. In this instance, **designer approval is a requirement** before the PR can be merged.
 
 ### If this is a change to code:
 

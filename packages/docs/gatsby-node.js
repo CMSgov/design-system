@@ -1,3 +1,4 @@
+const redirects = require('./redirects.json');
 const path = require('path');
 const express = require('express');
 
@@ -19,13 +20,13 @@ exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions;
   const infoPageTemplate = path.resolve(`src/components/page-templates/InfoPage.tsx`);
   const blogPageTemplate = path.resolve(`src/components/page-templates/BlogPage.tsx`);
 
   // get all pages
-  return graphql(`
+  const result = await graphql(`
     query loadPagesQuery {
       allMdx(filter: { fileAbsolutePath: { glob: "**/content/**" } }) {
         edges {
@@ -40,22 +41,29 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then((result) => {
-    if (result.errors) {
-      throw result.errors;
-    }
+  `);
+  if (result.errors) {
+    throw result.errors;
+  }
 
-    // Create blog post pages.
-    result.data.allMdx.edges.forEach((edge) => {
-      createPage({
-        // Path for this page -- the slug with positioning markers removed
-        path: edge.node.slug.replace(/\d+_/g, '') + '/',
-        component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
-        // props passed to template
-        context: {
-          id: edge.node.id,
-        },
-      });
+  // Create blog post pages.
+  result.data.allMdx.edges.forEach((edge) => {
+    createPage({
+      // Path for this page -- the slug with positioning markers removed
+      path: edge.node.slug.replace(/\d+_/g, '') + '/',
+      component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
+      // props passed to template
+      context: {
+        id: edge.node.id,
+      },
+    });
+  });
+
+  redirects.forEach((redirect) => {
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+      isPermanent: true,
     });
   });
 };

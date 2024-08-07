@@ -12,9 +12,6 @@
 }
 
 .ds-c-vertical-nav {
-  gap: 0;
-  margin: 0;
-
   > .ds-c-vertical-nav__item {
     background-color: transparent;
     border-block-start: 1px solid var(--vertical-nav-item__border-color);
@@ -24,13 +21,13 @@
     }
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-block: 1px solid LinkText;
     border-inline-end: 1px solid LinkText;
   }
 
   .ds-c-vertical-nav__item {
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-block: 1px solid LinkText;
     }
   }
@@ -52,6 +49,7 @@
   &:hover {
     @extend %nav-item-hover;
   }
+
   &:focus,
   &.ds-c-vertical-nav__label--current:focus {
     @extend %nav-item-focus;
@@ -59,7 +57,7 @@
 }
 
 .ds-c-vertical-nav__label--current.ds-c-vertical-nav__label--parent {
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     color: window; // Allows parent nav to be legible without obscuring child and grandchild links
   }
 }
@@ -84,7 +82,7 @@
     @extend %nav-item-focus;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     background-color: LinkText;
     forced-color-adjust: none;
     -ms-high-contrast-adjust: none;
@@ -105,7 +103,7 @@
     height: var(--font-size-md);
     width: var(--font-size-md);
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       path {
         fill: Window;
       }
@@ -119,20 +117,17 @@
   color: var(--vertical-nav-label__color--current);
   font-weight: var(--font-weight-bold);
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-inline-start-color: WindowText;
   }
 }
 
 .ds-c-vertical-nav__subnav {
-  gap: 0;
-  margin: 0;
-
   .ds-c-vertical-nav__label {
     font-size: var(--font-size-sm);
     padding-inline-start: $spacer-3;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       &:hover,
       &:focus {
         text-decoration: underline;
@@ -143,7 +138,7 @@
   .ds-c-vertical-nav__label--current {
     border-color: transparent;
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       border-color: WindowText;
     }
   }
@@ -152,7 +147,7 @@
     padding-inline-start: $spacer-4;
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     margin-inline-start: $spacer-2;
   }
 }

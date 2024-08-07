@@ -1,9 +1,14 @@
-import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import type * as React from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
 import { TextInputProps } from './TextInput';
+import mergeIds from '../utilities/mergeIds';
+import useId from '../utilities/useId';
 
+/**
+ * Function for taking raw input and formatting it for a label mask. Passing `true` to
+ * `valueOnly` will return just the formatted value entered.
+ */
 export type MaskFunction = (rawInput: string, valueOnly?: boolean) => string;
 
 /**
@@ -128,7 +133,8 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
 
 export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
   // TODO: Once we're on React 18, we can use the `useId` hook
-  const labelMaskId = useRef(uniqueId('labelmask_')).current;
+  const generatedId = useId('label-mask--');
+  const labelMaskId = originalInputProps.id ? `${originalInputProps.id}__label-mask` : generatedId;
   const [focused, setFocused] = useState(false);
   const { onFocus, onBlur, onChange } = originalInputProps;
   const value =
@@ -175,7 +181,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
     },
     type: 'text',
     inputMode: 'numeric' as const,
-    'aria-describedby': classNames(originalInputProps['aria-describedby'], labelMaskId),
+    'aria-describedby': mergeIds(originalInputProps['aria-describedby'], labelMaskId),
   };
 
   let currentMask = maskFn(currentValue);

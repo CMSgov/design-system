@@ -1,0 +1,22 @@
+[
+  [
+    "children",
+    "string",
+    "-"
+  ],
+  [
+    "component",
+    "The root HTML element used to render the label\n\"label\"\n\"legend\"",
+    "\"label\""
+  ],
+  [
+    "fieldId",
+    "The ID of the field this label is for. This is used for the label's for attribute and any related ARIA attributes, such as for the error message.\n\nstring",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" theme\nboolean",
+    "-"
+  ]
+]

@@ -1,31 +1,20 @@
-'use strict';
-
-// Unfortunately we can't convert this module to TypeScript until we deprecate
-// the `secondary` button variation and get rid of its TS definition file.
-
 /**
- * This is the main entry file for a child design system's React components.
- * It should contain all exported JS from the core CMS design system
- * and all additional child design system code.
- *
- * The CMSDS build scripts rely on this entry file's location (`src/components/index.js`) to transpile JS.
- * Modify `babel.config.js` to configure the build files.
- *
- * Also included here are default flag settings for each subsystem
- *
+ * This is the main entry file for a child design system's React components. It should
+ * contain all exported JS from the core CMS design system and all additional child
+ * design system code.
  */
 
-import { setErrorPlacementDefault } from '@cmsgov/design-system';
-
+// Export everything from the core design system
 export * from '@cmsgov/design-system';
-export * from './Accordion';
+
+// Export new components that are specific to this child design system
 export * from './Footer';
 export * from './Header';
 export * from './Logo';
 
-export * from './flags';
-
-/**
- * Healthcare.gov Flags
- */
-setErrorPlacementDefault('bottom');
+// The following modules have side effects and must be accounted for in the package
+// file's `sideEffects` property in order for build systems to know not to tree-shake
+// these modules out of bundles.
+export * from './config';
+import './Accordion';
+import './ThirdPartyExternalLink';

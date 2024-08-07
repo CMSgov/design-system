@@ -1,3 +1,14 @@
+/**
+ * To debug these in a browser, run the following command:
+ *
+ * ```
+ * yarn playwright test --config tests/browser/storybook-docs.config.ts --headed --debug --ignore-snapshots
+ * ```
+ *
+ * The `--ignore-snapshots` is important if you don't want it to fail the tests, because the
+ * snapshots are taken inside a Docker container rather than on the host machine.
+ */
+
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
@@ -65,9 +76,10 @@ const smokeTestProjects = [
  */
 const config: PlaywrightTestConfig = {
   testDir: './',
+  testIgnore: ['storybook-docs.test.ts', 'examples.test.ts'],
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
-  snapshotPathTemplate: 'snapshots/{arg}--{projectName}{ext}',
+  snapshotPathTemplate: 'snapshots/stories/{arg}--{projectName}{ext}',
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.

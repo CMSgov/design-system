@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRef } from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { useClickOutsideHandler } from './useClickOutsideHandler';
@@ -9,10 +8,6 @@ const TestComponentWithHook = ({ callbackFn }) => {
   useClickOutsideHandler([divRef], callbackFn);
 
   return <div ref={divRef}>Hello World.</div>;
-};
-
-TestComponentWithHook.propTypes = {
-  callbackFn: typeof jest.fn(),
 };
 
 describe('useClickOutsideHandler', () => {

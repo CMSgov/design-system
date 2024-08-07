@@ -1,8 +1,10 @@
 ---
 title: Healthcare.gov Header
+core:
+  figmaNodeId: 346-13316
 healthcare:
+  figmaNodeId: 346-13316
   githubLink: ds-healthcare-gov/src/components/Header
-  sketchLink: bgDE8k4
   storybookLink: healthcare-header--docs
 ---
 
@@ -37,7 +39,7 @@ The HealthCare.gov header component varies depending on the user's state (ie. lo
 
 ### React
 
-<SeeStorybookForReactGuidance storyId={'healthcare-header--docs'} />
+<SeeStorybookForGuidance storyId={'healthcare-header--docs'} />
 
 ### Google Analytics
 
@@ -51,7 +53,7 @@ Import and set the `setHeaderSendsAnalytics` feature flag to `false` in your app
 
 ```js
 import { setHeaderSendsAnalytics } from '@cmsgov/<design-system-package>';
-setHeaderSendsAnalytics(false);
+config({ headerSendsAnalytics: false });
 ```
 
 ## Component maturity

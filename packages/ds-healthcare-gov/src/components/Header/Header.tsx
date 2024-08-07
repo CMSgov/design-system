@@ -2,8 +2,9 @@ import ActionMenu from './ActionMenu';
 import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
-import React, { useState } from 'react';
-import { SkipNav } from '@cmsgov/design-system';
+import { useState } from 'react';
+import type * as React from 'react';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
 import classnames from 'classnames';
 import defaultMenuLinks from './defaultMenuLinks';
@@ -121,10 +122,9 @@ export interface HeaderProps {
    */
   isMenuOpen?: boolean;
   onMenuToggle?: () => void;
-  /**
-   * Additional classes to be added to the Logo component
-   */
   logoClassName?: string;
+  loginLinkClassName?: string;
+  languageLinkClassName?: string;
 }
 
 export const VARIATION_NAMES = {
@@ -133,46 +133,13 @@ export const VARIATION_NAMES = {
 };
 
 /**
- * The top-level component, responsible for maintaining the
- * header's state (like whether the mobile menu is expanded) and
- * determining which variation of the header to display
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/header/healthcare-header/?theme=healthcare).
  */
 export const Header = (props: HeaderProps) => {
-  const [openMenu, setOpenMenu] = useState(false);
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
-
-  /**
-   * Determines which variation of the header should be displayed,
-   * based on the props being passed into the component.
-   * @returns {String} Variation name
-   */
-  function variation(): string {
-    if (props.loggedIn) {
-      // Logged-in state, with minimal navigation
-      return VARIATION_NAMES.LOGGED_IN;
-    } else {
-      // Logged-out state, either Learn or Product
-      return VARIATION_NAMES.LOGGED_OUT;
-    }
-  }
-
-  function isLoggedIn() {
-    return variation() === VARIATION_NAMES.LOGGED_IN;
-  }
-
-  /**
-   * Content rendered within <Menu>, before the list of links
-   * @returns {Node}
-   */
-  function beforeMenuLinks(): JSX.Element {
-    if (isLoggedIn() && props.firstName) {
-      return (
-        <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
-          {props.firstName}
-        </div>
-      );
-    }
-  }
+  const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
+  const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
 
   /**
    * Event handler for when the "Menu" or "Close" button
@@ -180,13 +147,14 @@ export const Header = (props: HeaderProps) => {
    */
   function handleMenuToggleClick() {
     if (!isControlledMenu) {
-      setOpenMenu(!openMenu);
-    } else {
-      props.onMenuToggle();
+      setInternalIsMenuOpenState(!isMenuOpen);
     }
+
+    props.onMenuToggle?.();
   }
 
-  const classes = classnames(`hc-c-header hc-c-header--${variation()}`, props.className);
+  const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
+  const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
 
   const hasCustomLinks = !!props.links;
   const defaultLinksForVariation = defaultMenuLinks({
@@ -198,54 +166,65 @@ export const Header = (props: HeaderProps) => {
     hideLogoutLink: props.hideLogoutLink,
     hideLanguageSwitch: props.hideLanguageSwitch,
     customLinksPassedIn: hasCustomLinks,
-  })[variation()];
+    loginLinkClassName: props.loginLinkClassName,
+    languageLinkClassName: props.languageLinkClassName,
+  })[variation];
 
   const links = hasCustomLinks
     ? props.links.concat(defaultLinksForVariation)
     : defaultLinksForVariation;
 
+  const beforeMenuLinks =
+    props.loggedIn && props.firstName ? (
+      <div className="ds-u-sm-display--none ds-u-border-bottom--1 ds-u-margin-x--1 ds-u-padding-y--1 hc-c-header__name">
+        {props.firstName}
+      </div>
+    ) : undefined;
+
   return (
-    <header className={classes} role="banner" aria-label="global">
+    <>
       <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
         {t('header.skipNav')}
       </SkipNav>
+      <UsaBanner id="hc-c-header__usa-banner" />
+      <header className={classes} role="banner" aria-label="global">
+        <div className="ds-l-container">
+          <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
+            <a
+              href={props.primaryDomain ? props.primaryDomain : '/'}
+              className="hc-c-logo-link ds-l-col ds-l-col--auto"
+            >
+              <Logo className={props.logoClassName} />
+            </a>
 
-      <div className="ds-l-container">
-        <div className="ds-l-row ds-u-align-items--center ds-u-flex-wrap--nowrap ds-u-padding-y--2">
-          <a
-            href={props.primaryDomain ? props.primaryDomain : '/'}
-            className="hc-c-logo-link ds-l-col ds-l-col--auto"
-          >
-            <Logo className={props.logoClassName ?? ''} />
-          </a>
-
-          <nav
-            aria-label="Profile, applications, and coverage"
-            id="hc-c-header__actions"
-            className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
-          >
-            <ActionMenu
-              t={t}
-              firstName={props.firstName}
-              onMenuToggleClick={handleMenuToggleClick}
-              loggedIn={props.loggedIn}
-              open={isControlledMenu ? props.isMenuOpen : openMenu}
-              links={links}
-            />
-            <Menu
-              beforeLinks={beforeMenuLinks()}
-              links={links}
-              open={isControlledMenu ? props.isMenuOpen : openMenu}
-              submenuTop={props.submenuTop}
-              submenuBottom={props.submenuBottom}
-            />
-          </nav>
+            <nav
+              aria-label="Profile, applications, and coverage"
+              id="hc-c-header__actions"
+              className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+            >
+              <ActionMenu
+                t={t}
+                firstName={props.firstName}
+                onMenuToggleClick={handleMenuToggleClick}
+                loggedIn={props.loggedIn}
+                open={isMenuOpen}
+                links={links}
+              />
+              <Menu
+                beforeLinks={beforeMenuLinks}
+                links={links}
+                open={isMenuOpen}
+                submenuTop={props.submenuTop}
+                submenuBottom={props.submenuBottom}
+              />
+            </nav>
+          </div>
         </div>
-      </div>
 
-      {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
-      {props.headerBottom}
-    </header>
+        {props.deConsumer && <DeConsumerMessage t={t} deBrokerName={props.deBrokerName} />}
+        {props.headerBottom}
+      </header>
+    </>
   );
 };
 

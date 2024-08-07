@@ -1,0 +1,46 @@
+@use '../mixins';
+
+.ds-c-close-button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--color-gray-dark);
+
+  // We need to have at least a 44px hit box size for the button, but we don't
+  // want to shift the X visually from the right edge, so we're adding an
+  // amount of padding that would be equivalent to the number of pixels we need
+  // to make up in a browser with default font sizes. Then we shift it to the
+  // right and up by that same amount to visually align the X with the top right corner.
+  // Additionally, we'll bring in the bottom margin by the same amount
+  // to not visually shift the header row down. ASSUMPTION: This assumes we
+  // have sufficient spacing below a close button to not overlap with any other
+  // interactive elements.
+  margin-block: -0.625rem;
+  padding: 0.625rem;
+  position: relative;
+  right: -0.625rem;
+
+  &:focus {
+    @include mixins.focus-styles;
+  }
+
+  &:hover,
+  &:hover:focus {
+    color: var(--color-gray-darker);
+  }
+
+  &:active,
+  &:active:focus {
+    color: var(--color-gray-darkest);
+  }
+
+  // TODO: Is there a way to avoid this by making sure the forced-colors queries
+  // for icons respect color inheritance?
+  @media (forced-colors: active) {
+    .ds-c-icon {
+      path {
+        fill: ButtonText;
+      }
+    }
+  }
+}

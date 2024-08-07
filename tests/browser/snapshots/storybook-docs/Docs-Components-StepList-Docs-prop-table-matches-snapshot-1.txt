@@ -1,0 +1,112 @@
+[
+  [
+    "actionsLabelText",
+    "A template string for the aria-label describing a step's actions where the substring %{step} is replaced with that step's heading.\n\nstring",
+    "-"
+  ],
+  [
+    "completed",
+    "bool",
+    "Whether the step has been completed"
+  ],
+  [
+    "completedText",
+    "string",
+    "\"Completed\""
+  ],
+  [
+    "component",
+    "element, func",
+    "When provided, this will render the passed in component for link elements in this Step. This is useful when integrating with React Router's <Link> or using your own custom component."
+  ],
+  [
+    "component",
+    "When provided, this will render the passed in component for all link elements. This is useful when integrating with React Router's <Link> or using your own custom component. If more specific control is needed, each step object also accepts a component prop.\n\n\"a\" | ComponentType<StepLinkComponentProps>",
+    "-"
+  ],
+  [
+    "description",
+    "string",
+    "Additional text to dsiplay under (only rendered for top-level steps)"
+  ],
+  [
+    "editText",
+    "string",
+    "\"Edit\""
+  ],
+  [
+    "heading (required)",
+    "string",
+    "Text to display as the step heading"
+  ],
+  [
+    "headingLevel",
+    "'1', '2', '3', '4', '5'",
+    "Heading type to override default <h2>."
+  ],
+  [
+    "href (required)",
+    "string",
+    "URL or partial URL that routes to the step. Will be passed to onStepLinkClick as first parameter"
+  ],
+  [
+    "id",
+    "string",
+    "Unique string representing the step. WIll be passed to onStepLinkClick as second parameter"
+  ],
+  [
+    "isNextStep",
+    "bool",
+    "Whether this is the next unstarted step"
+  ],
+  [
+    "linkText",
+    "string",
+    "Alternative text for the link or button for this step. Will override the defaults"
+  ],
+  [
+    "onClick",
+    "func",
+    "onClick handler for this specific step's link/button"
+  ],
+  [
+    "onStepLinkClick",
+    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's href property will be passed as a parameter.\n\n(href?: string, stepId?: string) => any",
+    "-"
+  ],
+  [
+    "resumeText",
+    "string",
+    "\"Resume\""
+  ],
+  [
+    "showSubSubSteps",
+    "Whether or not to render a substep's substeps.\nboolean",
+    "false"
+  ],
+  [
+    "startText",
+    "string",
+    "\"Start\""
+  ],
+  [
+    "started",
+    "bool",
+    "Whether the step has been started"
+  ],
+  [
+    "steps",
+    "StepObject[]",
+    "Array of substeps"
+  ],
+  [
+    "steps*",
+    "An array of StepObjects that contain text, state, link URLs, and other info needed to render steps.\n\nName\tType\tDescription\ncompleted\tbool\tWhether the step has been completed\ncomponent\telement, func\tWhen provided, this will render the passed in component for link elements in this Step. This is useful when integrating with React Router's <Link> or using your own custom component.\ndescription\tstring\tAdditional text to dsiplay under (only rendered for top-level steps)\nheading (required)\tstring\tText to display as the step heading\nheadingLevel\t'1', '2', '3', '4', '5'\tHeading type to override default <h2>.\nhref (required)\tstring\tURL or partial URL that routes to the step. Will be passed to onStepLinkClick as first parameter\nid\tstring\tUnique string representing the step. WIll be passed to onStepLinkClick as second parameter\nisNextStep\tbool\tWhether this is the next unstarted step\nlinkText\tstring\tAlternative text for the link or button for this step. Will override the defaults\nonClick\tfunc\tonClick handler for this specific step's link/button\nstarted\tbool\tWhether the step has been started\nsteps\tStepObject[]\tArray of substeps\nStepObject[]",
+    "-"
+  ],
+  [
+    "substepsLabelText",
+    "A template string for the aria-label describing a step's substeps where the substring %{step} is replaced with that step's heading.\n\nstring",
+    "-"
+  ]
+]

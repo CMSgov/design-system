@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-system';
 import { SyntheticEvent } from 'react';
 import classnames from 'classnames';
@@ -56,7 +55,7 @@ const ActionMenu = function (props: ActionMenuProps) {
       ) : (
         <MenuIcon className="ds-u-margin-right--1" />
       )}
-      {props.t('header.menu')}
+      <span>{props.t('header.menu')}</span>
     </Button>
   );
 
@@ -75,7 +74,11 @@ const ActionMenu = function (props: ActionMenuProps) {
   } else if (props.links.length) {
     content = (
       <>
-        <ul className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex">
+        {/* This stuff is hidden on extra-small screens and is duplicately rendered by the Menu 😭 */}
+        <ul
+          role="list"
+          className="hc-c-logged-out-links ds-c-list--bare ds-u-display--none ds-u-sm-display--flex"
+        >
           {props.links.map((link) => {
             return (
               <li key={link.href} className="hc-c-logged-out-links__li">

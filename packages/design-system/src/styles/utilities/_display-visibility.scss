@@ -1,4 +1,5 @@
 @use '../base' as *;
+@use '../mixins';
 
 .ds-u-display--block {
   display: block !important;
@@ -33,15 +34,7 @@
 }
 
 .ds-u-visibility--screen-reader {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  // Workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=1241631
-  word-wrap: normal;
+  @include mixins.visually-hidden;
 }
 
 @media print {

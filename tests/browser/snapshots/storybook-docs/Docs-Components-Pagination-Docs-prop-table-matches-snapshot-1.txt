@@ -1,0 +1,72 @@
+[
+  [
+    "ariaLabel",
+    "Defines aria-label on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "Class to be applied to parent <nav> element of Pagination component. Optional.\nstring",
+    "-"
+  ],
+  [
+    "compact",
+    "Renders compact layout. Optional.\nboolean",
+    "false"
+  ],
+  [
+    "currentPage*",
+    "An integer representing active page number in the pagination results.\nnumber",
+    "-"
+  ],
+  [
+    "endAriaLabel",
+    "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.\nstring",
+    "-"
+  ],
+  [
+    "endLabelText",
+    "Sets custom label on end navigation. Added for language support. Optional.\nstring",
+    "-"
+  ],
+  [
+    "headingLevel",
+    "Heading type to override default <h2> used in the screen-reader heading.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
+    "\"2\""
+  ],
+  [
+    "isNavigationHidden",
+    "Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.\nboolean",
+    "false"
+  ],
+  [
+    "onPageChange*",
+    "A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
+    "-"
+  ],
+  [
+    "ref",
+    "Ref<HTMLElement>",
+    "-"
+  ],
+  [
+    "renderHref*",
+    "Defines application-specific routing in url for links.\n(page: number) => string",
+    "-"
+  ],
+  [
+    "startAriaLabel",
+    "Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.\nstring",
+    "-"
+  ],
+  [
+    "startLabelText",
+    "Sets custom label on start navigation. Added for language support. Optional.\nstring",
+    "-"
+  ],
+  [
+    "totalPages*",
+    "An integer representing total number of pages in the pagination results.\nnumber",
+    "-"
+  ]
+]

@@ -1,13 +1,12 @@
-import React from 'react';
-import { useRef } from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
-import uniqueId from 'lodash/uniqueId';
 import useAutofocus from '../utilities/useAutoFocus';
 import useAlertAnalytics from './useAlertAnalytics';
 import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '../Icons';
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
+import useId from '../utilities/useId';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -31,7 +30,7 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
    * Text for the alert heading
    */
-  heading?: string;
+  heading?: React.ReactNode;
   /**
    * Optional id used to link the `aria-labelledby` attribute to the heading. If not provided, a unique id will be automatically generated and used.
    */
@@ -44,6 +43,10 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
    * Boolean to hide the `Alert` icon
    */
   hideIcon?: boolean;
+  /**
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
+   */
+  id?: string;
   /**
    * ARIA `role`, defaults to 'region'
    */
@@ -61,11 +64,16 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
 export type AlertProps = BaseAlertProps &
   Omit<React.ComponentPropsWithRef<'div'>, keyof BaseAlertProps>;
 
-export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/alert/).
+ */
+export const Alert = (props: AlertProps) => {
   const { headingRef, bodyRef } = useAlertAnalytics(props);
   const focusRef = useAutofocus(props.autoFocus);
-  const headingId = useRef(props.headingId ?? uniqueId('alert_')).current;
-  const a11yLabelId = useRef(uniqueId('alert_a11y_label_')).current;
+  const rootId = useId('alert--', props.id);
+  const headingId = props.headingId ?? `${rootId}__heading`;
+  const a11yLabelId = `${rootId}__a11y-label`;
 
   if (process.env.NODE_ENV !== 'production') {
     if (!props.heading && !props.children) {
@@ -89,7 +97,6 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
     weight,
     analytics,
     analyticsLabelOverride,
-    analyticsEventTypeOverride,
     onAnalyticsEvent,
     ...alertProps
   } = props;
@@ -144,9 +151,9 @@ export const Alert: React.FC<AlertProps> = (props: AlertProps) => {
       {...alertProps}
     >
       {getIcon()}
-      <div className="ds-c-alert__body" id={headingId} ref={bodyRef}>
+      <div className="ds-c-alert__body" ref={bodyRef}>
         {heading ? (
-          <div className="ds-c-alert__header ds-c-alert__heading" ref={headingRef}>
+          <div id={headingId} className="ds-c-alert__header ds-c-alert__heading" ref={headingRef}>
             {a11yLabel}
             {headingElement}
           </div>

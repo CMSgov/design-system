@@ -1,7 +1,6 @@
-import React from 'react';
 import HelpDrawer, { HelpDrawerProps } from './HelpDrawer';
 import { UtagContainer } from '../analytics';
-import { setHelpDrawerSendsAnalytics } from '../flags';
+import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -13,14 +12,25 @@ const defaultProps = {
   footerTitle: 'Footer title',
   onCloseClick: jest.fn(),
   heading: 'HelpDrawer title',
+  isOpen: true,
 };
 
 function renderHelpDrawer(props: Partial<HelpDrawerProps> = {}) {
-  return render(
+  const result = render(
     <HelpDrawer {...defaultProps} {...props}>
       <p>content</p>
     </HelpDrawer>
   );
+  return {
+    ...result,
+    rerenderHelpDrawer(newProps = {}) {
+      return result.rerender(
+        <HelpDrawer {...defaultProps} {...newProps}>
+          <p>content</p>
+        </HelpDrawer>
+      );
+    },
+  };
 }
 
 describe('HelpDrawer', () => {
@@ -36,11 +46,22 @@ describe('HelpDrawer', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('passes arbitrary attributes to `<dialog>` element', () => {
+    const screen = render(
+      <HelpDrawer {...defaultProps} data-testid="foo">
+        <p>content</p>
+      </HelpDrawer>
+    );
+
+    const dialogEl = screen.queryByRole('dialog');
+    expect(dialogEl).toHaveAttribute('data-testid');
+  });
+
   describe('Analytics event tracking', () => {
     let tealiumMock;
 
     beforeEach(() => {
-      setHelpDrawerSendsAnalytics(true);
+      config({ helpDrawerSendsAnalytics: true });
       tealiumMock = jest.fn();
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
@@ -48,13 +69,35 @@ describe('HelpDrawer', () => {
     });
 
     afterEach(() => {
-      setHelpDrawerSendsAnalytics(false);
+      config({ helpDrawerSendsAnalytics: false });
       jest.resetAllMocks();
     });
 
-    it('sends analytics event tracking on open help drawer', () => {
-      renderHelpDrawer();
+    it("does not send analytics event when help drawer isn't open", () => {
+      renderHelpDrawer({ isOpen: false });
+      expect(tealiumMock).not.toHaveBeenCalled();
+    });
+
+    it('sends analytics event when help drawer starts open', () => {
+      renderHelpDrawer({ isOpen: true });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('sends analytics event when opening help drawer', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer({ isOpen: false });
+      expect(tealiumMock).not.toHaveBeenCalled();
+      rerenderHelpDrawer({ isOpen: true });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('sends analytics event when closing help drawer', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+      rerenderHelpDrawer({ isOpen: false });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(2);
     });
 
     it('sends analytics event when heading is non-string', () => {
@@ -68,7 +111,7 @@ describe('HelpDrawer', () => {
     });
 
     it('setting analytics to true overrides flag value', () => {
-      setHelpDrawerSendsAnalytics(false);
+      config({ helpDrawerSendsAnalytics: false });
       renderHelpDrawer({ analytics: true, onCloseClick: jest.fn() });
       expect(tealiumMock).toHaveBeenCalled();
     });

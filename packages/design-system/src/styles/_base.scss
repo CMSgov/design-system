@@ -31,7 +31,7 @@ $breakpoints: (
 
 .ds-base--inverse {
   background-color: var(--color-background-inverse);
-  color: var(--color-base-inverse);
+  color: var(--global__color--inverse);
 }
 
 /**
@@ -64,6 +64,7 @@ $breakpoints: (
     text-decoration-color: var(--link__color--hover);
     text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
+
   &:focus,
   &:focus:visited {
     @include mixins.focus-styles-link;
@@ -98,6 +99,7 @@ $breakpoints: (
   &:focus,
   &:focus:visited {
     @include mixins.focus-styles-link;
+
     color: var(--link__color);
   }
 
@@ -127,7 +129,7 @@ $breakpoints: (
  * Also exclude '.ds-c-tooltip__trigger-link' as we need to set
  * text decoration styles for the tooltip trigger links
  */
-.ds-base--inverse a:not(.ds-c-button):not(.ds-c-tooltip__trigger-link) {
+.ds-base--inverse a:not(.ds-c-button, .ds-c-tooltip__trigger-link) {
   @extend %link-inverse;
 }
 
@@ -136,8 +138,7 @@ $breakpoints: (
  */
 
 @mixin heading {
-  font-family: var(--typography-heading__font-family);
-  font-weight: var(--typography-heading__font-weight);
+  font-family: var(--font-family-heading);
   line-height: var(--font-line-height-heading);
   margin: 0;
 }
@@ -145,21 +146,23 @@ $breakpoints: (
 @mixin heading-margins {
   margin-block: 1.5em 0.5em;
 
-  &:first-child {
+  &:where(:first-child) {
     margin-block-start: 0;
   }
 
-  &:last-child {
+  &:where(:last-child) {
     margin-block-end: 0;
   }
 }
 
 @mixin heading--5xl {
   @include heading;
-  font-size: var(--font-size-3xl);
+
+  font-size: var(--font-size-5xl--mobile);
+  font-weight: var(--font-weight-heading-5xl);
 
   @media (min-width: $media-width-sm) {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-5xl--tablet);
   }
 
   @media (min-width: $media-width-md) {
@@ -169,8 +172,9 @@ $breakpoints: (
 
 @mixin heading--4xl {
   @include heading;
-  font-size: var(--font-size-3xl);
-  font-weight: var(--typography-heading-4xl__font-weight);
+
+  font-size: var(--font-size-4xl--mobile);
+  font-weight: var(--font-weight-heading-4xl);
 
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-4xl);
@@ -181,11 +185,8 @@ $breakpoints: (
   @include heading;
   @include heading-margins;
 
-  // There's no font size token for the mobile size heading--3xl style
-  // There's no space in our current font size token names to include it (what do you call a token between font-size-2xl and font-size-3xl?)
-  // Related to https://jira.cms.gov/browse/WNMGDS-2174
-  font-size: 1.875rem;
-  font-weight: var(--typography-heading-3xl__font-weight);
+  font-size: var(--font-size-3xl--mobile);
+  font-weight: var(--font-weight-heading-3xl);
 
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-3xl);
@@ -195,35 +196,46 @@ $breakpoints: (
 @mixin heading--2xl {
   @include heading;
   @include heading-margins;
-  font-size: var(--font-size-2xl);
+
+  font-size: var(--font-size-2xl--mobile);
+  font-weight: var(--font-weight-heading-2xl);
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-2xl);
+  }
 }
 
 @mixin heading--xl {
   @include heading;
   @include heading-margins;
+
   font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-heading-xl);
 }
 
 @mixin heading--lg {
   @include heading;
   @include heading-margins;
+
   font-size: var(--font-size-lg);
-  font-weight: var(--typography-heading-lg__font-weight);
+  font-weight: var(--font-weight-heading-lg);
 }
 
 @mixin heading--md {
   @include heading;
   @include heading-margins;
+
   font-size: var(--font-size-md);
-  font-weight: var(--typography-heading-md__font-weight);
+  font-weight: var(--font-weight-heading-md);
 }
 
 @mixin heading--sm {
   @include heading;
   @include heading-margins;
+
   color: var(--color-muted);
   font-size: var(--font-size-sm);
-  font-weight: var(--typography-heading-sm__font-weight);
+  font-weight: var(--font-weight-heading-sm);
 }
 
 .ds-content {
@@ -260,58 +272,46 @@ $breakpoints: (
   color: var(--color-muted-inverse);
 }
 
-// @TODO: Remove the semantic classes h1, h2, h3, display, title, etc... after deprecating
-
-.ds-display,
 .ds-text-heading--5xl {
   @include heading--5xl;
 }
 
-.ds-title,
 .ds-text-heading--4xl {
   @include heading--4xl;
 }
 
-.ds-h1,
 .ds-text-heading--3xl {
   @include heading--3xl;
 }
 
-.ds-h2,
 .ds-text-heading--2xl {
   @include heading--2xl;
 }
 
-.ds-h3,
 .ds-text-heading--xl {
   @include heading--xl;
 }
 
-.ds-h4,
 .ds-text-heading--lg {
   @include heading--lg;
 }
 
-.ds-h5,
 .ds-text-heading--md {
   @include heading--md;
 }
 
-.ds-h6,
 .ds-text-heading--sm {
   @include heading--sm;
+
+  .ds-base--inverse & {
+    color: var(--color-muted-inverse);
+  }
 }
 
-.ds-base--inverse .ds-h6,
-.ds-base--inverse .ds-text-heading--sm {
-  color: var(--color-muted-inverse);
-}
-
-.ds-text,
-.ds-text--lead,
 .ds-text-body--lg,
-.ds-text-body--md {
-  font-family: var(--typography-body__font-family);
+.ds-text-body--md,
+.ds-text-body--sm {
+  font-family: var(--font-family-body);
   line-height: var(--font-line-height-base);
   margin-block: 1em;
 
@@ -324,16 +324,17 @@ $breakpoints: (
   }
 }
 
-.ds-text--lead,
 .ds-text-body--lg {
   font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-body-lg);
 }
 
-.ds-text,
 .ds-text-body--md {
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-body-md);
 }
 
 .ds-text-body--sm {
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-body-sm);
 }

@@ -7,5 +7,11 @@
 }
 
 .ds-c-list--bare {
-  @include mixins.ds-unstyled-list;
+  // Bare lists should have `role="list"` applied to them, which makes them
+  // exempt from the regular list-normalization styles. Duplicate them here,
+  // because "Bare" lists should have the same spacing as our other lists but
+  // not have bullets or numbers; they're something different than completely
+  // unstyled lists.
+  @include mixins.flex-list;
+  @include mixins.unstyled-list;
 }

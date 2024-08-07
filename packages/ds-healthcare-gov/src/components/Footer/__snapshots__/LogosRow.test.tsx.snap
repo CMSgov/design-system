@@ -18,6 +18,7 @@ exports[`LogosRow renders logos and address 1`] = `
           <svg
             aria-labelledby="hc-c-footer__logo-title"
             height="25"
+            role="img"
             viewBox="0 0 253.05 31.65"
             width="200"
             xmlns="http://www.w3.org/2000/svg"
@@ -90,10 +91,14 @@ exports[`LogosRow renders logos and address 1`] = `
         class="hc-c-footer__disclaimer"
       >
         <p>
-          footer.disclaimer-top
+          Health Insurance Marketplace
+          <sup>
+            ®
+          </sup>
+           is a registered trademark of the Department of Health & Human Services.
         </p>
         <p>
-          footer.disclaimer-bottom
+          An official website of the U.S. Centers for Medicare & Medicaid Services.
         </p>
       </div>
     </div>

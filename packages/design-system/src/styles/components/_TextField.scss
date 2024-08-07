@@ -7,8 +7,9 @@
   border-radius: var(--text-input__border-radius);
   color: var(--text-input__color);
   display: block;
+  line-height: var(--text-input__line-height); // Needed to overwrite user agent heading tag styles
   margin-block-start: $spacer-half;
-  max-width: var(--form__max-width);
+  max-width: var(--field-max-width);
   outline: none;
   padding: var(--text-input__padding);
   width: 100%;
@@ -27,7 +28,7 @@
     // If a theme doesn't have a disabled border-width style defined, it will fall back to the normal border-width token
     border-width: var(--text-input__border-width--disabled, var(--text-input__border-width));
 
-    @media (-ms-high-contrast: active), (forced-colors: active) {
+    @media (forced-colors: active) {
       cursor: not-allowed;
 
       > option {
@@ -42,14 +43,13 @@
 }
 
 .ds-c-field--small {
-  max-width: var(--form__max-width--small);
+  max-width: var(--field-max-width--small);
 }
 
 .ds-c-field--medium {
-  max-width: var(--form__max-width--medium);
+  max-width: var(--field-max-width--medium);
 }
 
-.ds-c-field,
 .ds-c-field-mask {
   line-height: var(--text-input__line-height); // Needed to overwrite user agent heading tag styles
 }
@@ -71,8 +71,4 @@ Inverse theme
     border: var(--text-input__border-width--error) solid
       var(--text-input__border-color--error--inverse);
   }
-}
-
-.ds-c-field--success {
-  border: var(--text-input__border-width--success) solid var(--text-input__border-color--success);
 }

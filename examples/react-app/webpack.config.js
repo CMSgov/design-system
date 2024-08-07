@@ -1,7 +1,19 @@
 /**
  * Use Webpack + Babel to bundle and transpile our JSX
  */
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
+
+const dsDist = path.resolve(
+  __dirname,
+  '..',
+  '..',
+  'node_modules',
+  '@cmsgov',
+  'design-system',
+  'dist'
+);
+
 const config = {
   entry: './src/scripts/index.js',
   output: {
@@ -21,6 +33,15 @@ const config = {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: path.join(dsDist, 'fonts'), to: '../fonts' },
+        { from: path.join(dsDist, 'images'), to: '../images' },
+        { from: path.join(dsDist, 'css'), to: '../css' },
+      ],
+    }),
+  ],
 };
 
 module.exports = config;

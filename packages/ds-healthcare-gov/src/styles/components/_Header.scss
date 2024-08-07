@@ -1,9 +1,12 @@
 @use '../layout' as *;
 
 .hc-c-header {
+  --shadow: 10px;
+
   background-color: var(--color-background);
-  box-shadow: 0 0 10px 0 var(--color-gray-light);
-  isolation: isolate;
+  box-shadow: 0 var(--shadow) var(--shadow) (calc(var(--shadow) * -1)) var(--color-gray-light);
+  position: relative;
+  z-index: 1;
 
   > .ds-l-container {
     position: relative;
@@ -53,6 +56,7 @@
   padding: $spacer-1;
   position: absolute;
   right: 0;
+
   // @TODO: marked for refactoring this calc
   top: calc(4em - 2px);
   z-index: 1;

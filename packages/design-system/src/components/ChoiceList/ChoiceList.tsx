@@ -1,7 +1,12 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
-import React from 'react';
+import { Label } from '../Label';
+import type * as React from 'react';
 import classNames from 'classnames';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -10,11 +15,14 @@ export type ChoiceListType = 'checkbox' | 'radio';
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
 export type ChoiceProps = Omit<ChoiceComponentProps, OmitChoiceProp>;
 
-export interface BaseChoiceListProps extends Omit<FormFieldProps, 'id'> {
+export interface BaseChoiceListProps {
   /**
-   * Array of [`Choice`]({{root}}/components/choice/#components.choice.react) data objects to be rendered.
+   * Array of objects representing the props for each Choice in the ChoiceList
    */
-  choices: ChoiceProps[];
+  choices: Omit<
+    ChoiceProps,
+    'name' | 'type' | 'errorMessage' | 'errorId' | 'errorMessageClassName'
+  >[];
   /**
    * Additional classes to be added to the root element.
    */
@@ -24,25 +32,13 @@ export interface BaseChoiceListProps extends Omit<FormFieldProps, 'id'> {
    */
   disabled?: boolean;
   /**
-   * Additional hint text to display
+   * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
-  hint?: React.ReactNode;
+  id?: string;
   /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
-  /**
-   * Applies the "inverse" UI theme
+   * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
-  /**
-   * Label for the field
-   */
-  label: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
   /**
    * The field's `name` attribute
    */
@@ -69,10 +65,24 @@ export interface BaseChoiceListProps extends Omit<FormFieldProps, 'id'> {
 }
 
 export type ChoiceListProps = BaseChoiceListProps &
-  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps>;
+  Omit<React.ComponentPropsWithRef<'fieldset'>, keyof BaseChoiceListProps> &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
 
-export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices, ...listProps } = props;
+/**
+ * For information about how and when to use this component, refer to the
+ * [checkbox](https://design.cms.gov/components/checkbox/) and
+ * [radio](https://design.cms.gov/components/radio/) documentation pages.
+ *
+ * Checkboxes and radios can be managed as a group using `<ChoiceList>` or
+ * individually using `<Choice>`. Note that each of the items in the `choices`
+ * array represents props that will be passed to an individual `<Choice>`
+ * component. You can therefore define any of the props listed in the `<Choice>`
+ * props table below, including all valid attributes of the
+ * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+ */
+export const ChoiceList = (props: ChoiceListProps) => {
+  const { onBlur, onComponentBlur, choices } = props;
+  const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
     if (props.type !== 'checkbox' && props.choices.length === 1) {
@@ -100,14 +110,14 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
     }, 20);
   };
 
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    ...listProps,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-  });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
-  const choiceItems = choices.map((choiceProps) => {
+  const choiceItems = choices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
+      // Allow this to be overridden by the choiceProps
+      id: `${id}__choice--${index}`,
       ...choiceProps,
       inversed: props.inversed,
       name: props.name,
@@ -126,14 +136,30 @@ export const ChoiceList: React.FC<ChoiceListProps> = (props: ChoiceListProps) =>
           choiceProps.inputRef(ref);
         }
       },
+      _choiceChild: true,
     };
+
+    if (process.env.NODE_ENV !== 'production') {
+      if ('errorMessage' in completeChoiceProps) {
+        console.warn(
+          `[Warning]: Error messages on individual child Choice components is not a valid pattern. Errors should only be displayed on the parent ChoiceList component.`
+        );
+      }
+    }
 
     return <Choice key={choiceProps.value} {...completeChoiceProps} />;
   });
 
   return (
-    <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
+    <fieldset
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', props.className)}
+      role={props.type === 'radio' ? 'radiogroup' : null}
+    >
+      <Label component="legend" {...labelProps} />
+      {hintElement}
+      {topError}
       {choiceItems}
       {bottomError}
     </fieldset>

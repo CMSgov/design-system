@@ -1,14 +1,17 @@
 ---
 title: Drawer & Help Drawer
 intro: A drawer provides a space for medium to long-form help content — content that's too long or not common enough to warrant being on the page by default.
+cmsgov:
+  figmaNodeId: 6-91
 core:
+  figmaNodeId: 6-91
   githubLink: design-system/src/components/Drawer
-  sketchLink: zxawg1M
   storybookLink: components-drawer--docs
 healthcare:
-  sketchLink: GmlMnkL
+  figmaNodeId: 6-91
 medicare:
-  storybookLink: medicare-help-drawer--help-drawer-toggle-with-drawer
+  storybookLink: medicare-helpdrawer--help-drawer-toggle-with-drawer
+  figmaNodeId: 6-91
 ---
 
 On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
@@ -31,7 +34,7 @@ Render the drawer below the toggle button that triggers it. This way the markup 
 
 <StorybookExample
   componentName="drawer"
-  storyId="medicare-help-drawer--help-drawer-toggle-with-drawer"
+  storyId="medicare-helpdrawer--help-drawer-toggle-with-drawer"
   minHeight={500}
 />
 
@@ -52,71 +55,22 @@ A header and/or footer can have a "sticky" position if the following properties 
 
 ### Managing multiple drawers
 
-If you have multiple `<Drawer>`'s on a page, you can utilize the `<DrawerManager>` context provider along with the `useDrawerManager()` hook to manage the state of these drawers so that only one will remain open at a time. The hook provides functions to toggle state of the drawer via click, to close the drawer and to get the open status of the drawer.
-
-Since this component utilizes React [Context](https://react.dev/learn/passing-data-deeply-with-context), any number of components/content items can be within the `DrawerManager` provider and will not be effected by it.
-
-A minimal example of implementation:
-
-```js
-import { DrawerManager, useDrawerManager } from '@cmsgov/design-system';
-
-const ManagedDrawer = (props) => {
-  const { toggleClick, closeClick, isOpen } = useDrawerManager();
-
-  return (
-    <>
-      {isOpen && (
-        <Drawer onCloseClick={closeClick} {...props} />
-      )}
-      <Button
-        className="ds-c-drawer__toggle"
-        variation="ghost"
-        onClick={toggleClick}
-      >
-        Toggle {props.heading}
-      </Button>
-    </>
-  )
-}
-
-export default function App() {
-  <DrawerManager>
-    ... any content
-    <ManagedDrawer {...propsForDrawer1} />
-    <ManagedDrawer {...propsForDrawer2} />
-    <ManagedDrawer {...propsForDrawer3} />
-  </DrawerManager>
-}
-```
+What do you do when there are multiple drawers on a page? The simplest behavior—which may not be appropriate for all use cases—is that when one drawer opens, any open drawers get closes. While this logic can be written into your application, [we have a React component to manage simple drawer behavior](/storybook/?path=/docs/components-drawermanager--docs).
 
 ## Code
 
 ### React
 
-<PropTable componentName="Drawer" />
+<ReactDocsLinks>
+  <ReactDocsLink storyId="components-drawer--docs">Drawer</ReactDocsLink>
+  <ReactDocsLink storyId="components-helpdawer--docs">Help Drawer</ReactDocsLink>
+</ReactDocsLinks>
 
-#### `<DrawerToggle>`
-
-<PropTable componentName="DrawerToggle" />
-
-#### `<HelpDrawer>`
-
-This component is an enhanced `<Drawer>` component, providing the same properties as `<Drawer>` in addition to Google Analytics properties.
-
-<PropTable componentName="HelpDrawer" hasAnalytics />
-
-#### Focus Trap
-
-A focus trap can be set on a drawer if the property `hasFocusTrap` is enabled. A user can escape the focus trap by pressing the <kbd>ESC</kbd> key.
-
-### Styles
+### Style customization
 
 The following CSS variables can be overridden to customize Drawer components:
 
-<ComponentThemeOptions
-  componentname="drawer"
-/>
+<ComponentThemeOptions componentname="drawer" />
 
 ### Analytics
 
@@ -133,7 +87,7 @@ This component has analytics tracking available. Please see our developer docume
 
 ### When to use
 
-- When users need content to remain viewable while also allowing the user to views/interacts with the main page.
+- When users need content to remain viewable while also allowing the user to view and/or interact with the main page.
 - When the content is longer than 2 sentences.
 - When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
 - When the content just needs to be available at the user's discretion, to provide additional details or context.
@@ -155,24 +109,50 @@ This component has analytics tracking available. Please see our developer docume
 
 ### Accessibility
 
-- Focus should move to the content in the help drawer after the user has opened it.
-- Drawer should support keyboard navigation.
-  - `Enter` and `Space` to select the highlighted item.
-  - `Tab` to move the focus sequentially through the list of focusable items
-  - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order
+- Drawer should have an `aria-labelledby` attribute that references the `id` of heading in the Drawer.
+- The heading level used within the Drawer should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the Drawer toggle link is an `<h2>`, the heading level of the Drawer would most likely be an `<h3>`.
 
 #### Focus Management
 
-The property `hasFocusTrap` is an available option that will prevent keyboard focus from leaving the confines of the HelpDrawer when enabled.
+- Focus should move to the content in the Drawer after the user has opened it.
+- The property `hasFocusTrap` is an available option that will prevent keyboard focus from leaving the confines of the Drawer when enabled.
 
-When the property `hasFocusTrap` is enabled...
+When `hasFocusTrap` is enabled...
 
-- Keyboard focus is trapped within the HelpDrawer component.
-- Pressing the escape key will close the Drawer.
+- Keyboard focus is trapped within the Drawer component.
+- Pressing <kbd>Escape</kbd> will close the Drawer.
 
-A focus trap should _not_ be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements.
+A focus trap should _not_ be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements on the page.However, there are times when it makes sense to trap focus within the Drawer. One occasion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, e.g., in a mobile layout.
 
-However, there are times when it makes sense to trap focus within the Drawer. One occassion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, i.e., mobile layout.
+#### Accessibility testing
+
+##### Keyboard
+
+- I can use <kbd>Tab</kbd> to move focus to the Drawer toggle button.
+- I can use <kbd>Enter</kbd> or <kbd>Space</kbd> to toggle the Drawer open or closed.
+- When the Drawer is open, I can use <kbd>Tab</kbd> to move focus to the close button, then sequentially through the list of focusable items.
+- There's a visible focus ring as I move through interactive content in the Drawer, first to the close button, then sequentially through the list of focusable items.
+- If `hasFocusTrap` is enabled, then...
+  - ...pressing <kbd>Escape</kbd> will close the Drawer.
+  - ...I can't move focus outside of the Drawer.
+- If `hasFocusTrap` is not set, then...
+  - ...I can move focus outside of the Drawer.
+
+##### Screen reader
+
+- The Drawer toggle indicates the purpose of the Drawer and mirrors the first heading inside the Drawer.
+- When the Drawer is open:
+  - Focus is sent to the Drawer.
+  - The Drawer's role of `dialog` is read.
+  - The Drawer's first heading element is announced.
+
+###### Mobile
+
+- Double-tapping the Drawer toggle...
+  - ...sends focus to the Drawer.
+  - ...reads the Drawer's role of `dialog`.
+  - ...announces the Drawer's first heading element.
+- Double-tapping the Drawer's close button sends focus back to the Drawer toggle and the toggle label is read.
 
 ## Component maturity
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 
 export interface TableCaptionProps {
@@ -24,7 +24,7 @@ export interface TableCaptionProps {
   _scrollableNotice?: React.ReactNode;
 }
 
-export const TableCaption: React.FC<TableCaptionProps> = ({
+export const TableCaption = ({
   children,
   className,
   _id,

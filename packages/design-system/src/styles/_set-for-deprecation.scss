@@ -1,0 +1,38 @@
+// Classes included in this file are set for deprecation and will be removed in the next major release.
+
+// This adds a border to all soon-to-be deprecated classes.
+// When the class is deprecated, remove it from the list below.
+
+@mixin deprecate {
+  border: 2px solid lawngreen;
+  padding-block-end: 0.5rem;
+  position: relative;
+
+  &::after {
+    background-color: honeydew;
+    border: 1px solid lawngreen;
+    border-radius: 0.5em;
+    content: '💀 DEPRECATED';
+    font-size: 10px;
+    font-weight: 400;
+    inset: auto 0.5rem -0.5rem auto;
+    padding: 0.25em 0.5em;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+@container style(--debugger: true) {
+  // Remove in v12
+  .ds-u-font-weight--semibold {
+    @include deprecate;
+  }
+
+  .ds-u-sans {
+    @include deprecate;
+  }
+
+  .ds-u-serif {
+    @include deprecate;
+  }
+}

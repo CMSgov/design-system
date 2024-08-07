@@ -1,8 +1,15 @@
-import React from 'react';
+import type * as React from 'react';
 import DateInput from './DateInput';
 import defaultDateFormatter from './defaultDateFormatter';
-import { FormFieldProps, FormLabel, useFormLabel } from '../FormLabel';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import classNames from 'classnames';
+import describeField from '../utilities/describeField';
+import useId from '../utilities/useId';
+import { Label } from '../Label';
 import { t } from '../i18n';
+import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
+import { useHint, UseHintProps } from '../Hint/useHint';
+import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -11,7 +18,7 @@ export type DateFieldMonthValue = string | number;
 export type DateFieldYearDefaultValue = string | number;
 export type DateFieldYearValue = string | number;
 
-export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
+interface BaseDateFieldProps {
   /**
    * Adds `autocomplete` attributes `bday-day`, `bday-month` and `bday-year` to the corresponding `<MultiInputDateField>` inputs
    */
@@ -26,17 +33,9 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
    */
   dateFormatter?: (...args: any[]) => any;
   /**
-   * The primary label, rendered above the individual month/day/year fields
+   * Additional classes to be added to the root element.
    */
-  label?: React.ReactNode;
-  /**
-   * A unique ID to be used for the MultiInputDateField label. If one isn't provided, a unique ID will be generated.
-   */
-  labelId?: string;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
+  className?: string;
   /**
    * Called anytime any date input is blurred
    */
@@ -51,6 +50,14 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
    * Called anytime any date input is changed
    */
   onChange?: (...args: any[]) => any;
+  /**
+   * A unique ID prefix for all the text fields
+   */
+  id?: string;
+  /**
+   * Set to `true` to apply the "inverse" color scheme
+   */
+  inversed?: boolean;
   /**
    * Label for the day field
    */
@@ -131,26 +138,37 @@ export interface DateFieldProps extends Omit<FormFieldProps, 'label'> {
   yearValue?: DateFieldYearValue;
 }
 
+export type DateFieldProps = BaseDateFieldProps &
+  Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>;
+
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/date-field/multi-input-date-field/).
+ */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
-  const { labelProps, fieldProps, wrapperProps, bottomError } = useFormLabel({
-    label: t('dateField.label'),
-    hint: t('dateField.hint'),
+  const id = useId('date-field--', props.id);
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
+  const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
+  const fieldProps = {
     dayName: 'day',
     monthName: 'month',
     yearName: 'year',
     dateFormatter: defaultDateFormatter,
-    ...props,
-    labelComponent: 'legend',
-    wrapperIsFieldset: true,
-  });
-
-  delete fieldProps.id;
-  delete fieldProps.errorId;
+    ...cleanFieldProps(props),
+    id,
+  };
 
   return (
-    <fieldset {...wrapperProps}>
-      <FormLabel {...labelProps} />
-      <DateInput {...fieldProps} labelId={labelProps.id} />
+    <fieldset
+      aria-invalid={invalid}
+      aria-describedby={describeField({ ...props, hintId, errorId })}
+      className={classNames('ds-c-fieldset', props.className)}
+    >
+      <Label component="legend" {...labelProps} />
+      {hintElement}
+      {topError}
+      <DateInput {...fieldProps} />
       {bottomError}
     </fieldset>
   );

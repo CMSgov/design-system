@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import themes from '../../../../../themes.json';
 
-const sbID = 'components-text-field--single-line-field';
+const sbID = 'components-textfield--single-line-field';
 const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${sbID}`;
 
 Object.keys(themes).forEach((theme) => {

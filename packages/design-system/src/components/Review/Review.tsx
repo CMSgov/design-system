@@ -1,4 +1,4 @@
-import React from 'react';
+import type * as React from 'react';
 import classNames from 'classnames';
 import { t } from '../i18n';
 
@@ -43,6 +43,10 @@ const getHeading = (heading, headingLevel) => {
   }
 };
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/review/).
+ */
 export const Review = (props: ReviewProps) => {
   const handleClick = (event): void => {
     if (props.onEditClick) {

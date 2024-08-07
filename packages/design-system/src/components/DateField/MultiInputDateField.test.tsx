@@ -1,12 +1,59 @@
-import React from 'react';
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
 import { MultiInputDateField } from './MultiInputDateField';
 import defaultDateFormatter from './defaultDateFormatter';
-import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 
 describe('MultiInputDateField', () => {
   it('renders', () => {
-    expect(render(<MultiInputDateField />).asFragment()).toMatchSnapshot();
+    const { container } = render(<MultiInputDateField label="A date field" />);
+
+    expect(container.querySelectorAll('label')).toHaveLength(3);
+    expect(screen.getAllByText('/')).toHaveLength(2);
+
+    const monthInput = screen.getByLabelText(/month/i);
+    expect(monthInput).toBeInTheDocument();
+    expect(monthInput).toHaveAttribute('maxlength', '2');
+    expect(monthInput.classList).toContain('ds-c-field--month');
+
+    const dayInput = screen.getByLabelText(/day/i);
+    expect(dayInput).toBeInTheDocument();
+    expect(dayInput).toHaveAttribute('maxlength', '2');
+    expect(dayInput.classList).toContain('ds-c-field--day');
+
+    const yearInput = screen.getByLabelText(/year/i);
+    expect(yearInput).toBeInTheDocument();
+    expect(yearInput).toHaveAttribute('maxlength', '4');
+    expect(yearInput.classList).toContain('ds-c-field--year');
+
+    const inputs = screen.getAllByRole('textbox');
+    expect(inputs).toHaveLength(3);
+    inputs.forEach((input) => {
+      expect(input).toHaveAttribute('aria-invalid', 'false');
+      expect(input).toHaveAttribute('inputmode', 'numeric');
+      expect(input).toHaveAttribute('pattern', '[0-9]*');
+      expect(input).toHaveAttribute('type', 'text');
+    });
+  });
+
+  it('accepts a custom dateFormatter', () => {
+    const dateFormatter = ({ day, month, year }) => `${year}-${month}-${day}`;
+    const onChange = jest.fn();
+    render(
+      <MultiInputDateField
+        label="hi"
+        dateFormatter={dateFormatter}
+        monthValue=""
+        dayValue="3"
+        yearValue="1111"
+        onChange={onChange}
+      />
+    );
+
+    const monthInput = screen.getByLabelText(/month/i);
+    userEvent.type(monthInput, '2');
+
+    expect(onChange.mock.calls[0][1]).toEqual('1111-2-3');
   });
 
   describe('defaultDateFormatter', () => {

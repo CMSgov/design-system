@@ -19,7 +19,7 @@
   font-weight: var(--font-weight-normal);
   padding: 0;
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     padding: $spacer-half $spacer-2;
   }
 }
@@ -33,6 +33,9 @@
   background: var(--drawer__background-color);
   border: 0;
   box-shadow: -2px 0 0 var(--drawer__border-color);
+
+  // Reset so font size of ancestor elements don't affect the dialog
+  font-size: var(--font-size-base);
   height: 100%;
   inset: 0 0 0 auto;
   margin: 0;
@@ -41,7 +44,7 @@
   padding: 0;
   position: fixed;
   width: 100%;
-  z-index: var(--z-drawer);
+  z-index: 500;
 
   // If `hasFocusTrap` enabled, `background` should
   // not be visible.
@@ -58,21 +61,18 @@
     max-width: var(--measure-base);
   }
 
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border: 1px solid WindowText;
     border-left: $spacer-3 solid WindowText;
   }
 }
 
 .ds-c-drawer__window {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
-
-  @supports (display: flex) {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 /* Help drawer header */
@@ -80,15 +80,12 @@
   align-items: center;
   background-color: var(--drawer-header__background-color);
   display: flex;
+  flex: 0 0 auto;
   gap: $spacer-2;
   justify-content: space-between;
   padding: $spacer-2;
 
-  @supports (display: flex) {
-    flex: 0 0 auto;
-  }
-
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-block-end: 1px solid ButtonText;
   }
 }
@@ -116,6 +113,7 @@
 
 /* Help drawer body content */
 .ds-c-drawer__body {
+  flex: 1 1 auto;
   padding: $spacer-2;
 
   @media (min-width: $media-width-md) {
@@ -126,11 +124,7 @@
     font-size: var(--font-size-base);
   }
 
-  @supports (display: flex) {
-    flex: 1 1 auto;
-  }
-
-  @media (-ms-high-contrast: active), (forced-colors: active) {
+  @media (forced-colors: active) {
     border-block-start: 1px solid ButtonText;
   }
 }
@@ -138,11 +132,8 @@
 /* Help drawer footer */
 .ds-c-drawer__footer {
   background-color: var(--drawer-footer__background-color);
+  flex: 0 0 auto;
   padding: $spacer-2;
-
-  @supports (display: flex) {
-    flex: 0 0 auto;
-  }
 }
 
 .ds-c-drawer__footer-title {

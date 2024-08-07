@@ -1,12 +1,6 @@
 import { ButtonProps } from './Button';
-import { buttonSendsAnalytics } from '../flags';
-import {
-  defaultAnalyticsFunction,
-  EventCategory,
-  EventType,
-  getAnalyticsContentFromRefs,
-  eventExtensionText,
-} from '../analytics';
+import { config } from '../config';
+import { getAnalyticsContentFromRefs, eventExtensionText } from '../analytics';
 import { useRef } from 'react';
 
 export default function useButtonAnalytics({
@@ -15,14 +9,14 @@ export default function useButtonAnalytics({
   analyticsParentHeading,
   analyticsParentType,
   href,
-  onAnalyticsEvent = defaultAnalyticsFunction,
+  onAnalyticsEvent = config().defaultAnalyticsFunction,
   type,
   variation,
 }: ButtonProps) {
   const contentRef = useRef();
 
   function sendButtonEvent() {
-    if (analytics !== true && (!buttonSendsAnalytics() || analytics === false)) {
+    if (analytics !== true && (!config().buttonSendsAnalytics || analytics === false)) {
       return;
     }
 
@@ -34,10 +28,6 @@ export default function useButtonAnalytics({
 
     return onAnalyticsEvent({
       event_name: 'button_engagement',
-      event_type: EventType.UI_INTERACTION,
-      event_category: EventCategory.UI_INTERACTION,
-      event_action: `engaged ${buttonStyle} button`,
-      event_label: href ? `${buttonText}: ${href}` : buttonText,
       event_extension: eventExtensionText,
       text: buttonText,
       button_style: buttonStyle,

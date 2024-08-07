@@ -1,0 +1,165 @@
+[
+  [
+    "ariaLabel",
+    "Apply an aria-label to the text field to provide additional context to assistive devices.\n\nstring",
+    "-"
+  ],
+  [
+    "defaultMonth",
+    "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.\n\nDate",
+    "-"
+  ],
+  [
+    "defaultValue",
+    "Sets the initial value. Use this for an uncontrolled component; otherwise, use the value property.\n\nstring",
+    "-"
+  ],
+  [
+    "errorId",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the id prop for the field.\n\nstring",
+    "-"
+  ],
+  [
+    "errorMessage",
+    "Enable the error state by providing an error message.\nReactNode",
+    "-"
+  ],
+  [
+    "errorMessageClassName",
+    "Additional classes to be added to the error message\nstring",
+    "-"
+  ],
+  [
+    "errorPlacement",
+    "Location of the error message relative to the field input\n\"bottom\"\n\"top\"",
+    "-"
+  ],
+  [
+    "fieldClassName",
+    "Additional classes to be added to the field element\nstring",
+    "-"
+  ],
+  [
+    "formattedValue",
+    "The input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it."
+  ],
+  [
+    "fromDate",
+    "Earliest day to start month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
+    "-"
+  ],
+  [
+    "fromMonth",
+    "Earliest month to start month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
+    "-"
+  ],
+  [
+    "fromYear",
+    "Earliest year to start month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nnumber",
+    "-"
+  ],
+  [
+    "hint",
+    "Additional hint text to display\nReactNode",
+    "-"
+  ],
+  [
+    "hintId",
+    "The ID of the hint element\nstring",
+    "-"
+  ],
+  [
+    "id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.\nstring",
+    "-"
+  ],
+  [
+    "inputRef",
+    "(...args: any[]) => any",
+    "-"
+  ],
+  [
+    "inversed",
+    "Set to true to apply the \"inverse\" color scheme\nboolean",
+    "-"
+  ],
+  [
+    "label*",
+    "Label for the field.\nReactNode",
+    "-"
+  ],
+  [
+    "labelClassName",
+    "Additional classes to be added to the label\nstring",
+    "-"
+  ],
+  [
+    "labelId",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
+    "-"
+  ],
+  [
+    "multiline",
+    "Whether or not the text field is a multiline text field\nboolean",
+    "-"
+  ],
+  [
+    "name*",
+    "The input field's name attribute\nstring",
+    "-"
+  ],
+  [
+    "numeric",
+    "Sets inputMode, type, and pattern to improve accessibility and consistency for number fields. Use this prop instead of type=\"number\", see here for more information.\nboolean",
+    "-"
+  ],
+  [
+    "onBlur",
+    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>) => any",
+    "-"
+  ],
+  [
+    "onChange",
+    "Called anytime any date input is changed. This function is called with two arguments. The first argument should be used to update whatever state your application uses to supply back to this component's value prop in a controlled component pattern.\n\n(updatedValue: string, formattedValue: string) => any\nupdatedValue\tThe input's new value\nformattedValue\tThe input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
+    "-"
+  ],
+  [
+    "requirementLabel",
+    "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
+    "-"
+  ],
+  [
+    "rows",
+    "Optionally specify the number of visible text lines for the field. Only applicable if this is a multiline field.\n\nTextInputRows",
+    "-"
+  ],
+  [
+    "size",
+    "Set the max-width of the input either to 'small' or 'medium'.\n\"medium\"\n\"small\"",
+    "-"
+  ],
+  [
+    "toDate",
+    "Latest day to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
+    "-"
+  ],
+  [
+    "toMonth",
+    "Latest month to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nDate",
+    "-"
+  ],
+  [
+    "toYear",
+    "Latest year to end month navigation in the calendar picker. (This does not restrict dates entered manually.)\n\nnumber",
+    "-"
+  ],
+  [
+    "updatedValue",
+    "The input's new value"
+  ],
+  [
+    "value",
+    "Sets the input's value. Use in combination with an onChange handler to implement a controlled component pattern. This component expects the value to match whatever string the user types (i.e., the first argument provided to your onChange handler).\n\nstring",
+    "-"
+  ]
+]

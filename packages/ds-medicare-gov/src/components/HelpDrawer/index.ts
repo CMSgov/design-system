@@ -1,1 +1,2 @@
-export * from './HelpDrawerToggle';
+import './HelpDrawer';
+import './HelpDrawerToggle';

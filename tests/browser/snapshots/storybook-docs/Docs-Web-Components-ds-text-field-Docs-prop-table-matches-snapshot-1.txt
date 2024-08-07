@@ -1,0 +1,92 @@
+[
+  [
+    "class-name",
+    "Additional classes to be added to the root element.",
+    "string"
+  ],
+  [
+    "disabled",
+    "Disables the entire field.",
+    "\"true\"\"false\""
+  ],
+  [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "string"
+  ],
+  [
+    "error-message",
+    "Enable the error state by providing an error message",
+    "string"
+  ],
+  [
+    "error-placement",
+    "Location of the error message relative to the field input",
+    "undefined\"top\"\"bottom\""
+  ],
+  [
+    "field-class-name",
+    "Additional classes to be added to the input element",
+    "string"
+  ],
+  [
+    "hint",
+    "Hint text or HTML",
+    "string"
+  ],
+  [
+    "hint-id",
+    "The ID of the hint element",
+    "string"
+  ],
+  [
+    "inversed",
+    "Set to \"true\" to apply the \"inverse\" theme",
+    "\"true\"\"false\""
+  ],
+  [
+    "label",
+    "Label text or HTML.",
+    "string"
+  ],
+  [
+    "label-class-name",
+    "Additional classes to be added to the field label",
+    "string"
+  ],
+  [
+    "label-id",
+    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "string"
+  ],
+  [
+    "label-mask",
+    "Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See [Label-masked field](https://design.cms.gov/components/text-field/label-masked-field/) documentation page for more information.",
+    "undefined\"phone\"\"zip\"\"ssn\"\"currency\""
+  ],
+  [
+    "name",
+    "The `input` field's `name` attribute.",
+    "string"
+  ],
+  [
+    "requirement-label",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "string"
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ],
+  [
+    "size",
+    "Sets the max-width of the input either to `\"small\"` or `\"medium\"`",
+    "undefined\"medium\"\"small\""
+  ],
+  [
+    "value",
+    "The `input` field's `value` attribute",
+    "string"
+  ]
+]

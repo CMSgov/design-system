@@ -1,4 +1,3 @@
-import React from 'react';
 import LogoEsSvg from './LogoEsSvg';
 import { render } from '@testing-library/react';
 

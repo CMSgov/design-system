@@ -1,5 +1,6 @@
-import React from 'react';
-import { DropdownProps, DropdownOption, DropdownOptGroup } from './Dropdown';
+import { ReactNode, ReactElement } from 'react';
+import { findElementsOfType } from '../utilities/findElementsOfType';
+import { DropdownProps, DropdownOption, DropdownOptGroup, DropdownValue } from './Dropdown';
 
 export function validateProps(props: DropdownProps) {
   if (process.env.NODE_ENV !== 'production') {
@@ -11,73 +12,59 @@ export function validateProps(props: DropdownProps) {
   }
 }
 
-export function isOptGroupArray(
-  optionsOrGroups: DropdownOption[] | DropdownOptGroup[]
-): optionsOrGroups is DropdownOptGroup[] {
-  return (
-    optionsOrGroups?.length > 0 && (optionsOrGroups as DropdownOptGroup[])[0].options !== undefined
-  );
+export function isOptGroup(
+  optionsOrGroups: DropdownOption | DropdownOptGroup
+): optionsOrGroups is DropdownOptGroup {
+  return (optionsOrGroups as DropdownOptGroup).options !== undefined;
 }
 
-function findElementsOfType<T extends keyof JSX.IntrinsicElements>(
-  type: T,
-  node: React.ReactNode
-): React.ReactElement<any, T>[] {
-  if (!node || !(React.isValidElement(node) || Array.isArray(node))) {
-    // There's nothing to recurse on, and this is not the droid we're looking for
-    return [];
+export function getFirstOptionValue(
+  optionsAndGroups: Array<DropdownOptGroup | DropdownOption>
+): DropdownValue | undefined {
+  for (const optOrGroup of optionsAndGroups) {
+    if (!isOptGroup(optOrGroup)) {
+      return optOrGroup.value;
+    } else if (optOrGroup.options[0]) {
+      return optOrGroup.options[0].value;
+    }
   }
-
-  if (React.isValidElement(node) && type === node.type) {
-    // We found it! Return an array because it will be flattened
-    return [node as React.ReactElement<any, T>];
-  }
-
-  if (Array.isArray(node)) {
-    // Recurse on each member of the array and flatten the result
-    return node.reduce(
-      (acc: React.ReactElement<any, T>[], child: React.ReactNode) => [
-        ...acc,
-        ...findElementsOfType(type, child),
-      ],
-      []
-    ) as React.ReactElement<any, T>[];
-  }
-
-  // It's a React element, so recurse on its children (a ReactNode)
-  return findElementsOfType(type, (node as React.ReactElement).props?.children);
+  console.warn('Dropdown component could not determine a default selected option');
 }
 
-function parseOptionElement(option: React.ReactElement<any, 'option'>): DropdownOption {
+function parseOptionElement(option: ReactElement<any, 'option'>): DropdownOption {
   const { value, children, ...extraAttributes } = option.props;
+  // The web-component Preact parser sometimes wraps text content in an array, but
+  // react-aria doesn't like that because it wants its labels/children to only be
+  // strings, or it will warn "<Item> with non-plain text contents is unsupported".
+  const label = children.length === 1 ? children[0] : children;
   return {
     value,
-    label: children?.toString?.() ?? '', // Probably should throw an error
+    label,
     ...extraAttributes,
   };
 }
 
-function parseOptGroupElement(optgroup: React.ReactElement<any, 'optgroup'>): DropdownOptGroup {
+function parseOptGroupElement(optgroup: ReactElement<any, 'optgroup'>): DropdownOptGroup {
   const { label, ...extraProps } = optgroup.props;
   if (!label) {
     throw new Error('Could not find a label on `<optgroup>` element');
   }
   return {
     label,
-    options: findElementsOfType('option', optgroup).map(parseOptionElement),
+    options: findElementsOfType(['option'], optgroup).map(parseOptionElement),
     ...extraProps,
   };
 }
 
-export function parseChildren(node: React.ReactNode): DropdownOptGroup[] | DropdownOption[] {
-  const optgroups = findElementsOfType('optgroup', node);
-  if (optgroups.length) {
-    return optgroups.map(parseOptGroupElement);
-  }
-
-  const options = findElementsOfType('option', node);
-  if (options.length) {
-    return options.map(parseOptionElement);
+export function parseChildren(node: ReactNode): Array<DropdownOptGroup | DropdownOption> {
+  const elements = findElementsOfType(['optgroup', 'option'], node);
+  if (elements.length) {
+    return elements.map((element) => {
+      if (element.type === 'optgroup') {
+        return parseOptGroupElement(element as ReactElement<any, 'optgroup'>);
+      }
+      return parseOptionElement(element as ReactElement<any, 'option'>);
+    });
   }
 
   return [];

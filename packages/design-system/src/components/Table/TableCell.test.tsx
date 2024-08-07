@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TableCell from './TableCell';
 import TableRow from './TableRow';

@@ -1,5 +1,7 @@
-import React from 'react';
+import type * as React from 'react';
 import classnames from 'classnames';
+import { sendFooterLinkEvent } from './analytics';
+import { getLanguage } from '@cmsgov/design-system';
 
 interface LogoProps {
   children: React.ReactNode;
@@ -29,6 +31,10 @@ interface LogoProps {
  *
  */
 
+/**
+ * For information about how and when to use this component,
+ * [refer to its full documentation page](https://design.cms.gov/components/logos/healthcare-logo/).
+ */
 const Logo = (props: LogoProps) => {
   const style: any = {};
 
@@ -36,11 +42,14 @@ const Logo = (props: LogoProps) => {
     style.width = props.width;
   }
 
+  const linkText = getLanguage() === 'es' ? 'CuidadoDeSalud.gov' : 'HealthCare.gov';
+
   return (
     <a
       className={classnames('hc-c-footer__logo ds-u-display--inline-block', props.className)}
       href={props.href}
       style={style}
+      onClick={() => sendFooterLinkEvent(linkText, props.href)}
     >
       {props.children}
     </a>

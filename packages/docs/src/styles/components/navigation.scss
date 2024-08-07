@@ -1,3 +1,5 @@
+@use '@styles/mixins';
+
 // Mobile
 .c-navigation {
   background-color: var(--color-gray-lightest);
@@ -9,8 +11,13 @@
     gap: $spacer-2;
     padding: $spacer-2;
 
-    button {
+    > button {
       color: currentColor;
+
+      &:hover,
+      &:focus:hover {
+        color: currentColor;
+      }
     }
   }
 
@@ -24,7 +31,6 @@
 
   .c-navigation__link-list {
     border-block: 1px solid var(--vertical-nav-item__border-color);
-    gap: 0;
 
     .ds-c-vertical-nav__label--parent {
       text-transform: capitalize;
@@ -50,7 +56,60 @@
 }
 
 .c-navigation__switchers-wrapper {
-  padding: $spacer-2;
+  padding: $spacer-2 $spacer-2 $spacer-2 $spacer-4;
+}
+
+.c-navigation__settings-button {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--link__color);
+  display: inline-block;
+  font-weight: var(--font-weight-bold);
+
+  // Keep the hit area large by giving it padding on top and bottom, calculated
+  // to be about 40px tall at a default font size
+  padding: 0.5rem;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.125em;
+
+  &:visited {
+    color: var(--link__color--visited);
+  }
+
+  &:hover {
+    color: var(--link__color--hover);
+  }
+
+  &:active {
+    color: var(--link__color--active);
+  }
+
+  .c-navigation__switchers-wrapper & {
+    color: var(--link-inverse__color);
+
+    &:visited {
+      color: var(--link-inverse__color--visited);
+    }
+
+    &:hover {
+      color: var(--link-inverse__color--hover);
+    }
+
+    &:active {
+      color: var(--link-inverse__color--active);
+    }
+  }
+
+  &:focus {
+    @include mixins.focus-styles;
+  }
+
+  .ds-c-icon {
+    height: var(--font-size-sm);
+    width: var(--font-size-sm);
+  }
 }
 
 .c-navigation__links-wrapper {
@@ -80,46 +139,27 @@
   }
 }
 
+.ds-c-vertical-nav__label {
+  &:hover,
+  :visited:hover {
+    --vertical-nav-item__background-color--hover: color-mix(
+      in srgb,
+      var(--color-primary-lightest),
+      transparent 50%
+    );
+  }
+}
+
 // Desktop
 @media (min-width: $media-width-md) {
   .c-navigation {
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.
     width: 17rem;
-
-    .c-navigation__header {
-      padding-block-end: $spacer-1;
-      padding-block-start: $spacer-4;
-    }
-
-    .c-navigation__link-list {
-      .ds-c-vertical-nav__label {
-        background-color: transparent;
-        text-align: start;
-
-        &:hover,
-        &:visited:hover {
-          position: relative;
-          z-index: 1;
-
-          &:before {
-            background-color: var(--vertical-nav-item__color--hover);
-            bottom: 0;
-            content: '';
-            filter: opacity(0.05);
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            z-index: -1;
-          }
-        }
-      }
-    }
   }
 }
 
-@media (-ms-high-contrast: active), (forced-colors: active) {
+@media (forced-colors: active) {
   .c-navigation {
     forced-color-adjust: none;
     -ms-high-contrast-adjust: none;

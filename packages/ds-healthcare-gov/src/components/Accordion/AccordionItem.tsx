@@ -1,23 +1,11 @@
-import React from 'react';
 import { AccordionItem, MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
-import { t } from '../i18n';
 
 AccordionItem.defaultProps = {
   ...AccordionItem.defaultProps,
-  closeIcon: (
-    <MinusCircleIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.close')}
-      ariaHidden={false}
-    />
-  ),
-  openIcon: (
-    <PlusCircleIcon
-      className="ds-c-accordion__button-icon"
-      title={t('accordion.open')}
-      ariaHidden={false}
-    />
-  ),
+  closeIconComponent: MinusCircleIcon,
+  openIconComponent: PlusCircleIcon,
 };
 
-export default AccordionItem;
+// We need this for the healthcare story to work, and we also need to declare the side
+// effects for the src path.
+export { AccordionItem };

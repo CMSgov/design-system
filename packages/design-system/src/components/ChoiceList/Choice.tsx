@@ -1,13 +1,26 @@
+import { useEffect, useState } from 'react';
+import type * as React from 'react';
 import EvEmitter from 'ev-emitter';
-import FormLabel from '../FormLabel/FormLabel';
-import React from 'react';
 import classNames from 'classnames';
-import uniqueId from 'lodash/uniqueId';
+import useId from '../utilities/useId';
+import { InlineError } from '../InlineError';
+import { Label } from '../Label';
+import { UseInlineErrorProps } from '../InlineError/useInlineError';
+import { UseLabelPropsProps, useLabelProps } from '../Label/useLabelProps';
+import { UseHintProps, useHint } from '../Hint/useHint';
+import cleanFieldProps from '../utilities/cleanFieldProps';
+import describeField from '../utilities/describeField';
 
 export type ChoiceSize = 'small';
 export type ChoiceType = 'checkbox' | 'radio';
 export type ChoiceValue = number | string;
-export interface ChoiceProps {
+
+export interface BaseChoiceProps {
+  /**
+   * Sets the initial `checked` state. Use this for an uncontrolled component;
+   * otherwise, use the `checked` property.
+   */
+  defaultChecked?: boolean;
   /**
    * Sets the input's `checked` state. Use this in combination with `onChange`
    * for a controlled component; otherwise, set `defaultChecked`.
@@ -24,49 +37,30 @@ export interface ChoiceProps {
    */
   uncheckedChildren?: React.ReactNode;
   /**
+   * Disables the entire field.
+   */
+  disabled?: boolean;
+  /**
    * Additional classes to be added to the root `div` element.
    */
   className?: string;
+  /**
+   * @hide-prop Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
+   */
+  _choiceChild?: boolean;
   /**
    * Additional classes to be added to the `input` element.
    */
   inputClassName?: string;
   /**
-   * Label text or HTML.
-   */
-  label?: React.ReactNode;
-  /**
-   * Additional classes to be added to the `FormLabel`.
-   */
-  labelClassName?: string;
-  /**
-   * Sets the initial `checked` state. Use this for an uncontrolled component;
-   * otherwise, use the `checked` property.
-   */
-  defaultChecked?: boolean;
-  disabled?: boolean;
-  errorMessage?: React.ReactNode;
-  /**
-   * Additional classes to be added to the error message
-   */
-  errorMessageClassName?: string;
-  /**
    * Access a reference to the `input` element
    */
   inputRef?: (...args: any[]) => any;
-  /**
-   * Additional hint text to display below the choice's label
-   */
-  hint?: React.ReactNode;
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.
    */
   id?: string;
-  /**
-   * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields]({{root}}/guidelines/forms/#required-and-optional-fields).
-   */
-  requirementLabel?: React.ReactNode;
   /**
    * Applies the "inverse" UI theme
    */
@@ -88,164 +82,129 @@ export interface ChoiceProps {
   value: ChoiceValue;
 }
 
-type OmitProps =
-  | 'size'
-  | 'type'
-  | 'value'
-  | 'label'
-  | 'checked'
-  | 'defaultChecked'
-  | 'onBlur'
-  | 'onChange'
-  | 'name'
-  | 'id'
-  | 'className'
-  | 'disabled';
+export type ChoiceProps = BaseChoiceProps &
+  Omit<React.ComponentPropsWithRef<'input'>, keyof BaseChoiceProps> &
+  Omit<
+    UseLabelPropsProps & UseHintProps & UseInlineErrorProps,
+    'id' | 'inversed' | 'errorPlacement'
+  >;
 
 /** Used to emit events to all Choice components */
 const dsChoiceEmitter = new EvEmitter();
 
-export class Choice extends React.PureComponent<
-  Omit<React.ComponentPropsWithRef<'input'>, OmitProps> & ChoiceProps,
-  any
-> {
-  constructor(props: ChoiceProps) {
-    super(props);
-    this.input = null;
-    this.handleChange = this.handleChange.bind(this);
-    this.handleUncheck = this.handleUncheck.bind(this);
-    this.id = this.props.id || uniqueId(`${this.props.type}_${this.props.name}_`);
+/**
+ * This component passes any additional props to its underlying input element
+ * as attributes. See the corresponding MDN documentation for
+ * [input](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) for
+ * a list of valid attributes.
 
-    if (typeof this.props.checked === 'undefined') {
-      this.isControlled = false;
-      // Since this isn't a controlled component, we need a way
-      // to track when the value has changed. This can then be used
-      // to identify when to toggle the visibility of (un)checkedChildren
-      this.state = { checked: this.props.defaultChecked };
-    } else {
-      this.isControlled = true;
-    }
+ * For information about how and when to use this component, refer to the
+ * [checkbox](https://design.cms.gov/components/checkbox/) and
+ * [radio](https://design.cms.gov/components/radio/) documentation pages.
+ */
+
+export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
+  const initialCheckedState = props.checked ?? props.defaultChecked;
+  const [internalCheckedState, setChecked] = useState(initialCheckedState);
+  const isControlled = props.checked !== undefined;
+  const checked = isControlled ? props.checked : internalCheckedState;
+  const radioCheckedEventName = `${props.name}-radio-checked`;
+
+  const id = useId('choice--', props.id);
+
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
+
+  let errorId;
+  let errorElement;
+  if (!_choiceChild) {
+    errorId = props.errorId ?? `${id}__error`;
+    errorElement = (
+      <InlineError id={errorId} inversed={props.inversed} className={props.errorMessageClassName}>
+        {props.errorMessage}
+      </InlineError>
+    );
   }
 
-  componentDidMount(): void {
-    // Event emitters are only relevant for uncontrolled radio buttons
-    if (!this.isControlled && this.props.type === 'radio') {
-      this.uncheckEventName = `${this.props.name}-uncheck`;
-      dsChoiceEmitter.on(this.uncheckEventName, this.handleUncheck);
-    }
-  }
-
-  componentWillUnmount(): void {
-    // Unbind event emitters are only relevant for uncontrolled radio buttons
-    if (!this.isControlled && this.props.type === 'radio') {
-      dsChoiceEmitter.off(this.uncheckEventName, this.handleUncheck);
-    }
-  }
-
-  input: any;
-  id: string;
-  isControlled: boolean;
-  uncheckEventName: string;
-
-  checked(): boolean {
-    if (this.isControlled) {
-      return this.props.checked;
+  // Subscribe to changes from other radio buttons in the same group
+  useEffect(() => {
+    // This logic only applies to uncontrolled radio groups
+    if (props.type !== 'radio' || isControlled) {
+      return;
     }
 
-    return this.state.checked;
-  }
+    const handleRadioChecked = (checkedId: string) => {
+      // A radio button in this group was just checked. If it wasn't this one, uncheck this one
+      if (checkedId !== id) {
+        setChecked(false);
+      }
+    };
 
-  /**
-   * A radio button doesn't receive an onChange event when it is unchecked,
-   * so we fire an "uncheck" event when any radio option is selected. This
-   * allows us to check each radio options' checked state.
-   * @param {String} checkedId - ID of the checked radio option
-   */
-  handleUncheck(checkedId: string): void {
-    if (checkedId !== this.id && this.input.checked !== this.state.checked) {
-      this.setState({ checked: this.input.checked });
-    }
-  }
+    dsChoiceEmitter.on(radioCheckedEventName, handleRadioChecked);
+    return () => {
+      dsChoiceEmitter.off(radioCheckedEventName, handleRadioChecked);
+    };
+  }, [setChecked]);
 
-  handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
-    if (this.props.onChange) {
-      this.props.onChange(evt);
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    if (props.onChange) {
+      props.onChange(event);
     }
 
-    if (!this.isControlled) {
-      this.setState({ checked: evt.target.checked });
+    if (!isControlled) {
+      setChecked(event.target.checked);
 
-      if (this.props.type === 'radio' && evt.target.checked) {
-        // Emit the uncheck event so other radio options update their state
-        dsChoiceEmitter.emitEvent(this.uncheckEventName, [this.id]);
+      if (props.type === 'radio' && event.target.checked) {
+        // Emit an event so other radio options can uncheck themselves
+        dsChoiceEmitter.emitEvent(radioCheckedEventName, [id]);
       }
     }
   }
 
-  render() {
-    const {
-      'aria-live': ariaLive,
-      'aria-relevant': ariaRelevant,
-      'aria-atomic': ariaAtomic,
-      checkedChildren,
-      className,
-      disabled,
-      errorMessage,
-      errorMessageClassName,
-      hint,
-      inversed,
-      inputClassName,
-      label,
-      labelClassName,
-      requirementLabel,
-      size,
-      uncheckedChildren,
-      inputRef,
-      ...inputProps
-    } = this.props;
+  const {
+    'aria-live': ariaLive,
+    'aria-relevant': ariaRelevant,
+    'aria-atomic': ariaAtomic,
+    className,
+    inversed,
+    inputClassName,
+    inputRef,
+    size,
+    checkedChildren,
+    uncheckedChildren,
+    ...inputProps
+  } = props;
 
-    const inputClasses = classNames(inputClassName, 'ds-c-choice', {
-      'ds-c-choice--inverse': inversed,
-      'ds-c-choice--small': size === 'small',
-    });
-
-    // Remove props we have our own implementations for
-    if (inputProps.id) delete inputProps.id;
-    if (inputProps.onChange) delete inputProps.onChange;
-
-    return (
-      <div
-        className={className}
-        aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
-        aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
-        aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
-      >
-        <div className="ds-c-choice-wrapper">
-          <input
-            className={inputClasses}
-            id={this.id}
-            onChange={this.handleChange}
-            disabled={disabled}
-            ref={(ref) => {
-              this.input = ref;
-              if (inputRef) {
-                inputRef(ref);
-              }
-            }}
-            {...inputProps}
-          />
-          <FormLabel
-            className={labelClassName}
-            fieldId={this.id}
-            {...{ errorMessage, errorMessageClassName, hint, inversed, requirementLabel }}
-          >
-            {label}
-          </FormLabel>
-        </div>
-        {this.checked() ? checkedChildren : uncheckedChildren}
+  return (
+    <div
+      className={className}
+      aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
+      aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
+      aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
+    >
+      <div className="ds-c-choice-wrapper">
+        <input
+          {...cleanFieldProps(inputProps)}
+          id={id}
+          className={classNames(inputClassName, 'ds-c-choice', {
+            'ds-c-choice--inverse': inversed,
+            'ds-c-choice--small': size === 'small',
+          })}
+          onChange={handleChange}
+          ref={inputRef}
+          aria-describedby={describeField({ ...props, errorId, hintId })}
+        />
+        <Label {...labelProps} fieldId={id} />
+        {hintElement}
+        {errorElement}
       </div>
-    );
-  }
-}
+      {checked ? checkedChildren : uncheckedChildren}
+    </div>
+  );
+};
+
+Choice.defaultProps = {
+  _choiceChild: false,
+};
 
 export default Choice;

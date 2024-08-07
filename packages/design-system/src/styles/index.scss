@@ -6,6 +6,8 @@
 @use 'font';
 @use 'mixins';
 @use 'base';
+@use 'set-for-deprecation';
+@use 'web-components';
 
 /**
  * Utilities
@@ -17,7 +19,6 @@
 @use 'utilities/flexbox';
 @use 'utilities/float';
 @use 'utilities/focus';
-@use 'utilities/font-family';
 @use 'utilities/font-size';
 @use 'utilities/font-style';
 @use 'utilities/font-weight';
@@ -31,7 +32,6 @@
 @use 'utilities/text-color';
 @use 'utilities/text-decoration';
 @use 'utilities/text-transform';
-@use 'utilities/truncate';
 @use 'utilities/vertical-align';
 @use 'utilities/word-break';
 
@@ -44,15 +44,17 @@
 @use 'components/Badge';
 @use 'components/Button';
 @use 'components/ChoiceList';
+@use 'components/CloseButton';
 @use 'components/Dialog';
 @use 'components/Drawer';
 @use 'components/Dropdown';
 @use 'components/FilterChip';
-@use 'components/FormLabel';
+@use 'components/Hint';
+@use 'components/InlineError';
+@use 'components/Label';
 @use 'components/List';
 @use 'components/MonthPicker';
 @use 'components/Pagination';
-@use 'components/PrivacySettings';
 @use 'components/Review';
 @use 'components/SingleInputDateField';
 @use 'components/SkipNav';
@@ -61,6 +63,7 @@
 @use 'components/SvgIcon';
 @use 'components/Table';
 @use 'components/Tabs';
+
 // Mask, LabelMask and Date field styles need useed
 // after TextField since they modify it
 @use 'components/TextField';

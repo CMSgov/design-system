@@ -1,10 +1,10 @@
-import React from 'react';
 import Logo from './Logo';
 import { Logo as HCgovLogo } from '../Logo';
 import { getLanguage } from '@cmsgov/design-system';
+import { t } from '../i18n';
 
 interface LogosRowProps {
-  t: (string) => string;
+  logoClassName?: string;
 }
 
 const LogosRow = function (props: LogosRowProps) {
@@ -16,11 +16,18 @@ const LogosRow = function (props: LogosRowProps) {
             getLanguage() === 'es' ? 'https://www.cuidadodesalud.gov' : 'https://www.healthcare.gov'
           }
         >
-          <HCgovLogo titleId="hc-c-footer__logo-title" />
+          <HCgovLogo titleId="hc-c-footer__logo-title" className={props.logoClassName ?? ''} />
         </Logo>
         <div className="hc-c-footer__disclaimer">
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-top') }} />
-          <p dangerouslySetInnerHTML={{ __html: props.t('footer.disclaimer-bottom') }} />
+          {/* Trademark language is only for the English translation of footer */}
+          {getLanguage() === 'en' && (
+            <p>
+              Health Insurance Marketplace<sup>&#174;</sup> is a registered trademark of the
+              Department of Health &amp; Human Services.
+            </p>
+          )}
+          {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
+          <p dangerouslySetInnerHTML={{ __html: t('footer.disclaimer') }} />
         </div>
       </div>
     </div>

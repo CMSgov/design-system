@@ -1,4 +1,3 @@
-import React from 'react';
 import StepLink from './StepLink';
 import { render, screen, fireEvent } from '@testing-library/react';
 
