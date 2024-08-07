@@ -78,13 +78,19 @@ const PrefixedImg = (props) => {
 };
 
 /**
+ * Regular expression that matches valid URLs with .gov domains or ones for our repo
+ */
+const RE_INTERNAL_URL =
+  /^(?:https?:\/\/)?(?:[a-zA-Z\-]+\.)?(?:[a-zA-Z\-]+\.(?:gov)|github\.com\/CMSgov\/design-system)(?:\/|:|\?|\&|\s|$)\/?/;
+
+/**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
 const customComponents = (theme) => ({
   a: (props) => {
-    if (props.href.startsWith('http')) {
-      return <ThirdPartyExternalLink {...props} />;
+    if (props.href.startsWith('http') && !RE_INTERNAL_URL.test(props.href)) {
+      return <ThirdPartyExternalLink origin="design.cms.gov" {...props} />;
     }
     return <a {...props} />;
   },
