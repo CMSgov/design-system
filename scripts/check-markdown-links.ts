@@ -34,7 +34,8 @@ const findCommand = (): string => {
 
 // Create a table:
 const table = (header: string, body: string): string => {
-  return `<table>${header}${body}</table`;
+  const classes = ['ds-c-table', 'ds-c-table--stacked', 'ds-u-margin-x--auto', 'ds-u-margin-y-2'];
+  return `<table class="${classes.join(' ')}">${header}${body}</table`;
 };
 
 // Create a table header:
@@ -54,7 +55,7 @@ const createExternalLink = (linkUrl: string): string => {
     })
     .join('/');
   const gHubUrl = githubPrefix + githubUrlSuffix;
-  let externalLink = `<td><strong>Github: </strong><a href="${gHubUrl}" target="_blank">${gHubUrl}</a></td>`;
+  let externalLink = `<td data-title="${tableHeaders[0]}"><strong>Github: </strong>\n<a href="${gHubUrl}" target="_blank">${gHubUrl}</a></td>`;
   if (linkUrl.includes('/content/')) {
     const spliceFrom = linkUrl.split('/').indexOf('content');
     const docSiteUrlSuffix = linkUrl
@@ -63,17 +64,19 @@ const createExternalLink = (linkUrl: string): string => {
       .join('/');
     const dSiteUrlSansExt = docSiteUrlSuffix.split('.md')[0];
     const dSiteUrl = docSitePrefix + dSiteUrlSansExt;
-    externalLink = `<td><strong>Github: </strong><a href="${gHubUrl}" target="_blank">${gHubUrl}</a><br/><strong>Doc Site: </strong><a href="${dSiteUrl}" target="_blank">${dSiteUrl}</a></td>`;
+    externalLink = `<td data-title="${tableHeaders[0]}"><strong>Github: </strong>\n<a href="${gHubUrl}" target="_blank">${gHubUrl}</a><br/><strong>Doc Site: </strong><a href="${dSiteUrl}" target="_blank">${dSiteUrl}</a></td>`;
   }
   return externalLink;
 };
 
 const tableBodyContent = (file: string, filePath: string, status: number, url: string) => {
   const externalLink = createExternalLink(filePath);
-  const internalLink = `<td><a href="${file}" target="_blank">${filePath}</a></td>`;
-  const brokenLink = `<td><a href="${url}" target="_blank">${url}</a></td>`;
-  const priority = `<td>${
-    status === 404 ? `High priority: 404 broken link.` : `Response status ${status}. Investigate.`
+  const internalLink = `<td data-title="${tableHeaders[1]}"><a href="${file}" target="_blank">${filePath}</a></td>`;
+  const brokenLink = `<td data-title="${tableHeaders[2]}"><a href="${url}" target="_blank">${url}</a></td>`;
+  const priority = `<td data-title="${tableHeaders[3]}">${
+    status === 404
+      ? `<strong>High:</strong> 404 broken link.`
+      : `<strong>Investigate status:</strong> ${status}`
   }</td>`;
   const content = `<tr> ${externalLink + internalLink + brokenLink + priority}</tr>`;
   return content;
@@ -104,8 +107,11 @@ const writeToFile = (
   errorMessage = 'Error!',
   successMessage?: string
 ) => {
+  const baseCSS = `<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/10.1.1/css/index.css" />`;
+  const coreCSS = `<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/10.1.1/css/core-theme.css" />`;
+  const htmlOutput = `<!DOCTYPE html><html><head>${baseCSS}${coreCSS}</head><body>${content}</body></html>`;
   try {
-    fs.writeFileSync(outputFileName, content, flag);
+    fs.writeFileSync(outputFileName, htmlOutput, flag);
     successMessage && console.log(successMessage);
   } catch (err) {
     console.error(errorMessage.concat(` ${err}`));
