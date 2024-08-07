@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateField Date Field with Error renders with error message 1`] = `
+<p
+  aria-atomic="true"
+  aria-live="assertive"
+  class="ds-c-inline-error"
+  id="static-id__error"
+>
+  <svg
+    aria-hidden="true"
+    class="ds-c-icon ds-c-icon--alert-circle "
+    viewBox="36 -12 186 186"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
+    />
+  </svg>
+  <span
+    class="ds-u-visibility--screen-reader"
+  >
+    Error: 
+  </span>
+  This is an example error message.
+</p>
+`;
+
+exports[`DateField Date Field with Error renders with error message 2`] = `
+<input
+  aria-describedby="static-id__error static-id__hint static-id__label-mask"
+  aria-invalid="true"
+  class="ds-c-field ds-c-field--error"
+  id="static-id"
+  inputmode="numeric"
+  name="ds-date-field"
+  parent="[object HTMLElement]"
+  type="text"
+/>
+`;
+
+exports[`DateField DateField with picker renders with picker 1`] = `
+<button
+  aria-describedby="static-id__label static-id__hint"
+  class="ds-c-single-input-date-field__button"
+  type="button"
+>
+  <svg
+    aria-hidden="false"
+    aria-labelledby="static-id__icon__title"
+    class="ds-c-icon ds-c-icon--calendar "
+    id="static-id__icon"
+    role="img"
+    viewBox="0 0 448 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title
+      id="static-id__icon__title"
+    >
+      Open calendar picker dialog
+    </title>
+    <path
+      d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"
+    />
+  </svg>
+</button>
+`;
+
+exports[`DateField generates ids when no id is provided 1`] = `
+<input
+  aria-describedby="date-field--6__hint date-field--6__label-mask"
+  aria-invalid="false"
+  class="ds-c-field"
+  id="date-field--6"
+  inputmode="numeric"
+  name="ds-date-field"
+  parent="[object HTMLElement]"
+  type="text"
+/>
+`;
+
+exports[`DateField renders without picker 1`] = `
+<input
+  aria-describedby="static-id__hint static-id__label-mask"
+  aria-invalid="false"
+  class="ds-c-field"
+  id="static-id"
+  inputmode="numeric"
+  name="ds-date-field"
+  parent="[object HTMLElement]"
+  type="text"
+/>
+`;
