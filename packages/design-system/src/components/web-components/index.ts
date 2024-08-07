@@ -17,6 +17,7 @@ import './ds-alert';
 import './ds-badge';
 import './ds-button';
 import './ds-choice';
+import './ds-date-field';
 import './ds-dropdown';
 import './ds-month-picker';
 import './ds-skip-nav';

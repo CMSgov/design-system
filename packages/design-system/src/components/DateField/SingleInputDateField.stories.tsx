@@ -26,26 +26,29 @@ export default meta;
 
 type Story = StoryObj<typeof SingleInputDateField>;
 
-export const Default: Story = {
+const UncontrolledTemplate: Story = {
+  render: function Component(args) {
+    return <SingleInputDateField {...args} />;
+  },
+};
+
+const ControlledTemplate: Story = {
   render: function Component(args) {
     const [dateString, updateDate] = useState();
     const onChange = (...params) => {
       action('onChange')(...params);
       updateDate(params[0]);
     };
-    return (
-      <SingleInputDateField
-        {...args}
-        name="single-input-date-field"
-        value={dateString ?? ''}
-        onChange={onChange}
-      />
-    );
+    return <SingleInputDateField {...args} value={dateString ?? ''} onChange={onChange} />;
   },
 };
 
+export const Default: Story = {
+  ...ControlledTemplate,
+};
+
 export const WithPicker: Story = {
-  ...Default,
+  ...ControlledTemplate,
   args: {
     label: 'What day did you move?',
     hint: 'This date should be within the past 60 days in order to qualify.',
@@ -61,9 +64,14 @@ export const WithPicker: Story = {
 };
 
 export const WithError = {
-  ...Default,
+  ...ControlledTemplate,
   args: {
     errorMessage: 'This is an example error message.',
     ...WithPicker.args,
   },
+};
+
+export const UncontrolledComponent = {
+  ...WithPicker,
+  ...UncontrolledTemplate,
 };
