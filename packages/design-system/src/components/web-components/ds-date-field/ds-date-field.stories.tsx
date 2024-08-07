@@ -5,6 +5,13 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { webComponentDecorator } from '../storybook';
 import './ds-date-field';
 
+const formatDateArg = (dateArg: string | number | undefined): string => {
+  if (typeof dateArg === 'number') {
+    return new Date(dateArg).toISOString();
+  }
+  return dateArg;
+};
+
 const meta: Meta = {
   title: 'Web Components/ds-date-field',
   decorators: [webComponentDecorator],
@@ -142,7 +149,16 @@ const Template = (args) => {
     }
   }, []);
 
-  return <ds-date-field {...args} />;
+  const formattedArgs = {
+    ...args,
+    'to-date': formatDateArg(args['to-date']),
+    'to-month': formatDateArg(args['to-month']),
+    'from-month': formatDateArg(args['from-month']),
+    'default-month': formatDateArg(args['default-month']),
+    'from-date': formatDateArg(args['from-date']),
+  };
+
+  return <ds-date-field {...formattedArgs} />;
 };
 
 export const Default = Template.bind({});
