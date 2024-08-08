@@ -1,0 +1,34 @@
+---
+title: Utility Actions
+intro: Utility actions for a webpage including print, email, RSS and more.
+---
+
+import { TextField } from '@cmsgov/design-system';
+
+## Guidance
+
+### When to use
+
+- If you would like to give the user the option to print or email a page.
+- If you would like to give the user the option to enable RSS.
+- These "utility actions" are considered [ghost buttons](/components/button/#ghost-button) for actions available that do not take priority over a primary or secondary CTAs (e.g., print, email, RSS).
+
+### When to consider alternatives
+
+- If an action (e.g. printing or emailing) is a critical call-to-action on a webpage, consider using a solid or outlined main button.
+- If the utility action is opening a link versus triggering an action, please reference [guidance on links](/foundation/typography/links).
+- Consider carefully which Utility Actions are used on mobile since space is a premium.
+
+### Usage
+
+- This pattern uses a ghost button component with a left icon boolean.
+- Placement should be in page header
+- Top, right aligned
+- For typeface please reference [guidance on links](/foundation/typography/links)
+- When pairing two or more buttons the preferred/main action is placed on the left
+  - Order of actions should be consistent across pages and products
+
+### Accessibility
+
+- Icons without the text label are an accessibility concern
+- Every Utility Action should be unique on a page. A single page with multiple "print" actions can cause confusion for screen readers.
