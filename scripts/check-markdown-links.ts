@@ -47,12 +47,9 @@ const tableHeader = () => {
 const tableBodyContainer: Array<string> = [];
 
 const createExternalLink = (linkUrl: string): string => {
-  // Find both on Github and the docsite
   const githubUrlSuffix = linkUrl
     .split('/')
-    .filter((link) => {
-      if (!link.includes('design-system')) return true;
-    })
+    .splice(linkUrl.split('/').indexOf('design-system') + 1)
     .join('/');
   const gHubUrl = githubPrefix + githubUrlSuffix;
   let externalLink = `<td data-title="${tableHeaders[0]}"><strong>Github: </strong>\n<a href="${gHubUrl}" target="_blank">${gHubUrl}</a></td>`;
@@ -138,7 +135,7 @@ const findLinks = (filePath: string, regex: RegExp): void => {
 };
 
 // Use node-fetch to query urls and return a status code:
-const curl = async (file: string, url: string, lastItem: boolean): Promise<void> => {
+const curl = async (file: string, url: string): Promise<void> => {
   const spliceFrom = file.split('/').indexOf('design-system');
   const filePath: string = file.split('/').splice(spliceFrom).join('/');
   const content = '';
@@ -147,18 +144,13 @@ const curl = async (file: string, url: string, lastItem: boolean): Promise<void>
       const rowContent = tableBodyContent(file, filePath, res.status, url);
       tableBodyContainer.push(rowContent);
     }
-    if (lastItem) {
-      console.log(
-        'Broken links found! Run "open brokenLinkReport.html" in the terminal to view the list.'
-      );
-      const outputTable = table(tableHeader(), tableBodyContainer.join(''));
-      writeToFile(
-        outputFileName,
-        outputTable,
-        { flag: 'a+' },
-        `Could not write line to file.\nContent: ${content}. Error: `
-      );
-    }
+    const outputTable = table(tableHeader(), tableBodyContainer.join(''));
+    writeToFile(
+      outputFileName,
+      outputTable,
+      {},
+      `Could not write line to file.\nContent: ${content}. Error: `
+    );
   });
 };
 
@@ -182,11 +174,8 @@ if (!foundFiles) {
 writeToFile(outputFileName, '', {}, 'File not cleaned:', 'Cleaned file. Preparing to write.');
 
 // Loop over all files and links and write the broken links into an HTML file:
-let iter = 0;
 for (const [file, links] of Object.entries(urlsToCheck)) {
-  links.forEach((link, index) => {
-    const isLastItem = links.length - 1 === index && Object.keys(urlsToCheck).length - 1 === iter;
-    curl(file, link, isLastItem);
+  links.forEach((link) => {
+    curl(file, link);
   });
-  iter++;
 }
