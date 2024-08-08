@@ -148,6 +148,9 @@ const curl = async (file: string, url: string, lastItem: boolean): Promise<void>
       tableBodyContainer.push(rowContent);
     }
     if (lastItem) {
+      console.log(
+        'Broken links found! Run "open brokenLinkReport.html" in the terminal to view the list.'
+      );
       const outputTable = table(tableHeader(), tableBodyContainer.join(''));
       writeToFile(
         outputFileName,
