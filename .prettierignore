@@ -7,3 +7,4 @@ packages/coverage/**
 packages/docs/.cache/**
 packages/docs/public/**
 packages/docs/static/**
+brokenLinkReport.html
