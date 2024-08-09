@@ -27,6 +27,7 @@
     "lint": "yarn lint:stylelint && yarn lint:eslint",
     "lint:eslint": "yarn eslint ./packages/",
     "lint:stylelint": "yarn stylelint --custom-formatter stylelint-formatter-pretty ./packages/**/*.scss",
+    "lint:links": "ts-node ./scripts/check-markdown-links.ts",
     "precommit": "lint-staged",
     "prepare": "husky install",
     "release": "ts-node ./scripts/release.ts",
