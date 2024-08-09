@@ -23,6 +23,7 @@ import {
   NextIcon,
   PdfIcon,
   PlusCircleIcon,
+  PrintIcon,
   RemoveIcon,
   StarIcon,
   SvgIcon,
@@ -166,6 +167,11 @@ const iconData = [
     name: 'PlusCircleIcon',
   },
   {
+    defaultTitle: 'Print',
+    component: <PrintIcon />,
+    name: 'PrintIcon',
+  },
+  {
     defaultTitle: 'Remove',
     component: <RemoveIcon />,
     name: 'RemoveIcon',
@@ -193,32 +199,34 @@ const iconData = [
   },
 ];
 
-export const AvailableIcons = () => (
-  <table className="ds-c-table">
-    <thead>
-      <tr>
-        <th>Icon Component</th>
-        <th>Example</th>
-        <th>
-          Default <code>title</code> attribute
-        </th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      {iconData.map(({ defaultTitle, component, name, notes }) => (
-        <tr key={name}>
-          <td>
-            <code>{name}</code>
-          </td>
-          <td className="ds-u-text-align--center">{component}</td>
-          <td>{defaultTitle}</td>
-          {/* eslint-disable-next-line react/no-danger -- Story with known text */}
-          <td dangerouslySetInnerHTML={{ __html: notes }} />
+export const AvailableIcons = () => {
+  return (
+    <table className="ds-c-table">
+      <thead>
+        <tr>
+          <th>Icon Component</th>
+          <th>Example</th>
+          <th>
+            Default <code>title</code> attribute
+          </th>
+          <th>Notes</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
-);
+      </thead>
+      <tbody>
+        {iconData.map(({ defaultTitle, component, name, notes }) => (
+          <tr key={name}>
+            <td>
+              <code>{name}</code>
+            </td>
+            <td className="ds-u-text-align--center">{component}</td>
+            <td>{defaultTitle}</td>
+            {/* eslint-disable-next-line react/no-danger -- Story with known text */}
+            <td dangerouslySetInnerHTML={{ __html: notes }} />
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 export const HhsLogo = () => <HHSLogo />;
