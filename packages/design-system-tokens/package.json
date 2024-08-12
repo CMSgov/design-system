@@ -1,6 +1,6 @@
 {
   "name": "design-system-tokens",
-  "version": "0.0.1",
+  "version": "1.0.0-beta.0",
   "private": true,
   "description": "CMSDS Design System Tokens",
   "devDependencies": {
