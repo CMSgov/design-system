@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-medicare-gov",
-  "version": "12.1.2",
+  "version": "13.0.0-beta.0",
   "publishConfig": {
     "tag": "latest",
     "access": "public"
