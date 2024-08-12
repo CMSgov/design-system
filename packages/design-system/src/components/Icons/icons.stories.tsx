@@ -23,6 +23,7 @@ import {
   NextIcon,
   PdfIcon,
   PlusCircleIcon,
+  PrintIcon,
   RemoveIcon,
   StarIcon,
   SvgIcon,
@@ -164,6 +165,11 @@ const iconData = [
     defaultTitle: 'Plus in circle',
     component: <PlusCircleIcon />,
     name: 'PlusCircleIcon',
+  },
+  {
+    defaultTitle: 'Print',
+    component: <PrintIcon />,
+    name: 'PrintIcon',
   },
   {
     defaultTitle: 'Remove',
