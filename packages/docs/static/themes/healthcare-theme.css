@@ -469,7 +469,7 @@
 --tooltip__color: var(--color-base);
 --tooltip-icon__color: var(--color-primary);
 --tooltip-icon__color--inverse: var(--color-white);
---tooltip-trigger__color: var(--color-black);
+--tooltip-trigger__color: var(--color-base);
 --vertical-nav-item__background-color--hover: var(--color-gray-lightest);
 --vertical-nav-item__border-color: var(--color-gray-dark);
 --vertical-nav-item__color--hover: var(--color-primary);
