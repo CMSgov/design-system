@@ -10,6 +10,7 @@ import {
   CloseIcon,
   CloseIconThin,
   DownloadIcon,
+  EmailIcon,
   ExternalLinkIcon,
   HHSLogo,
   ImageIcon,
@@ -25,6 +26,7 @@ import {
   PlusCircleIcon,
   PrintIcon,
   RemoveIcon,
+  RssIcon,
   StarIcon,
   SvgIcon,
   UsaFlagIcon,
@@ -107,6 +109,11 @@ const iconData = [
     name: 'DownloadIcon',
   },
   {
+    defaultTitle: 'Email',
+    component: <EmailIcon />,
+    name: 'EmailIcon',
+  },
+  {
     defaultTitle: 'External Link',
     component: <ExternalLinkIcon />,
     name: 'ExternalLinkIcon',
@@ -175,6 +182,11 @@ const iconData = [
     defaultTitle: 'Remove',
     component: <RemoveIcon />,
     name: 'RemoveIcon',
+  },
+  {
+    defaultTitle: 'RSS',
+    component: <RssIcon />,
+    name: 'RssIcon',
   },
   {
     defaultTitle: 'Star / Star Filled',
