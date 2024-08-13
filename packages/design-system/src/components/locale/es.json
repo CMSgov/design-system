@@ -54,6 +54,7 @@
     "hhsLogo": "Departamento de Salud y Servicios Humanos de los Estados Unidos",
     "image": "Imagen",
     "infoCircle": "Información",
+    "link": "Enlace",
     "lockCircle": "Candado en un círculo",
     "lock": "Candado",
     "menu": "Icono de menú",
@@ -66,7 +67,8 @@
     "starFilled": "Estrella llena",
     "starHalf": "Media Estrella",
     "usaLogo": "USA.gov – Gobierno más simple",
-    "warning": "Advertencia"
+    "warning": "Advertencia",
+    "whatsNew": "Qué hay de nuevo"
   },
   "idleTimeoutDialog": {
     "heading": "¿Sigue ahí?",

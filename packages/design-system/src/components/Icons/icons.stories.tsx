@@ -16,6 +16,7 @@ import {
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
+  LinkIcon,
   LockCircleIcon,
   LockIcon,
   MenuIcon,
@@ -31,6 +32,7 @@ import {
   SvgIcon,
   UsaFlagIcon,
   WarningIcon,
+  WhatsNewIcon,
 } from './index';
 
 export default {
@@ -134,6 +136,11 @@ const iconData = [
     name: 'InfoCircleIconThin',
   },
   {
+    defaultTitle: 'Link',
+    component: <LinkIcon />,
+    name: 'LinkIcon',
+  },
+  {
     defaultTitle: 'Lock in circle',
     component: <LockCircleIcon />,
     name: 'LockCircleIcon',
@@ -208,6 +215,11 @@ const iconData = [
     defaultTitle: 'Warning',
     component: <WarningIcon />,
     name: 'WarningIcon',
+  },
+  {
+    defaultTitle: "What's New",
+    component: <WhatsNewIcon />,
+    name: 'WhatsNewIcon',
   },
 ];
 

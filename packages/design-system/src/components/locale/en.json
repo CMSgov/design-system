@@ -54,6 +54,7 @@
     "hhsLogo": "Department of Health and Human Services",
     "image": "Image",
     "infoCircle": "Information",
+    "link": "Link",
     "lockCircle": "Lock in circle",
     "lock": "Lock",
     "menu": "Menu Icon",
@@ -66,7 +67,8 @@
     "starFilled": "Filled Star",
     "starHalf": "Half Star",
     "usaLogo": "USA.gov - Government Made Easy",
-    "warning": "Warning"
+    "warning": "Warning",
+    "whatsNew": "What's New"
   },
   "idleTimeoutDialog": {
     "heading": "Are you still there?",
