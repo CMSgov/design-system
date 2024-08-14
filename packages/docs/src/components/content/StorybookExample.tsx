@@ -10,6 +10,10 @@ interface StorybookExampleProps {
    */
   componentName: string;
   /**
+   * optional values supplied to alter controls on the story.
+   */
+  controls?: string;
+  /**
    * min height of example container. Use for examples that have elements appear on interactivity that need more room
    */
   minHeight?: number;
@@ -31,12 +35,19 @@ interface StorybookExampleProps {
  * If you need to show responsiveness, use the `ResponsiveExample`.
  * If you don't need a story, but can use regular HTML or React components, use an Embedded example.
  */
-const StorybookExample = ({ theme, componentName, minHeight, storyId }: StorybookExampleProps) => {
+const StorybookExample = ({
+  theme,
+  componentName,
+  minHeight,
+  storyId,
+  controls,
+}: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const iframeRef = useRef<HTMLIFrameElement>();
+  const controlArgs = controls ? `&args=${controls}` : '';
   const iframeUrl = withPrefix(
-    `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
+    `/storybook/iframe.html?id=${storyId}${controlArgs}&viewMode=story&globals=theme:${theme}`
   );
 
   useEffect(() => {
