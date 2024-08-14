@@ -217,7 +217,7 @@ const iconData = [
     name: 'WarningIcon',
   },
   {
-    defaultTitle: "What's New",
+    defaultTitle: 'What’s New',
     component: <WhatsNewIcon />,
     name: 'WhatsNewIcon',
   },
