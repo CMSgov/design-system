@@ -23,6 +23,7 @@ export * from './MinusCircleIcon';
 export * from './NextIcon';
 export * from './PdfIcon';
 export * from './PlusCircleIcon';
+export * from './PrintIcon';
 export * from './RemoveIcon';
 export * from './StarIcon';
 export * from './UsaFlagIcon';
