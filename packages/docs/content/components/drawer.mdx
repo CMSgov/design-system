@@ -22,11 +22,7 @@ Render the drawer below the toggle button that triggers it. This way the markup 
 
 <ThemeContent neverThemes={['medicare']}>
 
-<StorybookExample
-  componentName="drawer"
-  storyId="components-drawer--drawer-toggle-with-drawer"
-  minHeight={500}
-/>
+<StorybookExample componentName="drawer" storyId="components-drawer--default" minHeight={500} />
 
 </ThemeContent>
 
@@ -49,8 +45,9 @@ A header and/or footer can have a "sticky" position if the following properties 
 
 <StorybookExample
   componentName="sticky-drawer"
-  storyId="components-drawer--drawer-with-sticky-positioning"
+  storyId="components-drawer--default"
   minHeight={300}
+  controls="isHeaderSticky:!true"
 />
 
 ### Managing multiple drawers
