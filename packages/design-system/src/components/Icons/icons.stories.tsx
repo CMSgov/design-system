@@ -10,11 +10,13 @@ import {
   CloseIcon,
   CloseIconThin,
   DownloadIcon,
+  EmailIcon,
   ExternalLinkIcon,
   HHSLogo,
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
+  LinkIcon,
   LockCircleIcon,
   LockIcon,
   MenuIcon,
@@ -25,10 +27,12 @@ import {
   PlusCircleIcon,
   PrintIcon,
   RemoveIcon,
+  RssIcon,
   StarIcon,
   SvgIcon,
   UsaFlagIcon,
   WarningIcon,
+  WhatsNewIcon,
 } from './index';
 
 export default {
@@ -107,6 +111,11 @@ const iconData = [
     name: 'DownloadIcon',
   },
   {
+    defaultTitle: 'Email',
+    component: <EmailIcon />,
+    name: 'EmailIcon',
+  },
+  {
     defaultTitle: 'External Link',
     component: <ExternalLinkIcon />,
     name: 'ExternalLinkIcon',
@@ -125,6 +134,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleIconThin />,
     name: 'InfoCircleIconThin',
+  },
+  {
+    defaultTitle: 'Link',
+    component: <LinkIcon />,
+    name: 'LinkIcon',
   },
   {
     defaultTitle: 'Lock in circle',
@@ -177,6 +191,11 @@ const iconData = [
     name: 'RemoveIcon',
   },
   {
+    defaultTitle: 'RSS',
+    component: <RssIcon />,
+    name: 'RssIcon',
+  },
+  {
     defaultTitle: 'Star / Star Filled',
     component: (
       <>
@@ -196,6 +215,11 @@ const iconData = [
     defaultTitle: 'Warning',
     component: <WarningIcon />,
     name: 'WarningIcon',
+  },
+  {
+    defaultTitle: 'What’s New',
+    component: <WhatsNewIcon />,
+    name: 'WhatsNewIcon',
   },
 ];
 
