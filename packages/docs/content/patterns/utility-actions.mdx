@@ -3,12 +3,46 @@ title: Utility Actions
 intro: Utility actions for a webpage including print, email, RSS and more.
 ---
 
-import { PrintIcon } from '@cmsgov/design-system';
+import {
+  DownloadIcon,
+  EmailIcon,
+  LinkIcon,
+  PrintIcon,
+  RssIcon,
+  WhatsNewIcon,
+} from '@cmsgov/design-system';
 
 ## Guidance
 
+### Examples
+
 <EmbeddedExample>
-  <PrintIcon />
+  <div className="ds-l-row">
+    <div className="ds-l-col--2">
+      <PrintIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">Print</p>
+    </div>
+    <div className="ds-l-col--2">
+      <EmailIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">Email</p>
+    </div>
+    <div className="ds-l-col--2">
+      <RssIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">RSS</p>
+    </div>
+    <div className="ds-l-col--2">
+      <LinkIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">Link</p>
+    </div>
+    <div className="ds-l-col--2">
+      <DownloadIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">Download</p>
+    </div>
+    <div className="ds-l-col--2">
+      <WhatsNewIcon viewBox="0 0 36 36" />
+      <p className="ds-u-margin--0">What's New</p>
+    </div>
+  </div>
 </EmbeddedExample>
 
 ### When to use
