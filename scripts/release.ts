@@ -1,4 +1,5 @@
 import c from 'chalk';
+import { chdir, cwd } from 'node:process';
 import yargs from 'yargs';
 import { updateVersions } from './versions';
 import { confirm, select } from '@inquirer/prompts';
@@ -6,6 +7,11 @@ import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
+const PACKAGES: Array<string> = [
+  './packages/ds-cms-gov',
+  './packages/ds-healthcare-gov',
+  './packages/ds-medicare-gov',
+] as const;
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
@@ -77,10 +83,11 @@ async function bumpVersions() {
   sh(
     `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
   );
-  // Only stage changes to package files
-  sh('git add -u **/package.json');
+  // Unstage the design-system-tokens package.json
+  sh('git checkout ./packages/design-system-tokens/package.json');
+  sh('git checkout yarn.lock');
   // And discard all other changes
-  sh('git checkout -- .');
+  //sh('git checkout -- .');
   // Verify that there are actually changes staged
   if (!sh('git status -s')) {
     console.log(c.yellow('No version changes made. Exiting...'));
@@ -88,39 +95,63 @@ async function bumpVersions() {
   }
   console.log(c.green('Bumped package versions.'));
 
+  // Now we need to add to the updated package json's the new design-system version.
+  const newDesignSystemVersionJSON = JSON.parse(sh(`npm version -w @cmsgov/design-system --json`));
+  const newDesignSystemVersion = newDesignSystemVersionJSON['@cmsgov/design-system'];
+
+  // Manually navigate into package subdirectory
+  PACKAGES.forEach((packageDir, index) => {
+    if (index > 0) return;
+    chdir(packageDir);
+    console.log(newDesignSystemVersion);
+    sh(`yarn add @cmsgov/design-system@${newDesignSystemVersion}`);
+    // console.log(
+    //   c.green(
+    //     `Bumped ${packageDir.split('/')[1]} to @cmsgov/design-system@${newDesignSystemVersion}.`
+    //   )
+    // );
+    // chdir('../../');
+    // sh('git checkout yarn.lock');
+  });
+
+  // Only stage changes to package files
+  sh('git add -u **/package.json');
+
+  console.log('Got to the end!');
+  process.exit(0);
   // Update versions.json
-  const currentVersionsByPackage = updateVersions();
-  sh('git add -u');
-  console.log(c.green('Updated versions.json.'));
+  //   const currentVersionsByPackage = updateVersions();
+  //   sh('git add -u');
+  //   console.log(c.green('Updated versions.json.'));
 
-  // Determine our tag names and create the publish commit
-  const tags = Object.keys(currentVersionsByPackage).map(
-    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
-  );
-  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
-  sh(`git commit -m "${commitMessage}"`);
-  console.log(c.green('Wrote publish commit.'));
+  //   // Determine our tag names and create the publish commit
+  //   const tags = Object.keys(currentVersionsByPackage).map(
+  //     (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  //   );
+  //   const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  //   sh(`git commit -m "${commitMessage}"`);
+  //   console.log(c.green('Wrote publish commit.'));
 
-  // Tag the publish commit
-  try {
-    for (const tag of tags) {
-      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
-    }
-    console.log(c.green('Tagged publish commit.'));
-  } catch (error) {
-    // Most likely we've failed to sign the commits due to GPG not being configured, so
-    // we need to roll back our progress so far.
-    console.log(c.yellow('Rolling back publish commit.'));
-    sh(`git reset --hard ${preBumpHash}`);
-    process.exit(1);
-  }
+  //   // Tag the publish commit
+  //   try {
+  //     for (const tag of tags) {
+  //       sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+  //     }
+  //     console.log(c.green('Tagged publish commit.'));
+  //   } catch (error) {
+  //     // Most likely we've failed to sign the commits due to GPG not being configured, so
+  //     // we need to roll back our progress so far.
+  //     console.log(c.yellow('Rolling back publish commit.'));
+  //     sh(`git reset --hard ${preBumpHash}`);
+  //     process.exit(1);
+  //   }
 
-  // Push everything to origin
-  console.log(c.green('Pushing to origin...'));
-  sh(`git push --set-upstream origin ${getCurrentBranch()}`);
-  console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${tags.join(' ')}`);
-  console.log(c.green('Pushed tags to origin.'));
+  //   // Push everything to origin
+  //   console.log(c.green('Pushing to origin...'));
+  //   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
+  //   console.log(c.green('Pushed bump commit to origin.'));
+  //   sh(`git push origin ${tags.join(' ')}`);
+  //   console.log(c.green('Pushed tags to origin.'));
 }
 
 /**
@@ -205,9 +236,9 @@ function printNextSteps() {
       verifyGhInstalled();
       await verifyNoUnstagedChanges();
       await bumpVersions();
-      await bumpMain();
-      await draftReleaseNotes();
-      printNextSteps();
+      // await bumpMain();
+      // await draftReleaseNotes();
+      // printNextSteps();
     }
   } catch (error) {
     if (error instanceof Error) {
