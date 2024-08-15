@@ -86,6 +86,7 @@ async function bumpVersions() {
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
   sh('git checkout yarn.lock');
+  sh('rm package-lock.json');
   // And discard all other changes
   //sh('git checkout -- .');
   // Verify that there are actually changes staged
@@ -102,9 +103,11 @@ async function bumpVersions() {
   // Manually navigate into package subdirectory
   PACKAGES.forEach((packageDir, index) => {
     if (index > 0) return;
+    sh('yarn cache clean');
+    sh('yarn install');
+    sh('git checkout yarn.lock');
     chdir(packageDir);
-    console.log(newDesignSystemVersion);
-    sh(`yarn add @cmsgov/design-system@${newDesignSystemVersion}`);
+    sh(`npm update @cmsgov/design-system@11.0.0`);
     // console.log(
     //   c.green(
     //     `Bumped ${packageDir.split('/')[1]} to @cmsgov/design-system@${newDesignSystemVersion}.`
