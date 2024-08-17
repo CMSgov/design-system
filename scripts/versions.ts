@@ -2,14 +2,14 @@ import path from 'node:path';
 import themes from '../themes.json';
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const root = path.join(__dirname, '..');
+export const root = path.join(__dirname, '..');
 const versionsFileName = path.join(root, 'versions.json');
 
 function readJson(filename: string): { [key: string]: any } {
   return JSON.parse(readFileSync(filename, { encoding: 'utf8' }));
 }
 
-function writeJson(filename: string, json: { [key: string]: any }) {
+export function writeJson(filename: string, json: { [key: string]: any }) {
   writeFileSync(filename, JSON.stringify(json, null, 2));
 }
 

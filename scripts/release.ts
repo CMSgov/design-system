@@ -1,16 +1,16 @@
 import c from 'chalk';
-import { chdir, cwd } from 'node:process';
-import yargs from 'yargs';
-import { updateVersions } from './versions';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
+import path from 'node:path';
 import { sh, shI, verifyGhInstalled } from './utils';
+import { root, updateVersions, writeJson } from './versions';
+import yargs from 'yargs';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz'];
 const PACKAGES: Array<string> = [
-  './packages/ds-cms-gov',
-  './packages/ds-healthcare-gov',
-  './packages/ds-medicare-gov',
+  '/packages/ds-cms-gov',
+  '/packages/ds-healthcare-gov',
+  '/packages/ds-medicare-gov',
 ] as const;
 
 async function verifyNoUnstagedChanges() {
@@ -72,6 +72,17 @@ async function undoLastCommit() {
   console.log(c.green('Publish commit deleted.'));
 }
 
+const newDesignSystemVersion = (): string => {
+  const newDesignSystemVersionJSON = JSON.parse(sh(`npm version -w @cmsgov/design-system --json`));
+  return newDesignSystemVersionJSON['@cmsgov/design-system'];
+};
+
+const updateDSVersion = (json: JSON | any): JSON => {
+  const dsKey = '@cmsgov/design-system';
+  json.dependencies[dsKey] = newDesignSystemVersion();
+  return json;
+};
+
 async function bumpVersions() {
   const preBumpHash = getCurrentCommit();
   const changeLevel = await select({
@@ -86,7 +97,6 @@ async function bumpVersions() {
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
   sh('git checkout yarn.lock');
-  sh('rm package-lock.json');
   // And discard all other changes
   //sh('git checkout -- .');
   // Verify that there are actually changes staged
@@ -94,27 +104,19 @@ async function bumpVersions() {
     console.log(c.yellow('No version changes made. Exiting...'));
     process.exit(1);
   }
-  console.log(c.green('Bumped package versions.'));
+  console.log(c.green('Bumped package versions. Bumping dependencies next...'));
 
-  // Now we need to add to the updated package json's the new design-system version.
-  const newDesignSystemVersionJSON = JSON.parse(sh(`npm version -w @cmsgov/design-system --json`));
-  const newDesignSystemVersion = newDesignSystemVersionJSON['@cmsgov/design-system'];
-
-  // Manually navigate into package subdirectory
-  PACKAGES.forEach((packageDir, index) => {
-    if (index > 0) return;
-    sh('yarn cache clean');
-    sh('yarn install');
-    sh('git checkout yarn.lock');
-    chdir(packageDir);
-    sh(`npm update @cmsgov/design-system@11.0.0`);
-    // console.log(
-    //   c.green(
-    //     `Bumped ${packageDir.split('/')[1]} to @cmsgov/design-system@${newDesignSystemVersion}.`
-    //   )
-    // );
-    // chdir('../../');
-    // sh('git checkout yarn.lock');
+  PACKAGES.forEach((packageDir) => {
+    const jsonFile = 'package.json';
+    const jsonLocation = path.join(root, packageDir, jsonFile);
+    const json = require(jsonLocation);
+    const updatedJson = updateDSVersion(json);
+    writeJson(jsonLocation, updatedJson);
+    console.log(
+      c.green(
+        `Bumped ${packageDir.split('/')[2]} to @cmsgov/design-system@${newDesignSystemVersion()}.`
+      )
+    );
   });
 
   // Only stage changes to package files
