@@ -11,6 +11,10 @@ const PACKAGES: Array<string> = [
   '/packages/ds-cms-gov',
   '/packages/ds-healthcare-gov',
   '/packages/ds-medicare-gov',
+  '/examples/astro',
+  '/examples/preact-app',
+  '/examples/preact-react-app',
+  '/examples/react-app',
 ] as const;
 
 async function verifyNoUnstagedChanges() {
