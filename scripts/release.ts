@@ -81,7 +81,11 @@ const updateDSVersion = (json: JSON | any): JSON => {
 const getPackages = (): Array<{ [key: string]: string }> => {
   const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
   const deps = packageJson['dependencies'];
-  const packageNames = Object.keys(deps);
+  const packageNames = Object.keys(deps).filter((name: string) => {
+    if (!(name === '@cmsgov/cms-design-system-docs')) {
+      return name;
+    }
+  });
   return packageNames.map((name: any) => {
     return { [name]: deps[name]['resolved'] };
   });
