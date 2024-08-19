@@ -6,16 +6,7 @@ import { sh, shI, verifyGhInstalled } from './utils';
 import { root, updateVersions, writeJson } from './versions';
 import yargs from 'yargs';
 
-const REVIEWERS = ['pwolfert', 'zarahzachz'];
-const PACKAGES: Array<string> = [
-  '/packages/ds-cms-gov',
-  '/packages/ds-healthcare-gov',
-  '/packages/ds-medicare-gov',
-  '/examples/astro',
-  '/examples/preact-app',
-  '/examples/preact-react-app',
-  '/examples/react-app',
-] as const;
+const REVIEWERS = ['pwolfert', 'zarahzachz', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
@@ -87,6 +78,15 @@ const updateDSVersion = (json: JSON | any): JSON => {
   return json;
 };
 
+const getPackages = (): Array<{ [key: string]: string }> => {
+  const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
+  const deps = packageJson['dependencies'];
+  const packageNames = Object.keys(deps);
+  return packageNames.map((name: any) => {
+    return { [name]: deps[name]['resolved'] };
+  });
+};
+
 async function bumpVersions() {
   const preBumpHash = getCurrentCommit();
   const changeLevel = await select({
@@ -109,16 +109,19 @@ async function bumpVersions() {
   }
   console.log(c.green('Bumped package versions. Bumping dependencies next...'));
 
-  PACKAGES.forEach((packageDir) => {
-    const jsonFile = 'package.json';
-    const jsonLocation = path.join(root, packageDir, jsonFile);
+  getPackages().forEach((pack) => {
+    const [packageName] = Object.keys(pack);
+    const [packageLocation] = Object.values(pack);
+    const jsonLocation = path.join(
+      root,
+      packageLocation.split('file:')[1].replaceAll('../', ''),
+      'package.json'
+    );
     const json = require(jsonLocation);
     const updatedJson = updateDSVersion(json);
     writeJson(jsonLocation, updatedJson);
     console.log(
-      c.green(
-        `Bumped ${packageDir.split('/')[2]} to @cmsgov/design-system@${newDesignSystemVersion()}.`
-      )
+      c.green(`Bumped ${packageName} to @cmsgov/design-system@${newDesignSystemVersion()}.`)
     );
   });
 
@@ -127,7 +130,7 @@ async function bumpVersions() {
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
-  console.log(currentVersionsByPackage);
+
   sh('git add -u');
   console.log(c.green('Updated versions.json.'));
 
