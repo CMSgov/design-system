@@ -104,13 +104,6 @@ async function bumpVersions() {
   );
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
-  // And discard all other changes
-  //sh('git checkout -- .');
-  // Verify that there are actually changes staged
-  if (!sh('git status -s')) {
-    console.log(c.yellow('No version changes made. Exiting...'));
-    process.exit(1);
-  }
   console.log(c.green('Bumped package versions. Bumping dependencies next...'));
 
   getPackages().forEach((pack) => {
@@ -129,8 +122,15 @@ async function bumpVersions() {
     );
   });
 
+  // Verify that there are actually changes staged
+  if (!sh('git status -s')) {
+    console.log(c.yellow('No version changes made. Exiting...'));
+    process.exit(1);
+  }
   // Only stage changes to package files
   sh('git add -u **/package.json');
+  // And discard all other changes
+  sh('git checkout -- .');
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
