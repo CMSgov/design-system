@@ -1,9 +1,12 @@
 ---
 title: Utility Actions
 intro: Utility actions for a webpage including print, email, RSS and more.
+core:
+  figmaNodeId: 4744-4695
 ---
 
 import {
+  Button,
   DownloadIcon,
   EmailIcon,
   LinkIcon,
@@ -18,41 +21,41 @@ import {
 
 <EmbeddedExample>
   <div className="ds-l-row">
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <PrintIcon className="ds-u-margin--05" viewBox="0 0 32 32" />
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <PrintIcon className="ds-u-margin-right--1" />
         Print
-      </button>
+      </Button>
     </div>
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <EmailIcon className="ds-u-margin--05" viewBox="0 0 32 32" />
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <EmailIcon className="ds-u-margin-right--1" />
         Email
-      </button>
+      </Button>
     </div>
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <RssIcon className="ds-u-margin--05" viewBox="0 0 32 32" />
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <RssIcon className="ds-u-margin-right--1" />
         RSS
-      </button>
+      </Button>
     </div>
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <LinkIcon className="ds-u-margin--05" viewBox="0 0 32 32" />
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <LinkIcon className="ds-u-margin-right--1" />
         Link
-      </button>
+      </Button>
     </div>
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <DownloadIcon className="ds-u-margin--05" viewBox="0 0 18 18" />
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <DownloadIcon className="ds-u-margin-right--1" viewBox="0 0 18 18" />
         Download
-      </button>
+      </Button>
     </div>
-    <div className="ds-l-col--6">
-      <button className="ds-c-button ds-c-button--ghost">
-        <WhatsNewIcon className="ds-u-margin--05" viewBox="0 0 32 32" />
-        What's New
-      </button>
+    <div className="ds-l-col--2">
+      <Button variation="ghost" size="small">
+        <WhatsNewIcon className="ds-u-margin-right--1" />
+        What’s New
+      </Button>
     </div>
   </div>
 </EmbeddedExample>
