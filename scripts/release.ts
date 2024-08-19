@@ -105,7 +105,7 @@ async function bumpVersions() {
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
   // And discard all other changes
-  sh('git checkout -- .');
+  //sh('git checkout -- .');
   // Verify that there are actually changes staged
   if (!sh('git status -s')) {
     console.log(c.yellow('No version changes made. Exiting...'));
