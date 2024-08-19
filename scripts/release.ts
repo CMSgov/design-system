@@ -1,11 +1,12 @@
 import c from 'chalk';
-import yargs from 'yargs';
-import { updateVersions } from './versions';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
+import path from 'node:path';
 import { sh, shI, verifyGhInstalled } from './utils';
+import { root, updateVersions, writeJson } from './versions';
+import yargs from 'yargs';
 
-const REVIEWERS = ['pwolfert', 'zarahzachz'];
+const REVIEWERS = ['pwolfert', 'zarahzachz', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
