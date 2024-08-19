@@ -67,6 +67,26 @@ async function undoLastCommit() {
   console.log(c.green('Publish commit deleted.'));
 }
 
+const newDesignSystemVersion = (): string => {
+  const newDesignSystemVersionJSON = JSON.parse(sh(`npm version -w @cmsgov/design-system --json`));
+  return newDesignSystemVersionJSON['@cmsgov/design-system'];
+};
+
+const updateDSVersion = (json: JSON | any): JSON => {
+  const dsKey = '@cmsgov/design-system';
+  json.dependencies[dsKey] = newDesignSystemVersion();
+  return json;
+};
+
+const getPackages = (): Array<{ [key: string]: string }> => {
+  const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
+  const deps = packageJson['dependencies'];
+  const packageNames = Object.keys(deps);
+  return packageNames.map((name: any) => {
+    return { [name]: deps[name]['resolved'] };
+  });
+};
+
 async function bumpVersions() {
   const preBumpHash = getCurrentCommit();
   const changeLevel = await select({
