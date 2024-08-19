@@ -81,11 +81,7 @@ const updateDSVersion = (json: JSON | any): JSON => {
 const getPackages = (): Array<{ [key: string]: string }> => {
   const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
   const deps = packageJson['dependencies'];
-  const packageNames = Object.keys(deps).filter((name: string) => {
-    if (!(name === '@cmsgov/cms-design-system-docs')) {
-      return name;
-    }
-  });
+  const packageNames = Object.keys(deps);
   return packageNames.map((name: any) => {
     return { [name]: deps[name]['resolved'] };
   });
@@ -104,6 +100,8 @@ async function bumpVersions() {
   );
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
+  // Only stage changes to package files
+  sh('git add -u **/package.json');
 
   console.log(c.green('Bumped package versions. Bumping dependencies next...'));
 
@@ -123,22 +121,13 @@ async function bumpVersions() {
     );
   });
 
-  // Only stage changes to package files
-  sh('git add -u **/package.json');
-  // And discard all other changes
-  sh('git checkout -- .');
-  // Verify that there are actually changes staged
-  if (!sh('git status -s')) {
-    console.log(c.yellow('No version changes made. Exiting...'));
-    process.exit(1);
-  }
-
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
 
   sh('git add -u');
+  sh('git reset ./packages/docs/package.json');
+  sh('git checkout ./packages/docs/package.json');
   console.log(c.green('Updated versions.json.'));
-
   // Determine our tag names and create the publish commit
   const tags = Object.keys(currentVersionsByPackage).map(
     (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
@@ -147,7 +136,7 @@ async function bumpVersions() {
   sh(`git commit -m "${commitMessage}"`);
   console.log(c.green('Wrote publish commit.'));
 
-  //   // Tag the publish commit
+  // Tag the publish commit
   try {
     for (const tag of tags) {
       sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
