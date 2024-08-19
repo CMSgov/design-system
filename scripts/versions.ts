@@ -5,11 +5,11 @@ import { readFileSync, writeFileSync } from 'node:fs';
 export const root = path.join(__dirname, '..');
 const versionsFileName = path.join(root, 'versions.json');
 
-export function readJson(filename: string): { [key: string]: any } {
+function readJson(filename: string): { [key: string]: any } {
   return JSON.parse(readFileSync(filename, { encoding: 'utf8' }));
 }
 
-function writeJson(filename: string, json: { [key: string]: any }) {
+export function writeJson(filename: string, json: { [key: string]: any }) {
   writeFileSync(filename, JSON.stringify(json, null, 2));
 }
 
