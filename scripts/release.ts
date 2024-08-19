@@ -100,9 +100,8 @@ async function bumpVersions() {
   );
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
-  sh('git checkout yarn.lock');
   // And discard all other changes
-  //sh('git checkout -- .');
+  sh('git checkout -- .');
   // Verify that there are actually changes staged
   if (!sh('git status -s')) {
     console.log(c.yellow('No version changes made. Exiting...'));
@@ -126,41 +125,40 @@ async function bumpVersions() {
   // Only stage changes to package files
   sh('git add -u **/package.json');
 
-  console.log('Got to the end!');
-  process.exit(0);
   // Update versions.json
-  //   const currentVersionsByPackage = updateVersions();
-  //   sh('git add -u');
-  //   console.log(c.green('Updated versions.json.'));
+  const currentVersionsByPackage = updateVersions();
+  console.log(currentVersionsByPackage);
+  sh('git add -u');
+  console.log(c.green('Updated versions.json.'));
 
-  //   // Determine our tag names and create the publish commit
-  //   const tags = Object.keys(currentVersionsByPackage).map(
-  //     (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
-  //   );
-  //   const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
-  //   sh(`git commit -m "${commitMessage}"`);
-  //   console.log(c.green('Wrote publish commit.'));
+  // Determine our tag names and create the publish commit
+  const tags = Object.keys(currentVersionsByPackage).map(
+    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  );
+  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  sh(`git commit -m "${commitMessage}"`);
+  console.log(c.green('Wrote publish commit.'));
 
   //   // Tag the publish commit
-  //   try {
-  //     for (const tag of tags) {
-  //       sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
-  //     }
-  //     console.log(c.green('Tagged publish commit.'));
-  //   } catch (error) {
-  //     // Most likely we've failed to sign the commits due to GPG not being configured, so
-  //     // we need to roll back our progress so far.
-  //     console.log(c.yellow('Rolling back publish commit.'));
-  //     sh(`git reset --hard ${preBumpHash}`);
-  //     process.exit(1);
-  //   }
+  try {
+    for (const tag of tags) {
+      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+    }
+    console.log(c.green('Tagged publish commit.'));
+  } catch (error) {
+    // Most likely we've failed to sign the commits due to GPG not being configured, so
+    // we need to roll back our progress so far.
+    console.log(c.yellow('Rolling back publish commit.'));
+    sh(`git reset --hard ${preBumpHash}`);
+    process.exit(1);
+  }
 
-  //   // Push everything to origin
-  //   console.log(c.green('Pushing to origin...'));
-  //   sh(`git push --set-upstream origin ${getCurrentBranch()}`);
-  //   console.log(c.green('Pushed bump commit to origin.'));
-  //   sh(`git push origin ${tags.join(' ')}`);
-  //   console.log(c.green('Pushed tags to origin.'));
+  // Push everything to origin
+  console.log(c.green('Pushing to origin...'));
+  sh(`git push --set-upstream origin ${getCurrentBranch()}`);
+  console.log(c.green('Pushed bump commit to origin.'));
+  sh(`git push origin ${tags.join(' ')}`);
+  console.log(c.green('Pushed tags to origin.'));
 }
 
 /**
@@ -245,9 +243,9 @@ function printNextSteps() {
       verifyGhInstalled();
       await verifyNoUnstagedChanges();
       await bumpVersions();
-      // await bumpMain();
-      // await draftReleaseNotes();
-      // printNextSteps();
+      await bumpMain();
+      await draftReleaseNotes();
+      printNextSteps();
     }
   } catch (error) {
     if (error instanceof Error) {
