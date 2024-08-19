@@ -98,6 +98,8 @@ async function bumpVersions() {
   sh(
     `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
   );
+  // Unstage the design-system-tokens package.json
+  sh('git checkout ./packages/design-system-tokens/package.json');
   // Only stage changes to package files
   sh('git add -u **/package.json');
   // And discard all other changes
@@ -107,11 +109,32 @@ async function bumpVersions() {
     console.log(c.yellow('No version changes made. Exiting...'));
     process.exit(1);
   }
-  console.log(c.green('Bumped package versions.'));
+  console.log(c.green('Bumped package versions. Bumping dependencies next...'));
+
+  getPackages().forEach((pack) => {
+    const [packageName] = Object.keys(pack);
+    const [packageLocation] = Object.values(pack);
+    const jsonLocation = path.join(
+      root,
+      packageLocation.split('file:')[1].replaceAll('../', ''),
+      'package.json'
+    );
+    const json = require(jsonLocation);
+    const updatedJson = updateDSVersion(json);
+    writeJson(jsonLocation, updatedJson);
+    console.log(
+      c.green(`Bumped ${packageName} to @cmsgov/design-system@${newDesignSystemVersion()}.`)
+    );
+  });
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
+  // Clean up our staged files
+  sh('git reset ./packages/docs/package.json');
+  sh('git checkout ./packages/docs/package.json');
   sh('git add -u');
+  // Delete lingering package-lock.json
+  sh('rm ../package-lock.json');
   console.log(c.green('Updated versions.json.'));
 
   // Determine our tag names and create the publish commit
