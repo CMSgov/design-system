@@ -3,7 +3,7 @@ import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import path from 'node:path';
 import { sh, shI, verifyGhInstalled } from './utils';
-import { root, updateVersions, writeJson } from './versions';
+import { readJson, root, updateVersions, writeJson } from './versions';
 import yargs from 'yargs';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
@@ -78,12 +78,50 @@ const updateDSVersion = (json: JSON | any): JSON => {
   return json;
 };
 
-const getPackages = (): Array<{ [key: string]: string }> => {
+/*
+ * Utilize `npm ls` to get all members of our design system workspace in JSON format.
+ * This allows us to dynamically update our child package.json files later on
+ *  rather than explicitly enumerating our examples and child design systems.
+ * The info we want (member name and package.json file location) are at different levels in the JSON,
+ *  so we have to dig a bit.
+ * We grab the package names by getting all of the keys in the object associated with the 'dependencies' key.
+ * We loop over the names to get the package.json file locations that are in the object associated with the 'resolved' key.
+ */
+const getPackageNamesAndLocations = (): Array<Array<string>> => {
   const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
   const deps = packageJson['dependencies'];
   const packageNames = Object.keys(deps);
   return packageNames.map((name: any) => {
-    return { [name]: deps[name]['resolved'] };
+    return [name, deps[name]['resolved']];
+  });
+};
+
+/*
+ * Actually does the updateing of the package.json files.
+ * Gets the file location, reads said file, bumps the version, writes the file.
+ */
+const updatePackageJson = (childPackageToUpdate: Array<string>): void => {
+  // Get our package name and package.json location via destructuring
+  const [packageName, packageLocation] = childPackageToUpdate;
+  /*
+   * The package location is stored relative to the root directory when returned by `npm ls`,
+   * so we have to clean it up a bit so `path` knows where to look.
+   */
+  const cleanedPackageLocation = packageLocation.split('file:')[1].replaceAll('../', '');
+  const jsonFileLocation = path.join(root, cleanedPackageLocation, 'package.json');
+  const json = readJson(jsonFileLocation);
+  const updatedJson = updateDSVersion(json);
+  writeJson(jsonFileLocation, updatedJson);
+  console.log(
+    c.green(`Bumped ${packageName} to @cmsgov/design-system@${newDesignSystemVersion()}.`)
+  );
+};
+
+// The thingy, wassit, function, what does the updating of said JSON files, guv'.
+const updateChildDSAndExamples = (): void => {
+  const allOurPackages = getPackageNamesAndLocations();
+  allOurPackages.forEach((childPackage) => {
+    updatePackageJson(childPackage);
   });
 };
 
@@ -111,21 +149,8 @@ async function bumpVersions() {
   }
   console.log(c.green('Bumped package versions. Bumping dependencies next...'));
 
-  getPackages().forEach((pack) => {
-    const [packageName] = Object.keys(pack);
-    const [packageLocation] = Object.values(pack);
-    const jsonLocation = path.join(
-      root,
-      packageLocation.split('file:')[1].replaceAll('../', ''),
-      'package.json'
-    );
-    const json = require(jsonLocation);
-    const updatedJson = updateDSVersion(json);
-    writeJson(jsonLocation, updatedJson);
-    console.log(
-      c.green(`Bumped ${packageName} to @cmsgov/design-system@${newDesignSystemVersion()}.`)
-    );
-  });
+  // Update the dependencies in our child design systems and examples:
+  updateChildDSAndExamples();
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
@@ -134,37 +159,38 @@ async function bumpVersions() {
   sh('git checkout ./packages/docs/package.json');
   sh('git add -u');
   // Delete lingering package-lock.json
-  sh('rm ../package-lock.json');
+  sh(`rm ${root}/package-lock.json`);
   console.log(c.green('Updated versions.json.'));
+  process.exit(0);
 
-  // Determine our tag names and create the publish commit
-  const tags = Object.keys(currentVersionsByPackage).map(
-    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
-  );
-  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
-  sh(`git commit -m "${commitMessage}"`);
-  console.log(c.green('Wrote publish commit.'));
+  // // Determine our tag names and create the publish commit
+  // const tags = Object.keys(currentVersionsByPackage).map(
+  //   (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  // );
+  // const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  // sh(`git commit -m "${commitMessage}"`);
+  // console.log(c.green('Wrote publish commit.'));
 
-  // Tag the publish commit
-  try {
-    for (const tag of tags) {
-      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
-    }
-    console.log(c.green('Tagged publish commit.'));
-  } catch (error) {
-    // Most likely we've failed to sign the commits due to GPG not being configured, so
-    // we need to roll back our progress so far.
-    console.log(c.yellow('Rolling back publish commit.'));
-    sh(`git reset --hard ${preBumpHash}`);
-    process.exit(1);
-  }
+  // // Tag the publish commit
+  // try {
+  //   for (const tag of tags) {
+  //     sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+  //   }
+  //   console.log(c.green('Tagged publish commit.'));
+  // } catch (error) {
+  //   // Most likely we've failed to sign the commits due to GPG not being configured, so
+  //   // we need to roll back our progress so far.
+  //   console.log(c.yellow('Rolling back publish commit.'));
+  //   sh(`git reset --hard ${preBumpHash}`);
+  //   process.exit(1);
+  // }
 
-  // Push everything to origin
-  console.log(c.green('Pushing to origin...'));
-  sh(`git push --set-upstream origin ${getCurrentBranch()}`);
-  console.log(c.green('Pushed bump commit to origin.'));
-  sh(`git push origin ${tags.join(' ')}`);
-  console.log(c.green('Pushed tags to origin.'));
+  // // Push everything to origin
+  // console.log(c.green('Pushing to origin...'));
+  // sh(`git push --set-upstream origin ${getCurrentBranch()}`);
+  // console.log(c.green('Pushed bump commit to origin.'));
+  // sh(`git push origin ${tags.join(' ')}`);
+  // console.log(c.green('Pushed tags to origin.'));
 }
 
 /**
@@ -249,9 +275,9 @@ function printNextSteps() {
       verifyGhInstalled();
       await verifyNoUnstagedChanges();
       await bumpVersions();
-      await bumpMain();
-      await draftReleaseNotes();
-      printNextSteps();
+      // await bumpMain();
+      // await draftReleaseNotes();
+      // printNextSteps();
     }
   } catch (error) {
     if (error instanceof Error) {
