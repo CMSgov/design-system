@@ -72,9 +72,12 @@ const newDesignSystemVersion = (): string => {
   return newDesignSystemVersionJSON['@cmsgov/design-system'];
 };
 
+let newVersionNumber: string | undefined = undefined;
+
 const updateDSVersion = (json: JSON | any): JSON => {
   const dsKey = '@cmsgov/design-system';
-  json.dependencies[dsKey] = newDesignSystemVersion();
+  newVersionNumber = newVersionNumber ?? newDesignSystemVersion();
+  json.dependencies[dsKey] = newVersionNumber;
   return json;
 };
 
@@ -87,12 +90,20 @@ const updateDSVersion = (json: JSON | any): JSON => {
  * We grab the package names by getting all of the keys in the object associated with the 'dependencies' key.
  * We loop over the names to get the package.json file locations that are in the object associated with the 'resolved' key.
  */
-const getPackageNamesAndLocations = (): Array<Array<string>> => {
+const getPackageNamesAndLocations = (): Array<{
+  packageName: string;
+  packageLocation: string;
+}> => {
   const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
   const deps = packageJson['dependencies'];
   const packageNames = Object.keys(deps);
   return packageNames.map((name: any) => {
-    return [name, deps[name]['resolved']];
+    /*
+     * The package location is stored relative to the root directory when returned by `npm ls`,
+     * so we have to clean it up a bit so `path` knows where to look.
+     */
+    const cleanedPackageLocation = deps[name]['resolved'].split('file:')[1].replaceAll('../', '');
+    return { packageName: name, packageLocation: cleanedPackageLocation };
   });
 };
 
@@ -100,28 +111,26 @@ const getPackageNamesAndLocations = (): Array<Array<string>> => {
  * Actually does the updateing of the package.json files.
  * Gets the file location, reads said file, bumps the version, writes the file.
  */
-const updatePackageJson = (childPackageToUpdate: Array<string>): void => {
+const readWriteChildDSAndExamplesPackageJson = ({
+  packageName,
+  packageLocation,
+}: {
+  packageName: string;
+  packageLocation: string;
+}): void => {
   // Get our package name and package.json location via destructuring
-  const [packageName, packageLocation] = childPackageToUpdate;
-  /*
-   * The package location is stored relative to the root directory when returned by `npm ls`,
-   * so we have to clean it up a bit so `path` knows where to look.
-   */
-  const cleanedPackageLocation = packageLocation.split('file:')[1].replaceAll('../', '');
-  const jsonFileLocation = path.join(root, cleanedPackageLocation, 'package.json');
+  const jsonFileLocation = path.join(root, packageLocation, 'package.json');
   const json = readJson(jsonFileLocation);
   const updatedJson = updateDSVersion(json);
   writeJson(jsonFileLocation, updatedJson);
-  console.log(
-    c.green(`Bumped ${packageName} to @cmsgov/design-system@${newDesignSystemVersion()}.`)
-  );
+  console.log(c.green(`Bumped ${packageName} to @cmsgov/design-system@${newVersionNumber}.`));
 };
 
-// The thingy, wassit, function, what does the updating of said JSON files, guv'.
+// This function does the actual updating of the json files.
 const updateChildDSAndExamples = (): void => {
   const allOurPackages = getPackageNamesAndLocations();
   allOurPackages.forEach((childPackage) => {
-    updatePackageJson(childPackage);
+    readWriteChildDSAndExamplesPackageJson(childPackage);
   });
 };
 
@@ -154,10 +163,9 @@ async function bumpVersions() {
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
-  // We don't want to update the versions associated with our doc site
-  sh('git reset ./packages/docs/package.json');
-  sh('git checkout ./packages/docs/package.json');
+
   sh('git add -u');
+
   // Delete lingering package-lock.json if it exists:
   try {
     sh(`rm ${root}/package-lock.json`);
@@ -165,7 +173,6 @@ async function bumpVersions() {
     console.log('No package-lock.json at the top level. Moving on...');
   }
   console.log(c.green('Updated versions.json.'));
-  process.exit(0);
 
   // Determine our tag names and create the publish commit
   const tags = Object.keys(currentVersionsByPackage).map(
