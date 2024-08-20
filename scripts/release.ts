@@ -1,9 +1,9 @@
 import c from 'chalk';
+import { updateChildDSAndExamples } from './bump-child-deps-utils';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
-import path from 'node:path';
 import { sh, shI, verifyGhInstalled } from './utils';
-import { readJson, root, updateVersions, writeJson } from './versions';
+import { root, updateVersions } from './versions';
 import yargs from 'yargs';
 
 const REVIEWERS = ['pwolfert', 'zarahzachz', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
@@ -66,73 +66,6 @@ async function undoLastCommit() {
   sh(`git push --force origin ${getCurrentBranch()}`);
   console.log(c.green('Publish commit deleted.'));
 }
-
-const newDesignSystemVersion = (): string => {
-  const newDesignSystemVersionJSON = JSON.parse(sh(`npm version -w @cmsgov/design-system --json`));
-  return newDesignSystemVersionJSON['@cmsgov/design-system'];
-};
-
-let newVersionNumber: string | undefined = undefined;
-
-const updateDSVersion = (json: JSON | any): JSON => {
-  const dsKey = '@cmsgov/design-system';
-  newVersionNumber = newVersionNumber ?? newDesignSystemVersion();
-  json.dependencies[dsKey] = newVersionNumber;
-  return json;
-};
-
-/*
- * Utilize `npm ls` to get all members of our design system workspace in JSON format.
- * This allows us to dynamically update our child package.json files later on
- *  rather than explicitly enumerating our examples and child design systems.
- * The info we want (member name and package.json file location) are at different levels in the JSON,
- *  so we have to dig a bit.
- * We grab the package names by getting all of the keys in the object associated with the 'dependencies' key.
- * We loop over the names to get the package.json file locations that are in the object associated with the 'resolved' key.
- */
-const getPackageNamesAndLocations = (): Array<{
-  packageName: string;
-  packageLocation: string;
-}> => {
-  const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
-  const deps = packageJson['dependencies'];
-  const packageNames = Object.keys(deps);
-  return packageNames.map((name: any) => {
-    /*
-     * The package location is stored relative to the root directory when returned by `npm ls`,
-     * so we have to clean it up a bit so `path` knows where to look.
-     */
-    const cleanedPackageLocation = deps[name]['resolved'].split('file:')[1].replaceAll('../', '');
-    return { packageName: name, packageLocation: cleanedPackageLocation };
-  });
-};
-
-/*
- * Actually does the updateing of the package.json files.
- * Gets the file location, reads said file, bumps the version, writes the file.
- */
-const readWriteChildDSAndExamplesPackageJson = ({
-  packageName,
-  packageLocation,
-}: {
-  packageName: string;
-  packageLocation: string;
-}): void => {
-  // Get our package name and package.json location via destructuring
-  const jsonFileLocation = path.join(root, packageLocation, 'package.json');
-  const json = readJson(jsonFileLocation);
-  const updatedJson = updateDSVersion(json);
-  writeJson(jsonFileLocation, updatedJson);
-  console.log(c.green(`Bumped ${packageName} to @cmsgov/design-system@${newVersionNumber}.`));
-};
-
-// This function does the actual updating of the json files.
-const updateChildDSAndExamples = (): void => {
-  const allOurPackages = getPackageNamesAndLocations();
-  allOurPackages.forEach((childPackage) => {
-    readWriteChildDSAndExamplesPackageJson(childPackage);
-  });
-};
 
 async function bumpVersions() {
   const preBumpHash = getCurrentCommit();
