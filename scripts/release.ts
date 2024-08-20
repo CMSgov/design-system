@@ -154,7 +154,7 @@ async function bumpVersions() {
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
-  // Clean up our staged files
+  // We don't want to update the versions associated with our doc site
   sh('git reset ./packages/docs/package.json');
   sh('git checkout ./packages/docs/package.json');
   sh('git add -u');
