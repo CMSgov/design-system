@@ -158,39 +158,43 @@ async function bumpVersions() {
   sh('git reset ./packages/docs/package.json');
   sh('git checkout ./packages/docs/package.json');
   sh('git add -u');
-  // Delete lingering package-lock.json
-  sh(`rm ${root}/package-lock.json`);
+  // Delete lingering package-lock.json if it exists:
+  try {
+    sh(`rm ${root}/package-lock.json`);
+  } catch {
+    console.log('No package-lock.json at the top level. Moving on...');
+  }
   console.log(c.green('Updated versions.json.'));
   process.exit(0);
 
-  // // Determine our tag names and create the publish commit
-  // const tags = Object.keys(currentVersionsByPackage).map(
-  //   (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
-  // );
-  // const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
-  // sh(`git commit -m "${commitMessage}"`);
-  // console.log(c.green('Wrote publish commit.'));
+  // Determine our tag names and create the publish commit
+  const tags = Object.keys(currentVersionsByPackage).map(
+    (packageName) => `@cmsgov/${packageName}@${currentVersionsByPackage[packageName]}`
+  );
+  const commitMessage = 'Publish\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
+  sh(`git commit -m "${commitMessage}"`);
+  console.log(c.green('Wrote publish commit.'));
 
-  // // Tag the publish commit
-  // try {
-  //   for (const tag of tags) {
-  //     sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
-  //   }
-  //   console.log(c.green('Tagged publish commit.'));
-  // } catch (error) {
-  //   // Most likely we've failed to sign the commits due to GPG not being configured, so
-  //   // we need to roll back our progress so far.
-  //   console.log(c.yellow('Rolling back publish commit.'));
-  //   sh(`git reset --hard ${preBumpHash}`);
-  //   process.exit(1);
-  // }
+  // Tag the publish commit
+  try {
+    for (const tag of tags) {
+      sh(`git tag -a -s -m "Release tag ${tag}" "${tag}"`);
+    }
+    console.log(c.green('Tagged publish commit.'));
+  } catch (error) {
+    // Most likely we've failed to sign the commits due to GPG not being configured, so
+    // we need to roll back our progress so far.
+    console.log(c.yellow('Rolling back publish commit.'));
+    sh(`git reset --hard ${preBumpHash}`);
+    process.exit(1);
+  }
 
-  // // Push everything to origin
-  // console.log(c.green('Pushing to origin...'));
-  // sh(`git push --set-upstream origin ${getCurrentBranch()}`);
-  // console.log(c.green('Pushed bump commit to origin.'));
-  // sh(`git push origin ${tags.join(' ')}`);
-  // console.log(c.green('Pushed tags to origin.'));
+  // Push everything to origin
+  console.log(c.green('Pushing to origin...'));
+  sh(`git push --set-upstream origin ${getCurrentBranch()}`);
+  console.log(c.green('Pushed bump commit to origin.'));
+  sh(`git push origin ${tags.join(' ')}`);
+  console.log(c.green('Pushed tags to origin.'));
 }
 
 /**
@@ -275,9 +279,9 @@ function printNextSteps() {
       verifyGhInstalled();
       await verifyNoUnstagedChanges();
       await bumpVersions();
-      // await bumpMain();
-      // await draftReleaseNotes();
-      // printNextSteps();
+      await bumpMain();
+      await draftReleaseNotes();
+      printNextSteps();
     }
   } catch (error) {
     if (error instanceof Error) {
