@@ -1,11 +1,12 @@
 import c from 'chalk';
-import yargs from 'yargs';
-import { updateVersions } from './versions';
+import { updateChildDSAndExamples } from './bump-child-deps-utils';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
+import { root, updateVersions } from './versions';
+import yargs from 'yargs';
 
-const REVIEWERS = ['pwolfert', 'zarahzachz'];
+const REVIEWERS = ['pwolfert', 'zarahzachz', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
@@ -77,6 +78,8 @@ async function bumpVersions() {
   sh(
     `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
   );
+  // Unstage the design-system-tokens package.json
+  sh('git checkout ./packages/design-system-tokens/package.json');
   // Only stage changes to package files
   sh('git add -u **/package.json');
   // And discard all other changes
@@ -86,11 +89,22 @@ async function bumpVersions() {
     console.log(c.yellow('No version changes made. Exiting...'));
     process.exit(1);
   }
-  console.log(c.green('Bumped package versions.'));
+  console.log(c.green('Bumped package versions. Bumping dependencies next...'));
+
+  // Update the dependencies in our child design systems and examples:
+  updateChildDSAndExamples();
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
+
   sh('git add -u');
+
+  // Delete lingering package-lock.json if it exists:
+  try {
+    sh(`rm ${root}/package-lock.json`);
+  } catch {
+    console.log('No package-lock.json at the top level. Moving on...');
+  }
   console.log(c.green('Updated versions.json.'));
 
   // Determine our tag names and create the publish commit
