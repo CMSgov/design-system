@@ -63,7 +63,7 @@ const bumpPackageJsonDependencies = ({
   const jsonFileLocation = path.join(root, packageLocation, 'package.json');
   const json = readJson(jsonFileLocation);
   const updatedJson = updateDSVersion(json);
-  writeJson(jsonFileLocation, updatedJson, true);
+  writeJson(jsonFileLocation, updatedJson);
   console.log(c.green(`Bumped ${packageName} to @cmsgov/design-system@${newVersionNumber}.`));
 };
 

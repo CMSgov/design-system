@@ -9,10 +9,9 @@ export function readJson(filename: string): { [key: string]: any } {
   return JSON.parse(readFileSync(filename, { encoding: 'utf8' }));
 }
 
-export function writeJson(filename: string, json: { [key: string]: any }, addNewLine?: boolean) {
+export function writeJson(filename: string, json: { [key: string]: any }) {
   const stringifiedJson = JSON.stringify(json, null, 2);
-  const content = addNewLine ? `${stringifiedJson}\n` : stringifiedJson;
-  writeFileSync(filename, content);
+  writeFileSync(filename, stringifiedJson);
 }
 
 export function getPackageVersion(packageName: string): string {
