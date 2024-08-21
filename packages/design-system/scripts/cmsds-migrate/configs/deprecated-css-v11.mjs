@@ -75,7 +75,7 @@ export default {
       to: '$1 /* CMSDS-MIGRATE: This was deprecated and removed in CMSDS v11 */',
     })),
     ...replacements.map(([from, to]) => ({
-      from: RegExp(from, 'g'),
+      from: RegExp(`(${from})`, 'g'),
       to,
     })),
   ],
