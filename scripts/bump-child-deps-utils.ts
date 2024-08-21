@@ -50,7 +50,7 @@ const getPackageNamesAndLocations = (): Array<{
 };
 
 /*
- * Actually does the updateing of the package.json files.
+ * Actually does the updating of the package.json files.
  * Gets the file location, reads said file, bumps the version, writes the file.
  */
 const bumpPackageJsonDependencies = ({
