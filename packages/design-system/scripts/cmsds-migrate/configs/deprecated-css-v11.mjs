@@ -1,4 +1,3 @@
-
 const removals = [
   '--font-sans',
   '--font-serif',
@@ -48,7 +47,7 @@ const removals = [
   '--datefield-separator__display',
 
   '--autocomplete[a-z_\\-]*',
-  '--dropdown[a-z_\\-]*'',
+  '--dropdown[a-z_\\-]*',
 
   'ds-u-font-weight--semibold',
 ];
@@ -58,23 +57,25 @@ const replacements = [
   ['--form__max-width--small', '--field-max-width--small'],
   ['--form__max-width--medium', '--field-max-width--medium'],
   ['--choice__translateY', '--choice-label__top-offset'],
-  ['--button_font-weight', '$1 /* CMSDS-MIGRATE: This variable has been replaced with `--font-weight-button-sm`, `--font-weight-button-md`, and `--font-weight-button-lg` */']
+  [
+    '--button_font-weight',
+    '$1 /* CMSDS-MIGRATE: This variable has been replaced with `--font-weight-button-sm`, `--font-weight-button-md`, and `--font-weight-button-lg` */',
+  ],
 ];
 
 export default {
-  description:
-    "Flags usage of CSS variables and classes that were deprecated in v11",
+  description: 'Flags usage of CSS variables and classes that were deprecated in v11',
   patterns: ['**/*'],
   globbyConfig: {
     ignore: ['**/cmsds-migrate/**/*'],
   },
   expressions: [
     ...removals.map((token) => ({
-      from: RegExp(`(${token})`, "g"),
+      from: RegExp(`(${token})`, 'g'),
       to: '$1 /* CMSDS-MIGRATE: This was deprecated and removed in CMSDS v11 */',
     })),
     ...replacements.map(([from, to]) => ({
-      from: RegExp(from, "g"),
+      from: RegExp(from, 'g'),
       to,
     })),
   ],
