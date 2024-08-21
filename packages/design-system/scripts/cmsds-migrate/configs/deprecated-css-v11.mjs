@@ -3,8 +3,6 @@ const removals = [
   '--font-sans',
   '--font-serif',
   '--font-weight-light',
-  '--font-weight-normal',
-  '--font-weight-bold',
   '--font-weight-semibold',
   '--typography-body__font-family',
   '--typography-heading-2xl__font-size--mobile',
