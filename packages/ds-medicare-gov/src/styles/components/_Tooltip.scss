@@ -12,7 +12,7 @@
   text-underline-offset: var(--link__text-decoration-offset);
 
   &:hover {
-    color: var(--color-black);
+    color: var(--color-primary-darker);
     text-decoration-color: var(--color-black);
     text-decoration-thickness: var(--link__text-decoration-thickness--hover);
   }
