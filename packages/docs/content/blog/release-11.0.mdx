@@ -5,6 +5,7 @@ intro: Figma migration, further bundle-size reductions, and replacement of priva
 ---
 
 import sketchToFigmaImg from '../../src/images/sketch-to-figma.jpg';
+import { Alert } from '@cmsgov/design-system';
 
 ## The Figma migration is complete!
 
@@ -20,7 +21,19 @@ By now most of you have heard about the migration from Sketch to Figma. This mov
 
 Our migration to Figma also prompted us to evolve our own tokens system in order to achieve greater parity and integration between code and design. We developed some internal tools to facilitate bi-directional syncing, enabling our design team to update tokens within Figma and sync them back to our code repository effortlessly. Any synchronization with code happens through version control, which is easy to audit and means engineers can discuss changes on GitHub. It creates a conversation between design and engineering with a better paper trail that is easier to document. Ultimately that's a benefit to product teams.
 
-In the process of syncing with Figma, we took the opportunity to refine many of our design tokens. These changes are a natural part of the evolution of the design system, but it does result in some breaking changes for the CSS variables that are generated from our design tokens. [Details of the CSS-variable changes can be found in our release notes](/REPLACE-ME). We hope that you'll accept a new feature, though, in exchange for making you update a few variables: Most component-level tokens are now defined by referencing theme-level tokens like `--color-primary`, which means you can make high-level customizations and see them trickle down to multiple components. We hope the variable referencing also makes it easier for developers to see the relationship between tokens across the system without having to store hexadecimal codes in their heads. Overall we're working towards tokens that are better organized and more consistent and understandable, and we thank you for walking with us on this journey.
+In the process of syncing with Figma, we took the opportunity to refine many of our design tokens. These changes are a natural part of the evolution of the design system, but it does result in some breaking changes for the CSS variables that are generated from our design tokens. [Details of the CSS-variable changes can be found in our release notes](https://github.com/CMSgov/design-system/releases/tag/%40cmsgov%2Fdesign-system%4011.0.0). We hope that you'll accept a new feature, though, in exchange for making you update a few variables: Most component-level tokens are now defined by referencing theme-level tokens like `--color-primary`, which means you can make high-level customizations and see them trickle down to multiple components. We hope the variable referencing also makes it easier for developers to see the relationship between tokens across the system without having to store hexadecimal codes in their heads. To make the update easier, we included a [migration script](#migration-script-instructions) that will find outdated variable references in your code. Overall we're working towards tokens that are better organized and more consistent and understandable, and we thank you for walking with us on this journey.
+
+<Alert heading="Running the migration script" id="migration-script-instructions">
+
+  We've included a migration script in v11 to help you find and update outdated references to deprecated CSS variables and utility classes. Using your local package manager's task runner, run our `cmsds-migrate` command like so:
+
+  ```
+  npm run cmsds-migrate
+  ```
+
+  From the menu, choose the "deprecated css v11" script and run it. If you are unsure of anything, refer back to the release notes or reach out to us!
+
+</Alert>
 
 Our transition to Figma marks a significant milestone in our journey to create a more efficient, collaborative, and innovative design process. By embracing this powerful tool and our new design system library, we are well-equipped to build cohesive and accessible products with greater efficiency and efficacy. We look forward to seeing the creativity and productivity this change will unleash across our teams.
 
