@@ -120,5 +120,13 @@ describe('HelpDrawer', () => {
       renderHelpDrawer({ analyticsLabelOverride: 'other heading', onCloseClick: jest.fn() });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
     });
+
+    it('handles custom onAnalyticsEvent prop', () => {
+      const onAnalyticsEvent = jest.fn();
+      const { rerenderHelpDrawer } = renderHelpDrawer({ isOpen: false, onAnalyticsEvent });
+      rerenderHelpDrawer({ isOpen: true, onAnalyticsEvent });
+      expect(tealiumMock).not.toHaveBeenCalled();
+      expect(onAnalyticsEvent).toHaveBeenCalled();
+    });
   });
 });
