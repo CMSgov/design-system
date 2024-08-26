@@ -13,6 +13,7 @@ export const HelpDrawer = (props: HelpDrawerProps) => {
   const {
     analytics,
     analyticsLabelOverride,
+    onAnalyticsEvent,
     analyticsEventTypeOverride,
     children,
     className,
