@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import classNames from 'classnames';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -22,7 +22,6 @@ const meta: Meta = {
       control: 'object',
       table: {
         type: { summary: 'array' },
-        defaultValue: { summary: '[]' },
       },
     },
     'show-sub-sub-steps': {
@@ -69,16 +68,15 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
-  useEffect(() => {
-    const element = document.querySelector('ds-step-list');
-    console.log('Element', element);
-  }, []);
-
   return <ds-step-list {...args} />;
 };
 
 const serializeSteps = (steps) => JSON.stringify(steps);
-
+const Link = ({ className, ...props }) => (
+  <a className={classNames(className, 'special-link')} {...props}>
+    {props.children}
+  </a>
+);
 export const StepListExample = Template.bind({});
 StepListExample.args = {
   steps: serializeSteps([
@@ -97,6 +95,7 @@ StepListExample.args = {
       started: true,
       completed: false,
       description: 'Provide details about everyone in your household.',
+      component: Link,
       steps: [
         {
           id: 'household.overall',

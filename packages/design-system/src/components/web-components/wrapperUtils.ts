@@ -10,12 +10,3 @@ export function parseDateAttr(attr?: string): Date | undefined {
 export function parseIntegerAttr(attr?: string): number | undefined {
   if (attr !== undefined) return parseInt(attr);
 }
-
-export function parseJsonAttr(jsonString: string) {
-  try {
-    return JSON.parse(jsonString);
-  } catch (e) {
-    console.error('Error parsing JSON attribute:', e);
-    return [];
-  }
-}

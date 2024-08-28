@@ -1,7 +1,14 @@
 import { define } from '../preactement/define';
 import { StepListProps } from '../../StepList/StepList';
 import { StepList } from '../../StepList';
-import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
+import { parseBooleanAttr } from '../wrapperUtils';
+
+/*
+Todos:
+  1. Verify the handling of the `component` attribute.
+  2. Verify the handling of `onStepLinkClick`.
+  3. Ensure full test coverage in `ds-step-list.tests.tsx`.
+*/
 
 const attributes = [
   'steps',
@@ -11,7 +18,6 @@ const attributes = [
     */
   // 'component', // StepLinkProps['component']
   'show-sub-sub-steps',
-  // 'on-step-link-click', // StepLinkProps['onClick']
   'completed-text',
   'edit-text',
   'resume-text',
@@ -26,7 +32,7 @@ interface WrapperProps extends Omit<StepListProps, 'steps' | 'showSubSubSteps'> 
 }
 
 const Wrapper = ({
-  steps = '[]',
+  steps,
   showSubSubSteps,
   completedText,
   editText,
@@ -36,12 +42,12 @@ const Wrapper = ({
   substepsLabelText,
   ...otherProps
 }: WrapperProps) => {
-  const parsedSteps = parseJsonAttr(steps);
+  // console.log('steps', steps)
   const parsedShowSubSubSteps = parseBooleanAttr(showSubSubSteps);
 
   return (
     <StepList
-      steps={parsedSteps}
+      steps={typeof steps === 'string' ? JSON.parse(steps) : steps}
       showSubSubSteps={parsedShowSubSubSteps}
       completedText={completedText}
       editText={editText}
@@ -69,4 +75,14 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-step-list', () => Wrapper, { attributes, events: [] });
+define('ds-step-list', () => Wrapper, {
+  attributes,
+  events: [
+    [
+      'onStepLinkClick',
+      (href?: string, stepId?: string) => ({
+        detail: { href, stepId },
+      }),
+    ],
+  ],
+});
