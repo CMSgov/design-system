@@ -12,8 +12,7 @@ import defaultMenuLinks from './defaultMenuLinks';
 export interface Link {
   href: string;
   label: React.ReactNode;
-  // TODO: I don't think this is necessary to require - PW
-  ariaLabel: string;
+  ariaLabel?: string;
   className?: string;
   onClick?: (...args: any[]) => any;
 }
@@ -130,7 +129,7 @@ export interface HeaderProps {
 export const VARIATION_NAMES = {
   LOGGED_IN: 'logged-in',
   LOGGED_OUT: 'logged-out',
-};
+} as const;
 
 /**
  * For information about how and when to use this component,
