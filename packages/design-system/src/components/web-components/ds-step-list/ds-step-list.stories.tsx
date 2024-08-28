@@ -13,48 +13,7 @@ const meta: Meta = {
     },
   },
   args: {
-    steps: [
-      {
-        id: 'taxYear',
-        heading: 'Choose a tax year',
-        href: '#step-1',
-        started: true,
-        completed: true,
-        description: 'Select the tax year for which you are filing.',
-      },
-      {
-        id: 'household',
-        heading: 'Enter household details',
-        href: '#step-2',
-        started: true,
-        completed: false,
-        description: 'Provide details about everyone in your household.',
-        steps: [
-          {
-            id: 'household.overall',
-            heading: 'Overall household',
-            href: '#step-2a',
-            started: true,
-            completed: true,
-          },
-          {
-            id: 'household.bob',
-            heading: "Bob's information",
-            href: '#step-2b',
-            started: false,
-            completed: false,
-          },
-        ],
-      },
-      {
-        id: 'review',
-        heading: 'Review your information',
-        href: '#step-3',
-        started: false,
-        completed: false,
-        description: 'Review all the information you have entered.',
-      },
-    ],
+    steps: [],
   },
   argTypes: {
     steps: {
@@ -66,33 +25,41 @@ const meta: Meta = {
         defaultValue: { summary: '[]' },
       },
     },
-    onStepLinkClick: {
+    'show-sub-sub-steps': {
+      description: "Whether or not to render a substep's substeps",
+      control: 'boolean',
+    },
+    'on-step-link-click': {
       description:
         "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's `href` property will be passed as a parameter.",
       action: 'onStepLinkClick',
     },
-    completedText: {
+    'completed-text': {
       description: 'Text displayed when a step is completed.',
+      defaultValue: { summary: 'Completed' },
       control: 'text',
     },
-    editText: {
+    'edit-text': {
       description: 'Text displayed for the edit button/link of a step.',
+      defaultValue: { summary: 'Edit' },
       control: 'text',
     },
-    resumeText: {
+    'resume-text': {
       description: 'Text displayed for the resume button/link of a step.',
+      defaultValue: { summary: 'Resume' },
       control: 'text',
     },
-    startText: {
+    'start-text': {
       description: 'Text displayed for the start button/link of a step.',
+      defaultValue: { summary: 'Start' },
       control: 'text',
     },
-    actionsLabelText: {
+    'actions-label-text': {
       description:
         "A template string for the aria-label describing a step's actions where the substring `%{step}` is replaced with that step's `heading`.",
       control: 'text',
     },
-    substepsLabelText: {
+    'substeps-label-text': {
       description:
         "A template string for the aria-label describing a step's substeps where the substring `%{step}` is replaced with that step's `heading`.",
       control: 'text',
@@ -153,8 +120,13 @@ StepListExample.args = {
       href: '#step-3',
       started: false,
       completed: false,
-      description: 'Review all the information you have entered.',
+    },
+    {
+      id: 'finish',
+      heading: 'View premium results',
+      href: '#step-4',
+      started: false,
+      completed: false,
     },
   ]),
-  'resume-text': 'Resume',
 };

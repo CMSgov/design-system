@@ -7,11 +7,9 @@ const attributes = [
   'steps',
   /*
     The component prop in our React component is used to render a specific React component 
-    for all link elements when provided. 
-    Should we include component in the list of attributes for the ds-step-list web component? 
-    If so, how can we serialize this prop to a string?
+    for all link elements when provided.
     */
-  //'component', // StepLinkProps['component']
+  // 'component', // StepLinkProps['component']
   'show-sub-sub-steps',
   // 'on-step-link-click', // StepLinkProps['onClick']
   'completed-text',
@@ -36,8 +34,6 @@ const Wrapper = ({
   startText,
   actionsLabelText,
   substepsLabelText,
-  // component,
-  // onStepLinkClick,
   ...otherProps
 }: WrapperProps) => {
   const parsedSteps = parseJsonAttr(steps);
@@ -54,8 +50,6 @@ const Wrapper = ({
       actionsLabelText={actionsLabelText}
       substepsLabelText={substepsLabelText}
       {...otherProps}
-      //component={component}
-      // onStepLinkClick={onStepLinkClick}
     />
   );
 };
