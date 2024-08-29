@@ -1,9 +1,9 @@
 {
   "name": "preact-react-app-example",
-  "version": "10.1.2",
+  "version": "10.1.3",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "10.1.2",
+    "@cmsgov/design-system": "10.1.3",
     "preact": "10.11.3"
   },
   "devDependencies": {
