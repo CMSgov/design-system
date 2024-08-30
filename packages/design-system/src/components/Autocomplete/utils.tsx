@@ -27,7 +27,7 @@ export function renderStatusMessage(message: ReactNode) {
 }
 
 /**
- * Determine if a React component is a TextField
+ * Determine if a React component is a TextField or ds-text-field
  */
 function isTextField(child?: ReactNode): child is ReactElement {
   if (!child || !isValidElement(child)) {
@@ -36,7 +36,9 @@ function isTextField(child?: ReactNode): child is ReactElement {
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
   const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-  return child.type === TextField || componentName === 'TextField';
+  return (
+    child.type === TextField || componentName === 'TextField' || child.type === 'ds-text-field'
+  );
 }
 
 export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
