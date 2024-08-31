@@ -53,15 +53,14 @@ const meta: Meta = {
       description: 'Removes the Clear search button when set to `false`',
       control: 'boolean',
     },
+    hint: {
+      description: 'An optional hint for the label',
+      control: 'text',
+    },
     // TODO: control this
     items: { control: false },
     label: {
-      description:
-        "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.",
-      control: 'text',
-    },
-    'label-id': {
-      description: 'A unique `id` to be used on the child `TextField` label tag',
+      description: 'A label for the input',
       control: 'text',
     },
     loading: {
@@ -73,19 +72,32 @@ const meta: Meta = {
       description: 'Message users will see when the `loading` prop is passed to `Autocomplete`.',
       control: 'text',
     },
-    'no-results-message': {
+    'menu-heading': {
       description:
-        'Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.',
+        "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.",
+      control: 'text',
+    },
+    'menu-heading-id': {
+      description: 'A unique `id` to be used on the child `TextField` label tag',
       control: 'text',
     },
     name: {
       description: "The `input` field's `name` attribute.",
       control: 'text',
     },
+    'no-results-message': {
+      description:
+        'Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.',
+      control: 'text',
+    },
     'root-id': {
       description:
         "A unique ID for this element. A unique ID will be generated if one isn't provided.",
       control: 'text',
+    },
+    value: {
+      description: 'Input value',
+      control: 'string',
     },
   },
 };
@@ -95,10 +107,6 @@ const Template = (args) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
 
-  const onInputValueChange = (...args) => {
-    action('onInputValueChange')(args);
-    setInput(args[0]);
-  };
   let filteredItems = null;
   if (input.length > 0) {
     filteredItems = items.filter(
@@ -110,16 +118,17 @@ const Template = (args) => {
     const element = document.querySelector('ds-autocomplete');
     if (element) {
       const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
-        return action('ds-on-change')(event);
+        return action('ds-change')(event);
       };
-      const handleOnInputValueChange = (event: CustomEvent<{ inputValue: string }>) => {
-        action('ds-on-input-value-change')(event);
+      const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
+        action('ds-input-value-change')(event);
+        setInput(event.detail.value);
       };
-      element.addEventListener('ds-on-change', handleOnChange);
-      element.addEventListener('ds-on-input-value-change', handleOnInputValueChange);
+      element.addEventListener('ds-change', handleOnChange);
+      element.addEventListener('ds-input-value-change', handleOnInputValueChange);
       return () => {
-        element.removeEventListener('ds-on-change', handleOnChange);
-        element.removeEventListener('ds-on-input-value-change', handleOnInputValueChange);
+        element.removeEventListener('ds-change', handleOnChange);
+        element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
       };
     }
   }, []);
@@ -127,18 +136,11 @@ const Template = (args) => {
   return (
     <ds-autocomplete
       {...autocompleteArgs}
-      onChange={action('onChange')}
-      onInputValueChange={onInputValueChange}
-      items={filteredItems}
-    >
-      <ds-text-field
-        label={textFieldLabel}
-        hint={textFieldHint}
-        name="autocomplete"
-        value={input}
-        size="big"
-      />
-    </ds-autocomplete>
+      items={JSON.stringify(filteredItems)}
+      label={textFieldLabel}
+      hint={textFieldHint}
+      value={input}
+    />
   );
 };
 
