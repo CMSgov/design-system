@@ -23,12 +23,17 @@ export interface DefaultMenuLinkOptions {
   languageLinkClassName?: string;
 }
 
+export interface DefaultMenuLinksObject {
+  [VARIATION_NAMES.LOGGED_OUT]: Array<Link | DefaultLink>;
+  [VARIATION_NAMES.LOGGED_IN]: Array<Link | DefaultLink>;
+}
+
 /**
  * Default menu links for each header variation.
  * Apps can import this method into their app if they need to
  * extend the existing default list of menu links.
  */
-export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
+export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}): DefaultMenuLinksObject {
   const {
     deConsumer,
     subpath = '',
@@ -44,8 +49,8 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
   const isSpanish = languageMatches('es');
 
   // NOTE: order matters here and links will be displayed in order added to the arrays
-  const loggedOut = [];
-  const loggedIn = [];
+  const loggedOut: Array<Link | DefaultLink> = [];
+  const loggedIn: Array<Link | DefaultLink> = [];
 
   // Links other than the ones inside this if should need to be explicitly hidden for their
   // respective variations. This means the language and login will show even if a custom set
@@ -95,9 +100,10 @@ export function defaultMenuLinks(options: DefaultMenuLinkOptions = {}) {
     });
   }
 
-  const links = {};
-  links[VARIATION_NAMES.LOGGED_OUT] = loggedOut;
-  links[VARIATION_NAMES.LOGGED_IN] = loggedIn;
+  const links: DefaultMenuLinksObject = {
+    [VARIATION_NAMES.LOGGED_OUT]: loggedOut,
+    [VARIATION_NAMES.LOGGED_IN]: loggedIn,
+  };
 
   return links;
 }
