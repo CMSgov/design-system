@@ -40,7 +40,3 @@ Our transition to Figma marks a significant milestone in our journey to create a
 ## Further bundle-size reductions
 
 In the past several releases, we've been talking about the progress we're making towards reducing the amount of JavaScript needed for our components. We've further reduced this amount by about 3.5% in this release, due to [a change that you can read more about here](https://github.com/CMSgov/design-system/pull/2996).
-
-## Removed the privacy settings dialog from the design system
-
-The analytics team at CMS is taking over the UI for users' privacy settings, so we've removed our own privacy settings dialog from this version. The healthcare.gov footer and our own doc-site footer that used to use our version now invoke the privacy settings dialog from the analytics script. For most product teams, this will require no changes on your end. It would only require a change if you were rendering our privacy settings dialog component directly.
