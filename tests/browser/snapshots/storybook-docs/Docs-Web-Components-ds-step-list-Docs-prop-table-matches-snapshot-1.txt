@@ -1,0 +1,47 @@
+[
+  [
+    "actions-label-text",
+    "A template string for the aria-label describing a step's actions where the substring `%{step}` is replaced with that step's `heading`.",
+    "string"
+  ],
+  [
+    "completed-text",
+    "Text displayed when a step is completed.",
+    "string"
+  ],
+  [
+    "edit-text",
+    "Text displayed for the edit button/link of a step.",
+    "string"
+  ],
+  [
+    "on-step-link-click",
+    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's `href` property will be passed as a parameter.",
+    ""
+  ],
+  [
+    "resume-text",
+    "Text displayed for the resume button/link of a step.",
+    "string"
+  ],
+  [
+    "show-sub-sub-steps",
+    "Whether or not to render a substep's substeps",
+    "\"true\"\"false\""
+  ],
+  [
+    "start-text",
+    "Text displayed for the start button/link of a step.",
+    "string"
+  ],
+  [
+    "steps",
+    "An array of `StepObjects` that contain text, state, link URLs, and other info needed to render steps. For more details, refer to the [StepList documentation on storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: The `component` prop is excluded in `ds-step-list`.",
+    "See description"
+  ],
+  [
+    "substeps-label-text",
+    "A template string for the aria-label describing a step's substeps where the substring `%{step}` is replaced with that step's `heading`.",
+    "string"
+  ]
+]
