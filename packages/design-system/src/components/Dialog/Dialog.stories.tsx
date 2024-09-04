@@ -18,6 +18,13 @@ const meta: Meta<typeof Dialog> = {
     ),
     heading: 'Dialog Heading',
   },
+  argTypes: {
+    ariaCloseLabel: {
+      table: {
+        defaultValue: { summary: 'Close modal dialog' },
+      },
+    },
+  },
   parameters: {
     docs: {
       source: {
