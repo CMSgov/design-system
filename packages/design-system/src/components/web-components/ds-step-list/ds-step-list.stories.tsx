@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
+import { serializedSteps } from './serialized-steps';
 import './ds-step-list';
 
 const meta: Meta = {
@@ -10,6 +10,11 @@ const meta: Meta = {
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
+      description: {
+        component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/step-list/).
+
+**Note:** The \`ds-step-list\` is based on the existing functionality of our React component \`StepList\`. Unlike \`StepList\`, which uses an optional \`component\` prop to render custom components for link elements—defaulting to an \`<a>\` tag if not provided—the \`ds-step-list\` does not support the \`component\` attribute. Instead, all link elements in \`ds-step-list\` will default to standard anchor (\`<a>\`) tags to simplify the API and ensure consistent behavior.`,
+      },
     },
   },
   args: {
@@ -17,8 +22,9 @@ const meta: Meta = {
   },
   argTypes: {
     steps: {
-      description:
-        'An array of `StepObjects` that contain text, state, link URLs, and other info needed to render steps.',
+      description: `
+An array of \`StepObjects\` that contain text, state, link URLs, and other info needed to render steps. For more details, refer to the [StepList documentation](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: The \`component\` prop is excluded in \`ds-step-list\`.
+`,
       control: 'object',
       table: {
         type: { summary: 'array' },
@@ -71,61 +77,7 @@ const Template = (args) => {
   return <ds-step-list {...args} />;
 };
 
-const serializeSteps = (steps) => JSON.stringify(steps);
-const Link = ({ className, ...props }) => (
-  <a className={classNames(className, 'special-link')} {...props}>
-    {props.children}
-  </a>
-);
 export const StepListExample = Template.bind({});
 StepListExample.args = {
-  steps: serializeSteps([
-    {
-      id: 'taxYear',
-      heading: 'Choose a tax year',
-      href: '#step-1',
-      started: true,
-      completed: true,
-      description: 'Select the tax year for which you are filing.',
-    },
-    {
-      id: 'household',
-      heading: 'Enter household details',
-      href: '#step-2',
-      started: true,
-      completed: false,
-      description: 'Provide details about everyone in your household.',
-      component: Link,
-      steps: [
-        {
-          id: 'household.overall',
-          heading: 'Overall household',
-          href: '#step-2a',
-          started: true,
-          completed: true,
-        },
-        {
-          id: 'household.bob',
-          heading: "Bob's information",
-          href: '#step-2b',
-          started: false,
-          completed: false,
-        },
-      ],
-    },
-    {
-      id: 'review',
-      heading: 'Review your information',
-      href: '#step-3',
-      started: false,
-      completed: false,
-    },
-    {
-      id: 'finish',
-      heading: 'View premium results',
-      href: '#step-4',
-      started: false,
-      completed: false,
-    },
-  ]),
+  steps: serializedSteps,
 };
