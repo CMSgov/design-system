@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "11.0.0-beta.0",
+  "version": "11.0.0-beta.1",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -75,7 +75,8 @@
     "react-day-picker": "8.10.1",
     "react-stately": "^3.25.0",
     "react-transition-group": "^4.4.5",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "@cmsgov/design-system": "11.0.0-beta.1"
   },
   "peerDependencies": {
     "react": ">=17.0.0",
