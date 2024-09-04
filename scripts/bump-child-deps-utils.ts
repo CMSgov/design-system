@@ -35,7 +35,7 @@ const getPackageNamesAndLocations = (): Array<{
 }> => {
   const packageJson: any = JSON.parse(sh('npm ls -ws @cmsgov/design-system --json'));
   const deps = packageJson['dependencies'];
-  const packageNames = Object.keys(deps);
+  const packageNames = Object.keys(deps).filter((dep) => !(dep === '@cmsgov/design-system'));
   return packageNames.map((name: any) => {
     /*
      * The package location is stored relative to the root directory when returned by `npm ls`,
