@@ -2,7 +2,7 @@
   [
     "ariaClearLabel",
     "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
-    "-"
+    "Remove"
   ],
   [
     "className",
