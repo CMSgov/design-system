@@ -11,11 +11,34 @@ const meta: Meta<typeof Autocomplete> = {
   component: Autocomplete,
   args: {
     // setting some defaults so controls turn on by default
+    ariaClearLabel: 'Clear search',
     clearInputText: 'Clear search',
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
   } as any,
+  argTypes: {
+    ariaClearLabel: {
+      table: {
+        defaultValue: { summary: 'Clear search to try again' },
+      },
+    },
+    clearInputText: {
+      table: {
+        defaultValue: { summary: 'Clear Search' },
+      },
+    },
+    loadingMessage: {
+      table: {
+        defaultValue: { summary: 'Loading...' },
+      },
+    },
+    noResultsMessage: {
+      table: {
+        defaultValue: { summary: 'No results' },
+      },
+    },
+  },
 };
 export default meta;
 
