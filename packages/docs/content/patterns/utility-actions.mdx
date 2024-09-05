@@ -12,12 +12,20 @@ import {
   LinkIcon,
   PrintIcon,
   RssIcon,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableRow,
   WhatsNewIcon,
 } from '@cmsgov/design-system';
 
 ## Guidance
 
-### Examples
+### Example
+
+The example below shows utility actions for Print, Email and RSS.
 
 <EmbeddedExample>
   <div className="ds-l-row ds-u-justify-content--end">
@@ -41,6 +49,110 @@ import {
     </div>
   </div>
 </EmbeddedExample>
+
+### Available Actions
+
+In Figma, use the toggle feature to select different utility actions. Available utility actions include:
+
+<Table>
+  <TableHead>
+    <TableRow>
+      <TableCell key="utility" id="utility">
+        Utility
+      </TableCell>
+      <TableCell key="action" id="action">
+        Action
+      </TableCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow key="Print">
+      <TableCell key="Print Icon" headers="printIcon" stackedTitle="Print Icon">
+        <Button variation="ghost" size="small">
+          <PrintIcon className="ds-u-margin-right--1" />
+          Print
+        </Button>
+      </TableCell>
+      <TableCell key="Print action description." headers="description" stackedTitle="Description">
+        Opens print terminal.
+      </TableCell>
+    </TableRow>
+    <TableRow key="Articles of Confederation">
+      <TableCell
+        key="Document title-Articles of Confederation"
+        headers="documentTitle"
+        stackedTitle="Document title"
+      >
+        Articles of Confederation
+      </TableCell>
+      <TableCell
+        key="Description-This document served as the United Statesʼ first constitution."
+        headers="description"
+        stackedTitle="Description"
+      >
+        This document served as the United Statesʼ first constitution.
+      </TableCell>
+      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
+        <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">
+          https://www.archives.gov/milestone-documents/articles-of-confederation
+        </a>
+      </TableCell>
+      <TableCell key="Year-1777" headers="year" stackedTitle="Year">
+        1777
+      </TableCell>
+    </TableRow>
+    <TableRow key="The Constitution">
+      <TableCell
+        key="Document title-The Constitution"
+        headers="documentTitle"
+        stackedTitle="Document title"
+      >
+        The Constitution
+      </TableCell>
+      <TableCell
+        key="Description-Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states"
+        headers="description"
+        stackedTitle="Description"
+      >
+        Replaced the Articles of Confederation with a new form of government. It created a federal
+        system with a national government composed of 3 separated powers, and included both reserved
+        and concurrent powers of states
+      </TableCell>
+      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
+        <a href="https://billofrightsinstitute.org/primary-sources/constitution">
+          https://billofrightsinstitute.org/primary-sources/constitution
+        </a>
+      </TableCell>
+      <TableCell key="Year-1787" headers="year" stackedTitle="Year">
+        1787
+      </TableCell>
+    </TableRow>
+    <TableRow key="Bill of Rights">
+      <TableCell
+        key="Document title-Bill of Rights"
+        headers="documentTitle"
+        stackedTitle="Document title"
+      >
+        Bill of Rights
+      </TableCell>
+      <TableCell
+        key="Description-The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms."
+        headers="description"
+        stackedTitle="Description"
+      >
+        The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+      </TableCell>
+      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
+        <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">
+          https://billofrightsinstitute.org/founding-documents/bill-of-rights/
+        </a>
+      </TableCell>
+      <TableCell key="Year-1791" headers="year" stackedTitle="Year">
+        1791
+      </TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
 
 ### When to use
 
