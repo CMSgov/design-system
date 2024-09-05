@@ -9,6 +9,21 @@ const meta: Meta<typeof MultiInputDateField> = {
     errorMessage: { control: 'text' },
     hint: { control: 'text' },
     requirementLabel: { control: 'text' },
+    dayLabel: {
+      table: {
+        defaultValue: { summary: 'Day' },
+      },
+    },
+    monthLabel: {
+      table: {
+        defaultValue: { summary: 'Month' },
+      },
+    },
+    yearLabel: {
+      table: {
+        defaultValue: { summary: 'Year' },
+      },
+    },
   },
   args: {
     label: 'Enter your date of birth.',

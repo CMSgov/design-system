@@ -7,6 +7,15 @@ const meta: Meta<typeof SkipNav> = {
   args: {
     href: '#main',
   },
+  argTypes: {
+    children: {
+      table: {
+        defaultValue: {
+          summary: 'Skip to main content',
+        },
+      },
+    },
+  },
 };
 export default meta;
 

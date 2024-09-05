@@ -2,7 +2,7 @@
   [
     "ariaLabel",
     "Gives more context to screen readers on the Drawer close button.\nstring",
-    "-"
+    "Close help drawer"
   ],
   [
     "className",
@@ -12,7 +12,7 @@
   [
     "closeButtonText",
     "ReactNode",
-    "-"
+    "Close"
   ],
   [
     "closeButtonVariation",
@@ -47,7 +47,7 @@
   [
     "headingLevel",
     "Heading type to override default <h3>\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"",
-    "\"'3' as const\""
+    "3"
   ],
   [
     "headingRef",

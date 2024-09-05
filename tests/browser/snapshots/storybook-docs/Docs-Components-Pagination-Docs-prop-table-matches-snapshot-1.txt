@@ -2,7 +2,7 @@
   [
     "ariaLabel",
     "Defines aria-label on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.\nstring",
-    "-"
+    "Pagination results"
   ],
   [
     "className",
@@ -22,12 +22,12 @@
   [
     "endAriaLabel",
     "Sets custom ARIA label on end navigation. Added for language support. Label structure should be the equivalent of: Next Page. Optional.\nstring",
-    "-"
+    "Next Page"
   ],
   [
     "endLabelText",
     "Sets custom label on end navigation. Added for language support. Optional.\nstring",
-    "-"
+    "Next"
   ],
   [
     "headingLevel",
@@ -57,12 +57,12 @@
   [
     "startAriaLabel",
     "Sets custom ARIA label on start navigation. Added for language support. Label structure should be the equivalent of: Previous Page. Optional.\nstring",
-    "-"
+    "Previous Page"
   ],
   [
     "startLabelText",
     "Sets custom label on start navigation. Added for language support. Optional.\nstring",
-    "-"
+    "Previous"
   ],
   [
     "totalPages*",
