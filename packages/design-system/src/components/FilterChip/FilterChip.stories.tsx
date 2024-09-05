@@ -8,6 +8,15 @@ const meta: Meta<typeof FilterChip> = {
   args: {
     label: 'Example Filter Chip',
   },
+  argTypes: {
+    ariaClearLabel: {
+      table: {
+        defaultValue: {
+          summary: 'Remove',
+        },
+      },
+    },
+  },
 };
 export default meta;
 

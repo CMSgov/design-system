@@ -32,7 +32,7 @@
   [
     "dayLabel",
     "Label for the day field\nReactNode",
-    "-"
+    "Day"
   ],
   [
     "dayName",
@@ -117,7 +117,7 @@
   [
     "monthLabel",
     "Label for the month field\nReactNode",
-    "-"
+    "Month"
   ],
   [
     "monthName",
@@ -167,7 +167,7 @@
   [
     "yearLabel",
     "Label for the year input field\nReactNode",
-    "-"
+    "Year"
   ],
   [
     "yearName",
