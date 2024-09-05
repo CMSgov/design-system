@@ -4507,7 +4507,7 @@
       },
       "trigger": {
         "color": {
-          "$value": "{theme.color.primary}",
+          "$value": "{theme.color.base}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
