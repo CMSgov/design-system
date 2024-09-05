@@ -11,7 +11,7 @@
   [
     "ariaClearLabel",
     "Screen reader-specific label for the Clear search <button>. Intended to provide a longer, more descriptive explanation of the button's behavior.\nstring",
-    "-"
+    "Clear search to try again"
   ],
   [
     "autoCompleteLabel",
@@ -36,7 +36,7 @@
   [
     "clearInputText",
     "Text rendered on the page if clearInput prop is passed. Default is \"Clear search\".\nReactNode",
-    "-"
+    "Clear Search"
   ],
   [
     "clearSearchButton",
@@ -91,12 +91,12 @@
   [
     "loadingMessage",
     "Message users will see when the loading prop is passed to Autocomplete.\nReactNode",
-    "-"
+    "Loading..."
   ],
   [
     "noResultsMessage",
     "Message users will see when the items array returns empty and the loading prop is passed to <Autocomplete />.\nReactNode",
-    "-"
+    "No results"
   ],
   [
     "onChange",

@@ -7,6 +7,15 @@ const meta: Meta<typeof Review> = {
   args: {
     headingLevel: '3',
   },
+  argTypes: {
+    editText: {
+      table: {
+        defaultValue: {
+          summary: 'Edit',
+        },
+      },
+    },
+  },
 };
 export default meta;
 

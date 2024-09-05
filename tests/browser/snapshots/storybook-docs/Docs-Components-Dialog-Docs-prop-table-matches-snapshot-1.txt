@@ -27,7 +27,7 @@
   [
     "ariaCloseLabel",
     "Aria label for the close button\nstring",
-    "-"
+    "Close modal dialog"
   ],
   [
     "backdropClickExits",

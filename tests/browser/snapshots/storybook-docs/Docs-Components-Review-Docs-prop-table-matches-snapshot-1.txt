@@ -27,7 +27,7 @@
   [
     "editText",
     "ReactNode",
-    "-"
+    "Edit"
   ],
   [
     "heading",
