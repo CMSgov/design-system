@@ -464,7 +464,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --text-input__padding: var(--spacer-1);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
---tooltip-trigger__color: var(--color-primary);
+--tooltip-trigger__color: var(--color-base);
 --tooltip__background-color: var(--color-background);
 --tooltip__border-color--active: #0d249940;
 --tooltip__border-color--inverse-active: #ffffff40;
@@ -950,7 +950,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --text-input__padding: var(--spacer-1);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
---tooltip-trigger__color: var(--color-primary);
+--tooltip-trigger__color: var(--color-base);
 --tooltip__background-color: var(--color-background);
 --tooltip__border-color--active: #0071bc40;
 --tooltip__border-color--inverse-active: #ffffff40;
@@ -1436,7 +1436,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --text-input__padding: var(--spacer-1);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
---tooltip-trigger__color: var(--color-primary);
+--tooltip-trigger__color: var(--color-base);
 --tooltip__background-color: var(--color-background);
 --tooltip__border-color--active: #04679140;
 --tooltip__border-color--inverse-active: #ffffff40;
