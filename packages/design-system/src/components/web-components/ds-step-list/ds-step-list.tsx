@@ -20,7 +20,7 @@ interface WrapperProps extends Omit<StepListProps, 'steps' | 'showSubSubSteps'> 
 }
 
 const Wrapper = ({
-  steps,
+  steps = '[]',
   showSubSubSteps,
   completedText,
   editText,
@@ -31,7 +31,7 @@ const Wrapper = ({
   ...otherProps
 }: WrapperProps) => (
   <StepList
-    steps={typeof steps === 'string' ? JSON.parse(steps) : steps}
+    steps={JSON.parse(steps)}
     showSubSubSteps={parseBooleanAttr(showSubSubSteps)}
     completedText={completedText}
     editText={editText}
