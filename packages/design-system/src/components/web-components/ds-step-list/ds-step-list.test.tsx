@@ -24,8 +24,10 @@ describe('StepList', () => {
     const resume = screen.getByText('Resume!');
     expect(resume).toBeInTheDocument();
 
-    const firstStepDescription = screen.getByText('Select the tax year for which you are filing.');
-    expect(firstStepDescription).toBeInTheDocument();
+    const secondStepDescription = screen.getByText(
+      'Answer questions about who in your household qualifies for a premium tax credit and information on each person, including date of birth, location(s) they lived in for the year, and months of marketplace coverage.'
+    );
+    expect(secondStepDescription).toBeInTheDocument();
 
     const headings = screen.getAllByText('Choose a tax year');
     const firstStepHeading = headings.find((element) => element.tagName.toLowerCase() === 'h2');
