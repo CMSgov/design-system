@@ -10,6 +10,43 @@ const meta: Meta<typeof Pagination> = {
     currentPage: 1,
     totalPages: 15,
   },
+  argTypes: {
+    ariaLabel: {
+      table: {
+        defaultValue: {
+          summary: 'Pagination results',
+        },
+      },
+    },
+    endAriaLabel: {
+      table: {
+        defaultValue: {
+          summary: 'Next Page',
+        },
+      },
+    },
+    endLabelText: {
+      table: {
+        defaultValue: {
+          summary: 'Next',
+        },
+      },
+    },
+    startAriaLabel: {
+      table: {
+        defaultValue: {
+          summary: 'Previous Page',
+        },
+      },
+    },
+    startLabelText: {
+      table: {
+        defaultValue: {
+          summary: 'Previous',
+        },
+      },
+    },
+  },
   render: function Component(args) {
     const [{ currentPage }, updateArgs] = useArgs();
     const handleSetPage = (evt, page) => {

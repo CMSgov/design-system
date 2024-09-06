@@ -15,6 +15,27 @@ const meta: Meta<typeof Drawer> = {
         disable: true,
       },
     },
+    ariaLabel: {
+      table: {
+        defaultValue: {
+          summary: 'Close help drawer',
+        },
+      },
+    },
+    closeButtonText: {
+      table: {
+        defaultValue: {
+          summary: 'Close',
+        },
+      },
+    },
+    headingLevel: {
+      table: {
+        defaultValue: {
+          summary: '3',
+        },
+      },
+    },
   },
   args: {
     footerTitle: 'Footer Title',
