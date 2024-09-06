@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -25,7 +27,7 @@ const meta: Meta = {
       description: `
 An array of \`StepObjects\` that contain text, state, link URLs, and other info needed to render steps. For more details, refer to the [StepList documentation on storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: The \`component\` prop is excluded in \`ds-step-list\`.
 `,
-      control: 'object',
+      control: 'text',
       table: {
         type: { summary: 'array' },
       },
@@ -33,11 +35,6 @@ An array of \`StepObjects\` that contain text, state, link URLs, and other info 
     'show-sub-sub-steps': {
       description: "Whether or not to render a substep's substeps",
       control: 'boolean',
-    },
-    'on-step-link-click': {
-      description:
-        "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's `href` property will be passed as a parameter.",
-      action: 'onStepLinkClick',
     },
     'completed-text': {
       description: 'Text displayed when a step is completed.',
@@ -74,6 +71,21 @@ An array of \`StepObjects\` that contain text, state, link URLs, and other info 
 export default meta;
 
 const Template = (args) => {
+  useEffect(() => {
+    const element = document.querySelector('ds-step-list');
+    if (element) {
+      const handleStoryBookClick = (
+        event: CustomEvent<{ updatedValue: string; formattedValue: string }>
+      ) => {
+        action('ds-step-link-click')(event);
+      };
+      element.addEventListener('ds-step-link-click', handleStoryBookClick as EventListener);
+
+      return () => {
+        element.removeEventListener('ds-step-link-click', handleStoryBookClick as EventListener);
+      };
+    }
+  }, []);
   return <ds-step-list {...args} />;
 };
 
