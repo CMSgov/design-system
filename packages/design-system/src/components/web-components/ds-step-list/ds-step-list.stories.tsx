@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
-import { serializedSteps } from './serialized-steps';
+import { stepListStepData } from '../../StepList/StepList.stories';
 import './ds-step-list';
 
 const meta: Meta = {
@@ -89,6 +89,7 @@ const Template = (args) => {
   return <ds-step-list {...args} />;
 };
 
+const serializedSteps = JSON.stringify(stepListStepData);
 export const StepListExample = Template.bind({});
 StepListExample.args = {
   steps: serializedSteps,

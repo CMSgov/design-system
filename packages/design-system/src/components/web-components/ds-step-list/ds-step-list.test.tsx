@@ -1,7 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { serializedSteps } from './serialized-steps';
+import { stepListStepData } from '../../StepList/StepList.stories';
 import './ds-step-list';
+
+// Modify stepListStepData to include sub-sub steps.
+stepListStepData[1].steps[0]['steps'] = [
+  {
+    id: 'household.overall.children',
+    heading: 'Children’s information',
+    href: '#step-2a1',
+    started: false,
+    completed: false,
+  },
+];
+
+const serializedSteps = JSON.stringify(stepListStepData);
 
 const defaultStepListAttributes = {
   steps: serializedSteps,
@@ -69,5 +82,21 @@ describe('StepList', () => {
         detail: { href: '#step-2', stepId: 'household' },
       })
     );
+  });
+
+  it('displays sub-sub-steps when show-sub-sub-steps is true', () => {
+    const props = { ...defaultStepListAttributes, 'show-sub-sub-steps': true };
+    render(<ds-step-list {...props} />);
+
+    const subSubStepText = screen.getByText('Children’s information');
+    expect(subSubStepText).toBeInTheDocument();
+  });
+
+  it('does not display sub-sub-steps when show-sub-sub-steps is false', () => {
+    const props = { ...defaultStepListAttributes, 'show-sub-sub-steps': false };
+    render(<ds-step-list {...props} />);
+
+    const subSubStepText = screen.queryByText('Children’s information');
+    expect(subSubStepText).toBeNull();
   });
 });
