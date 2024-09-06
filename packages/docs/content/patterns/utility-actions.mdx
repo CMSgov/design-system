@@ -21,9 +21,7 @@ import {
   WhatsNewIcon,
 } from '@cmsgov/design-system';
 
-## Guidance
-
-### Example
+## Example
 
 The example below shows utility actions for Print, Email and RSS.
 
@@ -68,114 +66,121 @@ In Figma, use the toggle feature to select different utility actions. Available 
   <TableBody>
     <TableRow key="Print">
       <TableCell key="Print Icon" headers="printIcon" stackedTitle="Print Icon">
-        <Button variation="ghost" size="small">
+        <Button variation="ghost" size="medium">
           <PrintIcon className="ds-u-margin-right--1" />
           Print
         </Button>
       </TableCell>
-      <TableCell key="Print action description." headers="description" stackedTitle="Description">
-        Opens print terminal.
+      <TableCell
+        key="Print action description."
+        headers="printIconDescription"
+        stackedTitle="Print description."
+      >
+        Opens print terminal
       </TableCell>
     </TableRow>
-    <TableRow key="Articles of Confederation">
-      <TableCell
-        key="Document title-Articles of Confederation"
-        headers="documentTitle"
-        stackedTitle="Document title"
-      >
-        Articles of Confederation
+    <TableRow key="Email">
+      <TableCell key="Email Icon" headers="emailIcon" stackedTitle="Email Icon">
+        <Button variation="ghost" size="medium">
+          <EmailIcon className="ds-u-margin-right--1" />
+          Email
+        </Button>
       </TableCell>
       <TableCell
-        key="Description-This document served as the United Statesʼ first constitution."
-        headers="description"
-        stackedTitle="Description"
+        key="Email action description."
+        headers="emailIconDescription"
+        stackedTitle="Email description."
       >
-        This document served as the United Statesʼ first constitution.
-      </TableCell>
-      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
-        <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">
-          https://www.archives.gov/milestone-documents/articles-of-confederation
-        </a>
-      </TableCell>
-      <TableCell key="Year-1777" headers="year" stackedTitle="Year">
-        1777
+        Opens default desktop email app
       </TableCell>
     </TableRow>
-    <TableRow key="The Constitution">
-      <TableCell
-        key="Document title-The Constitution"
-        headers="documentTitle"
-        stackedTitle="Document title"
-      >
-        The Constitution
+    <TableRow key="RSS">
+      <TableCell key="RSS Icon" headers="rssIcon" stackedTitle="RSS Icon">
+        <Button variation="ghost" size="medium">
+          <RssIcon className="ds-u-margin-right--1" />
+          RSS
+        </Button>
       </TableCell>
       <TableCell
-        key="Description-Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states"
-        headers="description"
-        stackedTitle="Description"
+        key="RSS action description."
+        headers="rssIconDescription"
+        stackedTitle="RSS description."
       >
-        Replaced the Articles of Confederation with a new form of government. It created a federal
-        system with a national government composed of 3 separated powers, and included both reserved
-        and concurrent powers of states
-      </TableCell>
-      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
-        <a href="https://billofrightsinstitute.org/primary-sources/constitution">
-          https://billofrightsinstitute.org/primary-sources/constitution
-        </a>
-      </TableCell>
-      <TableCell key="Year-1787" headers="year" stackedTitle="Year">
-        1787
+        Opens an XML feed in a different tab
       </TableCell>
     </TableRow>
-    <TableRow key="Bill of Rights">
-      <TableCell
-        key="Document title-Bill of Rights"
-        headers="documentTitle"
-        stackedTitle="Document title"
-      >
-        Bill of Rights
+    <TableRow key="Link">
+      <TableCell key="Link Icon" headers="linkIcon" stackedTitle="Link Icon">
+        <Button variation="ghost" size="medium">
+          <LinkIcon className="ds-u-margin-right--1" />
+          Link
+        </Button>
       </TableCell>
       <TableCell
-        key="Description-The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms."
-        headers="description"
-        stackedTitle="Description"
+        key="Link action description."
+        headers="linkIconDescription"
+        stackedTitle="Link description."
       >
-        The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+        Copies link for current page to clipboard
       </TableCell>
-      <TableCell key="Links-[object Object]" headers="links" stackedTitle="Links">
-        <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">
-          https://billofrightsinstitute.org/founding-documents/bill-of-rights/
-        </a>
+    </TableRow>
+    <TableRow key="Download">
+      <TableCell key="Download Icon" headers="downloadIcon" stackedTitle="Download Icon">
+        <Button variation="ghost" size="medium">
+          <DownloadIcon className="ds-u-margin-right--1" />
+          Download
+        </Button>
       </TableCell>
-      <TableCell key="Year-1791" headers="year" stackedTitle="Year">
-        1791
+      <TableCell
+        key="Download action description."
+        headers="downloadIconDescription"
+        stackedTitle="Download description."
+      >
+        Initiates download
+      </TableCell>
+    </TableRow>
+    <TableRow key="What's New">
+      <TableCell key="What's New Icon" headers="whatsNewIcon" stackedTitle="What's New Icon">
+        <Button variation="ghost" size="medium">
+          <WhatsNewIcon className="ds-u-margin-right--1" />
+          What's New
+        </Button>
+      </TableCell>
+      <TableCell
+        key="What's New action description."
+        headers="whatsNewIconDescription"
+        stackedTitle="What's New description."
+      >
+        Opens sidebar with updates
       </TableCell>
     </TableRow>
   </TableBody>
 </Table>
 
-### When to use
+## When to use
 
-- If you would like to give the user the option to print or email a page.
-- If you would like to give the user the option to enable RSS.
-- These "utility actions" are considered [ghost buttons](/components/button/#ghost-button) for actions available that do not take priority over a primary or secondary calls to action (e.g., print, email, RSS).
+- Content on a webpage or a document is something a user would want to be able to refer back to - provide options to print, email, or download.
+- If you would like to give the user the option to:
+  - Open an XML feed in a different tab
+  - Copy a link to a webpage
+  - Open a popup with new updates or new website capabilities
+
+### Usage
+
+- Utility actions are ghost buttons for available actions that do not take priority over primary or secondary call-to-actions (CTAs).
+- Placement should be in the page header and top, right aligned.
+- Include no more than 3 utility actions on a page to prevent cluttering the user interface (UI) and distracting the user.
+- When pairing 2 or more utility action buttons, the preferred action goes on the left.
+- Be consistent with the inclusion of utility actions and their order across pages and products.
+- Follow any additional governance established by your UX and content lead for which utility actions to include.
 
 ### When to consider alternatives
 
 - If an action (e.g. printing or emailing) is a critical call-to-action on a webpage, consider using a solid or outlined main button.
-- If the utility action is opening a link versus triggering an action, please reference [guidance on links](/foundation/typography/links).
-- Consider carefully which Utility Actions are used on mobile since space is a premium.
+- If the utility action is opening a link in a new webpage versus triggering an action, refer to [guidance on links](/foundation/typography/links).
+- Carefully consider which utility actions are used on mobile (since space is a premium.)
 
-### Usage
+## Accessibility
 
-- This pattern uses a [ghost button](/components/button/#ghost-button) component with a left icon boolean in Figma.
-- Placement should be in page header.
-- Top, right aligned.
-- For typeface please reference [guidance on links](/foundation/typography/links).
-- When pairing two or more buttons the preferred/main action is placed on the left.
-  - Order of actions should be consistent across pages and products.
-
-### Accessibility
-
-- Icons without the text label are an accessibility concern.
-- Every Utility Action should be unique on a page. A single page with multiple "print" actions can cause confusion for screen readers.
+- Always include both the icon and label in utility actions to meet accessibility standards.
+- Don't create CTAs that duplicate utility actions on a page. Having multiple "print" actions on a page can hinder accessibility for screen reader users.
