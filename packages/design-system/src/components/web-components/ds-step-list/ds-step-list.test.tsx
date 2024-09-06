@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { serializedSteps } from './serialized-steps';
 import './ds-step-list';
 
-const defaultStepProps = {
+const defaultStepListAttributes = {
   steps: serializedSteps,
-  'on-step-link-click': jest.fn(),
   'show-sub-sub-steps': false,
   'completed-text': 'Completed!',
   'edit-text': 'Edit!',
@@ -13,8 +13,12 @@ const defaultStepProps = {
 };
 
 describe('StepList', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders list of steps', () => {
-    const props = defaultStepProps;
+    const props = defaultStepListAttributes;
     render(<ds-step-list {...props} />);
 
     const resume = screen.getByText('Resume!');
@@ -40,5 +44,28 @@ describe('StepList', () => {
       .getAllByRole('link', { name: /enter household details/i })
       .find((link) => link.getAttribute('href') === '#step-2');
     expect(householdLink).toBeInTheDocument();
+  });
+
+  it('calls ds-step-link-click when a step link is clicked', () => {
+    const props = defaultStepListAttributes;
+    render(<ds-step-list {...props} />);
+    const stepListComponent = document.querySelector('ds-step-list');
+    const mockClickHandler = jest.fn();
+
+    stepListComponent.addEventListener('ds-step-link-click', mockClickHandler);
+
+    const householdLink = screen
+      .getAllByRole('link', { name: /enter household details/i })
+      .find((link) => link.getAttribute('href') === '#step-2');
+
+    userEvent.click(householdLink);
+
+    expect(mockClickHandler).toHaveBeenCalled();
+
+    expect(mockClickHandler).toHaveBeenCalledWith(
+      expect.objectContaining({
+        detail: { href: '#step-2', stepId: 'household' },
+      })
+    );
   });
 });
