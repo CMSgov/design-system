@@ -58,14 +58,4 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-step-list', () => Wrapper, {
-  attributes,
-  events: [
-    [
-      'onStepLinkClick',
-      (href?: string, stepId?: string) => ({
-        detail: { href, stepId },
-      }),
-    ],
-  ],
-});
+define('ds-step-list', () => Wrapper, { attributes });

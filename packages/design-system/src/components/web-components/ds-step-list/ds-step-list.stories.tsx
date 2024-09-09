@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -16,12 +14,6 @@ const meta: Meta = {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/step-list/).
 
 **Note:** The \`ds-step-list\` is based on the existing functionality of our React component \`StepList\`. Unlike \`StepList\`, which uses an optional \`component\` prop to render custom components for link elements—defaulting to an \`<a>\` tag if not provided—the \`ds-step-list\` does not support the \`component\` attribute. Instead, all link elements in \`ds-step-list\` will default to standard anchor (\`<a>\`) tags to simplify the API and ensure consistent behavior.`,
-      },
-      componentEvents: {
-        'ds-step-link-click': {
-          description:
-            "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's `href` property will be passed as a parameter.",
-        },
       },
     },
   },
@@ -77,21 +69,6 @@ An array of \`StepObjects\` that contain text, state, link URLs, and other info 
 export default meta;
 
 const Template = (args) => {
-  useEffect(() => {
-    const element = document.querySelector('ds-step-list');
-    if (element) {
-      const handleStoryBookClick = (
-        event: CustomEvent<{ updatedValue: string; formattedValue: string }>
-      ) => {
-        action('ds-step-link-click')(event);
-      };
-      element.addEventListener('ds-step-link-click', handleStoryBookClick as EventListener);
-
-      return () => {
-        element.removeEventListener('ds-step-link-click', handleStoryBookClick as EventListener);
-      };
-    }
-  }, []);
   return <ds-step-list {...args} />;
 };
 

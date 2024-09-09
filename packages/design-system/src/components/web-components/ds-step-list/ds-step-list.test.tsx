@@ -61,29 +61,6 @@ describe('StepList', () => {
     expect(householdLink).toBeInTheDocument();
   });
 
-  it('calls ds-step-link-click when a step link is clicked', () => {
-    const props = defaultStepListAttributes;
-    render(<ds-step-list {...props} />);
-    const stepListComponent = document.querySelector('ds-step-list');
-    const mockClickHandler = jest.fn();
-
-    stepListComponent.addEventListener('ds-step-link-click', mockClickHandler);
-
-    const householdLink = screen
-      .getAllByRole('link', { name: /enter household details/i })
-      .find((link) => link.getAttribute('href') === '#step-2');
-
-    userEvent.click(householdLink);
-
-    expect(mockClickHandler).toHaveBeenCalled();
-
-    expect(mockClickHandler).toHaveBeenCalledWith(
-      expect.objectContaining({
-        detail: { href: '#step-2', stepId: 'household' },
-      })
-    );
-  });
-
   it('displays sub-sub-steps when show-sub-sub-steps is true', () => {
     const props = { ...defaultStepListAttributes, 'show-sub-sub-steps': true };
     render(<ds-step-list {...props} />);
