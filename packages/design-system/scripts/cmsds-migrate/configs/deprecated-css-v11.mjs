@@ -1,0 +1,82 @@
+const removals = [
+  '--font-sans',
+  '--font-serif',
+  '--font-weight-light',
+  '--font-weight-semibold',
+  '--typography-body__font-family',
+  '--typography-heading-2xl__font-size--mobile',
+  '--typography-heading-2xl__font-size',
+  '--typography-heading-3xl__font-size--mobile',
+  '--typography-heading-3xl__font-size',
+  '--typography-heading-3xl__font-weight',
+  '--typography-heading-4xl__font-size--mobile',
+  '--typography-heading-4xl__font-size',
+  '--typography-heading-4xl__font-weight',
+  '--typography-heading-5xl__font-size--mobile',
+  '--typography-heading-5xl__font-size--tablet',
+  '--typography-heading-5xl__font-size',
+  '--typography-heading-lg__font-size',
+  '--typography-heading-lg__font-weight',
+  '--typography-heading-md__font-size',
+  '--typography-heading-md__font-weight',
+  '--typography-heading-sm__font-size',
+  '--typography-heading-sm__font-weight',
+  '--typography-heading-xl__font-size',
+  '--typography-heading__font-family',
+  '--typography-heading__font-weight',
+  '--font-sans',
+  '--font-serif',
+  '--shadow-base-blur-radius',
+  '--shadow-base-color',
+  '--shadow-base-offset-x',
+  '--shadow-base-offset-y',
+  '--shadow-base',
+  '--shadow-focus-inverse',
+  '--shadow-focus-link',
+  '--shadow-focus',
+  '--usa-banner-heading__font-family',
+  '--usa-banner-heading__font-size',
+  '--usa-banner-heading__line-height',
+  '--usa-banner-panel__font-family',
+  '--usa-banner-panel__font-size',
+  '--usa-banner-panel__line-height',
+  '--inset__border-width',
+  '--footer__list-marker-size',
+  '--accordion-icon__size',
+  '--hint__font-size',
+  '--datefield-separator__display',
+
+  '--autocomplete[a-z_\\-]*',
+  '--dropdown[a-z_\\-]*',
+
+  'ds-u-font-weight--semibold',
+];
+
+const replacements = [
+  ['--form__max-width', '--field-max-width'],
+  ['--form__max-width--small', '--field-max-width--small'],
+  ['--form__max-width--medium', '--field-max-width--medium'],
+  ['--choice__translateY', '--choice-label__top-offset'],
+  [
+    '--button_font-weight',
+    '$1 /* CMSDS-MIGRATE: This variable has been replaced with `--font-weight-button-sm`, `--font-weight-button-md`, and `--font-weight-button-lg` */',
+  ],
+];
+
+export default {
+  description: 'Flags usage of CSS variables and classes that were deprecated in v11',
+  patterns: ['**/*'],
+  globbyConfig: {
+    ignore: ['**/cmsds-migrate/**/*'],
+  },
+  expressions: [
+    ...removals.map((token) => ({
+      from: RegExp(`(${token})`, 'g'),
+      to: '$1 /* CMSDS-MIGRATE: This was deprecated and removed in CMSDS v11 */',
+    })),
+    ...replacements.map(([from, to]) => ({
+      from: RegExp(`(${from})`, 'g'),
+      to,
+    })),
+  ],
+};

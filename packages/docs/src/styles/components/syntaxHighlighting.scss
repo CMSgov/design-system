@@ -23,9 +23,15 @@ a code {
 }
 
 .ds-c-alert code,
+.ds-c-alert pre,
 kbd {
   // Semi-transparent so it matches the color of the alert better
   background-color: #c4c4c44f;
+}
+
+// Don't want to double-up the background color for multi-line code blocks
+.ds-c-alert pre > code {
+  background: transparent;
 }
 
 kbd {
