@@ -16,7 +16,7 @@ const Link = ({ className, ...props }) => (
   </a>
 );
 
-const stepListStepData = [
+export const stepListStepData = [
   {
     id: 'taxYear',
     heading: 'Choose a tax year',
