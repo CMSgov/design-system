@@ -13,7 +13,7 @@ const meta: Meta = {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/step-list/).
 
-**Note:** The \`ds-step-list\` is based on the existing functionality of our React component \`StepList\`. Unlike \`StepList\`, which uses an optional \`component\` prop to render custom components for link elements—defaulting to an \`<a>\` tag if not provided—the \`ds-step-list\` does not support the \`component\` attribute. Instead, all link elements in \`ds-step-list\` will default to standard anchor (\`<a>\`) tags to simplify the API and ensure consistent behavior.`,
+**Note:** The \`ds-step-list\` is based on the existing functionality of our React component \`StepList\`. Unlike \`StepList\`, which uses an optional \`component\` prop to render custom components for link elements—defaulting to an \`<a>\` tag if not provided—the \`ds-step-list\` does not support the \`component\` attribute. Instead, all link elements in \`ds-step-list\` will default to standard anchor (\`<a>\`) tags to simplify the API and ensure consistent behavior. Additionally, the \`ds-step-list\` does not include the \`onStepLinkClick\` prop from the React version \`StepList\`. The \`onStepLinkClick\` prop in \`StepList\` allows users to provide custom handling when a link is clicked. However, \`ds-step-list\` relies on the standard anchor tag behavior, and therefore does not support this feature. This decision simplifies the component's API and maintains the expected functionality of standard link navigation.`,
       },
     },
   },
