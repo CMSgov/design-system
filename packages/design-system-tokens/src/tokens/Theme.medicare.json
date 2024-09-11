@@ -1158,6 +1158,16 @@
               "codeSyntax": {}
             }
           }
+        },
+        "semibold": {
+          "$value": "{font.weight.600}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
         }
       }
     }
