@@ -322,7 +322,7 @@ async function tokenFromVariable(
       ...(existingToken?.$extensions ?? {}),
       'com.figma': {
         hiddenFromPublishing: variable.hiddenFromPublishing,
-        scopes: variable.scopes,
+        scopes: variable.scopes.sort(),
         codeSyntax: variable.codeSyntax,
       },
     },
