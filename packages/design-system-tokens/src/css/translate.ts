@@ -226,6 +226,14 @@ export function tokenFilesToScssFiles(tokensByFile: FlattenedTokensByFile): Outp
       const scssVars = tokensToSassVars(themeTokens, systemTokens, themeName === 'core');
       const scssFileName = `${themeName}-theme.scss`;
       obj[scssFileName] = scssVars;
+
+      // TODO: We're duplicating these files for backwards compatibility so teams currently
+      // using the Sass variables don't have to change anything, but at some point we'll
+      // want to force a change. This may coincide with the removal of Sass entirely.
+      const deprecatedVars = `// Use of this file is deprecated. Please use "${scssFileName}" instead.\n${scssVars}`;
+      obj[`${themeName}-tokens.scss`] = deprecatedVars;
+      obj[`${themeName}-component-tokens.scss`] = deprecatedVars;
+
       return obj;
     }, {} as Record<string, string>);
 }
