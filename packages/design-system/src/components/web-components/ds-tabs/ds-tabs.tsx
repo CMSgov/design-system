@@ -1,6 +1,8 @@
 import { define } from '../preactement/define';
-import { Tabs } from '../../Tabs';
+import { Tabs, TabPanel } from '../../Tabs';
 import { TabsProps } from '../../Tabs/Tabs';
+import { findElementsOfType } from '../../utilities/findElementsOfType';
+import React, { cloneElement, createElement } from 'react';
 
 /*
 In the Tabs pattern:
@@ -14,34 +16,55 @@ allowing you to manage tabbed content by simply nesting TabPanel components insi
 */
 
 
-
-const attributes = [
-    'children', 
-    'default-selected-id',
-    'selected-id',
-    'tablist-class-name'
-];
-  
+const attributes = ['selected-id', 'default-selected-id', 'tablist-class-name'];
 
 interface WrapperProps extends Omit<TabsProps, 'children'> {
-    children: TabsProps['children'] | undefined;
+  selectedId?: string;
+  defaultSelectedId?: string;
+  tablistClassName?: string;
+  children: TabsProps['children'] | undefined;
 }
 
-const Wrapper = ({
-    children,
-    defaultSelectedId,
-    selectedId,
-    tablistClassName
-  }: WrapperProps) => {
-    return (
-      <Tabs
-        children={children}
-        defaultSelectedId={defaultSelectedId}
-        selectedId={selectedId}
-        tablistClassName={tablistClassName}
-      />
-    );
-  };
+const Wrapper = ({ children, ...otherProps }: WrapperProps) => {
+  // function parseChildren(node) {
+  //   const elements = findElementsOfType(['ds-tab-panel'], node);
+
+  //   return Array.from(elements).map((element) => {
+  //     const { children, ...attrs } = element.props;
+  //     if (element?.props?.children) {
+
+  //     }
+  //     return { ...attrs, children };
+  //   });
+  // }
+  function parseChildren(node) {
+    const elements = findElementsOfType(['ds-tab-panel'], node);
+
+    return Array.from(elements).map((element) => {
+      const { children, ...attrs } = element.props || {};
+
+      const parsedChildren = Array.isArray(children)
+        ? children.map((child) => {
+            if (typeof child === 'string') {
+           
+              return child;
+            }
+     
+            return parseChildren(child);
+          })
+        : children;
+
+    
+      return createElement(TabPanel, { ...attrs }, parsedChildren);
+    });
+  }
+
+  return (
+    <Tabs {...otherProps} children={parseChildren(children)}>
+    </Tabs>
+  );
+};
+
 
   /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
