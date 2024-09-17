@@ -36,9 +36,7 @@ function isTextField(child?: ReactNode): child is ReactElement {
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
   const componentName = (child.type as any)?.displayName || (child.type as any)?.name;
-  return (
-    child.type === TextField || componentName === 'TextField' || child.type === 'ds-text-field'
-  );
+  return child.type === TextField || componentName === 'TextField';
 }
 
 export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
