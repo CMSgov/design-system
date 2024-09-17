@@ -39,7 +39,19 @@ describe('tokenFilesToCssFiles', () => {
 
 describe('tokenFilesToScssFiles', () => {
   it('matches snapshot', () => {
-    expect(tokenFilesToScssFiles(tokensByFile)).toMatchSnapshot();
+    const files = tokenFilesToScssFiles(tokensByFile);
+
+    // Acknowledge but don't snapshot the duplicated files
+    expect(files['core-component-tokens.scss']).toBeTruthy();
+    expect(files['core-tokens.scss']).toBeTruthy();
+    expect(files['cmsgov-component-tokens.scss']).toBeTruthy();
+    expect(files['cmsgov-tokens.scss']).toBeTruthy();
+    delete files['core-component-tokens.scss'];
+    delete files['core-tokens.scss'];
+    delete files['cmsgov-component-tokens.scss'];
+    delete files['cmsgov-tokens.scss'];
+
+    expect(files).toMatchSnapshot();
   });
 });
 
