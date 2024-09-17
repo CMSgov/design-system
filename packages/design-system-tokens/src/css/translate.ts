@@ -150,6 +150,66 @@ export function tokensToCssProperties(
 }
 
 /**
+ * Unlike CSS Custom Properties, Sass variables can't be used before they're defined. In
+ * order to avoid compilation errors in Sass, we need to enforce an order of declaration
+ * and then use, which may not be the natural order we get from the tokens.
+ */
+export function enforceSassVariableOrder(originalDeclarations: string[]): string[] {
+  // Matches the variable being declared (first group) and any variables being referenced (second group)
+  const declarationRegex = /(\$[\w\-_]+):\s*(\$[\w\-_]+)?.*;/;
+  const getVarNames = (line: string) => line.match(declarationRegex)?.slice(1) || [];
+
+  const declaredVars = new Set<string>();
+  const declarations = originalDeclarations.slice();
+
+  let i = 0;
+  while (i < declarations.length) {
+    const line = declarations[i];
+    const [declaredVar, referencedVar] = getVarNames(line);
+
+    // If this line doesn't declare anything, move on
+    if (!declaredVar) {
+      i++;
+      continue;
+    }
+
+    // See if we the variable being referenced hasn't been declared yet
+    if (referencedVar && !declaredVars.has(referencedVar)) {
+      // Extract this declaration and move it to be after it gets defined. Note
+      // that we don't want to increment the index, because we've extracted the
+      // current line from the array, so the next line that we want to look at
+      // will be at the same index.
+
+      // Delete it from the current position
+      declarations.splice(i, 1);
+
+      // Look for a place to insert it
+      let declarationPosition;
+      for (let j = i; j < declarations.length; j++) {
+        const [laterDeclaration] = getVarNames(declarations[j]);
+        if (laterDeclaration === referencedVar) {
+          declarationPosition = j;
+          break;
+        }
+      }
+
+      // Insert it if we can
+      if (declarationPosition) {
+        declarations.splice(declarationPosition + 1, 0, line);
+      } else {
+        throw new Error(`Declaration for ${referencedVar} not found`);
+      }
+    } else {
+      // This declaration is solid, so leave it in place and move on
+      declaredVars.add(declaredVar);
+      i++;
+    }
+  }
+
+  return declarations;
+}
+
+/**
  * Generates all the Sass variable definitions for a specific theme based on that theme's
  * tokens and the system tokens. This can later be dropped into a SCSS file and saved.
  */
@@ -182,7 +242,7 @@ export function tokensToSassVars(
       return `$${varName}: ${varValue}${defaultFlag};`;
     });
 
-  return vars.join('\n');
+  return enforceSassVariableOrder(vars).join('\n');
 }
 
 /**
