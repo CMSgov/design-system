@@ -17,27 +17,12 @@ interface WrapperProps extends Omit<TabsProps, 'children'> {
 const Wrapper = ({ children = [], ...otherProps }: WrapperProps) => {
   function parseChildren(node) {
     const elements = findElementsOfType(['ds-tab-panel'], node);
-    const parsedElements = [];
-  
-    for (let i = 0; i < elements.length; i++) {
-      const element = elements[i];
-      const { children, ...attrs } = element.props || {};
- 
-      let parsedChildren = [];
-  
-      if (Array.isArray(children)) {
-        for (let j = 0; j < children.length; j++) {
-          parsedChildren.push(children[j]);
-        }
-      } else {
-        parsedChildren = children;
-      }
 
-      const tabPanelElement = createElement(TabPanel, { ...attrs }, parsedChildren);
-      parsedElements.push(tabPanelElement);
-    }
+    return elements.map(element => {
+      const { children, ...attrs } = element.props || {};
+      return createElement(TabPanel, { ...attrs }, children)
+    });
   
-    return parsedElements;
   }
  
   return (
