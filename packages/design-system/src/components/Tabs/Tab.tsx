@@ -53,7 +53,6 @@ export const Tab = forwardRef((props: TabProps, ref: any) => {
     id: props.id,
     ref: ref,
   };
-  console.log('Inside Tab', props.children);
 
   const handleClick = (evt: React.MouseEvent): void => {
     const { onClick, panelId, id } = props;
