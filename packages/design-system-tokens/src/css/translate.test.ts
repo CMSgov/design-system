@@ -1,6 +1,7 @@
 import path from 'path';
 import { readTokenFiles } from '../lib/readTokenFiles';
 import {
+  enforceSassVariableOrder,
   tokenFilesToCssFiles,
   tokenFilesToScssFiles,
   tokenFilesToScssLayoutFiles,
@@ -38,6 +39,28 @@ describe('tokenFilesToCssFiles', () => {
 });
 
 describe('tokenFilesToScssFiles', () => {
+  it('enforceSassVariableOrder makes sure no variables are used before declared', () => {
+    const vars = [
+      '$color-info: #3e94cf;',
+      '$font-weight-button-lg: $font-weight-bold;',
+      '$font-weight-button-md: $font-weight-bold;',
+      '$font-weight-button-sm: $font-weight-normal;',
+      '$font-weight-normal: 400;',
+      '$font-weight-bold: 700;',
+      '$alert__border-left-color: $color-info;',
+    ];
+
+    expect(enforceSassVariableOrder(vars)).toEqual([
+      '$color-info: #3e94cf;',
+      '$font-weight-normal: 400;',
+      '$font-weight-button-sm: $font-weight-normal;',
+      '$font-weight-bold: 700;',
+      '$font-weight-button-md: $font-weight-bold;',
+      '$font-weight-button-lg: $font-weight-bold;',
+      '$alert__border-left-color: $color-info;',
+    ]);
+  });
+
   it('matches snapshot', () => {
     const files = tokenFilesToScssFiles(tokensByFile);
 
