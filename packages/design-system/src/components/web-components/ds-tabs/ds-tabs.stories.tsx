@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import { action } from '@storybook/addon-actions';
-import { Tabs, TabPanel } from '../../Tabs';
 import type { Meta } from '@storybook/react';
+import { useEffect } from 'react';
+import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-tabs';
-import './ds-tab-panel'
+import './ds-tab-panel';
 
 const meta: Meta = {
   title: 'Web Components/ds-tabs',
@@ -13,19 +12,28 @@ const meta: Meta = {
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
+      description: {
+        component:
+          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).',
+      },
+      componentEvents: {
+        'ds-change': {
+          description: "A callback function that's invoked when the selected tab is changed.",
+        },
+      },
     },
   },
-  args: {
-    // 'selected-id': 'tab1',
-    // 'tablist-class-name': 'ds-u-padding--2 ds-u-fill--gray-lightest',
-  },
   argTypes: {
+    children: {
+      description: 'Limited to `ds-tab-panel` components.',
+    },
     'selected-id': {
-      description: 'Sets the id of the currently selected TabPanel.',
+      description:
+        'Sets the initial selected state to the specified `ds-tab-panel` id. Use this in combination with `onChange` for a controlled component; otherwise, set `defaultSelectedId`',
       control: 'text',
     },
     'default-selected-id': {
-      description: 'Sets the id of the TabPanel that is initially selected.',
+      description: 'Sets the id of the `ds-tab-panel` that is initially selected.',
       control: 'text',
     },
     'tablist-class-name': {
@@ -38,32 +46,30 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
-  // useEffect(() => {
-  //   const element = document.querySelector('ds-tabs');
-   
-  //   if (element) {
-  //     const handleStoryBookChange = (event: CustomEvent<{ selectedId: string }>) => {
-  //       console.log('event from inside storybook', event)
-  //       action('ds-change')(event);
-  //     };
-  //     element.addEventListener('ds-change', handleStoryBookChange as EventListener);
-  //     return () => {
-  //       element.removeEventListener('ds-change', handleStoryBookChange as EventListener);
-  //     };
-  //   }
-  // }, []);
+  useEffect(() => {
+    const element = document.querySelector('ds-tabs');
+    const handleStorybookChange = (event) => {
+      const { selectedId, prevSelectedId } = event.detail;
+      action('ds-cshange')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
+    };
 
-
+    element.addEventListener('ds-change', handleStorybookChange);
+    return () => {
+      element.removeEventListener('ds-change', handleStorybookChange);
+    };
+  }, []);
   return (
     <ds-tabs {...args}>
       <ds-tab-panel key="summary" id="summary" tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </ds-tab-panel>
       <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
-        <p>We the People of the United States, in Order to form a more perfect Union, establish Justice,
-        insure domestic Tranquility, provide for the common defence, promote the general Welfare, and
-        secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this
-        Constitution for the United States of America.</p> 
+        <p>
+          We the People of the United States, in Order to form a more perfect Union, establish
+          Justice, insure domestic Tranquility, provide for the common defence, promote the general
+          Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+          establish this Constitution for the United States of America.
+        </p>
       </ds-tab-panel>
       <ds-tab-panel key="amendments" id="amendments" tab="Amendments">
         <h2 className="ds-text-heading--lg">Bill of Rights</h2>
@@ -107,22 +113,46 @@ const Template = (args) => {
   );
 };
 
+const DisabledTemplate = (args) => {
+  useEffect(() => {
+    const element = document.querySelector('ds-tabs');
+
+    const handleStorybookChange = (event) => {
+      const { selectedId, prevSelectedId } = event.detail;
+      action('ds-cshange')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
+    };
+
+    element.addEventListener('ds-change', handleStorybookChange);
+    return () => {
+      element.removeEventListener('ds-change', handleStorybookChange);
+    };
+  }, []);
+  return (
+    <ds-tabs {...args}>
+      <ds-tab-panel key="summary" id="summary" tab="Summary">
+        The Bill of Rights is the first ten amendments to the United States Constitution.
+      </ds-tab-panel>
+      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
+        <p>
+          We the People of the United States, in Order to form a more perfect Union, establish
+          Justice, insure domestic Tranquility, provide for the common defence, promote the general
+          Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+          establish this Constitution for the United States of America.
+        </p>
+      </ds-tab-panel>
+      <ds-tab-panel id="disabled" tab="Disabled" disabled="true">
+        You shouldn’t see this
+      </ds-tab-panel>
+    </ds-tabs>
+  );
+};
+
 export const Default = Template.bind({});
 Default.args = {
-  // 'selected-id': 'tab1',
   'default-selected-id': 'summary',
 };
 
-export const WithCustomClasses = Template.bind({});
-WithCustomClasses.args = {
-  // 'selected-id': 'tab2',
+export const Disabled = DisabledTemplate.bind({});
+Disabled.args = {
   'default-selected-id': 'summary',
-  'tablist-class-name': 'ds-u-padding--4 ds-u-fill--primary-lightest',
 };
-
-export const WithDifferentStartingTab = Template.bind({});
-WithDifferentStartingTab.args = {
-  // 'selected-id': 'tab3',
-  'default-selected-id': 'preamble',
-};
-
