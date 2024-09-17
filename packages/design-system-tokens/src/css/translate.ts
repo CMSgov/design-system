@@ -157,7 +157,7 @@ export function tokensToCssProperties(
 export function enforceSassVariableOrder(originalDeclarations: string[]): string[] {
   // Matches the variable being declared (first group) and any variables being referenced (second group)
   const declarationRegex = /(\$[\w\-_]+):\s*(\$[\w\-_]+)?.*;/;
-  const getVarNames = (line) => line.match(declarationRegex)?.slice(1) || [];
+  const getVarNames = (line: string) => line.match(declarationRegex)?.slice(1) || [];
 
   const declaredVars = new Set<string>();
   const declarations = originalDeclarations.slice();
