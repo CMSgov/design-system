@@ -2944,7 +2944,6 @@
       "lexend": {
         "$value": [
           "Lexend",
-          "Open Sans",
           "Inter",
           "Roboto",
           "Helvetica Neue",
@@ -2985,7 +2984,6 @@
       "public-sans": {
         "$value": [
           "Public Sans",
-          "Open Sans",
           "Inter",
           "Roboto",
           "Helvetica Neue",
