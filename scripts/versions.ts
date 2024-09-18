@@ -34,6 +34,7 @@ export function getPackageVersions(): Record<string, string> {
 // We only care about the first digit in the version string (the major version)
 const getMajorVersion = parseInt;
 const isBetaVersion = (version: string) => version.includes('beta');
+const getBetaVersion = (version: string) => version.split('-beta.')[1];
 
 export function updateVersions() {
   const versions = readJson(versionsFileName);
@@ -53,8 +54,9 @@ export function updateVersions() {
       const isBetaForReleasedVersion =
         getMajorVersion(version) === getMajorVersion(currentVersion) &&
         !isBetaVersion(currentVersion);
+      const isPreviousBetaVersion = getBetaVersion(version) < getBetaVersion(currentVersion);
 
-      return isOld || isBetaForReleasedVersion;
+      return isOld || isBetaForReleasedVersion || isPreviousBetaVersion;
     };
     versions[packageName] = versions[packageName].filter((version: string) => !isOldBeta(version));
   }
