@@ -39,6 +39,7 @@ export interface TabPanelProps {
 
 export const TabPanel = (props: TabPanelProps) => {
   const classes = classnames('ds-c-tabs__panel', props.className);
+
   return (
     <div
       aria-labelledby={props.tabId}
