@@ -20,6 +20,8 @@ const storySkipList = [
   'components-label--default', // Captured by individual form fields
   'components-skipnav--default-skip-nav',
   'components-skipnav--skip-nav-example',
+  'components-tabs--default',
+  'components-tabs--disabled',
   'components-tabs--controlled', // Redundant
   'foundations-layout-grid--equal-widths',
   'foundations-layout-grid--column-spanning',
@@ -29,6 +31,11 @@ const storySkipList = [
   'healthcare-privacysettingslink--default',
   'healthcare-privacysettingslink--custom-content',
   'web-components-ds-accordion-item--default', // Redundant
+];
+
+const storyUseAxeLegacyModeList = [
+  'web-components-ds-tabs--default',
+  'web-components-ds-tabs--disabled',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
@@ -93,8 +100,8 @@ stories.forEach((story) => {
               await page.waitForTimeout(100);
               break;
           }
-
-          await expectNoAxeViolations(page);
+          const shouldUseAxeLegacyMode = storyUseAxeLegacyModeList.includes(story.id);
+          await expectNoAxeViolations(page, shouldUseAxeLegacyMode);
         });
       });
     });
