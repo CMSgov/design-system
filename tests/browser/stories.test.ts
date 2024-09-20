@@ -20,8 +20,6 @@ const storySkipList = [
   'components-label--default', // Captured by individual form fields
   'components-skipnav--default-skip-nav',
   'components-skipnav--skip-nav-example',
-  'components-tabs--default',
-  'components-tabs--disabled',
   'components-tabs--controlled', // Redundant
   'foundations-layout-grid--equal-widths',
   'foundations-layout-grid--column-spanning',

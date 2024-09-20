@@ -56,6 +56,5 @@ export default async function expectNoAxeViolations(page: Page, shouldUseAxeLega
     .analyze();
   // Disable Jest linting rule because it isn't Jest!
   // eslint-disable-next-line jest/valid-expect
-  console.log('Violations', results?.violations);
   expect(results?.violations.length, createErrorMessage(results.violations)).toBe(0);
 }
