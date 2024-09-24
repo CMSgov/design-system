@@ -2991,28 +2991,6 @@
             "codeSyntax": {}
           }
         }
-      },
-      "public-sans": {
-        "$value": ["Public Sans"],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "lexend": {
-        "$value": ["Lexend"],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
       }
     },
     "weight": {
