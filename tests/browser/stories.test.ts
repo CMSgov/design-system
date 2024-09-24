@@ -31,6 +31,11 @@ const storySkipList = [
   'web-components-ds-accordion-item--default', // Redundant
 ];
 
+const storyUseAxeLegacyModeList = [
+  'web-components-ds-tabs--default',
+  'web-components-ds-tabs--disabled',
+];
+
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
@@ -93,8 +98,8 @@ stories.forEach((story) => {
               await page.waitForTimeout(100);
               break;
           }
-
-          await expectNoAxeViolations(page);
+          const shouldUseAxeLegacyMode = storyUseAxeLegacyModeList.includes(story.id);
+          await expectNoAxeViolations(page, shouldUseAxeLegacyMode);
         });
       });
     });
