@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ds-tooltip displays the icon 1`] = `
+<DocumentFragment>
+  <ds-tooltip
+    id="static-id"
+    includeicon="true"
+    title="I'm a title!"
+  >
+    <div
+      class="ds-c-tooltip__container"
+    >
+      <button
+        aria-describedby="tooltip-trigger--2"
+        class="ds-c-tooltip__trigger"
+        parent="[object HTMLElement]"
+        type="button"
+      />
+      <div
+        aria-hidden="true"
+        class="ds-c-tooltip"
+        id="tooltip-trigger--2"
+        role="tooltip"
+        style="max-width: 300px; z-index: 9999;"
+      >
+        <span
+          class="ds-c-tooltip__arrow"
+          data-popper-arrow="true"
+        />
+        <div
+          class="ds-c-tooltip__content"
+        />
+        <span
+          class="ds-c-tooltip__interactive-border"
+          style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
+        />
+      </div>
+    </div>
+    <template />
+  </ds-tooltip>
+</DocumentFragment>
+`;
+
+exports[`ds-tooltip renders a tooltip 1`] = `
+<DocumentFragment>
+  <ds-tooltip
+    id="static-id"
+    title="I'm a title!"
+  >
+    <div
+      class="ds-c-tooltip__container"
+    >
+      <button
+        aria-describedby="tooltip-trigger--1"
+        class="ds-c-tooltip__trigger"
+        parent="[object HTMLElement]"
+        type="button"
+      >
+        I'm a tooltip!
+      </button>
+      <div
+        aria-hidden="true"
+        class="ds-c-tooltip"
+        id="tooltip-trigger--1"
+        role="tooltip"
+        style="max-width: 300px; z-index: 9999;"
+      >
+        <span
+          class="ds-c-tooltip__arrow"
+          data-popper-arrow="true"
+        />
+        <div
+          class="ds-c-tooltip__content"
+        />
+        <span
+          class="ds-c-tooltip__interactive-border"
+          style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
+        />
+      </div>
+    </div>
+    <template />
+  </ds-tooltip>
+</DocumentFragment>
+`;
