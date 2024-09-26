@@ -9,9 +9,7 @@ const attributes = [
   'class-name',
   'close-button-label',
   'component',
-  'content-heading',
   'dialog',
-  'id',
   'interactive-border',
   'inversed',
   'max-width',
@@ -41,8 +39,9 @@ declare global {
 interface WrapperProps
   extends Omit<
     TooltipProps,
-    'dialog' | 'inversed' | 'showCloseButton' | 'offset' | 'placement' | 'title'
+    'contentHeading' | 'dialog' | 'inversed' | 'showCloseButton' | 'offset' | 'placement' | 'title'
   > {
+  contentHeading?: string | TooltipProps['contentHeading'];
   dialog?: string;
   inversed?: string;
   showCloseButton?: string;
@@ -50,8 +49,18 @@ interface WrapperProps
   rootId?: string;
   includeIcon?: string;
   offset?: string;
-  title: string;
+  title: string | TooltipProps['title'];
 }
+
+const parseOffset = (offset: string): TooltipProps['offset'] => {
+  if (typeof offset === 'string') {
+    const vals = offset.split(' ');
+    const [xOffset, yOffset] = vals;
+    return [parseInt(xOffset), parseInt(yOffset)];
+  }
+  // Else return the default offset value
+  return Tooltip.defaultProps.offset as TooltipProps['offset'];
+};
 
 const isPlacementValue = (location: string): location is Placement => {
   return [
@@ -73,18 +82,30 @@ const isPlacementValue = (location: string): location is Placement => {
   ].includes(location);
 };
 
-const Wrapper = ({ dialog, inversed, rootId, title, ...otherProps }: WrapperProps) => (
+const Wrapper = ({
+  contentHeading,
+  dialog,
+  inversed,
+  offset,
+  rootId,
+  title,
+  ...otherProps
+}: WrapperProps) => (
   <Tooltip
     {...otherProps}
-    title={title}
+    contentHeading={contentHeading}
     dialog={parseBooleanAttr(dialog)}
     inversed={parseBooleanAttr(inversed)}
     showCloseButton={parseBooleanAttr(otherProps.showCloseButton)}
     id={rootId}
-    placement={isPlacementValue(otherProps.placement) ? otherProps.placement : null}
-  >
-    {otherProps.children}
-  </Tooltip>
+    title={title}
+    offset={parseOffset(offset)}
+    placement={
+      isPlacementValue(otherProps.placement)
+        ? otherProps.placement
+        : (Tooltip.defaultProps.placement as Placement)
+    }
+  ></Tooltip>
 );
 
-define('ds-tooltip', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });
+define('ds-tooltip', () => Wrapper, { attributes, events: ['onClose', 'onOpen'] });
