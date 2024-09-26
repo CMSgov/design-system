@@ -58,7 +58,7 @@ interface CustomElement<CF = any, C = any> extends HTMLElement {
   __events?: IProps;
   __options: IOptions;
   __mutationObserver?: MutationObserver;
-  __signals: Record<string, Signal>;
+  __propsSignal: Signal;
 
   renderPreactComponent(): void;
 }

@@ -91,7 +91,7 @@ function createCustomElement<T>(
     __properties = {};
     __options = options;
     __mutationObserver;
-    __signals;
+    __propsSignal;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -280,10 +280,10 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
     props = { ...props, ...parseJson.call(this, updated) };
   } else {
     props[getPropKey(name)] = updated;
-    this.__signals[getPropKey(name)].value = updated;
   }
 
   this.__properties = props;
+  this.__propsSignal.value = props;
 
   // this.renderPreactComponent();
 }
@@ -366,24 +366,18 @@ function renderPreactComponent(this: CustomElement) {
 
   const children = unwrapTemplateVNode(vnode);
 
-  const attrSignals: Record<string, Signal> = Object.fromEntries(
-    this.__options.attributes.map((name) => [name, signal(this.__properties[name])])
-  );
-  this.__signals = attrSignals;
+  const otherProps = {
+    parent: this,
+    children,
+    ...slots,
+  };
+
+  const component = this.__component;
+  const propsSignal = signal(this.__properties);
+  this.__propsSignal = propsSignal;
 
   function StateWrapper() {
-    const props = {
-      ...this.__properties,
-      parent: this,
-      children,
-      ...slots,
-    };
-
-    for (const [name, signal] of Object.entries(attrSignals)) {
-      props[name] = signal.value;
-    }
-
-    return h(this.__component, props);
+    return h(component, { ...propsSignal.value, ...otherProps });
   }
 
   // TODO: Clearing everything before the Preact component render only appears to be
