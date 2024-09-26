@@ -1,11 +1,21 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-tooltip';
+import './ds-tooltip-icon';
 
 jest.mock('@popperjs/core');
 
 function renderTooltip(props = {}) {
   return render(<ds-tooltip {...props}>I&apos;m a tooltip!</ds-tooltip>);
+}
+
+function renderTooltipWithIcon(props = {}) {
+  return render(
+    <ds-tooltip {...props}>
+      I&apos;m a tooltip!
+      <ds-tooltip-icon />
+    </ds-tooltip>
+  );
 }
 
 describe('ds-tooltip', function () {
@@ -15,10 +25,9 @@ describe('ds-tooltip', function () {
   });
 
   it('displays the icon', () => {
-    const { container } = renderTooltip({
+    const { container } = renderTooltipWithIcon({
       title: "I'm a title!",
       id: 'static-id',
-      includeIcon: 'true',
     });
     const tooltipIcon = container.querySelector('.ds-c-tooltip-icon');
     expect(tooltipIcon).toBeInTheDocument();
