@@ -222,7 +222,7 @@
         }
       },
       "focus-dark": {
-        "$value": "{color.orchid.500}",
+        "$value": "{color.copper.500}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
