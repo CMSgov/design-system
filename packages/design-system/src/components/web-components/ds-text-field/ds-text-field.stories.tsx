@@ -1,6 +1,6 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from '@storybook/addon-actions';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { webComponentDecorator } from '../storybook';
 import './ds-text-field';
 
@@ -101,9 +101,11 @@ export default {
 };
 
 const Template = (args) => {
+  const [value, setValue] = useState('');
   useEffect(() => {
     const onChange = (event) => {
       action('ds-change')(event);
+      setValue(event.detail.target.value);
     };
     const onBlur = (event) => {
       action('ds-blur')(event);
@@ -117,7 +119,7 @@ const Template = (args) => {
     };
   });
 
-  return <ds-text-field {...args} />;
+  return <ds-text-field {...args} value={value} />;
 };
 
 export const Default = Template.bind({});
