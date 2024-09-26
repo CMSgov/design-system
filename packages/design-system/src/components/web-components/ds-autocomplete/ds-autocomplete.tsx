@@ -6,7 +6,6 @@ import { formAttrs } from '../shared-attributes/form';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
 import { UseInlineErrorProps } from '../../InlineError/useInlineError';
-import { useState } from 'react';
 
 const attributes = [
   'aria-clear-label',
@@ -63,12 +62,6 @@ const Wrapper = ({
   rootId,
   ...otherProps
 }: WrapperProps) => {
-  // const [input, setInput] = useState(value);
-  // const onInputValueChange = (inputValue: string) => {
-  //   setInput(inputValue);
-  //   otherProps.onInputValueChange?.(inputValue);
-  // };
-
   return (
     <Autocomplete
       {...otherProps}
@@ -79,7 +72,6 @@ const Wrapper = ({
       id={rootId}
       items={JSON.parse(items)}
       loading={parseBooleanAttr(loading)}
-      // onInputValueChange={onInputValueChange}
     >
       <TextField label={label} hint={hint} name="autocomplete" value={value} />
     </Autocomplete>
