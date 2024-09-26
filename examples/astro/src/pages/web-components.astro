@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="ds-text-heading--4xl ds-u-margin-top--2">
       Web-component examples
     </h1>
-  
+<!--   
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>
         This is an example showing how to use our library of interactive web components.
@@ -123,43 +123,92 @@ import Layout from '../layouts/Layout.astro';
 
       <hr class="ds-u-margin-y--4">
 
-      <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
+      <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination> -->
+
+      <ds-text-field value="" id="the-text-field"></ds-text-field>
+
+      <h2 class="ds-text-heading--2xl">Autocomplete example</h2>
+      <ds-autocomplete
+        id="the-autocomplete"
+        items='[{"id":"71","name":"Acetaminophen"},{"id":"72","name":"Advil"},{"id":"73","name":"Benadryl"},{"id":"74","name":"Claritin"},{"id":"75","name":"Detrol"},{"id":"76","name":"Excedrin"}]'
+        label="Enter and select a drug to see its cost under each plan."
+        hint="Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
+        clear-search-button="true"
+        class-name="ds-u-padding-bottom--7"
+      >
+      </ds-autocomplete>
     </div>
   </main>
 </Layout>
 
 <script>
-  document.getElementById('the-button').addEventListener('click', function () {
-    const alert = document.getElementById('alert');
-    alert.setAttribute('variation', 'error');
-    alert.innerHTML = "I can't believe you pressed the button.";
+  document.getElementById('the-text-field')?.addEventListener('ds-change', (e: any) => {
+    const newValue = e.detail.target.value;
+    document.getElementById('the-text-field')?.setAttribute('value', newValue);
+  })
+
+
+
+  let items: { id: string; name: string }[] | null = null, filteredItems = null;
+  window.addEventListener("load", () => {
+    const initialItems = document?.getElementById('the-autocomplete')?.getAttribute('items');
+    if (typeof initialItems === 'string') {
+      items = JSON.parse(initialItems)
+    }
+  })
+  document.getElementById('the-autocomplete').addEventListener('ds-input-value-change', function (e: CustomEvent<{ value: string }>) {
+    console.log(items);
+    const input = e?.detail?.value ?? '';
+    const currentItems = document?.getElementById('the-autocomplete')?.getAttribute('items')
+    const parsedItems = typeof currentItems === 'string' ? JSON.parse(currentItems) as { id: string; name: string }[] : undefined;
+    
+    if (input.length > 0 && parsedItems) {
+      filteredItems = parsedItems.filter(
+        (item) =>
+          !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+      );
+      console.log(filteredItems)
+      document.getElementById('the-autocomplete')?.setAttribute('items', JSON.stringify(filteredItems));
+    }
+    // console.log(filteredItems)
+    // document.getElementById('the-autocomplete')?.setAttribute('items', '[{"id":"1","name":"One"},{"id":"2","name":"Two"},{"id":"3","name":"Three"},{"id":"4","name":"Four"},{"id":"5","name":"Five"}]');
   });
 
-  document.getElementById('operation').addEventListener('ds-change', function (e) {
-    const sign = e.detail.target.value === 'addition' ? '+' : '-';
-    document.getElementById('sign').innerHTML = sign;
+  document.getElementById('the-autocomplete').addEventListener('ds-change', function (e: CustomEvent<{ selectedItem: {id: string, name: string} }>) {
+    console.log(e.detail.selectedItem)
   });
 
-  document.getElementById('calculator').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const { a, b, operation, result } = e.currentTarget;
-    const intA = parseInt(a.value);
-    const intB = parseInt(b.value);
-    console.log(operation.value);
-    result.value = operation.value === 'addition' ? intA + intB : intA - intB;
-  });
+  // document.getElementById('the-button').addEventListener('click', function () {
+  //   const alert = document.getElementById('alert');
+  //   alert.setAttribute('variation', 'error');
+  //   alert.innerHTML = "I can't believe you pressed the button.";
+  // });
 
-  function updatePaginationFromHash() {
-    const pageMatch = window.location.hash.match(/page=(\d+)/);
-    const page = pageMatch ? pageMatch[1] : '1';
-    document.getElementById('pagination')?.setAttribute('current-page', page);
-  }
-  window.addEventListener('hashchange', updatePaginationFromHash);
-  updatePaginationFromHash();
+  // document.getElementById('operation').addEventListener('ds-change', function (e) {
+  //   const sign = e.detail.target.value === 'addition' ? '+' : '-';
+  //   document.getElementById('sign').innerHTML = sign;
+  // });
+
+  // document.getElementById('calculator').addEventListener('submit', function (e) {
+  //   e.preventDefault();
+  //   const { a, b, operation, result } = e.currentTarget;
+  //   const intA = parseInt(a.value);
+  //   const intB = parseInt(b.value);
+  //   console.log(operation.value);
+  //   result.value = operation.value === 'addition' ? intA + intB : intA - intB;
+  // });
+
+  // function updatePaginationFromHash() {
+  //   const pageMatch = window.location.hash.match(/page=(\d+)/);
+  //   const page = pageMatch ? pageMatch[1] : '1';
+  //   document.getElementById('pagination')?.setAttribute('current-page', page);
+  // }
+  // window.addEventListener('hashchange', updatePaginationFromHash);
+  // updatePaginationFromHash();
 </script>
 
-<!-- <script src="@cmsgov/design-system/web-components"></script> -->
-<script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
+<script src="@cmsgov/design-system/web-components"></script>
+<!-- <script src="@cmsgov/design-system/dist/web-components/bundle/base.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-accordion.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-alert.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-button.js"></script>
@@ -168,4 +217,4 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-month-picker.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-pagination.js"></script>
 <script src="@cmsgov/design-system/dist/web-components/bundle/ds-spinner.js"></script>
-<script src="@cmsgov/design-system/dist/web-components/bundle/ds-usa-banner.js"></script>
+<script src="@cmsgov/design-system/dist/web-components/bundle/ds-usa-banner.js"></script> -->

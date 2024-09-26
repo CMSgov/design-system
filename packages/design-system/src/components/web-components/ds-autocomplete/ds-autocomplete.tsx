@@ -6,12 +6,13 @@ import { formAttrs } from '../shared-attributes/form';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
 import { UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { useState } from 'react';
 
 const attributes = [
-  // Using the lowercase HTML attribute name rather than `auto-focus` so it's
-  // more natural. There's no reason for us to worry about name collisions.
   'aria-clear-label',
   'aria-complete-label',
+  // Using the lowercase HTML attribute name rather than `auto-focus` so it's
+  // more natural. There's no reason for us to worry about name collisions.
   'autofocus',
   'class-name',
   'clear-input-text',
@@ -44,6 +45,8 @@ interface WrapperProps
   value: string;
   items?: string;
   loading?: string;
+  menuHeading?: string;
+  menuHeadingId?: string;
   rootId: string;
 }
 
@@ -55,17 +58,28 @@ const Wrapper = ({
   items,
   label,
   loading,
+  menuHeading,
+  menuHeadingId,
   rootId,
   ...otherProps
 }: WrapperProps) => {
+  // const [input, setInput] = useState(value);
+  // const onInputValueChange = (inputValue: string) => {
+  //   setInput(inputValue);
+  //   otherProps.onInputValueChange?.(inputValue);
+  // };
+
   return (
     <Autocomplete
       {...otherProps}
+      label={menuHeading}
+      labelId={menuHeadingId}
       autoFocus={parseBooleanAttr(autofocus)}
       clearSearchButton={parseBooleanAttr(clearSearchButton)}
       id={rootId}
       items={JSON.parse(items)}
       loading={parseBooleanAttr(loading)}
+      // onInputValueChange={onInputValueChange}
     >
       <TextField label={label} hint={hint} name="autocomplete" value={value} />
     </Autocomplete>
