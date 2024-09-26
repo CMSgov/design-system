@@ -12,6 +12,7 @@ import {
 import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
+import { signal, Signal } from '@preact/signals';
 
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
@@ -90,6 +91,7 @@ function createCustomElement<T>(
     __properties = {};
     __options = options;
     __mutationObserver;
+    __signals;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -278,11 +280,12 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
     props = { ...props, ...parseJson.call(this, updated) };
   } else {
     props[getPropKey(name)] = updated;
+    this.__signals[getPropKey(name)].value = updated;
   }
 
   this.__properties = props;
 
-  this.renderPreactComponent();
+  // this.renderPreactComponent();
 }
 
 /**
@@ -363,20 +366,32 @@ function renderPreactComponent(this: CustomElement) {
 
   const children = unwrapTemplateVNode(vnode);
 
-  // These are the props we'll pass to the Preact component
-  const props = {
-    ...this.__properties,
-    parent: this,
-    children,
-    ...slots,
-  };
+  const attrSignals: Record<string, Signal> = Object.fromEntries(
+    this.__options.attributes.map((name) => [name, signal(this.__properties[name])])
+  );
+  this.__signals = attrSignals;
+
+  function StateWrapper() {
+    const props = {
+      ...this.__properties,
+      parent: this,
+      children,
+      ...slots,
+    };
+
+    for (const [name, signal] of Object.entries(attrSignals)) {
+      props[name] = signal.value;
+    }
+
+    return h(this.__component, props);
+  }
 
   // TODO: Clearing everything before the Preact component render only appears to be
   // necessary for the unit tests. I haven't figured out why yet.
   [...this.childNodes].forEach((childNode) => childNode.remove());
 
   // Render the Preact component to the root of this custom element
-  render(h(this.__component, props), this);
+  render(h(StateWrapper, {}), this);
 
   // The Preact render would have removed this template, so add it back in
   this.appendChild(template);
