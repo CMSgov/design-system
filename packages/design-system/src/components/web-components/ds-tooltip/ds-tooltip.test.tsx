@@ -5,155 +5,148 @@ import './ds-tooltip-icon';
 
 jest.mock('@popperjs/core');
 
-function renderTooltip(props = {}) {
-  return render(<ds-tooltip {...props}>I&apos;m a tooltip!</ds-tooltip>);
-}
+const defaultProps = {
+  children: <ds-tooltip-icon data-testid="ds-tooltip-icon" />,
+  'class-name': 'ds-c-tooltip__trigger-icon',
+  title: 'Tooltip body content',
+  id: '1234',
+};
 
-function renderTooltipWithIcon(props = {}) {
-  return render(
-    <ds-tooltip {...props}>
-      I&apos;m a tooltip!
-      <ds-tooltip-icon />
-    </ds-tooltip>
-  );
+const customTooltipText = 'Custom tooltip title text for our web component!';
+const customHeadingText = 'Custom tooltip heading text for our web component!';
+const childText = 'Bog standard child content.';
+
+const propsWithSlots = {
+  children: (
+    <>
+      <div slot="title">{customTooltipText}</div>
+      <div slot="content-heading">{customHeadingText}</div>
+      {childText}
+    </>
+  ),
+};
+
+function renderTooltip(customProps = {}) {
+  const props = { ...defaultProps, ...customProps };
+  return render(<ds-tooltip {...props} />);
 }
 
 describe('ds-tooltip', function () {
   it('renders a tooltip', () => {
-    const { asFragment } = renderTooltip({ title: "I'm a title!", id: 'static-id' });
+    const { asFragment } = renderTooltip();
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('displays the icon', () => {
-    const { container } = renderTooltipWithIcon({
-      title: "I'm a title!",
-      id: 'static-id',
+  it('renders title and contentHeading when passed in as slots', () => {
+    renderTooltip(propsWithSlots);
+    const tooltipTrigger = screen.getByText(customTooltipText);
+    expect(tooltipTrigger).toHaveTextContent(customTooltipText);
+    expect(tooltipTrigger).toHaveTextContent(customHeadingText);
+  });
+
+  it('renders default trigger icon', () => {
+    renderTooltip();
+    const triggerEl = screen.queryByTestId('ds-tooltip-icon');
+    expect(triggerEl).toMatchSnapshot();
+  });
+
+  it('renders custom trigger component', () => {
+    renderTooltip({
+      component: 'a',
+      children: childText,
     });
-    const tooltipIcon = container.querySelector('.ds-c-tooltip-icon');
-    expect(tooltipIcon).toBeInTheDocument();
+    const triggerEl = screen.queryByText(childText);
+    expect(triggerEl).toMatchSnapshot();
+  });
+
+  it('renders inverse tooltip', () => {
+    const { asFragment } = renderTooltip({ inversed: 'true' });
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders dialog tooltip', () => {
+    renderTooltip({ dialog: 'true', children: childText });
+    const tooltipTrigger = screen.getByText(childText);
+    userEvent.click(tooltipTrigger);
+    const contentEl = screen.queryByRole('dialog');
+    expect(contentEl).not.toBeNull();
+    expect(contentEl).toMatchSnapshot();
+  });
+
+  it('closes tooltip when trigger focus is lost', async () => {
+    jest.useFakeTimers();
+    const { container } = renderTooltip();
+    const tooltip = container.querySelector('.ds-c-tooltip');
+
+    userEvent.tab();
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(tooltip).toHaveClass('ds-c-tooltip-enter');
+
+    userEvent.tab();
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(tooltip).toHaveClass('ds-c-tooltip-exit');
+  });
+
+  it('renders a close button', () => {
+    renderTooltip({
+      dialog: 'true',
+      'show-close-button': 'true',
+      title: customTooltipText,
+    });
+    const closeButton = screen.getByLabelText('Close', { selector: 'button' });
+    expect(closeButton).toBeDefined();
+  });
+
+  it('renders heading element', () => {
+    renderTooltip({
+      dialog: 'true',
+      'content-heading': 'Tooltip heading content',
+      title: customTooltipText,
+    });
+    const tooltipTrigger = screen.getByText(customTooltipText);
+    userEvent.click(tooltipTrigger);
+    const contentEl = screen.queryByRole('dialog');
+    expect(contentEl).toMatchSnapshot();
+  });
+
+  it('renders heading element and close button', () => {
+    renderTooltip({
+      dialog: 'true',
+      'content-heading': customHeadingText,
+      'show-close-button': 'true',
+      title: customTooltipText,
+    });
+    const tooltipTrigger = screen.getByText(customTooltipText);
+    userEvent.click(tooltipTrigger);
+    const contentEl = screen.queryByRole('dialog');
+    expect(contentEl).toMatchSnapshot();
+  });
+
+  it('should return focus back to trigger when closed', () => {
+    renderTooltip({
+      dialog: 'true',
+      'show-close-button': 'true',
+      children: childText,
+      title: customTooltipText,
+    });
+    const tooltipTrigger = screen.getByText(childText);
+    userEvent.click(tooltipTrigger);
+    const closeButton = screen.getByLabelText('Close', { selector: 'button' });
+    userEvent.click(closeButton);
+    expect(tooltipTrigger).toEqual(document.activeElement); // eslint-disable-line
+  });
+
+  it('close button should take custom aria label', () => {
+    renderTooltip({
+      dialog: 'true',
+      'show-close-button': 'true',
+      'close-button-label': 'custom close label text',
+    });
+    const closeButton = screen.queryByLabelText('custom close label text');
+    expect(closeButton).not.toBeNull();
   });
 });
-
-// describe('ds-text-field', function () {
-//   it('renders text-field', () => {
-//     const { asFragment } = renderTextField({ id: 'static-id' });
-//     expect(asFragment()).toMatchSnapshot();
-//   });
-
-//   it('renders disabled input', () => {
-//     renderTextField({ disabled: 'true' });
-//     const input = screen.getByRole('textbox');
-//     expect(input).toHaveAttribute('disabled');
-//   });
-
-//   it('does not render disabled when passed false', () => {
-//     renderTextField({ disabled: 'false' });
-//     const input = screen.getByRole('textbox');
-//     expect(input).not.toHaveAttribute('disabled');
-//   });
-
-//   it('applies additional classes to the root element', () => {
-//     const { container } = renderTextField({ 'class-name': 'foobar' });
-//     const root = container.querySelector('.ds-u-clearfix');
-//     expect(root).toHaveClass('foobar');
-//   });
-
-//   it('applies additional classes to the input', () => {
-//     renderTextField({ 'field-class-name': 'foobar' });
-//     const input = screen.getByRole('textbox');
-//     expect(input).toHaveClass('foobar');
-//   });
-
-//   it('applies requirement-label to hint text', () => {
-//     const { container } = renderTextField({ 'requirement-label': 'Optional' });
-//     const input = screen.getByRole('textbox');
-//     const hintId = input.getAttribute('aria-describedby');
-//     const hint = container.querySelector(`#${hintId}`);
-//     expect(hint).toContainHTML('Optional');
-//   });
-
-//   it('renders an error message', () => {
-//     const { container } = renderTextField({ 'error-message': 'Uh-oh!' });
-//     const input = screen.getByRole('textbox');
-//     const errorId = input.getAttribute('aria-describedby');
-//     const error = container.querySelector(`#${errorId}`);
-//     expect(error).toContainHTML('Uh-oh!');
-//   });
-
-//   it('applies inverse class', () => {
-//     const { container } = renderTextField({
-//       inversed: 'true',
-//       hint: 'Hello',
-//       'error-message': 'Ahh!!',
-//     });
-//     const inversedLabel = container.querySelector('.ds-c-label--inverse');
-//     const inversedHint = container.querySelector('.ds-c-hint--inverse');
-//     const inversedError = container.querySelector('.ds-c-inline-error--inverse');
-//     expect(inversedLabel).toBeInTheDocument();
-//     expect(inversedHint).toBeInTheDocument();
-//     expect(inversedError).toBeInTheDocument();
-//   });
-
-//   it('applies size classes', () => {
-//     renderTextField({ size: 'small' });
-//     const input = screen.getByRole('textbox');
-//     expect(input.classList.contains('ds-c-field--small')).toBe(true);
-//   });
-
-//   it('supports multiline text fields', () => {
-//     renderTextField({ multiline: 'true', rows: '3' });
-//     const textArea = screen.getByRole('textbox');
-//     expect(textArea.tagName).toEqual('TEXTAREA');
-//     expect(textArea).toHaveAttribute('rows', '3');
-//   });
-
-//   it('fires a custom ds-change event', () => {
-//     renderTextField();
-
-//     const textFieldRoot = document.querySelector('ds-text-field');
-//     const mockHandler = jest.fn();
-//     textFieldRoot.addEventListener('ds-change', mockHandler);
-
-//     const input = screen.getByRole('textbox');
-//     userEvent.click(input);
-//     userEvent.keyboard('a');
-
-//     expect(mockHandler).toHaveBeenCalledTimes(1);
-//     textFieldRoot.removeEventListener('ds-change', mockHandler);
-//   });
-
-//   it('fires a custom ds-blur event', async () => {
-//     renderTextField();
-
-//     const textFieldRoot = document.querySelector('ds-text-field');
-//     const onBlur = jest.fn();
-//     const onChange = jest.fn();
-//     textFieldRoot.addEventListener('ds-blur', onBlur);
-//     textFieldRoot.addEventListener('ds-change', onChange);
-
-//     const input = screen.getByRole('textbox');
-//     userEvent.click(input);
-//     userEvent.tab();
-
-//     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-//     await act(async () => {
-//       await sleep(40);
-//     });
-
-//     expect(onBlur).toHaveBeenCalledTimes(1);
-//     expect(onChange).not.toHaveBeenCalled();
-//     textFieldRoot.removeEventListener('ds-blur', onBlur);
-//     textFieldRoot.removeEventListener('ds-change', onChange);
-//   });
-
-//   it('formats a phone number on blur', () => {
-//     renderTextField({ 'label-mask': 'phone' });
-
-//     const input = screen.getByRole('textbox') as HTMLInputElement;
-//     userEvent.click(input);
-//     userEvent.type(input, '1234567890');
-//     userEvent.tab();
-
-//     expect(input.value).toEqual('123-456-7890');
-//   });
-// });

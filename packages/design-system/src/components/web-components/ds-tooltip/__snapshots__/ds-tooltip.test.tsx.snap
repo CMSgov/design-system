@@ -1,24 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ds-tooltip displays the icon 1`] = `
+exports[`ds-tooltip renders a tooltip 1`] = `
 <DocumentFragment>
   <ds-tooltip
-    id="static-id"
-    includeicon="true"
-    title="I'm a title!"
+    class-name="ds-c-tooltip__trigger-icon"
+    id="1234"
+    title="Tooltip body content"
   >
     <div
       class="ds-c-tooltip__container"
     >
       <button
         aria-describedby="tooltip-trigger--2"
-        class="ds-c-tooltip__trigger"
+        class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
         parent="[object HTMLElement]"
         type="button"
-      />
+      >
+        <ds-tooltip-icon
+          data-testid="ds-tooltip-icon"
+        >
+          <span
+            class="ds-c-tooltip-icon__container"
+          >
+            <svg
+              aria-hidden="true"
+              class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+              parent="[object HTMLElement]"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </span>
+          <template />
+        </ds-tooltip-icon>
+      </button>
       <div
         aria-hidden="true"
         class="ds-c-tooltip"
+        data-placement="top"
         id="tooltip-trigger--2"
         role="tooltip"
         style="max-width: 300px; z-index: 9999;"
@@ -29,7 +52,9 @@ exports[`ds-tooltip displays the icon 1`] = `
         />
         <div
           class="ds-c-tooltip__content"
-        />
+        >
+          Tooltip body content
+        </div>
         <span
           class="ds-c-tooltip__interactive-border"
           style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
@@ -41,27 +66,111 @@ exports[`ds-tooltip displays the icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ds-tooltip renders a tooltip 1`] = `
+exports[`ds-tooltip renders custom trigger component 1`] = `
+<a
+  aria-describedby="tooltip-trigger--8"
+  class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
+  parent="[object HTMLElement]"
+  tabindex="0"
+>
+  Bog standard child content.
+</a>
+`;
+
+exports[`ds-tooltip renders default trigger icon 1`] = `
+<ds-tooltip-icon
+  data-testid="ds-tooltip-icon"
+>
+  <span
+    class="ds-c-tooltip-icon__container"
+  >
+    <svg
+      aria-hidden="true"
+      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      parent="[object HTMLElement]"
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </span>
+  <template />
+</ds-tooltip-icon>
+`;
+
+exports[`ds-tooltip renders dialog tooltip 1`] = `
+<div
+  aria-hidden="false"
+  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  data-placement="top"
+  id="tooltip-trigger--12"
+  role="dialog"
+  style="max-width: 300px; z-index: 9999;"
+  tabindex="-1"
+>
+  <span
+    class="ds-c-tooltip__arrow"
+    data-popper-arrow="true"
+  />
+  <div
+    class="ds-c-tooltip__content"
+  >
+    Tooltip body content
+  </div>
+</div>
+`;
+
+exports[`ds-tooltip renders heading element 1`] = `null`;
+
+exports[`ds-tooltip renders heading element and close button 1`] = `null`;
+
+exports[`ds-tooltip renders inverse tooltip 1`] = `
 <DocumentFragment>
   <ds-tooltip
-    id="static-id"
-    title="I'm a title!"
+    class-name="ds-c-tooltip__trigger-icon"
+    id="1234"
+    inversed="true"
+    title="Tooltip body content"
   >
     <div
       class="ds-c-tooltip__container"
     >
       <button
-        aria-describedby="tooltip-trigger--1"
-        class="ds-c-tooltip__trigger"
+        aria-describedby="tooltip-trigger--10"
+        class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
         parent="[object HTMLElement]"
         type="button"
       >
-        I'm a tooltip!
+        <ds-tooltip-icon
+          data-testid="ds-tooltip-icon"
+        >
+          <span
+            class="ds-c-tooltip-icon__container"
+          >
+            <svg
+              aria-hidden="true"
+              class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+              parent="[object HTMLElement]"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </span>
+          <template />
+        </ds-tooltip-icon>
       </button>
       <div
         aria-hidden="true"
-        class="ds-c-tooltip"
-        id="tooltip-trigger--1"
+        class="ds-c-tooltip ds-c-tooltip--inverse"
+        data-placement="top"
+        id="tooltip-trigger--10"
         role="tooltip"
         style="max-width: 300px; z-index: 9999;"
       >
@@ -71,7 +180,9 @@ exports[`ds-tooltip renders a tooltip 1`] = `
         />
         <div
           class="ds-c-tooltip__content"
-        />
+        >
+          Tooltip body content
+        </div>
         <span
           class="ds-c-tooltip__interactive-border"
           style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
