@@ -356,29 +356,29 @@ function renderPreactComponent(this: CustomElement) {
   // function, or we'll get an endless feedback loop of change and re-render.
   this.__mutationObserver?.disconnect();
 
+  // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
     template = document.createElement('template');
     template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
-
   const { vnode, slots } = templateToPreactVNode(template);
 
+  // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
+  // in the original innerHTML. To keep that from getting passed to the Preact component,
+  // we need to unwrap our vnode before we pass it as the `children` prop.
   const children = unwrapTemplateVNode(vnode);
 
-  const otherProps = {
-    parent: this, // What if we removed this? We don't have a use for it ourselves
-    children,
-    ...slots,
-  };
+  const parent = this; // What if we removed this? We don't have a use for it ourselves
 
-  const component = this.__component;
+  // If we were to call this function that we're in every time a prop changed, it would
+  // clobber the internal state of our underlying Preact component. To avoid this, we're
+  // going to tie our attributes (props) to Preact Signals that we can use to trigger
+  // re-rendering a `StateWrapper` component.
   const propsSignal = signal(this.__properties);
   this.__propsSignal = propsSignal;
-
-  function StateWrapper() {
-    return h(component, { ...propsSignal.value, ...otherProps });
-  }
+  const StateWrapper = () =>
+    h(this.__component, { ...propsSignal.value, ...slots, children, parent });
 
   // TODO: Clearing everything before the Preact component render only appears to be
   // necessary for the unit tests. I haven't figured out why yet.
