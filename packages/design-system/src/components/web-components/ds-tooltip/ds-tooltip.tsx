@@ -5,7 +5,6 @@ import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
   'active-class-name',
-  'aria-label',
   'class-name',
   'close-button-label',
   'component',
@@ -41,7 +40,14 @@ declare global {
 interface WrapperProps
   extends Omit<
     TooltipProps,
-    'contentHeading' | 'dialog' | 'inversed' | 'showCloseButton' | 'offset' | 'placement' | 'title'
+    | 'ariaLabel'
+    | 'contentHeading'
+    | 'dialog'
+    | 'inversed'
+    | 'showCloseButton'
+    | 'offset'
+    | 'placement'
+    | 'title'
   > {
   contentHeading?: string | TooltipProps['contentHeading'];
   dialog?: string;
