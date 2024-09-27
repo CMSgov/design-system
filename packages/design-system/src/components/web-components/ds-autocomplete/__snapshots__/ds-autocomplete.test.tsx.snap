@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete renders correctly 1`] = `
+<DocumentFragment>
+  <ds-autocomplete
+    aria-clear-label="Clear search to try again"
+    clear-input-text="Clear search"
+    clear-search-button="true"
+    items="[{\\"id\\":\\"kRf6c2fY\\",\\"name\\":\\"Cook County, IL\\"}]"
+    loading-message="Loading..."
+    no-results-message="No results"
+  >
+    <div
+      class="ds-c-autocomplete"
+    >
+      <div
+        class="ds-u-clearfix"
+      >
+        <label
+          class="ds-c-label"
+          for="autocomplete--1"
+          id="autocomplete--1__label"
+        />
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error"
+          id="autocomplete--1__error"
+        />
+        <input
+          aria-autocomplete="list"
+          aria-controls="autocomplete--1__menu"
+          aria-expanded="false"
+          aria-invalid="false"
+          aria-labelledby="autocomplete--1__label"
+          autocomplete="off"
+          autocorrect="off"
+          class="ds-c-field"
+          id="autocomplete--1"
+          name="autocomplete"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+        />
+      </div>
+      <button
+        aria-label="Clear search to try again"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+        type="button"
+      >
+        Clear search
+      </button>
+    </div>
+    <template />
+  </ds-autocomplete>
+</DocumentFragment>
+`;
