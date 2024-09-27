@@ -11,10 +11,6 @@ export default {
       description: 'Classes applied to the tooltip trigger when the tooltip is active.',
       control: 'text',
     },
-    'aria-label': {
-      description: 'Helpful description of the tooltip for screenreaders',
-      control: 'text',
-    },
     'class-name': {
       description: 'Additional classes to be added to the root element.',
       control: 'text',
@@ -25,7 +21,7 @@ export default {
     },
     component: {
       description:
-        'When provided, will render the passed in component for the tooltip trigger. Typically will be a `button`, `a`, or rarely an `input` element.',
+        'When provided, will render the passed in component for the tooltip trigger. Must be either `button` or `a`.',
       control: 'text',
     },
     dialog: {
@@ -45,7 +41,7 @@ export default {
     'max-width': { description: '`maxWidth` styling applied to the tooltip body', control: 'text' },
     offset: {
       description:
-        'Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.',
+        'Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. When applied as an attribute, must be a space separated string with two values. Similar to: `offset="3 5"` See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.',
       control: 'text',
     },
     placement: {
@@ -68,7 +64,7 @@ export default {
         'bottom-start',
         'bottom-end',
       ],
-      control: 'text',
+      control: 'radio',
     },
     'root-id': {
       control: 'text',
@@ -184,7 +180,6 @@ export const TitleAsAttribute = {
   args: {
     component: 'a',
     id: '1',
-    ariaLabel: 'Label describing the subject of the tooltip',
     'class-name': 'ds-c-tooltip__trigger-link',
     title: 'Check out the `title` value in the developer console!',
     children: <span>an attribute</span>,
@@ -196,7 +191,6 @@ export const ContentHeadingAsAttribute = {
   render: Template,
   args: {
     id: '1',
-    ariaLabel: 'Label describing the subject of the tooltip',
     'class-name': 'ds-c-button',
     title: 'This is the title attribute set on the ds-tooltip.',
     'content-heading': 'This is the content heading attribute.',
@@ -207,9 +201,8 @@ export const ContentHeadingAsAttribute = {
 export const IconTrigger = {
   render: Template,
   args: {
-    component: 'a',
+    component: 'button',
     id: '1',
-    ariaLabel: 'Lets adjust this right now!',
     'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     children: iconTrigger,
     exampleText: 'Tooltip with icon trigger',
@@ -221,7 +214,6 @@ export const InlineTrigger = {
   args: {
     component: 'a',
     id: '1',
-    ariaLabel: 'Label describing the subject of the tooltip',
     'class-name': 'ds-c-tooltip__trigger-link',
     children: inlineTrigger,
     exampleText: 'Tooltip with ',
