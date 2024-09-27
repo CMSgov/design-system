@@ -9,6 +9,7 @@ const attributes = [
   'class-name',
   'close-button-label',
   'component',
+  'content-heading',
   'dialog',
   'interactive-border',
   'inversed',
@@ -17,6 +18,7 @@ const attributes = [
   'placement',
   'root-id',
   'show-close-button',
+  'title',
   'transition-duration',
   'z-index',
 ] as const;
@@ -47,7 +49,6 @@ interface WrapperProps
   showCloseButton?: string;
   placement?: string;
   rootId?: string;
-  includeIcon?: string;
   offset?: string;
   title: string | TooltipProps['title'];
 }
@@ -108,4 +109,4 @@ const Wrapper = ({
   ></Tooltip>
 );
 
-define('ds-tooltip', () => Wrapper, { attributes, events: ['onClose', 'onOpen'] });
+define('ds-tooltip', () => Wrapper, { attributes });
