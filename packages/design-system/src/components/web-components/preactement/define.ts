@@ -12,7 +12,7 @@ import {
 import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
-import { signal, Signal } from '@preact/signals';
+import { signal } from '@preact/signals';
 
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
@@ -279,7 +279,7 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
   if (name === 'props') {
     props = { ...props, ...parseJson.call(this, updated) };
   } else {
-    props[getPropKey(name)] = updated;
+    props = { ...props, [getPropKey(name)]: updated };
   }
 
   this.__properties = props;
@@ -367,7 +367,7 @@ function renderPreactComponent(this: CustomElement) {
   const children = unwrapTemplateVNode(vnode);
 
   const otherProps = {
-    parent: this,
+    parent: this, // What if we removed this? We don't have a use for it ourselves
     children,
     ...slots,
   };
