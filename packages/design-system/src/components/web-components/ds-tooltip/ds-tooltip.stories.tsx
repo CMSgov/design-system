@@ -1,6 +1,4 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
-import { action } from '@storybook/addon-actions';
-import { useEffect } from 'react';
 import { webComponentDecorator } from '../storybook';
 import './ds-tooltip';
 import './ds-tooltip-icon';
@@ -103,35 +101,26 @@ export default {
       },
     },
   },
-  decorators: [webComponentDecorator],
+  decorators: [
+    webComponentDecorator,
+    (Story) => (
+      <div style={{ margin: '11rem auto', textAlign: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const Template = (args) => {
-  useEffect(() => {
-    const onClose = (event) => {
-      action('ds-close')(event);
-    };
-    const onOpen = (event) => {
-      action('ds-open')(event);
-    };
-    const textField = document.querySelector('ds-tooltip');
-    textField.addEventListener('ds-close', onClose);
-    textField.addEventListener('ds-open', onOpen);
-    return () => {
-      textField.removeEventListener('ds-close', onClose);
-      textField.removeEventListener('ds-open', onOpen);
-    };
-  });
-
   return (
     <>
-      <p className="ds-u-margin--0 ds-u-display--inline">Tooltip with </p>
+      {args.exampleText && (
+        <p className="ds-u-margin--0 ds-u-display--inline">{args.exampleText}</p>
+      )}
       <ds-tooltip {...args} />
     </>
   );
 };
-
-export const Default = Template.bind({});
 
 const iconTrigger = (
   <>
@@ -174,8 +163,10 @@ const withCloseButton = (
   <>
     Tooltip trigger.
     <div slot="title">
-      Entering your Social Security Number helps the plan confirm with your state that you have
-      Medicaid.
+      <p>
+        Entering your Social Security Number helps the plan confirm with your state that you have
+        Medicaid.
+      </p>
     </div>
     <div slot="contentHeading">Really long Heading for tooltip</div>
   </>
@@ -188,14 +179,40 @@ const inversedTrigger = (
   </>
 );
 
+export const TitleAsAttribute = {
+  render: Template,
+  args: {
+    component: 'a',
+    id: '1',
+    ariaLabel: 'Label describing the subject of the tooltip',
+    'class-name': 'ds-c-tooltip__trigger-link',
+    title: 'Check out the `title` value in the developer console!',
+    children: <span>an attribute</span>,
+    exampleText: 'This tooltip has the `title` value set as ',
+  },
+};
+
+export const ContentHeadingAsAttribute = {
+  render: Template,
+  args: {
+    id: '1',
+    ariaLabel: 'Label describing the subject of the tooltip',
+    'class-name': 'ds-c-button',
+    title: 'This is the title attribute set on the ds-tooltip.',
+    'content-heading': 'This is the content heading attribute.',
+    children: 'Hover to see the tooltip content.',
+  },
+};
+
 export const IconTrigger = {
   render: Template,
   args: {
     component: 'a',
-    id: 'static-id',
-    ariaLabel: 'Label describing the subject of the tooltip',
-    className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
+    id: '1',
+    ariaLabel: 'Lets adjust this right now!',
+    'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     children: iconTrigger,
+    exampleText: 'Tooltip with icon trigger',
   },
 };
 
@@ -203,10 +220,11 @@ export const InlineTrigger = {
   render: Template,
   args: {
     component: 'a',
-    id: 'static-id',
+    id: '1',
     ariaLabel: 'Label describing the subject of the tooltip',
-    className: 'ds-c-tooltip__trigger-link',
+    'class-name': 'ds-c-tooltip__trigger-link',
     children: inlineTrigger,
+    exampleText: 'Tooltip with ',
   },
 };
 
@@ -215,8 +233,8 @@ export const InteractiveContent = {
   args: {
     component: 'button',
     dialog: 'true',
-    id: 'static-id',
-    className: 'ds-c-button',
+    id: '1',
+    'class-name': 'ds-c-button',
     children: withInteractiveContent,
   },
 };
@@ -225,10 +243,10 @@ export const WithCloseButton = {
   render: Template,
   args: {
     children: withCloseButton,
-    className: 'ds-c-button',
+    'class-name': 'ds-c-button',
     dialog: 'true',
-    id: 'static-id',
-    showCloseButton: 'true',
+    id: '1',
+    'show-close-button': 'true',
   },
 };
 
@@ -237,9 +255,10 @@ export const InversedTrigger = {
   args: {
     component: 'a',
     children: inversedTrigger,
-    className: 'ds-c-tooltip__trigger-icon ds-u-display--inline',
+    'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     inversed: 'true',
-    id: 'static-id',
+    id: '1',
+    exampleText: 'Tooltip with icon trigger ',
   },
   parameters: {
     // Must supply `layout: 'fullscreen'` when we use `onDark: true`
