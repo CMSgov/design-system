@@ -55,3 +55,77 @@ exports[`Autocomplete renders correctly 1`] = `
   </ds-autocomplete>
 </DocumentFragment>
 `;
+
+exports[`Autocomplete renders item with custom className 1`] = `
+Array [
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__menu-item"
+    data-key="1a"
+    id="autocomplete--17__item--0"
+    role="option"
+  >
+    <span>
+      Normal item
+    </span>
+  </li>,
+  <li
+    aria-selected="false"
+    class="custom-class ds-c-autocomplete__menu-item"
+    data-key="5b"
+    id="autocomplete--17__item--1"
+    role="option"
+  >
+    <span>
+      Special item
+    </span>
+  </li>,
+]
+`;
+
+exports[`Autocomplete renders items with children property 1`] = `
+<ul
+  aria-label="Suggestions"
+  aria-labelledby=""
+  class="ds-c-autocomplete__menu"
+  id="autocomplete--9__menu"
+  role="listbox"
+>
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__menu-item"
+    data-key="1"
+    id="autocomplete--9__item--0"
+    role="option"
+  >
+    <span />
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__menu-item"
+    data-key="2"
+    id="autocomplete--9__item--1"
+    role="option"
+  >
+    <span />
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__menu-item"
+    data-key="3"
+    id="autocomplete--9__item--2"
+    role="option"
+  >
+    <span />
+  </li>
+  <li
+    aria-selected="false"
+    class="ds-c-autocomplete__menu-item"
+    data-key="4"
+    id="autocomplete--9__item--3"
+    role="option"
+  >
+    <span />
+  </li>
+</ul>
+`;

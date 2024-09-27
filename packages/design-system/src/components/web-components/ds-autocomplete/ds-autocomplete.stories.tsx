@@ -193,3 +193,91 @@ export const Default = {
     ],
   },
 };
+
+export const LabeledList = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Search for and select your county.',
+    textFieldHint:
+      'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Select from the options below:',
+    items: [
+      makeItem('Cook County, IL'),
+      makeItem('Cook County, MD'),
+      makeItem('Cook County, TN'),
+      makeItem('Cook County, AK'),
+      makeItem('Cook County, FL'),
+      makeItem('Cook County, AL'),
+      makeItem('Cook County, WA'),
+      makeItem('Cook County, OR'),
+    ],
+  } as any,
+};
+
+export const CustomMarkup = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Select a snack that starts with "C".',
+    textFieldHint:
+      'Type "C" to start seeing a list of snacks. Clicking the last item should not change the input value to "Search all snacks"',
+    label: 'Select from the options below:',
+    items: [
+      makeItem(
+        'Carrots (1)',
+        <>
+          Carrots <strong>(1)</strong>
+        </>
+      ),
+      makeItem(
+        'Cookies (3)',
+        <>
+          Cookies <strong>(3)</strong>
+        </>
+      ),
+      makeItem(
+        'Crackers (2)',
+        <>
+          Crackers <strong>(2)</strong>
+        </>
+      ),
+      {
+        children: (
+          <a href="#snacks" onClick={() => console.log('Searching for all the snacks!')}>
+            Search all snacks
+          </a>
+        ),
+        className: 'ds-c-autocomplete__search-all',
+        isResult: false,
+      },
+    ],
+  } as any,
+
+  parameters: {
+    docs: {
+      source: {
+        code: 'Disabled for this story. See https://github.com/storybookjs/storybook/issues/11554',
+      },
+    },
+  },
+};
+
+export const LoadingMessage = {
+  render: Template,
+  args: {
+    clearSearchButton: false,
+    loading: true,
+    items: [],
+    textFieldLabel: 'This will only show a loading message.',
+    textFieldHint: 'List should return string Loading to simulate async data call.',
+  } as any,
+};
+
+export const NoResults = {
+  render: Template,
+  args: {
+    items: [],
+    clearSearchButton: false,
+    textFieldLabel: 'This will show a "no results" message.',
+    textFieldHint: "Start typing, but you'll only get a loading message.",
+  } as any,
+};
