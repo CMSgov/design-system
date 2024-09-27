@@ -2,82 +2,58 @@ import { define } from '../preactement/define';
 import { Drawer } from '../../Drawer';
 import { DrawerProps } from '../../Drawer/Drawer';
 import { parseBooleanAttr } from '../wrapperUtils';
-import { createElement } from 'react';
-import { Children } from 'react';
-
-/**
- * Finds the first child element with a matching slot attribute.
- *
- * @param {React.ReactNode} children - The children elements to search through.
- * @param {string} slotName - The name of the slot to search for.
- * @returns {React.ReactNode | null} - The element corresponding to the slot, or null if not found.
- */
-function findSlot(children, slotName) {
-  let foundSlot = null;
-
-  Children.forEach(children, (child) => {
-    if (child && child.props && child.props.slot === slotName) {
-      foundSlot = child;
-    }
-  });
-
-  return foundSlot;
-}
 
 const attributes = [
   'aria-label',
+  'backdrop-click-exits',
   'close-button-text',
-  'heading',
+  'close-button-variation',
+  'class-name',
+  'footer-title',
+  'footer-body',
   'has-focus-trap',
-  'is-open',
+  'heading',
   'heading-id',
   'heading-level',
-  'close-button-variation',
-  'classname',
-  'heading-ref',
   'is-header-sticky',
   'is-footer-sticky',
+  'is-open',
 ];
 
 interface WrapperProps
   extends Omit<
     DrawerProps,
-    'children' | 'isOpen' | 'hasFocusTrap' | 'headingRef' | 'isHeaderSticky' | 'isFooterSticky'
+    'backdropClickExits' | 'hasFocusTrap' | 'isHeaderSticky' | 'isFooterSticky' | 'isOpen'
   > {
   ariaLabel?: string;
-  closeButtonText: string;
-  isOpen: string;
+  backdropClickExits?: string;
+  // children: DrawerProps['children'];
   hasFocusTrap?: string;
   heading: string;
-  children: DrawerProps['children'];
-  headingRef: string;
   isHeaderSticky?: string;
   isFooterSticky?: string;
+  isOpen: string;
 }
 
 const Wrapper = ({
-  children = [],
-  isOpen,
+  backdropClickExits,
+  children,
   hasFocusTrap,
-  headingRef,
   isHeaderSticky,
   isFooterSticky,
+  isOpen,
   ...otherProps
 }: WrapperProps) => {
-  const footerTitleSlot = findSlot(children, 'footerTitle');
-  const footerBodySlot = findSlot(children, 'footerBody');
   return (
     <Drawer
-      isOpen={parseBooleanAttr(isOpen)}
+      backdropClickExits={parseBooleanAttr(backdropClickExits)}
       hasFocusTrap={parseBooleanAttr(hasFocusTrap)}
-      headingRef={JSON.parse(headingRef)}
       isHeaderSticky={parseBooleanAttr(isHeaderSticky)}
       isFooterSticky={parseBooleanAttr(isFooterSticky)}
+      isOpen={parseBooleanAttr(isOpen)}
       {...otherProps}
     >
       {children}
-      {footerTitleSlot && <div className="ds-c-drawer__footer-title">{footerTitleSlot}</div>}
-      {footerBodySlot && <div className="ds-c-drawer__footer-body">{footerBodySlot}</div>}
     </Drawer>
   );
 };
@@ -92,6 +68,7 @@ declare global {
     }
   }
 }
+
 /* eslint-enable */
 
 define('ds-drawer', () => Wrapper, {

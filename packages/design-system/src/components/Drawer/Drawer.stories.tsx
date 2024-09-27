@@ -54,7 +54,7 @@ export default meta;
 
 type Story = StoryObj<typeof Drawer>;
 
-const drawerContent = (
+export const drawerContent = (
   <>
     <strong>An Explanation</strong>
     <p>
