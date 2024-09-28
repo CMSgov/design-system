@@ -16,6 +16,12 @@ const meta: Meta = {
         component:
           'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/drawer/).',
       },
+      slots: {
+        'footer-body': {
+          description:
+            'Slot for displaying custom content in the footer area of the Drawer. This can include text, or HTML elements. Use this slot to provide additional contextual information, actions, or links within the Drawer footer.',
+        },
+      },
       componentEvents: {
         'ds-close-click': {
           description:
@@ -52,7 +58,8 @@ const meta: Meta = {
       control: 'text',
     },
     'footer-body': {
-      description: 'Content to be displayed in the footer area of the Drawer.',
+      description:
+        'Content to be displayed in the footer area of the Drawer. Accepts a string value, typically for simple text content. For more complex content, consider using the `footer-body` slot.',
       control: 'text',
     },
     'footer-title': {
