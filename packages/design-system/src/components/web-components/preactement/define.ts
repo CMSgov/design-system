@@ -283,9 +283,8 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
   }
 
   this.__properties = props;
+  // Will trigger a re-render of the `StateWrapper` component if it changed
   this.__propsSignal.value = props;
-
-  // this.renderPreactComponent();
 }
 
 /**
