@@ -8,7 +8,6 @@ exports[`Label should render a basic label 1`] = `
     <label
       class="ds-c-label"
       for="field-123"
-      parent="[object HTMLElement]"
     >
       Foo
     </label>

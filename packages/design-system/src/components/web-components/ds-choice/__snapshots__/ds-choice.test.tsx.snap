@@ -19,7 +19,6 @@ exports[`Choice applies errorMessage to label 1`] = `
           class="ds-c-choice"
           id="choice--11"
           name="foo"
-          parent="[object HTMLElement]"
           type="checkbox"
           value="boo"
         />
@@ -80,7 +79,6 @@ exports[`Choice has a hint and requirementLabel 1`] = `
           class="ds-c-choice"
           id="choice--8"
           name="foo"
-          parent="[object HTMLElement]"
           type="checkbox"
           value="boo"
         />
@@ -128,7 +126,6 @@ exports[`Choice is a checkbox 1`] = `
           class="ds-c-choice"
           id="choice--2"
           name="foo"
-          parent="[object HTMLElement]"
           type="checkbox"
           value="boo"
         />
@@ -170,7 +167,6 @@ exports[`Choice is a radio 1`] = `
           class="ds-c-choice"
           id="choice--1"
           name="foo"
-          parent="[object HTMLElement]"
           type="radio"
           value="boo"
         />
@@ -216,7 +212,6 @@ exports[`Choice nested content renders checked and unchecked children appropriat
           class="ds-c-choice"
           id="choice--23"
           name="foo"
-          parent="[object HTMLElement]"
           type="checkbox"
           value="boo"
         />
