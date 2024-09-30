@@ -357,6 +357,8 @@ function renderPreactComponent(this: CustomElement) {
   this.__mutationObserver?.disconnect();
 
   // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
+  // Putting the original inner content into a template also allows us to keep a copy of
+  // it for future renders where context has been lost (see function documentation).
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
     template = document.createElement('template');
