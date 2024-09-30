@@ -5,7 +5,6 @@ exports[`Badge should render a default badge 1`] = `
   <ds-badge>
     <span
       class="ds-c-badge"
-      parent="[object HTMLElement]"
     >
       Foo
     </span>

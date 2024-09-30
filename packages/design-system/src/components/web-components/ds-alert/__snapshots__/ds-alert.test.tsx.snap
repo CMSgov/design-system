@@ -8,7 +8,6 @@ exports[`Alert renders alert 1`] = `
     <div
       aria-labelledby="alert--1__a11y-label"
       class="ds-c-alert"
-      parent="[object HTMLElement]"
       role="region"
     >
       <svg
