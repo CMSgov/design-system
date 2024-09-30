@@ -255,7 +255,6 @@ export const WithCloseButton = {
 export const InversedTrigger = {
   render: Template,
   args: {
-    component: 'a',
     children: inversedTrigger,
     'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     inversed: 'true',
