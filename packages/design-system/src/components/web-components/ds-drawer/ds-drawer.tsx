@@ -73,5 +73,12 @@ declare global {
 
 define('ds-drawer', () => Wrapper, {
   attributes,
-  events: ['onCloseClick'],
+  events: [
+    [
+      'onCloseClick',
+      (event: MouseEvent | KeyboardEvent) => ({
+        detail: { event },
+      }),
+    ],
+  ],
 } as any);
