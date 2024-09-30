@@ -1,12 +1,7 @@
-// should handle `esc` with focus trap enabled.
-// removes event listener on unmount.
-// should not call onCloseClick for other key presses.
-
-import { render, screen, cleanup, fireEvent } from '@testing-library/preact';
+import { render, screen, cleanup } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-drawer';
 
-const defaultProps = {};
 const children = (
   <>
     <strong>An Explanation</strong>
@@ -30,6 +25,7 @@ function renderDrawer(args, children) {
     </ds-drawer>
   );
 }
+const mockCloseHandler = jest.fn();
 
 describe('Drawer', () => {
   beforeEach(() => {
@@ -76,23 +72,50 @@ describe('Drawer', () => {
     const renderedFooterBodyElement = screen.getByText('Footer Content');
     expect(renderedFooterBodyElement).toBeInTheDocument();
   });
-  //       it.only('should call the `ds-close-click` handler when the close button is clicked', () => {
-  //         renderDrawer({ 'is-open': 'true', heading: 'Test Drawer Heading', 'aria-label': 'Close help drawer' }, children);
+  it('should call the `ds-close-click` handler when the close button is clicked', async () => {
+    renderDrawer(
+      { 'is-open': 'true', heading: 'Test Drawer Heading', 'aria-label': 'Close help drawer' },
+      children
+    );
+    const drawer = document.querySelector('ds-drawer');
 
-  //         const drawerElement = screen.getByRole('dialog');
-  //         const mockCloseHandler = jest.fn();
+    drawer.addEventListener('ds-close-click', mockCloseHandler);
 
-  //         console.log('Drawer Element:', drawerElement);
+    const closeButton = await screen.findByRole('button', { name: /close help drawer/i });
+    userEvent.click(closeButton);
 
-  //         const closeButton = screen.getByRole('button', { name: /close help drawer/i });
-  //         drawerElement.addEventListener('ds-close-click', mockCloseHandler as EventListener);
+    expect(mockCloseHandler).toHaveBeenCalledTimes(1);
+    drawer.removeEventListener('ds-close-click', mockCloseHandler);
+  });
+  it('should handle `esc` with focus trap enabled', async () => {
+    renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+    const drawer = document.querySelector('ds-drawer');
 
-  //         userEvent.click(closeButton);
-  //         console.log('Close button', closeButton)
+    drawer.addEventListener('ds-close-click', mockCloseHandler);
 
-  //         expect(mockCloseHandler).toHaveBeenCalledTimes(1);
+    userEvent.keyboard('{Escape}');
 
-  //         // expect(drawerElement).not.toBeInTheDocument();
-  //         drawerElement.removeEventListener('ds-close-click', mockCloseHandler as EventListener);
-  //       });
+    expect(mockCloseHandler).toHaveBeenCalledTimes(1);
+    drawer.removeEventListener('ds-close-click', mockCloseHandler);
+  });
+  it('should not call the event handler after unmounting', () => {
+    const { unmount } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+    const drawer = document.querySelector('ds-drawer');
+    drawer.addEventListener('ds-close-click', mockCloseHandler);
+
+    unmount();
+    userEvent.keyboard('{Escape}');
+    expect(mockCloseHandler).not.toHaveBeenCalled();
+  });
+  it('should not call onCloseClick for other key presses', () => {
+    renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+    const drawer = document.querySelector('ds-drawer');
+
+    drawer.addEventListener('ds-close-click', mockCloseHandler);
+
+    userEvent.keyboard('a');
+
+    expect(mockCloseHandler).not.toHaveBeenCalled();
+    drawer.removeEventListener('ds-close-click', mockCloseHandler);
+  });
 });
