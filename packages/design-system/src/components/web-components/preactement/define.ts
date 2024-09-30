@@ -369,16 +369,13 @@ function renderPreactComponent(this: CustomElement) {
   // we need to unwrap our vnode before we pass it as the `children` prop.
   const children = unwrapTemplateVNode(vnode);
 
-  const parent = this; // What if we removed this? We don't have a use for it ourselves
-
   // If we were to call this function that we're in every time a prop changed, it would
   // clobber the internal state of our underlying Preact component. To avoid this, we're
   // going to tie our attributes (props) to Preact Signals that we can use to trigger
   // re-rendering a `StateWrapper` component.
   const propsSignal = signal(this.__properties);
   this.__propsSignal = propsSignal;
-  const StateWrapper = () =>
-    h(this.__component, { ...propsSignal.value, ...slots, children, parent });
+  const StateWrapper = () => h(this.__component, { ...propsSignal.value, ...slots, children });
 
   // TODO: Clearing everything before the Preact component render only appears to be
   // necessary for the unit tests. I haven't figured out why yet.
