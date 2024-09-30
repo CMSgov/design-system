@@ -5,7 +5,6 @@ exports[`Hint should render a default hint 1`] = `
   <ds-hint>
     <p
       class="ds-c-hint"
-      parent="[object HTMLElement]"
     >
       Foo
     </p>

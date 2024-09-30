@@ -34,7 +34,6 @@ exports[`DateField Date Field with Error renders with error message 2`] = `
   id="static-id"
   inputmode="numeric"
   name="ds-date-field"
-  parent="[object HTMLElement]"
   type="text"
 />
 `;
@@ -74,7 +73,6 @@ exports[`DateField generates ids when no id is provided 1`] = `
   id="date-field--6"
   inputmode="numeric"
   name="ds-date-field"
-  parent="[object HTMLElement]"
   type="text"
 />
 `;
@@ -87,7 +85,6 @@ exports[`DateField renders without picker 1`] = `
   id="static-id"
   inputmode="numeric"
   name="ds-date-field"
-  parent="[object HTMLElement]"
   type="text"
 />
 `;

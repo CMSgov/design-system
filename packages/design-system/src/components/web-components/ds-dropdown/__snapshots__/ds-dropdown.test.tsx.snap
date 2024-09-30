@@ -66,7 +66,6 @@ exports[`Dropdown renders a dropdown 1`] = `
         aria-labelledby="dropdown--1__button-content dropdown--1__label"
         class="ds-c-dropdown__button ds-c-field"
         id="dropdown--1"
-        parent="[object HTMLElement]"
         type="button"
       >
         <span
@@ -166,7 +165,6 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         aria-labelledby="dropdown--5__button-content dropdown--5__label"
         class="ds-c-dropdown__button ds-c-field"
         id="dropdown--5"
-        parent="[object HTMLElement]"
         type="button"
       >
         <span
