@@ -19,6 +19,7 @@ const attributes = [
   'show-close-button',
   'title',
   'transition-duration',
+  'trigger-aria-label',
   'z-index',
 ] as const;
 
@@ -100,6 +101,7 @@ const Wrapper = ({
 }: WrapperProps) => (
   <Tooltip
     {...otherProps}
+    ariaLabel={otherProps.triggerAriaLabel}
     contentHeading={contentHeading}
     dialog={parseBooleanAttr(dialog)}
     inversed={parseBooleanAttr(inversed)}

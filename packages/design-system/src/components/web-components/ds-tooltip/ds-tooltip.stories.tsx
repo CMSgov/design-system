@@ -81,6 +81,10 @@ export default {
         'Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.',
       control: 'text',
     },
+    'trigger-aria-label': {
+      description: 'Helpful label describing the content of the tooltip for screenreaders.',
+      control: 'text',
+    },
     'z-index': {
       description: '`zIndex` styling applied to the tooltip body',
       control: 'text',
@@ -184,6 +188,7 @@ export const TitleAsAttribute = {
     title: 'Check out the `title` value in the developer console!',
     children: <span>an attribute</span>,
     exampleText: 'This tooltip has the `title` value set as ',
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -195,6 +200,7 @@ export const ContentHeadingAsAttribute = {
     title: 'This is the title attribute set on the ds-tooltip.',
     'content-heading': 'This is the content heading attribute.',
     children: 'Hover to see the tooltip content.',
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -206,6 +212,7 @@ export const IconTrigger = {
     'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     children: iconTrigger,
     exampleText: 'Tooltip with icon trigger',
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -217,6 +224,7 @@ export const InlineTrigger = {
     'class-name': 'ds-c-tooltip__trigger-link',
     children: inlineTrigger,
     exampleText: 'Tooltip with ',
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -228,6 +236,7 @@ export const InteractiveContent = {
     id: '1',
     'class-name': 'ds-c-button',
     children: withInteractiveContent,
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -239,6 +248,7 @@ export const WithCloseButton = {
     dialog: 'true',
     id: '1',
     'show-close-button': 'true',
+    'trigger-aria-label': 'This is the aria label.',
   },
 };
 
@@ -251,6 +261,7 @@ export const InversedTrigger = {
     inversed: 'true',
     id: '1',
     exampleText: 'Tooltip with icon trigger ',
+    'trigger-aria-label': 'This is the aria label.',
   },
   parameters: {
     // Must supply `layout: 'fullscreen'` when we use `onDark: true`

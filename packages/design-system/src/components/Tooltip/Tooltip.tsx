@@ -86,6 +86,10 @@ export interface BaseTooltipProps {
    */
   transitionDuration?: number;
   /**
+   * In the case of web components we need to pass in the aria label separately to target the trigger element so we don't apply it to the web component wrapper.
+   */
+  triggerAriaLabel?: string;
+  /**
    * `zIndex` styling applied to the tooltip body
    */
   zIndex?: number;
@@ -274,7 +278,7 @@ export const Tooltip = (props: TooltipProps) => {
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        aria-label={ariaLabel || undefined}
+        aria-label={ariaLabel || props.triggerAriaLabel || undefined}
         aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}
