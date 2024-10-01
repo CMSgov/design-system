@@ -126,7 +126,7 @@ import Layout from '../layouts/Layout.astro';
       <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
 
       <h2 class="ds-text-heading--2xl">Controlled text field example</h2>
-      <ds-text-field value="" id="the-text-field"></ds-text-field>
+      <ds-text-field value="" id="the-text-field" label="Text field example"></ds-text-field>
 
       <hr class="ds-u-margin-y--4">
 
@@ -145,10 +145,12 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-  document.getElementById('the-text-field')?.addEventListener('ds-change', (e: any) => {
+  document.getElementById('the-text-field')?.addEventListener('ds-change', ((
+    e: CustomEvent<{ target: { value: string } }>
+  ) => {
     const newValue = e.detail.target.value;
     document.getElementById('the-text-field')?.setAttribute('value', newValue);
-  })
+  }) as EventListener);
 
   let items: { id: string; name: string }[] | null = null;
   window.addEventListener("load", () => {
@@ -157,27 +159,35 @@ import Layout from '../layouts/Layout.astro';
       items = JSON.parse(initialItems)
     }
   })
-  document.getElementById('the-autocomplete').addEventListener('ds-input-value-change', function (e: CustomEvent<{ value: string }>) {
+
+  const autocompleteElement = document.getElementById('the-autocomplete');
+  autocompleteElement?.addEventListener('ds-input-value-change', ((
+    e: CustomEvent<{ value: string }>
+  ) => {
     const input = e?.detail?.value ?? '';
 
-    // clear search button click
-    if(input.length === 0) {
-      document.getElementById('the-autocomplete')?.setAttribute('items', JSON.stringify(items));
+    // reset items to original value
+    if (input.length === 0) {
+      autocompleteElement.setAttribute('items', JSON.stringify(items));
       return;
     }
 
     if (input.length > 0 && items) {
       const filteredItems = items.filter(
-        (item) =>
-          !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-        );
-      document.getElementById('the-autocomplete')?.setAttribute('items', JSON.stringify(filteredItems));
+        (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+      );
+      autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
     }
-  });
+  }) as EventListener);
 
-  document.getElementById('the-autocomplete').addEventListener('ds-change', function (e: CustomEvent<{ selectedItem: {id: string, name: string} }>) {
-    console.log(e.detail.selectedItem)
-  });
+
+  document
+  .getElementById('the-autocomplete')
+  ?.addEventListener('ds-change', function (
+    e: CustomEvent<{ selectedItem: { id: string; name: string } }>
+  ) {
+    console.log(`Autocomplete selection: ${JSON.stringify(e.detail.selectedItem)}`);
+  } as EventListener);
 
   document.getElementById('the-button').addEventListener('click', function () {
     const alert = document.getElementById('alert');
