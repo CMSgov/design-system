@@ -158,7 +158,7 @@ const Template = (args) => {
         toggleButton.removeEventListener('click', handleDrawerOpen);
       };
     }
-  }, []);
+  }, [drawerOpen]);
 
   const formattedArgs = {
     ...args,
