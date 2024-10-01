@@ -118,6 +118,7 @@ const Template = (args) => {
     const element = document.querySelector('ds-autocomplete');
     if (element) {
       const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
+        setInput(event.detail.selectedItem.name);
         return action('ds-change')(event);
       };
       const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
@@ -200,7 +201,7 @@ export const LabeledList = {
     textFieldLabel: 'Search for and select your county.',
     textFieldHint:
       'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-    label: 'Select from the options below:',
+    'menu-heading': 'Select from the options below:',
     items: [
       makeItem('Cook County, IL'),
       makeItem('Cook County, MD'),
@@ -214,52 +215,52 @@ export const LabeledList = {
   } as any,
 };
 
-export const CustomMarkup = {
-  render: Template,
-  args: {
-    textFieldLabel: 'Select a snack that starts with "C".',
-    textFieldHint:
-      'Type "C" to start seeing a list of snacks. Clicking the last item should not change the input value to "Search all snacks"',
-    label: 'Select from the options below:',
-    items: [
-      makeItem(
-        'Carrots (1)',
-        <>
-          Carrots <strong>(1)</strong>
-        </>
-      ),
-      makeItem(
-        'Cookies (3)',
-        <>
-          Cookies <strong>(3)</strong>
-        </>
-      ),
-      makeItem(
-        'Crackers (2)',
-        <>
-          Crackers <strong>(2)</strong>
-        </>
-      ),
-      {
-        children: (
-          <a href="#snacks" onClick={() => console.log('Searching for all the snacks!')}>
-            Search all snacks
-          </a>
-        ),
-        className: 'ds-c-autocomplete__search-all',
-        isResult: false,
-      },
-    ],
-  } as any,
+// export const CustomMarkup = {
+//   render: Template,
+//   args: {
+//     textFieldLabel: 'Select a snack that starts with "C".',
+//     textFieldHint:
+//       'Type "C" to start seeing a list of snacks. Clicking the last item should not change the input value to "Search all snacks"',
+//     label: 'Select from the options below:',
+//     items: [
+//       makeItem(
+//         'Carrots (1)',
+//         <>
+//           Carrots <strong>(1)</strong>
+//         </>
+//       ),
+//       makeItem(
+//         'Cookies (3)',
+//         <>
+//           Cookies <strong>(3)</strong>
+//         </>
+//       ),
+//       makeItem(
+//         'Crackers (2)',
+//         <>
+//           Crackers <strong>(2)</strong>
+//         </>
+//       ),
+//       {
+//         children: (
+//           <a href="#snacks" onClick={() => console.log('Searching for all the snacks!')}>
+//             Search all snacks
+//           </a>
+//         ),
+//         className: 'ds-c-autocomplete__search-all',
+//         isResult: false,
+//       },
+//     ],
+//   } as any,
 
-  parameters: {
-    docs: {
-      source: {
-        code: 'Disabled for this story. See https://github.com/storybookjs/storybook/issues/11554',
-      },
-    },
-  },
-};
+//   parameters: {
+//     docs: {
+//       source: {
+//         code: 'Disabled for this story. See https://github.com/storybookjs/storybook/issues/11554',
+//       },
+//     },
+//   },
+// };
 
 export const LoadingMessage = {
   render: Template,
