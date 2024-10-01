@@ -5,6 +5,7 @@ import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { StarIcon } from '../Icons';
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Components/Autocomplete',
@@ -150,7 +151,7 @@ export const CustomMarkup: Story = {
       makeItem(
         'Carrots (1)',
         <>
-          Carrots <strong>(1)</strong>
+          Carrots <strong>(1)</strong> <StarIcon className="ds-u-float--right" />
         </>
       ),
       makeItem(
