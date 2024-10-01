@@ -55,11 +55,6 @@
     "string"
   ],
   [
-    "offset",
-    "Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. When applied as an attribute, must be a space separated string with two values. Similar to: `offset=\"3 5\"` See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.",
-    "string"
-  ],
-  [
     "placement",
     "Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.",
     "\"auto\"\"auto-start\"\"auto-end\"\"left\"\"left-start\"\"left-end\"\"right\"\"right-start\"\"right-end\"\"top\"\"top-start\"\"top-end\"\"bottom\"\"bottom-start\"\"bottom-end\""
