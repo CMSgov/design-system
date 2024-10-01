@@ -27,7 +27,7 @@ export function renderStatusMessage(message: ReactNode) {
 }
 
 /**
- * Determine if a React component is a TextField or ds-text-field
+ * Determine if a React component is a TextField
  */
 function isTextField(child?: ReactNode): child is ReactElement {
   if (!child || !isValidElement(child)) {
