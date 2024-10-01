@@ -31,6 +31,12 @@ const storySkipList = [
   'web-components-ds-accordion-item--default', // Redundant
 ];
 
+const storyUseAxeLegacyModeList = [
+  'web-components-ds-tabs--default',
+  'web-components-ds-tabs--disabled',
+  'web-components-ds-drawer--default',
+];
+
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 

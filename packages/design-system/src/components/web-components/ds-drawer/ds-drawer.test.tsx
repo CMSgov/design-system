@@ -35,7 +35,8 @@ describe('Drawer', () => {
 
   it('should render a dialog', () => {
     renderDrawer({ 'is-open': 'true', heading: 'Test Drawer Heading' }, children);
-
+    const drawer = document.querySelector('ds-drawer');
+    expect(drawer).toMatchSnapshot();
     const dialogElement = screen.getByRole('dialog', { name: /test drawer heading/i });
     expect(dialogElement).toBeInTheDocument();
 

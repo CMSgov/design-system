@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer should render a dialog 1`] = `
+<ds-drawer
+  heading="Test Drawer Heading"
+  is-open="true"
+>
+  <dialog
+    aria-labelledby="drawer--1"
+    class="ds-c-drawer"
+    open=""
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="ds-c-drawer__window"
+    >
+      <div
+        class="ds-c-drawer__header"
+      >
+        <h3
+          class="ds-c-drawer__header-heading"
+          id="drawer--1"
+        >
+          Test Drawer Heading
+        </h3>
+        <button
+          aria-label="Close help drawer"
+          class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
+      <div
+        class="ds-c-drawer__body"
+        tabindex="0"
+      >
+        <strong>
+          An Explanation
+        </strong>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+  </dialog>
+  <template />
+</ds-drawer>
+`;
