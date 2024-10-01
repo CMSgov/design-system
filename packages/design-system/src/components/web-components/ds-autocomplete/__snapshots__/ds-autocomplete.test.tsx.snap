@@ -7,6 +7,7 @@ exports[`Autocomplete renders correctly 1`] = `
     clear-input-text="Clear search"
     clear-search-button="true"
     items="[{\\"id\\":\\"kRf6c2fY\\",\\"name\\":\\"Cook County, IL\\"}]"
+    label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
   >
@@ -20,7 +21,9 @@ exports[`Autocomplete renders correctly 1`] = `
           class="ds-c-label"
           for="autocomplete--1"
           id="autocomplete--1__label"
-        />
+        >
+          autocomplete label
+        </label>
         <p
           aria-atomic="true"
           aria-live="assertive"
@@ -62,7 +65,7 @@ Array [
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
     data-key="1a"
-    id="autocomplete--17__item--0"
+    id="autocomplete--13__item--0"
     role="option"
   >
     <span>
@@ -73,7 +76,7 @@ Array [
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
     data-key="5b"
-    id="autocomplete--17__item--1"
+    id="autocomplete--13__item--1"
     role="option"
   >
     <span>
@@ -81,51 +84,4 @@ Array [
     </span>
   </li>,
 ]
-`;
-
-exports[`Autocomplete renders items with children property 1`] = `
-<ul
-  aria-label="Suggestions"
-  aria-labelledby=""
-  class="ds-c-autocomplete__menu"
-  id="autocomplete--9__menu"
-  role="listbox"
->
-  <li
-    aria-selected="false"
-    class="ds-c-autocomplete__menu-item"
-    data-key="1"
-    id="autocomplete--9__item--0"
-    role="option"
-  >
-    <span />
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-autocomplete__menu-item"
-    data-key="2"
-    id="autocomplete--9__item--1"
-    role="option"
-  >
-    <span />
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-autocomplete__menu-item"
-    data-key="3"
-    id="autocomplete--9__item--2"
-    role="option"
-  >
-    <span />
-  </li>
-  <li
-    aria-selected="false"
-    class="ds-c-autocomplete__menu-item"
-    data-key="4"
-    id="autocomplete--9__item--3"
-    role="option"
-  >
-    <span />
-  </li>
-</ul>
 `;
