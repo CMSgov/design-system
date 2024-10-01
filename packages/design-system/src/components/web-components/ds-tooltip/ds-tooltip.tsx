@@ -13,7 +13,6 @@ const attributes = [
   'interactive-border',
   'inversed',
   'max-width',
-  'offset',
   'placement',
   'root-id',
   'show-close-button',
@@ -56,19 +55,8 @@ interface WrapperProps
   showCloseButton?: string;
   placement?: string;
   rootId?: string;
-  offset?: string;
   title: string | TooltipProps['title'];
 }
-
-const parseOffset = (offset: string): TooltipProps['offset'] => {
-  if (typeof offset === 'string') {
-    const vals = offset.split(' ');
-    const [xOffset, yOffset] = vals;
-    return [parseInt(xOffset), parseInt(yOffset)];
-  }
-  // Else return the default offset value
-  return Tooltip.defaultProps.offset as TooltipProps['offset'];
-};
 
 const isPlacementValue = (location: string): location is Placement => {
   return [
@@ -94,7 +82,6 @@ const Wrapper = ({
   contentHeading,
   dialog,
   inversed,
-  offset,
   rootId,
   title,
   ...otherProps
@@ -108,7 +95,6 @@ const Wrapper = ({
     showCloseButton={parseBooleanAttr(otherProps.showCloseButton)}
     id={rootId}
     title={title}
-    offset={parseOffset(offset)}
     placement={
       isPlacementValue(otherProps.placement)
         ? otherProps.placement

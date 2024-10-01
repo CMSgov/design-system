@@ -39,11 +39,6 @@ export default {
       control: 'boolean',
     },
     'max-width': { description: '`maxWidth` styling applied to the tooltip body', control: 'text' },
-    offset: {
-      description:
-        'Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. When applied as an attribute, must be a space separated string with two values. Similar to: `offset="3 5"` See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.',
-      control: 'text',
-    },
     placement: {
       description:
         'Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.',
