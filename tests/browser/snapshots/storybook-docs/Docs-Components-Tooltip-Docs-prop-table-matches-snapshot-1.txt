@@ -100,6 +100,11 @@
     "250"
   ],
   [
+    "triggerAriaLabel",
+    "In the case of web components we need to pass in the aria label separately to target the trigger element so we don't apply it to the web component wrapper.\nstring",
+    "-"
+  ],
+  [
     "zIndex",
     "zIndex styling applied to the tooltip body\nnumber",
     "9999"
