@@ -6,6 +6,7 @@ import { parseBooleanAttr } from '../wrapperUtils';
 const attributes = [
   'aria-label',
   'backdrop-click-exits',
+  'children',
   'close-button-text',
   'close-button-variation',
   'class-name',
@@ -23,11 +24,16 @@ const attributes = [
 interface WrapperProps
   extends Omit<
     DrawerProps,
-    'backdropClickExits' | 'hasFocusTrap' | 'isHeaderSticky' | 'isFooterSticky' | 'isOpen'
+    | 'backdropClickExits'
+    | 'children'
+    | 'hasFocusTrap'
+    | 'isHeaderSticky'
+    | 'isFooterSticky'
+    | 'isOpen'
   > {
   ariaLabel?: string;
   backdropClickExits?: string;
-  // children: DrawerProps['children'];
+  children: DrawerProps['children'];
   hasFocusTrap?: string;
   heading: string;
   isHeaderSticky?: string;
@@ -68,7 +74,6 @@ declare global {
     }
   }
 }
-
 /* eslint-enable */
 
 define('ds-drawer', () => Wrapper, {
