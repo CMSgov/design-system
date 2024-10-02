@@ -5,11 +5,6 @@
     "string"
   ],
   [
-    "children",
-    "",
-    "See description"
-  ],
-  [
     "class-name",
     "Additional classes to be added to the root element.",
     "string"
@@ -28,16 +23,6 @@
     "dialog",
     "Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)",
     "\"true\"\"false\""
-  ],
-  [
-    "exampleText",
-    "",
-    "string"
-  ],
-  [
-    "id",
-    "",
-    "string"
   ],
   [
     "interactive-border",
@@ -71,7 +56,7 @@
   ],
   [
     "title",
-    "",
+    "Content inside the tooltip body or popover. If contains interactive elements set the `dialog` attribute to `true`.",
     "string"
   ],
   [
