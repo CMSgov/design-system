@@ -124,6 +124,26 @@ function generateWebpackConfig(options) {
     output.filename = 'preact-components.js';
   }
 
+  if (options.analyzeBundles) {
+    let report;
+    if (!options.preact) {
+      report = 'react-components';
+    } else if (!options.webComponents) {
+      report = 'preact-components';
+    } else {
+      report = 'web-components';
+    }
+
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+        analyzerMode: 'static',
+        reportFilename: path.join('.', 'bundle-analysis', `${report}.html`),
+      })
+    );
+  }
+
   return {
     entry,
     output,
