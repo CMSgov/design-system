@@ -13,6 +13,10 @@ function flushPromises() {
   return new Promise((resolve) => setTimeout(resolve, 0));
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 /* -----------------------------------
  *
  * IProps
@@ -187,26 +191,40 @@ describe('define()', () => {
       expect(element.innerHTML).toEqual('');
     });
 
-    it('updates component props when attributes are changed', () => {
-      const customTitle = 'customTitle';
-      const updatedProp = 'updated!';
-      const props = { value: 'attrUpdate' };
+    it('updates component props when attributes are changed', async () => {
+      const originalTitle = 'original';
+      const updatedTitle = 'updated!';
       const html = '<button>Click here</button>';
 
       define('message-nine', () => Message, { attributes: ['custom-title'] });
 
       const element = document.createElement('message-nine');
-      element.setAttribute('custom-title', customTitle);
-      element.setAttribute('props', JSON.stringify(props));
+      element.setAttribute('custom-title', originalTitle);
       element.innerHTML = html;
       root.appendChild(element);
+      expect(root.innerHTML).toContain(`<h2>${originalTitle}</h2><em></em>${html}`);
 
-      expect(root.innerHTML).toContain(`<h2>${customTitle}</h2><em>${props.value}</em>${html}`);
+      element.setAttribute('custom-title', updatedTitle);
+      await sleep(20);
+      expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
+    });
 
-      element.setAttribute('custom-title', '');
-      element.setAttribute('props', JSON.stringify({ ...props, value: updatedProp }));
+    it('updates component props when `props` attribute is changed', async () => {
+      const originalTitle = 'original';
+      const updatedTitle = 'updated!';
+      const html = '<button>Click here</button>';
 
-      expect(root.innerHTML).toContain(`<em>${updatedProp}</em>${html}`);
+      define('message-nine-and-a-half', () => Message, { attributes: ['custom-title'] });
+
+      const element = document.createElement('message-nine-and-a-half');
+      element.setAttribute('props', JSON.stringify({ customTitle: originalTitle }));
+      element.innerHTML = html;
+      root.appendChild(element);
+      expect(root.innerHTML).toContain(`<h2>${originalTitle}</h2><em></em>${html}`);
+
+      element.setAttribute('props', JSON.stringify({ customTitle: updatedTitle }));
+      await sleep(20);
+      expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
     });
 
     it('wraps component in an HOC if provided', () => {
