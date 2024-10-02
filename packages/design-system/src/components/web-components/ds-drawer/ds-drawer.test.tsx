@@ -67,12 +67,18 @@ describe('Drawer', () => {
 
   it('should render a footer-body when footer-body attribute is provided', () => {
     renderDrawer(
-      { 'is-open': 'true', heading: 'Test Drawer Heading', 'footer-body': 'Footer Content' },
+      {
+        'is-open': 'true',
+        heading: 'Test Drawer Heading',
+        'footer-body': 'Footer Content',
+      },
       children
     );
+
     const renderedFooterBodyElement = screen.getByText('Footer Content');
     expect(renderedFooterBodyElement).toBeInTheDocument();
   });
+
   it('should call the `ds-close-click` handler when the close button is clicked', async () => {
     renderDrawer(
       { 'is-open': 'true', heading: 'Test Drawer Heading', 'aria-label': 'Close help drawer' },
@@ -88,10 +94,11 @@ describe('Drawer', () => {
     expect(mockCloseHandler).toHaveBeenCalledTimes(1);
     drawer.removeEventListener('ds-close-click', mockCloseHandler);
   });
+
   it('should handle `esc` with focus trap enabled', async () => {
     renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
-    const drawer = document.querySelector('ds-drawer');
 
+    const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
     userEvent.keyboard('{Escape}');
@@ -99,19 +106,23 @@ describe('Drawer', () => {
     expect(mockCloseHandler).toHaveBeenCalledTimes(1);
     drawer.removeEventListener('ds-close-click', mockCloseHandler);
   });
+
   it('should not call the event handler after unmounting', () => {
     const { unmount } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+
     const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
     unmount();
     userEvent.keyboard('{Escape}');
+
     expect(mockCloseHandler).not.toHaveBeenCalled();
   });
+
   it('should not call onCloseClick for other key presses', () => {
     renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
-    const drawer = document.querySelector('ds-drawer');
 
+    const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
     userEvent.keyboard('a');
