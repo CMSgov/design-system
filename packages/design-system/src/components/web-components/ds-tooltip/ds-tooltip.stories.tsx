@@ -15,6 +15,11 @@ export default {
       description: 'Additional classes to be added to the root element.',
       control: 'text',
     },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
     'close-button-label': {
       description: "Configurable text for the aria-label of the tooltip's close button",
       control: 'text',
@@ -28,6 +33,13 @@ export default {
       description:
         "Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)",
       control: 'boolean',
+    },
+    exampleText: {
+      description:
+        'Used only within this story for setting text around the tooltip. Not used in production.',
+      table: {
+        disable: true,
+      },
     },
     'interactive-border': {
       description:
@@ -71,6 +83,11 @@ export default {
         'Determines if close button is shown in tooltip. It is recommended that the close button is only used if `dialog=true`',
       control: 'boolean',
     },
+    title: {
+      description:
+        'Content inside the tooltip body or popover. If contains interactive elements set the `dialog` attribute to `true`.',
+      control: 'text',
+    },
     'transition-duration': {
       description:
         'Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.',
@@ -93,6 +110,16 @@ export default {
       page: WebComponentDocTemplate,
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tooltip/).`,
+      },
+      slots: {
+        title: {
+          description:
+            'Slot for displaying custom content inside the tooltip body or popover. This can include text, or HTML elements. If contains interactive elements set the `dialog` attribute to `true`.',
+        },
+        'content-heading': {
+          description:
+            'Slot for displaying a custom heading for the tooltip content. This will show above `title` content and inline with `close-button` if the `close-button` attribute is set to `true`.',
+        },
       },
     },
   },
@@ -178,7 +205,7 @@ export const TitleAsAttribute = {
   render: Template,
   args: {
     component: 'a',
-    id: '1',
+    'root-id': '1',
     'class-name': 'ds-c-tooltip__trigger-link',
     title: 'Check out the `title` value in the developer console!',
     children: <span>an attribute</span>,
@@ -190,7 +217,7 @@ export const TitleAsAttribute = {
 export const ContentHeadingAsAttribute = {
   render: Template,
   args: {
-    id: '1',
+    'root-id': '1',
     'class-name': 'ds-c-button',
     title: 'This is the title attribute set on the ds-tooltip.',
     'content-heading': 'This is the content heading attribute.',
@@ -203,7 +230,7 @@ export const IconTrigger = {
   render: Template,
   args: {
     component: 'button',
-    id: '1',
+    'root-id': '1',
     'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     children: iconTrigger,
     exampleText: 'Tooltip with icon trigger',
@@ -215,7 +242,7 @@ export const InlineTrigger = {
   render: Template,
   args: {
     component: 'a',
-    id: '1',
+    'root-id': '1',
     'class-name': 'ds-c-tooltip__trigger-link',
     children: inlineTrigger,
     exampleText: 'Tooltip with ',
@@ -228,7 +255,7 @@ export const InteractiveContent = {
   args: {
     component: 'button',
     dialog: 'true',
-    id: '1',
+    'root-id': '1',
     'class-name': 'ds-c-button',
     children: withInteractiveContent,
     'trigger-aria-label': 'This is the aria label.',
@@ -241,7 +268,7 @@ export const WithCloseButton = {
     children: withCloseButton,
     'class-name': 'ds-c-button',
     dialog: 'true',
-    id: '1',
+    'root-id': '1',
     'show-close-button': 'true',
     'trigger-aria-label': 'This is the aria label.',
   },
@@ -253,7 +280,7 @@ export const InversedTrigger = {
     children: inversedTrigger,
     'class-name': 'ds-c-tooltip__trigger-icon ds-u-display--inline',
     inversed: 'true',
-    id: '1',
+    'root-id': '1',
     exampleText: 'Tooltip with icon trigger ',
     'trigger-aria-label': 'This is the aria label.',
   },
