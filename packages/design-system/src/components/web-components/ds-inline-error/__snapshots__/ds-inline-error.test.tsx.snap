@@ -8,7 +8,6 @@ exports[`InlineError should render a default inline-error 1`] = `
       aria-live="assertive"
       class="ds-c-inline-error"
       id="inline-error--1"
-      parent="[object HTMLElement]"
     >
       <svg
         aria-hidden="true"

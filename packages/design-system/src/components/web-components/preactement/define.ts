@@ -12,6 +12,7 @@ import {
 import { templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
+import { signal } from '@preact/signals';
 
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
@@ -90,6 +91,7 @@ function createCustomElement<T>(
     __properties = {};
     __options = options;
     __mutationObserver;
+    __propsSignal;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -277,12 +279,12 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
   if (name === 'props') {
     props = { ...props, ...parseJson.call(this, updated) };
   } else {
-    props[getPropKey(name)] = updated;
+    props = { ...props, [getPropKey(name)]: updated };
   }
 
   this.__properties = props;
-
-  this.renderPreactComponent();
+  // Will trigger a re-render of the `StateWrapper` component if it changed
+  this.__propsSignal.value = props;
 }
 
 /**
@@ -353,30 +355,35 @@ function renderPreactComponent(this: CustomElement) {
   // function, or we'll get an endless feedback loop of change and re-render.
   this.__mutationObserver?.disconnect();
 
+  // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
+  // Putting the original inner content into a template also allows us to keep a copy of
+  // it for future renders where context has been lost (see function documentation).
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
     template = document.createElement('template');
     template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
-
   const { vnode, slots } = templateToPreactVNode(template);
 
+  // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
+  // in the original innerHTML. To keep that from getting passed to the Preact component,
+  // we need to unwrap our vnode before we pass it as the `children` prop.
   const children = unwrapTemplateVNode(vnode);
 
-  // These are the props we'll pass to the Preact component
-  const props = {
-    ...this.__properties,
-    parent: this,
-    children,
-    ...slots,
-  };
+  // If we were to call this function that we're in every time a prop changed, it would
+  // clobber the internal state of our underlying Preact component. To avoid this, we're
+  // going to tie our attributes (props) to Preact Signals that we can use to trigger
+  // re-rendering a `StateWrapper` component.
+  const propsSignal = signal(this.__properties);
+  this.__propsSignal = propsSignal;
+  const StateWrapper = () => h(this.__component, { ...propsSignal.value, ...slots, children });
 
   // TODO: Clearing everything before the Preact component render only appears to be
   // necessary for the unit tests. I haven't figured out why yet.
   [...this.childNodes].forEach((childNode) => childNode.remove());
 
   // Render the Preact component to the root of this custom element
-  render(h(this.__component, props), this);
+  render(h(StateWrapper, {}), this);
 
   // The Preact render would have removed this template, so add it back in
   this.appendChild(template);
