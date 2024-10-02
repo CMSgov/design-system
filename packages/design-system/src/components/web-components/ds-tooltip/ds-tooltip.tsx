@@ -49,13 +49,13 @@ interface WrapperProps
     | 'placement'
     | 'title'
   > {
-  contentHeading?: string | TooltipProps['contentHeading'];
+  contentHeading?: string;
   dialog?: string;
   inversed?: string;
   showCloseButton?: string;
   placement?: string;
   rootId?: string;
-  title: string | TooltipProps['title'];
+  title: string;
 }
 
 const isPlacementValue = (location: string): location is Placement => {
