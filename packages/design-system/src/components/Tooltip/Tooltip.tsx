@@ -240,6 +240,7 @@ export const Tooltip = (props: TooltipProps) => {
       maxWidth,
       title,
       transitionDuration,
+      triggerAriaLabel,
       zIndex,
       showCloseButton,
       closeButtonLabel,
@@ -278,7 +279,7 @@ export const Tooltip = (props: TooltipProps) => {
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        aria-label={ariaLabel || props.triggerAriaLabel || undefined}
+        aria-label={ariaLabel || triggerAriaLabel || undefined}
         aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}

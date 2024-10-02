@@ -5,16 +5,18 @@ import './ds-tooltip-icon';
 
 jest.mock('@popperjs/core');
 
-const defaultProps = {
-  children: <ds-tooltip-icon data-testid="ds-tooltip-icon" />,
-  'class-name': 'ds-c-tooltip__trigger-icon',
-  title: 'Tooltip body content',
-  id: '1234',
-};
-
 const customTooltipText = 'Custom tooltip title text for our web component!';
 const customHeadingText = 'Custom tooltip heading text for our web component!';
 const childText = 'Bog standard child content.';
+const triggerAriaLabelText = 'tooltip trigger aria label';
+
+const defaultProps = {
+  children: <ds-tooltip-icon />,
+  'class-name': 'ds-c-tooltip__trigger-icon',
+  title: customTooltipText,
+  'root-id': '1234',
+  'trigger-aria-label': triggerAriaLabelText,
+};
 
 const propsWithSlots = {
   children: (
@@ -38,16 +40,22 @@ describe('ds-tooltip', function () {
   });
 
   it('renders title and contentHeading when passed in as slots', () => {
-    renderTooltip(propsWithSlots);
-    const tooltipTrigger = screen.getByText(customTooltipText);
-    expect(tooltipTrigger).toHaveTextContent(customTooltipText);
-    expect(tooltipTrigger).toHaveTextContent(customHeadingText);
+    jest.useFakeTimers();
+    const { container } = renderTooltip(propsWithSlots);
+    const tooltip = container.querySelector('.ds-c-tooltip');
+
+    userEvent.tab();
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+    expect(tooltip).toHaveTextContent(customTooltipText);
+    expect(tooltip).toHaveTextContent(customHeadingText);
   });
 
   it('renders default trigger icon', () => {
     renderTooltip();
-    const triggerEl = screen.queryByTestId('ds-tooltip-icon');
-    expect(triggerEl).toMatchSnapshot();
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    expect(tooltipTrigger).toMatchSnapshot();
   });
 
   it('renders custom trigger component', () => {
@@ -55,8 +63,8 @@ describe('ds-tooltip', function () {
       component: 'a',
       children: childText,
     });
-    const triggerEl = screen.queryByText(childText);
-    expect(triggerEl).toMatchSnapshot();
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    expect(tooltipTrigger).toMatchSnapshot();
   });
 
   it('renders inverse tooltip', () => {
@@ -66,7 +74,7 @@ describe('ds-tooltip', function () {
 
   it('renders dialog tooltip', () => {
     renderTooltip({ dialog: 'true', children: childText });
-    const tooltipTrigger = screen.getByText(childText);
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     userEvent.click(tooltipTrigger);
     const contentEl = screen.queryByRole('dialog');
     expect(contentEl).not.toBeNull();
@@ -95,7 +103,6 @@ describe('ds-tooltip', function () {
     renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
-      title: customTooltipText,
     });
     const closeButton = screen.getByLabelText('Close', { selector: 'button' });
     expect(closeButton).toBeDefined();
@@ -104,10 +111,9 @@ describe('ds-tooltip', function () {
   it('renders heading element', () => {
     renderTooltip({
       dialog: 'true',
-      'content-heading': 'Tooltip heading content',
-      title: customTooltipText,
+      'content-heading': customHeadingText,
     });
-    const tooltipTrigger = screen.getByText(customTooltipText);
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     userEvent.click(tooltipTrigger);
     const contentEl = screen.queryByRole('dialog');
     expect(contentEl).toMatchSnapshot();
@@ -118,22 +124,32 @@ describe('ds-tooltip', function () {
       dialog: 'true',
       'content-heading': customHeadingText,
       'show-close-button': 'true',
-      title: customTooltipText,
     });
-    const tooltipTrigger = screen.getByText(customTooltipText);
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     userEvent.click(tooltipTrigger);
     const contentEl = screen.queryByRole('dialog');
     expect(contentEl).toMatchSnapshot();
+  });
+
+  it('should close tooltip when onClose is clicked', () => {
+    renderTooltip({
+      dialog: 'true',
+      'show-close-button': 'true',
+    });
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    userEvent.click(tooltipTrigger);
+    const closeButton = screen.getByLabelText('Close', { selector: 'button' });
+    userEvent.click(closeButton);
+    const tooltipContent = screen.queryByRole('dialog');
+    expect(tooltipContent).toBeNull();
   });
 
   it('should return focus back to trigger when closed', () => {
     renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
-      children: childText,
-      title: customTooltipText,
     });
-    const tooltipTrigger = screen.getByText(childText);
+    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     userEvent.click(tooltipTrigger);
     const closeButton = screen.getByLabelText('Close', { selector: 'button' });
     userEvent.click(closeButton);
