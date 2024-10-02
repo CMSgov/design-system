@@ -86,7 +86,7 @@ export interface BaseTooltipProps {
    */
   transitionDuration?: number;
   /**
-   * In the case of web components we need to pass in the aria label separately to target the trigger element so we don't apply it to the web component wrapper.
+   * Helpful description of the tooltip for screenreaders. An alias for `ariaLabel` specifically added to improve accessibility for the web component version of this component.
    */
   triggerAriaLabel?: string;
   /**
