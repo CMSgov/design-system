@@ -117,7 +117,7 @@ const Template = (args) => {
   const [input, setInput] = useState('');
 
   let filteredItems = null;
-  if (input.length > 0) {
+  if (input.length > 0 && items) {
     filteredItems = items.filter(
       (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
     );

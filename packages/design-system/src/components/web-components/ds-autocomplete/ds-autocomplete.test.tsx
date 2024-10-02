@@ -189,7 +189,7 @@ describe('Autocomplete', () => {
   });
 
   it('opens the menu if typing resulted in results that were delayed by async data fetching', async () => {
-    const { rerender } = renderAutocomplete({ items: 'null' });
+    const { rerender } = renderAutocomplete({ items: undefined });
     const autocompleteField = screen.getByRole('combobox');
     userEvent.click(autocompleteField);
     userEvent.type(autocompleteField, 'c');

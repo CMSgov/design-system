@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from '../../Autocomplete';
-import { parseBooleanAttr } from '../wrapperUtils';
+import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
 import { TextField } from '../../TextField';
 import { formAttrs } from '../shared-attributes/form';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
@@ -70,7 +70,7 @@ const Wrapper = ({
       autoFocus={parseBooleanAttr(autofocus)}
       clearSearchButton={parseBooleanAttr(clearSearchButton)}
       id={rootId}
-      items={JSON.parse(items)}
+      items={parseJsonAttr(items)}
       loading={parseBooleanAttr(loading)}
     >
       <TextField label={label} hint={hint} name="autocomplete" value={value} />
