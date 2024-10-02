@@ -1,10 +1,11 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
+import type { Meta } from '@storybook/react';
 import './ds-tooltip';
 import './ds-tooltip-icon';
 import '../ds-button/ds-button';
 
-export default {
+const meta: Meta = {
   title: 'Web Components/ds-tooltip',
   argTypes: {
     'active-class-name': {
@@ -132,6 +133,8 @@ export default {
     ),
   ],
 };
+
+export default meta;
 
 const Template = (args) => {
   return (
