@@ -189,7 +189,7 @@ export const Default = Template.bind({});
 Default.args = {
   heading: 'Drawer Heading',
   'footer-title': 'Footer Title',
-  'footer-body': 'Footer Content',
+  'footer-body': 'Footer content',
 };
 
 export default meta;

@@ -10,7 +10,7 @@
     "-"
   ],
   [
-    "closeButtonAriaLabel*",
+    "closeButtonAriaLabel",
     "Helpful description of the drawer for screenreaders. An alias for ariaLabel specifically added to improve accessibility for the web component version of this component.\nstring",
     "-"
   ],

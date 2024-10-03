@@ -18,7 +18,7 @@ function renderDrawer(args, children) {
     <ds-drawer {...(args as any)}>
       {children}
       <div slot="footer-body">
-        <p className="ds-text-body--md ds-u-margin--0">{'Default slotted footer content'}</p>
+        <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
       </div>
     </ds-drawer>
   );

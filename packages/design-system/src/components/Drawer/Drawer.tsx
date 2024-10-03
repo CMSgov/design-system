@@ -20,7 +20,7 @@ export interface DrawerProps {
   /**
    * Helpful description of the drawer for screenreaders. An alias for `ariaLabel` specifically added to improve accessibility for the web component version of this component.
    */
-  closeButtonAriaLabel: string;
+  closeButtonAriaLabel?: string;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
