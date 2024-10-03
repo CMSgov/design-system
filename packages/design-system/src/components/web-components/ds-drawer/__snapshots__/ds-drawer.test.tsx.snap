@@ -43,6 +43,22 @@ exports[`Drawer should render a dialog 1`] = `
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
+      <div
+        class="ds-c-drawer__footer"
+      >
+        <h4
+          class="ds-c-drawer__footer-title"
+        />
+        <div
+          class="ds-c-drawer__footer-body"
+        >
+          <p
+            class="ds-text-body--md ds-u-margin--0"
+          >
+            Default slotted footer content
+          </p>
+        </div>
+      </div>
     </div>
   </dialog>
   <template />

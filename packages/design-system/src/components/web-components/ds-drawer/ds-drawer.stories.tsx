@@ -174,11 +174,11 @@ const Template = (args) => {
     <div>
       <ds-drawer {...formattedArgs}>
         {drawerContent}
-        {args['footer-body'] && (
-          <div slot="footer-body">
-            <p className="ds-text-body--md ds-u-margin--0">{args['footer-body']}</p>
-          </div>
-        )}
+        <div slot="footer-body">
+          <p className="ds-text-body--md ds-u-margin--0">
+            {args['footer-body'] ? args['footer-body'] : 'Default slotted footer content'}
+          </p>
+        </div>
       </ds-drawer>
       <ds-button {...toggleButtonArgs}>Click to toggle drawer</ds-button>
     </div>
@@ -189,7 +189,7 @@ export const Default = Template.bind({});
 Default.args = {
   heading: 'Drawer Heading',
   'footer-title': 'Footer Title',
-  'footer-body': 'Footer Content',
+  // 'footer-body': 'Footer Content',
 };
 
 export default meta;

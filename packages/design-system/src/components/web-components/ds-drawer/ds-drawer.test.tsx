@@ -17,13 +17,15 @@ function renderDrawer(args, children) {
   return render(
     <ds-drawer {...(args as any)}>
       {children}
-      {args['footer-body'] && (
-        <div slot="footer-body">
-          <p className="ds-text-body--md ds-u-margin--0">{args['footer-body']}</p>
-        </div>
-      )}
+      <div slot="footer-body">
+        <p className="ds-text-body--md ds-u-margin--0">{'Default slotted footer content'}</p>
+      </div>
     </ds-drawer>
   );
+}
+
+function renderDrawerWithoutSlottedFooter(args, children) {
+  return render(<ds-drawer {...(args as any)}>{children}</ds-drawer>);
 }
 const mockCloseHandler = jest.fn();
 
@@ -65,17 +67,44 @@ describe('Drawer', () => {
     expect(openDialogElement).toBeInTheDocument();
   });
 
-  it('should render a footer-body when footer-body attribute is provided', () => {
-    renderDrawer(
+  it('renders footer-body when footer-body attribute is provided', () => {
+    renderDrawerWithoutSlottedFooter(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
-        'footer-body': 'Footer Content',
+        'footer-body': 'Footer Attribute Content',
       },
       children
     );
 
-    const renderedFooterBodyElement = screen.getByText('Footer Content');
+    const renderedFooterBodyElement = screen.getByText('Footer Attribute Content');
+    expect(renderedFooterBodyElement).toBeInTheDocument();
+  });
+
+  it('renders slotted footer-body when slot content is provided and attribute is not', () => {
+    renderDrawer(
+      {
+        'is-open': 'true',
+        heading: 'Test Drawer Heading',
+      },
+      children
+    );
+
+    const renderedFooterBodyElement = screen.getByText('Default slotted footer content');
+    expect(renderedFooterBodyElement).toBeInTheDocument();
+  });
+
+  it('prioritizes slotted footer-body over the attribute when both are provided', () => {
+    renderDrawer(
+      {
+        'is-open': 'true',
+        heading: 'Test Drawer Heading',
+        'footer-body': 'Footer-body content from attribute',
+      },
+      children
+    );
+
+    const renderedFooterBodyElement = screen.getByText('Default slotted footer content');
     expect(renderedFooterBodyElement).toBeInTheDocument();
   });
 
