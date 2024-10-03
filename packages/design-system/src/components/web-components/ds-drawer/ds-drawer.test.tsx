@@ -36,11 +36,22 @@ describe('Drawer', () => {
   });
 
   it('should render a dialog', () => {
-    renderDrawer({ 'is-open': 'true', heading: 'Test Drawer Heading' }, children);
+    renderDrawer(
+      {
+        'is-open': 'true',
+        heading: 'Test Drawer Heading',
+        'close-button-aria-label': 'Close Help Drawer',
+      },
+      children
+    );
     const drawer = document.querySelector('ds-drawer');
     expect(drawer).toMatchSnapshot();
+
     const dialogElement = screen.getByRole('dialog', { name: /test drawer heading/i });
     expect(dialogElement).toBeInTheDocument();
+
+    const closeButton = screen.getByLabelText('Close Help Drawer');
+    expect(closeButton).toBeInTheDocument();
 
     const headingElement = screen.getByText('Test Drawer Heading');
     expect(headingElement).toBeInTheDocument();
@@ -110,7 +121,11 @@ describe('Drawer', () => {
 
   it('should call the `ds-close-click` handler when the close button is clicked', async () => {
     renderDrawer(
-      { 'is-open': 'true', heading: 'Test Drawer Heading', 'aria-label': 'Close help drawer' },
+      {
+        'is-open': 'true',
+        heading: 'Test Drawer Heading',
+        'close-button-aria-label': 'Close help drawer',
+      },
       children
     );
     const drawer = document.querySelector('ds-drawer');

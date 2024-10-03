@@ -2,12 +2,14 @@
 
 exports[`Drawer should render a dialog 1`] = `
 <ds-drawer
+  close-button-aria-label="Close Help Drawer"
   heading="Test Drawer Heading"
   is-open="true"
 >
   <dialog
     aria-labelledby="drawer--1"
     class="ds-c-drawer"
+    closebuttonarialabel="Close Help Drawer"
     open=""
     role="dialog"
     tabindex="-1"
@@ -25,7 +27,7 @@ exports[`Drawer should render a dialog 1`] = `
           Test Drawer Heading
         </h3>
         <button
-          aria-label="Close help drawer"
+          aria-label="Close Help Drawer"
           class="ds-c-button ds-c-button--small ds-c-drawer__close-button"
           type="button"
         >

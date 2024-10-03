@@ -31,14 +31,14 @@ const meta: Meta = {
     },
   },
   argTypes: {
-    'aria-label': {
-      description: 'Gives more context to screen readers on the Drawer close button.',
-      control: 'text',
-    },
     'backdrop-click-exits': {
       description:
         'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked.',
       control: 'boolean',
+    },
+    'close-button-aria-label': {
+      description: 'Gives more context to screen readers on the Drawer close button.',
+      control: 'text',
     },
     'close-button-text': {
       description: 'Content for the close button, typically a string or node.',
@@ -189,7 +189,7 @@ export const Default = Template.bind({});
 Default.args = {
   heading: 'Drawer Heading',
   'footer-title': 'Footer Title',
-  // 'footer-body': 'Footer Content',
+  'footer-body': 'Footer Content',
 };
 
 export default meta;

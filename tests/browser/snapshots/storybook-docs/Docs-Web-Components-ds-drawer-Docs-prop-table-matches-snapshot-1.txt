@@ -1,10 +1,5 @@
 [
   [
-    "aria-label",
-    "Gives more context to screen readers on the Drawer close button.",
-    "string"
-  ],
-  [
     "backdrop-click-exits",
     "Pass `true` to have the dialog close when its backdrop pseudo-element is clicked.",
     "\"true\"\"false\""
@@ -17,6 +12,11 @@
   [
     "class-name",
     "CSS class to apply custom styles to the Drawer.",
+    "string"
+  ],
+  [
+    "close-button-aria-label",
+    "Gives more context to screen readers on the Drawer close button.",
     "string"
   ],
   [

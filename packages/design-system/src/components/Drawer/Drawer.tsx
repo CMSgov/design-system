@@ -17,6 +17,10 @@ export interface DrawerProps {
    * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
    */
   backdropClickExits?: boolean;
+  /**
+   * Helpful description of the drawer for screenreaders. An alias for `ariaLabel` specifically added to improve accessibility for the web component version of this component.
+   */
+  closeButtonAriaLabel: string;
   closeButtonText?: React.ReactNode;
   closeButtonVariation?: ButtonVariation;
   children: React.ReactNode;
