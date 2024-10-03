@@ -100,6 +100,11 @@
     "250"
   ],
   [
+    "triggerAriaLabel",
+    "Helpful description of the tooltip for screenreaders. An alias for ariaLabel specifically added to improve accessibility for the web component version of this component.\nstring",
+    "-"
+  ],
+  [
     "zIndex",
     "zIndex styling applied to the tooltip body\nnumber",
     "9999"

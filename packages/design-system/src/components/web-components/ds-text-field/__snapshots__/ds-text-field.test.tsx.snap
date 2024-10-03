@@ -24,7 +24,6 @@ exports[`ds-text-field renders text-field 1`] = `
         aria-invalid="false"
         class="ds-c-field"
         id="text-field--1"
-        parent="[object HTMLElement]"
         type="text"
       />
     </div>

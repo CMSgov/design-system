@@ -99,8 +99,8 @@ stories.forEach((story) => {
               await page.waitForTimeout(100);
               break;
           }
-
-          await expectNoAxeViolations(page);
+          const shouldUseAxeLegacyMode = storyUseAxeLegacyModeList.includes(story.id);
+          await expectNoAxeViolations(page, shouldUseAxeLegacyMode);
         });
       });
     });
