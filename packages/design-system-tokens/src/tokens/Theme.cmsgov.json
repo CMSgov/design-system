@@ -953,7 +953,7 @@
           }
         },
         "body": {
-          "$value": "{font.family.open-sans}",
+          "$value": "{font.family.public-sans}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -963,7 +963,7 @@
           }
         },
         "button": {
-          "$value": "{font.family.open-sans}",
+          "$value": "{font.family.public-sans}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
@@ -973,7 +973,7 @@
           }
         },
         "link": {
-          "$value": "{font.family.open-sans}",
+          "$value": "{font.family.public-sans}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
