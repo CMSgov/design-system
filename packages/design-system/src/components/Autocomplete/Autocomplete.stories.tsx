@@ -203,6 +203,6 @@ export const NoResults: Story = {
     items: [],
     clearSearchButton: false,
     textFieldLabel: 'This will show a "no results" message.',
-    textFieldHint: "Start typing, but you'll only get a loading message.",
+    textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
   } as any,
 };

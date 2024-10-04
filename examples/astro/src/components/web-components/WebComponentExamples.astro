@@ -123,10 +123,70 @@
     <hr class="ds-u-margin-y--4">
 
     <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
+
+    <h2 class="ds-text-heading--2xl">Controlled text field example</h2>
+    <ds-text-field value="" id="the-text-field" label="Text field example"></ds-text-field>
+
+    <hr class="ds-u-margin-y--4">
+
+    <h2 class="ds-text-heading--2xl">Autocomplete example</h2>
+    <ds-autocomplete
+      id="the-autocomplete"
+      items='[{"id":"71","name":"Acetaminophen"},{"id":"72","name":"Advil"},{"id":"73","name":"Benadryl"},{"id":"74","name":"Claritin"},{"id":"75","name":"Detrol"},{"id":"76","name":"Excedrin"}]'
+      label="Enter and select a drug to see its cost under each plan."
+      hint="Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
+      clear-search-button="true"
+      class-name="ds-u-padding-bottom--7"
+    >
+    </ds-autocomplete>
   </div>
 </main>
 
 <script>
+  document.getElementById('the-text-field')?.addEventListener('ds-change', ((
+    e: CustomEvent<{ target: { value: string } }>
+  ) => {
+    const newValue = e.detail.target.value;
+    document.getElementById('the-text-field')?.setAttribute('value', newValue);
+  }) as EventListener);
+
+  let items: { id: string; name: string }[] | null = null;
+  window.addEventListener("load", () => {
+    const initialItems = document?.getElementById('the-autocomplete')?.getAttribute('items');
+    if (typeof initialItems === 'string') {
+      items = JSON.parse(initialItems)
+    }
+  })
+
+  const autocompleteElement = document.getElementById('the-autocomplete');
+  autocompleteElement?.addEventListener('ds-input-value-change', ((
+    e: CustomEvent<{ value: string }>
+  ) => {
+    const input = e?.detail?.value ?? '';
+
+    // reset items to original value
+    if (input.length === 0) {
+      autocompleteElement.setAttribute('items', JSON.stringify(items));
+      return;
+    }
+
+    if (input.length > 0 && items) {
+      const filteredItems = items.filter(
+        (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+      );
+      autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
+    }
+  }) as EventListener);
+
+
+  document
+  .getElementById('the-autocomplete')
+  ?.addEventListener('ds-change', function (
+    e: CustomEvent<{ selectedItem: { id: string; name: string } }>
+  ) {
+    console.log(`Autocomplete selection: ${JSON.stringify(e.detail.selectedItem)}`);
+  } as EventListener);
+  
   document.getElementById('the-button').addEventListener('click', function () {
     const alert = document.getElementById('alert');
     alert.setAttribute('variation', 'error');
