@@ -10,3 +10,15 @@ export function parseDateAttr(attr?: string): Date | undefined {
 export function parseIntegerAttr(attr?: string): number | undefined {
   if (attr !== undefined) return parseInt(attr);
 }
+
+export function parseJsonAttr(attr?: string): any | string | undefined {
+  const isJsonString = (str?: string): boolean => {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  };
+  return isJsonString(attr) ? JSON.parse(attr) : attr;
+}

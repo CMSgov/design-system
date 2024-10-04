@@ -1,0 +1,87 @@
+[
+  [
+    "aria-clear-label",
+    "Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.",
+    "string"
+  ],
+  [
+    "aria-complete-label",
+    "Control the `TextField` autocomplete attribute. Defaults to \"off\" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)",
+    "string"
+  ],
+  [
+    "autofocus",
+    "Sets the focus on the select during the first mount",
+    "\"true\"\"false\""
+  ],
+  [
+    "class-name",
+    "Additional classes to be added to the root element. Useful for adding utility classes.",
+    "string"
+  ],
+  [
+    "clear-input-text",
+    "Text rendered on the page if `clearInput` prop is passed. Default is \"Clear search\".",
+    "string"
+  ],
+  [
+    "clear-search-button",
+    "Removes the Clear search button when set to `false`",
+    "\"true\"\"false\""
+  ],
+  [
+    "hint",
+    "An optional hint for the label",
+    "string"
+  ],
+  [
+    "items",
+    "An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined. This parameter needs to be stringified (please see examples for usage and [read more on the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs):).",
+    "string"
+  ],
+  [
+    "label",
+    "A label for the input",
+    "string"
+  ],
+  [
+    "loading",
+    "Can be called when the `items` array is being fetched remotely, or will be delayed for more than 1-2 seconds.",
+    "\"true\"\"false\""
+  ],
+  [
+    "loading-message",
+    "Message users will see when the `loading` prop is passed to `Autocomplete`.",
+    "string"
+  ],
+  [
+    "menu-heading",
+    "Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.",
+    "string"
+  ],
+  [
+    "menu-heading-id",
+    "A unique `id` to be used on the child `TextField` label tag",
+    "string"
+  ],
+  [
+    "name",
+    "The `input` field's `name` attribute.",
+    "string"
+  ],
+  [
+    "no-results-message",
+    "Message users will see when the `items` array returns empty and the `loading` prop is passed to `<Autocomplete />`.",
+    "string"
+  ],
+  [
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "string"
+  ],
+  [
+    "value",
+    "Input value",
+    "string"
+  ]
+]
