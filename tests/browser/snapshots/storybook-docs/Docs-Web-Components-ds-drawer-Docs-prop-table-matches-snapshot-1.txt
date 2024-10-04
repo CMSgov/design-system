@@ -26,7 +26,7 @@
   ],
   [
     "close-button-variation",
-    "Style variation for the close button.",
+    "Style variation for the close button (\"solid\" or \"ghost\").",
     "\"solid\"\"ghost\""
   ],
   [

@@ -45,7 +45,7 @@ const meta: Meta = {
       control: 'text',
     },
     'close-button-variation': {
-      description: 'Style variation for the close button.',
+      description: 'Style variation for the close button ("solid" or "ghost").',
       control: { type: 'select' },
       options: ['solid', 'ghost'],
     },
