@@ -41,7 +41,7 @@ const meta: Meta = {
       control: 'text',
     },
     'close-button-text': {
-      description: 'Content for the close button, typically a string or node.',
+      description: 'Content for the close button, specified as a string.',
       control: 'text',
     },
     'close-button-variation': {
