@@ -55,6 +55,7 @@ playwright-report/
 tests/browser/test-results/
 tests/a11y/test-results/
 dist/
+bundle-analysis/
 
 # Doc Site ignores
 .cache/

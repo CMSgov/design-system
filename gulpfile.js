@@ -25,6 +25,7 @@ const args = require('yargs/yargs')(process.argv.slice(2)).argv;
 const willMinifySvg = args.minifySvg ?? false;
 const rootPath = args.package ?? path.join('packages', 'design-system');
 const isCore = rootPath.includes('design-system') ?? false;
+const analyzeBundles = args['analyze-bundles'];
 
 const tokensPackageFiles = path.join('packages', 'design-system-tokens', 'dist');
 const corePackageFiles = path.join('packages', 'design-system', 'dist');
@@ -274,7 +275,7 @@ const compileTypescriptDefs = (tsConfig = {}) =>
 const bundleJs = (options) => (cb) => {
   gulp
     .src(options.entryPath)
-    .pipe(webpack(generateWebpackConfig(options)))
+    .pipe(webpack(generateWebpackConfig({ ...options, analyzeBundles })))
     .pipe(gulp.dest(options.dest))
     .on('end', cb);
 };
@@ -326,6 +327,7 @@ const displayHelp = (cb) => {
   log('usage:');
   log('yarn gulp build <params>');
   log('  --package <cmsds system/child system path> // i.e. packages/ds-healthcare-gov');
+  log('  --analyze-bundles // Runs a bundle analyzer for the current build');
   log('  --minifySvg // will enable svg minification during image asset copying');
   log();
   cb();
