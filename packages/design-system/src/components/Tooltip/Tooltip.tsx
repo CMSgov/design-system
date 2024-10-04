@@ -86,6 +86,10 @@ export interface BaseTooltipProps {
    */
   transitionDuration?: number;
   /**
+   * Helpful description of the tooltip for screenreaders. An alias for `ariaLabel` specifically added to improve accessibility for the web component version of this component.
+   */
+  triggerAriaLabel?: string;
+  /**
    * `zIndex` styling applied to the tooltip body
    */
   zIndex?: number;
@@ -236,6 +240,7 @@ export const Tooltip = (props: TooltipProps) => {
       maxWidth,
       title,
       transitionDuration,
+      triggerAriaLabel,
       zIndex,
       showCloseButton,
       closeButtonLabel,
@@ -274,7 +279,7 @@ export const Tooltip = (props: TooltipProps) => {
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
-        aria-label={ariaLabel || undefined}
+        aria-label={ariaLabel || triggerAriaLabel || undefined}
         aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
         ref={setTriggerElement}

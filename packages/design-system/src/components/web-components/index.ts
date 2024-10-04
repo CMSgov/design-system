@@ -14,6 +14,7 @@ export * from '../i18n';
 
 import './ds-accordion';
 import './ds-alert';
+import './ds-autocomplete';
 import './ds-badge';
 import './ds-button';
 import './ds-choice';
