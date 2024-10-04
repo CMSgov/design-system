@@ -32,7 +32,6 @@ interface WrapperProps
     | 'isFooterSticky'
     | 'isOpen'
   > {
-  ariaLabel?: string;
   backdropClickExits?: string;
   children: DrawerProps['children'];
   hasFocusTrap?: string;
@@ -43,9 +42,9 @@ interface WrapperProps
 }
 
 const Wrapper = ({
-  ariaLabel,
   backdropClickExits,
   children,
+  closeButtonAriaLabel,
   hasFocusTrap,
   isHeaderSticky,
   isFooterSticky,
@@ -59,7 +58,7 @@ const Wrapper = ({
       isHeaderSticky={parseBooleanAttr(isHeaderSticky)}
       isFooterSticky={parseBooleanAttr(isFooterSticky)}
       isOpen={parseBooleanAttr(isOpen)}
-      ariaLabel={otherProps.closeButtonAriaLabel}
+      ariaLabel={closeButtonAriaLabel}
       {...otherProps}
     >
       {children}
