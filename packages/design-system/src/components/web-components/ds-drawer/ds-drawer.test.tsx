@@ -14,14 +14,28 @@ const children = (
 );
 
 function renderDrawer(args, children) {
-  return render(
-    <ds-drawer {...(args as any)}>
+  const result = render(
+    <ds-drawer {...args}>
       {children}
       <div slot="footer-body">
         <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
       </div>
     </ds-drawer>
   );
+
+  return {
+    ...result,
+    rerenderDrawer(newArgs, newChildren) {
+      return result.rerender(
+        <ds-drawer {...newArgs}>
+          {newChildren}
+          <div slot="footer-body">
+            <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
+          </div>
+        </ds-drawer>
+      );
+    },
+  };
 }
 
 function renderDrawerWithoutSlottedFooter(args, children) {
@@ -65,17 +79,11 @@ describe('Drawer', () => {
     expect(paragraphText).toBeInTheDocument();
   });
 
-  it('should be closed until isOpen is set to true', () => {
-    renderDrawer({ 'is-open': 'false', heading: 'Test Drawer Heading' }, children);
-
-    const dialogElement = screen.queryByRole('dialog', { name: /test drawer heading/i });
-    expect(dialogElement).not.toBeInTheDocument();
-
-    // Re-render the drawer with `is-open` set to 'true'
-    renderDrawer({ 'is-open': 'true', heading: 'Test Drawer Heading' }, children);
-
-    const openDialogElement = screen.getByRole('dialog', { name: /test drawer heading/i });
-    expect(openDialogElement).toBeInTheDocument();
+  it("is closed until 'is-open' is set to true", () => {
+    const { rerenderDrawer } = renderDrawer({ 'is-open': 'false' }, children);
+    expect(screen.queryByRole('dialog')).toBe(null);
+    rerenderDrawer({ 'is-open': 'true' }, children);
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
   it('renders footer-body when footer-body attribute is provided', () => {
