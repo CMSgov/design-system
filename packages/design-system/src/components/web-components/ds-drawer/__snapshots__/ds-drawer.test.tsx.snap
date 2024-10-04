@@ -9,7 +9,6 @@ exports[`Drawer should render a dialog 1`] = `
   <dialog
     aria-labelledby="drawer--1"
     class="ds-c-drawer"
-    closebuttonarialabel="Close Help Drawer"
     open=""
     role="dialog"
     tabindex="-1"
