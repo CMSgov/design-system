@@ -21,7 +21,7 @@
   ],
   [
     "close-button-text",
-    "Content for the close button, typically a string or node.",
+    "Content for the close button, specified as a string.",
     "string"
   ],
   [
