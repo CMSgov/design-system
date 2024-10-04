@@ -42,6 +42,7 @@ These scripts can all be run from the root level of the repo:
   - Building is required to get TypeScript completion for the core package in child design system packages
 - `yarn build:{core,cmsgov,healthcare,medicare}`
   - Builds a specific brand of the design system and its corresponding package
+  - `yarn build:core --analyze-bundles` will run a bundle analysis and write reports to `./bundle-analysis`
 - `yarn build:docs`
   - Statically builds a copy of the doc site
   - You can then serve it with `yarn serve:docs`
