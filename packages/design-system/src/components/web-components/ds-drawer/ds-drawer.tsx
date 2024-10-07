@@ -34,7 +34,6 @@ interface WrapperProps
 }
 
 const Wrapper = ({
-  backdropClickExits,
   children,
   closeButtonAriaLabel,
   hasFocusTrap,
