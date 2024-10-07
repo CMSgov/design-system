@@ -1,10 +1,5 @@
 [
   [
-    "ariaLabel",
-    "",
-    "string"
-  ],
-  [
     "children",
     "Limited to `ds-tab-panel` components.",
     ""

@@ -155,7 +155,6 @@ const DisabledTemplate = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   'default-selected-id': 'summary',
-  ariaLabel: 'Tams parent label',
 };
 
 export const Disabled = DisabledTemplate.bind({});
