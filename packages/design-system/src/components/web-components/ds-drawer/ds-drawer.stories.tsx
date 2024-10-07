@@ -31,11 +31,6 @@ const meta: Meta = {
     },
   },
   argTypes: {
-    'backdrop-click-exits': {
-      description:
-        'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked.',
-      control: 'boolean',
-    },
     'close-button-aria-label': {
       description: 'Gives more context to screen readers on the Drawer close button.',
       control: 'text',

@@ -4,7 +4,6 @@ import { DrawerProps } from '../../Drawer/Drawer';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
-  'backdrop-click-exits',
   'children',
   'close-button-aria-label',
   'close-button-text',
@@ -24,15 +23,8 @@ const attributes = [
 interface WrapperProps
   extends Omit<
     DrawerProps,
-    | 'ariaLabel'
-    | 'backdropClickExits'
-    | 'children'
-    | 'hasFocusTrap'
-    | 'isHeaderSticky'
-    | 'isFooterSticky'
-    | 'isOpen'
+    'ariaLabel' | 'children' | 'hasFocusTrap' | 'isHeaderSticky' | 'isFooterSticky' | 'isOpen'
   > {
-  backdropClickExits?: string;
   children: DrawerProps['children'];
   hasFocusTrap?: string;
   heading: string;
@@ -53,7 +45,6 @@ const Wrapper = ({
 }: WrapperProps) => {
   return (
     <Drawer
-      backdropClickExits={parseBooleanAttr(backdropClickExits)}
       hasFocusTrap={parseBooleanAttr(hasFocusTrap)}
       isHeaderSticky={parseBooleanAttr(isHeaderSticky)}
       isFooterSticky={parseBooleanAttr(isFooterSticky)}
