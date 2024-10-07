@@ -1,7 +1,7 @@
 import { define } from '../preactement/define';
 import { TabPanel } from '../../Tabs';
 import { TabPanelProps } from '../../Tabs/TabPanel';
-import { parseBooleanAttr } from '../wrapperUtils';
+import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
 import { ReactNode } from 'react';
 
 const tabPanelAttributes = [
@@ -22,15 +22,6 @@ interface WrapperProps extends Omit<TabPanelProps, 'selected' | 'disabled' | 'ta
   tab: string;
 }
 
-const isJsonString = (str: string): boolean => {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
-
 const Wrapper = ({
   className,
   rootId,
@@ -49,7 +40,7 @@ const Wrapper = ({
       id={rootId}
       selected={parseBooleanAttr(selected)}
       disabled={parseBooleanAttr(disabled)}
-      tab={isJsonString(tab) ? JSON.parse(tab) : tab}
+      tab={parseJsonAttr(tab)}
       tabClassName={tabClassName}
       tabHref={tabHref}
       tabId={tabId}
