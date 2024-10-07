@@ -44,23 +44,8 @@ test.describe('astro', () => {
     await expect(page).toHaveScreenshot('astro-react.png', { fullPage: true });
   });
 
-  test('core web-components page matches snapshot', async ({ page }) => {
-    await page.goto(`${DOMAIN}/astro/dist/web-components/core`);
+  test('web-components page matches snapshot', async ({ page }) => {
+    await page.goto(`${DOMAIN}/astro/dist/web-components`);
     await expect(page).toHaveScreenshot('astro-web-components.png', { fullPage: true });
   });
-
-  // test('healthcare web-components page matches snapshot', async ({ page }) => {
-  //   await page.goto(`${DOMAIN}/astro/dist/web-components/healthcare`);
-  //   await expect(page).toHaveScreenshot('astro-healthcare-web-components.png', { fullPage: true });
-  // });
-
-  // test('medicare web-components page matches snapshot', async ({ page }) => {
-  //   await page.goto(`${DOMAIN}/astro/dist/web-components/medicare`);
-  //   await expect(page).toHaveScreenshot('astro-medicare-web-components.png', { fullPage: true });
-  // });
-
-  // test('cmsgov web-components page matches snapshot', async ({ page }) => {
-  //   await page.goto(`${DOMAIN}/astro/dist/web-components/cmsgov`);
-  //   await expect(page).toHaveScreenshot('astro-cmsgov-web-components.png', { fullPage: true });
-  // });
 });
