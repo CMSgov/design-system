@@ -4,16 +4,23 @@ import { TabsProps } from '../../Tabs/Tabs';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
 import { createElement } from 'react';
 
-const attributes = ['selected-id', 'default-selected-id', 'tablist-class-name', 'children'];
+const attributes = [
+  'children',
+  'default-selected-id',
+  'selected-id',
+  'tablist-class-name',
+  'tabs-aria-label',
+];
 
 interface WrapperProps extends Omit<TabsProps, 'children'> {
-  selectedId?: string;
-  defaultSelectedId?: string;
-  tablistClassName?: string;
   children: TabsProps['children'];
+  defaultSelectedId?: string;
+  selectedId?: string;
+  tablistClassName?: string;
+  tabsAriaLabel?: string;
 }
 
-const Wrapper = ({ children = [], ...otherProps }: WrapperProps) => {
+const Wrapper = ({ children = [], tabsAriaLabel, ...otherProps }: WrapperProps) => {
   function parseChildren(node) {
     const elements = findElementsOfType(['ds-tab-panel'], node);
 
@@ -23,7 +30,11 @@ const Wrapper = ({ children = [], ...otherProps }: WrapperProps) => {
     });
   }
 
-  return <Tabs {...otherProps}>{parseChildren(children)}</Tabs>;
+  return (
+    <Tabs {...otherProps} ariaLabel={tabsAriaLabel}>
+      {parseChildren(children)}
+    </Tabs>
+  );
 };
 
 /* eslint-disable @typescript-eslint/no-namespace */

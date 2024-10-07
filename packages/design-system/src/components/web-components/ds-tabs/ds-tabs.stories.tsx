@@ -27,17 +27,22 @@ const meta: Meta = {
     children: {
       description: 'Limited to `ds-tab-panel` components.',
     },
+    'default-selected-id': {
+      description: 'Sets the id of the `ds-tab-panel` that is initially selected.',
+      control: 'text',
+    },
     'selected-id': {
       description:
         'Sets the initial selected state to the specified `ds-tab-panel` id. Use this in combination with `onChange` for a controlled component; otherwise, set `defaultSelectedId`',
       control: 'text',
     },
-    'default-selected-id': {
-      description: 'Sets the id of the `ds-tab-panel` that is initially selected.',
-      control: 'text',
-    },
     'tablist-class-name': {
       description: 'Additional classes to be added to the tab list for styling purposes.',
+      control: 'text',
+    },
+    'tabs-aria-label': {
+      description:
+        'Provides an accessible description of the tabs component for screen readers. This is an alias for the `ariaLabel` prop, which can be used to provide context-specific labels for accessibility purposes.',
       control: 'text',
     },
   },
@@ -150,6 +155,7 @@ const DisabledTemplate = (args) => {
 export const Default = Template.bind({});
 Default.args = {
   'default-selected-id': 'summary',
+  ariaLabel: 'Tams parent label',
 };
 
 export const Disabled = DisabledTemplate.bind({});
