@@ -7,6 +7,10 @@ import get from 'lodash/get';
 
 export interface TabsProps {
   /**
+   * Defines a customizable `aria-label` on the screen-reader heading for this element.
+   */
+  ariaLabel?: string;
+  /**
    * Must only contain `TabPanel` components
    */
   children: React.ReactNode;
@@ -96,6 +100,7 @@ export const Tabs = (props: TabsProps) => {
   const [internalSelectedId, setSelectedId] = useState(initialSelectedId);
   const isControlled = props.selectedId !== undefined;
   const selectedId = isControlled ? props.selectedId : internalSelectedId;
+  const ariaLabel = props.ariaLabel || 'Tab Navigation';
 
   const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
@@ -211,7 +216,7 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <div>
-      <div className={listClasses} role="tablist">
+      <div className={listClasses} role="tablist" aria-label={ariaLabel}>
         {renderTabs()}
       </div>
       {renderChildren()}
