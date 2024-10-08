@@ -34,6 +34,7 @@ const storySkipList = [
 const storyUseAxeLegacyModeList = [
   'web-components-ds-tabs--default',
   'web-components-ds-tabs--disabled',
+  'web-components-ds-drawer--default',
 ];
 
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
