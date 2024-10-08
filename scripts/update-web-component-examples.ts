@@ -13,12 +13,18 @@ const templateContent = fs.readFileSync(templatePath, fileEncodingOptions);
 const startComment = '<!-- START WEB COMPONENT EXAMPLES -->';
 const endComment = '<!-- END WEB COMPONENT EXAMPLES -->';
 const searchPattern = new RegExp(`${startComment}[\\s\\S]*?${endComment}`, 'g');
+const indentationPattern = new RegExp(`^([\\s]*)${startComment}`, 'm');
 
 async function insertTemplateContent(filePath: string) {
   const fileContent = await fs.promises.readFile(filePath, fileEncodingOptions);
+  const indentation = fileContent.match(indentationPattern)?.[1] ?? '';
+  const templateContentWithIndentation = templateContent
+    .split('\n')
+    .map((line) => indentation + line)
+    .join('\n');
   const updatedContent = fileContent.replace(
     searchPattern,
-    `${startComment}\n${templateContent}\n${endComment}`
+    `${startComment}\n${templateContentWithIndentation}${endComment}`
   );
   await fs.promises.writeFile(filePath, updatedContent, fileEncodingOptions);
 }
