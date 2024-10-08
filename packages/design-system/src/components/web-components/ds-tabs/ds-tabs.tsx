@@ -12,15 +12,7 @@ const attributes = [
   'tabs-aria-label',
 ];
 
-interface WrapperProps extends Omit<TabsProps, 'children'> {
-  children: TabsProps['children'];
-  defaultSelectedId?: string;
-  selectedId?: string;
-  tablistClassName?: string;
-  tabsAriaLabel?: string;
-}
-
-const Wrapper = ({ children = [], tabsAriaLabel, ...otherProps }: WrapperProps) => {
+const Wrapper = ({ ...props }: TabsProps) => {
   function parseChildren(node) {
     const elements = findElementsOfType(['ds-tab-panel'], node);
 
@@ -31,8 +23,8 @@ const Wrapper = ({ children = [], tabsAriaLabel, ...otherProps }: WrapperProps) 
   }
 
   return (
-    <Tabs {...otherProps} ariaLabel={tabsAriaLabel}>
-      {parseChildren(children)}
+    <Tabs {...props} ariaLabel={props.tabsAriaLabel}>
+      {parseChildren(props.children)}
     </Tabs>
   );
 };
