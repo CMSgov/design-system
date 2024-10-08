@@ -17,11 +17,15 @@ const indentationPattern = new RegExp(`^([\\s]*)${startComment}`, 'm');
 
 async function insertTemplateContent(filePath: string) {
   const fileContent = await fs.promises.readFile(filePath, fileEncodingOptions);
+
+  // Get the whitespace before the first comment and use that for our indentation
   const indentation = fileContent.match(indentationPattern)?.[1] ?? '';
+  // Apply that same indentation to all the lines of the template content
   const templateContentWithIndentation = templateContent
     .split('\n')
     .map((line) => indentation + line)
     .join('\n');
+
   const updatedContent = fileContent.replace(
     searchPattern,
     `${startComment}\n${templateContentWithIndentation}${endComment}`
