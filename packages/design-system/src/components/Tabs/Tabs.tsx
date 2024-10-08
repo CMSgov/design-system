@@ -35,10 +35,6 @@ export interface TabsProps {
    * Additional classes to be added to the component wrapping the tabs
    */
   tablistClassName?: string;
-  /**
-   * Helpful description of the tabs for screenreaders. An alias for `ariaLabel` specifically added to improve accessibility for the web component version of this component.
-   */
-  tabsAriaLabel?: string;
 }
 
 /** CONSTANTS

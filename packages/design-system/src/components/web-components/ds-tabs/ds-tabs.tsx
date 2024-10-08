@@ -1,6 +1,5 @@
 import { define } from '../preactement/define';
 import { Tabs, TabPanel } from '../../Tabs';
-import { TabsProps } from '../../Tabs/Tabs';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
 import { createElement } from 'react';
 
@@ -12,7 +11,7 @@ const attributes = [
   'tabs-aria-label',
 ];
 
-const Wrapper = ({ ...props }: TabsProps) => {
+const Wrapper = ({ tabsAriaLabel, ...props }) => {
   function parseChildren(node) {
     const elements = findElementsOfType(['ds-tab-panel'], node);
 
@@ -23,7 +22,7 @@ const Wrapper = ({ ...props }: TabsProps) => {
   }
 
   return (
-    <Tabs {...props} ariaLabel={props.tabsAriaLabel}>
+    <Tabs {...props} ariaLabel={tabsAriaLabel}>
       {parseChildren(props.children)}
     </Tabs>
   );

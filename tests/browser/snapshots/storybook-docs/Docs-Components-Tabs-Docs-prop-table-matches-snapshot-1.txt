@@ -28,10 +28,5 @@
     "tablistClassName",
     "Additional classes to be added to the component wrapping the tabs\nstring",
     "-"
-  ],
-  [
-    "tabsAriaLabel",
-    "Helpful description of the tabs for screenreaders. An alias for ariaLabel specifically added to improve accessibility for the web component version of this component.\nstring",
-    "-"
   ]
 ]
