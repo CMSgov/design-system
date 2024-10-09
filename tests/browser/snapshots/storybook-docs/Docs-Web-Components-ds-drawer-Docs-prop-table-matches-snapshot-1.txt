@@ -1,0 +1,72 @@
+[
+  [
+    "children",
+    "Content to be rendered inside the drawer.",
+    "string"
+  ],
+  [
+    "class-name",
+    "CSS class to apply custom styles to the Drawer.",
+    "string"
+  ],
+  [
+    "close-button-aria-label",
+    "Gives more context to screen readers on the Drawer close button.",
+    "string"
+  ],
+  [
+    "close-button-text",
+    "Content for the close button, specified as a string.",
+    "string"
+  ],
+  [
+    "close-button-variation",
+    "Style variation for the close button (\"solid\" or \"ghost\").",
+    "\"solid\"\"ghost\""
+  ],
+  [
+    "footer-body",
+    "Content to be displayed in the footer area of the Drawer. Accepts a string value, typically for simple text content. For more complex content, consider using the `footer-body` slot.",
+    "string"
+  ],
+  [
+    "footer-title",
+    "Title for the footer section of the Drawer.",
+    "string"
+  ],
+  [
+    "has-focus-trap",
+    "Enables focus trap functionality within the Drawer.",
+    "\"true\"\"false\""
+  ],
+  [
+    "heading",
+    "Text for the Drawer heading. Required as the heading will be focused on mount.",
+    "string"
+  ],
+  [
+    "heading-id",
+    "A unique `id` to be used on the heading element to label multiple Drawer instances.",
+    "string"
+  ],
+  [
+    "heading-level",
+    "Heading level type to override default `<h3>`.",
+    "\"1\"\"2\"\"3\"\"4\"\"5\""
+  ],
+  [
+    "is-footer-sticky",
+    "Enables \"sticky\" position for the Drawer footer.",
+    "\"true\"\"false\""
+  ],
+  [
+    "is-header-sticky",
+    "Enables \"sticky\" position for the Drawer header.",
+    "\"true\"\"false\""
+  ],
+  [
+    "is-open",
+    "Controls whether the Drawer is in an open state.",
+    "\"true\"\"false\""
+  ]
+]
