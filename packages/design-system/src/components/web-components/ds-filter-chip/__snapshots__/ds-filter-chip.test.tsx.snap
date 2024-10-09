@@ -17,7 +17,7 @@ exports[`ds-filter-chip should include children as label 1`] = `
     class="ds-u-visibility--screen-reader"
     id="filter-chip--1-instructions"
   >
-    Remove
+    
      
     Filter Chip! filter
      .

@@ -4,7 +4,7 @@ import { FilterChipProps } from '../../FilterChip/FilterChip';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
-  'aria-clear-label',
+  'clear-label',
   'class-name',
   'label',
   'root-id',
@@ -29,10 +29,16 @@ declare global {
 
 interface WrapperProps extends Omit<FilterChipProps, 'useAlternateIcon'> {
   useAlternateIcon?: string;
+  clearLabel?: string;
 }
 
-const Wrapper = ({ label, useAlternateIcon, ...otherProps }: WrapperProps) => (
-  <FilterChip label={label} useAlternateIcon={parseBooleanAttr(useAlternateIcon)} {...otherProps} />
+const Wrapper = ({ clearLabel, label, useAlternateIcon, ...otherProps }: WrapperProps) => (
+  <FilterChip
+    ariaClearLabel={clearLabel ?? ''}
+    label={label}
+    useAlternateIcon={parseBooleanAttr(useAlternateIcon)}
+    {...otherProps}
+  />
 );
 
 define('ds-filter-chip', () => Wrapper, {

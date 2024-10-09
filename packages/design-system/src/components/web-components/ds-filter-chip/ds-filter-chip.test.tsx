@@ -21,7 +21,7 @@ describe('ds-filter-chip', () => {
   });
 
   it('should use different aria label if provided', () => {
-    renderFilterChip({ 'aria-clear-label': 'Clear' });
+    renderFilterChip({ 'clear-label': 'Clear' });
     const chipEl = screen.getByRole('button');
     expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
       'Clear Filter Chip! filter .'
