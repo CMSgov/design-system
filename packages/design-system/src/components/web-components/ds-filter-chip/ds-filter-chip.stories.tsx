@@ -24,10 +24,10 @@ const meta: Meta = {
   },
   args: {
     label: 'Example Filter Chip',
-    'aria-clear-label': 'Remove',
+    'clear-label': 'Remove',
   },
   argTypes: {
-    'aria-clear-label': {
+    'clear-label': {
       description: 'Labels filter action, i.e., "Remove." For screenreader support.',
       control: 'text',
     },
@@ -119,7 +119,7 @@ export const Default = {
 export const MultipleChips = {
   render: MultiChipTemplate,
   argTypes: {
-    'aria-clear-label': {
+    'clear-label': {
       table: {
         disable: true,
       },
