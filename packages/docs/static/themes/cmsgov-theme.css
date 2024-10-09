@@ -128,7 +128,7 @@
 --font-line-height-heading: 1.2999999523162842;
 --font-line-height-base: 1.5;
 --font-line-height-lead: 1.7000000476837158;
---font-family-heading: 'Lexend';
+--font-family-heading: 'Lexend', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-body: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-button: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
