@@ -5,7 +5,7 @@ import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
   'aria-clear-label',
-  'class-names',
+  'class-name',
   'label',
   'root-id',
   'size',

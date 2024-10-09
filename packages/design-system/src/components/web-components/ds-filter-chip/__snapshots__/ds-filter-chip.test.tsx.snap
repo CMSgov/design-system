@@ -2,7 +2,7 @@
 
 exports[`ds-filter-chip should include children as label 1`] = `
 <button
-  class="ds-c-filter-chip__button"
+  class="ds-c-filter-chip__button ds-not-a-real-class"
   id="filter-chip--1"
   type="button"
 >
