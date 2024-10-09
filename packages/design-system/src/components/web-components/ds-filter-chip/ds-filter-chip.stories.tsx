@@ -59,9 +59,9 @@ export default meta;
 
 const listOfChips = [
   { label: 'Example FilterChip' },
-  { label: 'Example with alternate icon', useAlternateIcon: true },
+  { label: 'Example with alternate icon', 'use-alternate-icon': 'true' },
   { label: 'Example big filter chip', size: 'big' },
-  { label: 'Example big with alternate icon', useAlternateIcon: true, size: 'big' },
+  { label: 'Example big with alternate icon', 'use-alternate-icon': 'true', size: 'big' },
 ];
 
 const Template = (args: any) => {
@@ -118,4 +118,36 @@ export const Default = {
 
 export const MultipleChips = {
   render: MultiChipTemplate,
+  argTypes: {
+    'aria-clear-label': {
+      table: {
+        disable: true,
+      },
+    },
+    'class-name': {
+      table: {
+        disable: true,
+      },
+    },
+    label: {
+      table: {
+        disable: true,
+      },
+    },
+    'root-id': {
+      table: {
+        disable: true,
+      },
+    },
+    size: {
+      table: {
+        disable: true,
+      },
+    },
+    'use-alternate-icon': {
+      table: {
+        disable: true,
+      },
+    },
+  },
 };
