@@ -100,7 +100,7 @@ export const Tabs = (props: TabsProps) => {
   const [internalSelectedId, setSelectedId] = useState(initialSelectedId);
   const isControlled = props.selectedId !== undefined;
   const selectedId = isControlled ? props.selectedId : internalSelectedId;
-  const ariaLabel = props.ariaLabel || 'Tab Navigation';
+  const ariaProps = props.ariaLabel ? { 'aria-label': props.ariaLabel } : {};
 
   const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
@@ -216,7 +216,7 @@ export const Tabs = (props: TabsProps) => {
 
   return (
     <div>
-      <div className={listClasses} role="tablist" aria-label={ariaLabel}>
+      <div className={listClasses} role="tablist" {...ariaProps}>
         {renderTabs()}
       </div>
       {renderChildren()}
