@@ -24,10 +24,6 @@
 
 @container style(--debugger: true) {
   // Remove in v12
-  .ds-u-font-weight--semibold {
-    @include deprecate;
-  }
-
   .ds-u-sans {
     @include deprecate;
   }
