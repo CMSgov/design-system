@@ -9,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
     <h1 class="ds-text-heading--4xl ds-u-margin-top--2">
       Web-component examples
     </h1>
-
+  
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>
         This is an example showing how to use our library of interactive web components.
@@ -61,7 +61,7 @@ import Layout from '../layouts/Layout.astro';
 
       <ds-choice-list type="radio" label="Choice list example" name="foo">
         <ds-choice label="Choice without associated children" value="no children" />
-
+    
         <ds-choice
           label="Checked children"
           hint="Selecting this checkbox will reveal its associated children."
@@ -140,9 +140,6 @@ import Layout from '../layouts/Layout.astro';
         class-name="ds-u-padding-bottom--7"
       >
       </ds-autocomplete>
-
-      <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
-      <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
     </div>
   </main>
 </Layout>
@@ -219,8 +216,6 @@ import Layout from '../layouts/Layout.astro';
   }
   window.addEventListener('hashchange', updatePaginationFromHash);
   updatePaginationFromHash();
-
-  document.querySelector('ds-filter-chip').addEventListener('ds-delete', (e) => console.log('You fired the custom ds-delete event.', e))
 </script>
 
 <!-- <script src="@cmsgov/design-system/web-components"></script> -->
@@ -231,10 +226,8 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/web-components/ds-button"></script>
 <script src="@cmsgov/design-system/web-components/ds-choice"></script>
 <script src="@cmsgov/design-system/web-components/ds-dropdown"></script>
-<script src="@cmsgov/design-system/web-components/ds-filter-chip"></script>
 <script src="@cmsgov/design-system/web-components/ds-month-picker"></script>
 <script src="@cmsgov/design-system/web-components/ds-pagination"></script>
 <script src="@cmsgov/design-system/web-components/ds-spinner"></script>
 <script src="@cmsgov/design-system/web-components/ds-text-field"></script>
-<script src="@cmsgov/design-system/web-components/ds-tooltip"></script>
 <script src="@cmsgov/design-system/web-components/ds-usa-banner"></script>
