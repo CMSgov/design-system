@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-filter-chip';
 
@@ -45,21 +45,22 @@ describe('ds-filter-chip', () => {
       const onDelete = jest.fn();
       renderFilterChip();
 
-      const chipEl = screen.getByRole('button');
+      const chipEl = document.querySelector('ds-filter-chip');
       expect(chipEl).toBeDefined();
       chipEl.addEventListener('ds-delete', onDelete);
 
-      userEvent.click(chipEl);
+      userEvent.click(screen.getByRole('button'));
       expect(onDelete).toHaveBeenCalled();
+      chipEl.removeEventListener('ds-delete', onDelete);
     });
 
     it('should call onDelete when certain keyboard keys are pressed', () => {
       const onDelete = jest.fn();
       renderFilterChip();
 
-      const chipEl = screen.getByRole('button');
+      const chipEl = document.querySelector('ds-filter-chip');
       chipEl.addEventListener('ds-delete', onDelete);
-      chipEl.focus();
+      screen.getByRole('button').focus();
 
       userEvent.keyboard('{Enter}');
       expect(onDelete).toHaveBeenCalledTimes(1);
@@ -69,6 +70,8 @@ describe('ds-filter-chip', () => {
       expect(onDelete).toHaveBeenCalledTimes(3);
       userEvent.keyboard('{Delete}');
       expect(onDelete).toHaveBeenCalledTimes(4);
+
+      chipEl.removeEventListener('ds-delete', onDelete);
     });
 
     it('should not call onDelete when most keyboard keys are pressed', () => {
@@ -78,11 +81,13 @@ describe('ds-filter-chip', () => {
       const chipEl = screen.getByRole('button');
       chipEl.addEventListener('ds-on-delete', onDelete);
 
-      chipEl.focus();
+      screen.getByRole('button').focus();
       userEvent.keyboard('{Tab}');
       expect(onDelete).not.toHaveBeenCalled();
       userEvent.keyboard('a');
       expect(onDelete).not.toHaveBeenCalled();
+
+      chipEl.removeEventListener('ds-delete', onDelete);
     });
   });
 
