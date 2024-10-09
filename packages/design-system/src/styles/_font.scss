@@ -47,6 +47,14 @@ $font-path: '../fonts' !default;
   font-display: swap;
   font-family: 'Open Sans';
   font-style: normal;
+  font-weight: 600;
+  src: url('#{$font-path}/opensans-semibold-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
   font-weight: 700;
   src: url('#{$font-path}/opensans-bold-webfont.woff2') format('woff2');
 }
