@@ -119,6 +119,14 @@ describe('ds-tabs', () => {
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'true');
   });
 
+  it('should render a custom aria-label when the tabs-aria-label attribute is provided', () => {
+    const customAriaLabel = 'Custom Tab List Label';
+    renderTabs({ 'tabs-aria-label': customAriaLabel });
+    const tablistElement = screen.getByRole('tablist');
+
+    expect(tablistElement).toHaveAttribute('aria-label', customAriaLabel);
+  });
+
   it('selects the last panel on left arrow keyDown from first panel', () => {
     renderTabs(defaultProps, children);
 

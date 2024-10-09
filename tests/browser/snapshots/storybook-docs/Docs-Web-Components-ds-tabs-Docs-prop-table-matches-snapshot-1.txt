@@ -18,5 +18,10 @@
     "tablist-class-name",
     "Additional classes to be added to the tab list for styling purposes.",
     "string"
+  ],
+  [
+    "tabs-aria-label",
+    "Provides an accessible description of the tabs component for screen readers. This is an alias for the `ariaLabel` prop, which can be used to provide context-specific labels for accessibility purposes.",
+    "string"
   ]
 ]
