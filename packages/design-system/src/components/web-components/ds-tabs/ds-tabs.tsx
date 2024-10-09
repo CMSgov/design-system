@@ -3,13 +3,7 @@ import { Tabs, TabPanel } from '../../Tabs';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
 import { createElement } from 'react';
 
-const attributes = [
-  'children',
-  'default-selected-id',
-  'selected-id',
-  'tablist-class-name',
-  'tabs-aria-label',
-];
+const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];
 
 const Wrapper = ({ tabsAriaLabel, ...props }) => {
   function parseChildren(node) {
