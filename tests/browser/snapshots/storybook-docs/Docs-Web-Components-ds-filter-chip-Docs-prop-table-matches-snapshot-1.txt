@@ -1,0 +1,32 @@
+[
+  [
+    "class-name",
+    "CSS class to apply custom styles to the Drawer.",
+    "string"
+  ],
+  [
+    "clear-label",
+    "Labels filter action, i.e., \"Remove.\" For screenreader support.",
+    "string"
+  ],
+  [
+    "label",
+    "Text for the filter chip.",
+    "string"
+  ],
+  [
+    "root-id",
+    "Id for filter chip button. If not provided, a unique id will be automatically generated and used.",
+    "string"
+  ],
+  [
+    "size",
+    "Sets the size of the chip to larger version. The only acceptable value is \"big\".",
+    "string"
+  ],
+  [
+    "use-alternate-icon",
+    "Use alternate thinner close icon in place of standard.",
+    "\"true\"\"false\""
+  ]
+]
