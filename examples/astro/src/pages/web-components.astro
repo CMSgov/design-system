@@ -75,7 +75,7 @@ import Layout from '../layouts/Layout.astro';
       </ds-month-picker>
   
       <ds-choice-list type="radio" label="Choice list example" name="foo">
-        <ds-choice label="Choice without associated children" value="no children" />
+        <ds-choice label="Choice without associated children" value="no children"></ds-choice>
   
         <ds-choice
           label="Checked children"
@@ -85,8 +85,8 @@ import Layout from '../layouts/Layout.astro';
           <div slot="checked-children">
             <div class="ds-c-choice__checkedChild">
               <ds-alert heading="🫣 Tag! You're it!">
-                You can reveal content by applying <code>checked-children</code> to the{' '}
-                <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
+                You can reveal content by applying <code>checked-children</code> to the
+                <code>slot</code> attribute of an HTML element. Do not forget to include a
                 <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
                 whatever content you want to show/hide so it gets side border showing an association
                 with its choice parent.
@@ -102,8 +102,8 @@ import Layout from '../layouts/Layout.astro';
           <div slot="unchecked-children">
             <div class="ds-c-choice__checkedChild">
               <ds-alert variation="warn" heading="I banish thee!">
-                You can hide content by applying <code>unchecked-children</code> to the{' '}
-                <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
+                You can hide content by applying <code>unchecked-children</code> to the
+                <code>slot</code> attribute of an HTML element. Do not forget to include a
                 <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
                 whatever content you want to show/hide so it gets side border showing an association
                 with its choice parent.
