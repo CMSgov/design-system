@@ -1,6 +1,8 @@
 import type { Meta } from '@storybook/react';
+import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
+import { useArgs } from '@storybook/preview-api';
 import './ds-tab-panel';
 
 const meta: Meta = {
@@ -55,6 +57,18 @@ const meta: Meta = {
 export default meta;
 
 const Template = (args) => {
+  const [{ selected, disabled }, updateArgs] = useArgs();
+
+  useEffect(() => {
+    const isDisabled = disabled === true || disabled === 'true';
+    const isSelected = selected === true || selected === 'true';
+
+    // If the tab-panel is disabled, ensure it's not selected.
+    if (isDisabled && isSelected) {
+      updateArgs({ selected: false });
+    }
+  }, [disabled, selected, updateArgs]);
+
   return (
     <ds-tab-panel {...args}>
       <h2 className="ds-text-heading--lg">Bill of Rights</h2>
@@ -71,28 +85,6 @@ const Template = (args) => {
         <li>Rights retained by the People</li>
         <li>States’ rights</li>
       </ol>
-
-      <h2 className="ds-text-heading--lg">Later Amendments</h2>
-
-      <ol className="ds-c-list" start={11}>
-        <li>Lawsuits against states</li>
-        <li>Presidential elections</li>
-        <li>Abolition of slavery</li>
-        <li>Civil rights</li>
-        <li>Black suffrage</li>
-        <li>Income taxes</li>
-        <li>Senatorial elections</li>
-        <li>Prohibition of liquor</li>
-        <li>Women’s suffrage</li>
-        <li>Terms of office</li>
-        <li>Repeal of Prohibition</li>
-        <li>Term Limits for the Presidency</li>
-        <li>Washington, D.C., suffrage</li>
-        <li>Abolition of poll taxes</li>
-        <li>Presidential succession</li>
-        <li>18-year-old suffrage</li>
-        <li>Congressional pay raises</li>
-      </ol>
     </ds-tab-panel>
   );
 };
@@ -101,5 +93,6 @@ export const Default = Template.bind({});
 Default.args = {
   tab: 'Tab 1',
   'tab-id': 'tab-1',
-  selected: 'true',
+  selected: true,
+  disabled: false,
 };
