@@ -15,11 +15,6 @@ const meta: Meta = {
         component:
           'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).',
       },
-      componentEvents: {
-        'ds-change': {
-          description: "A callback function that's invoked when the selected tab is changed.",
-        },
-      },
     },
   },
   argTypes: {
