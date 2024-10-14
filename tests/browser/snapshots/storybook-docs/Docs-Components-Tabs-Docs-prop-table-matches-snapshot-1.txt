@@ -1,5 +1,10 @@
 [
   [
+    "ariaLabel",
+    "Defines a customizable aria-label on the screen-reader heading for this element.\nstring",
+    "-"
+  ],
+  [
     "children*",
     "Must only contain TabPanel components\nReactNode",
     "-"
