@@ -52,12 +52,51 @@ const meta: Meta = {
     },
   },
 };
+const children = 'This is an example of a default Review component.';
 
 const Template = (args) => {
-  return <div></div>;
+  return <ds-review {...args}>{children}</ds-review>;
+};
+
+export const MultipleReviewsTemplate = (args) => (
+  <div>
+    <ds-review {...args}>{children}</ds-review>
+    <ds-review {...args}>{children}</ds-review>
+  </div>
+);
+
+const TemplateWithCustomActions = (args) => {
+  return (
+    <ds-review {...args}>
+      {children}
+      <div slot="edit-content">
+        <div>
+          <a href="#">Edit</a>
+          <span>|</span>
+          <a href="#">Remove</a>
+        </div>
+      </div>
+    </ds-review>
+  );
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+
+export const SingleReview = Template.bind({});
+SingleReview.args = {
+  heading: 'A single Review component',
+  editHref: '#',
+};
+
+export const MultipleReviews = MultipleReviewsTemplate.bind({});
+MultipleReviews.args = {
+  heading: 'Multiple Review components',
+  editHref: '#',
+};
+
+export const CustomActions = TemplateWithCustomActions.bind({});
+CustomActions.args = {
+  heading: 'A Review component with custom actions',
+};
 
 export default meta;

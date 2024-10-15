@@ -6,14 +6,16 @@ import { ReactNode } from 'react';
 const attributes = [
   'class-name',
   'edit-aria-label',
-  // 'edit-content',
   'edit-href',
   'edit-text',
   'heading',
   'heading-level',
 ] as const;
 
-const Wrapper = ({ children, ...otherProps }: ReviewProps & { children?: ReactNode }) => {
+// const Wrapper = ({ children, ...otherProps }: ReviewProps & { children?: ReactNode }) => {
+//   return <Review {...otherProps}>{children}</Review>;
+// };
+const Wrapper = ({ children, ...otherProps }) => {
   return <Review {...otherProps}>{children}</Review>;
 };
 
@@ -29,6 +31,6 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-tab-panel', () => Wrapper, {
+define('ds-review', () => Wrapper, {
   attributes: attributes,
 });
