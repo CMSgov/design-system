@@ -218,6 +218,18 @@ import Layout from '../layouts/Layout.astro';
           });
         });
       </script>
+  
+      <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
+      <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document
+            .querySelector('ds-filter-chip')
+            ?.addEventListener('ds-delete', (e) =>
+              console.log('You fired the custom ds-delete event.', e)
+            );
+        });
+      </script>
     </div>
   </main>
   <!-- END WEB COMPONENT EXAMPLES -->
@@ -231,6 +243,7 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/web-components/ds-button"></script>
 <script src="@cmsgov/design-system/web-components/ds-choice"></script>
 <script src="@cmsgov/design-system/web-components/ds-dropdown"></script>
+<script src="@cmsgov/design-system/web-components/ds-filter-chip"></script>
 <script src="@cmsgov/design-system/web-components/ds-month-picker"></script>
 <script src="@cmsgov/design-system/web-components/ds-pagination"></script>
 <script src="@cmsgov/design-system/web-components/ds-spinner"></script>

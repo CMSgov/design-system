@@ -213,5 +213,17 @@
         });
       });
     </script>
+
+    <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
+    <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document
+          .querySelector('ds-filter-chip')
+          ?.addEventListener('ds-delete', (e) =>
+            console.log('You fired the custom ds-delete event.', e)
+          );
+      });
+    </script>
   </div>
 </main>
