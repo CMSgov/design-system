@@ -53,6 +53,14 @@ describe('Tabs', function () {
     expect(firstPanel.getAttribute('aria-labelledby')).toEqual(firstTab.id);
   });
 
+  it('should render a custom aria-label when provided as a prop', () => {
+    const customAriaLabel = 'Custom Tab List Label';
+    renderTabs({ ariaLabel: customAriaLabel });
+    const tablistElement = screen.getByRole('tablist');
+
+    expect(tablistElement).toHaveAttribute('aria-label', customAriaLabel);
+  });
+
   it('adds additional class names to tablist', () => {
     const className = 'foo-bar';
     renderTabs({ tablistClassName: className });
