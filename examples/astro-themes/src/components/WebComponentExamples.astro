@@ -205,7 +205,7 @@
 
           if (input.length > 0 && items) {
             const filteredItems = items.filter(
-              (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase()),
+              (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
             );
             autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
           }
