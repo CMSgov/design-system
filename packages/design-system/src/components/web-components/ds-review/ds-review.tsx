@@ -1,7 +1,5 @@
 import { define } from '../preactement/define';
 import { Review } from '../../Review';
-import { ReviewProps } from '../../Review/Review';
-import { ReactNode } from 'react';
 
 const attributes = [
   'class-name',
@@ -12,9 +10,6 @@ const attributes = [
   'heading-level',
 ] as const;
 
-// const Wrapper = ({ children, ...otherProps }: ReviewProps & { children?: ReactNode }) => {
-//   return <Review {...otherProps}>{children}</Review>;
-// };
 const Wrapper = ({ children, ...otherProps }) => {
   return <Review {...otherProps}>{children}</Review>;
 };

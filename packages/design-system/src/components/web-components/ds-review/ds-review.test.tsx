@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/preact';
-import userEvent from '@testing-library/user-event';
 import './ds-review';
 
 const defaultAttrs = {
@@ -7,8 +6,10 @@ const defaultAttrs = {
   'edit-href': 'edit-href',
   'edit-text': 'edit',
 };
-const children = 'Some kids';
-function renderReview(attrs = {}, children?, slotContent = null) {
+
+const children = 'This is an example of a default Review component.';
+
+function renderReview(attrs = {}, children = null, slotContent = null) {
   return render(
     <ds-review {...(attrs as any)}>
       {children}
@@ -27,6 +28,7 @@ describe('Review', () => {
     expect(wrapper.classList).toContain('ds-c-review');
     expect(wrapper).toMatchSnapshot();
   });
+
   it('renders a heading', () => {
     renderReview(defaultAttrs, children);
 
@@ -36,6 +38,7 @@ describe('Review', () => {
     const heading = headings[0];
     expect(heading.textContent).toBe(defaultAttrs.heading);
   });
+
   it('renders the edit link', () => {
     renderReview(defaultAttrs, children);
 
@@ -54,6 +57,7 @@ describe('Review', () => {
         <a href="#">Remove</a>
       </div>
     );
+
     renderReview(defaultAttrs, children, slotContent);
 
     const editLink = screen.getByText('Edit');

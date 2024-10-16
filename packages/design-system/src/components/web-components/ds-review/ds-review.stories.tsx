@@ -1,6 +1,4 @@
 import type { Meta } from '@storybook/react';
-import { useEffect, useState } from 'react';
-import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-review';
