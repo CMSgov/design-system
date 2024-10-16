@@ -1,0 +1,19 @@
+$font-path: '../fonts' !default;
+
+/* lexend-600normal - latin */
+@font-face {
+  font-display: swap;
+  font-family: Lexend;
+  font-style: normal;
+  font-weight: 600;
+  src: url('#{$font-path}/lexend/Lexend-SemiBold.woff2') format('woff2');
+}
+
+/* public-sans-400normal - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$font-path}/public-sans/PublicSans-Regular.woff2') format('woff2');
+}

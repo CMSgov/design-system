@@ -27,6 +27,10 @@ module.exports = async ({ config }) => {
           to: './fonts',
         },
         {
+          from: path.resolve(__dirname, '../packages/ds-cms-gov/src', 'fonts'),
+          to: './fonts',
+        },
+        {
           from: path.resolve(__dirname, '../packages/ds-healthcare-gov/src', 'images'),
           to: './images',
         },
