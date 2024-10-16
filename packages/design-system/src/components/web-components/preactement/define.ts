@@ -107,8 +107,8 @@ function createCustomElement<T>(
       onDisconnected.call(this);
     }
 
-    public renderPreactComponent() {
-      renderPreactComponent.call(this);
+    public renderPreactComponent(addedNodes?: Node[]) {
+      renderPreactComponent.call(this, addedNodes);
     }
   }
 
@@ -207,8 +207,16 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
  */
 function setupMutationObserver(this: CustomElement) {
   this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
-    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
-      this.renderPreactComponent();
+    console.log('mutation observed! ', mutations);
+    const childListMutations = mutations.filter(
+      (mutation: MutationRecord) => mutation.type === 'childList'
+    );
+    if (childListMutations.length) {
+      const addedNodes = childListMutations.reduce(
+        (nodes, mutation) => [...nodes, ...mutation.addedNodes],
+        []
+      );
+      this.renderPreactComponent(addedNodes);
     }
   });
 }
@@ -345,7 +353,7 @@ function unwrapTemplateVNode(vnode: VNode): VNode {
  * Users can also replace the content by setting the innerHTML to something new, and
  * we'll just treat it as new input if we don't find the cached template element!
  */
-function renderPreactComponent(this: CustomElement) {
+function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
@@ -358,12 +366,19 @@ function renderPreactComponent(this: CustomElement) {
   // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
   // Putting the original inner content into a template also allows us to keep a copy of
   // it for future renders where context has been lost (see function documentation).
-  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
-  if (!template) {
-    console.log(`innerHTML for ${this.tagName}: "${this.innerHTML}"`);
-    template = document.createElement('template');
+  // let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  // if (!template) {
+  console.log(`innerHTML for ${this.tagName}: "${this.innerHTML}"`);
+  const template = document.createElement('template');
+  if (addedNodes) {
+    const span = document.createElement('span');
+    span.append(...addedNodes);
+    template.content.append(span);
+  } else {
     template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
+
+  // }
   const { vnode, slots } = templateToPreactVNode(template);
 
   // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
