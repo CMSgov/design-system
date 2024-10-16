@@ -3011,6 +3011,26 @@
             "codeSyntax": {}
           }
         }
+      },
+      "lexend": {
+        "$value": [
+          "Lexend",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
       }
     },
     "weight": {
