@@ -207,7 +207,6 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
  */
 function setupMutationObserver(this: CustomElement) {
   this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
-    console.log('mutation observed! ', mutations);
     const childListMutations = mutations.filter(
       (mutation: MutationRecord) => mutation.type === 'childList'
     );
@@ -368,7 +367,6 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   // it for future renders where context has been lost (see function documentation).
   // let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   // if (!template) {
-  console.log(`innerHTML for ${this.tagName}: "${this.innerHTML}"`);
   const template = document.createElement('template');
   if (addedNodes) {
     const span = document.createElement('span');
