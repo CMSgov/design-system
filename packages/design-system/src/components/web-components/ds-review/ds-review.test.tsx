@@ -8,7 +8,7 @@ const defaultAttrs = {
   'edit-text': 'edit',
 };
 const children = 'Some kids';
-function renderReview(attrs = {}, slotContent = null) {
+function renderReview(attrs = {}, children?, slotContent = null) {
   return render(
     <ds-review {...(attrs as any)}>
       {children}
@@ -19,7 +19,7 @@ function renderReview(attrs = {}, slotContent = null) {
 
 describe('Review', () => {
   it('renders review', () => {
-    renderReview(defaultAttrs);
+    renderReview(defaultAttrs, children);
 
     const wrappers = screen.getAllByRole('generic');
     const wrapper = wrappers[1];
@@ -28,7 +28,7 @@ describe('Review', () => {
     expect(wrapper).toMatchSnapshot();
   });
   it('renders a heading', () => {
-    renderReview(defaultAttrs);
+    renderReview(defaultAttrs, children);
 
     const headings = screen.getAllByRole('heading');
     expect(headings.length).toBe(1);
@@ -37,7 +37,7 @@ describe('Review', () => {
     expect(heading.textContent).toBe(defaultAttrs.heading);
   });
   it('renders the edit link', () => {
-    renderReview(defaultAttrs);
+    renderReview(defaultAttrs, children);
 
     const links = screen.getAllByRole('link');
     expect(links.length).toBe(1);
@@ -54,12 +54,31 @@ describe('Review', () => {
         <a href="#">Remove</a>
       </div>
     );
-    renderReview(defaultAttrs, slotContent);
+    renderReview(defaultAttrs, children, slotContent);
 
     const editLink = screen.getByText('Edit');
     const removeLink = screen.getByText('Remove');
 
     expect(editLink).toBeInTheDocument();
     expect(removeLink).toBeInTheDocument();
+  });
+
+  it('renders HTML children', () => {
+    const text = 'review text';
+    renderReview({}, <p className="my-p">{text}</p>);
+    const els = screen.getAllByText(text);
+    expect(els.length).toBe(1);
+
+    const el = els[0];
+    expect(el.classList).toContain('my-p');
+  });
+
+  it('adds a class from props', () => {
+    renderReview({ 'class-name': 'my-class' });
+
+    const wrappers = screen.getAllByRole('generic');
+    const wrapper = wrappers[1];
+
+    expect(wrapper.classList).toContain('my-class');
   });
 });
