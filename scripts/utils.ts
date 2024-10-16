@@ -24,6 +24,13 @@ export function shI(
   return spawnSync(command, args, { stdio: 'inherit', ...config });
 }
 
+/**
+ * Just like the `sh` function but prints all stdio output (verbose)
+ */
+export function shV(command: string) {
+  execSync(command, { stdio: 'inherit' });
+}
+
 export function verifyGhInstalled() {
   try {
     sh('gh --version');
