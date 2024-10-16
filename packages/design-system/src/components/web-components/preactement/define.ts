@@ -360,6 +360,7 @@ function renderPreactComponent(this: CustomElement) {
   // it for future renders where context has been lost (see function documentation).
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (!template) {
+    console.log(`innerHTML for ${this.tagName}: "${this.innerHTML}"`);
     template = document.createElement('template');
     template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
