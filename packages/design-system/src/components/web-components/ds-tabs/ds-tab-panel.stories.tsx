@@ -12,8 +12,10 @@ const meta: Meta = {
     docs: {
       page: WebComponentDocTemplate,
       description: {
-        component:
-          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).',
+        component: `The \`ds-tab-panel\` component is designed to be used in conjunction with the \`ds-tabs\` component.
+        Each \`ds-tab-panel\` corresponds to a tab in the \`ds-tabs\` component, where the \`tab\` attribute defines the label and \`selected\` controls the visibility. 
+        These panels should typically not be used in isolation without \`ds-tabs\`. 
+        For more information, [refer to its full documentation page](https://design.cms.gov/components/tabs/).`,
       },
     },
   },
