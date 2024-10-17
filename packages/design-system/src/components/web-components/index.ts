@@ -23,6 +23,7 @@ import './ds-drawer';
 import './ds-dropdown';
 import './ds-filter-chip';
 import './ds-month-picker';
+import './ds-review';
 import './ds-skip-nav';
 import './ds-spinner';
 import './ds-tabs';
