@@ -306,6 +306,11 @@ function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
   return childNode.nodeName.toLowerCase() === 'template';
 }
 
+function isEmptyTemplate(template: HTMLTemplateElement): boolean {
+  const wrapperSpan = template.content.firstChild;
+  return !wrapperSpan || wrapperSpan.childNodes.length === 0;
+}
+
 /**
  * Because bare text content in the root of a template element doesn't get parsed into
  * its document fragment by the browser, we need to wrap our input content in an element
@@ -365,18 +370,25 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
   // Putting the original inner content into a template also allows us to keep a copy of
   // it for future renders where context has been lost (see function documentation).
-  // let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
-  // if (!template) {
-  const template = document.createElement('template');
-  if (addedNodes) {
-    const span = document.createElement('span');
-    span.append(...addedNodes);
-    template.content.append(span);
-  } else {
-    template.innerHTML = wrapTemplateHtml(this.innerHTML);
+  // Note that web components rendered with Angular will have no innerHTML content at
+  // first, even if content was placed between the tags in the Angular template, so its
+  // initial render will result in an empty template. In order to determine if we need to
+  // start over with a new template, we need to check for both a missing template and an
+  // empty template. There's no harm in overwriting an empty template that is meant to be
+  // empty, but there is harm in creating a new template when one already exists with
+  // content in it, because it will be duplicated in the new template (which can happen
+  // when there are nested web components).
+  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  if (!template || isEmptyTemplate(template)) {
+    template = document.createElement('template');
+    if (addedNodes) {
+      const span = document.createElement('span');
+      span.append(...addedNodes);
+      template.content.append(span);
+    } else {
+      template.innerHTML = wrapTemplateHtml(this.innerHTML);
+    }
   }
-
-  // }
   const { vnode, slots } = templateToPreactVNode(template);
 
   // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
