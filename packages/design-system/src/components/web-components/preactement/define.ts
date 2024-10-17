@@ -370,16 +370,21 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
   // Putting the original inner content into a template also allows us to keep a copy of
   // it for future renders where context has been lost (see function documentation).
-  // Note that web components rendered with Angular will have no innerHTML content at
-  // first, even if content was placed between the tags in the Angular template, so its
-  // initial render will result in an empty template. In order to determine if we need to
-  // start over with a new template, we need to check for both a missing template and an
-  // empty template. There's no harm in overwriting an empty template that is meant to be
-  // empty, but there is harm in creating a new template when one already exists with
-  // content in it, because it will be duplicated in the new template (which can happen
-  // when there are nested web components).
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
-  if (!template || isEmptyTemplate(template)) {
+  if (template && isEmptyTemplate(template)) {
+    // Web components rendered with Angular will have no innerHTML content at first, even
+    // if content was placed between the tags in the Angular template, so its initial
+    // render will result in an empty template. If the template is empty, we want to both
+    // start over with a new template and remove the old one so it doesn't make its way
+    // into the next one. Even if the empty template is a false positive for this Angular
+    // behavior, there's no harm in replacing it with a new empty template, but there
+    // _is_ harm in leaving a non-empty template to duplicate its content by using it in
+    // the inner HTML that will create go into a new template (creating buttons inside of
+    // buttons and things like that).
+    template.remove();
+    template = undefined;
+  }
+  if (!template) {
     template = document.createElement('template');
     if (addedNodes) {
       const span = document.createElement('span');
