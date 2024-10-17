@@ -367,14 +367,12 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   // it for future renders where context has been lost (see function documentation).
   // let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   // if (!template) {
-  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  const template = document.createElement('template');
   if (addedNodes) {
-    template = document.createElement('template');
     const span = document.createElement('span');
     span.append(...addedNodes);
     template.content.append(span);
-  } else if (!template) {
-    template = document.createElement('template');
+  } else {
     template.innerHTML = wrapTemplateHtml(this.innerHTML);
   }
 
