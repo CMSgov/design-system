@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Web-component examples">
   <!-- START WEB COMPONENT EXAMPLES -->
+  <!-- These web component examples are shared between multiple example projects -->
   <ds-skip-nav href="#main"></ds-skip-nav>
   <ds-usa-banner></ds-usa-banner>
   
@@ -12,23 +13,16 @@ import Layout from '../layouts/Layout.astro';
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>This is an example showing how to use our library of interactive web components.</p>
   
-      <ds-spinner aria-valuetext="aria sets spinner label!"
-        >children don't set spinner label</ds-spinner
-      >
+      <ds-spinner aria-valuetext="aria sets spinner label!">children don't set spinner label</ds-spinner>
   
-      <ds-alert
-        variation="success"
-        heading="You've loaded the web-components example"
-        class-name="ds-u-margin-y--2"
-        id="alert"
-      >
+      <ds-alert variation="success" heading="You've loaded the web-components example" class-name="ds-u-margin-y--2"
+        id="alert">
         <p id="alert-content">
           This is an example of a success alert. If you want to see an error alert, click the button
           below.
         </p>
-        <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1"
-          >Break things</ds-button
-        >
+        <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1">Break
+          things</ds-button>
       </ds-alert>
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -63,12 +57,8 @@ import Layout from '../layouts/Layout.astro';
         </ds-accordion-item>
       </ds-accordion>
   
-      <ds-month-picker
-        requirement-label="Required."
-        hint="Select many."
-        name="fooPicker"
-        label="Select any months you want!"
-      >
+      <ds-month-picker requirement-label="Required." hint="Select many." name="fooPicker"
+        label="Select any months you want!">
         <input type="checkbox" value="10" checked />
         <input type="checkbox" value="11" checked disabled />
         <input type="checkbox" value="12" disabled />
@@ -77,11 +67,8 @@ import Layout from '../layouts/Layout.astro';
       <ds-choice-list type="radio" label="Choice list example" name="foo">
         <ds-choice label="Choice without associated children" value="no children"></ds-choice>
   
-        <ds-choice
-          label="Checked children"
-          hint="Selecting this checkbox will reveal its associated children."
-          value="checked children"
-        >
+        <ds-choice label="Checked children" hint="Selecting this checkbox will reveal its associated children."
+          value="checked children">
           <div slot="checked-children">
             <div class="ds-c-choice__checkedChild">
               <ds-alert heading="🫣 Tag! You're it!">
@@ -94,11 +81,8 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </ds-choice>
-        <ds-choice
-          label="Unchecked children"
-          hint="Selecting this checkbox will hide its associated children."
-          value="unchecked children"
-        >
+        <ds-choice label="Unchecked children" hint="Selecting this checkbox will hide its associated children."
+          value="unchecked children">
           <div slot="unchecked-children">
             <div class="ds-c-choice__checkedChild">
               <ds-alert variation="warn" heading="I banish thee!">
@@ -119,10 +103,7 @@ import Layout from '../layouts/Layout.astro';
           <option value="addition">Addition</option>
           <option value="subtraction">Subtraction</option>
         </ds-dropdown>
-        <div
-          class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2"
-          style="gap: var(--spacer-2)"
-        >
+        <div class="ds-u-display--flex ds-u-align-items--center ds-u-margin-y--2" style="gap: var(--spacer-2)">
           <input type="number" id="a" name="a" value="20" class="ds-c-field ds-c-field--small" />
           <span id="sign">+</span>
           <input type="number" id="b" name="b" value="30" class="ds-c-field ds-c-field--small" />
@@ -178,14 +159,11 @@ import Layout from '../layouts/Layout.astro';
       <hr class="ds-u-margin-y--4" />
   
       <h2 class="ds-text-heading--2xl">Autocomplete example</h2>
-      <ds-autocomplete
-        id="the-autocomplete"
+      <ds-autocomplete id="the-autocomplete"
         items='[{"id":"71","name":"Acetaminophen"},{"id":"72","name":"Advil"},{"id":"73","name":"Benadryl"},{"id":"74","name":"Claritin"},{"id":"75","name":"Detrol"},{"id":"76","name":"Excedrin"}]'
         label="Enter and select a drug to see its cost under each plan."
         hint="Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
-        clear-search-button="true"
-        class-name="ds-u-padding-bottom--7"
-      >
+        clear-search-button="true" class-name="ds-u-padding-bottom--7">
       </ds-autocomplete>
       <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -230,9 +208,40 @@ import Layout from '../layouts/Layout.astro';
             );
         });
       </script>
+      <h2 class="ds-text-heading--2xl">Review example</h2>
+      <ds-review heading="Heading for the Review Component" >
+        <p>This is the body of a review component example. Click the links to see actions.</p>
+        <div slot="edit-content">
+          <div>
+            <a href="#" id="edit-link">Edit</a>
+            <span>|</span>
+            <a href="#" id="remove-link">Remove</a>
+          </div>
+        </div>
+      </ds-review>
+      <div id="feedback" style="margin-top: 10px; font-style: italic;"></div>
+  
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const editLink = document.getElementById('edit-link');
+          const removeLink = document.getElementById('remove-link');
+          const feedback = document.getElementById('feedback');
+  
+          editLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log('Edit link clicked!', event);
+            feedback.textContent = 'Edit action performed.';
+          });
+  
+          removeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log('Remove link clicked!', event);
+            feedback.textContent = 'Remove action performed.';
+          });
+        });
+      </script>
     </div>
-  </main>
-  <!-- END WEB COMPONENT EXAMPLES -->
+  </main><!-- END WEB COMPONENT EXAMPLES -->
 </Layout>
 
 <!-- <script src="@cmsgov/design-system/web-components"></script> -->
@@ -246,6 +255,7 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/web-components/ds-filter-chip"></script>
 <script src="@cmsgov/design-system/web-components/ds-month-picker"></script>
 <script src="@cmsgov/design-system/web-components/ds-pagination"></script>
+<script src="@cmsgov/design-system/web-components/ds-review"></script>
 <script src="@cmsgov/design-system/web-components/ds-spinner"></script>
 <script src="@cmsgov/design-system/web-components/ds-text-field"></script>
 <script src="@cmsgov/design-system/web-components/ds-usa-banner"></script>

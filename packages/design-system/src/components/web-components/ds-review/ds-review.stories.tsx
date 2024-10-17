@@ -56,7 +56,7 @@ const Template = (args) => {
   return <ds-review {...args}>{children}</ds-review>;
 };
 
-export const MultipleReviewsTemplate = (args) => (
+const MultipleReviewsTemplate = (args) => (
   <div>
     <ds-review {...args}>{children}</ds-review>
     <ds-review {...args}>{children}</ds-review>
@@ -82,19 +82,19 @@ export const Default = Template.bind({});
 
 export const SingleReview = Template.bind({});
 SingleReview.args = {
-  heading: 'A single Review component',
-  editHref: '#',
+  heading: 'A Single Review Component',
+  'edit-href': '#',
 };
 
 export const MultipleReviews = MultipleReviewsTemplate.bind({});
 MultipleReviews.args = {
-  heading: 'Multiple Review components',
-  editHref: '#',
+  heading: 'Multiple Review Components',
+  'edit-href': '#',
 };
 
 export const CustomActions = TemplateWithCustomActions.bind({});
 CustomActions.args = {
-  heading: 'A Review component with custom actions',
+  heading: 'A Review Component with Custom Actions',
 };
 
 export default meta;
