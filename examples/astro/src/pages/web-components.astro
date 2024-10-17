@@ -220,6 +220,8 @@ import Layout from '../layouts/Layout.astro';
         });
       </script>
   
+      <hr class="ds-u-margin-y--4" />
+  
       <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
       <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
       <script>
@@ -231,6 +233,8 @@ import Layout from '../layouts/Layout.astro';
             );
         });
       </script>
+    </div>
+    <div class="ds-u-padding-y--3 ds-u-padding-bottom--4">
       <h2 class="ds-text-heading--2xl">Review example</h2>
       <ds-review heading="Heading for the Review Component">
         <p>This is the body of a review component example. Click the links to see actions.</p>
@@ -243,19 +247,19 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </ds-review>
       <div id="feedback" style="margin-top: 10px; font-style: italic"></div>
-  
+    
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
           const editLink = document.getElementById('edit-link');
           const removeLink = document.getElementById('remove-link');
           const feedback = document.getElementById('feedback');
-  
+    
           editLink.addEventListener('click', (event) => {
             event.preventDefault();
             console.log('Edit link clicked!', event);
             feedback.textContent = 'Edit action performed.';
           });
-  
+    
           removeLink.addEventListener('click', (event) => {
             event.preventDefault();
             console.log('Remove link clicked!', event);
