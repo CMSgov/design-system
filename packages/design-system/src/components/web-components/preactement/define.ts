@@ -373,14 +373,16 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
   if (template && isEmptyTemplate(template)) {
     // Web components rendered with Angular will have no innerHTML content at first, even
-    // if content was placed between the tags in the Angular template, so its initial
-    // render will result in an empty template. If the template is empty, we want to both
+    // if content was placed between the tags in the Angular template. In that case when
+    // we do our first render pass executing this function, we will generate an empty
+    // internal template because it gets filled with non-existent innerHTML. So when we
+    // perform a subsequent render, if our previous template is empty, we want to both
     // start over with a new template and remove the old one so it doesn't make its way
-    // into the next one. Even if the empty template is a false positive for this Angular
+    // into the new. Even if the empty template is a false positive for this Angular
     // behavior, there's no harm in replacing it with a new empty template, but there
     // _is_ harm in leaving a non-empty template to duplicate its content by using it in
-    // the inner HTML that will create go into a new template (creating buttons inside of
-    // buttons and things like that).
+    // the inner HTML that will go into a new template (which results in buttons inside
+    // of buttons and things like that).
     template.remove();
     template = undefined;
   }
