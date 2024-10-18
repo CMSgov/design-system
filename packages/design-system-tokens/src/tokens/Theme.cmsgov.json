@@ -943,7 +943,7 @@
       },
       "family": {
         "heading": {
-          "$value": "{font.family.open-sans}",
+          "$value": "{font.family.lexend}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
