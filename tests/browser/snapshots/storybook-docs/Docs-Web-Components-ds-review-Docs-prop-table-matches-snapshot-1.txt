@@ -1,0 +1,32 @@
+[
+  [
+    "class-name",
+    "CSS class to apply custom styles to the Review component.",
+    "string"
+  ],
+  [
+    "edit-aria-label",
+    "Optional label to give screen readers longer, more descriptive text to explain the context of an edit link.",
+    "string"
+  ],
+  [
+    "edit-href",
+    "Href for the edit link. If this is undefined, no edit link will be shown.",
+    "string"
+  ],
+  [
+    "edit-text",
+    "Text for the rendered edit link.",
+    "string"
+  ],
+  [
+    "heading",
+    "Text for the Review heading.",
+    "string"
+  ],
+  [
+    "heading-level",
+    "Heading type to override default `<h3>`",
+    "\"1\"\"2\"\"3\"\"4\"\"5\""
+  ]
+]
