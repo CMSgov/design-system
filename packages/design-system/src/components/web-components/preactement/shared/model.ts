@@ -60,7 +60,7 @@ interface CustomElement<CF = any, C = any> extends HTMLElement {
   __mutationObserver?: MutationObserver;
   __propsSignal: Signal;
 
-  renderPreactComponent(): void;
+  renderPreactComponent(addedNodes?: Node[]): void;
 }
 
 /* -----------------------------------
