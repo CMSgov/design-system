@@ -168,6 +168,32 @@ describe('Tabs', function () {
     expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
   });
 
+  it('skips disabled tabs on arrow key navigation', () => {
+    const children = [
+      <TabPanel key="1" id="panel-1" tab="Tab 1">
+        Content 1
+      </TabPanel>,
+      <TabPanel key="2" id="panel-2" tab="Tab 2" disabled>
+        Content 2
+      </TabPanel>,
+      <TabPanel key="3" id="panel-3" tab="Tab 3">
+        Content 3
+      </TabPanel>,
+    ];
+
+    renderTabs({ defaultSelectedId: 'panel-1' }, children);
+
+    const tabEls = screen.getAllByRole('tab');
+
+    tabEls[0].focus();
+    userEvent.keyboard('{ArrowRight}');
+
+    expect(tabEls[2].getAttribute('aria-selected')).toBe('true');
+    expect(tabEls[1].getAttribute('aria-disabled')).toBe('true');
+    expect(tabEls[1]).not.toHaveFocus();
+    expect(tabEls[2]).toHaveFocus();
+  });
+
   it('selects the last panel on left arrow keyDown from first panel', () => {
     renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(2));
     const tabEls = screen.getAllByRole('tab');
