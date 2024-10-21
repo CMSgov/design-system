@@ -1,5 +1,5 @@
 import { Children, cloneElement, isValidElement, useState, useRef } from 'react';
-import type * as React from 'react';
+import React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import classnames from 'classnames';
@@ -137,33 +137,41 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const handleTabKeyDown = (evt: React.KeyboardEvent, panelId: string): void => {
-    const tabs = panelChildren();
+    const tabs = panelChildren().filter((elem): elem is React.ReactElement =>
+      React.isValidElement(elem)
+    );
     const tabIndex = tabs.findIndex((elem: React.ReactElement) => elem.props.id === panelId);
+
     let target;
+    const isDisabled = (tab: React.ReactElement) => tab.props.disabled;
 
     switch (evt.key) {
-      case LEFT_ARROW:
+      case LEFT_ARROW: {
         evt.preventDefault();
-        if (tabIndex === 0) {
-          const prevTab = tabs[tabs.length - 1] as React.ReactElement;
-          target = prevTab.props.id;
-        } else {
-          const prevTab = tabs[tabIndex - 1] as React.ReactElement;
-          target = prevTab.props.id;
+        // If we're on the first tab, make previous the last tab in the list.
+        let prevTabIndex = tabIndex === 0 ? tabs.length - 1 : tabIndex - 1;
+        // If we're on a disabled tab, skip until we find an enabled one.
+        while (isDisabled(tabs[prevTabIndex])) {
+          prevTabIndex = prevTabIndex === 0 ? tabs.length - 1 : prevTabIndex - 1;
         }
+        target = tabs[prevTabIndex].props.id;
         handleSelectedTabChange(target);
         break;
-      case RIGHT_ARROW:
+      }
+
+      case RIGHT_ARROW: {
         evt.preventDefault();
-        if (tabIndex === tabs.length - 1) {
-          const currentTab = tabs[0] as React.ReactElement;
-          target = currentTab.props.id;
-        } else {
-          const nextTab = tabs[tabIndex + 1] as React.ReactElement;
-          target = nextTab.props.id;
+        // If we're on the last tab, make next tab the first in the list.
+        let nextTabIndex = tabIndex === tabs.length - 1 ? 0 : tabIndex + 1;
+        // If we're on a disabled tab, skip until we find an enabled one.
+        while (isDisabled(tabs[nextTabIndex])) {
+          nextTabIndex = nextTabIndex === tabs.length - 1 ? 0 : nextTabIndex + 1;
         }
+        target = tabs[nextTabIndex].props.id;
         handleSelectedTabChange(target);
         break;
+      }
+
       default:
         break;
     }
