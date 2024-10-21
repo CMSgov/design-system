@@ -148,6 +148,7 @@
 --font-weight-button-sm: var(--font-weight-normal);
 --font-weight-normal: 400;
 --font-weight-bold: 700;
+--font-weight-semibold: 600;
 --global__color: var(--color-base);
 --global__color--inverse: var(--color-base-inverse);
 --global__font-family: var(--font-family-body);
