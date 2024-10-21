@@ -11,7 +11,7 @@ const meta: Meta = {
       page: WebComponentDocTemplate,
       description: {
         component:
-          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/drawer/).',
+          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/review/).',
       },
       slots: {
         'edit-content': {
