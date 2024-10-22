@@ -64,6 +64,11 @@
     "-"
   ],
   [
+    "hintClassName",
+    "Custom CSS class name(s) for the hint element\nstring",
+    "-"
+  ],
+  [
     "hintId",
     "The ID of the hint element\nstring",
     "-"

@@ -57,6 +57,10 @@ const meta: Meta = {
       description: 'An optional hint for the label',
       control: 'text',
     },
+    'hint-class-name': {
+      control: 'text',
+      description: 'Custom CSS class name(s) for the hint element',
+    },
     items: {
       description:
         'An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined. This parameter needs to be stringified (please see examples for usage and [read more on the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs):).',
