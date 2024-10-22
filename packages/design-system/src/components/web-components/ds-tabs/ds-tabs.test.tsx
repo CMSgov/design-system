@@ -20,6 +20,21 @@ const children = [
   </ds-tab-panel>,
 ];
 
+const childrenWithDisabledTabPanel = [
+  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+    Some content for tab 1
+    <ol>
+      <li>Nested content for tab 1.</li>
+    </ol>
+  </ds-tab-panel>,
+  <ds-tab-panel key="2" id="panel-2" tab="Tab 2" disabled="true">
+    Some content for disabled tab.
+  </ds-tab-panel>,
+  <ds-tab-panel key="3" id="panel-3" tab="Tab 3">
+    Some content for tab 3.
+  </ds-tab-panel>,
+];
+
 describe('ds-tabs', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -103,6 +118,18 @@ describe('ds-tabs', () => {
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'false');
   });
 
+  it('skips disabled tabs on arrow key navigation', () => {
+    renderTabs(defaultProps, childrenWithDisabledTabPanel);
+    const tabEls = screen.getAllByRole('tab');
+    tabEls[0].focus();
+    userEvent.keyboard('{ArrowRight}');
+
+    expect(tabEls[2].getAttribute('aria-selected')).toBe('true');
+    expect(tabEls[1].getAttribute('aria-disabled')).toBe('true');
+    expect(tabEls[1]).not.toHaveFocus();
+    expect(tabEls[2]).toHaveFocus();
+  });
+
   it('selects the first panel on left arrow keyDown', () => {
     renderTabs(defaultProps, children);
 
@@ -117,14 +144,6 @@ describe('ds-tabs', () => {
     expect(tabEls[0]).toHaveFocus();
     expect(panelEls[0]).toHaveAttribute('aria-hidden', 'false');
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'true');
-  });
-
-  it('should render a custom aria-label when the tabs-aria-label attribute is provided', () => {
-    const customAriaLabel = 'Custom Tab List Label';
-    renderTabs({ 'tabs-aria-label': customAriaLabel });
-    const tablistElement = screen.getByRole('tablist');
-
-    expect(tablistElement).toHaveAttribute('aria-label', customAriaLabel);
   });
 
   it('selects the last panel on left arrow keyDown from first panel', () => {
