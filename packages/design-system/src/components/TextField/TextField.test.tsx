@@ -61,6 +61,15 @@ describe('TextField', function () {
     expect(container.querySelector('input')).toHaveValue('foo');
   });
 
+  it('applies custom hintClassName to the hint element', () => {
+    const customHintClass = 'my-custom-hint-class';
+    renderTextField({ hint: 'This is a hint', hintClassName: customHintClass });
+
+    const hint = screen.getByText('This is a hint');
+    expect(hint).toBeInTheDocument();
+    expect(hint.classList).toContain(customHintClass);
+  });
+
   it('can accept custom ids', () => {
     const id = 'custom-id';
     const labelId = 'custom-label-id';

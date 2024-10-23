@@ -58,6 +58,10 @@ export default {
       description: 'Hint text or HTML',
       control: 'text',
     },
+    'hint-class-name': {
+      control: 'text',
+      description: 'Custom CSS class name(s) for the hint element',
+    },
     inversed: {
       description: 'Set to "true" to apply the "inverse" scheme',
       control: 'boolean',

@@ -46,12 +46,17 @@ describe('ds-text-field', function () {
     expect(input).toHaveClass('foobar');
   });
 
-  it('applies requirement-label to hint text', () => {
-    const { container } = renderTextField({ 'requirement-label': 'Optional' });
+  it('applies requirement-label and hint-class-name attributes to hint text', () => {
+    const customHintClass = 'my-custom-hint-class';
+    const { container } = renderTextField({
+      'requirement-label': 'Optional',
+      'hint-class-name': customHintClass,
+    });
     const input = screen.getByRole('textbox');
     const hintId = input.getAttribute('aria-describedby');
     const hint = container.querySelector(`#${hintId}`);
     expect(hint).toContainHTML('Optional');
+    expect(hint.classList).toContain(customHintClass);
   });
 
   it('renders an error message', () => {

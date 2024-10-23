@@ -35,6 +35,11 @@
     "string"
   ],
   [
+    "hint-class-name",
+    "Custom CSS class name(s) for the hint element",
+    "string"
+  ],
+  [
     "hint-id",
     "The ID of the hint element",
     "string"

@@ -1,5 +1,5 @@
 const labelAttrs = ['label', 'label-class-name', 'label-id'] as const;
-const hintAttrs = ['hint', 'hint-id', 'requirement-label'] as const;
+const hintAttrs = ['hint', 'hint-id', 'requirement-label', 'hint-class-name'] as const;
 const inlineErrorAttrs = [
   'error-id',
   'error-placement',

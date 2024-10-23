@@ -36,6 +36,21 @@ describe('MultiInputDateField', () => {
     });
   });
 
+  it('applies custom `hintClassName` to the hint element', () => {
+    const customHintClass = 'my-custom-hint-class';
+    render(
+      <MultiInputDateField
+        label="A date field"
+        hintClassName={customHintClass}
+        hint="Enter the date"
+      />
+    );
+
+    const hint = screen.getByText('Enter the date');
+    expect(hint).toBeInTheDocument();
+    expect(hint.classList).toContain(customHintClass);
+  });
+
   it('accepts a custom dateFormatter', () => {
     const dateFormatter = ({ day, month, year }) => `${year}-${month}-${day}`;
     const onChange = jest.fn();
