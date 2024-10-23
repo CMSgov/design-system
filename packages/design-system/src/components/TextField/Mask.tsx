@@ -10,7 +10,7 @@ const maskPattern = {
   phone: '[0-9-]*',
   ssn: '[0-9-*]*',
   zip: '[0-9-]*',
-  currency: '[0-9.,-]*',
+  currency: '[0-9\\.\\,\\-]*',
 };
 
 const maskOverlayContent = {
@@ -87,7 +87,7 @@ export class Mask extends PureComponent<MaskProps, any> {
    * @param {React.Element} field - Child TextField
    */
   handleBlur(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
-    const value = maskValue(evt.target.value, this.props.mask);
+    const value = (evt.target.value = maskValue(evt.target.value, this.props.mask));
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
@@ -101,6 +101,10 @@ export class Mask extends PureComponent<MaskProps, any> {
       // value returned by event.target.value is the value after masking
       evt.persist();
       this.debouncedOnBlurEvent = evt;
+    }
+
+    if (typeof field.props.onChange === 'function') {
+      field.props.onChange(evt);
     }
 
     this.setState({
