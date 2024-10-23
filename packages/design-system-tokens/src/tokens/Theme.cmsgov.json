@@ -986,7 +986,7 @@
       "weight": {
         "heading": {
           "5xl": {
-            "$value": "{theme.font.weight.bold}",
+            "$value": "{theme.font.weight.semibold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1016,7 +1016,7 @@
             }
           },
           "2xl": {
-            "$value": "{theme.font.weight.bold}",
+            "$value": "{theme.font.weight.semibold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1026,7 +1026,7 @@
             }
           },
           "xl": {
-            "$value": "{theme.font.weight.bold}",
+            "$value": "{theme.font.weight.semibold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1036,7 +1036,7 @@
             }
           },
           "lg": {
-            "$value": "{theme.font.weight.bold}",
+            "$value": "{theme.font.weight.semibold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1046,7 +1046,7 @@
             }
           },
           "md": {
-            "$value": "{theme.font.weight.bold}",
+            "$value": "{theme.font.weight.semibold}",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1142,6 +1142,16 @@
         },
         "bold": {
           "$value": "{font.weight.700}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "semibold": {
+          "$value": "{font.weight.600}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
