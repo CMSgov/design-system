@@ -12,7 +12,7 @@ import { createElement } from 'react';
 function parseChildren(node) {
   const elements = findElementsOfType(['ds-tab-panel'], node);
 
-  const mappedElements = elements.map((element) => {
+  return elements.map((element) => {
     const { children, ...attrs } = element.props || {};
 
     // Rename `root-id` to `id` if it exists.
@@ -31,12 +31,8 @@ function parseChildren(node) {
       return acc;
     }, {} as Partial<TabPanelProps>);
 
-    const reactElem = createElement(TabPanel, camelCaseAttrs as TabPanelProps, children);
-
-    return reactElem;
+    return createElement(TabPanel, camelCaseAttrs as TabPanelProps, children);
   });
-
-  return mappedElements;
 }
 
 const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];

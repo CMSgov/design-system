@@ -21,16 +21,16 @@ const children = [
 ];
 
 const childrenWithDisabledTabPanel = [
-  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+  <ds-tab-panel key="1" root-id="panel-1" tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
   </ds-tab-panel>,
-  <ds-tab-panel key="2" id="panel-2" tab="Tab 2" disabled="true">
+  <ds-tab-panel key="2" root-id="panel-2" tab="Tab 2" disabled="true">
     Some content for disabled tab.
   </ds-tab-panel>,
-  <ds-tab-panel key="3" id="panel-3" tab="Tab 3">
+  <ds-tab-panel key="3" root-id="panel-3" tab="Tab 3">
     Some content for tab 3.
   </ds-tab-panel>,
 ];
@@ -206,8 +206,8 @@ describe('ds-tabs', () => {
     ]);
 
     const tabs = screen.getAllByRole('tab');
-    expect(tabs[0].id).toEqual('lunch__tab');
-    expect(tabs[1].id).toEqual('dinner__tab');
+    expect(tabs[0].id).toEqual('lunch-tab');
+    expect(tabs[1].id).toEqual('dinner-tab');
 
     const panels = screen.getAllByRole('tabpanel');
     expect(panels[0].getAttribute('aria-labelledby')).toEqual(tabs[0].id);
