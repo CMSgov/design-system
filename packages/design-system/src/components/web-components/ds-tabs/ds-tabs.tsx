@@ -13,6 +13,12 @@ const Wrapper = ({ tabsAriaLabel, ...props }) => {
     const mappedElements = elements.map((element) => {
       const { children, ...attrs } = element.props || {};
 
+      // Rename `root-id` to `id` if it exists.
+      if ('root-id' in attrs) {
+        attrs.id = attrs['root-id'];
+        delete attrs['root-id'];
+      }
+
       // Parse kebab-cased attributes into cameCased props.
       const camelCaseAttrs = Object.keys(attrs).reduce((acc, key) => {
         const camelCaseKey = key.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());

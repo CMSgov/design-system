@@ -65,10 +65,15 @@ const Template = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <ds-tab-panel key="summary" id="summary" tab="Summary" tab-class-name="custom-class-name">
+      <ds-tab-panel
+        key="summary"
+        root-id="summary"
+        tab="Summary"
+        tab-class-name="custom-class-name"
+      >
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </ds-tab-panel>
-      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
+      <ds-tab-panel key="preamble" root-id="preamble" tab="Preamble">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
@@ -76,7 +81,7 @@ const Template = (args) => {
           establish this Constitution for the United States of America.
         </p>
       </ds-tab-panel>
-      <ds-tab-panel key="amendments" id="amendments" tab="Amendments">
+      <ds-tab-panel key="amendments" root-id="amendments" tab="Amendments">
         <h2 className="ds-text-heading--lg">Bill of Rights</h2>
 
         <ol className="ds-c-list">
