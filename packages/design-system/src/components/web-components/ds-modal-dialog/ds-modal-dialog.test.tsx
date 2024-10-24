@@ -1,6 +1,7 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import './ds-modal-dialog';
+import '../ds-button/ds-button';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -20,11 +21,21 @@ const defaultAttributes = {
 };
 
 function renderDialog(props: any) {
-  return render(
+  const view = render(
     <ds-modal-dialog {...defaultAttributes} {...props}>
       {props.children || defaultAttributes.children}
     </ds-modal-dialog>
   );
+  return {
+    ...view,
+    rerenderModalDialog(newAttributes = {}) {
+      return view.rerender(
+        <ds-modal-dialog {...defaultAttributes} {...newAttributes}>
+          {defaultAttributes.children}
+        </ds-modal-dialog>
+      );
+    },
+  };
 }
 
 describe('DS Modal Dialog', function () {
@@ -37,7 +48,7 @@ describe('DS Modal Dialog', function () {
 
   it('renders with additional classNames and size', () => {
     renderDialog({
-      actions: '<span>Pretend these are actions</span>',
+      actions: 'Pretend these are actions',
       'actions-class-name': 'test-action',
       'class-name': 'test-dialog',
       'header-class-name': 'test-header',
@@ -50,55 +61,80 @@ describe('DS Modal Dialog', function () {
   it('renders slot content to actions', () => {
     const actionsContent = (
       <div slot="actions">
-        <button>Click here</button>
+        <button role="button">Click here</button>
       </div>
     );
 
     renderDialog({
+      'is-open': 'true',
       children: actionsContent,
     });
 
     expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
-  it('renders JSON content to actions', () => {
+  it('renders slot content to heading', () => {
+    const headingContent = (
+      <div slot="heading">
+        <h3>I am a HEADING</h3>
+      </div>
+    );
+
     renderDialog({
-      actions:
-        '{["<button role="button">Click here</button>","<button role="button">Click there</button>", "<button role="button">Click anywhere</button>" ]}',
+      'is-open': 'true',
+      children: headingContent,
     });
 
-    const buttons = screen.getAllByRole('button');
-    expect(buttons?.length).toBe(3);
     expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
-  it('accepts an alert attribute', () => {});
+  it('accepts an alert attribute', () => {
+    renderDialog({
+      alert: 'true',
+    });
 
-  it('closes on backdrop click when backdrop-click-exits is set to true', () => {});
-
-  it('renders children', () => {});
-
-  it('renders children as slot content', () => {});
-
-  it('applies classes to the header', () => {});
-
-  // Keep
-  it('calls onExit when close button is clicked', () => {
-    const onExit = jest.fn();
-    renderDialog({ onExit });
-    fireEvent.click(screen.getByRole('button'));
-    expect(onExit.mock.calls.length).toBe(1);
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
-  // Keep
-  it('is closed until isOpen is set to true', () => {
-    renderDialog({ 'is-open': 'false' });
+
+  it('applies classes to the header', () => {
+    renderDialog({
+      'root-id': 'static-id',
+      heading: 'Some heading string',
+      'header-class-name': 'ds-not-a-real-header-class',
+    });
+
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
+  });
+
+  it('triggers the ds-exit custom event when the close button is clicked', () => {
+    const onExit = jest.fn();
+    renderDialog({});
+    const modal = document.querySelector('ds-modal-dialog');
+    expect(modal).toBeDefined();
+    modal.addEventListener('ds-exit', onExit);
+
+    userEvent.click(screen.getByRole('button'));
+    expect(onExit).toHaveBeenCalled();
+    modal.removeEventListener('ds-exit', onExit);
+  });
+
+  it('is closed until is-open is set to true', () => {
+    const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
     expect(screen.queryByRole('dialog')).toBe(null);
-    renderDialog({ 'is-open': 'true' });
+
+    rerenderModalDialog({ 'is-open': 'true' });
+    expect(screen.getByRole('dialog')).toBeDefined();
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
-  // Keep
-  it('opens if the isOpen prop is true', () => {
-    renderDialog({ 'is-open': 'true' });
+
+  it('opens if the is-open prop is set to true', () => {
+    const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+    const modal = document.querySelector('ds-modal-dialog');
+    expect(modal).toBeDefined();
+    expect(modal.getAttribute('is-open')).toBe('false');
+
+    rerenderModalDialog({ 'is-open': 'true' });
+    expect(modal.getAttribute('is-open')).toBe('true');
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 

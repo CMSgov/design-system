@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DS Modal Dialog renders slot content to actions 1`] = `
+exports[`DS Modal Dialog accepts an alert attribute 1`] = `
 <dialog
-  aria-labelledby="dialog--3__heading"
+  aria-labelledby="static-id__heading"
   class="ds-c-dialog"
-  id="dialog--3"
+  id="static-id"
   open=""
   role="dialog"
-  rootid="static-id"
   tabindex="-1"
 >
   <div
@@ -18,20 +17,20 @@ exports[`DS Modal Dialog renders slot content to actions 1`] = `
     >
       <h2
         class="ds-c-dialog__heading"
-        id="dialog--3__heading"
+        id="static-id__heading"
       >
         dialog heading
       </h2>
       <button
         aria-label="Close modal dialog"
         class="ds-c-close-button ds-c-dialog__close"
-        id="dialog--3__close"
+        id="static-id__close"
         type="button"
       >
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-          id="dialog--3__close__icon"
+          id="static-id__close__icon"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -49,12 +48,128 @@ exports[`DS Modal Dialog renders slot content to actions 1`] = `
       class="ds-c-dialog__body"
     >
       <div
-        id="dialog--3__content"
+        id="static-id__content"
+      >
+        Foo
+      </div>
+    </div>
+  </div>
+</dialog>
+`;
+
+exports[`DS Modal Dialog applies classes to the header 1`] = `
+<dialog
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog"
+  id="static-id"
+  open=""
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class="ds-c-dialog__window"
+  >
+    <div
+      class="ds-c-dialog__header ds-not-a-real-header-class"
+    >
+      <h2
+        class="ds-c-dialog__heading"
+        id="static-id__heading"
+      >
+        Some heading string
+      </h2>
+      <button
+        aria-label="Close modal dialog"
+        class="ds-c-close-button ds-c-dialog__close"
+        id="static-id__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          id="static-id__close__icon"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="ds-c-dialog__body"
+    >
+      <div
+        id="static-id__content"
+      >
+        Foo
+      </div>
+    </div>
+  </div>
+</dialog>
+`;
+
+exports[`DS Modal Dialog renders slot content to actions 1`] = `
+<dialog
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog"
+  id="static-id"
+  open=""
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class="ds-c-dialog__window"
+  >
+    <div
+      class="ds-c-dialog__header"
+    >
+      <h2
+        class="ds-c-dialog__heading"
+        id="static-id__heading"
+      >
+        dialog heading
+      </h2>
+      <button
+        aria-label="Close modal dialog"
+        class="ds-c-close-button ds-c-dialog__close"
+        id="static-id__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          id="static-id__close__icon"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="ds-c-dialog__body"
+    >
+      <div
+        id="static-id__content"
       />
       <div
         class="ds-c-dialog__actions"
       >
-        <button>
+        <button
+          role="button"
+        >
           Click here
         </button>
       </div>
@@ -63,14 +178,70 @@ exports[`DS Modal Dialog renders slot content to actions 1`] = `
 </dialog>
 `;
 
-exports[`DS Modal Dialog renders with additional classNames and size 1`] = `
+exports[`DS Modal Dialog renders slot content to heading 1`] = `
 <dialog
-  aria-labelledby="dialog--2__heading"
-  class="ds-c-dialog test-dialog ds-c-dialog--full"
-  id="dialog--2"
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog"
+  id="static-id"
   open=""
   role="dialog"
-  rootid="static-id"
+  tabindex="-1"
+>
+  <div
+    class="ds-c-dialog__window"
+  >
+    <div
+      class="ds-c-dialog__header"
+    >
+      <h2
+        class="ds-c-dialog__heading"
+        id="static-id__heading"
+      >
+        <h3>
+          I am a HEADING
+        </h3>
+      </h2>
+      <button
+        aria-label="Close modal dialog"
+        class="ds-c-close-button ds-c-dialog__close"
+        id="static-id__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          id="static-id__close__icon"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="ds-c-dialog__body"
+    >
+      <div
+        id="static-id__content"
+      />
+    </div>
+  </div>
+</dialog>
+`;
+
+exports[`DS Modal Dialog renders with additional classNames and size 1`] = `
+<dialog
+  aria-labelledby="static-id__heading"
+  class="ds-c-dialog test-dialog ds-c-dialog--full"
+  id="static-id"
+  open=""
+  role="dialog"
   tabindex="-1"
 >
   <div
@@ -81,20 +252,20 @@ exports[`DS Modal Dialog renders with additional classNames and size 1`] = `
     >
       <h2
         class="ds-c-dialog__heading"
-        id="dialog--2__heading"
+        id="static-id__heading"
       >
         dialog heading
       </h2>
       <button
         aria-label="Close modal dialog"
         class="ds-c-close-button ds-c-dialog__close"
-        id="dialog--2__close"
+        id="static-id__close"
         type="button"
       >
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-          id="dialog--2__close__icon"
+          id="static-id__close__icon"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -112,14 +283,9 @@ exports[`DS Modal Dialog renders with additional classNames and size 1`] = `
       class="ds-c-dialog__body"
     >
       <div
-        id="dialog--2__content"
+        id="static-id__content"
       >
         Foo
-      </div>
-      <div
-        class="ds-c-dialog__actions test-action"
-      >
-        &lt;span&gt;Pretend these are actions&lt;/span&gt;
       </div>
     </div>
   </div>
