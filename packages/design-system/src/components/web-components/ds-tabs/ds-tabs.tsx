@@ -7,7 +7,8 @@ import { createElement } from 'react';
 /**
  * Parses custom web components that are `ds-tab-panel` elements and converts them into React components.
  * This is necessary for the `Tabs` interface, which expects `TabPanel` children to be React components.
- * The function handles `ds-tab-panel` elements by converting their kebab-cased attributes into camelCased React props.
+ * The function handles `ds-tab-panel` elements by converting their kebab-cased attributes to camelCasing,
+ * which is the convention React expects for props.
  */
 function parseChildren(node) {
   const elements = findElementsOfType(['ds-tab-panel'], node);
@@ -22,7 +23,7 @@ function parseChildren(node) {
     }
 
     /**
-     * Convert kebab-cased attributes to camelCased props.
+     * Convert kebab-cased keys to camelCase.
      * E.g., `tab-class-name` becomes `tabClassName`.
      */
     const camelCaseAttrs = Object.keys(attrs).reduce((acc, key) => {

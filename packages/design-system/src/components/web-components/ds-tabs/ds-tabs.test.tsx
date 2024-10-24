@@ -9,13 +9,13 @@ function renderTabs(props = {}, children = []) {
   return render(<ds-tabs {...(props as any)}>{children}</ds-tabs>);
 }
 const children = [
-  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+  <ds-tab-panel key="1" root-id="panel-1" tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
   </ds-tab-panel>,
-  <ds-tab-panel key="2" id="panel-2" tab="Tab 2">
+  <ds-tab-panel key="2" root-id="panel-2" tab="Tab 2">
     Some content for tab 2.
   </ds-tab-panel>,
 ];
@@ -197,10 +197,10 @@ describe('ds-tabs', () => {
 
   it('applies the tabId to the tab element', () => {
     renderTabs(undefined, [
-      <ds-tab-panel key="lunch" id="lunch" tab-id="lunch-tab" tab="Lunch Menu">
+      <ds-tab-panel key="lunch" root-id="lunch" tab-id="lunch-tab" tab="Lunch Menu">
         Food
       </ds-tab-panel>,
-      <ds-tab-panel key="dinner" id="dinner" tab-id="dinner-tab" tab="Dinner menu">
+      <ds-tab-panel key="dinner" root-id="dinner" tab-id="dinner-tab" tab="Dinner menu">
         Food
       </ds-tab-panel>,
     ]);
@@ -235,5 +235,39 @@ describe('ds-tabs', () => {
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[0].getAttribute('aria-selected')).toBe('false');
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('converts root-id to id correctly', () => {
+    const attrs = { 'root-id': 'panel-123', tab: 'Test Tab' };
+    renderTabs({}, [
+      <ds-tab-panel key="1" {...attrs}>
+        Test Content
+      </ds-tab-panel>,
+    ]);
+
+    const tabPanel = screen.getByRole('tabpanel', { hidden: true });
+    expect(tabPanel.id).toBe('panel-123');
+  });
+
+  it('parses all ds-tab-panel props correctly', () => {
+    const attrs = {
+      'root-id': 'panel-1',
+      'tab-id': 'panel-1-tab',
+      'tab-class-name': 'custom-tab',
+      'aria-label': 'Panel One',
+    };
+    renderTabs({}, [
+      <ds-tab-panel key="1" {...attrs}>
+        Some content
+      </ds-tab-panel>,
+    ]);
+
+    const tabs = screen.getAllByRole('tab');
+    const panel = screen.getByRole('tabpanel', { hidden: true });
+
+    expect(tabs[0].id).toBe('panel-1-tab');
+    expect(panel.id).toBe('panel-1');
+    expect(tabs[0].classList).toContain('custom-tab');
+    expect(panel).toHaveAttribute('aria-labelledby', 'panel-1-tab');
   });
 });
