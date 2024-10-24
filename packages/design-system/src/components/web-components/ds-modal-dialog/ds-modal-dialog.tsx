@@ -1,9 +1,8 @@
 import { define } from '../preactement/define';
 import { Dialog, DialogProps, DialogSize } from '../../Dialog';
-import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
-  'actions',
   'actions-class-name',
   'alert',
   'dialog-close-label',
@@ -16,10 +15,13 @@ const attributes = [
   'size',
 ];
 
-interface WrapperProps extends Omit<DialogProps, 'actions' | 'alert' | 'isOpen' | 'size'> {
+interface WrapperProps
+  extends Omit<DialogProps, 'actions' | 'alert' | 'heading' | 'isOpen' | 'size'> {
   actions?: string;
   alert?: string;
   dialogCloseLabel?: string;
+  heading?: string;
+  rootId?: string;
   isOpen: string;
   size: string;
 }
@@ -29,16 +31,16 @@ const isAcceptableSize = (size: string): size is DialogSize => {
 };
 
 const Wrapper = ({
-  actions,
   alert,
   children,
   dialogCloseLabel,
   isOpen,
+  rootId,
   size,
   ...otherProps
 }: WrapperProps) => (
   <Dialog
-    actions={parseJsonAttr(actions)} // <- see how Kim documents this
+    id={rootId}
     alert={parseBooleanAttr(alert)}
     ariaCloseLabel={dialogCloseLabel}
     isOpen={parseBooleanAttr(isOpen)}
