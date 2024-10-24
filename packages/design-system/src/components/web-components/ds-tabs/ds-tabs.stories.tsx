@@ -65,7 +65,7 @@ const Template = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <ds-tab-panel key="summary" id="summary" tab="Summary">
+      <ds-tab-panel key="summary" id="summary" tab="Summary" tab-class-name="custom-class-name">
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </ds-tab-panel>
       <ds-tab-panel key="preamble" id="preamble" tab="Preamble">

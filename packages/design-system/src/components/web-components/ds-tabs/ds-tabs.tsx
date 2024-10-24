@@ -1,5 +1,6 @@
 import { define } from '../preactement/define';
 import { Tabs, TabPanel } from '../../Tabs';
+import { TabPanelProps } from '../../Tabs/TabPanel';
 import { findElementsOfType } from '../../utilities/findElementsOfType';
 import { createElement } from 'react';
 
@@ -9,10 +10,22 @@ const Wrapper = ({ tabsAriaLabel, ...props }) => {
   function parseChildren(node) {
     const elements = findElementsOfType(['ds-tab-panel'], node);
 
-    return elements.map((element) => {
+    const mappedElements = elements.map((element) => {
       const { children, ...attrs } = element.props || {};
-      return createElement(TabPanel, { ...attrs }, children);
+
+      // Parse kebab-cased attributes into cameCased props.
+      const camelCaseAttrs = Object.keys(attrs).reduce((acc, key) => {
+        const camelCaseKey = key.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+        acc[camelCaseKey] = attrs[key];
+        return acc;
+      }, {} as Partial<TabPanelProps>);
+
+      const reactElem = createElement(TabPanel, camelCaseAttrs as TabPanelProps, children);
+
+      return reactElem;
     });
+
+    return mappedElements;
   }
 
   return (
