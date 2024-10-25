@@ -84,11 +84,15 @@ This component has analytics tracking available. Please see our developer docume
 
 ### When to use
 
-- When users need content to remain viewable while also allowing the user to view and/or interact with the main page.
-- When the content is longer than 2 sentences.
-- When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
-- When the content just needs to be available at the user's discretion, to provide additional details or context.
-- When users may need additional information to complete the task than can be supplied on the main page without overwhelming the primary content.
+Consider using a `Drawer` in the following scenarios:
+
+- When users need content to remain viewable while also allowing them to interact with the main page.
+- When the information is more than a few sentences and doesn’t fit well in a tooltip or inline note. Examples might include explanations, guidelines, or interactive elements like forms.
+- When content needs to be available at a particular point in the process but doesn't need to be included on the main page.
+- When content should be accessible at the user's discretion, providing additional details or context.
+- When users may need supplementary information to complete a task without overwhelming the main content on the page.
+
+Consider using a `HelpDrawer` when you need to track how users interact with the content, such as monitoring how often the drawer is opened or engaged with.
 
 ### When to consider alternatives
 
