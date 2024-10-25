@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Alert Analytics event tracking overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "alert_impression",
+    "heading": "alternate content",
+    "type": "error",
+  },
+]
+`;
+
+exports[`Alert Analytics event tracking sends analytics event 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "alert_impression",
+    "heading": "Alert: dialog heading",
+    "type": "error",
+  },
+]
+`;
+
 exports[`Alert renders alert 1`] = `
 <DocumentFragment>
   <ds-alert
