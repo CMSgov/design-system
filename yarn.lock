@@ -4002,33 +4002,6 @@
   resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.5.4.tgz#1a89069978734e132fa4a59414ddb64e4b94fde7"
   integrity sha512-qnikpQgi30AS01aFlNQV6l8/qdZIcP76mp90ti+u4rucXHsn4afSKivQXApqxvrQG9+Ibv45STyvHizvxef/7A==
 
-"@cmsgov/design-system@11.0.0":
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/@cmsgov/design-system/-/design-system-11.0.0.tgz#26291b03d79f9a16bff4908df207881ed80b25a5"
-  integrity sha512-RkGj+sf8K50U06CI4M6rqB6oP3ah6HmQlaUWrG1W570UPlZMXk+coyNUVCp4Yn4VRQFU9G6CC7+0ABrfGRgTsw==
-  dependencies:
-    "@popperjs/core" "^2.4.4"
-    "@types/react" "^18.3.1"
-    "@types/react-dom" "^18.3.0"
-    "@types/react-transition-group" "^4.4.5"
-    case-it "^1.0.1"
-    chalk "^5.0.1"
-    classnames "^2.2.5"
-    date-fns "^3.0.6"
-    ev-emitter "^1.1.1"
-    focus-trap-react "^10.0.0"
-    globby "^13.1.2"
-    inquirer "^9.0.2"
-    lodash "^4.17.21"
-    ora "^6.1.2"
-    preactement "1.8.5"
-    prop-types "^15.8.1"
-    react-aria "^3.27.0"
-    react-day-picker "8.10.1"
-    react-stately "^3.25.0"
-    react-transition-group "^4.4.5"
-    yargs "^17.7.2"
-
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -22610,11 +22583,6 @@ preact@10.11.3:
   version "10.11.3"
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.11.3.tgz#8a7e4ba19d3992c488b0785afcc0f8aa13c78d19"
   integrity sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==
-
-preactement@1.8.5:
-  version "1.8.5"
-  resolved "https://registry.yarnpkg.com/preactement/-/preactement-1.8.5.tgz#bd0ecb6c14ec8103d78d7f48d1c60031dd882e8c"
-  integrity sha512-amNlPLvhOz4ZImozZb3nizziiOGAmjLPPHGgKYE0192QsPALqq/lXECyzP6twsrvdidM0ay8zGHR1rgSKJxejw==
 
 prebuild-install@^7.1.1:
   version "7.1.1"
