@@ -10,6 +10,11 @@
     "\"true\"\"false\""
   ],
   [
+    "id",
+    "A unique `id`, to be used on the rendered panel element.",
+    "string"
+  ],
+  [
     "selected",
     "Sets the selected state of the `ds-tab-panel`. If true, this panel will be displayed.",
     "\"true\"\"false\""
