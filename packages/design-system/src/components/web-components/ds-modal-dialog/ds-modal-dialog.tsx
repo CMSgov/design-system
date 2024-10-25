@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { Dialog, DialogProps, DialogSize } from '../../Dialog';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { analyticsAttrs } from '../shared-attributes/analytics';
 
 const attributes = [
   'actions-class-name',
@@ -13,12 +14,14 @@ const attributes = [
   'root-id',
   'is-open',
   'size',
+  ...analyticsAttrs,
 ];
 
 interface WrapperProps
-  extends Omit<DialogProps, 'actions' | 'alert' | 'heading' | 'isOpen' | 'size'> {
+  extends Omit<DialogProps, 'actions' | 'alert' | 'analytics' | 'heading' | 'isOpen' | 'size'> {
   actions?: string;
   alert?: string;
+  analytics?: string;
   dialogCloseLabel?: string;
   heading?: string;
   rootId?: string;
@@ -32,6 +35,7 @@ const isAcceptableSize = (size: string): size is DialogSize => {
 
 const Wrapper = ({
   alert,
+  analytics,
   children,
   dialogCloseLabel,
   isOpen,
@@ -46,6 +50,7 @@ const Wrapper = ({
     isOpen={parseBooleanAttr(isOpen)}
     size={isAcceptableSize(size) ? size : null}
     {...otherProps}
+    analytics={analytics && Boolean(JSON.parse(analytics))}
   >
     {children}
   </Dialog>
@@ -53,12 +58,5 @@ const Wrapper = ({
 
 define('ds-modal-dialog', () => Wrapper, {
   attributes,
-  events: [
-    [
-      'onExit',
-      (event: MouseEvent | KeyboardEvent) => ({
-        detail: { event },
-      }),
-    ],
-  ],
+  events: ['onAnalyticsEvent', 'onExit'],
 });

@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Alert Analytics event tracking overrides analytics event content 1`] = `undefined`;
+
+exports[`Alert Analytics event tracking sends analytics event with body-content fallback 1`] = `undefined`;
+
+exports[`Alert Analytics event tracking sends analytics event with heading 1`] = `undefined`;
+
 exports[`Alert renders alert 1`] = `
 <DocumentFragment>
   <ds-alert

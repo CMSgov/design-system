@@ -1,5 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
+import { UtagContainer } from '../../analytics/index';
+import { config } from '../../config';
 import './ds-modal-dialog';
 import '../ds-button/ds-button';
 
@@ -133,106 +136,107 @@ describe('DS Modal Dialog', function () {
     expect(modal).toBeDefined();
     expect(modal.getAttribute('is-open')).toBe('false');
 
-    rerenderModalDialog({ 'is-open': 'true' });
+    modal.setAttribute('is-open', 'true');
+    rerenderModalDialog({});
     expect(modal.getAttribute('is-open')).toBe('true');
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
-  // Commenting out analytics for now
+  // Skipping these for the same reason outlined in the ds-alert.test.tsx file.
+  // See lines 123 - 129.
+  describe.skip('Analytics event tracking', () => {
+    let tealiumMock;
+    const defaultEvent = {
+      event_name: 'modal_impression',
+      heading: 'dialog heading',
+    };
 
-  // describe('Analytics event tracking', () => {
-  //   let tealiumMock;
-  //   const defaultEvent = {
-  //     event_name: 'modal_impression',
-  //     heading: 'dialog heading',
-  //   };
+    beforeEach(() => {
+      config({ dialogSendsAnalytics: true });
+      tealiumMock = jest.fn();
+      (window as any as UtagContainer).utag = {
+        link: tealiumMock,
+      };
+    });
 
-  //   beforeEach(() => {
-  //     config({ dialogSendsAnalytics: true });
-  //     tealiumMock = jest.fn();
-  //     (window as any as UtagContainer).utag = {
-  //       link: tealiumMock,
-  //     };
-  //   });
+    afterEach(() => {
+      config({ dialogSendsAnalytics: false });
+      jest.resetAllMocks();
+    });
 
-  //   afterEach(() => {
-  //     config({ dialogSendsAnalytics: false });
-  //     jest.resetAllMocks();
-  //   });
+    it("does not send analytics event when dialog isn't open", () => {
+      renderDialog({ 'is-open': 'false' });
+      act(() => {
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+    });
 
-  //   it("does not send analytics event when dialog isn't open", () => {
-  //     renderDialog({ isOpen: false });
-  //     act(() => {
-  //       expect(tealiumMock).not.toHaveBeenCalled();
-  //     });
-  //   });
+    it('sends analytics event when dialog starts open', () => {
+      renderDialog({});
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+    });
 
-  //   it('sends analytics event when dialog starts open', () => {
-  //     renderDialog();
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
-  //       expect(tealiumMock).toHaveBeenCalledTimes(1);
-  //     });
-  //   });
+    it('sends analytics event when opening dialog', () => {
+      const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+      act(() => {
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+      rerenderModalDialog({ 'is-open': true });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+    });
 
-  //   it('sends analytics event when opening dialog', () => {
-  //     const { rerenderDialog } = renderDialog({ isOpen: false });
-  //     act(() => {
-  //       expect(tealiumMock).not.toHaveBeenCalled();
-  //     });
-  //     rerenderDialog({ isOpen: true });
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
-  //       expect(tealiumMock).toHaveBeenCalledTimes(1);
-  //     });
-  //   });
+    it('sends analytics event when closing dialog', () => {
+      const { rerenderModalDialog } = renderDialog({});
+      const expectedClosedEvent = expect.objectContaining({ event_name: 'modal_closed' });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      });
+      rerenderModalDialog({ 'is-open': 'false' });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(expectedClosedEvent);
+        expect(tealiumMock).toHaveBeenCalledTimes(2);
+      });
+    });
 
-  //   it('sends analytics event when closing dialog', () => {
-  //     const { rerenderDialog } = renderDialog();
-  //     const expectedClosedEvent = expect.objectContaining({ event_name: 'modal_closed' });
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
-  //       expect(tealiumMock).toHaveBeenCalledTimes(1);
-  //     });
-  //     rerenderDialog({ isOpen: false });
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(expectedClosedEvent);
-  //       expect(tealiumMock).toHaveBeenCalledTimes(2);
-  //     });
-  //   });
+    it('sends analytics event when heading is non-string', () => {
+      renderDialog({ heading: <span>Hello World</span> });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            ...defaultEvent,
+            heading: 'Hello World',
+          })
+        );
+      });
+    });
 
-  //   it('sends analytics event when heading is non-string', () => {
-  //     renderDialog({ heading: <span>Hello World</span> });
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(
-  //         expect.objectContaining({
-  //           ...defaultEvent,
-  //           heading: 'Hello World',
-  //         })
-  //       );
-  //     });
-  //   });
+    it('disables analytics event tracking on open', () => {
+      renderDialog({ analytics: 'false' });
+      expect(tealiumMock).not.toBeCalled();
+    });
 
-  //   it('disables analytics event tracking on open', () => {
-  //     renderDialog({ analytics: false });
-  //     expect(tealiumMock).not.toBeCalled();
-  //   });
+    it('setting analytics to true overrides flag value', () => {
+      config({ dialogSendsAnalytics: false });
+      renderDialog({ analytics: 'true' });
+      expect(tealiumMock).toHaveBeenCalled();
+    });
 
-  //   it('setting analytics to true overrides flag value', () => {
-  //     config({ dialogSendsAnalytics: false });
-  //     renderDialog({ analytics: true });
-  //     expect(tealiumMock).toHaveBeenCalled();
-  //   });
-
-  //   it('overrides analytics event tracking on open', () => {
-  //     renderDialog({ analyticsLabelOverride: 'other heading' });
-  //     act(() => {
-  //       expect(tealiumMock).toBeCalledWith(
-  //         expect.objectContaining({
-  //           heading: 'other heading',
-  //         })
-  //       );
-  //     });
-  //   });
-  // });
+    it('overrides analytics event tracking on open', () => {
+      renderDialog({ 'analytics-label-override': 'other heading' });
+      act(() => {
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            heading: 'other heading',
+          })
+        );
+      });
+    });
+  });
 });
