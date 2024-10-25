@@ -16,12 +16,6 @@ function parseChildren(node) {
   return elements.map((element) => {
     const { children, ...attrs } = element.props || {};
 
-    // Rename `root-id` to `id` if it exists.
-    if ('root-id' in attrs) {
-      attrs.id = attrs['root-id'];
-      delete attrs['root-id'];
-    }
-
     /**
      * Convert kebab-cased keys to camelCase.
      * E.g., `tab-class-name` becomes `tabClassName`.

@@ -3,7 +3,7 @@ import './ds-tab-panel';
 
 const defaultChildren = 'Content';
 const defaultAttrs = {
-  'root-id': 'panel-1',
+  id: 'panel-1',
   'tab-id': 'tab-1',
 };
 

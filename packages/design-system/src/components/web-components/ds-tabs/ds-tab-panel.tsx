@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 
 const tabPanelAttributes = [
   'class-name',
-  'root-id',
+  'id',
   'selected',
   'disabled',
   'tab',
@@ -16,7 +16,6 @@ const tabPanelAttributes = [
 ] as const;
 
 interface WrapperProps extends Omit<TabPanelProps, 'selected' | 'disabled' | 'tab'> {
-  rootId: string;
   selected: string;
   disabled: string;
   tab: string;
@@ -24,9 +23,9 @@ interface WrapperProps extends Omit<TabPanelProps, 'selected' | 'disabled' | 'ta
 
 const Wrapper = ({
   className,
-  rootId,
   selected,
   disabled,
+  id,
   tab,
   tabClassName,
   tabHref,
@@ -37,7 +36,7 @@ const Wrapper = ({
   return (
     <TabPanel
       className={className}
-      id={rootId}
+      id={id}
       selected={parseBooleanAttr(selected)}
       disabled={parseBooleanAttr(disabled)}
       tab={parseJsonAttr(tab)}

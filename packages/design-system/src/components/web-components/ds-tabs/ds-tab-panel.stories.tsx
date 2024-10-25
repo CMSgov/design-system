@@ -32,6 +32,10 @@ const meta: Meta = {
       description: 'Disables the `ds-tab-panel`. If true, this panel will not be selectable.',
       control: 'boolean',
     },
+    id: {
+      description: 'A unique `id`, to be used on the rendered panel element.',
+      control: 'text',
+    },
     tab: {
       description: 'The label to display for the associated tab.',
       control: 'text',
