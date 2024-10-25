@@ -111,10 +111,7 @@ describe('Button', () => {
     buttonRoot.removeEventListener('ds-analytics-event', mockHandler);
   });
 
-  // Skipping this group of tests temporarily; we need to revisit how define handles callback functions
-  // Currently, callbacks are being overwritten, however the analytics events call default functions when the event isn't defined.
-  // This default function gets overwritten and we end up with undefined analytics data.
-  describe.skip('Analytics', () => {
+  describe('Analytics', () => {
     let tealiumMock;
 
     beforeEach(() => {
@@ -123,45 +120,70 @@ describe('Button', () => {
       (window as any as UtagContainer).utag = {
         link: tealiumMock,
       };
+      jest.useFakeTimers();
     });
 
     afterEach(() => {
       config({ buttonSendsAnalytics: false });
       jest.resetAllMocks();
+      jest.useRealTimers();
     });
 
-    it('sends button analytics event', () => {
+    function waitForAnalytics() {
+      jest.advanceTimersToNextTimer();
+      new Promise((resolve) => setTimeout(resolve, 0));
+    }
+
+    it('sends button analytics event', async () => {
       renderButton();
       fireEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends anchor analytics event', () => {
+    it('sends anchor analytics event', async () => {
       renderButton({ href: '#/somewhere-over-the-rainbow' });
       fireEvent.click(screen.getByRole('link'));
+      await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('disables analytics event tracking', () => {
+    it('disables analytics event tracking', async () => {
       renderButton({ analytics: 'false' });
       fireEvent.click(screen.getByRole('button'));
-      expect(tealiumMock).not.toBeCalled();
+      await waitForAnalytics();
+      expect(tealiumMock).not.toHaveBeenCalled();
     });
 
-    it('setting analytics to true overrides flag value', () => {
+    it('setting analytics to true overrides flag value', async () => {
       config({ buttonSendsAnalytics: false });
       renderButton({ analytics: 'true' });
       fireEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
       expect(tealiumMock).toHaveBeenCalled();
     });
 
-    it('overrides analytics event tracking on open', () => {
+    it('overrides analytics event tracking on open', async () => {
       renderButton({ 'analytics-label-override': 'alternate content' });
       fireEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('passes along parent heading and type', () => {
+    it('allows default analytics function to be ovewridden', async () => {
+      let analyticsEvent;
+      renderButton();
+      document.querySelector('ds-button').addEventListener('ds-analytics-event', (event: any) => {
+        event.preventDefault();
+        analyticsEvent = event.detail.event;
+      });
+      fireEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
+      expect(tealiumMock).not.toHaveBeenCalled();
+      expect(analyticsEvent).toMatchSnapshot();
+    });
+
+    it('passes along parent heading and type', async () => {
       const analyticsParentHeading = 'Hello World';
       const analyticsParentType = 'div';
       renderButton({
@@ -169,6 +191,7 @@ describe('Button', () => {
         'analytics-parent-type': analyticsParentType,
       });
       fireEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
       expect(tealiumMock).toBeCalledWith(
         expect.objectContaining({
           parent_component_heading: analyticsParentHeading,
