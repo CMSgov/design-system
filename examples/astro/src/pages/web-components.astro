@@ -220,6 +220,8 @@ import Layout from '../layouts/Layout.astro';
         });
       </script>
   
+      <hr class="ds-u-margin-y--4" />
+  
       <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
       <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
       <script>
@@ -229,6 +231,40 @@ import Layout from '../layouts/Layout.astro';
             ?.addEventListener('ds-delete', (e) =>
               console.log('You fired the custom ds-delete event.', e)
             );
+        });
+      </script>
+    </div>
+    <div class="ds-u-padding-y--3 ds-u-padding-bottom--4">
+      <h2 class="ds-text-heading--2xl">Review example</h2>
+      <ds-review heading="Heading for the Review Component">
+        <p>This is the body of a review component example. Click the links to see actions.</p>
+        <div slot="edit-content">
+          <div>
+            <a href="#" id="edit-link">Edit</a>
+            <span>|</span>
+            <a href="#" id="remove-link">Remove</a>
+          </div>
+        </div>
+      </ds-review>
+      <div id="feedback" class="ds-u-font-style--italic ds-u-margin-top--1"></div>
+  
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const editLink = document.getElementById('edit-link');
+          const removeLink = document.getElementById('remove-link');
+          const feedback = document.getElementById('feedback');
+  
+          editLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log('Edit link clicked!', event);
+            feedback.textContent = 'Edit action performed.';
+          });
+  
+          removeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            console.log('Remove link clicked!', event);
+            feedback.textContent = 'Remove action performed.';
+          });
         });
       </script>
     </div>
@@ -247,6 +283,7 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/web-components/ds-filter-chip"></script>
 <script src="@cmsgov/design-system/web-components/ds-month-picker"></script>
 <script src="@cmsgov/design-system/web-components/ds-pagination"></script>
+<script src="@cmsgov/design-system/web-components/ds-review"></script>
 <script src="@cmsgov/design-system/web-components/ds-spinner"></script>
 <script src="@cmsgov/design-system/web-components/ds-text-field"></script>
 <script src="@cmsgov/design-system/web-components/ds-usa-banner"></script>

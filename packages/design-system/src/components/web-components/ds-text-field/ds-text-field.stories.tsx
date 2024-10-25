@@ -34,6 +34,10 @@ export default {
       description: 'Hint text or HTML',
       control: 'text',
     },
+    'hint-class-name': {
+      control: 'text',
+      description: 'Custom CSS class name(s) for the hint element',
+    },
     'hint-id': {
       description: 'The ID of the hint element',
       control: 'text',
