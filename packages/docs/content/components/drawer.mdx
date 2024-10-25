@@ -103,15 +103,17 @@ Consider using a `HelpDrawer` when you need to track how users interact with the
 
 ### Usage
 
-- Link text used to trigger the help drawer should be specific and descriptive.
-  - Avoid using only "Learn more" to link to help drawer content
-  - Limit the amount of link text
-- Drawer content area should include a close button clearly at the top.
+- Link text used to trigger the `Drawer` should be specific and descriptive.
+  - Avoid using only "Learn more" to link to help `Drawer` content.
+  - Limit the amount of link text.
+- `Drawer` content area should include a close button clearly at the top.
+- On larger screens, the `Drawer` is fixed to the side of the screen, whereas on smaller screens, it overlays the entire screen.
 
 ### Accessibility
 
-- Drawer should have an `aria-labelledby` attribute that references the `id` of heading in the Drawer.
-- The heading level used within the Drawer should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the Drawer toggle link is an `<h2>`, the heading level of the Drawer would most likely be an `<h3>`.
+- The `Drawer` should have an `aria-labelledby` attribute that references the `id` of the heading in the `Drawer`.
+- The `Drawer` should be rendered below the toggle button that triggers it. This way, the markup remains semantically sound and accessible for screen readers, improving the user experience.
+- The heading level used within the `Drawer` should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the `Drawer` toggle link is an `<h2>`, the heading level of the `Drawer` would most likely be an `<h3>`.
 
 #### Focus Management
 
