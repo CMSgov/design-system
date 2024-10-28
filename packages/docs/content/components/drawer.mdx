@@ -82,20 +82,19 @@ This component has analytics tracking available. Please see our developer docume
 </ThemeContent>
 
 ### When to use 
-
-### Consider using a `Drawer` in the following scenarios:
+`Drawer`
 
 - When users need additional information that should remain viewable while they interact with the main page, such as detailed explanations, guidelines, or interactive elements like forms.
 - When supplementary, non-time-sensitive information is helpful at a specific point in the user’s journey but does not need to be displayed on the main page. This allows users to access helpful context or additional details at their discretion without interrupting the flow of the main task.
 - When optional information is needed to complete a task without overwhelming the primary content on the page.
 
-### Consider using `HelpDrawer` in the following scenarios:
+`HelpDrawer`
 - When you need to track how users interact with the content, such as monitoring how often the drawer is opened or engaged with.
 
 ### When to Consider Alternatives
 
-- When the information is timely, urgent, or critical to the action being taken. Drawers are intended for supplementary details that users can access at their discretion. For time-sensitive or essential information, consider using more prominent, inline elements like alerts or banners to ensure users don’t miss it.
-- When the information needs to be immediately visible to clarify or support a primary task. Since `Drawers` require an extra step to open, they are not ideal for essential information that users must see to complete a task or understand other content. Instead, consider using inline messages, tooltips, or expandable sections that don’t require additional clicks.
+- When the information is timely, urgent, or critical to the action being taken. Drawers are intended for supplementary details that users can access at their discretion. For time-sensitive or essential information, consider using more prominent inline elements to ensure users don’t miss it.
+- When the information needs to be immediately visible to clarify or support a primary task. Since `Drawers` require an extra step to open, they are not ideal for essential information that users must see to complete a task or understand other content.
 - When the information must be displayed automatically without user initiation. `Drawers` rely on users clicking a link or button to open them. If content needs to appear automatically, such as onboarding tips or error messages, consider inline options that don’t require user action.
 
 ### Usage
