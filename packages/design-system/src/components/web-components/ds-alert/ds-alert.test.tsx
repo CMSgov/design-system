@@ -1,8 +1,7 @@
-import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import { render, screen } from '@testing-library/react';
 import './ds-alert';
-import { testAnalyticsEvents } from '../analyticsTesting';
+import { testAnalytics } from '../analyticsTesting';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -121,69 +120,69 @@ describe('Alert', function () {
     alertRoot.removeEventListener('ds-analytics-event', mockHandler);
   });
 
-  // Skipping this group of tests temporarily; we need to revisit how define handles callback functions
-  // In usAlertAnalytics, `onAnalyticsEvent = config().defaultAnalyticsFunction`
-  // Callbacks are being overwritten and the analytics events calls a default function when the event isn't defined.
-  // This default function gets overwritten and we end up with undefined analytics data.
-
-  // Possible analytics event fix: bake the event into component or define function or make it a separate config in the WC file
-  // Where wb are used - do we even want the default analytics function?
   describe('Analytics event tracking', () => {
-    testAnalyticsEvents({
-      tagName: 'ds-alert',
-      configField: 'alertSendsAnalytics',
-      renderComponent: (props) =>
-        renderAlert({ heading: 'dialog heading', variation: 'error', ...props }),
-      triggerAction: () => {},
+    beforeEach(() => {
+      config({ alertSendsAnalytics: true });
     });
-    // let tealiumMock;
 
-    // beforeEach(() => {
-    //   config({ alertSendsAnalytics: true });
-    //   tealiumMock = jest.fn();
-    //   (window as any as UtagContainer).utag = {
-    //     link: tealiumMock,
-    //   };
-    // });
+    afterEach(() => {
+      config({ alertSendsAnalytics: false });
+    });
 
-    // afterEach(() => {
-    //   config({ alertSendsAnalytics: false });
-    //   jest.resetAllMocks();
-    // });
+    testAnalytics(
+      'sends analytics event with heading',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        const heading = 'Ahhh!';
+        renderAlert({ heading, variation: 'error' });
+        await waitForAnalytics();
+        expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      }
+    );
 
-    // it('sends analytics event with heading', () => {
-    //   const heading = 'Ahhh!';
-    //   renderAlert({ heading, variation: 'error' });
-    //   expect(tealiumMock.mock.lastCall).toMatchSnapshot();
-    //   expect(tealiumMock).toHaveBeenCalledTimes(1);
-    // });
+    testAnalytics(
+      'sends analytics event with body-content fallback',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderAlert({ variation: 'warn' });
+        await waitForAnalytics();
+        expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      }
+    );
 
-    // it('sends analytics event with body-content fallback', () => {
-    //   renderAlert({ variation: 'warn' });
-    //   expect(tealiumMock.mock.lastCall).toMatchSnapshot();
-    //   expect(tealiumMock).toHaveBeenCalledTimes(1);
-    // });
+    testAnalytics(
+      'does not send analytics event for default variation',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderAlert();
+        await waitForAnalytics();
+        expect(tealiumMock).not.toBeCalled();
+      }
+    );
 
-    // it('does not send analytics event for default variation', () => {
-    //   renderAlert();
-    //   expect(tealiumMock).not.toBeCalled();
-    // });
+    testAnalytics('disables analytics tracking', async ({ tealiumMock, waitForAnalytics }) => {
+      renderAlert({ heading: 'dialog heading', variation: 'error', analytics: 'false' });
+      await waitForAnalytics();
+      expect(tealiumMock).not.toBeCalled();
+    });
 
-    // it('disables analytics tracking', () => {
-    //   renderAlert({ heading: 'dialog heading', variation: 'error', analytics: false });
-    //   expect(tealiumMock).not.toBeCalled();
-    // });
+    testAnalytics(
+      'setting analytics to true overrides flag value',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        config({ alertSendsAnalytics: false });
+        renderAlert({ heading: 'dialog heading', variation: 'error', analytics: 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock).toHaveBeenCalled();
+      }
+    );
 
-    // it('setting analytics to true overrides flag value', () => {
-    //   config({ alertSendsAnalytics: false });
-    //   renderAlert({ heading: 'dialog heading', variation: 'error', analytics: true });
-    //   expect(tealiumMock).toHaveBeenCalled();
-    // });
-
-    // it('overrides analytics event content', () => {
-    //   renderAlert({ variation: 'success', 'analytics-label-override': 'other heading' });
-    //   expect(tealiumMock.mock.lastCall).toMatchSnapshot();
-    //   expect(tealiumMock).toHaveBeenCalledTimes(1);
-    // });
+    testAnalytics(
+      'overrides analytics event content',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderAlert({ variation: 'success', 'analytics-label-override': 'other heading' });
+        await waitForAnalytics();
+        expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+      }
+    );
   });
 });
