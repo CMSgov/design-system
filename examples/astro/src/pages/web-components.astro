@@ -1,22 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
+
 <Layout title="Web-component examples">
   <!-- START WEB COMPONENT EXAMPLES -->
   <!-- These web component examples are shared between multiple example projects -->
   <ds-skip-nav href="#main"></ds-skip-nav>
   <ds-usa-banner></ds-usa-banner>
-  
+
   <main id="main" class="ds-l-container">
     <h1 class="ds-text-heading--4xl ds-u-margin-top--2">Web-component examples</h1>
-  
+
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>This is an example showing how to use our library of interactive web components.</p>
-  
+
       <ds-spinner aria-valuetext="aria sets spinner label!"
         >children don't set spinner label</ds-spinner
       >
-  
+
       <ds-alert
         variation="success"
         heading="You've loaded the web-components example"
@@ -40,20 +41,20 @@ import Layout from '../layouts/Layout.astro';
           });
         });
       </script>
-  
+
       <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
         <div slot="checked-children">
           <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
         </div>
       </ds-choice>
-  
+
       <ds-accordion bordered="true" class="ds-u-margin-top--2">
         <ds-accordion-item heading="First Amendment" default-open="true">
           <p>
             We the People of the United States, in Order to form a more perfect Union, establish
-            Justice, insure domestic Tranquility, provide for the common defence, promote the general
-            Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
-            establish this Constitution for the United States of America.
+            Justice, insure domestic Tranquility, provide for the common defence, promote the
+            general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do
+            ordain and establish this Constitution for the United States of America.
           </p>
         </ds-accordion-item>
         <ds-accordion-item heading="Second Amendment">
@@ -63,7 +64,7 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </ds-accordion-item>
       </ds-accordion>
-  
+
       <ds-month-picker
         requirement-label="Required."
         hint="Select many."
@@ -74,10 +75,10 @@ import Layout from '../layouts/Layout.astro';
         <input type="checkbox" value="11" checked disabled />
         <input type="checkbox" value="12" disabled />
       </ds-month-picker>
-  
+
       <ds-choice-list type="radio" label="Choice list example" name="foo">
         <ds-choice label="Choice without associated children" value="no children"></ds-choice>
-  
+
         <ds-choice
           label="Checked children"
           hint="Selecting this checkbox will reveal its associated children."
@@ -88,9 +89,9 @@ import Layout from '../layouts/Layout.astro';
               <ds-alert heading="🫣 Tag! You're it!">
                 You can reveal content by applying <code>checked-children</code> to the
                 <code>slot</code> attribute of an HTML element. Do not forget to include a
-                <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
-                whatever content you want to show/hide so it gets side border showing an association
-                with its choice parent.
+                <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to whatever
+                content you want to show/hide so it gets side border showing an association with its
+                choice parent.
               </ds-alert>
             </div>
           </div>
@@ -105,15 +106,15 @@ import Layout from '../layouts/Layout.astro';
               <ds-alert variation="warn" heading="I banish thee!">
                 You can hide content by applying <code>unchecked-children</code> to the
                 <code>slot</code> attribute of an HTML element. Do not forget to include a
-                <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
-                whatever content you want to show/hide so it gets side border showing an association
-                with its choice parent.
+                <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to whatever
+                content you want to show/hide so it gets side border showing an association with its
+                choice parent.
               </ds-alert>
             </div>
           </div>
         </ds-choice>
       </ds-choice-list>
-  
+
       <h2 class="ds-text-heading--2xl">Adding machine</h2>
       <form id="calculator">
         <ds-dropdown id="operation" name="operation" label="Operation">
@@ -138,7 +139,7 @@ import Layout from '../layouts/Layout.astro';
             const sign = e.detail.target.value === 'addition' ? '+' : '-';
             document.getElementById('sign').innerHTML = sign;
           });
-  
+
           document.getElementById('calculator')?.addEventListener('submit', function (e) {
             e.preventDefault();
             const { a, b, operation, result } = e.currentTarget;
@@ -149,9 +150,9 @@ import Layout from '../layouts/Layout.astro';
           });
         });
       </script>
-  
+
       <hr class="ds-u-margin-y--4" />
-  
+
       <ds-pagination id="pagination" total-pages="10" class="ds-u-margin-y--4"></ds-pagination>
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -164,7 +165,7 @@ import Layout from '../layouts/Layout.astro';
           updatePaginationFromHash();
         });
       </script>
-  
+
       <h2 class="ds-text-heading--2xl">Controlled text field example</h2>
       <ds-text-field value="" id="the-text-field" label="Text field example"></ds-text-field>
       <script>
@@ -175,9 +176,9 @@ import Layout from '../layouts/Layout.astro';
           });
         });
       </script>
-  
+
       <hr class="ds-u-margin-y--4" />
-  
+
       <h2 class="ds-text-heading--2xl">Autocomplete example</h2>
       <ds-autocomplete
         id="the-autocomplete"
@@ -188,6 +189,7 @@ import Layout from '../layouts/Layout.astro';
         class-name="ds-u-padding-bottom--7"
       >
       </ds-autocomplete>
+
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           let items = null;
@@ -195,17 +197,17 @@ import Layout from '../layouts/Layout.astro';
           if (typeof initialItems === 'string') {
             items = JSON.parse(initialItems);
           }
-  
+
           const autocompleteElement = document.getElementById('the-autocomplete');
           autocompleteElement?.addEventListener('ds-input-value-change', (e) => {
             const input = e?.detail?.value ?? '';
-  
+
             // reset items to original value
             if (input.length === 0) {
               autocompleteElement.setAttribute('items', JSON.stringify(items));
               return;
             }
-  
+
             if (input.length > 0 && items) {
               const filteredItems = items.filter(
                 (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
@@ -213,15 +215,15 @@ import Layout from '../layouts/Layout.astro';
               autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
             }
           });
-  
+
           document.getElementById('the-autocomplete')?.addEventListener('ds-change', function (e) {
             console.log(`Autocomplete selection: ${JSON.stringify(e.detail.selectedItem)}`);
           });
         });
       </script>
-  
+
       <hr class="ds-u-margin-y--4" />
-  
+
       <h2 class="ds-text-heading--2xl">Filter Chip example</h2>
       <ds-filter-chip label="Click me and look at the dev console."></ds-filter-chip>
       <script>
@@ -231,6 +233,62 @@ import Layout from '../layouts/Layout.astro';
             ?.addEventListener('ds-delete', (e) =>
               console.log('You fired the custom ds-delete event.', e)
             );
+        });
+      </script>
+
+      <h2 class="ds-text-heading--2xl">Modal Dialog example</h2>
+      <ds-button id="modal-toggle">Open Modal</ds-button>
+      <ds-modal-dialog backdrop-click-exits="true" alert="false" size="wide">
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+            lacinia, eget tempor purus placerat.
+          </p>
+          <div slot="heading">
+            <h2>This is the modal heading.</h2>
+          </div>
+          <div slot="actions">
+            <ds-button id="submit">Submit (and close the dialog)</ds-button>
+            <ds-button id="cancel">Cancel (and close the dialog)</ds-button>
+          </div>
+        </div>
+      </ds-modal-dialog>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const modal = document.querySelector('ds-modal-dialog');
+          const toggleButton = document.getElementById('modal-toggle');
+          const submitButton = document.getElementById('submit');
+          const cancelButton = document.getElementById('cancel');
+
+          const toggleModal = () => {
+            const isOpen = modal?.getAttribute('is-open');
+            if (isOpen === 'true') {
+              modal?.setAttribute('is-open', 'false');
+            } else {
+              modal?.setAttribute('is-open', 'true');
+            }
+          };
+
+          [submitButton, cancelButton].forEach((btn) => {
+            btn?.addEventListener('click', function (event) {
+              if (event?.target?.id === 'submit') {
+                console.log('SUBMISSION');
+              } else {
+                console.log('CANCELATION');
+              }
+              const exitEvent = new CustomEvent('ds-exit', {
+                ...event,
+                composed: true,
+                bubbles: true,
+                detail: { event: event },
+              });
+              modal?.dispatchEvent(exitEvent);
+            });
+          });
+
+          toggleButton?.addEventListener('ds-click', toggleModal);
+          modal?.addEventListener('ds-exit', toggleModal);
         });
       </script>
     </div>
@@ -247,19 +305,19 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </ds-review>
       <div id="feedback" class="ds-u-font-style--italic ds-u-margin-top--1"></div>
-  
+
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
           const editLink = document.getElementById('edit-link');
           const removeLink = document.getElementById('remove-link');
           const feedback = document.getElementById('feedback');
-  
+
           editLink.addEventListener('click', (event) => {
             event.preventDefault();
             console.log('Edit link clicked!', event);
             feedback.textContent = 'Edit action performed.';
           });
-  
+
           removeLink.addEventListener('click', (event) => {
             event.preventDefault();
             console.log('Remove link clicked!', event);
@@ -281,6 +339,7 @@ import Layout from '../layouts/Layout.astro';
 <script src="@cmsgov/design-system/web-components/ds-choice"></script>
 <script src="@cmsgov/design-system/web-components/ds-dropdown"></script>
 <script src="@cmsgov/design-system/web-components/ds-filter-chip"></script>
+<script src="@cmsgov/design-system/web-components/ds-modal-dialog"></script>
 <script src="@cmsgov/design-system/web-components/ds-month-picker"></script>
 <script src="@cmsgov/design-system/web-components/ds-pagination"></script>
 <script src="@cmsgov/design-system/web-components/ds-review"></script>
