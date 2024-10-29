@@ -2,6 +2,7 @@ import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 import './ds-button';
+import { testAnalytics } from '../analyticsTesting';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -112,92 +113,93 @@ describe('Button', () => {
   });
 
   describe('Analytics', () => {
-    let tealiumMock;
-
     beforeEach(() => {
       config({ buttonSendsAnalytics: true });
-      tealiumMock = jest.fn();
-      (window as any as UtagContainer).utag = {
-        link: tealiumMock,
-      };
-      jest.useFakeTimers();
     });
 
     afterEach(() => {
       config({ buttonSendsAnalytics: false });
-      jest.resetAllMocks();
-      jest.useRealTimers();
     });
 
-    function waitForAnalytics() {
-      jest.advanceTimersToNextTimer();
-      new Promise((resolve) => setTimeout(resolve, 0));
-    }
-
-    it('sends button analytics event', async () => {
+    testAnalytics('sends button analytics event', async ({ tealiumMock, waitForAnalytics }) => {
       renderButton();
       fireEvent.click(screen.getByRole('button'));
       await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends anchor analytics event', async () => {
+    testAnalytics('sends anchor analytics event', async ({ tealiumMock, waitForAnalytics }) => {
       renderButton({ href: '#/somewhere-over-the-rainbow' });
       fireEvent.click(screen.getByRole('link'));
       await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('disables analytics event tracking', async () => {
-      renderButton({ analytics: 'false' });
-      fireEvent.click(screen.getByRole('button'));
-      await waitForAnalytics();
-      expect(tealiumMock).not.toHaveBeenCalled();
-    });
+    testAnalytics(
+      'disables analytics event tracking',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderButton({ analytics: 'false' });
+        fireEvent.click(screen.getByRole('button'));
+        await waitForAnalytics();
+        expect(tealiumMock).not.toHaveBeenCalled();
+      }
+    );
 
-    it('setting analytics to true overrides flag value', async () => {
-      config({ buttonSendsAnalytics: false });
-      renderButton({ analytics: 'true' });
-      fireEvent.click(screen.getByRole('button'));
-      await waitForAnalytics();
-      expect(tealiumMock).toHaveBeenCalled();
-    });
+    testAnalytics(
+      'setting analytics to true overrides flag value',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        config({ buttonSendsAnalytics: false });
+        renderButton({ analytics: 'true' });
+        fireEvent.click(screen.getByRole('button'));
+        await waitForAnalytics();
+        expect(tealiumMock).toHaveBeenCalled();
+      }
+    );
 
-    it('overrides analytics event tracking on open', async () => {
-      renderButton({ 'analytics-label-override': 'alternate content' });
-      fireEvent.click(screen.getByRole('button'));
-      await waitForAnalytics();
-      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
-    });
+    testAnalytics(
+      'overrides analytics event tracking on open',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderButton({ 'analytics-label-override': 'alternate content' });
+        fireEvent.click(screen.getByRole('button'));
+        await waitForAnalytics();
+        expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+      }
+    );
 
-    it('allows default analytics function to be ovewridden', async () => {
-      let analyticsEvent;
-      renderButton();
-      document.querySelector('ds-button').addEventListener('ds-analytics-event', (event: any) => {
-        event.preventDefault();
-        analyticsEvent = event.detail.event;
-      });
-      fireEvent.click(screen.getByRole('button'));
-      await waitForAnalytics();
-      expect(tealiumMock).not.toHaveBeenCalled();
-      expect(analyticsEvent).toMatchSnapshot();
-    });
+    testAnalytics(
+      'allows default analytics function to be ovewridden',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        let analyticsEvent;
+        renderButton();
+        document.querySelector('ds-button').addEventListener('ds-analytics-event', (event: any) => {
+          event.preventDefault();
+          analyticsEvent = event.detail.event;
+        });
+        fireEvent.click(screen.getByRole('button'));
+        await waitForAnalytics();
+        expect(tealiumMock).not.toHaveBeenCalled();
+        expect(analyticsEvent).toMatchSnapshot();
+      }
+    );
 
-    it('passes along parent heading and type', async () => {
-      const analyticsParentHeading = 'Hello World';
-      const analyticsParentType = 'div';
-      renderButton({
-        'analytics-parent-heading': analyticsParentHeading,
-        'analytics-parent-type': analyticsParentType,
-      });
-      fireEvent.click(screen.getByRole('button'));
-      await waitForAnalytics();
-      expect(tealiumMock).toBeCalledWith(
-        expect.objectContaining({
-          parent_component_heading: analyticsParentHeading,
-          parent_component_type: analyticsParentType,
-        })
-      );
-    });
+    testAnalytics(
+      'passes along parent heading and type',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        const analyticsParentHeading = 'Hello World';
+        const analyticsParentType = 'div';
+        renderButton({
+          'analytics-parent-heading': analyticsParentHeading,
+          'analytics-parent-type': analyticsParentType,
+        });
+        fireEvent.click(screen.getByRole('button'));
+        await waitForAnalytics();
+        expect(tealiumMock).toBeCalledWith(
+          expect.objectContaining({
+            parent_component_heading: analyticsParentHeading,
+            parent_component_type: analyticsParentType,
+          })
+        );
+      }
+    );
   });
 });
