@@ -10,6 +10,11 @@
     "\"true\"\"false\""
   ],
   [
+    "analytics",
+    "Enables analytics tracking on the component.",
+    "\"true\"\"false\""
+  ],
+  [
     "backdrop-click-exits",
     "Pass `true` to have the dialog close when its backdrop pseudo-element is clicked",
     "\"true\"\"false\""

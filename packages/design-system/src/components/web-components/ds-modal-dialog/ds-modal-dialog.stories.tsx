@@ -12,11 +12,11 @@ const meta: Meta = {
     alert: 'false',
     children: (
       <div>
+        <div slot="heading">Modal heading</div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
         lacinia, eget tempor purus placerat.
       </div>
     ),
-    heading: 'Dialog Heading',
     'is-open': 'false',
   },
   argTypes: {
@@ -237,6 +237,26 @@ export const PreventScrollExample = {
       </div>
     ),
     heading: 'Dialog Heading',
+    'is-open': 'false',
+  },
+};
+
+export const SlottedContent = {
+  render: Template,
+  args: {
+    alert: 'false',
+    children: (
+      <>
+        <div slot="heading">This is the heading provided by a slot.</div>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+          lacinia, eget tempor purus placerat.
+        </div>
+        <div slot="actions">
+          <ds-button>I&apos;m a button provided via a slot!</ds-button>
+        </div>
+      </>
+    ),
     'is-open': 'false',
   },
 };
