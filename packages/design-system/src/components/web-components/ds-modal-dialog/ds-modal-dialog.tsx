@@ -50,7 +50,7 @@ const Wrapper = ({
     isOpen={parseBooleanAttr(isOpen)}
     size={isAcceptableSize(size) ? size : null}
     {...otherProps}
-    analytics={analytics && Boolean(JSON.parse(analytics))}
+    analytics={parseBooleanAttr(analytics)}
   >
     {children}
   </Dialog>

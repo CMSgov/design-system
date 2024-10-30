@@ -24,6 +24,10 @@ const meta: Meta = {
       description: 'Additional classes to be added to the actions container.',
       control: 'text',
     },
+    analytics: {
+      description: 'Enables analytics tracking on the component.',
+      control: 'boolean',
+    },
     alert: {
       description:
         'If `true`, the modal will receive a role of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs.',
