@@ -284,6 +284,62 @@
             });
           });
         </script>
+
+        <h2 class="ds-text-heading--2xl">Modal Dialog example</h2>
+        <ds-button id="modal-toggle">Open Modal</ds-button>
+        <ds-modal-dialog backdrop-click-exits="true" alert="false" size="wide">
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+              lacinia, eget tempor purus placerat.
+            </p>
+            <div slot="heading">
+              <h2>This is the modal heading.</h2>
+            </div>
+            <div slot="actions">
+              <ds-button id="submit">Submit (and close the dialog)</ds-button>
+              <ds-button id="cancel">Cancel (and close the dialog)</ds-button>
+            </div>
+          </div>
+        </ds-modal-dialog>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', (event) => {
+            const modal = document.querySelector('ds-modal-dialog');
+            const toggleButton = document.getElementById('modal-toggle');
+            const submitButton = document.getElementById('submit');
+            const cancelButton = document.getElementById('cancel');
+
+            const toggleModal = () => {
+              const isOpen = modal?.getAttribute('is-open');
+              if (isOpen === 'true') {
+                modal?.setAttribute('is-open', 'false');
+              } else {
+                modal?.setAttribute('is-open', 'true');
+              }
+            };
+
+            [submitButton, cancelButton].forEach((btn) => {
+              btn?.addEventListener('click', function (event) {
+                if (event?.target?.id === 'submit') {
+                  console.log('SUBMISSION');
+                } else {
+                  console.log('CANCELATION');
+                }
+                const exitEvent = new CustomEvent('ds-exit', {
+                  ...event,
+                  composed: true,
+                  bubbles: true,
+                  detail: { event: event },
+                });
+                modal?.dispatchEvent(exitEvent);
+              });
+            });
+
+            toggleButton?.addEventListener('ds-click', toggleModal);
+            modal?.addEventListener('ds-exit', toggleModal);
+          });
+        </script>
       </div>
     </main>
     <!-- END WEB COMPONENT EXAMPLES -->
