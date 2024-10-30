@@ -37,40 +37,16 @@ export const analyticsEventDocs = {
   'ds-analytics-event': {
     description:
       'This event is dispatched whenever the component emits an analytics event. Listening to this event will allow you to handle the analytics event yourself instead of relying on the `defaultAnalyticsFunction` defined in the design system config. [Read more about analytics.](https://design.cms.gov/components/analytics/)',
-    eventObjectDescription: (
-      <>
-        <p>
-          <code>event.details.event</code> - The analytics event object being emitted.
-        </p>
-        <p>
-          <code>event.preventDefault()</code> - Calling this prevents the{' '}
-          <code>defaultAnalyticsFunction</code> from the{' '}
-          <a href="https://design.cms.gov/components/config/">global config</a> from being called.
-        </p>
-      </>
-    ),
+    eventObjectDescription:
+      '`event.details.event` - The analytics event object being emitted.\n\n`event.preventDefault()` - Calling this prevents the `defaultAnalyticsFunction` from the [global config](https://design.cms.gov/components/config/) from being called.',
   },
 };
 
 export const alertAnalyticsEventDocs = {
   'ds-analytics-event': {
-    ...analyticsEventDocs['ds-analytics-event'],
-    eventObjectDescription: (
-      <>
-        <p>
-          <code>event.details.event</code> - The analytics event object being emitted.
-        </p>
-        <p>
-          <code>
-            <s>event.preventDefault()</s>
-          </code>{' '}
-          - Note that the alert&apos;s impression event is emitted immediately, so calling{' '}
-          <code>preventDefault</code> to stop <code>defaultAnalyticsFunction</code> from being
-          called will be too late. If you need to customize this event for a particular instance,
-          please apply the <code>analytics=&quot;false&quot;</code> attribute to your element and
-          then emit the analytics event yourself.
-        </p>
-      </>
-    ),
+    description:
+      'This event is dispatched whenever the component emits an analytics event. [Read more about analytics.](https://design.cms.gov/components/analytics/)',
+    eventObjectDescription:
+      '`event.details.event` - The analytics event object being emitted.\n\n`event.preventDefault()` - ⚠️ Note that the alert\'s impression event is emitted immediately upon render, so calling `preventDefault` within an event listener bound after first render will be too late to stop `defaultAnalyticsFunction` from being called. If you need to customize this event for a particular instance, please apply the `analytics="false"` attribute to your element and then emit the analytics event yourself.',
   },
 };
