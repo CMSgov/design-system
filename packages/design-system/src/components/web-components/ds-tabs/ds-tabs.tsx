@@ -1,20 +1,55 @@
 import { define } from '../preactement/define';
 import { Tabs, TabPanel } from '../../Tabs';
-import { findElementsOfType } from '../../utilities/findElementsOfType';
+import { TabPanelProps } from '../../Tabs/TabPanel';
+import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
 import { createElement } from 'react';
 
 const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];
 
+function parseChildren(nodes) {
+  const parsedChildren = nodes.map((element) => {
+    const attrs = element.props;
+
+    // Check for required attributes
+    if (!attrs.id || !attrs.children) {
+      console.warn(
+        'Each child passed to `ds-tabs` must include `id` and `children` attributes for `TabPanel` functionality.'
+      );
+      return null;
+    }
+
+    const {
+      id,
+      children,
+      className,
+      'data-selected': dataSelected,
+      'data-disabled': dataDisabled,
+      'data-tab': dataTab,
+      'data-tab-class-name': dataTabClassName,
+      'data-tab-href': dataTabHref,
+      'data-tab-id': dataTabId,
+      ...otherAttributes
+    } = attrs;
+
+    const props: TabPanelProps = {
+      id,
+      children,
+      className,
+      selected: parseBooleanAttr(dataSelected),
+      disabled: parseBooleanAttr(dataDisabled),
+      tab: dataTab,
+      tabClassName: dataTabClassName,
+      tabHref: dataTabHref,
+      tabId: dataTabId,
+    };
+
+    return createElement(TabPanel, { ...otherAttributes, ...(props as TabPanelProps) }, children);
+  });
+
+  return parsedChildren;
+}
+
 const Wrapper = ({ tabsAriaLabel, ...props }) => {
-  function parseChildren(node) {
-    const elements = findElementsOfType(['ds-tab-panel'], node);
-
-    return elements.map((element) => {
-      const { children, ...attrs } = element.props || {};
-      return createElement(TabPanel, { ...attrs }, children);
-    });
-  }
-
   return (
     <Tabs {...props} ariaLabel={tabsAriaLabel}>
       {parseChildren(props.children)}

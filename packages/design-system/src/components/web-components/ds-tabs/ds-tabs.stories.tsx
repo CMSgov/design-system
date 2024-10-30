@@ -65,18 +65,18 @@ const Template = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <ds-tab-panel key="summary" id="summary" tab="Summary">
+      <div className="ds-tab-panel" key="summary" id="summary" data-tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
-      </ds-tab-panel>
-      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
+      </div>
+      <div key="preamble" id="preamble" data-tab="Preamble">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
         </p>
-      </ds-tab-panel>
-      <ds-tab-panel key="amendments" id="amendments" tab="Amendments">
+      </div>
+      <div key="amendments" id="amendments" data-tab="Amendments">
         <h2 className="ds-text-heading--lg">Bill of Rights</h2>
 
         <ol className="ds-c-list">
@@ -113,7 +113,7 @@ const Template = (args) => {
           <li>18-year-old suffrage</li>
           <li>Congressional pay raises</li>
         </ol>
-      </ds-tab-panel>
+      </div>
     </ds-tabs>
   );
 };
@@ -134,20 +134,20 @@ const DisabledTemplate = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <ds-tab-panel key="summary" id="summary" tab="Summary">
+      <div key="summary" id="summary" data-tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
-      </ds-tab-panel>
-      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
+      </div>
+      <div key="preamble" id="preamble" data-tab="Preamble" aria-label="tams label">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
         </p>
-      </ds-tab-panel>
-      <ds-tab-panel id="disabled" tab="Disabled" disabled="true">
+      </div>
+      <div id="disabled" data-tab="Disabled" data-disabled="true">
         You shouldn’t see this
-      </ds-tab-panel>
+      </div>
     </ds-tabs>
   );
 };
