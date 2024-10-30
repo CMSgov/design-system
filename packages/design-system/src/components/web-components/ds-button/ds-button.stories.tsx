@@ -3,6 +3,10 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { action } from '@storybook/addon-actions';
 import './ds-button';
 import { webComponentDecorator } from '../storybook';
+import {
+  analyticsOverrideArgTypes,
+  analyticsParentDataArgTypes,
+} from '../shared-attributes/storybook';
 
 export default {
   title: 'Web Components/ds-button',
@@ -26,6 +30,8 @@ export default {
       options: [undefined, 'solid', 'ghost'],
       control: { type: 'radio' },
     },
+    ...analyticsOverrideArgTypes,
+    ...analyticsParentDataArgTypes,
   },
   args: {},
   parameters: {
@@ -34,7 +40,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/button/).`,
       },
-      sharedAttrLists: ['analytics'],
     },
   },
   decorators: [webComponentDecorator],

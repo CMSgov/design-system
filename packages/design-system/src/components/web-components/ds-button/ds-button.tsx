@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import Button, { ButtonProps } from '../../Button/Button';
-import { analyticsAttrs } from '../shared-attributes/analytics';
+import { analyticsOverrideAttrs, analyticsParentDataAttrs } from '../shared-attributes/analytics';
 import { onAnalyticsEvent } from '../analytics';
 
 const attributes = [
@@ -13,7 +13,8 @@ const attributes = [
   'type',
   'variation',
   'target',
-  ...analyticsAttrs,
+  ...analyticsOverrideAttrs,
+  ...analyticsParentDataAttrs,
 ];
 
 // Mapping `onDark` to `isOnDark` because props starting with "on" indicate an event handler and tests fail due to this expectation

@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { analyticsOverrideArgTypes } from '../shared-attributes/storybook';
 import { webComponentDecorator } from '../storybook';
 import './ds-alert';
 
@@ -38,6 +39,7 @@ export default {
       description:
         "A unique ID for this element. A unique ID will be generated if one isn't provided.",
     },
+    ...analyticsOverrideArgTypes,
   },
   args: {
     variation: 'success',
@@ -49,7 +51,6 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/alert/).`,
       },
-      sharedAttrLists: ['analytics'],
     },
   },
   decorators: [webComponentDecorator],

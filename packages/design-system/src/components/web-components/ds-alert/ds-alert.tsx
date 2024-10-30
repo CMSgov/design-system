@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import { Alert, AlertProps } from '../../Alert';
-import { analyticsAttrs } from '../shared-attributes/analytics';
+import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 import { onAnalyticsEvent } from '../analytics';
 
 const attributes = [
@@ -12,7 +12,7 @@ const attributes = [
   'weight',
   'variation',
   'root-id',
-  ...analyticsAttrs,
+  ...analyticsOverrideAttrs,
 ];
 
 interface WrapperProps extends Omit<AlertProps, 'hideIcon' | 'analytics'> {
