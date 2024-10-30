@@ -32,3 +32,22 @@ export const analyticsParentDataArgTypes: ArgTypesFromAttributes<typeof analytic
       control: 'text',
     },
   };
+
+export const analyticsEventDocs = {
+  'ds-analytics-event': {
+    description:
+      'This event is dispatched whenever the component emits an analytics event. Listening to this event will allow you to handle the analytics event yourself instead of relying on the `defaultAnalyticsFunction` defined in the design system config. [Read more about analytics.](https://design.cms.gov/components/analytics/)',
+    eventObjectDescription: (
+      <>
+        <p>
+          <code>event.details.event</code> - The analytics event object being emitted.
+        </p>
+        <p>
+          <code>event.preventDefault()</code> - Calling this prevents the{' '}
+          <code>defaultAnalyticsFunction</code> from the{' '}
+          <a href="https://design.cms.gov/components/config/">global config</a> from being called.
+        </p>
+      </>
+    ),
+  },
+};

@@ -1,4 +1,5 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { analyticsEventDocs } from '../shared-attributes/storybook';
 import { analyticsOverrideArgTypes } from '../shared-attributes/storybook';
 import { webComponentDecorator } from '../storybook';
 import './ds-alert';
@@ -50,6 +51,28 @@ export default {
       page: WebComponentDocTemplate,
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/alert/).`,
+      },
+      componentEvents: {
+        'ds-analytics-event': {
+          ...analyticsEventDocs['ds-analytics-event'],
+          eventObjectDescription: (
+            <>
+              <p>
+                <code>event.details.event</code> - The analytics event object being emitted.
+              </p>
+              <p>
+                <code>
+                  <s>event.preventDefault()</s>
+                </code>{' '}
+                - Note that the alert&apos;s impression event is emitted immediately, so calling{' '}
+                <code>preventDefault</code> to stop <code>defaultAnalyticsFunction</code> from being
+                called will be too late. If you need to customize this event for a particular
+                instance, please apply the <code>analytics=&quot;false&quot;</code> attribute to
+                your element and then emit the analytics event yourself.
+              </p>
+            </>
+          ),
+        },
       },
     },
   },
