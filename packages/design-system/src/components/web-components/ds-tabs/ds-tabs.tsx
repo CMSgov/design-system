@@ -7,10 +7,9 @@ import { createElement } from 'react';
 const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];
 
 function parseChildren(nodes) {
-  const parsedChildren = nodes.map((element) => {
+  return nodes.map((element) => {
     const attrs = element.props;
 
-    // Check for required attributes
     if (!attrs.id || !attrs.children) {
       console.warn(
         'Each child passed to `ds-tabs` must include `id` and `children` attributes for `TabPanel` functionality.'
@@ -21,7 +20,7 @@ function parseChildren(nodes) {
     const {
       id,
       children,
-      className,
+      'data-classname': dataClassName,
       'data-selected': dataSelected,
       'data-disabled': dataDisabled,
       'data-tab': dataTab,
@@ -31,22 +30,19 @@ function parseChildren(nodes) {
       ...otherAttributes
     } = attrs;
 
-    const props: TabPanelProps = {
+    const props: Partial<TabPanelProps> = {
       id,
-      children,
-      className,
+      className: dataClassName,
       selected: parseBooleanAttr(dataSelected),
       disabled: parseBooleanAttr(dataDisabled),
-      tab: dataTab,
+      tab: parseJsonAttr(dataTab),
       tabClassName: dataTabClassName,
       tabHref: dataTabHref,
       tabId: dataTabId,
     };
 
-    return createElement(TabPanel, { ...otherAttributes, ...(props as TabPanelProps) }, children);
+    return createElement(TabPanel, { ...props, ...otherAttributes }, children);
   });
-
-  return parsedChildren;
 }
 
 const Wrapper = ({ tabsAriaLabel, ...props }) => {

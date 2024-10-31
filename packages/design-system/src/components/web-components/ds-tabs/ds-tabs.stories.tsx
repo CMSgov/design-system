@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-tabs';
-import './ds-tab-panel';
 
 const meta: Meta = {
   title: 'Web Components/ds-tabs',
@@ -65,7 +64,7 @@ const Template = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <div className="ds-tab-panel" key="summary" id="summary" data-tab="Summary">
+      <div data-class-name="tamara's class" key="summary" id="summary" data-tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </div>
       <div key="preamble" id="preamble" data-tab="Preamble">

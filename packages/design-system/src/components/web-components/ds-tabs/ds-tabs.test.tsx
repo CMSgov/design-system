@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-tabs';
-import './ds-tab-panel';
 const defaultProps = {
   'default-selected-id': 'panel-1',
 };
@@ -9,30 +8,30 @@ function renderTabs(props = {}, children = []) {
   return render(<ds-tabs {...(props as any)}>{children}</ds-tabs>);
 }
 const children = [
-  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+  <div key="1" id="panel-1" data-tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
-  </ds-tab-panel>,
-  <ds-tab-panel key="2" id="panel-2" tab="Tab 2">
+  </div>,
+  <div key="2" id="panel-2" data-tab="Tab 2">
     Some content for tab 2.
-  </ds-tab-panel>,
+  </div>,
 ];
 
 const childrenWithDisabledTabPanel = [
-  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+  <div key="1" id="panel-1" data-tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
-  </ds-tab-panel>,
-  <ds-tab-panel key="2" id="panel-2" tab="Tab 2" disabled="true">
+  </div>,
+  <div key="2" id="panel-2" data-tab="Tab 2" data-disabled="true">
     Some content for disabled tab.
-  </ds-tab-panel>,
-  <ds-tab-panel key="3" id="panel-3" tab="Tab 3">
+  </div>,
+  <div key="3" id="panel-3" data-tab="Tab 3">
     Some content for tab 3.
-  </ds-tab-panel>,
+  </div>,
 ];
 
 describe('ds-tabs', () => {
@@ -197,17 +196,17 @@ describe('ds-tabs', () => {
 
   it('applies the tabId to the tab element', () => {
     renderTabs(undefined, [
-      <ds-tab-panel key="lunch" id="lunch" tab-id="lunch-tab" tab="Lunch Menu">
+      <div key="lunch" id="lunch" data-tab-id="lunch-tab" data-tab="Lunch Menu">
         Food
-      </ds-tab-panel>,
-      <ds-tab-panel key="dinner" id="dinner" tab-id="dinner-tab" tab="Dinner menu">
+      </div>,
+      <div key="dinner" id="dinner" data-tab-id="dinner-tab" data-tab="Dinner menu">
         Food
-      </ds-tab-panel>,
+      </div>,
     ]);
 
     const tabs = screen.getAllByRole('tab');
-    expect(tabs[0].id).toEqual('lunch__tab');
-    expect(tabs[1].id).toEqual('dinner__tab');
+    expect(tabs[0].id).toEqual('lunch-tab');
+    expect(tabs[1].id).toEqual('dinner-tab');
 
     const panels = screen.getAllByRole('tabpanel');
     expect(panels[0].getAttribute('aria-labelledby')).toEqual(tabs[0].id);
