@@ -20,7 +20,7 @@ function parseChildren(nodes) {
     const {
       id,
       children,
-      'data-classname': dataClassName,
+      'class-name': className,
       'data-selected': dataSelected,
       'data-disabled': dataDisabled,
       'data-tab': dataTab,
@@ -32,7 +32,7 @@ function parseChildren(nodes) {
 
     const props: Partial<TabPanelProps> = {
       id,
-      className: dataClassName,
+      className,
       selected: parseBooleanAttr(dataSelected),
       disabled: parseBooleanAttr(dataDisabled),
       tab: parseJsonAttr(dataTab),
