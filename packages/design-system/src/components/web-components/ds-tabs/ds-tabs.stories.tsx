@@ -15,19 +15,23 @@ const meta: Meta = {
         component: `
 For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).
 
-The \`ds-tabs\` component accepts regular \`<div>\` elements as children to represent tab panels. Each \`<div>\` should include specific attributes for tab functionality:
+The \`ds-tabs\` component accepts regular \`<div>\` elements as children to represent tab panels. Each \`<div>\` should contain specific content and attributes for tab functionality.
 
-- \`id\` (required): A unique identifier for the tab panel.
-- \`children\` (required): Content of the tab panel.
-- \`class-name\` (optional): Custom class for styling the tab panel container.
-- \`data-selected\` (optional): Marks the tab panel as initially selected (\`boolean\`).
-- \`data-disabled\` (optional): Disables the tab panel, making it unselectable (\`boolean\`).
-- \`data-tab\` (optional): The label shown on the associated tab for this panel.
-- \`data-tab-class-name\` (optional): Additional CSS class for styling the associated tab.
-- \`data-tab-href\` (optional): URL or link to navigate to when the tab is clicked.
-- \`data-tab-id\` (optional): The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
+**Required Content:**
+- **Content** (\`children\`): The inner content within the \`<div>\` representing the tab panel.
 
-**Note:** Only \`id\` and \`children\` are mandatory for each tab panel.
+**Required Attribute:**
+- \`id\`: A unique identifier for the tab panel, linking it to its associated tab.
+
+**Optional Attributes:**
+- \`class-name\`: Custom class for styling the tab panel container.
+- \`data-selected\`: Accepts \`"true"\` or \`"false"\` as strings, marking the tab panel as initially selected.
+- \`data-disabled\`: Accepts \`"true"\` or \`"false"\` as strings, disabling the tab panel and making it unselectable.
+- \`data-tab\`: The label displayed on the associated tab for this panel.
+- \`data-tab-class-name\`: Additional CSS class for styling the associated tab.
+- \`data-tab-href\`: URL or link to navigate to when the tab is clicked.
+- \`data-tab-id\`: The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
+
         `,
       },
       componentEvents: {
@@ -40,7 +44,7 @@ The \`ds-tabs\` component accepts regular \`<div>\` elements as children to repr
   argTypes: {
     children: {
       description:
-        'Each child should be a `<div>` with attributes like `id`, `data-selected`, etc. See Docs tab for full details.',
+        'Each child should be a `<div>` with attributes like `id`, `data-selected`, etc. See Docs above for full details.',
       control: 'object',
       table: {
         type: { summary: 'Array<HTMLElement>' },
