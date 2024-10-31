@@ -12,8 +12,23 @@ const meta: Meta = {
     docs: {
       page: WebComponentDocTemplate,
       description: {
-        component:
-          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).',
+        component: `
+For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).
+
+The \`ds-tabs\` component accepts regular \`<div>\` elements as children to represent tab panels. Each \`<div>\` should include specific attributes for tab functionality:
+
+- \`id\` (required): A unique identifier for the tab panel.
+- \`children\` (required): Content of the tab panel.
+- \`class-name\` (optional): Custom class for styling the tab panel container.
+- \`data-selected\` (optional): Marks the tab panel as initially selected (\`boolean\`).
+- \`data-disabled\` (optional): Disables the tab panel, making it unselectable (\`boolean\`).
+- \`data-tab\` (optional): The label shown on the associated tab for this panel.
+- \`data-tab-class-name\` (optional): Additional CSS class for styling the associated tab.
+- \`data-tab-href\` (optional): URL or link to navigate to when the tab is clicked.
+- \`data-tab-id\` (optional): The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
+
+**Note:** Only \`id\` and \`children\` are mandatory for each tab panel.
+        `,
       },
       componentEvents: {
         'ds-change': {
@@ -24,7 +39,13 @@ const meta: Meta = {
   },
   argTypes: {
     children: {
-      description: 'Limited to `ds-tab-panel` components.',
+      description:
+        'Each child should be a `<div>` with attributes like `id`, `data-selected`, etc. See Docs tab for full details.',
+      control: 'object',
+      table: {
+        type: { summary: 'Array<HTMLElement>' },
+        defaultValue: { summary: '[]' },
+      },
     },
     'default-selected-id': {
       description: 'Sets the id of the `ds-tab-panel` that is initially selected.',
