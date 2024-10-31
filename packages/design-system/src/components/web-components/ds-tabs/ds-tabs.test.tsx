@@ -235,4 +235,26 @@ describe('ds-tabs', () => {
     expect(tabEls[0].getAttribute('aria-selected')).toBe('false');
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
   });
+
+  it('parses all ds-tab-panel props correctly', () => {
+    const attrs = {
+      id: 'panel-1',
+      'data-tab-id': 'panel-1-tab',
+      'data-tab-class-name': 'custom-tab',
+      'aria-label': 'Panel One',
+    };
+    renderTabs({}, [
+      <div key="1" {...attrs}>
+        Some content
+      </div>,
+    ]);
+
+    const tabs = screen.getAllByRole('tab');
+    const panel = screen.getByRole('tabpanel', { hidden: true });
+
+    expect(tabs[0].id).toBe('panel-1-tab');
+    expect(panel.id).toBe('panel-1');
+    expect(tabs[0].classList).toContain('custom-tab');
+    expect(panel).toHaveAttribute('aria-labelledby', 'panel-1-tab');
+  });
 });
