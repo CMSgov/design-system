@@ -16,12 +16,12 @@
   ],
   [
     "component",
-    "When provided, will render the passed in component for the tooltip trigger. Must be either `button` or `a`.",
+    "When provided, will render the passed in component for the tooltip trigger. Must be either button or a.",
     "string"
   ],
   [
     "dialog",
-    "Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's [tooltip dialog documentation](https://dequeuniversity.com/library/aria/tooltip-dialog)",
+    "Tooltip that behaves like a dialog, i.e. a tooltip that only appears on click, traps focus, and contains interactive content. For more information, see Deque's tooltip dialog documentation",
     "\"true\"\"false\""
   ],
   [
@@ -36,12 +36,12 @@
   ],
   [
     "max-width",
-    "`maxWidth` styling applied to the tooltip body",
+    "maxWidth styling applied to the tooltip body",
     "string"
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.",
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.",
     "\"auto\"\"auto-start\"\"auto-end\"\"left\"\"left-start\"\"left-end\"\"right\"\"right-start\"\"right-end\"\"top\"\"top-start\"\"top-end\"\"bottom\"\"bottom-start\"\"bottom-end\""
   ],
   [
@@ -51,17 +51,17 @@
   ],
   [
     "show-close-button",
-    "Determines if close button is shown in tooltip. It is recommended that the close button is only used if `dialog=true`",
+    "Determines if close button is shown in tooltip. It is recommended that the close button is only used if dialog=true",
     "\"true\"\"false\""
   ],
   [
     "title",
-    "Content inside the tooltip body or popover. If contains interactive elements set the `dialog` attribute to `true`.",
+    "Content inside the tooltip body or popover. If contains interactive elements set the dialog attribute to true.",
     "string"
   ],
   [
     "transition-duration",
-    "Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.",
+    "Duration of the react-transition-group CSSTransition. See the timeout option for more info.",
     "string"
   ],
   [
@@ -71,7 +71,7 @@
   ],
   [
     "z-index",
-    "`zIndex` styling applied to the tooltip body",
+    "zIndex styling applied to the tooltip body",
     "string"
   ]
 ]
