@@ -1,12 +1,12 @@
 [
   [
     "button-class-name",
-    "Class to be applied to the header `<button>` of an accordion item.",
+    "Class to be applied to the header <button> of an accordion item.",
     "string"
   ],
   [
     "content-class-name",
-    "Class to be applied to the content `<div>` tag of an accordion item.",
+    "Class to be applied to the content <div> tag of an accordion item.",
     "string"
   ],
   [
@@ -16,12 +16,12 @@
   ],
   [
     "heading",
-    "Class to be applied to the outer `<div>` that contains all accordion items.",
+    "Class to be applied to the outer <div> that contains all accordion items.",
     "string"
   ],
   [
     "heading-level",
-    "Heading type to override default `<h2>`",
+    "Heading type to override default <h2>",
     "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
   ]
 ]

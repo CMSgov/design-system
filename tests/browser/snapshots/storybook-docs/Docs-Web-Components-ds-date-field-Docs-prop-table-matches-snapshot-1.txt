@@ -6,12 +6,12 @@
   ],
   [
     "default-value",
-    "Sets the initial value for the component. This value will be used until the user changes the input, at which point the new value will be handled by the component's internal state. The `onChange` event will still be triggered with the updated value, but the component will manage the state internally.",
+    "Sets the initial value for the component. This value will be used until the user changes the input, at which point the new value will be handled by the component's internal state. The onChange event will still be triggered with the updated value, but the component will manage the state internally.",
     "string"
   ],
   [
     "error-id",
-    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the root-id attribute.",
     "string"
   ],
   [
@@ -56,7 +56,7 @@
   ],
   [
     "inversed",
-    "Set to `true` to apply the \"inverse\" color scheme.",
+    "Set to true to apply the \"inverse\" color scheme.",
     "\"true\"\"false\""
   ],
   [
@@ -71,17 +71,17 @@
   ],
   [
     "label-id",
-    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.",
     "string"
   ],
   [
     "name",
-    "The `input` field's `name` attribute.",
+    "The input field's name attribute.",
     "string"
   ],
   [
     "requirement-label",
-    "Text showing the requirement (e.g., \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "Text showing the requirement (e.g., \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.",
     "string"
   ],
   [
@@ -106,7 +106,7 @@
   ],
   [
     "value",
-    "The `input` field's `value` attribute. Typically not used for uncontrolled components (web components).",
+    "The input field's value attribute. Typically not used for uncontrolled components (web components).",
     "string"
   ]
 ]

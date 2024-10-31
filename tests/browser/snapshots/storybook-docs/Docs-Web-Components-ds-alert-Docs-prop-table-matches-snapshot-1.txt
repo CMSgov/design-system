@@ -1,5 +1,15 @@
 [
   [
+    "analytics",
+    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance. Read more about analytics.",
+    "\"true\"\"false\""
+  ],
+  [
+    "analytics-label-override",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property. Read more about analytics.",
+    "string"
+  ],
+  [
     "heading",
     "Text for the alert heading",
     "string"
@@ -11,7 +21,7 @@
   ],
   [
     "role",
-    "ARIA `role`, defaults to \"region\"",
+    "ARIA role, defaults to \"region\"",
     "undefined\"alert\"\"alertdialog\"\"region\"\"status\""
   ],
   [
@@ -21,12 +31,12 @@
   ],
   [
     "variation",
-    "A string corresponding to the `Alert` variation classes",
+    "A string corresponding to the Alert variation classes",
     "undefined\"success\"\"warn\"\"error\""
   ],
   [
     "weight",
-    "A string corresponding to the `Alert` weight classes",
+    "A string corresponding to the Alert weight classes",
     "undefined\"lightweight\""
   ]
 ]

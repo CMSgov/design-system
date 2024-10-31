@@ -11,7 +11,7 @@
   ],
   [
     "error-id",
-    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the root-id attribute.",
     "string"
   ],
   [
@@ -61,22 +61,22 @@
   ],
   [
     "label-id",
-    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.",
     "string"
   ],
   [
     "label-mask",
-    "Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See [Label-masked field](https://design.cms.gov/components/text-field/label-masked-field/) documentation page for more information.",
+    "Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See Label-masked field documentation page for more information.",
     "undefined\"phone\"\"zip\"\"ssn\"\"currency\""
   ],
   [
     "name",
-    "The `input` field's `name` attribute.",
+    "The input field's name attribute.",
     "string"
   ],
   [
     "requirement-label",
-    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.",
     "string"
   ],
   [
@@ -86,12 +86,12 @@
   ],
   [
     "size",
-    "Sets the max-width of the input either to `\"small\"` or `\"medium\"`",
+    "Sets the max-width of the input either to \"small\" or \"medium\"",
     "undefined\"medium\"\"small\""
   ],
   [
     "value",
-    "The `input` field's `value` attribute",
+    "The input field's value attribute",
     "string"
   ]
 ]
