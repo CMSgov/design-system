@@ -158,10 +158,10 @@ const DisabledTemplate = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <ds-tab-panel key="summary" id="summary" tab="Summary" tab-class-name="Tams class name">
+      <ds-tab-panel key="summary" id="summary" tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </ds-tab-panel>
-      <ds-tab-panel key="preamble" id="preamble" tab="Preamble" aria-label="tams label">
+      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
