@@ -1,7 +1,7 @@
 [
   [
     "children",
-    "Each child should be a `<div>` with attributes like `id`, `data-selected`, etc. See Docs above for full details.",
+    "Each child should be a `<ds-tab-panel>` with attributes like `id`, `selected`, etc. See Docs above for full details.",
     "See description"
   ],
   [

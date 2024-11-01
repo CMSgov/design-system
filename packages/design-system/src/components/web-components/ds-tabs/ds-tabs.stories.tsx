@@ -15,22 +15,22 @@ const meta: Meta = {
         component: `
 For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).
 
-The \`ds-tabs\` component accepts regular \`<div>\` elements as children to represent tab panels. Each \`<div>\` should contain specific content and attributes for tab functionality.
+The \`ds-tabs\` component accepts regular \`<ds-tab-panel>\` elements as children to represent tab panels. Each \`<ds-tab-panel>\` should contain specific content and attributes for tab functionality.
 
 **Required Content:**
-- **Content** (\`children\`): The inner content within the \`<div>\` representing the tab panel.
+- **Content** (\`children\`): The inner content within the \`<ds-tab-panel>\` representing the tab panel.
 
 **Required Attribute:**
 - \`id\`: A unique identifier for the tab panel, linking it to its associated tab.
-- \`data-tab\`: The label displayed on the associated tab for this panel.
+- \`tab\`: The label displayed on the associated tab for this panel.
 
 **Optional Attributes:**
 - \`class-name\`: Custom class for styling the tab panel container.
-- \`data-selected\`: Accepts \`"true"\` or \`"false"\` as strings, marking the tab panel as initially selected.
-- \`data-disabled\`: Accepts \`"true"\` or \`"false"\` as strings, disabling the tab panel and making it unselectable.
-- \`data-tab-class-name\`: Additional CSS class for styling the associated tab.
-- \`data-tab-href\`: URL or link to navigate to when the tab is clicked.
-- \`data-tab-id\`: The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
+- \`selected\`: Accepts \`"true"\` or \`"false"\` as strings, marking the tab panel as initially selected.
+- \`disabled\`: Accepts \`"true"\` or \`"false"\` as strings, disabling the tab panel and making it unselectable.
+- \`tab-class-name\`: Additional CSS class for styling the associated tab.
+- \`tab-href\`: URL or link to navigate to when the tab is clicked.
+- \`tab-id\`: The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
 
         `,
       },
@@ -44,7 +44,7 @@ The \`ds-tabs\` component accepts regular \`<div>\` elements as children to repr
   argTypes: {
     children: {
       description:
-        'Each child should be a `<div>` with attributes like `id`, `data-selected`, etc. See Docs above for full details.',
+        'Each child should be a `<ds-tab-panel>` with attributes like `id`, `selected`, etc. See Docs above for full details.',
       control: 'object',
       table: {
         type: { summary: 'Array<HTMLElement>' },
@@ -89,18 +89,18 @@ const Template = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <div key="summary" id="summary" data-tab="Summary">
+      <ds-tab-panel key="summary" id="summary" tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
-      </div>
-      <div key="preamble" id="preamble" data-tab="Preamble">
+      </ds-tab-panel>
+      <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
         </p>
-      </div>
-      <div key="amendments" id="amendments" data-tab="Amendments">
+      </ds-tab-panel>
+      <ds-tab-panel key="amendments" id="amendments" tab="Amendments">
         <h2 className="ds-text-heading--lg">Bill of Rights</h2>
 
         <ol className="ds-c-list">
@@ -137,7 +137,7 @@ const Template = (args) => {
           <li>18-year-old suffrage</li>
           <li>Congressional pay raises</li>
         </ol>
-      </div>
+      </ds-tab-panel>
     </ds-tabs>
   );
 };
@@ -158,20 +158,20 @@ const DisabledTemplate = (args) => {
   }, []);
   return (
     <ds-tabs {...args}>
-      <div key="summary" id="summary" data-tab="Summary">
+      <ds-tab-panel key="summary" id="summary" tab="Summary" tab-class-name="Tams class name">
         The Bill of Rights is the first ten amendments to the United States Constitution.
-      </div>
-      <div key="preamble" id="preamble" data-tab="Preamble" aria-label="tams label">
+      </ds-tab-panel>
+      <ds-tab-panel key="preamble" id="preamble" tab="Preamble" aria-label="tams label">
         <p>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
         </p>
-      </div>
-      <div id="disabled" data-tab="Disabled" data-disabled="true">
+      </ds-tab-panel>
+      <ds-tab-panel id="disabled" tab="Disabled" disabled="true">
         You shouldn’t see this
-      </div>
+      </ds-tab-panel>
     </ds-tabs>
   );
 };

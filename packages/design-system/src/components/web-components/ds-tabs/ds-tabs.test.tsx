@@ -8,30 +8,30 @@ function renderTabs(props = {}, children = []) {
   return render(<ds-tabs {...(props as any)}>{children}</ds-tabs>);
 }
 const children = [
-  <div key="1" id="panel-1" data-tab="Tab 1">
+  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
-  </div>,
-  <div key="2" id="panel-2" data-tab="Tab 2">
+  </ds-tab-panel>,
+  <ds-tab-panel key="2" id="panel-2" tab="Tab 2">
     Some content for tab 2.
-  </div>,
+  </ds-tab-panel>,
 ];
 
 const childrenWithDisabledTabPanel = [
-  <div key="1" id="panel-1" data-tab="Tab 1">
+  <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
     Some content for tab 1
     <ol>
       <li>Nested content for tab 1.</li>
     </ol>
-  </div>,
-  <div key="2" id="panel-2" data-tab="Tab 2" data-disabled="true">
+  </ds-tab-panel>,
+  <ds-tab-panel key="2" id="panel-2" tab="Tab 2" disabled="true">
     Some content for disabled tab.
-  </div>,
-  <div key="3" id="panel-3" data-tab="Tab 3">
+  </ds-tab-panel>,
+  <ds-tab-panel key="3" id="panel-3" tab="Tab 3">
     Some content for tab 3.
-  </div>,
+  </ds-tab-panel>,
 ];
 
 describe('ds-tabs', () => {
@@ -196,12 +196,12 @@ describe('ds-tabs', () => {
 
   it('applies the tabId to the tab element', () => {
     renderTabs(undefined, [
-      <div key="lunch" id="lunch" data-tab-id="lunch-tab" data-tab="Lunch Menu">
+      <ds-tab-panel key="lunch" id="lunch" tab-id="lunch-tab" tab="Lunch Menu">
         Food
-      </div>,
-      <div key="dinner" id="dinner" data-tab-id="dinner-tab" data-tab="Dinner menu">
+      </ds-tab-panel>,
+      <ds-tab-panel key="dinner" id="dinner" tab-id="dinner-tab" tab="Dinner menu">
         Food
-      </div>,
+      </ds-tab-panel>,
     ]);
 
     const tabs = screen.getAllByRole('tab');
@@ -239,15 +239,15 @@ describe('ds-tabs', () => {
   it('parses all ds-tab-panel props correctly', () => {
     const attrs = {
       id: 'panel-1',
-      'data-tab': 'Panel 1',
-      'data-tab-id': 'panel-1-tab',
-      'data-tab-class-name': 'custom-tab',
+      tab: 'Panel 1',
+      'tab-id': 'panel-1-tab',
+      'tab-class-name': 'custom-tab',
       'aria-label': 'Panel One',
     };
     renderTabs({}, [
-      <div key="1" {...attrs}>
+      <ds-tab-panel key="1" {...attrs}>
         Some content
-      </div>,
+      </ds-tab-panel>,
     ]);
 
     const tabs = screen.getAllByRole('tab');

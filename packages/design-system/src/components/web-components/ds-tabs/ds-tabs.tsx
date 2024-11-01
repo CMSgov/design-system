@@ -10,7 +10,7 @@ function parseChildren(nodes) {
   return nodes.map((element) => {
     const attrs = element.props;
 
-    if (!attrs.id || !attrs.children || !attrs['data-tab']) {
+    if (!attrs.id || !attrs.children || !attrs.tab) {
       console.warn(
         'Each child passed to `ds-tabs` must include `id` and `children` attributes for `TabPanel` functionality.'
       );
@@ -21,24 +21,24 @@ function parseChildren(nodes) {
       id,
       children,
       'class-name': className,
-      'data-selected': dataSelected,
-      'data-disabled': dataDisabled,
-      'data-tab': dataTab,
-      'data-tab-class-name': dataTabClassName,
-      'data-tab-href': dataTabHref,
-      'data-tab-id': dataTabId,
+      selected: selected,
+      disabled: disabled,
+      tab: tab,
+      'tab-class-name': tabClassName,
+      'tab-href': tabHref,
+      'tab-id': tabId,
       ...otherAttributes
     } = attrs;
 
     const props: Partial<TabPanelProps> = {
       id,
       className,
-      selected: parseBooleanAttr(dataSelected),
-      disabled: parseBooleanAttr(dataDisabled),
-      tab: parseJsonAttr(dataTab),
-      tabClassName: dataTabClassName,
-      tabHref: dataTabHref,
-      tabId: dataTabId,
+      selected: parseBooleanAttr(selected),
+      disabled: parseBooleanAttr(disabled),
+      tab: parseJsonAttr(tab),
+      tabClassName,
+      tabHref,
+      tabId,
     };
 
     return createElement(TabPanel, { ...props, ...otherAttributes }, children);
@@ -59,6 +59,16 @@ declare global {
     interface IntrinsicElements {
       'ds-tabs': JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
+      };
+      'ds-tab-panel': JSX.IntrinsicElements['div'] & {
+        id: string;
+        'class-name'?: string;
+        selected?: string;
+        disabled?: string;
+        tab: string;
+        'tab-class-name'?: string;
+        'tab-href'?: string;
+        'tab-id'?: string;
       };
     }
   }
