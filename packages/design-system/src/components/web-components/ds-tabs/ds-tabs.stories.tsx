@@ -22,12 +22,12 @@ The \`ds-tabs\` component accepts regular \`<div>\` elements as children to repr
 
 **Required Attribute:**
 - \`id\`: A unique identifier for the tab panel, linking it to its associated tab.
+- \`data-tab\`: The label displayed on the associated tab for this panel.
 
 **Optional Attributes:**
 - \`class-name\`: Custom class for styling the tab panel container.
 - \`data-selected\`: Accepts \`"true"\` or \`"false"\` as strings, marking the tab panel as initially selected.
 - \`data-disabled\`: Accepts \`"true"\` or \`"false"\` as strings, disabling the tab panel and making it unselectable.
-- \`data-tab\`: The label displayed on the associated tab for this panel.
 - \`data-tab-class-name\`: Additional CSS class for styling the associated tab.
 - \`data-tab-href\`: URL or link to navigate to when the tab is clicked.
 - \`data-tab-id\`: The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.

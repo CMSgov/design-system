@@ -239,6 +239,7 @@ describe('ds-tabs', () => {
   it('parses all ds-tab-panel props correctly', () => {
     const attrs = {
       id: 'panel-1',
+      'data-tab': 'Panel 1',
       'data-tab-id': 'panel-1-tab',
       'data-tab-class-name': 'custom-tab',
       'aria-label': 'Panel One',

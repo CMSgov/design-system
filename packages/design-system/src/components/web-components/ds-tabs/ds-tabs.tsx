@@ -10,7 +10,7 @@ function parseChildren(nodes) {
   return nodes.map((element) => {
     const attrs = element.props;
 
-    if (!attrs.id || !attrs.children) {
+    if (!attrs.id || !attrs.children || !attrs['data-tab']) {
       console.warn(
         'Each child passed to `ds-tabs` must include `id` and `children` attributes for `TabPanel` functionality.'
       );
