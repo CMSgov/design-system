@@ -10,14 +10,28 @@ const meta: Meta = {
   title: 'Web Components/ds-modal-dialog',
   args: {
     alert: 'false',
+    'is-open': 'false',
     children: (
       <div>
-        <div slot="heading">Modal heading</div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-        lacinia, eget tempor purus placerat.
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+          lacinia, eget tempor purus placerat.
+        </p>
+        <div slot="heading">
+          <h2>This is the modal heading.</h2>
+        </div>
+        <div slot="actions">
+          <form method="dialog">
+            <ds-button type="submit" value="rstBtn">
+              Reset
+            </ds-button>
+            <ds-button type="submit" value="sbmBtn">
+              Confirm
+            </ds-button>
+          </form>
+        </div>
       </div>
     ),
-    'is-open': 'false',
   },
   argTypes: {
     'actions-class-name': {
@@ -86,7 +100,7 @@ const meta: Meta = {
       },
       componentEvents: {
         'ds-exit': {
-          description: 'A callback function triggered when the user clicks the filter chip button.',
+          description: 'A callback function triggered when the user clicks the close button.',
         },
       },
       sharedAttrLists: ['analytics'],
@@ -108,33 +122,35 @@ export default meta;
 
 const Template = (args) => {
   useEffect(() => {
-    const button = document.querySelector('ds-button');
     const modal = document.querySelector('ds-modal-dialog');
-    const toggleModal = (event): void => {
-      const targetType = event.target.nodeName ?? '';
-      if (targetType === 'DS-BUTTON') {
-        action('ds-click')(event);
+    const toggleButton = document.getElementById('modal-toggle');
+    const closeButton = document.querySelector('button[aria-label="Close modal dialog"]');
+    const form = document.querySelector('form[method=dialog]');
+
+    const toggleModal = () => {
+      if (modal.getAttribute('is-open') === 'true') {
+        modal?.setAttribute('is-open', 'false');
       } else {
-        action('ds-exit')(event);
-      }
-      const isOpen = modal.getAttribute('is-open');
-      if (isOpen === 'true') {
-        modal.setAttribute('is-open', 'false');
-      } else {
-        modal.setAttribute('is-open', 'true');
+        modal?.setAttribute('is-open', 'true');
       }
     };
-    button.addEventListener('ds-click', toggleModal);
-    modal.addEventListener('ds-exit', toggleModal);
+
+    modal?.addEventListener('ds-exit', (event) => action('ds-exit')(event));
+    toggleButton?.addEventListener('click', toggleModal);
+    form?.addEventListener('submit', toggleModal);
+    closeButton?.addEventListener('click', toggleModal);
+
     return () => {
-      button.removeEventListener('ds-click', toggleModal);
-      modal.removeEventListener('ds-exit', toggleModal);
+      modal?.removeEventListener('ds-exit', (event) => action('ds-exit')(event));
+      toggleButton?.removeEventListener('click', toggleModal);
+      form?.removeEventListener('submit', toggleModal);
+      closeButton?.removeEventListener('click', toggleModal);
     };
   });
 
   return (
     <>
-      <ds-button>Open Modal</ds-button>
+      <ds-button id="modal-toggle">Open Modal</ds-button>
       <ds-modal-dialog {...args}></ds-modal-dialog>
     </>
   );
@@ -144,14 +160,6 @@ export const Default = {
   render: Template,
   args: {
     alert: 'false',
-    children: (
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-        lacinia, eget tempor purus placerat.
-      </div>
-    ),
-    heading: 'Dialog Heading',
-    'is-open': 'false',
   },
 };
 
@@ -160,14 +168,7 @@ export const BackdropClickExits = {
   args: {
     alert: 'false',
     'backdrop-click-exits': 'true',
-    children: (
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-        lacinia, eget tempor purus placerat.
-      </div>
-    ),
     heading: 'Dialog Heading',
-    'is-open': 'false',
   },
 };
 
@@ -237,26 +238,5 @@ export const PreventScrollExample = {
       </div>
     ),
     heading: 'Dialog Heading',
-    'is-open': 'false',
-  },
-};
-
-export const SlottedContent = {
-  render: Template,
-  args: {
-    alert: 'false',
-    children: (
-      <>
-        <div slot="heading">This is the heading provided by a slot.</div>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-          lacinia, eget tempor purus placerat.
-        </div>
-        <div slot="actions">
-          <ds-button>I&apos;m a button provided via a slot!</ds-button>
-        </div>
-      </>
-    ),
-    'is-open': 'false',
   },
 };
