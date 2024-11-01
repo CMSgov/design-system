@@ -60,16 +60,6 @@ declare global {
       'ds-tabs': JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
-      'ds-tab-panel': JSX.IntrinsicElements['div'] & {
-        id: string;
-        'class-name'?: string;
-        selected?: string;
-        disabled?: string;
-        tab: string;
-        'tab-class-name'?: string;
-        'tab-href'?: string;
-        'tab-id'?: string;
-      };
     }
   }
 }
