@@ -426,28 +426,4 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   // Reinstate the mutation observer to watch for user changes
   this.__mutationObserver.observe(this, { childList: true });
   // this.__mutationObserver.observe(template.content.firstChild, { childList: true, subtree: true });
-
-  let previousContentSnapshot = template.content.cloneNode(true);
-
-  // Function to compare snapshots
-  const hasContentChanged = () => {
-    // Create a new snapshot to compare
-    const currentSnapshot = template.content.cloneNode(true);
-
-    // Compare the new snapshot to the previous one
-    const isDifferent = !currentSnapshot.isEqualNode(previousContentSnapshot);
-
-    if (isDifferent) {
-      // console.log('Template content modified!', currentSnapshot);
-      previousContentSnapshot = currentSnapshot; // Update the snapshot
-      this.renderPreactComponent([...template.content.firstChild.childNodes]);
-    }
-  };
-
-  if ((this as any).__pollInterval) {
-    clearInterval((this as any).__pollInterval);
-  }
-
-  // Set up polling interval (adjust as needed)
-  (this as any).__pollInterval = setInterval(hasContentChanged, 500); // Check every 500ms
 }
