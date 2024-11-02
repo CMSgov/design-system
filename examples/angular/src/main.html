@@ -11,20 +11,29 @@
         >children don't set spinner label</ds-spinner
       >
 
-      <ds-alert
-        variation="success"
-        heading="You've loaded the web-components example"
-        class-name="ds-u-margin-y--2"
-        id="alert"
-      >
+      <ds-alert variation="success" #whateverVariableName>
         <p id="alert-content">
           This is an example of a success alert. If you want to see an error alert, click the button
-          below.
+          below. Counter: {{counter}}
         </p>
-        <ds-button variation="solid" is-alternate="true" id="the-button" class="ds-u-margin-top--1"
+        <ds-button
+          (click)="incrementCounter()"
+          variation="solid"
+          is-alternate="true"
+          id="the-button"
+          class="ds-u-margin-top--1"
           >Break things</ds-button
         >
       </ds-alert>
+
+      <ds-button
+        (click)="incrementCounter()"
+        variation="solid"
+        is-alternate="true"
+        id="the-button"
+        class="ds-u-margin-top--1"
+        >Increment</ds-button
+      >
 
       <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
         <div slot="checked-children">
