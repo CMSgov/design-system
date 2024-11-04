@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-tabs';
-import './ds-tab-panel';
 
 const meta: Meta = {
   title: 'Web Components/ds-tabs',
@@ -13,8 +12,27 @@ const meta: Meta = {
     docs: {
       page: WebComponentDocTemplate,
       description: {
-        component:
-          'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).',
+        component: `
+For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tabs/).
+
+The \`ds-tabs\` component accepts regular \`<ds-tab-panel>\` elements as children to represent tab panels. Each \`<ds-tab-panel>\` should contain specific content and attributes for tab functionality.
+
+**Required Content:**
+- **Content** (\`children\`): The inner content within the \`<ds-tab-panel>\` representing the tab panel.
+
+**Required Attribute:**
+- \`id\`: A unique identifier for the tab panel, linking it to its associated tab.
+- \`tab\`: The label displayed on the associated tab for this panel.
+
+**Optional Attributes:**
+- \`class-name\`: Custom class for styling the tab panel container.
+- \`selected\`: Accepts \`"true"\` or \`"false"\` as strings, marking the tab panel as initially selected.
+- \`disabled\`: Accepts \`"true"\` or \`"false"\` as strings, disabling the tab panel and making it unselectable.
+- \`tab-class-name\`: Additional CSS class for styling the associated tab.
+- \`tab-href\`: URL or link to navigate to when the tab is clicked.
+- \`tab-id\`: The \`id\` of the associated tab, used for \`aria-labelledby\` accessibility.
+
+        `,
       },
       componentEvents: {
         'ds-change': {
@@ -25,7 +43,13 @@ const meta: Meta = {
   },
   argTypes: {
     children: {
-      description: 'Limited to `ds-tab-panel` components.',
+      description:
+        'Each child should be a `<ds-tab-panel>` with attributes like `id`, `selected`, etc. See Docs above for full details.',
+      control: 'object',
+      table: {
+        type: { summary: 'Array<HTMLElement>' },
+        defaultValue: { summary: '[]' },
+      },
     },
     'default-selected-id': {
       description: 'Sets the id of the `ds-tab-panel` that is initially selected.',
@@ -55,7 +79,7 @@ const Template = (args) => {
     const element = document.querySelector('ds-tabs');
     const handleStorybookChange = (event) => {
       const { selectedId, prevSelectedId } = event.detail;
-      action('ds-cshange')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
+      action('ds-change')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
     };
 
     element.addEventListener('ds-change', handleStorybookChange);

@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-tabs';
-import './ds-tab-panel';
 const defaultProps = {
   'default-selected-id': 'panel-1',
 };
@@ -206,8 +205,8 @@ describe('ds-tabs', () => {
     ]);
 
     const tabs = screen.getAllByRole('tab');
-    expect(tabs[0].id).toEqual('lunch__tab');
-    expect(tabs[1].id).toEqual('dinner__tab');
+    expect(tabs[0].id).toEqual('lunch-tab');
+    expect(tabs[1].id).toEqual('dinner-tab');
 
     const panels = screen.getAllByRole('tabpanel');
     expect(panels[0].getAttribute('aria-labelledby')).toEqual(tabs[0].id);
@@ -235,5 +234,28 @@ describe('ds-tabs', () => {
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[0].getAttribute('aria-selected')).toBe('false');
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
+  });
+
+  it('parses all ds-tab-panel props correctly', () => {
+    const attrs = {
+      id: 'panel-1',
+      tab: 'Panel 1',
+      'tab-id': 'panel-1-tab',
+      'tab-class-name': 'custom-tab',
+      'aria-label': 'Panel One',
+    };
+    renderTabs({}, [
+      <ds-tab-panel key="1" {...attrs}>
+        Some content
+      </ds-tab-panel>,
+    ]);
+
+    const tabs = screen.getAllByRole('tab');
+    const panel = screen.getByRole('tabpanel', { hidden: true });
+
+    expect(tabs[0].id).toBe('panel-1-tab');
+    expect(panel.id).toBe('panel-1');
+    expect(tabs[0].classList).toContain('custom-tab');
+    expect(panel).toHaveAttribute('aria-labelledby', 'panel-1-tab');
   });
 });
