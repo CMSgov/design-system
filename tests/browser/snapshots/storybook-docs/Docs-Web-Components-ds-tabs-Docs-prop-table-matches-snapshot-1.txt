@@ -1,8 +1,8 @@
 [
   [
     "children",
-    "Limited to ds-tab-panel components.",
-    ""
+    "Each child should be a <ds-tab-panel> with attributes like id, selected, etc. See Docs above for full details.",
+    "See description"
   ],
   [
     "default-selected-id",
