@@ -82,14 +82,17 @@ export const NativeDialog = ({
       if (dialogNode.open) {
         dialogNode.close();
         closingBecauseOfProp = true;
+        console.log('calling .close because of prop')
       }
     }
 
     // Bind close event listener for ESC press
     const handleClose = (event) => {
       event.preventDefault();
+      console.log('preventing default on close')
       // Only call the exit handler if the parent didn't close it by setting isOpen to false
       if (!closingBecauseOfProp) {
+        console.log('closing because prop was not set')
         exit(event);
       }
     };
@@ -115,12 +118,22 @@ export const NativeDialog = ({
         event.clientY <= rect.top + rect.height &&
         rect.left <= event.clientX &&
         event.clientX <= rect.left + rect.width;
+        
+        console.log('event.clientY', event.clientY)
+        console.log('event.clientX', event.clientX)
+        console.log('rect.top', rect.top)
+        console.log('rect.top + rect.height', rect.top + rect.height)
+        console.log('rect.left', rect.left)
+        console.log('rect.left + rect.width', rect.left + rect.width)
       if (!isInDialog) {
+        console.log(event)
+        console.log('calling exit because of backdrop click')
         exit(event);
       }
     };
     dialogNode.addEventListener('click', handleClick);
     return () => {
+      console.log('unmounting')
       dialogNode.removeEventListener('click', handleClick);
     };
   }, [exit, backdropClickExits]);

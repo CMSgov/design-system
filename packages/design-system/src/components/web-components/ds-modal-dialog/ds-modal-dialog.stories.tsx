@@ -124,27 +124,30 @@ const Template = (args) => {
   useEffect(() => {
     const modal = document.querySelector('ds-modal-dialog');
     const toggleButton = document.getElementById('modal-toggle');
-    const closeButton = document.querySelector('button[aria-label="Close modal dialog"]');
-    const form = document.querySelector('form[method=dialog]');
+    // const closeButton = document.querySelector('button[aria-label="Close modal dialog"]');
+    // const form = document.querySelector('form[method=dialog]');
+    // console.log(form)
+    console.log('hey')
 
-    const toggleModal = () => {
-      if (modal.getAttribute('is-open') === 'true') {
-        modal?.setAttribute('is-open', 'false');
-      } else {
-        modal?.setAttribute('is-open', 'true');
-      }
+    const openModal = () => {
+      modal?.setAttribute('is-open', 'true');
     };
 
-    modal?.addEventListener('ds-exit', (event) => action('ds-exit')(event));
-    toggleButton?.addEventListener('click', toggleModal);
-    form?.addEventListener('submit', toggleModal);
-    closeButton?.addEventListener('click', toggleModal);
+    modal?.addEventListener('ds-exit', (event) => {
+      console.log('before is-open false')
+      action('ds-exit')(event)
+      modal?.setAttribute('is-open', 'false');
+      console.log('after is-open false')
+    });
+    toggleButton?.addEventListener('click', openModal);
+    // form?.addEventListener('submit', toggleModal);
+    // closeButton?.addEventListener('click', toggleModal);
 
     return () => {
       modal?.removeEventListener('ds-exit', (event) => action('ds-exit')(event));
-      toggleButton?.removeEventListener('click', toggleModal);
-      form?.removeEventListener('submit', toggleModal);
-      closeButton?.removeEventListener('click', toggleModal);
+      toggleButton?.removeEventListener('click', openModal);
+      // form?.removeEventListener('submit', toggleModal);
+      // closeButton?.removeEventListener('click', toggleModal);
     };
   });
 

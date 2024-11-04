@@ -136,7 +136,10 @@ export const Dialog = (props: DialogProps) => {
             ariaHidden={true}
             className="ds-c-dialog__close"
             id={`${rootId}__close`}
-            onClick={onExit}
+            onClick={(event) => {
+              // event.stopPropagation();
+              console.log('calling exit from close button handler')
+              onExit(event)}}
           />
         </div>
         <div className="ds-c-dialog__body">

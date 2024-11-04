@@ -58,5 +58,20 @@ const Wrapper = ({
 
 define('ds-modal-dialog', () => Wrapper, {
   attributes,
-  events: ['onAnalyticsEvent', 'onExit'],
+  events: [
+    'onAnalyticsEvent',
+    [
+      'onExit',
+      (event: any) => {
+        event.stopPropagation();
+        return {
+          // Note that we're explicitly not spreading the original event properties onto
+          // this event object, because that would cause click event listeners like the
+          // backdrop click event listener to be triggered.
+          // ^^^ Nope, this is not true. What actually fixed it was calling stopPropagation
+          detail: { target: event.target },
+        };
+      },
+    ],
+  ],
 });

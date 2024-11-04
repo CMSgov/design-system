@@ -306,28 +306,42 @@ import Layout from '../layouts/Layout.astro';
           // You can open and close the modal multiple ways. You can either toggle the `is-open` attribute on the
           // ds-modal-dialog custom element, or you can trigger the close() and showModal() methods on the
           // underlying dialog element.
-          const toggleModal = () => {
-            // The commented out code here toggles the open state via the `is-open` attribute on the ds-modal-dialog
-            // custom element.
+          // const toggleModal = () => {
+          //   // The commented out code here toggles the open state via the `is-open` attribute on the ds-modal-dialog
+          //   // custom element.
   
-            // if (modal.getAttribute('is-open') === 'true') {
-            //   modal?.setAttribute('is-open', 'false');
-            // } else {
-            //   modal?.setAttribute('is-open', 'true');
-            // }
+          //   // if (modal.getAttribute('is-open') === 'true') {
+          //   //   modal?.setAttribute('is-open', 'false');
+          //   // } else {
+          //   //   modal?.setAttribute('is-open', 'true');
+          //   // }
   
-            // This code toggles the state of the modal via the underlying dialog element's close() and showModal()
-            // methods.
-            if (dialog.open) {
-              dialog.close();
-            } else {
-              dialog.showModal();
-            }
+          //   // This code toggles the state of the modal via the underlying dialog element's close() and showModal()
+          //   // methods.
+          //   if (dialog.open) {
+          //     dialog.close();
+          //   } else {
+          //     dialog.showModal();
+          //   }
+          // };
+
+          // modal?.addEventListener('ds-exit', () => console.log('Ds Exit happened'))
+  
+          // toggleButton?.addEventListener('click', toggleModal);
+          // form?.addEventListener('submit', toggleModal)
+          // closeButton?.addEventListener('click', toggleModal);
+
+          const openModal = () => {
+            modal?.setAttribute('is-open', 'true');
           };
-  
-          toggleButton?.addEventListener('click', toggleModal);
-          form?.addEventListener('submit', toggleModal)
-          closeButton?.addEventListener('click', toggleModal);
+
+          const closeModal = (event: any) => {
+            console.log(event)
+            modal?.setAttribute('is-open', 'false');
+          }
+
+          modal?.addEventListener('ds-exit', closeModal);
+          toggleButton?.addEventListener('click', openModal);
         });
       </script>
     </div>
