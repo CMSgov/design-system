@@ -128,21 +128,23 @@ In Figma, use the toggle feature to select different utility actions.
         </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="What's New description.">
-        Opens sidebar with updates
+        <p>Opens sidebar with updates</p>
+        <p>Limited usage only for certain cases in Medicare child system</p>
       </TableCell>
     </TableRow>
   </TableBody>
 </Table>
 
-## When to use
+## Use cases
 
-- Content on a webpage or a document is something a user would want to be able to refer back to - provide options to print, email, or download.
-- If you would like to give the user the option to:
-  - Open an XML feed in a different tab
-  - Copy a link to a webpage
-  - Open a popup with new updates or new website capabilities
+- **Provide options for saving or sharing content:** Offer users the ability to print, email, or download content so that users may refer to or share information from a web page or document.
+- **Subscribe to content updates:** When users want to stay informed about new content on a website or blog, providing an RSS feed allows them to easily subscribe and receive notifications of new posts or updates.
+- **Highlight updates on relevant information:** Use the "what's new" feature to keep users informed about the latest developments, changes, or additions to your website. Note: the "what's new" feature is limited to sites using the Medicare Design System.
+- Examples:
+  - Enabling users to print search results (Medicare - [Care Compare](https://www.medicare.gov/care-compare/results?searchType=Physician&page=1&city=Washington&state=DC&zipcode=&radius=15&sort=closest&tealiumEventAction=Landing%20Page%20-%20Search&tealiumSearchLocation=search%20bar))
+  - Enabling users to email or print important information (HealthCare - Find Local Help or [When can you get Health Insurance?](https://www.healthcare.gov/quick-guide/dates-and-deadlines/))
 
-### Usage
+### Guidelines
 
 - Utility actions are ghost buttons for available actions that do not take priority over primary or secondary call-to-actions (CTAs).
 - Placement should be in the page header and top, right aligned.
@@ -154,10 +156,59 @@ In Figma, use the toggle feature to select different utility actions.
 ### When to consider alternatives
 
 - If an action (e.g. printing or emailing) is a critical call-to-action on a webpage, consider using a solid or outlined main button.
-- If the utility action is opening a link in a new webpage versus triggering an action, refer to [guidance on links](/foundation/typography/links).
+- If the utility action is opening a link in a new webpage versus triggering an action, [refer to guidance on links](/foundation/typography/links).
 - Carefully consider which utility actions are used on mobile (since space is a premium.)
+
+### Component behavior (New subsection)
+
+- Hover state: A subtle highlight or change in color to indicate interactivity.
+- Focus state: A border or outline, to show that the button is focused.
+- Click/tap behavior: Execute the intended action (e.g., open print terminal, copy a link, etc.)
+- Accessibility: Ensure that utility actions are accessible to users with disabilities, including providing appropriate ARIA attributes and keyboard navigation.
 
 ## Accessibility
 
+### Accessibility Guidelines
+
 - Always include both the icon and label in utility actions to meet accessibility standards.
 - Don't create CTAs that duplicate utility actions on a page. Having multiple "print" actions on a page can hinder accessibility for screen reader users.
+- Consider using ARIA labels
+
+### Accessibility testing
+
+#### General
+
+- Each utility action should have a unique, accessible name. [Get details on accessible names and descriptions](https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/).
+- The purpose of the utility action should be clear in the context of the whole page.
+
+#### Keyboard testing
+
+- Use the tab key to move the focus between elements on the page. The focused element should be visually indicated by a design-system-standard colored outline.
+- Navigate to each utility action button and ensure that it can be focused and activated using the tab key.
+- If any keyboard shortcuts are associated with utility actions, test that they work as expected.
+- Ensure that the focus moves through the elements in a logical order, preventing users from getting stuck in unexpected places.
+- Verify that all actions can be completed using the keyboard, without requiring a mouse or touchpad.
+
+#### Screen reader testing
+
+When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
+
+- Ensure that screen reader software can accurately read the labels associated with utility action buttons. The labels should clearly convey the purpose and functionality of each button.
+- Check that appropriate ARIA attributes (e.g., role, aria-label) are used to provide additional context and information to screen reader users.
+
+## Code
+
+- Implementing this pattern requires importing at least 2 components from the Design System:
+  1. [Button component](https://design.cms.gov/components/button/?theme=core), and
+     2.The specific icon you wish to display (Email icon for example). [Get icon component details](https://design.cms.gov/components/icon/?theme=core).
+- The Button component should wrap the icon and be set to the ‘ghost’ variation.
+- Changing the size of the Button via the size prop will also change the size of the icon. For more control of the icon size [refer to class names from our font size utilities](https://design.cms.gov/components/icon/?theme=core#changing-icon-size).
+
+### Style Customization
+
+**Color:** Use only primary or secondary colors for each product theme. Style changes not allowed.
+**Icon size:** Can be customized. [Get details on changing icon size](https://design.cms.gov/components/icon/?theme=core#changing-icon-size).
+
+### Analytics
+
+This component has analytics tracking available via analytic properties exposed on the Button component. [Get details on analytics for buttons](https://design.cms.gov/components/button/?theme=core#analytics).
