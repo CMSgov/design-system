@@ -58,46 +58,44 @@ export class CePassthrough<T extends HTMLElement> {
       }
     });
 
-    // this.zone.runOutsideAngular(() => {
+    this.initTemplatePolling();
+  }
 
-    // })
-    // this.initTemplatePolling();
+  getTemplateContent(): Node | null {
+    const template: HTMLTemplateElement | undefined = [...(this.el as any).childNodes].find(
+      isTemplate
+    );
+    if (!template) {
+      console.error('No web component template found');
+    }
+    return template?.content.firstChild ?? null;
   }
 
   // Doesn't seem to work like it does in the web component `define` module
-  // initTemplatePolling() {
-  //   let template: HTMLTemplateElement | undefined = [...(this.el as any).childNodes].find(
-  //     isTemplate
-  //   );
-  //   if (!template) {
-  //     console.log('no template found');
-  //     return;
-  //   }
-  //   console.log('template found!', template)
-  //   let previousContentSnapshot = template.content.cloneNode(true);
+  initTemplatePolling() {
+    let previousContentSnapshot = this.getTemplateContent()?.cloneNode(true);
 
-  //   // Function to compare snapshots
-  //   const hasContentChanged = () => {
-  //     // Create a new snapshot to compare
-  //     const currentSnapshot = template.content.cloneNode(true);
+    // Function to compare snapshots
+    const hasContentChanged = () => {
+      const currentContent = this.getTemplateContent();
 
-  //     // Compare the new snapshot to the previous one
-  //     const isDifferent = !currentSnapshot.isEqualNode(previousContentSnapshot);
+      // Compare the new content to the previous snapshot
+      const isDifferent =
+        !previousContentSnapshot || !previousContentSnapshot.isEqualNode(currentContent);
 
-  //     if (isDifferent) {
-  //       console.log('Template content modified!', currentSnapshot);
-  //       previousContentSnapshot = currentSnapshot; // Update the snapshot
-  //       (this.el as any).renderPreactComponent([
-  //         ...(template.content.firstChild as any).childNodes,
-  //       ]);
-  //     }
-  //   };
+      if (isDifferent) {
+        previousContentSnapshot = currentContent?.cloneNode(true); // Update the snapshot
+        (this.el as any).renderPreactComponent(
+          currentContent ? [...(currentContent.childNodes as any)] : []
+        );
+      }
+    };
 
-  //   if (this.pollInterval) {
-  //     clearInterval(this.pollInterval);
-  //   }
+    if (this.pollInterval) {
+      clearInterval(this.pollInterval);
+    }
 
-  //   // Set up polling interval (adjust as needed)
-  //   this.pollInterval = setInterval(hasContentChanged, 500); // Check every 500ms
-  // }
+    // Set up polling interval (adjust as needed)
+    this.pollInterval = setInterval(hasContentChanged, 500); // Check every 500ms
+  }
 }
