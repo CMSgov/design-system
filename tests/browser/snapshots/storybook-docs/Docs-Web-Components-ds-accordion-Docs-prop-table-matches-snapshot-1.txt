@@ -6,7 +6,7 @@
   ],
   [
     "class-name",
-    "Class to be applied to the outer `<div>` that contains all accordion items.",
+    "Class to be applied to the outer <div> that contains all accordion items.",
     "string"
   ]
 ]
