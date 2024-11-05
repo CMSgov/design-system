@@ -26,7 +26,7 @@
   ],
   [
     "footer-body",
-    "Content to be displayed in the footer area of the Drawer. Accepts a string value, typically for simple text content. For more complex content, consider using the `footer-body` slot.",
+    "Content to be displayed in the footer area of the Drawer. Accepts a string value, typically for simple text content. For more complex content, consider using the footer-body slot.",
     "string"
   ],
   [
@@ -46,12 +46,12 @@
   ],
   [
     "heading-id",
-    "A unique `id` to be used on the heading element to label multiple Drawer instances.",
+    "A unique id to be used on the heading element to label multiple Drawer instances.",
     "string"
   ],
   [
     "heading-level",
-    "Heading level type to override default `<h3>`.",
+    "Heading level type to override default <h3>.",
     "\"1\"\"2\"\"3\"\"4\"\"5\""
   ],
   [

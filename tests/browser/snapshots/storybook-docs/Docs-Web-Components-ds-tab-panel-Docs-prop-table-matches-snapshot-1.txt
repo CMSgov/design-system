@@ -1,17 +1,17 @@
 [
   [
     "children",
-    "Content to be displayed inside the `ds-tab-panel` component.",
+    "Content to be displayed inside the ds-tab-panel component.",
     ""
   ],
   [
     "disabled",
-    "Disables the `ds-tab-panel`. If true, this panel will not be selectable.",
+    "Disables the ds-tab-panel. If true, this panel will not be selectable.",
     "\"true\"\"false\""
   ],
   [
     "selected",
-    "Sets the selected state of the `ds-tab-panel`. If true, this panel will be displayed.",
+    "Sets the selected state of the ds-tab-panel. If true, this panel will be displayed.",
     "\"true\"\"false\""
   ],
   [
@@ -26,7 +26,7 @@
   ],
   [
     "tab-href",
-    "The `href` attribute for the associated tab, if it should behave as a link.",
+    "The href attribute for the associated tab, if it should behave as a link.",
     "string"
   ],
   [
