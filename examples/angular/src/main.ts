@@ -1,11 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  viewChild,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import '@cmsgov/design-system/web-components'; // TODO: Move to project.demo.architect.build.options.scripts
 // import { MyAlertComponent } from './app/my-alert/my-alert.component';
@@ -16,7 +9,7 @@ import { DsAlert } from './ds-alert';
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './main.html',
-  imports: [/*MyAlertComponent, */ DsAlert],
+  imports: [DsAlert],
 })
 export class App implements OnInit {
   name = 'Angular';
@@ -30,6 +23,10 @@ export class App implements OnInit {
   incrementCounter() {
     this.counter += 500;
     console.log('hey', this.counter);
+  }
+
+  helloWorld() {
+    console.log('hello world');
   }
 }
 

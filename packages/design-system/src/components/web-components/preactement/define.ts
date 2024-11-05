@@ -208,7 +208,6 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
  */
 function setupMutationObserver(this: CustomElement) {
   this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
-    console.log('a mutation!');
     const childListMutations = mutations.filter(
       (mutation: MutationRecord) => mutation.type === 'childList'
     );
@@ -425,5 +424,4 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
 
   // Reinstate the mutation observer to watch for user changes
   this.__mutationObserver.observe(this, { childList: true });
-  // this.__mutationObserver.observe(template.content.firstChild, { childList: true, subtree: true });
 }

@@ -28,7 +28,7 @@ export class CePassthrough<T extends HTMLElement> {
   static eventMap: Record<string, string> = {} as const;
 
   ngOnChanges(changes: SimpleChanges) {
-    // console.log('change detected!');
+    console.log('change detected!');
     this.zone.runOutsideAngular(() => {
       for (const changedProp of Object.keys(changes)) {
         if (!(changedProp in this.elRef.nativeElement)) {
