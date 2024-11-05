@@ -1,7 +1,8 @@
-export const analyticsAttrs = [
-  'analytics',
-  'analytics-label-override',
-  'analytics-event-type-override',
+// Refer to the AnalyticsOverrideProps and AnalyticsParentDataProps types
+
+export const analyticsOverrideAttrs = ['analytics', 'analytics-label-override'] as const;
+
+export const analyticsParentDataAttrs = [
   'analytics-parent-heading',
   'analytics-parent-type',
 ] as const;
