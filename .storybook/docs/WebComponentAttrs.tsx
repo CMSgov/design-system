@@ -13,7 +13,7 @@ interface WebComponentAttrsProps {
  * array in `story.parameters.docs` to determine if it should show this additional
  * text and what elements' documentation it should link to.
  */
-export const WebComponentAttrs = ({ of }) => {
+export const WebComponentAttrs = ({ of }: WebComponentAttrsProps) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;

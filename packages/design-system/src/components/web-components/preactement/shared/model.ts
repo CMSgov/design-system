@@ -26,7 +26,7 @@ interface IOptions<F = any, W = any> {
    * React callback parameters and return an event-like object that will be used to
    * create the custom event.
    */
-  events?: Array<string | [string, (...args: any[]) => CustomEventInit<unknown>]>;
+  events?: Array<string | readonly [string, (...args: any[]) => CustomEventInit<unknown>]>;
   formatProps?: (props: any) => F;
   wrapComponent?: (child: any) => W;
 }

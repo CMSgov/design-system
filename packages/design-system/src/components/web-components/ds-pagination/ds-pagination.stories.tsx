@@ -78,17 +78,8 @@ export default {
         'ds-page-change': {
           description:
             'Dispatched whenever page link is clicked, including the previous and next buttons.',
-          eventObjectDescription: (
-            <>
-              <p>
-                <code>event.details.target</code> - The <code>target</code> of the original event
-              </p>
-              <p>
-                <code>event.details.page</code> - An integer representing the newly active page
-                number
-              </p>
-            </>
-          ),
+          eventObjectDescription:
+            '`event.details.target` - The `target` of the original event\n\n`event.details.page` - An integer representing the newly active page number',
         },
       },
     },

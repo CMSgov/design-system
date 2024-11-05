@@ -16,7 +16,7 @@
   ],
   [
     "default-value",
-    "Sets the initial selected state. Using this attribute instead of `value` means that the select will maintain its own internal selection state.",
+    "Sets the initial selected state. Using this attribute instead of value means that the select will maintain its own internal selection state.",
     "string"
   ],
   [
@@ -26,7 +26,7 @@
   ],
   [
     "error-id",
-    "The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the root-id attribute.",
     "string"
   ],
   [
@@ -76,32 +76,32 @@
   ],
   [
     "label-id",
-    "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.",
     "string"
   ],
   [
     "name",
-    "The `name` is applied to a hidden select element that holds the selected value for the purpose of native HTML form support",
+    "The name is applied to a hidden select element that holds the selected value for the purpose of native HTML form support",
     "string"
   ],
   [
     "options",
-    "The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a `label` and `value`.",
+    "The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a label and value.",
     "See description"
   ],
   [
     "requirement-label",
-    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.",
+    "Text showing the requirement (ie. \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.",
     "string"
   ],
   [
     "size",
-    "Sets the max-width of the input either to `\"small\"` or `\"medium\"`",
+    "Sets the max-width of the input either to \"small\" or \"medium\"",
     "undefined\"medium\"\"small\""
   ],
   [
     "value",
-    "Sets the selected value. Using this attribute instead of `default-value` means the dropdown will not maintain its own internal selection state.",
+    "Sets the selected value. Using this attribute instead of default-value means the dropdown will not maintain its own internal selection state.",
     "string"
   ]
 ]

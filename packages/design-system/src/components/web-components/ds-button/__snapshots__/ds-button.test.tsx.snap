@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button Analytics allows default analytics function to be ovewridden 1`] = `
+Object {
+  "button_style": "default",
+  "button_type": "button",
+  "event_extension": "Design system integration",
+  "event_name": "button_engagement",
+  "parent_component_heading": " ",
+  "parent_component_type": " ",
+  "text": "Foo",
+}
+`;
+
+exports[`Button Analytics overrides analytics event tracking on open 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_extension": "Design system integration",
+    "event_name": "button_engagement",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "alternate content",
+  },
+]
+`;
+
+exports[`Button Analytics sends anchor analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "link",
+    "event_extension": "Design system integration",
+    "event_name": "button_engagement",
+    "link_url": "#/somewhere-over-the-rainbow",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
+exports[`Button Analytics sends button analytics event 1`] = `
+Array [
+  Object {
+    "button_style": "default",
+    "button_type": "button",
+    "event_extension": "Design system integration",
+    "event_name": "button_engagement",
+    "parent_component_heading": " ",
+    "parent_component_type": " ",
+    "text": "Foo",
+  },
+]
+`;
+
 exports[`Button renders as an anchor with custom prop 1`] = `
 <DocumentFragment>
   <ds-button

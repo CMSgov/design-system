@@ -1,4 +1,4 @@
-import { useOf } from '@storybook/blocks';
+import { Markdown, useOf } from '@storybook/blocks';
 
 function optToCodeBlock(opt: undefined | string) {
   const formattedOpt = opt === undefined ? 'undefined' : `"${opt}"`;
@@ -62,7 +62,9 @@ export const WebComponentArgsTable = ({ of }) => {
               <td>
                 {argType.description && (
                   <div style={{ marginBottom: '4px' }}>
-                    <p>{argType.description}</p>
+                    <p>
+                      <Markdown>{argType.description}</Markdown>
+                    </p>
                   </div>
                 )}
               </td>

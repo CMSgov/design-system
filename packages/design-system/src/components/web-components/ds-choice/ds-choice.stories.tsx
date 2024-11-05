@@ -128,17 +128,8 @@ export default {
       componentEvents: {
         'ds-change': {
           description: 'Dispatched whenever the choice `checked` value changes.',
-          eventObjectDescription: (
-            <>
-              <p>
-                <code>event.details.target.value</code> - The <code>value</code> of the selected
-                option
-              </p>
-              <p>
-                <code>event.details.target.checked</code> - A boolean representing the checked state
-              </p>
-            </>
-          ),
+          eventObjectDescription:
+            '<p>`event.details.target.value` - The `value` of the selected option\n\n`event.details.target.checked` - A boolean representing the checked state',
         },
         'ds-blur': {
           description: 'Dispatched whenever the choice loses focus.',

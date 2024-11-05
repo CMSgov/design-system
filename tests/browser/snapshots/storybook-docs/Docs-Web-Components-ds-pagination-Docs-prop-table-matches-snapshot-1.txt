@@ -26,17 +26,17 @@
   ],
   [
     "heading-aria-label",
-    "Defines `aria-label` on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a `<nav>` element, the word \"navigation\" should be omitted from this label. Optional.",
+    "Defines aria-label on the screen-reader heading for this element, which precedes the page count readout. Since this exists on a <nav> element, the word \"navigation\" should be omitted from this label. Optional.",
     "string"
   ],
   [
     "heading-level",
-    "Heading type to override default `<h2>` used in the screen-reader heading. Optional.",
+    "Heading type to override default <h2> used in the screen-reader heading. Optional.",
     "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
   ],
   [
     "hrefTemplate",
-    "A string used to generate URLs for each page link. The component will find any instance of `{page}` and replace it with the page number. Defaults to `'#page={page}'`.",
+    "A string used to generate URLs for each page link. The component will find any instance of {page} and replace it with the page number. Defaults to '#page={page}'.",
     "string"
   ],
   [

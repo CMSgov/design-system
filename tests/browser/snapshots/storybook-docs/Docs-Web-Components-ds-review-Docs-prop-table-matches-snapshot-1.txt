@@ -26,7 +26,7 @@
   ],
   [
     "heading-level",
-    "Heading type to override default `<h3>`",
+    "Heading type to override default <h3>",
     "\"1\"\"2\"\"3\"\"4\"\"5\""
   ]
 ]

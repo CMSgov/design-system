@@ -116,12 +116,8 @@ export default {
       componentEvents: {
         'ds-change': {
           description: 'Dispatched whenever the selected value changes.',
-          eventObjectDescription: (
-            <>
-              <code>event.details.target.value</code> - The <code>value</code> of the selected
-              option
-            </>
-          ),
+          eventObjectDescription:
+            '`event.details.target.value` - The `value` of the selected option',
         },
         'ds-blur': {
           description: 'Dispatched whenever the dropdown loses focus.',

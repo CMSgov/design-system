@@ -47,13 +47,8 @@ export default {
       componentEvents: {
         'ds-change': {
           description: 'Dispatched whenever the accordion is opened or closed.',
-          eventObjectDescription: (
-            <>
-              <code>event.details.target</code> - The <code>HTMLButtonElement</code> that was
-              pressed, from which you can get the expanded state through{' '}
-              <code>getAttribute(&#39;aria-expanded&#39;)</code>
-            </>
-          ),
+          eventObjectDescription:
+            '`event.details.target` - The `HTMLButtonElement` that was pressed, from which you can get the expanded state through `getAttribute("aria-expanded")`',
         },
       },
     },
