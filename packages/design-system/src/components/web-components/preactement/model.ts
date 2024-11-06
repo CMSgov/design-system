@@ -30,7 +30,7 @@ interface IOptions {
    * React callback parameters and return an event-like object that will be used to
    * create the custom event.
    */
-  events?: Array<string | [string, (...args: any[]) => CustomEventInit<unknown>]>;
+  events?: Array<string | readonly [string, (...args: any[]) => CustomEventInit<unknown>]>;
   formatProps?: <P = any>(props: P) => P;
   wrapComponent?: <P>(child: ComponentFactory<P>) => ComponentFactory<P>;
 }
