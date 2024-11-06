@@ -290,9 +290,9 @@
         <ds-modal-dialog
           is-open="false"
           root-id="modal-dialog"
-          backdrop-click-exits="false"
           alert="false"
           size="wide"
+          backdrop-click-exits="true"
         >
           <div>
             <p>
@@ -304,7 +304,7 @@
             </div>
             <div slot="actions">
               <form method="dialog">
-                <ds-button type="submit" value="rstBtn">Reset</ds-button>
+                <ds-button type="reset" value="rstBtn">Reset</ds-button>
                 <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
               </form>
             </div>
@@ -313,37 +313,27 @@
 
         <script>
           document.addEventListener('DOMContentLoaded', (event) => {
-            const dialog = document.querySelector('dialog') as HTMLDialogElement;
             const modal = document.querySelector('ds-modal-dialog') as HTMLDialogElement;
             const toggleButton = document.getElementById('modal-toggle');
-            const closeButton = document.getElementById('modal-dialog__close');
-            const form = document.querySelector('form[method=dialog]') as HTMLFormElement;
 
-            // You can open and close the modal multiple ways. You can either toggle the `is-open` attribute on the
-            // ds-modal-dialog custom element, or you can trigger the close() and showModal() methods on the
-            // underlying dialog element.
-            const toggleModal = () => {
-              // The commented out code here toggles the open state via the `is-open` attribute on the ds-modal-dialog
-              // custom element.
+            // You can also open and close via the underlying dialog element's close() and showModal()
+            // methods.
+            //   const dialog = document.querySelector('dialog') as HTMLDialogElement;
+            //   if (dialog.open) {
+            //     dialog.close();
+            //   } else {
+            //     dialog.showModal();
+            //   }
+            // };
 
-              // if (modal.getAttribute('is-open') === 'true') {
-              //   modal?.setAttribute('is-open', 'false');
-              // } else {
-              //   modal?.setAttribute('is-open', 'true');
-              // }
-
-              // This code toggles the state of the modal via the underlying dialog element's close() and showModal()
-              // methods.
-              if (dialog.open) {
-                dialog.close();
-              } else {
-                dialog.showModal();
-              }
+            const openModal = () => {
+              modal?.setAttribute('is-open', 'true');
             };
 
-            toggleButton?.addEventListener('click', toggleModal);
-            form?.addEventListener('submit', toggleModal)
-            closeButton?.addEventListener('click', toggleModal);
+            modal?.addEventListener('ds-exit', () => {
+              modal?.setAttribute('is-open', 'false');
+            });
+            toggleButton?.addEventListener('click', openModal);
           });
         </script>
       </div>

@@ -22,9 +22,7 @@ const meta: Meta = {
         </div>
         <div slot="actions">
           <form method="dialog">
-            <ds-button type="submit" value="rstBtn">
-              Reset
-            </ds-button>
+            <ds-button value="rstBtn">Reset</ds-button>
             <ds-button type="submit" value="sbmBtn">
               Confirm
             </ds-button>
@@ -47,11 +45,11 @@ const meta: Meta = {
         'If `true`, the modal will receive a role of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs.',
       control: 'boolean',
     },
-    'backdrop-click-exits': {
-      description:
-        'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked',
-      control: 'boolean',
-    },
+    // 'backdrop-click-exits': {
+    //   description:
+    //     'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked',
+    //   control: 'boolean',
+    // },
     children: {
       table: {
         disable: true,
@@ -124,27 +122,23 @@ const Template = (args) => {
   useEffect(() => {
     const modal = document.querySelector('ds-modal-dialog');
     const toggleButton = document.getElementById('modal-toggle');
-    const closeButton = document.querySelector('button[aria-label="Close modal dialog"]');
-    const form = document.querySelector('form[method=dialog]');
 
-    const toggleModal = () => {
-      if (modal.getAttribute('is-open') === 'true') {
-        modal?.setAttribute('is-open', 'false');
-      } else {
-        modal?.setAttribute('is-open', 'true');
-      }
+    const openModal = () => {
+      modal?.setAttribute('is-open', 'true');
     };
 
-    modal?.addEventListener('ds-exit', (event) => action('ds-exit')(event));
-    toggleButton?.addEventListener('click', toggleModal);
-    form?.addEventListener('submit', toggleModal);
-    closeButton?.addEventListener('click', toggleModal);
+    modal?.addEventListener('ds-exit', (event) => {
+      action('ds-exit')(event);
+      modal?.setAttribute('is-open', 'false');
+    });
+    toggleButton?.addEventListener('click', openModal);
 
     return () => {
-      modal?.removeEventListener('ds-exit', (event) => action('ds-exit')(event));
-      toggleButton?.removeEventListener('click', toggleModal);
-      form?.removeEventListener('submit', toggleModal);
-      closeButton?.removeEventListener('click', toggleModal);
+      modal?.removeEventListener('ds-exit', (event) => {
+        action('ds-exit')(event);
+        modal?.setAttribute('is-open', 'false');
+      });
+      toggleButton?.removeEventListener('click', openModal);
     };
   });
 
@@ -163,14 +157,14 @@ export const Default = {
   },
 };
 
-export const BackdropClickExits = {
-  render: Template,
-  args: {
-    alert: 'false',
-    'backdrop-click-exits': 'true',
-    heading: 'Dialog Heading',
-  },
-};
+// export const BackdropClickExits = {
+//   render: Template,
+//   args: {
+//     alert: 'false',
+//     'backdrop-click-exits': 'true',
+//     heading: 'Dialog Heading',
+//   },
+// };
 
 export const PreventScrollExample = {
   render: function Component(args) {
@@ -230,7 +224,7 @@ export const PreventScrollExample = {
   },
   args: {
     alert: 'false',
-    'backdrop-click-exits': 'true',
+    'backdrop-click-exits': 'false',
     children: (
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus

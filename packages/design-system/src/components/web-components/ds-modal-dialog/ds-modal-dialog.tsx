@@ -7,7 +7,6 @@ const attributes = [
   'actions-class-name',
   'alert',
   'dialog-close-label',
-  'backdrop-click-exits',
   'class-name',
   'header-class-name',
   'heading',
