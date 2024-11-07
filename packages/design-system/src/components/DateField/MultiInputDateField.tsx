@@ -161,7 +161,6 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
 
   return (
     <fieldset
-      aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
     >
