@@ -129,7 +129,9 @@ In Figma, use the toggle feature to select different utility actions.
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="What's New description.">
         <p>Opens sidebar with updates</p>
-        <p>Limited usage only for certain cases in Medicare child system</p>
+        <p>
+          <em>Limited usage only for certain cases in Medicare child system</em>
+        </p>
       </TableCell>
     </TableRow>
   </TableBody>
@@ -159,12 +161,12 @@ In Figma, use the toggle feature to select different utility actions.
 - If the utility action is opening a link in a new webpage versus triggering an action, [refer to guidance on links](/foundation/typography/links).
 - Carefully consider which utility actions are used on mobile (since space is a premium.)
 
-### Component behavior (New subsection)
+### Component behavior
 
-- Hover state: A subtle highlight or change in color to indicate interactivity.
-- Focus state: A border or outline, to show that the button is focused.
-- Click/tap behavior: Execute the intended action (e.g., open print terminal, copy a link, etc.)
-- Accessibility: Ensure that utility actions are accessible to users with disabilities, including providing appropriate ARIA attributes and keyboard navigation.
+- **Hover state**: A subtle highlight or change in color to indicate interactivity.
+- **Focus state**: A border or outline, to show that the button is focused.
+- **Click/tap behavior**: Execute the intended action (e.g., open print terminal, copy a link, etc.)
+- **Accessibility**: Ensure that utility actions are accessible to users with disabilities, including providing appropriate ARIA attributes and keyboard navigation.
 
 ## Accessibility
 
@@ -172,7 +174,7 @@ In Figma, use the toggle feature to select different utility actions.
 
 - Always include both the icon and label in utility actions to meet accessibility standards.
 - Don't create CTAs that duplicate utility actions on a page. Having multiple "print" actions on a page can hinder accessibility for screen reader users.
-- Consider using ARIA labels
+- Consider using ARIA labels.
 
 ### Accessibility testing
 
@@ -194,19 +196,38 @@ In Figma, use the toggle feature to select different utility actions.
 When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
 - Ensure that screen reader software can accurately read the labels associated with utility action buttons. The labels should clearly convey the purpose and functionality of each button.
-- Check that appropriate ARIA attributes (e.g., role, aria-label) are used to provide additional context and information to screen reader users.
+- Check that appropriate ARIA attributes (e.g., <code>role</code>, <code>aria-label</code>) are used to provide additional context and information to screen reader users.
 
 ## Code
 
-- Implementing this pattern requires importing at least 2 components from the Design System:
-  1. [Button component](https://design.cms.gov/components/button/?theme=core), and
-     2.The specific icon you wish to display (Email icon for example). [Get icon component details](https://design.cms.gov/components/icon/?theme=core).
-- The Button component should wrap the icon and be set to the ‘ghost’ variation.
-- Changing the size of the Button via the size prop will also change the size of the icon. For more control of the icon size [refer to class names from our font size utilities](https://design.cms.gov/components/icon/?theme=core#changing-icon-size).
+<ul>
+  <li>
+    Implementing this pattern requires importing at least 2 components from the Design System:
+    <ol>
+      <li>
+        <a href="https://design.cms.gov/components/button/?theme=core">Button component</a>, and
+      </li>
+      <li>
+        The specific icon you wish to display (Email icon for example).{' '}
+        <a href="https://design.cms.gov/components/icon/?theme=core">Get icon component details</a>.
+      </li>
+    </ol>
+  </li>
+  <li>The Button component should wrap the icon and be set to the ‘ghost’ variation.</li>
+  <li>
+    Changing the size of the Button via the size prop will also change the size of the icon. For
+    more control of the icon size{' '}
+    <a href="https://design.cms.gov/components/icon/?theme=core#changing-icon-size">
+      refer to class names from our font size utilities
+    </a>
+    .
+  </li>
+</ul>
 
-### Style Customization
+### Style customization
 
 **Color:** Use only primary or secondary colors for each product theme. Style changes not allowed.
+
 **Icon size:** Can be customized. [Get details on changing icon size](https://design.cms.gov/components/icon/?theme=core#changing-icon-size).
 
 ### Analytics
