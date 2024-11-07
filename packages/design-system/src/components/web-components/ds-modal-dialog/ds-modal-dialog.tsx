@@ -1,7 +1,7 @@
 import { define } from '../preactement/define';
 import { Dialog, DialogProps, DialogSize } from '../../Dialog';
 import { parseBooleanAttr } from '../wrapperUtils';
-import { analyticsAttrs } from '../shared-attributes/analytics';
+import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 
 const attributes = [
   'actions-class-name',
@@ -13,7 +13,7 @@ const attributes = [
   'root-id',
   'is-open',
   'size',
-  ...analyticsAttrs,
+  ...analyticsOverrideAttrs,
 ];
 
 interface WrapperProps
