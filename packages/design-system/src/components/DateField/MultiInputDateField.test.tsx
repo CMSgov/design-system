@@ -36,6 +36,27 @@ describe('MultiInputDateField', () => {
     });
   });
 
+  it('renders with aria-invalid set to true on specific invalid inputs only', () => {
+    const errorProps = {
+      errorMessage: 'Please enter a valid date',
+      monthDefaultValue: '12',
+      dayDefaultValue: '35',
+      yearDefaultValue: '2050',
+      dayInvalid: true,
+      yearInvalid: true,
+    };
+
+    render(<MultiInputDateField label="A date field" {...errorProps} />);
+
+    const monthInput = screen.getByLabelText(/month/i);
+    const dayInput = screen.getByLabelText(/day/i);
+    const yearInput = screen.getByLabelText(/year/i);
+
+    expect(monthInput).toHaveAttribute('aria-invalid', 'false');
+    expect(dayInput).toHaveAttribute('aria-invalid', 'true');
+    expect(yearInput).toHaveAttribute('aria-invalid', 'true');
+  });
+
   it('applies custom `hintClassName` to the hint element', () => {
     const customHintClass = 'my-custom-hint-class';
     render(
