@@ -60,7 +60,7 @@ exports[`Alert renders alert 1`] = `
           class="ds-c-alert__a11y-label ds-u-visibility--screen-reader"
           id="alert--1__a11y-label"
         >
-          Notice:
+          Notice: 
         </span>
         Ruhroh
       </div>
