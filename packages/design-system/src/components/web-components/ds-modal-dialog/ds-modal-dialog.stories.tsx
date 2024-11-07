@@ -45,11 +45,11 @@ const meta: Meta = {
         'If `true`, the modal will receive a role of `alertdialog`, instead of its default `dialog`. The `alertdialog` role should only be used when an alert, error, or warning occurs.',
       control: 'boolean',
     },
-    // 'backdrop-click-exits': {
-    //   description:
-    //     'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked',
-    //   control: 'boolean',
-    // },
+    'backdrop-click-exits': {
+      description:
+        'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked',
+      control: 'boolean',
+    },
     children: {
       table: {
         disable: true,
@@ -157,14 +157,14 @@ export const Default = {
   },
 };
 
-// export const BackdropClickExits = {
-//   render: Template,
-//   args: {
-//     alert: 'false',
-//     'backdrop-click-exits': 'true',
-//     heading: 'Dialog Heading',
-//   },
-// };
+export const BackdropClickExits = {
+  render: Template,
+  args: {
+    alert: 'false',
+    'backdrop-click-exits': 'true',
+    heading: 'Dialog Heading',
+  },
+};
 
 export const PreventScrollExample = {
   render: function Component(args) {
