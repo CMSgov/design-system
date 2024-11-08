@@ -6,6 +6,7 @@ import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 const attributes = [
   'actions-class-name',
   'alert',
+  'backdrop-click-exits',
   'dialog-close-label',
   'class-name',
   'header-class-name',
@@ -17,10 +18,14 @@ const attributes = [
 ];
 
 interface WrapperProps
-  extends Omit<DialogProps, 'actions' | 'alert' | 'analytics' | 'heading' | 'isOpen' | 'size'> {
+  extends Omit<
+    DialogProps,
+    'actions' | 'alert' | 'analytics' | 'backdropClickExits' | 'heading' | 'isOpen' | 'size'
+  > {
   actions?: string;
   alert?: string;
   analytics?: string;
+  backdropClickExits?: string;
   dialogCloseLabel?: string;
   heading?: string;
   rootId?: string;
@@ -35,6 +40,7 @@ const isAcceptableSize = (size: string): size is DialogSize => {
 const Wrapper = ({
   alert,
   analytics,
+  backdropClickExits,
   children,
   dialogCloseLabel,
   isOpen,
@@ -46,6 +52,7 @@ const Wrapper = ({
     id={rootId}
     alert={parseBooleanAttr(alert)}
     ariaCloseLabel={dialogCloseLabel}
+    backdropClickExits={parseBooleanAttr(backdropClickExits)}
     isOpen={parseBooleanAttr(isOpen)}
     size={isAcceptableSize(size) ? size : null}
     {...otherProps}
