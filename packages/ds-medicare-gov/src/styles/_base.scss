@@ -115,13 +115,3 @@ svg {
   line-height: 20px;
   margin-bottom: $spacer-1;
 }
-
-/**
- * Pagination overrides
- */
-
-.ds-c-pagination {
-  .ds-c-button {
-    font-family: var(--font-family-heading);
-  }
-}
