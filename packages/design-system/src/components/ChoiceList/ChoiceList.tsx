@@ -110,7 +110,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
     }, 20);
   };
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { errorId, topError, bottomError } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
@@ -152,7 +152,6 @@ export const ChoiceList = (props: ChoiceListProps) => {
 
   return (
     <fieldset
-      aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
       role={props.type === 'radio' ? 'radiogroup' : null}

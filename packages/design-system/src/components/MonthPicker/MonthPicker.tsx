@@ -153,13 +153,12 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const selectAllPressed = selectedMonths.length === NUM_MONTHS - disabledMonths.length;
   const clearAllPressed = selectedMonths.length === 0;
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { errorId, topError, bottomError } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
 
   return (
     <fieldset
-      aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', 'ds-c-month-picker', props.className)}
     >
