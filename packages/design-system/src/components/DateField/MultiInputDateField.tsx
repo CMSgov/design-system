@@ -147,7 +147,7 @@ export type DateFieldProps = BaseDateFieldProps &
  */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { errorId, topError, bottomError } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
   const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
   const fieldProps = {
@@ -161,7 +161,6 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
 
   return (
     <fieldset
-      aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
     >
