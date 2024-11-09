@@ -22,7 +22,9 @@ const meta: Meta = {
         </div>
         <div slot="actions">
           <form method="dialog">
-            <ds-button value="rstBtn">Reset</ds-button>
+            <ds-button value="rstBtn" class-name="ds-u-margin-right--1">
+              Reset
+            </ds-button>
             <ds-button type="submit" value="sbmBtn">
               Confirm
             </ds-button>
@@ -101,7 +103,7 @@ const meta: Meta = {
       slots: {
         actions: {
           description:
-            'Buttons or other HTML to be rendered in the "actions" bar at the bottom of the dialog.',
+            'Buttons or other HTML to be rendered in the "actions" bar at the bottom of the dialog. The preferred method for supplying this content is to add a `div` element with a `slot` attribute of `actions` as a child element to this custom element. Note that in our example we use a `form` with a `method` of `dialog` to wrap two buttons. Using a `submit` button within this form will automatically close the dialog on click and emit a `ds-exit` event. If you want to include other buttons that do not close the dialog but trigger other actions, those buttons need to have a type other than submit. The benefit of this approach is that you can close the dialog on submit without needing to attach any event handlers. For more information please [refer to the MDN form element documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method)',
         },
         heading: {
           description:

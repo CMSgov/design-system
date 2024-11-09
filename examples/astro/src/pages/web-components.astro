@@ -288,7 +288,9 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div slot="actions">
             <form method="dialog">
-              <ds-button type="reset" value="rstBtn">Reset</ds-button>
+              <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1"
+                >Reset</ds-button
+              >
               <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
             </form>
           </div>
@@ -297,18 +299,8 @@ import Layout from '../layouts/Layout.astro';
   
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-          const modal = document.querySelector('ds-modal-dialog') as HTMLDialogElement;
+          const modal = document.querySelector('ds-modal-dialog');
           const toggleButton = document.getElementById('modal-toggle');
-  
-          // You can also open and close via the underlying dialog element's close() and showModal()
-          // methods.
-          //   const dialog = document.querySelector('dialog') as HTMLDialogElement;
-          //   if (dialog.open) {
-          //     dialog.close();
-          //   } else {
-          //     dialog.showModal();
-          //   }
-          // };
   
           const openModal = () => {
             modal?.setAttribute('is-open', 'true');
