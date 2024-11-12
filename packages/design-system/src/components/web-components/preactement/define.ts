@@ -211,10 +211,7 @@ function setupMutationObserver(this: CustomElement) {
       (mutation: MutationRecord) => mutation.type === 'childList'
     );
     if (childListMutations.length) {
-      const addedNodes = childListMutations.reduce(
-        (nodes, mutation) => [...nodes, ...mutation.addedNodes],
-        []
-      );
+      const addedNodes = childListMutations.flatMap((mutation) => [...mutation.addedNodes]);
       this.renderPreactComponent(addedNodes);
     }
   });
