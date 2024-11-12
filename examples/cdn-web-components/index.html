@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CDN Example</title>
-    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/11.0.0/css/index.css" />
+    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/11.1.0/css/index.css" />
     <link
       rel="stylesheet"
-      href="https://design.cms.gov/cdn/design-system/11.0.0/css/core-theme.css"
+      href="https://design.cms.gov/cdn/design-system/11.1.0/css/core-theme.css"
     />
   </head>
   <body class="ds-content">
@@ -284,9 +284,53 @@
             });
           });
         </script>
+
+        <h2>Modal Dialog example</h2>
+        <ds-button id="modal-toggle">Open Modal</ds-button>
+        <ds-modal-dialog
+          is-open="false"
+          root-id="modal-dialog"
+          alert="false"
+          size="wide"
+          backdrop-click-exits="true"
+        >
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+              lacinia, eget tempor purus placerat.
+            </p>
+            <div slot="heading">
+              <h2>This is the modal heading.</h2>
+            </div>
+            <div slot="actions">
+              <form method="dialog">
+                <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1"
+                  >Reset</ds-button
+                >
+                <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+              </form>
+            </div>
+          </div>
+        </ds-modal-dialog>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', (event) => {
+            const modal = document.querySelector('ds-modal-dialog');
+            const toggleButton = document.getElementById('modal-toggle');
+
+            const openModal = () => {
+              modal?.setAttribute('is-open', 'true');
+            };
+
+            modal?.addEventListener('ds-exit', () => {
+              modal?.setAttribute('is-open', 'false');
+            });
+            toggleButton?.addEventListener('click', openModal);
+          });
+        </script>
       </div>
     </main>
     <!-- END WEB COMPONENT EXAMPLES -->
-    <script src="https://design.cms.gov/cdn/design-system/11.0.0/web-components/bundle/web-components.js"></script>
+    <script src="https://design.cms.gov/cdn/design-system/11.1.0/web-components/bundle/web-components.js"></script>
   </body>
 </html>

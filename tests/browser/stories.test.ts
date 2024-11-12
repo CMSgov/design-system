@@ -29,6 +29,8 @@ const storySkipList = [
   'healthcare-privacysettingslink--default',
   'healthcare-privacysettingslink--custom-content',
   'web-components-ds-accordion-item--default', // Redundant
+  'web-components-ds-modal-dialog--default', // Doesn't show the open dialog
+  'web-components-ds-modal-dialog--prevent-scroll-example', // Doesn't show the open dialog
 ];
 
 const storyUseAxeLegacyModeList = [

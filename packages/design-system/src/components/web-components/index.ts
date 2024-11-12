@@ -22,6 +22,7 @@ import './ds-date-field';
 import './ds-drawer';
 import './ds-dropdown';
 import './ds-filter-chip';
+import './ds-modal-dialog';
 import './ds-month-picker';
 import './ds-review';
 import './ds-skip-nav';

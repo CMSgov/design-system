@@ -1,0 +1,1 @@
+import './ds-modal-dialog';
