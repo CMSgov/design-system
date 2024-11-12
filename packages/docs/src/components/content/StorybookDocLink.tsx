@@ -1,6 +1,6 @@
 import { makeStorybookUrl } from '../../helpers/urlUtils';
 
-interface ReactDocsLinkProps {
+interface StorybookDocLinkProps {
   /**
    * Name of component
    */
@@ -10,10 +10,14 @@ interface ReactDocsLinkProps {
    */
   storyId: string;
   theme: string;
+  /**
+   * Type of documentation, React or Web Component.
+   */
+  tech?: 'react' | 'wc';
 }
 
-const ReactDocsLink = ({ storyId, theme, children }: ReactDocsLinkProps) => (
+const StorybookDocLink = ({ storyId, theme, children, tech = 'react' }: StorybookDocLinkProps) => (
   <a href={makeStorybookUrl(storyId, theme, 'docs')}>Storybook &quot;{children}&quot; page</a>
 );
 
-export default ReactDocsLink;
+export default StorybookDocLink;
