@@ -319,6 +319,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --font-family-button: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-heading: 'Lexend', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+--font-family-pagination: 'Public Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-line-height-base: 1.5;
 --font-line-height-heading: 1.2999999523162842;
 --font-line-height-lead: 1.7000000476837158;
@@ -806,6 +807,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --font-family-button: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-heading: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+--font-family-pagination: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-line-height-base: 1.5;
 --font-line-height-heading: 1.2999999523162842;
 --font-line-height-lead: 1.7000000476837158;
@@ -1293,6 +1295,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --font-family-button: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-heading: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+--font-family-pagination: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-line-height-base: 1.5;
 --font-line-height-heading: 1.2999999523162842;
 --font-line-height-lead: 1.7000000476837158;
@@ -1778,6 +1781,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --font-family-button: 'Rubik', 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
 --font-family-heading: 'Montserrat', 'Avenir', 'Corbel', 'URW Gothic', 'source-sans-pro', 'sans-serif';
 --font-family-link: 'Rubik', 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
+--font-family-pagination: 'Montserrat', 'Avenir', 'Corbel', 'URW Gothic', 'source-sans-pro', 'sans-serif';
 --font-line-height-base: 1.5;
 --font-line-height-heading: 1.2999999523162842;
 --font-line-height-lead: 1.7000000476837158;
