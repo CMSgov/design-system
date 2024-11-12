@@ -386,7 +386,6 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   if (!template) {
     template = document.createElement('template');
     if (addedNodes) {
-      console.log('appending content!');
       const span = document.createElement('span');
       span.append(...addedNodes);
       template.content.append(span);
