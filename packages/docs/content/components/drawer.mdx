@@ -14,9 +14,9 @@ medicare:
   figmaNodeId: 6-91
 ---
 
-On large screens it's fixed to the side of the screen, and on smaller screens it overlays the entire screen.
+A `Drawer` is a component that provides a space for displaying medium to long-form content. It is designed to present information that may be too lengthy or too specific to be included on the page by default. The content can include a mix of text, HTML elements, or other components, allowing for flexibility in displaying information such as forms, images, links, or lists.
 
-Render the drawer below the toggle button that triggers it. This way the markup remains semantically sound and screen reader friendly.
+The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions, making it a great choice for situations where gathering insights on how users engage with help content is important.
 
 ## Examples
 
@@ -78,36 +78,38 @@ This component has analytics tracking available. Please see our developer docume
 <ThemeContent onlyThemes={['medicare']}>
 
 - All help drawer links will include a help icon with the link to indicate the link is a help option.
-- All help drawer links are clickable.
 
 </ThemeContent>
 
-### When to use
+### When to use 
+`Drawer`
 
-- When users need content to remain viewable while also allowing the user to view and/or interact with the main page.
-- When the content is longer than 2 sentences.
-- When the content needs to be available at a particular point in the process, but doesn't need to be included on the main page.
-- When the content just needs to be available at the user's discretion, to provide additional details or context.
-- When users may need additional information to complete the task than can be supplied on the main page without overwhelming the primary content.
+- When users need additional information that should remain viewable while they interact with the main page, such as detailed explanations, guidelines, or interactive elements like forms.
+- When supplementary, non-time-sensitive information is helpful at a specific point in the user’s journey but does not need to be displayed on the main page. This allows users to access helpful context or additional details at their discretion without interrupting the flow of the main task.
+- When optional information is needed to complete a task without overwhelming the primary content on the page.
 
-### When to consider alternatives
+`HelpDrawer`
+- When you need to track how users interact with the content, such as monitoring how often the drawer is opened or engaged with.
 
-- When the content is timely/urgent, or critical to the action being taken.
-- When the content is intended to clarify or call attention to other content on the page.
-- When the content must be displayed without being initiated by a user action.
-- When additional information is necessary to the primary information the user is interacting with.
+### When to Consider Alternatives
+
+- When the information is timely, urgent, or critical to the action being taken. Drawers are intended for supplementary details that users can access at their discretion. For time-sensitive or essential information, consider using more prominent inline elements to ensure users don’t miss it.
+- When the information needs to be immediately visible to clarify or support a primary task. Since `Drawers` require an extra step to open, they are not ideal for essential information that users must see to complete a task or understand other content.
+- When the information must be displayed automatically without user initiation. `Drawers` rely on users selecting a link or button to open them. If content needs to appear automatically, such as onboarding tips or error messages, consider inline options that don’t require user action.
 
 ### Usage
 
-- Link text used to trigger the help drawer should be specific and descriptive.
-  - Avoid using only "Learn more" to link to help drawer content
-  - Limit the amount of link text
-- Drawer content area should include a close button clearly at the top.
+- Link text used to trigger the `Drawer` should be specific and descriptive.
+  - Avoid using only "Learn more" to link to help `Drawer` content.
+  - Limit the amount of link text.
+- `Drawer` content area should include a close button clearly at the top.
+- On larger screens, the `Drawer` is fixed to the side of the screen, whereas on smaller screens, it overlays the entire screen.
 
 ### Accessibility
 
-- Drawer should have an `aria-labelledby` attribute that references the `id` of heading in the Drawer.
-- The heading level used within the Drawer should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the Drawer toggle link is an `<h2>`, the heading level of the Drawer would most likely be an `<h3>`.
+- The `Drawer` should have an `aria-labelledby` attribute that references the `id` of the heading in the `Drawer`.
+- The `Drawer` markup should be placed after the toggle element that triggers it in the HTML structure. This keeps the markup semantically sound and improves accessibility for screen readers.
+- The heading level used within the `Drawer` should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the `Drawer` toggle link is an `<h2>`, the heading level of the `Drawer` would most likely be an `<h3>`.
 
 #### Focus Management
 

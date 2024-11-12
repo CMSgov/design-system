@@ -1,17 +1,17 @@
 [
   [
     "children",
-    "Limited to `ds-tab-panel` components.",
-    ""
+    "Each child should be a <ds-tab-panel> with attributes like id, selected, etc. See Docs above for full details.",
+    "See description"
   ],
   [
     "default-selected-id",
-    "Sets the id of the `ds-tab-panel` that is initially selected.",
+    "Sets the id of the ds-tab-panel that is initially selected.",
     "string"
   ],
   [
     "selected-id",
-    "Sets the initial selected state to the specified `ds-tab-panel` id. Use this in combination with `onChange` for a controlled component; otherwise, set `defaultSelectedId`",
+    "Sets the initial selected state to the specified ds-tab-panel id. Use this in combination with onChange for a controlled component; otherwise, set defaultSelectedId",
     "string"
   ],
   [
@@ -21,7 +21,7 @@
   ],
   [
     "tabs-aria-label",
-    "Provides an accessible description of the tabs component for screen readers. This is an alias for the `ariaLabel` prop, which can be used to provide context-specific labels for accessibility purposes.",
+    "Provides an accessible description of the tabs component for screen readers. This is an alias for the ariaLabel prop, which can be used to provide context-specific labels for accessibility purposes.",
     "string"
   ]
 ]
