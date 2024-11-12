@@ -19,10 +19,12 @@ export class App {
   @ViewChild('myAlert') myAlert!: ElementRef;
 
   onButtonClick() {
+    this.hideButton = true;
     this.alertVariation = 'success';
     this.alertHeading = 'You did it!';
+    // Temporary workaround for components not responding to dynamic content changes made
+    // by Angular templates
     this.myAlert.nativeElement.innerHTML = 'You successfully clicked a button.';
-    this.hideButton = true;
   }
 }
 
