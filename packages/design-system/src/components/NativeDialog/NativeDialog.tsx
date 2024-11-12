@@ -116,7 +116,7 @@ export const NativeDialog = ({
         rect.left <= event.clientX &&
         event.clientX <= rect.left + rect.width;
       if (!isInDialog) {
-        exit();
+        exit(event);
       }
     };
     dialogNode.addEventListener('click', handleClick);
