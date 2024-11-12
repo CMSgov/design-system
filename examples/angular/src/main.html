@@ -7,39 +7,20 @@
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>This is an example showing how to use our library of interactive web components.</p>
 
-      <ds-spinner aria-valuetext="aria sets spinner label!"
-        >children don't set spinner label</ds-spinner
+      <ds-alert
+        heading="{{alertHeading}}"
+        [attr.variation]="alertVariation ?? null"
+        class="ds-u-margin-y--2"
+        #myAlert
       >
-
-      <ds-alert variation="success" #whateverVariableName>
-        <p id="alert-content">
-          This is an example of a success alert. If you want to see an error alert, click the button
-          below. Counter: {{counter}}
-        </p>
-        <ds-button
-          (click)="incrementCounter()"
-          variation="solid"
-          is-alternate="true"
-          id="the-button"
-          class="ds-u-margin-top--1"
-          >Break things</ds-button
-        >
+        In accordance with HIPAA, this application does not store any data. All data is stored
+        locally on your computer and is not transmitted to any external servers. The data you enter
+        into this application is not stored or shared with anyone.
       </ds-alert>
 
-      <ds-button
-        (click)="incrementCounter()"
-        variation="solid"
-        is-alternate="true"
-        id="the-button"
-        class="ds-u-margin-top--1"
-        >Increment</ds-button
+      <ds-button (click)="onButtonClick()" variation="solid" *ngIf="!hideButton"
+        >Click here</ds-button
       >
-
-      <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
-        <div slot="checked-children">
-          <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
-        </div>
-      </ds-choice>
 
       <ds-accordion bordered="true" class="ds-u-margin-top--2">
         <ds-accordion-item heading="First Amendment" default-open="true">
@@ -63,12 +44,21 @@
         hint="Select many."
         name="fooPicker"
         label="Select any months you want!"
-        (ds-change)="helloWorld()"
       >
         <input type="checkbox" value="10" checked />
         <input type="checkbox" value="11" checked disabled />
         <input type="checkbox" value="12" disabled />
       </ds-month-picker>
+
+      <ds-spinner aria-valuetext="aria sets spinner label!"
+        >children don't set spinner label</ds-spinner
+      >
+
+      <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
+        <div slot="checked-children">
+          <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
+        </div>
+      </ds-choice>
 
       <ds-choice-list type="radio" label="Choice list example" name="foo">
         <ds-choice label="Choice without associated children" value="no children" />

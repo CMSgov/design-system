@@ -92,7 +92,6 @@ function createCustomElement<T>(
     __options = options;
     __mutationObserver;
     __propsSignal;
-    __pollInterval;
 
     static observedAttributes = ['props', ...attributes];
 
