@@ -5,9 +5,10 @@
 .ds-c-usa-banner {
   // The following local CSS vars aren't meant to be themed; they're meant to be consistent across all CMS properties.
   // System font stack was chosen to avoid having users download unnecessary fonts just for the banner.
-  --font-family: 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial',
-    sans-serif;
+  --font-family: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans',
+    'Arial', sans-serif;
   --heading__line-height: 1.1;
+  --font-weight-bold: 700;
 
   // Hardcoding colors to prevent theming
   // Couldn't use util classes because each theme has a different color scheme
@@ -19,6 +20,12 @@
   // Allow applications to override this color. We don't define this variable
   color: var(--usa-banner-color, inherit);
   font-family: var(--font-family);
+
+  // Font weight should not be theme-able.
+  b,
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
 }
 
 .ds-c-usa-banner__header,
