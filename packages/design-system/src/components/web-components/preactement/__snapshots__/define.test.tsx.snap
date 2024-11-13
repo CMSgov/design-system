@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`define() when run in the browser renders child HTML 1`] = `
+<description-pair
+  term="supercalifragilisticexpialidocious"
+>
+  <dt>
+    supercalifragilisticexpialidocious
+  </dt>
+  <dd>
+    Something to say when the 
+    <a
+      href="#cat"
+    >
+      cat's got your tongue
+    </a>
+  </dd>
+  <template />
+</description-pair>
+`;

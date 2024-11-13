@@ -19,23 +19,16 @@ function sleep(ms) {
 
 /* -----------------------------------
  *
- * IProps
- *
- * -------------------------------- */
-
-interface IProps {
-  customTitle?: string;
-  value: string;
-  children?: any;
-}
-
-/* -----------------------------------
- *
  * Component
  *
  * -------------------------------- */
 
-function Message({ customTitle, value, children }: IProps) {
+interface MessageProps {
+  customTitle?: string;
+  value: string;
+  children?: any;
+}
+function Message({ customTitle, value, children }: MessageProps) {
   return (
     <>
       {customTitle && <h2>{customTitle}</h2>}
@@ -44,6 +37,21 @@ function Message({ customTitle, value, children }: IProps) {
     </>
   );
 }
+define('basic-message', () => Message, { attributes: ['custom-title', 'value'] });
+
+interface DescriptionPairProps {
+  term: string;
+  children: any;
+}
+function DescriptionPair({ term, children }: DescriptionPairProps) {
+  return (
+    <>
+      <dt>{term}</dt>
+      <dd>{children}</dd>
+    </>
+  );
+}
+define('description-pair', () => DescriptionPair, { attributes: ['term'] });
 
 /* -----------------------------------
  *
@@ -70,9 +78,7 @@ describe('define()', () => {
     it('validates tag name value with prefix if needed', () => {
       const props = { value: 'propsValue' };
 
-      define('component-message', () => Message);
-
-      const element = document.createElement('component-message');
+      const element = document.createElement('basic-message');
       element.setAttribute('props', JSON.stringify(props));
       root.appendChild(element);
 
@@ -82,9 +88,7 @@ describe('define()', () => {
     it('renders component correctly when from props attribute', async () => {
       const props = { value: 'propsValue' };
 
-      define('message-one', () => Message);
-
-      const element = document.createElement('message-one');
+      const element = document.createElement('basic-message');
       element.setAttribute('props', JSON.stringify(props));
       root.appendChild(element);
 
@@ -95,9 +99,7 @@ describe('define()', () => {
       const props = { value: 'jsonValue' };
       const json = `<script type="application/json">${JSON.stringify(props)}</script>`;
 
-      define('message-two', () => Message);
-
-      const element = document.createElement('message-two');
+      const element = document.createElement('basic-message');
       element.innerHTML = json;
       root.appendChild(element);
 
@@ -109,9 +111,7 @@ describe('define()', () => {
       const json = `<script type="application/json">${JSON.stringify(props)}</script>`;
       const html = '<p data-title="test">Testing</p><br><button title="test">Click here</button>';
 
-      define('message-three', () => Message);
-
-      const element = document.createElement('message-three');
+      const element = document.createElement('basic-message');
       element.innerHTML = json + html;
       root.appendChild(element);
 
@@ -123,9 +123,7 @@ describe('define()', () => {
       const json = `<script type="application/json">${JSON.stringify(props)}</script>`;
       const html = '<p>Server rendered!</p><button>Click here</button>';
 
-      define('message-four', () => Message);
-
-      const element = document.createElement('message-four');
+      const element = document.createElement('basic-message');
       element.setAttribute('server', '');
       element.innerHTML = json + html;
       root.appendChild(element);
@@ -270,9 +268,7 @@ describe('define()', () => {
       const customTitle = '<em>customTitle</em>';
       const html = `<div slot="customTitle">${customTitle}</div>`;
 
-      define('message-twelve', () => Message);
-
-      const element = document.createElement('message-twelve');
+      const element = document.createElement('basic-message');
       element.innerHTML = html;
       root.appendChild(element);
 
@@ -284,9 +280,7 @@ describe('define()', () => {
       const customText = 'Lorem ipsum dolor';
       const html = `<div slot="customTitle">${customTitle}</div><p>${customText}</p>`;
 
-      define('message-thirteen', () => Message);
-
-      const element = document.createElement('message-thirteen');
+      const element = document.createElement('basic-message');
       const wrapper = document.createElement('main');
       element.innerHTML = html;
       root.appendChild(element);
@@ -299,6 +293,57 @@ describe('define()', () => {
       wrapper.appendChild(element);
 
       expect(root.innerHTML).toContain(`<h2>${customTitle}</h2><em></em><p>${customText}</p>`);
+    });
+
+    it('renders child HTML', () => {
+      const term = 'supercalifragilisticexpialidocious';
+      const html = 'Something to say when the <a href="#cat">cat\'s got your tongue</a>';
+
+      const element = document.createElement('description-pair');
+      // @ts-ignore
+      element.term = term;
+      element.innerHTML = html;
+      root.appendChild(element);
+
+      expect(root.querySelector('a')).toBeInTheDocument();
+      expect(root.querySelector('description-pair')).toMatchSnapshot();
+    });
+
+    it('responds to replacement of child HTML', async () => {
+      const term = 'supercalifragilisticexpialidocious';
+      const html1 = 'Something to say when the <a href="#cat">cat\'s got your tongue</a>';
+      const html2 = 'The biggest word you ever heard';
+
+      const element = document.createElement('description-pair');
+      // @ts-ignore
+      element.term = term;
+      element.innerHTML = html1;
+      root.appendChild(element);
+
+      expect(root.querySelector('a')).toBeInTheDocument();
+
+      element.innerHTML = html2;
+      await sleep(20);
+      expect(root.querySelector('dd').textContent).toEqual(html2);
+      expect(root.querySelector('a')).not.toBeInTheDocument();
+    });
+
+    it('responds to late additions of direct children', async () => {
+      const term = 'supercalifragilisticexpialidocious';
+      const html = 'Something to say when the <a href="#cat">cat\'s got your tongue</a>';
+
+      const element = document.createElement('description-pair');
+      // @ts-ignore
+      element.term = term;
+      root.appendChild(element);
+
+      expect(root.querySelector('a')).not.toBeInTheDocument();
+
+      element.innerHTML = html;
+      await sleep(20);
+      const dd = root.querySelector('dd');
+      expect(dd).toBeInTheDocument();
+      expect(dd.querySelector('a')).toBeInTheDocument();
     });
 
     it('creates custom events', () => {
