@@ -107,8 +107,8 @@ function createCustomElement<T>(
       onDisconnected.call(this);
     }
 
-    public renderPreactComponent() {
-      renderPreactComponent.call(this);
+    public renderPreactComponent(addedNodes?: Node[]) {
+      renderPreactComponent.call(this, addedNodes);
     }
   }
 
@@ -207,8 +207,12 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
  */
 function setupMutationObserver(this: CustomElement) {
   this.__mutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
-    if (mutations.find((mutation: MutationRecord) => mutation.type === 'childList')) {
-      this.renderPreactComponent();
+    const childListMutations = mutations.filter(
+      (mutation: MutationRecord) => mutation.type === 'childList'
+    );
+    if (childListMutations.length) {
+      const addedNodes = childListMutations.flatMap((mutation) => [...mutation.addedNodes]);
+      this.renderPreactComponent(addedNodes);
     }
   });
 }
@@ -299,6 +303,11 @@ function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
   return childNode.nodeName.toLowerCase() === 'template';
 }
 
+function isEmptyTemplate(template: HTMLTemplateElement): boolean {
+  const wrapperSpan = template.content.firstChild;
+  return !wrapperSpan || wrapperSpan.childNodes.length === 0;
+}
+
 /**
  * Because bare text content in the root of a template element doesn't get parsed into
  * its document fragment by the browser, we need to wrap our input content in an element
@@ -345,7 +354,7 @@ function unwrapTemplateVNode(vnode: VNode): VNode {
  * Users can also replace the content by setting the innerHTML to something new, and
  * we'll just treat it as new input if we don't find the cached template element!
  */
-function renderPreactComponent(this: CustomElement) {
+function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
@@ -359,9 +368,30 @@ function renderPreactComponent(this: CustomElement) {
   // Putting the original inner content into a template also allows us to keep a copy of
   // it for future renders where context has been lost (see function documentation).
   let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  if (template && isEmptyTemplate(template)) {
+    // Web components rendered with Angular will have no innerHTML content at first, even
+    // if content was placed between the tags in the Angular template. In that case when
+    // we do our first render pass executing this function, we will generate an empty
+    // internal template because it gets filled with non-existent innerHTML. So when we
+    // perform a subsequent render, if our previous template is empty, we want to both
+    // start over with a new template and remove the old one so it doesn't make its way
+    // into the new. Even if the empty template is a false positive for this Angular
+    // behavior, there's no harm in replacing it with a new empty template, but there
+    // _is_ harm in leaving a non-empty template to duplicate its content by using it in
+    // the inner HTML that will go into a new template (which results in buttons inside
+    // of buttons and things like that).
+    template.remove();
+    template = undefined;
+  }
   if (!template) {
     template = document.createElement('template');
-    template.innerHTML = wrapTemplateHtml(this.innerHTML);
+    if (addedNodes) {
+      const span = document.createElement('span');
+      span.append(...addedNodes);
+      template.content.append(span);
+    } else {
+      template.innerHTML = wrapTemplateHtml(this.innerHTML);
+    }
   }
   const { vnode, slots } = templateToPreactVNode(template);
 
