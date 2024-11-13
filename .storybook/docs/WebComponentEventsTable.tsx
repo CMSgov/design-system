@@ -1,4 +1,4 @@
-import { useOf } from '@storybook/blocks';
+import { Markdown, useOf } from '@storybook/blocks';
 
 /**
  * A table documenting a web component's custom events
@@ -19,10 +19,14 @@ export const WebComponentEventsTable = ({ of }) => {
         <strong>{eventName}</strong>
       </td>
       <td>
-        <p>{event?.description ?? ''}</p>
+        <p>
+          <Markdown>{event?.description ?? ''}</Markdown>
+        </p>
       </td>
       <td>
-        <p>{event.eventObjectDescription}</p>
+        <p>
+          <Markdown>{event.eventObjectDescription}</Markdown>
+        </p>
       </td>
     </tr>
   ));
