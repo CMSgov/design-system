@@ -981,6 +981,16 @@
               "codeSyntax": {}
             }
           }
+        },
+        "pagination": {
+          "$value": "{font.family.public-sans}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
         }
       },
       "weight": {
