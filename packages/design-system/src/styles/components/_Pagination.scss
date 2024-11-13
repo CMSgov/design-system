@@ -24,6 +24,7 @@
   .ds-c-button {
     color: var(--pagination-link__color);
     font-weight: var(--font-weight-normal);
+    font-family: var(--font-family-pagination);
     min-width: 44px;
     padding: $spacer-1 0;
   }
