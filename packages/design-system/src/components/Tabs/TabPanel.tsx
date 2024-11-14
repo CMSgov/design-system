@@ -44,7 +44,6 @@ export const TabPanel = (props: TabPanelProps) => {
     <div
       aria-labelledby={props.tabId}
       aria-hidden={!props.selected}
-      aria-disabled={props.disabled}
       className={classes}
       id={props.id}
       role="tabpanel"
