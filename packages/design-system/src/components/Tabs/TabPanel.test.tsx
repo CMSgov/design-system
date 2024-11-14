@@ -30,7 +30,6 @@ describe('TabPanel', () => {
     expect(tabPanelEl).toBeDefined();
     expect(tabPanelEl.getAttribute('aria-labelledby')).toBe(defaultProps.tabId);
     expect(tabPanelEl.getAttribute('aria-hidden')).toBe('false');
-    expect(tabPanelEl.getAttribute('aria-disabled')).toBe(null);
   });
 
   it('adds additional class names', () => {
@@ -42,9 +41,9 @@ describe('TabPanel', () => {
     expect(tabPanelEl.classList).toContain('ds-c-tabs__panel');
   });
 
-  it('sets aria-disabled', () => {
+  it('sets aria-hidden="true" if tabPanel is disabled', () => {
     renderTabPanel({ disabled: true });
     const tabPanelEl = screen.getByRole('tabpanel', { hidden: true });
-    expect(tabPanelEl.getAttribute('aria-disabled')).toBe('true');
+    expect(tabPanelEl).toHaveAttribute('aria-hidden', 'true');
   });
 });
