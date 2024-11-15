@@ -22,6 +22,14 @@ const computePassToFailRate = (passCount: number, failCount: number) => {
 };
 
 const analyzeBuilds = async (latestBuildNumber: number, numberOfDays: number) => {
+  // Handle the single build case.
+  if (numberOfDays < 2) {
+    const buildData = await fetchBuildData(latestBuildNumber);
+
+    console.log(`Build #${latestBuildNumber}: ${buildData.result === 'SUCCESS' ? 'Pass' : 'Fail'}`);
+    return;
+  }
+
   const startBuildNumber = computeRange(latestBuildNumber, numberOfDays);
   const endBuildNumber = latestBuildNumber;
 
