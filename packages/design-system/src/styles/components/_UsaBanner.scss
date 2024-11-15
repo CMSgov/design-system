@@ -3,8 +3,6 @@
 @use '../base' as *;
 
 .ds-c-usa-banner {
-  // The following local CSS vars aren't meant to be themed; they're meant to be consistent across all CMS properties.
-  // System font stack was chosen to avoid having users download unnecessary fonts just for the banner.
   --font-family: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans',
     'Arial', sans-serif;
   --heading__line-height: 1.1;
