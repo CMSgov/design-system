@@ -1,5 +1,11 @@
 /*
-Placeholder function that should fetch data from jenkins API for a givne build number.
+Placeholder function that should fetch data from the jenkins API for a given build number.
+
+TODO:
+1. Implement the actual logic to fetch data from the jenkins API.
+2. Handle cases where build data is not available (e.g., network errors or missing data).
+   - In such cases, skip to the next build, and log the build number as "unavailable."
+3. Add a mechanism to respect rate limits if making multiple API calls.
 */
 const fetchBuildData = async (buildNumber: number) => {
   return {
