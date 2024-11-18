@@ -29,7 +29,6 @@ const loginAndAnalyzeBuilds = async (
     ]);
     console.log('Login successful.');
 
-    // Step 2: Analyze builds
     const startBuildNumber = latestBuildNumber - numberOfDays + 1;
     console.log(`Analyzing builds from ${startBuildNumber} to ${latestBuildNumber}...`);
 
@@ -94,7 +93,6 @@ const loginAndAnalyzeBuilds = async (
   }
 };
 
-// Example usage
 const latestBuildNumber = parseInt(process.argv[2], 10);
 const numberOfDays = parseInt(process.argv[3], 10) || 1;
 const username = process.env.JENKINS_ID || '';
