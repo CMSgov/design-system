@@ -173,5 +173,8 @@
   },
   "resolutions": {
     "react-docgen-typescript": "2.3.0-beta.0"
+  },
+  "dependencies": {
+    "puppeteer": "^23.8.0"
   }
 }
