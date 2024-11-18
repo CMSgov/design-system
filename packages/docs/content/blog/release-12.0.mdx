@@ -1,0 +1,9 @@
+---
+title: Release 12.0
+date: 2024-11-18
+intro: Replacement of privacy settings dialog
+---
+
+## Removed the privacy settings dialog from the design system
+
+The analytics team at CMS is taking over the UI for users' privacy settings, so we've removed our own privacy settings dialog from this version of the design system. The healthcare.gov footer and our own doc-site footer that used to use our version of `PrivacySettingsDialog` now invoke the privacy settings dialog from the analytics script. For most product teams, this will require no changes on your end. It would only require a change if you were rendering our privacy settings dialog component directly.
