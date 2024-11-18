@@ -1,72 +1,111 @@
-/*
-Placeholder function that should fetch data from the jenkins API for a given build number.
+import puppeteer from 'puppeteer';
+import dotenv from 'dotenv';
+dotenv.config();
 
-TODO:
-1. Implement the actual logic to fetch data from the jenkins API.
-2. Handle cases where build data is not available (e.g., network errors or missing data).
-   - In such cases, skip to the next build, and log the build number as "unavailable."
-3. Add a mechanism to respect rate limits if making multiple API calls.
-*/
-const fetchBuildData = async (buildNumber: number) => {
-  return {
-    result: buildNumber % 2 === 0 ? 'SUCCESS' : 'FAILURE', // Mocking this response for now.
-  };
-};
+const loginAndAnalyzeBuilds = async (
+  latestBuildNumber: number,
+  numberOfDays: number,
+  username: string,
+  token: string
+) => {
+  const loginUrl = process.env.JENKINS_LOGIN_URL;
+  const baseApiUrl = process.env.JENKINS_BASE_API_URL;
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
 
-const computeRange = (latestBuildNumber: number, numberOfDays: number) => {
-  return latestBuildNumber - numberOfDays + 1;
-};
-
-const computePassToFailRate = (passCount: number, failCount: number) => {
-  return (passCount / (passCount + failCount)) * 100;
-};
-
-const analyzeBuilds = async (latestBuildNumber: number, numberOfDays: number) => {
-  // Handle the single build case.
-  if (numberOfDays < 2) {
-    const buildData = await fetchBuildData(latestBuildNumber);
-
-    console.log(`Build #${latestBuildNumber}: ${buildData.result === 'SUCCESS' ? 'Pass' : 'Fail'}`);
+  if (!loginUrl || !baseApiUrl) {
+    console.error('Missing environment variables. Please check your .env file.');
     return;
   }
 
-  const startBuildNumber = computeRange(latestBuildNumber, numberOfDays);
-  const endBuildNumber = latestBuildNumber;
+  try {
+    // Step 1: Login
+    console.log('Logging in to Jenkins...');
+    await page.goto(loginUrl, { waitUntil: 'networkidle2' });
+    await page.type('#j_username', username);
+    await page.type('input[name="j_password"]', token);
+    await Promise.all([
+      page.click('button[type="submit"]'),
+      page.waitForNavigation({ waitUntil: 'networkidle2' }),
+    ]);
+    console.log('Login successful.');
 
-  const failedBuilds = [];
-  let passCount = 0;
+    // Step 2: Analyze builds
+    const startBuildNumber = latestBuildNumber - numberOfDays + 1;
+    console.log(`Analyzing builds from ${startBuildNumber} to ${latestBuildNumber}...`);
 
-  console.log(`Analyzing builds from ${startBuildNumber} to ${endBuildNumber}...`);
+    const failedBuilds: number[] = [];
+    let passCount = 0;
 
-  for (let buildNumber = startBuildNumber; buildNumber <= endBuildNumber; buildNumber++) {
-    const buildData = await fetchBuildData(buildNumber);
+    for (let buildNumber = startBuildNumber; buildNumber <= latestBuildNumber; buildNumber++) {
+      console.log(`Fetching data for build #${buildNumber}...`);
+      const url = `${baseApiUrl}/${buildNumber}/api/json`;
+      try {
+        const response = await page.goto(url, { waitUntil: 'networkidle0', timeout: 10000 });
 
-    if (buildData.result === 'FAILURE') {
-      failedBuilds.push(buildNumber);
-    } else {
-      passCount++;
+        if (!response) {
+          console.log(`Build #${buildNumber}: No response from server.`);
+          continue;
+        }
+
+        const responseBody = await response.text();
+
+        if (!responseBody) {
+          console.log(`Build #${buildNumber}: Empty response body.`);
+          continue;
+        }
+
+        let data: { result?: string } | null = null;
+        try {
+          data = JSON.parse(responseBody);
+        } catch (jsonError) {
+          console.error(`Build #${buildNumber}: Failed to parse JSON.`, jsonError);
+          continue;
+        }
+
+        if (!data || !data.result) {
+          console.log(`Build #${buildNumber}: Data unavailable or missing result.`);
+          continue;
+        }
+
+        if (data.result === 'FAILURE') {
+          failedBuilds.push(buildNumber);
+        } else if (data.result === 'SUCCESS') {
+          passCount++;
+        } else {
+          console.log(`Build #${buildNumber}: Unknown result.`);
+        }
+      } catch (error) {
+        console.error(`Error fetching build #${buildNumber}: ${(error as Error).message}`);
+      }
     }
 
-    // TODO: Implement a delay between requests to avoid hitting API rate limits.
+    const failCount = failedBuilds.length;
+    const passToFailRate = (passCount / (passCount + failCount)) * 100;
+
+    console.log(`Analysis complete.`);
+    console.log(`Pass Count: ${passCount}`);
+    console.log(`Fail Count: ${failCount}`);
+    console.log(`Pass-to-Fail Rate: ${passToFailRate.toFixed(2)}%`);
+    console.log(`Failed Builds: ${failedBuilds.join(', ')}`);
+  } catch (error) {
+    console.error(`Error during execution: ${(error as Error).message}`);
+  } finally {
+    await browser.close();
   }
-
-  const failCount = failedBuilds.length;
-  const passToFailRate = computePassToFailRate(passCount, failCount);
-
-  console.log(`Analysis complete.`);
-  console.log(`Pass Count: ${passCount}`);
-  console.log(`Fail Count: ${failCount}`);
-  console.log(`Pass-to-Fail Rate: ${passToFailRate.toFixed(2)}%`);
-  console.log(`Failed Builds: ${failedBuilds.join(', ')}`);
 };
 
 // Example usage
 const latestBuildNumber = parseInt(process.argv[2], 10);
 const numberOfDays = parseInt(process.argv[3], 10) || 1;
+const username = process.env.JENKINS_ID || '';
+const token = process.env.JENKINS_PASSWORD || '';
 
-if (!latestBuildNumber) {
-  console.error('Please provide the latestBuildNumber as an argument.');
+if (!latestBuildNumber || !username || !token) {
+  console.error(
+    'Missing arguments. Please provide latestBuildNumber, and set JENKINS_ID and JENKINS_PASSWORD in the environment.'
+  );
   process.exit(1);
 }
 
-analyzeBuilds(latestBuildNumber, numberOfDays);
+loginAndAnalyzeBuilds(latestBuildNumber, numberOfDays, username, token);
