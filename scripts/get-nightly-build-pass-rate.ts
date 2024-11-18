@@ -19,7 +19,6 @@ const loginAndAnalyzeBuilds = async (
   }
 
   try {
-    // Step 1: Login
     console.log('Logging in to Jenkins...');
     await page.goto(loginUrl, { waitUntil: 'networkidle2' });
     await page.type('#j_username', username);
