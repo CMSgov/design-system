@@ -428,7 +428,7 @@ function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
 }
 
 function renderWithShadowDom(this: CustomElement) {
-  // Create an unnamed `<slot>` for the element's children
+  // Create an unnamed default `<slot>` for the element's children
   const vnode = createSlotVNode();
 
   // const { vnode: templateVNode, slots } = templateToPreactVNode(template);
@@ -438,6 +438,12 @@ function renderWithShadowDom(this: CustomElement) {
   // require no extra configuration to parse a template and extract the slots that way...
   // OR we could avoid copying into a template and just search the children for named slots
 
+  // Create named `<slot name={name}>` elements for each named slot that has been
+  // provided somewhere in this element's DOM tree. Note that for the browser to be able
+  // to link the rendered `<slot name={name}>` element to the element provided by the
+  // application (`<something slot="{name}">`), that provided element can't be a child
+  // of an element that ends up in the default slot. In other words, it needs to be at
+  // the root of the custom element.
   const slotNamesUsed = getSlotNames(this);
   const slots = Object.fromEntries(
     slotNamesUsed.map((name) => [
