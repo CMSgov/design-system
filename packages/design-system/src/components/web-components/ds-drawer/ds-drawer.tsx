@@ -78,4 +78,5 @@ define('ds-drawer', () => Wrapper, {
       }),
     ],
   ],
+  shadow: true,
 } as any);
