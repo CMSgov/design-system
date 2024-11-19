@@ -9,7 +9,7 @@ import {
   getElementAttributes,
   getAsyncComponent,
 } from './shared';
-import { nodeToPreactVNode, templateToPreactVNode } from './parse';
+import { Slots, nodeToPreactVNode, templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 import { signal } from '@preact/signals';
@@ -93,7 +93,7 @@ function createCustomElement<T>(
     __options = options;
     __mutationObserver;
     __propsSignal;
-    __root = this.attachShadow({ mode: 'open' });
+    __root = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -109,8 +109,8 @@ function createCustomElement<T>(
       onDisconnected.call(this);
     }
 
-    public renderPreactComponent(addedNodes?: Node[]) {
-      renderPreactComponent.call(this, addedNodes);
+    public forceRender(addedNodes?: Node[]) {
+      renderComponent.call(this, addedNodes);
     }
   }
 
@@ -214,7 +214,7 @@ function setupMutationObserver(this: CustomElement) {
     );
     if (childListMutations.length) {
       const addedNodes = childListMutations.flatMap((mutation) => [...mutation.addedNodes]);
-      this.renderPreactComponent(addedNodes);
+      this.forceRender(addedNodes);
     }
   });
 }
@@ -257,13 +257,15 @@ async function onConnected(this: CustomElement) {
     component = wrapComponent(component);
   }
 
-  setupMutationObserver.call(this);
-
-  addGlobalStylesToShadowRoot(this.__root);
+  if (this.__options.shadow) {
+    addGlobalStylesToShadowRoot(this.__root);
+  } else {
+    setupMutationObserver.call(this);
+  }
 
   this.__component = component;
   this.removeAttribute('server');
-  this.renderPreactComponent();
+  this.forceRender();
   this.__mounted = true;
 }
 
@@ -358,79 +360,100 @@ function unwrapTemplateVNode(vnode: VNode): VNode {
  * Users can also replace the content by setting the innerHTML to something new, and
  * we'll just treat it as new input if we don't find the cached template element!
  */
-function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
+function renderComponent(this: CustomElement, addedNodes?: Node[]) {
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
   }
 
-  const bob = document.createElement('slot');
-  // const button = document.createElement('button');
-  // button.addEventListener('click', () => {console.log('yoyoyoy!')});
-  // button.textContent = 'Hello world';
-  // bob.appendChild(button);
-  // this.appendChild(bob);
+  if (this.__options.shadow) {
+    renderWithShadowDom.call(this);
+  } else {
+    renderWithoutShadowDom.call(this, addedNodes);
+  }
+}
 
+function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
   // We don't want the mutation observer responding to all the changes we make in this
   // function, or we'll get an endless feedback loop of change and re-render.
   this.__mutationObserver?.disconnect();
 
-  // // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
-  // // Putting the original inner content into a template also allows us to keep a copy of
-  // // it for future renders where context has been lost (see function documentation).
-  // let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
-  // if (template && isEmptyTemplate(template)) {
-  //   // Web components rendered with Angular will have no innerHTML content at first, even
-  //   // if content was placed between the tags in the Angular template. In that case when
-  //   // we do our first render pass executing this function, we will generate an empty
-  //   // internal template because it gets filled with non-existent innerHTML. So when we
-  //   // perform a subsequent render, if our previous template is empty, we want to both
-  //   // start over with a new template and remove the old one so it doesn't make its way
-  //   // into the new. Even if the empty template is a false positive for this Angular
-  //   // behavior, there's no harm in replacing it with a new empty template, but there
-  //   // _is_ harm in leaving a non-empty template to duplicate its content by using it in
-  //   // the inner HTML that will go into a new template (which results in buttons inside
-  //   // of buttons and things like that).
-  //   template.remove();
-  //   template = undefined;
-  // }
-  // if (!template) {
-  //   template = document.createElement('template');
-  //   if (addedNodes) {
-  //     const span = document.createElement('span');
-  //     span.append(...addedNodes);
-  //     template.content.append(span);
-  //   } else {
-  //     template.innerHTML = wrapTemplateHtml(this.innerHTML);
-  //   }
-  // }
-  // const { vnode, slots } = templateToPreactVNode(template);
-  const { vnode, slots } = nodeToPreactVNode(bob);
+  // We use a template to parse our innerHTML and turn it into Preact Virtual DOM (vnode)
+  // Putting the original inner content into a template also allows us to keep a copy of
+  // it for future renders where context has been lost (see function documentation).
+  let template: HTMLTemplateElement | undefined = [...this.childNodes].find(isTemplate);
+  if (template && isEmptyTemplate(template)) {
+    // Web components rendered with Angular will have no innerHTML content at first, even
+    // if content was placed between the tags in the Angular template. In that case when
+    // we do our first render pass executing this function, we will generate an empty
+    // internal template because it gets filled with non-existent innerHTML. So when we
+    // perform a subsequent render, if our previous template is empty, we want to both
+    // start over with a new template and remove the old one so it doesn't make its way
+    // into the new. Even if the empty template is a false positive for this Angular
+    // behavior, there's no harm in replacing it with a new empty template, but there
+    // _is_ harm in leaving a non-empty template to duplicate its content by using it in
+    // the inner HTML that will go into a new template (which results in buttons inside
+    // of buttons and things like that).
+    template.remove();
+    template = undefined;
+  }
+  if (!template) {
+    template = document.createElement('template');
+    if (addedNodes) {
+      const span = document.createElement('span');
+      span.append(...addedNodes);
+      template.content.append(span);
+    } else {
+      template.innerHTML = wrapTemplateHtml(this.innerHTML);
+    }
+  }
+  const { vnode: templateVNode, slots } = templateToPreactVNode(template);
 
   // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
   // in the original innerHTML. To keep that from getting passed to the Preact component,
   // we need to unwrap our vnode before we pass it as the `children` prop.
-  // const children = unwrapTemplateVNode(vnode);
-  const children = vnode;
+  const children = unwrapTemplateVNode(templateVNode);
 
+  // TODO: Clearing everything before the Preact component render only appears to be
+  // necessary for the unit tests. I haven't figured out why yet.
+  [...this.childNodes].forEach((childNode) => childNode.remove());
+
+  renderPreactComponent.call(this, { vnode: children, slots });
+
+  // The Preact render would have removed this template, so add it back in
+  this.appendChild(template);
+
+  // Reinstate the mutation observer to watch for user changes
+  this.__mutationObserver.observe(this, { childList: true });
+}
+
+function renderWithShadowDom(this: CustomElement) {
+  const childrenSlot = document.createElement('slot');
+
+  const { vnode, slots } = nodeToPreactVNode(childrenSlot);
+
+  renderPreactComponent.call(this, { vnode, slots });
+}
+
+function renderPreactComponent(
+  this: CustomElement,
+  {
+    vnode,
+    slots,
+  }: {
+    vnode: VNode;
+    slots: Slots;
+  }
+) {
   // If we were to call this function that we're in every time a prop changed, it would
   // clobber the internal state of our underlying Preact component. To avoid this, we're
   // going to tie our attributes (props) to Preact Signals that we can use to trigger
   // re-rendering a `StateWrapper` component.
   const propsSignal = signal(this.__properties);
   this.__propsSignal = propsSignal;
-  const StateWrapper = () => h(this.__component, { ...propsSignal.value, ...slots, children });
-
-  // TODO: Clearing everything before the Preact component render only appears to be
-  // necessary for the unit tests. I haven't figured out why yet.
-  // [...this.childNodes].forEach((childNode) => childNode.remove());
+  const StateWrapper = () =>
+    h(this.__component, { ...propsSignal.value, ...slots, children: vnode });
 
   // Render the Preact component to the root of this custom element
   render(h(StateWrapper, {}), this.__root);
-
-  // The Preact render would have removed this template, so add it back in
-  // this.appendChild(template);
-
-  // Reinstate the mutation observer to watch for user changes
-  this.__mutationObserver.observe(this, { childList: true });
 }

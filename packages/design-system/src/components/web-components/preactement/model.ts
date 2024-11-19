@@ -33,6 +33,7 @@ interface IOptions {
   events?: Array<string | readonly [string, (...args: any[]) => CustomEventInit<unknown>]>;
   formatProps?: <P = any>(props: P) => P;
   wrapComponent?: <P>(child: ComponentFactory<P>) => ComponentFactory<P>;
+  shadow?: boolean;
 }
 
 /* -----------------------------------

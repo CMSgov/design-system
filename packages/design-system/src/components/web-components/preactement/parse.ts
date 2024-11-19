@@ -1,7 +1,7 @@
 import { h, Fragment, VNode } from 'preact';
 import { getAttributeObject, selfClosingTags, getPropKey } from './shared';
 
-type Slots = { [k: string]: VNode<any> | string };
+export type Slots = { [k: string]: VNode<any> | string };
 
 /**
  * Takes a template element and converts its content into a Preact VNode and also

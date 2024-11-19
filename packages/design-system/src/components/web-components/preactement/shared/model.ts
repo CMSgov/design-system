@@ -29,6 +29,7 @@ interface IOptions<F = any, W = any> {
   events?: Array<string | readonly [string, (...args: any[]) => CustomEventInit<unknown>]>;
   formatProps?: (props: any) => F;
   wrapComponent?: (child: any) => W;
+  shadow?: boolean;
 }
 
 /* -----------------------------------
@@ -59,9 +60,9 @@ interface CustomElement<CF = any, C = any> extends HTMLElement {
   __options: IOptions;
   __mutationObserver?: MutationObserver;
   __propsSignal: Signal;
-  __root: ShadowRoot;
+  __root: Element | ShadowRoot;
 
-  renderPreactComponent(addedNodes?: Node[]): void;
+  forceRender(addedNodes?: Node[]): void;
 }
 
 /* -----------------------------------
