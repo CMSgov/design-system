@@ -36,4 +36,4 @@ const Wrapper = ({ defaultOpen, contentId, ...otherProps }: WrapperProps) => (
   <AccordionItem {...otherProps} defaultOpen={parseBooleanAttr(defaultOpen)} id={contentId} />
 );
 
-define('ds-accordion-item', () => Wrapper, { attributes, events: ['onChange'] } as any);
+define('ds-accordion-item', () => Wrapper, { attributes, events: ['onChange'], shadow: true });
