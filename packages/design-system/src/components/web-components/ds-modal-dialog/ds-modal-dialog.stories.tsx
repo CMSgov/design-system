@@ -12,15 +12,17 @@ const meta: Meta = {
     alert: 'false',
     'is-open': 'false',
     children: (
-      <div>
+      <>
+        <span slot="heading">
+          This is a <i>special</i> heading
+        </span>
+
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
           lacinia, eget tempor purus placerat.
         </p>
-        <div slot="heading">
-          <h2>This is the modal heading.</h2>
-        </div>
-        <div slot="actions">
+
+        <span slot="actions">
           <form method="dialog">
             <ds-button value="rstBtn" class-name="ds-u-margin-right--1">
               Reset
@@ -29,8 +31,8 @@ const meta: Meta = {
               Confirm
             </ds-button>
           </form>
-        </div>
-      </div>
+        </span>
+      </>
     ),
   },
   argTypes: {
