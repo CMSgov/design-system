@@ -26,6 +26,10 @@ export class App {
     // by Angular templates
     this.myAlert.nativeElement.innerHTML = 'You successfully clicked a button.';
   }
+
+  onAccordionButtonClick() {
+    alert('Yes!');
+  }
 }
 
 bootstrapApplication(App);
