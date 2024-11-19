@@ -439,8 +439,15 @@ function renderWithShadowDom(this: CustomElement) {
   // OR we could avoid copying into a template and just search the children for named slots
 
   const slotNamesUsed = getSlotNames(this);
-  const slots = Object.fromEntries(slotNamesUsed.map((name) => [name, createSlotVNode(name)]));
-  console.log(slots);
+  const slots = Object.fromEntries(
+    slotNamesUsed.map((name) => [
+      // Use the camelCase prop key for passing it into the Preact component
+      getPropKey(name),
+      // But retain the same exact name so the input matches the output in the DOM and
+      // the browser can automatically link the two together.
+      createSlotVNode(name),
+    ])
+  );
 
   renderPreactComponent.call(this, { vnode, slots });
 }
