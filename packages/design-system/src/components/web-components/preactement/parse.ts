@@ -142,7 +142,7 @@ function getSlotNamesFromNode(node: Node): string[] {
     const slotsFromChildren = Array.from(node.childNodes).flatMap(getSlotNamesFromNode);
     if (slotsFromChildren.length) {
       console.error(
-        'Named slots must be defined at the root level of your web component. Found the following named slots nested within other elements:',
+        'Named slots must be defined at the root level of your web component in order for the browser to find them. Found the following named slots incorrectly nested within other elements:',
         slotsFromChildren
       );
     }
