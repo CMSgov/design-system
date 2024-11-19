@@ -132,13 +132,25 @@ function getSlotNamesFromNode(node: Node): string[] {
   // Only recurse into child nodes if this is not a custom element, because we don't care
   // what's inside that nested custom element and don't want to steal its slots.
   const isCustomElement = nodeName.includes('-');
-  const slotsFromChildren = isCustomElement
-    ? []
-    : Array.from(node.childNodes).flatMap(getSlotNamesFromNode);
+  if (!isCustomElement) {
+    // If a named slot is nested inside other elements, the browser will interpret that
+    // element as being part of the default slot content. In order for the browser to be
+    // able to link the rendered `<slot name={name}>` element to the element provided by
+    // the application (`<something slot="{name}">`), that provided element must be at
+    // the root of the custom element. Therefore, if we find named slots nested in other
+    // elements, we should warn application developers so they can fix it.
+    const slotsFromChildren = Array.from(node.childNodes).flatMap(getSlotNamesFromNode);
+    if (slotsFromChildren.length) {
+      console.error(
+        'Named slots must be defined at the root level of your web component. Found the following named slots nested within other elements:',
+        slotsFromChildren
+      );
+    }
+  }
 
   if (slot) {
-    return [slot, ...slotsFromChildren];
+    return [slot];
   } else {
-    return slotsFromChildren;
+    return [];
   }
 }
