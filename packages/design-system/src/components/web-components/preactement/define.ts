@@ -9,7 +9,7 @@ import {
   getElementAttributes,
   getAsyncComponent,
 } from './shared';
-import { Slots, nodeToPreactVNode, templateToPreactVNode } from './parse';
+import { Slots, createSlotVNode, getSlotNames, templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 import { signal } from '@preact/signals';
@@ -428,9 +428,19 @@ function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
 }
 
 function renderWithShadowDom(this: CustomElement) {
-  const childrenSlot = document.createElement('slot');
+  // Create an unnamed `<slot>` for the element's children
+  const vnode = createSlotVNode();
 
-  const { vnode, slots } = nodeToPreactVNode(childrenSlot);
+  // const { vnode: templateVNode, slots } = templateToPreactVNode(template);
+  // TODO: Need to replace each prop for which we've defined a slot with a `<slot name={name}>`
+  // While we could define each of the attributes that _could_ be a slot and replace those
+  // props that have been provided with no strings with the VDom slot element, it would
+  // require no extra configuration to parse a template and extract the slots that way...
+  // OR we could avoid copying into a template and just search the children for named slots
+
+  const slotNamesUsed = getSlotNames(this);
+  const slots = Object.fromEntries(slotNamesUsed.map((name) => [name, createSlotVNode(name)]));
+  console.log(slots);
 
   renderPreactComponent.call(this, { vnode, slots });
 }

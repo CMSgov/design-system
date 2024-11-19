@@ -108,3 +108,37 @@ function getSlotChildren(children: Array<VNode | string | null>) {
 
   return h(Fragment, {}, children);
 }
+
+export function createSlotVNode(name?: string): VNode {
+  return h('slot', { name });
+}
+
+export function getSlotNames(element: Element): string[] {
+  return Array.from(element.childNodes).flatMap(getSlotNamesFromNode);
+}
+
+function getSlotNamesFromNode(node: Node): string[] {
+  if (node.nodeType === 3 || node.nodeType !== 1) {
+    return [];
+  }
+
+  const nodeName = String(node.nodeName).toLowerCase();
+  if (nodeName === 'template') {
+    return [];
+  }
+
+  const slot = (node as Element).getAttribute('slot');
+
+  // Only recurse into child nodes if this is not a custom element, because we don't care
+  // what's inside that nested custom element and don't want to steal its slots.
+  const isCustomElement = nodeName.includes('-');
+  const slotsFromChildren = isCustomElement
+    ? []
+    : Array.from(node.childNodes).flatMap(getSlotNamesFromNode);
+
+  if (slot) {
+    return [slot, ...slotsFromChildren];
+  } else {
+    return slotsFromChildren;
+  }
+}
