@@ -122,23 +122,24 @@ const Template = (args) => {
   useEffect(() => {
     const modal = document.querySelector('ds-modal-dialog');
     const toggleButton = document.getElementById('modal-toggle');
+    const form = modal.querySelector('form[method="dialog"]');
 
-    const openModal = () => {
-      modal?.setAttribute('is-open', 'true');
+    const openModal = () => modal?.setAttribute('is-open', 'true');
+    const closeModal = () => modal?.setAttribute('is-open', 'false');
+
+    const handleExit = (event) => {
+      action('ds-exit')(event);
+      closeModal();
     };
 
-    modal?.addEventListener('ds-exit', (event) => {
-      action('ds-exit')(event);
-      modal?.setAttribute('is-open', 'false');
-    });
+    modal?.addEventListener('ds-exit', handleExit);
     toggleButton?.addEventListener('click', openModal);
+    form?.addEventListener('submit', closeModal);
 
     return () => {
-      modal?.removeEventListener('ds-exit', (event) => {
-        action('ds-exit')(event);
-        modal?.setAttribute('is-open', 'false');
-      });
+      modal?.removeEventListener('ds-exit', handleExit);
       toggleButton?.removeEventListener('click', openModal);
+      form?.removeEventListener('submit', closeModal);
     };
   });
 

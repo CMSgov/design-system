@@ -295,15 +295,14 @@
       document.addEventListener('DOMContentLoaded', (event) => {
         const modal = document.querySelector('ds-modal-dialog');
         const toggleButton = document.getElementById('modal-toggle');
+        const form = modal.querySelector('form[method="dialog"]');
 
-        const openModal = () => {
-          modal?.setAttribute('is-open', 'true');
-        };
+        const openModal = () => modal?.setAttribute('is-open', 'true');
+        const closeModal = () => modal?.setAttribute('is-open', 'false');
 
-        modal?.addEventListener('ds-exit', () => {
-          modal?.setAttribute('is-open', 'false');
-        });
+        modal?.addEventListener('ds-exit', closeModal);
         toggleButton?.addEventListener('click', openModal);
+        form?.addEventListener('submit', closeModal);
       });
     </script>
   </div>
