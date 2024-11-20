@@ -36,8 +36,13 @@ export class App {
     this.modalDialog.nativeElement.setAttribute('is-open', 'true');
   }
 
-  dialogActionsSubmitted() {
+  closeDialog() {
     this.modalDialog.nativeElement.setAttribute('is-open', 'false');
+  }
+
+  dialogActionsSubmitted() {
+    this.closeDialog();
+    console.log('confirmed!');
   }
 }
 

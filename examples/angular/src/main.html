@@ -108,6 +108,7 @@
         size="wide"
         backdrop-click-exits="true"
         #modalDialog
+        (ds-exit)="closeDialog()"
       >
         <div slot="heading">
           <h2>This is the modal heading.</h2>
