@@ -2,7 +2,7 @@
  * setupTests.js
  */
 
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 // following Jest's recommendation: https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 window.matchMedia = (query) => ({
