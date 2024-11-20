@@ -446,6 +446,30 @@ function renderWithShadowDom(this: CustomElement) {
   );
 
   renderPreactComponent.call(this, { vnode, slots });
+
+  // If there are no child nodes, it could be on purpose, but it could also be that
+  // Angular's rendering engine hasn't provided the content yet. Let's add a mutation
+  // observer and wait around for late arrivals. While Angular adding content late
+  // doesn't affect its ability to be rendered into the default `<slot>`, it's a
+  // problem for the named slots because our `getSlotNames` call above won't return
+  // those named slots if the element is empty, which means the first render won't
+  // pass those slots to the Preact component.
+  if (this.childNodes.length === 0) {
+    const angularMutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      const addedNodes = mutations
+        .filter((mutation: MutationRecord) => mutation.type === 'childList')
+        .flatMap((mutation) => [...mutation.addedNodes]);
+
+      if (addedNodes) {
+        // This means our Angular template content has finally arrived! We shouldn't need
+        // to wait around for it anymore for this component instance.
+        angularMutationObserver.disconnect();
+        this.forceRender(addedNodes);
+      }
+    });
+
+    angularMutationObserver.observe(this, { childList: true });
+  }
 }
 
 function renderPreactComponent(
