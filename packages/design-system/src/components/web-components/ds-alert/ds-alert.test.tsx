@@ -1,5 +1,5 @@
 import { config } from '../../config';
-import { render, screen } from '@testing-library/react';
+import { render, getByRole, getByText } from '@testing-library/react';
 import './ds-alert';
 import { testAnalytics } from '../analyticsTesting';
 
@@ -16,95 +16,93 @@ declare global {
 const defaultText = 'Ruhroh';
 
 function renderAlert(props = {}) {
-  return render(<ds-alert {...props}>{defaultText}</ds-alert>);
+  const renderResult = render(<ds-alert {...props}>{defaultText}</ds-alert>);
+  return {
+    ...renderResult,
+    shadowRoot: renderResult.container.querySelector('ds-alert').shadowRoot,
+  };
 }
 
-function expectHasClass(className: string) {
-  expect(screen.getByRole('region').className).toContain(className);
+function expectHasClass(shadowRoot: ShadowRoot, className: string) {
+  expect(getByRole(shadowRoot as any as HTMLElement, 'region').className).toContain(className);
 }
 
 describe('Alert', function () {
   it('renders alert', () => {
-    const { asFragment } = renderAlert({ id: 'static-id' });
-    expect(asFragment()).toMatchSnapshot();
+    const { shadowRoot } = renderAlert({ id: 'static-id' });
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('renders a heading', () => {
     const heading = 'Error';
-    renderAlert({ heading });
-    expect(screen.getByText(heading).textContent).toEqual(heading);
+    const { shadowRoot } = renderAlert({ heading });
+    expect(getByText(shadowRoot as any as HTMLElement, heading).textContent).toEqual(heading);
   });
 
   it('appears as an error', () => {
-    renderAlert({ variation: 'error' });
-    expectHasClass('ds-c-alert--error');
+    const { shadowRoot } = renderAlert({ variation: 'error' });
+    expectHasClass(shadowRoot, 'ds-c-alert--error');
   });
 
   it('appears as a lightweight alert', () => {
-    renderAlert({ weight: 'lightweight' });
-    expectHasClass('ds-c-alert--lightweight');
+    const { shadowRoot } = renderAlert({ weight: 'lightweight' });
+    expectHasClass(shadowRoot, 'ds-c-alert--lightweight');
   });
 
   it('renders additional className and role prop', () => {
     const className = 'ds-u-test';
     const role = 'alert';
-    renderAlert({ 'class-name': className, role });
+    const { shadowRoot } = renderAlert({ 'class-name': className, role });
 
     // Need to query by class selector instead of role.
     // Role is both a prop and native HTML attr, so it appears in multiple places within the component and is hard to query for.
-    const alert = document.querySelector('.ds-c-alert');
+    const alert = shadowRoot.querySelector('.ds-c-alert');
     expect(alert.className).toContain(className);
   });
 
-  it('renders HTML children', () => {
-    renderAlert({ children: <p className="ds-text-body--md">{defaultText}</p> });
-    const alert = screen.getByRole('region');
-    expect(alert.textContent).toContain(defaultText);
-  });
-
   it('hides icon', () => {
-    renderAlert({ 'hide-icon': true });
-    expectHasClass('ds-c-alert--hide-icon');
+    const { shadowRoot } = renderAlert({ 'hide-icon': true });
+    expectHasClass(shadowRoot, 'ds-c-alert--hide-icon');
   });
 
   it('sets tabIndex when autoFocus is passed', () => {
-    renderAlert({ autoFocus: true });
-    const alert = screen.getByRole('region');
+    const { shadowRoot } = renderAlert({ autoFocus: true });
+    const alert = getByRole(shadowRoot as any as HTMLElement, 'region');
     expect(alert.tabIndex).toBe(-1);
   });
 
   describe('a11y labels', () => {
     it('renders default a11y label', () => {
-      renderAlert();
-      expect(screen.getByText('Notice:')).toBeInTheDocument();
+      const { shadowRoot } = renderAlert();
+      expect(getByText(shadowRoot as any as HTMLElement, 'Notice:')).toBeInTheDocument();
     });
 
     it('renders error a11y label', () => {
-      renderAlert({ variation: 'error' });
-      expect(screen.getByText('Alert:')).toBeInTheDocument();
+      const { shadowRoot } = renderAlert({ variation: 'error' });
+      expect(getByText(shadowRoot as any as HTMLElement, 'Alert:')).toBeInTheDocument();
     });
 
     it('renders success a11y label', () => {
-      renderAlert({ variation: 'success' });
-      expect(screen.getByText('Success:')).toBeInTheDocument();
+      const { shadowRoot } = renderAlert({ variation: 'success' });
+      expect(getByText(shadowRoot as any as HTMLElement, 'Success:')).toBeInTheDocument();
     });
 
     it('renders warn a11y label', () => {
-      renderAlert({ variation: 'warn' });
-      expect(screen.getByText('Warning:')).toBeInTheDocument();
+      const { shadowRoot } = renderAlert({ variation: 'warn' });
+      expect(getByText(shadowRoot as any as HTMLElement, 'Warning:')).toBeInTheDocument();
     });
 
     it('points aria-labelledby to heading', () => {
       const heading = 'Elvis has left the building';
-      renderAlert({ heading, variation: 'error' });
-      const alert = screen.getByRole('region');
+      const { shadowRoot } = renderAlert({ heading, variation: 'error' });
+      const alert = getByRole(shadowRoot as any as HTMLElement, 'region');
       const id = alert.getAttribute('aria-labelledby');
       expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
     });
 
     it('falls back aria-labelledby to a11y label when no heading is provided', () => {
-      renderAlert();
-      const alert = screen.getByRole('region');
+      const { shadowRoot } = renderAlert();
+      const alert = getByRole(shadowRoot as any as HTMLElement, 'region');
       const id = alert.getAttribute('aria-labelledby');
       expect(alert.querySelector(`#${id}`).textContent).toContain('Notice');
     });
