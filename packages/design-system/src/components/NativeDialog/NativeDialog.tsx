@@ -108,6 +108,17 @@ export const NativeDialog = ({
 
     const dialogNode = dialogRef.current;
     const handleClick = (event) => {
+      // In Chrome and Firefox Pointer Events triggered by a key press receive a clientX & clientY value of 0 each.
+      // This puts the pointer outside of our dialog element, and so we trigger the exit() event.
+      // This causes the exit event to fire twice on keyboard presses if the button you are focusing has an event
+      // handler/listener attached to it.
+      // Note Safari is smart and actually assigns a value to the clientX and clientY values for button presses, so we
+      // don't see this error in Safari.
+      // event.detail counts the number of clicks. There are no clicks on a keyboard press, so if this function is called
+      // and the event.detail value is zero, we exit without firing the exit() event.
+      if (event.detail === 0) {
+        return;
+      }
       const boundingNode = boundingBoxRef?.current ?? dialogRef.current;
       const rect = boundingNode.getBoundingClientRect();
       const isInDialog =
