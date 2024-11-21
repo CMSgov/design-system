@@ -1,11 +1,12 @@
 import { define } from '../preactement/define';
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from '../../Autocomplete';
 import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
-import { TextField } from '../../TextField';
+import { TextField, TextFieldSize, TextFieldProps } from '../../TextField';
 import { formAttrs } from '../shared-attributes/form';
+import { textFieldAttrs } from '../shared-attributes/textField';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
-import { UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { UseInlineErrorProps, ErrorPlacement } from '../../InlineError/useInlineError';
 
 const attributes = [
   'aria-clear-label',
@@ -16,16 +17,15 @@ const attributes = [
   'class-name',
   'clear-input-text',
   'clear-search-button',
-  'value',
   'items',
   'loading-message',
   'loading',
   'menu-heading-id',
   'menu-heading',
-  'name',
   'no-results-message',
   'root-id',
   ...formAttrs,
+  ...textFieldAttrs,
 ] as const;
 
 type IncompatibleProps =
@@ -37,7 +37,10 @@ type IncompatibleProps =
   | 'loading';
 
 interface WrapperProps
-  extends Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>,
+  extends Omit<
+      UseLabelPropsProps & UseHintProps & UseInlineErrorProps,
+      'id' | 'inversed' | 'errorPlacement'
+    >,
     Omit<AutocompleteProps, IncompatibleProps> {
   autofocus?: string;
   clearSearchButton?: string;
@@ -47,7 +50,19 @@ interface WrapperProps
   menuHeading?: string;
   menuHeadingId?: string;
   rootId: string;
+  size?: string;
+  errorMessage?: string;
+  errorPlacement?: string;
+  errorMessageClassName?: string;
 }
+
+const isPossibleSize = (size: string): size is TextFieldSize => {
+  return ['small', 'medium'].includes(size);
+};
+
+const isPossibleErrorLocation = (location: string): location is ErrorPlacement => {
+  return ['top', 'bottom'].includes(location);
+};
 
 const Wrapper = ({
   autofocus,
@@ -73,7 +88,18 @@ const Wrapper = ({
       items={parseJsonAttr(items)}
       loading={parseBooleanAttr(loading)}
     >
-      <TextField label={label} hint={hint} name="autocomplete" value={value} />
+      <TextField
+        size={isPossibleSize(otherProps.size) ? otherProps.size : null}
+        errorMessage={otherProps.errorMessage}
+        errorPlacement={
+          isPossibleErrorLocation(otherProps.errorPlacement) ? otherProps.errorPlacement : null
+        }
+        errorMessageClassName={otherProps.errorMessageClassName}
+        label={label}
+        hint={hint}
+        name="autocomplete"
+        value={value}
+      />
     </Autocomplete>
   );
 };

@@ -154,6 +154,7 @@ const Template = (args) => {
       label={textFieldLabel}
       hint={textFieldHint}
       value={input}
+      size={'small'}
     />
   );
 };
