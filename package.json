@@ -55,6 +55,7 @@
     "test:browser:storybook-docs": "yarn test:browser --config tests/browser/storybook-docs.config.ts",
     "test:browser:examples": "yarn test:browser --config tests/browser/examples.config.ts",
     "test:browser:all": "yarn test:browser && yarn test:browser:interaction --no-build && yarn test:browser:storybook-docs --no-build && yarn test:browser:examples",
+    "test:browser:all:update": "yarn test:browser -u && yarn test:browser:interaction --no-build -u && yarn test:browser:storybook-docs --no-build -u && yarn test:browser:examples -u",
     "type-check": "yarn tsc --noEmit"
   },
   "husky": {
