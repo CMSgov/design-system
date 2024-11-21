@@ -1,4 +1,4 @@
-import { createTestRenderer } from '../testingUtils';
+import { createTestRenderer } from '../__tests__/rendering';
 import { getByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-accordion-item';

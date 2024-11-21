@@ -1,8 +1,8 @@
 import { config } from '../../config';
 import { getByRole, getByText } from '@testing-library/react';
 import './ds-alert';
-import { testAnalytics } from '../analyticsTesting';
-import { createTestRenderer } from '../testingUtils';
+import { testAnalytics } from '../__tests__/analytics';
+import { createTestRenderer } from '../__tests__/rendering';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {

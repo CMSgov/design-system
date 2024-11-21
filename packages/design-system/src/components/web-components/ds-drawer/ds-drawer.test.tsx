@@ -1,4 +1,4 @@
-import { createTestRenderer } from '../testingUtils';
+import { createTestRenderer } from '../__tests__/rendering';
 import { cleanup, findByRole, getByRole, queryByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-drawer';

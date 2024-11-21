@@ -5,7 +5,7 @@ import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import './ds-modal-dialog';
 import '../ds-button/ds-button';
-import { createTestRenderer } from '../testingUtils';
+import { createTestRenderer } from '../__tests__/rendering';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {

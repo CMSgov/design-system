@@ -1,4 +1,4 @@
-import { createTestRenderer } from '../testingUtils';
+import { createTestRenderer } from '../__tests__/rendering';
 import './ds-accordion';
 import './ds-accordion-item';
 

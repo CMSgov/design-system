@@ -1,4 +1,4 @@
-import { createGenericTestRenderer } from '../testingUtils';
+import { createGenericTestRenderer } from '../__tests__/rendering';
 import { getAllByRole, screen } from '@testing-library/preact';
 import './ds-review';
 
