@@ -377,6 +377,28 @@ describe('Autocomplete', () => {
     expectMenuToBeClosed();
   });
 
+  it('displays a custom error message', () => {
+    renderAutocomplete({ 'error-message': 'Something went wrong' });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+  });
+
+  it('sets the display location of the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-placement': 'bottom',
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment).toMatchSnapshot();
+  });
+
+  it('can add a custom class name to the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-message-class-name': 'custom-class-name',
+      'error-message': 'Something went wrong',
+    });
+    expect(asFragment).toMatchSnapshot();
+  });
+
   // it("calls child TextField's event handlers", () => {
   //   const props = {
   //     label: 'autocomplete',

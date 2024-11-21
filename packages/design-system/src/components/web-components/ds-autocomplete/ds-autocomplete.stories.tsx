@@ -53,6 +53,24 @@ const meta: Meta = {
       description: 'Removes the Clear search button when set to `false`',
       control: 'boolean',
     },
+    disabled: {
+      description: 'Disables the input text field.',
+      control: 'boolean',
+    },
+    'error-message': {
+      description: 'Enable the error state by providing an error message',
+      control: 'text',
+    },
+    'error-placement': {
+      description: 'Location of the error message relative to the field input',
+      options: [undefined, 'top', 'bottom'],
+      control: { type: 'radio' },
+    },
+    'error-message-class-name': {
+      description:
+        'Provides the option to add styling to error messages placed at the bottom of the autcomplete.',
+      control: 'text',
+    },
     hint: {
       description: 'An optional hint for the label',
       control: 'text',
@@ -154,7 +172,6 @@ const Template = (args) => {
       label={textFieldLabel}
       hint={textFieldHint}
       value={input}
-      size={'small'}
     />
   );
 };
