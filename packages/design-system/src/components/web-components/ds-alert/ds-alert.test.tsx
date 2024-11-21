@@ -1,7 +1,8 @@
 import { config } from '../../config';
-import { render, getByRole, getByText } from '@testing-library/react';
+import { getByRole, getByText } from '@testing-library/react';
 import './ds-alert';
 import { testAnalytics } from '../analyticsTesting';
+import { createTestRenderer } from '../testingUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -15,13 +16,9 @@ declare global {
 
 const defaultText = 'Ruhroh';
 
-function renderAlert(props = {}) {
-  const renderResult = render(<ds-alert {...props}>{defaultText}</ds-alert>);
-  return {
-    ...renderResult,
-    shadowRoot: renderResult.container.querySelector('ds-alert').shadowRoot,
-  };
-}
+const renderAlert = createTestRenderer('ds-alert', (attrs = {}) => (
+  <ds-alert {...attrs}>{defaultText}</ds-alert>
+));
 
 function expectHasClass(shadowRoot: ShadowRoot, className: string) {
   expect(getByRole(shadowRoot as any as HTMLElement, 'region').className).toContain(className);

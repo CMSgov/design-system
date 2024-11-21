@@ -1,4 +1,4 @@
-import { createTestRenderer } from '../shadowDomTesting';
+import { createTestRenderer } from '../testingUtils';
 import { cleanup, findByRole, getByRole, queryByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-drawer';
@@ -14,7 +14,7 @@ const children = (
   </>
 );
 
-const renderDrawer = createTestRenderer('ds-drawer', (attrs, children) => (
+const renderDrawer = createTestRenderer('ds-drawer', (attrs = {}, children) => (
   <ds-drawer {...(attrs as any)}>
     {children}
     <div slot="footer-body">
@@ -22,7 +22,7 @@ const renderDrawer = createTestRenderer('ds-drawer', (attrs, children) => (
     </div>
   </ds-drawer>
 ));
-const renderDrawerWithoutSlottedFooter = createTestRenderer('ds-drawer', (attrs, children) => (
+const renderDrawerWithoutSlottedFooter = createTestRenderer('ds-drawer', (attrs = {}, children) => (
   <ds-drawer {...(attrs as any)}>{children}</ds-drawer>
 ));
 

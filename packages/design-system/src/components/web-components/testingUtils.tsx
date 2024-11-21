@@ -7,25 +7,31 @@ export function createGenericTestRenderer<T extends unknown[]>(
   return (...args: T) => {
     const result = render(renderFn(...args));
 
+    function getCustomElement(renderResult) {
+      return renderResult.container.querySelector(customElementSelector);
+    }
+
+    function getShadowRoot(renderResult): ShadowRoot {
+      return getCustomElement(renderResult).shadowRoot;
+    }
+
     function createRerenderFunction(renderResult) {
       return (...newArgs: T) => {
         const rerenderResult = renderResult.rerender(renderFn(...newArgs));
         return {
           ...rerenderResult,
+          customElement: getCustomElement(result),
           shadowRoot: getShadowRoot(result),
           rerenderTest: createRerenderFunction(rerenderResult),
         };
       };
     }
 
-    function getShadowRoot(renderResult): ShadowRoot {
-      return renderResult.container.querySelector(customElementSelector).shadowRoot;
-    }
-
     return {
       ...result,
-      rerenderTest: createRerenderFunction(result),
+      customElement: getCustomElement(result),
       shadowRoot: getShadowRoot(result),
+      rerenderTest: createRerenderFunction(result),
     };
   };
 }
@@ -37,8 +43,8 @@ export function createGenericTestRenderer<T extends unknown[]>(
 export function createTestRenderer<TagName extends keyof JSX.IntrinsicElements>(
   tagName: TagName,
   renderFn: (
-    attrs: JSX.IntrinsicElements[TagName],
-    children: React.ReactElement
+    attrs?: JSX.IntrinsicElements[TagName],
+    children?: React.ReactElement
   ) => React.ReactElement
 ) {
   return createGenericTestRenderer(tagName, renderFn);

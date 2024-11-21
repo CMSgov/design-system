@@ -1,4 +1,5 @@
-import { render, getByRole } from '@testing-library/react';
+import { createTestRenderer } from '../testingUtils';
+import { getByRole } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-accordion-item';
 
@@ -7,19 +8,11 @@ const defaultAttrs = {
   'content-id': 'static-id',
 };
 
-function renderAccordionItem(attrs = {}) {
-  const renderResult = render(
-    <ds-accordion-item {...defaultAttrs} {...attrs}>
-      Some content
-    </ds-accordion-item>
-  );
-  const root = renderResult.container.querySelector('ds-accordion-item');
-  return {
-    ...renderResult,
-    root,
-    shadowRoot: root.shadowRoot,
-  };
-}
+const renderAccordionItem = createTestRenderer('ds-accordion-item', (attrs = {}) => (
+  <ds-accordion-item {...defaultAttrs} {...attrs}>
+    Some content
+  </ds-accordion-item>
+));
 
 describe('ds-accordion-item', () => {
   it('renders an open accordion item', () => {
@@ -41,15 +34,15 @@ describe('ds-accordion-item', () => {
   });
 
   it('fires a custom ds-change event', () => {
-    const { root, shadowRoot } = renderAccordionItem();
+    const { customElement, shadowRoot } = renderAccordionItem();
 
     const mockHandler = jest.fn();
-    root.addEventListener('ds-change', mockHandler);
+    customElement.addEventListener('ds-change', mockHandler);
 
     const button = getByRole(shadowRoot as any as HTMLElement, 'button');
     userEvent.click(button);
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
-    root.removeEventListener('ds-change', mockHandler);
+    customElement.removeEventListener('ds-change', mockHandler);
   });
 });
