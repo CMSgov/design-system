@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-export function createTestRenderer<T extends unknown[]>(
+export function createGenericTestRenderer<T extends unknown[]>(
   customElementSelector: string,
   renderFn: (...args: T) => React.ReactElement
 ) {
@@ -28,4 +28,18 @@ export function createTestRenderer<T extends unknown[]>(
       shadowRoot: getShadowRoot(result),
     };
   };
+}
+
+/**
+ * This is a convenient version that assumes that the render function will always have
+ * attribute and children parameters and can automatically add the type annotations.
+ */
+export function createTestRenderer<TagName extends keyof JSX.IntrinsicElements>(
+  tagName: TagName,
+  renderFn: (
+    attrs: JSX.IntrinsicElements[TagName],
+    children: React.ReactElement
+  ) => React.ReactElement
+) {
+  return createGenericTestRenderer(tagName, renderFn);
 }

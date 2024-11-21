@@ -14,23 +14,17 @@ const children = (
   </>
 );
 
-const renderDrawer = createTestRenderer(
-  'ds-drawer',
-  (attrs: JSX.IntrinsicElements['ds-drawer'], children: any) => (
-    <ds-drawer {...(attrs as any)}>
-      {children}
-      <div slot="footer-body">
-        <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
-      </div>
-    </ds-drawer>
-  )
-);
-const renderDrawerWithoutSlottedFooter = createTestRenderer(
-  'ds-drawer',
-  (attrs: JSX.IntrinsicElements['ds-drawer'], children: React.ReactElement) => (
-    <ds-drawer {...(attrs as any)}>{children}</ds-drawer>
-  )
-);
+const renderDrawer = createTestRenderer('ds-drawer', (attrs, children) => (
+  <ds-drawer {...(attrs as any)}>
+    {children}
+    <div slot="footer-body">
+      <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
+    </div>
+  </ds-drawer>
+));
+const renderDrawerWithoutSlottedFooter = createTestRenderer('ds-drawer', (attrs, children) => (
+  <ds-drawer {...(attrs as any)}>{children}</ds-drawer>
+));
 
 const mockCloseHandler = jest.fn();
 
