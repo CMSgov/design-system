@@ -1,12 +1,12 @@
 import { define } from '../preactement/define';
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from '../../Autocomplete';
 import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
-import { TextField, TextFieldSize, TextFieldProps } from '../../TextField';
+import { TextField } from '../../TextField';
 import { formAttrs } from '../shared-attributes/form';
-import { textFieldAttrs } from '../shared-attributes/textField';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
-import { UseInlineErrorProps, ErrorPlacement } from '../../InlineError/useInlineError';
+import { UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { isPossibleValue } from '../utils';
 
 const attributes = [
   'aria-clear-label',
@@ -14,6 +14,7 @@ const attributes = [
   // Using the lowercase HTML attribute name rather than `auto-focus` so it's
   // more natural. There's no reason for us to worry about name collisions.
   'autofocus',
+  'disabled',
   'class-name',
   'clear-input-text',
   'clear-search-button',
@@ -24,8 +25,8 @@ const attributes = [
   'menu-heading',
   'no-results-message',
   'root-id',
+  'value',
   ...formAttrs,
-  ...textFieldAttrs,
 ] as const;
 
 type IncompatibleProps =
@@ -34,7 +35,8 @@ type IncompatibleProps =
   | 'items'
   | 'label-id'
   | 'label'
-  | 'loading';
+  | 'loading'
+  | 'disabled';
 
 interface WrapperProps
   extends Omit<
@@ -43,6 +45,7 @@ interface WrapperProps
     >,
     Omit<AutocompleteProps, IncompatibleProps> {
   autofocus?: string;
+  disabled?: string;
   clearSearchButton?: string;
   value: string;
   items?: string;
@@ -50,19 +53,10 @@ interface WrapperProps
   menuHeading?: string;
   menuHeadingId?: string;
   rootId: string;
-  size?: string;
   errorMessage?: string;
   errorPlacement?: string;
   errorMessageClassName?: string;
 }
-
-const isPossibleSize = (size: string): size is TextFieldSize => {
-  return ['small', 'medium'].includes(size);
-};
-
-const isPossibleErrorLocation = (location: string): location is ErrorPlacement => {
-  return ['top', 'bottom'].includes(location);
-};
 
 const Wrapper = ({
   autofocus,
@@ -89,10 +83,12 @@ const Wrapper = ({
       loading={parseBooleanAttr(loading)}
     >
       <TextField
-        size={isPossibleSize(otherProps.size) ? otherProps.size : null}
+        disabled={parseBooleanAttr(otherProps.disabled)}
         errorMessage={otherProps.errorMessage}
         errorPlacement={
-          isPossibleErrorLocation(otherProps.errorPlacement) ? otherProps.errorPlacement : null
+          isPossibleValue(otherProps.errorPlacement, ['top', 'bottom'])
+            ? otherProps.errorPlacement
+            : null
         }
         errorMessageClassName={otherProps.errorMessageClassName}
         label={label}
