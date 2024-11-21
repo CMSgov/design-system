@@ -44,7 +44,7 @@ export function createTestRenderer<TagName extends keyof JSX.IntrinsicElements>(
   tagName: TagName,
   renderFn: (
     attrs?: JSX.IntrinsicElements[TagName],
-    children?: React.ReactElement
+    children?: React.ReactNode
   ) => React.ReactElement
 ) {
   return createGenericTestRenderer(tagName, renderFn);
