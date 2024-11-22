@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Autocomplete can add a custom class name to the error message 1`] = `[Function]`;
+
 exports[`Autocomplete renders correctly 1`] = `
 <DocumentFragment>
   <ds-autocomplete
@@ -85,3 +87,5 @@ Array [
   </li>,
 ]
 `;
+
+exports[`Autocomplete sets the display location of the error message 1`] = `[Function]`;
