@@ -30,6 +30,7 @@ interface IOptions<F = any, W = any> {
   formatProps?: (props: any) => F;
   wrapComponent?: (child: any) => W;
   shadow?: boolean;
+  passCustomElementProp?: boolean;
 }
 
 /* -----------------------------------

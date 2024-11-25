@@ -1,6 +1,5 @@
 import type * as React from 'react';
 import classNames from 'classnames';
-import { useEffect, useRef, useState } from 'react';
 import { define } from '../preactement/define';
 import { AccordionItem, AccordionItemProps } from '../../Accordion';
 import { parseBooleanAttr } from '../wrapperUtils';
@@ -47,25 +46,18 @@ function findAccordionAncestor(el: Element): Element | undefined {
 interface WrapperProps extends Omit<AccordionItemProps, 'defaultOpen'> {
   defaultOpen?: string;
   contentId?: string;
+  customElement: Element;
 }
 
 const Wrapper = ({
   defaultOpen,
   contentId,
   contentClassName,
-  children,
+  customElement,
   ...otherProps
 }: WrapperProps) => {
-  const [bordered, setBordered] = useState(false);
-  const ref = useRef<HTMLSpanElement>();
-
-  useEffect(() => {
-    const shadowRoot = ref.current.getRootNode() as ShadowRoot;
-    const parentAccordion = findAccordionAncestor(shadowRoot.host);
-    if (parentAccordion) {
-      setBordered(parseBooleanAttr(parentAccordion.getAttribute('bordered')));
-    }
-  }, [ref, setBordered]);
+  const parentAccordion = findAccordionAncestor(customElement);
+  const bordered = parseBooleanAttr(parentAccordion.getAttribute('bordered'));
 
   return (
     <AccordionItem
@@ -76,11 +68,13 @@ const Wrapper = ({
         contentClassName,
         bordered && 'ds-c-accordion__content--bordered'
       )}
-    >
-      {children}
-      <span ref={ref} />
-    </AccordionItem>
+    />
   );
 };
 
-define('ds-accordion-item', () => Wrapper, { attributes, events: ['onChange'], shadow: true });
+define('ds-accordion-item', () => Wrapper, {
+  attributes,
+  events: ['onChange'],
+  shadow: true,
+  passCustomElementProp: true,
+});

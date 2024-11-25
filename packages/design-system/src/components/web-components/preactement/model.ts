@@ -34,6 +34,7 @@ interface IOptions {
   formatProps?: <P = any>(props: P) => P;
   wrapComponent?: <P>(child: ComponentFactory<P>) => ComponentFactory<P>;
   shadow?: boolean;
+  passCustomElementProp?: boolean;
 }
 
 /* -----------------------------------
