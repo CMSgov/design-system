@@ -118,7 +118,7 @@ export function getSlotNames(element: Element): string[] {
 }
 
 function getSlotNamesFromNode(node: Node): string[] {
-  if (node.nodeType === 3 || node.nodeType !== 1) {
+  if (node.nodeType !== Node.ELEMENT_NODE) {
     return [];
   }
 
