@@ -70,7 +70,10 @@ ds-accordion-item:not(:first-child) {
   background-color: var(--accordion-content__background-color);
   overflow: auto;
   padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
+}
 
+.ds-c-accordion__content,
+ds-accordion-item {
   > :first-child {
     margin-block-start: 0;
   }
