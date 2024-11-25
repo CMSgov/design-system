@@ -80,10 +80,9 @@ ds-accordion-item:not(:first-child) {
   }
 }
 
-.ds-c-accordion--bordered {
-  .ds-c-accordion__content {
-    border: var(--accordion__border-width) solid var(--accordion__border-color);
-    border-block-start: 0;
-    padding: $spacer-2 $spacer-2;
-  }
+.ds-c-accordion--bordered .ds-c-accordion__content,
+.ds-c-accordion__content--bordered {
+  border: var(--accordion__border-width) solid var(--accordion__border-color);
+  border-block-start: 0;
+  padding: $spacer-2 $spacer-2;
 }

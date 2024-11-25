@@ -37,18 +37,14 @@ export default {
 const Template = (args) => (
   <ds-accordion {...args}>
     <ds-accordion-item heading="First Amendment" default-open="true">
-      <p>
-        We the People of the United States, in Order to form a more perfect Union, establish
-        Justice, insure domestic Tranquility, provide for the common defence, promote the general
-        Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
-        establish this Constitution for the United States of America.
-      </p>
+      We the People of the United States, in Order to form a more perfect Union, establish Justice,
+      insure domestic Tranquility, provide for the common defence, promote the general Welfare, and
+      secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this
+      Constitution for the United States of America.
     </ds-accordion-item>
     <ds-accordion-item heading="Second Amendment">
-      <p>
-        A well regulated Militia, being necessary to the security of a free State, the right of the
-        people to keep and bear Arms, shall not be infringed.
-      </p>
+      A well regulated Militia, being necessary to the security of a free State, the right of the
+      people to keep and bear Arms, shall not be infringed.
     </ds-accordion-item>
   </ds-accordion>
 );
