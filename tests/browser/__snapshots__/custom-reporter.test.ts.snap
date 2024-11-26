@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSON report matches snapshot 1`] = `
+Object {
+  "failingTests": Array [
+    Object {
+      "name": "Test 2",
+      "path": "Sample Suite",
+    },
+  ],
+  "skippedTests": Array [],
+  "status": "failed",
+  "summary": Object {
+    "failed": 1,
+    "passed": 1,
+    "skipped": 0,
+  },
+}
+`;
