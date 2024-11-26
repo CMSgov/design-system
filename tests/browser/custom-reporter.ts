@@ -57,6 +57,12 @@ class MyReporter implements Reporter {
     console.log(` - Failed: ${this.failCount}`);
     console.log(` - Skipped: ${this.skipCount}`);
 
+    const totalTests = this.passCount + this.failCount + this.skipCount;
+    const testsRun = this.passCount + this.failCount;
+    const testCoverage = (testsRun / totalTests) * 100;
+
+    console.log(`Test Coverage: ${testCoverage.toFixed(2)}%`);
+
     if (this.failingTests.length > 0) {
       console.log(`\nFailing Tests:`);
       for (const test of this.failingTests) {
@@ -70,6 +76,7 @@ class MyReporter implements Reporter {
         passed: this.passCount,
         failed: this.failCount,
         skipped: this.skipCount,
+        testCoverage: testCoverage.toFixed(2),
       },
       failingTests: this.failingTests,
       skippedTests: this.skippedTests,
