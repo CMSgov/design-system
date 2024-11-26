@@ -8,13 +8,14 @@ import type {
 } from '@playwright/test/reporter';
 
 class MyReporter implements Reporter {
+  private passCount = 0;
+  private failCount = 0;
+  private skipCount = 0;
+  private failingTests: { path: string; name: string }[] = [];
+
   onBegin(config: FullConfig, suite: Suite) {
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
-
-  // onTestBegin(test: TestCase, result: TestResult) {
-  //   console.log(`Starting test ${test.title}`);
-  // }
 
   onTestEnd(test: TestCase, result: TestResult) {
     const getHierarchyPath = (test: TestCase): string => {
@@ -28,11 +29,36 @@ class MyReporter implements Reporter {
     };
 
     const hierarchyPath = getHierarchyPath(test);
-    console.log(`Finished test ${hierarchyPath} > ${test.title}: ${result.status}`);
+
+    switch (result.status) {
+      case 'passed':
+        this.passCount++;
+        break;
+      case 'failed':
+        this.failCount++;
+        this.failingTests.push({ path: hierarchyPath, name: test.title });
+        break;
+      case 'skipped':
+        this.skipCount++;
+        break;
+    }
+
+    console.log(`${hierarchyPath} > ${test.title}: ${result.status}`);
   }
 
   onEnd(result: FullResult) {
     console.log(`Finished the run: ${result.status}`);
+    console.log(`Summary:`);
+    console.log(`  - Passed: ${this.passCount}`);
+    console.log(`  - Failed: ${this.failCount}`);
+    console.log(`  - Skipped: ${this.skipCount}`);
+
+    if (this.failingTests.length > 0) {
+      console.log(`\nFailing Tests:`);
+      for (const test of this.failingTests) {
+        console.log(`  ${test.path} > ${test.name}`);
+      }
+    }
   }
 }
 
