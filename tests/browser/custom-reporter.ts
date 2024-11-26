@@ -6,12 +6,15 @@ import type {
   TestCase,
   TestResult,
 } from '@playwright/test/reporter';
+import { writeFileSync } from 'fs';
+import path from 'path';
 
 class MyReporter implements Reporter {
   private passCount = 0;
   private failCount = 0;
   private skipCount = 0;
   private failingTests: { path: string; name: string }[] = [];
+  private skippedTests: { path: string; name: string }[] = [];
 
   onBegin(config: FullConfig, suite: Suite) {
     console.log(`Starting the run with ${suite.allTests().length} tests`);
@@ -40,6 +43,7 @@ class MyReporter implements Reporter {
         break;
       case 'skipped':
         this.skipCount++;
+        this.skippedTests.push({ path: hierarchyPath, name: test.title });
         break;
     }
 
@@ -49,15 +53,34 @@ class MyReporter implements Reporter {
   onEnd(result: FullResult) {
     console.log(`Finished the run: ${result.status}`);
     console.log(`Summary:`);
-    console.log(`  - Passed: ${this.passCount}`);
-    console.log(`  - Failed: ${this.failCount}`);
-    console.log(`  - Skipped: ${this.skipCount}`);
+    console.log(` - Passed: ${this.passCount}`);
+    console.log(` - Failed: ${this.failCount}`);
+    console.log(` - Skipped: ${this.skipCount}`);
 
     if (this.failingTests.length > 0) {
       console.log(`\nFailing Tests:`);
       for (const test of this.failingTests) {
         console.log(`  ${test.path} > ${test.name}`);
       }
+    }
+
+    const reportData = {
+      status: result.status,
+      summary: {
+        passed: this.passCount,
+        failed: this.failCount,
+        skipped: this.skipCount,
+      },
+      failingTests: this.failingTests,
+      skippedTests: this.skippedTests,
+    };
+
+    const reportPath = path.resolve(__dirname, 'test-report.json');
+    try {
+      writeFileSync(reportPath, JSON.stringify(reportData, null, 2));
+      console.log(`JSON report written to ${reportPath}`);
+    } catch (error) {
+      console.error('Failed to write JSON report:', error);
     }
   }
 }
