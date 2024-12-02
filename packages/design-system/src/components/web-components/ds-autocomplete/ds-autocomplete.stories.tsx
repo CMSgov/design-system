@@ -21,7 +21,7 @@ const meta: Meta = {
     'clear-search-button': true,
     'loading-message': 'Loading...',
     'no-results-message': 'No results',
-    name: 'ds-autocomplete',
+    name: 'autocomplete',
   },
   argTypes: {
     'aria-clear-label': {

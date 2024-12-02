@@ -23,6 +23,7 @@ const attributes = [
   'loading',
   'menu-heading-id',
   'menu-heading',
+  'name',
   'no-results-message',
   'root-id',
   'value',
@@ -45,41 +46,43 @@ interface WrapperProps
     >,
     Omit<AutocompleteProps, IncompatibleProps> {
   autofocus?: string;
-  disabled?: string;
   clearSearchButton?: string;
+  disabled?: string;
+  errorMessage?: string;
+  errorPlacement?: string;
+  errorMessageClassName?: string;
   value: string;
   items?: string;
   loading?: string;
   menuHeading?: string;
   menuHeadingId?: string;
+  name?: string;
   rootId: string;
-  errorMessage?: string;
-  errorPlacement?: string;
-  errorMessageClassName?: string;
 }
 
 const Wrapper = ({
   autofocus,
   clearSearchButton,
   hint,
-  value,
   items,
   label,
   loading,
   menuHeading,
   menuHeadingId,
+  name,
   rootId,
+  value,
   ...otherProps
 }: WrapperProps) => {
   return (
     <Autocomplete
       {...otherProps}
-      label={menuHeading}
-      labelId={menuHeadingId}
       autoFocus={parseBooleanAttr(autofocus)}
       clearSearchButton={parseBooleanAttr(clearSearchButton)}
       id={rootId}
       items={parseJsonAttr(items)}
+      label={menuHeading}
+      labelId={menuHeadingId}
       loading={parseBooleanAttr(loading)}
     >
       <TextField
@@ -93,7 +96,7 @@ const Wrapper = ({
         errorMessageClassName={otherProps.errorMessageClassName}
         label={label}
         hint={hint}
-        name="autocomplete"
+        name={name ?? 'autocomplete'}
         value={value}
       />
     </Autocomplete>
