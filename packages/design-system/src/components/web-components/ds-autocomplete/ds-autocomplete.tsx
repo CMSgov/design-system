@@ -91,7 +91,7 @@ const Wrapper = ({
         errorPlacement={
           isPossibleValue(otherProps.errorPlacement, ['top', 'bottom'])
             ? otherProps.errorPlacement
-            : null
+            : undefined
         }
         errorMessageClassName={otherProps.errorMessageClassName}
         label={label}
