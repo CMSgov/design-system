@@ -2,6 +2,10 @@
 
 exports[`Autocomplete can add a custom class name to the error message 1`] = `[Function]`;
 
+exports[`Autocomplete displays an error message in the default location for Healthcare 1`] = `[Function]`;
+
+exports[`Autocomplete displays an error message in the default position for Core 1`] = `[Function]`;
+
 exports[`Autocomplete renders correctly 1`] = `
 <DocumentFragment>
   <ds-autocomplete
@@ -26,6 +30,12 @@ exports[`Autocomplete renders correctly 1`] = `
         >
           autocomplete label
         </label>
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error"
+          id="autocomplete--1__error"
+        />
         <input
           aria-autocomplete="list"
           aria-controls="autocomplete--1__menu"
@@ -40,12 +50,6 @@ exports[`Autocomplete renders correctly 1`] = `
           role="combobox"
           spellcheck="false"
           type="text"
-        />
-        <p
-          aria-atomic="true"
-          aria-live="assertive"
-          class="ds-c-inline-error"
-          id="autocomplete--1__error"
         />
       </div>
       <button
