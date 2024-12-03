@@ -6,7 +6,7 @@ import type {
   TestCase,
   TestResult,
 } from '@playwright/test/reporter';
-import { writeFileSync } from 'fs';
+import { writeFileSync, mkdirSync } from 'fs';
 import path from 'path';
 
 class MyReporter implements Reporter {
@@ -64,20 +64,28 @@ class MyReporter implements Reporter {
       }
     }
 
-    const reportData = {
-      status: result.status,
-      summary: {
-        passed: this.passCount,
-        failed: this.failCount,
-        skipped: this.skipCount,
-      },
-      failingTests: this.failingTests,
-      skippedTests: this.skippedTests,
-    };
+    const reportDirectory = path.resolve(__dirname, 'test-results');
+    const reportPath = path.resolve(reportDirectory, 'test-report.json');
 
-    const reportPath = path.resolve(__dirname, 'test-report.json');
     try {
-      writeFileSync(reportPath, JSON.stringify(reportData, null, 2));
+      mkdirSync(reportDirectory, { recursive: true });
+      writeFileSync(
+        reportPath,
+        JSON.stringify(
+          {
+            status: result.status,
+            summary: {
+              passed: this.passCount,
+              failed: this.failCount,
+              skipped: this.skipCount,
+            },
+            failingTests: this.failingTests,
+            skippedTests: this.skippedTests,
+          },
+          null,
+          2
+        )
+      );
       console.log(`JSON report written to ${reportPath}`);
     } catch (error) {
       console.error('Failed to write JSON report:', error);
