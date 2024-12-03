@@ -488,13 +488,17 @@ function renderPreactComponent(
   // re-rendering a `StateWrapper` component.
   const propsSignal = signal(this.__properties);
   this.__propsSignal = propsSignal;
-  const stateWrapperProps = { ...propsSignal.value, ...slots, children: vnode };
-  if (this.__options.passCustomElementProp) {
-    // Sometimes we want to have access to the custom element to the Preact component wrapper
-    (stateWrapperProps as any).customElement = this;
-  }
 
-  const StateWrapper = () => h(this.__component, stateWrapperProps);
+  const StateWrapper = () => {
+    const stateWrapperProps = { ...propsSignal.value, ...slots, children: vnode };
+
+    if (this.__options.passCustomElementProp) {
+      // Sometimes we want to have access to the custom element to the Preact component wrapper
+      (stateWrapperProps as any).customElement = this;
+    }
+
+    return h(this.__component, stateWrapperProps);
+  };
 
   // Render the Preact component to the root of this custom element
   render(h(StateWrapper, {}), this.__root);
