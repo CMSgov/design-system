@@ -17,7 +17,6 @@ const conditionalWebComponentsConfig = useWebComponents
         '<rootDir>/packages/design-system/src/components/web-components/**/*.test.[jt]s(x)?',
         '<rootDir>/tests/browser/custom-reporter.test.ts',
       ],
-      testPathIgnorePatterns: ['<rootDir>/tests/browser/'],
     }
   : {
       testPathIgnorePatterns: [

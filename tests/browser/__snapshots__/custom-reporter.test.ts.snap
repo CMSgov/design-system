@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JSON report matches snapshot 1`] = `
+exports[`Custom reporter JSON report matches snapshot 1`] = `
 Object {
   "failingTests": Array [
     Object {

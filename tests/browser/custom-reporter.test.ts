@@ -50,7 +50,8 @@ test('JSON report matches snapshot', () => {
   const mockResult: FullResult = { status: 'failed' };
   reporter.onEnd(mockResult);
 
-  const reportPath = path.resolve(__dirname, 'test-report.json');
+  const reportDirectory = path.resolve(__dirname, 'test-results');
+  const reportPath = path.resolve(reportDirectory, 'test-report.json');
   const generatedReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
 
   expect(generatedReport).toMatchSnapshot();
