@@ -1,3 +1,5 @@
+const POLLING_INTERVAL = 10;
+
 let globalSheets: CSSStyleSheet[] | null = null;
 let subscribers: ShadowRoot[] = [];
 
@@ -21,10 +23,6 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
   });
 }
 
-function isStyleElement(node: Node): node is HTMLStyleElement {
-  return node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'STYLE';
-}
-
 function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
   return (
     node.nodeType === Node.ELEMENT_NODE &&
@@ -33,39 +31,30 @@ function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
   );
 }
 
-function watchForFutureChanges() {
-  const observer = new MutationObserver((allMutations: MutationRecord[]) => {
-    console.log('Observing changes to doc head');
-    const mutations = allMutations.filter((mutation) => mutation.type === 'childList');
-
-    // Update styles immediately if inline `<style>` elements were added or removed
-    const hasImmediateStyleChanges = mutations.some((mutation) =>
-      [...mutation.addedNodes, ...mutation.removedNodes].some(isStyleElement)
-    );
-    if (hasImmediateStyleChanges) {
-      updateStyles();
-    }
-
-    // Look for new `<link rel="stylesheet">` elements so we can wait for their load event
-    for (const mutation of mutations) {
-      for (const node of mutation.addedNodes) {
-        if (isLinkedStyleElement(node)) {
-          updateOnLinkLoad(node);
-        }
-      }
-    }
-  });
-
-  observer.observe(document.head, { childList: true });
-
-  // Listen for stylesheets that have yet to load on existing `link` elements
-  Array.from(document.head.querySelectorAll('link[rel="stylesheet"]')).forEach(updateOnLinkLoad);
+/**
+ * Create a string that is a relatively cheap to calculate but a fair representation of
+ * the document stylesheets so we can compare at the next poll interval and detect
+ * changes.
+ */
+function createStyleSheetSnapshot(): string {
+  return Array.from(document.styleSheets)
+    .map((sheet) =>
+      isLinkedStyleElement(sheet.ownerNode)
+        ? sheet.ownerNode.href
+        : sheet.cssRules[0]?.cssText ?? ''
+    )
+    .join(',');
 }
 
-function updateOnLinkLoad(el: HTMLLinkElement) {
-  console.log('listening to load events on ', el);
-  el.addEventListener('load', updateStyles);
-  el.addEventListener('error', console.log);
+function watchForFutureChanges() {
+  let stylesheetSnapshot = createStyleSheetSnapshot();
+  setInterval(() => {
+    const currentSnapshot = createStyleSheetSnapshot();
+    if (currentSnapshot !== stylesheetSnapshot) {
+      updateStyles();
+      stylesheetSnapshot = currentSnapshot;
+    }
+  }, POLLING_INTERVAL);
 }
 
 function updateStyles() {
