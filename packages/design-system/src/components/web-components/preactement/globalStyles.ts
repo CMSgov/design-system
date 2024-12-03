@@ -34,7 +34,8 @@ function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
 /**
  * Create a string that is a relatively cheap to calculate but a fair representation of
  * the document stylesheets so we can compare at the next poll interval and detect
- * changes.
+ * changes. It's not enough to just check the number of stylesheets because of situations
+ * like our Storybook where we just change the `href` attribute of an existing `link` el.
  */
 function createStyleSheetSnapshot(): string {
   return Array.from(document.styleSheets)
@@ -46,6 +47,11 @@ function createStyleSheetSnapshot(): string {
     .join(',');
 }
 
+/**
+ * We want to keep the shadow DOMs up-to-date with the global styles even if dynamic
+ * changes are made later or if stylesheets added right before our initial copy haven't
+ * actually finished loading.
+ */
 function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
   setInterval(() => {
@@ -58,18 +64,22 @@ function watchForFutureChanges() {
 }
 
 function updateStyles() {
-  console.log('Styles changed');
   globalSheets = copyGlobalStyleSheets();
   updateSubscribers(globalSheets);
 }
 
 function updateSubscribers(newSheets: CSSStyleSheet[]) {
   for (const subscriber of subscribers) {
-    console.log('updating subscriber');
     subscriber.adoptedStyleSheets = newSheets;
   }
 }
 
+/**
+ * Applies the current global styles to the given shadow root and subscribes to future
+ * changes to the global stylesheets. Don't forget to unsubscribe when the web component
+ * is disconnected by calling `unsubscribeFromGlobalStyleChanges` or else our reference
+ * to it here will keep garbage collection from being able to remove it from memory.
+ */
 export function subscribeToGlobalStyleChanges(shadowRoot: ShadowRoot) {
   shadowRoot.adoptedStyleSheets.push(...getGlobalStyleSheets());
   subscribers.push(shadowRoot);
