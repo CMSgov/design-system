@@ -23,12 +23,8 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
   });
 }
 
-function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
-  return (
-    node.nodeType === Node.ELEMENT_NODE &&
-    (node as Element).tagName === 'LINK' &&
-    (node as HTMLLinkElement).rel === 'stylesheet'
-  );
+function isLinkElement(node: Node): node is HTMLLinkElement {
+  return node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
 }
 
 /**
@@ -40,9 +36,7 @@ function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
 function createStyleSheetSnapshot(): string {
   return Array.from(document.styleSheets)
     .map((sheet) =>
-      isLinkedStyleElement(sheet.ownerNode)
-        ? sheet.ownerNode.href
-        : sheet.cssRules[0]?.cssText ?? ''
+      isLinkElement(sheet.ownerNode) ? sheet.ownerNode.href : sheet.cssRules[0]?.cssText ?? ''
     )
     .join(',');
 }
