@@ -57,7 +57,7 @@ const Wrapper = ({
   ...otherProps
 }: WrapperProps) => {
   const parentAccordion = findAccordionAncestor(customElement);
-  const bordered = parseBooleanAttr(parentAccordion.getAttribute('bordered'));
+  const bordered = parseBooleanAttr(parentAccordion?.getAttribute('bordered'));
 
   return (
     <AccordionItem
