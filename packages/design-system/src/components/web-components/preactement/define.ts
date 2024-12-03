@@ -13,7 +13,7 @@ import { Slots, createSlotVNode, getSlotNames, templateToPreactVNode } from './p
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 import { signal } from '@preact/signals';
-import { addGlobalStylesToShadowRoot } from './globalStyles';
+import { subscribeToGlobalStyleChanges, unsubscribeFromGlobalStyleChanges } from './globalStyles';
 
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
@@ -258,7 +258,7 @@ async function onConnected(this: CustomElement) {
   }
 
   if (this.__options.shadow) {
-    addGlobalStylesToShadowRoot(this.__root);
+    subscribeToGlobalStyleChanges(this.__root as ShadowRoot);
   } else {
     setupMutationObserver.call(this);
   }
@@ -303,6 +303,9 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
 function onDisconnected(this: CustomElement) {
   render(null, this);
   this.__mutationObserver?.disconnect();
+  if (this.__options.shadow) {
+    unsubscribeFromGlobalStyleChanges(this.__root as ShadowRoot);
+  }
 }
 
 function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
