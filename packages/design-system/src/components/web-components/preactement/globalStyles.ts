@@ -21,49 +21,51 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
   });
 }
 
-function nodeIsStylish(node: Node): boolean {
-  if (node.nodeType !== Node.ELEMENT_NODE) {
-    return false;
-  }
+function isStyleElement(node: Node): node is HTMLStyleElement {
+  return node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'STYLE';
+}
 
+function isLinkedStyleElement(node: Node): node is HTMLLinkElement {
   return (
-    ((node as Element).tagName === 'LINK' && (node as HTMLLinkElement).rel === 'stylesheet') ||
-    (node as Element).tagName === 'STYLE'
+    node.nodeType === Node.ELEMENT_NODE &&
+    (node as Element).tagName === 'LINK' &&
+    (node as HTMLLinkElement).rel === 'stylesheet'
   );
 }
 
 function watchForFutureChanges() {
-  const observer = new MutationObserver((mutationsList: MutationRecord[]) => {
+  const observer = new MutationObserver((allMutations: MutationRecord[]) => {
     console.log('Observing changes to doc head');
+    const mutations = allMutations.filter((mutation) => mutation.type === 'childList');
 
-    const stylesChanged = mutationsList.some(
-      (mutation) =>
-        (mutation.type === 'childList' && Array.from(mutation.addedNodes).some(nodeIsStylish)) ||
-        Array.from(mutation.removedNodes).some(nodeIsStylish)
+    // Update styles immediately if inline `<style>` elements were added or removed
+    const hasImmediateStyleChanges = mutations.some((mutation) =>
+      [...mutation.addedNodes, ...mutation.removedNodes].some(isStyleElement)
     );
-
-    if (stylesChanged) {
+    if (hasImmediateStyleChanges) {
       updateStyles();
+    }
+
+    // Look for new `<link rel="stylesheet">` elements so we can wait for their load event
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (isLinkedStyleElement(node)) {
+          updateOnLinkLoad(node);
+        }
+      }
     }
   });
 
   observer.observe(document.head, { childList: true });
 
-  // The following is really just for our particular Storybook setup, where we change the
-  // href attribute of our theme `<link>` element when the user switches themes. We don't
-  // expect this to be a common pattern in the real world.
-  const hrefAttributeObserver = new MutationObserver((mutationsList) => {
-    console.log('observed mutation');
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'href') {
-        updateStyles();
-      }
-    }
-  });
-  Array.from(document.head.querySelectorAll('link[rel="stylesheet"]')).forEach((link) => {
-    console.log(link);
-    hrefAttributeObserver.observe(link, { attributes: true });
-  });
+  // Listen for stylesheets that have yet to load on existing `link` elements
+  Array.from(document.head.querySelectorAll('link[rel="stylesheet"]')).forEach(updateOnLinkLoad);
+}
+
+function updateOnLinkLoad(el: HTMLLinkElement) {
+  console.log('listening to load events on ', el);
+  el.addEventListener('load', updateStyles);
+  el.addEventListener('error', console.log);
 }
 
 function updateStyles() {
