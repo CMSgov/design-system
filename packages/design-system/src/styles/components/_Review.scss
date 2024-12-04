@@ -24,6 +24,9 @@
 
 .ds-c-review__heading {
   display: inline-block;
+  font-family: var(--global__font-family);
   font-weight: var(--font-weight-bold);
+  font-size: var(--global__font-size);
+  line-height: var(--global__line-height);
   margin-block: 0;
 }
