@@ -397,7 +397,7 @@ describe('Autocomplete', () => {
       'error-message': 'Something went wrong',
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('sets the display location of the error message', () => {
@@ -406,7 +406,7 @@ describe('Autocomplete', () => {
       'error-message': 'Something went wrong',
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('can add a custom class name to the error message', () => {
@@ -414,7 +414,7 @@ describe('Autocomplete', () => {
       'error-message-class-name': 'custom-class-name',
       'error-message': 'Something went wrong',
     });
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   // it("calls child TextField's event handlers", () => {
