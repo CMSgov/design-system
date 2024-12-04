@@ -1,18 +1,46 @@
 import { isValidElement, Children, ReactElement, ReactNode } from 'react';
-import { AutocompleteProps, AutocompleteItem } from './Autocomplete';
-import { ComboBoxState, Item } from '../react-aria'; // from react-stately
+import {
+  AutocompleteProps,
+  AutocompleteItem,
+  AutocompleteItems,
+  AutocompleteItemGroup,
+} from './Autocomplete';
+import { ComboBoxState, Item, Section } from '../react-aria'; // from react-stately
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 
 export function renderReactStatelyItems(
-  items: AutocompleteItem[],
+  items: AutocompleteItems,
   itemToString: AutocompleteProps['itemToString']
 ) {
-  return items.map((item: AutocompleteItem) => {
-    const { id, name, children, isResult, ...extraAttrs } = item;
+  return items.map((item) => {
+    // Check if the item is a group
+    if ('label' in item && 'items' in item) {
+      const group = item as AutocompleteItemGroup;
+      return (
+        <Section key={group.label} title={group.label}>
+          {group.items.map((groupItem) => (
+            <Item
+              key={groupItem.id}
+              textValue={groupItem.name ?? itemToString?.(groupItem)}
+              {...groupItem}
+            >
+              {groupItem.children ?? groupItem.name}
+            </Item>
+          ))}
+        </Section>
+      );
+    }
+
+    // If not a group, render as a standalone item
+    const standaloneItem = item as AutocompleteItem;
     return (
-      <Item {...extraAttrs} textValue={name ?? itemToString?.(item)} key={id}>
-        {children ?? name}
+      <Item
+        key={standaloneItem.id}
+        textValue={standaloneItem.name ?? itemToString?.(standaloneItem)}
+        {...standaloneItem}
+      >
+        {standaloneItem.children ?? standaloneItem.name}
       </Item>
     );
   });

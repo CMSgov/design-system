@@ -69,7 +69,7 @@ const Template = (args) => {
   );
 };
 
-function makeItem(name: string, children?: React.ReactNode) {
+function makeItem(name: string, children?: React.ReactNode, category?: string) {
   return {
     id: uniqueId(),
     name,
@@ -139,6 +139,29 @@ export const LabeledList: Story = {
   } as any,
 };
 
+export const OptionGroups: Story = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Select a state.',
+    textFieldHint:
+      'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Select from the options below:',
+    items: [
+      {
+        label: 'Group A',
+        items: [makeItem('Alabama'), makeItem('Alaska'), makeItem('Arizona'), makeItem('Arkansas')],
+      },
+      {
+        label: 'Group C',
+        items: [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')],
+      },
+      {
+        label: 'Group D',
+        items: [makeItem('Delaware'), makeItem('District of Columbia')],
+      },
+    ],
+  } as any,
+};
 export const CustomMarkup: Story = {
   render: Template,
   args: {

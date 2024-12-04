@@ -39,6 +39,14 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
   isResult?: boolean;
 }
 
+export interface AutocompleteItemGroup {
+  label: string; // Group label
+  items: AutocompleteItem[]; // Items in the group
+  id: string; // Unique identifier for this group
+}
+
+export type AutocompleteItems = AutocompleteItem[] | AutocompleteItemGroup[];
+
 export interface AutocompleteProps {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
@@ -102,7 +110,7 @@ export interface AutocompleteProps {
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
    * this props should be undefined.
    */
-  items?: AutocompleteItem[];
+  items?: AutocompleteItems;
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
@@ -131,6 +139,7 @@ export interface AutocompleteProps {
    * Called when the child `TextField` value changes. Is called with a string representing the input value.
    */
   onInputValueChange?: (inputValue: string) => void;
+  category?: string;
 }
 
 /**
