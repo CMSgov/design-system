@@ -388,7 +388,7 @@ describe('Autocomplete', () => {
       'error-message': 'Something went wrong',
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('displays an error message in the default location for Healthcare', () => {
