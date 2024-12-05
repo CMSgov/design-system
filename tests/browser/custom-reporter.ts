@@ -16,7 +16,7 @@ class MyReporter implements Reporter {
   private failingTests: { path: string; name: string }[] = [];
   private skippedTests: { path: string; name: string }[] = [];
 
-  onBegin(config: FullConfig, suite: Suite) {
+  onBegin(_: FullConfig, suite: Suite) {
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
 
