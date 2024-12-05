@@ -40,9 +40,9 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
 }
 
 export interface AutocompleteItemGroup {
-  label: string; // Group label
-  items: AutocompleteItem[]; // Items in the group
-  id: string; // Unique identifier for this group
+  label: string;
+  items: AutocompleteItem[];
+  id: string;
 }
 
 export type AutocompleteItems = AutocompleteItem[] | AutocompleteItemGroup[];

@@ -53,9 +53,22 @@ const Template = (args) => {
   };
   let filteredItems = null;
   if (input.length > 0) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
+    // If we have groups:
+    if (items[0].label) {
+      filteredItems = items.map((group) => {
+        const filteredGroup = group.items.filter(
+          (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+        );
+        return {
+          ...group,
+          items: filteredGroup,
+        };
+      });
+    } else {
+      filteredItems = items.filter(
+        (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+      );
+    }
   }
   return (
     <Autocomplete
