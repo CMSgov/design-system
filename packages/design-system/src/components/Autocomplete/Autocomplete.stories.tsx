@@ -54,7 +54,7 @@ const Template = (args) => {
   let filteredItems = null;
   if (input.length > 0) {
     // If we have groups:
-    if (items[0].label) {
+    if (items[0]?.label) {
       filteredItems = items.map((group) => {
         const filteredGroup = group.items.filter(
           (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
@@ -82,7 +82,7 @@ const Template = (args) => {
   );
 };
 
-function makeItem(name: string, children?: React.ReactNode, category?: string) {
+function makeItem(name: string, children?: React.ReactNode) {
   return {
     id: uniqueId(),
     name,

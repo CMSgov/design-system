@@ -139,7 +139,6 @@ export interface AutocompleteProps {
    * Called when the child `TextField` value changes. Is called with a string representing the input value.
    */
   onInputValueChange?: (inputValue: string) => void;
-  category?: string;
 }
 
 /**
