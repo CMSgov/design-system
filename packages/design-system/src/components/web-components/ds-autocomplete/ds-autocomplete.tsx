@@ -5,7 +5,7 @@ import { TextField } from '../../TextField';
 import { formAttrs } from '../shared-attributes/form';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
-import { UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { errorPlacementValues, UseInlineErrorProps } from '../../InlineError/useInlineError';
 import { isPossibleValue } from '../utils';
 
 const attributes = [
@@ -89,7 +89,7 @@ const Wrapper = ({
         disabled={parseBooleanAttr(otherProps.disabled)}
         errorMessage={otherProps.errorMessage}
         errorPlacement={
-          isPossibleValue(otherProps.errorPlacement, ['top', 'bottom'])
+          isPossibleValue(otherProps.errorPlacement, errorPlacementValues)
             ? otherProps.errorPlacement
             : undefined
         }
