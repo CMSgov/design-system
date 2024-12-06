@@ -30,6 +30,26 @@
     "\"true\"\"false\""
   ],
   [
+    "disabled",
+    "Disables the input text field.",
+    "\"true\"\"false\""
+  ],
+  [
+    "error-message",
+    "Enable the error state by providing an error message",
+    "string"
+  ],
+  [
+    "error-message-class-name",
+    "Provides the option to add styling to error messages placed at the bottom of the autcomplete.",
+    "string"
+  ],
+  [
+    "error-placement",
+    "Location of the error message relative to the field input",
+    "undefined\"top\"\"bottom\""
+  ],
+  [
     "hint",
     "An optional hint for the label",
     "string"

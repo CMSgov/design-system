@@ -21,7 +21,7 @@ const meta: Meta = {
     'clear-search-button': true,
     'loading-message': 'Loading...',
     'no-results-message': 'No results',
-    name: 'ds-autocomplete',
+    name: 'autocomplete',
   },
   argTypes: {
     'aria-clear-label': {
@@ -52,6 +52,24 @@ const meta: Meta = {
     'clear-search-button': {
       description: 'Removes the Clear search button when set to `false`',
       control: 'boolean',
+    },
+    disabled: {
+      description: 'Disables the input text field.',
+      control: 'boolean',
+    },
+    'error-message': {
+      description: 'Enable the error state by providing an error message',
+      control: 'text',
+    },
+    'error-placement': {
+      description: 'Location of the error message relative to the field input',
+      options: [undefined, 'top', 'bottom'],
+      control: { type: 'radio' },
+    },
+    'error-message-class-name': {
+      description:
+        'Provides the option to add styling to error messages placed at the bottom of the autcomplete.',
+      control: 'text',
     },
     hint: {
       description: 'An optional hint for the label',

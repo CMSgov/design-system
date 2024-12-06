@@ -5,6 +5,8 @@ import { config } from '../config';
 
 export type ErrorPlacement = 'top' | 'bottom';
 
+export const errorPlacementValues: ErrorPlacement[] = ['top', 'bottom'] as const;
+
 // TODO: We should conditionally return an errorId, because we want to be able
 // to include it in the aria-describedby without conditional logic in the component
 

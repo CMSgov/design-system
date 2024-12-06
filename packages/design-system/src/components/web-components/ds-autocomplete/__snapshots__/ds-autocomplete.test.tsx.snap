@@ -1,5 +1,237 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Autocomplete can add a custom class name to the error message 1`] = `
+<DocumentFragment>
+  <ds-autocomplete
+    aria-clear-label="Clear search to try again"
+    clear-input-text="Clear search"
+    clear-search-button="true"
+    error-message="Something went wrong"
+    error-message-class-name="custom-class-name"
+    label="autocomplete label"
+    loading-message="Loading..."
+    no-results-message="No results"
+  >
+    <div
+      class="ds-c-autocomplete"
+    >
+      <div
+        class="ds-u-clearfix"
+      >
+        <label
+          class="ds-c-label"
+          for="autocomplete--133"
+          id="autocomplete--133__label"
+        >
+          autocomplete label
+        </label>
+        <input
+          aria-autocomplete="list"
+          aria-controls="autocomplete--133__menu"
+          aria-describedby="autocomplete--133__error"
+          aria-expanded="false"
+          aria-invalid="true"
+          aria-labelledby="autocomplete--133__label"
+          autocomplete="off"
+          autocorrect="off"
+          class="ds-c-field ds-c-field--error"
+          id="autocomplete--133"
+          name="autocomplete"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+        />
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error custom-class-name ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
+          id="autocomplete--133__error"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--alert-circle "
+            viewBox="36 -12 186 186"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
+            />
+          </svg>
+          <span
+            class="ds-u-visibility--screen-reader"
+          >
+            Error: 
+          </span>
+          Something went wrong
+        </p>
+      </div>
+      <button
+        aria-label="Clear search to try again"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+        type="button"
+      >
+        Clear search
+      </button>
+    </div>
+    <template />
+  </ds-autocomplete>
+</DocumentFragment>
+`;
+
+exports[`Autocomplete displays an error message in the default location for Healthcare 1`] = `
+<DocumentFragment>
+  <ds-autocomplete
+    aria-clear-label="Clear search to try again"
+    clear-input-text="Clear search"
+    clear-search-button="true"
+    error-message="Something went wrong"
+    label="autocomplete label"
+    loading-message="Loading..."
+    no-results-message="No results"
+  >
+    <div
+      class="ds-c-autocomplete"
+    >
+      <div
+        class="ds-u-clearfix"
+      >
+        <label
+          class="ds-c-label"
+          for="autocomplete--125"
+          id="autocomplete--125__label"
+        >
+          autocomplete label
+        </label>
+        <input
+          aria-autocomplete="list"
+          aria-controls="autocomplete--125__menu"
+          aria-describedby="autocomplete--125__error"
+          aria-expanded="false"
+          aria-invalid="true"
+          aria-labelledby="autocomplete--125__label"
+          autocomplete="off"
+          autocorrect="off"
+          class="ds-c-field ds-c-field--error"
+          id="autocomplete--125"
+          name="autocomplete"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+        />
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
+          id="autocomplete--125__error"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--alert-circle "
+            viewBox="36 -12 186 186"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
+            />
+          </svg>
+          <span
+            class="ds-u-visibility--screen-reader"
+          >
+            Error: 
+          </span>
+          Something went wrong
+        </p>
+      </div>
+      <button
+        aria-label="Clear search to try again"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+        type="button"
+      >
+        Clear search
+      </button>
+    </div>
+    <template />
+  </ds-autocomplete>
+</DocumentFragment>
+`;
+
+exports[`Autocomplete displays an error message in the default position for Core 1`] = `
+<DocumentFragment>
+  <ds-autocomplete
+    aria-clear-label="Clear search to try again"
+    clear-input-text="Clear search"
+    clear-search-button="true"
+    error-message="Something went wrong"
+    label="autocomplete label"
+    loading-message="Loading..."
+    no-results-message="No results"
+  >
+    <div
+      class="ds-c-autocomplete"
+    >
+      <div
+        class="ds-u-clearfix"
+      >
+        <label
+          class="ds-c-label"
+          for="autocomplete--121"
+          id="autocomplete--121__label"
+        >
+          autocomplete label
+        </label>
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error"
+          id="autocomplete--121__error"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--alert-circle "
+            viewBox="36 -12 186 186"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
+            />
+          </svg>
+          <span
+            class="ds-u-visibility--screen-reader"
+          >
+            Error: 
+          </span>
+          Something went wrong
+        </p>
+        <input
+          aria-autocomplete="list"
+          aria-controls="autocomplete--121__menu"
+          aria-describedby="autocomplete--121__error"
+          aria-expanded="false"
+          aria-invalid="true"
+          aria-labelledby="autocomplete--121__label"
+          autocomplete="off"
+          autocorrect="off"
+          class="ds-c-field ds-c-field--error"
+          id="autocomplete--121"
+          name="autocomplete"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+        />
+      </div>
+      <button
+        aria-label="Clear search to try again"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+        type="button"
+      >
+        Clear search
+      </button>
+    </div>
+    <template />
+  </ds-autocomplete>
+</DocumentFragment>
+`;
+
 exports[`Autocomplete renders correctly 1`] = `
 <DocumentFragment>
   <ds-autocomplete
@@ -84,4 +316,82 @@ Array [
     </span>
   </li>,
 ]
+`;
+
+exports[`Autocomplete sets the display location of the error message 1`] = `
+<DocumentFragment>
+  <ds-autocomplete
+    aria-clear-label="Clear search to try again"
+    clear-input-text="Clear search"
+    clear-search-button="true"
+    error-message="Something went wrong"
+    error-placement="bottom"
+    label="autocomplete label"
+    loading-message="Loading..."
+    no-results-message="No results"
+  >
+    <div
+      class="ds-c-autocomplete"
+    >
+      <div
+        class="ds-u-clearfix"
+      >
+        <label
+          class="ds-c-label"
+          for="autocomplete--129"
+          id="autocomplete--129__label"
+        >
+          autocomplete label
+        </label>
+        <input
+          aria-autocomplete="list"
+          aria-controls="autocomplete--129__menu"
+          aria-describedby="autocomplete--129__error"
+          aria-expanded="false"
+          aria-invalid="true"
+          aria-labelledby="autocomplete--129__label"
+          autocomplete="off"
+          autocorrect="off"
+          class="ds-c-field ds-c-field--error"
+          id="autocomplete--129"
+          name="autocomplete"
+          role="combobox"
+          spellcheck="false"
+          type="text"
+        />
+        <p
+          aria-atomic="true"
+          aria-live="assertive"
+          class="ds-c-inline-error ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
+          id="autocomplete--129__error"
+        >
+          <svg
+            aria-hidden="true"
+            class="ds-c-icon ds-c-icon--alert-circle "
+            viewBox="36 -12 186 186"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M162.18 41.592c-5.595-9.586-13.185-17.176-22.771-22.771-9.588-5.595-20.055-8.392-31.408-8.392-11.352 0-21.821 2.797-31.408 8.392-9.587 5.594-17.177 13.184-22.772 22.771-5.596 9.587-8.393 20.057-8.393 31.408 0 11.351 2.798 21.82 8.392 31.408 5.595 9.584 13.185 17.176 22.772 22.771 9.587 5.595 20.056 8.392 31.408 8.392s21.822-2.797 31.408-8.392c9.586-5.594 17.176-13.185 22.771-22.771C167.773 94.82 170.57 84.35 170.57 73c0-11.351-2.797-21.822-8.39-31.408zm-43.75 70.433c0 .761-.246 1.398-.734 1.914s-1.086.773-1.793.773H100.26c-.706 0-1.331-.271-1.874-.814-.543-.543-.814-1.168-.814-1.873V96.546c0-.706.271-1.331.814-1.874.543-.543 1.168-.814 1.874-.814h15.643c.707 0 1.306.258 1.793.773.488.518.734 1.154.734 1.915v15.479zm-.164-28.026c-.055.543-.339 1.019-.854 1.426-.517.407-1.154.61-1.914.61h-15.073c-.761 0-1.413-.203-1.956-.61-.543-.407-.815-.883-.815-1.426l-1.385-50.595c0-.653.271-1.141.814-1.467.544-.434 1.196-.652 1.956-.652h17.926c.761 0 1.412.217 1.955.652.543.326.813.815.813 1.467l-1.467 50.595z"
+            />
+          </svg>
+          <span
+            class="ds-u-visibility--screen-reader"
+          >
+            Error: 
+          </span>
+          Something went wrong
+        </p>
+      </div>
+      <button
+        aria-label="Clear search to try again"
+        class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
+        type="button"
+      >
+        Clear search
+      </button>
+    </div>
+    <template />
+  </ds-autocomplete>
+</DocumentFragment>
 `;

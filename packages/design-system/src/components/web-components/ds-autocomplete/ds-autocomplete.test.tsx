@@ -1,4 +1,5 @@
 import { render, waitFor, screen } from '@testing-library/react';
+import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
 
@@ -375,6 +376,45 @@ describe('Autocomplete', () => {
     userEvent.type(autocompleteField, '{esc}');
 
     expectMenuToBeClosed();
+  });
+
+  it('displays a custom error message', () => {
+    renderAutocomplete({ 'error-message': 'Something went wrong' });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+  });
+
+  it('displays an error message in the default position for Core', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('displays an error message in the default location for Healthcare', () => {
+    config({ errorPlacementDefault: 'bottom' });
+    const { asFragment } = renderAutocomplete({
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('sets the display location of the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-placement': 'bottom',
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('can add a custom class name to the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-message-class-name': 'custom-class-name',
+      'error-message': 'Something went wrong',
+    });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   // it("calls child TextField's event handlers", () => {
