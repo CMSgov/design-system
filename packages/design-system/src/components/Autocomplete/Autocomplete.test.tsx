@@ -148,6 +148,53 @@ describe('Autocomplete', () => {
     expectMenuToBeClosed();
   });
 
+  it('renders grouped items with headers', () => {
+    const items = [
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Option 1' },
+          { id: '2', name: 'Option 2' },
+        ],
+      },
+      {
+        label: 'Group 2',
+        id: 'group-2',
+        items: [
+          { id: '3', name: 'Option 3' },
+          { id: '4', name: 'Option 4' },
+        ],
+      },
+    ];
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(2);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+    expect(groups[1]).toHaveAccessibleName('Group 2');
+
+    const headers = screen.getAllByText(/Group/, {
+      selector: '.ds-c-autocomplete__menu-item-group-label',
+    });
+    expect(headers).toHaveLength(2);
+
+    expect(headers[0]).toHaveTextContent('Group 1');
+    expect(headers[0]).toHaveAttribute('id', 'static-id__group--0');
+
+    expect(headers[1]).toHaveTextContent('Group 2');
+    expect(headers[1]).toHaveAttribute('id', 'static-id__group--1');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(4);
+    expect(listItems[0]).toHaveTextContent('Option 1');
+    expect(listItems[1]).toHaveTextContent('Option 2');
+    expect(listItems[2]).toHaveTextContent('Option 3');
+    expect(listItems[3]).toHaveTextContent('Option 4');
+  });
+
   it('renders Autocomplete component no results', () => {
     renderAutocomplete({ items: [] });
     open();
