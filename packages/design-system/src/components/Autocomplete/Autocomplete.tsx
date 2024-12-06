@@ -40,8 +40,18 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
 }
 
 export interface AutocompleteItemGroup {
+  /**
+   * Label displayed as the group header in the autocomplete menu.
+   */
   label: string;
+  /**
+   * Array of items contained within this group.
+   * Each item should conform to the `AutocompleteItem` type.
+   */
   items: AutocompleteItem[];
+  /**
+   * Unique identifier for the group.
+   */
   id: string;
 }
 
