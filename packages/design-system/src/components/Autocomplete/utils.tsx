@@ -13,12 +13,15 @@ export function renderReactStatelyItems(
   items: AutocompleteItems,
   itemToString: AutocompleteProps['itemToString']
 ) {
-  return items.map((item) => {
+  return items.map((item, index) => {
     // Check if the item is a group
     if ('label' in item && 'items' in item) {
       const group = item as AutocompleteItemGroup;
+      const { id, label, items, ...extraAttrs } = group;
+      const groupKey = `group-${label.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+
       return (
-        <Section key={group.label} title={group.label}>
+        <Section {...extraAttrs} key={groupKey} title={label}>
           {group.items.map((groupItem) => {
             const { id, name, children, ...extraAttrs } = groupItem;
 
