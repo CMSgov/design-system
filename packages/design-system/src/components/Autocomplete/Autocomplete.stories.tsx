@@ -182,7 +182,7 @@ export const ItemGroups: Story = {
   } as any,
 };
 
-export const MixedGroupsAndStandaloneItems: Story = {
+export const GroupsAndStandaloneItems: Story = {
   render: Template,
   args: {
     textFieldLabel: 'Search for a healthcare specialty or doctor’s office.',
