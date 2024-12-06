@@ -278,19 +278,22 @@ import Layout from '../layouts/Layout.astro';
         size="wide"
         backdrop-click-exits="true"
       >
-        <div slot="heading">
-          <h2>This is the modal heading.</h2>
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
-          lacinia, eget tempor purus placerat.
-        </p>
-  
-        <div slot="actions">
-          <form method="dialog">
-            <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1">Reset</ds-button>
-            <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
-          </form>
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+            lacinia, eget tempor purus placerat.
+          </p>
+          <div slot="heading">
+            <h2>This is the modal heading.</h2>
+          </div>
+          <div slot="actions">
+            <form method="dialog">
+              <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1"
+                >Reset</ds-button
+              >
+              <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+            </form>
+          </div>
         </div>
       </ds-modal-dialog>
   
@@ -298,14 +301,15 @@ import Layout from '../layouts/Layout.astro';
         document.addEventListener('DOMContentLoaded', (event) => {
           const modal = document.querySelector('ds-modal-dialog');
           const toggleButton = document.getElementById('modal-toggle');
-          const form = modal.querySelector('form[method="dialog"]');
   
-          const openModal = () => modal?.setAttribute('is-open', 'true');
-          const closeModal = () => modal?.setAttribute('is-open', 'false');
+          const openModal = () => {
+            modal?.setAttribute('is-open', 'true');
+          };
   
-          modal?.addEventListener('ds-exit', closeModal);
+          modal?.addEventListener('ds-exit', () => {
+            modal?.setAttribute('is-open', 'false');
+          });
           toggleButton?.addEventListener('click', openModal);
-          form?.addEventListener('submit', closeModal);
         });
       </script>
     </div>
