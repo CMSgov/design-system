@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/preact';
+import { createGenericTestRenderer } from '../__tests__/rendering';
+import { getAllByRole, screen } from '@testing-library/preact';
 import './ds-review';
 
 const defaultAttrs = {
@@ -7,32 +8,30 @@ const defaultAttrs = {
   'edit-text': 'edit',
 };
 
-const children = 'This is an example of a default Review component.';
+const defaultChildren = 'This is an example of a default Review component.';
 
-function renderReview(attrs = {}, children = null, slotContent = null) {
-  return render(
+const renderReview = createGenericTestRenderer(
+  'ds-review',
+  (attrs = {}, children: React.ReactNode = null, slotContent: React.ReactElement = null) => (
     <ds-review {...(attrs as any)}>
       {children}
       {slotContent && <div slot="edit-content">{slotContent}</div>}
     </ds-review>
-  );
-}
+  )
+);
 
 describe('Review', () => {
   it('renders review', () => {
-    renderReview(defaultAttrs, children);
+    const { shadowRoot } = renderReview(defaultAttrs, defaultChildren);
 
-    const wrappers = screen.getAllByRole('generic');
-    const wrapper = wrappers[1];
-
-    expect(wrapper.classList).toContain('ds-c-review');
-    expect(wrapper).toMatchSnapshot();
+    expect(shadowRoot.firstElementChild.classList).toContain('ds-c-review');
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('renders a heading', () => {
-    renderReview(defaultAttrs, children);
+    const { shadowRoot } = renderReview(defaultAttrs, defaultChildren);
 
-    const headings = screen.getAllByRole('heading');
+    const headings = getAllByRole(shadowRoot as any as HTMLElement, 'heading');
     expect(headings.length).toBe(1);
 
     const heading = headings[0];
@@ -40,9 +39,9 @@ describe('Review', () => {
   });
 
   it('renders the edit link', () => {
-    renderReview(defaultAttrs, children);
+    const { shadowRoot } = renderReview(defaultAttrs, defaultChildren);
 
-    const links = screen.getAllByRole('link');
+    const links = getAllByRole(shadowRoot as any as HTMLElement, 'link');
     expect(links.length).toBe(1);
 
     const link = links[0];
@@ -58,7 +57,7 @@ describe('Review', () => {
       </div>
     );
 
-    renderReview(defaultAttrs, children, slotContent);
+    renderReview(defaultAttrs, defaultChildren, slotContent);
 
     const editLink = screen.getByText('Edit');
     const removeLink = screen.getByText('Remove');
@@ -78,11 +77,7 @@ describe('Review', () => {
   });
 
   it('adds a class from props', () => {
-    renderReview({ 'class-name': 'my-class' });
-
-    const wrappers = screen.getAllByRole('generic');
-    const wrapper = wrappers[1];
-
-    expect(wrapper.classList).toContain('my-class');
+    const { shadowRoot } = renderReview({ 'class-name': 'my-class' });
+    expect(shadowRoot.firstElementChild.classList).toContain('my-class');
   });
 });
