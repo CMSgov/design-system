@@ -1,7 +1,8 @@
 import { define } from '../preactement/define';
-import { Tooltip, TooltipProps } from '../../Tooltip';
+import { placements, Tooltip, TooltipProps } from '../../Tooltip';
 import { Placement } from '@popperjs/core';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { isPossibleValue } from '../utils';
 
 const attributes = [
   'active-class-name',
@@ -58,26 +59,6 @@ interface WrapperProps
   title: string;
 }
 
-const isPlacementValue = (location: string): location is Placement => {
-  return [
-    'auto',
-    'auto-start',
-    'auto-end',
-    'top',
-    'top-start',
-    'top-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'right',
-    'right-start',
-    'right-end',
-    'left',
-    'left-start',
-    'left-end',
-  ].includes(location);
-};
-
 const Wrapper = ({
   contentHeading,
   dialog,
@@ -96,7 +77,7 @@ const Wrapper = ({
     id={rootId}
     title={title}
     placement={
-      isPlacementValue(otherProps.placement)
+      isPossibleValue(otherProps.placement, placements)
         ? otherProps.placement
         : (Tooltip.defaultProps.placement as Placement)
     }

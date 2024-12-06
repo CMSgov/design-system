@@ -1,7 +1,8 @@
 import { define } from '../preactement/define';
-import { Dialog, DialogProps, DialogSize } from '../../Dialog';
+import { availableSizes, Dialog, DialogProps, DialogSize } from '../../Dialog';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
+import { isPossibleValue } from '../utils';
 
 const attributes = [
   'actions-class-name',
@@ -33,10 +34,6 @@ interface WrapperProps
   size: string;
 }
 
-const isAcceptableSize = (size: string): size is DialogSize => {
-  return ['narrow', 'wide', 'full'].includes(size);
-};
-
 const Wrapper = ({
   alert,
   analytics,
@@ -54,7 +51,7 @@ const Wrapper = ({
     ariaCloseLabel={dialogCloseLabel}
     backdropClickExits={parseBooleanAttr(backdropClickExits)}
     isOpen={parseBooleanAttr(isOpen)}
-    size={isAcceptableSize(size) ? size : null}
+    size={isPossibleValue(size, availableSizes) ? size : undefined}
     {...otherProps}
     analytics={parseBooleanAttr(analytics)}
   >

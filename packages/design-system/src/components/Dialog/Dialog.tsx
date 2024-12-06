@@ -11,6 +11,8 @@ import { useBodyScrollPrevention } from './useBodyScrollPrevention';
 
 export type DialogSize = 'narrow' | 'wide' | 'full';
 
+export const availableSizes: DialogSize[] = ['narrow', 'wide', 'full'];
+
 export interface BaseDialogProps extends AnalyticsOverrideProps {
   /**
    * Buttons or other HTML to be rendered in the "actions" bar
