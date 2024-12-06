@@ -53,23 +53,26 @@ const Template = (args) => {
   };
   let filteredItems = null;
   if (input.length > 0) {
-    // If we have groups:
-    if (items[0]?.label) {
-      filteredItems = items.map((group) => {
-        const filteredGroup = group.items.filter(
-          (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-        );
-        return {
-          ...group,
-          items: filteredGroup,
-        };
-      });
-    } else {
-      filteredItems = items.filter(
-        (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-      );
-    }
+    filteredItems = items
+      .map((item) => {
+        if (item.label && item.items) {
+          // Handle grouped items
+          const filteredGroupItems = item.items.filter(
+            (groupItem) =>
+              !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
+          );
+          return {
+            ...item,
+            items: filteredGroupItems,
+          };
+        } else {
+          // Handle standalone items
+          return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
+        }
+      })
+      .filter(Boolean);
   }
+
   return (
     <Autocomplete
       {...autocompleteArgs}
@@ -87,6 +90,14 @@ function makeItem(name: string, children?: React.ReactNode) {
     id: uniqueId(),
     name,
     children,
+  };
+}
+
+function makeGroup(label: string, items: ReturnType<typeof makeItem>[]) {
+  return {
+    id: uniqueId(),
+    label,
+    items,
   };
 }
 
@@ -152,29 +163,47 @@ export const LabeledList: Story = {
   } as any,
 };
 
-export const OptionGroups: Story = {
+export const ItemGroups: Story = {
   render: Template,
   args: {
     textFieldLabel: 'Select a state.',
     textFieldHint:
       'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
-    label: 'Select from the options below:',
     items: [
-      {
-        label: 'Group A',
-        items: [makeItem('Alabama'), makeItem('Alaska'), makeItem('Arizona'), makeItem('Arkansas')],
-      },
-      {
-        label: 'Group C',
-        items: [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')],
-      },
-      {
-        label: 'Group D',
-        items: [makeItem('Delaware'), makeItem('District of Columbia')],
-      },
+      makeGroup('Group A', [
+        makeItem('Alabama'),
+        makeItem('Alaska'),
+        makeItem('Arizona'),
+        makeItem('Arkansas'),
+      ]),
+      makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
+      makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
     ],
   } as any,
 };
+
+export const MixedGroupsAndStandaloneItems: Story = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Search for a healthcare specialty or doctor’s office.',
+    textFieldHint:
+      'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    items: [
+      makeItem('Care Clinic - Specialty Center'),
+      makeItem('Healthy Life Gastroenterology - Main Campus'),
+      makeItem('Dermatology Associates - East Wing'),
+      makeGroup('Healthcare Specialties', [
+        makeItem('Pediatrics'),
+        makeItem('Gastroenterology'),
+        makeItem('Dermatology'),
+        makeItem('Cardiology'),
+        makeItem('Neurology'),
+        makeItem('Orthopedics'),
+      ]),
+    ],
+  } as any,
+};
+
 export const CustomMarkup: Story = {
   render: Template,
   args: {
