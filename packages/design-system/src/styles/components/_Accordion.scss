@@ -70,10 +70,7 @@ ds-accordion-item:not(:first-child) {
   background-color: var(--accordion-content__background-color);
   overflow: auto;
   padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
-}
 
-.ds-c-accordion__content,
-ds-accordion-item {
   > :first-child {
     margin-block-start: 0;
   }
@@ -83,9 +80,10 @@ ds-accordion-item {
   }
 }
 
-.ds-c-accordion--bordered .ds-c-accordion__content,
-.ds-c-accordion__content--bordered {
-  border: var(--accordion__border-width) solid var(--accordion__border-color);
-  border-block-start: 0;
-  padding: $spacer-2 $spacer-2;
+.ds-c-accordion--bordered {
+  .ds-c-accordion__content {
+    border: var(--accordion__border-width) solid var(--accordion__border-color);
+    border-block-start: 0;
+    padding: $spacer-2 $spacer-2;
+  }
 }

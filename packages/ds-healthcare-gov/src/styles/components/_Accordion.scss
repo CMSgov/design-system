@@ -1,54 +1,56 @@
 @use '../layout' as *;
 
-.ds-c-accordion__button {
-  background-color: var(--accordion__background-color);
-  color: var(--accordion-button__color);
-  column-gap: $spacer-1;
-  flex-direction: row-reverse;
-  font-weight: var(--font-weight-normal);
-  justify-content: flex-end;
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
+.ds-c-accordion {
+  .ds-c-accordion__button {
+    background-color: var(--accordion__background-color);
+    color: var(--accordion-button__color);
+    column-gap: $spacer-1;
+    flex-direction: row-reverse;
+    font-weight: var(--font-weight-normal);
+    justify-content: flex-end;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-2;
 
-  &:hover {
-    --ds-c-accordion__button__color: var(--color-primary-darker);
+    &:hover {
+      --ds-c-accordion__button__color: var(--color-primary-darker);
 
-    text-decoration: underline;
+      text-decoration: underline;
 
-    .ds-c-icon--minus-circle__circle,
-    .ds-c-icon--plus-circle__circle {
-      fill: currentColor;
-    }
-
-    .ds-c-icon--minus-circle__group,
-    .ds-c-icon--plus-circle__group {
-      fill: var(--color-white);
-    }
-  }
-
-  @media (forced-colors: active) {
-    background-color: LinkText;
-    color: window;
-    forced-color-adjust: none;
-    -ms-high-contrast-adjust: none;
-
-    &:hover,
-    &:focus {
-      background-color: window;
-      color: LinkText;
-      forced-color-adjust: none;
-      -ms-high-contrast-adjust: none;
-      outline: $spacer-half solid LinkText;
-      outline-offset: calc(-1 * #{$spacer-half});
-
-      .ds-c-icon--plus-circle__circle,
-      .ds-c-icon--minus-circle__circle {
-        fill: Window;
-        stroke: WindowText;
+      .ds-c-icon--minus-circle__circle,
+      .ds-c-icon--plus-circle__circle {
+        fill: currentColor;
       }
 
-      .ds-c-icon--plus-circle__group,
-      .ds-c-icon--minus-circle__group {
-        fill: WindowText;
+      .ds-c-icon--minus-circle__group,
+      .ds-c-icon--plus-circle__group {
+        fill: var(--color-white);
+      }
+    }
+
+    @media (forced-colors: active) {
+      background-color: LinkText;
+      color: window;
+      forced-color-adjust: none;
+      -ms-high-contrast-adjust: none;
+
+      &:hover,
+      &:focus {
+        background-color: window;
+        color: LinkText;
+        forced-color-adjust: none;
+        -ms-high-contrast-adjust: none;
+        outline: $spacer-half solid LinkText;
+        outline-offset: calc(-1 * #{$spacer-half});
+
+        .ds-c-icon--plus-circle__circle,
+        .ds-c-icon--minus-circle__circle {
+          fill: Window;
+          stroke: WindowText;
+        }
+
+        .ds-c-icon--plus-circle__group,
+        .ds-c-icon--minus-circle__group {
+          fill: WindowText;
+        }
       }
     }
   }
@@ -60,16 +62,17 @@
     // We need to create tokens specific to icon sizing instead of repurposing spacer-* or font-size-* tokens
     font-size: 0.875rem;
   }
-}
 
-.ds-c-accordion__content {
-  background-color: var(--accordion-content__background-color);
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+  .ds-c-accordion__content {
+    background-color: var(--accordion-content__background-color);
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+  }
 }
 
 // overwrite core bordered styles
-.ds-c-accordion--bordered .ds-c-accordion__content,
-.ds-c-accordion__content--bordered {
-  border: none;
-  padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+.ds-c-accordion--bordered {
+  .ds-c-accordion__content {
+    border: none;
+    padding: $spacer-1 $spacer-2 $spacer-1 $spacer-5;
+  }
 }

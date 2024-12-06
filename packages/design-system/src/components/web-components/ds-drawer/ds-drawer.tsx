@@ -4,6 +4,7 @@ import { DrawerProps } from '../../Drawer/Drawer';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
+  'children',
   'close-button-aria-label',
   'close-button-text',
   'close-button-variation',
@@ -77,5 +78,4 @@ define('ds-drawer', () => Wrapper, {
       }),
     ],
   ],
-  shadow: true,
 } as any);

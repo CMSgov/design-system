@@ -50,7 +50,7 @@ exports[`DS Modal Dialog accepts an alert attribute 1`] = `
       <div
         id="static-id__content"
       >
-        <slot />
+        Foo
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@ exports[`DS Modal Dialog applies classes to the header 1`] = `
       <div
         id="static-id__content"
       >
-        <slot />
+        Foo
       </div>
     </div>
   </div>
@@ -163,15 +163,15 @@ exports[`DS Modal Dialog renders slot content to actions 1`] = `
     >
       <div
         id="static-id__content"
-      >
-        <slot />
-      </div>
+      />
       <div
         class="ds-c-dialog__actions"
       >
-        <slot
-          name="actions"
-        />
+        <button
+          role="button"
+        >
+          Click here
+        </button>
       </div>
     </div>
   </div>
@@ -197,9 +197,9 @@ exports[`DS Modal Dialog renders slot content to heading 1`] = `
         class="ds-c-dialog__heading"
         id="static-id__heading"
       >
-        <slot
-          name="heading"
-        />
+        <h3>
+          I am a HEADING
+        </h3>
       </h2>
       <button
         aria-label="Close modal dialog"
@@ -229,9 +229,7 @@ exports[`DS Modal Dialog renders slot content to heading 1`] = `
     >
       <div
         id="static-id__content"
-      >
-        <slot />
-      </div>
+      />
     </div>
   </div>
 </dialog>
@@ -287,7 +285,7 @@ exports[`DS Modal Dialog renders with additional classNames and size 1`] = `
       <div
         id="static-id__content"
       >
-        <slot />
+        Foo
       </div>
     </div>
   </div>

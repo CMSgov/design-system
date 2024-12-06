@@ -12,17 +12,15 @@ const meta: Meta = {
     alert: 'false',
     'is-open': 'false',
     children: (
-      <>
-        <span slot="heading">
-          This is a <i>special</i> heading
-        </span>
-
+      <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
           lacinia, eget tempor purus placerat.
         </p>
-
-        <span slot="actions">
+        <div slot="heading">
+          <h2>This is the modal heading.</h2>
+        </div>
+        <div slot="actions">
           <form method="dialog">
             <ds-button value="rstBtn" class-name="ds-u-margin-right--1">
               Reset
@@ -31,8 +29,8 @@ const meta: Meta = {
               Confirm
             </ds-button>
           </form>
-        </span>
-      </>
+        </div>
+      </div>
     ),
   },
   argTypes: {
@@ -122,24 +120,23 @@ const Template = (args) => {
   useEffect(() => {
     const modal = document.querySelector('ds-modal-dialog');
     const toggleButton = document.getElementById('modal-toggle');
-    const form = modal.querySelector('form[method="dialog"]');
 
-    const openModal = () => modal?.setAttribute('is-open', 'true');
-    const closeModal = () => modal?.setAttribute('is-open', 'false');
-
-    const handleExit = (event) => {
-      action('ds-exit')(event);
-      closeModal();
+    const openModal = () => {
+      modal?.setAttribute('is-open', 'true');
     };
 
-    modal?.addEventListener('ds-exit', handleExit);
+    modal?.addEventListener('ds-exit', (event) => {
+      action('ds-exit')(event);
+      modal?.setAttribute('is-open', 'false');
+    });
     toggleButton?.addEventListener('click', openModal);
-    form?.addEventListener('submit', closeModal);
 
     return () => {
-      modal?.removeEventListener('ds-exit', handleExit);
+      modal?.removeEventListener('ds-exit', (event) => {
+        action('ds-exit')(event);
+        modal?.setAttribute('is-open', 'false');
+      });
       toggleButton?.removeEventListener('click', openModal);
-      form?.removeEventListener('submit', closeModal);
     };
   });
 

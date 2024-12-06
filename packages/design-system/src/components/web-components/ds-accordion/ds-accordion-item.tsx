@@ -1,5 +1,4 @@
 import type * as React from 'react';
-import classNames from 'classnames';
 import { define } from '../preactement/define';
 import { AccordionItem, AccordionItemProps } from '../../Accordion';
 import { parseBooleanAttr } from '../wrapperUtils';
@@ -28,53 +27,13 @@ declare global {
 }
 /* eslint-enable */
 
-function findAccordionAncestor(el: Element): Element | undefined {
-  let parentAccordion;
-  let parentElement = el.parentElement;
-
-  do {
-    if (parentElement.tagName === 'DS-ACCORDION') {
-      parentAccordion = parentElement;
-      break;
-    }
-    parentElement = parentElement.parentElement;
-  } while (parentElement != null);
-
-  return parentAccordion;
-}
-
 interface WrapperProps extends Omit<AccordionItemProps, 'defaultOpen'> {
   defaultOpen?: string;
   contentId?: string;
-  customElement: Element;
 }
 
-const Wrapper = ({
-  defaultOpen,
-  contentId,
-  contentClassName,
-  customElement,
-  ...otherProps
-}: WrapperProps) => {
-  const parentAccordion = findAccordionAncestor(customElement);
-  const bordered = parseBooleanAttr(parentAccordion?.getAttribute('bordered'));
+const Wrapper = ({ defaultOpen, contentId, ...otherProps }: WrapperProps) => (
+  <AccordionItem {...otherProps} defaultOpen={parseBooleanAttr(defaultOpen)} id={contentId} />
+);
 
-  return (
-    <AccordionItem
-      {...otherProps}
-      defaultOpen={parseBooleanAttr(defaultOpen)}
-      id={contentId}
-      contentClassName={classNames(
-        contentClassName,
-        bordered && 'ds-c-accordion__content--bordered'
-      )}
-    />
-  );
-};
-
-define('ds-accordion-item', () => Wrapper, {
-  attributes,
-  events: ['onChange'],
-  shadow: true,
-  passCustomElementProp: true,
-});
+define('ds-accordion-item', () => Wrapper, { attributes, events: ['onChange'] } as any);

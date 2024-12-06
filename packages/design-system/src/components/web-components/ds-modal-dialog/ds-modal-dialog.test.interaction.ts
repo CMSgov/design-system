@@ -13,7 +13,7 @@ Object.keys(themes).forEach((theme) => {
 
   test(`Dialog open: ${theme}`, async ({ page }) => {
     await page.goto(`${storyUrl}&globals=theme:${theme}`);
-    const elem = page.getByRole('button', { name: /Open Modal/ });
+    const elem = page.getByRole('button');
 
     await elem.click();
     await sleep(100);

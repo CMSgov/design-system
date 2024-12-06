@@ -2,7 +2,7 @@
  * setupTests.js
  */
 
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 
 // following Jest's recommendation: https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 window.matchMedia = (query) => ({
@@ -31,8 +31,4 @@ const localStorageMock = (function () {
 
 Object.defineProperty(window, 'localStorage', {
   value: localStorageMock,
-});
-
-Object.defineProperty(ShadowRoot.prototype, 'adoptedStyleSheets', {
-  value: [],
 });

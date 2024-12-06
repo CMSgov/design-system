@@ -1,5 +1,4 @@
-import { createTestRenderer } from '../__tests__/rendering';
-import { cleanup, findByRole, getByRole, queryByRole } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-drawer';
 
@@ -14,18 +13,34 @@ const children = (
   </>
 );
 
-const renderDrawer = createTestRenderer('ds-drawer', (attrs = {}, children) => (
-  <ds-drawer {...(attrs as any)}>
-    {children}
-    <div slot="footer-body">
-      <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
-    </div>
-  </ds-drawer>
-));
-const renderDrawerWithoutSlottedFooter = createTestRenderer('ds-drawer', (attrs = {}, children) => (
-  <ds-drawer {...(attrs as any)}>{children}</ds-drawer>
-));
+function renderDrawer(args, children) {
+  const result = render(
+    <ds-drawer {...args}>
+      {children}
+      <div slot="footer-body">
+        <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
+      </div>
+    </ds-drawer>
+  );
 
+  return {
+    ...result,
+    rerenderDrawer(newArgs, newChildren) {
+      return result.rerender(
+        <ds-drawer {...newArgs}>
+          {newChildren}
+          <div slot="footer-body">
+            <p className="ds-text-body--md ds-u-margin--0">Default slotted footer content</p>
+          </div>
+        </ds-drawer>
+      );
+    },
+  };
+}
+
+function renderDrawerWithoutSlottedFooter(args, children) {
+  return render(<ds-drawer {...(args as any)}>{children}</ds-drawer>);
+}
 const mockCloseHandler = jest.fn();
 
 describe('Drawer', () => {
@@ -35,7 +50,7 @@ describe('Drawer', () => {
   });
 
   it('should render a dialog', () => {
-    const { shadowRoot } = renderDrawer(
+    renderDrawer(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -43,25 +58,36 @@ describe('Drawer', () => {
       },
       children
     );
-    expect(shadowRoot.firstElementChild).toMatchSnapshot();
+    const drawer = document.querySelector('ds-drawer');
+    expect(drawer).toMatchSnapshot();
 
-    const dialogElement = getByRole(shadowRoot as any as HTMLElement, 'dialog', {
-      name: /test drawer heading/i,
-    });
+    const dialogElement = screen.getByRole('dialog', { name: /test drawer heading/i });
     expect(dialogElement).toBeInTheDocument();
+
+    const closeButton = screen.getByLabelText('Close Help Drawer');
+    expect(closeButton).toBeInTheDocument();
+
+    const headingElement = screen.getByText('Test Drawer Heading');
+    expect(headingElement).toBeInTheDocument();
+
+    const explanationText = screen.getByText('An Explanation');
+    expect(explanationText).toBeInTheDocument();
+
+    const paragraphText = screen.getByText(
+      /Lorem ipsum dolor sit amet, consectetur adipiscing elit/i
+    );
+    expect(paragraphText).toBeInTheDocument();
   });
 
   it("is closed until 'is-open' is set to true", () => {
-    const { rerenderTest, shadowRoot } = renderDrawer({ 'is-open': 'false' }, children);
-    expect(queryByRole(shadowRoot as any as HTMLElement, 'dialog')).toBe(null);
-    rerenderTest({ 'is-open': 'true' }, children);
-    expect((getByRole(shadowRoot as any as HTMLElement, 'dialog') as HTMLDialogElement).open).toBe(
-      true
-    );
+    const { rerenderDrawer } = renderDrawer({ 'is-open': 'false' }, children);
+    expect(screen.queryByRole('dialog')).toBe(null);
+    rerenderDrawer({ 'is-open': 'true' }, children);
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
   it('renders footer-body when footer-body attribute is provided', () => {
-    const { shadowRoot } = renderDrawerWithoutSlottedFooter(
+    renderDrawerWithoutSlottedFooter(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -70,13 +96,12 @@ describe('Drawer', () => {
       children
     );
 
-    const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
+    const renderedFooterBodyElement = screen.getByText('Footer Attribute Content');
     expect(renderedFooterBodyElement).toBeInTheDocument();
-    expect(renderedFooterBodyElement.textContent).toEqual('Footer Attribute Content');
   });
 
   it('renders slotted footer-body when slot content is provided and attribute is not', () => {
-    const { shadowRoot } = renderDrawer(
+    renderDrawer(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -84,14 +109,12 @@ describe('Drawer', () => {
       children
     );
 
-    const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
-    const slot = renderedFooterBodyElement.firstElementChild;
-    expect(slot.tagName).toEqual('SLOT');
-    expect(slot).toHaveAttribute('name', 'footer-body');
+    const renderedFooterBodyElement = screen.getByText('Default slotted footer content');
+    expect(renderedFooterBodyElement).toBeInTheDocument();
   });
 
   it('prioritizes slotted footer-body over the attribute when both are provided', () => {
-    const { shadowRoot } = renderDrawer(
+    renderDrawer(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -100,14 +123,12 @@ describe('Drawer', () => {
       children
     );
 
-    const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
-    const slot = renderedFooterBodyElement.firstElementChild;
-    expect(slot.tagName).toEqual('SLOT');
-    expect(slot).toHaveAttribute('name', 'footer-body');
+    const renderedFooterBodyElement = screen.getByText('Default slotted footer content');
+    expect(renderedFooterBodyElement).toBeInTheDocument();
   });
 
   it('should call the `ds-close-click` handler when the close button is clicked', async () => {
-    const { shadowRoot } = renderDrawer(
+    renderDrawer(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -119,9 +140,7 @@ describe('Drawer', () => {
 
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
-    const closeButton = await findByRole(shadowRoot as any as HTMLElement, 'button', {
-      name: /close help drawer/i,
-    });
+    const closeButton = await screen.findByRole('button', { name: /close help drawer/i });
     userEvent.click(closeButton);
 
     expect(mockCloseHandler).toHaveBeenCalledTimes(1);
@@ -140,8 +159,7 @@ describe('Drawer', () => {
     drawer.removeEventListener('ds-close-click', mockCloseHandler);
   });
 
-  // I'm not sure why this one doesn't work, but it may be a race condition
-  it.skip('should not call the event handler after unmounting', () => {
+  it('should not call the event handler after unmounting', () => {
     const { unmount } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
 
     const drawer = document.querySelector('ds-drawer');

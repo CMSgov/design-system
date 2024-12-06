@@ -1,11 +1,10 @@
-import { getByRole, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import userEvent from '@testing-library/user-event';
 import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import './ds-modal-dialog';
 import '../ds-button/ds-button';
-import { createTestRenderer } from '../__tests__/rendering';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -18,33 +17,40 @@ declare global {
 /* eslint-enable */
 
 const defaultAttributes = {
+  children: 'Foo',
   heading: 'dialog heading',
   'is-open': 'true',
   'root-id': 'static-id',
 };
 
-const defaultChildren = 'Foo';
-
-const renderDialog = createTestRenderer('ds-modal-dialog', (attrs = {}, children) => (
-  <ds-modal-dialog {...defaultAttributes} {...attrs}>
-    {children || defaultChildren}
-  </ds-modal-dialog>
-));
-
-function getDialog(shadowRoot: ShadowRoot): HTMLDialogElement {
-  return getByRole(shadowRoot as any as HTMLElement, 'dialog') as HTMLDialogElement;
+function renderDialog(props: any) {
+  const view = render(
+    <ds-modal-dialog {...defaultAttributes} {...props}>
+      {props.children || defaultAttributes.children}
+    </ds-modal-dialog>
+  );
+  return {
+    ...view,
+    rerenderModalDialog(newAttributes = {}) {
+      return view.rerender(
+        <ds-modal-dialog {...defaultAttributes} {...newAttributes}>
+          {defaultAttributes.children}
+        </ds-modal-dialog>
+      );
+    },
+  };
 }
 
 describe('DS Modal Dialog', function () {
   it('generates ids when no id is provided', () => {
-    const { shadowRoot } = renderDialog({ 'root-id': undefined });
+    renderDialog({ 'root-id': undefined });
     const idRegex = /dialog--\d+/;
-    expect(getDialog(shadowRoot).id).toMatch(idRegex);
-    expect(getByRole(shadowRoot as any as HTMLElement, 'heading').id).toMatch(idRegex);
+    expect(screen.getByRole('dialog').id).toMatch(idRegex);
+    expect(screen.getByRole('heading').id).toMatch(idRegex);
   });
 
   it('renders with additional classNames and size', () => {
-    const { shadowRoot } = renderDialog({
+    renderDialog({
       actions: 'Pretend these are actions',
       'actions-class-name': 'test-action',
       'class-name': 'test-dialog',
@@ -52,7 +58,7 @@ describe('DS Modal Dialog', function () {
       size: 'full',
     });
 
-    expect(getDialog(shadowRoot)).toMatchSnapshot();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('renders slot content to actions', () => {
@@ -62,14 +68,12 @@ describe('DS Modal Dialog', function () {
       </div>
     );
 
-    const { shadowRoot } = renderDialog(
-      {
-        'is-open': 'true',
-      },
-      actionsContent
-    );
+    renderDialog({
+      'is-open': 'true',
+      children: actionsContent,
+    });
 
-    expect(getDialog(shadowRoot)).toMatchSnapshot();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('renders slot content to heading', () => {
@@ -79,65 +83,63 @@ describe('DS Modal Dialog', function () {
       </div>
     );
 
-    const { shadowRoot } = renderDialog(
-      {
-        'is-open': 'true',
-      },
-      headingContent
-    );
+    renderDialog({
+      'is-open': 'true',
+      children: headingContent,
+    });
 
-    expect(getDialog(shadowRoot)).toMatchSnapshot();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('accepts an alert attribute', () => {
-    const { shadowRoot } = renderDialog({
+    renderDialog({
       alert: 'true',
     });
 
-    expect(getDialog(shadowRoot)).toMatchSnapshot();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('applies classes to the header', () => {
-    const { shadowRoot } = renderDialog({
+    renderDialog({
       'root-id': 'static-id',
       heading: 'Some heading string',
       'header-class-name': 'ds-not-a-real-header-class',
     });
 
-    expect(getDialog(shadowRoot)).toMatchSnapshot();
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   it('triggers the ds-exit custom event when the close button is clicked', () => {
     const onExit = jest.fn();
-    const { shadowRoot } = renderDialog({});
+    renderDialog({});
     const modal = document.querySelector('ds-modal-dialog');
     expect(modal).toBeDefined();
     modal.addEventListener('ds-exit', onExit);
 
-    userEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
+    userEvent.click(screen.getByRole('button'));
     expect(onExit).toHaveBeenCalled();
     modal.removeEventListener('ds-exit', onExit);
   });
 
   it('is closed until is-open is set to true', () => {
-    const { rerenderTest, shadowRoot } = renderDialog({ 'is-open': 'false' });
+    const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
     expect(screen.queryByRole('dialog')).toBe(null);
 
-    rerenderTest({ 'is-open': 'true' });
-    expect(getDialog(shadowRoot)).toBeDefined();
-    expect(getDialog(shadowRoot).open).toBe(true);
+    rerenderModalDialog({ 'is-open': 'true' });
+    expect(screen.getByRole('dialog')).toBeDefined();
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
   it('opens if the is-open prop is set to true', () => {
-    const { rerenderTest, shadowRoot } = renderDialog({ 'is-open': 'false' });
+    const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
     const modal = document.querySelector('ds-modal-dialog');
     expect(modal).toBeDefined();
     expect(modal.getAttribute('is-open')).toBe('false');
 
     modal.setAttribute('is-open', 'true');
-    rerenderTest({});
+    rerenderModalDialog({});
     expect(modal.getAttribute('is-open')).toBe('true');
-    expect(getDialog(shadowRoot).open).toBe(true);
+    expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
   // Skipping these for the same reason outlined in the ds-alert.test.tsx file.
@@ -178,11 +180,11 @@ describe('DS Modal Dialog', function () {
     });
 
     it('sends analytics event when opening dialog', () => {
-      const { rerenderTest } = renderDialog({ 'is-open': 'false' });
+      const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
       act(() => {
         expect(tealiumMock).not.toHaveBeenCalled();
       });
-      rerenderTest({ 'is-open': true });
+      rerenderModalDialog({ 'is-open': true });
       act(() => {
         expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
         expect(tealiumMock).toHaveBeenCalledTimes(1);
@@ -190,13 +192,13 @@ describe('DS Modal Dialog', function () {
     });
 
     it('sends analytics event when closing dialog', () => {
-      const { rerenderTest } = renderDialog({});
+      const { rerenderModalDialog } = renderDialog({});
       const expectedClosedEvent = expect.objectContaining({ event_name: 'modal_closed' });
       act(() => {
         expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
         expect(tealiumMock).toHaveBeenCalledTimes(1);
       });
-      rerenderTest({ 'is-open': 'false' });
+      rerenderModalDialog({ 'is-open': 'false' });
       act(() => {
         expect(tealiumMock).toBeCalledWith(expectedClosedEvent);
         expect(tealiumMock).toHaveBeenCalledTimes(2);
