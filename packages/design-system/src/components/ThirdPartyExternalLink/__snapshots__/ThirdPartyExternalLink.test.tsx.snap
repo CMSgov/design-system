@@ -23,7 +23,7 @@ Array [
     "link_url": "foo",
     "parent_component_heading": " ",
     "parent_component_type": " ",
-    "text": "External site linkThis link goes to an external site",
+    "text": "External site link This link goes to an external site ",
   },
 ]
 `;
