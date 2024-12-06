@@ -13,37 +13,27 @@ export function renderReactStatelyItems(
   items: AutocompleteItems,
   itemToString: AutocompleteProps['itemToString']
 ) {
-  return items.map((item, index) => {
-    // Check if the item is a group
-    if ('label' in item && 'items' in item) {
-      const group = item as AutocompleteItemGroup;
-      const { id, label, items, ...extraAttrs } = group;
-      const groupKey = `group-${label.replace(/\s+/g, '-').toLowerCase()}-${index}`;
-
-      return (
-        <Section {...extraAttrs} key={groupKey} title={label}>
-          {group.items.map((groupItem) => {
-            const { id, name, children, ...extraAttrs } = groupItem;
-
-            return (
-              <Item key={id} textValue={name ?? itemToString?.(groupItem)} {...extraAttrs}>
-                {children ?? name}
-              </Item>
-            );
-          })}
-        </Section>
-      );
-    }
-
-    // If not a group, render as a standalone item
-    const standaloneItem = item as AutocompleteItem;
-    const { id, name, children, ...extraAttrs } = standaloneItem;
-
+  const renderItem = (item: AutocompleteItem) => {
+    const { id, name, children, ...extraAttrs } = item;
     return (
-      <Item key={id} textValue={name ?? itemToString?.(standaloneItem)} {...extraAttrs}>
+      <Item key={id} textValue={name ?? itemToString?.(item)} {...extraAttrs}>
         {children ?? name}
       </Item>
     );
+  };
+
+  return items.map((item, index) => {
+    if ('label' in item && 'items' in item) {
+      const { id, label, items, ...extraAttrs } = item as AutocompleteItemGroup;
+      const groupKey = `group-${label.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+      return (
+        <Section {...extraAttrs} key={groupKey} title={label}>
+          {items.map(renderItem)}
+        </Section>
+      );
+    } else {
+      return renderItem(item as AutocompleteItem);
+    }
   });
 }
 
