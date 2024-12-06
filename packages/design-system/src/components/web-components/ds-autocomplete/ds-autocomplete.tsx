@@ -5,7 +5,8 @@ import { TextField } from '../../TextField';
 import { formAttrs } from '../shared-attributes/form';
 import { UseLabelPropsProps } from '../../Label/useLabelProps';
 import { UseHintProps } from '../../Hint/useHint';
-import { UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { errorPlacementValues, UseInlineErrorProps } from '../../InlineError/useInlineError';
+import { isPossibleValue } from '../utils';
 
 const attributes = [
   'aria-clear-label',
@@ -13,10 +14,10 @@ const attributes = [
   // Using the lowercase HTML attribute name rather than `auto-focus` so it's
   // more natural. There's no reason for us to worry about name collisions.
   'autofocus',
+  'disabled',
   'class-name',
   'clear-input-text',
   'clear-search-button',
-  'value',
   'items',
   'loading-message',
   'loading',
@@ -25,6 +26,7 @@ const attributes = [
   'name',
   'no-results-message',
   'root-id',
+  'value',
   ...formAttrs,
 ] as const;
 
@@ -34,18 +36,27 @@ type IncompatibleProps =
   | 'items'
   | 'label-id'
   | 'label'
-  | 'loading';
+  | 'loading'
+  | 'disabled';
 
 interface WrapperProps
-  extends Omit<UseLabelPropsProps & UseHintProps & UseInlineErrorProps, 'id' | 'inversed'>,
+  extends Omit<
+      UseLabelPropsProps & UseHintProps & UseInlineErrorProps,
+      'id' | 'inversed' | 'errorPlacement'
+    >,
     Omit<AutocompleteProps, IncompatibleProps> {
   autofocus?: string;
   clearSearchButton?: string;
+  disabled?: string;
+  errorMessage?: string;
+  errorPlacement?: string;
+  errorMessageClassName?: string;
   value: string;
   items?: string;
   loading?: string;
   menuHeading?: string;
   menuHeadingId?: string;
+  name?: string;
   rootId: string;
 }
 
@@ -53,27 +64,41 @@ const Wrapper = ({
   autofocus,
   clearSearchButton,
   hint,
-  value,
   items,
   label,
   loading,
   menuHeading,
   menuHeadingId,
+  name,
   rootId,
+  value,
   ...otherProps
 }: WrapperProps) => {
   return (
     <Autocomplete
       {...otherProps}
-      label={menuHeading}
-      labelId={menuHeadingId}
       autoFocus={parseBooleanAttr(autofocus)}
       clearSearchButton={parseBooleanAttr(clearSearchButton)}
       id={rootId}
       items={parseJsonAttr(items)}
+      label={menuHeading}
+      labelId={menuHeadingId}
       loading={parseBooleanAttr(loading)}
     >
-      <TextField label={label} hint={hint} name="autocomplete" value={value} />
+      <TextField
+        disabled={parseBooleanAttr(otherProps.disabled)}
+        errorMessage={otherProps.errorMessage}
+        errorPlacement={
+          isPossibleValue(otherProps.errorPlacement, errorPlacementValues)
+            ? otherProps.errorPlacement
+            : undefined
+        }
+        errorMessageClassName={otherProps.errorMessageClassName}
+        label={label}
+        hint={hint}
+        name={name ?? 'autocomplete'}
+        value={value}
+      />
     </Autocomplete>
   );
 };
