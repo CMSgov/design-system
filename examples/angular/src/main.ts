@@ -15,34 +15,16 @@ export class App {
 
   alertVariation: string | null = null;
   alertHeading = 'Confidentiality and medical data sharing';
-  alertBody =
-    'In accordance with HIPAA, this application does not store any data. All data is stored locally on your computer and is not transmitted to any external servers. The data you enter into this application is not stored or shared with anyone.';
   hideButton = false;
-
-  @ViewChild('modalDialog') modalDialog!: ElementRef;
+  @ViewChild('myAlert') myAlert!: ElementRef;
 
   onButtonClick() {
     this.hideButton = true;
     this.alertVariation = 'success';
     this.alertHeading = 'You did it!';
-    this.alertBody = 'You successfully triggered a bound action on a nested ds-button.';
-  }
-
-  onAccordionButtonClick() {
-    alert('Yes!');
-  }
-
-  openDialog() {
-    this.modalDialog.nativeElement.setAttribute('is-open', 'true');
-  }
-
-  closeDialog() {
-    this.modalDialog.nativeElement.setAttribute('is-open', 'false');
-  }
-
-  dialogActionsSubmitted() {
-    this.closeDialog();
-    console.log('confirmed!');
+    // Temporary workaround for components not responding to dynamic content changes made
+    // by Angular templates
+    this.myAlert.nativeElement.innerHTML = 'You successfully clicked a button.';
   }
 }
 
