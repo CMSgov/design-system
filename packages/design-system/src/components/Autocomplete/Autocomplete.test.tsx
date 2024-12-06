@@ -195,6 +195,40 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
+  it('renders mixed grouped and standalone items', () => {
+    const items = [
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Group item 1' },
+          { id: '2', name: 'Group item 2' },
+        ],
+      },
+      { id: '3', name: 'Standalone Item 1' },
+    ];
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+
+    const headers = screen.getAllByText(/Group/, {
+      selector: '.ds-c-autocomplete__menu-item-group-label',
+    });
+    expect(headers).toHaveLength(1);
+    expect(headers[0]).toHaveTextContent('Group 1');
+    expect(headers[0]).toHaveAttribute('id', 'static-id__group--0');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(3);
+    expect(listItems[0]).toHaveTextContent('Group item 1');
+    expect(listItems[1]).toHaveTextContent('Group item 2');
+    expect(listItems[2]).toHaveTextContent('Standalone Item 1');
+  });
+
   it('renders Autocomplete component no results', () => {
     renderAutocomplete({ items: [] });
     open();
