@@ -34,10 +34,6 @@ interface WrapperProps
   size: string;
 }
 
-const isAcceptableSize = (size: string): size is DialogSize => {
-  return ['narrow', 'wide', 'full'].includes(size);
-};
-
 const Wrapper = ({
   alert,
   analytics,
