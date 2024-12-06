@@ -16,7 +16,7 @@ Object.keys(themes).forEach((theme) => {
     const elem = page.getByRole('button', { name: /Open Modal/ });
 
     await elem.click();
-    await sleep(200);
+    await sleep(100);
     await expect(page).toHaveScreenshot(`ds-modal-dialog--open--${theme}.png`, { fullPage: true });
   });
 });
