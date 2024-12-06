@@ -65,4 +65,5 @@ const Wrapper = ({
 define('ds-modal-dialog', () => Wrapper, {
   attributes,
   events: ['onAnalyticsEvent', 'onExit'],
+  shadow: true,
 });

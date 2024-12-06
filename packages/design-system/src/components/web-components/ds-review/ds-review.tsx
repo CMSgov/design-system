@@ -28,4 +28,5 @@ declare global {
 
 define('ds-review', () => Wrapper, {
   attributes: attributes,
+  shadow: true,
 });
