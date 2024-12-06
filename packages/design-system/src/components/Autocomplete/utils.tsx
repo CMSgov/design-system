@@ -19,28 +19,26 @@ export function renderReactStatelyItems(
       const group = item as AutocompleteItemGroup;
       return (
         <Section key={group.label} title={group.label}>
-          {group.items.map((groupItem) => (
-            <Item
-              key={groupItem.id}
-              textValue={groupItem.name ?? itemToString?.(groupItem)}
-              {...groupItem}
-            >
-              {groupItem.children ?? groupItem.name}
-            </Item>
-          ))}
+          {group.items.map((groupItem) => {
+            const { id, name, children, ...extraAttrs } = groupItem;
+
+            return (
+              <Item key={id} textValue={name ?? itemToString?.(groupItem)} {...extraAttrs}>
+                {children ?? name}
+              </Item>
+            );
+          })}
         </Section>
       );
     }
 
     // If not a group, render as a standalone item
     const standaloneItem = item as AutocompleteItem;
+    const { id, name, children, ...extraAttrs } = standaloneItem;
+
     return (
-      <Item
-        key={standaloneItem.id}
-        textValue={standaloneItem.name ?? itemToString?.(standaloneItem)}
-        {...standaloneItem}
-      >
-        {standaloneItem.children ?? standaloneItem.name}
+      <Item key={id} textValue={name ?? itemToString?.(standaloneItem)} {...extraAttrs}>
+        {children ?? name}
       </Item>
     );
   });
