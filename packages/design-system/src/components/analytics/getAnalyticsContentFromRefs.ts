@@ -8,7 +8,7 @@ function getTextContent(nodes: Node[]): string {
   return nodes
     .map((node) => {
       if (node.nodeType === Node.TEXT_NODE) {
-        return node.textContent.trim();
+        return node.textContent;
       } else if (node.nodeType === Node.ELEMENT_NODE) {
         if ((node as HTMLElement).tagName === 'SLOT') {
           // If it's a slot, it won't actually have any content in itself, so we have to
@@ -22,7 +22,7 @@ function getTextContent(nodes: Node[]): string {
         return '';
       }
     })
-    .join(' ');
+    .join('');
 }
 
 export function getAnalyticsContentFromRefs(refs: RefObject<any>[]): string | undefined {
