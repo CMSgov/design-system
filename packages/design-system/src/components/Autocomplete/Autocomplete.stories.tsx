@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type * as React from 'react';
-import Autocomplete from './Autocomplete';
+import { Autocomplete, AutocompleteProps } from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
 import { action } from '@storybook/addon-actions';
@@ -179,7 +179,7 @@ export const ItemGroups: Story = {
       makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
       makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
     ],
-  } as any,
+  } as AutocompleteProps & { textFieldLabel: string; textFieldHint: string },
 };
 
 export const GroupsAndStandaloneItems: Story = {
@@ -201,7 +201,7 @@ export const GroupsAndStandaloneItems: Story = {
         makeItem('Orthopedics'),
       ]),
     ],
-  } as any,
+  } as AutocompleteProps & { textFieldLabel: string; textFieldHint: string },
 };
 
 export const CustomMarkup: Story = {
