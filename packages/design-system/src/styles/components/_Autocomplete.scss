@@ -23,8 +23,23 @@
 
 // Experienced an error using `@extend .ds-c-dropdown__menu-item` where it wouldn't compile styles for this class.
 // I'm assuming the cause is due to the extended class rules are also applied to `.ds-c-dropdown__menu-item-group` (.ds-c-dropdown__menu-item, .ds-c-dropdown__menu-item-group {}). When styles are split into individual rules, it works, but is less DRY. Attempted using the % placeholder selector, but that didn't work either.
-.ds-c-autocomplete__menu-item {
+// Option group styles for Autocomplete
+.ds-c-autocomplete__menu-item,
+.ds-c-autocomplete__menu-item-group-label {
+  cursor: default;
   padding: var(--text-input__padding);
+}
+
+.ds-c-autocomplete__menu-item-group-label {
+  font-weight: var(--font-weight-bold);
+}
+
+.ds-c-autocomplete__menu-item-group ul[role='group'] {
+  @include mixins.unstyled-list;
+}
+
+.ds-c-autocomplete__menu-item-group .ds-c-autocomplete__menu-item {
+  padding-inline-start: calc(var(--text-input__padding) + var(--spacer-2));
 }
 
 .ds-c-autocomplete__menu-item-message {

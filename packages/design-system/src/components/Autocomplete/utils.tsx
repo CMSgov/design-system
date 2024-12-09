@@ -1,20 +1,39 @@
 import { isValidElement, Children, ReactElement, ReactNode } from 'react';
-import { AutocompleteProps, AutocompleteItem } from './Autocomplete';
-import { ComboBoxState, Item } from '../react-aria'; // from react-stately
+import {
+  AutocompleteProps,
+  AutocompleteItem,
+  AutocompleteItems,
+  AutocompleteItemGroup,
+} from './Autocomplete';
+import { ComboBoxState, Item, Section } from '../react-aria'; // from react-stately
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 
 export function renderReactStatelyItems(
-  items: AutocompleteItem[],
+  items: AutocompleteItems,
   itemToString: AutocompleteProps['itemToString']
 ) {
-  return items.map((item: AutocompleteItem) => {
-    const { id, name, children, isResult, ...extraAttrs } = item;
+  const renderItem = (item: AutocompleteItem) => {
+    const { id, name, children, ...extraAttrs } = item;
     return (
-      <Item {...extraAttrs} textValue={name ?? itemToString?.(item)} key={id}>
+      <Item key={id} textValue={name ?? itemToString?.(item)} {...extraAttrs}>
         {children ?? name}
       </Item>
     );
+  };
+
+  return items.map((item, index) => {
+    if ('label' in item && 'items' in item) {
+      const { id, label, items, ...extraAttrs } = item as AutocompleteItemGroup;
+      const groupKey = `group-${label.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+      return (
+        <Section {...extraAttrs} key={groupKey} title={label}>
+          {items.map(renderItem)}
+        </Section>
+      );
+    } else {
+      return renderItem(item as AutocompleteItem);
+    }
   });
 }
 
