@@ -55,7 +55,7 @@ export interface AutocompleteItemGroup {
   id: string;
 }
 
-export type AutocompleteItems = AutocompleteItem[] | AutocompleteItemGroup[];
+export type AutocompleteItems = Array<AutocompleteItem | AutocompleteItemGroup>;
 
 export interface AutocompleteProps {
   /**
