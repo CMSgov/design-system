@@ -59,9 +59,10 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => (
+const Template = ({ heading, children, ...args }) => (
   <ds-alert {...args}>
-    {args.children ?? (
+    <span slot="heading">{heading}</span>
+    {children ?? (
       <>
         This is an example of a success alert. If you want to see an error alert, click the button
         below.

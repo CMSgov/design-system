@@ -32,4 +32,4 @@ const Wrapper = ({ analytics, hideIcon, rootId, ...otherProps }: WrapperProps) =
   />
 );
 
-define('ds-alert', () => Wrapper, { attributes, events: [onAnalyticsEvent] });
+define('ds-alert', () => Wrapper, { attributes, events: [onAnalyticsEvent], shadow: true });
