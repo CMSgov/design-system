@@ -236,6 +236,21 @@ describe('Autocomplete', () => {
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
+  it('renders "no results" message when groups contain no items', () => {
+    renderAutocomplete({
+      items: [
+        {
+          label: 'Group 1',
+          id: 'group-1',
+          items: [],
+        },
+      ],
+    });
+    open();
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
+  });
+
   it('shows the menu when open', () => {
     renderAutocomplete();
     open();

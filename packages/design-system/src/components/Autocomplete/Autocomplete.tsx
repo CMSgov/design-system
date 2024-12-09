@@ -198,10 +198,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
+  const hasValidStandaloneItems = items?.some((item) => !('items' in item));
+  const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
+
   // Determine what we'll show based on state
   let reactStatelyItems = [];
   let statusMessage;
-  if (items?.length) {
+
+  if (hasValidStandaloneItems || hasValidGroupedItems) {
     reactStatelyItems = renderReactStatelyItems(items, itemToString);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
