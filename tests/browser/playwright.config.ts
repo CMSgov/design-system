@@ -76,7 +76,12 @@ const smokeTestProjects = [
  */
 const config: PlaywrightTestConfig = {
   testDir: './',
-  testIgnore: ['storybook-docs.test.ts', 'examples.test.ts'],
+  testIgnore: [
+    'storybook-docs.test.ts',
+    'examples.test.ts',
+    '**/__snapshots__/**',
+    'custom-reporter.test.ts',
+  ],
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   snapshotPathTemplate: 'snapshots/stories/{arg}--{projectName}{ext}',
@@ -96,7 +101,7 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: isCI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never' }]],
+  reporter: [['html', { open: 'never' }], ['./custom-reporter.ts']],
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: './test-results/',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
