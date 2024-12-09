@@ -13,9 +13,9 @@ export function getGlobalStyleSheets() {
 }
 
 function copyGlobalStyleSheets(): CSSStyleSheet[] {
-  return Array.from(document.styleSheets).map((x) => {
+  return Array.from(document.styleSheets).map((documentSheet) => {
     const sheet = new CSSStyleSheet();
-    const css = Array.from(x.cssRules)
+    const css = Array.from(documentSheet.cssRules)
       .map((rule) => rule.cssText)
       .join(' ');
     sheet.replaceSync(css);
