@@ -114,6 +114,24 @@ type OtherProps = Omit<
 
 export type TooltipProps = BaseTooltipProps & OtherProps;
 
+export const placements: Placement[] = [
+  'auto',
+  'auto-start',
+  'auto-end',
+  'top',
+  'top-start',
+  'top-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right',
+  'right-start',
+  'right-end',
+  'left',
+  'left-start',
+  'left-end',
+] as const;
+
 /**
  * Tooltips provide additional information upon hover, focus or click.
  * For information about how and when to use this component,
