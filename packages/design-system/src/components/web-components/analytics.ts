@@ -1,6 +1,8 @@
 import { AnalyticsEvent } from '../analytics';
 import { config } from '../config';
 
+export const WAIT_TIME = 10;
+
 /**
  * The web component event configuration to pass into the define function's `events`
  * option that will allow users to override the default analytics function by creating
@@ -26,7 +28,7 @@ export const onAnalyticsEvent = [
       if (callDefaultAnalyticsFunction) {
         config().defaultAnalyticsFunction(event);
       }
-    }, 10);
+    }, WAIT_TIME);
 
     return {
       detail: { event },
