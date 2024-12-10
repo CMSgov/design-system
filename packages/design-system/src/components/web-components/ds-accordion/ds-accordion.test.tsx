@@ -20,9 +20,27 @@ describe('ds-accordion', () => {
     expect(accordion.classList).toContain('ds-u-test');
   });
 
-  it('renders ds-c-accordion--bordered class when a bordered prop is set', () => {
+  it('renders with border classes when a bordered prop is set', () => {
     const { shadowRoot } = renderAccordion({ bordered: 'true' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
     expect(accordion.classList).toContain('ds-c-accordion--bordered');
+    const items = accordion.querySelectorAll('ds-accordion-item');
+    for (const item of items) {
+      const shadowRoot = item.shadowRoot;
+      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
+      expect(contentEl).toHaveClass('ds-c-accordion__content--bordered');
+    }
+  });
+
+  it('does not render border classes when border prop is not set', () => {
+    const { shadowRoot } = renderAccordion({ bordered: 'false' });
+    const accordion = shadowRoot.querySelector('.ds-c-accordion');
+    expect(accordion).not.toHaveClass('ds-c-accordion--bordered');
+    const items = accordion.querySelectorAll('ds-accordion-item');
+    for (const item of items) {
+      const shadowRoot = item.shadowRoot;
+      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
+      expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
+    }
   });
 });

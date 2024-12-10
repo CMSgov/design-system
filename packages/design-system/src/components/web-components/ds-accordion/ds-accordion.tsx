@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import { define } from '../preactement/define';
-import { Accordion } from '../../Accordion';
+import { Accordion, AccordionProps } from '../../Accordion';
 
 const attributes = ['class-name', 'bordered'] as const;
 
@@ -19,4 +19,12 @@ declare global {
 }
 /* eslint-enable */
 
-define('ds-accordion', () => Accordion, { attributes, shadow: true });
+interface WrapperProps extends Omit<AccordionProps, 'bordered'> {
+  bordered?: string;
+}
+
+const Wrapper = ({ bordered, ...otherProps }: WrapperProps) => (
+  <Accordion {...otherProps} bordered={bordered && Boolean(JSON.parse(bordered))} />
+);
+
+define('ds-accordion', () => Wrapper, { attributes, shadow: true });
