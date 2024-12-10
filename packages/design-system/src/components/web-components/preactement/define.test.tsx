@@ -38,6 +38,7 @@ function Message({ customTitle, value, children }: MessageProps) {
   );
 }
 define('basic-message', () => Message, { attributes: ['custom-title', 'value'] });
+define('shadow-message', () => Message, { shadow: true, attributes: ['custom-title', 'value'] });
 
 interface DescriptionPairProps {
   term: string;
@@ -344,6 +345,39 @@ describe('define()', () => {
       const dd = root.querySelector('dd');
       expect(dd).toBeInTheDocument();
       expect(dd.querySelector('a')).toBeInTheDocument();
+    });
+
+    it('supports shadow dom option', () => {
+      const html = `
+        <span slot="custom-title">Really <em>special</em> title</span>
+        Hello world
+      `;
+
+      const element = document.createElement('shadow-message');
+      // @ts-ignore
+      element.value = 'July 4th';
+      element.innerHTML = html;
+
+      root.appendChild(element);
+      expect(element.innerHTML).toMatchSnapshot();
+      expect(element.shadowRoot.innerHTML).toMatchSnapshot();
+    });
+
+    it('shadow version responds to late additions of direct children', async () => {
+      const element = document.createElement('shadow-message');
+      root.appendChild(element);
+
+      expect(element.shadowRoot.querySelector('h2')).toBeNull();
+
+      element.innerHTML = `
+        <span slot="custom-title">Really <em>special</em> title</span>
+        Hello world
+      `;
+      await sleep(20);
+
+      expect(element.shadowRoot.querySelector('h2')).toContainHTML(
+        '<slot name="custom-title"></slot>'
+      );
     });
 
     it('creates custom events', () => {
