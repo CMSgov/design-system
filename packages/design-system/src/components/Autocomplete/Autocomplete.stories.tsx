@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import type * as React from 'react';
-import { Autocomplete, AutocompleteProps } from './Autocomplete';
+import { Autocomplete, AutocompleteItem, AutocompleteProps } from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { debounce } from '../utilities/debounce';
+
+type AutocompleteArgs = AutocompleteProps & { textFieldLabel: string; textFieldHint: string };
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Components/Autocomplete',
@@ -140,7 +143,7 @@ export const Default: Story = {
       makeItem('Yonsa'),
       makeItem('Zyrtec'),
     ],
-  } as any,
+  } as AutocompleteArgs,
 };
 
 export const LabeledList: Story = {
@@ -179,7 +182,7 @@ export const ItemGroups: Story = {
       makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
       makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
     ],
-  } as AutocompleteProps & { textFieldLabel: string; textFieldHint: string },
+  } as AutocompleteArgs,
 };
 
 export const GroupsAndStandaloneItems: Story = {
@@ -270,4 +273,150 @@ export const NoResults: Story = {
     textFieldLabel: 'This will show a "no results" message.',
     textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
   } as any,
+};
+
+type MockedDataResponse = {
+  id: number;
+  title: string;
+  artist_title: string;
+};
+const mockedData = [
+  {
+    artist_title: 'Vasily Kandinsky',
+    id: 8980,
+    title: 'Landscape with Two Poplars',
+  },
+  {
+    artist_title: 'Katsushika Hokusai',
+    id: 24645,
+    title:
+      'Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series "Thirty-Six Views of Mount Fuji (Fugaku sanjūrokkei)"',
+  },
+  {
+    artist_title: 'Eleanor Coen',
+    id: 7030,
+    title: 'Growing City',
+  },
+  {
+    artist_title: 'Amédée Ozenfant',
+    id: 68407,
+    title: 'Landscape (Bordeaux II)',
+  },
+  {
+    artist_title: 'Claude Monet',
+    id: 4783,
+    title: 'Poppy Field (Giverny)',
+  },
+  {
+    artist_title: 'Kurt Seligmann',
+    id: 62323,
+    title: 'Magnetic Mountain',
+  },
+  {
+    artist_title: 'Chaim Soutine',
+    id: 59967,
+    title: 'Landscape at Cagnes',
+  },
+  {
+    artist_title: 'Gustave Moreau',
+    id: 20579,
+    title: 'Hercules and the Lernaean Hydra',
+  },
+  {
+    artist_title: 'Frederic Edwin Church',
+    id: 76571,
+    title: 'View of Cotopaxi',
+  },
+  {
+    artist_title: 'Albert Bierstadt',
+    id: 146701,
+    title: 'Mountain Brook',
+  },
+];
+
+const searchMock = {
+  matcher: {
+    name: 'artworkSearchSuccess',
+    url: 'begin:https://api.artic.edu/api/v1/artworks/search',
+    method: 'GET',
+  },
+  response: {
+    status: 200,
+    body: {
+      data: mockedData,
+    },
+  },
+};
+
+export const AsyncItems: Story = {
+  render: function Component(
+    args: AutocompleteProps & { textFieldLabel: string; textFieldHint: string }
+  ) {
+    const { items, textFieldLabel, textFieldHint, label, ...autocompleteArgs } = args;
+    const [input, setInput] = useState('');
+    const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
+    const hasResults = input.length > 2 && additionalItems.length;
+
+    const searchArtwork = () => {
+      // Note: the response is mocked
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_display&limit=10`;
+      fetch(searchURL)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(({ data }: { data: MockedDataResponse[] }) => {
+          const additionalItems = data.map(({ id, title, artist_title }) => ({
+            id: id.toString(),
+            name: `${title} by ${artist_title}`,
+          }));
+          setAdditionalItems(additionalItems);
+        });
+    };
+
+    const debouncedSearch = useCallback(
+      debounce(() => {
+        searchArtwork();
+      }, 500),
+      []
+    );
+
+    const onInputValueChange = (...args) => {
+      action('onInputValueChange')(args);
+      setInput(args[0]);
+      if (input.length > 2 && input !== args[0]) {
+        debouncedSearch();
+      }
+    };
+
+    return (
+      <Autocomplete
+        {...autocompleteArgs}
+        label={hasResults ? undefined : label}
+        onChange={action('onChange')}
+        onInputValueChange={onInputValueChange}
+        items={hasResults ? additionalItems : items}
+      >
+        <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
+      </Autocomplete>
+    );
+  },
+  args: {
+    textFieldLabel: 'Search for artwork',
+    textFieldHint: 'Enter the name of an artist, title, or genre',
+    label: 'Popular searches includes:',
+    items: [
+      makeItem('Mountains'),
+      makeItem('Watercolor'),
+      makeItem("Georgia O'Keeffe"),
+      makeItem('City Landscape'),
+      makeItem('Self-Portrait'),
+    ],
+  } as AutocompleteArgs,
+  parameters: {
+    fetchMock: {
+      mocks: [searchMock],
+    },
+  },
 };
