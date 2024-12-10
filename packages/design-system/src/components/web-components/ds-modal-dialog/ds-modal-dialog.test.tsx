@@ -5,6 +5,7 @@ import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import './ds-modal-dialog';
 import '../ds-button/ds-button';
+import { testAnalytics, waitForAnalytics } from '../analyticsTesting';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -142,101 +143,107 @@ describe('DS Modal Dialog', function () {
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
   });
 
-  // Skipping these for the same reason outlined in the ds-alert.test.tsx file.
-  // See lines 123 - 129.
-  describe.skip('Analytics event tracking', () => {
-    let tealiumMock;
-    const defaultEvent = {
-      event_name: 'modal_impression',
-      heading: 'dialog heading',
-    };
+  describe('Analytics', () => {
+    const openedEvent = expect.objectContaining({ event_name: 'modal_impression' });
+    const closedEvent = expect.objectContaining({ event_name: 'modal_closed' });
 
     beforeEach(() => {
       config({ dialogSendsAnalytics: true });
-      tealiumMock = jest.fn();
-      (window as any as UtagContainer).utag = {
-        link: tealiumMock,
-      };
     });
 
     afterEach(() => {
       config({ dialogSendsAnalytics: false });
-      jest.resetAllMocks();
     });
 
-    it("does not send analytics event when dialog isn't open", () => {
-      renderDialog({ 'is-open': 'false' });
-      act(() => {
+    testAnalytics(
+      "does not send analytics event when dialog isn't open",
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderDialog({ 'is-open': 'false' });
+        await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
-      });
-    });
+      }
+    );
 
-    it('sends analytics event when dialog starts open', () => {
-      renderDialog({});
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
-        expect(tealiumMock).toHaveBeenCalledTimes(1);
-      });
-    });
+    testAnalytics(
+      'sends analytics event when dialog starts open',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderDialog({ 'is-open': 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+      }
+    );
 
-    it('sends analytics event when opening dialog', () => {
-      const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
-      act(() => {
+    testAnalytics(
+      'sends analytics event when opening dialog',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+        await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
-      });
-      rerenderModalDialog({ 'is-open': true });
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
-        expect(tealiumMock).toHaveBeenCalledTimes(1);
-      });
-    });
+        rerenderModalDialog({ 'is-open': 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock).toBeCalledWith(openedEvent);
+      }
+    );
 
-    it('sends analytics event when closing dialog', () => {
-      const { rerenderModalDialog } = renderDialog({});
-      const expectedClosedEvent = expect.objectContaining({ event_name: 'modal_closed' });
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(expect.objectContaining(defaultEvent));
+    testAnalytics(
+      'sends analytics event when closing dialog',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        const { rerenderModalDialog } = renderDialog({ 'is-open': 'true' });
+        await waitForAnalytics();
         expect(tealiumMock).toHaveBeenCalledTimes(1);
-      });
-      rerenderModalDialog({ 'is-open': 'false' });
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(expectedClosedEvent);
+        expect(tealiumMock).toBeCalledWith(openedEvent);
+
+        rerenderModalDialog({ 'is-open': 'false' });
+        await waitForAnalytics();
         expect(tealiumMock).toHaveBeenCalledTimes(2);
-      });
-    });
+        expect(tealiumMock).toBeCalledWith(closedEvent);
+      }
+    );
 
-    it('sends analytics event when heading is non-string', () => {
-      renderDialog({ heading: <span>Hello World</span> });
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(
-          expect.objectContaining({
-            ...defaultEvent,
-            heading: 'Hello World',
-          })
-        );
-      });
-    });
+    testAnalytics(
+      'disables analytics event tracking',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderDialog({ analytics: 'false', 'is-open': 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock).not.toHaveBeenCalled();
+      }
+    );
 
-    it('disables analytics event tracking on open', () => {
-      renderDialog({ analytics: 'false' });
-      expect(tealiumMock).not.toBeCalled();
-    });
+    testAnalytics(
+      'setting analytics to true overrides flag value',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        config({ dialogSendsAnalytics: false });
+        renderDialog({ analytics: 'true', 'is-open': 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock).toHaveBeenCalled();
+      }
+    );
 
-    it('setting analytics to true overrides flag value', () => {
-      config({ dialogSendsAnalytics: false });
-      renderDialog({ analytics: 'true' });
-      expect(tealiumMock).toHaveBeenCalled();
-    });
+    testAnalytics(
+      'overrides analytics event tracking on open',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        renderDialog({ 'is-open': 'true', 'analytics-label-override': 'alternate content' });
+        await waitForAnalytics();
+        expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+      }
+    );
 
-    it('overrides analytics event tracking on open', () => {
-      renderDialog({ 'analytics-label-override': 'other heading' });
-      act(() => {
-        expect(tealiumMock).toBeCalledWith(
-          expect.objectContaining({
-            heading: 'other heading',
-          })
-        );
-      });
-    });
+    testAnalytics(
+      'allows default analytics function to be ovewridden',
+      async ({ tealiumMock, waitForAnalytics }) => {
+        let analyticsEvent;
+        const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+        document
+          .querySelector('ds-modal-dialog')
+          .addEventListener('ds-analytics-event', (event: any) => {
+            event.preventDefault();
+            analyticsEvent = event.detail.event;
+          });
+        rerenderModalDialog({ 'is-open': 'true' });
+        await waitForAnalytics();
+        expect(tealiumMock).not.toHaveBeenCalled();
+        expect(analyticsEvent).toMatchSnapshot();
+      }
+    );
   });
 });

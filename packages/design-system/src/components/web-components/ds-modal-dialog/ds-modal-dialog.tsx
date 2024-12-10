@@ -3,6 +3,7 @@ import { availableSizes, Dialog, DialogProps, DialogSize } from '../../Dialog';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 import { isPossibleValue } from '../utils';
+import { onAnalyticsEvent } from '../analytics';
 
 const attributes = [
   'actions-class-name',
@@ -53,7 +54,7 @@ const Wrapper = ({
     isOpen={parseBooleanAttr(isOpen)}
     size={isPossibleValue(size, availableSizes) ? size : undefined}
     {...otherProps}
-    analytics={parseBooleanAttr(analytics)}
+    analytics={analytics === undefined ? undefined : analytics !== 'false'}
   >
     {children}
   </Dialog>
@@ -61,5 +62,5 @@ const Wrapper = ({
 
 define('ds-modal-dialog', () => Wrapper, {
   attributes,
-  events: ['onAnalyticsEvent', 'onExit'],
+  events: [onAnalyticsEvent, 'onExit'],
 });
