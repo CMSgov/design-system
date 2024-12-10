@@ -19,7 +19,7 @@ const meta: Meta<typeof Autocomplete> = {
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
-  } as any,
+  } as AutocompleteArgs,
   argTypes: {
     ariaClearLabel: {
       table: {
@@ -163,7 +163,7 @@ export const LabeledList: Story = {
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
     ],
-  } as any,
+  } as AutocompleteArgs,
 };
 
 export const ItemGroups: Story = {
@@ -204,7 +204,7 @@ export const GroupsAndStandaloneItems: Story = {
         makeItem('Orthopedics'),
       ]),
     ],
-  } as AutocompleteProps & { textFieldLabel: string; textFieldHint: string },
+  } as AutocompleteArgs,
 };
 
 export const CustomMarkup: Story = {
@@ -243,7 +243,7 @@ export const CustomMarkup: Story = {
         isResult: false,
       },
     ],
-  } as any,
+  } as AutocompleteArgs,
 
   parameters: {
     docs: {
@@ -262,7 +262,7 @@ export const LoadingMessage: Story = {
     items: [],
     textFieldLabel: 'This will only show a loading message.',
     textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as any,
+  } as AutocompleteArgs,
 };
 
 export const NoResults: Story = {
@@ -272,7 +272,7 @@ export const NoResults: Story = {
     clearSearchButton: false,
     textFieldLabel: 'This will show a "no results" message.',
     textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as any,
+  } as AutocompleteArgs,
 };
 
 type MockedDataResponse = {
