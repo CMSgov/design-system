@@ -23,7 +23,7 @@ describe('ds-accordion', () => {
   it('renders with border classes when a bordered prop is set', () => {
     const { shadowRoot } = renderAccordion({ bordered: 'true' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
-    expect(accordion.classList).toContain('ds-c-accordion--bordered');
+    expect(accordion).toHaveClass('ds-c-accordion--bordered');
     const items = accordion.querySelectorAll('ds-accordion-item');
     for (const item of items) {
       const shadowRoot = item.shadowRoot;
