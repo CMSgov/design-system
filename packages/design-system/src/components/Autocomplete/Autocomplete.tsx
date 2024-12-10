@@ -39,6 +39,24 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
   isResult?: boolean;
 }
 
+export interface AutocompleteItemGroup {
+  /**
+   * Label displayed as the group header in the autocomplete menu.
+   */
+  label: string;
+  /**
+   * Array of items contained within this group.
+   * Each item should conform to the `AutocompleteItem` type.
+   */
+  items: AutocompleteItem[];
+  /**
+   * Unique identifier for the group.
+   */
+  id: string;
+}
+
+export type AutocompleteItems = Array<AutocompleteItem | AutocompleteItemGroup>;
+
 export interface AutocompleteProps {
   /**
    * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
@@ -102,7 +120,7 @@ export interface AutocompleteProps {
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
    * this props should be undefined.
    */
-  items?: AutocompleteItem[];
+  items?: AutocompleteItems;
   /**
    * Adds a heading to the top of the autocomplete list. This can be used to convey to the user that they're required to select an option from the autocomplete list.
    */
@@ -180,10 +198,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
+  const hasValidStandaloneItems = items?.some((item) => !('items' in item));
+  const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
+
   // Determine what we'll show based on state
   let reactStatelyItems = [];
   let statusMessage;
-  if (items?.length) {
+
+  if (hasValidStandaloneItems || hasValidGroupedItems) {
     reactStatelyItems = renderReactStatelyItems(items, itemToString);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
