@@ -7,20 +7,19 @@
     <div class="ds-u-measure--base ds-u-padding-bottom--4">
       <p>This is an example showing how to use our library of interactive web components.</p>
 
-      <ds-alert
-        heading="{{alertHeading}}"
-        [attr.variation]="alertVariation ?? null"
-        class="ds-u-margin-y--2"
-        #myAlert
-      >
-        In accordance with HIPAA, this application does not store any data. All data is stored
-        locally on your computer and is not transmitted to any external servers. The data you enter
-        into this application is not stored or shared with anyone.
-      </ds-alert>
+      <ds-alert [attr.variation]="alertVariation ?? null" class="ds-u-margin-y--2">
+        <div slot="heading">{{alertHeading}}</div>
 
-      <ds-button (click)="onButtonClick()" variation="solid" *ngIf="!hideButton"
-        >Click here</ds-button
-      >
+        {{alertBody}}
+
+        <ds-button
+          (click)="onButtonClick()"
+          variation="solid"
+          class="ds-u-margin-top--2"
+          *ngIf="!hideButton"
+          >Try something</ds-button
+        >
+      </ds-alert>
 
       <ds-accordion bordered="true" class="ds-u-margin-top--2">
         <ds-accordion-item heading="First Amendment" default-open="true">
@@ -30,6 +29,9 @@
             general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do
             ordain and establish this Constitution for the United States of America.
           </p>
+          <ds-button (click)="onAccordionButtonClick()" variation="solid" class="ds-u-margin-top--2"
+            >Does the event stay bound?</ds-button
+          >
         </ds-accordion-item>
         <ds-accordion-item heading="Second Amendment">
           <p>
@@ -97,6 +99,35 @@
           </div>
         </ds-choice>
       </ds-choice-list>
+
+      <h2>Modal Dialog example</h2>
+      <ds-button (click)="openDialog()">Open Modal</ds-button>
+      <ds-modal-dialog
+        is-open="false"
+        root-id="modal-dialog"
+        size="wide"
+        backdrop-click-exits="true"
+        #modalDialog
+        (ds-exit)="closeDialog()"
+      >
+        <div slot="heading">
+          <h2>This is the modal heading.</h2>
+        </div>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+          lacinia, eget tempor purus placerat.
+        </p>
+
+        <div slot="actions">
+          <form method="dialog" (submit)="dialogActionsSubmitted()">
+            <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1"
+              >Reset</ds-button
+            >
+            <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+          </form>
+        </div>
+      </ds-modal-dialog>
     </div>
   </main>
 </div>
