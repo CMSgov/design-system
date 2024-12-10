@@ -140,9 +140,24 @@ const Template = (args) => {
 
   let filteredItems = null;
   if (input.length > 0 && items) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
+    filteredItems = items
+      .map((item) => {
+        if (item.label && item.items) {
+          // Handle grouped items
+          const filteredGroupItems = item.items.filter(
+            (groupItem) =>
+              !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
+          );
+          return {
+            ...item,
+            items: filteredGroupItems,
+          };
+        } else {
+          // Handle standalone items
+          return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
+        }
+      })
+      .filter(Boolean);
   }
 
   useEffect(() => {
@@ -175,6 +190,14 @@ const Template = (args) => {
     />
   );
 };
+
+function makeGroup(label: string, items: ReturnType<typeof makeItem>[]) {
+  return {
+    id: uniqueId(),
+    label,
+    items,
+  };
+}
 
 function makeItem(name: string, children?: React.ReactNode) {
   return {
@@ -244,6 +267,47 @@ export const LabeledList = {
       makeItem('Cook County, OR'),
     ],
   } as any,
+};
+
+export const ItemGroups = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Select a state.',
+    textFieldHint:
+      'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    items: [
+      makeGroup('Group A', [
+        makeItem('Alabama'),
+        makeItem('Alaska'),
+        makeItem('Arizona'),
+        makeItem('Arkansas'),
+      ]),
+      makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
+      makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
+    ],
+  },
+};
+
+export const GroupsAndStandaloneItems = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Search for a healthcare specialty or doctor’s office.',
+    textFieldHint:
+      'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    items: [
+      makeItem('Care Clinic - Specialty Center'),
+      makeItem('Healthy Life Gastroenterology - Main Campus'),
+      makeItem('Dermatology Associates - East Wing'),
+      makeGroup('Healthcare Specialties', [
+        makeItem('Pediatrics'),
+        makeItem('Gastroenterology'),
+        makeItem('Dermatology'),
+        makeItem('Cardiology'),
+        makeItem('Neurology'),
+        makeItem('Orthopedics'),
+      ]),
+    ],
+  },
 };
 
 // export const CustomMarkup = {
