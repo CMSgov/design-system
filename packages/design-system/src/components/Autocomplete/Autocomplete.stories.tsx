@@ -349,9 +349,7 @@ const searchMock = {
 };
 
 export const AsyncItems: Story = {
-  render: function Component(
-    args: AutocompleteProps & { textFieldLabel: string; textFieldHint: string }
-  ) {
+  render: function Component(args: AutocompleteArgs) {
     const { items, textFieldLabel, textFieldHint, label, ...autocompleteArgs } = args;
     const [input, setInput] = useState('');
     const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
@@ -359,7 +357,7 @@ export const AsyncItems: Story = {
 
     const searchArtwork = () => {
       // Note: the response is mocked
-      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_display&limit=10`;
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
       fetch(searchURL)
         .then((response) => {
           if (response.status === 200) {
@@ -375,6 +373,7 @@ export const AsyncItems: Story = {
         });
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const debouncedSearch = useCallback(
       debounce(() => {
         searchArtwork();
