@@ -18,3 +18,12 @@ exports[`define() when run in the browser renders child HTML 1`] = `
   <template />
 </description-pair>
 `;
+
+exports[`define() when run in the browser supports shadow dom option 1`] = `
+"
+        <span slot=\\"custom-title\\">Really <em>special</em> title</span>
+        Hello world
+      "
+`;
+
+exports[`define() when run in the browser supports shadow dom option 2`] = `"<h2><slot name=\\"custom-title\\"></slot></h2><em>July 4th</em><slot></slot>"`;
