@@ -201,6 +201,9 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    fetchMock: {
+      debug: false,
+    },
     viewport: {
       viewports: breakpointViewportSizes,
     },
