@@ -4,6 +4,7 @@ import themes from '../../themes.json';
 import expectNoAxeViolations from './expectNoAxeViolations';
 
 const storySkipList = [
+  'components-autocomplete--async-items', // Redundant
   'components-dialog--default', // Doesn't show the open dialog
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog
