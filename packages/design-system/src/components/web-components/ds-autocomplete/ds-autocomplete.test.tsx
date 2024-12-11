@@ -1,4 +1,4 @@
-import { render, waitFor, screen, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
