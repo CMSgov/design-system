@@ -1,4 +1,4 @@
-import { UtagContainer } from '../analytics/index';
+import { UtagContainer } from '../../analytics/index';
 
 export function mockTealium() {
   const tealiumMock = jest.fn();

@@ -9,10 +9,11 @@ import {
   getElementAttributes,
   getAsyncComponent,
 } from './shared';
-import { templateToPreactVNode } from './parse';
+import { Slots, createSlotVNode, getSlotNames, templateToPreactVNode } from './parse';
 import { IOptions, ComponentFunction } from './model';
 import { kebabCaseIt } from 'case-it/kebab';
 import { signal } from '@preact/signals';
+import { subscribeToGlobalStyleChanges, unsubscribeFromGlobalStyleChanges } from './globalStyles';
 
 /**
  * Registers the provided Preact component as a custom element in the browser. It can
@@ -92,6 +93,7 @@ function createCustomElement<T>(
     __options = options;
     __mutationObserver;
     __propsSignal;
+    __root = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -107,8 +109,8 @@ function createCustomElement<T>(
       onDisconnected.call(this);
     }
 
-    public renderPreactComponent(addedNodes?: Node[]) {
-      renderPreactComponent.call(this, addedNodes);
+    public forceRender(addedNodes?: Node[]) {
+      renderComponent.call(this, addedNodes);
     }
   }
 
@@ -212,7 +214,7 @@ function setupMutationObserver(this: CustomElement) {
     );
     if (childListMutations.length) {
       const addedNodes = childListMutations.flatMap((mutation) => [...mutation.addedNodes]);
-      this.renderPreactComponent(addedNodes);
+      this.forceRender(addedNodes);
     }
   });
 }
@@ -255,11 +257,15 @@ async function onConnected(this: CustomElement) {
     component = wrapComponent(component);
   }
 
-  setupMutationObserver.call(this);
+  if (this.__options.shadow) {
+    subscribeToGlobalStyleChanges(this.__root as ShadowRoot);
+  } else {
+    setupMutationObserver.call(this);
+  }
 
   this.__component = component;
   this.removeAttribute('server');
-  this.renderPreactComponent();
+  this.forceRender();
   this.__mounted = true;
 }
 
@@ -297,6 +303,9 @@ function onAttributeChange(this: CustomElement, name: string, _original: string,
 function onDisconnected(this: CustomElement) {
   render(null, this);
   this.__mutationObserver?.disconnect();
+  if (this.__options.shadow) {
+    unsubscribeFromGlobalStyleChanges(this.__root as ShadowRoot);
+  }
 }
 
 function isTemplate(childNode: ChildNode): childNode is HTMLTemplateElement {
@@ -354,12 +363,20 @@ function unwrapTemplateVNode(vnode: VNode): VNode {
  * Users can also replace the content by setting the innerHTML to something new, and
  * we'll just treat it as new input if we don't find the cached template element!
  */
-function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
+function renderComponent(this: CustomElement, addedNodes?: Node[]) {
   if (!this.__component) {
     console.error(ErrorTypes.Missing, `: <${this.tagName.toLowerCase()}>`);
     return;
   }
 
+  if (this.__options.shadow) {
+    renderWithShadowDom.call(this);
+  } else {
+    renderWithoutShadowDom.call(this, addedNodes);
+  }
+}
+
+function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
   // We don't want the mutation observer responding to all the changes we make in this
   // function, or we'll get an endless feedback loop of change and re-render.
   this.__mutationObserver?.disconnect();
@@ -393,31 +410,99 @@ function renderPreactComponent(this: CustomElement, addedNodes?: Node[]) {
       template.innerHTML = wrapTemplateHtml(this.innerHTML);
     }
   }
-  const { vnode, slots } = templateToPreactVNode(template);
+  const { vnode: templateVNode, slots } = templateToPreactVNode(template);
 
   // For technical reasons, our vnode needs to be wrapped in an element that didn't exist
   // in the original innerHTML. To keep that from getting passed to the Preact component,
   // we need to unwrap our vnode before we pass it as the `children` prop.
-  const children = unwrapTemplateVNode(vnode);
-
-  // If we were to call this function that we're in every time a prop changed, it would
-  // clobber the internal state of our underlying Preact component. To avoid this, we're
-  // going to tie our attributes (props) to Preact Signals that we can use to trigger
-  // re-rendering a `StateWrapper` component.
-  const propsSignal = signal(this.__properties);
-  this.__propsSignal = propsSignal;
-  const StateWrapper = () => h(this.__component, { ...propsSignal.value, ...slots, children });
+  const children = unwrapTemplateVNode(templateVNode);
 
   // TODO: Clearing everything before the Preact component render only appears to be
   // necessary for the unit tests. I haven't figured out why yet.
   [...this.childNodes].forEach((childNode) => childNode.remove());
 
-  // Render the Preact component to the root of this custom element
-  render(h(StateWrapper, {}), this);
+  renderPreactComponent.call(this, { vnode: children, slots });
 
   // The Preact render would have removed this template, so add it back in
   this.appendChild(template);
 
   // Reinstate the mutation observer to watch for user changes
   this.__mutationObserver.observe(this, { childList: true });
+}
+
+function renderWithShadowDom(this: CustomElement) {
+  // Create an unnamed default `<slot>` for the element's children
+  const vnode = createSlotVNode();
+
+  // Create named `<slot name={name}>` elements for each named slot that has been
+  // provided by the application, then we'll pass them into the corresponding React
+  // component props.
+  const slotNamesUsed = getSlotNames(this);
+  const slots = Object.fromEntries(
+    slotNamesUsed.map((name) => [
+      // Use the camelCase prop key for passing it into the Preact component
+      getPropKey(name),
+      // But retain the same exact name so the input matches the output in the DOM and
+      // the browser can automatically link the two together.
+      createSlotVNode(name),
+    ])
+  );
+
+  renderPreactComponent.call(this, { vnode, slots });
+
+  // If there are no child nodes, it could be on purpose, but it could also be that
+  // Angular's rendering engine hasn't provided the content yet. Let's add a mutation
+  // observer and wait around for late arrivals. While Angular adding content late
+  // doesn't affect its ability to be rendered into the default `<slot>`, it's a
+  // problem for the named slots because our `getSlotNames` call above won't return
+  // those named slots if the element is empty, which means the first render won't
+  // pass those slots to the Preact component.
+  if (this.childNodes.length === 0) {
+    const angularMutationObserver = new MutationObserver((mutations: MutationRecord[]) => {
+      const addedNodes = mutations
+        .filter((mutation: MutationRecord) => mutation.type === 'childList')
+        .flatMap((mutation) => [...mutation.addedNodes]);
+
+      if (addedNodes) {
+        // This means our Angular template content has finally arrived! We shouldn't need
+        // to wait around for it anymore for this component instance.
+        angularMutationObserver.disconnect();
+        this.forceRender(addedNodes);
+      }
+    });
+
+    angularMutationObserver.observe(this, { childList: true });
+  }
+}
+
+function renderPreactComponent(
+  this: CustomElement,
+  {
+    vnode,
+    slots,
+  }: {
+    vnode: VNode;
+    slots: Slots;
+  }
+) {
+  // If we were to call this function that we're in every time a prop changed, it would
+  // clobber the internal state of our underlying Preact component. To avoid this, we're
+  // going to tie our attributes (props) to Preact Signals that we can use to trigger
+  // re-rendering a `StateWrapper` component.
+  const propsSignal = signal(this.__properties);
+  this.__propsSignal = propsSignal;
+
+  const StateWrapper = () => {
+    const stateWrapperProps = { ...propsSignal.value, ...slots, children: vnode };
+
+    if (this.__options.passCustomElementProp) {
+      // Sometimes we want to have access to the custom element to the Preact component wrapper
+      (stateWrapperProps as any).customElement = this;
+    }
+
+    return h(this.__component, stateWrapperProps);
+  };
+
+  // Render the Preact component to the root of this custom element
+  render(h(StateWrapper, {}), this.__root);
 }
