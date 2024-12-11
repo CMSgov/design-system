@@ -172,10 +172,10 @@ describe('DS Modal Dialog', function () {
     testAnalytics(
       'sends analytics event when opening dialog',
       async ({ tealiumMock, waitForAnalytics }) => {
-        const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+        const { rerenderTest } = renderDialog({ 'is-open': 'false' });
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
-        rerenderModalDialog({ 'is-open': 'true' });
+        rerenderTest({ 'is-open': 'true' });
         await waitForAnalytics();
         expect(tealiumMock).toBeCalledWith(openedEvent);
       }
@@ -184,12 +184,12 @@ describe('DS Modal Dialog', function () {
     testAnalytics(
       'sends analytics event when closing dialog',
       async ({ tealiumMock, waitForAnalytics }) => {
-        const { rerenderModalDialog } = renderDialog({ 'is-open': 'true' });
+        const { rerenderTest } = renderDialog({ 'is-open': 'true' });
         await waitForAnalytics();
         expect(tealiumMock).toHaveBeenCalledTimes(1);
         expect(tealiumMock).toBeCalledWith(openedEvent);
 
-        rerenderModalDialog({ 'is-open': 'false' });
+        rerenderTest({ 'is-open': 'false' });
         await waitForAnalytics();
         expect(tealiumMock).toHaveBeenCalledTimes(2);
         expect(tealiumMock).toBeCalledWith(closedEvent);
@@ -228,14 +228,14 @@ describe('DS Modal Dialog', function () {
       'allows default analytics function to be ovewridden',
       async ({ tealiumMock, waitForAnalytics }) => {
         let analyticsEvent;
-        const { rerenderModalDialog } = renderDialog({ 'is-open': 'false' });
+        const { rerenderTest } = renderDialog({ 'is-open': 'false' });
         document
           .querySelector('ds-modal-dialog')
           .addEventListener('ds-analytics-event', (event: any) => {
             event.preventDefault();
             analyticsEvent = event.detail.event;
           });
-        rerenderModalDialog({ 'is-open': 'true' });
+        rerenderTest({ 'is-open': 'true' });
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
         expect(analyticsEvent).toMatchSnapshot();

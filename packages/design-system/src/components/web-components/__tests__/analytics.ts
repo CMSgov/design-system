@@ -1,5 +1,5 @@
 import { UtagContainer } from '../../analytics/index';
-import { WAIT_TIME } from './analytics';
+import { WAIT_TIME } from '../analytics';
 
 export function mockTealium() {
   const tealiumMock = jest.fn();
