@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const defaultItems = [{ id: 'kRf6c2fY', name: 'Cook County, IL' }];
+const updatedItems = [{ id: 'Yf2c6fRk', name: 'Marion County, OR' }];
 
 function makeAutocomplete(customProps = {}) {
   const props = {
@@ -273,6 +274,17 @@ describe('Autocomplete', () => {
     userEvent.type(autocompleteField, 'ac');
     await sleep(100);
     rerender(makeAutocomplete({ items: defaultItems }));
+    expectMenuToBeOpen();
+  });
+
+  it('displays menu with default items and updates items after async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    expectMenuToBeOpen();
+    userEvent.type(autocompleteField, 'mar');
+    await sleep(100);
+    rerender(makeAutocomplete({ items: updatedItems }));
     expectMenuToBeOpen();
   });
 
