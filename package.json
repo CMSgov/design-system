@@ -156,6 +156,7 @@
     "sass": "^1.53.0",
     "sass-loader": "10.2.1",
     "storybook": "^8.0.5",
+    "storybook-addon-fetch-mock": "^2.0.1",
     "stylelint": "16.3.1",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-formatter-pretty": "^4.0.0",
