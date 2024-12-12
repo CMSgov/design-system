@@ -105,16 +105,6 @@ describe('Alert', function () {
     });
   });
 
-  // Analytics fires before the event is set on the component
-  it.skip('fires a custom event on load', () => {
-    renderAlert({ analytics: 'true', variation: 'error' });
-    const alertRoot = document.querySelector('ds-alert');
-    const mockHandler = jest.fn();
-    alertRoot.addEventListener('ds-analytics-event', mockHandler);
-    expect(mockHandler).toHaveBeenCalledTimes(1);
-    alertRoot.removeEventListener('ds-analytics-event', mockHandler);
-  });
-
   describe('Analytics event tracking', () => {
     beforeEach(() => {
       config({ alertSendsAnalytics: true });
