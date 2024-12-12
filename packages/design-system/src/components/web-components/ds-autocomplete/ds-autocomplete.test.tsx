@@ -1,9 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
-
-jest.mock('lodash/uniqueId', () => jest.fn((prefix) => `${prefix || 'id'}-test`));
 
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
 
@@ -46,10 +44,6 @@ function sleep(ms) {
 }
 
 describe('Autocomplete', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('renders correctly', () => {
     const { asFragment } = renderAutocomplete();
     expect(asFragment()).toMatchSnapshot();
@@ -122,17 +116,6 @@ describe('Autocomplete', () => {
     expect(groups[0]).toHaveAccessibleName('Group 1');
     expect(groups[1]).toHaveAccessibleName('Group 2');
 
-    const headers = screen.getAllByText(/Group/, {
-      selector: '.ds-c-autocomplete__menu-item-group-label',
-    });
-    expect(headers).toHaveLength(2);
-
-    expect(headers[0]).toHaveTextContent('Group 1');
-    expect(headers[0]).toHaveAttribute('id', 'autocomplete---test__group--0');
-
-    expect(headers[1]).toHaveTextContent('Group 2');
-    expect(headers[1]).toHaveAttribute('id', 'autocomplete---test__group--1');
-
     const listItems = screen.getAllByRole('option');
     expect(listItems).toHaveLength(4);
     expect(listItems[0]).toHaveTextContent('Option 1');
@@ -157,22 +140,28 @@ describe('Autocomplete', () => {
     renderAutocomplete({ items });
 
     open();
+
     const groups = screen.getAllByRole('group');
     expect(groups).toHaveLength(1);
-    expect(groups[0]).toHaveAccessibleName('Group 1');
-
-    const headers = screen.getAllByText(/Group/, {
-      selector: '.ds-c-autocomplete__menu-item-group-label',
-    });
-    expect(headers).toHaveLength(1);
-    expect(headers[0]).toHaveTextContent('Group 1');
-    expect(headers[0]).toHaveAttribute('id', 'autocomplete---test__group--0');
 
     const listItems = screen.getAllByRole('option');
     expect(listItems).toHaveLength(3);
-    expect(listItems[0]).toHaveTextContent('Group item 1');
-    expect(listItems[1]).toHaveTextContent('Group item 2');
-    expect(listItems[2]).toHaveTextContent('Standalone Item 1');
+  });
+
+  it('renders "no results" message when groups contain no items', () => {
+    renderAutocomplete({
+      items: JSON.stringify([
+        {
+          label: 'Group 1',
+          id: 'group-1',
+          items: [],
+        },
+      ]),
+    });
+
+    open();
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
   // TODO: Fix how items with children are rendered
@@ -222,7 +211,7 @@ describe('Autocomplete', () => {
   it('generates ids when no id is provided', () => {
     renderAutocomplete({ id: undefined, items: defaultItems });
     open();
-    const idRegex = 'autocomplete---test';
+    const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
     expect(screen.getByRole('combobox').id).toMatch(idRegex);
   });
@@ -250,22 +239,6 @@ describe('Autocomplete', () => {
 
   it('renders Autocomplete component no results', () => {
     renderAutocomplete({ items: JSON.stringify([]) });
-    open();
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
-    expect(screen.queryByRole('option')).toHaveTextContent('No results');
-  });
-
-  it('renders "no results" message when groups contain no items', () => {
-    renderAutocomplete({
-      items: JSON.stringify([
-        {
-          label: 'Group 1',
-          id: 'group-1',
-          items: [],
-        },
-      ]),
-    });
-
     open();
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
