@@ -1,18 +1,9 @@
 import { test, expect } from '@playwright/test';
-import themes from '../../../../../themes.json';
+import { describeByTheme, sleep, storyUrl } from '../__tests__/interaction';
 
-const sbID = 'components-drawer--default';
-const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${sbID}`;
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-Object.keys(themes).forEach((theme) => {
-  if (themes[theme].incomplete) return;
-
-  test(`Drawer open: ${theme}`, async ({ page }) => {
-    await page.goto(`${storyUrl}&globals=theme:${theme}`);
+describeByTheme((theme) => {
+  test('Drawer open', async ({ page }) => {
+    await page.goto(storyUrl('components-drawer--default', theme));
     const elem = page.getByRole('button');
     await elem.click();
     await sleep(100);
