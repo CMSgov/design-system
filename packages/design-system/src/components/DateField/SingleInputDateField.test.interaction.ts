@@ -1,5 +1,9 @@
 import { test } from '@playwright/test';
-import { describeByTheme, expectScreenshot, storyUrl } from '../__tests__/interaction';
+import {
+  describeByTheme,
+  expectScreenshot,
+  storyUrl,
+} from '../../../../../tests/browser/interactionHelpers';
 
 describeByTheme((theme) => {
   test('DateField with picker interaction', async ({ page }) => {

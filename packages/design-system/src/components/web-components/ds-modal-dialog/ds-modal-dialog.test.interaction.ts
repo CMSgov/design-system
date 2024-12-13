@@ -1,5 +1,10 @@
 import { test } from '@playwright/test';
-import { describeByTheme, expectScreenshot, sleep, storyUrl } from '../../__tests__/interaction';
+import {
+  describeByTheme,
+  expectScreenshot,
+  sleep,
+  storyUrl,
+} from '../../../../../../tests/browser/interactionHelpers';
 
 describeByTheme((theme) => {
   test('Dialog open', async ({ page }) => {
