@@ -9,6 +9,7 @@
  * snapshots are taken inside a Docker container rather than on the host machine.
  */
 
+import './custom-matcher';
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
