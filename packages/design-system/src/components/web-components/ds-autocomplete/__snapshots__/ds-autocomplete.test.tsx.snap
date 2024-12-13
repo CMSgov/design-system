@@ -11,6 +11,7 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
     label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
+    root-id="autocomplete--1"
   >
     <div
       class="ds-c-autocomplete"
@@ -20,22 +21,22 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
       >
         <label
           class="ds-c-label"
-          for="autocomplete--145"
-          id="autocomplete--145__label"
+          for="autocomplete--1"
+          id="autocomplete--1__label"
         >
           autocomplete label
         </label>
         <input
           aria-autocomplete="list"
-          aria-controls="autocomplete--145__menu"
-          aria-describedby="autocomplete--145__error"
+          aria-controls="autocomplete--1__menu"
+          aria-describedby="autocomplete--1__error"
           aria-expanded="false"
           aria-invalid="true"
-          aria-labelledby="autocomplete--145__label"
+          aria-labelledby="autocomplete--1__label"
           autocomplete="off"
           autocorrect="off"
           class="ds-c-field ds-c-field--error"
-          id="autocomplete--145"
+          id="autocomplete--1"
           name="autocomplete"
           role="combobox"
           spellcheck="false"
@@ -45,7 +46,7 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error custom-class-name ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
-          id="autocomplete--145__error"
+          id="autocomplete--1__error"
         >
           <svg
             aria-hidden="true"
@@ -88,6 +89,7 @@ exports[`Autocomplete displays an error message in the default location for Heal
     label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
+    root-id="autocomplete--1"
   >
     <div
       class="ds-c-autocomplete"
@@ -97,22 +99,22 @@ exports[`Autocomplete displays an error message in the default location for Heal
       >
         <label
           class="ds-c-label"
-          for="autocomplete--137"
-          id="autocomplete--137__label"
+          for="autocomplete--1"
+          id="autocomplete--1__label"
         >
           autocomplete label
         </label>
         <input
           aria-autocomplete="list"
-          aria-controls="autocomplete--137__menu"
-          aria-describedby="autocomplete--137__error"
+          aria-controls="autocomplete--1__menu"
+          aria-describedby="autocomplete--1__error"
           aria-expanded="false"
           aria-invalid="true"
-          aria-labelledby="autocomplete--137__label"
+          aria-labelledby="autocomplete--1__label"
           autocomplete="off"
           autocorrect="off"
           class="ds-c-field ds-c-field--error"
-          id="autocomplete--137"
+          id="autocomplete--1"
           name="autocomplete"
           role="combobox"
           spellcheck="false"
@@ -122,7 +124,7 @@ exports[`Autocomplete displays an error message in the default location for Heal
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
-          id="autocomplete--137__error"
+          id="autocomplete--1__error"
         >
           <svg
             aria-hidden="true"
@@ -165,6 +167,7 @@ exports[`Autocomplete displays an error message in the default position for Core
     label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
+    root-id="autocomplete--1"
   >
     <div
       class="ds-c-autocomplete"
@@ -174,8 +177,8 @@ exports[`Autocomplete displays an error message in the default position for Core
       >
         <label
           class="ds-c-label"
-          for="autocomplete--133"
-          id="autocomplete--133__label"
+          for="autocomplete--1"
+          id="autocomplete--1__label"
         >
           autocomplete label
         </label>
@@ -183,7 +186,7 @@ exports[`Autocomplete displays an error message in the default position for Core
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="autocomplete--133__error"
+          id="autocomplete--1__error"
         >
           <svg
             aria-hidden="true"
@@ -204,15 +207,15 @@ exports[`Autocomplete displays an error message in the default position for Core
         </p>
         <input
           aria-autocomplete="list"
-          aria-controls="autocomplete--133__menu"
-          aria-describedby="autocomplete--133__error"
+          aria-controls="autocomplete--1__menu"
+          aria-describedby="autocomplete--1__error"
           aria-expanded="false"
           aria-invalid="true"
-          aria-labelledby="autocomplete--133__label"
+          aria-labelledby="autocomplete--1__label"
           autocomplete="off"
           autocorrect="off"
           class="ds-c-field ds-c-field--error"
-          id="autocomplete--133"
+          id="autocomplete--1"
           name="autocomplete"
           role="combobox"
           spellcheck="false"
@@ -242,6 +245,7 @@ exports[`Autocomplete renders correctly 1`] = `
     label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
+    root-id="autocomplete--1"
   >
     <div
       class="ds-c-autocomplete"
@@ -297,7 +301,7 @@ Array [
     aria-selected="false"
     class="ds-c-autocomplete__menu-item"
     data-key="1a"
-    id="autocomplete--25__item--0"
+    id="autocomplete--1__item--0"
     role="option"
   >
     <span>
@@ -308,7 +312,7 @@ Array [
     aria-selected="false"
     class="custom-class ds-c-autocomplete__menu-item"
     data-key="5b"
-    id="autocomplete--25__item--1"
+    id="autocomplete--1__item--1"
     role="option"
   >
     <span>
@@ -329,6 +333,7 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
     label="autocomplete label"
     loading-message="Loading..."
     no-results-message="No results"
+    root-id="autocomplete--1"
   >
     <div
       class="ds-c-autocomplete"
@@ -338,22 +343,22 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
       >
         <label
           class="ds-c-label"
-          for="autocomplete--141"
-          id="autocomplete--141__label"
+          for="autocomplete--1"
+          id="autocomplete--1__label"
         >
           autocomplete label
         </label>
         <input
           aria-autocomplete="list"
-          aria-controls="autocomplete--141__menu"
-          aria-describedby="autocomplete--141__error"
+          aria-controls="autocomplete--1__menu"
+          aria-describedby="autocomplete--1__error"
           aria-expanded="false"
           aria-invalid="true"
-          aria-labelledby="autocomplete--141__label"
+          aria-labelledby="autocomplete--1__label"
           autocomplete="off"
           autocorrect="off"
           class="ds-c-field ds-c-field--error"
-          id="autocomplete--141"
+          id="autocomplete--1"
           name="autocomplete"
           role="combobox"
           spellcheck="false"
@@ -363,7 +368,7 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error ds-c-autocomplete__error-message ds-c-autocomplete__error-message-clear-btn ds-c-inline-error--bottom"
-          id="autocomplete--141__error"
+          id="autocomplete--1__error"
         >
           <svg
             aria-hidden="true"

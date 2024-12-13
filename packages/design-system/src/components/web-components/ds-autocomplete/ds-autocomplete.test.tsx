@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
@@ -9,6 +9,7 @@ type AutocompleteProps = JSX.IntrinsicElements['ds-autocomplete'];
 
 function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {
+    'root-id': 'autocomplete--1',
     'aria-clear-label': 'Clear search to try again',
     'clear-input-text': 'Clear search',
     'clear-search-button': 'true',
