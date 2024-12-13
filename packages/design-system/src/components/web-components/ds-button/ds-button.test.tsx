@@ -2,7 +2,7 @@ import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import { fireEvent, render, screen } from '@testing-library/react';
 import './ds-button';
-import { testAnalytics } from '../analyticsTesting';
+import { testAnalytics } from '../__tests__/analytics';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {

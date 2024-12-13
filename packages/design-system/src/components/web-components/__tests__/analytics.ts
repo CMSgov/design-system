@@ -1,4 +1,5 @@
-import { UtagContainer } from '../analytics/index';
+import { UtagContainer } from '../../analytics/index';
+import { WAIT_TIME } from '../analytics';
 
 export function mockTealium() {
   const tealiumMock = jest.fn();
@@ -15,7 +16,7 @@ export function unmockTealium() {
 }
 
 export function waitForAnalytics() {
-  jest.advanceTimersToNextTimer();
+  jest.advanceTimersByTime(WAIT_TIME);
   new Promise((resolve) => setTimeout(resolve, 0));
 }
 
