@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { describeByTheme, sleep, storyUrl } from '../__tests__/interaction';
+import { test } from '@playwright/test';
+import { describeByTheme, expectScreenshot, sleep, storyUrl } from '../__tests__/interaction';
 
 describeByTheme((theme) => {
   test('Autocomplete select hover', async ({ page }) => {
@@ -8,7 +8,7 @@ describeByTheme((theme) => {
     await elem.type('c');
     await sleep(100);
     await elem.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`autocomplete--type--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `autocomplete--type--${theme}.png`);
   });
 
   test('Autocomplete ItemGroups interaction', async ({ page }) => {
@@ -22,8 +22,6 @@ describeByTheme((theme) => {
     await sleep(100);
     await elem.press('ArrowDown');
 
-    await expect(page).toHaveScreenshot(`autocomplete-itemgroups--interaction--${theme}.png`, {
-      fullPage: true,
-    });
+    await expectScreenshot(page, `autocomplete-itemgroups--interaction--${theme}.png`);
   });
 });

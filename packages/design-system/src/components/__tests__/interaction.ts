@@ -1,6 +1,8 @@
 import { test } from '@playwright/test';
 import themes from '../../../../../themes.json';
 
+export { expectScreenshot } from '../../../../../tests/browser/expectScreenshot';
+
 export function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { describeByTheme, storyUrl } from '../__tests__/interaction';
+import { test } from '@playwright/test';
+import { describeByTheme, expectScreenshot, storyUrl } from '../__tests__/interaction';
 
 describeByTheme((theme) => {
   test('Mask partial text entry', async ({ page }, workerInfo) => {
@@ -12,7 +12,7 @@ describeByTheme((theme) => {
     await page.goto(storyUrl('components-textfield--label-masked-ssn', theme));
     const elem = page.locator('input.ds-c-field');
     await elem.type('22', { delay: 220 });
-    await expect(page).toHaveScreenshot(`mask--text-entry--${theme}.png`);
+    await expectScreenshot(page, `mask--text-entry--${theme}.png`);
   });
 
   test('Mask partial text entry and exit', async ({ page }) => {
@@ -20,6 +20,6 @@ describeByTheme((theme) => {
     const elem = page.locator('input.ds-c-field');
     await elem.type('221', { delay: 220 });
     await elem.press('Tab');
-    await expect(page).toHaveScreenshot(`mask--text-entry-and-exit--${theme}.png`);
+    await expectScreenshot(page, `mask--text-entry-and-exit--${theme}.png`);
   });
 });

@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { describeByTheme, sleep, storyUrl } from '../../__tests__/interaction';
+import { test } from '@playwright/test';
+import { describeByTheme, expectScreenshot, sleep, storyUrl } from '../../__tests__/interaction';
 
 describeByTheme((theme) => {
   test('Dialog open', async ({ page }) => {
@@ -8,6 +8,6 @@ describeByTheme((theme) => {
 
     await elem.click();
     await sleep(100);
-    await expect(page).toHaveScreenshot(`ds-modal-dialog--open--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `ds-modal-dialog--open--${theme}.png`);
   });
 });

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { describeByTheme, storyUrl } from '../__tests__/interaction';
+import { describeByTheme, expectScreenshot, storyUrl } from '../__tests__/interaction';
 
 describeByTheme((theme) => {
   test('Dropdown open', async ({ page }) => {
@@ -9,7 +9,7 @@ describeByTheme((theme) => {
     await page.waitForTimeout(200);
     await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`dropdown--open--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `dropdown--open--${theme}.png`);
   });
 
   test('Dropdown open with option groups', async ({ page }) => {
@@ -19,9 +19,7 @@ describeByTheme((theme) => {
     await page.waitForTimeout(200);
     await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`dropdown-optgroups--open--${theme}.png`, {
-      fullPage: true,
-    });
+    await expectScreenshot(page, `dropdown-optgroups--open--${theme}.png`);
   });
 });
 
