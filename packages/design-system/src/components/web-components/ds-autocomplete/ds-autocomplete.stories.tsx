@@ -148,6 +148,11 @@ const Template = (args) => {
             (groupItem) =>
               !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
           );
+
+          if (filteredGroupItems.length === 0) {
+            return null;
+          }
+
           return {
             ...item,
             items: filteredGroupItems,
