@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-autocomplete';
@@ -133,9 +133,13 @@ const meta: Meta = {
   },
 };
 export default meta;
+type DSAutocompleteProps = Omit<React.JSX.IntrinsicElements['ds-autocomplete'], 'items'> & {
+  items: AutocompleteItem[];
+};
+type Story = StoryObj<DSAutocompleteProps>;
 
-const Template = (args) => {
-  const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
+const Template = (args: DSAutocompleteProps) => {
+  const { items, label, hint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
 
   let filteredItems = null;
@@ -169,8 +173,8 @@ const Template = (args) => {
     <ds-autocomplete
       {...autocompleteArgs}
       items={JSON.stringify(filteredItems)}
-      label={textFieldLabel}
-      hint={textFieldHint}
+      label={label}
+      hint={hint}
       value={input}
     />
   );
@@ -184,12 +188,11 @@ function makeItem(name: string, children?: React.ReactNode) {
   };
 }
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Enter and select a drug to see its cost under each plan.',
-    textFieldHint:
-      'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Enter and select a drug to see its cost under each plan.',
+    hint: 'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     items: [
       makeItem('Acetaminophen'),
       makeItem('Advil'),
@@ -226,12 +229,11 @@ export const Default = {
   },
 };
 
-export const LabeledList = {
+export const LabeledList: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Search for and select your county.',
-    textFieldHint:
-      'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Search for and select your county.',
+    hint: 'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     'menu-heading': 'Select from the options below:',
     items: [
       makeItem('Cook County, IL'),
@@ -243,7 +245,7 @@ export const LabeledList = {
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
     ],
-  } as any,
+  },
 };
 
 // export const CustomMarkup = {
@@ -293,23 +295,23 @@ export const LabeledList = {
 //   },
 // };
 
-export const LoadingMessage = {
+export const LoadingMessage: Story = {
   render: Template,
   args: {
-    clearSearchButton: false,
-    loading: true,
+    'clear-search-button': 'false',
+    loading: 'true',
     items: [],
-    textFieldLabel: 'This will only show a loading message.',
-    textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as any,
+    label: 'This will only show a loading message.',
+    hint: 'List should return string Loading to simulate async data call.',
+  },
 };
 
-export const NoResults = {
+export const NoResults: Story = {
   render: Template,
   args: {
     items: [],
-    clearSearchButton: false,
-    textFieldLabel: 'This will show a "no results" message.',
-    textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as any,
+    'clear-search-button': 'false',
+    label: 'This will show a "no results" message.',
+    hint: 'Start typing, but you’ll only get a "no results" message.',
+  },
 };
