@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
@@ -37,10 +37,6 @@ function expectMenuToBeOpen() {
 
 function expectMenuToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('Autocomplete', () => {
