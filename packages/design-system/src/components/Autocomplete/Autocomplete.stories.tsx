@@ -275,12 +275,13 @@ export const NoResults: Story = {
   } as AutocompleteArgs,
 };
 
-type MockedDataResponse = {
+export type MockedDataResponse = {
   id: number;
   title: string;
   artist_title: string;
 };
-const mockedData = [
+
+export const mockedData = [
   {
     artist_title: 'Vasily Kandinsky',
     id: 8980,
@@ -334,7 +335,7 @@ const mockedData = [
   },
 ];
 
-const searchMock = {
+export const searchMock = {
   matcher: {
     name: 'artworkSearchSuccess',
     url: 'begin:https://api.artic.edu/api/v1/artworks/search',
