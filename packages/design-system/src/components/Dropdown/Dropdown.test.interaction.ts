@@ -1,38 +1,35 @@
 import { test, expect } from '@playwright/test';
-import themes from '../../../../../themes.json';
+import {
+  describeByTheme,
+  expectScreenshot,
+  storyUrl,
+} from '../../../../../tests/browser/interactionHelpers';
 
-const storyUrl = (theme: string, id: string) =>
-  `http://localhost:6006/iframe.html?viewMode=story&id=${id}&globals=theme:${theme}`;
-
-Object.keys(themes).forEach((theme) => {
-  if (themes[theme].incomplete) return;
-
-  test(`Dropdown open: ${theme}`, async ({ page }) => {
-    await page.goto(storyUrl(theme, 'components-dropdown--default'));
+describeByTheme((theme) => {
+  test('Dropdown open', async ({ page }) => {
+    await page.goto(storyUrl('components-dropdown--default', theme));
     await page.getByRole('button').click();
     // Cannot figure out an alternative to this wait time
     await page.waitForTimeout(200);
     await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`dropdown--open--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `dropdown--open--${theme}.png`);
   });
 
-  test(`Dropdown open with option groups: ${theme}`, async ({ page }) => {
-    await page.goto(storyUrl(theme, 'components-dropdown--option-groups'));
+  test('Dropdown open with option groups', async ({ page }) => {
+    await page.goto(storyUrl('components-dropdown--option-groups', theme));
     await page.getByRole('button').click();
     // Cannot figure out an alternative to this wait time
     await page.waitForTimeout(200);
     await page.getByRole('listbox').waitFor();
     await page.keyboard.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`dropdown-optgroups--open--${theme}.png`, {
-      fullPage: true,
-    });
+    await expectScreenshot(page, `dropdown-optgroups--open--${theme}.png`);
   });
 });
 
 // Don't need to test these in all themes
 test('Dropdown scrolls to selected item', async ({ page }) => {
-  await page.goto(storyUrl('core', 'components-dropdown--default'));
+  await page.goto(storyUrl('components-dropdown--default', 'core'));
   await page.getByRole('button').click();
   // Cannot figure out an alternative to this wait time
   await page.waitForTimeout(200);

@@ -1,30 +1,23 @@
-import { test, expect } from '@playwright/test';
-import themes from '../../../../../themes.json';
+import { test } from '@playwright/test';
+import {
+  describeByTheme,
+  expectScreenshot,
+  sleep,
+  storyUrl,
+} from '../../../../../tests/browser/interactionHelpers';
 
-const sbID = 'components-autocomplete--default';
-const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${sbID}`;
-
-const itemGroupsSbID = 'components-autocomplete--item-groups';
-const itemGroupsStoryUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${itemGroupsSbID}`;
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-Object.keys(themes).forEach((theme) => {
-  if (themes[theme].incomplete) return;
-
-  test(`Autocomplete select  hover: ${theme}`, async ({ page }) => {
-    await page.goto(`${storyUrl}&globals=theme:${theme}`);
+describeByTheme((theme) => {
+  test('Autocomplete select hover', async ({ page }) => {
+    await page.goto(storyUrl('components-autocomplete--default', theme));
     const elem = page.getByRole('combobox');
     await elem.type('c');
     await sleep(100);
     await elem.press('ArrowDown');
-    await expect(page).toHaveScreenshot(`autocomplete--type--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `autocomplete--type--${theme}.png`);
   });
 
-  test(`Autocomplete ItemGroups interaction: ${theme}`, async ({ page }) => {
-    await page.goto(`${itemGroupsStoryUrl}&globals=theme:${theme}`);
+  test('Autocomplete ItemGroups interaction', async ({ page }) => {
+    await page.goto(storyUrl('components-autocomplete--item-groups', theme));
 
     const elem = page.getByRole('combobox');
     await elem.type('a');
@@ -34,8 +27,6 @@ Object.keys(themes).forEach((theme) => {
     await sleep(100);
     await elem.press('ArrowDown');
 
-    await expect(page).toHaveScreenshot(`autocomplete-itemgroups--interaction--${theme}.png`, {
-      fullPage: true,
-    });
+    await expectScreenshot(page, `autocomplete-itemgroups--interaction--${theme}.png`);
   });
 });

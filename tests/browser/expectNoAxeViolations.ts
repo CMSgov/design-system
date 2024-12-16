@@ -48,7 +48,7 @@ function createErrorMessage(violations: AxeResults['violations']): string {
   return message;
 }
 
-export default async function expectNoAxeViolations(page: Page, shouldUseAxeLegacyMode: boolean) {
+export async function expectNoAxeViolations(page: Page, shouldUseAxeLegacyMode: boolean) {
   const results = await new AxeBuilder({ page })
     .setLegacyMode(shouldUseAxeLegacyMode)
     .withTags(RULESET_ALL)
