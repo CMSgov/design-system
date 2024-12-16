@@ -131,8 +131,8 @@ describe('Autocomplete', () => {
   //   expect(ul).toMatchSnapshot();
   // });
 
-  it('generates ids when no id is provided', () => {
-    renderAutocomplete({ id: undefined, items: defaultItems });
+  it('generates ids when no root id is provided', () => {
+    renderAutocomplete({ 'root-id': undefined, items: defaultItems });
     open();
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
