@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
 
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
+const updatedItems = JSON.stringify([{ id: 'Yf2c6fRk', name: 'Marion County, OR' }]);
 
 type AutocompleteProps = JSX.IntrinsicElements['ds-autocomplete'];
 
@@ -193,6 +194,19 @@ describe('Autocomplete', () => {
 
     rerender(makeAutocomplete({ items: defaultItems }));
     expectMenuToBeOpen();
+  });
+
+  it('displays menu with default items and updates items after async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    expectMenuToBeOpen();
+    userEvent.type(autocompleteField, 'mar');
+    rerender(makeAutocomplete({ items: updatedItems }));
+    expectMenuToBeOpen();
+    const items = screen.getByRole('option');
+    expect(items).toBeInTheDocument();
+    expect(items).toHaveTextContent('Marion County, OR');
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
