@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
@@ -7,6 +7,8 @@ import './ds-autocomplete';
 import { AutocompleteItem } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
+import { MockedDataResponse, searchMock } from '../../Autocomplete/Autocomplete.stories';
+import debounce from '../../utilities/debounce';
 
 const meta: Meta = {
   title: 'Web Components/ds-autocomplete',
@@ -313,5 +315,89 @@ export const NoResults: Story = {
     'clear-search-button': 'false',
     label: 'This will show a "no results" message.',
     hint: 'Start typing, but you’ll only get a "no results" message.',
+  },
+};
+
+export const AsyncItems: Story = {
+  render: function Component(args: DSAutocompleteProps) {
+    const { items, ...autocompleteArgs } = args;
+    const [input, setInput] = useState('');
+    const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
+    const hasResults = input.length > 2 && additionalItems.length;
+
+    const searchArtwork = () => {
+      // Note: the response is mocked
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
+      fetch(searchURL)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(({ data }: { data: MockedDataResponse[] }) => {
+          const additionalItems = data.map(({ id, title, artist_title }) => ({
+            id: id.toString(),
+            name: `${title} by ${artist_title}`,
+          }));
+          setAdditionalItems(additionalItems);
+        });
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedSearch = useCallback(
+      debounce(() => {
+        searchArtwork();
+      }, 500),
+      []
+    );
+
+    useEffect(() => {
+      const element = document.querySelector('ds-autocomplete');
+      if (element) {
+        const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
+          setInput(event.detail.selectedItem.name);
+          return action('ds-change')(event);
+        };
+        const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
+          action('ds-input-value-change')(event);
+          setInput(event.detail.value);
+          if (input.length > 2 && input !== event.detail.value) {
+            debouncedSearch();
+          }
+        };
+        element.addEventListener('ds-change', handleOnChange);
+        element.addEventListener('ds-input-value-change', handleOnInputValueChange);
+        return () => {
+          element.removeEventListener('ds-change', handleOnChange);
+          element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
+        };
+      }
+    }, [debouncedSearch, input]);
+
+    return (
+      <ds-autocomplete
+        {...autocompleteArgs}
+        menu-heading={hasResults ? undefined : autocompleteArgs['menu-heading']}
+        onChange={action('onChange')}
+        items={hasResults ? JSON.stringify(additionalItems) : JSON.stringify(items)}
+      />
+    );
+  },
+  args: {
+    label: 'Search for artwork',
+    hint: 'Enter the name of an artist, title, or genre',
+    'menu-heading': 'Popular searches includes:',
+    items: [
+      makeItem('Mountains'),
+      makeItem('Watercolor'),
+      makeItem("Georgia O'Keeffe"),
+      makeItem('City Landscape'),
+      makeItem('Self-Portrait'),
+    ],
+  },
+  parameters: {
+    fetchMock: {
+      mocks: [searchMock],
+    },
   },
 };
