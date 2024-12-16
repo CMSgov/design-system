@@ -7,7 +7,7 @@ import './ds-autocomplete';
 import { AutocompleteItem } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
-import { MockedDataResponse, searchMock } from '../../Autocomplete/Autocomplete.stories';
+import { MockedDataResponse, searchMock } from '../../Autocomplete/testMocks';
 import debounce from '../../utilities/debounce';
 
 const meta: Meta = {
