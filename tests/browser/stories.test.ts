@@ -1,7 +1,8 @@
-import { test, expect, BrowserContext, Page } from '@playwright/test';
+import { test, BrowserContext, Page } from '@playwright/test';
 import { entries as storiesObject } from '../../storybook-static/index.json';
 import themes from '../../themes.json';
-import expectNoAxeViolations from './expectNoAxeViolations';
+import { expectNoAxeViolations } from './expectNoAxeViolations';
+import { expectScreenshot } from './expectScreenshot';
 
 const storySkipList = [
   'components-autocomplete--async-items', // Redundant
@@ -80,7 +81,7 @@ stories.forEach((story) => {
         });
 
         test(`matches snapshot`, async () => {
-          await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
+          await expectScreenshot(page, `${story.id}-${theme}.png`);
         });
 
         test(`passes a11y checks`, async ({ browser }, workerInfo) => {
