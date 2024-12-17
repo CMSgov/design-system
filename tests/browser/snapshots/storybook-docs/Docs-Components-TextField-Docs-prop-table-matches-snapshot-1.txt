@@ -71,7 +71,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the input or textarea element\n(...args: any[]) => any",
+    "Access a reference to the input or textarea element\nRef<HTMLInputElement | HTMLTextAreaElement>",
     "-"
   ],
   [
