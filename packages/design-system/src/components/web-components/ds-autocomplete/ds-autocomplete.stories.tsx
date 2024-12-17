@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-autocomplete';
 import { AutocompleteItem } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
+import { MockedDataResponse, searchMock } from '../../Autocomplete/testMocks';
+import debounce from '../../utilities/debounce';
 
 const meta: Meta = {
   title: 'Web Components/ds-autocomplete',
@@ -133,9 +135,13 @@ const meta: Meta = {
   },
 };
 export default meta;
+type DSAutocompleteProps = Omit<React.JSX.IntrinsicElements['ds-autocomplete'], 'items'> & {
+  items: AutocompleteItem[];
+};
+type Story = StoryObj<DSAutocompleteProps>;
 
-const Template = (args) => {
-  const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
+const Template = (args: DSAutocompleteProps) => {
+  const { items, label, hint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
 
   let filteredItems = null;
@@ -189,8 +195,8 @@ const Template = (args) => {
     <ds-autocomplete
       {...autocompleteArgs}
       items={JSON.stringify(filteredItems)}
-      label={textFieldLabel}
-      hint={textFieldHint}
+      label={label}
+      hint={hint}
       value={input}
     />
   );
@@ -212,12 +218,11 @@ function makeItem(name: string, children?: React.ReactNode) {
   };
 }
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Enter and select a drug to see its cost under each plan.',
-    textFieldHint:
-      'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Enter and select a drug to see its cost under each plan.',
+    hint: 'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     items: [
       makeItem('Acetaminophen'),
       makeItem('Advil'),
@@ -254,12 +259,11 @@ export const Default = {
   },
 };
 
-export const LabeledList = {
+export const LabeledList: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Search for and select your county.',
-    textFieldHint:
-      'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Search for and select your county.',
+    hint: 'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     'menu-heading': 'Select from the options below:',
     items: [
       makeItem('Cook County, IL'),
@@ -271,7 +275,7 @@ export const LabeledList = {
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
     ],
-  } as any,
+  },
 };
 
 export const ItemGroups = {
@@ -362,23 +366,107 @@ export const GroupsAndStandaloneItems = {
 //   },
 // };
 
-export const LoadingMessage = {
+export const LoadingMessage: Story = {
   render: Template,
   args: {
-    clearSearchButton: false,
-    loading: true,
+    'clear-search-button': 'false',
+    loading: 'true',
     items: [],
-    textFieldLabel: 'This will only show a loading message.',
-    textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as any,
+    label: 'This will only show a loading message.',
+    hint: 'List should return string Loading to simulate async data call.',
+  },
 };
 
-export const NoResults = {
+export const NoResults: Story = {
   render: Template,
   args: {
     items: [],
-    clearSearchButton: false,
-    textFieldLabel: 'This will show a "no results" message.',
-    textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as any,
+    'clear-search-button': 'false',
+    label: 'This will show a "no results" message.',
+    hint: 'Start typing, but you’ll only get a "no results" message.',
+  },
+};
+
+export const AsyncItems: Story = {
+  render: function Component(args: DSAutocompleteProps) {
+    const { items, ...autocompleteArgs } = args;
+    const [input, setInput] = useState('');
+    const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
+    const hasResults = input.length > 2 && additionalItems.length;
+
+    const searchArtwork = () => {
+      // Note: the response is mocked
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
+      fetch(searchURL)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(({ data }: { data: MockedDataResponse[] }) => {
+          const additionalItems = data.map(({ id, title, artist_title }) => ({
+            id: id.toString(),
+            name: `${title} by ${artist_title}`,
+          }));
+          setAdditionalItems(additionalItems);
+        });
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedSearch = useCallback(
+      debounce(() => {
+        searchArtwork();
+      }, 500),
+      []
+    );
+
+    useEffect(() => {
+      const element = document.querySelector('ds-autocomplete');
+      if (element) {
+        const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
+          setInput(event.detail.selectedItem.name);
+          return action('ds-change')(event);
+        };
+        const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
+          action('ds-input-value-change')(event);
+          setInput(event.detail.value);
+          if (input.length > 2 && input !== event.detail.value) {
+            debouncedSearch();
+          }
+        };
+        element.addEventListener('ds-change', handleOnChange);
+        element.addEventListener('ds-input-value-change', handleOnInputValueChange);
+        return () => {
+          element.removeEventListener('ds-change', handleOnChange);
+          element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
+        };
+      }
+    }, [debouncedSearch, input]);
+
+    return (
+      <ds-autocomplete
+        {...autocompleteArgs}
+        menu-heading={hasResults ? undefined : autocompleteArgs['menu-heading']}
+        onChange={action('onChange')}
+        items={hasResults ? JSON.stringify(additionalItems) : JSON.stringify(items)}
+      />
+    );
+  },
+  args: {
+    label: 'Search for artwork',
+    hint: 'Enter the name of an artist, title, or genre',
+    'menu-heading': 'Popular searches includes:',
+    items: [
+      makeItem('Mountains'),
+      makeItem('Watercolor'),
+      makeItem("Georgia O'Keeffe"),
+      makeItem('City Landscape'),
+      makeItem('Self-Portrait'),
+    ],
+  },
+  parameters: {
+    fetchMock: {
+      mocks: [searchMock],
+    },
+  },
 };
