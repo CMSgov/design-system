@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-autocomplete';
-import { AutocompleteItem } from '../../Autocomplete';
+import { AutocompleteItem, AutocompleteItems } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
 import { MockedDataResponse, searchMock } from '../../Autocomplete/testMocks';
@@ -136,7 +136,7 @@ const meta: Meta = {
 };
 export default meta;
 type DSAutocompleteProps = Omit<React.JSX.IntrinsicElements['ds-autocomplete'], 'items'> & {
-  items: AutocompleteItem[];
+  items: AutocompleteItems;
 };
 type Story = StoryObj<DSAutocompleteProps>;
 
@@ -146,9 +146,29 @@ const Template = (args: DSAutocompleteProps) => {
 
   let filteredItems = null;
   if (input.length > 0 && items) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
+    filteredItems = items
+      .map((item) => {
+        if ('label' in item) {
+          // Handle grouped items
+          const filteredGroupItems = item.items.filter(
+            (groupItem) =>
+              !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
+          );
+
+          if (filteredGroupItems.length === 0) {
+            return null;
+          }
+
+          return {
+            ...item,
+            items: filteredGroupItems,
+          };
+        } else {
+          // Handle standalone items
+          return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
+        }
+      })
+      .filter(Boolean);
   }
 
   useEffect(() => {
@@ -181,6 +201,14 @@ const Template = (args: DSAutocompleteProps) => {
     />
   );
 };
+
+function makeGroup(label: string, items: ReturnType<typeof makeItem>[]) {
+  return {
+    id: uniqueId(),
+    label,
+    items,
+  };
+}
 
 function makeItem(name: string, children?: React.ReactNode) {
   return {
@@ -246,6 +274,45 @@ export const LabeledList: Story = {
       makeItem('Cook County, AL'),
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
+    ],
+  },
+};
+
+export const ItemGroups = {
+  render: Template,
+  args: {
+    label: 'Select a state.',
+    hint: 'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    items: [
+      makeGroup('Group A', [
+        makeItem('Alabama'),
+        makeItem('Alaska'),
+        makeItem('Arizona'),
+        makeItem('Arkansas'),
+      ]),
+      makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
+      makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
+    ],
+  },
+};
+
+export const GroupsAndStandaloneItems = {
+  render: Template,
+  args: {
+    label: 'Search for a healthcare specialty or doctor’s office.',
+    hint: 'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    items: [
+      makeItem('Care Clinic - Specialty Center'),
+      makeItem('Healthy Life Gastroenterology - Main Campus'),
+      makeItem('Dermatology Associates - East Wing'),
+      makeGroup('Healthcare Specialties', [
+        makeItem('Pediatrics'),
+        makeItem('Gastroenterology'),
+        makeItem('Dermatology'),
+        makeItem('Cardiology'),
+        makeItem('Neurology'),
+        makeItem('Orthopedics'),
+      ]),
     ],
   },
 };
