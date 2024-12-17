@@ -87,6 +87,82 @@ describe('Autocomplete', () => {
     expect(items).toHaveTextContent('Cook County, IL');
   });
 
+  it('renders grouped items with headers', () => {
+    const items = JSON.stringify([
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Option 1' },
+          { id: '2', name: 'Option 2' },
+        ],
+      },
+      {
+        label: 'Group 2',
+        id: 'group-2',
+        items: [
+          { id: '3', name: 'Option 3' },
+          { id: '4', name: 'Option 4' },
+        ],
+      },
+    ]);
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(2);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+    expect(groups[1]).toHaveAccessibleName('Group 2');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(4);
+    expect(listItems[0]).toHaveTextContent('Option 1');
+    expect(listItems[1]).toHaveTextContent('Option 2');
+    expect(listItems[2]).toHaveTextContent('Option 3');
+    expect(listItems[3]).toHaveTextContent('Option 4');
+  });
+
+  it('renders mixed grouped and standalone items', () => {
+    const items = JSON.stringify([
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Group item 1' },
+          { id: '2', name: 'Group item 2' },
+        ],
+      },
+      { id: '3', name: 'Standalone Item 1' },
+    ]);
+
+    renderAutocomplete({ items });
+
+    open();
+
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(1);
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(3);
+  });
+
+  it('renders "no results" message when groups contain no items', () => {
+    renderAutocomplete({
+      items: JSON.stringify([
+        {
+          label: 'Group 1',
+          id: 'group-1',
+          items: [],
+        },
+      ]),
+    });
+
+    open();
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
+  });
+
   // TODO: Fix how items with children are rendered
   // it('renders items with children property', () => {
   //   const items = [
