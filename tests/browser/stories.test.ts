@@ -33,6 +33,8 @@ const storySkipList = [
   'web-components-ds-accordion-item--default', // Redundant
   'web-components-ds-modal-dialog--default', // Doesn't show the open dialog
   'web-components-ds-modal-dialog--prevent-scroll-example', // Doesn't show the open dialog
+  'web-components-ds-autocomplete--groups-and-standalone-items', // Redundant
+  'web-components-ds-autocomplete--item-groups', // Redundant
   'web-components-ds-autocomplete--async-items', // Redundant
 ];
 
