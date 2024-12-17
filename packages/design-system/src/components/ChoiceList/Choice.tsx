@@ -55,7 +55,7 @@ export interface BaseChoiceProps {
   /**
    * Access a reference to the `input` element
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: React.Ref<HTMLInputElement>;
   /**
    * A unique ID to be used for the input field, as well as the label's
    * `for` attribute. A unique ID will be generated if one isn't provided.

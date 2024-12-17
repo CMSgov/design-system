@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { createRef } from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -129,5 +130,19 @@ describe('TextInput', function () {
     renderInput({ onChange });
     userEvent.type(getInput(), 'hello world');
     expect(onChange).toHaveBeenCalled();
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderInput({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderInput({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 });

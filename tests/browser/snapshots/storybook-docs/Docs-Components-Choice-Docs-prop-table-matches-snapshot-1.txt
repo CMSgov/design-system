@@ -71,7 +71,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the input element\n(...args: any[]) => any",
+    "Access a reference to the input element\nRef<HTMLInputElement>",
     "-"
   ],
   [

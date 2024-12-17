@@ -166,9 +166,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     id,
     onChange: handleInputChange,
     type: 'text',
-    inputRef: (el) => {
-      inputRef.current = el;
-    },
+    inputRef,
     'aria-invalid': invalid,
     'aria-describedby': describeField({ ...props, errorId, hintId }),
   });
