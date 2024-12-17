@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
+import { createRef } from 'react';
 
 const defaultProps = {
   name: 'dropdown',
@@ -213,6 +214,20 @@ describe('Dropdown', () => {
     makeDropdown({ defaultValue: '1', autoFocus: true }, 10);
     const button = getButton();
     expect(button).toHaveFocus();
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLButtonElement>();
+    makeDropdown({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('BUTTON');
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    makeDropdown({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('BUTTON');
   });
 
   it('accepts optgroup children', () => {

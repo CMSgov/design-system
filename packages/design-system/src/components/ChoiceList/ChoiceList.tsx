@@ -1,12 +1,14 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { Label } from '../Label';
 import type * as React from 'react';
+import { createRef } from 'react';
 import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import mergeRefs from '../utilities/mergeRefs';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -92,7 +94,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
     }
   }
 
-  const choiceRefs: [any?] = [];
+  const inputElements: Element[] = [];
 
   const handleBlur = (evt: React.FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(evt);
@@ -104,7 +106,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
     // transition, so in order to check if the newly focused element
     // is one of our choices, we're going to have to wait a bit.
     setTimeout(() => {
-      if (!choiceRefs.includes(document.activeElement)) {
+      if (!inputElements.includes(document.activeElement)) {
         onComponentBlur(evt);
       }
     }, 20);
@@ -130,12 +132,10 @@ export const ChoiceList = (props: ChoiceListProps) => {
         'ds-c-choice--error': props.errorMessage,
       }),
       disabled: choiceProps.disabled || props.disabled, // Individual choices can be disabled as well as the entire field
-      inputRef: (ref) => {
-        choiceRefs.push(ref);
-        if (choiceProps.inputRef) {
-          choiceProps.inputRef(ref);
-        }
-      },
+      inputRef: mergeRefs([
+        choiceProps.inputRef,
+        (inputElement) => inputElements.push(inputElement),
+      ]),
       _choiceChild: true,
     };
 
