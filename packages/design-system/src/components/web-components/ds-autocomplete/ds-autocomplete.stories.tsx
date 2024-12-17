@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-autocomplete';
-import { AutocompleteItem } from '../../Autocomplete';
+import { AutocompleteItem, AutocompleteItems } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
 import { MockedDataResponse, searchMock } from '../../Autocomplete/testMocks';
@@ -136,7 +136,7 @@ const meta: Meta = {
 };
 export default meta;
 type DSAutocompleteProps = Omit<React.JSX.IntrinsicElements['ds-autocomplete'], 'items'> & {
-  items: AutocompleteItem[];
+  items: AutocompleteItems;
 };
 type Story = StoryObj<DSAutocompleteProps>;
 
@@ -148,7 +148,7 @@ const Template = (args: DSAutocompleteProps) => {
   if (input.length > 0 && items) {
     filteredItems = items
       .map((item) => {
-        if (item.label && item.items) {
+        if ('label' in item) {
           // Handle grouped items
           const filteredGroupItems = item.items.filter(
             (groupItem) =>
@@ -281,9 +281,8 @@ export const LabeledList: Story = {
 export const ItemGroups = {
   render: Template,
   args: {
-    textFieldLabel: 'Select a state.',
-    textFieldHint:
-      'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Select a state.',
+    hint: 'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     items: [
       makeGroup('Group A', [
         makeItem('Alabama'),
@@ -300,9 +299,8 @@ export const ItemGroups = {
 export const GroupsAndStandaloneItems = {
   render: Template,
   args: {
-    textFieldLabel: 'Search for a healthcare specialty or doctor’s office.',
-    textFieldHint:
-      'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    label: 'Search for a healthcare specialty or doctor’s office.',
+    hint: 'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
     items: [
       makeItem('Care Clinic - Specialty Center'),
       makeItem('Healthy Life Gastroenterology - Main Campus'),
