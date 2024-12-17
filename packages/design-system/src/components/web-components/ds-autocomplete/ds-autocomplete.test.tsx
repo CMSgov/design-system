@@ -1,14 +1,17 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
 
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
+const updatedItems = JSON.stringify([{ id: 'Yf2c6fRk', name: 'Marion County, OR' }]);
 
 type AutocompleteProps = JSX.IntrinsicElements['ds-autocomplete'];
 
 function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {
+    'root-id': 'static-id',
+    id: 'autocomplete--1',
     'aria-clear-label': 'Clear search to try again',
     'clear-input-text': 'Clear search',
     'clear-search-button': 'true',
@@ -37,10 +40,6 @@ function expectMenuToBeOpen() {
 
 function expectMenuToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('Autocomplete', () => {
@@ -132,8 +131,8 @@ describe('Autocomplete', () => {
   //   expect(ul).toMatchSnapshot();
   // });
 
-  it('generates ids when no id is provided', () => {
-    renderAutocomplete({ id: undefined, items: defaultItems });
+  it('generates ids when no root id is provided', () => {
+    renderAutocomplete({ 'root-id': undefined, items: defaultItems });
     open();
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
@@ -197,6 +196,19 @@ describe('Autocomplete', () => {
 
     rerender(makeAutocomplete({ items: defaultItems }));
     expectMenuToBeOpen();
+  });
+
+  it('displays menu with default items and updates items after async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    expectMenuToBeOpen();
+    userEvent.type(autocompleteField, 'mar');
+    rerender(makeAutocomplete({ items: updatedItems }));
+    expectMenuToBeOpen();
+    const items = screen.getByRole('option');
+    expect(items).toBeInTheDocument();
+    expect(items).toHaveTextContent('Marion County, OR');
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
