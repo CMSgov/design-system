@@ -45,7 +45,7 @@ interface BaseTextFieldProps {
   /**
    * Access a reference to the `input` or `textarea` element
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
   /**
    * Set to `true` to apply the "inverse" color scheme
    */
