@@ -80,7 +80,7 @@
   ],
   [
     "inputRef",
-    "(...args: any[]) => any",
+    "Ref<any>",
     "-"
   ],
   [
