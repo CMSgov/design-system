@@ -26,14 +26,22 @@
             }
           },
           "options": {
-            "assets": [],
+            "outputPath": "dist/demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "outputPath": "dist/demo",
             "polyfills": ["zone.js"],
-            "scripts": [],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
             "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json"
+            "scripts": [
+              "node_modules/@cmsgov/design-system/dist/web-components/bundle/base.js",
+              "node_modules/@cmsgov/design-system/dist/web-components/bundle/all.js"
+            ]
           }
         },
         "serve": {

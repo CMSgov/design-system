@@ -1,0 +1,7 @@
+<ds-alert [attr.variation]="alertVariation()" class="ds-u-margin-y--2">
+  <div slot="heading">{{ alertHeading() }}</div>
+  {{ alertMessage() }}
+  <div class="ds-u-margin-y--2">
+    <ng-content></ng-content>
+  </div>
+</ds-alert>
