@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import StorybookExampleFooter from './StorybookExampleFooter';
 import { Spinner } from '@cmsgov/design-system';
 import { withPrefix } from 'gatsby';
+import { clientOnly } from '../../helpers/clientOnly';
 
 interface StorybookExampleProps {
   /**
@@ -124,4 +125,4 @@ const StorybookExample = ({
   );
 };
 
-export default StorybookExample;
+export default clientOnly(StorybookExample);
