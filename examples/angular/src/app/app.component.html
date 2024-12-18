@@ -1,0 +1,111 @@
+<div class="ds-content ds-u-margin-x--0 ds-u-margin-bottom--2 full-height">
+  <ds-skip-nav href="#main"></ds-skip-nav>
+  <ds-usa-banner></ds-usa-banner>
+  <main class="ds-l-container">
+    <h1 class="ds-text-heading--5xl ds-u-margin-top--2">Web-component examples</h1>
+
+    <!-- Wrapped Alert -->
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Alert</h2>
+    <app-alert
+      [alertVariation]="wrappedAlertVariation"
+      [alertHeading]="wrappedAlertHeading"
+      [alertMessage]="wrappedAlertMessage"
+    >
+      <app-button (buttonClickEvent)="setToWarning($event)" [buttonVariation]="buttonVariation">
+        {{ buttonText }}
+      </app-button>
+    </app-alert>
+
+    <!-- Wrapped Accordion -->
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Accordion</h2>
+    <app-accordion [bordered]="bordered" [items]="items" [headingLevel]="headingLevel">
+    </app-accordion>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Month Picker</h2>
+    <ds-month-picker
+      requirement-label="Required."
+      hint="Select many."
+      name="fooPicker"
+      label="Select any months you want!"
+    >
+      <input type="checkbox" value="10" checked />
+      <input type="checkbox" value="11" checked disabled />
+      <input type="checkbox" value="12" disabled />
+    </ds-month-picker>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Spinner</h2>
+    <ds-spinner aria-valuetext="aria sets spinner label!"
+      >children don't set spinner label</ds-spinner
+    >
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Checkbox</h2>
+    <h3 class="ds-text-heading--3xl ds-u-margin-top--2">DS Choice</h3>
+    <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
+      <div slot="checked-children">
+        <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
+      </div>
+    </ds-choice>
+
+    <h3 class="ds-text-heading--3xl ds-u-margin-top--2">DS Choicelist</h3>
+    <ds-choice-list type="radio" label="Choice list example" name="foo">
+      <ds-choice label="Choice without associated children" value="no children" />
+      <ds-choice
+        label="Checked children"
+        hint="Selecting this checkbox will reveal its associated children."
+        value="checked children"
+      >
+        <div slot="checked-children">
+          <div class="ds-c-choice__checkedChild">
+            <ds-alert heading="🫣 Tag! You're it!">
+              You can reveal content by applying <code>checked-children</code> to the
+              <code>slot</code> attribute of an HTML element. Do not forget to include a
+              <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+              whatever content you want to show/hide so it gets side border showing an association
+              with its choice parent.
+            </ds-alert>
+          </div>
+        </div>
+      </ds-choice>
+      <ds-choice
+        label="Unchecked children"
+        hint="Selecting this checkbox will hide its associated children."
+        value="unchecked children"
+      >
+        <div slot="unchecked-children">
+          <div class="ds-c-choice__checkedChild">
+            <ds-alert variation="warn" heading="I banish thee!">
+              You can hide content by applying <code>unchecked-children</code> to the
+              <code>slot</code> attribute of an HTML element. Do not forget to include a
+              <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+              whatever content you want to show/hide so it gets side border showing an association
+              with its choice parent.
+            </ds-alert>
+          </div>
+        </div>
+      </ds-choice>
+    </ds-choice-list>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Modal Dialog</h2>
+    <ds-button (click)="openDialog()">Open Dialog</ds-button>
+    <app-dialog
+      [(isOpen)]="is_open"
+      [root_id]="root_id"
+      [size]="size"
+      [backdrop_click_exits]="backdrop_click_exits"
+      [heading]="dialogHeading"
+    >
+      <dialog-body>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+          lacinia, eget tempor purus placerat.
+        </p>
+      </dialog-body>
+      <dialog-actions>
+        <form method="dialog" (submit)="closeDialog()">
+          <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1">Reset</ds-button>
+          <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+        </form>
+      </dialog-actions>
+    </app-dialog>
+  </main>
+</div>
