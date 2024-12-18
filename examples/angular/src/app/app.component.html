@@ -107,5 +107,55 @@
         </form>
       </dialog-actions>
     </app-dialog>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Review</h2>
+    @for(elem of reviewElements; track elem.id) {
+    <app-review [edit_href]="href">
+      <review-heading>{{ elem.heading }}</review-heading>
+      <review-edit-text>{{ elem.editText }}</review-edit-text>
+      <p>{{ elem.content }}</p>
+    </app-review>
+    } @empty {
+    <app-review [edit_href]="href">
+      <review-heading>Please review the following content.</review-heading>
+      <review-edit-text>Hello. Edit me.</review-edit-text>
+      <p>Have you deeply considered your options?</p>
+    </app-review>
+    }
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Drawer</h2>
+    <app-drawer
+      [(isOpen)]="drawerOpen"
+      [footerBody]="footerBody"
+      [footerTitle]="footerTitle"
+      [drawerHeading]="drawerHeading"
+    >
+      <strong> An Explanation </strong>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </app-drawer>
+    <ds-button class-name="ds-c-drawer__toggle" variation="ghost" (ds-click)="toggleDrawer()">
+      Click to toggle drawer
+    </ds-button>
   </main>
 </div>
