@@ -1,0 +1,9 @@
+<ds-review [attr.edit-href]="edit_href()" [attr.heading-level]="heading_level()">
+  <div slot="heading">
+    <ng-content select="review-heading">Backup Heading</ng-content>
+  </div>
+  <div slot="edit-text">
+    <ng-content select="review-edit-text">Backup edit text</ng-content>
+  </div>
+  <ng-content></ng-content>
+</ds-review>
