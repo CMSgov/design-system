@@ -22,18 +22,17 @@ interface ColorExampleListProps {
  * items. Note that this does not show a special transparency background to
  * support semi-transparent colors like the `ColorRamps` component does.
  */
-const ColorExampleList = ({ colorNames, preface, theme }: ColorExampleListProps) =>
-  clientOnly(
-    <div className="ds-u-margin-top--2">
-      {colorNames.map((name) => (
-        <ColorExampleRow
-          name={name}
-          displayName={`${preface}${name}`}
-          value={getThemeColorValue(theme as ThemeName, name)}
-          key={name}
-        />
-      ))}
-    </div>
-  );
+const ColorExampleList = clientOnly(({ colorNames, preface, theme }: ColorExampleListProps) => (
+  <div className="ds-u-margin-top--2">
+    {colorNames.map((name) => (
+      <ColorExampleRow
+        name={name}
+        displayName={`${preface}${name}`}
+        value={getThemeColorValue(theme as ThemeName, name)}
+        key={name}
+      />
+    ))}
+  </div>
+));
 
 export default ColorExampleList;
