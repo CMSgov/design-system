@@ -3,12 +3,21 @@ import { AccordionComponent } from './accordionWrapper/accordion.component';
 import { AlertComponent } from './alertWrapper/alert.component';
 import { ButtonComponent } from './buttonWrapper/button.component';
 import { DialogComponent } from './modalDialogWrapper/dialog.component';
+import { ReviewComponent } from './reviewWrapper/review.component';
+import { DrawerComponent } from './drawerWrapper/drawer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [AccordionComponent, AlertComponent, ButtonComponent, DialogComponent],
+  imports: [
+    AccordionComponent,
+    AlertComponent,
+    ButtonComponent,
+    DialogComponent,
+    DrawerComponent,
+    ReviewComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -68,5 +77,37 @@ export class AppComponent {
 
   closeDialog() {
     this.is_open = 'false';
+  }
+
+  // Review Data:
+  href = '#';
+  reviewElements = [
+    {
+      heading: 'Review item one',
+      content: 'This is the first review.',
+      editText: 'Edit if you dare!',
+      id: '1',
+    },
+    {
+      heading: 'Review item two',
+      content: 'This is the second review.',
+      editText: 'Edit if you dare, again!',
+      id: '2',
+    },
+    {
+      heading: 'Review item three',
+      content: 'This is the third review.',
+      editText: 'Triple-dog-dare you to edit me!',
+      id: '3',
+    },
+  ];
+
+  // Drawer Data:
+  drawerHeading = 'Drawer Heading';
+  footerTitle = 'Footer Title';
+  footerBody = 'Footer content';
+  drawerOpen = 'false';
+  toggleDrawer() {
+    this.drawerOpen = 'true';
   }
 }
