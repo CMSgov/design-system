@@ -39,10 +39,8 @@
             ],
             "styles": ["src/global_styles.css"],
             "scripts": [
-              "/cmsgov/web-components/dist/all.js",
-              "/cmsgov/web-components/dist/base.js"
-              // "node_modules/@cmsgov/design-system/dist/web-components/bundle/base.js",
-              // "node_modules/@cmsgov/design-system/dist/web-components/bundle/all.js"
+              "../../packages/design-system/dist/web-components/bundle/base.js",
+              "../../packages/design-system/dist/web-components/bundle/all.js"
             ]
           }
         },
