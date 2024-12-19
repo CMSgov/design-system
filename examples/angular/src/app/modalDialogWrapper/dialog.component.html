@@ -4,6 +4,8 @@
   [attr.size]="size()"
   [attr.backdrop-click-exits]="backdrop_click_exits()"
   (ds-exit)="close()"
+  analtyics="true"
+  (ds-analytics-event)="analyticsEvent()"
 >
   <div slot="heading">
     {{ heading() }}

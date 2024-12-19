@@ -27,4 +27,8 @@ export class DialogComponent {
     this.isOpen = 'false';
     this.isOpenChange.emit(this.isOpen);
   }
+
+  analyticsEvent() {
+    console.log('Dialog analytics event');
+  }
 }
