@@ -34,9 +34,13 @@ export class AppComponent {
   wrappedAlertVariation = 'success';
 
   // Button Data:
-  buttonVariation = 'outline';
+  buttonVariation: string | null = null;
+  outlineVariation = 'outline';
+  ghostVariation = 'ghost';
+  solidVariation = 'solid';
   buttonWarn = false;
   buttonText = "I'm only gonna tell you once.";
+  toggleClasses = 'ds-c-drawer__toggle';
 
   setToWarning(warning: string) {
     this.wrappedAlertVariation = warning;
@@ -44,7 +48,7 @@ export class AppComponent {
     this.buttonWarn = true;
     // Dunno why I can't change the text content.
     this.buttonText = "You've been warned.";
-    this.buttonVariation = 'solid';
+    this.buttonVariation = this.solidVariation;
   }
 
   // Accordion Data:

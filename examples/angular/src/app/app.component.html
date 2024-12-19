@@ -11,7 +11,7 @@
       [alertHeading]="wrappedAlertHeading"
       [alertMessage]="wrappedAlertMessage"
     >
-      <app-button (buttonClickEvent)="setToWarning($event)" [buttonVariation]="buttonVariation">
+      <app-button (buttonClickEvent)="setToWarning($event)" [buttonVariation]="solidVariation">
         {{ buttonText }}
       </app-button>
     </app-alert>
@@ -86,7 +86,7 @@
     </ds-choice-list>
 
     <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Modal Dialog</h2>
-    <ds-button (click)="openDialog()">Open Dialog</ds-button>
+    <app-button (buttonClickEvent)="openDialog()"> Open Dialog </app-button>
     <app-dialog
       [(isOpen)]="is_open"
       [root_id]="root_id"
@@ -154,8 +154,12 @@
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </app-drawer>
-    <ds-button class-name="ds-c-drawer__toggle" variation="ghost" (ds-click)="toggleDrawer()">
+    <app-button
+      [additionalClasses]="toggleClasses"
+      [buttonVariation]="ghostVariation"
+      (buttonClickEvent)="toggleDrawer()"
+    >
       Click to toggle drawer
-    </ds-button>
+    </app-button>
   </main>
 </div>
