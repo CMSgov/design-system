@@ -11,4 +11,8 @@ export class AlertComponent {
   alertHeading = input.required<string>();
   alertMessage = input.required<string>();
   alertVariation = input<string>();
+
+  analyticsEvent() {
+    console.log('Alert analytics event');
+  }
 }
