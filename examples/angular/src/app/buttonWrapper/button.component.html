@@ -1,3 +1,9 @@
-<ds-button [attr.variation]="buttonVariation()" (ds-click)="handleClick()">
+<ds-button
+  [attr.variation]="buttonVariation()"
+  [attr.class-name]="additionalClasses()"
+  (ds-click)="handleClick()"
+  analytics="true"
+  (ds-analytics-event)="analyticsEvent()"
+>
   <ng-content></ng-content>
 </ds-button>
