@@ -25,8 +25,4 @@ export class DrawerComponent {
     this.isOpen = 'false';
     this.isOpenChange.emit(this.isOpen);
   }
-
-  analyticsEvent() {
-    console.log('Drawer analytics event');
-  }
 }
