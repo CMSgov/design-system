@@ -1,5 +1,7 @@
 const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
 const useWebComponents = Boolean(process.env.WC && JSON.parse(process.env.WC));
+const type = useWebComponents ? 'wc' : 'react';
+
 const preactModuleMapper =
   usePreact || useWebComponents
     ? {
@@ -41,6 +43,10 @@ module.exports = {
   ],
   ...conditionalWebComponentsConfig,
   coverageDirectory: `<rootDir>/tests/unit/coverage-data`,
+  reporters: [
+    'default',
+    ['<rootDir>/tests/unit/reporter.js', { file: `coverage-summary-${type}.json`, type }],
+  ],
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   moduleNameMapper: {
