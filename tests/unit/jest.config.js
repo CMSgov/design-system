@@ -45,6 +45,7 @@ module.exports = {
   coverageDirectory: `<rootDir>/tests/unit/coverage-data`,
   reporters: [
     'default',
+    ['<rootDir>/tests/unit/testsReporter.js', { type }],
     ['<rootDir>/tests/unit/coverageReporter.js', { file: `coverage-summary-${type}.json`, type }],
   ],
   coveragePathIgnorePatterns: ['/node_modules/'],
