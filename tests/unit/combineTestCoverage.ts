@@ -27,10 +27,10 @@ const combinedParsedData = TEST_COVERAGE_TYPES.map((type) => {
   const unparsedData = readFile(filePath);
   const parsedData = JSON.parse(unparsedData);
 
-  if (!parsedData.total || !parsedData.covered) {
-    throw new Error(`Invalid data in ${filePath}`);
-  } else {
+  if ('total' in parsedData && 'covered' in parsedData) {
     return parsedData as SummaryData;
+  } else {
+    throw new Error(`Invalid data in ${filePath}`);
   }
 });
 

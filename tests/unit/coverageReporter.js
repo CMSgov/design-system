@@ -26,7 +26,12 @@ class CoverageReporter {
       const wcData = Object.entries(coverageReport)
         .filter(([key]) => key.includes('web-components'))
         .map(([, data]) => summarizeData(Object.values(data)));
-      results = summarizeData(wcData);
+
+      if (wcData.length === 0) {
+        results = summarizeData(Object.values(coverageReport.total));
+      } else {
+        results = summarizeData(wcData);
+      }
     } else if (coverageReport.total) {
       results = summarizeData(Object.values(coverageReport.total));
     } else {
