@@ -2,7 +2,7 @@ const { readFileSync, writeFileSync } = require('fs');
 const path = require('path');
 const { summarizeData } = require('./utils');
 
-class Reporter {
+class CoverageReporter {
   constructor(globalConfig, options) {
     this._globalConfig = globalConfig;
     this._options = options;
@@ -43,4 +43,4 @@ class Reporter {
   }
 }
 
-module.exports = Reporter;
+module.exports = CoverageReporter;

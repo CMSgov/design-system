@@ -45,7 +45,7 @@ module.exports = {
   coverageDirectory: `<rootDir>/tests/unit/coverage-data`,
   reporters: [
     'default',
-    ['<rootDir>/tests/unit/reporter.js', { file: `coverage-summary-${type}.json`, type }],
+    ['<rootDir>/tests/unit/coverageReporter.js', { file: `coverage-summary-${type}.json`, type }],
   ],
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
