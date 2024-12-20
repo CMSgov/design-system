@@ -1,4 +1,4 @@
-const { writeFileSync } = require('fs');
+const { existsSync, mkdirSync, writeFileSync } = require('fs');
 const path = require('path');
 
 class CountsReporter {
@@ -16,9 +16,14 @@ class CountsReporter {
       skipped: overallResults.numPendingTests,
     };
 
-    const artifactPath = path.resolve(__dirname, 'coverage-data', `test-summary-${type}.json`);
     try {
-      writeFileSync(artifactPath, JSON.stringify(results, null, 2));
+      const artifactPath = path.resolve(__dirname, 'coverage-data');
+      if (!existsSync(artifactPath)) {
+        mkdirSync(artifactPath);
+      }
+
+      const artifactFile = path.resolve(artifactPath, `test-summary-${type}.json`);
+      writeFileSync(artifactFile, JSON.stringify(results, null, 2));
     } catch (e) {
       throw new Error(`Error writing test summary artifact: ${e}`);
     }

@@ -1,4 +1,4 @@
-const { readFileSync, writeFileSync } = require('fs');
+const { existsSync, mkdirSync, readFileSync, writeFileSync } = require('fs');
 const path = require('path');
 const { summarizeData } = require('./utils');
 
@@ -33,10 +33,14 @@ class CoverageReporter {
       throw new Error(`No parsed coverage data.`);
     }
 
-    const artifactPath = path.resolve(__dirname, 'coverage-data', this._options.file);
-
     try {
-      writeFileSync(artifactPath, JSON.stringify(results, null, 2));
+      const artifactPath = path.resolve(__dirname, 'coverage-data');
+      if (!existsSync(artifactPath)) {
+        mkdirSync(artifactPath);
+      }
+
+      const artifactFile = path.resolve(artifactPath, this._options.file);
+      writeFileSync(artifactFile, JSON.stringify(results, null, 2));
     } catch (e) {
       throw new Error(`Error writing coverage summary artifact: ${e}`);
     }

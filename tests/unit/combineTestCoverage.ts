@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { summarizeData } from './utils';
 
@@ -10,9 +10,8 @@ type SummaryData = {
   skipped: number;
 };
 
-const getFilePath = (type?: string): string => {
-  const filename = type ? `coverage-summary-${type}.json` : 'coverage-summary.json';
-  return path.resolve(__dirname, 'coverage-data', filename);
+const getFilePath = (type: string): string => {
+  return path.resolve(__dirname, 'coverage-data', `coverage-summary-${type}.json`);
 };
 
 const readFile = (path: string) => {
@@ -38,8 +37,12 @@ const combinedParsedData = TEST_COVERAGE_TYPES.map((type) => {
 const combinedCoverage = summarizeData(combinedParsedData);
 
 try {
-  const artifactPath = getFilePath();
-  writeFileSync(artifactPath, JSON.stringify(combinedCoverage, null, 2));
+  const artifactPath = path.resolve(__dirname, 'coverage-data');
+  if (!existsSync(artifactPath)) {
+    mkdirSync(artifactPath);
+  }
+  const artifactFile = path.resolve(artifactPath, 'coverage-summary.json');
+  writeFileSync(artifactFile, JSON.stringify(combinedCoverage, null, 2));
 } catch (error) {
   throw new Error(`Error generating coverage data: ${error}`);
 }
