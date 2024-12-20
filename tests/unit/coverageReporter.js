@@ -11,24 +11,24 @@ class CoverageReporter {
   onRunComplete() {
     // if the coverage flag is false, no need to parse json summary documents
     if (this._globalConfig.collectCoverage !== true) return;
+    const isWebComponent = this._options.type === 'wc';
 
     const coveragePath = path.resolve(__dirname, 'coverage-data', 'coverage-summary.json');
-    const coverageReport = readFileSync(coveragePath, 'utf-8');
-    const isWebComponent = this._options.type === 'wc';
-    if (!coverageReport) {
+    let coverageReport;
+    try {
+      coverageReport = JSON.parse(readFileSync(coveragePath, 'utf-8'));
+    } catch (error) {
       throw new Error(`Invalid coverage summary file: ${coveragePath}. File is empty.`);
     }
 
-    const parsedCoverageReport = JSON.parse(coverageReport);
     let results;
-
     if (isWebComponent) {
-      const wcData = Object.entries(parsedCoverageReport)
+      const wcData = Object.entries(coverageReport)
         .filter(([key]) => key.includes('web-components'))
         .map(([, data]) => summarizeData(Object.values(data)));
       results = summarizeData(wcData);
-    } else if (parsedCoverageReport.total) {
-      results = summarizeData(Object.values(parsedCoverageReport.total));
+    } else if (coverageReport.total) {
+      results = summarizeData(Object.values(coverageReport.total));
     } else {
       throw new Error(`No parsed coverage data.`);
     }
