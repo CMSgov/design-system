@@ -15,23 +15,36 @@ class MyReporter implements Reporter {
   private skipCount = 0;
   private failingTests: { path: string; name: string }[] = [];
   private skippedTests: { path: string; name: string }[] = [];
+  private isListMode = false;
+
+  private getHierarchyPath(test: TestCase): string {
+    const path: string[] = [];
+    let parent: Suite | undefined = test.parent;
+    while (parent) {
+      path.unshift(parent.title || '');
+      parent = parent.parent;
+    }
+    return path.filter(Boolean).join(' > ');
+  }
 
   onBegin(_: FullConfig, suite: Suite) {
+    if (process.argv.includes('--list')) {
+      this.isListMode = true;
+      console.log('Listing matching tests with hierarchy paths:');
+      suite.allTests().forEach((test) => {
+        const hierarchyPath = this.getHierarchyPath(test);
+        console.log(`${hierarchyPath} > ${test.title}`);
+      });
+      return;
+    }
+
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
 
   onTestEnd(test: TestCase, result: TestResult) {
-    const getHierarchyPath = (test: TestCase): string => {
-      const path: string[] = [];
-      let parent: Suite | undefined = test.parent;
-      while (parent) {
-        path.unshift(parent.title || '');
-        parent = parent.parent;
-      }
-      return path.filter(Boolean).join(' > ');
-    };
+    if (this.isListMode) return;
 
-    const hierarchyPath = getHierarchyPath(test);
+    const hierarchyPath = this.getHierarchyPath(test);
 
     switch (result.status) {
       case 'passed':
@@ -51,6 +64,8 @@ class MyReporter implements Reporter {
   }
 
   onEnd(result: FullResult) {
+    if (this.isListMode) return;
+
     console.log(`Finished the run: ${result.status}`);
     console.log(`Summary:`);
     console.log(` - Passed: ${this.passCount}`);
