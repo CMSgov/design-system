@@ -15,23 +15,57 @@ class MyReporter implements Reporter {
   private skipCount = 0;
   private failingTests: { path: string; name: string }[] = [];
   private skippedTests: { path: string; name: string }[] = [];
+  private isListMode = false;
+  private totalTests = 0;
+  private currentTestIndex = 0;
+
+  private getHierarchyPath(test: TestCase): string {
+    const path: string[] = [];
+    let parent: Suite | undefined = test.parent;
+
+    while (parent) {
+      if (parent.title) {
+        path.unshift(parent.title);
+      }
+      parent = parent.parent;
+    }
+
+    if (path.length > 0) {
+      path[0] = `[${path[0]}]`;
+    }
+
+    return path.join(' > ');
+  }
 
   onBegin(_: FullConfig, suite: Suite) {
+    const totalFiles = new Set(suite.allTests().map((test) => test.location.file)).size;
+    this.totalTests = suite.allTests().length;
+
+    console.log(`Running ${totalFiles} files with ${suite.allTests().length} tests`);
+    if (process.argv.includes('--list')) {
+      this.isListMode = true;
+      console.log('Listing matching tests with hierarchy paths:');
+      suite.allTests().forEach((test) => {
+        const hierarchyPath = this.getHierarchyPath(test);
+        console.log(`${hierarchyPath} > ${test.title}`);
+      });
+      console.log(
+        `\nTotal: ${this.totalTests} tests in ${totalFiles} file${totalFiles > 1 ? 's' : ''}`
+      );
+      return;
+    }
+
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
 
-  onTestEnd(test: TestCase, result: TestResult) {
-    const getHierarchyPath = (test: TestCase): string => {
-      const path: string[] = [];
-      let parent: Suite | undefined = test.parent;
-      while (parent) {
-        path.unshift(parent.title || '');
-        parent = parent.parent;
-      }
-      return path.filter(Boolean).join(' > ');
-    };
+  onTestBegin(_: TestCase) {
+    this.currentTestIndex++;
+  }
 
-    const hierarchyPath = getHierarchyPath(test);
+  onTestEnd(test: TestCase, result: TestResult) {
+    if (this.isListMode) return;
+
+    const hierarchyPath = this.getHierarchyPath(test);
 
     switch (result.status) {
       case 'passed':
@@ -47,10 +81,14 @@ class MyReporter implements Reporter {
         break;
     }
 
-    console.log(`${hierarchyPath} > ${test.title}: ${result.status}`);
+    console.log(
+      `[${this.currentTestIndex}/${this.totalTests}] ${hierarchyPath} > ${test.title}: ${result.status}`
+    );
   }
 
   onEnd(result: FullResult) {
+    if (this.isListMode) return;
+
     console.log(`Finished the run: ${result.status}`);
     console.log(`Summary:`);
     console.log(` - Passed: ${this.passCount}`);
