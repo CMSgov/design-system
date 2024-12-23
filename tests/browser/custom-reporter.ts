@@ -16,6 +16,8 @@ class MyReporter implements Reporter {
   private failingTests: { path: string; name: string }[] = [];
   private skippedTests: { path: string; name: string }[] = [];
   private isListMode = false;
+  private totalTests = 0;
+  private currentTestIndex = 0;
 
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];
@@ -45,8 +47,12 @@ class MyReporter implements Reporter {
       });
       return;
     }
-
+    this.totalTests = suite.allTests().length;
     console.log(`Starting the run with ${suite.allTests().length} tests`);
+  }
+
+  onTestBegin(_: TestCase) {
+    this.currentTestIndex++;
   }
 
   onTestEnd(test: TestCase, result: TestResult) {
@@ -68,7 +74,9 @@ class MyReporter implements Reporter {
         break;
     }
 
-    console.log(`${hierarchyPath} > ${test.title}: ${result.status}`);
+    console.log(
+      `[${this.currentTestIndex}/${this.totalTests}] ${hierarchyPath} > ${test.title}: ${result.status}`
+    );
   }
 
   onEnd(result: FullResult) {
