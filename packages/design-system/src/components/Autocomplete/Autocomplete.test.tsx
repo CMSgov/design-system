@@ -2,6 +2,7 @@ import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultItems = [{ id: 'kRf6c2fY', name: 'Cook County, IL' }];
 const updatedItems = [{ id: 'Yf2c6fRk', name: 'Marion County, OR' }];
@@ -478,5 +479,36 @@ describe('Autocomplete', () => {
     expect(field).toHaveAttribute('disabled');
     const clearButton = screen.getByText('Clear search');
     expect(clearButton).toHaveAttribute('disabled');
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderAutocomplete({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLButtonElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return (
+        <Autocomplete items={defaultItems} inputRef={inputRef}>
+          <TextField label="autocomplete" name="autocomplete_field" />
+        </Autocomplete>
+      );
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderAutocomplete({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 });
