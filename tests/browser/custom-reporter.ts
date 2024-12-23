@@ -38,6 +38,10 @@ class MyReporter implements Reporter {
   }
 
   onBegin(_: FullConfig, suite: Suite) {
+    const totalFiles = new Set(suite.allTests().map((test) => test.location.file)).size;
+    this.totalTests = suite.allTests().length;
+
+    console.log(`Running ${totalFiles} files with ${suite.allTests().length} tests`);
     if (process.argv.includes('--list')) {
       this.isListMode = true;
       console.log('Listing matching tests with hierarchy paths:');
@@ -45,9 +49,12 @@ class MyReporter implements Reporter {
         const hierarchyPath = this.getHierarchyPath(test);
         console.log(`${hierarchyPath} > ${test.title}`);
       });
+      console.log(
+        `\nTotal: ${this.totalTests} tests in ${totalFiles} file${totalFiles > 1 ? 's' : ''}`
+      );
       return;
     }
-    this.totalTests = suite.allTests().length;
+
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
 
