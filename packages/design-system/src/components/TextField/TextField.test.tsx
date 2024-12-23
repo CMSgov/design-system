@@ -2,7 +2,7 @@ import TextField from './TextField';
 import { render, screen } from '@testing-library/react';
 import { DATE_MASK } from './useLabelMask';
 import userEvent from '@testing-library/user-event';
-import { createRef } from 'react';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   label: 'Foo',
@@ -114,6 +114,19 @@ describe('TextField', function () {
     renderTextField({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
     expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLInputElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return <TextField inputRef={inputRef} {...defaultProps} />;
+    };
+
+    render(<MyComponent />);
   });
 
   it('forwards a function inputRef', () => {

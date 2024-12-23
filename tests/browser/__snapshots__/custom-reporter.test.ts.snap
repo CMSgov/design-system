@@ -5,7 +5,7 @@ Object {
   "failingTests": Array [
     Object {
       "name": "Test 2",
-      "path": "Sample Suite",
+      "path": "[Sample Suite]",
     },
   ],
   "skippedTests": Array [],
