@@ -20,11 +20,19 @@ class MyReporter implements Reporter {
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];
     let parent: Suite | undefined = test.parent;
+
     while (parent) {
-      path.unshift(parent.title || '');
+      if (parent.title) {
+        path.unshift(parent.title);
+      }
       parent = parent.parent;
     }
-    return path.filter(Boolean).join(' > ');
+
+    if (path.length > 0) {
+      path[0] = `[${path[0]}]`;
+    }
+
+    return path.join(' > ');
   }
 
   onBegin(_: FullConfig, suite: Suite) {
