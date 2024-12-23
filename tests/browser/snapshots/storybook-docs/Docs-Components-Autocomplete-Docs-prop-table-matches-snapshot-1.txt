@@ -60,7 +60,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the child TextField's input element\nRef<HTMLInputElement>",
+    "Access a reference to the child TextField's input element\nRef<any> | MutableRefObject<any>",
     "-"
   ],
   [

@@ -108,7 +108,7 @@ export interface AutocompleteProps {
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
-  inputRef?: React.Ref<HTMLInputElement>;
+  inputRef?: React.Ref<any> | React.MutableRefObject<any>;
   /**
    * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
    * @deprecated Please provide a `name` property to each item instead.
