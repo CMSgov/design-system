@@ -30,8 +30,16 @@ test('JSON report matches snapshot', () => {
   const mockSuite = {
     title: 'Sample Suite',
     allTests: () => [
-      { title: 'Test 1', parent: { title: 'Sample Suite', parent: null } },
-      { title: 'Test 2', parent: { title: 'Sample Suite', parent: null } },
+      {
+        title: 'Test 1',
+        location: { file: 'sample-suite.test.ts' },
+        parent: { title: 'Sample Suite', parent: null },
+      },
+      {
+        title: 'Test 2',
+        location: { file: 'sample-suite.test.ts' },
+        parent: { title: 'Sample Suite', parent: null },
+      },
     ],
   } as unknown as Suite;
 
