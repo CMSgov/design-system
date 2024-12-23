@@ -8,7 +8,7 @@ export type ButtonSize = 'small' | 'big';
 
 export type ButtonVariation = 'solid' | 'ghost';
 
-export type ButtonRef = React.Ref<HTMLButtonElement | HTMLAnchorElement>;
+export type ButtonRef = React.Ref<any> | React.MutableRefObject<any>;
 
 interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataProps {
   /**
