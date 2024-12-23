@@ -1,0 +1,12 @@
+<ds-accordion [attr.bordered]="bordered()">
+  @for(item of items(); track item.title) {
+  <ds-accordion-item [attr.heading-level]="headingLevel()">
+    <div slot="heading">
+      {{ item.title }}
+    </div>
+    {{ item.content }}
+  </ds-accordion-item>
+  } @empty {
+  <ds-accordion-item [attr.heading-level]="headingLevel()"> 'Empty' </ds-accordion-item>
+  }
+</ds-accordion>
