@@ -31,14 +31,23 @@ async function insertTemplateContent(filePath: string) {
     `${startComment}\n${templateContentWithIndentation}${endComment}`
   );
   await fs.promises.writeFile(filePath, updatedContent, fileEncodingOptions);
+
+  try {
+    sh(`yarn prettier --write ${filePath}`);
+  } catch (error) {
+    // If we don't have prettier set up for this kind of file, we don't really care that
+    // it didn't work. The prettier command will log its error to the terminal anyway.
+  }
 }
 
-// Run the grep command to find files that contain the start comment
-const grepOutput = sh(`grep -rl '${startComment}' ${searchDir}`);
-const filePaths = grepOutput.split('\n');
-// Then insert our template content between those two comments
-filePaths.forEach((filePath) => insertTemplateContent(filePath));
+(async () => {
+  // Run the grep command to find files that contain the start comment
+  const grepOutput = sh(`grep -rl '${startComment}' ${searchDir}`);
+  const filePaths = grepOutput.split('\n');
+  // Then insert our template content between those two comments
+  await Promise.all(filePaths.map((filePath) => insertTemplateContent(filePath)));
 
-// And brag about it
-console.log('Updated the following files:\n');
-console.log(filePaths.map((f) => c.green(f)).join('\n'));
+  // And brag about it
+  console.log('Updated the following files:\n');
+  console.log(filePaths.map((f) => c.green(f)).join('\n'));
+})();
