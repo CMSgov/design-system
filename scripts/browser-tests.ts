@@ -2,7 +2,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI } from './utils';
 
-const DOCKER_IMAGE = 'mcr.microsoft.com/playwright:v1.37.1-focal';
+const DOCKER_IMAGE = 'mcr.microsoft.com/playwright:v1.49.1-noble';
 
 function verifyPlaywrightInstalled() {
   try {
