@@ -10,8 +10,8 @@ function renderAlert(props: AlertProps = {}) {
   return render(<Alert children={defaultText} {...props} />);
 }
 
-function expectHasClass(className: string) {
-  expect(screen.getByRole('region').className).toContain(className);
+function expectHasClass(className: string, role = 'region') {
+  expect(screen.getByRole(role).className).toContain(className);
 }
 
 describe('Alert', function () {
@@ -29,12 +29,32 @@ describe('Alert', function () {
 
   it('appears as an error', () => {
     renderAlert({ variation: 'error' });
-    expectHasClass('ds-c-alert--error');
+    const alert = screen.getByRole('alert');
+    expect(alert).toBeInTheDocument();
+    expectHasClass('ds-c-alert--error', 'alert');
   });
 
   it('appears as a lightweight alert', () => {
     renderAlert({ weight: 'lightweight' });
     expectHasClass('ds-c-alert--lightweight');
+  });
+
+  it('assigns role="status" for success variation', () => {
+    renderAlert({ variation: 'success' });
+    const alert = screen.getByRole('status');
+    expect(alert).toBeInTheDocument();
+  });
+
+  it('assigns role="alert" for warn variation', () => {
+    renderAlert({ variation: 'warn' });
+    const alert = screen.getByRole('alert');
+    expect(alert).toBeInTheDocument();
+  });
+
+  it('uses explicitly provided role prop over variation-based role', () => {
+    renderAlert({ variation: 'success', role: 'alertdialog' });
+    const alert = screen.getByRole('alertdialog');
+    expect(alert).toBeInTheDocument();
   });
 
   it('renders additional className and role prop', () => {
@@ -100,7 +120,7 @@ describe('Alert', function () {
     it('points aria-labelledby to heading', () => {
       const heading = 'Elvis has left the building';
       renderAlert({ heading, variation: 'error' });
-      const alert = screen.getByRole('region');
+      const alert = screen.getByRole('alert');
       const id = alert.getAttribute('aria-labelledby');
       expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
     });
