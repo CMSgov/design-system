@@ -29,8 +29,6 @@ describe('Alert', function () {
 
   it('appears as an error', () => {
     renderAlert({ variation: 'error' });
-    const alert = screen.getByRole('alert');
-    expect(alert).toBeInTheDocument();
     expectHasClass('ds-c-alert--error', 'alert');
   });
 
