@@ -12,11 +12,12 @@
  * snapshots are taken inside a Docker container rather than on the host machine.
  */
 
-import { default as pwc } from './playwright.config';
+import { config } from './playwright.config';
+import { defineConfig } from '@playwright/test';
 
-pwc.snapshotPathTemplate = 'snapshots/stories-interaction/{arg}--{projectName}{ext}';
-pwc.testDir = '../../packages/';
-pwc.testIgnore = ['**/docs/**', '**/design-system-tokens/**'];
-pwc.testMatch = /.*test\.interaction\.ts/;
+config.snapshotPathTemplate = 'snapshots/stories-interaction/{arg}--{projectName}{ext}';
+config.testDir = '../../packages/';
+config.testIgnore = ['**/docs/**', '**/design-system-tokens/**'];
+config.testMatch = /.*test\.interaction\.ts/;
 
-export default pwc;
+export default defineConfig(config);

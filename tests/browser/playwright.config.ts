@@ -10,7 +10,7 @@
  */
 
 import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 const isCI = Boolean(process.env.CI && JSON.parse(process.env.CI));
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
@@ -74,7 +74,7 @@ const smokeTestProjects = [
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig = {
+export const config: PlaywrightTestConfig = {
   testDir: './',
   testIgnore: [
     'storybook-docs.test.ts',
@@ -123,4 +123,4 @@ const config: PlaywrightTestConfig = {
   },
 };
 
-export default config;
+export default defineConfig(config);
