@@ -67,7 +67,7 @@
   [
     "role",
     "ARIA role, defaults to 'region'\n\"alert\"\n\"alertdialog\"\n\"region\"\n\"status\"",
-    "\"region\""
+    "-"
   ],
   [
     "variation",
