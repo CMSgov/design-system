@@ -5,7 +5,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input } from '@angular/c
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.css'],
 })
 export class AccordionComponent {
   constructor(elementRef: ElementRef) {

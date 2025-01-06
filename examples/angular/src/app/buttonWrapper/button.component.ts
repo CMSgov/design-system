@@ -5,7 +5,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, input, Output } from '
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css'],
 })
 export class ButtonComponent {
   buttonVariation = input<string>('solid');
