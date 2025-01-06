@@ -5,7 +5,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css'],
 })
 export class AlertComponent {
   alertHeading = input.required<string>();

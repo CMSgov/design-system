@@ -12,7 +12,6 @@ import {
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './drawer.component.html',
-  styleUrls: ['./drawer.component.css'],
 })
 export class DrawerComponent {
   @Input() isOpen = 'false';

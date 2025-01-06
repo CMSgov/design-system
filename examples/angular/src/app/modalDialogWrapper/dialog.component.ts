@@ -12,7 +12,6 @@ import {
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent {
   @Input() isOpen: string | undefined;
