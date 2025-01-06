@@ -19,7 +19,6 @@ import { DrawerComponent } from './drawerWrapper/drawer.component';
     ReviewComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Angular Web Components';
