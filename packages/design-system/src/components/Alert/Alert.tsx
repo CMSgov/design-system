@@ -48,7 +48,12 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
    */
   id?: string;
   /**
-   * ARIA `role`, defaults to 'region'
+   * ARIA `role`, which determines the accessibility role of the alert.
+   * If not explicitly provided, the role is dynamically assigned based on the `variation`:
+   * - For `variation="error"`, `role="alert"`
+   * - For `variation="success"`, `role="status"`
+   * - For `variation="warn"`, `role="alert"`
+   * - Otherwise, defaults to `role="region"`
    */
   role?: AlertRole;
   /**
