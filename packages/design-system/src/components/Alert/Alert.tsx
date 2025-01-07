@@ -10,7 +10,7 @@ import useId from '../utilities/useId';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
-export type AlertVariation = 'error' | 'warn' | 'success';
+export type AlertVariation = 'error' | 'warn' | 'success' | 'informational';
 export type AlertWeight = 'lightweight';
 
 export interface BaseAlertProps extends AnalyticsOverrideProps {
@@ -58,7 +58,7 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation?: AlertVariation;
+  variation?: Exclude<AlertVariation, 'informational'>;
 }
 
 export type AlertProps = BaseAlertProps &
