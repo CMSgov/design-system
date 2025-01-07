@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -223,7 +223,7 @@
 
               if (input.length > 0 && items) {
                 const filteredItems = items.filter(
-                  (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
+                  (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase()),
                 );
                 autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
               }
@@ -246,7 +246,7 @@
             document
               .querySelector('ds-filter-chip')
               ?.addEventListener('ds-delete', (e) =>
-                console.log('You fired the custom ds-delete event.', e)
+                console.log('You fired the custom ds-delete event.', e),
               );
           });
         </script>
