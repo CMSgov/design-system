@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { AccordionComponent } from './accordionWrapper/accordion.component';
 import { AlertComponent } from './alertWrapper/alert.component';
 import { ButtonComponent } from './buttonWrapper/button.component';
@@ -38,31 +38,19 @@ export class AppComponent {
   ghostVariation = 'ghost';
   solidVariation = 'solid';
   buttonWarn = false;
-  buttonText = "I'm only gonna tell you once.";
+  buttonText = signal("I'm only gonna tell you once.");
   toggleClasses = 'ds-c-drawer__toggle';
 
   setToWarning(warning: string) {
     this.wrappedAlertVariation = warning;
     this.wrappedAlertHeading = 'Whoa clicked';
     this.buttonWarn = true;
-    // Dunno why I can't change the text content.
-    this.buttonText = "You've been warned.";
+    this.buttonText.set("You've been warned.");
     this.buttonVariation = this.solidVariation;
   }
 
   // Accordion Data:
   bordered = 'true';
-  items = [
-    {
-      title: 'Item 1',
-      content: 'This is the first item.',
-    },
-    {
-      title: 'Item 2',
-      content:
-        'This is the second item, and it is a little longer but we can handle it and Github copilot is really good at writing code but not so good at knowing what I want to say or when to stop.',
-    },
-  ];
 
   // Accordion Item data:
   headingLevel = '2';

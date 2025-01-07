@@ -12,14 +12,13 @@
       [alertMessage]="wrappedAlertMessage"
     >
       <app-button (buttonClickEvent)="setToWarning($event)" [buttonVariation]="solidVariation">
-        {{ buttonText }}
+        {{ buttonText() }}
       </app-button>
     </app-alert>
 
     <!-- Wrapped Accordion -->
     <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Accordion</h2>
-    <app-accordion [bordered]="bordered" [items]="items" [headingLevel]="headingLevel">
-    </app-accordion>
+    <app-accordion [bordered]="bordered" [headingLevel]="headingLevel" />
 
     <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Month Picker</h2>
     <ds-month-picker
