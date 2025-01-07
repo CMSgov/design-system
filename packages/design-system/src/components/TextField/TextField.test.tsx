@@ -2,6 +2,7 @@ import TextField from './TextField';
 import { render, screen } from '@testing-library/react';
 import { DATE_MASK } from './useLabelMask';
 import userEvent from '@testing-library/user-event';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   label: 'Foo',
@@ -106,5 +107,32 @@ describe('TextField', function () {
     expect(onBlur).not.toHaveBeenCalled();
     userEvent.tab();
     expect(onBlur).toHaveBeenCalled();
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderTextField({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLInputElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return <TextField inputRef={inputRef} {...defaultProps} />;
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderTextField({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 });

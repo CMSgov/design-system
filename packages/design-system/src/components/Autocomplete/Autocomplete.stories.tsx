@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import type * as React from 'react';
-import Autocomplete from './Autocomplete';
+import { Autocomplete, AutocompleteItem, AutocompleteProps } from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import { debounce } from '../utilities/debounce';
+import { MockedDataResponse, searchMock } from './testMocks';
+
+type AutocompleteArgs = AutocompleteProps & { textFieldLabel: string; textFieldHint: string };
 
 const meta: Meta<typeof Autocomplete> = {
   title: 'Components/Autocomplete',
@@ -16,7 +20,7 @@ const meta: Meta<typeof Autocomplete> = {
     clearSearchButton: true,
     loadingMessage: 'Loading...',
     noResultsMessage: 'No results',
-  } as any,
+  } as AutocompleteArgs,
   argTypes: {
     ariaClearLabel: {
       table: {
@@ -53,10 +57,31 @@ const Template = (args) => {
   };
   let filteredItems = null;
   if (input.length > 0) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
+    filteredItems = items
+      .map((item) => {
+        if (item.label && item.items) {
+          // Handle grouped items
+          const filteredGroupItems = item.items.filter(
+            (groupItem) =>
+              !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
+          );
+
+          if (filteredGroupItems.length === 0) {
+            return null;
+          }
+
+          return {
+            ...item,
+            items: filteredGroupItems,
+          };
+        } else {
+          // Handle standalone items
+          return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
+        }
+      })
+      .filter(Boolean);
   }
+
   return (
     <Autocomplete
       {...autocompleteArgs}
@@ -74,6 +99,14 @@ function makeItem(name: string, children?: React.ReactNode) {
     id: uniqueId(),
     name,
     children,
+  };
+}
+
+function makeGroup(label: string, items: ReturnType<typeof makeItem>[]) {
+  return {
+    id: uniqueId(),
+    label,
+    items,
   };
 }
 
@@ -116,7 +149,7 @@ export const Default: Story = {
       makeItem('Yonsa'),
       makeItem('Zyrtec'),
     ],
-  } as any,
+  } as AutocompleteArgs,
 };
 
 export const LabeledList: Story = {
@@ -136,7 +169,48 @@ export const LabeledList: Story = {
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
     ],
-  } as any,
+  } as AutocompleteArgs,
+};
+
+export const ItemGroups: Story = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Select a state.',
+    textFieldHint:
+      'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    items: [
+      makeGroup('Group A', [
+        makeItem('Alabama'),
+        makeItem('Alaska'),
+        makeItem('Arizona'),
+        makeItem('Arkansas'),
+      ]),
+      makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
+      makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
+    ],
+  } as AutocompleteArgs,
+};
+
+export const GroupsAndStandaloneItems: Story = {
+  render: Template,
+  args: {
+    textFieldLabel: 'Search for a healthcare specialty or doctor’s office.',
+    textFieldHint:
+      'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    items: [
+      makeItem('Care Clinic - Specialty Center'),
+      makeItem('Healthy Life Gastroenterology - Main Campus'),
+      makeItem('Dermatology Associates - East Wing'),
+      makeGroup('Healthcare Specialties', [
+        makeItem('Pediatrics'),
+        makeItem('Gastroenterology'),
+        makeItem('Dermatology'),
+        makeItem('Cardiology'),
+        makeItem('Neurology'),
+        makeItem('Orthopedics'),
+      ]),
+    ],
+  } as AutocompleteArgs,
 };
 
 export const CustomMarkup: Story = {
@@ -175,7 +249,7 @@ export const CustomMarkup: Story = {
         isResult: false,
       },
     ],
-  } as any,
+  } as AutocompleteArgs,
 
   parameters: {
     docs: {
@@ -194,7 +268,7 @@ export const LoadingMessage: Story = {
     items: [],
     textFieldLabel: 'This will only show a loading message.',
     textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as any,
+  } as AutocompleteArgs,
 };
 
 export const NoResults: Story = {
@@ -204,5 +278,77 @@ export const NoResults: Story = {
     clearSearchButton: false,
     textFieldLabel: 'This will show a "no results" message.',
     textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as any,
+  } as AutocompleteArgs,
+};
+
+export const AsyncItems: Story = {
+  render: function Component(args: AutocompleteArgs) {
+    const { items, textFieldLabel, textFieldHint, label, ...autocompleteArgs } = args;
+    const [input, setInput] = useState('');
+    const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
+    const hasResults = input.length > 2 && additionalItems.length;
+
+    const searchArtwork = () => {
+      // Note: the response is mocked
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
+      fetch(searchURL)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(({ data }: { data: MockedDataResponse[] }) => {
+          const additionalItems = data.map(({ id, title, artist_title }) => ({
+            id: id.toString(),
+            name: `${title} by ${artist_title}`,
+          }));
+          setAdditionalItems(additionalItems);
+        });
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedSearch = useCallback(
+      debounce(() => {
+        searchArtwork();
+      }, 500),
+      []
+    );
+
+    const onInputValueChange = (...args) => {
+      action('onInputValueChange')(args);
+      setInput(args[0]);
+      if (input.length > 2 && input !== args[0]) {
+        debouncedSearch();
+      }
+    };
+
+    return (
+      <Autocomplete
+        {...autocompleteArgs}
+        label={hasResults ? undefined : label}
+        onChange={action('onChange')}
+        onInputValueChange={onInputValueChange}
+        items={hasResults ? additionalItems : items}
+      >
+        <TextField label={textFieldLabel} hint={textFieldHint} name="autocomplete" value={input} />
+      </Autocomplete>
+    );
+  },
+  args: {
+    textFieldLabel: 'Search for artwork',
+    textFieldHint: 'Enter the name of an artist, title, or genre',
+    label: 'Popular searches includes:',
+    items: [
+      makeItem('Mountains'),
+      makeItem('Watercolor'),
+      makeItem("Georgia O'Keeffe"),
+      makeItem('City Landscape'),
+      makeItem('Self-Portrait'),
+    ],
+  } as AutocompleteArgs,
+  parameters: {
+    fetchMock: {
+      mocks: [searchMock],
+    },
+  },
 };

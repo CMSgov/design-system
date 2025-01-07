@@ -2,8 +2,10 @@ import Autocomplete from './Autocomplete';
 import TextField from '../TextField/TextField';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultItems = [{ id: 'kRf6c2fY', name: 'Cook County, IL' }];
+const updatedItems = [{ id: 'Yf2c6fRk', name: 'Marion County, OR' }];
 
 function makeAutocomplete(customProps = {}) {
   const props = {
@@ -148,8 +150,104 @@ describe('Autocomplete', () => {
     expectMenuToBeClosed();
   });
 
+  it('renders grouped items with headers', () => {
+    const items = [
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Option 1' },
+          { id: '2', name: 'Option 2' },
+        ],
+      },
+      {
+        label: 'Group 2',
+        id: 'group-2',
+        items: [
+          { id: '3', name: 'Option 3' },
+          { id: '4', name: 'Option 4' },
+        ],
+      },
+    ];
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(2);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+    expect(groups[1]).toHaveAccessibleName('Group 2');
+
+    const headers = screen.getAllByText(/Group/, {
+      selector: '.ds-c-autocomplete__menu-item-group-label',
+    });
+    expect(headers).toHaveLength(2);
+
+    expect(headers[0]).toHaveTextContent('Group 1');
+    expect(headers[0]).toHaveAttribute('id', 'static-id__group--0');
+
+    expect(headers[1]).toHaveTextContent('Group 2');
+    expect(headers[1]).toHaveAttribute('id', 'static-id__group--1');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(4);
+    expect(listItems[0]).toHaveTextContent('Option 1');
+    expect(listItems[1]).toHaveTextContent('Option 2');
+    expect(listItems[2]).toHaveTextContent('Option 3');
+    expect(listItems[3]).toHaveTextContent('Option 4');
+  });
+
+  it('renders mixed grouped and standalone items', () => {
+    const items = [
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Group item 1' },
+          { id: '2', name: 'Group item 2' },
+        ],
+      },
+      { id: '3', name: 'Standalone Item 1' },
+    ];
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+
+    const headers = screen.getAllByText(/Group/, {
+      selector: '.ds-c-autocomplete__menu-item-group-label',
+    });
+    expect(headers).toHaveLength(1);
+    expect(headers[0]).toHaveTextContent('Group 1');
+    expect(headers[0]).toHaveAttribute('id', 'static-id__group--0');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(3);
+    expect(listItems[0]).toHaveTextContent('Group item 1');
+    expect(listItems[1]).toHaveTextContent('Group item 2');
+    expect(listItems[2]).toHaveTextContent('Standalone Item 1');
+  });
+
   it('renders Autocomplete component no results', () => {
     renderAutocomplete({ items: [] });
+    open();
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
+  });
+
+  it('renders "no results" message when groups contain no items', () => {
+    renderAutocomplete({
+      items: [
+        {
+          label: 'Group 1',
+          id: 'group-1',
+          items: [],
+        },
+      ],
+    });
     open();
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
@@ -177,6 +275,17 @@ describe('Autocomplete', () => {
     userEvent.type(autocompleteField, 'ac');
     await sleep(100);
     rerender(makeAutocomplete({ items: defaultItems }));
+    expectMenuToBeOpen();
+  });
+
+  it('displays menu with default items and updates items after async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    expectMenuToBeOpen();
+    userEvent.type(autocompleteField, 'mar');
+    await sleep(100);
+    rerender(makeAutocomplete({ items: updatedItems }));
     expectMenuToBeOpen();
   });
 
@@ -370,5 +479,36 @@ describe('Autocomplete', () => {
     expect(field).toHaveAttribute('disabled');
     const clearButton = screen.getByText('Clear search');
     expect(clearButton).toHaveAttribute('disabled');
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderAutocomplete({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLButtonElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return (
+        <Autocomplete items={defaultItems} inputRef={inputRef}>
+          <TextField label="autocomplete" name="autocomplete_field" />
+        </Autocomplete>
+      );
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderAutocomplete({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 });

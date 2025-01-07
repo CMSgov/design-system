@@ -3,13 +3,12 @@ import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useButtonAnalytics from './useButtonAnalytics';
 import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
-import { MutableRefObject } from 'react';
 
 export type ButtonSize = 'small' | 'big';
 
 export type ButtonVariation = 'solid' | 'ghost';
 
-export type ButtonRef = MutableRefObject<any> | ((...args: any[]) => any);
+export type ButtonRef = React.Ref<any> | React.MutableRefObject<any>;
 
 interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataProps {
   /**

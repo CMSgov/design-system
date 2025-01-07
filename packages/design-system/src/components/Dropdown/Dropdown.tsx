@@ -70,7 +70,7 @@ export interface BaseDropdownProps {
   /**
    * Access a reference to the `button` element
    */
-  inputRef?: (...args: any[]) => any;
+  inputRef?: React.Ref<any> | React.MutableRefObject<any>;
   /**
    * Set to `true` to apply the "inverse" color scheme
    */

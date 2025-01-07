@@ -8,8 +8,8 @@
  * ```
  */
 
-import { default as config } from './playwright.config';
-import { devices } from '@playwright/test';
+import { config } from './playwright.config';
+import { defineConfig, devices } from '@playwright/test';
 
 config.snapshotPathTemplate = 'snapshots/storybook-docs/{arg}{ext}';
 config.testMatch = 'storybook-docs.test.ts';
@@ -21,4 +21,4 @@ config.projects = [
   },
 ];
 
-export default config;
+export default defineConfig(config);

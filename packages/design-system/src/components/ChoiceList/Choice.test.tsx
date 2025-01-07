@@ -1,6 +1,7 @@
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   name: 'foo',
@@ -128,6 +129,33 @@ describe('Choice', () => {
     renderChoice({ value: 100 });
     const input = screen.getByRole('checkbox');
     expect(input).toHaveAttribute('value', '100');
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderChoice({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLInputElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return <Choice inputRef={inputRef} {...defaultProps} />;
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderChoice({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 
   it('accepts a custom id', () => {

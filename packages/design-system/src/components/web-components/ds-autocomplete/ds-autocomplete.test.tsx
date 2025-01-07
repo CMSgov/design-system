@@ -1,13 +1,17 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { config } from '../../config';
 import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
 
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
+const updatedItems = JSON.stringify([{ id: 'Yf2c6fRk', name: 'Marion County, OR' }]);
 
 type AutocompleteProps = JSX.IntrinsicElements['ds-autocomplete'];
 
 function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {
+    'root-id': 'static-id',
+    id: 'autocomplete--1',
     'aria-clear-label': 'Clear search to try again',
     'clear-input-text': 'Clear search',
     'clear-search-button': 'true',
@@ -36,10 +40,6 @@ function expectMenuToBeOpen() {
 
 function expectMenuToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('Autocomplete', () => {
@@ -87,6 +87,82 @@ describe('Autocomplete', () => {
     expect(items).toHaveTextContent('Cook County, IL');
   });
 
+  it('renders grouped items with headers', () => {
+    const items = JSON.stringify([
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Option 1' },
+          { id: '2', name: 'Option 2' },
+        ],
+      },
+      {
+        label: 'Group 2',
+        id: 'group-2',
+        items: [
+          { id: '3', name: 'Option 3' },
+          { id: '4', name: 'Option 4' },
+        ],
+      },
+    ]);
+
+    renderAutocomplete({ items });
+
+    open();
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(2);
+    expect(groups[0]).toHaveAccessibleName('Group 1');
+    expect(groups[1]).toHaveAccessibleName('Group 2');
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(4);
+    expect(listItems[0]).toHaveTextContent('Option 1');
+    expect(listItems[1]).toHaveTextContent('Option 2');
+    expect(listItems[2]).toHaveTextContent('Option 3');
+    expect(listItems[3]).toHaveTextContent('Option 4');
+  });
+
+  it('renders mixed grouped and standalone items', () => {
+    const items = JSON.stringify([
+      {
+        label: 'Group 1',
+        id: 'group-1',
+        items: [
+          { id: '1', name: 'Group item 1' },
+          { id: '2', name: 'Group item 2' },
+        ],
+      },
+      { id: '3', name: 'Standalone Item 1' },
+    ]);
+
+    renderAutocomplete({ items });
+
+    open();
+
+    const groups = screen.getAllByRole('group');
+    expect(groups).toHaveLength(1);
+
+    const listItems = screen.getAllByRole('option');
+    expect(listItems).toHaveLength(3);
+  });
+
+  it('renders "no results" message when groups contain no items', () => {
+    renderAutocomplete({
+      items: JSON.stringify([
+        {
+          label: 'Group 1',
+          id: 'group-1',
+          items: [],
+        },
+      ]),
+    });
+
+    open();
+    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.queryByRole('option')).toHaveTextContent('No results');
+  });
+
   // TODO: Fix how items with children are rendered
   // it('renders items with children property', () => {
   //   const items = [
@@ -131,8 +207,8 @@ describe('Autocomplete', () => {
   //   expect(ul).toMatchSnapshot();
   // });
 
-  it('generates ids when no id is provided', () => {
-    renderAutocomplete({ id: undefined, items: defaultItems });
+  it('generates ids when no root id is provided', () => {
+    renderAutocomplete({ 'root-id': undefined, items: defaultItems });
     open();
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
@@ -196,6 +272,19 @@ describe('Autocomplete', () => {
 
     rerender(makeAutocomplete({ items: defaultItems }));
     expectMenuToBeOpen();
+  });
+
+  it('displays menu with default items and updates items after async data fetching', async () => {
+    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const autocompleteField = screen.getByRole('combobox');
+    userEvent.click(autocompleteField);
+    expectMenuToBeOpen();
+    userEvent.type(autocompleteField, 'mar');
+    rerender(makeAutocomplete({ items: updatedItems }));
+    expectMenuToBeOpen();
+    const items = screen.getByRole('option');
+    expect(items).toBeInTheDocument();
+    expect(items).toHaveTextContent('Marion County, OR');
   });
 
   it('does not render a clear search button when clearSearchButton is set to false', () => {
@@ -375,6 +464,45 @@ describe('Autocomplete', () => {
     userEvent.type(autocompleteField, '{esc}');
 
     expectMenuToBeClosed();
+  });
+
+  it('displays a custom error message', () => {
+    renderAutocomplete({ 'error-message': 'Something went wrong' });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+  });
+
+  it('displays an error message in the default position for Core', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('displays an error message in the default location for Healthcare', () => {
+    config({ errorPlacementDefault: 'bottom' });
+    const { asFragment } = renderAutocomplete({
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('sets the display location of the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-placement': 'bottom',
+      'error-message': 'Something went wrong',
+    });
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('can add a custom class name to the error message', () => {
+    const { asFragment } = renderAutocomplete({
+      'error-message-class-name': 'custom-class-name',
+      'error-message': 'Something went wrong',
+    });
+    expect(asFragment()).toMatchSnapshot();
   });
 
   // it("calls child TextField's event handlers", () => {

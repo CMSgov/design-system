@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-autocomplete';
-import { AutocompleteItem } from '../../Autocomplete';
+import { AutocompleteItem, AutocompleteItems } from '../../Autocomplete';
 import uniqueId from 'lodash/uniqueId';
 import '../ds-text-field';
+import { MockedDataResponse, searchMock } from '../../Autocomplete/testMocks';
+import debounce from '../../utilities/debounce';
 
 const meta: Meta = {
   title: 'Web Components/ds-autocomplete',
@@ -21,7 +23,7 @@ const meta: Meta = {
     'clear-search-button': true,
     'loading-message': 'Loading...',
     'no-results-message': 'No results',
-    name: 'ds-autocomplete',
+    name: 'autocomplete',
   },
   argTypes: {
     'aria-clear-label': {
@@ -52,6 +54,24 @@ const meta: Meta = {
     'clear-search-button': {
       description: 'Removes the Clear search button when set to `false`',
       control: 'boolean',
+    },
+    disabled: {
+      description: 'Disables the input text field.',
+      control: 'boolean',
+    },
+    'error-message': {
+      description: 'Enable the error state by providing an error message',
+      control: 'text',
+    },
+    'error-placement': {
+      description: 'Location of the error message relative to the field input',
+      options: [undefined, 'top', 'bottom'],
+      control: { type: 'radio' },
+    },
+    'error-message-class-name': {
+      description:
+        'Provides the option to add styling to error messages placed at the bottom of the autcomplete.',
+      control: 'text',
     },
     hint: {
       description: 'An optional hint for the label',
@@ -115,16 +135,40 @@ const meta: Meta = {
   },
 };
 export default meta;
+type DSAutocompleteProps = Omit<React.JSX.IntrinsicElements['ds-autocomplete'], 'items'> & {
+  items: AutocompleteItems;
+};
+type Story = StoryObj<DSAutocompleteProps>;
 
-const Template = (args) => {
-  const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
+const Template = (args: DSAutocompleteProps) => {
+  const { items, label, hint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
 
   let filteredItems = null;
   if (input.length > 0 && items) {
-    filteredItems = items.filter(
-      (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
-    );
+    filteredItems = items
+      .map((item) => {
+        if ('label' in item) {
+          // Handle grouped items
+          const filteredGroupItems = item.items.filter(
+            (groupItem) =>
+              !groupItem.name || groupItem.name.toLowerCase().includes(input.toLowerCase())
+          );
+
+          if (filteredGroupItems.length === 0) {
+            return null;
+          }
+
+          return {
+            ...item,
+            items: filteredGroupItems,
+          };
+        } else {
+          // Handle standalone items
+          return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
+        }
+      })
+      .filter(Boolean);
   }
 
   useEffect(() => {
@@ -151,12 +195,20 @@ const Template = (args) => {
     <ds-autocomplete
       {...autocompleteArgs}
       items={JSON.stringify(filteredItems)}
-      label={textFieldLabel}
-      hint={textFieldHint}
+      label={label}
+      hint={hint}
       value={input}
     />
   );
 };
+
+function makeGroup(label: string, items: ReturnType<typeof makeItem>[]) {
+  return {
+    id: uniqueId(),
+    label,
+    items,
+  };
+}
 
 function makeItem(name: string, children?: React.ReactNode) {
   return {
@@ -166,12 +218,11 @@ function makeItem(name: string, children?: React.ReactNode) {
   };
 }
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Enter and select a drug to see its cost under each plan.',
-    textFieldHint:
-      'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Enter and select a drug to see its cost under each plan.',
+    hint: 'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     items: [
       makeItem('Acetaminophen'),
       makeItem('Advil'),
@@ -208,12 +259,11 @@ export const Default = {
   },
 };
 
-export const LabeledList = {
+export const LabeledList: Story = {
   render: Template,
   args: {
-    textFieldLabel: 'Search for and select your county.',
-    textFieldHint:
-      'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    label: 'Search for and select your county.',
+    hint: 'Type "C" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
     'menu-heading': 'Select from the options below:',
     items: [
       makeItem('Cook County, IL'),
@@ -225,7 +275,46 @@ export const LabeledList = {
       makeItem('Cook County, WA'),
       makeItem('Cook County, OR'),
     ],
-  } as any,
+  },
+};
+
+export const ItemGroups = {
+  render: Template,
+  args: {
+    label: 'Select a state.',
+    hint: 'Type "A" then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.',
+    items: [
+      makeGroup('Group A', [
+        makeItem('Alabama'),
+        makeItem('Alaska'),
+        makeItem('Arizona'),
+        makeItem('Arkansas'),
+      ]),
+      makeGroup('Group C', [makeItem('California'), makeItem('Colorado'), makeItem('Connecticut')]),
+      makeGroup('Group D', [makeItem('Delaware'), makeItem('District of Columbia')]),
+    ],
+  },
+};
+
+export const GroupsAndStandaloneItems = {
+  render: Template,
+  args: {
+    label: 'Search for a healthcare specialty or doctor’s office.',
+    hint: 'Type to filter options. Use ARROW keys to navigate, ENTER to select, ESC to dismiss.',
+    items: [
+      makeItem('Care Clinic - Specialty Center'),
+      makeItem('Healthy Life Gastroenterology - Main Campus'),
+      makeItem('Dermatology Associates - East Wing'),
+      makeGroup('Healthcare Specialties', [
+        makeItem('Pediatrics'),
+        makeItem('Gastroenterology'),
+        makeItem('Dermatology'),
+        makeItem('Cardiology'),
+        makeItem('Neurology'),
+        makeItem('Orthopedics'),
+      ]),
+    ],
+  },
 };
 
 // export const CustomMarkup = {
@@ -275,23 +364,107 @@ export const LabeledList = {
 //   },
 // };
 
-export const LoadingMessage = {
+export const LoadingMessage: Story = {
   render: Template,
   args: {
-    clearSearchButton: false,
-    loading: true,
+    'clear-search-button': 'false',
+    loading: 'true',
     items: [],
-    textFieldLabel: 'This will only show a loading message.',
-    textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as any,
+    label: 'This will only show a loading message.',
+    hint: 'List should return string Loading to simulate async data call.',
+  },
 };
 
-export const NoResults = {
+export const NoResults: Story = {
   render: Template,
   args: {
     items: [],
-    clearSearchButton: false,
-    textFieldLabel: 'This will show a "no results" message.',
-    textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as any,
+    'clear-search-button': 'false',
+    label: 'This will show a "no results" message.',
+    hint: 'Start typing, but you’ll only get a "no results" message.',
+  },
+};
+
+export const AsyncItems: Story = {
+  render: function Component(args: DSAutocompleteProps) {
+    const { items, ...autocompleteArgs } = args;
+    const [input, setInput] = useState('');
+    const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
+    const hasResults = input.length > 2 && additionalItems.length;
+
+    const searchArtwork = () => {
+      // Note: the response is mocked
+      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
+      fetch(searchURL)
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then(({ data }: { data: MockedDataResponse[] }) => {
+          const additionalItems = data.map(({ id, title, artist_title }) => ({
+            id: id.toString(),
+            name: `${title} by ${artist_title}`,
+          }));
+          setAdditionalItems(additionalItems);
+        });
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedSearch = useCallback(
+      debounce(() => {
+        searchArtwork();
+      }, 500),
+      []
+    );
+
+    useEffect(() => {
+      const element = document.querySelector('ds-autocomplete');
+      if (element) {
+        const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
+          setInput(event.detail.selectedItem.name);
+          return action('ds-change')(event);
+        };
+        const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
+          action('ds-input-value-change')(event);
+          setInput(event.detail.value);
+          if (input.length > 2 && input !== event.detail.value) {
+            debouncedSearch();
+          }
+        };
+        element.addEventListener('ds-change', handleOnChange);
+        element.addEventListener('ds-input-value-change', handleOnInputValueChange);
+        return () => {
+          element.removeEventListener('ds-change', handleOnChange);
+          element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
+        };
+      }
+    }, [debouncedSearch, input]);
+
+    return (
+      <ds-autocomplete
+        {...autocompleteArgs}
+        menu-heading={hasResults ? undefined : autocompleteArgs['menu-heading']}
+        onChange={action('onChange')}
+        items={hasResults ? JSON.stringify(additionalItems) : JSON.stringify(items)}
+      />
+    );
+  },
+  args: {
+    label: 'Search for artwork',
+    hint: 'Enter the name of an artist, title, or genre',
+    'menu-heading': 'Popular searches includes:',
+    items: [
+      makeItem('Mountains'),
+      makeItem('Watercolor'),
+      makeItem("Georgia O'Keeffe"),
+      makeItem('City Landscape'),
+      makeItem('Self-Portrait'),
+    ],
+  },
+  parameters: {
+    fetchMock: {
+      mocks: [searchMock],
+    },
+  },
 };

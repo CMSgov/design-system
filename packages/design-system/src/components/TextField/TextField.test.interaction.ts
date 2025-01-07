@@ -1,16 +1,14 @@
-import { test, expect } from '@playwright/test';
-import themes from '../../../../../themes.json';
+import { test } from '@playwright/test';
+import {
+  describeByTheme,
+  expectScreenshot,
+  storyUrl,
+} from '../../../../../tests/browser/interactionHelpers';
 
-const sbID = 'components-textfield--single-line-field';
-const storyUrl = `http://localhost:6006/iframe.html?viewMode=story&id=${sbID}`;
-
-Object.keys(themes).forEach((theme) => {
-  if (themes[theme].incomplete) return;
-
-  // focus
-  test(`Button focus: ${theme}`, async ({ page }) => {
-    await page.goto(`${storyUrl}&globals=theme:${theme}`);
+describeByTheme((theme) => {
+  test('Button focus', async ({ page }) => {
+    await page.goto(storyUrl('components-textfield--single-line-field', theme));
     await page.getByRole('textbox').focus();
-    await expect(page).toHaveScreenshot(`textbox--focus--${theme}.png`, { fullPage: true });
+    await expectScreenshot(page, `textbox--focus--${theme}.png`);
   });
 });

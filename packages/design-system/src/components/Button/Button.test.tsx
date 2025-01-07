@@ -2,6 +2,7 @@ import Button from './Button';
 import { UtagContainer } from '../analytics';
 import { config } from '../config';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   children: 'Foo',
@@ -80,6 +81,33 @@ describe('Button', () => {
     expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
     expect(link.classList.contains('ds-c-button--alternate')).toBe(true);
     expect(link.classList.contains('ds-c-button')).toBe(true);
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLButtonElement>();
+    renderButton({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('BUTTON');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLButtonElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('BUTTON');
+      }, []);
+      return <Button inputRef={inputRef}>Hello world</Button>;
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderButton({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('BUTTON');
   });
 
   describe('Analytics', () => {

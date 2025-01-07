@@ -1,9 +1,11 @@
-import { test, expect, BrowserContext, Page } from '@playwright/test';
+import { test, BrowserContext, Page } from '@playwright/test';
 import { entries as storiesObject } from '../../storybook-static/index.json';
 import themes from '../../themes.json';
-import expectNoAxeViolations from './expectNoAxeViolations';
+import { expectNoAxeViolations } from './expectNoAxeViolations';
+import { expectScreenshot } from './expectScreenshot';
 
 const storySkipList = [
+  'components-autocomplete--async-items', // Redundant
   'components-dialog--default', // Doesn't show the open dialog
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog
@@ -31,6 +33,9 @@ const storySkipList = [
   'web-components-ds-accordion-item--default', // Redundant
   'web-components-ds-modal-dialog--default', // Doesn't show the open dialog
   'web-components-ds-modal-dialog--prevent-scroll-example', // Doesn't show the open dialog
+  'web-components-ds-autocomplete--groups-and-standalone-items', // Redundant
+  'web-components-ds-autocomplete--item-groups', // Redundant
+  'web-components-ds-autocomplete--async-items', // Redundant
 ];
 
 const storyUseAxeLegacyModeList = [
@@ -78,7 +83,7 @@ stories.forEach((story) => {
         });
 
         test(`matches snapshot`, async () => {
-          await expect(page).toHaveScreenshot(`${story.id}-${theme}.png`, { fullPage: true });
+          await expectScreenshot(page, `${story.id}-${theme}.png`);
         });
 
         test(`passes a11y checks`, async ({ browser }, workerInfo) => {

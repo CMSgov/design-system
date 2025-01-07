@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { createRef, useEffect, useRef } from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -7,7 +8,6 @@ const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
   TextInputProps = {
   name: 'spec-field',
-  inputRef: jest.fn(),
   id: 'static-id',
   type: 'text',
 };
@@ -129,5 +129,32 @@ describe('TextInput', function () {
     renderInput({ onChange });
     userEvent.type(getInput(), 'hello world');
     expect(onChange).toHaveBeenCalled();
+  });
+
+  it('forwards an object inputRef', () => {
+    const inputRef = createRef<HTMLInputElement>();
+    renderInput({ inputRef });
+    expect(inputRef.current).toBeInTheDocument();
+    expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLInputElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return <TextInput inputRef={inputRef} {...defaultProps} />;
+    };
+
+    render(<MyComponent />);
+  });
+
+  it('forwards a function inputRef', () => {
+    const inputRef = jest.fn();
+    renderInput({ inputRef });
+    expect(inputRef).toHaveBeenCalled();
+    expect(inputRef.mock.lastCall[0].tagName).toEqual('INPUT');
   });
 });

@@ -1,5 +1,7 @@
 const usePreact = Boolean(process.env.PREACT && JSON.parse(process.env.PREACT));
 const useWebComponents = Boolean(process.env.WC && JSON.parse(process.env.WC));
+const type = useWebComponents ? 'wc' : 'react';
+
 const preactModuleMapper =
   usePreact || useWebComponents
     ? {
@@ -13,16 +15,24 @@ const preactModuleMapper =
 
 const conditionalWebComponentsConfig = useWebComponents
   ? {
-      testMatch: ['<rootDir>/design-system/src/components/web-components/**/*.test.[jt]s(x)?'],
+      testMatch: [
+        '<rootDir>/packages/design-system/src/components/web-components/**/*.test.[jt]s(x)?',
+        '<rootDir>/tests/browser/custom-reporter.test.ts',
+      ],
     }
-  : { testPathIgnorePatterns: ['<rootDir>/design-system/src/components/web-components'] };
+  : {
+      testPathIgnorePatterns: [
+        '<rootDir>/packages/design-system/src/components/web-components',
+        '<rootDir>/tests/browser/',
+      ],
+    };
 
 module.exports = {
-  rootDir: '../../packages',
+  rootDir: '../..',
   testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
-  setupFilesAfterEnv: [`<rootDir>/../tests/unit/setupTests.js`],
+  setupFilesAfterEnv: [`<rootDir>/tests/unit/setupTests.js`],
   testPathIgnorePatterns: [
     'dist/',
     'node_modules/',
@@ -32,12 +42,16 @@ module.exports = {
     'docs/static',
   ],
   ...conditionalWebComponentsConfig,
-  coverageDirectory: `<rootDir>/../tests/unit/coverage-data`,
+  coverageDirectory: `<rootDir>/tests/unit/coverage-data`,
+  reporters: [
+    'default',
+    ['<rootDir>/tests/unit/testsReporter.js', { type }],
+    ['<rootDir>/tests/unit/coverageReporter.js', { file: `coverage-summary-${type}.json`, type }],
+  ],
   coveragePathIgnorePatterns: ['/node_modules/'],
   transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
   moduleNameMapper: {
-    // Remap imports for core to the src directory so we don't have to build first
-    '^@cmsgov/design-system$': '<rootDir>/design-system/src/components/index',
+    '^@cmsgov/design-system$': '<rootDir>/packages/design-system/src/components/index',
     ...preactModuleMapper,
   },
 };
