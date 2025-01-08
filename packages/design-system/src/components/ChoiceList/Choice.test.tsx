@@ -1,7 +1,7 @@
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createRef } from 'react';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   name: 'foo',
@@ -136,6 +136,19 @@ describe('Choice', () => {
     renderChoice({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
     expect(inputRef.current.tagName).toEqual('INPUT');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLInputElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('INPUT');
+      }, []);
+      return <Choice inputRef={inputRef} {...defaultProps} />;
+    };
+
+    render(<MyComponent />);
   });
 
   it('forwards a function inputRef', () => {

@@ -66,8 +66,8 @@
   ],
   [
     "role",
-    "ARIA role, defaults to 'region'\n\"alert\"\n\"alertdialog\"\n\"region\"\n\"status\"",
-    "\"region\""
+    "ARIA role, which determines the accessibility role of the alert. If not explicitly provided, the role is dynamically assigned based on the variation:\n\nFor variation=\"error\", role=\"alert\"\nFor variation=\"success\", role=\"status\"\nFor variation=\"warn\", role=\"alert\"\nOtherwise, defaults to role=\"region\"\n\"alert\"\n\"alertdialog\"\n\"region\"\n\"status\"",
+    "-"
   ],
   [
     "variation",

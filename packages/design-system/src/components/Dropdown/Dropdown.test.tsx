@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
-import { createRef } from 'react';
+import { createRef, useEffect, useRef } from 'react';
 
 const defaultProps = {
   name: 'dropdown',
@@ -221,6 +221,19 @@ describe('Dropdown', () => {
     makeDropdown({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
     expect(inputRef.current.tagName).toEqual('BUTTON');
+  });
+
+  it('forwards a mutable object inputRef', () => {
+    const MyComponent = () => {
+      const inputRef = useRef<HTMLButtonElement>();
+      useEffect(() => {
+        expect(inputRef.current).toBeInTheDocument();
+        expect(inputRef.current.tagName).toEqual('BUTTON');
+      }, []);
+      return <Dropdown inputRef={inputRef} {...defaultProps} options={generateOptions(2)} />;
+    };
+
+    render(<MyComponent />);
   });
 
   it('forwards a function inputRef', () => {

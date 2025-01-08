@@ -71,7 +71,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the input element\nRef<HTMLInputElement>",
+    "Access a reference to the input element\nRef<any> | MutableRefObject<any>",
     "-"
   ],
   [

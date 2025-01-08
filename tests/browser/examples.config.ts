@@ -12,7 +12,8 @@
  * snapshots are taken inside a Docker container rather than on the host machine.
  */
 
-import { default as config } from './playwright.config';
+import { config } from './playwright.config';
+import { defineConfig } from '@playwright/test';
 
 config.snapshotPathTemplate = 'snapshots/examples/{arg}/{arg}--{projectName}{ext}';
 config.testMatch = /examples\.test\.ts/;
@@ -23,4 +24,4 @@ config.webServer = {
   cwd: '../../',
 };
 
-export default config;
+export default defineConfig(config);
