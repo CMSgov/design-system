@@ -20,8 +20,8 @@ const renderAlert = createTestRenderer('ds-alert', (attrs = {}) => (
   <ds-alert {...attrs}>{defaultText}</ds-alert>
 ));
 
-function expectHasClass(shadowRoot: ShadowRoot, className: string) {
-  expect(getByRole(shadowRoot as any as HTMLElement, 'region').className).toContain(className);
+function expectHasClass(shadowRoot: ShadowRoot, className: string, role = 'region') {
+  expect(getByRole(shadowRoot as any as HTMLElement, role).className).toContain(className);
 }
 
 describe('Alert', function () {
@@ -38,7 +38,7 @@ describe('Alert', function () {
 
   it('appears as an error', () => {
     const { shadowRoot } = renderAlert({ variation: 'error' });
-    expectHasClass(shadowRoot, 'ds-c-alert--error');
+    expectHasClass(shadowRoot, 'ds-c-alert--error', 'alert');
   });
 
   it('appears as a lightweight alert', () => {
@@ -92,7 +92,7 @@ describe('Alert', function () {
     it('points aria-labelledby to heading', () => {
       const heading = 'Elvis has left the building';
       const { shadowRoot } = renderAlert({ heading, variation: 'error' });
-      const alert = getByRole(shadowRoot as any as HTMLElement, 'region');
+      const alert = getByRole(shadowRoot as any as HTMLElement, 'alert');
       const id = alert.getAttribute('aria-labelledby');
       expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
     });

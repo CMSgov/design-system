@@ -48,7 +48,12 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
    */
   id?: string;
   /**
-   * ARIA `role`, defaults to 'region'
+   * ARIA `role`, which determines the accessibility role of the alert.
+   * If not explicitly provided, the role is dynamically assigned based on the `variation`:
+   * - For `variation="error"`, `role="alert"`
+   * - For `variation="success"`, `role="status"`
+   * - For `variation="warn"`, `role="alert"`
+   * - Otherwise, defaults to `role="region"`
    */
   role?: AlertRole;
   /**
@@ -122,23 +127,22 @@ export const Alert = (props: AlertProps) => {
     </span>
   );
 
-  // getting proper icon for alert variation
+  const variationConfig = {
+    error: { role: 'alert', icon: AlertCircleIcon },
+    success: { role: 'status', icon: CheckCircleIcon },
+    warn: { role: 'alert', icon: WarningIcon },
+    default: { role: 'region', icon: InfoCircleIcon },
+  };
+
+  const dynamicRole = role ?? (variationConfig[variation]?.role || variationConfig.default.role);
+
   function getIcon() {
-    const iconClass = 'ds-c-alert__icon';
     if (hideIcon) {
       return null;
     }
 
-    switch (variation) {
-      case 'error':
-        return <AlertCircleIcon className={iconClass} />;
-      case 'success':
-        return <CheckCircleIcon className={iconClass} />;
-      case 'warn':
-        return <WarningIcon className={iconClass} />;
-      default:
-        return <InfoCircleIcon className={iconClass} />;
-    }
+    const IconComponent = variationConfig[variation]?.icon || variationConfig.default.icon;
+    return <IconComponent className="ds-c-alert__icon" />;
   }
 
   return (
@@ -146,7 +150,7 @@ export const Alert = (props: AlertProps) => {
       className={classes}
       ref={mergeRefs([alertRef, focusRef])}
       tabIndex={alertRef || autoFocus ? -1 : null}
-      role={role}
+      role={dynamicRole}
       aria-labelledby={heading ? headingId : a11yLabelId}
       {...alertProps}
     >
@@ -167,7 +171,6 @@ export const Alert = (props: AlertProps) => {
 };
 
 Alert.defaultProps = {
-  role: 'region',
   headingLevel: '2',
 };
 
