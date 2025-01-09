@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Web Components Demo</title>
+    <meta name="description" content="Web Components" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/12.0.0/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://design.cms.gov/cdn/design-system/12.0.0/css/core-theme.css"
+    />
+  </head>
+
+  <body>
+    <ds-usa-banner></ds-usa-banner>
+    <main class="ds-l-container ds-content">
+      <header class="ds-u-margin-bottom--4">
+        <h1>Tempting the Demo Gods</h1>
+        <p>
+          This page heading communicates the main focus of the page. Make your heading descriptive
+          and keep it succinct.
+        </p>
+      </header>
+
+      <article>
+        <h2>This is a form demo</h2>
+        <p>Because we want to show you the ease with which you can implement web components.</p>
+        <p>Just run this file in the browser using <code>open demo.html</code> in the terminal.</p>
+        <ds-step-list
+          steps='[{"id":"taxYear","heading":"Choose a tax year","href":"#step-1","started":false,"completed":false}]'
+        ></ds-step-list>
+
+        <ds-autocomplete></ds-autocomplete>
+        <ds-choice-list></ds-choice-list>
+        <ds-button variation="solid">Submit</ds-button>
+      </article>
+    </main>
+    <script src="https://design.cms.gov/cdn/design-system/12.0.0/web-components/bundle/all.js"></script>
+  </body>
+</html>
