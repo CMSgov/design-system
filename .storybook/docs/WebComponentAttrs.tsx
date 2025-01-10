@@ -1,4 +1,4 @@
-import humanizeList from 'humanize-react';
+import { humanizeList } from '../../packages/docs/src/helpers/humanizeList';
 import { useOf } from '@storybook/blocks';
 
 interface WebComponentAttrsProps {

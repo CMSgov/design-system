@@ -141,7 +141,6 @@
     "gulp-svgmin": "^4.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "http-server": "^14.1.1",
-    "humanize-react": "^1.0.0",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^10.0.8",
