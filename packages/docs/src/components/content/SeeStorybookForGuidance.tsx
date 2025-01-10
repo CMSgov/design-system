@@ -25,8 +25,10 @@ const SeeStorybookForGuidance = ({
 }: StorybookExampleFooterProps) => {
   return (
     <p>
-      See <a href={makeStorybookUrl(storyId, theme, 'docs')}>Storybook</a> for{' '}
-      {tech === 'react' ? 'React' : 'Web Component'} guidance of this component.
+      <a href={makeStorybookUrl(storyId, theme, 'docs')}>
+        {tech === 'react' ? 'Review' : 'Go to'} Storybook for{' '}
+        {tech === 'react' ? 'React' : 'Web Component'} guidance of this component.
+      </a>
     </p>
   );
 };

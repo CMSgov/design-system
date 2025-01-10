@@ -132,6 +132,7 @@
 --font-family-body: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-button: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+--font-family-pagination: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-weight-heading-5xl: var(--font-weight-bold);
 --font-weight-heading-4xl: var(--font-weight-normal);
 --font-weight-heading-3xl: var(--font-weight-normal);
