@@ -43,23 +43,28 @@ You can also read our [CONTRIBUTING.md](https://github.com/CMSgov/design-system/
 
 The design system follows a variation of [ITCSS](http://thomasbyttebier.be/blog/less-css-mess) (Inverted Triangle architecture for CSS). The goal is to write CSS in [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) order.
 
-<!-- You can regenerate the tree by running tree -d -I "node_modules" -->
-
 ```
 └── @cmsgov/design-system/dist
     ├── components/
     │   └── index.js        Compiled JS entry point (CommmonJS)
     ├── css/
-    │   └── index.css       Compiled CSS entry point
-    ├── esnext/
-    │   └── index.esm.js    Compiled JS entry point (ES Module)
-    ├── fonts/
-    ├── images/
+    │   ├── index.css       Compiled CSS rules
+    │   └── core-theme.css  Core-theme tokens as CSS variables
     ├── scss/
-    │   ├── base/           Base styles, HTML element selectors
-    │   ├── components/     Component styles
-    │   ├── settings/       Variables, mixins, and functions
-    │   ├── utilities/      Utility classes for individual CSS properties
-    │   └── index.scss      Precompiled SCSS entry point
-    └── types/              Typescript definition files
+    │   ├── core-theme.scss Sass version of core-theme tokens
+    │   ├── *-tokens.scss   Copy of core-theme.scss for backwards compatability
+    ├── fonts/
+    │   └── *               Fonts referenced by the design system CSS
+    ├── images/
+    │   └── *               Images referenced by the design system CSS
+    ├── {preact,react}-components/
+    │   ├── bundle/         Bundled version of JavaScript components
+    │   ├── cjs/            CommonJS compiled version of JavaScript components
+    │   ├── esm/            ES Modules compiled version of JavaScript components
+    │   └── types/          TypeScript definition files for JavaScript components
+    └── web-components
+        └── bundle/
+            ├── all.js      All web components bundled together (standalone file)
+            ├── base.js     Base code necessary for loading individual web component bundles
+            └── ds-*.js     Individual web component bundles
 ```
