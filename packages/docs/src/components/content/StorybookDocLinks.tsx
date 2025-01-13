@@ -1,6 +1,6 @@
 import { Children } from 'react';
 import type * as React from 'react';
-import humanizeList from 'humanize-react';
+import { humanizeList } from '../../helpers/humanizeList';
 
 interface StorybookDocLinksProps {
   children: React.ReactElement<any>;
