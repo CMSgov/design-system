@@ -17693,11 +17693,6 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
-humanize-react@1.0.0, humanize-react@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/humanize-react/-/humanize-react-1.0.0.tgz#542c78db7c919b9b8e8c095487469c8868b8c26f"
-  integrity sha512-d68v6HGH4EnYgH/YgbRKj1+4KYi3TLkMXlZgk4On1ee18XbCQO1Eb/ur0BOZvmEgu8TES5G9Cqu7a4lQng4Sig==
-
 husky@^7.0.0:
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/husky/-/husky-7.0.4.tgz#242048245dc49c8fb1bf0cc7cfb98dd722531535"
@@ -23577,15 +23572,10 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-docgen-typescript@2.3.0-beta.0:
+react-docgen-typescript@2.3.0-beta.0, react-docgen-typescript@^2.2.2:
   version "2.3.0-beta.0"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.3.0-beta.0.tgz#f7725a1a76afec30c636b3e538f4aff05cd269ca"
   integrity sha512-Uh2ZHWNDF4TJZRodJ2+yN13k4vlzPya+6VqDDS+9F4fEdZDBvQvCkowyHQQNZ1If8688hHbSJYHXYNiD3kml3A==
-
-react-docgen-typescript@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-2.2.2.tgz#4611055e569edc071204aadb20e1c93e1ab1659c"
-  integrity sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==
 
 react-docgen@^7.0.0:
   version "7.0.3"
