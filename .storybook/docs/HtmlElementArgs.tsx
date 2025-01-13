@@ -1,4 +1,4 @@
-import humanizeList from 'humanize-react';
+import { humanizeList } from '../../packages/docs/src/helpers/humanizeList';
 import { useOf } from '@storybook/blocks';
 
 interface HtmlElementArgsProps {
@@ -14,7 +14,7 @@ interface HtmlElementArgsProps {
  * determine if it should show this additional text and what elements' documentation
  * it should link to.
  */
-export const HtmlElementArgs = ({ of }) => {
+export const HtmlElementArgs = ({ of }: HtmlElementArgsProps) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;
