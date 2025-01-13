@@ -80,113 +80,54 @@ provided by the user.
 
 ### When to use
 
-<Table
-  stackable
-  stackableBreakpoint="md"
-  scrollableNotice={
-    <Alert className="ds-c-table__scroll-alert" role="status">
-      <p class="ds-c-alert__text" className="ds-c-alert__text">
-        Scroll using arrow keys to see more
-      </p>
-    </Alert>
-  }
->
-  <TableHead>
-    <TableRow>
-      <TableCell key="Alert Type" id="alertType">
-        Alert type
-      </TableCell>
-      <TableCell key="When to use" id="whenToUse">
-        When to use
-      </TableCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow key="Informational">
-      <TableCell key="Alert Type-Informational" headers="alertType" stackedTitle="Alert Type">
-        <strong>Informational</strong>
-      </TableCell>
-      <TableCell key="When to use-Informational" headers="whenToUse" stackedTitle="When to use">
-        <p className="ds-u-margin-top--0">
-          <strong>On Forms</strong>: To provide key supplementary or contextual information to
-          support the successful completion of tasks or aid overall comprehension.
-        </p>
-        <p>
-          <strong>On Static Pages</strong>: To highlight recent, critical changes.
-        </p>
-        <p>Examples:</p>
-        <ul>
-          <li>
-            To provide additional information such as explanations of criteria the user needs to
-            meet
-          </li>
-          <li>To highlight new information available</li>
-        </ul>
-        <p>
-          Lightweight informational alert may be used if information is helpful, but not critical or
-          necessary to complete the task.
-        </p>
-      </TableCell>
-    </TableRow>
-    <TableRow key="Error">
-      <TableCell key="Alert Type-Error" headers="alertType" stackedTitle="Alert Type">
-        <strong>Error</strong>
-      </TableCell>
-      <TableCell key="When to use-Error" headers="whenToUse" stackedTitle="When to use">
-        <p className="ds-u-margin-top--0">
-          <strong>On Forms</strong>: To draw focus to an error or an incomplete task by prompting
-          the user to review or take other action.
-        </p>
-        <p>Examples:</p>
-        <ul>
-          <li>To alert a user of missing form entry</li>
-          <li>To alert a user of incorrect form entry</li>
-          <li>To alert a user of broader system issues</li>
-        </ul>
-        <p>Never use error alerts on static pages.</p>
-      </TableCell>
-    </TableRow>
-    <TableRow key="Warning">
-      <TableCell key="Alert Type-Warning" headers="alertType" stackedTitle="Alert Type">
-        <strong>Warning</strong>
-      </TableCell>
-      <TableCell key="When to use-Warning" headers="whenToUse" stackedTitle="When to use">
-        <p className="ds-u-margin-top--0">
-          <strong>On Forms</strong>: To call out or notify a user of risk or important information
-          prior to completing the action.
-        </p>
-        <p>
-          <strong>On Static Pages</strong>: To notify users of scheduled website maintenance or
-          unexpected system outage.
-        </p>
-        <p>Examples:</p>
-        <ul>
-          <li>To warn a user of potential negative consequences of a certain action</li>
-          <li>To warn a user of unintended results</li>
-          <li>To encourage a user to double check their choices</li>
-          <li>To highlight information that a user should be aware of</li>
-        </ul>
-      </TableCell>
-    </TableRow>
-    <TableRow key="Success">
-      <TableCell key="Alert Type-Success" headers="alertType" stackedTitle="Alert Type">
-        <strong>Success</strong>
-      </TableCell>
-      <TableCell key="When to use-Success" headers="whenToUse" stackedTitle="When to use">
-        <p className="ds-u-margin-top--0">
-          <strong>On Forms</strong>: To confirm that a task was completed successfully.
-        </p>
-        <p>Examples:</p>
-        <ul>
-          <li>To confirm submission of an application</li>
-          <li>To offer a user positive feedback, such as a congratulatory note</li>
-          <li>To guide the user to the next step in a multi-step process</li>
-        </ul>
-        <p>Never use success alerts on static pages.</p>
-      </TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+#### Informational
+
+**On Forms**: To provide key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
+**On Static Pages**: To highlight recent, critical changes.
+
+Examples:
+
+- To provide additional information such as explanations of criteria the user needs to meet
+- To highlight new information available
+
+Lightweight informational alert may be used if information is helpful, but not critical or necessary to complete the task.
+
+#### Error
+
+**On Forms**: To draw focus to an error or an incomplete task by prompting the user to review or take other action.
+
+Examples:
+
+- To alert a user of missing form entry
+- To alert a user of incorrect form entry
+- To alert a user of broader system issues
+
+Never use error alerts on static pages.
+
+#### Warning
+
+**On Forms**: To call out or notify a user of risk or important information prior to completing the action.
+
+**On Static Pages**: To notify users of scheduled website maintenance or unexpected system outage.
+
+Examples:
+
+- To warn a user of potential negative consequences of a certain action
+- To warn a user of unintended results
+- To encourage a user to double check their choices
+- To highlight information that a user should be aware of
+
+#### Success
+
+**On Forms**: To confirm that a task was completed successfully.
+
+Examples:
+
+- To confirm submission of an application
+- To offer a user positive feedback, such as a congratulatory note
+- To guide the user to the next step in a multi-step process
+
+Never use success alerts on static pages.
 
 ### Guidelines
 
