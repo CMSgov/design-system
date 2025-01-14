@@ -3,12 +3,7 @@
 exports[`Hint should render a default hint 1`] = `
 <DocumentFragment>
   <ds-hint>
-    <p
-      class="ds-c-hint"
-    >
-      Foo
-    </p>
-    <template />
+    Foo
   </ds-hint>
 </DocumentFragment>
 `;
