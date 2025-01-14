@@ -14,4 +14,4 @@ const Wrapper = ({ inversed, rootId, for: fieldId, ...otherProps }: WrapperProps
   <Label {...otherProps} inversed={parseBooleanAttr(inversed)} fieldId={fieldId} id={rootId} />
 );
 
-define('ds-label', () => Wrapper, { attributes });
+define('ds-label', () => Wrapper, { attributes, shadow: true });
