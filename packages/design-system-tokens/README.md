@@ -17,13 +17,11 @@ Folder structure is as follows:
 
 ## Scripts
 
-_Before you can use any of these package scripts, dependencies must be installed through `yarn install`, which can be done here or in the root of the repository._
-
-- `yarn build`
+- `npm run build`
   - Builds files that our other packages rely on, namely the CSS and SCSS files generated from our tokens
-- `yarn clean`
+- `npm run clean`
   - Cleans out the build (`dist`) folder
-- `yarn sync:to-figma` and `yarn sync:from-figma`
+- `npm run sync:to-figma` and `npm run sync:from-figma`
   - Connects to Figma's API to export our local tokens into Figma variables or updates our local tokens from Figma variables
   - Requires `PERSONAL_ACCESS_TOKEN` and `FILE_KEY` environment variables to be defined, which can go in a `.env` file at the root of this package directory. The `FILE_KEY` refers to the Figma file we're syncing to (the library file). For a quick start, copy the `.env.example` to `.env` and replace `YOUR_FIGMA_PERSONAL_ACCESS_TOKEN`.
 

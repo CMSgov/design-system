@@ -8,8 +8,6 @@ The _Medicare.gov Design System_ contains shared design and front-end developmen
 
 ## Usage
 
-`yarn add @cmsgov/ds-medicare-gov`
-
 For full documentation on installation and usage in your Medicare.gov product, please refer to [our documentation site](https://design.cms.gov/getting-started/developers/installation/?theme=medicare).
 
 ## Contributing
