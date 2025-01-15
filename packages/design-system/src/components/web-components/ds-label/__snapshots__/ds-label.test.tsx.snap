@@ -5,7 +5,13 @@ exports[`Label should render a basic label 1`] = `
   <ds-label
     for="field-123"
   >
-    Foo
+    <label
+      class="ds-c-label"
+      for="field-123"
+    >
+      Foo
+    </label>
+    <template />
   </ds-label>
 </DocumentFragment>
 `;
