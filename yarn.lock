@@ -20026,11 +20026,6 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-docgen-typescript@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-2.2.2.tgz"
-  integrity sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==
-
 react-docgen-typescript@2.3.0-beta.0:
   version "2.3.0-beta.0"
   resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-2.3.0-beta.0.tgz"
