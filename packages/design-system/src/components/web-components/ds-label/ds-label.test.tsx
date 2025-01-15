@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { render, screen } from '@testing-library/react';
-=======
-import { createTestRenderer } from '../__tests__/rendering';
->>>>>>> 107c1cedb (Remove unused dep)
 import './ds-label';
 
 /* eslint-disable @typescript-eslint/no-namespace */
