@@ -22,6 +22,7 @@ export function cleanFieldProps<T extends PropsToExclude>(props: T): Omit<T, key
   delete newProps.errorPlacement;
   delete newProps.hint;
   delete newProps.hintId;
+  delete newProps.hintClassName;
   delete newProps.requirementLabel;
   delete newProps.labelId;
   delete newProps.label;
