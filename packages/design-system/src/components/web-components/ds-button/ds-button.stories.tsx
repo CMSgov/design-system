@@ -12,6 +12,11 @@ import {
 export default {
   title: 'Web Components/ds-button',
   argTypes: {
+    children: {
+      description:
+        'An optional attribute that allows you to set text or HTML content to display inside the button.',
+      control: 'text',
+    },
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
       control: 'text',
