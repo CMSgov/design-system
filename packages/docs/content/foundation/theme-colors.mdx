@@ -106,12 +106,12 @@ Accent colors are used sparingly to support primary and secondary colors in desi
   preface="--color-"
 />
 
-<ColorTable colorCategory="gray" />
+<ColorTable colorCategory={["white", "gray", "black"]} />
 
 ## Text colors
 
 <ColorExampleList colorNames={['base']} preface="--color-" />
-<ColorTable colorCategory="base" />
+<ColorTable colorCategory="base" exactMatch={true} />
 
 ## Background colors
 
@@ -193,6 +193,6 @@ Be cautious using these colors to signify something that may contradict what mos
 ## Focus colors
 
 <ColorExampleList colorNames={['focus-light', 'focus-dark']} preface="--color-" />
-<ColorTable colorCategory="focus" />
+<ColorTable colorCategory={["focus-light", 'focus-dark']} exactMatch={true} />
 
 <ColorContrastGuidelines />

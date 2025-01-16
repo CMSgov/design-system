@@ -6,19 +6,24 @@ import { ThemeName, determineColorCategoryUsageByTheme } from '../../../helpers/
 
 interface ColorProps extends PropsWithChildren {
   /**
-   * color category (e.g. primary, secondary, etc.)
+   * color categories such as "primary", "secondary, "accent"
    */
-  colorCategory: string;
+  colorCategory: string | string[];
   /**
    * Name of currently selected theme
    */
   theme: ThemeName;
+  /**
+   * Whether to match the color category exactly or not
+   */
+  exactMatch?: boolean;
 }
 
-const ColorTable: FC<ColorProps> = clientOnly(({ colorCategory, theme }) => {
+const ColorTable: FC<ColorProps> = clientOnly(({ colorCategory, theme, exactMatch }) => {
   const { activeColors, availableColors } = determineColorCategoryUsageByTheme({
     colorCategory,
     themeName: theme,
+    exactMatch,
   });
 
   return (

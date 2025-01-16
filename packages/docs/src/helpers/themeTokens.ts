@@ -14,6 +14,7 @@ import {
 } from 'design-system-tokens/src/lib/tokens';
 import { tokenNameToVarName, tokenToCssValue } from 'design-system-tokens/src/css/translate';
 import { capitalize } from './capitalize';
+import { HexValue, luminanceFromHex } from 'design-system-tokens/src/lib/colorUtils';
 
 export type ThemeName = keyof typeof themes;
 
@@ -95,22 +96,24 @@ export function getSystemColorTokenFromValue(colorValue: string): string {
   return tokenKey.split('color.')[1];
 }
 
-export function getThemeColorSwatch(themeName: ThemeName, colorName: string): string {
+export function getThemeColorSwatches(themeName: ThemeName, colorNames: string[]) {
   const filename = filenameFromTheme(themeName);
-  let colorToken = tokensByFile[filename][`theme.color.${colorName}`];
-  if (!colorToken) {
-    debugger;
-    return '';
-  }
-  if (isAlias(colorToken.$value.toString())) {
-    colorToken = resolveTokenAlias(colorToken, tokensByFile, filename);
-  }
+  const tokenKeys = colorNames.map((colorName) => {
+    let colorToken = tokensByFile[filename][`theme.color.${colorName}`];
+    if (!colorToken) {
+      return undefined;
+    }
+    if (isAlias(colorToken.$value.toString())) {
+      colorToken = resolveTokenAlias(colorToken, tokensByFile, filename);
+    }
 
-  const tokenKey = findKey(
-    tokensByFile['System.Value.json'],
-    ({ $value }) => String($value) === String(colorToken.$value)
-  );
-  return tokenKey.split('.')[1];
+    const tokenKey = findKey(
+      tokensByFile['System.Value.json'],
+      ({ $value }) => String($value) === String(colorToken.$value)
+    );
+    return tokenKey.split('.')[1];
+  });
+  return tokenKeys;
 }
 
 type ColorAttributes = {
@@ -118,6 +121,15 @@ type ColorAttributes = {
   hex: string;
   figma: string;
   componentUsage?: string[];
+};
+
+type colorCategoryUsage = {
+  name: string;
+  attributes: {
+    key: string;
+    label: string;
+    value: string;
+  }[];
 };
 
 const formatters = {
@@ -161,16 +173,25 @@ const formatters = {
 export function determineColorCategoryUsageByTheme({
   colorCategory,
   themeName,
+  exactMatch = false,
 }: {
-  colorCategory: string;
+  colorCategory: string | string[];
   themeName: ThemeName;
-}) {
+  exactMatch?: boolean;
+}): { activeColors: colorCategoryUsage[]; availableColors: colorCategoryUsage[] } {
   const filename = filenameFromTheme(themeName);
   const flattenedThemeTokens = Object.entries(tokensByFile[filename]);
   const flattenedComponents = flattenedThemeTokens.filter(([key]) => key.includes(`component.`));
+  const colorCategories = typeof colorCategory === 'string' ? [colorCategory] : colorCategory;
 
   const namedColors: ColorAttributes[] = flattenedThemeTokens
-    .filter(([key]) => key.includes(`theme.color.${colorCategory}`))
+    .filter(([colorToken]) => {
+      const filterByCategory = colorCategories.some((category) => {
+        const colorCategoryKey = `theme.color.${category}`;
+        return exactMatch ? colorToken === colorCategoryKey : colorToken.includes(colorCategoryKey);
+      });
+      return filterByCategory;
+    })
     .map(([color, colorToken]) => {
       const css = formatters.css(color);
       const hex = formatters.hex(colorToken, tokensByFile, filename);
@@ -199,41 +220,48 @@ export function determineColorCategoryUsageByTheme({
         figma,
         componentUsage,
       };
+    })
+    .sort((a, b) => {
+      const aLuminance = luminanceFromHex(a.hex as HexValue);
+      const bLuminance = luminanceFromHex(b.hex as HexValue);
+      return bLuminance - aLuminance;
     });
 
-  const colorSwatch = getThemeColorSwatch(themeName, colorCategory);
-  if (colorSwatch === '') {
-    return {
-      activeColors: [],
-      availableColors: [],
-    };
-  }
+  const colorSwatches = getThemeColorSwatches(themeName, colorCategories);
 
   const usedColors = namedColors.filter(({ componentUsage }) => Boolean(componentUsage.length));
-  const unusedColors: ColorAttributes[] = Object.values(systemTokens.color[colorSwatch])
-    .map((token: Token) => {
-      const match = namedColors.find((color) => color.hex === token.$value);
-      return {
-        ...match,
-        ...token,
-      };
-    })
-    .filter(({ $value }) => {
-      const matchByColorAndIsUsed = namedColors.some(({ hex, componentUsage }) => {
-        const matchedByColor = hex === $value.toString();
-        const isUsed = Boolean(componentUsage.length);
-        return matchedByColor && isUsed;
+  const unusedColors = colorSwatches.map((colorSwatch) => {
+    const tokens = systemTokens.color[colorSwatch];
+    if (!tokens) return [];
+    return Object.entries(tokens)
+      .filter(([key]) => !key.includes('alpha'))
+      .map(([, token]: [string, Token]) => {
+        const match = namedColors.find((color) => color.hex === token.$value);
+        return {
+          ...match,
+          ...token,
+        };
+      })
+      .filter(({ $value }) => {
+        const matchByColorAndIsUsed = namedColors.some(({ hex, componentUsage }) => {
+          const matchedByColor = hex === $value.toString();
+          const isUsed = Boolean(componentUsage.length);
+          return matchedByColor && isUsed;
+        });
+        return !matchByColorAndIsUsed;
+      })
+      .map(({ $value, css }) => ({
+        css: css ?? 'No CSS token',
+        hex: $value.toString(),
+        figma: formatters.figma($value.toString()),
+      }))
+      .filter(({ css }) => {
+        return exactMatch ? colorCategories.some((category) => css.includes(category)) : true;
       });
-      return !matchByColorAndIsUsed;
-    })
-    .map(({ $value, css }) => ({
-      css: css ?? 'No CSS token',
-      hex: $value.toString(),
-      figma: formatters.figma($value.toString()),
-    }));
+  });
 
   return {
     activeColors: formatters.colors(usedColors),
-    availableColors: formatters.colors(unusedColors),
+    availableColors: unusedColors ? formatters.colors(unusedColors.flat()) : [],
   };
 }
