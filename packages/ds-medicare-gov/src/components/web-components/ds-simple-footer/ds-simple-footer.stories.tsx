@@ -2,23 +2,14 @@ import type { Meta } from '@storybook/react';
 import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
+import { webComponentDecorator } from '../../../../../design-system/src/components/web-components/storybook';
 import './ds-simple-footer';
-import { Fragment } from 'react';
-
-export function webComponentDecorator(Story, context) {
-  // The Preact element `children` can have circular references which trip up Storybook's JSON evaluation
-  const { children, ...simpleArgs } = context.args;
-  return (
-    <Fragment key={JSON.stringify({ ...simpleArgs, ...context.globals })}>
-      <Story />
-    </Fragment>
-  );
-}
 
 const meta: Meta = {
   title: 'Medicare/Web Components/ds-simple-footer',
   decorators: [webComponentDecorator],
   parameters: {
+    theme: 'medicare',
     docs: {
       page: WebComponentDocTemplate,
       description: {
@@ -58,25 +49,11 @@ const meta: Meta = {
     },
   },
 };
-export default meta;
 
-export const Template = (args) => {
-  useEffect(() => {
-    const footer = document.querySelector('ds-simple-footer');
-    footer.addEventListener('click', action('click'));
-  }, []);
-  console.log('footer', args);
+const Template = (args) => {
   return <ds-simple-footer {...args}></ds-simple-footer>;
 };
 
 export const Default = Template.bind({});
 
-Default.args = {
-  'about-medicare-label': 'About Medicare',
-  'nondiscrimination-label': 'Nondiscrimination',
-  'privacy-policy-label': 'Privacy Policy',
-  'privacy-setting-label': 'Privacy Settings',
-  'linking-policy-label': 'Linking Policy',
-  'using-this-site-label': 'Using This Site',
-  'plain-writing-label': 'Plain Writing',
-};
+export default meta;
