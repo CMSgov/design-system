@@ -31,4 +31,12 @@ declare global {
 
 define('ds-simple-footer', () => Wrapper, {
   attributes,
+  events: [
+    [
+      'onClickLinkAnalytics',
+      (url: string) => ({
+        detail: { url },
+      }),
+    ],
+  ],
 } as any);

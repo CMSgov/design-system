@@ -16,6 +16,11 @@ const meta: Meta = {
         component:
           'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/footer/medicare-footer).',
       },
+      componentEvents: {
+        'ds-link-click-analytics': {
+          description: 'A callback function triggered when the user clicks a link in the footer.',
+        },
+      },
     },
   },
   argTypes: {
@@ -51,6 +56,35 @@ const meta: Meta = {
 };
 
 const Template = (args) => {
+  useEffect(() => {
+    const footer = document.querySelector('ds-simple-footer');
+    // Adding custom event listeners to links prevents immediate navigation, allowing us to log and verify
+    // the `ds-click-link-analytics` event in storybook actions before the browser navigates away.
+    const links = footer?.querySelectorAll('a');
+    links?.forEach((link) => {
+      link.setAttribute('target', '_blank');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        setTimeout(() => {
+          window.open(link.href, '_blank');
+        }, 3000);
+      });
+    });
+
+    const handleAnalyticsEvent = (event: CustomEvent) => {
+      action('ds-click-link-analytics')(event);
+    };
+
+    footer?.addEventListener('ds-click-link-analytics', handleAnalyticsEvent);
+
+    return () => {
+      links?.forEach((link) => {
+        link.removeEventListener('click', (e) => e.preventDefault());
+      });
+      footer?.removeEventListener('ds-click-link-analytics', handleAnalyticsEvent);
+    };
+  }, []);
   return <ds-simple-footer {...args}></ds-simple-footer>;
 };
 
