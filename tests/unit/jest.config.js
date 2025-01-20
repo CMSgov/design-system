@@ -17,12 +17,14 @@ const conditionalWebComponentsConfig = useWebComponents
   ? {
       testMatch: [
         '<rootDir>/packages/design-system/src/components/web-components/**/*.test.[jt]s(x)?',
+        '<rootDir>/packages/ds-medicare-gov/src/components/web-components/**/*.test.[jt]s(x)?',
         '<rootDir>/tests/browser/custom-reporter.test.ts',
       ],
     }
   : {
       testPathIgnorePatterns: [
         '<rootDir>/packages/design-system/src/components/web-components',
+        '<rootDir>/packages/ds-medicare-gov/src/components/web-components',
         '<rootDir>/tests/browser/',
       ],
     };
