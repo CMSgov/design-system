@@ -70,7 +70,7 @@ const SearchPage = ({ location }: MdxQuery) => {
               const sendAnalyticsEvent = () => {
                 sendLinkEvent({
                   event_name: 'search_result_engaged',
-                  search_result_count: results.length,
+                  search_result_count: results.length.toString(),
                   search_result_position: result.title,
                   search_term: query,
                   search_term_type: 'user_initiated',
