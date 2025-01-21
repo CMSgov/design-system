@@ -1,8 +1,9 @@
 import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { getByRole, fireEvent } from '@testing-library/react';
 import './ds-button';
 import { testAnalytics } from '../__tests__/analytics';
+import { createTestRenderer } from '../__tests__/rendering';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -18,71 +19,73 @@ const defaultProps = {
   children: 'Foo',
 };
 
-function renderButton(props = {}) {
-  return render(<ds-button {...defaultProps} {...props} />);
-}
+// Renaming the renderButton function to view to match TestingLibrary's naming conventions
+const view = createTestRenderer('ds-button', (attrs = {}) => (
+  <ds-button {...defaultProps} {...attrs} />
+));
 
 describe('Button', () => {
   it('renders as button', () => {
-    const { asFragment } = renderButton();
-    expect(asFragment()).toMatchSnapshot();
+    const { shadowRoot } = view();
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('renders as submit button', () => {
-    renderButton({ type: 'submit' });
-    expect(screen.getByRole('button').getAttribute('type')).toEqual('submit');
+    const { shadowRoot } = view({ type: 'submit' });
+    const dsButton = getByRole(shadowRoot as any as HTMLElement, 'button').getAttribute('type');
+    expect(dsButton).toEqual('submit');
   });
 
   it('renders disabled button', () => {
-    const { asFragment } = renderButton({ disabled: true });
-    expect(asFragment()).toMatchSnapshot();
+    const { shadowRoot } = view({ disabled: true });
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('renders as an anchor with custom prop', () => {
-    const { asFragment } = renderButton({
+    const { shadowRoot } = view({
       href: '/example',
       target: '_blank',
       type: 'submit',
     });
-    expect(asFragment()).toMatchSnapshot();
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('renders disabled anchor correctly', () => {
-    const { asFragment } = renderButton({
+    const { shadowRoot } = view({
       href: '#!',
       disabled: true,
       children: 'Link button',
     });
-    expect(asFragment()).toMatchSnapshot();
+    expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
   it('applies additional classes', () => {
-    renderButton({ 'class-name': 'foobar' });
-    const button = screen.getByRole('button');
+    const { shadowRoot } = view({ 'class-name': 'foobar' });
+    const button = getByRole(shadowRoot as any as HTMLElement, 'button');
     expect(button.classList.contains('foobar')).toBe(true);
   });
 
   it('applies variation classes', () => {
-    renderButton({ variation: 'solid' });
-    const button = screen.getByRole('button');
+    const { shadowRoot } = view({ variation: 'solid' });
+    const button = getByRole(shadowRoot as any as HTMLElement, 'button');
     expect(button.classList.contains('ds-c-button--solid')).toBe(true);
   });
 
   it('applies size classes', () => {
-    renderButton({ size: 'small' });
-    const button = screen.getByRole('button');
+    const { shadowRoot } = view({ size: 'small' });
+    const button = getByRole(shadowRoot as any as HTMLElement, 'button');
     expect(button.classList.contains('ds-c-button--small')).toBe(true);
   });
 
   it('applies disabled, inverse, alternate, and variation classes together', () => {
-    renderButton({
+    const { shadowRoot } = view({
       href: '#!',
       disabled: true,
       'is-on-dark': true,
       'is-alternate': true,
       variation: 'ghost',
     });
-    const link = screen.getByRole('link');
+    const link = getByRole(shadowRoot as any as HTMLElement, 'link');
     expect(link.hasAttribute('href')).toBe(false);
     expect(link.classList.contains('ds-c-button--ghost')).toBe(true);
     expect(link.classList.contains('ds-c-button--on-dark')).toBe(true);
@@ -91,9 +94,9 @@ describe('Button', () => {
   });
 
   it('fires a custom click event on click', () => {
-    renderButton();
+    const { shadowRoot } = view();
     const buttonRoot = document.querySelector('ds-button');
-    const buttonEl = screen.getByRole('button');
+    const buttonEl = getByRole(shadowRoot as any as HTMLElement, 'button');
     const mockHandler = jest.fn();
     buttonRoot.addEventListener('ds-click', mockHandler);
     fireEvent.click(buttonEl);
@@ -102,9 +105,9 @@ describe('Button', () => {
   });
 
   it('fires a custom analytics event on click', () => {
-    renderButton({ analytics: 'true' });
+    const { shadowRoot } = view({ analytics: 'true' });
     const buttonRoot = document.querySelector('ds-button');
-    const buttonEl = screen.getByRole('button');
+    const buttonEl = getByRole(shadowRoot as any as HTMLElement, 'button');
     const mockHandler = jest.fn();
     buttonRoot.addEventListener('ds-analytics-event', mockHandler);
     fireEvent.click(buttonEl);
@@ -122,15 +125,15 @@ describe('Button', () => {
     });
 
     testAnalytics('sends button analytics event', async ({ tealiumMock, waitForAnalytics }) => {
-      renderButton();
-      fireEvent.click(screen.getByRole('button'));
+      const { shadowRoot } = view();
+      fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
       await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
     testAnalytics('sends anchor analytics event', async ({ tealiumMock, waitForAnalytics }) => {
-      renderButton({ href: '#/somewhere-over-the-rainbow' });
-      fireEvent.click(screen.getByRole('link'));
+      const { shadowRoot } = view({ href: '#/somewhere-over-the-rainbow' });
+      fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'link'));
       await waitForAnalytics();
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
@@ -138,8 +141,8 @@ describe('Button', () => {
     testAnalytics(
       'disables analytics event tracking',
       async ({ tealiumMock, waitForAnalytics }) => {
-        renderButton({ analytics: 'false' });
-        fireEvent.click(screen.getByRole('button'));
+        const { shadowRoot } = view({ analytics: 'false' });
+        fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
       }
@@ -149,8 +152,8 @@ describe('Button', () => {
       'setting analytics to true overrides flag value',
       async ({ tealiumMock, waitForAnalytics }) => {
         config({ buttonSendsAnalytics: false });
-        renderButton({ analytics: 'true' });
-        fireEvent.click(screen.getByRole('button'));
+        const { shadowRoot } = view({ analytics: 'true' });
+        fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock).toHaveBeenCalled();
       }
@@ -159,8 +162,8 @@ describe('Button', () => {
     testAnalytics(
       'overrides analytics event tracking on open',
       async ({ tealiumMock, waitForAnalytics }) => {
-        renderButton({ 'analytics-label-override': 'alternate content' });
-        fireEvent.click(screen.getByRole('button'));
+        const { shadowRoot } = view({ 'analytics-label-override': 'alternate content' });
+        fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
       }
@@ -170,12 +173,12 @@ describe('Button', () => {
       'allows default analytics function to be ovewridden',
       async ({ tealiumMock, waitForAnalytics }) => {
         let analyticsEvent;
-        renderButton();
+        const { shadowRoot } = view();
         document.querySelector('ds-button').addEventListener('ds-analytics-event', (event: any) => {
           event.preventDefault();
           analyticsEvent = event.detail.event;
         });
-        fireEvent.click(screen.getByRole('button'));
+        fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
         expect(analyticsEvent).toMatchSnapshot();
@@ -187,11 +190,11 @@ describe('Button', () => {
       async ({ tealiumMock, waitForAnalytics }) => {
         const analyticsParentHeading = 'Hello World';
         const analyticsParentType = 'div';
-        renderButton({
+        const { shadowRoot } = view({
           'analytics-parent-heading': analyticsParentHeading,
           'analytics-parent-type': analyticsParentType,
         });
-        fireEvent.click(screen.getByRole('button'));
+        fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock).toBeCalledWith(
           expect.objectContaining({

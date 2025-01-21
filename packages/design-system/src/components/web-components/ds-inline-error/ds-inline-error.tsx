@@ -13,4 +13,4 @@ const Wrapper = ({ inversed, rootId, ...otherProps }: WrapperProps) => (
   <InlineError {...otherProps} inversed={parseBooleanAttr(inversed)} id={rootId} />
 );
 
-define('ds-inline-error', () => Wrapper, { attributes });
+define('ds-inline-error', () => Wrapper, { attributes, shadow: true });

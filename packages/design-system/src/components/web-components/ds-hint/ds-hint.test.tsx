@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { createTestRenderer } from '../__tests__/rendering';
 import './ds-hint';
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -11,31 +11,30 @@ declare global {
 }
 /* eslint-enable */
 
-function renderHint(props = {}) {
-  return render(<ds-hint {...props}>Foo</ds-hint>);
-}
+// Renaming the renderButton function to view to match TestingLibrary's naming conventions
+const view = createTestRenderer('ds-hint', (attrs = {}) => <ds-hint {...attrs}>Foo</ds-hint>);
 
 describe('Hint', () => {
   it('should render a default hint', () => {
-    const { asFragment } = renderHint();
-    expect(asFragment()).toMatchSnapshot();
+    const { shadowRoot } = view();
+    expect(shadowRoot.firstChild).toMatchSnapshot();
   });
 
   it('should apply an inverse class', () => {
-    renderHint({ inversed: true });
-    const hint = screen.getByText('Foo');
+    const { shadowRoot } = view({ inversed: true });
+    const hint = shadowRoot.firstChild as HTMLElement;
     expect(hint.className).toContain('ds-c-hint--inverse');
   });
 
   it('should apply custom classes', () => {
-    renderHint({ 'class-name': 'bar' });
-    const hint = screen.getByText('Foo');
+    const { shadowRoot } = view({ 'class-name': 'bar' });
+    const hint = shadowRoot.firstChild as HTMLElement;
     expect(hint.className).toContain('bar');
   });
 
   it('should render a requirement label', () => {
-    renderHint({ 'requirement-label': 'Optional' });
-    const hint = screen.getByText(/Optional.*/);
-    expect(hint).toContainHTML('Foo');
+    const { shadowRoot } = view({ 'requirement-label': 'Optional' });
+    const hint = shadowRoot.firstChild as HTMLElement;
+    expect(hint).toContainHTML('Optional. <slot />');
   });
 });

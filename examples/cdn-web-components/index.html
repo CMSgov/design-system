@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -143,7 +143,7 @@
             =
             <output name="result" for="a b"></output>
           </div>
-          <ds-button variation="solid" type="submit">Calculate</ds-button>
+          <button class="ds-c-button ds-c-button--solid" type="submit">Calculate</button>
         </form>
         <script>
           document.addEventListener('DOMContentLoaded', (event) => {
@@ -223,7 +223,7 @@
 
               if (input.length > 0 && items) {
                 const filteredItems = items.filter(
-                  (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase()),
+                  (item) => !item.name || item.name.toLowerCase().includes(input.toLowerCase())
                 );
                 autocompleteElement.setAttribute('items', JSON.stringify(filteredItems));
               }
@@ -246,7 +246,7 @@
             document
               .querySelector('ds-filter-chip')
               ?.addEventListener('ds-delete', (e) =>
-                console.log('You fired the custom ds-delete event.', e),
+                console.log('You fired the custom ds-delete event.', e)
               );
           });
         </script>
@@ -307,7 +307,7 @@
               <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1"
                 >Reset</ds-button
               >
-              <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+              <button class="ds-c-button" type="submit" value="sbmBtn">Confirm</button>
             </form>
           </div>
         </ds-modal-dialog>
