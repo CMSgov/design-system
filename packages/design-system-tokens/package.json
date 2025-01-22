@@ -7,13 +7,13 @@
     "@figma/rest-api-spec": "^0.13.0",
     "@inquirer/prompts": "^3.0.3",
     "@types/node": "^17.0.22",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.4.3"
   },
   "scripts": {
-    "build": "ts-node ./src/css/index.ts",
+    "build": "tsx ./src/css/index.ts",
     "clean": "rm -rf dist/*",
-    "sync:to-figma": "ts-node ./src/figma/syncTokensToFigma.ts",
-    "sync:from-figma": "ts-node ./src/figma/syncFigmaToTokens.ts"
+    "sync:to-figma": "tsx ./src/figma/syncTokensToFigma.ts",
+    "sync:from-figma": "tsx ./src/figma/syncFigmaToTokens.ts"
   }
 }
