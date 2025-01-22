@@ -42,7 +42,7 @@ These scripts can all be run from the root level of the repo:
   - Building is required to get TypeScript completion for the core package in child design system packages
 - `npm run build:{core,cmsgov,healthcare,medicare}`
   - Builds a specific brand of the design system and its corresponding package
-  - `npm run build:core --analyze-bundles` will run a bundle analysis and write reports to `./bundle-analysis`
+  - `npm run build:core -- --analyze-bundles` will run a bundle analysis and write reports to `./bundle-analysis`
 - `npm run build:docs`
   - Statically builds a copy of the doc site
   - You can then serve it with `npm run serve:docs`
@@ -65,15 +65,15 @@ These scripts can all be run from the root level of the repo:
   - Alias of `npm run test:unit`
 - `npm run test:unit`
   - Runs JS unit tests for all packages
-  - `npm run test:unit -u` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+  - `npm run test:unit -- -u` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
   - `npm run test:unit:preact` runs the unit tests in Preact mode
   - `npm run test:unit:wc` runs the unit tests for the web components, which have to run in Preact mode
 - `npm run test:browser`
   - Runs accessibility and visual-regression tests using [Playwright](https://playwright.dev/). See [Visual regression testing](#visual-regression-testing) section below for details. This is the base command that defaults to the basic tests that cover Storybook stories, but we have several different kinds of browser tests under different sub-commands.
   - Note that this command will [accept any arguments that Playwright accepts](https://playwright.dev/docs/test-cli).
-  - `npm run test:browser -u` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes. You can use this argument on any of the browser-test sub-commands to update snapshots for specific kinds of tests.
-  - `npm run test:browser --no-build` will skip building the tests' pre-requisites. This is useful if you've already done it and haven't made any changes to the source.
-  - `npm run test:browser --grep "Alert"` will only run tests with "Alert" in the name.
+  - `npm run test:browser -- -u` updates reference screenshots used for visual regression testing. Update these only when we expect the visual changes. You can use this argument on any of the browser-test sub-commands to update snapshots for specific kinds of tests.
+  - `npm run test:browser -- --no-build` will skip building the tests' pre-requisites. This is useful if you've already done it and haven't made any changes to the source.
+  - `npm run test:browser -- --grep "Alert"` will only run tests with "Alert" in the name.
   - `npm run test:browser:interaction` runs VRT interaction tests to validate visual state of components after interaction.
   - `npm run test:browser:examples` runs VRT tests for our example projects.
   - `npm run test:browser:storybook-docs` checks for regressions in prop tables in storybook docs.
@@ -105,7 +105,7 @@ There are a lot of tests, so it can be helpful to constrain the tests you run lo
 1. Open the Docker app, and make sure you're signed in (Docker Desktop requires a license now).
 2. Run `npm run test:browser` to begin comparing component images
    1. If differences are detected and unexpected, evaluate your changes - we only want to update and commit references when we expect the visual changes detected.
-   2. If differences are detected and expected, run `npm run test:browser -u`, verify the changes, and then commit them.
+   2. If differences are detected and expected, run `npm run test:browser -- -u`, verify the changes, and then commit them.
 
 #### Development outside of Docker:
 

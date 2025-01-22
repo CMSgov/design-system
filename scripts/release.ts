@@ -228,7 +228,9 @@ function printNextSteps() {
       console.error(error.message);
       console.log('-------------------------');
       console.log(
-        c.yellow(`You can run ${c.reset('`npm run release --undo`')} to undo changes made so far.`)
+        c.yellow(
+          `You can run ${c.reset('`npm run release -- --undo`')} to undo changes made so far.`
+        )
       );
     }
     process.exit(1);
