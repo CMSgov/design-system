@@ -302,5 +302,42 @@
         form?.addEventListener('submit', closeModal);
       });
     </script>
+
+    <h2>Drawer example</h2>
+    <ds-button id="drawer-toggle">Open Drawer</ds-button>
+    <ds-drawer
+      id="example-drawer"
+      heading="Drawer Heading"
+      footer-title="Footer Title"
+      is-open="false"
+      close-button-aria-label="Close Drawer"
+      has-focus-trap="true"
+    >
+      <div>
+        <strong>An Explanation</strong>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <div slot="footer-body">
+        <p class="ds-text-body--md ds-u-margin--0">
+          Custom footer content for additional information or actions.
+        </p>
+      </div>
+    </ds-drawer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const drawer = document.getElementById('example-drawer');
+        const toggleButton = document.getElementById('drawer-toggle');
+
+        const openDrawer = () => drawer?.setAttribute('is-open', 'true');
+        const closeDrawer = () => drawer?.setAttribute('is-open', 'false');
+
+        drawer?.addEventListener('ds-close-click', closeDrawer);
+        toggleButton?.addEventListener('click', openDrawer);
+      });
+    </script>
   </div>
 </main>
