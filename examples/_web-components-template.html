@@ -306,7 +306,7 @@
     <h2>Drawer example</h2>
     <ds-button id="drawer-toggle">Open Drawer</ds-button>
     <ds-drawer
-      id="example-drawer"
+      root-id="example-drawer"
       heading="Drawer Heading"
       footer-title="Footer Title"
       is-open="false"
@@ -329,7 +329,7 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const drawer = document.getElementById('example-drawer');
+        const drawer = document.querySelector('ds-drawer');
         const toggleButton = document.getElementById('drawer-toggle');
 
         const openDrawer = () => drawer?.setAttribute('is-open', 'true');
