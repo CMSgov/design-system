@@ -54,11 +54,11 @@
     "test:unit:wc": "WC=true jest --config=tests/unit/jest.config.js",
     "test:browser": "tsx ./scripts/browser-tests.ts",
     "test:browser:smoke": "npm run test:browser -- --smoke",
-    "test:browser:interaction": "npm run test:browser --config tests/browser/interaction.config.ts",
-    "test:browser:storybook-docs": "npm run test:browser --config tests/browser/storybook-docs.config.ts",
+    "test:browser:interaction": "npm run test:browser -- --config tests/browser/interaction.config.ts",
+    "test:browser:storybook-docs": "npm run test:browser -- --config tests/browser/storybook-docs.config.ts",
     "test:browser:examples": "npm run test:browser -- --config tests/browser/examples.config.ts",
     "test:browser:all": "npm run test:browser && npm run test:browser:interaction -- --no-build && npm run test:browser:storybook-docs -- --no-build && npm run test:browser:examples",
-    "test:browser:all:update": "npm run test:browser -u && npm run test:browser:interaction -- --no-build -u && npm run test:browser:storybook-docs -- --no-build -u && npm run test:browser:examples -- -u",
+    "test:browser:all:update": "npm run test:browser -- -u && npm run test:browser:interaction -- --no-build -u && npm run test:browser:storybook-docs -- --no-build -u && npm run test:browser:examples -- -u",
     "type-check": "tsc --noEmit"
   },
   "husky": {
