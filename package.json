@@ -51,7 +51,7 @@
     "test:unit:coverage:all": "npm run test:unit:coverage:react && npm run test:unit:coverage:wc && ts-node ./tests/unit/combineTestCoverage.ts",
     "test:unit": "jest --config=tests/unit/jest.config.js",
     "test:unit:preact": "npm run PREACT=true jest --config=tests/unit/jest.config.js",
-    "test:unit:wc": "npm run WC=true jest --config=tests/unit/jest.config.js",
+    "test:unit:wc": "WC=true npm run jest --config=tests/unit/jest.config.js",
     "test:browser": "ts-node ./scripts/browser-tests.ts",
     "test:browser:smoke": "npm run test:browser --smoke",
     "test:browser:interaction": "npm run test:browser --config tests/browser/interaction.config.ts",
