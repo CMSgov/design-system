@@ -96,24 +96,18 @@ export function getSystemColorTokenFromValue(colorValue: string): string {
   return tokenKey.split('color.')[1];
 }
 
-export function getThemeColorSwatches(themeName: ThemeName, colorNames: string[]) {
-  const filename = filenameFromTheme(themeName);
-  const tokenKeys = colorNames.map((colorName) => {
-    let colorToken = tokensByFile[filename][`theme.color.${colorName}`];
-    if (!colorToken) {
-      return undefined;
-    }
-    if (isAlias(colorToken.$value.toString())) {
-      colorToken = resolveTokenAlias(colorToken, tokensByFile, filename);
-    }
-
-    const tokenKey = findKey(
-      tokensByFile['System.Value.json'],
-      ({ $value }) => String($value) === String(colorToken.$value)
-    );
-    return tokenKey.split('.')[1];
+export function getSystemColorsByCategoryAndTheme({
+  colorCategories,
+  themeName,
+}: {
+  colorCategories: string[];
+  themeName: ThemeName;
+}) {
+  return colorCategories.map((colorName) => {
+    const colorValue = getThemeColorValue(themeName, colorName);
+    const systemColorToken = getSystemColorTokenFromValue(colorValue);
+    return systemColorToken.split('.')[0];
   });
-  return tokenKeys;
 }
 
 type ColorAttributes = {
@@ -133,19 +127,26 @@ type colorCategoryUsage = {
 };
 
 const formatters = {
-  css: (value: string) => `--color-${value.split('theme.color.')[1]}`,
+  css: (value: string) => {
+    return `--color-${value.split('theme.color.')[1]}`;
+  },
   hex: (colorToken: Token, tokensByFile: FlattenedTokensByFile, filename: string) => {
     const token = isAlias(colorToken.$value.toString())
       ? resolveTokenAlias(colorToken, tokensByFile, filename)
       : colorToken;
     return token.$value.toString();
   },
-  figma: (value: string) => capitalize(getSystemColorTokenFromValue(value)).split('.').join(' '),
-  token: (value: string) => value.toLowerCase().split(' ').join('.'),
-  attributes: (value: string | string[]) => {
-    return Array.isArray(value) ? value.join(', ') : value;
+  figma: (value: string) => {
+    const systemColorToken = getSystemColorTokenFromValue(value);
+    return capitalize(systemColorToken).split('.').join(' ');
   },
-  colors: (colors: ColorAttributes[]) => {
+  token: (value: string) => {
+    return value.toLowerCase().split(' ').join('.');
+  },
+  attributes: (value: string | string[]) => {
+    return typeof value === 'string' ? value : value.join(', ');
+  },
+  colors: (colors: ColorAttributes[]): colorCategoryUsage[] => {
     return colors.map((color) => {
       const attributes = Object.entries(color).map(([key, value]) => {
         const labelLookup = {
@@ -168,6 +169,54 @@ const formatters = {
       };
     });
   },
+};
+
+const sortByLuminance = (a: ColorAttributes, b: ColorAttributes) => {
+  const aLuminance = luminanceFromHex(a.hex as HexValue);
+  const bLuminance = luminanceFromHex(b.hex as HexValue);
+  return bLuminance - aLuminance;
+};
+
+const determineComponentUsage = ({
+  color,
+  flattenedComponents,
+}: {
+  color: string;
+  flattenedComponents: [string, Token][];
+}) => {
+  return flattenedComponents
+    .filter(([, value]) => value.$value === `{${color}}`)
+    .reduce((acc, [key]) => {
+      // sample keys: `component.button-primary-text-color` or `component.usa-banner.security-icon.color`
+      let componentName = key.split('.')[1];
+      if (componentName.startsWith('button')) {
+        componentName = 'Button';
+      } else {
+        componentName = componentName.split('-').map(capitalize).join(' ');
+      }
+
+      // If the component name is already in the list, don't add it again
+      if (acc.find((component) => component === componentName)) {
+        return acc;
+      } else {
+        return [...acc, componentName];
+      }
+    }, [] as string[]);
+};
+
+const getHexCodesByColorNames = (colorNames: string[]) => {
+  return colorNames
+    .map((colorName) => {
+      const systemColorToken: Token = systemTokens.color[colorName];
+      const systemHexCodes = Object.entries(systemColorToken)
+        .filter(([key]) => !key.includes('alpha'))
+        .map(([, token]) => ({
+          hex: token.$value.toString() as string,
+        }));
+
+      return systemHexCodes;
+    })
+    .flat();
 };
 
 export function determineColorCategoryUsageByTheme({
@@ -193,75 +242,52 @@ export function determineColorCategoryUsageByTheme({
       return filterByCategory;
     })
     .map(([color, colorToken]) => {
-      const css = formatters.css(color);
       const hex = formatters.hex(colorToken, tokensByFile, filename);
-      const figma = formatters.figma(hex);
-
-      const componentUsage = flattenedComponents
-        .filter(([, value]) => value.$value === `{${color}}`)
-        .reduce((acc, [key]) => {
-          let componentName = key.split('.')[1];
-          if (componentName.startsWith('button')) {
-            componentName = 'Button';
-          } else {
-            componentName = componentName.split('-').map(capitalize).join(' ');
-          }
-
-          if (acc.find((component) => component === componentName)) {
-            return acc;
-          } else {
-            return [...acc, componentName];
-          }
-        }, [] as string[]);
-
       return {
-        css,
+        css: formatters.css(color),
         hex,
-        figma,
-        componentUsage,
+        figma: formatters.figma(hex),
+        componentUsage: determineComponentUsage({ color, flattenedComponents }),
       };
     })
-    .sort((a, b) => {
-      const aLuminance = luminanceFromHex(a.hex as HexValue);
-      const bLuminance = luminanceFromHex(b.hex as HexValue);
-      return bLuminance - aLuminance;
-    });
-
-  const colorSwatches = getThemeColorSwatches(themeName, colorCategories);
+    .sort(sortByLuminance);
 
   const usedColors = namedColors.filter(({ componentUsage }) => Boolean(componentUsage.length));
-  const unusedColors = colorSwatches.map((colorSwatch) => {
-    const tokens = systemTokens.color[colorSwatch];
-    if (!tokens) return [];
-    return Object.entries(tokens)
-      .filter(([key]) => !key.includes('alpha'))
-      .map(([, token]: [string, Token]) => {
-        const match = namedColors.find((color) => color.hex === token.$value);
-        return {
-          ...match,
-          ...token,
-        };
-      })
-      .filter(({ $value }) => {
-        const matchByColorAndIsUsed = namedColors.some(({ hex, componentUsage }) => {
-          const matchedByColor = hex === $value.toString();
-          const isUsed = Boolean(componentUsage.length);
-          return matchedByColor && isUsed;
-        });
-        return !matchByColorAndIsUsed;
-      })
-      .map(({ $value, css }) => ({
-        css: css ?? 'No CSS token',
-        hex: $value.toString(),
-        figma: formatters.figma($value.toString()),
-      }))
-      .filter(({ css }) => {
-        return exactMatch ? colorCategories.some((category) => css.includes(category)) : true;
-      });
+  // sample colors are "sapphire, granite, persimmon, etc."
+  const systemColors = getSystemColorsByCategoryAndTheme({ colorCategories, themeName });
+  const systemColorHexCodes = getHexCodesByColorNames(systemColors);
+
+  const systemHexCodesWithMoreInfo = systemColorHexCodes.map(({ hex }) => {
+    // namedColors potentially contains the component usage and css for each hex code
+    const match = namedColors.find((color) => color.hex === hex);
+    return {
+      ...match,
+      hex,
+    };
+  });
+
+  // filter out hex codes that are used in components and don't already exist in usedColors
+  const filteredHexCodes = systemHexCodesWithMoreInfo.filter(({ hex }) => {
+    return !namedColors.some(({ hex: namedColorHex, componentUsage }) => {
+      const matchedByColor = hex === namedColorHex;
+      const isUsed = Boolean(componentUsage.length);
+      return matchedByColor && isUsed;
+    });
+  });
+
+  const formattedHexCodes = filteredHexCodes.map(({ hex, css }) => ({
+    css: css ?? 'No CSS token',
+    hex,
+    figma: formatters.figma(hex),
+  }));
+
+  // if the `exactMatch` param is true, only return the values where the css variable overlaps with color categories
+  const unusedColors = formattedHexCodes.filter(({ css }) => {
+    return exactMatch ? colorCategories.some((category) => css.includes(category)) : true;
   });
 
   return {
     activeColors: formatters.colors(usedColors),
-    availableColors: unusedColors ? formatters.colors(unusedColors.flat()) : [],
+    availableColors: unusedColors ? formatters.colors(unusedColors) : [],
   };
 }
