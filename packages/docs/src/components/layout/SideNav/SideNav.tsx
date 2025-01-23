@@ -13,6 +13,7 @@ import {
 } from '../../../helpers/navDataFormatUtils';
 import GithubIcon from '../../icons/GithubIcon';
 import NewsIcon from '../../icons/NewsIcon';
+import linkAnalytics from '../../../helpers/linkAnalytics';
 
 interface SideNavProps {
   location: LocationInterface;
@@ -22,7 +23,7 @@ interface SideNavProps {
  * A wrapper for the gatsby link to handle internal site navigation
  */
 const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
-  <Link to={props.href} {...props}>
+  <Link onClick={linkAnalytics} to={props.href} {...props}>
     {props.children}
   </Link>
 );
@@ -120,9 +121,9 @@ const SideNav = ({ location }: SideNavProps) => {
           )}
         </Button>
         <div>
-          <a className="c-navigation__title" href="/">
+          <Link onClick={linkAnalytics} className="c-navigation__title" to="/">
             CMS Design System
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -143,13 +144,18 @@ const SideNav = ({ location }: SideNavProps) => {
             selectedId={location ? location.pathname : ''}
           />
           <p>
-            <Link to="/blog/" className="c-navigation__bottom-link ds-c-link">
+            <Link
+              onClick={linkAnalytics}
+              to="/blog/"
+              className="c-navigation__bottom-link ds-c-link"
+            >
               <NewsIcon />
               What&apos;s new?
             </Link>
           </p>
           <p>
             <a
+              onClick={linkAnalytics}
               href="https://github.com/CMSgov/design-system"
               className="c-navigation__bottom-link ds-c-link"
             >

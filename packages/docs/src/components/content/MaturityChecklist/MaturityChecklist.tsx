@@ -1,4 +1,5 @@
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
+import linkAnalytics from '../../../helpers/linkAnalytics';
 
 interface MaturityChecklistProps {
   // Accessibility
@@ -29,7 +30,10 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
   <section>
     <p>
       For more information about how we tested and validated our work for each checklist item,{' '}
-      <a href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md">
+      <a
+        onClick={linkAnalytics}
+        href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md"
+      >
         read our component maturity documentation
       </a>
       .
