@@ -10,5 +10,15 @@
     "baseUrl": ".",
     "skipLibCheck": true
   },
-  "include": ["packages/**/src/**/*", ".storybook/**/*"]
+  "include": ["packages/**/src/**/*", ".storybook/**/*"],
+  "exclude": [
+    "**/*.test.{js,jsx,ts,tsx}",
+    "**/*.test.interaction.{js,jsx,ts,tsx}",
+    "**/*.spec.{js,jsx,ts,tsx}",
+    "**/*.d.{js,jsx,ts,tsx}",
+    "**/*.stories.{js,jsx,ts,tsx}",
+    "**/setupTests.{js,jsx,ts,tsx}",
+    "**/__mocks__/**/*",
+    "**/__tests__/**/*"
+  ]
 }
