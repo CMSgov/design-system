@@ -18,6 +18,7 @@ import '../../styles/index.scss';
 import { getThemeData } from './SideNav/themeVersionData';
 import ThemeVersionSection from './SideNav/ThemeVersionSection';
 import FilterDialogManager from './FilterDialog/FilterDialogManager';
+import linkAnalytics from '../../helpers/linkAnalytics';
 
 interface LayoutProps {
   /**
@@ -116,7 +117,7 @@ const Layout = ({
 
       <div className="ds-l-row ds-u-margin--0 full-height">
         <FilterDialogManager>
-          <SideNav location={location} />
+          <SideNav location={location} onClick={linkAnalytics} />
           <div className="ds-u-md-display--none ds-u-padding-x--3 ds-u-padding-top--2">
             <ThemeVersionSection />
           </div>

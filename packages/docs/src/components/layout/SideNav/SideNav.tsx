@@ -22,11 +22,23 @@ interface SideNavProps {
 /**
  * A wrapper for the gatsby link to handle internal site navigation
  */
-const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => (
-  <Link onClick={linkAnalytics} to={props.href} {...props}>
-    {props.children}
-  </Link>
-);
+const GatsbyLink = (props: any /* See VerticalNavItemLabel.tsx */) => {
+  const { onClick, href, ...restProps } = props;
+
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (onClick) {
+      onClick(event);
+    }
+    // Always fire analytics
+    linkAnalytics(event);
+  };
+
+  return (
+    <Link onClick={handleClick} to={href} {...restProps}>
+      {restProps.children}
+    </Link>
+  );
+};
 
 /**
  * DocSiteNav
