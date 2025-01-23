@@ -94,7 +94,7 @@ const customComponents = (theme) => ({
       return <ThirdPartyExternalLink analytics={true} origin="design.cms.gov" {...props} />;
     }
     if (href.includes('github.com/CMSgov/design-system') || href.startsWith('https:')) {
-      return <a href={href} {...restProps} />;
+      return <a onClick={linkAnalytics} href={href} {...restProps} />;
     } else {
       return <Link onClick={linkAnalytics} to={href} {...restProps} />;
     }
