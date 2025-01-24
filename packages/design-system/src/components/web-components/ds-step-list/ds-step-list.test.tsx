@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { stepListStepData } from '../../StepList/StepList.stories';
+import { stepListStepData } from '../../StepList/__mocks__/stepListStepData';
 import './ds-step-list';
 
 // Modify stepListStepData to include sub-sub steps.

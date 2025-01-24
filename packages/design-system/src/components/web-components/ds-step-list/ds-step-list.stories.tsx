@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
-import { stepListStepData } from '../../StepList/StepList.stories';
+import { stepListStepData } from '../../StepList/__mocks__/stepListStepData';
 import './ds-step-list';
 
 const meta: Meta = {
