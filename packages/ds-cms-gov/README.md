@@ -6,7 +6,7 @@ The _CMS.gov Design System_ contains shared design and front-end development res
 
 ## Usage
 
-For documentation on installation and usage, please refer to [our documentation site](https://design.cms.gov/getting-started/developers/installation/?theme=cmsgov).
+For documentation on installation and usage, please refer to [our documentation site](https://design.cms.gov/getting-started/for-developers/?theme=cmsgov#getting-the-design-system-assets).
 
 ## Development
 
