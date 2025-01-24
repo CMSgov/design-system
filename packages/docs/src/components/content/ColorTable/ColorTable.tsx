@@ -45,7 +45,8 @@ const ColorTable: FC<ColorProps> = ({ colorCategory, theme, exactMatch }) => {
           <AccordionItem heading="Available Colors" defaultOpen={false}>
             <p className="ds-u-margin-bottom--2">
               These colors are available as part of the system palette, but are not currently used
-              in existing components. Using these colors? Let the DS team know.
+              in existing components. Using these colors?{' '}
+              <a href="https://confluence.cms.gov/x/U26MRw">Let the DS team know.</a>
             </p>
             {availableColors.map(({ name, attributes }) => (
               <ColorCard key={name} attributes={attributes} />
