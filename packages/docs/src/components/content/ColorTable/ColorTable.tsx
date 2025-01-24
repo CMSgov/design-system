@@ -1,8 +1,7 @@
 import { Accordion, AccordionItem } from '@cmsgov/design-system';
-import { ColorCard } from './ColorCard';
 import { FC, PropsWithChildren } from 'react';
-import { clientOnly } from '../../../helpers/clientOnly';
 import { ThemeName, determineColorCategoryUsageByTheme } from '../../../helpers/themeTokens';
+import { ColorCard } from './ColorCard';
 
 interface ColorProps extends PropsWithChildren {
   /**
@@ -19,7 +18,7 @@ interface ColorProps extends PropsWithChildren {
   exactMatch?: boolean;
 }
 
-const ColorTable: FC<ColorProps> = clientOnly(({ colorCategory, theme, exactMatch }) => {
+const ColorTable: FC<ColorProps> = ({ colorCategory, theme, exactMatch }) => {
   const { activeColors, availableColors } = determineColorCategoryUsageByTheme({
     colorCategory,
     themeName: theme,
@@ -56,6 +55,6 @@ const ColorTable: FC<ColorProps> = clientOnly(({ colorCategory, theme, exactMatc
       )}
     </>
   );
-});
+};
 
 export default ColorTable;
