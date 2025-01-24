@@ -8,7 +8,7 @@ The _HealthCare.gov Design System_ contains shared design and front-end developm
 
 ## Usage
 
-For documentation on installation and usage, please refer to [our documentation site](https://design.cms.gov/getting-started/developers/installation/?theme=healthcare).
+For documentation on installation and usage, please refer to [our documentation site](https://design.cms.gov/getting-started/for-developers/?theme=healthcare#getting-the-design-system-assets).
 
 ## Contributing
 

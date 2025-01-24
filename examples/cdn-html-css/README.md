@@ -7,7 +7,7 @@ This shows the usage of CMS design system components on a pure HTML/CSS page wit
 - using responsive classes
 - loading the core CMSDS styles and a theme definition from the CDN
 
-For more information about the setup, see [documentation for using assets from our CDN](https://design.cms.gov/getting-started/developers/installation?theme=core#utilize-the-cdn).
+For more information about the setup, see [documentation for using assets from our CDN](https://design.cms.gov/getting-started/for-developers/#option-2-reference-assets-from-the-cdn).
 
 ## Getting started
 
