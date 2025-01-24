@@ -35,4 +35,8 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   />
 );
 
-define('ds-button', () => Wrapper, { attributes, events: ['onClick', onAnalyticsEvent] });
+define('ds-button', () => Wrapper, {
+  attributes,
+  events: ['onClick', onAnalyticsEvent],
+  shadow: true,
+});

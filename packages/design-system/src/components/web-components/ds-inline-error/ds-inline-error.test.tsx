@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import './ds-inline-error';
+import { createTestRenderer } from '../__tests__/rendering';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -11,25 +11,25 @@ declare global {
 }
 /* eslint-enable */
 
-function renderInlineError(props = {}) {
-  return render(<ds-inline-error {...props}>Foo</ds-inline-error>);
-}
+const view = createTestRenderer('ds-inline-error', (attrs = {}) => (
+  <ds-inline-error {...attrs}>Foo</ds-inline-error>
+));
 
 describe('InlineError', () => {
   it('should render a default inline-error', () => {
-    const { asFragment } = renderInlineError();
-    expect(asFragment()).toMatchSnapshot();
+    const { shadowRoot } = view();
+    expect(shadowRoot.firstChild).toMatchSnapshot();
   });
 
   it('should apply an inverse class', () => {
-    renderInlineError({ inversed: true });
-    const inlineError = screen.getByText('Foo');
+    const { shadowRoot } = view({ inversed: true });
+    const inlineError = shadowRoot.firstChild as HTMLElement;
     expect(inlineError.className).toContain('ds-c-inline-error--inverse');
   });
 
   it('should apply custom classes', () => {
-    renderInlineError({ 'class-name': 'bar' });
-    const inlineError = screen.getByText('Foo');
+    const { shadowRoot } = view({ 'class-name': 'bar' });
+    const inlineError = shadowRoot.firstChild as HTMLElement;
     expect(inlineError.className).toContain('bar');
   });
 });

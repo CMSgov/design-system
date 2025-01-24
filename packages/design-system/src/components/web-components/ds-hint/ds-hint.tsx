@@ -13,4 +13,4 @@ const Wrapper = ({ inversed, rootId, ...otherProps }: WrapperProps) => (
   <Hint {...otherProps} inversed={parseBooleanAttr(inversed)} id={rootId} />
 );
 
-define('ds-hint', () => Wrapper, { attributes });
+define('ds-hint', () => Wrapper, { attributes, shadow: true });

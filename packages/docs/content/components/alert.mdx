@@ -13,107 +13,50 @@ medicare:
   figmaNodeId: 6-80
 ---
 
-import { Badge, CloseIconThin } from '@cmsgov/design-system';
+import { Alert, Badge, CloseIconThin } from '@cmsgov/design-system';
 
 ## Examples
 
 ### Informational (Default)
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed. Provides additional information, such as definitions, explanations, or criteria, that the user may find helpful as they answer questions with unfamiliar terminology or policy considerations.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Does not require an icon.
-
-Provides supplementary information, or highlights a tool or step available to the user, that may be helpful to users regarding their current action or task, but is optional or not critical. Can provide guidance on what the user needs to do to proceed.
-
-</ThemeContent>
+The informational alert provides supplementary information or highlights a tool or step available
+to the user to help them complete their current action or task. It’s non-critical or optional
+messaging that gives guidance on what the user needs to do to proceed.
 
 <StorybookExample componentName="alert" storyId="components-alert--default" />
 
 ### Error
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Requires an icon.
-
-Informs users of an error or critical failure. Often used to block them from proceeding until they resolve the issue including system alerts.
-
-</ThemeContent>
+The error alert informs users of an error or critical failure. This alert is often used to block
+users from proceeding until they resolve the issue including system alerts.
 
 <StorybookExample componentName="error alert" storyId="components-alert--error" />
 
 ### Warning
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone. Highlights information a user should be aware of in order to help them avoid taking an action that is likely to result in a negative outcome or understand when content/data is missing from the page.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Requires an icon.
-
-Informs users that their entry or selection may have unexpected or undesirable results, some of which may not be easily undone.
-
-</ThemeContent>
+The warning alert informs users that their entry or selection may have unexpected or undesirable
+results, some of which may not be easily undone.
 
 <StorybookExample componentName="warning alert" storyId="components-alert--warning" />
 
 ### Success
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Confirms the successful completion of a step or task, or receipt of information provided by the user. Suggests a path forward that may be beneficial to the user, based on their selections or entries.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Does not require an icon.
-
-Confirms the successful completion of a step or task, or receipt of information provided by the user.
-
-</ThemeContent>
+The success alert confirms the successful completion of a step or task, or receipt of information
+provided by the user.
 
 <StorybookExample componentName="success alert" storyId="components-alert--success" />
 
-<ThemeContent onlyThemes={['medicare']}>
-
-### Note
-
-Not in the design system yet.
-
-Does not require an icon.
-
-Explains concepts which may include math or maybe not.
-
-</ThemeContent>
-
 ### Lightweight
+
+<ThemeContent onlyThemes={['core', 'cmsgov', 'healthcare']}>
+  The lightweight alert highlights information that is not as urgent as informational alerts.
+</ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
 <Badge variation="alert">
   <CloseIconThin /> Unused by Medicare.
 </Badge>
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Used to show important but not as urgent messages as standard alerts.
 
 </ThemeContent>
 
@@ -125,87 +68,143 @@ Used to show important but not as urgent messages as standard alerts.
 
 ## Guidance
 
-### Usage
-
-- Don’t overdo it — too many notifications will either overwhelm or annoy the user and are likely to be ignored.
-- Write the message in concise, human readable language; avoid jargon and computer code.
-- Don’t include notifications that aren’t related to the user’s current goal.
-- When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
-- Be mindful of other elements on the page that may compete for the user’s attention.
-
 ### When to use
 
-- As a validation message that alerts someone that they just did something that needs to be corrected or as confirmation that a task was completed successfully.
-- As a callout or notification for important or timely information. This includes errors, warnings, and general information.
-- Drawing focus to an error or an incomplete task by prompting the user to review or take other action.
-- Confirming the successful competition of a task.
-- Providing key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
+#### Informational
 
-<ThemeContent onlyThemes={['medicare']}>
+**On Forms**: To provide key supplementary or contextual information to support the successful completion of tasks or aid overall comprehension.
+**On Static Pages**: To highlight recent, critical changes.
 
-### Don't use
+Examples:
 
-- You need to display alerts that aren’t related to the user’s current goal.
+- To provide additional information such as explanations of criteria the user needs to meet
+- To highlight new information available
 
-</ThemeContent>
+Lightweight informational alert may be used if information is helpful, but not critical or necessary to complete the task.
+
+#### Error
+
+**On Forms**: To draw focus to an error or an incomplete task by prompting the user to review or take other action.
+
+Examples:
+
+- To alert a user of missing form entry
+- To alert a user of incorrect form entry
+- To alert a user of broader system issues
+
+Never use error alerts on static pages.
+
+#### Warning
+
+**On Forms**: To call out or notify a user of risk or important information prior to completing the action.
+
+**On Static Pages**: To notify users of scheduled website maintenance or unexpected system outage.
+
+Examples:
+
+- To warn a user of potential negative consequences of a certain action
+- To warn a user of unintended results
+- To encourage a user to double check their choices
+- To highlight information that a user should be aware of
+
+#### Success
+
+**On Forms**: To confirm that a task was completed successfully.
+
+Examples:
+
+- To confirm submission of an application
+- To offer a user positive feedback, such as a congratulatory note
+- To guide the user to the next step in a multi-step process
+
+Never use success alerts on static pages.
+
+### Guidelines
+
+- Don’t overdo it—Limit alerts to no more than 2 per screen. Too many notifications won’t be read, as they can overwhelm and annoy the user.
+- Only include notifications that relate to the user’s current goal.
+- Be mindful of other elements on the page that may compete for the user’s attention.
+- On forms, always include in-line validation in addition to any error alerts that
+  appear at the top of the form.
+- If the error alert relates to specific text fields, also display the impacted fields in an
+  error state.
 
 ### When to consider alternatives
 
-- On long forms, always include in-line validation in addition to any error messages that appear at the top of the form. When possible, simplify forms by rewriting and where possible, splitting long forms across multiple pages
+- For less critical messages or less-urgent information, consider tooltips, hint text, or inline help text.
+- When the goal is to guide user input, utilizing hint text or inline help can be more effective in providing real-time guidance within form fields.
 - If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
 - When you need to display content that isn't related to the user’s current goal.
 
-**When the alert is for an error:**
-
-- Be polite in error messages — don’t place blame on the user.
-- Users generally won’t read documentation but will read a message that helps them resolve an error; include some educational material in your error message.
-- If the error relates to specific text fields, give these fields an error state as well.
-
 ### Display & behavior
 
-- Alerts are static and shouldn't be associated with a timer or dismiss button.
-- Can be displayed statically on page load or dynamically loaded.
+- Alerts may be displayed statically on a page, appearing immediately when the webpage is first loaded, or dynamically loaded on a page, appearing based on specific conditions or user interactions, like clicking a button, submitting a form, or fulfilling certain criteria on the page.
+- Alerts with icons are preferred. An alert doesn’t need to include an icon if it requires a large amount of content. Such instances should be rare. Validate the design and spacing on mobile to help make this decision.
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+- Don’t use alerts with a timer or dismiss button.
 
-<ThemeContent onlyThemes={['healthcare']}>
+### Content guidelines
 
-- Having icons is the preferred use for alerts. Some alerts might have a large amount of content and may need the extra space and in those cases the icon can be removed. Removing the icon should be considered a exception. Validate the design and spacing on mobile to help make this decision.
+#### Guidelines
 
-### Design guidelines
+- Keep alerts short—Use the fewest words possible to convey the concept or issue.
+  - Best practice is no more than 2-3 short sentences.
+  - If longer, consider adding a link to a help drawer to provide more details.
+- Use plain language, active voice, and imperative style when providing directions.
+- Avoid jargon and computer code, like “Message 1234,” or code snippets, such as -h, -
+  p 8080, -d /var/www/html.
+- Alert content can include:
+  - A heading (not required)
+  - Navigational links
+  - “Trigger words” to open help drawer for more details o Bulleted or numbered lists
+- [Get more details from 18 F on writing in active voice.](https://content-guide.18f.gov/active-voice/)
 
-#### Placement
+#### Heading content
 
-- Place all alerts below the main page title.
-- Default alerts provide more impact and should be used sparingly. Focus on using default alerts as top-level elements.
-  - Exception: Warning alerts can be used as needed within the page.
-- Lightweight alerts are more targeted and should be focused on specific elements within the context of the page.
+- Alert headings are optional, but preferred. They draw attention and frame the information in the alert.
+- Bold alert headings and use sentence case.
+- Don’t include punctuation, unless it’s a question.
 
-</ThemeContent>
+#### Content for error alerts
+
+- Help the user correct the error —Don’t place blame on the user.
+- Keep error alerts short, using the fewest words possible to describe what went
+  wrong and what the user needs to do.
+- Alerts support various types and lengths of content from ~45 to ~80 characters
+  wide.
+- When writing error alerts, use:
+  - Plain language and active voice. Use contractions.
+  - Imperative style for directions to correct the error or action to take.
+  - Don’t use words like "please" or "sorry," or informal language like “oops.”
+  - Sentence case and include punctuation. Don’t use exclamation points.
+- If action to correct error has multiple steps or is complex, consider adding trigger text for a help drawer to provide more details.
+- [Get details about inline error messages that pair with error alerts.](https://design.cms.gov/components/inline-error/)
 
 ### Accessibility
 
-- Use alerts sparingly as to avoid creating too much "noise" in screen readers, making it difficult to understand the overall layout of the page.
-- Users who are viewing the content need it to be placed in an effective location and to draw attention even when CSS is turned off. Content can help here too, using word choices that make the importance of the message clear.
-- Users who hear this content through assistive technology, such as a screen reader, will need to be alerted when the alert component visually appears, and that can be done using `aria-live`.
-- Users who are using a keyboard to navigate the page will need to be able to access the alert and its content in the right order.
-- Do not visually hide alert messages on the page and then make them visible when they are needed. Users of older assistive technologies may still be able to perceive the alert messages even if they are not currently applicable.
-- Use the <abbr title="Accessible rich internet applications">ARIA</abbr> `role="alert"` to inform assistive technologies of a time-sensitive and important message that is not interactive. If the message is interactive, use the `role="alertdialog"` instead. Both include an implicit use of `aria-live="assertive"`. Refer to the [Dialog component’s full documentation](/components/modal-dialog/) when using `role="alertdialog"`.
-- If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an `aria-label` or `aria-labelledby` attribute.
+#### Accessibility
 
-<ThemeContent onlyThemes={['healthcare']}>
+- Use alerts sparingly to avoid creating too much "noise" in screen readers, making it difficult to understand the overall layout of the page.
+- Place alerts in an effective location to draw attention even when CSS is turned off. Content helps also to make the importance of the message clear.
+- Immediately notify users relying on assistive tech, like screen readers, when an alert appears.
+- Users who are using a keyboard to navigate the page must be able to access the alert and its content in the right order.
+- Don’t visually hide alert messages on the page and then make them visible when needed. Users of older assistive technologies may still be able to perceive the alert messages even if they aren’t currently applicable.
+- If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an aria-label or aria-labeled by attribute.
 
-#### For dynamic alerts
+#### Accessibility for dynamic alerts
 
-- If dynamically loaded, be mindful of when the alert displays on the page. For example, an alert could appear on a page due to an error or progressive disclosure. Where and how the content appears visually should align with how and when a screen reader user hears the content. Errors need immediate attention, but content through progressive disclosure may not.
+- If dynamically loading an alert, be mindful of when the alert displays on the page.
+  - For example, an alert could appear on a page due to an error or progressive disclosure. Synchronize the visual presentation of dynamically loaded content with its auditory presentation by screen readers.
+  - Errors need immediate attention, but content through progressive disclosure may not.
 - When a user's actions require dynamically displaying an alert, such as with success or error states, inject the alert inside an already existing `<div>` with `aria-live="polite"` and `aria-relevant="additions removals"` or `role="alert"`. These ARIA attributes ensure screen readers will announce alerts that have been added or updated dynamically.
 
-  - For example, your empty `<div>` on page load would appear as:
+  - Your empty `<div>` on page load would appear as:
 
   ```html
   <div aria-live="polite" aria-relevant="additions removals"></div>
   ```
 
-  And when the user performs an action that displays an alert, add the alert to the existing `<div>`:
+  - When the user performs an action that displays an alert, add the alert to the existing `<div>`:
 
   ```html
   <div aria-live="polite" aria-relevant="additions removals">
@@ -216,10 +215,8 @@ Used to show important but not as urgent messages as standard alerts.
 - The value of the `aria-live` attribute is used to update assistive technologies on the degree of importance.
   - `aria-live="polite"` will notify users of updates but generally do not interrupt the current task, with the updates having a low priority.
   - `aria-live="assertive"` will immediately notify the user, potentially clearing the speech queue of previous updates. Don't use the assertive value unless the interruption is imperative.
-  - Use `aria-relevant="additions removals"` (tailored to the appropriate value) to communicate the types of changes that have occurred to an `aria-live` region. Assistive technologies only need to be informed of content removal when its removal represents an important change.
+  - `aria-relevant="additions removals"` (tailored to the appropriate value) will communicate the types of changes that occurred to an aria-live region. You only need to inform assistive technologies of content removal when the removal represents an important change.
 - If you choose to shift focus to the alert, be mindful that using other techniques like `role="alert"`, and `aria-live="polite"` will cause some browser and screen reader combinations to read out the content more than once. Typically, shifting focus alone will be enough to alert screen readers of the content.
-
-</ThemeContent>
 
 #### Accessibility testing
 
@@ -230,7 +227,7 @@ Used to show important but not as urgent messages as standard alerts.
 
 ##### Keyboard testing
 
-- When using features that trigger the display of an alert, I should see or hear the alert announced, but focus DOES NOT transfer automatically when the alert appears.
+- When using features that trigger the display of an alert, I should see or hear the alert announced, but focus DOESN'T transfer automatically when the alert appears.
 - When using features that trigger the display of an [alert dialog (modal)](/components/modal-dialog/), I should see or hear the alert announced, and focus DOES transfer automatically when the alert appears.
 
 ##### Screen reader testing
@@ -242,82 +239,9 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
   - It identifies itself as an alert
 - Navigating the page announces the accessible name of the alert, followed by the alert content.
 
-<ThemeContent onlyThemes={['healthcare']}>
+### Report an accessibility bug
 
-### Content
-
-- Consider the amount of text placed in an alert. Aim for the shortest possible amount of text to convey the concept or issue.
-- Write the message in concise, plain language; avoid jargon and computer code.
-- Alerts support various types and lengths of content from ~45 to ~80 characters wide, including lists and navigational links.
-
-#### Heading content
-
-- Is bolded and acts as the title of the alert
-- Helps to group or frame the information in the alert
-- Shouldn't end in a period
-
-#### Error content
-
-- Describe what went wrong and what the the user needs to do.
-- Use the fewest words possible (i.e., don't use "please").
-- Body copy should end with a period.
-- Include some educational material or guidance on what action the user needs to take because they generally won’t read documentation but will read a message that helps them resolve an error.
-- Use active voice. It helps reduce the number of words needed to convey your message.
-- Use contractions where applicable (especially negative contractions like won't, don't, can't, shouldn't). People sometimes miss "not" in text so contractions help with clarity.
-
-<table class="ds-c-table ds-c-table--compact ds-c-md-table--stacked" role="table" width="100%">
-  <thead role="rowgroup">
-    <tr role="row">
-      <th class="ds-u-fill--success-lightest" role="columnheader" scope="col">
-        Use
-      </th>
-      <th class="ds-u-fill--error-lightest" role="columnheader" scope="col">
-        Don't use
-      </th>
-    </tr>
-  </thead>
-  <tbody role="rowgroup">
-    <tr role="row">
-      <td role="cell" data-title="Document title" width="50%">
-        Use active voice: "Access your application...". Start with an action verb whenever possible.
-      </td>
-      <td role="cell" data-title="Description" width="50%">
-        Use passive voice: "Your application can be accessed by...."
-      </td>
-    </tr>
-    <tr role="row">
-      <td role="cell" data-title="Document title" width="50%">
-        Contractions
-      </td>
-      <td role="cell" data-title="Description" width="50%">
-        These specific contractions: "it'll, that’ll, why’s, how’s, you’d"
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-</ThemeContent>
-
-## Learn more
-
-- [18F Content Guide \- Active voice](https://content-guide.18f.gov/active-voice/)
-
-## Component maturity
-
-<MaturityChecklist
-  a11yStandards={true}
-  color={true}
-  forcedColors={true}
-  screenReaders={true}
-  keyboardNavigable={null}
-  storybook={true}
-  responsive={true}
-  spanish={true}
-  completeUiKit={false}
-  responsiveUiKit={false}
-  tokensInCode={true}
-  tokensInSketch={true}
-/>
+If you encounter a bug with the accessibility of the alert component, [refer to our refer to our bug reporting confluence page](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323) and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
 
 ## Code
 
@@ -338,3 +262,20 @@ The following CSS variables can be overridden to customize Alert components:
 ### Analytics
 
 This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={null}
+  storybook={true}
+  responsive={true}
+  spanish={true}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>
