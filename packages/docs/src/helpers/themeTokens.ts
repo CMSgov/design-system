@@ -117,7 +117,7 @@ type ColorAttributes = {
   componentUsage?: string[];
 };
 
-type colorCategoryUsage = {
+type ColorCategoryUsage = {
   name: string;
   attributes: {
     key: string;
@@ -146,7 +146,7 @@ const formatters = {
   attributes: (value: string | string[]) => {
     return typeof value === 'string' ? value : value.join(', ');
   },
-  colors: (colors: ColorAttributes[]): colorCategoryUsage[] => {
+  colors: (colors: ColorAttributes[]): ColorCategoryUsage[] => {
     return colors.map((color) => {
       const attributes = Object.entries(color).map(([key, value]) => {
         const labelLookup = {
@@ -219,6 +219,56 @@ const getHexCodesByColorNames = (colorNames: string[]) => {
     .flat();
 };
 
+const includeNamedColorsInfo = ({
+  namedColors,
+  hexCodes,
+}: {
+  namedColors: ColorAttributes[];
+  hexCodes: {
+    hex: string;
+  }[];
+}): ColorAttributes[] => {
+  return hexCodes.map(({ hex }) => {
+    // namedColors potentially contains the component usage and css for each hex code
+    const match = namedColors.find((color) => color.hex === hex);
+    return {
+      ...match,
+      hex,
+    };
+  });
+};
+
+const filterHexCodesByComponentUsageAndColor = ({
+  hexCodes,
+  namedColors,
+}: {
+  hexCodes: ColorAttributes[];
+  namedColors: ColorAttributes[];
+}) => {
+  return hexCodes.filter(({ hex }) => {
+    // If the hex code is used in a component, don't include it in the list of available colors
+    const matchByColorAndIsUsed = namedColors.some(({ hex: namedColorHex, componentUsage }) => {
+      const matchedByColor = hex === namedColorHex;
+      const isUsed = Boolean(componentUsage.length);
+      return matchedByColor && isUsed;
+    });
+    return !matchByColorAndIsUsed;
+  });
+};
+
+const matchAgainstColorCategories = ({
+  hexCodes,
+  colorCategories,
+}: {
+  hexCodes: ColorAttributes[];
+  colorCategories: string[];
+}) => {
+  // only return the values where the css variable overlaps with color categories
+  return hexCodes.filter(({ css }) => {
+    return colorCategories.some((category) => css.includes(category));
+  });
+};
+
 export function determineColorCategoryUsageByTheme({
   colorCategory,
   themeName,
@@ -227,7 +277,7 @@ export function determineColorCategoryUsageByTheme({
   colorCategory: string | string[];
   themeName: ThemeName;
   exactMatch?: boolean;
-}): { activeColors: colorCategoryUsage[]; availableColors: colorCategoryUsage[] } {
+}): { activeColors: ColorCategoryUsage[]; availableColors: ColorCategoryUsage[] } {
   const filename = filenameFromTheme(themeName);
   const flattenedThemeTokens = Object.entries(tokensByFile[filename]);
   const flattenedComponents = flattenedThemeTokens.filter(([key]) => key.includes(`component.`));
@@ -257,22 +307,14 @@ export function determineColorCategoryUsageByTheme({
   const systemColors = getSystemColorsByCategoryAndTheme({ colorCategories, themeName });
   const systemColorHexCodes = getHexCodesByColorNames(systemColors);
 
-  const systemHexCodesWithMoreInfo = systemColorHexCodes.map(({ hex }) => {
-    // namedColors potentially contains the component usage and css for each hex code
-    const match = namedColors.find((color) => color.hex === hex);
-    return {
-      ...match,
-      hex,
-    };
+  const systemHexCodesWithMoreInfo = includeNamedColorsInfo({
+    hexCodes: systemColorHexCodes,
+    namedColors,
   });
 
-  // filter out hex codes that are used in components and don't already exist in usedColors
-  const filteredHexCodes = systemHexCodesWithMoreInfo.filter(({ hex }) => {
-    return !namedColors.some(({ hex: namedColorHex, componentUsage }) => {
-      const matchedByColor = hex === namedColorHex;
-      const isUsed = Boolean(componentUsage.length);
-      return matchedByColor && isUsed;
-    });
+  const filteredHexCodes = filterHexCodesByComponentUsageAndColor({
+    hexCodes: systemHexCodesWithMoreInfo,
+    namedColors,
   });
 
   const formattedHexCodes = filteredHexCodes.map(({ hex, css }) => ({
@@ -281,13 +323,15 @@ export function determineColorCategoryUsageByTheme({
     figma: formatters.figma(hex),
   }));
 
-  // if the `exactMatch` param is true, only return the values where the css variable overlaps with color categories
-  const unusedColors = formattedHexCodes.filter(({ css }) => {
-    return exactMatch ? colorCategories.some((category) => css.includes(category)) : true;
-  });
+  const unusedColors = exactMatch
+    ? matchAgainstColorCategories({
+        hexCodes: formattedHexCodes,
+        colorCategories,
+      })
+    : formattedHexCodes;
 
   return {
     activeColors: formatters.colors(usedColors),
-    availableColors: unusedColors ? formatters.colors(unusedColors) : [],
+    availableColors: formatters.colors(unusedColors),
   };
 }
