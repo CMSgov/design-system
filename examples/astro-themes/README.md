@@ -7,18 +7,18 @@ In this project, the design system package is installed as an npm dependency. Re
 ## Getting started
 
 1. Install packages at the root of this repository (see [root README](../../README.md))
-1. Start the application: `yarn start`
+1. Start the application: `npm run start`
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 Check out [the Astro documentation](https://docs.astro.build).

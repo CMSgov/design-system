@@ -5,7 +5,7 @@
  * To debug these in a browser, run the following command:
  *
  * ```
- * yarn playwright test --config tests/browser/interaction.config.ts --headed --debug --ignore-snapshots
+ * npx playwright test --config tests/browser/interaction.config.ts --headed --debug --ignore-snapshots
  * ```
  *
  * The `--ignore-snapshots` is important if you don't want it to fail the tests, because the

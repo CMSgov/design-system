@@ -23,8 +23,8 @@
 ### If this is a change to code:
 
 - [ ] Created or updated unit tests to cover any new or modified code
-- [ ] Verified that running both `yarn test:unit` and `yarn test:browser:all` were each successful
-- [ ] If necessary, updated unit-test snapshots (`yarn test:unit:update`) and browser-test snapshots (`yarn test:browser:all:update`)
+- [ ] Verified that running both `npm run test:unit` and `npm run test:browser:all` were each successful
+- [ ] If necessary, updated unit-test snapshots (`npm run test:unit:update`) and browser-test snapshots (`npm run test:browser:all:update`)
 
 ### If this is a change to documentation:
 

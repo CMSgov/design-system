@@ -33,7 +33,7 @@ async function insertTemplateContent(filePath: string) {
   await fs.promises.writeFile(filePath, updatedContent, fileEncodingOptions);
 
   try {
-    sh(`yarn prettier --write ${filePath}`);
+    sh(`npx prettier --write ${filePath}`);
   } catch (error) {
     // If we don't have prettier set up for this kind of file, we don't really care that
     // it didn't work. The prettier command will log its error to the terminal anyway.

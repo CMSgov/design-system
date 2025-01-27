@@ -2,10 +2,6 @@
 /packages/**/dist
 /examples/**/dist
 
-# Package managers
-**/package-lock.json
-/examples/*/yarn.lock
-
 /examples/cdn/js/*
 /examples/cdn/css/*
 /examples/cdn/fonts/*

@@ -8,32 +8,32 @@ The Gatsby-powered documentation site for the CMS family of design systems.
 
 The following scripts can be run from the `packages/docs` folder.
 
-`yarn install`
+`npm install`
 Installs dependencies for the doc site. Only needs to be run on first spin up of the project, or if new dependencies are installed.
 
-`yarn develop`
+`npm run develop`
 Runs the site locally at `http:localhost:8000/`
 Also runs the GraphiQL playground at `http://localhost:800/___graphql`.
 
-`yarn build`
+`npm run build`
 This builds a production-ready version of the site that can be deployed.
 
 The following scripts can be run from the root directory.
 
-`yarn install`
+`npm install`
 Installs dependencies for all packages. Only needs to be run on first spin up of the project, or if new dependencies are installed.
 
-`yarn start:gatsby`
+`npm run start:gatsby`
 Runs the site locally at `http:localhost:8000/`
 Also runs the GraphiQL playground at `http://localhost:800/___graphql`.
 
-`yarn build:gatsby`
+`npm run build:gatsby`
 This builds a production-ready version of the site that can be deployed.
 
-`yarn serve:gatsby`
-This serves the files built from `yarn build:gatsby`.
+`npm run serve:gatsby`
+This serves the files built from `npm run build:gatsby`.
 
-`yarn build-storybook:gatsby`
+`npm run build-storybook:gatsby`
 This build storybook in production mode and moves files to `packages/docs` to be served as a sub-route of the documentation site.
 
 ## Project Structure

@@ -18,7 +18,7 @@ Code is checked with the [Axe Core plugin (external link)](https://github.com/de
 
 You can use Storybook to test for WCAG violations and color blindness filters.
 
-Run `yarn test:a11y`
+Run `npm run test:a11y`
 
 ### Supports Forced Colors Mode (FCM)
 
@@ -59,7 +59,7 @@ Color blindness is tested using a color blindness simulator and visually inspect
 - Link visibility
 - Errors and warnings that might rely on color
 
-- Code - Run `yarn test:a11y`
+- Code - Run `npm run test:a11y`
 - Design - Designs are verified using a plugin within Sketch to check color contrast and color blindness.
 
 ### Screen readers

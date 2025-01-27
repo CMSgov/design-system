@@ -6,7 +6,7 @@ const DOCKER_IMAGE = 'mcr.microsoft.com/playwright:v1.49.1-noble';
 
 function verifyPlaywrightInstalled() {
   try {
-    sh('yarn playwright --version');
+    sh('npx playwright --version');
   } catch (error) {
     console.log('Playwright command is unavailable. Install it with `npx playwright install`.');
     process.exit(1);
@@ -16,7 +16,7 @@ function verifyPlaywrightInstalled() {
 (async () => {
   // Get command line args
   const argv = await yargs(hideBin(process.argv))
-    .scriptName('yarn test:browser')
+    .scriptName('npm run test:browser')
     .parserConfiguration({ 'unknown-options-as-args': true })
     .options({
       // Note that you can negate it with --no-build
@@ -46,9 +46,9 @@ function verifyPlaywrightInstalled() {
   // Build whatever is necessary to run these tests
   if (argv.build) {
     if (argv.config.includes('examples.config.ts')) {
-      shI('yarn', ['build:examples']);
+      shI('npm', ['run', 'build:examples']);
     } else {
-      shI('yarn', ['build:storybook']);
+      shI('npm', ['run', 'build:storybook']);
     }
   }
 
@@ -65,7 +65,7 @@ function verifyPlaywrightInstalled() {
       // Environment vars need to be passed to the docker container
       ...(argv.smoke ? ['--env', 'SMOKE=true'] : []),
       DOCKER_IMAGE,
-      ...['yarn', 'playwright', ...playwrightArgs],
+      ...['npx', 'playwright', ...playwrightArgs],
     ];
 
     // And run docker
@@ -85,8 +85,8 @@ function verifyPlaywrightInstalled() {
       };
     }
 
-    // Run Playwright directly through yarn
-    result = shI('yarn', ['playwright', ...playwrightArgs], config);
+    // Run Playwright directly through npm
+    result = shI('npx', ['playwright', ...playwrightArgs], config);
   }
 
   if (result.error || result.status !== 0) {
