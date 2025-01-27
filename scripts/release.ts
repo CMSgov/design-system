@@ -96,15 +96,7 @@ async function bumpVersions() {
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
-
   sh('git add -u');
-
-  // Delete lingering package-lock.json if it exists:
-  try {
-    sh(`rm ${root}/package-lock.json`);
-  } catch {
-    console.log('No package-lock.json at the top level. Moving on...');
-  }
   console.log(c.green('Updated versions.json.'));
 
   // Determine our tag names and create the publish commit
@@ -179,11 +171,11 @@ async function draftReleaseNotes() {
   const yes = await confirm({ message: `Would you like to draft some release notes?` });
   if (!yes) {
     console.log(c.green('Skipping release notes.'));
-    console.log(`You can come back to this later by running 'yarn release:notes'.`);
+    console.log(`You can come back to this later by running 'npm run release:notes'.`);
     return;
   }
 
-  shI('yarn', ['release:notes']);
+  shI('npm', ['run', 'release:notes']);
 }
 
 function printNextSteps() {
@@ -200,7 +192,7 @@ function printNextSteps() {
 (async () => {
   // Get command line args
   const argv = await yargs(hideBin(process.argv))
-    .scriptName('yarn release')
+    .scriptName('npm run release')
     .options({
       undo: {
         alias: 'u',
@@ -228,7 +220,9 @@ function printNextSteps() {
       console.error(error.message);
       console.log('-------------------------');
       console.log(
-        c.yellow(`You can run ${c.reset('`yarn release --undo`')} to undo changes made so far.`)
+        c.yellow(
+          `You can run ${c.reset('`npm run release -- --undo`')} to undo changes made so far.`
+        )
       );
     }
     process.exit(1);

@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "copyThemes": "copyfiles -u 4 ../design-system-tokens/dist/css-vars/*-theme.css ./static/themes/",
-    "build": "yarn copyThemes && gatsby build",
+    "build": "npm run copyThemes && gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby clean && gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve",
