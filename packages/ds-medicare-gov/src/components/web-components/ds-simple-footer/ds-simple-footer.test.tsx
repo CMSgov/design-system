@@ -1,4 +1,5 @@
-import { render, screen, waitFor } from '@testing-library/preact';
+import React from 'react';
+import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-simple-footer';
 
