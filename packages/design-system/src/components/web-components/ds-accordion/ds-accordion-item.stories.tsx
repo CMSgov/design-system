@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -62,9 +63,9 @@ const Template = (args) => {
       action('ds-change')(event);
     };
     const item = document.querySelector('ds-accordion-item');
-    item.addEventListener('ds-change', onChange);
+    item?.addEventListener('ds-change', onChange);
     return () => {
-      item.removeEventListener('ds-change', onChange);
+      item?.removeEventListener('ds-change', onChange);
     };
   });
   return (

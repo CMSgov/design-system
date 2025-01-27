@@ -1,3 +1,4 @@
+import React from 'react';
 import { createTestRenderer } from '../__tests__/rendering';
 import './ds-accordion';
 import './ds-accordion-item';
@@ -17,18 +18,20 @@ describe('ds-accordion', () => {
   it('renders additional className', () => {
     const { shadowRoot } = renderAccordion({ 'class-name': 'ds-u-test' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
-    expect(accordion.classList).toContain('ds-u-test');
+    expect(accordion?.classList).toContain('ds-u-test');
   });
 
   it('renders with border classes when a bordered prop is set', () => {
     const { shadowRoot } = renderAccordion({ bordered: 'true' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
     expect(accordion).toHaveClass('ds-c-accordion--bordered');
-    const items = accordion.querySelectorAll('ds-accordion-item');
-    for (const item of items) {
-      const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
-      expect(contentEl).toHaveClass('ds-c-accordion__content--bordered');
+    const items = accordion?.querySelectorAll('ds-accordion-item');
+    if (items) {
+      for (const item of items) {
+        const shadowRoot = item.shadowRoot;
+        const contentEl = shadowRoot?.querySelector('.ds-c-accordion__content');
+        expect(contentEl).toHaveClass('ds-c-accordion__content--bordered');
+      }
     }
   });
 
@@ -36,11 +39,13 @@ describe('ds-accordion', () => {
     const { shadowRoot } = renderAccordion({ bordered: 'false' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
     expect(accordion).not.toHaveClass('ds-c-accordion--bordered');
-    const items = accordion.querySelectorAll('ds-accordion-item');
-    for (const item of items) {
-      const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
-      expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
+    const items = accordion?.querySelectorAll('ds-accordion-item');
+    if (items) {
+      for (const item of items) {
+        const shadowRoot = item.shadowRoot;
+        const contentEl = shadowRoot?.querySelector('.ds-c-accordion__content');
+        expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
+      }
     }
   });
 });

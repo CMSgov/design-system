@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta } from '@storybook/react';
 import { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
@@ -72,8 +73,9 @@ const Template = (args) => {
       });
     });
 
-    const handleAnalyticsEvent = (event: CustomEvent) => {
-      action('ds-click-link-analytics')(event);
+    const handleAnalyticsEvent = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      action('ds-click-link-analytics')(customEvent);
     };
 
     footer?.addEventListener('ds-click-link-analytics', handleAnalyticsEvent);

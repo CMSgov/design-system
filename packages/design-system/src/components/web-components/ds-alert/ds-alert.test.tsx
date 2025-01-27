@@ -1,3 +1,4 @@
+import React from 'react';
 import { config } from '../../config';
 import { getByRole, getByText } from '@testing-library/react';
 import './ds-alert';
@@ -54,7 +55,7 @@ describe('Alert', function () {
     // Need to query by class selector instead of role.
     // Role is both a prop and native HTML attr, so it appears in multiple places within the component and is hard to query for.
     const alert = shadowRoot.querySelector('.ds-c-alert');
-    expect(alert.className).toContain(className);
+    expect(alert?.className).toContain(className);
   });
 
   it('hides icon', () => {
@@ -94,14 +95,14 @@ describe('Alert', function () {
       const { shadowRoot } = renderAlert({ heading, variation: 'error' });
       const alert = getByRole(shadowRoot as any as HTMLElement, 'alert');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
+      expect(alert?.querySelector(`#${id}`)?.textContent).toContain(`Alert: ${heading}`);
     });
 
     it('falls back aria-labelledby to a11y label when no heading is provided', () => {
       const { shadowRoot } = renderAlert();
       const alert = getByRole(shadowRoot as any as HTMLElement, 'region');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain('Notice');
+      expect(alert?.querySelector(`#${id}`)?.textContent).toContain('Notice');
     });
   });
 
