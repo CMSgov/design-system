@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { TextField } from '@cmsgov/design-system';
+import { TextField, sendLinkEvent } from '@cmsgov/design-system';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { useStaticQuery, graphql } from 'gatsby';
 import { MdxQuery, SearchDataStore, SearchQuery } from '../helpers/graphQLTypes';
 import Layout from '../components/layout/Layout';
 import useTheme from '../helpers/useTheme';
+import { sendSearchInitiatedEvent } from '../helpers/analytics';
 
 const SearchPage = ({ location }: MdxQuery) => {
   const [query, setQuery] = useState('');
@@ -42,7 +43,9 @@ const SearchPage = ({ location }: MdxQuery) => {
             label="Enter your search terms below:"
             name="search-field"
             onChange={(evt) => {
-              setQuery(evt.target.value);
+              const { value } = evt.target;
+              setQuery(value);
+              sendSearchInitiatedEvent(value);
             }}
             value={query}
           />
@@ -57,16 +60,34 @@ const SearchPage = ({ location }: MdxQuery) => {
             <div>Search for &quot;{query}&quot; did not return any results.</div>
           )}
           <ul>
-            {results.map((result: SearchDataStore) => {
+            {results.map((result: SearchDataStore, resultIndex: number) => {
               let body = result.body;
               const strLoc = body.toLowerCase().indexOf(query.toLowerCase());
               body = body.slice(Math.max(strLoc - 160, 0), strLoc + 160);
               const re = new RegExp(query, 'gi');
               body = body.replace(re, `<mark>${query}</mark>`) + '...';
 
+              const sendAnalyticsEvent = () => {
+                sendLinkEvent({
+                  event_name: 'search_result_engaged',
+                  search_result_count: results.length.toString(),
+                  search_result_position: result.title,
+                  search_term: query,
+                  search_term_type: 'user_initiated',
+                } as any);
+              };
+
+              // I found that even though `result.id` is supposed to be defined in the
+              // results of `useFlexSearch`, it isn't. So I'm making up a unique key.
+              const key = `${resultIndex}-${result.title}`;
               return (
-                <li key={result.id}>
-                  <a href={location.origin + '/' + result.path + location.search}>{result.title}</a>
+                <li key={key}>
+                  <a
+                    href={location.origin + '/' + result.path + location.search}
+                    onClick={sendAnalyticsEvent}
+                  >
+                    {result.title}
+                  </a>
                   {/* eslint-disable-next-line react/no-danger -- Known-safe source */}
                   <p dangerouslySetInnerHTML={{ __html: body }} />
                 </li>

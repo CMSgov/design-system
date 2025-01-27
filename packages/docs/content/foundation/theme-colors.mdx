@@ -33,18 +33,7 @@ We chose colors that offer a range of uses and that meet or exceed standards in 
 
 The guidelines indicate how colors should be applied, noting where some should be utilized sparingly and with purpose for specific components like errors or messaging.
 
-<ColorExampleList
-  colorNames={[
-    'primary-lightest',
-    'primary-lighter',
-    'primary-light',
-    'primary',
-    'primary-dark',
-    'primary-darker',
-    'primary-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="primary" />
 
 ### Secondary colors
 
@@ -54,18 +43,7 @@ These are accent colors to provide additional lightness and style to pages looki
 
 </ThemeContent>
 
-<ColorExampleList
-  colorNames={[
-    'secondary-lightest',
-    'secondary-lighter',
-    'secondary-light',
-    'secondary',
-    'secondary-dark',
-    'secondary-darker',
-    'secondary-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="secondary" />
 
 ## Accent colors
 
@@ -73,45 +51,21 @@ Accent colors are used sparingly to support primary and secondary colors in desi
 
 ### Primary accent colors
 
-<ColorExampleList
-  colorNames={[
-    'accent-primary-lightest',
-    'accent-primary-lighter',
-    'accent-primary-light',
-    'accent-primary',
-    'accent-primary-dark',
-    'accent-primary-darker',
-    'accent-primary-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="accent-primary" />
 
 ## Neutral colors
 
-<ColorExampleList
-  colorNames={[
-    'white',
-    'gray-lightest',
-    'gray-lighter',
-    'gray-light',
-    'gray',
-    'gray-dark',
-    'gray-darker',
-    'gray-darkest',
-    'black',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory={["white", "gray", "black"]} />
 
 ## Text colors
 
-<ColorExampleList colorNames={['base']} preface="--color-" />
+<ColorTable colorCategory="base" exactMatch={true} />
 
 ## Background colors
 
 These colors are used largely for background blocks and large content areas. When alternating between tones, be sure to use enough contrast between adjacent colors.
 
-<ColorExampleList colorNames={['background', 'background-inverse']} preface="--color-" />
+<ColorTable colorCategory="background" />
 
 ## Status colors
 
@@ -120,66 +74,22 @@ Be cautious using these colors to signify something that may contradict what mos
 
 ### Informational
 
-<ColorExampleList
-  colorNames={[
-    'info-lightest',
-    'info-lighter',
-    'info-light',
-    'info',
-    'info-dark',
-    'info-darker',
-    'info-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="info" />
 
 ### Success
 
-<ColorExampleList
-  colorNames={[
-    'success-lightest',
-    'success-lighter',
-    'success-light',
-    'success',
-    'success-dark',
-    'success-darker',
-    'success-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="success" />
 
 ### Warn
 
-<ColorExampleList
-  colorNames={[
-    'warn-lightest',
-    'warn-lighter',
-    'warn-light',
-    'warn',
-    'warn-dark',
-    'warn-darker',
-    'warn-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="warn" />
 
 ### Error
 
-<ColorExampleList
-  colorNames={[
-    'error-lightest',
-    'error-lighter',
-    'error-light',
-    'error',
-    'error-dark',
-    'error-darker',
-    'error-darkest',
-  ]}
-  preface="--color-"
-/>
+<ColorTable colorCategory="error" />
 
 ## Focus colors
 
-<ColorExampleList colorNames={['focus-light', 'focus-dark']} preface="--color-" />
+<ColorTable colorCategory={["focus-light", 'focus-dark']} exactMatch={true} />
 
 <ColorContrastGuidelines />

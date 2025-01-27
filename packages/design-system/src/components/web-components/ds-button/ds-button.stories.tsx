@@ -12,6 +12,10 @@ import {
 export default {
   title: 'Web Components/ds-button',
   argTypes: {
+    'text content': {
+      control: 'text',
+      controlsOnly: true,
+    },
     'class-name': {
       description: 'Additional classes to be added to the root button element.',
       control: 'text',
@@ -34,7 +38,9 @@ export default {
     ...analyticsOverrideArgTypes,
     ...analyticsParentDataArgTypes,
   },
-  args: {},
+  args: {
+    'text content': 'Your button text is here',
+  },
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
@@ -49,7 +55,7 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = ({ 'text content': text, args }) => {
   useEffect(() => {
     const onClick = (event) => {
       action('ds-click')(event);
@@ -60,7 +66,7 @@ const Template = (args) => {
       button.removeEventListener('ds-click', onClick);
     };
   });
-  return <ds-button {...args}>{args.children ?? <>Your button text is here</>}</ds-button>;
+  return <ds-button {...args}>{text}</ds-button>;
 };
 
 export const Default = Template.bind({});

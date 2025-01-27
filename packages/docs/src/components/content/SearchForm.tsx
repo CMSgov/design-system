@@ -1,8 +1,17 @@
 import { Button, TextInput } from '@cmsgov/design-system';
+import { sendSearchInitiatedEvent } from '../../helpers/analytics';
 
 const SearchForm = ({ className }) => {
   return (
-    <form className={`ds-u-display--flex ${className ?? ''}`} action="/search" method="GET">
+    <form
+      className={`ds-u-display--flex ${className ?? ''}`}
+      action="/search"
+      method="GET"
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+        const formData = new FormData(event.target as HTMLFormElement);
+        sendSearchInitiatedEvent(formData.get('query').toString());
+      }}
+    >
       <TextInput
         type="search"
         size="medium"
