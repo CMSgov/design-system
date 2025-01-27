@@ -5,12 +5,15 @@ const express = require('express');
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      // aliasing @styles a shortcut to core styles directory
-      // aliasing fonts & images to catch relative paths defined in core styles
       alias: {
+        // aliasing @styles a shortcut to core styles directory
+        // aliasing fonts & images to catch relative paths defined in core styles
         '@styles': path.resolve(__dirname, '../design-system/src/styles'),
         '../fonts': path.resolve(__dirname, 'static/fonts'),
         '../images': path.resolve(__dirname, 'static/images'),
+        // Force gatsby-plugin-mdx to use the local version of @mdx-js/react instead of
+        // the version hoisted to the root of the workspace.
+        '@mdx-js/react': path.resolve(__dirname, 'node_modules/@mdx-js/react'),
       },
     },
   });
