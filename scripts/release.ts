@@ -96,15 +96,7 @@ async function bumpVersions() {
 
   // Update versions.json
   const currentVersionsByPackage = updateVersions();
-
   sh('git add -u');
-
-  // Delete lingering package-lock.json if it exists:
-  try {
-    sh(`rm ${root}/package-lock.json`);
-  } catch {
-    console.log('No package-lock.json at the top level. Moving on...');
-  }
   console.log(c.green('Updated versions.json.'));
 
   // Determine our tag names and create the publish commit
