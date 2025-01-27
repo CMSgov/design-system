@@ -1,0 +1,37 @@
+[
+  [
+    "about-medicare-label",
+    "Label for the \"About\" link.",
+    "string"
+  ],
+  [
+    "linking-policy-label",
+    "Label for the \"Linking policy\" link.",
+    "string"
+  ],
+  [
+    "nondiscrimination-label",
+    "Label for the \"Accessibility\" link.",
+    "string"
+  ],
+  [
+    "plain-writing-label",
+    "Label for the \"Plain writing\" link.",
+    "string"
+  ],
+  [
+    "privacy-policy-label",
+    "Label for the \"Privacy policy\" link.",
+    "string"
+  ],
+  [
+    "privacy-setting-label",
+    "Label for the \"Privacy setting\" link.",
+    "string"
+  ],
+  [
+    "using-this-site-label",
+    "Label for the \"Using this site\" link.",
+    "string"
+  ]
+]
