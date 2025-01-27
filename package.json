@@ -33,6 +33,7 @@
     "precommit": "lint-staged",
     "prepare": "husky install",
     "release": "tsx ./scripts/release.ts",
+    "release:undo": "npm run release -- --undo",
     "release:notes": "tsx ./scripts/notes.ts",
     "release:patch": "tsx ./scripts/patch.ts",
     "serve:docs": "npm --prefix ./packages/docs run serve",
