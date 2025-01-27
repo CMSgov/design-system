@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../../../../../design-system/src/components/web-components/storybook';

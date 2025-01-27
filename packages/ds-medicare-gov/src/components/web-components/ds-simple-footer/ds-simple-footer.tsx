@@ -1,5 +1,5 @@
 import { SimpleFooter } from '../../SimpleFooter';
-import { define } from '../../../../../design-system/src/components/web-components/index';
+import { define } from '../../../../../design-system/src/components/web-components/preactement/define';
 
 const attributes = [
   'about-medicare-label',
