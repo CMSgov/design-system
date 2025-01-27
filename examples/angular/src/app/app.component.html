@@ -92,6 +92,7 @@
       [size]="size"
       [backdrop_click_exits]="backdrop_click_exits"
       [heading]="dialogHeading"
+      (ds-exit)="closeDialog()"
     >
       <dialog-body>
         <p>
@@ -101,8 +102,9 @@
       </dialog-body>
       <dialog-actions>
         <form method="dialog" (submit)="closeDialog()">
-          <ds-button type="reset" value="rstBtn" class-name="ds-u-margin-right--1">Reset</ds-button>
-          <ds-button type="submit" value="sbmBtn">Confirm</ds-button>
+          <button class="ds-c-button ds-c-button--solid" type="submit" value="sbmBtn">
+            Confirm
+          </button>
         </form>
       </dialog-actions>
     </app-dialog>

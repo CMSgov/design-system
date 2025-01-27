@@ -1,11 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  EventEmitter,
-  input,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
@@ -14,17 +7,16 @@ import {
   templateUrl: './dialog.component.html',
 })
 export class DialogComponent {
-  @Input() isOpen: string | undefined;
+  isOpen = input<string>();
   root_id = input<string>();
   size = input<string>();
   backdrop_click_exits = input<string>();
   heading = input<string>();
 
-  @Output() isOpenChange = new EventEmitter<string | undefined>();
+  @Output() isOpenChange = new EventEmitter<undefined>();
 
   close() {
-    this.isOpen = 'false';
-    this.isOpenChange.emit(this.isOpen);
+    this.isOpenChange.emit();
   }
 
   analyticsEvent() {
