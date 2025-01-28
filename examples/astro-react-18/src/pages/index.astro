@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AccordionExample from '../../../_shared/react/AccordionExample';
+import AlertExample from '../../../_shared/react/AlertExample';
+import AutocompleteExample from '../../../_shared/react/AutocompleteExample';
+import BadgeExample from '../../../_shared/react/BadgeExample';
+import ButtonExample from '../../../_shared/react/ButtonExample';
+import ChoiceListExample from '../../../_shared/react/ChoiceListExample';
+import SingleInputDateFieldExample from '../../../_shared/react/SingleInputDateFieldExample';
+import MultiInputDateFieldExample from '../../../_shared/react/MultiInputDateFieldExample';
+import DropdownExample from '../../../_shared/react/DropdownExample';
+import FilterChipExample from '../../../_shared/react/FilterChipExample';
+import HelpDrawerExample from '../../../_shared/react/HelpDrawerExample';
+import MaskedFieldExample from '../../../_shared/react/MaskedFieldExample';
+import ModalDialogExample from '../../../_shared/react/ModalDialogExample';
+import MonthPickerExample from '../../../_shared/react/MonthPickerExample';
+import PaginationExample from '../../../_shared/react/PaginationExample';
+import SpinnerExample from '../../../_shared/react/SpinnerExample';
+import TableExample from '../../../_shared/react/TableExample';
+import TabsExample from '../../../_shared/react/TabsExample';
+import TextFieldExample from '../../../_shared/react/TextFieldExample';
+// import TooltipExample from '../../../_shared/react/TooltipExample';
+import UsaBannerExample from '../../../_shared/react/UsaBannerExample';
+import VerticalNavigationExample from '../../../_shared/react/VerticalNavigationExample';
+import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+---
+
+<Layout title="React component examples">
+  <SkipNav href="#main" client:load />
+  <UsaBanner client:idle />
+  <main id="main" class="ds-l-container">
+    <h1 class="ds-text-heading--4xl ds-u-margin-top--2">
+      React component examples
+    </h1>
+
+    <AccordionExample client:visible />
+    <AlertExample client:visible />
+    <AutocompleteExample client:visible />
+    <BadgeExample client:visible />
+    <ButtonExample client:visible />
+    <ChoiceListExample client:visible />
+    <SingleInputDateFieldExample client:visible />
+    <MultiInputDateFieldExample client:visible />
+    <DropdownExample client:visible />
+    <FilterChipExample client:visible />
+    <HelpDrawerExample client:visible />
+    <MaskedFieldExample client:visible />
+    <ModalDialogExample client:visible />
+    <MonthPickerExample client:visible />
+    <PaginationExample client:visible />
+    <SpinnerExample client:visible />
+    <TextFieldExample client:visible />
+    <TableExample client:visible />
+    <TabsExample client:visible />
+    <!-- <TooltipExample client:visible /> -->
+    <UsaBannerExample client:visible />
+    <VerticalNavigationExample client:visible />
+  </main>
+</Layout>
