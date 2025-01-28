@@ -9,6 +9,7 @@ import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
 import ColorExampleList from './ColorExampleList';
 import ColorRamps from './ColorRamps';
+import ColorTable from './ColorTable';
 import ComponentThemeOptions from './ComponentThemeOptions';
 import EmbeddedExample from './EmbeddedExample';
 import MaturityChecklist from './MaturityChecklist';
@@ -104,6 +105,7 @@ const customComponents = (theme) => ({
   code: CodeWithSyntaxHighlighting,
   ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
   ColorRamps,
+  ColorTable: (props) => <ColorTable theme={theme} {...props} />,
   ComponentThemeOptions: (props) => <ComponentThemeOptions theme={theme} {...props} />,
   EmbeddedExample,
   img: PrefixedImg,

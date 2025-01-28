@@ -325,7 +325,7 @@ const compilePreactComponents = gulp.series(
 const displayHelp = (cb) => {
   log();
   log('usage:');
-  log('yarn gulp build <params>');
+  log('npx gulp build <params>');
   log('  --package <cmsds system/child system path> // i.e. packages/ds-healthcare-gov');
   log('  --analyze-bundles // Runs a bundle analyzer for the current build');
   log('  --minifySvg // will enable svg minification during image asset copying');

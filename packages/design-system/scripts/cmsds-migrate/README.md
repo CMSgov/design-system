@@ -15,7 +15,7 @@ A bit more friendly than using unix command line tools.
 
 ## Command Line Options
 
-Use `yarn cmsds-migrate --help` for optional command line options. `cwd`, `ignore`, `file (config)`, `force` can be specified to override defaults.
+Use `npx cmsds-migrate --help` for optional command line options. `cwd`, `ignore`, `file (config)`, `force` can be specified to override defaults.
 
 ## Additional notes
 

@@ -391,5 +391,5 @@ export function writeTokenFiles(tokensDir: string, tokensByFile: TokensByFile) {
 
   // Format the files using prettier and its project config so we can properly preview
   // the actual changes before committing
-  execSync(`yarn prettier --write '${tokensDir}/*.json'`);
+  execSync(`npx prettier --write '${tokensDir}/*.json'`);
 }

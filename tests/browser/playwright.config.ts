@@ -2,7 +2,7 @@
  * To debug these in a browser, run the following command:
  *
  * ```
- * yarn playwright test --config tests/browser/storybook-docs.config.ts --headed --debug --ignore-snapshots
+ * npx playwright test --config tests/browser/storybook-docs.config.ts --headed --debug --ignore-snapshots
  * ```
  *
  * The `--ignore-snapshots` is important if you don't want it to fail the tests, because the
@@ -117,7 +117,7 @@ export const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn http-server -p 6006 storybook-static',
+    command: 'npx http-server -p 6006 storybook-static',
     port: 6006,
     cwd: '../../',
   },
