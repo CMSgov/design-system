@@ -1,6 +1,6 @@
 ## Example: An Astro project with TypeScript and React 17
 
-This shows the usage of CMS design system components in a TypeScript-enabled [Astro](https://docs.astro.build) project. This project is specifically for demonstrating our library's compatibility with React 17.
+This shows the usage of CMS design system components in a TypeScript-enabled [Astro](https://docs.astro.build) project. This project is specifically for demonstrating our library's compatibility with React 18.
 
 In this project, the design system package is installed as an npm dependency. Refer to [install using npm](https://design.cms.gov/getting-started/for-developers/#option-1-install-using-npm) for instructions on how to install the design system as a dependency package.
 
