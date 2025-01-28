@@ -11,7 +11,6 @@
 export * from '../analytics';
 export * from '../config';
 export * from '../i18n';
-export { define } from './preactement/define';
 
 import './ds-accordion';
 import './ds-alert';
