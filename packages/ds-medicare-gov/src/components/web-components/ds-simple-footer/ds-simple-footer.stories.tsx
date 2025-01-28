@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta } from '@storybook/react';
 import { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
@@ -91,13 +90,13 @@ const Template = (args) => {
       action('ds-click-link-analytics')(customEvent);
     };
 
-    footer?.addEventListener('ds-click-link-analytics', handleAnalyticsEvent);
+    footer.addEventListener('ds-click-link-analytics', handleAnalyticsEvent);
 
     return () => {
       links?.forEach((link) => {
         link.removeEventListener('click', (e) => e.preventDefault());
       });
-      footer?.removeEventListener('ds-click-link-analytics', handleAnalyticsEvent);
+      footer.removeEventListener('ds-click-link-analytics', handleAnalyticsEvent);
     };
   }, []);
   return <ds-simple-footer {...args}></ds-simple-footer>;
