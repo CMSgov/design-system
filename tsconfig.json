@@ -11,33 +11,5 @@
     "baseUrl": ".",
     "skipLibCheck": true
   },
-  "include": ["packages/**/src/**/*", ".storybook/**/*"],
-  "exclude": [
-    "**/*.test.js",
-    "**/*.test.jsx",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.test.interaction.js",
-    "**/*.test.interaction.jsx",
-    "**/*.test.interaction.ts",
-    "**/*.test.interaction.tsx",
-    "**/*.spec.js",
-    "**/*.spec.jsx",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/*.d.js",
-    "**/*.d.jsx",
-    "**/*.d.ts",
-    "**/*.d.tsx",
-    "**/*.stories.js",
-    "**/*.stories.jsx",
-    "**/*.stories.ts",
-    "**/*.stories.tsx",
-    "**/setupTests.js",
-    "**/setupTests.jsx",
-    "**/setupTests.ts",
-    "**/setupTests.tsx",
-    "**/__mocks__/**/*",
-    "**/__tests__/**/*"
-  ]
+  "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }
