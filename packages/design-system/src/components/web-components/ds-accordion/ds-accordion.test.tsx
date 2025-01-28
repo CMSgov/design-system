@@ -27,7 +27,7 @@ describe('ds-accordion', () => {
     const items = accordion.querySelectorAll('ds-accordion-item');
     for (const item of items) {
       const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot?.querySelector('.ds-c-accordion__content');
+      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
       expect(contentEl).toHaveClass('ds-c-accordion__content--bordered');
     }
   });
@@ -39,7 +39,7 @@ describe('ds-accordion', () => {
     const items = accordion.querySelectorAll('ds-accordion-item');
     for (const item of items) {
       const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot?.querySelector('.ds-c-accordion__content');
+      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
       expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
     }
   });
