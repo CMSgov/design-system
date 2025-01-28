@@ -71,22 +71,20 @@ const meta: Meta = {
 const Template = (args) => {
   useEffect(() => {
     const footer = document.querySelector('ds-simple-footer');
-    // Adding custom event listeners to links prevents immediate navigation, allowing us to log and verify
-    // the `ds-click-link-analytics` event in storybook actions before the browser navigates away.
+    // Adding custom event listeners to open links in new tabs, allowing us to log and verify
+    // the `ds-click-link-analytics` event in Storybook actions.
     const links = footer?.querySelectorAll('a');
     links?.forEach((link) => {
       link.setAttribute('target', '_blank');
       link.addEventListener('click', (e) => {
         e.preventDefault();
-
-        setTimeout(() => {
-          window.open(link.href, '_blank');
-        }, 3000);
+        window.open(link.href, '_blank');
       });
     });
 
     const handleAnalyticsEvent = (event: Event) => {
       const customEvent = event as CustomEvent;
+      event.preventDefault();
       action('ds-click-link-analytics')(customEvent);
     };
 
