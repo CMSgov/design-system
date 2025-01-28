@@ -1,4 +1,5 @@
 import { makeStorybookUrl } from '../../helpers/urlUtils';
+import linkAnalytics from '../../helpers/linkAnalytics';
 
 // Create a link component that uses urlUtils to create the link
 // to the storybook page for the component
@@ -25,7 +26,7 @@ const SeeStorybookForGuidance = ({
 }: StorybookExampleFooterProps) => {
   return (
     <p>
-      <a href={makeStorybookUrl(storyId, theme, 'docs')}>
+      <a onClick={linkAnalytics} href={makeStorybookUrl(storyId, theme, 'docs')}>
         {tech === 'react' ? 'Review' : 'Go to'} Storybook for{' '}
         {tech === 'react' ? 'React' : 'Web Component'} guidance of this component.
       </a>
