@@ -1,4 +1,5 @@
 import { withPrefix } from 'gatsby';
+import linkAnalytics from '../../helpers/linkAnalytics';
 
 export interface VideoProps {
   name: string;
@@ -16,7 +17,10 @@ const Video = ({ name }: VideoProps) => {
       <track kind="captions" src={`${path}.vtt`} srcLang="en" />
       <p>
         Your browser does not support HTML video. Here is a
-        <a href={`${path}.mp4`}>link to the video</a> instead.
+        <a onClick={linkAnalytics} href={`${path}.mp4`}>
+          link to the video
+        </a>{' '}
+        instead.
       </p>
     </video>
   );

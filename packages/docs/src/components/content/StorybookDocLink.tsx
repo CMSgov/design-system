@@ -1,5 +1,5 @@
 import { makeStorybookUrl } from '../../helpers/urlUtils';
-
+import linkAnalytics from '../../helpers/linkAnalytics';
 interface StorybookDocLinkProps {
   /**
    * Name of component
@@ -17,7 +17,9 @@ interface StorybookDocLinkProps {
 }
 
 const StorybookDocLink = ({ storyId, theme, children, tech = 'react' }: StorybookDocLinkProps) => (
-  <a href={makeStorybookUrl(storyId, theme, 'docs')}>Storybook &quot;{children}&quot; page</a>
+  <a onClick={linkAnalytics} href={makeStorybookUrl(storyId, theme, 'docs')}>
+    Storybook &quot;{children}&quot; page
+  </a>
 );
 
 export default StorybookDocLink;
