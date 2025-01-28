@@ -28,30 +28,43 @@ const meta: Meta = {
     'about-medicare-label': {
       description: 'Label for the "About" link.',
       control: 'text',
+      defaultValue: { summary: 'About' },
     },
     'nondiscrimination-label': {
       description: 'Label for the "Accessibility" link.',
       control: 'text',
+      defaultValue: { summary: 'Accessibility' },
     },
     'privacy-policy-label': {
       description: 'Label for the "Privacy policy" link.',
       control: 'text',
+      defaultValue: { summary: 'Privacy policy' },
     },
     'privacy-setting-label': {
       description: 'Label for the "Privacy setting" link.',
       control: 'text',
+      defaultValue: { summary: 'Privacy setting' },
     },
     'linking-policy-label': {
       description: 'Label for the "Linking policy" link.',
       control: 'text',
+      defaultValue: { summary: 'Linking policy' },
     },
     'using-this-site-label': {
       description: 'Label for the "Using this site" link.',
       control: 'text',
+      defaultValue: { summary: 'Using this site' },
     },
     'plain-writing-label': {
       description: 'Label for the "Plain writing" link.',
       control: 'text',
+      defaultValue: { summary: 'Plain writing' },
+    },
+    language: {
+      description:
+        "Language for the 'Privacy Setting' modal. See Tealium documentation for more information.",
+      control: 'text',
+      defaultValue: { summary: 'en' },
     },
   },
 };
