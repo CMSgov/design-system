@@ -5,6 +5,11 @@
     "string"
   ],
   [
+    "language",
+    "Language for the 'Privacy Setting' modal. See Tealium documentation for more information.",
+    "string"
+  ],
+  [
     "linking-policy-label",
     "Label for the \"Linking policy\" link.",
     "string"
