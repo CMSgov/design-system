@@ -7,7 +7,7 @@ const fileEncodingOptions = { encoding: 'utf-8' as const };
 
 const root = path.join(__dirname, '..');
 const searchDir = path.join(root, 'examples');
-const templatePath = path.join(root, 'examples', '_web-components-template.html');
+const templatePath = path.join(root, 'examples', '_shared', 'web-components', 'template.html');
 const templateContent = fs.readFileSync(templatePath, fileEncodingOptions);
 
 const startComment = '<!-- START WEB COMPONENT EXAMPLES -->';
