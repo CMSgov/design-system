@@ -11,4 +11,6 @@ shV('npm --prefix ./examples/react-app run build');
 
 if (!isSmokeTest) {
   shV('npm --prefix ./examples/astro-themes run build -- --base /astro-themes/dist');
+  shV('npm --prefix ./examples/astro-react-17 run build -- --base /astro-react-17/dist');
+  shV('npm --prefix ./examples/astro-react-18 run build -- --base /astro-react-18/dist');
 }
