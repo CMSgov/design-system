@@ -29,3 +29,15 @@ export const Default = {
     bordered: true,
   },
 };
+
+export const BlockQuote = {
+  ...BoxContentTemplate,
+  args: {
+    heading: 'The Inflation Reduction Act',
+    children:
+      "The Inflation Reduction Act keeps these safvings and lower costs through 2025. If you qualify for savings, you'll find out the lower costs when you shop for plans.",
+    quote: true,
+    citation: 'https://home.treasury.gov/policy-issues/inflation-reduction-act',
+    author: 'U.S. Department of the Treasury',
+  },
+};

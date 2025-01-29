@@ -1,10 +1,11 @@
 import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
+import { BoxQuotation, BoxQuotationsProps } from './BoxQuotation';
 
 export type BoxContentHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
-interface BoxContentProps {
+interface BoxContentProps extends BoxQuotationsProps {
   /**
    * Applies a border to the box content.
    */
@@ -26,12 +27,22 @@ interface BoxContentProps {
    */
   headingLevel?: BoxContentHeadingLevel;
   /**
-   * Quotation?
+   * Use to highlight a direct quotation
    */
+  quote?: boolean;
 }
 
 const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) => {
-  const { bordered, children, className, heading, headingLevel = '2' } = props;
+  const {
+    author,
+    bordered,
+    children,
+    citation,
+    className,
+    heading,
+    headingLevel = '2',
+    quote,
+  } = props;
 
   const classes = classNames(
     'ds-c-box-content',
@@ -46,8 +57,22 @@ const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) 
   return (
     <aside className={classes}>
       <div className="ds-c-box-content__body">
-        {headingElement}
-        <div className={heading ? 'ds-c-box-content__text' : ''}>{children}</div>
+        {quote ? (
+          <span className="ds-text-body--lg">
+            <strong>{'"'}</strong>
+          </span>
+        ) : (
+          headingElement
+        )}
+        <div className={heading ? 'ds-c-box-content__text' : ''}>
+          {quote ? (
+            <BoxQuotation citation={citation} author={author}>
+              {children}
+            </BoxQuotation>
+          ) : (
+            children
+          )}
+        </div>
       </div>
     </aside>
   );
