@@ -59,6 +59,15 @@ const meta: Meta = {
       control: 'text',
       defaultValue: { summary: 'Plain writing' },
     },
+    'website-info': {
+      description:
+        'Text describing the website’s management and funding, typically displayed in the footer. Defaults to a standard message indicating CMS ownership.',
+      control: 'text',
+      defaultValue: {
+        summary:
+          'A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.',
+      },
+    },
     language: {
       description:
         "Language for the 'Privacy Setting' modal. See Tealium documentation for more information.",

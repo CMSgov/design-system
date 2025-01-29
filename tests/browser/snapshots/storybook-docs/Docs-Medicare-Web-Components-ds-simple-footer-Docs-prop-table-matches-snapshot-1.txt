@@ -38,5 +38,10 @@
     "using-this-site-label",
     "Label for the \"Using this site\" link.",
     "string"
+  ],
+  [
+    "website-info",
+    "Text describing the website’s management and funding, typically displayed in the footer. Defaults to a standard message indicating CMS ownership.",
+    "string"
   ]
 ]
