@@ -9,7 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/plugin-transform-react-jsx": "7.20.13",
-    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-env": "^7.21.4",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^6.4.1",
     "webpack": "^5.75.0",

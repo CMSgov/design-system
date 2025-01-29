@@ -20,6 +20,13 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist/scripts'),
   },
+  resolve: {
+    alias: {
+      // Use the example project's version of React always
+      react: path.resolve(__dirname, 'node_modules', 'react'),
+      'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
+    },
+  },
   module: {
     rules: [
       {
