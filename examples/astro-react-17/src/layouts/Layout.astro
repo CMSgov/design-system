@@ -1,0 +1,41 @@
+---
+import '@cmsgov/design-system/css/index.css';
+import '@cmsgov/design-system/css/core-theme.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - CMSDS Astro Example</title>
+	</head>
+	<body class="ds-content">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	body {
+		margin: 0;
+	}
+
+	/* This is a hack to get around the bad first-child rule */
+	astro-island > h1,
+	astro-island > h2,
+	astro-island > h3,
+	astro-island > h4,
+	astro-island > h5,
+	astro-island > h6 {
+		margin-block-start: 1.5em !important;
+	}
+</style>
