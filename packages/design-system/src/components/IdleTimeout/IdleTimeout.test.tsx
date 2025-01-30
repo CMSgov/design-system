@@ -30,7 +30,7 @@ describe('Idle Timeout', () => {
   };
 
   beforeEach(() => {
-    jest.useFakeTimers('legacy');
+    jest.useFakeTimers({ legacyFakeTimers: true });
     // setting start time for consistent tests
     mockTime(MOCK_START_TIME);
   });
