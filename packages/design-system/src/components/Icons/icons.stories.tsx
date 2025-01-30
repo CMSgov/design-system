@@ -16,7 +16,6 @@ import {
   ImageIcon,
   InfoCircleIcon,
   InfoCircleIconThin,
-  LeftQuoteIcon,
   LinkIcon,
   LockCircleIcon,
   LockIcon,
@@ -27,6 +26,7 @@ import {
   PdfIcon,
   PlusCircleIcon,
   PrintIcon,
+  QuotationMarkIcon,
   RemoveIcon,
   RssIcon,
   StarIcon,
@@ -137,9 +137,9 @@ const iconData = [
     name: 'InfoCircleIconThin',
   },
   {
-    defaultTitle: 'Left Quote',
-    component: <LeftQuoteIcon />,
-    name: 'LeftQuoteIcon',
+    defaultTitle: 'Quotation Mark',
+    component: <QuotationMarkIcon />,
+    name: 'QuotationMarkIcon',
   },
   {
     defaultTitle: 'Link',
