@@ -16,6 +16,7 @@ export * from './HhsLogo';
 export * from './ImageIcon';
 export * from './InfoCircleIcon';
 export * from './InfoCircleIconThin';
+export * from './LeftQuoteIcon';
 export * from './LinkIcon';
 export * from './LockCircleIcon';
 export * from './LockIcon';
