@@ -19,9 +19,21 @@ export interface BoxQuotationsProps {
 export const BoxQuotation: FunctionComponent<BoxQuotationsProps> = (props: BoxQuotationsProps) => {
   const { author, children, citation } = props;
   return (
-    <figure>
-      <blockquote cite={citation}>{children}</blockquote>
-      {author && <figcaption>&mdash; {author}</figcaption>}
+    <figure className="ds-c-box-content-quotation">
+      <blockquote className="ds-c-box-content-quotation--blockquote" cite={!author ? citation : ''}>
+        {children}
+      </blockquote>
+      {author && (
+        <figcaption className="ds-c-box-content-quotation--caption">
+          &mdash; {author}{' '}
+          {citation && (
+            <cite>
+              {'/ '}
+              {citation}
+            </cite>
+          )}
+        </figcaption>
+      )}
     </figure>
   );
 };

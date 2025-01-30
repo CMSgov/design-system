@@ -1,8 +1,8 @@
 @use '../layout' as *;
 
 .ds-c-box-content {
-  padding: var(--spacer-4);
-  background-color: var(--color-info-lightest);
+  padding: var(--spacer-2);
+  background-color: var(--color-gray-lightest);
   color: var(--color-base);
   border-radius: var(--radius-default);
   border: 1px solid var(--color-transparent);
@@ -17,7 +17,7 @@
 }
 
 .ds-c-box-content--bordered {
-  border: 1px solid var(--color-gray-lighter);
+  border: 1px solid var(--color-border-dark);
   background-color: var(--color-background);
 
   @media (forced-colors: active) {
@@ -31,9 +31,14 @@
 }
 
 .ds-c-box-content__text {
-  margin-block-start: var(--spacer-2);
+  margin-block-start: var(--spacer-half);
 }
 
-.ds-c-box-content--quotation {
-  padding-inline-start: $spacer-2;
+.ds-c-box-content-quotation--blockquote {
+  margin: 0;
+}
+
+.ds-c-box-content-quotation--caption {
+  margin-block-start: var(--spacer-half);
+  font-weight: var(--font-weight-semibold);
 }
