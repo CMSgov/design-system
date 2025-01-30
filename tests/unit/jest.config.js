@@ -30,6 +30,7 @@ const conditionalWebComponentsConfig = useWebComponents
 module.exports = {
   rootDir: '../..',
   testEnvironment: 'jsdom',
+  testURL: 'http://localhost',
   setupFiles: [require.resolve('react-app-polyfill/stable')],
   setupFilesAfterEnv: [`<rootDir>/tests/unit/setupTests.js`],
   testPathIgnorePatterns: [
