@@ -62,7 +62,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-transition-group": "^4.4.5",
     "case-it": "^1.0.1",
-    "chalk": "^4.1.2",
+    "chalk": "^5.4.1",
     "classnames": "^2.2.5",
     "date-fns": "^3.0.6",
     "ev-emitter": "^1.1.1",
