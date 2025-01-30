@@ -3,7 +3,7 @@ import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
-import { withPrefix } from 'gatsby';
+import { Link, withPrefix } from 'gatsby';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
@@ -21,6 +21,7 @@ import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
 import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
+import linkAnalytics from '../../helpers/linkAnalytics';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -83,17 +84,21 @@ const PrefixedImg = (props) => {
  */
 const RE_INTERNAL_URL =
   /^(?:https?:\/\/)?(?:[a-zA-Z\-]+\.)?(?:[a-zA-Z\-]+\.(?:gov)|github\.com\/CMSgov\/design-system)(?:\/|:|\?|\&|\s|$)\/?/;
-
 /**
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
 const customComponents = (theme) => ({
   a: (props) => {
-    if (props.href.startsWith('http') && !RE_INTERNAL_URL.test(props.href)) {
-      return <ThirdPartyExternalLink origin="design.cms.gov" {...props} />;
+    const { href, ...restProps } = props;
+    if (href.startsWith('http') && !RE_INTERNAL_URL.test(href)) {
+      return <ThirdPartyExternalLink analytics={true} origin="design.cms.gov" {...props} />;
     }
-    return <a {...props} />;
+    if (href.includes('github.com/CMSgov/design-system') || href.startsWith('https:')) {
+      return <a onClick={linkAnalytics} href={href} {...restProps} />;
+    } else {
+      return <Link onClick={linkAnalytics} to={href} {...restProps} />;
+    }
   },
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,

@@ -1,4 +1,5 @@
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import linkAnalytics from '../../helpers/linkAnalytics';
 import { withPrefix } from 'gatsby';
 import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
@@ -48,7 +49,11 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
       {showLinkBar && (
         <div className="ds-u-margin-top--1 ds-u-margin-bottom--0">
           {figmaNodeId && (
-            <a href={makeFigmaUrl(figmaNodeId, figmaTheme)} className="c-page-header__link">
+            <a
+              onClick={linkAnalytics}
+              href={makeFigmaUrl(figmaNodeId, figmaTheme)}
+              className="c-page-header__link"
+            >
               <img
                 alt="Figma logo"
                 src={withPrefix('/images/figma-icon.png')}
@@ -58,13 +63,21 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
             </a>
           )}
           {ghPath && (
-            <a href={makeGithubUrl(`tree/main/packages/${ghPath}`)} className="c-page-header__link">
+            <a
+              onClick={linkAnalytics}
+              href={makeGithubUrl(`tree/main/packages/${ghPath}`)}
+              className="c-page-header__link"
+            >
               <GithubIcon />
               Github
             </a>
           )}
           {storyId && (
-            <a href={makeStorybookUrl(storyId, theme, 'docs')} className="c-page-header__link">
+            <a
+              onClick={linkAnalytics}
+              href={makeStorybookUrl(storyId, theme, 'docs')}
+              className="c-page-header__link"
+            >
               <img
                 alt="Storybook logo"
                 src={withPrefix('/images/storybook-icon.png')}
