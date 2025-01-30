@@ -98,7 +98,10 @@ export class AppComponent {
   footerTitle = 'Footer Title';
   footerBody = 'Footer content';
   drawerOpen = 'false';
-  toggleDrawer() {
+  openDrawer() {
     this.drawerOpen = 'true';
+  }
+  closeDrawer() {
+    this.drawerOpen = 'false';
   }
 }

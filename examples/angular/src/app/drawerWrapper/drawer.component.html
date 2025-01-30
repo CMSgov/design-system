@@ -1,7 +1,7 @@
 <ds-drawer
   [attr.footer-title]="footerTitle()"
   [attr.heading]="drawerHeading()"
-  [attr.is-open]="isOpen"
+  [attr.is-open]="isOpen()"
   (ds-close-click)="closeDrawer()"
 >
   <ng-content></ng-content>

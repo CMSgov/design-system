@@ -1,11 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  EventEmitter,
-  input,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-drawer',
@@ -14,14 +7,13 @@ import {
   templateUrl: './drawer.component.html',
 })
 export class DrawerComponent {
-  @Input() isOpen = 'false';
+  isOpen = input<string>();
   @Output() isOpenChange = new EventEmitter<string>();
   footerBody = input<string>();
   footerTitle = input<string>();
   drawerHeading = input<string>();
 
   closeDrawer() {
-    this.isOpen = 'false';
-    this.isOpenChange.emit(this.isOpen);
+    this.isOpenChange.emit();
   }
 }
