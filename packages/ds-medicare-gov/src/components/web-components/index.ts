@@ -10,4 +10,6 @@
  * modules during tree-shaking.
  */
 
+import './ds-simple-footer';
+
 export * from '@cmsgov/design-system/web-components';
