@@ -97,7 +97,6 @@ function generateWebpackConfig(options) {
       })
     );
   }
-
   if (options.preact) {
     // If we're using preact, we need to replace resolve references to react
     // to their preact equivalents.
@@ -106,6 +105,11 @@ function generateWebpackConfig(options) {
         react: 'preact/compat',
         'react-dom': 'preact/compat',
         'react/jsx-runtime': 'preact/jsx-runtime',
+        '../../../../../design-system/src/components/web-components/preactement/define':
+          path.resolve(
+            __dirname,
+            'packages/design-system/dist/preact-components/esm/web-components/preactement/define.js'
+          ),
       },
     };
 
