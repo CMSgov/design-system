@@ -7,3 +7,20 @@ export function sendSearchInitiatedEvent(searchTerm: string) {
     search_term_type: 'user_initiated',
   } as any);
 }
+
+export function sendFilterAppliedEvent({
+  filterCategoriesUsed,
+  resultsCountAfterFiltering,
+  resultsCountPriorToFiltering,
+}: {
+  filterCategoriesUsed: string[];
+  resultsCountAfterFiltering?: number;
+  resultsCountPriorToFiltering?: number;
+}) {
+  sendLinkEvent({
+    event_name: 'filters_applied',
+    filter_categories_used: filterCategoriesUsed.join(', '),
+    results_count_after_filtering: resultsCountAfterFiltering || 0,
+    results_count_prior_to_filtering: resultsCountPriorToFiltering || 0,
+  } as any);
+}
