@@ -1,11 +1,15 @@
 import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
-import { BoxQuotation, BoxQuotationsProps } from './BoxQuotation';
+import { BoxQuotation } from './BoxQuotation';
 
 export type BoxContentHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
-interface BoxContentProps extends BoxQuotationsProps {
+interface BoxContentProps {
+  /**
+   * Provide an author for the quote
+   */
+  author?: string;
   /**
    * Applies a border to the box content.
    */
@@ -14,6 +18,10 @@ interface BoxContentProps extends BoxQuotationsProps {
    * Content to be displayed within the Box
    */
   children?: React.ReactNode;
+  /**
+   * Provide a citation for the quote
+   */
+  citation?: string;
   /**
    * Additional classes to be added to the component
    */

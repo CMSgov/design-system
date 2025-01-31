@@ -1,11 +1,12 @@
 import type * as React from 'react';
 import { FunctionComponent } from 'react';
+import { RequireAtLeastOne } from '../utilities/requireAtLeastOne';
 
-export interface BoxQuotationsProps {
+interface MinimumBoxQuotationProps {
   /**
    * Content to be displayed within the Box Quotation
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /**
    * Provide a citation for the quote
    */
@@ -16,24 +17,24 @@ export interface BoxQuotationsProps {
   author?: string;
 }
 
-export const BoxQuotation: FunctionComponent<BoxQuotationsProps> = (props: BoxQuotationsProps) => {
+export type BoxQuotationProps = RequireAtLeastOne<MinimumBoxQuotationProps, 'citation' | 'author'>;
+
+export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuotationProps) => {
   const { author, children, citation } = props;
   return (
     <figure className="ds-c-box-content-quotation">
-      <blockquote className="ds-c-box-content-quotation--blockquote" cite={!author ? citation : ''}>
+      <blockquote className="ds-c-box-content-quotation--blockquote" cite={citation || author}>
         {children}
       </blockquote>
-      {author && (
-        <figcaption className="ds-c-box-content-quotation--caption">
-          &mdash; {author}{' '}
-          {citation && (
-            <cite>
-              {'/ '}
-              {citation}
-            </cite>
-          )}
-        </figcaption>
-      )}
+      <figcaption className="ds-c-box-content-quotation--caption">
+        {author ? `&mdash; ${author} ` : ''}
+        {citation && (
+          <cite>
+            {'/ '}
+            {citation}
+          </cite>
+        )}
+      </figcaption>
     </figure>
   );
 };
