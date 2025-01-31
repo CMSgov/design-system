@@ -1,6 +1,6 @@
 <ds-accordion [attr.bordered]="bordered()">
-  <ds-accordion-item [attr.heading-level]="headingLevel()">
-    <div slot="heading">The First Ammendment</div>
+  <app-accordion-item>
+    <item-heading>The First Ammendment</item-heading>
     <ds-alert> This is an alert inside of an accordion item. </ds-alert>
     <p>
       The First Amendment provides several rights protections: to express ideas through speech and
@@ -23,9 +23,9 @@
         >Tell us what you though about this content.</ds-button
       >
     </div>
-  </ds-accordion-item>
-  <ds-accordion-item [attr.heading-level]="headingLevel()">
-    <div slot="heading">The Third Ammendment</div>
+  </app-accordion-item>
+  <app-accordion-item>
+    <item-heading>The Third Ammendment</item-heading>
     <ds-alert variation="warn">
       This is an alert inside of an accordion item that is warning you.</ds-alert
     >
@@ -34,9 +34,9 @@
       homes. Before the Revolutionary War, laws gave British soldiers the right to take over private
       homes.
     </p>
-  </ds-accordion-item>
-  <ds-accordion-item [attr.heading-level]="headingLevel()">
-    <div slot="heading">The Fourth Ammendment</div>
+  </app-accordion-item>
+  <app-accordion-item>
+    <item-heading>The Fourth Ammendment</item-heading>
     <ds-alert variation="error">
       This is an alert inside of an accordion item that informing you of an error.</ds-alert
     >
@@ -44,13 +44,15 @@
       The Fourth Amendment bars the government from unreasonable search and seizure of an individual
       or their private property.
     </p>
-  </ds-accordion-item>
+  </app-accordion-item>
   <div class="ds-u-margin-top--2">
-    <a
-      href="https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say"
-      target="_blank"
-    >
-      Source Material</a
-    >
+    <cite>
+      <a
+        href="https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say"
+        target="_blank"
+      >
+        Source Material</a
+      >
+    </cite>
   </div>
 </ds-accordion>

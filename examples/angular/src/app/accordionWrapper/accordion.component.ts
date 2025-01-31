@@ -1,10 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, signal } from '@angular/core';
+import { AccordionItemComponent } from '../accordionItemWrapper/accordionItem.component';
 
 @Component({
   selector: 'app-accordion',
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './accordion.component.html',
+  imports: [AccordionItemComponent],
 })
 export class AccordionComponent {
   constructor(elementRef: ElementRef) {
