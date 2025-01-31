@@ -26,6 +26,7 @@ export * from './NextIcon';
 export * from './PdfIcon';
 export * from './PlusCircleIcon';
 export * from './PrintIcon';
+export * from './QuotationMarkIcon';
 export * from './RemoveIcon';
 export * from './RssIcon';
 export * from './StarIcon';
