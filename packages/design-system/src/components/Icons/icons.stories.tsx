@@ -26,6 +26,7 @@ import {
   PdfIcon,
   PlusCircleIcon,
   PrintIcon,
+  QuotationMarkIcon,
   RemoveIcon,
   RssIcon,
   StarIcon,
@@ -184,6 +185,11 @@ const iconData = [
     defaultTitle: 'Print',
     component: <PrintIcon />,
     name: 'PrintIcon',
+  },
+  {
+    defaultTitle: 'Quotation Mark',
+    component: <QuotationMarkIcon />,
+    name: 'QuotationMarkIcon',
   },
   {
     defaultTitle: 'Remove',
