@@ -137,11 +137,6 @@ const iconData = [
     name: 'InfoCircleIconThin',
   },
   {
-    defaultTitle: 'Quotation Mark',
-    component: <QuotationMarkIcon />,
-    name: 'QuotationMarkIcon',
-  },
-  {
     defaultTitle: 'Link',
     component: <LinkIcon />,
     name: 'LinkIcon',
@@ -190,6 +185,11 @@ const iconData = [
     defaultTitle: 'Print',
     component: <PrintIcon />,
     name: 'PrintIcon',
+  },
+  {
+    defaultTitle: 'Quotation Mark',
+    component: <QuotationMarkIcon />,
+    name: 'QuotationMarkIcon',
   },
   {
     defaultTitle: 'Remove',
