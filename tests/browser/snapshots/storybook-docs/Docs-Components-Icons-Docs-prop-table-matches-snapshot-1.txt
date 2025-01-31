@@ -30,7 +30,7 @@
     "false"
   ],
   [
-    "title*",
+    "title",
     "The descriptive name for the SVG icon\nstring",
     "-"
   ],
