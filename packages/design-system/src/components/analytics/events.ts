@@ -26,7 +26,7 @@ export const eventExtensionText = 'Design system integration';
 
 export interface AnalyticsEvent {
   event_name: string;
-  event_extension: string;
+  event_extension?: string;
   [additional_props: string]: unknown;
 }
 
