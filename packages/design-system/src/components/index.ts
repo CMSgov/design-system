@@ -2,6 +2,7 @@ export * from './Accordion';
 export * from './Alert';
 export * from './Autocomplete';
 export * from './Badge';
+export * from './BoxContent';
 export * from './Button';
 export * from './ChoiceList';
 export * from './DateField';
