@@ -16,18 +16,18 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
 
   function handleUpdate() {
     if (version !== props.version) {
-      let resultsCountAfterFiltering = null;
-      let resultsCountPriorToFiltering = null;
+      let resultsCountAfterFiltering: number | undefined;
+      let resultsCountPriorToFiltering: number | undefined;
 
       if (props.theme === 'healthcare') {
-        resultsCountPriorToFiltering = getVersionOptions(props.theme).length; 
+        resultsCountPriorToFiltering = getVersionOptions(props.theme).length;
         resultsCountAfterFiltering = 1;
       }
 
       sendFilterAppliedEvent({
         filterCategoriesUsed: [props.theme],
         resultsCountAfterFiltering,
-        resultsCountPriorToFiltering
+        resultsCountPriorToFiltering,
       });
 
       // Since the version changed, we need to navigate to that version of the

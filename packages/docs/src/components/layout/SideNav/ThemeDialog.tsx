@@ -19,12 +19,8 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
       setQueryParam('theme', theme, true);
     }
 
-    if (theme) {}
-
     sendFilterAppliedEvent({
       filterCategoriesUsed: [theme],
-      resultsCountAfterFiltering: null,
-      resultsCountPriorToFiltering: null,
     });
 
     props.onExit();
