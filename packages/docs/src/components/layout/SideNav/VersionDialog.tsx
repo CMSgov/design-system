@@ -16,12 +16,20 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
 
   function handleUpdate() {
     if (version !== props.version) {
+      let resultsCountAfterFiltering = null;
+      let resultsCountPriorToFiltering = null;
+
+      if (props.theme === 'healthcare') {
+        resultsCountPriorToFiltering = getVersionOptions(props.theme).length; 
+        resultsCountAfterFiltering = 1;
+      }
 
       sendFilterAppliedEvent({
-        filterCategoriesUsed: ['version'],
-        resultsCountAfterFiltering: null,
-        resultsCountPriorToFiltering: null,
+        filterCategoriesUsed: [props.theme],
+        resultsCountAfterFiltering,
+        resultsCountPriorToFiltering
       });
+
       // Since the version changed, we need to navigate to that version of the
       // doc site, which is archived under design.cms.gov/v/
 

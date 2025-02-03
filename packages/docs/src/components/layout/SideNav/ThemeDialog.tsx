@@ -3,6 +3,7 @@ import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog/index';
 import { getThemeOptions } from './themeVersionData';
 import { setQueryParam } from '../../../helpers/urlUtils';
+import { sendFilterAppliedEvent } from '../../../helpers/analytics';
 
 export interface ThemeVersionDialogProps {
   theme: string;
@@ -17,6 +18,14 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
     if (theme !== props.theme) {
       setQueryParam('theme', theme, true);
     }
+
+    if (theme) {}
+
+    sendFilterAppliedEvent({
+      filterCategoriesUsed: [theme],
+      resultsCountAfterFiltering: null,
+      resultsCountPriorToFiltering: null,
+    });
 
     props.onExit();
   }
