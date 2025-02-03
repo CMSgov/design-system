@@ -1,0 +1,42 @@
+[
+  [
+    "author",
+    "Provide an author for the quote\nstring",
+    "-"
+  ],
+  [
+    "bordered",
+    "Applies a border to the box content.\nboolean",
+    ""
+  ],
+  [
+    "children",
+    "Content to be displayed within the Box\nReactNode",
+    "-"
+  ],
+  [
+    "citation",
+    "Provide a citation for the quote\nstring",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the component\nstring",
+    "-"
+  ],
+  [
+    "heading",
+    "Text for the box content heading\nReactNode",
+    "-"
+  ],
+  [
+    "headingLevel",
+    "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
+    "-"
+  ],
+  [
+    "quote",
+    "Use to highlight a direct quotation\nboolean",
+    "-"
+  ]
+]
