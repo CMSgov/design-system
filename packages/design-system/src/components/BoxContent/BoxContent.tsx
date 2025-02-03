@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import { BoxQuotation } from './BoxQuotation';
+import { QuotationMarkIcon } from '../Icons';
 
 export type BoxContentHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 
@@ -65,13 +66,7 @@ const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) 
   return (
     <aside className={classes}>
       <div className="ds-c-box-content__body">
-        {quote ? (
-          <span className="ds-text-body--lg">
-            <strong>{'"'}</strong>
-          </span>
-        ) : (
-          headingElement
-        )}
+        {quote ? <QuotationMarkIcon /> : headingElement}
         <div className={heading ? 'ds-c-box-content__text' : ''}>
           {quote ? (
             <BoxQuotation citation={citation} author={author}>
