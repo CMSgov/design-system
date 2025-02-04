@@ -12,3 +12,129 @@ healthcare:
 medicare:
   figmaNodeId: 6-78
 ---
+
+## Font Families
+
+<ThemeContent onlyThemes={['core']}>
+
+Core uses Open Sans as the base font for the site.
+
+The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel.
+
+- Open Sans font is used for headings and body content.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+CMS.gov uses Lexend for headings and Public Sans for all other text.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Healthcare uses Open Sans as the base font for the site.
+
+The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel.
+
+- Open Sans font is used for headings and body content.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Medicare.gov uses Montserrat for headings and Rubik for all other text.
+
+</ThemeContent>
+
+## Web font stack
+
+<ThemeContent onlyThemes={['core']}>
+
+**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+**Headings font stack:** Lexend > Inter > Roboto > “Helvetica Neue" > “Arial Nova” > “Nimbus Sans” > Arial > “sans-serif”
+
+**Body copy font stack:** “Public Sans” > Inter > Roboto > “Helvetica Neue” > “Arial Nova” > “Nimbus Sans” > Arial > “sans-serif”
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+**Headings font stack:** Montserrat > Avenir > Corbel > “URW Gothic” > source-sans-pro > “sans-serif”
+
+**Body copy font stack:** Rubik > Seravek > “Gill Sans Nova” > Ubuntu > Calibri > “DejaVu Sans” > source-sans-pro > “sans-serif”
+
+</ThemeContent>
+
+## Working with these fonts
+
+The design system provides guidance for <a href="/foundation/typography/headings/">headings</a>, <a href="/foundation/typography/body/">body copy</a>, <a href="foundation/typography/links">links</a>, and <a href="foundation/typography/lists">lists</a>.
+
+### The `ds-content` class
+
+For pages that are mainly about written content or places where you want to use a standard mapping of heading-level styles to semantic heading levels, consider using the <a href="/foundation/typography/content">`ds-content` class</a>.
+
+### Responsive typography
+
+To apply responsive typography elsewhere, use the <a href="/utilities/font/font-size/?theme=medicare#responsive-font-sizes">font size utility class</a>. Since the base typography margins and line height is measured in em units, they'll automatically adjust as you change the font size.
+
+### Accessibility
+
+<ThemeContent onlyThemes={['core']}>
+
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
+
+- Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
+
+- Smallest paragraph text for legibility reasons is Open Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text).
+
+- Uppercase font should not be used.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Public Sans is used for body type, secondary and tertiary headlines, and instructional text.
+
+- Standard body text is Public Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
+
+- Smallest paragraph text for legibility reasons is Public Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text).
+
+- Uppercase font should not be used.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['healthcare']}>
+
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
+
+- Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
+
+- Smallest paragraph text for legibility reasons is Open Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text)
+
+- Uppercase font should not be used.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Rubik is used for body type, secondary and tertiary headlines, and instructional text.
+
+- Standard body text is Rubik Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
+
+- Smallest paragraph text for legibility reasons is Rubik Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text)
+
+- Uppercase font should not be used.
+
+</ThemeContent>
