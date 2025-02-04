@@ -8,7 +8,6 @@ import { sendFilterAppliedEvent } from '../../../helpers/analytics';
 export interface ThemeVersionDialogProps {
   theme: string;
   isOpen?: boolean;
-  version: string;
   onExit(...args: any[]): void;
 }
 
@@ -19,7 +18,7 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
     if (theme !== props.theme) {
       setQueryParam('theme', theme, true);
 
-      let filterCategoriesUsed = { theme: props.theme, version: props.version };
+      let filterCategoriesUsed = { theme: theme };
       let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
       sendFilterAppliedEvent({ filterCategoriesUsedString });
     }

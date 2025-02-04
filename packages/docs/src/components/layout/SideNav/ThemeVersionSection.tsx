@@ -30,7 +30,6 @@ export const ThemeVersionSection = () => {
         </button>
         <ThemeDialog
           theme={theme}
-          version={version}
           isOpen={themeDialogProps.isOpen}
           onExit={() => {
             themeDialogProps.closeClick();
