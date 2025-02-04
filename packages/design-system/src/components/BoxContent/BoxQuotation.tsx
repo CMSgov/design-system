@@ -10,11 +10,11 @@ interface MinimumBoxQuotationProps {
   /**
    * Provide a citation for the quote
    */
-  citation?: string;
+  citation: string;
   /**
    * Provide an author for the quote
    */
-  author?: string;
+  author: string;
 }
 
 export type BoxQuotationProps = RequireAtLeastOne<MinimumBoxQuotationProps, 'citation' | 'author'>;
