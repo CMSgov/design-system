@@ -17,11 +17,11 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   function handleUpdate() {
     if (theme !== props.theme) {
       setQueryParam('theme', theme, true);
-    }
 
-    sendFilterAppliedEvent({
-      filterCategoriesUsed: [theme],
-    });
+      sendFilterAppliedEvent({
+        filterCategoriesUsed: [theme],
+      });
+    }
 
     props.onExit();
   }
