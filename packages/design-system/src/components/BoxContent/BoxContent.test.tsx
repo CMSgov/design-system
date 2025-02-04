@@ -30,7 +30,7 @@ describe('BoxContent', () => {
 
   // Test that quote option renders properly
   it('renders quote option properly', () => {
-    renderBoxContent({ quote: true });
+    renderBoxContent({ quote: true, author: 'Test Author', citation: 'Test Citation' });
     const quoteElement = screen.getByText(/This is foo text. Bar!/);
     expect(quoteElement).toBeInTheDocument();
     expect(screen.getByRole('complementary')).toMatchSnapshot();

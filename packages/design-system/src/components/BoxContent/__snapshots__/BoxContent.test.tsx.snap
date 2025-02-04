@@ -45,6 +45,7 @@ exports[`BoxContent renders quote option properly 1`] = `
         class="ds-c-box-content-quotation"
       >
         <blockquote
+          cite="Test Citation"
           class="ds-c-box-content-quotation--blockquote"
         >
           This is foo text. Bar!
@@ -52,8 +53,11 @@ exports[`BoxContent renders quote option properly 1`] = `
         <figcaption
           class="ds-c-box-content-quotation--caption"
         >
-          
-          
+          — Test Author 
+          / 
+          <cite>
+            Test Citation
+          </cite>
         </figcaption>
       </figure>
     </div>

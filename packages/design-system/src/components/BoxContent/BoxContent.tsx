@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { BoxQuotation } from './BoxQuotation';
 import { QuotationMarkIcon } from '../Icons';
 
-export type BoxContentHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
+export type BoxContentHeadingLevel = '2' | '3' | '4' | '5' | '6';
 
 interface BoxContentProps {
   /**
@@ -18,7 +18,7 @@ interface BoxContentProps {
   /**
    * Content to be displayed within the Box
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /**
    * Provide a citation for the quote
    */
