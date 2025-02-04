@@ -9,18 +9,12 @@ export function sendSearchInitiatedEvent(searchTerm: string) {
 }
 
 export function sendFilterAppliedEvent({
-  filterCategoriesUsed,
-  resultsCountAfterFiltering,
-  resultsCountPriorToFiltering,
+  filterCategoriesUsedString,
 }: {
-  filterCategoriesUsed: string[];
-  resultsCountAfterFiltering?: number;
-  resultsCountPriorToFiltering?: number;
+  filterCategoriesUsedString: string;
 }) {
   sendLinkEvent({
     event_name: 'filters_applied',
-    filter_categories_used: filterCategoriesUsed.join(', '),
-    results_count_after_filtering: resultsCountAfterFiltering || null,
-    results_count_prior_to_filtering: resultsCountPriorToFiltering || null,
+    filter_categories_used: filterCategoriesUsedString,
   } as any);
 }
