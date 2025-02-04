@@ -1,4 +1,6 @@
+import { QuotationMarkIcon } from '../Icons';
 import BoxContent from './BoxContent';
+import { BoxQuotation } from './BoxQuotation';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -30,7 +32,14 @@ describe('BoxContent', () => {
 
   // Test that quote option renders properly
   it('renders quote option properly', () => {
-    renderBoxContent({ quote: true, author: 'Test Author', citation: 'Test Citation' });
+    renderBoxContent({
+      heading: <QuotationMarkIcon />,
+      children: (
+        <BoxQuotation author="Test Author" citation="Test Citation">
+          This is foo text. Bar!
+        </BoxQuotation>
+      ),
+    });
     const quoteElement = screen.getByText(/This is foo text. Bar!/);
     expect(quoteElement).toBeInTheDocument();
     expect(screen.getByRole('complementary')).toMatchSnapshot();
@@ -38,14 +47,20 @@ describe('BoxContent', () => {
 
   // Test that only author renders
   it('renders a quote with only author', () => {
-    renderBoxContent({ quote: true, author: 'Test Author' });
+    renderBoxContent({
+      heading: <QuotationMarkIcon />,
+      children: <BoxQuotation author="Test Author">This is foo text. Bar!</BoxQuotation>,
+    });
     const authorElement = screen.getByText(/Test Author/);
     expect(authorElement).toBeInTheDocument();
   });
 
   // Test that only citation renders
   it('renders a quote with only citation', () => {
-    renderBoxContent({ quote: true, citation: 'Test Citation' });
+    renderBoxContent({
+      heading: <QuotationMarkIcon />,
+      children: <BoxQuotation citation="Test Citation">This is foo text. Bar!</BoxQuotation>,
+    });
     const citationElement = screen.getByText(/Test Citation/);
     expect(citationElement).toBeInTheDocument();
   });

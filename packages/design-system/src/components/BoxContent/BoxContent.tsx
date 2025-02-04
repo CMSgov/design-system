@@ -1,16 +1,10 @@
 import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
-import { BoxQuotation } from './BoxQuotation';
-import { QuotationMarkIcon } from '../Icons';
 
 export type BoxContentHeadingLevel = '2' | '3' | '4' | '5' | '6';
 
 interface BoxContentProps {
-  /**
-   * Provide an author for the quote
-   */
-  author?: string;
   /**
    * Applies a border to the box content.
    */
@@ -19,10 +13,6 @@ interface BoxContentProps {
    * Content to be displayed within the Box
    */
   children: React.ReactNode;
-  /**
-   * Provide a citation for the quote
-   */
-  citation?: string;
   /**
    * Additional classes to be added to the component
    */
@@ -35,23 +25,10 @@ interface BoxContentProps {
    * Heading type to override default `<h2>`.
    */
   headingLevel?: BoxContentHeadingLevel;
-  /**
-   * Use to highlight a direct quotation
-   */
-  quote?: boolean;
 }
 
 const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) => {
-  const {
-    author,
-    bordered,
-    children,
-    citation,
-    className,
-    heading,
-    headingLevel = '2',
-    quote,
-  } = props;
+  const { bordered, children, className, heading, headingLevel = '2' } = props;
 
   const classes = classNames(
     'ds-c-box-content',
@@ -63,19 +40,12 @@ const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) 
     const Heading = `h${headingLevel}` as const;
     headingElement = <Heading className="ds-c-box-content__heading">{heading}</Heading>;
   }
+
   return (
     <aside className={classes}>
       <div className="ds-c-box-content__body">
-        {quote ? <QuotationMarkIcon /> : headingElement}
-        <div className={heading ? 'ds-c-box-content__text' : ''}>
-          {quote ? (
-            <BoxQuotation citation={citation} author={author}>
-              {children}
-            </BoxQuotation>
-          ) : (
-            children
-          )}
-        </div>
+        {headingElement}
+        <div className={heading ? 'ds-c-box-content__text' : ''}>{children}</div>
       </div>
     </aside>
   );
