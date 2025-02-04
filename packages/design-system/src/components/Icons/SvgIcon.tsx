@@ -31,7 +31,7 @@ export interface BaseSvgIconProps {
   /**
    * The descriptive name for the SVG icon
    */
-  title: string;
+  title?: string;
   /**
    * A string describing the viewbox of the SVG.
    *
