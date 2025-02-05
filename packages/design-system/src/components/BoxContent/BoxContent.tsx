@@ -36,9 +36,11 @@ const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) 
     className
   );
   let headingElement;
-  if (heading) {
+  if (typeof heading === 'string') {
     const Heading = `h${headingLevel}` as const;
     headingElement = <Heading className="ds-c-box-content__heading">{heading}</Heading>;
+  } else {
+    headingElement = heading;
   }
 
   return (

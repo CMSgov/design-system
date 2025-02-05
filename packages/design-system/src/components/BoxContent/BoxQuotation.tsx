@@ -31,9 +31,7 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
 
   return (
     <figure className={classes}>
-      <blockquote className="ds-c-box-content-quotation--blockquote" cite={citation || author}>
-        {children}
-      </blockquote>
+      <blockquote className="ds-c-box-content-quotation--blockquote">{children}</blockquote>
       <figcaption className="ds-c-box-content-quotation--caption">
         {author && `\u2014 ${author} `}
         {author && citation && '/ '}
