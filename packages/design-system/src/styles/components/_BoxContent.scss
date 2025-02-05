@@ -1,11 +1,22 @@
 @use '../layout' as *;
 
+@mixin box-content-high-contrast-mode-remove-color() {
+  @media (forced-colors: active) {
+    background-color: window;
+    color: windowText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
+}
+
 .ds-c-box-content {
-  padding: var(--spacer-2);
+  padding: $spacer-2;
   background-color: var(--color-gray-lightest);
   color: var(--color-base);
   border-radius: var(--radius-default);
   border: 1px solid var(--color-transparent);
+
+  @include box-content-high-contrast-mode-remove-color;
 }
 
 .ds-c-box-content__heading {
@@ -22,6 +33,7 @@
 
   @media (forced-colors: active) {
     border: 1px solid windowText;
+    background-color: window;
   }
 }
 
@@ -31,7 +43,7 @@
 }
 
 .ds-c-box-content__text {
-  margin-block-start: var(--spacer-half);
+  margin-block-start: $spacer-half;
 }
 
 .ds-c-box-content-quotation--blockquote {
@@ -39,6 +51,6 @@
 }
 
 .ds-c-box-content-quotation--caption {
-  margin-block-start: var(--spacer-half);
+  margin-block-start: $spacer-half;
   font-weight: var(--font-weight-semibold);
 }
