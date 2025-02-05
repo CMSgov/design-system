@@ -1,8 +1,13 @@
 import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import { RequireAtLeastOne } from '../utilities/requireAtLeastOne';
+import classNames from 'classnames';
 
 interface MinimumBoxQuotationProps {
+  /**
+   * Provide an author for the quote
+   */
+  author?: string;
   /**
    * Content to be displayed within the Box Quotation
    */
@@ -12,17 +17,20 @@ interface MinimumBoxQuotationProps {
    */
   citation?: string;
   /**
-   * Provide an author for the quote
+   * Additional classes to be added to the component
    */
-  author?: string;
+  className?: string;
 }
 
 export type BoxQuotationProps = RequireAtLeastOne<MinimumBoxQuotationProps, 'citation' | 'author'>;
 
 export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuotationProps) => {
-  const { author, children, citation } = props;
+  const { author, children, citation, className } = props;
+
+  const classes = classNames('ds-c-box-content-quotation', className);
+
   return (
-    <figure className="ds-c-box-content-quotation">
+    <figure className={classes}>
       <blockquote className="ds-c-box-content-quotation--blockquote" cite={citation || author}>
         {children}
       </blockquote>
