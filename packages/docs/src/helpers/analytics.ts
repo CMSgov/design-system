@@ -1,4 +1,4 @@
-import { sendLinkEvent, sendFilterEvent } from '@cmsgov/design-system';
+import { sendLinkEvent } from '@cmsgov/design-system';
 
 export function sendSearchInitiatedEvent(searchTerm: string) {
   sendLinkEvent({
@@ -13,7 +13,7 @@ export function sendFilterAppliedEvent({
 }: {
   filterCategoriesUsedString: string;
 }) {
-  sendFilterEvent({
+  sendLinkEvent({
     event_name: 'filters_applied',
     filter_categories_used: filterCategoriesUsedString,
   } as any);

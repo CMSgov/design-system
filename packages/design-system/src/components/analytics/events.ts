@@ -19,7 +19,7 @@ export interface UtagContainer {
   utag?: UtagObject;
 }
 
-export type UtagEventType = 'link' | 'view' | 'filter';
+export type UtagEventType = 'link' | 'view';
 
 // This is the default event 'extension' for events arising from the DS
 export const eventExtensionText = 'Design system integration';
@@ -76,10 +76,6 @@ export function sendAnalytics(eventType: UtagEventType, event: AnalyticsEvent, r
 
 export function sendLinkEvent(event: AnalyticsEvent) {
   return sendAnalytics('link', event);
-}
-
-export function sendFilterEvent(event: AnalyticsEvent) {
-  return sendAnalytics('filter', event);
 }
 
 export type AnalyticsFunction = typeof sendLinkEvent;
