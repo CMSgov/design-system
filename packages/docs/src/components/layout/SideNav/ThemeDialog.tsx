@@ -15,12 +15,13 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [theme, setTheme] = useState(props.theme);
 
   function handleUpdate() {
+    let filterCategoriesUsed = { theme: theme };
+    let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
+
+    sendFilterAppliedEvent({ filterCategoriesUsedString });
+
     if (theme !== props.theme) {
       setQueryParam('theme', theme, true);
-
-      let filterCategoriesUsed = { theme: theme };
-      let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
-      sendFilterAppliedEvent({ filterCategoriesUsedString });
     }
 
     props.onExit();

@@ -15,12 +15,12 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [version, setVersion] = useState(props.version);
 
   function handleUpdate() {
+    let filterCategoriesUsed = { theme: props.theme, version: version };
+    let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
+
+    sendFilterAppliedEvent({ filterCategoriesUsedString });
+
     if (version !== props.version) {
-      let filterCategoriesUsed = { theme: props.theme, version: version };
-      let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
-
-      sendFilterAppliedEvent({ filterCategoriesUsedString });
-
       // Since the version changed, we need to navigate to that version of the
       // doc site, which is archived under design.cms.gov/v/
 
