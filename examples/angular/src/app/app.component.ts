@@ -1,5 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { AccordionComponent } from './accordionWrapper/accordion.component';
+import { AccordionItemComponent } from './accordionItemWrapper/accordionItem.component';
 import { AlertComponent } from './alertWrapper/alert.component';
 import { ButtonComponent } from './buttonWrapper/button.component';
 import { DialogComponent } from './modalDialogWrapper/dialog.component';
@@ -12,6 +13,7 @@ import { DrawerComponent } from './drawerWrapper/drawer.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     AccordionComponent,
+    AccordionItemComponent,
     AlertComponent,
     ButtonComponent,
     DialogComponent,
@@ -54,6 +56,20 @@ export class AppComponent {
 
   // Accordion Item data:
   headingLevel = '2';
+  liked = true;
+
+  setLiked(e: Event) {
+    const value = ((e as any).detail.target as HTMLInputElement).value === 'true';
+    this.liked = value;
+  }
+
+  alertLiked() {
+    if (this.liked) {
+      alert('Glad you liked this!');
+    } else {
+      alert('Sorry you did not like this content.');
+    }
+  }
 
   // Modal Dialog Data:
   is_open = 'false';
