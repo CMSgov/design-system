@@ -15,8 +15,8 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [version, setVersion] = useState(props.version);
 
   function handleUpdate() {
-    let filterCategoriesUsed = { theme: props.theme, version: version };
-    let filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
+    const filterCategoriesUsed = { theme: props.theme, version: version };
+    const filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
 
     sendFilterAppliedEvent({ filterCategoriesUsedString });
 
