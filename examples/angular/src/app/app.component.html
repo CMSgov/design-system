@@ -1,0 +1,224 @@
+<div class="ds-content ds-u-margin-x--0 ds-u-margin-bottom--2 full-height">
+  <ds-skip-nav href="#main"></ds-skip-nav>
+  <ds-usa-banner></ds-usa-banner>
+  <main class="ds-l-container">
+    <h1 class="ds-text-heading--5xl ds-u-margin-top--2">Web-component examples</h1>
+
+    <!-- Wrapped Alert -->
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Alert</h2>
+    <app-alert
+      [alertVariation]="wrappedAlertVariation"
+      [alertHeading]="wrappedAlertHeading"
+      [alertMessage]="wrappedAlertMessage"
+    >
+      <app-button (buttonClickEvent)="setToWarning($event)" [buttonVariation]="solidVariation">
+        {{ buttonText() }}
+      </app-button>
+    </app-alert>
+
+    <!-- Wrapped Accordion -->
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Accordion</h2>
+    <app-accordion [bordered]="bordered" [headingLevel]="headingLevel">
+      <app-accordion-item>
+        <item-heading>The First Ammendment</item-heading>
+        <ds-alert> This is an alert inside of an accordion item. </ds-alert>
+        <p>
+          The First Amendment provides several rights protections: to express ideas through speech
+          and the press, to assemble or gather with a group to protest or for other reasons, and to
+          ask the government to fix problems. It also protects the right to religious beliefs and
+          practices. It prevents the government from creating or favoring a religion.
+        </p>
+        <div class="ds-u-margin-top--2">
+          <ds-choice-list
+            (ds-change)="setLiked($event)"
+            class-name="ds-u-margin-bottom--2"
+            label="Did you like this content?"
+            name="likedIt"
+            type="radio"
+          >
+            <ds-choice label="Yes" default-checked="true" value="true" />
+            <ds-choice label="No" value="false" />
+          </ds-choice-list>
+          <ds-button (ds-click)="alertLiked()" variation="solid"
+            >Tell us what you though about this content.</ds-button
+          >
+        </div>
+      </app-accordion-item>
+      <app-accordion-item>
+        <item-heading>The Third Ammendment</item-heading>
+        <ds-alert variation="warn">
+          This is an alert inside of an accordion item that is warning you.</ds-alert
+        >
+        <p>
+          The Third Amendment prevents government from forcing homeowners to allow soldiers to use
+          their homes. Before the Revolutionary War, laws gave British soldiers the right to take
+          over private homes.
+        </p>
+      </app-accordion-item>
+      <app-accordion-item>
+        <item-heading>The Fourth Ammendment</item-heading>
+        <ds-alert variation="error">
+          This is an alert inside of an accordion item that informing you of an error.</ds-alert
+        >
+        <p>
+          The Fourth Amendment bars the government from unreasonable search and seizure of an
+          individual or their private property.
+        </p>
+      </app-accordion-item>
+      <div class="ds-u-margin-top--2">
+        <cite>
+          <a
+            href="https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say"
+            target="_blank"
+          >
+            Source Material</a
+          >
+        </cite>
+      </div>
+    </app-accordion>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Month Picker</h2>
+    <ds-month-picker
+      requirement-label="Required."
+      hint="Select many."
+      name="fooPicker"
+      label="Select any months you want!"
+    >
+      <input type="checkbox" value="10" checked />
+      <input type="checkbox" value="11" checked disabled />
+      <input type="checkbox" value="12" disabled />
+    </ds-month-picker>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Spinner</h2>
+    <ds-spinner aria-valuetext="aria sets spinner label!"
+      >children don't set spinner label</ds-spinner
+    >
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Checkbox</h2>
+    <h3 class="ds-text-heading--3xl ds-u-margin-top--2">DS Choice</h3>
+    <ds-choice type="checkbox" label="I agree to the terms and conditions" name="agree">
+      <div slot="checked-children">
+        <ds-alert class="ds-u-margin-top--1">Cool, we hoped you'd check this box.</ds-alert>
+      </div>
+    </ds-choice>
+
+    <h3 class="ds-text-heading--3xl ds-u-margin-top--2">DS Choicelist</h3>
+    <ds-choice-list type="radio" label="Choice list example" name="foo">
+      <ds-choice label="Choice without associated children" value="no children" />
+      <ds-choice
+        label="Checked children"
+        hint="Selecting this checkbox will reveal its associated children."
+        value="checked children"
+      >
+        <div slot="checked-children">
+          <div class="ds-c-choice__checkedChild">
+            <ds-alert heading="🫣 Tag! You're it!">
+              You can reveal content by applying <code>checked-children</code> to the
+              <code>slot</code> attribute of an HTML element. Do not forget to include a
+              <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+              whatever content you want to show/hide so it gets side border showing an association
+              with its choice parent.
+            </ds-alert>
+          </div>
+        </div>
+      </ds-choice>
+      <ds-choice
+        label="Unchecked children"
+        hint="Selecting this checkbox will hide its associated children."
+        value="unchecked children"
+      >
+        <div slot="unchecked-children">
+          <div class="ds-c-choice__checkedChild">
+            <ds-alert variation="warn" heading="I banish thee!">
+              You can hide content by applying <code>unchecked-children</code> to the
+              <code>slot</code> attribute of an HTML element. Do not forget to include a
+              <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+              whatever content you want to show/hide so it gets side border showing an association
+              with its choice parent.
+            </ds-alert>
+          </div>
+        </div>
+      </ds-choice>
+    </ds-choice-list>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Modal Dialog</h2>
+    <app-button (buttonClickEvent)="openDialog()"> Open Dialog </app-button>
+    <app-dialog
+      [(isOpen)]="is_open"
+      [root_id]="root_id"
+      [size]="size"
+      [backdrop_click_exits]="backdrop_click_exits"
+      [heading]="dialogHeading"
+      (ds-exit)="closeDialog()"
+    >
+      <dialog-body>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan diam vitae metus
+          lacinia, eget tempor purus placerat.
+        </p>
+      </dialog-body>
+      <dialog-actions>
+        <form method="dialog" (submit)="closeDialog()">
+          <button class="ds-c-button ds-c-button--solid" type="submit" value="sbmBtn">
+            Confirm
+          </button>
+        </form>
+      </dialog-actions>
+    </app-dialog>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Review</h2>
+    @for(elem of reviewElements; track elem.id) {
+    <app-review [edit_href]="href">
+      <review-heading>{{ elem.heading }}</review-heading>
+      <review-edit-text>{{ elem.editText }}</review-edit-text>
+      <p>{{ elem.content }}</p>
+    </app-review>
+    } @empty {
+    <app-review [edit_href]="href">
+      <review-heading>Please review the following content.</review-heading>
+      <review-edit-text>Hello. Edit me.</review-edit-text>
+      <p>Have you deeply considered your options?</p>
+    </app-review>
+    }
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Drawer</h2>
+    <app-drawer
+      [(isOpen)]="drawerOpen"
+      [footerBody]="footerBody"
+      [footerTitle]="footerTitle"
+      [drawerHeading]="drawerHeading"
+      (ds-close-click)="closeDrawer()"
+    >
+      <strong> An Explanation </strong>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </app-drawer>
+    <app-button
+      [additionalClasses]="toggleClasses"
+      [buttonVariation]="ghostVariation"
+      (buttonClickEvent)="openDrawer()"
+    >
+      Click to toggle drawer
+    </app-button>
+  </main>
+</div>

@@ -1,0 +1,14 @@
+<ds-drawer
+  [attr.footer-title]="footerTitle()"
+  [attr.heading]="drawerHeading()"
+  [attr.is-open]="isOpen()"
+  (ds-close-click)="closeDrawer()"
+>
+  <ng-content></ng-content>
+
+  <div slot="footer-body">
+    <p class="ds-text-body--md ds-u-margin--0" className="ds-text-body--md ds-u-margin--0">
+      {{ footerBody() }}
+    </p>
+  </div>
+</ds-drawer>
