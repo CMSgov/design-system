@@ -46,6 +46,10 @@
   margin-block-start: $spacer-half;
 }
 
+.ds-c-box-content-quotation {
+  margin: $spacer-2;
+}
+
 .ds-c-box-content-quotation--blockquote {
   margin: 0;
 }
@@ -53,4 +57,8 @@
 .ds-c-box-content-quotation--caption {
   margin-block-start: $spacer-half;
   font-weight: var(--font-weight-semibold);
+}
+
+.ds-c-box-content-quotation--citation {
+  font-style: normal;
 }

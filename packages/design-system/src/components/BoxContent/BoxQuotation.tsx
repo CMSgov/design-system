@@ -15,7 +15,7 @@ interface MinimumBoxQuotationProps {
   /**
    * Provide a citation for the quote
    */
-  citation?: string;
+  citation?: React.ReactNode;
   /**
    * Additional classes to be added to the component
    */
@@ -35,7 +35,7 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
       <figcaption className="ds-c-box-content-quotation--caption">
         {author && `\u2014 ${author} `}
         {author && citation && '/ '}
-        {citation && <cite>{citation}</cite>}
+        {citation && <cite className="ds-c-box-content-quotation--citation">{citation}</cite>}
       </figcaption>
     </figure>
   );
