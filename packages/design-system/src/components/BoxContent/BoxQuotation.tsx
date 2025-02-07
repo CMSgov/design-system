@@ -29,13 +29,22 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
 
   const classes = classNames('ds-c-box-content-quotation', className);
 
+  const captionContent = () => {
+    // We want to prioritize citations over authors, so if both are present only render the citation.
+    if (citation) {
+      return <cite className="ds-c-box-content-quotation--citation">{citation}</cite>;
+    }
+    // If citation is not present, but author is, render the author.
+    if (author && !citation) {
+      return `${author} `;
+    }
+  };
+
   return (
     <figure className={classes}>
       <blockquote className="ds-c-box-content-quotation--blockquote">{children}</blockquote>
       <figcaption className="ds-c-box-content-quotation--caption">
-        {author && `\u2014 ${author} `}
-        {author && citation && '/ '}
-        {citation && <cite className="ds-c-box-content-quotation--citation">{citation}</cite>}
+        {`\u2014`} {captionContent()}
       </figcaption>
     </figure>
   );

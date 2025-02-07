@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import BoxContent from './BoxContent';
-import { BoxQuotation } from './BoxQuotation';
-import { QuotationMarkIcon } from '../Icons';
+import { Default as BoxQuotationStory } from './BoxQuotation.stories';
 
 const meta: Meta = {
   component: BoxContent,
@@ -22,21 +21,6 @@ const BoxContentTemplate: Story = {
   },
 };
 
-const BoxQuotationTemplate: Story = {
-  render: ({ ...args }) => {
-    return (
-      <BoxContent {...args}>
-        <BoxQuotation
-          author="U.S. Department of the Treasury"
-          citation="https://home.treasury.gov/policy-issues/inflation-reduction-act"
-        >
-          {args.children}
-        </BoxQuotation>
-      </BoxContent>
-    );
-  },
-};
-
 export const Default = {
   ...BoxContentTemplate,
   args: {
@@ -48,10 +32,5 @@ export const Default = {
 };
 
 export const BlockQuote = {
-  ...BoxQuotationTemplate,
-  args: {
-    heading: <QuotationMarkIcon />,
-    children:
-      "The Inflation Reduction Act keeps these savings and lower costs through 2025. If you qualify for savings, you'll find out the lower costs when you shop for plans.",
-  },
+  ...BoxQuotationStory,
 };
