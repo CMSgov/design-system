@@ -8,6 +8,13 @@ import { select } from '@inquirer/prompts';
 import { execSync } from 'child_process';
 import path from 'path';
 
+const missingAliasesLogPath = path.join(__dirname, 'missing_aliases.txt');
+
+function logMissingAlias(variableName: string, missingId: string) {
+  const logEntry = `❌ Missing Alias: ${missingId} for variable ${variableName}\n`;
+  fs.appendFileSync(missingAliasesLogPath, logEntry, 'utf8');
+}
+
 /**
  * An internal representation of the kind of dimensional unit we're dealing with when
  * we're processing a number-type token (which all gets shoved into the same FLOAT type
@@ -221,15 +228,26 @@ function tokenValueFromVariable(
   localVariables: { [id: string]: Variable }
 ): { value: any; aliasedVariable?: Variable } {
   const value = variable.valuesByMode[modeId];
+
   if (typeof value === 'object') {
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id];
+
+      if (!aliasedVariable) {
+        console.warn(
+          `⚠️ WARNING: Alias ID ${value.id} not found in localVariables for ${variable.name}`
+        );
+        logMissingAlias(variable.name, value.id);
+        return { value: `MISSING_ALIAS(${value.id})` };
+      }
+
       return { value: `{${aliasedVariable.name.replace(/\//g, '.')}}`, aliasedVariable };
     } else if ('r' in value) {
       return { value: rgbToHex(value) };
     }
 
-    throw new Error(`Format of variable value is invalid: ${value}`);
+    console.warn(`⚠️ Unexpected variable format for ${variable.name}: ${JSON.stringify(value)}`);
+    return { value: `UNKNOWN_FORMAT(${JSON.stringify(value)})` };
   } else {
     return { value };
   }
