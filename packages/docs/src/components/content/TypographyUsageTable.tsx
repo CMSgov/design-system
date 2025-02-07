@@ -49,7 +49,7 @@ const UnusedBadge = ({ theme }: { theme: ThemeName }) => {
   const displayName = capitalize(theme);
 
   return (
-    <Badge variation="alert">
+    <Badge className="ds-c-badge--alert">
       <CloseIconThin /> Unused by {displayName}.
     </Badge>
   );
@@ -67,7 +67,7 @@ const DynamicTableCell = ({
   const { dataKey, label } = header;
   const value = dataItem[dataKey];
   const data = typeof value === 'object' ? value[theme] : value;
-  let content: React.ReactNode;
+  let content: React.ReactNode = data;
 
   const isCSSClass = dataKey === 'cssClass';
   const isExample = dataKey === 'example';
@@ -78,7 +78,7 @@ const DynamicTableCell = ({
     content = <UnusedBadge theme={theme} />;
   } else if (isExampleLink) {
     content = (
-      <a href={`#${dataItem.cssClass}`} className={dataItem.cssClass}>
+      <a href="javascript:void(0);" className={dataItem.cssClass}>
         {DEFAULT_EXAMPLE_TEXT}
       </a>
     );
@@ -104,9 +104,9 @@ const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps
     <Table
       className="c-typography-usage-table ds-u-margin-bottom--2"
       compact
+      scrollable
       stackable
       stackableBreakpoint="lg"
-      scrollable
     >
       <TableCaption>{caption}</TableCaption>
       <TableHead>
@@ -124,8 +124,8 @@ const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps
             {filteredHeaders.map((header) => (
               <DynamicTableCell
                 key={header.dataKey}
-                header={header}
                 dataItem={dataItem}
+                header={header}
                 theme={theme}
               />
             ))}
