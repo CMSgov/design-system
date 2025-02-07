@@ -57,14 +57,14 @@ const UnusedBadge = ({ theme }: { theme: ThemeName }) => {
 
 const DynamicTableCell = ({
   dataItem,
-  headers,
+  header,
   theme,
 }: {
   dataItem: DataItem;
-  headers: Header;
+  header: Header;
   theme: ThemeName;
 }) => {
-  const { dataKey, label } = headers;
+  const { dataKey, label } = header;
   const value = dataItem[dataKey];
   const data = typeof value === 'object' ? value[theme] : value;
   let content: React.ReactNode;
@@ -121,10 +121,10 @@ const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps
       <TableBody>
         {data.map((dataItem) => (
           <TableRow key={dataItem.figmaToken}>
-            {filteredHeaders.map((headers) => (
+            {filteredHeaders.map((header) => (
               <DynamicTableCell
-                key={headers.dataKey}
-                headers={headers}
+                key={header.dataKey}
+                header={header}
                 dataItem={dataItem}
                 theme={theme}
               />
