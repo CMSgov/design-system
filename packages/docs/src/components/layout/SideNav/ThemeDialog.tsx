@@ -3,10 +3,13 @@ import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog/index';
 import { getThemeOptions } from './themeVersionData';
 import { setQueryParam } from '../../../helpers/urlUtils';
+import { sendFilterAppliedEvent } from '../../../helpers/analytics';
+import { getVersionEquivalent } from './themeVersionData';
 
 export interface ThemeVersionDialogProps {
   theme: string;
   isOpen?: boolean;
+  version: string;
   onExit(...args: any[]): void;
 }
 
@@ -14,6 +17,12 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [theme, setTheme] = useState(props.theme);
 
   function handleUpdate() {
+    const currentVersion = getVersionEquivalent(theme, props.theme, props.version);
+    const filterCategoriesUsed = { theme: theme, version: currentVersion };
+    const filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
+
+    sendFilterAppliedEvent({ filterCategoriesUsedString });
+
     if (theme !== props.theme) {
       setQueryParam('theme', theme, true);
     }
