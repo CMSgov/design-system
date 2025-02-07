@@ -14,128 +14,291 @@ medicare:
   figmaNodeId: 4052-37058
 ---
 
-import { Alert, Badge, CloseIconThin } from '@cmsgov/design-system';
+import {
+  Alert,
+  Badge,
+  CloseIconThin,
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
+import { css } from '@storybook/theming';
 
-<Alert heading="Typography sizing updates!">
-  <p class="ds-c-alert__text">
-    We've updated typography sizing variables and class names to separate semantics from
-    presentation. Read about{' '}
-    <a href="/migration-guides/agnostic-typography-classes">how you can update</a>.
-  </p>
-</Alert>
+## Heading font family
 
-<ThemeContent onlyThemes={['healthcare']}>
+<ThemeContent onlyThemes={['core']}>Core uses Open Sans for all headings.</ThemeContent>
 
-Open Sans serves as the base font for the site. The full Open Sans type family consists of a variety of weights including light, regular, semibold, bold, and extrabold which allows for a wide range of type treatments and hierarchies within a page while still maintaining a unified look and feel.
-
-Sans-serifs have been proven to be easier to read on-screen and are incredibly adaptable when resized and displayed across different platforms and browsers. Accordingly, Open Sans is used for body type, secondary and tertiary headlines, and instructional text.
-
-**Web font stack:** Open Sans > Helvetica > Arial > Verdana > Sans-Serif
-
-- Open Sans font is used for headings and body content.
-- Standard body text is Open Sans Regular, 16px, #333, 24px line-height, 32px bottom-margin on paragraphs.
-- Smallest paragraph text for legibility reasons is Open Sans Regular, 14px, #333, 20px line-height, 28px bottom-margin on paragraphs (except for legal/caption text).
-- Uppercase font should not be used.
-
-</ThemeContent>
-
-The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
-
-## Examples
-
-### Heading--5xl
-
-<ThemeContent onlyThemes={['medicare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Medicare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent neverThemes={['medicare']}>
-  <EmbeddedExample>
-    <h1 class="ds-text-heading--5xl">Example heading (5xl)</h1>
-  </EmbeddedExample>
-</ThemeContent>
-
-### Heading--4xl
-
-<ThemeContent onlyThemes={['medicare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Medicare.
-</Badge>
-
-</ThemeContent>
+<ThemeContent onlyThemes={['cmsgov']}>CMS.gov uses Lexend for all headings.</ThemeContent>
 
 <ThemeContent onlyThemes={['healthcare']}>
-
-Heading--4xl is used for the heading on landing pages that serve as an entry point to a section on HC.gov when the heading needs to be larger and bolder to stand out.
-
+  Healthcare.gov uses Open Sans for all headings.
 </ThemeContent>
 
-<ThemeContent neverThemes={['medicare']}>
-  <EmbeddedExample>
-    <h1 class="ds-text-heading--4xl">Example heading (4xl)</h1>
-  </EmbeddedExample>
+<ThemeContent onlyThemes={['medicare']}>
+  Medicare.gov uses Montserrat for all headings.
 </ThemeContent>
 
-### Heading--3xl
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc.) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--3xl">Example heading (3xl)</h1>
-</EmbeddedExample>
+## Responsive typography
 
-### Heading--2xl
+`.ds-text-heading-5xl`, `ds-text-heading-4xl`, and `ds-text-heading-3xl` classes are responsive by default.
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--2xl">Example heading (2xl)</h1>
-</EmbeddedExample>
+To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
+Since the base typography margins and line height is measured in `em` units,
+they'll automatically adjust as you change the font size.
 
-### Heading--xl
+<TypographyUsageTable
+  caption="All / Small breakpoints"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+    { dataKey: 'usage', label: 'Usage' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--sm',
+      figmaToken: 'Headings/Small',
+    },
+    {
+      cssClass: 'ds-text-heading--md',
+      figmaToken: 'Headings/Medium',
+      usage: {
+        cmsgov: 'Footer headings',
+        healthcare: 'H2 in megamenus',
+        medicare: 'Search headers',
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--lg',
+      figmaToken: 'Headings/Large',
+      usage: {
+        healthcare: 'H4 - subsection headings',
+        medicare: 'Footer menu headers',
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--xl',
+      figmaToken: 'Headings/XL',
+      usage: {
+        cmsgov: 'H3 headers in cards',
+        healthcare: 'H3 - subsection headings',
+        medicare: 'Card headers',
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--2xl',
+      figmaToken: 'Headings/2xl/2xl',
+      usage: {
+        cmsgov: 'H3 headers',
+        healthcare: 'H2 - section headings',
+        medicare: 'Mobile menu drawer header',
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Headings/3xl/3xl - MD-SM',
+      usage: {
+        cmsgov: 'Search prompt on homepage',
+        healthcare: 'H1 for homepage heroes, page headings',
+        medicare: 'Internal page headers',
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Headings/4xl/4xl - MD-SM',
+      example: {
+        medicare: null,
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Headings/5xl/5xl - SM',
+      usage: {
+        cmsgov: 'H1 on homepage; internal page titles',
+        healthcare: 'H1 on Get Coverage; Keep Coverage',
+        medicare: 'Learn, Resources headers',
+      },
+    },
+  ]}
+/>
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--xl">Example heading (xl)</h1>
-</EmbeddedExample>
+<TypographyUsageTable
+  caption="Medium breakpoints"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Headings/3xl/3xl - MD-SM',
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Headings/4xl/4xl - MD-SM',
+      example: {
+        medicare: null,
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Headings/5xl/5xl - MD',
+    },
+  ]}
+/>
 
-### Heading--lg
+<TypographyUsageTable
+  caption="Large breakpoints and up"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Headings/3xl/3xl - LG',
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Headings/4xl/4xl - LG',
+      example: {
+        medicare: null,
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Headings/5xl/5xl - LG',
+    },
+  ]}
+/>
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--lg">Example heading (lg)</h1>
-</EmbeddedExample>
+| CSS Class              | 545px and below | 545px to 768px | 768px and above |
+| ---------------------- | --------------- | -------------- | --------------- |
+| `.ds-text-heading-5xl` | 36px            | 48px           | 60px            |
+| `.ds-text-heading-4xl` | 36px            | 36px           | 48px            |
+| `.ds-text-heading-3xl` | 30px            | 30px           | 36px            |
 
-### Heading--md
+<ResponsiveExample
+  storyId="foundations-typography-headings--responsive-headings"
+  title="Responsive typography example"
+/>
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--md">Example heading (md)</h1>
-</EmbeddedExample>
+## Headings Links
 
-### Heading--sm
+Links nested within elements styled with heading tags, or styled directly as headings, will render as links in the appropriate size and weight. There is no additional CSS class to apply, but Figma contains tokens specific to rendering links. Medium breakpoints are given as an example below.
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--sm">Example heading (sm)</h1>
-</EmbeddedExample>
+Please note that in Figma, the color token is separate from the font token and needs to be applied independently.
 
-### Link Heading
+<TypographyUsageTable
+  caption="All / Small breakpoints as links"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--sm',
+      figmaToken: 'Links/Headings/Small',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--md',
+      figmaToken: 'Links/Headings/Medium',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--lg',
+      figmaToken: 'Links/Headings/Large',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--xl',
+      figmaToken: 'Links/Headings/XL',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--2xl',
+      figmaToken: 'Links/Headings/2xl/2xl',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Links/Headings/3xl/3xl - MD-SM',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Links/Headings/4xl/4xl - MD-SM',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Links/Headings/5xl/5xl - SM',
+      example: 'example-link',
+    },
+  ]}
+/>
 
-<EmbeddedExample>
-  <h1 class="ds-text-heading--lg">
-    <a href="javascript:void(0);">Example link heading (lg)</a>
-  </h1>
-</EmbeddedExample>
+<TypographyUsageTable
+  caption="Medium breakpoints as links"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Links/Headings/3xl/3xl - MD-SM',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Links/Headings/4xl/4xl - MD-SM',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Links/Headings/5xl/5xl - MD',
+      example: 'example-link',
+    },
+  ]}
+/>
 
-### On dark background
-
-<EmbeddedExample>
-  <div class="ds-base--inverse ds-u-padding--2">
-    <h3 class="ds-text-heading--lg">Example heading on dark background</h3>
-    <h3 class="ds-text-heading--lg">
-      <a href="javascript:void(0);">Example link heading on dark background</a>
-    </h3>
-  </div>
-</EmbeddedExample>
+<TypographyUsageTable
+  caption="Large breakpoints and up as links"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: 'Links/Headings/3xl/3xl - LG',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: 'Links/Headings/4xl/4xl - LG',
+      example: 'example-link',
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: 'Links/Headings/5xl/5xl - LG',
+      example: 'example-link',
+    },
+  ]}
+/>
 
 <ThemeContent onlyThemes={['medicare']}>
 
@@ -149,6 +312,8 @@ Only used for landing pages and marketing material to apply emphasis to words wi
   <h3 class="ds-text-heading--lg ds-u-color--primary">Example teal heading</h3>
 </EmbeddedExample>
 
+</ThemeContent>
+
 ### Eyebrow/Eyelash header
 
 In some cases, it is better to group header elements into a header component. This can be referred to as the Eyelash/Eyebrow header where you have the main header and an optional top header (eyebrow) or bottom header (eyelash) header.
@@ -160,8 +325,6 @@ This is an optional header design.
   <h1 class="ds-text-heading--3xl ds-u-margin--0">Example main header</h1>
   <p class="ds-text-body--md ds-u-margin-top--0">Example eyelash header</p>
 </EmbeddedExample>
-
-</ThemeContent>
 
 ## Code
 
@@ -185,29 +348,6 @@ The design system heading styles have alternate margins for headings that are th
 
 </Alert>
 
-### The `ds-content` class
-
-For pages that are mainly about written content or places where you want to use a standard mapping of heading-level styles to semantic heading levels, consider using the [`ds-content`](/foundation/typography/content/) class.
-
-### Responsive typography
-
-`.ds-text-heading-5xl`, `ds-text-heading-4xl`, and `ds-text-heading-3xl` classes are responsive by default.
-
-| Font class             | 545px and below | 545px to 768px | 768px and above |
-| ---------------------- | --------------- | -------------- | --------------- |
-| `.ds-text-heading-5xl` | 36px            | 48px           | 60px            |
-| `.ds-text-heading-4xl` | 36px            | 36px           | 48px            |
-| `.ds-text-heading-3xl` | 30px            | 30px           | 36px            |
-
-<ResponsiveExample
-  storyId="foundations-typography-headings--responsive-headings"
-  title="Responsive typography example"
-/>
-
-To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
-Since the base typography margins and line height is measured in `em` units,
-they'll automatically adjust as you change the font size.
-
 ### Style customization
 
 The following CSS variables can be overridden to change the type sizes:
@@ -223,9 +363,11 @@ The following CSS variables can be overridden to change the type sizes:
 
 ## Guidance
 
-<ThemeContent onlyThemes={['healthcare']}>
+### The `ds-content` class
 
-### Layout
+For pages that are mainly about written content or places where you want to use a standard mapping of heading-level styles to semantic heading levels, consider using the [`ds-content`](/foundation/typography/content/) class.
+
+### Layout dos and don'ts
 
 There should always be a parent/child relationship between headers and content on the page. Every header should have a relationship to something else on the page. This can apply to many different relationships like a header and a form group or a header and list of links. Stray headers or content should be reevaluated.
 
@@ -234,67 +376,5 @@ There should always be a parent/child relationship between headers and content o
 - Not all paragraphs need a header, but all headers need children.
 - Every page should have one heading 1 (H1)
 - Headings style appearing under H1 should follow a logical order for information design and supporting various assistive technology devices/software.
-
-### Don't
-
 - Don't use a smaller header font size than the body font size
 - Don't use stray headers
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-### Mobile
-
-Header sizes should be reduced on mobile screen sizes. Header sizes can be reduced depending on the designers discretion but you can generally use this guide for reducing your header sizes.
-
-- 3xLarge to 2xLarge - Down 2 sizes
-- Xlarge to Large - Down 1 size
-- Medium to Small - No change in size
-
-### Typography Spacing
-
-Spacing between text elements can make an impact on the overall design and having a consistent spacing between elements improves the flow of a page and improves consistency between products.
-
-Here are some spacing elements that can help create guides for spacing between elements.
-
-#### How to use spacers
-
-- Use spacers that correspond to the header being applied. If you use a `heading--lg` header, apply a `--spacer-5` spacer to the body content below the header.
-- When it comes to content relationships. Header sizes should be of equal or smaller size to the body content.
-
-| Header size  | Variable    | Value | Example                                                   |
-| ------------ | ----------- | ----- | --------------------------------------------------------- |
-| Heading--sm  | --spacer-3  | 24px  | <div class="ds-u-fill--secondary example-spacer-3"></div> |
-| Heading--md  | --spacer-4  | 32px  | <div class="ds-u-fill--secondary example-spacer-4"></div> |
-| Heading--lg  | --spacer-5  | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div> |
-| Heading--xl  | --spacer-6  | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div> |
-| Heading--2xl | --spacer-7  | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div> |
-| Heading--3xl | No variable | 72px  |                                                           |
-
-#### Spacing example
-
-<EmbeddedExample>
-  <h1 class="ds-text-heading--2xl">Spacing example heading (2xl)</h1>
-  <div class="utility-example example-spacer-7 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">
-    --spacer-7
-  </div>
-  <p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
-
-  <h1 class="ds-text-heading--lg">Spacing example heading (lg)</h1>
-  <div class="utility-example example-spacer-5 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">
-    --spacer-5
-  </div>
-  <p class="ds-text-body--md">{loremIpsumGenerator('l')}</p>
-</EmbeddedExample>
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['healthcare']}>
-- The default size for body content is 16px.
-- The Rubrik font is used for body content.
-- The Montserrat font is used for headers, some menu components, and the big button (Landing).
-- The smallest paragraph text for legibility to the Medicare audience should not be smaller than 16 px (except for legal/caption text).
-- Uppercase font should not be used (exception for form elements).
-
-</ThemeContent>
