@@ -3,10 +3,10 @@ import { updateChildDSAndExamples } from './bump-child-deps-utils';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled } from './utils';
-import { root, updateVersions } from './versions';
+import { updateVersions } from './versions';
 import yargs from 'yargs';
 
-const REVIEWERS = ['pwolfert', 'kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
+const REVIEWERS = ['kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
