@@ -246,8 +246,7 @@ function tokenValueFromVariable(
       return { value: rgbToHex(value) };
     }
 
-    console.warn(`⚠️ Unexpected variable format for ${variable.name}: ${JSON.stringify(value)}`);
-    return { value: `UNKNOWN_FORMAT(${JSON.stringify(value)})` };
+    throw new Error(`Format of variable value is invalid: ${value}`);
   } else {
     return { value };
   }
