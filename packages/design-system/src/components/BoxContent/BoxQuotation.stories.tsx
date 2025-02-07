@@ -28,9 +28,9 @@ const BoxQuotationStory: Story = {
 export const Default = {
   ...BoxQuotationStory,
   args: {
-    citation: <a href="https://home.treasury.gov/">Inflation Reduction Act</a>,
+    citation: <a href="https://home.treasury.gov/">U.S. Department of the Treasury</a>,
     children:
-      "The Inflation Reduction Act keeps these savings and lower costs through 2025. If you qualify for savings, you'll find out the lower costs when you shop for plans.",
+      "The U.S. Department of the Treasury's mission is to maintain a strong economy and create economic and job opportunities by promoting the conditions that enable economic growth and stability at home and abroad, strengthen national security by combating threats and protecting the integrity of the financial system, and manage the U.S. Government’s finances and resources effectively.",
     heading: <QuotationMarkIcon />,
   },
 };

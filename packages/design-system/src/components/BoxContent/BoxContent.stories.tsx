@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import BoxContent from './BoxContent';
-import { Default as BoxQuotationStory } from './BoxQuotation.stories';
 
 const meta: Meta = {
   component: BoxContent,
@@ -29,8 +28,4 @@ export const Default = {
       "The Inflation Reduction Act keeps these savings and lower costs through 2025. If you qualify for savings, you'll find out the lower costs when you shop for plans.",
     bordered: true,
   },
-};
-
-export const BlockQuote = {
-  ...BoxQuotationStory,
 };
