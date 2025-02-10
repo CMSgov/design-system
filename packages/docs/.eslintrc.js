@@ -14,5 +14,9 @@ module.exports = {
     node: true,
   },
   plugins: ['jsx-a11y', 'react', 'react-hooks'],
-  rules: {},
+  rules: {
+    'no-undef': 'warn',
+    'no-useless-escape': 'warn',
+    'react/prop-types': [1, { ignore: ['className', 't'] }],
+  },
 };
