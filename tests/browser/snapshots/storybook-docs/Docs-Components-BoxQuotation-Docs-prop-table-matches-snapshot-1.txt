@@ -1,0 +1,22 @@
+[
+  [
+    "author",
+    "Provide an author for the quote\nstring",
+    "-"
+  ],
+  [
+    "children*",
+    "Content to be displayed within the Box Quotation\nReactNode",
+    "-"
+  ],
+  [
+    "citation",
+    "Provide a citation for the quote\nReactNode",
+    "-"
+  ],
+  [
+    "className",
+    "Additional classes to be added to the component\nstring",
+    "-"
+  ]
+]

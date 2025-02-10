@@ -9,6 +9,11 @@ const meta: Meta = {
     heading: { control: 'text' },
     headingLevel: { control: 'text' },
   },
+  parameters: {
+    docs: {
+      underlyingHtmlElements: ['aside'],
+    },
+  },
 };
 
 export default meta;

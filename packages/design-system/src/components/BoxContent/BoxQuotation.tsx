@@ -35,8 +35,11 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
       return <cite className="ds-c-box-content-quotation--citation">{citation}</cite>;
     }
     // If citation is not present, but author is, render the author.
-    if (author && !citation) {
+    if (author) {
       return `${author} `;
+    }
+    if (!citation && !author) {
+      throw new Error('Either a citation or an author is required for using a BoxQuotation.');
     }
   };
 

@@ -48,8 +48,9 @@ describe('BoxContent', () => {
     });
     const quoteElement = screen.getByText(/This is foo text. Bar!/);
     expect(quoteElement).toBeInTheDocument();
-    const authorElement = screen.getByText(/Test Author/);
-    expect(authorElement).toBeInTheDocument();
+    // Per Design request citation wins out over author if both are provided
+    const authorElement = screen.queryByText(/Test Author/);
+    expect(authorElement).not.toBeInTheDocument();
     const citationElement = screen.getByText(/Test Citation/);
     expect(citationElement).toBeInTheDocument();
     expect(screen.getByRole('complementary')).toMatchSnapshot();
