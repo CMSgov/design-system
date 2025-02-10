@@ -1,0 +1,11 @@
+.c-typography-usage-table {
+  code {
+    background: var(--color-background);
+  }
+
+  @media (max-width: $media-width-lg) {
+    .ds-u-text-align--right {
+      text-align: start !important;
+    }
+  }
+}
