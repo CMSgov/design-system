@@ -106,6 +106,33 @@ The following CSS variables can be overridden to customize Tooltip fields:
 - Don’t use a tooltip when its content is repetitive or if usability is obvious.
 - If content can fit outside a tooltip, don't use a tooltip.
 
+### Accessibility
+
+#### Accessibility 
+- Tooltip content should not cover other interactive elements or important information.
+- When moving the pointer over an active tooltip, the tooltip should stay open.
+- Tooltip content must appear after a short amount of time or when focus changes in response to a mouse hover, or after the accessibility parent receives keyboard focus.
+- Active tooltips should have the ability to be dismissed by pressing the escape key. 
+- Ensure that open tooltips do not block or obscure vital information or interactive elements on the page, allowing users to access all necessary content without interference.
+
+### Accessibility testing
+
+#### General accessibility testing
+- Using zoom should not obstruct the tooltip or other content – when zooming to 200%, the tooltip content should remain visible.
+
+#### Keyboard testing
+- Tooltips must be accessible with only a keyboard. 
+- When pressing the “tab” key, the user should be able to navigate to the tooltip and activate the tooltip.
+- Pressing the escape key while the tooltip is active, should close the tooltip.
+- When opening a tooltip, the user should be able to navigate in and out of the trigger component without difficulty so that the tooltip does not trap the user or move the user around the page unwillingly. 
+- The focus indicator should be clearly visible around the trigger element. 
+
+#### Screenreader testing
+- Use screen readers (e.g., NVDA, JAWS, VoiceOver) to verify that tooltips are announced correctly.
+- When focusing on the tooltip trigger, the screen reader should announce the tooltip content.
+- When listening to the tooltip with a screen reader, the user should first hear the trigger element content, then the tooltip content, followed by the next content on the page.
+
+
 ## Component maturity
 
 <MaturityChecklist
