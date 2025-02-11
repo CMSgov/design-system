@@ -10,8 +10,8 @@ import path from 'path';
 
 const missingAliasesLogPath = path.join(__dirname, 'missing_aliases.txt');
 
-function logMissingAlias(variableName: string, missingId: string) {
-  const logEntry = `❌ Missing Alias: ${missingId} for variable ${variableName}\n`;
+function logMissingAlias(variableName: string, missingId: string, modeName: string) {
+  const logEntry = `❌ Missing Alias: ${missingId} for variable ${variableName}. Mode: ${modeName}\n`;
   fs.appendFileSync(missingAliasesLogPath, logEntry, 'utf8');
 }
 
@@ -225,7 +225,8 @@ function tokenTypeFromVariable(variable: Variable): Token['$type'] {
 function tokenValueFromVariable(
   variable: Variable,
   modeId: string,
-  localVariables: { [id: string]: Variable }
+  localVariables: { [id: string]: Variable },
+  modeName: string
 ): { value: any; aliasedVariable?: Variable } {
   const value = variable.valuesByMode[modeId];
 
@@ -235,9 +236,10 @@ function tokenValueFromVariable(
 
       if (!aliasedVariable) {
         console.warn(
-          `⚠️ WARNING: Alias ID ${value.id} not found in localVariables for ${variable.name}`
+          `⚠️ WARNING: Alias ID "${value.id}" not found in localVariables for variable "${variable.name}". Mode: "${modeName}"`
         );
-        logMissingAlias(variable.name, value.id);
+
+        logMissingAlias(variable.name, value.id, modeName);
         return { value: `MISSING_ALIAS(${value.id})` };
       }
 
@@ -257,11 +259,12 @@ async function tokenFromVariable(
   modeId: string,
   localVariables: { [id: string]: Variable },
   existingTokens: FlattenedTokens,
-  resolvers: TypeResolvers
+  resolvers: TypeResolvers,
+  modeName: string
 ): Promise<Token> {
   const existingToken: Token | undefined = existingTokens[variable.name.replace(/\//g, '.')];
 
-  const valueInfo = tokenValueFromVariable(variable, modeId, localVariables);
+  const valueInfo = tokenValueFromVariable(variable, modeId, localVariables, modeName);
   let $value = valueInfo.value;
   let $type = tokenTypeFromVariable(variable);
 
@@ -387,7 +390,8 @@ export async function tokenFilesFromLocalVariables(
         mode.modeId,
         localVariables,
         existingTokens[fileName] ?? {},
-        resolvers
+        resolvers,
+        mode.name
       );
 
       Object.assign(obj, token);
