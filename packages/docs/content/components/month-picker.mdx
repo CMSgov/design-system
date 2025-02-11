@@ -40,6 +40,39 @@ This component also makes use of form field styles, which can be customized by t
 
 <ComponentThemeOptions componentname="form" />
 
+### Accessibility
+
+#### Accessibility
+- To group related checkboxes, surround them with a `<fieldset>` and use a `<legend>` to provide context, but avoid using `<fieldset>` and `<legend>` for a single checkbox.
+- Each input should have a semantic id attribute, and its corresponding label should have the same value in its for attribute.
+- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. [Read our guidance on color for more information.](../../foundation/system-color-tokens/#accessibility-considerations)
+
+### Accessibility testing
+
+#### Keyboard testing
+- All checkboxes can be accessed using only the tab key.
+- The checkbox focus follows logical content order. When you tab through the months with a keyboard, the focus stays in order of the content as intended.
+- The spacebar is used to check/uncheck a focused checkbox.
+- There is a visible focus state.
+- The change in state is visible.
+
+#### Screen reader testing
+
+###### For desktop users:
+- Some screen readers read the legend text for each element within the fieldset, so it should be brief and descriptive.
+- Each label should be announced for every checkbox.
+- The checkbox element should be identified with a role of checkbox.
+- If hints or errors are present, they are read after the label.
+- In a checkbox group, I should hear the question or title related to them via a legend inside a fieldset.
+- When the checkbox is selected, that state is read out.
+
+###### For mobile users:
+- All the above from the desktop screen reader experience apply.
+- Swiping focuses on a checkbox.
+- Double tapping with the checkbox in focus makes a selection and announces its been selected.
+- Users may select either the text label or the checkbox itself to select an option.
+- Click/tap target area is a minimum of 24x24px.
+
 ## Component maturity
 
 <MaturityChecklist
