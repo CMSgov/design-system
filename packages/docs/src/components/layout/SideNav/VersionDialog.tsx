@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button, Dropdown } from '@cmsgov/design-system';
 import { FilterDialog } from '../FilterDialog';
 import { getVersionOptions, getVersionEquivalent } from './themeVersionData';
+import { sendFilterAppliedEvent } from '../../../helpers/analytics';
 
 export interface ThemeVersionDialogProps {
   theme: string;
@@ -14,6 +15,11 @@ export const ThemeVersionDialog = (props: ThemeVersionDialogProps) => {
   const [version, setVersion] = useState(props.version);
 
   function handleUpdate() {
+    const filterCategoriesUsed = { theme: props.theme, version: version };
+    const filterCategoriesUsedString = JSON.stringify(filterCategoriesUsed);
+
+    sendFilterAppliedEvent({ filterCategoriesUsedString });
+
     if (version !== props.version) {
       // Since the version changed, we need to navigate to that version of the
       // doc site, which is archived under design.cms.gov/v/

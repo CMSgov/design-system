@@ -22,6 +22,7 @@ import ThemeContent from './ThemeContent';
 import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
 import linkAnalytics from '../../helpers/linkAnalytics';
+import TypographyUsageTable from './TypographyUsageTable';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -122,6 +123,7 @@ const customComponents = (theme) => ({
   table: TableWithClassnames,
   TextColorList: (props) => <TextColorList theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
+  TypographyUsageTable: (props) => <TypographyUsageTable theme={theme} {...props} />,
   ul: (props) => TextWithMaxWidth(props, 'ul'),
 });
 
