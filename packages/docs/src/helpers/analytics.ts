@@ -1,21 +1,21 @@
 import { sendLinkEvent } from '@cmsgov/design-system';
 
-const composeButtonAnalytics = (id: string, _collapsed: boolean) => {
-  const isSideNav = Boolean(id.match(/\//));
+const composeButtonAnalytics = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): any => {
   return {
     event_name: 'button_engagement',
     button_style: 'default',
-    button_type: 'sidenav_dropdown',
+    button_type: 'default',
     link_type: 'link_other',
     link_url: 'null',
-    parent_component_heading: isSideNav ? id.split('/')[0] : 'null',
-    parent_component_type: 'LI',
-    text: isSideNav ? id.split('/')[1] : id.split('/')[0],
+    parent_component_heading:
+      (event.target as HTMLButtonElement).parentElement.innerText ?? undefined,
+    parent_component_type: (event.target as HTMLButtonElement).parentElement.tagName ?? undefined,
+    text: (event.target as HTMLButtonElement).innerText,
   } as any;
 };
 
-export function sendButtonAnalytics(id: string, _collapsed: boolean) {
-  sendLinkEvent(composeButtonAnalytics(id, _collapsed));
+export function sendButtonAnalytics(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  sendLinkEvent(composeButtonAnalytics(event));
 }
 
 export function composeLinkAnalyticsEvent(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {

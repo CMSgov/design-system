@@ -2,7 +2,6 @@ import sortBy from 'lodash.sortby';
 import { VerticalNavItemProps } from '@cmsgov/design-system';
 import { makePageUrl } from './urlUtils';
 import { ContentDirectoryGroup, NavItem, LocationInterface } from './graphQLTypes';
-import { sendButtonAnalytics } from '../helpers/analytics';
 
 export interface DocsNavItem extends Omit<VerticalNavItemProps, 'label'> {
   label: string;
@@ -133,7 +132,6 @@ export const convertToNavItems = (
       selected: isSelected,
       id: dataItem.fieldValue,
       order: orderVal,
-      onSubnavToggle: (id, collapsed) => sendButtonAnalytics(id, collapsed),
     });
   });
 
