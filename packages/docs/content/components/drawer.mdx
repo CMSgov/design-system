@@ -14,10 +14,6 @@ medicare:
   figmaNodeId: 6-91
 ---
 
-A `Drawer` is a component that provides a space for displaying medium to long-form content. It is designed to present information that may be too lengthy or too specific to be included on the page by default. The content can include a mix of text, HTML elements, or other components, allowing for flexibility in displaying information such as forms, images, links, or lists. [//]: comment 
-
-The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions, making it a great choice for situations where gathering insights on how users engage with help content is important.
-
 ## Examples
 
 <ThemeContent neverThemes={['medicare']}>
@@ -50,10 +46,6 @@ A header and/or footer can have a "sticky" position if the following properties 
   controls="isHeaderSticky:!true"
 />
 
-### Managing multiple drawers
-
-What do you do when there are multiple drawers on a page? The simplest behavior—which may not be appropriate for all use cases—is that when one drawer opens, any open drawers get closes. While this logic can be written into your application, [we have a React component to manage simple drawer behavior](/storybook/?path=/docs/components-drawermanager--docs).
-
 ## Guidance
 
 <ThemeContent onlyThemes={['medicare']}>
@@ -84,6 +76,10 @@ What do you do when there are multiple drawers on a page? The simplest behavior�
 `Help Drawer`
 - The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions.
 - (Medicare only) All `HelpDrawer` links will include a help icon with the link to indicate the link is a help option.
+
+### Managing multiple drawers
+
+What do you do when there are multiple drawers on a page? The simplest behavior—which may not be appropriate for all use cases—is that when one drawer opens, any open drawers get closes. While this logic can be written into your application, [we have a React component to manage simple drawer behavior](/storybook/?path=/docs/components-drawermanager--docs).
 
 ### When to Consider Alternatives
 
