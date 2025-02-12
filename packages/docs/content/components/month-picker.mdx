@@ -18,34 +18,10 @@ The Month Picker component renders a grid of checkboxes with shortened month nam
 
 <StorybookExample componentName="monthPicker" storyId="components-monthpicker--default" />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-monthpicker--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-month-picker--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize MonthPicker fields:
-
-<ComponentThemeOptions componentname="choice" />
-
-### Form components
-
-This component also makes use of form field styles, which can be customized by the following variables:
-
-<ComponentThemeOptions componentname="form" />
-
 ### Accessibility
 
 #### Accessibility
-- To group related checkboxes, surround them with a `<fieldset>` and use a `<legend>` to provide context, but avoid using `<fieldset>` and `<legend>` for a single checkbox.
-- Each input should have a semantic id attribute, and its corresponding label should have the same value in its for attribute.
-- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. [Read our guidance on color for more information.](../../foundation/system-color-tokens/#accessibility-considerations)
+- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. When using a dark background, consider using the `inversed` prop. [Read our guidance on color for more information.](../../foundation/system-color-tokens/#accessibility-considerations) 
 
 ### Accessibility testing
 
@@ -72,6 +48,28 @@ This component also makes use of form field styles, which can be customized by t
 - Double tapping with the checkbox in focus makes a selection and announces its been selected.
 - Users may select either the text label or the checkbox itself to select an option.
 - Click/tap target area is a minimum of 24x24px.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-monthpicker--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-month-picker--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize MonthPicker fields:
+
+<ComponentThemeOptions componentname="choice" />
+
+### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions componentname="form" />
 
 ## Component maturity
 
