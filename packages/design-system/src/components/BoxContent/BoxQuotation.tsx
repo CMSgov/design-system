@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 interface MinimumBoxQuotationProps {
   /**
-   * Provide an author for the quote
+   * Provide an author for the quote. It is required if a citation is not provided.
    */
   author?: string;
   /**
@@ -13,7 +13,7 @@ interface MinimumBoxQuotationProps {
    */
   children: React.ReactNode;
   /**
-   * Provide a citation for the quote
+   * Provide a citation for the quote. A citation is the title of a cited creative work. This can be a website, book chapter, but not an author. This component can accept more complex HTML in addition to strings, so passing in a link directly to the citation source is possible.
    */
   citation?: React.ReactNode;
   /**
@@ -29,25 +29,38 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
 
   const classes = classNames('ds-c-box-content-quotation', className);
 
-  const captionContent = () => {
+  const CaptionContent: FunctionComponent = () => {
     // We want to prioritize citations over authors, so if both are present only render the citation.
     if (citation) {
-      return <cite className="ds-c-box-content-quotation--citation">{citation}</cite>;
+      return (
+        <cite className="ds-c-box-content-quotation--citation">
+          {`\u2014`} {citation}
+        </cite>
+      );
     }
     // If citation is not present, but author is, render the author.
     if (author) {
-      return `${author} `;
+      return (
+        <>
+          {`\u2014`} {author}
+        </>
+      );
     }
-    if (!citation && !author) {
-      throw new Error('Either a citation or an author is required for using a BoxQuotation.');
+    if (process.env.NODE_ENV !== 'production') {
+      if (!citation && !author) {
+        console.warn(
+          `[Warning]: You must include either an author prop or a citation prop on your BoxQuotation component.`
+        );
+      }
     }
+    return null;
   };
 
   return (
     <figure className={classes}>
       <blockquote className="ds-c-box-content-quotation--blockquote">{children}</blockquote>
       <figcaption className="ds-c-box-content-quotation--caption">
-        {`\u2014`} {captionContent()}
+        <CaptionContent />
       </figcaption>
     </figure>
   );

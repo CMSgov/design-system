@@ -1,7 +1,7 @@
 [
   [
     "author",
-    "Provide an author for the quote\nstring",
+    "Provide an author for the quote. It is required if a citation is not provided.\nstring",
     "-"
   ],
   [
@@ -11,7 +11,7 @@
   ],
   [
     "citation",
-    "Provide a citation for the quote\nReactNode",
+    "Provide a citation for the quote. A citation is the title of a cited creative work. This can be a website, book chapter, but not an author. This component can accept more complex HTML in addition to strings, so passing in a link directly to the citation source is possible.\nReactNode",
     "-"
   ],
   [
