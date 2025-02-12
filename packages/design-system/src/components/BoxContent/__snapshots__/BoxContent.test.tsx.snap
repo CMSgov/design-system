@@ -52,11 +52,11 @@ exports[`BoxContent renders quote option properly 1`] = `
         <figcaption
           class="ds-c-box-content-quotation--caption"
         >
-          —
-           
           <cite
             class="ds-c-box-content-quotation--citation"
           >
+            —
+             
             Test Citation
           </cite>
         </figcaption>
