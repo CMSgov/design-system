@@ -21,6 +21,31 @@ The `StepList` component is the preferred method for building a step list, since
 
 <StorybookExample componentName="step-list" storyId="components-steplist--step-list-example" />
 
+### Accessibility
+
+#### Accessibility 
+- Heading levels can be set dynamically via a parameter on the component—we strongly recommend that you follow typical semantic HTML practices and nest heading levels appropriately. 
+- There should only be one `H1` level heading per page, and the heading levels should decrement as they are nested. [Please refer to W3C for more information on how headings should reflect page organization.](https://www.w3.org/WAI/tutorials/page-structure/headings/#headings-that-reflect-the-page-organization) 
+- Use visually hidden text to indicate the current and completed steps.
+- When using labeled segments, use `aria-current="true"` on the list item representing the current step.
+- To avoid repeating step numbers, hide the `steps__indicator` element from screen readers using `aria-hidden="true"` when the `steps__label` already displays the step number.
+
+### Accessibility testing
+
+#### General accessibility testing
+- Check that each step has a clear and unique label so that users understand the purpose and sequence of steps.
+- Ensure that focus is managed correctly when steps are completed or when the user moves from one step to the next.
+- Verify that the component layout does not break or hide important information when viewed on different devices.
+
+#### Keyboard testing
+- Verify that users can navigate through the steps using only the keyboard (e.g., Tab, Shift+Tab, and Enter/Space keys).
+- Confirm that focus is clearly visible on each step and that the order of steps is logical.
+
+#### Screenreader testing
+- Use a screen reader (such as NVDA, JAWS, or VoiceOver) to test how the step indicator is announced.
+- Ensure that visually hidden text and ARIA labels are properly read, clearly conveying the completion status and position of each step.
+- Confirm that any indicators or icons that are hidden from screen readers (using `aria-hidden="true"`) do not interfere with the announcement of - the step information.
+
 ## Code
 
 ### React
