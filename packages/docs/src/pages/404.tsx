@@ -13,12 +13,14 @@ const NotFoundPage = ({ data, location }: MdxQuery) => {
     if (window && (window as UtagContainer)?.utag) {
       let env = 'prod';
 
+      // We can define environment names as we wish
+      // github-demo is a demo deployment off of a specific branch.
       switch (location.hostname) {
         case 'localhost':
           env = 'dev';
           break;
         case 'cmsgov.github.io':
-          env = 'test';
+          env = 'github-demo';
           break;
         case 'design.cms.gov':
           env = 'prod';
