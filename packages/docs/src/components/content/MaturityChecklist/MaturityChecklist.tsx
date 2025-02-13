@@ -1,5 +1,5 @@
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
-import linkAnalytics from '../../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../../helpers/analytics';
 
 interface MaturityChecklistProps {
   // Accessibility

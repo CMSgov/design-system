@@ -1,5 +1,5 @@
 import { makeStorybookUrl } from '../../helpers/urlUtils';
-import linkAnalytics from '../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../helpers/analytics';
 interface StorybookDocLinkProps {
   /**
    * Name of component
