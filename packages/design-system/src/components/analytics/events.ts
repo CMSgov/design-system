@@ -13,6 +13,7 @@ export interface UtagObject {
   gdpr?: {
     showConsentPreferences: (lang: Language) => any;
   };
+  view: (params: AnalyticsEvent) => void;
 }
 
 export interface UtagContainer {
@@ -76,6 +77,10 @@ export function sendAnalytics(eventType: UtagEventType, event: AnalyticsEvent, r
 
 export function sendLinkEvent(event: AnalyticsEvent) {
   return sendAnalytics('link', event);
+}
+
+export function sendViewEvent(event: AnalyticsEvent) {
+  return sendAnalytics('view', event);
 }
 
 export type AnalyticsFunction = typeof sendLinkEvent;

@@ -5,18 +5,12 @@ import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
 import { useEffect } from 'react';
-
-declare global {
-  interface Window {
-    utag: {
-      view: any;
-    };
-  }
-}
+import { UtagContainer } from '@cmsgov/design-system';
+import { sendViewEvent } from '@cmsgov/design-system';
 
 const NotFoundPage = ({ data, location }: MdxQuery) => {
   useEffect(() => {
-    if (window && window.utag) {
+    if (window && (window as UtagContainer)?.utag) {
       let env = 'prod';
 
       switch (location.hostname) {
@@ -33,7 +27,7 @@ const NotFoundPage = ({ data, location }: MdxQuery) => {
           env = 'prod';
       }
 
-      window.utag.view({
+      const analyticsPayload = {
         content_language: 'en',
         content_type: 'html',
         logged_in: 'false',
@@ -41,7 +35,9 @@ const NotFoundPage = ({ data, location }: MdxQuery) => {
         page_type: 'true', //If page is a 404 (error page) this is set to true, otherwise it is false
         site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
         site_section: 'Page not found - CMS Design System',
-      });
+      } as any;
+
+      sendViewEvent(analyticsPayload);
     }
   }, []);
 
