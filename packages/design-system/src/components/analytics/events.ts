@@ -9,11 +9,11 @@
 import { Language } from '../i18n';
 
 export interface UtagObject {
-  link: (params: AnalyticsEvent) => void;
+  link?: (params: AnalyticsEvent) => void;
   gdpr?: {
     showConsentPreferences: (lang: Language) => any;
   };
-  view: (params: AnalyticsEvent) => void;
+  view?: (params: AnalyticsEvent) => void;
 }
 
 export interface UtagContainer {
