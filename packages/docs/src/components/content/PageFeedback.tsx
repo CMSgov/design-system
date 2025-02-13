@@ -20,7 +20,13 @@ export interface PageFeedbackProps {
 const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackProps) => {
   const [answered, setAnswered] = useState(false);
 
-  function handleClick(helpful: boolean, event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleClick({
+    helpful,
+    event,
+  }: {
+    helpful: boolean;
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>;
+  }) {
     window.newrelic
       .interaction()
       .actionText('Feedback')
@@ -55,10 +61,16 @@ const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackPr
       ) : (
         <>
           {question}
-          <Button className="ds-u-margin-left--2" onClick={(event) => handleClick(true, event)}>
+          <Button
+            className="ds-u-margin-left--2"
+            onClick={(event) => handleClick({ helpful: true, event })}
+          >
             Yes
           </Button>
-          <Button className="ds-u-margin-left--1" onClick={(event) => handleClick(false, event)}>
+          <Button
+            className="ds-u-margin-left--1"
+            onClick={(event) => handleClick({ helpful: false, event })}
+          >
             No
           </Button>
         </>

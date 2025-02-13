@@ -6,7 +6,6 @@ const composeButtonAnalytics = (event: React.MouseEvent<HTMLButtonElement, Mouse
     button_style: 'default',
     button_type: 'default',
     link_type: 'link_other',
-    link_url: 'null',
     parent_component_heading:
       (event.target as HTMLButtonElement).parentElement.innerText ?? undefined,
     parent_component_type: (event.target as HTMLButtonElement).parentElement.tagName ?? undefined,
