@@ -24,7 +24,7 @@ const composeNavigationOpenedAnalytics = (id: string): any => {
   const subNav = id.match(/\//);
   return {
     event_name: 'navigation_opened',
-    navigation_type: 'main_nav',
+    navigation_type: 'main nav',
     heading: subNav ? heading[1] : heading[0],
   } as any;
 };
