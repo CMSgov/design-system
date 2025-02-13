@@ -1,5 +1,5 @@
 import { withPrefix } from 'gatsby';
-import linkAnalytics from '../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../helpers/analytics';
 
 export interface VideoProps {
   name: string;
