@@ -1,5 +1,7 @@
 import { sendLinkEvent } from '@cmsgov/design-system';
 
+const noValue = 'no value available';
+
 const composeButtonAnalytics = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): any => {
   return {
     event_name: 'button_engagement',
@@ -7,8 +9,8 @@ const composeButtonAnalytics = (event: React.MouseEvent<HTMLButtonElement, Mouse
     button_type: 'default',
     link_type: 'link_other',
     parent_component_heading:
-      (event.target as HTMLButtonElement).parentElement.innerText ?? undefined,
-    parent_component_type: (event.target as HTMLButtonElement).parentElement.tagName ?? undefined,
+      (event.target as HTMLButtonElement).parentElement.innerText ?? noValue,
+    parent_component_type: (event.target as HTMLButtonElement).parentElement.tagName ?? noValue,
     text: (event.target as HTMLButtonElement).innerText,
   } as any;
 };
@@ -23,8 +25,8 @@ export function composeLinkAnalyticsEvent(event: React.MouseEvent<HTMLAnchorElem
     link_url: (event.target as HTMLAnchorElement).baseURI,
     link_type: 'link_other',
     parent_component_heading:
-      (event.target as HTMLAnchorElement).parentElement.innerText ?? undefined,
-    parent_component_type: (event.target as HTMLAnchorElement).parentElement.tagName ?? undefined,
+      (event.target as HTMLAnchorElement).parentElement.innerText ?? noValue,
+    parent_component_type: (event.target as HTMLAnchorElement).parentElement.tagName ?? noValue,
     text: (event.target as HTMLAnchorElement).innerText,
   } as any;
 }
