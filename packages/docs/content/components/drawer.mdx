@@ -14,10 +14,6 @@ medicare:
   figmaNodeId: 6-91
 ---
 
-A `Drawer` is a component that provides a space for displaying medium to long-form content. It is designed to present information that may be too lengthy or too specific to be included on the page by default. The content can include a mix of text, HTML elements, or other components, allowing for flexibility in displaying information such as forms, images, links, or lists.
-
-The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions, making it a great choice for situations where gathering insights on how users engage with help content is important.
-
 ## Examples
 
 <ThemeContent neverThemes={['medicare']}>
@@ -36,7 +32,7 @@ The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which ca
 
 </ThemeContent>
 
-### Layout Alternatives
+### Variations
 
 A header and/or footer can have a "sticky" position if the following properties are applied to their respective elements:
 
@@ -50,35 +46,6 @@ A header and/or footer can have a "sticky" position if the following properties 
   controls="isHeaderSticky:!true"
 />
 
-### Managing multiple drawers
-
-What do you do when there are multiple drawers on a page? The simplest behavior—which may not be appropriate for all use cases—is that when one drawer opens, any open drawers get closes. While this logic can be written into your application, [we have a React component to manage simple drawer behavior](/storybook/?path=/docs/components-drawermanager--docs).
-
-## Code
-
-### React
-
-<StorybookDocLinks>
-  <StorybookDocLink storyId="components-drawer--docs">Drawer</StorybookDocLink>
-  <StorybookDocLink storyId="components-helpdrawer--docs">Help Drawer</StorybookDocLink>
-</StorybookDocLinks>
-
-### Web Component
-
-<StorybookDocLinks tech="wc">
-  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">Drawer</StorybookDocLink>
-</StorybookDocLinks>
-
-### Style customization
-
-The following CSS variables can be overridden to customize Drawer components:
-
-<ComponentThemeOptions componentname="drawer" />
-
-### Analytics
-
-This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
-
 ## Guidance
 
 <ThemeContent onlyThemes={['medicare']}>
@@ -91,17 +58,39 @@ This component has analytics tracking available. Please see our developer docume
 `Drawer`
 
 - When users need additional information that should remain viewable while they interact with the main page, such as detailed explanations, guidelines, or interactive elements like forms.
+- To present information that may be too lengthy or too specific to be included on the page by default.
 - When supplementary, non-time-sensitive information is helpful at a specific point in the user’s journey but does not need to be displayed on the main page. This allows users to access helpful context or additional details at their discretion without interrupting the flow of the main task.
 - When optional information is needed to complete a task without overwhelming the primary content on the page.
 
 `HelpDrawer`
 - When you need to track how users interact with the content, such as monitoring how often the drawer is opened or engaged with.
 
+### Guidelines
+`Drawer`
+- A Drawer is a component that provides a space for displaying medium to long-form content.
+- Link text used to trigger the `Drawer` should be specific and descriptive.
+- Avoid using only "Learn more" to link to help `Drawer` content.
+- Limit the amount of link text. 
+- The `Drawer` content area should include a close button clearly at the top.
+
+`Help Drawer`
+- The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions.
+- (Medicare only) All `HelpDrawer` links will include a help icon with the link to indicate the link is a help option.
+
+### Managing multiple drawers
+
+What do you do when there are multiple drawers on a page? The simplest behavior—which may not be appropriate for all use cases—is that when one drawer opens, any open drawers get closes. While this logic can be written into your application, [we have a React component to manage simple drawer behavior](/storybook/?path=/docs/components-drawermanager--docs).
+
 ### When to Consider Alternatives
 
-- When the information is timely, urgent, or critical to the action being taken. Drawers are intended for supplementary details that users can access at their discretion. For time-sensitive or essential information, consider using more prominent inline elements to ensure users don’t miss it.
-- When the information needs to be immediately visible to clarify or support a primary task. Since `Drawers` require an extra step to open, they are not ideal for essential information that users must see to complete a task or understand other content.
+- When the information is timely, urgent, or critical to the action being taken, use an Alert; Drawers are intended for supplementary details that users can access at their discretion.
+- For time-sensitive or essential information, consider using more prominent inline elements to ensure users don’t miss it, such as in-line errors.
+- When the information needs to be immediately visible to clarify or support a primary task, use an Alert. Since `Drawers` require an extra step to open, they are not ideal for essential information that users must see to complete a task or understand other content.
 - When the information must be displayed automatically without user initiation. `Drawers` rely on users selecting a link or button to open them. If content needs to appear automatically, such as onboarding tips or error messages, consider inline options that don’t require user action.
+
+### Display & behavior
+- On larger screens, the Drawer is fixed to the side of the screen, whereas on smaller screens, it overlays the entire screen.
+- Content within the Drawer can include a mix of text, HTML elements, or other components, allowing for flexibility in displaying information such as forms, images, links, or lists.
 
 ### Usage
 
@@ -126,8 +115,10 @@ When `hasFocusTrap` is enabled...
 
 - Keyboard focus is trapped within the Drawer component.
 - Pressing <kbd>Escape</kbd> will close the Drawer.
-
-A focus trap should _not_ be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer. For instance, if the user is completing a form, Drawer may contain a reference guide defining specific requirements on the page.However, there are times when it makes sense to trap focus within the Drawer. One occasion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, e.g., in a mobile layout.
+- A focus trap should not be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer.
+    - For example, if the user is completing a form, the Drawer may contain a reference guide defining specific requirements on the page.
+- There are times when it makes sense to trap focus within the Drawer.
+    - One occasion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, e.g., in a mobile layout.
 
 #### Accessibility testing
 
@@ -158,6 +149,31 @@ A focus trap should _not_ be used when it's anticipated that the user will rely 
   - ...reads the Drawer's role of `dialog`.
   - ...announces the Drawer's first heading element.
 - Double-tapping the Drawer's close button sends focus back to the Drawer toggle and the toggle label is read.
+
+## Code
+
+### React
+
+<StorybookDocLinks>
+  <StorybookDocLink storyId="components-drawer--docs">Drawer</StorybookDocLink>
+  <StorybookDocLink storyId="components-helpdrawer--docs">Help Drawer</StorybookDocLink>
+</StorybookDocLinks>
+
+### Web Component
+
+<StorybookDocLinks tech="wc">
+  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">Drawer</StorybookDocLink>
+</StorybookDocLinks>
+
+### Style customization
+
+The following CSS variables can be overridden to customize Drawer components:
+
+<ComponentThemeOptions componentname="drawer" />
+
+### Analytics
+
+This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
 
 ## Component maturity
 
