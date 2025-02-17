@@ -61,7 +61,7 @@
     "test:browser:all": "npm run test:browser && npm run test:browser:interaction -- --no-build && npm run test:browser:storybook-docs -- --no-build && npm run test:browser:examples",
     "test:browser:all:update": "npm run test:browser -- -u && npm run test:browser:interaction -- --no-build -u && npm run test:browser:storybook-docs -- --no-build -u && npm run test:browser:examples -- -u",
     "type-check": "tsc --noEmit",
-    "test-ct": "playwright test -c tests/browser-components/playwright-ct.config.ts"
+    "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "husky": {
     "hooks": {
