@@ -29,6 +29,11 @@ export default defineConfig({
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
     // ctTemplateDir: './tests/browser-components/',
+    ctViteConfig: {
+      optimizeDeps: {
+        exclude: ['ds-alert'], // Prevent Vite from trying to bundle ds-alert
+      },
+    },
   },
 
   /* Configure projects for major browsers */
