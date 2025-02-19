@@ -27,11 +27,6 @@ exports[`Dropdown renders a dropdown 1`] = `
         data-testid="hidden-select-container"
         style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
       >
-        <input
-          style="font-size: 16px;"
-          tabindex="-1"
-          type="text"
-        />
         <label>
           Dropdown label
           <select
@@ -121,11 +116,6 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         data-testid="hidden-select-container"
         style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
       >
-        <input
-          style="font-size: 16px;"
-          tabindex="-1"
-          type="text"
-        />
         <label>
           Dropdown label
           <select
