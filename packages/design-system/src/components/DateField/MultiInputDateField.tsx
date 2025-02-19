@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';
 import { Label } from '../Label';
-import { t } from '../i18n';
+import { t, getLanguage } from '../i18n';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
@@ -157,6 +157,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
     dateFormatter: defaultDateFormatter,
     ...cleanFieldProps(props),
     id,
+    language: getLanguage(),
   };
 
   return (
