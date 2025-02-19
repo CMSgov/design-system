@@ -19,6 +19,20 @@ export function sendButtonAnalytics(event: React.MouseEvent<HTMLButtonElement, M
   sendLinkEvent(composeButtonAnalytics(event));
 }
 
+const composeNavigationOpenedAnalytics = (id: string): any => {
+  const heading = id.split('/');
+  const subNav = id.match(/\//);
+  return {
+    event_name: 'navigation_opened',
+    navigation_type: 'main nav',
+    heading: subNav ? heading[1] : heading[0],
+  } as any;
+};
+
+export function sendNavigationOpenedAnalytics(id: string) {
+  sendLinkEvent(composeNavigationOpenedAnalytics(id));
+}
+
 export function composeLinkAnalyticsEvent(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
   return {
     event_name: `internal_link_clicked`,
