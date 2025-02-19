@@ -171,7 +171,7 @@ export const Alert = (props: AlertProps) => {
 };
 
 Alert.defaultProps = {
-  headingLevel: '2',
+  headingLevel: '2' as '2',
 };
 
 export default Alert;
