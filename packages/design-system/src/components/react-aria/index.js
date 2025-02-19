@@ -7101,9 +7101,8 @@ function $58aed456727eb0f3$export$e64b2f635402ca43(props, state, ref) {
  * governing permissions and limitations under the License.
  */
 
-function $bdd25dc72710631f$export$f809e80f58e251d1(props, state, triggerRef) {
+function $bdd25dc72710631f$export$f809e80f58e251d1(props, state) {
   let { autoComplete: autoComplete, name: name, isDisabled: isDisabled } = props;
-  let modality = $507fabe10e71c6fb$export$98e20ec92f614cfe();
   let { visuallyHiddenProps: visuallyHiddenProps } = $5c3e21d68f1c4674$export$a966af930f325cab();
   $99facab73266f662$export$5add1d006293d136(
     props.selectRef,
@@ -7111,24 +7110,9 @@ function $bdd25dc72710631f$export$f809e80f58e251d1(props, state, triggerRef) {
     state.setSelectedKey
   );
   var _state_selectedKey;
-  // In Safari, the <select> cannot have `display: none` or `hidden` for autofill to work.
-  // In Firefox, there must be a <label> to identify the <select> whereas other browsers
-  // seem to identify it just by surrounding text.
   // The solution is to use <VisuallyHidden> to hide the elements, which clips the elements to a
   // 1px rectangle. In addition, we hide from screen readers with aria-hidden, and make the <select>
   // non tabbable with tabIndex={-1}.
-  //
-  // In mobile browsers, there are next/previous buttons above the software keyboard for navigating
-  // between fields in a form. These only support native form inputs that are tabbable. In order to
-  // support those, an additional hidden input is used to marshall focus to the button. It is tabbable
-  // except when the button is focused, so that shift tab works properly to go to the actual previous
-  // input in the form. Using the <select> for this also works, but Safari on iOS briefly flashes
-  // the native menu on focus, so this isn't ideal. A font-size of 16px or greater is required to
-  // prevent Safari from zooming in on the input when it is focused.
-  //
-  // If the current interaction modality is null, then the user hasn't interacted with the page yet.
-  // In this case, we set the tabIndex to -1 on the input element so that automated accessibility
-  // checkers don't throw false-positives about focusable elements inside an aria-hidden parent.
   return {
     containerProps: {
       ...visuallyHiddenProps,
@@ -7136,13 +7120,9 @@ function $bdd25dc72710631f$export$f809e80f58e251d1(props, state, triggerRef) {
       ['data-a11y-ignore']: 'aria-hidden-focus',
     },
     inputProps: {
-      type: 'text',
-      tabIndex: modality == null || state.isFocused || state.isOpen ? -1 : 0,
       style: {
-        fontSize: 16,
+        display: 'none',
       },
-      onFocus: () => triggerRef.current.focus(),
-      disabled: isDisabled,
     },
     selectProps: {
       tabIndex: -1,
@@ -7167,18 +7147,15 @@ function $bdd25dc72710631f$export$cbd84cdb2e668835(props) {
     isDisabled: isDisabled,
   } = props;
   let selectRef = useRef(null);
-  let {
-    containerProps: containerProps,
-    inputProps: inputProps,
-    selectProps: selectProps,
-  } = $bdd25dc72710631f$export$f809e80f58e251d1(
-    {
-      ...props,
-      selectRef: selectRef,
-    },
-    state,
-    triggerRef
-  );
+  let { containerProps: containerProps, selectProps: selectProps } =
+    $bdd25dc72710631f$export$f809e80f58e251d1(
+      {
+        ...props,
+        selectRef: selectRef,
+      },
+      state,
+      triggerRef
+    );
   var _state_selectedKey;
   // If used in a <form>, use a hidden input so the value can be submitted to a server.
   // If the collection isn't too big, use a hidden <select> element for this so that browser
@@ -7190,7 +7167,6 @@ function $bdd25dc72710631f$export$cbd84cdb2e668835(props) {
         ...containerProps,
         'data-testid': 'hidden-select-container',
       },
-      /*#__PURE__*/ $73SJx$react.createElement('input', inputProps),
       /*#__PURE__*/ $73SJx$react.createElement(
         'label',
         null,
