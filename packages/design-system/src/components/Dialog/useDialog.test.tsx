@@ -1,7 +1,6 @@
 import { Dialog } from './Dialog';
 import { useDialog } from './useDialog';
-import { act, renderHook } from '@testing-library/react-hooks';
-import { render, screen } from '@testing-library/react';
+import { act, renderHook, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 enum ResolveValue {
