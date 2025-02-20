@@ -259,12 +259,13 @@ describe('Autocomplete', () => {
     expectMenuToBeOpen();
   });
 
-  it('opens the menu when focusing on an input that has text in it', () => {
+  it('opens the menu when focusing on an input that has text in it', async () => {
     renderAutocomplete({
       children: <TextField label="autocomplete" name="autocomplete_field" value="abc" />,
     });
     const autocompleteField = screen.getByRole('combobox');
     autocompleteField.focus();
+    await sleep(100);
     expectMenuToBeOpen();
   });
 
