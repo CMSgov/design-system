@@ -8,6 +8,7 @@ const preactModuleMapper =
         '^react$': 'preact/compat',
         '^react-dom$': 'preact/compat',
         '^react/jsx-runtime$': 'preact/jsx-runtime',
+        '^@testing-library/react': '@testing-library/preact',
       }
     : {};
 
