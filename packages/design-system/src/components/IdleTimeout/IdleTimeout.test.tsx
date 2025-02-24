@@ -1,7 +1,7 @@
 import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
-import { act } from 'react-dom/test-utils';
+import userEvent from '@testing-library/user-event';
 
 describe('Idle Timeout', () => {
   const MOCK_START_TIME = 1643811720; // setting starting date time to 2/22/2022 2:22
@@ -30,7 +30,7 @@ describe('Idle Timeout', () => {
   };
 
   beforeEach(() => {
-    jest.useFakeTimers('legacy');
+    jest.useFakeTimers();
     // setting start time for consistent tests
     mockTime(MOCK_START_TIME);
   });
@@ -85,11 +85,12 @@ describe('Idle Timeout', () => {
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
 
-    it('should reset countdown if user opts to close modal', () => {
+    it('should reset countdown if user opts to close modal', async () => {
       renderIdleTimeout();
       showWarning();
       const keepSessionBtn = screen.getByLabelText('Close modal dialog');
-      fireEvent.click(keepSessionBtn);
+      expect(keepSessionBtn).toBeInTheDocument();
+      userEvent.click(keepSessionBtn);
       expect(screen.queryByRole('dialog')).toBeNull();
       // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
@@ -116,8 +117,10 @@ describe('Idle Timeout', () => {
 
     it('should call onTimeout when countdown ends', () => {
       renderIdleTimeout();
-      mockTime(TIMEOUT_DATETIME);
-      jest.advanceTimersByTime(defaultProps.timeToTimeout * 30000);
+      act(() => {
+        mockTime(TIMEOUT_DATETIME);
+        jest.advanceTimersByTime(defaultProps.timeToTimeout * 30000);
+      });
       expect(defaultProps.onTimeout).toHaveBeenCalled();
     });
   });
