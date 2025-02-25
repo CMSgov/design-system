@@ -11,15 +11,16 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+// Remove all animations from design system elements only
+// for people that prefer not to see them
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
-
-  /* Apply only to CMSDS components */
-  .ds-c- *,
-  .ds-c- *::before,
-  .ds-c- *::after {
+  /* stylelint-disable declaration-no-important -- Override animations */
+  [class^='ds-'] *,
+  [class^='ds-'] *::before,
+  [class^='ds-'] *::after {
     border: 2px solid red !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -27,26 +28,27 @@ html:focus-within {
     transition-duration: 0.01ms !important;
   }
 }
+/* stylelint-enable declaration-no-important */
 
-// Remove all animations, transitions and smooth scroll
+// Remove all animations globally, transitions and smooth scroll
 // for people that prefer not to see them
-// @media (prefers-reduced-motion: reduce) {
-//   html:focus-within {
-//     scroll-behavior: auto;
-//   }
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 
-//   /* stylelint-disable declaration-no-important -- Override animations */
-//   *,
-//   *::before,
-//   *::after {
-//     border: 2px solid red !important;
-//     animation-duration: 0.01ms !important;
-//     animation-iteration-count: 1 !important;
-//     scroll-behavior: auto !important;
-//     transition-duration: 0.01ms !important;
-//   }
-// }
-// /* stylelint-enable declaration-no-important */
+  /* stylelint-disable declaration-no-important -- Override animations */
+  *,
+  *::before,
+  *::after {
+    border: 2px solid red !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* stylelint-enable declaration-no-important */
 
 /* Core body defaults */
 
