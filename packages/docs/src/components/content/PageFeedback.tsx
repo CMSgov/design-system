@@ -1,5 +1,6 @@
 import { Alert, Button } from '@cmsgov/design-system';
 import { useState } from 'react';
+import { sendButtonAnalytics } from '../../helpers/analytics';
 
 declare global {
   interface Window {
@@ -19,12 +20,20 @@ export interface PageFeedbackProps {
 const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackProps) => {
   const [answered, setAnswered] = useState(false);
 
-  function handleClick(helpful: boolean) {
+  function handleClick({
+    helpful,
+    event,
+  }: {
+    helpful: boolean;
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>;
+  }) {
     window.newrelic
       .interaction()
       .actionText('Feedback')
       .setAttribute('helpful', helpful ? 'yes' : 'no')
       .save();
+
+    sendButtonAnalytics(event);
     setAnswered(true);
   }
 
@@ -52,10 +61,16 @@ const PageFeedback = ({ question = 'Was this article helpful?' }: PageFeedbackPr
       ) : (
         <>
           {question}
-          <Button className="ds-u-margin-left--2" onClick={() => handleClick(true)}>
+          <Button
+            className="ds-u-margin-left--2"
+            onClick={(event) => handleClick({ helpful: true, event })}
+          >
             Yes
           </Button>
-          <Button className="ds-u-margin-left--1" onClick={() => handleClick(false)}>
+          <Button
+            className="ds-u-margin-left--1"
+            onClick={(event) => handleClick({ helpful: false, event })}
+          >
             No
           </Button>
         </>

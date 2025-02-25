@@ -4,6 +4,7 @@ import type * as React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
 import { t } from '../i18n';
+import type { Language } from '../i18n';
 import uniqueId from 'lodash/uniqueId';
 
 export type DateInputDayDefaultValue = string | number;
@@ -81,6 +82,10 @@ export interface DateInputProps {
    * for a controlled component; otherwise, set `dayDefaultValue`.
    */
   dayValue?: DateInputDayValue;
+  /**
+   * Sets the display format for the month and days input fields based on document language. For English documents, month precedes day, for Spanish documents day precedes month.
+   */
+  language: Language;
   /**
    * Label for the month field
    */
@@ -230,9 +235,9 @@ export class DateInput extends PureComponent<DateInputProps> {
   render() {
     return (
       <div className="ds-c-datefield__container ds-l-form-row">
-        {this.renderField('month', 2)}
+        {this.props.language === 'en' ? this.renderField('month', 2) : this.renderField('day', 2)}
         <span className="ds-c-datefield__separator">/</span>
-        {this.renderField('day', 2)}
+        {this.props.language === 'en' ? this.renderField('day', 2) : this.renderField('month', 2)}
         <span className="ds-c-datefield__separator">/</span>
         {this.renderField('year', 4)}
       </div>

@@ -1,5 +1,5 @@
 import { makeStorybookUrl } from '../../helpers/urlUtils';
-import linkAnalytics from '../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../helpers/analytics';
 
 // Create a link component that uses urlUtils to create the link
 // to the storybook page for the component

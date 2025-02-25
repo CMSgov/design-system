@@ -21,7 +21,7 @@ import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
 import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
-import linkAnalytics from '../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../helpers/analytics';
 import TypographyUsageTable from './TypographyUsageTable';
 
 // adds DS styling to tables from markdown
