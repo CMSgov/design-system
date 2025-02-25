@@ -1,7 +1,7 @@
-import Choice, { ChoiceProps, ChoiceType } from './Choice';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, useEffect, useRef } from 'react';
+import Choice, { ChoiceProps, ChoiceType } from './Choice';
 
 const defaultProps = {
   name: 'foo',
@@ -13,7 +13,10 @@ const defaultProps = {
 
 function renderChoice(customProps = {}) {
   const props: ChoiceProps = { ...defaultProps, ...customProps };
-  return render(<Choice {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<Choice {...props} />),
+  };
 }
 
 describe('Choice', () => {
@@ -39,10 +42,10 @@ describe('Choice', () => {
     expect(el).not.toBeChecked();
   });
 
-  it('is checked', () => {
-    renderChoice();
+  it('is checked', async () => {
+    const { user } = renderChoice();
     const el = screen.getByRole('checkbox');
-    userEvent.click(el);
+    await user.click(el);
     expect(el).toBeChecked();
   });
 
@@ -206,20 +209,20 @@ describe('Choice', () => {
       };
     });
 
-    it('calls the onChange handler', () => {
-      renderChoice(props);
+    it('calls the onChange handler', async () => {
+      const { user } = renderChoice(props);
       const el = screen.getByRole('checkbox');
-      userEvent.click(el);
+      await user.click(el);
 
       expect(props.onBlur).toHaveBeenCalledTimes(0);
       expect(props.onChange).toHaveBeenCalledTimes(1);
     });
 
-    it('calls the onBlur handler', () => {
-      renderChoice(props);
+    it('calls the onBlur handler', async () => {
+      const { user } = renderChoice(props);
       const el = screen.getByLabelText('George Washington');
       el.focus();
-      userEvent.tab();
+      await user.tab();
 
       expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).toHaveBeenCalledTimes(0);
@@ -227,7 +230,9 @@ describe('Choice', () => {
   });
 
   describe('radio groups', () => {
-    it('uncontrolled radios uncheck when sibling checked', () => {
+    it('uncontrolled radios uncheck when sibling checked', async () => {
+      const user = userEvent.setup();
+
       const commonProps = {
         name: 'foo',
         type: 'radio' as const,
@@ -247,14 +252,16 @@ describe('Choice', () => {
       expect(getRadio('B').checked).toBe(false);
       expect(getRadio('C').checked).toBe(false);
 
-      userEvent.click(getRadio('B'));
+      await user.click(getRadio('B'));
 
       expect(getRadio('A').checked).toBe(false);
       expect(getRadio('B').checked).toBe(true);
       expect(getRadio('C').checked).toBe(false);
     });
 
-    it('controlled radios do not uncheck when sibling checked', () => {
+    it('controlled radios do not uncheck when sibling checked', async () => {
+      const user = userEvent.setup();
+
       const commonProps = {
         name: 'foo',
         type: 'radio' as const,
@@ -274,7 +281,7 @@ describe('Choice', () => {
       expect(getRadio('B').checked).toBe(false);
       expect(getRadio('C').checked).toBe(false);
 
-      userEvent.click(getRadio('B'));
+      await user.click(getRadio('B'));
 
       expect(getRadio('A').checked).toBe(true);
       expect(getRadio('B').checked).toBe(false);
@@ -305,10 +312,10 @@ describe('Choice', () => {
       expect(screen.queryByTestId('checked')).toBeNull();
     });
 
-    it('renders `checkedChildren` when checked', () => {
-      const { asFragment } = renderChoice(props);
+    it('renders `checkedChildren` when checked', async () => {
+      const { asFragment, user } = renderChoice(props);
       const el = screen.getByRole('checkbox');
-      userEvent.click(el);
+      await user.click(el);
       expect(asFragment()).toMatchSnapshot();
       expect(screen.getByTestId('checked').textContent).toBe('I am checked');
       expect(screen.queryByTestId('unchecked')).toBeNull();
