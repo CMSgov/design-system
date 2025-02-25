@@ -11,17 +11,19 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-// Remove all animations, transitions and smooth scroll
-// for people that prefer not to see them
+/**
+ * Reduced Motion Overrides:
+ * For users who prefer reduced motion, this rule overrides animations, transitions,
+ * and scroll behavior for design system components (elements with class names starting with "ds-c-").
+ */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
-
   /* stylelint-disable declaration-no-important -- Override animations */
-  *,
-  *::before,
-  *::after {
+  [class^='ds-c-'] *,
+  [class^='ds-c-'] *::before,
+  [class^='ds-c-'] *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
