@@ -151,7 +151,7 @@ export const AnimatedButton: Story = {
   render: () => (
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <h4>DS Animated Button (should have red border under reduced motion)</h4>
-      <div className="ds-content">
+      <div className="ds-c-content">
         <Button className="animate-test">Animated DS Button</Button>
       </div>
       <h4>Native Animated Button (should animate normally)</h4>
