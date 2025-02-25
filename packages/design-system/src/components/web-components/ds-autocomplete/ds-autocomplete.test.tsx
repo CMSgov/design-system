@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import userEvent, { Options } from '@testing-library/user-event';
+import userEvent, { Options, UserEvent } from '@testing-library/user-event';
 import { config } from '../../config';
 import './ds-autocomplete';
 
@@ -35,10 +35,10 @@ function renderAutocomplete(
   };
 }
 
-async function open() {
+async function open({ user }: { user: UserEvent }) {
   const autocompleteField = screen.getByRole('combobox');
-  await userEvent.click(autocompleteField);
-  await userEvent.type(autocompleteField, 'c');
+  await user.click(autocompleteField);
+  await user.type(autocompleteField, 'c');
 }
 
 function expectMenuToBeOpen() {
@@ -84,9 +84,9 @@ describe('Autocomplete', () => {
   });
 
   it('renders items', async () => {
-    renderAutocomplete();
+    const { user } = renderAutocomplete();
 
-    await open();
+    await open({ user });
     expectMenuToBeOpen();
 
     const items = screen.getByRole('option');
@@ -114,9 +114,9 @@ describe('Autocomplete', () => {
       },
     ]);
 
-    renderAutocomplete({ items });
+    const { user } = renderAutocomplete({ items });
 
-    await open();
+    await open({ user });
     const groups = screen.getAllByRole('group');
     expect(groups).toHaveLength(2);
     expect(groups[0]).toHaveAccessibleName('Group 1');
@@ -143,9 +143,9 @@ describe('Autocomplete', () => {
       { id: '3', name: 'Standalone Item 1' },
     ]);
 
-    renderAutocomplete({ items });
+    const { user } = renderAutocomplete({ items });
 
-    await open();
+    await open({ user });
 
     const groups = screen.getAllByRole('group');
     expect(groups).toHaveLength(1);
@@ -155,7 +155,7 @@ describe('Autocomplete', () => {
   });
 
   it('renders "no results" message when groups contain no items', async () => {
-    renderAutocomplete({
+    const { user } = renderAutocomplete({
       items: JSON.stringify([
         {
           label: 'Group 1',
@@ -165,7 +165,7 @@ describe('Autocomplete', () => {
       ]),
     });
 
-    await open();
+    await open({ user });
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
@@ -215,8 +215,8 @@ describe('Autocomplete', () => {
   // });
 
   it('generates ids when no root id is provided', async () => {
-    renderAutocomplete({ 'root-id': undefined, items: defaultItems });
-    await open();
+    const { user } = renderAutocomplete({ 'root-id': undefined, items: defaultItems });
+    await open({ user });
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
     expect(screen.getByRole('combobox').id).toMatch(idRegex);
@@ -227,9 +227,9 @@ describe('Autocomplete', () => {
       { id: '1a', name: 'Normal item' },
       { id: '5b', name: 'Special item', className: 'custom-class' },
     ];
-    renderAutocomplete({ items: JSON.stringify(items) });
+    const { user } = renderAutocomplete({ items: JSON.stringify(items) });
 
-    await open();
+    await open({ user });
     expectMenuToBeOpen();
 
     const listItems = screen.queryAllByRole('option');
@@ -238,21 +238,21 @@ describe('Autocomplete', () => {
   });
 
   it('renders Autocomplete component without items', async () => {
-    renderAutocomplete({ items: 'null' });
-    await open();
+    const { user } = renderAutocomplete({ items: 'null' });
+    await open({ user });
     expectMenuToBeClosed();
   });
 
   it('renders Autocomplete component no results', async () => {
-    renderAutocomplete({ items: JSON.stringify([]) });
-    await open();
+    const { user } = renderAutocomplete({ items: JSON.stringify([]) });
+    await open({ user });
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
   it('shows the menu when open', async () => {
-    renderAutocomplete();
-    await open();
+    const { user } = renderAutocomplete();
+    await open({ user });
     expectMenuToBeOpen();
   });
 
