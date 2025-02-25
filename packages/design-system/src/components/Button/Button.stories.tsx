@@ -119,34 +119,6 @@ export const AllButtons: Story = {
   ),
 };
 
-/**
- * AnimatedButton Story
- *
- * This story adds a simple keyframe animation to the Button so you can verify
- * that your namespaced prefers-reduced-motion rules (with a temporary red border)
- * override the animation when enabled.
- */
-// export const AnimatedButton: Story = {
-//   render: () => (
-//     <div className="ds-content" style={{ padding: '2rem' }}>
-//       <style>
-//         {`
-//           @keyframes testAnimation {
-//             0% { transform: scale(1); }
-//             50% { transform: scale(1.2); }
-//             100% { transform: scale(1); }
-//           }
-//           /* Temporary class to trigger animation */
-//           .animate-test {
-//             animation: testAnimation 2s infinite;
-//           }
-//         `}
-//       </style>
-//       <Button className="animate-test">Animated DS Button</Button>
-//     </div>
-//   ),
-// };
-
 export const AnimatedButton: Story = {
   render: () => (
     <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
