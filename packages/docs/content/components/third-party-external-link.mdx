@@ -22,7 +22,7 @@ core:
 
 Use this pattern when the user is in the middle of a task or application to let them know that the action they are taking will move them away from the current site and or process. This serves as a warning where the user can then decide to remain where they are in the application or process.
 
-Any PDF link, whether internal or external, is not a use case for using the third party link component.
+Any PDF link, whether internal or external, is not a use case for using the third-party link component.
 
 - PDF links should use the regular [link style](/foundation/typography/links/).
 - Add "(PDF)" at the end of link.
@@ -32,27 +32,24 @@ Any PDF link, whether internal or external, is not a use case for using the thir
 ## Accessibility
 
 ### Accessibility
-- Links should be styled as links, not buttons, to maintain expected behavior.
-- Ensure that all link text clearly indicates its purpose or destination, making it easy for everyone—especially screen reader users—to understand where the link will take them.
-- Third party external links must indicate that they are external with an icon.
 - Ensure that external links have unique, descriptive text—avoiding repetitive phrases like "read more"—and, if necessary, include appropriate ARIA labels to provide additional context for screen reader users.
-- Clicking a third party external link will initiate a modal dialog notifying users that they are leaving a CMS website. Please reference the Modal Dialog for further accessibility guidance.
+- Clicking a third-party external link will initiate a modal dialog notifying users that they are leaving a CMS website. Please reference the Modal Dialog for further accessibility guidance.
 
 ### Accessibility testing
 
 #### General accessibility testing
-- Regularly verify that third-party external links remain up-to-date
+- Regularly verify that third-party external links remain up-to-date.
 - Ensure that external links point to secure (HTTPS) websites to protect user data and privacy.
-- Test that third party external links open in new tabs/windows.
+- Test that third-party external links open in new tabs/windows.
 
 #### Keyboard testing
 - Users should be able to navigate between links with a keyboard by using the “Tab” key. 
 - Users should be able to activate a link by pressing the “Enter” key.
 - Users should be able to activate hover and focus states with a keyboard.
 
-#### Screenreader testing
+#### Screen reader testing
 - Use screen readers (e.g., NVDA, JAWS, VoiceOver) to verify that external link indicators are announced appropriately.
-- Screenreaders must explicitly mention "external link" or "opens in a new window" within the link text to alert users they are leaving the current site.
+- Screen readers must explicitly mention "external link" or "opens in a new window" within the link text to alert users they are leaving the current site.
 
 ## Code
 
