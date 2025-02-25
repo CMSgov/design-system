@@ -11,24 +11,42 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-// Remove all animations, transitions and smooth scroll
-// for people that prefer not to see them
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
 
-  /* stylelint-disable declaration-no-important -- Override animations */
-  *,
-  *::before,
-  *::after {
+  /* Apply only to CMSDS components */
+  .ds-c- *,
+  .ds-c- *::before,
+  .ds-c- *::after {
+    border: 2px solid red !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }
-/* stylelint-enable declaration-no-important */
+
+// Remove all animations, transitions and smooth scroll
+// for people that prefer not to see them
+// @media (prefers-reduced-motion: reduce) {
+//   html:focus-within {
+//     scroll-behavior: auto;
+//   }
+
+//   /* stylelint-disable declaration-no-important -- Override animations */
+//   *,
+//   *::before,
+//   *::after {
+//     border: 2px solid red !important;
+//     animation-duration: 0.01ms !important;
+//     animation-iteration-count: 1 !important;
+//     scroll-behavior: auto !important;
+//     transition-duration: 0.01ms !important;
+//   }
+// }
+// /* stylelint-enable declaration-no-important */
 
 /* Core body defaults */
 
