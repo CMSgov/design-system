@@ -45,6 +45,10 @@ function expectDropdownToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 describe('Dropdown', () => {
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
@@ -160,7 +164,6 @@ describe('Dropdown', () => {
     expectDropdownToBeOpen();
     userEvent.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     await act(async () => {
       await sleep(40);
     });
@@ -203,7 +206,6 @@ describe('Dropdown', () => {
     expectDropdownToBeOpen();
     userEvent.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     await act(async () => {
       await sleep(40);
     });
