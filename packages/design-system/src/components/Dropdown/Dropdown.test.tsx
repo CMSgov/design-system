@@ -41,6 +41,11 @@ function getButton() {
 }
 
 describe('Dropdown', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
       {
@@ -137,7 +142,8 @@ describe('Dropdown', () => {
   });
 
   it('calls the onBlur handler', async () => {
-    const user = userEvent.setup({ delay: 25 });
+    jest.useFakeTimers();
+    const user = userEvent.setup({ delay: 25, advanceTimers: jest.advanceTimersByTime });
     const onChange = jest.fn();
     const onBlur = jest.fn();
     render(
@@ -154,10 +160,7 @@ describe('Dropdown', () => {
     await user.click(button);
     await user.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
@@ -176,7 +179,8 @@ describe('Dropdown', () => {
   });
 
   it('pressing Tab selects the focused item and blurs away', async () => {
-    const user = userEvent.setup({ delay: 25 });
+    jest.useFakeTimers();
+    const user = userEvent.setup({ delay: 25, advanceTimers: jest.advanceTimersByTime });
     const onChange = jest.fn();
     const onBlur = jest.fn();
     render(
@@ -194,10 +198,7 @@ describe('Dropdown', () => {
     await user.keyboard('{ArrowDown}');
     await user.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    jest.runAllTimers();
 
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();

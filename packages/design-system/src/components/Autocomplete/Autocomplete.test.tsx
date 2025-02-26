@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent, { Options, UserEvent } from '@testing-library/user-event';
 import { createRef, useEffect, useRef } from 'react';
 import TextField from '../TextField/TextField';
@@ -36,10 +36,6 @@ function expectMenuToBeOpen() {
 
 function expectMenuToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('Autocomplete', () => {
@@ -267,17 +263,20 @@ describe('Autocomplete', () => {
       children: <TextField label="autocomplete" name="autocomplete_field" value="abc" />,
     });
     const autocompleteField = screen.getByRole('combobox');
-    autocompleteField.focus();
-    await sleep(100);
+    await act(async () => {
+      autocompleteField.focus();
+    });
+
     expectMenuToBeOpen();
   });
 
   it('opens the menu if typing resulted in results that were delayed by async data fetching', async () => {
     const { user, rerender } = renderAutocomplete({ items: undefined });
     const autocompleteField = screen.getByRole('combobox');
-    await user.click(autocompleteField);
-    await user.type(autocompleteField, 'ac');
-    await sleep(100);
+    await act(async () => {
+      await user.click(autocompleteField);
+      await user.type(autocompleteField, 'ac');
+    });
     rerender(makeAutocomplete({ items: defaultItems }));
     expectMenuToBeOpen();
   });
@@ -287,8 +286,9 @@ describe('Autocomplete', () => {
     const autocompleteField = screen.getByRole('combobox');
     await user.click(autocompleteField);
     expectMenuToBeOpen();
-    await user.type(autocompleteField, 'mar');
-    await sleep(100);
+    await act(async () => {
+      await user.type(autocompleteField, 'mar');
+    });
     rerender(makeAutocomplete({ items: updatedItems }));
     expectMenuToBeOpen();
   });

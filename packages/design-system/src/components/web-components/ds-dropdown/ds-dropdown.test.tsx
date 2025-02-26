@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-dropdown';
 
@@ -13,12 +13,17 @@ const defaultAttrs = {
 
 function renderDropdown(attrs = {}) {
   return {
-    user: userEvent.setup({ delay: 25 }),
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime, delay: 25 }),
     ...render(<ds-dropdown {...defaultAttrs} {...attrs} />),
   };
 }
 
 describe('Dropdown', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('renders a dropdown', () => {
     const { asFragment } = renderDropdown();
     expect(asFragment()).toMatchSnapshot();
@@ -119,6 +124,7 @@ describe('Dropdown', () => {
   });
 
   it('fires a custom ds-blur event', async () => {
+    jest.useFakeTimers();
     const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
@@ -130,11 +136,7 @@ describe('Dropdown', () => {
     const button = screen.getByRole('button');
     await user.click(button);
     await user.tab();
-
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();
