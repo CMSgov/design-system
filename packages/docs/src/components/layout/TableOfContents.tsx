@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import { TableOfContentsItem } from '../../helpers/graphQLTypes';
-import linkAnalytics from '../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../helpers/analytics';
 
 function cleanTitle(title: string) {
   return title.replace(/<[^>]*>/g, '');

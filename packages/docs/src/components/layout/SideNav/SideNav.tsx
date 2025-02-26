@@ -13,7 +13,7 @@ import {
 } from '../../../helpers/navDataFormatUtils';
 import GithubIcon from '../../icons/GithubIcon';
 import NewsIcon from '../../icons/NewsIcon';
-import linkAnalytics from '../../../helpers/linkAnalytics';
+import { linkAnalytics } from '../../../helpers/analytics';
 
 interface SideNavProps {
   location: LocationInterface;
