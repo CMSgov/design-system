@@ -1,7 +1,6 @@
 import IdleTimeout, { IdleTimeoutProps } from './IdleTimeout';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { mockTime, restoreTime } from './utilities/mockTime';
-import userEvent from '@testing-library/user-event';
 
 describe('Idle Timeout', () => {
   const MOCK_START_TIME = 1643811720; // setting starting date time to 2/22/2022 2:22
@@ -90,7 +89,7 @@ describe('Idle Timeout', () => {
       showWarning();
       const keepSessionBtn = screen.getByLabelText('Close modal dialog');
       expect(keepSessionBtn).toBeInTheDocument();
-      userEvent.click(keepSessionBtn);
+      fireEvent.click(keepSessionBtn);
       expect(screen.queryByRole('dialog')).toBeNull();
       // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
