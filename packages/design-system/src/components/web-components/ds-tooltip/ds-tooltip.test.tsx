@@ -53,9 +53,7 @@ describe('ds-tooltip', function () {
     const tooltip = container.querySelector('.ds-c-tooltip');
 
     await user.tab();
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
+    jest.runAllTimers();
     expect(tooltip).toHaveTextContent(customTooltipText);
     expect(tooltip).toHaveTextContent(customHeadingText);
   });
