@@ -279,6 +279,28 @@ describe('Dropdown', () => {
     expect(options[6]).toHaveFocus();
   });
 
+  it('can focus across multiple uses of type ahead', async () => {
+    makeDropdown({}, dropdownOptions);
+    let button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{c}');
+    let options = screen.getAllByRole('option');
+    // First option starts with c, so it should be in focus
+    expect(options[1]).toHaveFocus();
+    userEvent.keyboard('{escape}');
+    expectDropdownToBeClosed();
+    button = getButton();
+    await sleep(10);
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{l}');
+    options = screen.getAllByRole('option');
+    // Lummi tribe option should have focus and is 7th element in array
+    expect(options[7]).toHaveFocus();
+  });
+
   it('does not move to the next item starting with the same letter', async () => {
     makeDropdown({}, dropdownOptions);
     const button = getButton();
@@ -297,15 +319,21 @@ describe('Dropdown', () => {
     expect(options[1]).toHaveFocus();
   });
 
-  it('supports multi-character type ahead', () => {
+  it('supports multi-character type ahead', async () => {
     makeDropdown({}, dropdownOptions);
     const button = getButton();
     userEvent.click(button);
     const list = screen.getByRole('listbox');
     userEvent.keyboard('{arrowdown}');
-    userEvent.type(list, 'cow');
-    const options = screen.getAllByRole('option');
-    // Cowlitz tribe option should have focus and is 4th element in options array
+    userEvent.type(list, 'c');
+    let options = screen.getAllByRole('option');
+    // Since we have only typed 'c' at this point we expect focus to be on the first element since it starts with 'c'
+    expect(options[1]).toHaveFocus();
+    await sleep(40);
+    // We are still within the 1 second type ahead window, so the search string will now be updated to 'cow'
+    userEvent.type(list, 'ow');
+    options = screen.getAllByRole('option');
+    // Focus should update to the fourth item, the Cowlitz tribe
     expect(options[4]).toHaveFocus();
   });
 
