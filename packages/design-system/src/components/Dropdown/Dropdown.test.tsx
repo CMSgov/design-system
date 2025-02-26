@@ -41,7 +41,7 @@ export function generateOptions(
 ): { value: string; label: string }[] {
   let options = [];
   if (typeof optionsToMake === 'number') {
-    for (let i = 1; i < optionsToMake + 1; i++) {
+    for (let i = 1; i <= optionsToMake; i++) {
       options.push({
         value: String(i),
         label: String(i),
