@@ -10,7 +10,10 @@ const defaultAttrs = {
 
 describe('ds-filter-chip', () => {
   const renderFilterChip = (customProps = {}) => {
-    return render(<ds-filter-chip {...defaultAttrs} {...customProps} />);
+    return {
+      user: userEvent.setup(),
+      ...render(<ds-filter-chip {...defaultAttrs} {...customProps} />),
+    };
   };
 
   it('should include children as label', () => {
@@ -41,50 +44,50 @@ describe('ds-filter-chip', () => {
   });
 
   describe('onDelete', () => {
-    it('should call onDelete function when clicked', () => {
+    it('should call onDelete function when clicked', async () => {
       const onDelete = jest.fn();
-      renderFilterChip();
+      const { user } = renderFilterChip();
 
       const chipEl = document.querySelector('ds-filter-chip');
       expect(chipEl).toBeDefined();
       chipEl.addEventListener('ds-delete', onDelete);
 
-      userEvent.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('button'));
       expect(onDelete).toHaveBeenCalled();
       chipEl.removeEventListener('ds-delete', onDelete);
     });
 
-    it('should call onDelete when certain keyboard keys are pressed', () => {
+    it('should call onDelete when certain keyboard keys are pressed', async () => {
       const onDelete = jest.fn();
-      renderFilterChip();
+      const { user } = renderFilterChip();
 
       const chipEl = document.querySelector('ds-filter-chip');
       chipEl.addEventListener('ds-delete', onDelete);
       screen.getByRole('button').focus();
 
-      userEvent.keyboard('{Enter}');
+      await user.keyboard('{Enter}');
       expect(onDelete).toHaveBeenCalledTimes(1);
-      userEvent.keyboard('{Space}');
+      await user.keyboard('{Space}');
       expect(onDelete).toHaveBeenCalledTimes(2);
-      userEvent.keyboard('{Backspace}');
+      await user.keyboard('{Backspace}');
       expect(onDelete).toHaveBeenCalledTimes(3);
-      userEvent.keyboard('{Delete}');
+      await user.keyboard('{Delete}');
       expect(onDelete).toHaveBeenCalledTimes(4);
 
       chipEl.removeEventListener('ds-delete', onDelete);
     });
 
-    it('should not call onDelete when most keyboard keys are pressed', () => {
+    it('should not call onDelete when most keyboard keys are pressed', async () => {
       const onDelete = jest.fn();
-      renderFilterChip();
+      const { user } = renderFilterChip();
 
       const chipEl = screen.getByRole('button');
       chipEl.addEventListener('ds-on-delete', onDelete);
 
       screen.getByRole('button').focus();
-      userEvent.keyboard('{Tab}');
+      await user.keyboard('{Tab}');
       expect(onDelete).not.toHaveBeenCalled();
-      userEvent.keyboard('a');
+      await user.keyboard('a');
       expect(onDelete).not.toHaveBeenCalled();
 
       chipEl.removeEventListener('ds-delete', onDelete);
