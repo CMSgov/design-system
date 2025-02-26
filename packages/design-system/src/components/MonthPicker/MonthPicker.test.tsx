@@ -1,7 +1,7 @@
-import MonthPicker from './MonthPicker';
+import { setLanguage } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { setLanguage } from '@cmsgov/design-system';
+import MonthPicker from './MonthPicker';
 
 const defaultProps = {
   name: 'months',
@@ -15,7 +15,10 @@ const defaultProps = {
 
 function renderMonthPicker(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
-  return render(<MonthPicker {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<MonthPicker {...props} />),
+  };
 }
 
 describe('MonthPicker', () => {
@@ -98,14 +101,14 @@ describe('MonthPicker', () => {
     });
   });
 
-  it('calls `onChange` and maintains state when checking/unchecking checkboxes', () => {
+  it('calls `onChange` and maintains state when checking/unchecking checkboxes', async () => {
     const onChange = jest.fn();
-    renderMonthPicker({ onChange });
+    const { user } = renderMonthPicker({ onChange });
 
     const el = screen.queryByLabelText('Jan');
     expect(el).not.toBeChecked();
 
-    userEvent.click(el);
+    await user.click(el);
     expect(onChange).toHaveBeenCalled();
     expect(el).toBeChecked();
   });
@@ -207,27 +210,27 @@ describe('MonthPicker', () => {
       expect(buttons[0].textContent).toEqual('Select all');
     });
 
-    it('triggers onSelectAll', () => {
+    it('triggers onSelectAll', async () => {
       const onSelectAll = jest.fn();
-      renderMonthPicker({ onSelectAll });
+      const { user } = renderMonthPicker({ onSelectAll });
 
       const button = screen.getByText('Select all');
       expect(button).toHaveAttribute('aria-pressed', 'false');
 
-      userEvent.click(button);
+      await user.click(button);
       expect(onSelectAll).toHaveBeenCalled();
     });
 
-    it("doesn't select disabled months when onSelectAll is called", () => {
+    it("doesn't select disabled months when onSelectAll is called", async () => {
       const onSelectAll = jest.fn();
       const disabledMonths = [5, 9];
 
-      renderMonthPicker({ disabledMonths, onSelectAll });
+      const { user } = renderMonthPicker({ disabledMonths, onSelectAll });
 
       const checkboxes = screen.getAllByRole('checkbox');
 
       const button = screen.getByText('Select all');
-      userEvent.click(button);
+      await user.click(button);
 
       expect(onSelectAll).toHaveBeenCalled();
       expect(checkboxes[0]).toBeChecked();
@@ -244,30 +247,30 @@ describe('MonthPicker', () => {
       expect(buttons[1].textContent).toEqual('Clear all');
     });
 
-    it('triggers onClearAll', () => {
+    it('triggers onClearAll', async () => {
       const onClearAll = jest.fn();
-      renderMonthPicker({ onClearAll });
+      const { user } = renderMonthPicker({ onClearAll });
 
       const button = screen.getByText('Clear all');
       expect(button).toHaveAttribute('aria-pressed', 'true');
 
-      userEvent.click(button);
+      await user.click(button);
       expect(onClearAll).toHaveBeenCalled();
     });
 
-    it("doesn't clear disable-selected months when called", () => {
+    it("doesn't clear disable-selected months when called", async () => {
       const onClearAll = jest.fn();
 
       // May should be both disabled and selected
       const disabledMonths = [5];
       const defaultSelectedMonths = [5];
 
-      renderMonthPicker({ disabledMonths, defaultSelectedMonths, onClearAll });
+      const { user } = renderMonthPicker({ disabledMonths, defaultSelectedMonths, onClearAll });
 
       const checkboxes = screen.getAllByRole('checkbox');
 
       const button = screen.getByText('Clear all');
-      userEvent.click(button);
+      await user.click(button);
 
       expect(onClearAll).toHaveBeenCalled();
       expect(checkboxes[4]).toBeChecked();
