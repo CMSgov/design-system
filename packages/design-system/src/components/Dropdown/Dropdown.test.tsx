@@ -268,9 +268,33 @@ describe('Dropdown', () => {
     expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{l}');
-    const options = screen.getAllByRole('option');
+    let options = screen.getAllByRole('option');
     // Lummi tribe option should have focus and is 7th element in array
     expect(options[7]).toHaveFocus();
+    // There is a 1 second delay on the type ahead functionality
+    await sleep(1000);
+    userEvent.keyboard('{n}');
+    options = screen.getAllByRole('option');
+    // Nisqually Indian Tribe option should have focus and is 6th element in array
+    expect(options[6]).toHaveFocus();
+  });
+
+  it('does not move to the next item starting with the same letter', async () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{c}');
+    let options = screen.getAllByRole('option');
+    // Confederated Tribes and Bands of the Yakama Nation is the first element in the options list
+    expect(options[1]).toHaveFocus();
+    // There is a 1 second delay on the type ahead functionality
+    await sleep(1000);
+    userEvent.keyboard('{c}');
+    options = screen.getAllByRole('option');
+    // We do not support moving to the next item starting with the same letter, so expect focus to remain the same
+    expect(options[1]).toHaveFocus();
   });
 
   it('supports multi-character type ahead', () => {
