@@ -37,6 +37,14 @@ function getButton() {
   return screen.getByRole('button', { name: RegExp(defaultProps.label) });
 }
 
+function expectDropdownToBeOpen() {
+  expect(screen.getByRole('listbox')).toBeInTheDocument();
+}
+
+function expectDropdownToBeClosed() {
+  expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+}
+
 describe('Dropdown', () => {
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
@@ -127,6 +135,7 @@ describe('Dropdown', () => {
     makeDropdown({ value: '1', onChange, onBlur }, 5);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
     expect(onBlur).not.toHaveBeenCalled();
@@ -148,6 +157,7 @@ describe('Dropdown', () => {
     );
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.tab();
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -157,6 +167,7 @@ describe('Dropdown', () => {
 
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
+    expectDropdownToBeClosed();
   });
 
   it('pressing Escape closes the menu without making a selection', () => {
@@ -164,11 +175,13 @@ describe('Dropdown', () => {
     makeDropdown({ value: '1', onChange }, 5);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{escape}');
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();
     expect(onChange).not.toHaveBeenCalled();
+    expectDropdownToBeClosed();
   });
 
   it('pressing Tab selects the focused item and blurs away', async () => {
@@ -187,6 +200,7 @@ describe('Dropdown', () => {
     const button = getButton();
     userEvent.click(button);
     userEvent.keyboard('{arrowdown}');
+    expectDropdownToBeOpen();
     userEvent.tab();
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -200,12 +214,14 @@ describe('Dropdown', () => {
     expect(onChange.mock.calls[0][0].currentTarget.value).toEqual('2');
     expect(onChange.mock.calls[0][0].currentTarget.name).toEqual('dropdown');
     expect(onBlur).toHaveBeenCalled();
+    expectDropdownToBeClosed();
   });
 
   it('automatically focuses on the selected option when opening', () => {
     makeDropdown({ defaultValue: '3' }, 10);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     const options = screen.getAllByRole('option');
     expect(options[2]).toHaveFocus();
   });
@@ -330,6 +346,7 @@ describe('Dropdown', () => {
       </Dropdown>
     );
     userEvent.click(getButton());
+    expectDropdownToBeOpen();
     const groupLabel = container.querySelector('#group-label-id');
     expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
   });
@@ -357,6 +374,7 @@ describe('Dropdown', () => {
     // Clicking an item should call `onChange` but should do nothing else
     // because this is a controlled component
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
     expect(onChange).toHaveBeenCalled();
