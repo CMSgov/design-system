@@ -12,7 +12,10 @@ const defaultAttrs = {
 };
 
 function renderDropdown(attrs = {}) {
-  return render(<ds-dropdown {...defaultAttrs} {...attrs} />);
+  return {
+    user: userEvent.setup({ delay: 25 }),
+    ...render(<ds-dropdown {...defaultAttrs} {...attrs} />),
+  };
 }
 
 describe('Dropdown', () => {
@@ -99,24 +102,24 @@ describe('Dropdown', () => {
     expect(button.classList.contains('ds-c-field--small')).toBe(true);
   });
 
-  it('fires a custom ds-change event', () => {
-    renderDropdown();
+  it('fires a custom ds-change event', async () => {
+    const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
     const mockHandler = jest.fn();
     dropdownRoot.addEventListener('ds-change', mockHandler);
 
     const button = screen.getByRole('button');
-    userEvent.click(button);
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{enter}');
+    await user.click(button);
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     dropdownRoot.removeEventListener('ds-change', mockHandler);
   });
 
   it('fires a custom ds-blur event', async () => {
-    renderDropdown();
+    const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
     const onBlur = jest.fn();
@@ -125,8 +128,8 @@ describe('Dropdown', () => {
     dropdownRoot.addEventListener('ds-change', onChange);
 
     const button = screen.getByRole('button');
-    userEvent.click(button);
-    userEvent.tab();
+    await user.click(button);
+    await user.tab();
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     await act(async () => {
