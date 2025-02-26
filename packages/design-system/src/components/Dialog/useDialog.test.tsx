@@ -55,7 +55,7 @@ describe('useDialog', () => {
   });
 
   // TODO: address this test failure
-  it.skip('should resolve promise and close dialog when ESC is pressed', async () => {
+  it('should resolve promise and close dialog when ESC is pressed', async () => {
     const user = userEvent.setup();
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const promise = openDialog(hookRenderResult);
