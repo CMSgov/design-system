@@ -13,22 +13,58 @@ const defaultProps = {
   }),
 };
 
-export function generateOptions(count: number): { value: string; label: string }[] {
-  const options = [];
+const dropdownOptions = [
+  { label: '- Select an option -', value: '' },
+  { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
+  { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
+  { label: 'Confederated Tribes of the Colville Reservation', value: '3' },
+  { label: 'Cowlitz Indian Tribe', value: '4' },
+  {
+    label: 'Hoh Indian Tribe (formerly the Hoh Indian Tribe of the Hoh Indian Reservation)',
+    value: '5',
+  },
+  {
+    label:
+      'Nisqually Indian Tribe (formerly the Nisqually Indian Tribe of the Nisqually Reservation)',
+    value: '6',
+  },
+  { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
+];
 
-  for (let i = 1; i < count + 1; i++) {
-    options.push({
-      value: String(i),
-      label: String(i),
-    });
+export function generateOptions(
+  optionsToMake:
+    | number
+    | {
+        label: string;
+        value: string;
+      }[]
+): { value: string; label: string }[] {
+  let options = [];
+  if (typeof optionsToMake === 'number') {
+    for (let i = 1; i < optionsToMake + 1; i++) {
+      options.push({
+        value: String(i),
+        label: String(i),
+      });
+    }
+  } else {
+    options = [...optionsToMake];
   }
 
   return options;
 }
 
-function makeDropdown(customProps = {}, optionsCount = 1) {
+function makeDropdown(
+  customProps = {},
+  options:
+    | number
+    | {
+        label: string;
+        value: string;
+      }[]
+) {
   const props = { ...defaultProps, ...customProps };
-  const component = <Dropdown {...props} options={generateOptions(optionsCount)} />;
+  const component = <Dropdown {...props} options={generateOptions(options)} />;
 
   return render(component);
 }
@@ -45,7 +81,7 @@ function expectDropdownToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 }
 
-function sleep(ms) {
+async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -62,14 +98,14 @@ describe('Dropdown', () => {
   });
 
   it('applies additional classes to root element', () => {
-    const { container } = makeDropdown({ className: 'bar' });
+    const { container } = makeDropdown({ className: 'bar' }, 1);
     expect(container.firstChild).toHaveClass('bar');
     // Make sure we're not replacing the other class names
     expect(container.firstChild).toHaveClass('ds-c-dropdown');
   });
 
   it('applies additional classes to button element', () => {
-    makeDropdown({ fieldClassName: 'foo' });
+    makeDropdown({ fieldClassName: 'foo' }, 1);
 
     const button = getButton();
     expect(button).toHaveClass('foo');
@@ -78,7 +114,7 @@ describe('Dropdown', () => {
   });
 
   it('adds size classes to the appropriate elements', () => {
-    makeDropdown({ size: 'small' });
+    makeDropdown({ size: 'small' }, 1);
     const button = getButton();
     userEvent.click(button);
     const listContainer = screen.getByRole('listbox').parentElement;
@@ -87,18 +123,21 @@ describe('Dropdown', () => {
   });
 
   it('adds inverse class to button', () => {
-    makeDropdown({ inversed: true });
+    makeDropdown({ inversed: true }, 1);
     const button = getButton();
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
   it('shows error message', () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown({
-      errorMessage: 'Error',
-      errorPlacement: 'top',
-      errorId,
-    });
+    const { container } = makeDropdown(
+      {
+        errorMessage: 'Error',
+        errorPlacement: 'top',
+        errorId,
+      },
+      1
+    );
 
     const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
@@ -111,11 +150,14 @@ describe('Dropdown', () => {
 
   it('supports bottom placed error', () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown({
-      errorMessage: 'Error',
-      errorPlacement: 'bottom',
-      errorId,
-    });
+    const { container } = makeDropdown(
+      {
+        errorMessage: 'Error',
+        errorPlacement: 'bottom',
+        errorId,
+      },
+      1
+    );
 
     const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
@@ -128,7 +170,7 @@ describe('Dropdown', () => {
   });
 
   it('is disabled', () => {
-    makeDropdown({ disabled: true });
+    makeDropdown({ disabled: true }, 1);
     const button = getButton();
     expect(button).toHaveAttribute('disabled');
   });
@@ -219,6 +261,30 @@ describe('Dropdown', () => {
     expectDropdownToBeClosed();
   });
 
+  it('supports single-character type ahead', async () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{l}');
+    const options = screen.getAllByRole('option');
+    // Lummi tribe option should have focus and is 7th element in array
+    expect(options[7]).toHaveFocus();
+  });
+
+  it('supports multi-character type ahead', () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    const list = screen.getByRole('listbox');
+    userEvent.keyboard('{arrowdown}');
+    userEvent.type(list, 'cow');
+    const options = screen.getAllByRole('option');
+    // Cowlitz tribe option should have focus and is 4th element in options array
+    expect(options[4]).toHaveFocus();
+  });
+
   it('automatically focuses on the selected option when opening', () => {
     makeDropdown({ defaultValue: '3' }, 10);
     const button = getButton();
@@ -236,7 +302,7 @@ describe('Dropdown', () => {
 
   it('forwards an object inputRef', () => {
     const inputRef = createRef<HTMLButtonElement>();
-    makeDropdown({ inputRef });
+    makeDropdown({ inputRef }, 1);
     expect(inputRef.current).toBeInTheDocument();
     expect(inputRef.current.tagName).toEqual('BUTTON');
   });
@@ -256,7 +322,7 @@ describe('Dropdown', () => {
 
   it('forwards a function inputRef', () => {
     const inputRef = jest.fn();
-    makeDropdown({ inputRef });
+    makeDropdown({ inputRef }, 1);
     expect(inputRef).toHaveBeenCalled();
     expect(inputRef.mock.lastCall[0].tagName).toEqual('BUTTON');
   });
