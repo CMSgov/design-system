@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-dropdown';
 
@@ -108,6 +108,7 @@ describe('Dropdown', () => {
   });
 
   it('fires a custom ds-change event', async () => {
+    jest.useFakeTimers();
     const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
@@ -118,6 +119,7 @@ describe('Dropdown', () => {
     await user.click(button);
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{Enter}');
+    jest.runAllTimers();
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     dropdownRoot.removeEventListener('ds-change', mockHandler);
