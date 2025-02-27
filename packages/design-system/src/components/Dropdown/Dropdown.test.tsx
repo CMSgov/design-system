@@ -3,6 +3,13 @@ import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
 import { createRef, useEffect, useRef } from 'react';
 
+interface Option {
+  label: string;
+  value: string;
+}
+
+type Options = Array<Option>;
+
 const defaultProps = {
   name: 'dropdown',
   label: 'Select an option',
@@ -13,28 +20,63 @@ const defaultProps = {
   }),
 };
 
-export function generateOptions(count: number): { value: string; label: string }[] {
-  const options = [];
+const dropdownOptions = [
+  { label: '- Select an option -', value: '' },
+  { label: 'Confederated Tribes and Bands of the Yakama Nation', value: '1' },
+  { label: 'Confederated Tribes of the Chehalis Reservation', value: '2' },
+  { label: 'Confederated Tribes of the Colville Reservation', value: '3' },
+  { label: 'Cowlitz Indian Tribe', value: '4' },
+  {
+    label: 'Hoh Indian Tribe (formerly the Hoh Indian Tribe of the Hoh Indian Reservation)',
+    value: '5',
+  },
+  {
+    label:
+      'Nisqually Indian Tribe (formerly the Nisqually Indian Tribe of the Nisqually Reservation)',
+    value: '6',
+  },
+  { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
+];
 
-  for (let i = 1; i < count + 1; i++) {
-    options.push({
-      value: String(i),
-      label: String(i),
-    });
+export function generateOptions(
+  optionsToMake: number | Options
+): { value: string; label: string }[] {
+  let options = [];
+  if (typeof optionsToMake === 'number') {
+    for (let i = 1; i <= optionsToMake; i++) {
+      options.push({
+        value: String(i),
+        label: String(i),
+      });
+    }
+  } else {
+    options = [...optionsToMake];
   }
 
   return options;
 }
 
-function makeDropdown(customProps = {}, optionsCount = 1) {
+function makeDropdown(customProps = {}, options: number | Options = 1) {
   const props = { ...defaultProps, ...customProps };
-  const component = <Dropdown {...props} options={generateOptions(optionsCount)} />;
+  const component = <Dropdown {...props} options={generateOptions(options)} />;
 
   return render(component);
 }
 
 function getButton() {
   return screen.getByRole('button', { name: RegExp(defaultProps.label) });
+}
+
+function expectDropdownToBeOpen() {
+  expect(screen.getByRole('listbox')).toBeInTheDocument();
+}
+
+function expectDropdownToBeClosed() {
+  expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+}
+
+async function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 describe('Dropdown', () => {
@@ -82,11 +124,14 @@ describe('Dropdown', () => {
 
   it('shows error message', () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown({
-      errorMessage: 'Error',
-      errorPlacement: 'top',
-      errorId,
-    });
+    const { container } = makeDropdown(
+      {
+        errorMessage: 'Error',
+        errorPlacement: 'top',
+        errorId,
+      },
+      1
+    );
 
     const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
@@ -99,11 +144,14 @@ describe('Dropdown', () => {
 
   it('supports bottom placed error', () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown({
-      errorMessage: 'Error',
-      errorPlacement: 'bottom',
-      errorId,
-    });
+    const { container } = makeDropdown(
+      {
+        errorMessage: 'Error',
+        errorPlacement: 'bottom',
+        errorId,
+      },
+      1
+    );
 
     const button = getButton();
     expect(button).toHaveAttribute('aria-invalid', 'true');
@@ -127,6 +175,7 @@ describe('Dropdown', () => {
     makeDropdown({ value: '1', onChange, onBlur }, 5);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
     expect(onBlur).not.toHaveBeenCalled();
@@ -148,15 +197,16 @@ describe('Dropdown', () => {
     );
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     await act(async () => {
       await sleep(40);
     });
 
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
+    expectDropdownToBeClosed();
   });
 
   it('pressing Escape closes the menu without making a selection', () => {
@@ -164,11 +214,13 @@ describe('Dropdown', () => {
     makeDropdown({ value: '1', onChange }, 5);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{escape}');
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();
     expect(onChange).not.toHaveBeenCalled();
+    expectDropdownToBeClosed();
   });
 
   it('pressing Tab selects the focused item and blurs away', async () => {
@@ -187,9 +239,9 @@ describe('Dropdown', () => {
     const button = getButton();
     userEvent.click(button);
     userEvent.keyboard('{arrowdown}');
+    expectDropdownToBeOpen();
     userEvent.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     await act(async () => {
       await sleep(40);
     });
@@ -200,12 +252,90 @@ describe('Dropdown', () => {
     expect(onChange.mock.calls[0][0].currentTarget.value).toEqual('2');
     expect(onChange.mock.calls[0][0].currentTarget.name).toEqual('dropdown');
     expect(onBlur).toHaveBeenCalled();
+    expectDropdownToBeClosed();
+  });
+
+  it('supports single-character type ahead', async () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{l}');
+    let options = screen.getAllByRole('option');
+    // Lummi tribe option should have focus and is 7th element in array
+    expect(options[7]).toHaveFocus();
+    // There is a 1 second delay on the type ahead functionality
+    await sleep(1000);
+    userEvent.keyboard('{n}');
+    options = screen.getAllByRole('option');
+    // Nisqually Indian Tribe option should have focus and is 6th element in array
+    expect(options[6]).toHaveFocus();
+  });
+
+  it('can focus across multiple uses of type ahead', async () => {
+    makeDropdown({}, dropdownOptions);
+    let button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{c}');
+    let options = screen.getAllByRole('option');
+    // First option starts with c, so it should be in focus
+    expect(options[1]).toHaveFocus();
+    userEvent.keyboard('{escape}');
+    expectDropdownToBeClosed();
+    button = getButton();
+    await sleep(10);
+    userEvent.click(button);
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{l}');
+    options = screen.getAllByRole('option');
+    // Lummi tribe option should have focus and is 7th element in array
+    expect(options[7]).toHaveFocus();
+  });
+
+  it('does not move to the next item starting with the same letter', async () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    expectDropdownToBeOpen();
+    userEvent.keyboard('{arrowdown}');
+    userEvent.keyboard('{c}');
+    let options = screen.getAllByRole('option');
+    // Confederated Tribes and Bands of the Yakama Nation is the first element in the options list
+    expect(options[1]).toHaveFocus();
+    // There is a 1 second delay on the type ahead functionality
+    await sleep(1000);
+    userEvent.keyboard('{c}');
+    options = screen.getAllByRole('option');
+    // We do not support moving to the next item starting with the same letter, so expect focus to remain the same
+    expect(options[1]).toHaveFocus();
+  });
+
+  it('supports multi-character type ahead', async () => {
+    makeDropdown({}, dropdownOptions);
+    const button = getButton();
+    userEvent.click(button);
+    const list = screen.getByRole('listbox');
+    userEvent.keyboard('{arrowdown}');
+    userEvent.type(list, 'c');
+    let options = screen.getAllByRole('option');
+    // Since we have only typed 'c' at this point we expect focus to be on the first element since it starts with 'c'
+    expect(options[1]).toHaveFocus();
+    await sleep(40);
+    // We are still within the 1 second type ahead window, so the search string will now be updated to 'cow'
+    userEvent.type(list, 'ow');
+    options = screen.getAllByRole('option');
+    // Focus should update to the fourth item, the Cowlitz tribe
+    expect(options[4]).toHaveFocus();
   });
 
   it('automatically focuses on the selected option when opening', () => {
     makeDropdown({ defaultValue: '3' }, 10);
     const button = getButton();
     userEvent.click(button);
+    expectDropdownToBeOpen();
     const options = screen.getAllByRole('option');
     expect(options[2]).toHaveFocus();
   });
@@ -330,6 +460,7 @@ describe('Dropdown', () => {
       </Dropdown>
     );
     userEvent.click(getButton());
+    expectDropdownToBeOpen();
     const groupLabel = container.querySelector('#group-label-id');
     expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
   });
@@ -357,6 +488,7 @@ describe('Dropdown', () => {
     // Clicking an item should call `onChange` but should do nothing else
     // because this is a controlled component
     userEvent.click(button);
+    expectDropdownToBeOpen();
     userEvent.keyboard('{arrowdown}');
     userEvent.keyboard('{enter}');
     expect(onChange).toHaveBeenCalled();
