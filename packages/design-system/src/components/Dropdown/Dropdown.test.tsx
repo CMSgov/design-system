@@ -3,6 +3,13 @@ import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
 import { createRef, useEffect, useRef } from 'react';
 
+interface Option {
+  label: string;
+  value: string;
+}
+
+type Options = Array<Option>;
+
 const defaultProps = {
   name: 'dropdown',
   label: 'Select an option',
@@ -32,12 +39,7 @@ const dropdownOptions = [
 ];
 
 export function generateOptions(
-  optionsToMake:
-    | number
-    | {
-        label: string;
-        value: string;
-      }[]
+  optionsToMake: number | Options
 ): { value: string; label: string }[] {
   let options = [];
   if (typeof optionsToMake === 'number') {
@@ -54,15 +56,7 @@ export function generateOptions(
   return options;
 }
 
-function makeDropdown(
-  customProps = {},
-  options:
-    | number
-    | {
-        label: string;
-        value: string;
-      }[]
-) {
+function makeDropdown(customProps = {}, options: number | Options = 1) {
   const props = { ...defaultProps, ...customProps };
   const component = <Dropdown {...props} options={generateOptions(options)} />;
 
