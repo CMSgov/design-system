@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Dropdown from './Dropdown';
 import { createRef, useEffect, useRef } from 'react';
+import Dropdown from './Dropdown';
 
 const defaultProps = {
   name: 'dropdown',
@@ -31,7 +31,7 @@ function makeDropdown(customProps = {}, optionsCount = 1) {
   const component = <Dropdown {...props} options={generateOptions(optionsCount)} />;
 
   return {
-    user: userEvent.setup({ delay: 25 }),
+    user: userEvent.setup({ delay: 50, advanceTimers: jest.advanceTimersByTime }),
     ...render(component),
   };
 }
@@ -74,6 +74,7 @@ describe('Dropdown', () => {
   });
 
   it('adds size classes to the appropriate elements', async () => {
+    jest.useFakeTimers();
     const { user } = makeDropdown({ size: 'small' });
     const button = getButton();
     await user.click(button);
@@ -130,13 +131,18 @@ describe('Dropdown', () => {
   });
 
   it('calls the onChange handler', async () => {
+    jest.useFakeTimers();
     const onChange = jest.fn();
     const onBlur = jest.fn();
     const { user } = makeDropdown({ value: '1', onChange, onBlur }, 5);
     const button = getButton();
+
     await user.click(button);
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{Enter}');
+
+    jest.runAllTimers();
+
     expect(onBlur).not.toHaveBeenCalled();
     expect(onChange).toHaveBeenCalled();
   });
@@ -167,6 +173,7 @@ describe('Dropdown', () => {
   });
 
   it('pressing Escape closes the menu without making a selection', async () => {
+    jest.useFakeTimers();
     const onChange = jest.fn();
     const { user } = makeDropdown({ value: '1', onChange }, 5);
     const button = getButton();
@@ -209,6 +216,7 @@ describe('Dropdown', () => {
   });
 
   it('automatically focuses on the selected option when opening', async () => {
+    jest.useFakeTimers();
     const { user } = makeDropdown({ defaultValue: '3' }, 10);
     const button = getButton();
     await act(async () => {
@@ -267,7 +275,9 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
-    await user.click(getButton());
+    await act(async () => {
+      await user.click(getButton());
+    });
     expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
     expect(list).toMatchSnapshot();

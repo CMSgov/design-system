@@ -125,6 +125,7 @@ describe('DateInput', () => {
     });
 
     it('calls onBlur when month is blurred', async () => {
+      jest.useFakeTimers();
       const { user } = renderDateInput(props);
       const monthInput = screen.getByRole('textbox', { name: /month/i });
       await user.click(monthInput);
@@ -134,6 +135,7 @@ describe('DateInput', () => {
     });
 
     it('calls onChange when day is changed', async () => {
+      jest.useFakeTimers();
       const { user } = renderDateInput(props);
       const monthInput = screen.getByRole('textbox', { name: /month/i });
       await user.type(monthInput, '1');
@@ -154,6 +156,7 @@ describe('DateInput', () => {
     });
 
     it('does not call onComponentBlur when focus switches to other date component', async () => {
+      jest.useFakeTimers();
       const onComponentBlur = jest.fn();
       const { user } = renderDateInput({ ...props, onComponentBlur });
       const firstInput = screen.getByRole('textbox', { name: /month/i });
@@ -164,6 +167,7 @@ describe('DateInput', () => {
     });
 
     it('formats the date as a single string', async () => {
+      jest.useFakeTimers();
       const { user } = renderDateInput({
         ...props,
         dateFormatter: (values) => `${values.month} ${values.day} ${values.year}`,

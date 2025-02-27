@@ -124,11 +124,11 @@ describe('SingleInputDateField', function () {
     // https://github.com/testing-library/dom-testing-library/issues/774#issuecomment-702574312
     // but it isn't working
     //
-    // it('selecting a day calls onChange', () => {
+    // it('selecting a day calls onChange', async () => {
     //   const onChange = jest.fn();
-    //   renderPicker({onChange});
-    //   userEvent.click(screen.getByRole('button'));
-    //   userEvent.click(screen.getByRole('button', {name: /9th/}))
+    //   const { user } = renderPicker({onChange});
+    //   await user.click(screen.getByRole('button'));
+    //   await user.click(screen.getByRole('button', {name: /9th/}))
     //   expect(onChange).toHaveBeenCalledWith('01/09/2000', '01/09/2000');
     // });
   });

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef, useEffect, useRef } from 'react';
 import Choice, { ChoiceProps, ChoiceType } from './Choice';
@@ -281,7 +281,9 @@ describe('Choice', () => {
       expect(getRadio('B').checked).toBe(false);
       expect(getRadio('C').checked).toBe(false);
 
-      await user.click(getRadio('B'));
+      await act(async () => {
+        await user.click(getRadio('B'));
+      });
 
       expect(getRadio('A').checked).toBe(true);
       expect(getRadio('B').checked).toBe(false);

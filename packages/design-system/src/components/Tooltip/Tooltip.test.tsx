@@ -48,6 +48,7 @@ describe('Tooltip', function () {
   });
 
   it('renders dialog tooltip', async () => {
+    jest.useFakeTimers();
     const { user } = renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
@@ -82,6 +83,7 @@ describe('Tooltip', function () {
     });
 
     it('renders heading element', async () => {
+      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
@@ -93,6 +95,7 @@ describe('Tooltip', function () {
     });
 
     it('renders heading element and close button', async () => {
+      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
@@ -105,6 +108,7 @@ describe('Tooltip', function () {
     });
 
     it('should call onClose when close button is clicked', async () => {
+      jest.useFakeTimers();
       const onClose = jest.fn();
       const { user } = renderTooltip({
         dialog: true,
@@ -119,6 +123,7 @@ describe('Tooltip', function () {
     });
 
     it('should close tooltip when onClose is clicked', async () => {
+      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
@@ -132,6 +137,7 @@ describe('Tooltip', function () {
     });
 
     it('should return focus back to trigger when closed', async () => {
+      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,

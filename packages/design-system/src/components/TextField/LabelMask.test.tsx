@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import LabelMask from './LabelMask';
@@ -77,7 +77,7 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
 
 const renderLabelMask = (mask: MaskFunction) => {
   return {
-    user: userEvent.setup({ delay: 25 }),
+    user: userEvent.setup(),
     ...render(<TestLabelMask mask={mask} />),
   };
 };
@@ -109,7 +109,9 @@ allMasks.forEach((currentMask) => {
         const mask = container.querySelector('.ds-c-label-mask');
         const input = container.querySelector('input');
 
-        await user.type(input, data);
+        await act(async () => {
+          await user.type(input, data);
+        });
 
         expect(input).toHaveValue(data);
         expect(mask.textContent).toContain(maskText);
@@ -122,7 +124,9 @@ allMasks.forEach((currentMask) => {
         const mask = container.querySelector('.ds-c-label-mask');
         const input = container.querySelector('input');
 
-        await user.type(input, data);
+        await act(async () => {
+          await user.type(input, data);
+        });
 
         expect(input).toHaveValue(data);
         expect(mask.textContent).toContain(currentMask.partialResult);
@@ -136,8 +140,13 @@ allMasks.forEach((currentMask) => {
 
       const input = container.querySelector('input');
 
-      await user.type(input, data);
-      await user.tab();
+      await act(async () => {
+        await user.type(input, data);
+      });
+
+      await act(async () => {
+        await user.tab();
+      });
 
       expect(input).toHaveValue(formattedData);
     });
