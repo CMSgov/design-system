@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-text-field';
 
@@ -13,10 +13,18 @@ declare global {
 /* eslint-enable */
 
 function renderTextField(props = {}) {
-  return render(<ds-text-field {...props} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    ...render(<ds-text-field {...props} />),
+  };
 }
 
 describe('ds-text-field', function () {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('renders text-field', () => {
     const { asFragment } = renderTextField({ id: 'static-id' });
     expect(asFragment()).toMatchSnapshot();
@@ -94,23 +102,24 @@ describe('ds-text-field', function () {
     expect(textArea).toHaveAttribute('rows', '3');
   });
 
-  it('fires a custom ds-change event', () => {
-    renderTextField();
+  it('fires a custom ds-change event', async () => {
+    const { user } = renderTextField();
 
     const textFieldRoot = document.querySelector('ds-text-field');
     const mockHandler = jest.fn();
     textFieldRoot.addEventListener('ds-change', mockHandler);
 
     const input = screen.getByRole('textbox');
-    userEvent.click(input);
-    userEvent.keyboard('a');
+    await user.click(input);
+    await user.keyboard('a');
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     textFieldRoot.removeEventListener('ds-change', mockHandler);
   });
 
   it('fires a custom ds-blur event', async () => {
-    renderTextField();
+    jest.useFakeTimers();
+    const { user } = renderTextField();
 
     const textFieldRoot = document.querySelector('ds-text-field');
     const onBlur = jest.fn();
@@ -119,13 +128,10 @@ describe('ds-text-field', function () {
     textFieldRoot.addEventListener('ds-change', onChange);
 
     const input = screen.getByRole('textbox');
-    userEvent.click(input);
-    userEvent.tab();
+    await user.click(input);
+    await user.tab();
 
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();
@@ -133,13 +139,13 @@ describe('ds-text-field', function () {
     textFieldRoot.removeEventListener('ds-change', onChange);
   });
 
-  it('formats a phone number on blur', () => {
-    renderTextField({ 'label-mask': 'phone' });
+  it('formats a phone number on blur', async () => {
+    const { user } = renderTextField({ 'label-mask': 'phone' });
 
     const input = screen.getByRole('textbox') as HTMLInputElement;
-    userEvent.click(input);
-    userEvent.type(input, '1234567890');
-    userEvent.tab();
+    await user.click(input);
+    await user.type(input, '1234567890');
+    await user.tab();
 
     expect(input.value).toEqual('123-456-7890');
   });

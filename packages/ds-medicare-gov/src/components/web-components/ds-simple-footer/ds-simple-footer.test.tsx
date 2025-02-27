@@ -3,7 +3,10 @@ import userEvent from '@testing-library/user-event';
 import './ds-simple-footer';
 
 function renderFooter(props = {}) {
-  return render(<ds-simple-footer {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<ds-simple-footer {...props} />),
+  };
 }
 
 describe('SimpleFooter', () => {
@@ -21,7 +24,7 @@ describe('SimpleFooter', () => {
   it('calls ds-click-link-analytics when a link is clicked', async () => {
     const mockAnalyticsCallback = jest.fn();
 
-    renderFooter({ 'about-medicare-label': 'About Medicare' });
+    const { user } = renderFooter({ 'about-medicare-label': 'About Medicare' });
 
     const footer = document.querySelector('ds-simple-footer');
     expect(footer).toBeInTheDocument();
@@ -29,7 +32,7 @@ describe('SimpleFooter', () => {
     footer?.addEventListener('ds-click-link-analytics', mockAnalyticsCallback);
 
     const link = screen.getByText(/About Medicare/i);
-    await userEvent.click(link);
+    await user.click(link);
 
     expect(mockAnalyticsCallback).toHaveBeenCalledTimes(1);
 

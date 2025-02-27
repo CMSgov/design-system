@@ -12,7 +12,10 @@ const defaultProps = {
 };
 
 function renderField(props = {}) {
-  return render(<SingleInputDateField {...defaultProps} {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<SingleInputDateField {...defaultProps} {...props} />),
+  };
 }
 
 function getInput() {
@@ -47,24 +50,24 @@ describe('SingleInputDateField', function () {
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
-  it('masks in label', function () {
-    const { container } = renderField({ value: '11-01' });
-    userEvent.click(getInput());
+  it('masks in label', async function () {
+    const { container, user } = renderField({ value: '11-01' });
+    await user.click(getInput());
     expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY');
   });
 
-  it('calls onChange when input changes', function () {
+  it('calls onChange when input changes', async function () {
     const onChange = jest.fn();
-    renderField({ onChange });
-    userEvent.type(getInput(), '1');
+    const { user } = renderField({ onChange });
+    await user.type(getInput(), '1');
     expect(onChange).toHaveBeenCalledWith('1', '01');
   });
 
-  it('calls onChange when input loses focus', function () {
+  it('calls onChange when input loses focus', async function () {
     const onChange = jest.fn();
-    renderField({ onChange, value: '01-02-2000' });
-    userEvent.click(getInput());
-    userEvent.tab();
+    const { user } = renderField({ onChange, value: '01-02-2000' });
+    await user.click(getInput());
+    await user.tab();
     expect(onChange).toHaveBeenCalledWith('01/02/2000', '01/02/2000');
   });
 
@@ -81,8 +84,8 @@ describe('SingleInputDateField', function () {
       return renderField({ ...defaultPickerProps, ...props });
     }
 
-    it('renders with picker', () => {
-      const { container } = renderPicker();
+    it('renders with picker', async () => {
+      const { container, user } = renderPicker();
 
       const label = container.querySelector('.ds-c-label');
       const hint = container.querySelector('.ds-c-hint');
@@ -104,7 +107,7 @@ describe('SingleInputDateField', function () {
       expect(button.firstElementChild.tagName).toBe('svg');
       expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
 
-      userEvent.click(button);
+      await user.click(button);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
 
@@ -121,11 +124,11 @@ describe('SingleInputDateField', function () {
     // https://github.com/testing-library/dom-testing-library/issues/774#issuecomment-702574312
     // but it isn't working
     //
-    // it('selecting a day calls onChange', () => {
+    // it('selecting a day calls onChange', async () => {
     //   const onChange = jest.fn();
-    //   renderPicker({onChange});
-    //   userEvent.click(screen.getByRole('button'));
-    //   userEvent.click(screen.getByRole('button', {name: /9th/}))
+    //   const { user } = renderPicker({onChange});
+    //   await user.click(screen.getByRole('button'));
+    //   await user.click(screen.getByRole('button', {name: /9th/}))
     //   expect(onChange).toHaveBeenCalledWith('01/09/2000', '01/09/2000');
     // });
   });
