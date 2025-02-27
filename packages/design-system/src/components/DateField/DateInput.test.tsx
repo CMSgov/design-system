@@ -11,6 +11,7 @@ const defaultProps: DateInputProps = {
   yearName: 'year',
   yearLabel: 'Year',
   id: 'static-id',
+  language: 'en',
 };
 
 function renderDateInput(customProps: Partial<DateInputProps> = {}) {
@@ -111,6 +112,26 @@ describe('DateInput', () => {
     expect((dayFieldRef.current as HTMLInputElement).value).toBe(dayDefaultValue);
     expect((monthFieldRef.current as HTMLInputElement).value).toBe(monthDefaultValue);
     expect((yearFieldRef.current as HTMLInputElement).value).toBe(yearDefaultValue);
+  });
+
+  it('renders DD/MM/YYYY for non-English language pages', () => {
+    renderDateInput({ language: 'es' });
+
+    const monthLabel = screen.getByLabelText(/month/i);
+    const dayLabel = screen.getByLabelText(/day/i);
+
+    // A return value of 4 from compareDocumentPosition means the monthLabel follows the dayLabel in the DOM
+    expect(dayLabel.compareDocumentPosition(monthLabel)).toBe(4);
+  });
+
+  it('renders MM/DD/YYYY for English language pages', () => {
+    renderDateInput();
+
+    const monthLabel = screen.getByLabelText(/month/i);
+    const dayLabel = screen.getByLabelText(/day/i);
+
+    // A return value of 4 from compareDocumentPosition means the dayLabel follows the monthLabel in the DOM
+    expect(monthLabel.compareDocumentPosition(dayLabel)).toBe(4);
   });
 
   describe('event handlers', () => {

@@ -15,6 +15,8 @@ export interface ComponentLinksInterface {
  * @see https://www.gatsbyjs.com/docs/location-data-from-props/
  */
 export interface LocationInterface {
+  host: string;
+  hostname: string;
   pathname: string;
   search?: string;
   origin?: string;
