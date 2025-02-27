@@ -92,14 +92,14 @@ describe('Dropdown', () => {
   });
 
   it('applies additional classes to root element', () => {
-    const { container } = makeDropdown({ className: 'bar' }, 1);
+    const { container } = makeDropdown({ className: 'bar' });
     expect(container.firstChild).toHaveClass('bar');
     // Make sure we're not replacing the other class names
     expect(container.firstChild).toHaveClass('ds-c-dropdown');
   });
 
   it('applies additional classes to button element', () => {
-    makeDropdown({ fieldClassName: 'foo' }, 1);
+    makeDropdown({ fieldClassName: 'foo' });
 
     const button = getButton();
     expect(button).toHaveClass('foo');
@@ -108,7 +108,7 @@ describe('Dropdown', () => {
   });
 
   it('adds size classes to the appropriate elements', () => {
-    makeDropdown({ size: 'small' }, 1);
+    makeDropdown({ size: 'small' });
     const button = getButton();
     userEvent.click(button);
     const listContainer = screen.getByRole('listbox').parentElement;
@@ -117,7 +117,7 @@ describe('Dropdown', () => {
   });
 
   it('adds inverse class to button', () => {
-    makeDropdown({ inversed: true }, 1);
+    makeDropdown({ inversed: true });
     const button = getButton();
     expect(button).toHaveClass('ds-c-field--inverse');
   });
@@ -164,7 +164,7 @@ describe('Dropdown', () => {
   });
 
   it('is disabled', () => {
-    makeDropdown({ disabled: true }, 1);
+    makeDropdown({ disabled: true });
     const button = getButton();
     expect(button).toHaveAttribute('disabled');
   });
@@ -348,7 +348,7 @@ describe('Dropdown', () => {
 
   it('forwards an object inputRef', () => {
     const inputRef = createRef<HTMLButtonElement>();
-    makeDropdown({ inputRef }, 1);
+    makeDropdown({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
     expect(inputRef.current.tagName).toEqual('BUTTON');
   });
@@ -368,7 +368,7 @@ describe('Dropdown', () => {
 
   it('forwards a function inputRef', () => {
     const inputRef = jest.fn();
-    makeDropdown({ inputRef }, 1);
+    makeDropdown({ inputRef });
     expect(inputRef).toHaveBeenCalled();
     expect(inputRef.mock.lastCall[0].tagName).toEqual('BUTTON');
   });
