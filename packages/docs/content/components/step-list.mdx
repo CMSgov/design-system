@@ -21,6 +21,24 @@ The `StepList` component is the preferred method for building a step list, since
 
 <StorybookExample componentName="step-list" storyId="components-steplist--step-list-example" />
 
+### Accessibility
+
+### Accessibility testing
+
+#### General accessibility testing
+- Check that each step has a clear and unique label so that users understand the purpose and sequence of steps.
+- Ensure that focus is managed correctly when steps are completed or when the user moves from one step to the next.
+- Verify that the component layout does not break or hide important information when viewed on different devices.
+
+#### Keyboard testing
+- Verify that users can navigate through any links in the steps using only the keyboard (e.g., Tab, Shift+Tab, and Enter/Space keys).
+- Confirm that focus is clearly visible on each step and that the order of steps is logical.
+
+#### Screenreader testing
+- Use a screen reader (such as NVDA, JAWS, or VoiceOver) to test how the step indicator is announced.
+- Ensure that visually hidden text and ARIA labels are properly read, clearly conveying the completion status and position of each step.
+- Confirm that any indicators or icons that are hidden from screen readers (using `aria-hidden="true"`) do not interfere with the announcement of - the step information.
+
 ## Code
 
 ### React
