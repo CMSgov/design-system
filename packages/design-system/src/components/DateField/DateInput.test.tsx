@@ -145,6 +145,11 @@ describe('DateInput', () => {
       props.onChange.mockClear();
     });
 
+    afterEach(() => {
+      jest.clearAllTimers();
+      jest.useRealTimers();
+    });
+
     it('calls onBlur when month is blurred', async () => {
       jest.useFakeTimers();
       const { user } = renderDateInput(props);

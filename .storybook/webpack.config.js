@@ -6,7 +6,8 @@ const usePreact = Boolean(JSON.parse(process.env.PREACT ?? 'true'));
 const preactAliases = usePreact
   ? {
       react: 'preact/compat',
-      'react-dom': 'preact/compat',
+      'react-dom/test-utils': 'preact/test-utils',
+      'react-dom': 'preact/compat', // Must be below test-utils
       'react/jsx-runtime': 'preact/jsx-runtime',
     }
   : {};

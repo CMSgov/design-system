@@ -1,6 +1,6 @@
-import SingleInputDateField from './SingleInputDateField';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import SingleInputDateField from './SingleInputDateField';
 
 const defaultProps = {
   label: 'Birthday',
@@ -76,7 +76,7 @@ describe('SingleInputDateField', function () {
       label: 'What day did you move?',
       hint: 'This date should be within the past 60 days in order to qualify',
       fromYear: new Date('01-02-2000').getFullYear(),
-      toDate: new Date('01-02-2000'),
+      toDate: new Date('01-31-2000'),
       id: 'static-id',
     };
 
@@ -117,19 +117,18 @@ describe('SingleInputDateField', function () {
       expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
     });
 
-    // This is throwing many, many instances of this error:
-    // `Error: Not implemented: window.computedStyle(elt, pseudoElt)`
-    // I tried adding `"@testing-library/dom": "^7.31.2",` to the scripts package
-    // because it is supposed to be fixed in later versions according to
-    // https://github.com/testing-library/dom-testing-library/issues/774#issuecomment-702574312
-    // but it isn't working
-    //
-    // it('selecting a day calls onChange', async () => {
-    //   const onChange = jest.fn();
-    //   const { user } = renderPicker({onChange});
-    //   await user.click(screen.getByRole('button'));
-    //   await user.click(screen.getByRole('button', {name: /9th/}))
-    //   expect(onChange).toHaveBeenCalledWith('01/09/2000', '01/09/2000');
-    // });
+    it('selecting a day calls onChange', async () => {
+      const onChange = jest.fn();
+      const { user } = renderPicker({ onChange });
+      await act(async () => {
+        await user.click(screen.getByRole('button'));
+      });
+
+      await act(async () => {
+        await user.click(screen.getByRole('gridcell', { name: /19th/ }));
+      });
+
+      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000');
+    });
   });
 });
