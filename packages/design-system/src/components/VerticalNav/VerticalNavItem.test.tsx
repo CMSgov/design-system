@@ -8,7 +8,10 @@ function renderVerticalNavItem(customProps = {}) {
     ...customProps,
   };
 
-  return render(<VerticalNavItem {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<VerticalNavItem {...props} />),
+  };
 }
 
 describe('VerticalNavItem', () => {
@@ -37,9 +40,9 @@ describe('VerticalNavItem', () => {
     expect(navItemEl.classList).toContain('bar');
   });
 
-  it('calls onSubnavToggle', () => {
+  it('calls onSubnavToggle', async () => {
     const onSubnavToggleMock = jest.fn();
-    renderVerticalNavItem({
+    const { user } = renderVerticalNavItem({
       onSubnavToggle: onSubnavToggleMock,
       defaultCollapsed: true,
       items: [
@@ -54,16 +57,16 @@ describe('VerticalNavItem', () => {
 
     const labelEl = screen.getByText('Foo');
 
-    userEvent.click(labelEl);
+    await user.click(labelEl);
 
     expect(onSubnavToggleMock).toHaveBeenCalledTimes(1);
     expect(onSubnavToggleMock).toHaveBeenCalledWith(expect.any(String), true);
   });
 
-  it('calls onSubnavToggle rather than onClick', () => {
+  it('calls onSubnavToggle rather than onClick', async () => {
     const onSubnavToggleMock = jest.fn();
     const onClickMock = jest.fn();
-    renderVerticalNavItem({
+    const { user } = renderVerticalNavItem({
       onSubnavToggle: onSubnavToggleMock,
       onClick: onClickMock,
       items: [
@@ -77,7 +80,7 @@ describe('VerticalNavItem', () => {
     });
 
     const labelEl = screen.getByText('Foo');
-    userEvent.click(labelEl);
+    await user.click(labelEl);
 
     expect(onClickMock).not.toHaveBeenCalled();
     expect(onSubnavToggleMock).toHaveBeenCalled();
@@ -108,16 +111,16 @@ describe('VerticalNavItem', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('calls onClick', () => {
+    it('calls onClick', async () => {
       const mockOnClick = jest.fn();
-      renderVerticalNavItem({
+      const { user } = renderVerticalNavItem({
         id: 'bar',
         onClick: mockOnClick,
         url: '/bar',
       });
 
       const labelEl = screen.getByText('Foo');
-      userEvent.click(labelEl);
+      await user.click(labelEl);
 
       expect(mockOnClick).toHaveBeenCalledTimes(1);
       expect(mockOnClick).toHaveBeenCalledWith(expect.anything(), 'bar', '/bar');
@@ -177,15 +180,15 @@ describe('VerticalNavItem', () => {
       expect(subNavEl.classList).toContain('ds-c-vertical-nav--collapsed');
     });
 
-    it('toggles collapsed state', () => {
+    it('toggles collapsed state', async () => {
       props.onClick = jest.fn();
-      renderVerticalNavItem(props);
+      const { user } = renderVerticalNavItem(props);
 
       const labelEl = screen.getByText('Foo');
       const subNavEl = screen.getAllByRole('list')[0];
       expect(subNavEl.classList).not.toContain('ds-c-vertical-nav--collapsed');
 
-      userEvent.click(labelEl);
+      await user.click(labelEl);
 
       expect(subNavEl.classList).toContain('ds-c-vertical-nav--collapsed');
     });
