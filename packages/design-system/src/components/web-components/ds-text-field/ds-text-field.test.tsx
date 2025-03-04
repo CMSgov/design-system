@@ -103,6 +103,7 @@ describe('ds-text-field', function () {
   });
 
   it('fires a custom ds-change event', async () => {
+    jest.useFakeTimers();
     const { user } = renderTextField();
 
     const textFieldRoot = document.querySelector('ds-text-field');
@@ -140,6 +141,7 @@ describe('ds-text-field', function () {
   });
 
   it('formats a phone number on blur', async () => {
+    jest.useFakeTimers();
     const { user } = renderTextField({ 'label-mask': 'phone' });
 
     const input = screen.getByRole('textbox') as HTMLInputElement;
