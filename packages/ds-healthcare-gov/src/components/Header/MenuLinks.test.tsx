@@ -31,14 +31,15 @@ describe('MenuLinks', function () {
       (window as any as UtagContainer).utag = { link: mock };
     });
 
-    it('sends analytics event when menu link clicked', () => {
+    it('sends analytics event when menu link clicked', async () => {
+      const user = userEvent.setup();
       render(
         <MenuLinks
           links={[{ href: 'https://www.zombo.com', ariaLabel: 'ZOMBO label', label: 'ZOMBO' }]}
         />
       );
       const link = screen.getByRole('link');
-      userEvent.click(link);
+      await user.click(link);
       expect(mock).toHaveBeenCalled();
     });
   });

@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-dropdown';
 
@@ -12,10 +12,18 @@ const defaultAttrs = {
 };
 
 function renderDropdown(attrs = {}) {
-  return render(<ds-dropdown {...defaultAttrs} {...attrs} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime, delay: 25 }),
+    ...render(<ds-dropdown {...defaultAttrs} {...attrs} />),
+  };
 }
 
 describe('Dropdown', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('renders a dropdown', () => {
     const { asFragment } = renderDropdown();
     expect(asFragment()).toMatchSnapshot();
@@ -99,24 +107,27 @@ describe('Dropdown', () => {
     expect(button.classList.contains('ds-c-field--small')).toBe(true);
   });
 
-  it('fires a custom ds-change event', () => {
-    renderDropdown();
+  it('fires a custom ds-change event', async () => {
+    jest.useFakeTimers();
+    const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
     const mockHandler = jest.fn();
     dropdownRoot.addEventListener('ds-change', mockHandler);
 
     const button = screen.getByRole('button');
-    userEvent.click(button);
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{enter}');
+    await user.click(button);
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
+    jest.runAllTimers();
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     dropdownRoot.removeEventListener('ds-change', mockHandler);
   });
 
   it('fires a custom ds-blur event', async () => {
-    renderDropdown();
+    jest.useFakeTimers();
+    const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
     const onBlur = jest.fn();
@@ -125,13 +136,9 @@ describe('Dropdown', () => {
     dropdownRoot.addEventListener('ds-change', onChange);
 
     const button = screen.getByRole('button');
-    userEvent.click(button);
-    userEvent.tab();
-
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    await user.click(button);
+    await user.tab();
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();

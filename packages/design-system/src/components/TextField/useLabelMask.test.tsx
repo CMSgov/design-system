@@ -1,15 +1,14 @@
+import { act, render, renderHook, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import useLabelMask, {
+  CURRENCY_MASK,
   DATE_MASK,
+  MaskFunction,
+  PHONE_MASK,
   SSN_MASK,
   SSN_MASK_OBFUSCATED,
-  PHONE_MASK,
   ZIP_MASK,
-  CURRENCY_MASK,
-  MaskFunction,
 } from './useLabelMask';
-import { render, screen } from '@testing-library/react';
-import { act, renderHook } from '@testing-library/react-hooks';
-import userEvent from '@testing-library/user-event';
 
 describe('SSN_MASK', () => {
   it('returns just the mask when given no input', () => {
@@ -175,7 +174,10 @@ describe('useLabelMask', () => {
   const defaultInputProps = { type: 'text', value: '', id: 'static-id' };
 
   function renderInput(props = {}) {
-    return render(<input {...props} />);
+    return {
+      user: userEvent.setup(),
+      ...render(<input {...props} />),
+    };
   }
 
   function renderUseLabelMask(inputProps = {}, mask: MaskFunction = DATE_MASK) {
@@ -198,25 +200,27 @@ describe('useLabelMask', () => {
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
-  it('shows masked value when focused', () => {
+  it('shows masked value when focused', async () => {
+    const user = userEvent.setup();
     const { result } = renderUseLabelMask({ value: '12' });
     renderInput(result.current.inputProps);
     // Can't really find an alternative that gets rid of the warnings
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.click(screen.getByRole('textbox'));
+    await act(async () => {
+      await user.click(screen.getByRole('textbox'));
     });
     expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });
 
-  it('shows unfilled mask when not focused', () => {
+  it('shows unfilled mask when not focused', async () => {
+    const user = userEvent.setup();
     const { result } = renderUseLabelMask({ value: '12250001' });
     renderInput(result.current.inputProps);
     // Can't really find an alternative that gets rid of the warnings
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.click(screen.getByRole('textbox'));
-      userEvent.tab();
+    await act(async () => {
+      await user.click(screen.getByRole('textbox'));
+      await user.tab();
     });
     expect(render(result.current.labelMask).asFragment()).toMatchSnapshot();
   });

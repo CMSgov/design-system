@@ -1,8 +1,7 @@
+import { act, render, renderHook, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dialog } from './Dialog';
 import { useDialog } from './useDialog';
-import { act, renderHook } from '@testing-library/react-hooks';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 enum ResolveValue {
   onExit,
@@ -56,26 +55,30 @@ describe('useDialog', () => {
   });
 
   it('should resolve promise and close dialog when ESC is pressed', async () => {
+    const user = userEvent.setup();
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const promise = openDialog(hookRenderResult);
     const dialogRenderResult = render(hookRenderResult.result.current.dialog);
+
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.keyboard('{escape}');
+    await act(async () => {
+      await user.keyboard('{Escape}');
     });
+
     const resolvedValue = await promise;
     expect(resolvedValue).toEqual(ResolveValue.onExit);
     expectClosed(hookRenderResult, dialogRenderResult);
   });
 
   it('should resolve promise and close dialog when dialog close button clicked', async () => {
+    const user = userEvent.setup();
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const promise = openDialog(hookRenderResult);
     const dialogRenderResult = render(hookRenderResult.result.current.dialog);
     const closeButton = screen.getByRole('button', { name: /Close/ });
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.click(closeButton);
+    await act(async () => {
+      await user.click(closeButton);
     });
     const resolvedValue = await promise;
     expect(resolvedValue).toEqual(ResolveValue.onExit);
@@ -83,13 +86,14 @@ describe('useDialog', () => {
   });
 
   it('should resolve promise and close dialog when "Yes" button is clicked', async () => {
+    const user = userEvent.setup();
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const promise = openDialog(hookRenderResult);
     const dialogRenderResult = render(hookRenderResult.result.current.dialog);
     const closeButton = screen.getByRole('button', { name: /Yes/ });
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.click(closeButton);
+    await act(async () => {
+      await user.click(closeButton);
     });
     const resolvedValue = await promise;
     expect(resolvedValue).toEqual(ResolveValue.yesClick);
@@ -97,13 +101,14 @@ describe('useDialog', () => {
   });
 
   it('should resolve promise and close dialog when "No" button is clicked', async () => {
+    const user = userEvent.setup();
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const promise = openDialog(hookRenderResult);
     const dialogRenderResult = render(hookRenderResult.result.current.dialog);
     const closeButton = screen.getByRole('button', { name: /No/ });
     // eslint-disable-next-line testing-library/no-unnecessary-act
-    act(() => {
-      userEvent.click(closeButton);
+    await act(async () => {
+      await user.click(closeButton);
     });
     const resolvedValue = await promise;
     expect(resolvedValue).toEqual(ResolveValue.noClick);

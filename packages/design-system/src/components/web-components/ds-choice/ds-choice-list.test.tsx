@@ -29,7 +29,10 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     'ds-change': () => null,
     ...customProps,
   };
-  return render(<ds-choice-list {...props} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    ...render(<ds-choice-list {...props} />),
+  };
 }
 
 describe('ChoiceList', () => {
@@ -154,18 +157,22 @@ describe('ChoiceList', () => {
   });
 
   it('calls onChange', async () => {
-    renderChoiceList();
+    jest.useFakeTimers();
+    const { user } = renderChoiceList();
     const choiceListRoot = document.querySelector('ds-choice-list');
     const onChange = jest.fn();
     choiceListRoot.addEventListener('ds-change', onChange);
 
     const choiceEl = screen.getByLabelText('Choice 1');
-    userEvent.click(choiceEl);
+    await user.click(choiceEl);
+    jest.runAllTimers();
+
     await waitFor(() => expect(onChange).toHaveBeenCalled());
   });
 
-  it('calls onBlur', () => {
-    renderChoiceList();
+  it('calls onBlur', async () => {
+    jest.useFakeTimers();
+    const { user } = renderChoiceList();
     const choiceListRoot = document.querySelector('ds-choice-list');
     const onBlur = jest.fn();
     choiceListRoot.addEventListener('ds-blur', onBlur);
@@ -173,13 +180,14 @@ describe('ChoiceList', () => {
     const choiceEl = screen.getByLabelText('Choice 1');
 
     choiceEl.focus();
-    userEvent.tab();
+    await user.tab();
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalled();
   });
 
-  it('calls onComponentBlur', () => {
-    renderChoiceList();
+  it('calls onComponentBlur', async () => {
+    const { user } = renderChoiceList();
     const choiceListRoot = document.querySelector('ds-choice-list');
 
     jest.useFakeTimers();
@@ -191,15 +199,15 @@ describe('ChoiceList', () => {
     const choiceEl = screen.getByLabelText('Choice 2');
 
     choiceEl.focus();
-    userEvent.tab();
+    await user.tab();
     jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalled();
     expect(onComponentBlur).toHaveBeenCalled();
   });
 
-  it("doesn't call onComponentBlur", () => {
-    renderChoiceList({ type: 'checkbox' });
+  it("doesn't call onComponentBlur", async () => {
+    const { user } = renderChoiceList({ type: 'checkbox' });
     const choiceListRoot = document.querySelector('ds-choice-list');
 
     jest.useFakeTimers();
@@ -212,7 +220,7 @@ describe('ChoiceList', () => {
     const choiceEls = screen.getAllByRole('checkbox');
 
     choiceEls[0].focus();
-    userEvent.tab();
+    await user.tab();
     jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalled();
