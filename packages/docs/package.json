@@ -28,7 +28,7 @@
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "classnames": "^2.3.1",
-    "gatsby": "5.14.1",
+    "gatsby": "5.14.0",
     "gatsby-plugin-client-side-redirect": "1.1.0",
     "gatsby-plugin-local-search": "^2.0.1",
     "gatsby-plugin-manifest": "^5.14.0",

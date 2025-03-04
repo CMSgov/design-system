@@ -177,8 +177,5 @@
   },
   "overrides": {
     "react-docgen-typescript": "2.3.0-beta.0"
-  },
-  "dependencies": {
-    "gatsby": "^5.14.1"
   }
 }
