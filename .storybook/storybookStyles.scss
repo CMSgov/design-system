@@ -11,6 +11,70 @@
   outline: 2px dashed var(--color-info);
 }
 
+.sb-tab-container {
+  border-bottom: 1px solid hsl(203deg 50% 30% / 15%);
+}
+
+.sb-tabbutton {
+  white-space: normal;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 15px;
+  transition: color 0.2s linear, border-bottom-color 0.2s linear;
+  height: 40px;
+  line-height: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: 0 solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  font-weight: bold;
+  font-size: 13px;
+  color: #73828c;
+  border-bottom-color: transparent;
+}
+
+.sb-tabbutton__active {
+  white-space: normal;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  display: inline-flexbox;
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 15px;
+  transition: color 0.2s linear, border-bottom-color 0.2s linear;
+  height: 40px;
+  line-height: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: 0 solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  font-weight: bold;
+  font-size: 13px;
+  color: #0071bc;
+  border-bottom-color: #0071bc;
+}
+
 // This class is meant to turn a be applied to a fullscreen story and match the
 // default padding that storybook puts around stories in different contexts. If
 // Storybook's styles change, we'll need to update these rules. It is used for
