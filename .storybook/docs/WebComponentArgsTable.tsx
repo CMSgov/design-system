@@ -7,7 +7,7 @@ function optToCodeBlock(opt: undefined | string) {
 }
 
 function getTypeLabel(argType: any) {
-  const controlType = argType.control?.type;
+  const controlType = argType.control?.type ?? argType.control;
   if (controlType) {
     switch (controlType) {
       case 'text':
