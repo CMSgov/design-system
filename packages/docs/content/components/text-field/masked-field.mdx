@@ -36,6 +36,34 @@ This component uses a text field and its styles, which can be customized by the 
 
 <ComponentThemeOptions componentname="form" />
 
+## Accessibility
+Please note that USWDS and others recognize some [accessibility issues](https://designsystem.digital.gov/components/input-mask/#known-issues) with masked input fields:
+- It can be difficult to recover from errors without good form validation and feedback to users, particularly if special characters are disallowed and ignored, or replaced. [USWDS](https://github.com/uswds/uswds/issues/5481)
+
+### General accessibility guidance
+- Group each set of thematically related controls in a `<fieldset>` element. Use the `<legend>` element to provide a label within each `<fieldset>`. These elements help screen reader users navigate the form more easily.
+- Keep your form blocks in a vertical pattern. This layout is ideal from an accessibility standpoint, as limited vision can make it difficult to scan from left to right.
+- Include a label. Ensure each form control has a `<label>` element with a `for` attribute that corresponds to the `id` of the input element it labels.
+- Use helpful hint text. Provide hint text that helps users understand what they need to input.
+- Avoid placeholder text. Most browsers' default rendering of placeholder text does not provide sufficient contrast.
+
+## Accessibility testing
+
+### General accessibility testing
+- Text inputs work on mobile devices. On mobile devices and tablets, text inputs should work in both portrait and landscape orientation with no loss of functionality.
+- Text inputs remain functional when the screen is magnified. When you zoom to 200%, the text area remains visible and functional.
+
+### Keyboard testing
+- The text field is accessible via keyboard navigation. Using only a keyboard, you can navigate to the text field, type in it, and navigate away from it.
+- Focus indicators are clearly visible around text inputs. When you use a keyboard to tab into a text input, you see an indicator around the input field.
+
+### Screen reader testing
+- Fields and labels are read in the same order that they appear on the page. When you use a screen reader and navigate through input fields, you hear each text field and label announced in the same order in which they appear on the page (e.g., left to right and top to bottom for English pages).
+- Screen reader announces field purpose. When you use a screen reader and navigate to a text input, you hear that the purpose of the input is to type in text. For example, “Edit, blank. Type in text.”
+- Screen reader announces field labels and instructions. When you use a screen reader and navigate to a text input, you hear the label or instructions that appear above the text area. (For example, “Enter first name.”)
+
+From [USWDS’ text input accessibility tests](https://designsystem.digital.gov/components/text-input/accessibility-tests/).
+
 ## Component maturity
 
 <MaturityChecklist
