@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent, { Options, UserEvent } from '@testing-library/user-event';
 import { config } from '../../config';
-import userEvent from '@testing-library/user-event';
 import './ds-autocomplete';
 
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
@@ -18,20 +18,27 @@ function makeAutocomplete(customProps: AutocompleteProps = {}) {
     'loading-message': 'Loading...',
     'no-results-message': 'No results',
     label: 'autocomplete label',
+    items: defaultItems,
     ...customProps,
   };
 
   return <ds-autocomplete {...props} />;
 }
 
-function renderAutocomplete(customProps: AutocompleteProps = { items: defaultItems }) {
-  return render(makeAutocomplete(customProps));
+function renderAutocomplete(
+  customProps: AutocompleteProps = {},
+  userEventSetupOptions: Options = {}
+) {
+  return {
+    user: userEvent.setup(userEventSetupOptions),
+    ...render(makeAutocomplete(customProps)),
+  };
 }
 
-function open() {
+async function open({ user }: { user: UserEvent }) {
   const autocompleteField = screen.getByRole('combobox');
-  userEvent.click(autocompleteField);
-  userEvent.type(autocompleteField, 'c');
+  await user.click(autocompleteField);
+  await user.type(autocompleteField, 'c');
 }
 
 function expectMenuToBeOpen() {
@@ -49,7 +56,7 @@ describe('Autocomplete', () => {
   });
 
   it('renders a closed Autocomplete component', () => {
-    const { container } = renderAutocomplete({ items: defaultItems });
+    const { container } = renderAutocomplete();
 
     const wrapperEl = container.querySelectorAll('.ds-c-autocomplete');
     expect(wrapperEl.length).toEqual(1);
@@ -76,10 +83,10 @@ describe('Autocomplete', () => {
     expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
-  it('renders items', () => {
-    renderAutocomplete({ items: defaultItems });
+  it('renders items', async () => {
+    const { user } = renderAutocomplete();
 
-    open();
+    await open({ user });
     expectMenuToBeOpen();
 
     const items = screen.getByRole('option');
@@ -87,7 +94,7 @@ describe('Autocomplete', () => {
     expect(items).toHaveTextContent('Cook County, IL');
   });
 
-  it('renders grouped items with headers', () => {
+  it('renders grouped items with headers', async () => {
     const items = JSON.stringify([
       {
         label: 'Group 1',
@@ -107,9 +114,9 @@ describe('Autocomplete', () => {
       },
     ]);
 
-    renderAutocomplete({ items });
+    const { user } = renderAutocomplete({ items });
 
-    open();
+    await open({ user });
     const groups = screen.getAllByRole('group');
     expect(groups).toHaveLength(2);
     expect(groups[0]).toHaveAccessibleName('Group 1');
@@ -123,7 +130,7 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
-  it('renders mixed grouped and standalone items', () => {
+  it('renders mixed grouped and standalone items', async () => {
     const items = JSON.stringify([
       {
         label: 'Group 1',
@@ -136,9 +143,9 @@ describe('Autocomplete', () => {
       { id: '3', name: 'Standalone Item 1' },
     ]);
 
-    renderAutocomplete({ items });
+    const { user } = renderAutocomplete({ items });
 
-    open();
+    await open({ user });
 
     const groups = screen.getAllByRole('group');
     expect(groups).toHaveLength(1);
@@ -147,8 +154,8 @@ describe('Autocomplete', () => {
     expect(listItems).toHaveLength(3);
   });
 
-  it('renders "no results" message when groups contain no items', () => {
-    renderAutocomplete({
+  it('renders "no results" message when groups contain no items', async () => {
+    const { user } = renderAutocomplete({
       items: JSON.stringify([
         {
           label: 'Group 1',
@@ -158,7 +165,7 @@ describe('Autocomplete', () => {
       ]),
     });
 
-    open();
+    await open({ user });
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
@@ -207,22 +214,22 @@ describe('Autocomplete', () => {
   //   expect(ul).toMatchSnapshot();
   // });
 
-  it('generates ids when no root id is provided', () => {
-    renderAutocomplete({ 'root-id': undefined, items: defaultItems });
-    open();
+  it('generates ids when no root id is provided', async () => {
+    const { user } = renderAutocomplete({ 'root-id': undefined, items: defaultItems });
+    await open({ user });
     const idRegex = /autocomplete--\d+/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
     expect(screen.getByRole('combobox').id).toMatch(idRegex);
   });
 
-  it('renders item with custom className', () => {
+  it('renders item with custom className', async () => {
     const items = [
       { id: '1a', name: 'Normal item' },
       { id: '5b', name: 'Special item', className: 'custom-class' },
     ];
-    renderAutocomplete({ items: JSON.stringify(items) });
+    const { user } = renderAutocomplete({ items: JSON.stringify(items) });
 
-    open();
+    await open({ user });
     expectMenuToBeOpen();
 
     const listItems = screen.queryAllByRole('option');
@@ -230,56 +237,56 @@ describe('Autocomplete', () => {
     expect(listItems).toMatchSnapshot();
   });
 
-  it('renders Autocomplete component without items', () => {
-    renderAutocomplete({ items: 'null' });
-    open();
+  it('renders Autocomplete component without items', async () => {
+    const { user } = renderAutocomplete({ items: 'null' });
+    await open({ user });
     expectMenuToBeClosed();
   });
 
-  it('renders Autocomplete component no results', () => {
-    renderAutocomplete({ items: JSON.stringify([]) });
-    open();
+  it('renders Autocomplete component no results', async () => {
+    const { user } = renderAutocomplete({ items: JSON.stringify([]) });
+    await open({ user });
     expect(screen.queryByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
-  it('shows the menu when open', () => {
-    renderAutocomplete();
-    open();
+  it('shows the menu when open', async () => {
+    const { user } = renderAutocomplete();
+    await open({ user });
     expectMenuToBeOpen();
   });
 
   it('opens the menu when focusing on an input that has text in it', async () => {
-    renderAutocomplete();
+    const { user } = renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox');
 
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'no-results-found');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'no-results-found');
 
     expect(autocompleteField).toHaveValue('no-results-found');
-    userEvent.tab();
+    await user.tab();
     expect(autocompleteField).not.toHaveFocus();
-    userEvent.tab({ shift: true });
+    await user.tab({ shift: true });
     expect(autocompleteField).toHaveFocus();
     expectMenuToBeOpen();
   });
 
   it('opens the menu if typing resulted in results that were delayed by async data fetching', async () => {
-    const { rerender } = renderAutocomplete({ items: undefined });
+    const { user, rerender } = renderAutocomplete({ items: undefined });
     const autocompleteField = screen.getByRole('combobox');
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
 
     rerender(makeAutocomplete({ items: defaultItems }));
     expectMenuToBeOpen();
   });
 
   it('displays menu with default items and updates items after async data fetching', async () => {
-    const { rerender } = renderAutocomplete({ items: defaultItems });
+    const { user, rerender } = renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox');
-    userEvent.click(autocompleteField);
+    await user.click(autocompleteField);
     expectMenuToBeOpen();
-    userEvent.type(autocompleteField, 'mar');
+    await user.type(autocompleteField, 'mar');
     rerender(makeAutocomplete({ items: updatedItems }));
     expectMenuToBeOpen();
     const items = screen.getByRole('option');
@@ -321,19 +328,23 @@ describe('Autocomplete', () => {
     });
   });
 
-  it('should set the input value correctly when a listbox selection is clicked', () => {
-    renderAutocomplete();
+  it('should set the input value correctly when a listbox selection is clicked', async () => {
+    const { user } = renderAutocomplete();
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockHandler);
 
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
 
     const listboxItem = screen.getByRole('option');
-    userEvent.click(listboxItem);
+    await user.click(listboxItem);
+
+    await waitFor(() => {
+      expect(listboxItem).not.toBeInTheDocument();
+    });
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(mockHandler).toHaveBeenCalledWith(
@@ -349,37 +360,45 @@ describe('Autocomplete', () => {
     autocompleteRoot.removeEventListener('ds-change', mockHandler);
   });
 
-  it('should set the input value to empty when "Clear search" is clicked', () => {
-    renderAutocomplete();
+  it('should set the input value to empty when "Clear search" is clicked', async () => {
+    const { user } = renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
 
     const listboxItem = screen.getByRole('option');
-    userEvent.click(listboxItem);
+    await user.click(listboxItem);
+
+    await waitFor(() => {
+      expect(listboxItem).not.toBeInTheDocument();
+    });
 
     const clearButton = screen.getByText('Clear search');
-    userEvent.click(clearButton);
+    await user.click(clearButton);
 
     expect(autocompleteField.value).toBe('');
   });
 
-  it('should call onChange with null item when "Clear search" is clicked', () => {
-    renderAutocomplete();
+  it('should call onChange with null item when "Clear search" is clicked', async () => {
+    const { user } = renderAutocomplete();
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
 
     const listboxItem = screen.getByRole('option');
-    userEvent.click(listboxItem);
+    await user.click(listboxItem);
+
+    await waitFor(() => {
+      expect(listboxItem).not.toBeInTheDocument();
+    });
 
     const clearButton = screen.getByText('Clear search');
-    userEvent.click(clearButton);
+    await user.click(clearButton);
 
     expect(autocompleteField.value).toBe('');
     expect(mockChangeHandler).toHaveBeenCalledTimes(2);
@@ -392,18 +411,26 @@ describe('Autocomplete', () => {
     autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('should select list items by keyboard', () => {
-    renderAutocomplete();
+  it('should select list items by keyboard', async () => {
+    const { user } = renderAutocomplete({}, { delay: 50 });
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
-    userEvent.type(autocompleteField, '{arrowdown}');
-    userEvent.type(autocompleteField, '{enter}');
+    autocompleteField.focus();
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
+    await user.type(autocompleteField, 'o');
+
+    const listboxItem = screen.getByRole('option');
+    await user.type(autocompleteField, '{ArrowDown}');
+    await user.type(autocompleteField, '{Enter}');
+
+    await waitFor(() => {
+      expect(listboxItem).not.toBeInTheDocument();
+    });
 
     expect(autocompleteField.value).toBe('Cook County, IL');
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
@@ -415,53 +442,61 @@ describe('Autocomplete', () => {
     autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('should not call onChange when an item was not selected', () => {
-    renderAutocomplete();
+  it('should not call onChange when an item was not selected', async () => {
+    const { user } = renderAutocomplete();
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
-    userEvent.type(autocompleteField, 'o');
-    userEvent.type(autocompleteField, '{enter}');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
+    await user.type(autocompleteField, 'o');
+    await user.type(autocompleteField, '{Enter}');
     expect(mockChangeHandler).not.toHaveBeenCalled();
 
     autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('should clear the input value by keyboard', () => {
-    renderAutocomplete();
+  it('should clear the input value by keyboard', async () => {
+    const { user } = renderAutocomplete({}, { delay: 50 });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
     autocompleteField.focus();
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
-    userEvent.type(autocompleteField, '{arrowdown}');
-    userEvent.type(autocompleteField, '{enter}');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
+    await user.type(autocompleteField, 'o');
+
+    const listboxItem = screen.getByRole('option');
+
+    await user.type(autocompleteField, '{ArrowDown}');
+    await user.type(autocompleteField, '{Enter}');
+
+    await waitFor(() => {
+      expect(listboxItem).not.toBeInTheDocument();
+    });
 
     expect(autocompleteField.value).toBe('Cook County, IL');
 
-    userEvent.tab();
+    await user.tab();
 
     const clearButton = screen.getByText('Clear search');
-    userEvent.click(clearButton);
+    await user.click(clearButton);
 
     expect(autocompleteField.value).toBe('');
   });
 
-  it('closes the listbox when ESC is pressed', () => {
-    renderAutocomplete();
+  it('closes the listbox when ESC is pressed', async () => {
+    const { user } = renderAutocomplete();
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    userEvent.click(autocompleteField);
-    userEvent.type(autocompleteField, 'c');
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
 
     expectMenuToBeOpen();
 
     expect(autocompleteField.value).toEqual('c');
 
-    userEvent.type(autocompleteField, '{esc}');
+    await user.type(autocompleteField, '{Escape}');
 
     expectMenuToBeClosed();
   });
@@ -474,6 +509,7 @@ describe('Autocomplete', () => {
   it('displays an error message in the default position for Core', () => {
     const { asFragment } = renderAutocomplete({
       'error-message': 'Something went wrong',
+      items: undefined,
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -483,6 +519,7 @@ describe('Autocomplete', () => {
     config({ errorPlacementDefault: 'bottom' });
     const { asFragment } = renderAutocomplete({
       'error-message': 'Something went wrong',
+      items: undefined,
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -492,6 +529,7 @@ describe('Autocomplete', () => {
     const { asFragment } = renderAutocomplete({
       'error-placement': 'bottom',
       'error-message': 'Something went wrong',
+      items: undefined,
     });
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
     expect(asFragment()).toMatchSnapshot();
@@ -501,6 +539,7 @@ describe('Autocomplete', () => {
     const { asFragment } = renderAutocomplete({
       'error-message-class-name': 'custom-class-name',
       'error-message': 'Something went wrong',
+      items: undefined,
     });
     expect(asFragment()).toMatchSnapshot();
   });
