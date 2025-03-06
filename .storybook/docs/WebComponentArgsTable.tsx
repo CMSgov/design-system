@@ -1,5 +1,5 @@
 import { Markdown, useOf } from '@storybook/blocks';
-import { useState } from 'react';
+import { Tabs, TabPanel } from '../../packages/design-system/src/components';
 
 function optToCodeBlock(opt: undefined | string) {
   const formattedOpt = opt === undefined ? 'undefined' : `"${opt}"`;
@@ -96,50 +96,21 @@ export const WebComponentArgsTable = ({ of }) => {
   const argTypes = resolvedOf.type === 'story' ? resolvedOf.story.argTypes : {};
   const subcomponents = resolvedOf.type === 'story' ? resolvedOf.story.subcomponents : undefined;
   const title = resolvedOf.type === 'story' ? resolvedOf.story.title.split('/')[1] : '';
-  const [currentTab, setCurrentTab] = useState(title);
-
-  const handleTabClick = (tab) => {
-    setCurrentTab(tab);
-  };
 
   if (subcomponents) {
     return (
-      <>
-        <div className="sb-tab-container">
-          <div role="tablist" style={{ whiteSpace: 'normal' }}>
-            <button
-              onClick={() => handleTabClick(title)}
-              type="button"
-              role="tab"
-              className={currentTab === title ? 'sb-tabbutton sb-tabbutton__active' : 'tabbutton'}
-            >
-              {title}
-            </button>
-            {Object.keys(subcomponents).map((key) => {
-              return (
-                <button
-                  onClick={() => handleTabClick(key)}
-                  type="button"
-                  role="tab"
-                  className={currentTab === key ? 'sb-tabbutton sb-tabbutton__active' : 'tabbutton'}
-                >
-                  {key}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-        <div>
-          {currentTab === title && <div>{generateTable(argTypes)}</div>}
-          {Object.keys(subcomponents).map((key) => {
-            return (
-              currentTab === key && (
-                <div key={key}>{generateTable(subcomponents[key] as Record<string, ArgType>)}</div>
-              )
-            );
-          })}
-        </div>
-      </>
+      <Tabs>
+        <TabPanel key={`${title}`} id={`${title}_id`} tab={title}>
+          {generateTable(argTypes)}
+        </TabPanel>
+        {Object.keys(subcomponents).map((key) => {
+          return (
+            <TabPanel key={key} id={`${key}`} tab={key}>
+              {generateTable(subcomponents[key] as Record<string, ArgType>)}
+            </TabPanel>
+          );
+        })}
+      </Tabs>
     );
   }
   return generateTable(argTypes);
