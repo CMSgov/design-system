@@ -2,9 +2,11 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { webComponentDecorator } from '../storybook';
 import './ds-accordion';
 import './ds-accordion-item';
+import dsAccordionItemStories from './ds-accordion-item.stories';
 
 export default {
   title: 'Web Components/ds-accordion',
+  subcomponents: { 'ds-accordion-item': dsAccordionItemStories.argTypes },
   argTypes: {
     children: {
       table: {
