@@ -31,7 +31,7 @@ function getTypeLabel(argType: any) {
 }
 
 // This interface was previously inferred by Typescript when the argTypes variable was assigned,
-// but by extracting the generateTable function out into a separate function we needed to expliclty define
+// but by extracting the generateTable function out into a separate function we needed to explicitly define
 // that type since it cannot be inferred when the function is defined.
 interface ArgType {
   table?: {
@@ -39,9 +39,11 @@ interface ArgType {
   };
   controlsOnly?: boolean;
   description?: string;
-  control?: {
-    type?: string;
-  };
+  control?:
+    | {
+        type?: string;
+      }
+    | string;
   options?: string[];
 }
 
