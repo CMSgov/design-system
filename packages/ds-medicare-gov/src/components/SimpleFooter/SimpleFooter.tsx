@@ -33,6 +33,7 @@ export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   onClickLinkAnalytics,
 }: SimpleFooterProps) => {
   const footerRef = useRef<HTMLElement>();
+  const baseUrl = language === 'es' ? 'https://es.medicare.gov' : 'https://www.medicare.gov';
 
   useEffect(() => {
     if (onClickLinkAnalytics) {
@@ -45,13 +46,13 @@ export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   return (
     <footer className="m-c-footer" ref={footerRef}>
       <div className="m-c-footer__linkRow">
-        <a href="https://www.medicare.gov/about-us">{aboutMedicareLabel}</a>
+        <a href={`${baseUrl}/about-us`}>{aboutMedicareLabel}</a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
-        <a href="https://www.medicare.gov/about-us/accessibility-nondiscrimination-notice">
+        <a href={`${baseUrl}/about-us/accessibility-nondiscrimination-notice`}>
           {nondiscriminationLabel}
         </a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
-        <a href="https://www.medicare.gov/privacy-policy">{privacyPolicyLabel}</a>
+        <a href={`${baseUrl}/privacy-policy`}>{privacyPolicyLabel}</a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
         <Button
           className="SimpleFooter__linkButton"
@@ -79,9 +80,9 @@ export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
           {linkingPolicyLabel}
         </a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
-        <a href="https://www.medicare.gov/about-us/using-this-site">{usingThisSiteLabel}</a>
+        <a href={`${baseUrl}/about-us/using-this-site`}>{usingThisSiteLabel}</a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
-        <a href="https://www.medicare.gov/about-us/plain-writing">{plainWritingLabel}</a>
+        <a href={`${baseUrl}/about-us/plain-writing`}>{plainWritingLabel}</a>
       </div>
       <div className="m-c-footer__identityRow">
         <MedicaregovLogo className="m-c-footer__medicare-logo" />
