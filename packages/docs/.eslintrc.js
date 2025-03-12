@@ -16,7 +16,13 @@ module.exports = {
   plugins: ['jsx-a11y', 'react', 'react-hooks'],
   rules: {
     'no-undef': 'warn',
+    'no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     'no-useless-escape': 'warn',
     'react/prop-types': [1, { ignore: ['className', 't'] }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };
