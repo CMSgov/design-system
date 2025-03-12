@@ -8,8 +8,8 @@ import { graphql } from 'gatsby';
 /**
  * Template for information content pages.
  */
-const InfoPage = ({ data, location }: MdxQuery) => {
-  const { frontmatter, body, tableOfContents, slug } = data.mdx;
+const InfoPage = ({ children, data, location }: MdxQuery) => {
+  const { frontmatter, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
 
   return (
@@ -20,7 +20,7 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={body} theme={theme} />
+      <ContentRenderer theme={theme}>{children}</ContentRenderer>
     </Layout>
   );
 };
@@ -51,8 +51,9 @@ export const query = graphql`
           githubLink
         }
       }
-      slug
-      body
+      fields {
+        slug
+      }
       tableOfContents(maxDepth: 3)
     }
   }

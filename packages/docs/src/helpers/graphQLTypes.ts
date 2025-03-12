@@ -39,7 +39,6 @@ export interface MdxQuery {
   data: {
     mdx: {
       id: string;
-      body: string;
       slug?: string;
       frontmatter: FrontmatterInterface;
       tableOfContents?: {
@@ -48,6 +47,7 @@ export interface MdxQuery {
     };
   };
   location?: LocationInterface;
+  children?: React.ReactNode;
 }
 
 export interface SearchDataStore {
@@ -71,7 +71,9 @@ export interface BlogQuery {
       edges: {
         node: {
           body: string;
-          slug?: string;
+          fields: {
+            slug?: string;
+          };
           frontmatter: {
             title: string;
             date: string;

@@ -5,18 +5,18 @@ import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
 
-const ContactPage = ({ data, location }: MdxQuery) => {
-  const { slug } = data.mdx;
+const ContactPage = ({ children, data, location }: MdxQuery) => {
+  const { frontmatter, slug, tableOfContents } = data.mdx;
   const theme = useTheme();
   return (
     <Layout
-      frontmatter={data.mdx.frontmatter}
+      frontmatter={frontmatter}
       location={location}
       slug={slug}
       theme={theme}
-      tableOfContentsData={data.mdx.tableOfContents?.items}
+      tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={data.mdx.body} theme={theme} />
+      <ContentRenderer theme={theme}>{children}</ContentRenderer>
     </Layout>
   );
 };
@@ -24,8 +24,9 @@ export const query = graphql`
   query PageFeedbackQuery {
     mdx(frontmatter: { title: { eq: "Contact us" } }) {
       id
-      body
-      slug
+      fields {
+        slug
+      }
       tableOfContents(maxDepth: 3)
       frontmatter {
         title

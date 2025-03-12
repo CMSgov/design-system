@@ -1,6 +1,7 @@
 const redirects = require('./redirects.json');
 const path = require('path');
 const express = require('express');
+const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -23,41 +24,70 @@ exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
 
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `Mdx`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` });
+
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    });
+  }
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
-  const infoPageTemplate = path.resolve(`src/components/page-templates/InfoPage.tsx`);
-  const blogPageTemplate = path.resolve(`src/components/page-templates/BlogPage.tsx`);
+  const infoPageTemplate = require.resolve(`./src/components/page-templates/InfoPage.tsx`);
+  const blogPageTemplate = require.resolve(`./src/components/page-templates/BlogPage.tsx`);
 
   // get all pages
   const result = await graphql(`
     query loadPagesQuery {
-      allMdx(filter: { fileAbsolutePath: { glob: "**/content/**" } }) {
+      allMdx(filter: { internal: { contentFilePath: { glob: "**/content/**/*" } } }) {
         edges {
           node {
             id
-            slug
             body
             frontmatter {
               title
+            }
+            fields {
+              slug
+            }
+            internal {
+              contentFilePath
             }
           }
         }
       }
     }
   `);
+
   if (result.errors) {
     throw result.errors;
   }
 
   // Create blog post pages.
   result.data.allMdx.edges.forEach((edge) => {
+    const {
+      node: {
+        id,
+        internal: { contentFilePath },
+        fields: { slug },
+      },
+    } = edge;
+    // Path for this page -- the slug with positioning markers removed
+    const path = edge.node.fields.slug.replace(/\d+_/g, '');
+    const template = slug.startsWith('/blog') ? blogPageTemplate : infoPageTemplate;
+    const component = `${template}?__contentFilePath=${contentFilePath}`;
     createPage({
-      // Path for this page -- the slug with positioning markers removed
-      path: edge.node.slug.replace(/\d+_/g, '') + '/',
-      component: edge.node.slug.startsWith('blog') ? blogPageTemplate : infoPageTemplate,
+      path,
+      component,
       // props passed to template
       context: {
-        id: edge.node.id,
+        id,
       },
     });
   });
@@ -69,6 +99,51 @@ exports.createPages = async ({ graphql, actions }) => {
       isPermanent: true,
     });
   });
+};
+
+let pageArchives = [];
+
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage, deletePage } = actions;
+  const pathsForPagesWeWantToRebuild = [
+    ['/', 'intro'],
+    ['/404/', '404'],
+    ['/contact/', 'contact'],
+  ];
+
+  // Special handling for markdown files found in `./content/not-in-sidebar` that
+  // corresponds to content for the `/`, `/404`, and `/contact` pages
+  if (page.path.startsWith('/not-in-sidebar/')) {
+    pageArchives.push({
+      component: page.component,
+      id: page.pluginCreatorId,
+      path: page.path,
+    });
+    deletePage(page);
+    return;
+  }
+
+  const matchedPath = pathsForPagesWeWantToRebuild.find(([path]) => path === page.path);
+
+  if (matchedPath) {
+    // page has already been created; this skips an infinite loop
+    if (page.context.id) return;
+
+    const originalPage = page;
+    deletePage(page);
+
+    const matchedArchivedPage = pageArchives.find((page) => page.path.includes(matchedPath[1]));
+    const contentFilePath = matchedArchivedPage.component.split('?')[1];
+
+    createPage({
+      path: originalPage.path,
+      component: `${originalPage.component}?${contentFilePath}`,
+      ownerNodeId: originalPage.pluginCreatorId,
+      context: {
+        id: originalPage.pluginCreatorId,
+      },
+    });
+  }
 };
 
 exports.onCreateBabelConfig = ({ actions }) => {
