@@ -71,7 +71,7 @@ const SearchPage = ({ location }: MdxQuery) => {
                 sendLinkEvent({
                   event_name: 'search_result_engaged',
                   search_result_count: results.length.toString(),
-                  search_result_position: result.title,
+                  search_result_position: String(resultIndex + 1),
                   search_term: query,
                   search_term_type: 'user_initiated',
                 } as any);

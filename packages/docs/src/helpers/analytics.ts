@@ -36,7 +36,7 @@ export function sendNavigationOpenedAnalytics(id: string) {
 export function composeLinkAnalyticsEvent(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
   return {
     event_name: `internal_link_clicked`,
-    link_url: (event.target as HTMLAnchorElement).baseURI,
+    link_url: (event.target as HTMLAnchorElement).href,
     link_type: 'link_other',
     parent_component_heading:
       (event.target as HTMLAnchorElement).parentElement.innerText ?? noValue,
