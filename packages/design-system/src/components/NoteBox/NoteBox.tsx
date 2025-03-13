@@ -2,9 +2,9 @@ import type * as React from 'react';
 import { FunctionComponent } from 'react';
 import classNames from 'classnames';
 
-export type BoxContentHeadingLevel = '2' | '3' | '4' | '5' | '6';
+export type NoteBoxHeadingLevel = '2' | '3' | '4' | '5' | '6';
 
-interface BoxContentProps {
+interface NoteBoxProps {
   /**
    * Applies a border to the box content.
    */
@@ -24,33 +24,29 @@ interface BoxContentProps {
   /**
    * Heading type to override default `<h2>`.
    */
-  headingLevel?: BoxContentHeadingLevel;
+  headingLevel?: NoteBoxHeadingLevel;
 }
 
-const BoxContent: FunctionComponent<BoxContentProps> = (props: BoxContentProps) => {
+const NoteBox: FunctionComponent<NoteBoxProps> = (props: NoteBoxProps) => {
   const { bordered, children, className, heading, headingLevel = '2' } = props;
 
-  const classes = classNames(
-    'ds-c-box-content',
-    bordered && 'ds-c-box-content--bordered',
-    className
-  );
+  const classes = classNames('ds-c-note-box', bordered && 'ds-c-note-box--bordered', className);
   let headingElement;
   if (typeof heading === 'string') {
     const Heading = `h${headingLevel}` as const;
-    headingElement = <Heading className="ds-c-box-content__heading">{heading}</Heading>;
+    headingElement = <Heading className="ds-c-note-box__heading">{heading}</Heading>;
   } else {
     headingElement = heading;
   }
 
   return (
     <aside className={classes}>
-      <div className="ds-c-box-content__body">
+      <div className="ds-c-note-box__body">
         {headingElement}
-        <div className={heading ? 'ds-c-box-content__text' : ''}>{children}</div>
+        <div className={heading ? 'ds-c-note-box__text' : ''}>{children}</div>
       </div>
     </aside>
   );
 };
 
-export default BoxContent;
+export default NoteBox;

@@ -1,6 +1,6 @@
 @use '../layout' as *;
 
-@mixin box-content-high-contrast-mode-remove-color() {
+@mixin note-box-high-contrast-mode-remove-color() {
   @media (forced-colors: active) {
     background-color: window;
     color: windowText;
@@ -9,17 +9,17 @@
   }
 }
 
-.ds-c-box-content {
+.ds-c-note-box {
   padding: $spacer-2;
   background-color: var(--color-gray-lightest);
   color: var(--color-base);
   border-radius: var(--radius-default);
   border: 1px solid var(--color-transparent);
 
-  @include box-content-high-contrast-mode-remove-color;
+  @include note-box-high-contrast-mode-remove-color;
 }
 
-.ds-c-box-content__heading {
+.ds-c-note-box__heading {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
@@ -27,7 +27,7 @@
   margin-block: 0 $spacer-half;
 }
 
-.ds-c-box-content--bordered {
+.ds-c-note-box--bordered {
   border: 1px solid var(--color-border-dark);
   background-color: var(--color-background);
 
@@ -37,28 +37,28 @@
   }
 }
 
-.ds-c-box-content__body {
+.ds-c-note-box__body {
   min-width: 0; // Allows it to shrink as necessary to fit in the parent
   padding-inline-start: 0;
 }
 
-.ds-c-box-content__text {
+.ds-c-note-box__text {
   margin-block-start: $spacer-half;
 }
 
-.ds-c-box-content-quotation {
+.ds-c-note-box-quotation {
   margin: $spacer-2;
 }
 
-.ds-c-box-content-quotation--blockquote {
+.ds-c-note-box-quotation--blockquote {
   margin: 0;
 }
 
-.ds-c-box-content-quotation--caption {
+.ds-c-note-box-quotation--caption {
   margin-block-start: $spacer-half;
   font-weight: var(--font-weight-semibold);
 }
 
-.ds-c-box-content-quotation--citation {
+.ds-c-note-box-quotation--citation {
   font-style: normal;
 }

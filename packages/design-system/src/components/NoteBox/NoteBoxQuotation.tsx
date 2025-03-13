@@ -3,7 +3,7 @@ import { FunctionComponent } from 'react';
 import { RequireAtLeastOne } from '../utilities/requireAtLeastOne';
 import classNames from 'classnames';
 
-interface MinimumBoxQuotationProps {
+interface MinimumNoteBoxQuotationProps {
   /**
    * Provide an author for the quote. It is required if a citation is not provided.
    */
@@ -22,18 +22,23 @@ interface MinimumBoxQuotationProps {
   className?: string;
 }
 
-export type BoxQuotationProps = RequireAtLeastOne<MinimumBoxQuotationProps, 'citation' | 'author'>;
+export type NoteBoxQuotationProps = RequireAtLeastOne<
+  MinimumNoteBoxQuotationProps,
+  'citation' | 'author'
+>;
 
-export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuotationProps) => {
+export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
+  props: NoteBoxQuotationProps
+) => {
   const { author, children, citation, className } = props;
 
-  const classes = classNames('ds-c-box-content-quotation', className);
+  const classes = classNames('ds-c-note-box-quotation', className);
 
   const CaptionContent: FunctionComponent = () => {
     // We want to prioritize citations over authors, so if both are present only render the citation.
     if (citation) {
       return (
-        <cite className="ds-c-box-content-quotation--citation">
+        <cite className="ds-c-note-box-quotation--citation">
           {`\u2014`} {citation}
         </cite>
       );
@@ -49,7 +54,7 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
     if (process.env.NODE_ENV !== 'production') {
       if (!citation && !author) {
         console.warn(
-          `[Warning]: You must include either an author prop or a citation prop on your BoxQuotation component.`
+          `[Warning]: You must include either an author prop or a citation prop on your NoteBoxQuotation component.`
         );
       }
     }
@@ -58,8 +63,8 @@ export const BoxQuotation: FunctionComponent<BoxQuotationProps> = (props: BoxQuo
 
   return (
     <figure className={classes}>
-      <blockquote className="ds-c-box-content-quotation--blockquote">{children}</blockquote>
-      <figcaption className="ds-c-box-content-quotation--caption">
+      <blockquote className="ds-c-note-box-quotation--blockquote">{children}</blockquote>
+      <figcaption className="ds-c-note-box-quotation--caption">
         <CaptionContent />
       </figcaption>
     </figure>

@@ -1,6 +1,6 @@
 import { QuotationMarkIcon } from '../Icons';
-import BoxContent from './BoxContent';
-import { BoxQuotation } from './BoxQuotation';
+import NoteBox from './NoteBox';
+import { NoteBoxQuotation } from './NoteBoxQuotation';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
@@ -8,24 +8,24 @@ const defaultProps = {
   heading: 'Test Heading',
 };
 
-function renderBoxContent(props = {}) {
-  return render(<BoxContent {...defaultProps} {...props} />);
+function renderNoteBox(props = {}) {
+  return render(<NoteBox {...defaultProps} {...props} />);
 }
 
-describe('BoxContent', () => {
+describe('NoteBox', () => {
   it('renders as complementary content', () => {
-    renderBoxContent();
+    renderNoteBox();
     expect(screen.getByRole('complementary')).toMatchSnapshot();
   });
 
   it('renders heading properly', () => {
-    renderBoxContent();
+    renderNoteBox();
     const headingElement = screen.getByText(/Test Heading/);
     expect(headingElement).toBeInTheDocument();
   });
 
   it('renders just child content', () => {
-    renderBoxContent({ heading: null });
+    renderNoteBox({ heading: null });
     const headingElement = screen.queryByText(/Test Heading/);
     const childElement = screen.getByText(/This is foo text. Bar!/);
     expect(childElement).toBeInTheDocument();
@@ -33,17 +33,17 @@ describe('BoxContent', () => {
   });
 
   it('renders border properly', () => {
-    const { container } = renderBoxContent({ bordered: true });
-    expect(container.firstChild).toHaveClass('ds-c-box-content--bordered');
+    const { container } = renderNoteBox({ bordered: true });
+    expect(container.firstChild).toHaveClass('ds-c-note-box ds-c-note-box--bordered');
   });
 
   it('renders quote option properly', () => {
-    renderBoxContent({
+    renderNoteBox({
       heading: <QuotationMarkIcon />,
       children: (
-        <BoxQuotation author="Test Author" citation="Test Citation">
+        <NoteBoxQuotation author="Test Author" citation="Test Citation">
           This is foo text. Bar!
-        </BoxQuotation>
+        </NoteBoxQuotation>
       ),
     });
     const quoteElement = screen.getByText(/This is foo text. Bar!/);
@@ -57,36 +57,38 @@ describe('BoxContent', () => {
   });
 
   it('renders a quote with only author', () => {
-    renderBoxContent({
+    renderNoteBox({
       heading: <QuotationMarkIcon />,
-      children: <BoxQuotation author="Test Author">This is foo text. Bar!</BoxQuotation>,
+      children: <NoteBoxQuotation author="Test Author">This is foo text. Bar!</NoteBoxQuotation>,
     });
     const authorElement = screen.getByText(/Test Author/);
     expect(authorElement).toBeInTheDocument();
   });
 
   it('renders a quote with only citation', () => {
-    renderBoxContent({
+    renderNoteBox({
       heading: <QuotationMarkIcon />,
-      children: <BoxQuotation citation="Test Citation">This is foo text. Bar!</BoxQuotation>,
+      children: (
+        <NoteBoxQuotation citation="Test Citation">This is foo text. Bar!</NoteBoxQuotation>
+      ),
     });
     const citationElement = screen.getByText(/Test Citation/);
     expect(citationElement).toBeInTheDocument();
   });
 
   it('renders children properly', () => {
-    renderBoxContent();
+    renderNoteBox();
     const childrenElement = screen.getByText(/This is foo text. Bar!/);
     expect(childrenElement).toBeInTheDocument();
   });
 
   it('applies className properly', () => {
-    const { container } = renderBoxContent({ className: 'test-class' });
+    const { container } = renderNoteBox({ className: 'test-class' });
     expect(container.firstChild).toHaveClass('test-class');
   });
 
   it('applies heading level properly', () => {
-    renderBoxContent({ heading: 'Test Heading', headingLevel: '3' });
+    renderNoteBox({ heading: 'Test Heading', headingLevel: '3' });
     const headingElement = screen.getByRole('heading', { level: 3 });
     expect(headingElement).toBeInTheDocument();
   });

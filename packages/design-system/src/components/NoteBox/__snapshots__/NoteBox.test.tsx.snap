@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BoxContent renders as complementary content 1`] = `
+exports[`NoteBox renders as complementary content 1`] = `
 <aside
-  class="ds-c-box-content"
+  class="ds-c-note-box"
 >
   <div
-    class="ds-c-box-content__body"
+    class="ds-c-note-box__body"
   >
     <h2
-      class="ds-c-box-content__heading"
+      class="ds-c-note-box__heading"
     >
       Test Heading
     </h2>
     <div
-      class="ds-c-box-content__text"
+      class="ds-c-note-box__text"
     >
       This is foo text. Bar!
     </div>
@@ -21,12 +21,12 @@ exports[`BoxContent renders as complementary content 1`] = `
 </aside>
 `;
 
-exports[`BoxContent renders quote option properly 1`] = `
+exports[`NoteBox renders quote option properly 1`] = `
 <aside
-  class="ds-c-box-content"
+  class="ds-c-note-box"
 >
   <div
-    class="ds-c-box-content__body"
+    class="ds-c-note-box__body"
   >
     <svg
       aria-hidden="true"
@@ -39,21 +39,21 @@ exports[`BoxContent renders quote option properly 1`] = `
       />
     </svg>
     <div
-      class="ds-c-box-content__text"
+      class="ds-c-note-box__text"
     >
       <figure
-        class="ds-c-box-content-quotation"
+        class="ds-c-note-box-quotation"
       >
         <blockquote
-          class="ds-c-box-content-quotation--blockquote"
+          class="ds-c-note-box-quotation--blockquote"
         >
           This is foo text. Bar!
         </blockquote>
         <figcaption
-          class="ds-c-box-content-quotation--caption"
+          class="ds-c-note-box-quotation--caption"
         >
           <cite
-            class="ds-c-box-content-quotation--citation"
+            class="ds-c-note-box-quotation--citation"
           >
             —
              

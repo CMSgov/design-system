@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import BoxContent from './BoxContent';
-import { BoxQuotation } from './BoxQuotation';
+import NoteBox from './NoteBox';
+import { NoteBoxQuotation } from './NoteBoxQuotation';
 import { QuotationMarkIcon } from '../Icons';
 
 const boxContentMeta: Meta = {
   title: 'Components/BoxQuotation',
-  component: BoxQuotation,
+  component: NoteBoxQuotation,
   argTypes: {
     author: { control: 'text' },
     citation: { control: 'text' },
@@ -18,20 +18,20 @@ const boxContentMeta: Meta = {
   },
 };
 export default boxContentMeta;
-type Story = StoryObj<typeof BoxQuotation>;
+type Story = StoryObj<typeof NoteBoxQuotation>;
 
-const BoxQuotationStory: Story = {
+const NoteBoxQuotationStory: Story = {
   render: ({ ...args }) => {
     return (
-      <BoxContent heading={<QuotationMarkIcon />}>
-        <BoxQuotation {...args}>{args.children}</BoxQuotation>
-      </BoxContent>
+      <NoteBox heading={<QuotationMarkIcon />}>
+        <NoteBoxQuotation {...args}>{args.children}</NoteBoxQuotation>
+      </NoteBox>
     );
   },
 };
 
 export const Default = {
-  ...BoxQuotationStory,
+  ...NoteBoxQuotationStory,
   args: {
     citation: <a href="https://home.treasury.gov/">U.S. Department of the Treasury</a>,
     children:
@@ -40,7 +40,7 @@ export const Default = {
 };
 
 export const WithAuthor = {
-  ...BoxQuotationStory,
+  ...NoteBoxQuotationStory,
   args: {
     author: 'John Adams',
     children: 'Let us dare to read, think, speak and write.',

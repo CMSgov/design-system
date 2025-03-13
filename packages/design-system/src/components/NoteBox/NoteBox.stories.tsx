@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import BoxContent from './BoxContent';
+import NoteBox from './NoteBox';
 
 const meta: Meta = {
-  component: BoxContent,
+  component: NoteBox,
   argTypes: {
     children: { control: 'text' },
     bordered: { control: 'boolean', defaultValue: true },
@@ -17,16 +17,16 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BoxContent>;
+type Story = StoryObj<typeof NoteBox>;
 
-const BoxContentTemplate: Story = {
+const NoteBoxTemplate: Story = {
   render: ({ ...args }) => {
-    return <BoxContent {...args}>{args.children}</BoxContent>;
+    return <NoteBox {...args}>{args.children}</NoteBox>;
   },
 };
 
 export const Default = {
-  ...BoxContentTemplate,
+  ...NoteBoxTemplate,
   args: {
     heading: 'The Inflation Reduction Act',
     children:
