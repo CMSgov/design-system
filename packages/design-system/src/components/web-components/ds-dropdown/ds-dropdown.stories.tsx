@@ -117,7 +117,7 @@ export default {
         'ds-change': {
           description: 'Dispatched whenever the selected value changes.',
           eventObjectDescription:
-            '`event.details.target.value` - The `value` of the selected option',
+            '`event.detail.target.value` - The `value` of the selected option',
         },
         'ds-blur': {
           description: 'Dispatched whenever the dropdown loses focus.',
