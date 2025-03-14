@@ -18,6 +18,17 @@ const meta: Meta = {
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
+      componentEvents: {
+        'ds-change': {
+          description:
+            "Called anytime any date input is changed. This function is called with two arguments. The first argument should be used to update whatever state your application uses to supply back to this component's `value` prop in a _controlled component_ pattern.",
+          eventObjectDescription:
+            "`event.detail.updatedValue` - The input's new value, `event.detail.formattedValue` - The input's new value with date formatting applied for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
+        },
+        'ds-blur': {
+          description: 'Dispatched whenever the date input loses focus.',
+        },
+      },
     },
   },
   args: {

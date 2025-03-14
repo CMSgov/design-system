@@ -16,6 +16,18 @@ const meta: Meta = {
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
+      componentEvents: {
+        'ds-input-value-change': {
+          description:
+            'Called when the child `TextField` value changes. Is called with a string representing the input value.',
+          eventObjectDescription: '`event.detail.value` - The `value` of the user input',
+        },
+        'ds-change': {
+          description:
+            'Called when the user selects an item and the selected item has changed. Called with the item that was selected.',
+          eventObjectDescription: '`event.detail.selectedItem` - The user-selected item',
+        },
+      },
     },
   },
   args: {
