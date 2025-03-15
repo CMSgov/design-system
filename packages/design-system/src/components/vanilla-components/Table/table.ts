@@ -32,3 +32,4 @@ function handleResize() {
 }
 
 window.addEventListener('resize', debounce(handleResize, 500));
+window.addEventListener('load', handleResize);

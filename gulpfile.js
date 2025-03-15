@@ -33,6 +33,7 @@ const distPath = path.join(rootPath, 'dist');
 const distReactComponents = path.join(distPath, 'react-components');
 const distPreactComponents = path.join(distPath, 'preact-components');
 const distWebComponents = path.join(distPath, 'web-components');
+const distVanillaJS = path.join(distPath, 'vanilla-components');
 const srcPath = path.join(rootPath, 'src');
 const imageCorePath = path.join(corePackageFiles, 'images');
 const sassCorePath = path.join(corePackageFiles, 'styles');
@@ -301,6 +302,12 @@ const bundleWebComponents = bundleJs({
 });
 bundleWebComponents.displayName = '📦 bundling web components for cdn distribution';
 
+const bundleVanillaJS = bundleJs({
+  entryPath: path.resolve(distVanillaJS, 'esm', 'web-components', 'index.js'),
+  dest: path.join(distVanillaJS, 'bundle'),
+});
+bundleVanillaJS.displayName = '📦 bundling vanilla JS for cdn distribution';
+
 const compileReactComponents = gulp.series(
   compileCjs(path.join(distReactComponents, 'cjs')),
   compileEsm(path.join(distReactComponents, 'esm')),
@@ -317,6 +324,11 @@ const compilePreactComponents = gulp.series(
   // compileTypescriptDefs(preactTsConfig),
   bundlePreactComponents,
   bundleWebComponents
+);
+
+const compileVanillaComponents = gulp.series(
+  compileEsm(path.join(distVanillaJS, 'esm')),
+  compileTypescriptDefs()
 );
 
 /*
@@ -340,7 +352,12 @@ log('🪴 building the cmsds');
 exports.build = gulp.series(
   cleanDist,
   gulp.parallel(copyCssThemes, copyScssThemes, copyImages, copyFonts, copyJSON),
-  gulp.parallel(compileSass, compileReactComponents, compilePreactComponents)
+  gulp.parallel(
+    compileSass,
+    compileReactComponents,
+    compilePreactComponents,
+    compileVanillaComponents
+  )
 );
 
 /*
