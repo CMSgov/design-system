@@ -5,62 +5,513 @@
     <title>Design System</title>
     <!-- In a real project this will contain a href link to your local CSS file,
       while in this case we are using a CDN as an example -->
-    <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/12.0.0/css/index.css" />
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://design.cms.gov/cdn/design-system/12.0.0/css/index.css"
+    />
     <!-- In this case we're loading the core-theme styles which include all the CSS
       variables for the core CMSDS theme, a theme must be loaded for the styles to work -->
     <link
       rel="stylesheet"
       href="https://design.cms.gov/cdn/design-system/12.0.0/css/core-theme.css"
+      crossorigin="anonymous"
     />
   </head>
   <body class="ds-base ds-l-container">
     <section>
       <h2>Default Table</h2>
-      <table class="ds-c-table">
+      <table class="ds-c-table ds-c-lg-table--stacked">
         <caption class="ds-c-table__caption">
           Founding documents
         </caption>
-        <thead class="ds-c-table">
-          <tr>
-            <th scope="col" class="ds-u-text-align--left" id="documentTitle"></th>
-            <th scope="col" class="ds-u-text-align--left" id="description"></th>
-            <th scope="col" class="ds-u-text-align--left" id="links"></th>
-            <th scope="col" class="ds-u-text-align--left" id="year"></th>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th class="ds-u-text-align--left" role="columnheader" scope="col" id="documentTitle">
+              Document title
+            </th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col" id="description">
+              Description
+            </th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col" id="links">Links</th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col" id="year">Year</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td class="ds-u-text-align--left" headers="documentTitle"></td>
-            <td class="ds-u-text-align--left" headers="description"></td>
-            <td class="ds-u-text-align--left" headers="links"></td>
-            <td class="ds-u-text-align--left" headers="year"></td>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="documentTitle"
+              data-title="Document Title"
+            >
+              Declaration of Independence
+            </td>
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="description"
+              data-title="Description"
+            >
+              Statement adopted by the Continental Congress declaring independence from the British
+              Empire.
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+              <a
+                href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/"
+                >https://billofrightsinstitute.org/founding-documents/declaration-of-independence/</a
+              >
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1776</td>
           </tr>
-          <tr>
-            <td class="ds-u-text-align--left" headers="documentTitle"></td>
-            <td class="ds-u-text-align--left" headers="description"></td>
-            <td class="ds-u-text-align--left" headers="links"></td>
-            <td class="ds-u-text-align--left" headers="year"></td>
+          <tr role="row">
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="documentTitle"
+              data-title="Document Title"
+            >
+              Articles of Confederation
+            </td>
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="description"
+              data-title="Description"
+            >
+              This document served as the United Statesʼ first constitution.
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+              <a href="https://www.archives.gov/milestone-documents/articles-of-confederation"
+                >https://www.archives.gov/milestone-documents/articles-of-confederation</a
+              >
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1777</td>
           </tr>
-          <tr>
-            <td class="ds-u-text-align--left" headers="documentTitle"></td>
-            <td class="ds-u-text-align--left" headers="description"></td>
-            <td class="ds-u-text-align--left" headers="links"></td>
-            <td class="ds-u-text-align--left" headers="year"></td>
+          <tr role="row">
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="documentTitle"
+              data-title="Document Title"
+            >
+              The Constitution
+            </td>
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="description"
+              data-title="Description"
+            >
+              Replaced the Articles of Confederation with a new form of government. It created a
+              federal system with a national government composed of 3 separated powers, and included
+              both reserved and concurrent powers of states
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+              <a href="https://billofrightsinstitute.org/primary-sources/constitution"
+                >https://billofrightsinstitute.org/primary-sources/constitution</a
+              >
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1787</td>
           </tr>
-          <tr>
-            <td class="ds-u-text-align--left" headers="documentTitle"></td>
-            <td class="ds-u-text-align--left" headers="description"></td>
-            <td class="ds-u-text-align--left" headers="links"></td>
-            <td class="ds-u-text-align--left" headers="year"></td>
+          <tr role="row">
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="documentTitle"
+              data-title="Document Title"
+            >
+              Bill of Rights
+            </td>
+            <td
+              class="ds-u-text-align--left"
+              role="cell"
+              headers="description"
+              data-title="Description"
+            >
+              The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+              <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/"
+                >https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a
+              >
+            </td>
+            <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1791</td>
           </tr>
         </tbody>
       </table>
     </section>
     <section>
-      <h2>Stackable Table</h2>
+      <h2>Scrollable Table</h2>
+      <div
+        aria-live="polite"
+        aria-relevant="additions"
+        class="ds-c-table__wrapper"
+        role="region"
+        aria-labelledby="table-caption"
+      >
+        <table class="ds-c-table">
+          <caption class="ds-c-table__caption" id="table-caption">
+            Founding documents
+          </caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="documentTitle">
+                Document title
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="description">
+                Description
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="links">
+                Links
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="year">Year</th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Declaration of Independence
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                Statement adopted by the Continental Congress declaring independence from the
+                British Empire.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a
+                  href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/"
+                  >https://billofrightsinstitute.org/founding-documents/declaration-of-independence/</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1776
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Articles of Confederation
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                This document served as the United Statesʼ first constitution.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://www.archives.gov/milestone-documents/articles-of-confederation"
+                  >https://www.archives.gov/milestone-documents/articles-of-confederation</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1777
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                The Constitution
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                Replaced the Articles of Confederation with a new form of government. It created a
+                federal system with a national government composed of 3 separated powers, and
+                included both reserved and concurrent powers of states
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://billofrightsinstitute.org/primary-sources/constitution"
+                  >https://billofrightsinstitute.org/primary-sources/constitution</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1787
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Bill of Rights
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/"
+                  >https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1791
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section>
+      <h2>Scrollable Table Number 2</h2>
+      <div
+        aria-live="polite"
+        aria-relevant="additions"
+        class="ds-c-table__wrapper"
+        role="region"
+        aria-labelledby="table-caption-2"
+      >
+        <table class="ds-c-table">
+          <caption class="ds-c-table__caption" id="table-caption-2">
+            Founding documents
+          </caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="documentTitle">
+                Document title
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="description">
+                Description
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="links">
+                Links
+              </th>
+              <th class="ds-u-text-align--left" role="columnheader" scope="col" id="year">Year</th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Declaration of Independence
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                Statement adopted by the Continental Congress declaring independence from the
+                British Empire.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a
+                  href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/"
+                  >https://billofrightsinstitute.org/founding-documents/declaration-of-independence/</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1776
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Articles of Confederation
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                This document served as the United Statesʼ first constitution.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://www.archives.gov/milestone-documents/articles-of-confederation"
+                  >https://www.archives.gov/milestone-documents/articles-of-confederation</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1777
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                The Constitution
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                Replaced the Articles of Confederation with a new form of government. It created a
+                federal system with a national government composed of 3 separated powers, and
+                included both reserved and concurrent powers of states
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://billofrightsinstitute.org/primary-sources/constitution"
+                  >https://billofrightsinstitute.org/primary-sources/constitution</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1787
+              </td>
+            </tr>
+            <tr role="row">
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="documentTitle"
+                data-title="Document title"
+              >
+                Bill of Rights
+              </td>
+              <td
+                class="ds-u-text-align--left"
+                role="cell"
+                headers="description"
+                data-title="Description"
+              >
+                The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+                <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/"
+                  >https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a
+                >
+              </td>
+              <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">
+                1791
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
     <section>
       <h2>Multi Header Table</h2>
+      <table class="ds-c-table">
+        <caption class="ds-c-table__caption">
+          Household members
+        </caption>
+        <col />
+        <colgroup span="2"></colgroup>
+        <colgroup span="2"></colgroup>
+        <thead role="rowgroup">
+          <tr role="row">
+            <td class="ds-u-text-align--left" role="columnheader" scope="col" rowspan="1"></td>
+            <th class="ds-u-text-align--left" role="columnheader" scope="colgroup" colspan="2">
+              Address
+            </th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="colgroup" colspan="2">
+              Employment
+            </th>
+          </tr>
+          <tr role="row">
+            <th class="ds-u-text-align--left" role="columnheader" scope="col">Name</th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col">Street</th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col">ZIP code</th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col">Employer</th>
+            <th class="ds-u-text-align--left" role="columnheader" scope="col">Industry</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr role="row">
+            <th class="ds-u-text-align--left" role="rowheader">John Doe</th>
+            <td class="ds-u-text-align--left" role="cell">123 Braavos Ave.</td>
+            <td class="ds-u-text-align--left" role="cell">20005</td>
+            <td class="ds-u-text-align--left" role="cell">Acme Co.</td>
+            <td class="ds-u-text-align--left" role="cell">Healthcare</td>
+          </tr>
+          <tr role="row">
+            <th class="ds-u-text-align--left" role="rowheader">John Doe</th>
+            <td class="ds-u-text-align--left" role="cell">456 King's Landing</td>
+            <td class="ds-u-text-align--left" role="cell">20005</td>
+            <td class="ds-u-text-align--left" role="cell">Acme Co.</td>
+            <td class="ds-u-text-align--left" role="cell">Healthcare</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
+    <script src="https://design.cms.gov/cdn/design-system/12.1.0-beta.0/web-components/bundle/base.js"></script>
+    <script src="https://design.cms.gov/cdn/design-system/12.1.0-beta.0/web-components/bundle/ds-alert.js"></script>
+    <script>
+      function debounce(fn, ms) {
+        let timer;
+        return (...args) => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            timer = null;
+            fn.apply(this, args);
+          }, ms);
+        };
+      }
+
+      function isScrollable(tableWrapper) {
+        return tableWrapper.clientWidth < tableWrapper.scrollWidth;
+      }
+
+      function handleResize() {
+        const tableWrappers = document.querySelectorAll('div[class="ds-c-table__wrapper"]');
+        if (tableWrappers.length <= 0 || !tableWrappers.length) {
+          return;
+        }
+        tableWrappers.forEach((tableWrapper) => {
+          const caption = tableWrapper.getElementsByTagName('caption')[0];
+          if (!caption) return;
+
+          const lastChild = caption?.lastElementChild?.tagName;
+          if (isScrollable(tableWrapper)) {
+            tableWrapper.setAttribute('tabIndex', '0');
+            if (!lastChild) {
+              caption.insertAdjacentHTML(
+                'beforeend',
+                '<ds-alert role="status">Scroll using arrow keys to see more.</ds-alert>'
+              );
+            }
+          } else {
+            tableWrapper.removeAttribute('tabIndex');
+            if (lastChild === 'DS-ALERT') {
+              caption.removeChild(caption.lastChild);
+            }
+          }
+        });
+      }
+
+      window.addEventListener('resize', debounce(handleResize, 500));
+    </script>
   </body>
 </html>
