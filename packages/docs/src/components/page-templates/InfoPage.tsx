@@ -1,6 +1,5 @@
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
-import avoidRefresh from '../../helpers/avoidRefresh';
 import useTheme from '../../helpers/useTheme';
 import { MdxQuery } from '../../helpers/graphQLTypes';
 import { graphql } from 'gatsby';
@@ -9,7 +8,11 @@ import { graphql } from 'gatsby';
  * Template for information content pages.
  */
 const InfoPage = ({ children, data, location }: MdxQuery) => {
-  const { frontmatter, tableOfContents, slug } = data.mdx;
+  const {
+    frontmatter,
+    tableOfContents,
+    fields: { slug },
+  } = data.mdx;
   const theme = useTheme();
 
   return (
@@ -59,4 +62,4 @@ export const query = graphql`
   }
 `;
 
-export default avoidRefresh(InfoPage);
+export default InfoPage;

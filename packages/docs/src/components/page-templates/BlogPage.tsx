@@ -1,6 +1,5 @@
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
-import avoidRefresh from '../../helpers/avoidRefresh';
 import PublishDate from '../content/PublishDate';
 import useTheme from '../../helpers/useTheme';
 import type { MdxQuery } from '../../helpers/graphQLTypes';
@@ -12,7 +11,11 @@ import PageFeedback from '../content/PageFeedback';
  * Template for information content pages.
  */
 const BlogPage = ({ data, location, children }: MdxQuery) => {
-  const { frontmatter, tableOfContents, slug } = data.mdx;
+  const {
+    frontmatter,
+    tableOfContents,
+    fields: { slug },
+  } = data.mdx;
   const theme = useTheme();
   const backLink = (
     <Link to="/blog/">
@@ -61,4 +64,4 @@ export const query = graphql`
   }
 `;
 
-export default avoidRefresh(BlogPage);
+export default BlogPage;
