@@ -1,6 +1,10 @@
-import type { GatsbyConfig } from 'gatsby';
+// @ts-check
+import remarkGfm from "remark-gfm"
 
-const config: GatsbyConfig = {
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
+const config = {
   siteMetadata: {
     title: `cms-design-system-docs`,
     siteUrl: `https://www.design.cms.gov`,
@@ -63,6 +67,10 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: ['gatsby-remark-autolink-headers'],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+        extensions: [`.mdx`, `.md`]
       },
     },
     {
@@ -117,7 +125,6 @@ const config: GatsbyConfig = {
             id: n.node.id,
             path: n.node.fields.slug,
             title: n.node.frontmatter.title,
-            // TODO: fix this
             body: n.node.body.replace(/(<([^>]+)>)/gi, '').replace(/\\n/gi, ''),
           })),
       },

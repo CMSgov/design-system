@@ -1,9 +1,18 @@
-const redirects = require('./redirects.json');
-const path = require('path');
-const express = require('express');
-const { createFilePath } = require('gatsby-source-filesystem');
+import express from 'express';
+import { createFilePath } from 'gatsby-source-filesystem';
+import { createRequire } from "module";
+import path from 'path';
+import { fileURLToPath } from "url";
+import redirects from "./redirects.json" with { type: "json" };
+// @ts-check
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const require = createRequire(import.meta.url)
+
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
+ */
+export const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -20,14 +29,20 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.onCreateDevServer = ({ app }) => {
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateDevServer']}
+ */
+export const onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ */
+export const onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
+    const slug = createFilePath({ node, getNode, basePath: `pages`, trailingSlash: false });
 
     createNodeField({
       node,
@@ -37,8 +52,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
+/**
+ * @type {import('gatsby').GatsbyNode['createPages']}
+ */
+export const createPages = async ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions;  
+  
   const infoPageTemplate = require.resolve(`./src/components/page-templates/InfoPage.tsx`);
   const blogPageTemplate = require.resolve(`./src/components/page-templates/BlogPage.tsx`);
 
@@ -82,6 +101,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const path = edge.node.fields.slug.replace(/\d+_/g, '');
     const template = slug.startsWith('/blog') ? blogPageTemplate : infoPageTemplate;
     const component = `${template}?__contentFilePath=${contentFilePath}`;
+
     createPage({
       path,
       component,
@@ -103,7 +123,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
 let pageArchives = [];
 
-exports.onCreatePage = async ({ page, actions }) => {
+/**
+ * @type {import('gatsby').GatsbyNode['onCreatePage']}
+ */
+export const onCreatePage = async ({ page, actions }) => {
   const { createPage, deletePage } = actions;
   const pathsForPagesWeWantToRebuild = [
     ['/', 'intro'],
@@ -146,7 +169,10 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 };
 
-exports.onCreateBabelConfig = ({ actions }) => {
+/**
+ * @type {import('gatsby').GatsbyNode['onCreateBabelConfig']}
+ */
+export const onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-transform-react-jsx',
     options: {
