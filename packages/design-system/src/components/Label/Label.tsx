@@ -61,6 +61,13 @@ export interface LabelProps {
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
   requirementLabel?: React.ReactNode;
+  /**
+   * Determines whether the label should be hidden from screen readers.
+   * Set to `true` to apply `aria-hidden="true"` to the label.
+   * This is useful in cases where the label does not provide valuable context for screen reader users,
+   * such as when the associated input already has an accessible name.
+   */
+  labelHidden?: boolean;
 }
 
 type LabelComponentProps = React.ComponentPropsWithRef<'label'> &
@@ -90,6 +97,8 @@ export const Label = (props: LabelComponentProps) => {
     requirementLabel,
     ...labelProps
   } = props;
+
+  const { labelHidden } = labelProps;
 
   if (process.env.NODE_ENV !== 'production' && (hint || hintId)) {
     console.warn(
@@ -130,7 +139,13 @@ export const Label = (props: LabelComponentProps) => {
 
   return (
     <>
-      <ComponentType className={classes} htmlFor={htmlFor} id={id} {...labelProps}>
+      <ComponentType
+        className={classes}
+        htmlFor={htmlFor}
+        id={id}
+        aria-hidden={labelHidden ? true : undefined}
+        {...labelProps}
+      >
         {children}
       </ComponentType>
       {hintElement}
