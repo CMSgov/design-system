@@ -70,6 +70,11 @@
     "-"
   ],
   [
+    "labelHidden",
+    "Determines whether the label should be hidden from screen readers. Set to true to apply aria-hidden=\"true\" to the label. This is useful in cases where the label does not provide valuable context for screen reader users, such as when the associated input already has an accessible name.\n\nboolean",
+    "-"
+  ],
+  [
     "labelId",
     "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.\n\nstring",
     "-"
