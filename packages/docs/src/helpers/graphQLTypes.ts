@@ -39,7 +39,7 @@ export interface MdxQuery {
   data: {
     mdx: {
       id: string;
-      slug?: string;
+      fields: { slug?: string };
       frontmatter: FrontmatterInterface;
       tableOfContents?: {
         items: TableOfContentsItem[];
