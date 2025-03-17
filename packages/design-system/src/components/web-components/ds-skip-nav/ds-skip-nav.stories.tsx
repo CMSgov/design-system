@@ -24,6 +24,11 @@ export default {
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/skip-nav/).`,
       },
+      componentEvents: {
+        'ds-click': {
+          description: 'An onClick handler used for manually setting focus on the content.',
+        },
+      },
     },
   },
   decorators: [webComponentDecorator],
