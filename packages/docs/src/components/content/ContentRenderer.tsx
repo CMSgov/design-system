@@ -54,7 +54,10 @@ const CodeWithSyntaxHighlighting = ({
 // for preformatted text that has code as it's child, set language class on <pre> too
 // this allows scrolling in code block on small screens
 const PreformattedWithLanguageClass = (props: any) => {
-  if (props.children?.props?.mdxType === 'code' && props.children?.props?.className) {
+  if (
+    props.children?.type?.name === 'CodeWithSyntaxHighlighting' &&
+    props.children?.props?.className
+  ) {
     return <pre className={props.children.props.className} {...props} />;
   }
   return <pre {...props} />;
