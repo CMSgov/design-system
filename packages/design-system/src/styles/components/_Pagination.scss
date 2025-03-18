@@ -15,7 +15,7 @@
       gap: 1ch;
     }
 
-    @media (min-width: $media-width-sm + 1) {
+    @media (min-width: $media-width-sm) {
       align-items: center;
       display: inline-flex;
     }
@@ -88,7 +88,7 @@
       border: 0;
     }
 
-    @media (max-width: $media-width-sm) {
+    @media (min-width: $media-width-sm) {
       display: inline-block;
     }
   }

@@ -133,19 +133,19 @@
 }
 
 .ds-c-sm-table--stacked {
-  @media (max-width: $media-width-sm) {
+  @media (min-width: $media-width-sm) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-md-table--stacked {
-  @media (max-width: $media-width-md) {
+  @media (min-width: $media-width-md) {
     @include stacked-table-styles;
   }
 }
 
 .ds-c-lg-table--stacked {
-  @media (max-width: $media-width-lg) {
+  @media (min-width: $media-width-lg) {
     @include stacked-table-styles;
   }
 }
