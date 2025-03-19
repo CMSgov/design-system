@@ -95,10 +95,9 @@ export const Label = (props: LabelComponentProps) => {
     errorMessage,
     errorId,
     requirementLabel,
+    labelHidden,
     ...labelProps
   } = props;
-
-  const { labelHidden } = labelProps;
 
   if (process.env.NODE_ENV !== 'production' && (hint || hintId)) {
     console.warn(

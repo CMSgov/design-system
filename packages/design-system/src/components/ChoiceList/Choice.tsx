@@ -113,7 +113,7 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
   const id = useId('choice--', props.id);
 
   const { hintId, hintElement } = useHint({ ...props, id });
-  const labelProps = useLabelProps({ ...props, id });
+  const { labelHidden, ...labelProps } = useLabelProps({ ...props, id });
 
   let errorId;
   let errorElement;
@@ -194,7 +194,7 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
           ref={inputRef}
           aria-describedby={describeField({ ...props, errorId, hintId })}
         />
-        <Label {...labelProps} fieldId={id} />
+        <Label labelHidden={labelHidden ? true : undefined} {...labelProps} fieldId={id} />
         {hintElement}
         {errorElement}
       </div>
