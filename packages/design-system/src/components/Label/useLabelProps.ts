@@ -24,13 +24,6 @@ export interface UseLabelPropsProps {
    * Set to `true` to apply the "inverse" color scheme
    */
   inversed?: boolean;
-  /**
-   * Determines whether the label should be hidden from screen readers.
-   * Set to `true` to apply `aria-hidden="true"` to the label.
-   * This is useful in cases where the label does not provide valuable context for screen reader users,
-   * such as when the associated input already has an accessible name.
-   */
-  labelHidden?: boolean;
 }
 
 /**
@@ -43,14 +36,13 @@ export interface UseLabelPropsProps {
 export function useLabelProps<T extends UseLabelPropsProps>(props: T): Omit<LabelProps, 'fieldId'> {
   const labelId = props.labelId ?? `${props.id}__label`;
 
-  const { label, labelClassName, inversed, labelHidden } = props;
+  const { label, labelClassName, inversed } = props;
 
   return {
     children: label,
     className: labelClassName,
     id: labelId,
     inversed,
-    labelHidden,
   };
 }
 
