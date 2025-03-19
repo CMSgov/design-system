@@ -4,7 +4,7 @@ import { NoteBoxQuotation } from './NoteBoxQuotation';
 import { QuotationMarkIcon } from '../Icons';
 
 const boxContentMeta: Meta = {
-  title: 'Components/BoxQuotation',
+  title: 'Components/NoteBoxQuotation',
   component: NoteBoxQuotation,
   argTypes: {
     author: { control: 'text' },
