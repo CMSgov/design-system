@@ -6,7 +6,11 @@ import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
 
 const ContactPage = ({ children, data, location }: MdxQuery) => {
-  const { frontmatter, slug, tableOfContents } = data.mdx;
+  const {
+    frontmatter,
+    fields: { slug },
+    tableOfContents,
+  } = data.mdx;
   const theme = useTheme();
   return (
     <Layout

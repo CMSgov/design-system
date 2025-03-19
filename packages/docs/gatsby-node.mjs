@@ -153,6 +153,7 @@ export const onCreatePage = async ({ page, actions }) => {
     if (page.context.id) return;
 
     const originalPage = page;
+    // It's important to delete the page before recreating it after incorporating the ?__contentFilePath link
     deletePage(page);
 
     const matchedArchivedPage = pageArchives.find((page) => page.path.includes(matchedPath[1]));

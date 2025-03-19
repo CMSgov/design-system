@@ -7,7 +7,11 @@ import ContentRenderer from '../components/content/ContentRenderer';
 
 // Main landing page for site
 const IndexPage = ({ children, data, location }: MdxQuery) => {
-  const { slug, frontmatter, tableOfContents } = data.mdx;
+  const {
+    fields: { slug },
+    frontmatter,
+    tableOfContents,
+  } = data.mdx;
   const theme = useTheme();
 
   return (
