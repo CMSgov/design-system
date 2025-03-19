@@ -94,7 +94,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--1"
                   id="month-picker--1__choice--1__label"
-                  labelhidden="true"
                 >
                   Jan
                 </label>
@@ -122,7 +121,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--2"
                   id="month-picker--1__choice--2__label"
-                  labelhidden="true"
                 >
                   Feb
                 </label>
@@ -150,7 +148,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--3"
                   id="month-picker--1__choice--3__label"
-                  labelhidden="true"
                 >
                   Mar
                 </label>
@@ -178,7 +175,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--4"
                   id="month-picker--1__choice--4__label"
-                  labelhidden="true"
                 >
                   Apr
                 </label>
@@ -206,7 +202,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--5"
                   id="month-picker--1__choice--5__label"
-                  labelhidden="true"
                 >
                   May
                 </label>
@@ -234,7 +229,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--6"
                   id="month-picker--1__choice--6__label"
-                  labelhidden="true"
                 >
                   Jun
                 </label>
@@ -262,7 +256,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--7"
                   id="month-picker--1__choice--7__label"
-                  labelhidden="true"
                 >
                   Jul
                 </label>
@@ -290,7 +283,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--8"
                   id="month-picker--1__choice--8__label"
-                  labelhidden="true"
                 >
                   Aug
                 </label>
@@ -318,7 +310,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--9"
                   id="month-picker--1__choice--9__label"
-                  labelhidden="true"
                 >
                   Sep
                 </label>
@@ -346,7 +337,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--10"
                   id="month-picker--1__choice--10__label"
-                  labelhidden="true"
                 >
                   Oct
                 </label>
@@ -374,7 +364,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--11"
                   id="month-picker--1__choice--11__label"
-                  labelhidden="true"
                 >
                   Nov
                 </label>
@@ -402,7 +391,6 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   class="ds-c-label"
                   for="month-picker--1__choice--12"
                   id="month-picker--1__choice--12__label"
-                  labelhidden="true"
                 >
                   Dec
                 </label>
