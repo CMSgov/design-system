@@ -19,22 +19,22 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
       theme={theme}
     >
       <>
-        {nodes.map((node, index) => (
+        {nodes.map(({ fields: { slug }, frontmatter: { date, intro, title } }, index) => (
           <article
             className={classNames(
               'ds-u-margin-bottom--3',
               'ds-u-padding-bottom--3',
               index < nodes.length - 1 && 'ds-u-border-bottom--1'
             )}
-            key={node.slug}
+            key={slug}
           >
             <header>
               <h2 className="ds-text-heading--2xl ds-u-margin-bottom--0">
-                <Link to={`/${node.slug}`}>{node.frontmatter.title}</Link>
+                <Link to={slug}>{title}</Link>
               </h2>
-              <PublishDate date={node.frontmatter.date} />
+              <PublishDate date={date} />
             </header>
-            <div className="ds-u-margin-top--2">{node.frontmatter.intro}</div>
+            <div className="ds-u-margin-top--2">{intro}</div>
           </article>
         ))}
       </>
@@ -45,13 +45,14 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
 export const query = graphql`
   query BlogIndexPageQuery {
     allMdx(
-      filter: { fileAbsolutePath: { glob: "**/content/blog/*" } }
-      sort: { fields: frontmatter___date, order: DESC }
+      filter: { internal: { contentFilePath: { glob: "**/content/blog/*" } } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
-          slug
-          body
+          fields {
+            slug
+          }
           frontmatter {
             title
             date
