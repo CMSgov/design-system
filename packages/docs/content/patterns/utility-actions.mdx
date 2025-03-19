@@ -28,13 +28,22 @@ The example below shows utility actions for Print, Email and RSS.
 <EmbeddedExample>
   <div className="ds-l-row ds-u-justify-content--end">
     <div className="ds-l-col--2">
-      <Button variation="ghost" size="small"><PrintIcon ariaHidden={false} className="ds-u-margin-right--1" />Print</Button>
+      <Button variation="ghost" size="small">
+        <PrintIcon ariaHidden={false} className="ds-u-margin-right--1" />
+        {'Print'}
+      </Button>
     </div>
     <div className="ds-l-col--2">
-      <Button variation="ghost" size="small"><EmailIcon ariaHidden={false} className="ds-u-margin-right--1" />Email</Button>
+      <Button variation="ghost" size="small">
+        <EmailIcon ariaHidden={false} className="ds-u-margin-right--1" />
+        {'Email'}
+      </Button>
     </div>
     <div className="ds-l-col--2">
-      <Button variation="ghost" size="small"><RssIcon ariaHidden={false} className="ds-u-margin-right--1" />RSS</Button>
+      <Button variation="ghost" size="small">
+        <RssIcon ariaHidden={false} className="ds-u-margin-right--1" />
+        {'RSS'}
+      </Button>
     </div>
   </div>
 </EmbeddedExample>
@@ -48,57 +57,75 @@ In Figma, use the toggle feature to select different utility actions.
   <TableHead>
     <TableRow>
       <TableCell key="utility" id="utility">
-        Utility
+        {'Utility'}
       </TableCell>
       <TableCell key="action" id="action">
-        Action
+        {'Action'}
       </TableCell>
     </TableRow>
   </TableHead>
   <TableBody>
     <TableRow key="Print">
       <TableCell key="Utility" headers="utility" stackedTitle="Print Icon">
-        <Button variation="ghost" size="medium"><PrintIcon ariaHidden={false} className="ds-u-margin-right--1" />Print</Button>
+        <Button variation="ghost" size="medium">
+          <PrintIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {'Print'}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="Print description.">
-        Opens print terminal
+        {'Opens print terminal'}
       </TableCell>
     </TableRow>
     <TableRow key="Email">
       <TableCell key="Utility" headers="utility" stackedTitle="Email Icon">
-        <Button variation="ghost" size="medium"><EmailIcon ariaHidden={false} className="ds-u-margin-right--1" />Email</Button>
+        <Button variation="ghost" size="medium">
+          <EmailIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {'Email'}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="Email description.">
-        Opens default desktop email app
+        {'Opens default desktop email app'}
       </TableCell>
     </TableRow>
     <TableRow key="RSS">
       <TableCell key="Utility" headers="utility" stackedTitle="RSS Icon">
-        <Button variation="ghost" size="medium"><RssIcon ariaHidden={false} className="ds-u-margin-right--1" />RSS</Button>
+        <Button variation="ghost" size="medium">
+          <RssIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {'RSS'}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="RSS description.">
-        Opens an XML feed in a different tab
+        {'Opens an XML feed in a different tab'}
       </TableCell>
     </TableRow>
     <TableRow key="Link">
       <TableCell key="Utility" headers="utility" stackedTitle="Link Icon">
-        <Button variation="ghost" size="medium"><LinkIcon ariaHidden={false} className="ds-u-margin-right--1" />Link</Button>
+        <Button variation="ghost" size="medium">
+          <LinkIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {'Link'}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="Link description.">
-        Copies link for current page to clipboard
+        {'Copies link for current page to clipboard'}
       </TableCell>
     </TableRow>
     <TableRow key="Download">
       <TableCell key="Utility" headers="utility" stackedTitle="Download Icon">
-        <Button variation="ghost" size="medium"><DownloadIcon ariaHidden={false} className="ds-u-margin-right--1" />Download</Button>
+        <Button variation="ghost" size="medium">
+          <DownloadIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {'Download'}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="Download description.">
-        Initiates download
+        {'Initiates download'}
       </TableCell>
     </TableRow>
     <TableRow key="What's New">
       <TableCell key="Utility" headers="utility" stackedTitle="What's New Icon">
-        <Button variation="ghost" size="medium"><WhatsNewIcon ariaHidden={false} className="ds-u-margin-right--1" />What's New</Button>
+        <Button variation="ghost" size="medium">
+          <WhatsNewIcon ariaHidden={false} className="ds-u-margin-right--1" />
+          {"What's New"}
+        </Button>
       </TableCell>
       <TableCell key="Action" headers="action" stackedTitle="What's New description.">
         <p>Opens sidebar with updates</p>
