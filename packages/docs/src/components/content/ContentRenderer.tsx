@@ -1,7 +1,6 @@
 import Prism from 'prismjs';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { MDXProvider } from '@mdx-js/react';
 import { Link, withPrefix } from 'gatsby';
 
@@ -56,7 +55,10 @@ const CodeWithSyntaxHighlighting = ({
 // for preformatted text that has code as it's child, set language class on <pre> too
 // this allows scrolling in code block on small screens
 const PreformattedWithLanguageClass = (props: any) => {
-  if (props.children?.props?.mdxType === 'code' && props.children?.props?.className) {
+  if (
+    props.children?.type?.name === 'CodeWithSyntaxHighlighting' &&
+    props.children?.props?.className
+  ) {
     return <pre className={props.children.props.className} {...props} />;
   }
   return <pre {...props} />;
@@ -131,10 +133,9 @@ const customComponents = (theme) => ({
 
 interface ContentRendererProps {
   /**
-   * A string of mdx data returned from graphQL
-   * Usually the `data.body.mdx` property from a `mdx` graphQL query
+   * Output from `gatsby-plugin-mdx` that formats MDX into React
    */
-  data: string;
+  children: React.ReactNode;
   /**
    * Current theme
    */
@@ -145,12 +146,8 @@ interface ContentRendererProps {
  * ContentRenderer - a component to standardize the steps needed to display MDX content as page content
  * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/#components for details
  */
-const ContentRenderer = ({ data, theme }: ContentRendererProps) => {
-  return (
-    <MDXProvider components={customComponents(theme)}>
-      <MDXRenderer>{data}</MDXRenderer>
-    </MDXProvider>
-  );
+const ContentRenderer = ({ children, theme }: ContentRendererProps) => {
+  return <MDXProvider components={customComponents(theme)}>{children}</MDXProvider>;
 };
 
 export default ContentRenderer;

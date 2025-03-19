@@ -51,21 +51,33 @@ To provide more contrast when being rendered over other content, the `.ds-c-spin
   <>
     <div
       class="ds-u-fill--background-inverse ds-u-color--base-inverse ds-u-padding--2"
-      style="position: relative"
+      style={{ position: 'relative' }}
     >
       <p>{loremIpsumGenerator('l')}</p>
       <div
         class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center"
-        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0"
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+        }}
       >
         <Spinner filled aria-valuetext="Loading" />
       </div>
     </div>
-    <div class="ds-u-padding--2" style="position: relative">
+    <div class="ds-u-padding--2" style={{ position: 'relative' }}>
       <p>{loremIpsumGenerator('l')}</p>
       <div
         class="ds-u-display--flex ds-u-justify-content--center ds-u-align-items--center"
-        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0"
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          top: 0,
+          left: 0,
+        }}
       >
         <Spinner filled inversed aria-valuetext="Loading" />
       </div>
