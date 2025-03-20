@@ -7,7 +7,7 @@ const fileEncodingOptions = { encoding: 'utf-8' as const };
 
 const root = path.join(__dirname, '..');
 const searchDir = path.join(root, 'examples');
-const templatePath = path.join(root, 'examples', '_web-components-template.html');
+const templatePath = path.join(root, 'examples', '_shared', 'web-components', 'template.html');
 const templateContent = fs.readFileSync(templatePath, fileEncodingOptions);
 
 const startComment = '<!-- START WEB COMPONENT EXAMPLES -->';
@@ -33,7 +33,7 @@ async function insertTemplateContent(filePath: string) {
   await fs.promises.writeFile(filePath, updatedContent, fileEncodingOptions);
 
   try {
-    sh(`yarn prettier --write ${filePath}`);
+    sh(`npx prettier --write ${filePath}`);
   } catch (error) {
     // If we don't have prettier set up for this kind of file, we don't really care that
     // it didn't work. The prettier command will log its error to the terminal anyway.

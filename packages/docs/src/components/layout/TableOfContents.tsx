@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import { TableOfContentsItem } from '../../helpers/graphQLTypes';
+import { linkAnalytics } from '../../helpers/analytics';
 
 function cleanTitle(title: string) {
   return title.replace(/<[^>]*>/g, '');
@@ -58,16 +59,19 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
     </h2>
     <ul role="list" className="ds-c-list ds-c-list--bare ds-u-md-margin-y--2">
       <li>
-        <Link to="/contact">Contact the team</Link>
+        <Link onClick={linkAnalytics} to="/contact">
+          Contact the team
+        </Link>
       </li>
       <li>
-        <a href="https://github.com/CMSgov/design-system/discussions">
+        <a onClick={linkAnalytics} href="https://github.com/CMSgov/design-system/discussions">
           Start a discussion on GitHub
         </a>
       </li>
       {typeof slug !== 'undefined' ? (
         <li>
           <a
+            onClick={linkAnalytics}
             href={`https://github.com/CMSgov/design-system/edit/main/packages/docs/content/${slug}.mdx`}
           >
             Edit this page

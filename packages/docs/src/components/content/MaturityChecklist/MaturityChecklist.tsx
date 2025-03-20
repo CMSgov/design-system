@@ -1,4 +1,5 @@
 import MaturityChecklistItem, { CheckStatus } from './MaturityChecklistItem';
+import { linkAnalytics } from '../../../helpers/analytics';
 
 interface MaturityChecklistProps {
   // Accessibility
@@ -19,7 +20,7 @@ interface MaturityChecklistProps {
 
   // Tokens
   tokensInCode: CheckStatus;
-  tokensInSketch: CheckStatus;
+  tokensInFigma: CheckStatus;
 }
 
 /**
@@ -29,7 +30,10 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
   <section>
     <p>
       For more information about how we tested and validated our work for each checklist item,{' '}
-      <a href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md">
+      <a
+        onClick={linkAnalytics}
+        href="https://github.com/CMSgov/design-system/blob/main/COMPONENT_MATURITY.md"
+      >
         read our component maturity documentation
       </a>
       .
@@ -82,8 +86,8 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       <MaturityChecklistItem title="Code" status={props.tokensInCode}>
         Tokens implemented in code.
       </MaturityChecklistItem>
-      <MaturityChecklistItem title="Design" status={props.tokensInSketch}>
-        Tokens implemented in the Sketch.
+      <MaturityChecklistItem title="Design" status={props.tokensInFigma}>
+        Tokens implemented in Figma.
       </MaturityChecklistItem>
     </ul>
   </section>

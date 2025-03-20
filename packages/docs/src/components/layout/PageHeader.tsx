@@ -1,4 +1,5 @@
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import { linkAnalytics } from '../../helpers/analytics';
 import { withPrefix } from 'gatsby';
 import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';

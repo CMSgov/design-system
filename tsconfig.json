@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "target": "es2015",
     "jsx": "react-jsx",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

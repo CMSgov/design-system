@@ -4,7 +4,7 @@
  * To debug these in a browser, run the following command:
  *
  * ```
- * yarn playwright test --config tests/browser/storybook-docs.config.ts --headed --debug
+ * npx playwright test --config tests/browser/storybook-docs.config.ts --headed --debug
  * ```
  */
 

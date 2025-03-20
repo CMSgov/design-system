@@ -8,6 +8,13 @@ import { select } from '@inquirer/prompts';
 import { execSync } from 'child_process';
 import path from 'path';
 
+const missingAliasesLogPath = path.join(__dirname, 'missing_aliases.txt');
+
+function logMissingAlias(variableName: string, missingId: string, modeName: string) {
+  const logEntry = `❌ Missing Alias: ${missingId} for variable ${variableName}. Mode: ${modeName}\n`;
+  fs.appendFileSync(missingAliasesLogPath, logEntry, 'utf8');
+}
+
 /**
  * An internal representation of the kind of dimensional unit we're dealing with when
  * we're processing a number-type token (which all gets shoved into the same FLOAT type
@@ -218,12 +225,24 @@ function tokenTypeFromVariable(variable: Variable): Token['$type'] {
 function tokenValueFromVariable(
   variable: Variable,
   modeId: string,
-  localVariables: { [id: string]: Variable }
+  localVariables: { [id: string]: Variable },
+  modeName: string
 ): { value: any; aliasedVariable?: Variable } {
   const value = variable.valuesByMode[modeId];
+
   if (typeof value === 'object') {
     if ('type' in value && value.type === 'VARIABLE_ALIAS') {
       const aliasedVariable = localVariables[value.id];
+
+      if (!aliasedVariable) {
+        console.warn(
+          `⚠️ WARNING: Alias ID "${value.id}" not found in localVariables for variable "${variable.name}". Mode: "${modeName}"`
+        );
+
+        logMissingAlias(variable.name, value.id, modeName);
+        return { value: `MISSING_ALIAS(${value.id})` };
+      }
+
       return { value: `{${aliasedVariable.name.replace(/\//g, '.')}}`, aliasedVariable };
     } else if ('r' in value) {
       return { value: rgbToHex(value) };
@@ -240,11 +259,12 @@ async function tokenFromVariable(
   modeId: string,
   localVariables: { [id: string]: Variable },
   existingTokens: FlattenedTokens,
-  resolvers: TypeResolvers
+  resolvers: TypeResolvers,
+  modeName: string
 ): Promise<Token> {
   const existingToken: Token | undefined = existingTokens[variable.name.replace(/\//g, '.')];
 
-  const valueInfo = tokenValueFromVariable(variable, modeId, localVariables);
+  const valueInfo = tokenValueFromVariable(variable, modeId, localVariables, modeName);
   let $value = valueInfo.value;
   let $type = tokenTypeFromVariable(variable);
 
@@ -370,7 +390,8 @@ export async function tokenFilesFromLocalVariables(
         mode.modeId,
         localVariables,
         existingTokens[fileName] ?? {},
-        resolvers
+        resolvers,
+        mode.name
       );
 
       Object.assign(obj, token);
@@ -391,5 +412,5 @@ export function writeTokenFiles(tokensDir: string, tokensByFile: TokensByFile) {
 
   // Format the files using prettier and its project config so we can properly preview
   // the actual changes before committing
-  execSync(`yarn prettier --write '${tokensDir}/*.json'`);
+  execSync(`npx prettier --write '${tokensDir}/*.json'`);
 }
