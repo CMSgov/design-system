@@ -98,6 +98,18 @@ describe('MonthPicker', () => {
     });
   });
 
+  it('hides labels from screen readers with aria-hidden', () => {
+    renderMonthPicker();
+
+    const labels = screen.getAllByText((content, element) => {
+      return element?.tagName.toLowerCase() === 'label';
+    });
+
+    labels.forEach((label) => {
+      expect(label).toHaveAttribute('aria-hidden', 'true');
+    });
+  });
+
   it('calls `onChange` and maintains state when checking/unchecking checkboxes', () => {
     const onChange = jest.fn();
     renderMonthPicker({ onChange });
