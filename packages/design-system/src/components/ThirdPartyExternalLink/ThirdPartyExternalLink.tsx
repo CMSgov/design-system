@@ -11,6 +11,8 @@ import useThirdPartyExternalLinkAnalytics from './useThirdPartyExternalLinkAnaly
 export interface ThirdPartyExternalLinkProps
   extends AnalyticsOverrideProps,
     AnalyticsParentDataProps {
+  /** An id of an another element on the page that provides additional descriptive content for the anchor link */
+  ariaDescribedby?: string;
   /** External link url. The destination. */
   href: string;
   /** External link text. This text will appear in the button triggering the dialog. */
@@ -29,7 +31,7 @@ export interface ThirdPartyExternalLinkProps
  */
 const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
   const { contentRef, buttonAnalyticsHandler } = useThirdPartyExternalLinkAnalytics(props);
-  const { href, children, className, learnMoreUrl, origin } = props;
+  const { href, children, className, learnMoreUrl, origin, ariaDescribedby } = props;
 
   const [showDialog, setShowDialog] = useState(false);
   function open(event: React.SyntheticEvent<any>) {
@@ -47,6 +49,7 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
         onClick={open}
         href={href}
         ref={contentRef}
+        aria-describedby={ariaDescribedby}
       >
         {children}
         <ExternalLinkIcon className="ds-c-external-link__icon" />
