@@ -133,26 +133,26 @@ const Template = (args) => {
 
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
-    const toggleButton = document.querySelector('.ds-c-drawer__toggle');
+    const toggleButton = document.getElementById('drawer-toggle');
 
-    if (drawerElement && toggleButton) {
-      const handleDrawerClose = (event: Event) => {
-        action('ds-close-click')(event);
-        setDrawerOpen(false);
-      };
+    if (!drawerElement || !toggleButton) return;
 
-      const handleDrawerOpen = () => {
-        setDrawerOpen(true);
-      };
+    const handleDrawerClose = (event) => {
+      action('ds-close-click')(event);
+      setDrawerOpen(false);
+    };
 
-      drawerElement.addEventListener('ds-close-click', handleDrawerClose as EventListener);
-      toggleButton.addEventListener('click', handleDrawerOpen);
+    const handleDrawerOpen = () => {
+      setDrawerOpen(true);
+    };
 
-      return () => {
-        drawerElement.removeEventListener('ds-close-click', handleDrawerClose as EventListener);
-        toggleButton.removeEventListener('click', handleDrawerOpen);
-      };
-    }
+    drawerElement.addEventListener('ds-close-click', handleDrawerClose);
+    toggleButton.addEventListener('click', handleDrawerOpen);
+
+    return () => {
+      drawerElement.removeEventListener('ds-close-click', handleDrawerClose);
+      toggleButton.removeEventListener('click', handleDrawerOpen);
+    };
   }, [drawerOpen]);
 
   const formattedArgs = {
@@ -162,6 +162,7 @@ const Template = (args) => {
 
   const toggleButtonArgs = {
     'class-name': 'ds-c-drawer__toggle',
+    id: 'drawer-toggle',
     variation: 'ghost',
   };
 
