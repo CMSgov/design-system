@@ -1,0 +1,138 @@
+---
+title: Note Box
+intro: The note box highlights information with a medium visual priority using existing typography styles with a box outline.
+cmsgov:
+  figmaNodeId: 10107:1379
+core:
+  figmaNodeId: 10107:1366
+  githubLink: design-system/src/components/NoteBox
+  storybookLink: components-notebox--docs
+healthcare:
+  figmaNodeId: 10107:1394
+medicare:
+  figmaNodeId: 10107:1410
+---
+
+## Examples
+
+### Body
+
+### Body + Heading
+
+### Quotation
+
+## Guidance
+
+### When to use
+
+Use the box for:
+
+- Informational content you want to highlight that isn’t critical, like tips, examples, or general notes
+- Quotations you want to call out or from an external source
+
+### Guidelines
+
+Placement:
+
+- Always be static content on a page.
+- Don’t use in dynamic forms or as a response to user interactions.
+- Limit to no more than 2 boxes per page.
+- Don’t stack boxes (or stack boxes with alerts).
+  How to select which color styling:
+- White box is for supplementary information that isn’t critical.
+- Gray box is for information that requires more emphasis.
+  What can be included in boxes:
+- Can include link text to a different page or further information.
+- When including quotes, you must include a source. Source citations use the
+  following format: em dash[source] There is no space between the emdash and the name of the source.
+
+  Examples:
+
+  <ul>
+    <li>Author</li>
+    <li>Inflation Reduction Act, U.S. Department of the Treasury</li>
+  </ul>
+
+- Don’t include images, or make the box clickable, like a clickable card, or include CTAs, like buttons. ([Refer to guidelines for clickable cards.]())
+
+### When to consider alternatives
+
+- Use an alert instead if the information is: o High priority
+  - Requires an action or button
+  - A warning or an error
+  - In a dynamic form or appears as a response to a user interaction
+- Use a help drawer instead if content is too long or not relevant enough to warrant being on the page by default.
+
+## Content Guidance
+
+### Guidelines
+
+- The content in a box is always ancillary to the main messages being conveyed. Users must not rely upon the box information to understand the main content.
+- Don’t use a box for an inline quotation.
+- Keep content used within a box short—use the fewest words possible to
+  convey the information. Best practice is no more than 2-3 short sentences.
+  If longer, use a help drawer or include the content as regular body copy.
+- Use plain language and an active voice.
+- Box content can include:
+  - A heading (not required) o Body text
+  - Link text
+  - Bulleted or numbered lists
+- [Get more details from 18F on writing in active voice.]()
+
+## Accessibility
+
+### Accessibility
+
+- If you have multiple boxes on a page, tailor the accessible text to differentiate between each by using an aria-label or aria-labeled by attribute.
+- This component has been implemented with the H4 header. If this is not semantically appropriate for your team's HTML, you can modify the H-tag and retain the CSS so that it is semantically correct without changing it visually.
+- Avoid stacking boxes vertically. This can create long blocks of text that are difficult to read, especially for users with visual impairments or cognitive disabilities.
+- The quotation icon used in the quotation box is purely decorative and offers no semantics, so no additional markup should be added to make it accessible to screen readers.
+
+### Accessibility Testing
+
+- Accessibility testing is crucial for this unique component. Verify that it can be easily navigated and used by users with disabilities, including those who rely on screen readers.
+- Pay close attention to keyboard navigation and ensure it does not trap focus.
+- The purpose of the information within the note box should be clear in the context of the whole page.
+- When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack), the note box should identify itself as a box or note.
+- When navigating the page, screen readers should announce the accessible name of the box or “Note,” followed by the content.
+
+### Reporting an accessibility bug
+
+If you encounter a bug with the accessibility of the alert component, [refer to our reporting confluence page]() and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
+
+## Code
+
+### HTML
+
+The note box component pattern is fairly simple: [an aside element wraps a div that contains the heading, and the main content is rendered as a sibling div below the heading](). The heading by default is an h2, however the heading level can be adjusted and should be in relation to the surrounding content on the page.
+
+The quotation variant is somewhat different. The above described structure utilizing an aside still holds true, but [the quotation content is placed within a blockquote element within a figure element. The blockquote contains the main text content of the quote. A figcaption element follows the blockquote and should contain the citation content]().
+
+The quotation box should always receive a `QuotationMarkIcon` component as the heading. Since this icon is purely decorative, it is not wrapped in a heading level 2-6. Effectively, the quotation box variant contains no heading.
+
+The quotation variant must always contain either an author or a citation source. In the case where both are provided the citation source will be rendered and the author’s name will not. [The citation itself is rendered within a cite element]() and can accept complex HTML as input. A possible use-case is to provide an anchor tag linking to the citation source.
+
+### React
+
+See Storybook for React guidance of this component.
+
+### Style Customization
+
+Additional classes can be added to the component via the `className` prop to both the Note Box component and the Quotation Box component. Note that for each element the additional classes will be appended to the class list on the parent aside and figure elements respectively.
+
+## Component maturity
+
+<MaturityChecklist
+  a11yStandards={true}
+  color={true}
+  forcedColors={true}
+  screenReaders={true}
+  keyboardNavigable={true}
+  storybook={true}
+  responsive={true}
+  spanish={false}
+  completeUiKit={false}
+  responsiveUiKit={false}
+  tokensInCode={true}
+  tokensInSketch={true}
+/>
