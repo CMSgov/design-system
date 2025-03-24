@@ -89,6 +89,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="1"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--1"
                   id="month-picker--1__choice--1__label"
@@ -114,6 +115,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="2"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--2"
                   id="month-picker--1__choice--2__label"
@@ -139,6 +141,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="3"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--3"
                   id="month-picker--1__choice--3__label"
@@ -164,6 +167,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="4"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--4"
                   id="month-picker--1__choice--4__label"
@@ -189,6 +193,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="5"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--5"
                   id="month-picker--1__choice--5__label"
@@ -214,6 +219,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="6"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--6"
                   id="month-picker--1__choice--6__label"
@@ -239,6 +245,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="7"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--7"
                   id="month-picker--1__choice--7__label"
@@ -264,6 +271,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="8"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--8"
                   id="month-picker--1__choice--8__label"
@@ -289,6 +297,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="9"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--9"
                   id="month-picker--1__choice--9__label"
@@ -314,6 +323,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="10"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--10"
                   id="month-picker--1__choice--10__label"
@@ -339,6 +349,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="11"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--11"
                   id="month-picker--1__choice--11__label"
@@ -364,6 +375,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
                   value="12"
                 />
                 <label
+                  aria-hidden="true"
                   class="ds-c-label"
                   for="month-picker--1__choice--12"
                   id="month-picker--1__choice--12__label"
