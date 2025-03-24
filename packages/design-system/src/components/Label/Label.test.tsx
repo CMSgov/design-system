@@ -14,6 +14,27 @@ describe('Label', () => {
     expect(label).toMatchSnapshot();
   });
 
+  it('hides label from screen readers when labelHidden is true', () => {
+    render(<Label labelHidden={true}>{labelText}</Label>);
+
+    const label = screen.getByText(labelText);
+    expect(label).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('does not hide label when labelHidden is false', () => {
+    render(<Label labelHidden={false}>{labelText}</Label>);
+
+    const label = screen.getByText(labelText);
+    expect(label).not.toHaveAttribute('aria-hidden');
+  });
+
+  it('does not hide label when labelHidden is not provided', () => {
+    render(<Label>{labelText}</Label>);
+
+    const label = screen.getByText(labelText);
+    expect(label).not.toHaveAttribute('aria-hidden');
+  });
+
   describe('Deprecated hint and error functionality', () => {
     let warn;
 
