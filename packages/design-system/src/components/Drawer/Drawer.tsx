@@ -14,7 +14,10 @@ export interface DrawerProps {
    */
   ariaLabel?: string;
   /**
-   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
+   * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked.
+   *
+   * Note: This only works when `hasFocusTrap` is also set to `true`, since that causes
+   * the dialog to be opened with `showModal()` which enables the backdrop.
    */
   backdropClickExits?: boolean;
   /**

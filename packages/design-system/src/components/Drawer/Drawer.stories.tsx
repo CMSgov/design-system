@@ -9,12 +9,6 @@ const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
   component: Drawer,
   argTypes: {
-    backdropClickExits: {
-      // Until this pattern has solidified, we're not going to advertize this feature.
-      table: {
-        disable: true,
-      },
-    },
     ariaLabel: {
       table: {
         defaultValue: {
@@ -112,5 +106,43 @@ export const Default: Story = {
         </Button>
       </>
     );
+  },
+};
+
+export const BackdropClickExits: Story = {
+  render: function Component(args) {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    const showDrawer = () => {
+      setDrawerOpen(true);
+    };
+
+    const hideDrawer = (event) => {
+      action('onCloseClick')(event);
+      setDrawerOpen(false);
+    };
+
+    return (
+      <>
+        <Drawer
+          {...args}
+          isOpen={drawerOpen}
+          onCloseClick={hideDrawer}
+          backdropClickExits={true}
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
+          heading="Drawer with Backdrop Click Exit"
+        >
+          {drawerContent}
+        </Drawer>
+        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+          Click to open drawer
+        </Button>
+      </>
+    );
+  },
+  args: {
+    backdropClickExits: true,
+    hasFocusTrap: true,
   },
 };
