@@ -203,6 +203,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
                 type="checkbox"
                 value={i + 1}
                 label={month}
+                labelHidden={true}
                 id={`${id}__choice--${i + 1}`}
                 _choiceChild={true}
               />
