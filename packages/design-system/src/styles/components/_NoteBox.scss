@@ -1,0 +1,64 @@
+@use '../layout' as *;
+
+@mixin note-box-high-contrast-mode-remove-color() {
+  @media (forced-colors: active) {
+    background-color: window;
+    color: windowText;
+    forced-color-adjust: none;
+    -ms-high-contrast-adjust: none;
+  }
+}
+
+.ds-c-note-box {
+  padding: $spacer-2;
+  background-color: var(--color-gray-lightest);
+  color: var(--color-base);
+  border-radius: var(--radius-default);
+  border: 1px solid var(--color-transparent);
+
+  @include note-box-high-contrast-mode-remove-color;
+}
+
+.ds-c-note-box__heading {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-line-height-heading);
+  margin-block: 0 $spacer-half;
+}
+
+.ds-c-note-box--bordered {
+  border: 1px solid var(--color-border-dark);
+  background-color: var(--color-background);
+
+  @media (forced-colors: active) {
+    border: 1px solid windowText;
+    background-color: window;
+  }
+}
+
+.ds-c-note-box__body {
+  min-width: 0; // Allows it to shrink as necessary to fit in the parent
+  padding-inline-start: 0;
+}
+
+.ds-c-note-box__text {
+  margin-block-start: $spacer-half;
+}
+
+.ds-c-note-box-quotation {
+  margin: $spacer-2;
+}
+
+.ds-c-note-box-quotation--blockquote {
+  margin: 0;
+}
+
+.ds-c-note-box-quotation--caption {
+  margin-block-start: $spacer-half;
+  font-weight: var(--font-weight-semibold);
+}
+
+.ds-c-note-box-quotation--citation {
+  font-style: normal;
+}
