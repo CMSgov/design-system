@@ -133,7 +133,7 @@ const Template = (args) => {
 
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
-    const toggleButton = document.getElementById('drawer-toggle');
+    const toggleButton = document.querySelector('ds-button');
 
     if (!drawerElement || !toggleButton) return;
 
@@ -162,7 +162,7 @@ const Template = (args) => {
 
   const toggleButtonArgs = {
     'class-name': 'ds-c-drawer__toggle',
-    id: 'drawer-toggle',
+    id: 'ds-button',
     variation: 'ghost',
   };
 
