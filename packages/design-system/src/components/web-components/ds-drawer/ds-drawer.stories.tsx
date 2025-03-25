@@ -192,4 +192,11 @@ Default.args = {
   'footer-title': 'Footer Title',
 };
 
+export const WithBackdropClickExits = Template.bind({});
+WithBackdropClickExits.args = {
+  'backdrop-click-exits': 'true',
+  'has-focus-trap': 'true',
+  ...Default.args,
+};
+
 export default meta;
