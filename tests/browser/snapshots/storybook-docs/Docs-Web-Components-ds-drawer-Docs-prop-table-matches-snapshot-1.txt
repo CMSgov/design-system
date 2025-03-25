@@ -1,5 +1,10 @@
 [
   [
+    "backdrop-click-exits",
+    "Pass true to have the dialog close when its backdrop pseudo-element is clicked.\n\nNote: This only works when hasFocusTrap is also set to \"true\", since that causesthe dialog to be opened with showModal() which enables the backdrop.",
+    "\"true\"\"false\""
+  ],
+  [
     "children",
     "Content to be rendered inside the drawer.",
     "string"
