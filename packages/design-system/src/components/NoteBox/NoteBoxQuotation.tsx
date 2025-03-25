@@ -27,7 +27,7 @@ export type NoteBoxQuotationProps = RequireAtLeastOne<
   'citation' | 'author'
 >;
 
-export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
+const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
   props: NoteBoxQuotationProps
 ) => {
   const { author, children, citation, className } = props;
@@ -70,3 +70,5 @@ export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     </figure>
   );
 };
+
+export default NoteBoxQuotation;

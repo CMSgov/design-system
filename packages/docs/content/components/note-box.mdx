@@ -13,25 +13,47 @@ medicare:
   figmaNodeId: 10107:1410
 ---
 
-import { NoteBox, NoteBoxQuotation } from '../../../design-system/src/components/NoteBox';
+import NoteBox from '../../../design-system/src/components/NoteBox/NoteBox';
+import NoteBoxQuotation from '../../../design-system/src/components/NoteBox/NoteBoxQuotation';
+import { QuotationMarkIcon } from '../../../design-system/src/components/Icons';
 
 ## Examples
+
+### Body
 
 <NoteBox bordered={true}>
   Discover what Marketplace plans cover, including treatment for pre-existing medical conditions and
   other essential health benefits.
 </NoteBox>
 
-<NoteBox>
+<NoteBox className="ds-u-margin-top--2">
   Discover what Marketplace plans cover, including treatment for pre-existing medical conditions and
   other essential health benefits.
 </NoteBox>
 
-### Body
-
 ### Body + Heading
 
+export const heading = 'Before you get started: Get key resources';
+
+<NoteBox bordered={true} heading={heading}>
+  Discover what Marketplace plans cover, including treatment for pre-existing medical conditions and
+  other essential health benefits.
+</NoteBox>
+
+<NoteBox className="ds-u-margin-top--2" heading={heading}>
+  Discover what Marketplace plans cover, including treatment for pre-existing medical conditions and
+  other essential health benefits.
+</NoteBox>
+
 ### Quotation
+
+<NoteBox bordered={true} heading={<QuotationMarkIcon />}>
+  <NoteBoxQuotation citation="Source">
+    Medicare is a federal health insurance program primarily for individuals aged 65 and older,
+    providing coverage for a range of medical services with beneficiaries typically sharing a
+    portion of the cost.
+  </NoteBoxQuotation>
+</NoteBox>
 
 ## Guidance
 
@@ -65,7 +87,7 @@ Placement:
     <li>Inflation Reduction Act, U.S. Department of the Treasury</li>
   </ul>
 
-- Don’t include images, or make the box clickable, like a clickable card, or include CTAs, like buttons. ([Refer to guidelines for clickable cards.]())
+- Don’t include images, or make the box clickable, like a clickable card, or include CTAs, like buttons. ([Refer to guidelines for clickable cards.](/components/card/?query=card))
 
 ### When to consider alternatives
 
@@ -89,7 +111,7 @@ Placement:
   - A heading (not required) o Body text
   - Link text
   - Bulleted or numbered lists
-- [Get more details from 18F on writing in active voice.]()
+- [Get more details from 18F on writing in active voice.](https://guides.18f.gov/content-guide/our-style/active-voice/)
 
 ## Accessibility
 
@@ -110,23 +132,23 @@ Placement:
 
 ### Reporting an accessibility bug
 
-If you encounter a bug with the accessibility of the alert component, [refer to our reporting confluence page]() and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
+If you encounter a bug with the accessibility of the alert component, [refer to our reporting confluence page](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323) and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
 
 ## Code
 
 ### HTML
 
-The note box component pattern is fairly simple: [an aside element wraps a div that contains the heading, and the main content is rendered as a sibling div below the heading](). The heading by default is an h2, however the heading level can be adjusted and should be in relation to the surrounding content on the page.
+The note box component pattern is fairly simple: [an aside element wraps a div that contains the heading, and the main content is rendered as a sibling div below the heading](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside). The heading by default is an h2, however the heading level can be adjusted and should be in relation to the surrounding content on the page.
 
-The quotation variant is somewhat different. The above described structure utilizing an aside still holds true, but [the quotation content is placed within a blockquote element within a figure element. The blockquote contains the main text content of the quote. A figcaption element follows the blockquote and should contain the citation content]().
+The quotation variant is somewhat different. The above described structure utilizing an aside still holds true, but [the quotation content is placed within a blockquote element within a figure element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure). [The blockquote contains the main text content of the quote](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote). [A figcaption element follows the blockquote and should contain the citation content](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption).
 
 The quotation box should always receive a `QuotationMarkIcon` component as the heading. Since this icon is purely decorative, it is not wrapped in a heading level 2-6. Effectively, the quotation box variant contains no heading.
 
-The quotation variant must always contain either an author or a citation source. In the case where both are provided the citation source will be rendered and the author’s name will not. [The citation itself is rendered within a cite element]() and can accept complex HTML as input. A possible use-case is to provide an anchor tag linking to the citation source.
+The quotation variant must always contain either an author or a citation source. In the case where both are provided the citation source will be rendered and the author’s name will not. [The citation itself is rendered within a cite element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite) and can accept complex HTML as input. A possible use-case is to provide an anchor tag linking to the citation source.
 
 ### React
 
-See Storybook for React guidance of this component.
+<SeeStorybookForGuidance storyId={'components-notebox--docs'} />
 
 ### Style Customization
 
