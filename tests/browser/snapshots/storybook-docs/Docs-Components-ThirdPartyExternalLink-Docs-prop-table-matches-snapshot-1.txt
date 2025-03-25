@@ -20,6 +20,11 @@
     "-"
   ],
   [
+    "ariaDescribedby",
+    "An id of an another element on the page that provides additional descriptive content for the anchor link\nstring",
+    "-"
+  ],
+  [
     "children*",
     "External link text. This text will appear in the button triggering the dialog.\nstring",
     "-"
