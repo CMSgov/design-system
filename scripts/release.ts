@@ -80,8 +80,10 @@ async function bumpVersions() {
   );
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
-  // Only stage changes to package files
+  // Stage changes to package files
   sh('git add -u **/package.json');
+  // Stage changes to package-lock.json
+  sh('git add -u package-lock.json');
   // And discard all other changes
   sh('git checkout -- .');
   // Verify that there are actually changes staged
