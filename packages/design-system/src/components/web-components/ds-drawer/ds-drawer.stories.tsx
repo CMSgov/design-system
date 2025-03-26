@@ -31,6 +31,11 @@ const meta: Meta = {
     },
   },
   argTypes: {
+    'backdrop-click-exits': {
+      description:
+        'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked. \n\n**Note:** This only works when `hasFocusTrap` is also set to `"true"`, since that causes the dialog to be opened with `showModal()` which enables the backdrop.',
+      control: 'boolean',
+    },
     'close-button-aria-label': {
       description: 'Gives more context to screen readers on the Drawer close button.',
       control: 'text',
@@ -185,6 +190,13 @@ export const Default = Template.bind({});
 Default.args = {
   heading: 'Drawer Heading',
   'footer-title': 'Footer Title',
+};
+
+export const WithBackdropClickExits = Template.bind({});
+WithBackdropClickExits.args = {
+  'backdrop-click-exits': 'true',
+  'has-focus-trap': 'true',
+  ...Default.args,
 };
 
 export default meta;
