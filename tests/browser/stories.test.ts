@@ -36,6 +36,7 @@ const storySkipList = [
   'web-components-ds-autocomplete--groups-and-standalone-items', // Redundant
   'web-components-ds-autocomplete--item-groups', // Redundant
   'web-components-ds-autocomplete--async-items', // Redundant
+  'web-components-ds-drawer--with-backdrop-click-exits', // Doesn't show the open drawer
 ];
 
 const storyUseAxeLegacyModeList = [
