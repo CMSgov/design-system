@@ -1,0 +1,83 @@
+name: Bug Report
+description: Create a report to help us improve
+title: '[Bug:] '
+labels:
+  [
+    'dependencies',
+    'Impacts: CMSGov',
+    'Impacts: Core',
+    'Impacts: Documentation',
+    'Impacts: Healthcare',
+    'Impacts: Medicare',
+    'javascript',
+    'Status: In JIRA',
+    'Status: Work In Progress',
+  ]
+type: 'Bug'
+body:
+  - type: textarea
+    attributes:
+      label: Describe the Bug
+      description: A clear an concise description of what the bug is.
+  - type: textarea
+    attributes:
+      label: To reproduce
+      description: 'Steps to reproduce the behavior:'
+      placeholder: |
+        1. Go to '...'
+        2. Click on  '...'
+        3. Scroll down to '...'
+        4. See error
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+  - type: markdown
+    attributes:
+      value: 'Desktop (please complete the following information):'
+  - type: input
+    attributes:
+      label: Operating System
+  - type: input
+    attributes:
+      label: Browser
+  - type: input
+    attributes:
+      label: Browser Version
+  - type: markdown
+    attributes:
+      value: 'Smartphone (please complete the following information):'
+  - type: input
+    attributes:
+      label: Device
+      description: e.g. iPhone6
+  - type: input
+    attributes:
+      label: OS
+      description: e.g. iOS8.1
+  - type: input
+    attributes:
+      label: Browser
+      description: e.g. stock brower, Safari etc.
+  - type: input
+    attributes:
+      label: Version
+      description: e.g. 22
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+  - type: input
+    attributes:
+      label: Codebase/Repository URL
+      description: Please include the codebase or repository that you are working within
+  - type: input
+    attributes:
+      label: Design System Version
+  - type: input
+    attributes:
+      label: Existing branch or Pull request on Github
+      description: Please supply a branch name or URL if there is an existing branch on Github
+  - type: input
+    attributes:
+      label: Team Name
