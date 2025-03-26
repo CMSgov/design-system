@@ -39,7 +39,8 @@ const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     if (citation) {
       return (
         <cite className="ds-c-note-box-quotation--citation">
-          {`\u2014`} {citation}
+          {`\u2014`}
+          {citation}
         </cite>
       );
     }
@@ -47,7 +48,8 @@ const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     if (author) {
       return (
         <>
-          {`\u2014`} {author}
+          {`\u2014`}
+          {author}
         </>
       );
     }

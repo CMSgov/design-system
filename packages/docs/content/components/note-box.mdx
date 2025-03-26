@@ -72,26 +72,32 @@ Placement:
 - Don’t use in dynamic forms or as a response to user interactions.
 - Limit to no more than 2 boxes per page.
 - Don’t stack boxes (or stack boxes with alerts).
-  How to select which color styling:
+
+How to select which color styling:
+
 - White box is for supplementary information that isn’t critical.
 - Gray box is for information that requires more emphasis.
-  What can be included in boxes:
+
+What can be included in boxes:
+
 - Can include link text to a different page or further information.
-- When including quotes, you must include a source. Source citations use the
-  following format: em dash[source] There is no space between the emdash and the name of the source.
-
-  Examples:
-
-  <ul>
-    <li>Author</li>
-    <li>Inflation Reduction Act, U.S. Department of the Treasury</li>
-  </ul>
+- <p>
+    When including quotes, you must include a source. Source citations use the following format: em
+    dash[source] There is no space between the emdash and the name of the source.
+    <br />
+    Examples:
+    <br />
+    &mdash;Author
+    <br />
+    &mdash;Inflation Reduction Act, U.S. Department of the Treasury
+  </p>
 
 - Don’t include images, or make the box clickable, like a clickable card, or include CTAs, like buttons. ([Refer to guidelines for clickable cards.](/components/card/?query=card))
 
 ### When to consider alternatives
 
-- Use an alert instead if the information is: o High priority
+- Use an alert instead if the information is:
+  - High priority
   - Requires an action or button
   - A warning or an error
   - In a dynamic form or appears as a response to a user interaction
@@ -108,7 +114,8 @@ Placement:
   If longer, use a help drawer or include the content as regular body copy.
 - Use plain language and an active voice.
 - Box content can include:
-  - A heading (not required) o Body text
+  - A heading (not required)
+  - Body text
   - Link text
   - Bulleted or numbered lists
 - [Get more details from 18F on writing in active voice.](https://guides.18f.gov/content-guide/our-style/active-voice/)
@@ -117,7 +124,7 @@ Placement:
 
 ### Accessibility
 
-- If you have multiple boxes on a page, tailor the accessible text to differentiate between each by using an aria-label or aria-labeled by attribute.
+- If you have multiple boxes on a page, tailor the accessible text to differentiate between each by using an `aria-label` or `aria-labeled-by` attribute.
 - This component has been implemented with the H4 header. If this is not semantically appropriate for your team's HTML, you can modify the H-tag and retain the CSS so that it is semantically correct without changing it visually.
 - Avoid stacking boxes vertically. This can create long blocks of text that are difficult to read, especially for users with visual impairments or cognitive disabilities.
 - The quotation icon used in the quotation box is purely decorative and offers no semantics, so no additional markup should be added to make it accessible to screen readers.
