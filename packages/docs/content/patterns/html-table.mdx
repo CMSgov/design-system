@@ -2,6 +2,7 @@
 title: Table Elements
 intro: Learn how to build accessible and responsive tables using semantic HTML and CMS Design System utility classes.
 ---
+import { Alert } from '@cmsgov/design-system'
 
 ## Overview
 
@@ -10,7 +11,9 @@ This approach improves accessibility and supports framework-agnostic implementat
 
 This guidance outlines how to replicate the core functionality of our soon-to-be legacy React `Table` component using native HTML and Design System classes.
 
-> ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these HTML-based patterns.
+<Alert variation="warn" heading="Note">
+  The React <code>Table</code> component will eventually be deprecated in favor of these HTML-based patterns.
+</Alert>
 
 ### Simple Table
 
@@ -22,8 +25,6 @@ Use a simple table when you need to display static, tabular data with a single h
 - Use `ds-c-table__caption` for visible captions to provide context.
 - Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
 - Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
-
-> ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these patterns.
 
 Here’s an example:
 <EmbeddedExample>
@@ -194,6 +195,7 @@ The example below uses the `ds-c-table--stacked` class:
   </table>
 </EmbeddedExample>
 
-> 🚧 **Coming soon:** The Design System will offer guidance and tooling for implementing scrollable tables in both HTML and React. Stay tuned for updates!
-
+<Alert variation="success" heading="Coming soon">
+  The Design System will offer guidance and tooling for implementing scrollable tables in both HTML and React. Stay tuned for updates!
+</Alert>
 
