@@ -3,16 +3,19 @@ title: Table Elements
 intro: Learn how to build accessible and responsive tables using semantic HTML and CMS Design System utility classes.
 ---
 
+## Overview
 
+The CMS Design System encourages using semantic HTML table elements (`<table>`, `<thead>`, `<caption>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`) in combination with our utility CSS classes. 
+This approach improves accessibility and supports framework-agnostic implementations.
 
 ## Overview
 
 The CMS Design System encourages using semantic HTML table elements (`<table>`, `<thead>`, `<caption>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`) in combination with our utility CSS classes. 
-This approach improves accessibility, supports framework-agnostic implementations, and makes the code easier to maintain.
+This approach improves accessibility and supports framework-agnostic implementations.
 
-This guidance outlines how to replicate the core functionality of the legacy React `Table` component using native HTML and Design System classes.
+This guidance outlines how to replicate the core functionality of our soon-to-be legacy React `Table` component using native HTML and Design System classes.
 
-> ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these patterns. Please follow the examples below when implementing new tables.
+> ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these HTML-based patterns.
 
 ### Simple Table
 
@@ -20,7 +23,21 @@ Use a simple table when you need to display static, tabular data with a single h
 
 #### How to build a simple table
 
-- Use the `ds-c-table` class on the `<table>` to apply the base styling.
+- Use the `ds-c-table` class on the `<table>` to apply base styling.
+- Use `ds-c-table__caption` for visible captions to provide context.
+- Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
+- Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
+
+Here’s an example:
+> ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these patterns.
+
+### Simple Table
+
+Use a simple table when you need to display static, tabular data with a single header row and consistent column structure.
+
+#### How to build a simple table
+
+- Use the `ds-c-table` class on the `<table>` to apply base styling.
 - Use `ds-c-table__caption` for visible captions to provide context.
 - Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
 - Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
@@ -77,12 +94,12 @@ Here’s an example:
 
 ### Multi-header Table
 
-Use a multi-header table when your data requires grouped columns with separate subheaders (e.g., grouping contact details and employment info).
+Use a multi-header table when your data requires grouped columns with separate subheaders.
 
 #### How to build a multi-header table
 
 - In the first header row, use  `<th colspan="X">` to group related columns. 
-- In the second header row, use a second `<tr>` with individual `<th scope="col">` elements for each sub-column.
+- In the second header row, use `<th scope="col">` for each individual sub-column.
 - Assign `scope="row"` to the first `<th>` in each body row for accessibility.
 - Use `ds-u-text-align--left` for consistent alignment with other table variants.
 
@@ -132,9 +149,23 @@ Stackable tables are useful when you need to display tabular data on small scree
 
 #### How to build a stackable table
 
-- Add the `ds-c-table ds-c-table--stacked` classes to your `<table>`.
+- Add the `ds-c-table ds-c-table--stacked` classes to your `<table>`. See the next section to choose the appropriate `stacked` variant for your use case.
 - For each `<td>` cell, include a `data-title="[Column name]"` attribute that matches its corresponding header.
 - Use `ds-u-text-align--left` for consistent alignment with other table variants.
+
+#### Choosing a stackable variant
+
+The Design System provides size-based modifiers that control when the table switches to a stacked layout.
+
+| Class | Stacking behavior | Breakpoint |
+|-------|-------------------|------------|
+| `ds-c-table--stacked` | Always stacked, on all screen sizes | — |
+| `ds-c-sm-table--stacked` | Stacked on small screens only | `≤ 544px` |
+| `ds-c-md-table--stacked` | Stacked on medium screens and below | `≤ 768px` |
+| `ds-c-lg-table--stacked` | Stacked on large screens and below | `≤ 1024px` |
+
+
+The example below uses the `ds-c-table--stacked` class:
 
 <EmbeddedExample>
   <table class="ds-c-table ds-c-table--stacked">
@@ -152,7 +183,7 @@ Stackable tables are useful when you need to display tabular data on small scree
         <td class="ds-u-text-align--left" data-title="Document title">Declaration of Independence</td>
         <td class="ds-u-text-align--left" data-title="Description">Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
         <td class="ds-u-text-align--left" data-title="Links">
-          <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">https://billofrightsinstitute.org/founding-documents/declaration-of-independence/</a>
+          <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">View</a>
         </td>
         <td class="ds-u-text-align--left" data-title="Year">1776</td>
       </tr>
@@ -160,7 +191,7 @@ Stackable tables are useful when you need to display tabular data on small scree
         <td class="ds-u-text-align--left" data-title="Document title">Articles of Confederation</td>
         <td class="ds-u-text-align--left" data-title="Description">This document served as the United Statesʼ first constitution.</td>
         <td class="ds-u-text-align--left" data-title="Links">
-          <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">https://www.archives.gov/milestone-documents/articles-of-confederation</a>
+          <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">View</a>
         </td>
         <td class="ds-u-text-align--left" data-title="Year">1777</td>
       </tr>
@@ -168,7 +199,7 @@ Stackable tables are useful when you need to display tabular data on small scree
         <td class="ds-u-text-align--left" data-title="Document title">The Constitution</td>
         <td class="ds-u-text-align--left" data-title="Description">Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states</td>
         <td class="ds-u-text-align--left" data-title="Links">
-          <a href="https://billofrightsinstitute.org/primary-sources/constitution">https://billofrightsinstitute.org/primary-sources/constitution</a>
+          <a href="https://billofrightsinstitute.org/primary-sources/constitution">View</a>
         </td>
         <td class="ds-u-text-align--left" data-title="Year">1787</td>
       </tr>
@@ -176,12 +207,14 @@ Stackable tables are useful when you need to display tabular data on small scree
         <td class="ds-u-text-align--left" data-title="Document title">Bill of Rights</td>
         <td class="ds-u-text-align--left" data-title="Description">The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
         <td class="ds-u-text-align--left" data-title="Links">
-          <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">https://billofrightsinstitute.org/founding-documents/bill-of-rights/</a>
+          <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">View</a>
         </td>
         <td class="ds-u-text-align--left" data-title="Year">1791</td>
       </tr>
     </tbody>
   </table>
 </EmbeddedExample>
+
+> 🚧 **Coming soon:** The Design System will offer guidance and tooling for implementing scrollable tables in both HTML and React. Stay tuned for updates!
 
 
