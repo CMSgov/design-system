@@ -28,22 +28,9 @@ Use a simple table when you need to display static, tabular data with a single h
 - Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
 - Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
 
-Here’s an example:
 > ⚠️ **Note:** The React `Table` component will eventually be deprecated in favor of these patterns.
 
-### Simple Table
-
-Use a simple table when you need to display static, tabular data with a single header row and consistent column structure.
-
-#### How to build a simple table
-
-- Use the `ds-c-table` class on the `<table>` to apply base styling.
-- Use `ds-c-table__caption` for visible captions to provide context.
-- Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
-- Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
-
 Here’s an example:
-
 <EmbeddedExample>
   <table class="ds-c-table">
     <caption class="ds-c-table__caption">Founding documents</caption>
@@ -104,7 +91,6 @@ Use a multi-header table when your data requires grouped columns with separate s
 - Use `ds-u-text-align--left` for consistent alignment with other table variants.
 
 Here’s an example:
-
 <EmbeddedExample>
   <table class="ds-c-table">
     <caption class="ds-c-table__caption">Household members</caption>
@@ -164,9 +150,7 @@ The Design System provides size-based modifiers that control when the table swit
 | `ds-c-md-table--stacked` | Stacked on medium screens and below | `≤ 768px` |
 | `ds-c-lg-table--stacked` | Stacked on large screens and below | `≤ 1024px` |
 
-
 The example below uses the `ds-c-table--stacked` class:
-
 <EmbeddedExample>
   <table class="ds-c-table ds-c-table--stacked">
     <caption class="ds-c-table__caption">Founding documents</caption>
