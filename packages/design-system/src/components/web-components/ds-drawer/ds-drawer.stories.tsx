@@ -31,6 +31,11 @@ const meta: Meta = {
     },
   },
   argTypes: {
+    'backdrop-click-exits': {
+      description:
+        'Pass `true` to have the dialog close when its backdrop pseudo-element is clicked. \n\n**Note:** This only works when `hasFocusTrap` is also set to `"true"`, since that causes the dialog to be opened with `showModal()` which enables the backdrop.',
+      control: 'boolean',
+    },
     'close-button-aria-label': {
       description: 'Gives more context to screen readers on the Drawer close button.',
       control: 'text',
@@ -133,26 +138,26 @@ const Template = (args) => {
 
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
-    const toggleButton = document.querySelector('.ds-c-drawer__toggle');
+    const toggleButton = document.querySelector('ds-button');
 
-    if (drawerElement && toggleButton) {
-      const handleDrawerClose = (event: Event) => {
-        action('ds-close-click')(event);
-        setDrawerOpen(false);
-      };
+    if (!drawerElement || !toggleButton) return;
 
-      const handleDrawerOpen = () => {
-        setDrawerOpen(true);
-      };
+    const handleDrawerClose = (event) => {
+      action('ds-close-click')(event);
+      setDrawerOpen(false);
+    };
 
-      drawerElement.addEventListener('ds-close-click', handleDrawerClose as EventListener);
-      toggleButton.addEventListener('click', handleDrawerOpen);
+    const handleDrawerOpen = () => {
+      setDrawerOpen(true);
+    };
 
-      return () => {
-        drawerElement.removeEventListener('ds-close-click', handleDrawerClose as EventListener);
-        toggleButton.removeEventListener('click', handleDrawerOpen);
-      };
-    }
+    drawerElement.addEventListener('ds-close-click', handleDrawerClose);
+    toggleButton.addEventListener('click', handleDrawerOpen);
+
+    return () => {
+      drawerElement.removeEventListener('ds-close-click', handleDrawerClose);
+      toggleButton.removeEventListener('click', handleDrawerOpen);
+    };
   }, [drawerOpen]);
 
   const formattedArgs = {
@@ -162,6 +167,7 @@ const Template = (args) => {
 
   const toggleButtonArgs = {
     'class-name': 'ds-c-drawer__toggle',
+    id: 'ds-button',
     variation: 'ghost',
   };
 
@@ -184,6 +190,13 @@ export const Default = Template.bind({});
 Default.args = {
   heading: 'Drawer Heading',
   'footer-title': 'Footer Title',
+};
+
+export const WithBackdropClickExits = Template.bind({});
+WithBackdropClickExits.args = {
+  'backdrop-click-exits': 'true',
+  'has-focus-trap': 'true',
+  ...Default.args,
 };
 
 export default meta;

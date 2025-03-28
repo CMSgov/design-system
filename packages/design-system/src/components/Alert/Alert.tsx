@@ -10,7 +10,9 @@ import useId from '../utilities/useId';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
-export type AlertVariation = 'error' | 'warn' | 'success';
+// @see https://design.cms.gov/components/alert/?theme=core#informational-default
+// 'informational' should be exposed as part of the type, but is not needed for the prop
+export type AlertVariation = 'error' | 'warn' | 'success' | 'informational';
 export type AlertWeight = 'lightweight';
 
 export interface BaseAlertProps extends AnalyticsOverrideProps {
@@ -63,7 +65,7 @@ export interface BaseAlertProps extends AnalyticsOverrideProps {
   /**
    * A string corresponding to the `Alert` variation classes (`error`, `warn`, `success`)
    */
-  variation?: AlertVariation;
+  variation?: Exclude<AlertVariation, 'informational'>;
 }
 
 export type AlertProps = BaseAlertProps &
@@ -93,6 +95,7 @@ export const Alert = (props: AlertProps) => {
     className,
     autoFocus,
     heading,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     headingId: _headingId,
     headingLevel,
     hideIcon,
@@ -100,8 +103,11 @@ export const Alert = (props: AlertProps) => {
     role,
     variation,
     weight,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     analytics,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     analyticsLabelOverride,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onAnalyticsEvent,
     ...alertProps
   } = props;

@@ -10,6 +10,7 @@ const storySkipList = [
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog
   'components-drawer--default', // Doesn't show the open drawer
+  'components-drawer--backdrop-click-exits', // Also doesn't show the open drawer
   'components-dropdown--option-groups', // Redundant in its unopened state
   'components-dropdown--html-option-groups', // Redundant
   'components-dropdown--html-options', // Redundant
@@ -36,6 +37,7 @@ const storySkipList = [
   'web-components-ds-autocomplete--groups-and-standalone-items', // Redundant
   'web-components-ds-autocomplete--item-groups', // Redundant
   'web-components-ds-autocomplete--async-items', // Redundant
+  'web-components-ds-drawer--with-backdrop-click-exits', // Doesn't show the open drawer
 ];
 
 const storyUseAxeLegacyModeList = [
@@ -86,6 +88,7 @@ stories.forEach((story) => {
           await expectScreenshot(page, `${story.id}-${theme}.png`);
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         test(`passes a11y checks`, async ({ browser }, workerInfo) => {
           test.skip(
             !a11yTestProjects.includes(workerInfo.project.name),

@@ -80,6 +80,13 @@ export interface BaseChoiceProps {
    * The `input` `value` attribute
    */
   value: ChoiceValue;
+  /**
+   * Determines whether the label should be hidden from screen readers.
+   * Set to `true` to apply `aria-hidden="true"` to the label.
+   * This is useful in cases where the label does not provide valuable context for screen reader users,
+   * such as when the associated input already has an accessible name.
+   */
+  labelHidden?: boolean;
 }
 
 export type ChoiceProps = BaseChoiceProps &
@@ -172,6 +179,7 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
     size,
     checkedChildren,
     uncheckedChildren,
+    labelHidden,
     ...inputProps
   } = props;
 
@@ -194,7 +202,7 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
           ref={inputRef}
           aria-describedby={describeField({ ...props, errorId, hintId })}
         />
-        <Label {...labelProps} fieldId={id} />
+        <Label labelHidden={labelHidden ? true : undefined} {...labelProps} fieldId={id} />
         {hintElement}
         {errorElement}
       </div>
