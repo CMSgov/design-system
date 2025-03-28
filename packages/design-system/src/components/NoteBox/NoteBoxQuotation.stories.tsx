@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import NoteBox from './NoteBox';
-import { NoteBoxQuotation } from './NoteBoxQuotation';
+import NoteBoxQuotation from './NoteBoxQuotation';
 import { QuotationMarkIcon } from '../Icons';
 
 const boxContentMeta: Meta = {
