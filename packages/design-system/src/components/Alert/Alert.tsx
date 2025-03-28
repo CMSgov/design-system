@@ -95,6 +95,7 @@ export const Alert = (props: AlertProps) => {
     className,
     autoFocus,
     heading,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     headingId: _headingId,
     headingLevel,
     hideIcon,
@@ -102,8 +103,11 @@ export const Alert = (props: AlertProps) => {
     role,
     variation,
     weight,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     analytics,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     analyticsLabelOverride,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onAnalyticsEvent,
     ...alertProps
   } = props;

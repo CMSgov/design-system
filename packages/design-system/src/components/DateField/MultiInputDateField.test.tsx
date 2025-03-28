@@ -1,8 +1,8 @@
 jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MultiInputDateField } from './MultiInputDateField';
 import defaultDateFormatter from './defaultDateFormatter';
-import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
 
 describe('MultiInputDateField', () => {
   it('renders', () => {
@@ -51,7 +51,8 @@ describe('MultiInputDateField', () => {
     expect(hint.classList).toContain(customHintClass);
   });
 
-  it('accepts a custom dateFormatter', () => {
+  it('accepts a custom dateFormatter', async () => {
+    const user = userEvent.setup();
     const dateFormatter = ({ day, month, year }) => `${year}-${month}-${day}`;
     const onChange = jest.fn();
     render(
@@ -66,7 +67,7 @@ describe('MultiInputDateField', () => {
     );
 
     const monthInput = screen.getByLabelText(/month/i);
-    userEvent.type(monthInput, '2');
+    await user.type(monthInput, '2');
 
     expect(onChange.mock.calls[0][1]).toEqual('1111-2-3');
   });
