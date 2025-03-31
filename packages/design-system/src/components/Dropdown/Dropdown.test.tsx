@@ -78,10 +78,6 @@ function expectDropdownToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 }
 
-async function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 describe('Dropdown', () => {
   afterEach(() => {
     jest.clearAllTimers();
