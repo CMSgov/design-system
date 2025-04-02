@@ -37,13 +37,13 @@ body:
       value: 'Desktop (please complete the following information):'
   - type: input
     attributes:
-      label: Operating System
+      label: Desktop Operating System
   - type: input
     attributes:
-      label: Browser
+      label: Desktop Browser Name
   - type: input
     attributes:
-      label: Browser Version
+      label: Desktop Browser Version
   - type: markdown
     attributes:
       value: 'Smartphone (please complete the following information):'
@@ -53,15 +53,15 @@ body:
       description: e.g. iPhone6
   - type: input
     attributes:
-      label: OS
+      label: Mobile Operating System
       description: e.g. iOS8.1
   - type: input
     attributes:
-      label: Browser
+      label: Mobile Browser Name
       description: e.g. stock brower, Safari etc.
   - type: input
     attributes:
-      label: Version
+      label: Mobile Browser Version
       description: e.g. 22
   - type: textarea
     attributes:
