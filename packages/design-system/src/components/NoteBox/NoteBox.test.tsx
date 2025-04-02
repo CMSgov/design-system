@@ -1,6 +1,6 @@
 import { QuotationMarkIcon } from '../Icons';
 import NoteBox from './NoteBox';
-import { NoteBoxQuotation } from './NoteBoxQuotation';
+import NoteBoxQuotation from './NoteBoxQuotation';
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {
