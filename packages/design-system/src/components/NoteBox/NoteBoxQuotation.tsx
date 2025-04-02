@@ -27,7 +27,7 @@ export type NoteBoxQuotationProps = RequireAtLeastOne<
   'citation' | 'author'
 >;
 
-export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
+const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
   props: NoteBoxQuotationProps
 ) => {
   const { author, children, citation, className } = props;
@@ -39,7 +39,8 @@ export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     if (citation) {
       return (
         <cite className="ds-c-note-box-quotation--citation">
-          {`\u2014`} {citation}
+          {`\u2014`}
+          {citation}
         </cite>
       );
     }
@@ -47,7 +48,8 @@ export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     if (author) {
       return (
         <>
-          {`\u2014`} {author}
+          {`\u2014`}
+          {author}
         </>
       );
     }
@@ -70,3 +72,5 @@ export const NoteBoxQuotation: FunctionComponent<NoteBoxQuotationProps> = (
     </figure>
   );
 };
+
+export default NoteBoxQuotation;

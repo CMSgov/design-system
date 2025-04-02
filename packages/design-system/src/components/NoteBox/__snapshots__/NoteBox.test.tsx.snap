@@ -56,7 +56,6 @@ exports[`NoteBox renders quote option properly 1`] = `
             class="ds-c-note-box-quotation--citation"
           >
             —
-             
             Test Citation
           </cite>
         </figcaption>
