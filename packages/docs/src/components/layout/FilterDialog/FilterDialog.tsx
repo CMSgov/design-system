@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import type * as React from 'react';
-import NativeDialog from '@cmsgov/design-system/src/components/NativeDialog/NativeDialog.tsx';
+import { Dialog } from '@cmsgov/design-system';
 import uniqueId from 'lodash/uniqueId';
 import classNames from 'classnames';
-import mergeRefs from '@cmsgov/design-system/src/components/utilities/mergeRefs.ts';
-import CloseButton from './CloseButton';
 
 export interface FilterDialogProps {
   /**
@@ -59,29 +57,28 @@ export interface FilterDialogProps {
  */
 export const FilterDialog = (props: FilterDialogProps) => {
   const id = useRef(props.id || uniqueId('filter-dialog-')).current;
-  const headingRef = mergeRefs([props.headingRef, useRef()]);
-  const headingId = props.headingId ?? `${id}__heading`;
-  const Heading = `h${props.headingLevel}` as const;
+  // const headingRef = mergeRefs([props.headingRef, useRef()]);
+  // const headingId = props.headingId ?? `${id}__heading`;
+  // const Heading = `h${props.headingLevel}` as const;
+
+  const actions = <div className="ds-c-filter-dialog__actions">{props.actions}</div>;
 
   return (
-    <NativeDialog
+    <Dialog
       className={classNames(props.className, 'ds-c-filter-dialog')}
       // We're not using the NativeDialog as a modal, so exit is never called
-      exit={() => null}
+      onExit={props.onExit}
       id={id}
       isOpen={props.isOpen}
+      heading={props.heading}
+      alert={false}
+      backdropClickExits={true}
+      actions={actions}
+      ariaCloseLabel="Close"
+      headerClassName="ds-c-filter-dialog__header"
     >
-      <div className="ds-c-filter-dialog__window" tabIndex={-1} aria-labelledby={headingId}>
-        <div className="ds-c-filter-dialog__header">
-          <Heading id={headingId} className="ds-c-filter-dialog__heading" ref={headingRef}>
-            {props.heading}
-          </Heading>
-          <CloseButton className="ds-c-filter-dialog__close" onClick={props.onExit} />
-        </div>
-        <div className={classNames('ds-c-filter-dialog__body')}>{props.children}</div>
-        <div className="ds-c-filter-dialog__actions">{props.actions}</div>
-      </div>
-    </NativeDialog>
+      {props.children}
+    </Dialog>
   );
 };
 
