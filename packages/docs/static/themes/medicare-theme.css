@@ -132,6 +132,7 @@
 --font-family-body: 'Rubik', 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
 --font-family-button: 'Rubik', 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
 --font-family-link: 'Rubik', 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
+--font-family-pagination: 'Montserrat', 'Avenir', 'Corbel', 'URW Gothic', 'source-sans-pro', 'sans-serif';
 --font-weight-heading-5xl: var(--font-weight-bold);
 --font-weight-heading-4xl: var(--font-weight-bold);
 --font-weight-heading-3xl: var(--font-weight-bold);
