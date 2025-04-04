@@ -9,6 +9,7 @@ import { DropdownSize } from './Dropdown';
 import classNames from 'classnames';
 
 interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
+  ariaInvalid?: React.AriaAttributes['aria-invalid'];
   children?: React.ReactNode;
   componentClass: string;
   heading?: React.ReactNode;
@@ -22,6 +23,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
 }
 
 export function DropdownMenu<T>({
+  ariaInvalid,
   children,
   componentClass,
   heading,
@@ -93,6 +95,7 @@ export function DropdownMenu<T>({
       <ul
         {...listBoxProps}
         id={menuId}
+        aria-invalid={ariaInvalid}
         aria-labelledby={classNames(labelId, heading && headingId)}
         className={`${componentClass}__menu`}
         ref={listBoxRef}

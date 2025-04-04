@@ -139,15 +139,19 @@ describe('Dropdown', () => {
     );
 
     const button = getButton();
-    expect(button).toHaveAttribute('aria-invalid', 'true');
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
+
+    userEvent.click(button);
+
+    const listbox = screen.getByRole('listbox');
+    expect(listbox).toHaveAttribute('aria-invalid', 'true');
 
     const error = container.querySelector(`#${errorId}`);
     expect(error).toMatchSnapshot();
   });
 
-  it('supports bottom placed error', () => {
+  it('supports bottom placed error', async () => {
     const errorId = 'my-error';
     const { container } = makeDropdown(
       {
@@ -159,9 +163,13 @@ describe('Dropdown', () => {
     );
 
     const button = getButton();
-    expect(button).toHaveAttribute('aria-invalid', 'true');
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
+
+    userEvent.click(button);
+
+    const listbox = screen.getByRole('listbox');
+    expect(listbox).toHaveAttribute('aria-invalid', 'true');
 
     const dropdown = container.querySelector('.ds-c-dropdown');
     const error = container.querySelector(`#${errorId}`);
