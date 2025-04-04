@@ -127,9 +127,9 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
-  it('shows error message', () => {
+  it('shows error message', async () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown(
+    const { container, user } = makeDropdown(
       {
         errorMessage: 'Error',
         errorPlacement: 'top',
@@ -142,7 +142,7 @@ describe('Dropdown', () => {
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
 
-    userEvent.click(button);
+    await user.click(button);
 
     const listbox = screen.getByRole('listbox');
     expect(listbox).toHaveAttribute('aria-invalid', 'true');
@@ -153,7 +153,7 @@ describe('Dropdown', () => {
 
   it('supports bottom placed error', async () => {
     const errorId = 'my-error';
-    const { container } = makeDropdown(
+    const { container, user } = makeDropdown(
       {
         errorMessage: 'Error',
         errorPlacement: 'bottom',
@@ -166,7 +166,7 @@ describe('Dropdown', () => {
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
 
-    userEvent.click(button);
+    await user.click(button);
 
     const listbox = screen.getByRole('listbox');
     expect(listbox).toHaveAttribute('aria-invalid', 'true');
