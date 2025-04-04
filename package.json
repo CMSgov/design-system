@@ -167,6 +167,7 @@
     "tsx": "^4.19.2",
     "typescript": "^5.4.3",
     "url-loader": "^4.1.1",
+    "vite": "^6.2.4",
     "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
