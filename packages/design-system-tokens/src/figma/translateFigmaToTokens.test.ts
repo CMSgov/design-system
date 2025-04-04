@@ -12,7 +12,7 @@ describe('tokenFilesFromLocalVariables', () => {
   it('matches snapshot', async () => {
     const resolvers = {
       number: (variableName: string) => Promise.resolve(guessNumberType(variableName) ?? 'number'),
-      string: (variableName: string) => Promise.resolve('string' as StringType),
+      string: () => Promise.resolve('string' as StringType),
     };
     const tokenFiles = await tokenFilesFromLocalVariables(testResponse, {}, resolvers);
     const expected = {

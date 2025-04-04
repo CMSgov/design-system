@@ -1,4 +1,3 @@
-import { UtagContainer } from '../../analytics/index';
 import { config } from '../../config';
 import { getByRole, fireEvent } from '@testing-library/react';
 import './ds-button';

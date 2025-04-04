@@ -1,9 +1,8 @@
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
-import avoidRefresh from '../../helpers/avoidRefresh';
 import PublishDate from '../content/PublishDate';
 import useTheme from '../../helpers/useTheme';
-import { MdxQuery } from '../../helpers/graphQLTypes';
+import type { MdxQuery } from '../../helpers/graphQLTypes';
 import { graphql, Link } from 'gatsby';
 import BackIcon from '../icons/BackIcon';
 import PageFeedback from '../content/PageFeedback';
@@ -11,8 +10,12 @@ import PageFeedback from '../content/PageFeedback';
 /**
  * Template for information content pages.
  */
-const BlogPage = ({ data, location }: MdxQuery) => {
-  const { frontmatter, body, tableOfContents, slug } = data.mdx;
+const BlogPage = ({ data, location, children }: MdxQuery) => {
+  const {
+    frontmatter,
+    tableOfContents,
+    fields: { slug },
+  } = data.mdx;
   const theme = useTheme();
   const backLink = (
     <Link to="/blog/">
@@ -38,7 +41,7 @@ const BlogPage = ({ data, location }: MdxQuery) => {
         </header>
       }
     >
-      <ContentRenderer data={body} theme={theme} />
+      <ContentRenderer theme={theme}>{children}</ContentRenderer>
       <PageFeedback />
       <div className="ds-u-margin-top--4">{backLink}</div>
     </Layout>
@@ -53,11 +56,12 @@ export const query = graphql`
         title
         date
       }
-      slug
-      body
+      fields {
+        slug
+      }
       tableOfContents(maxDepth: 3)
     }
   }
 `;
 
-export default avoidRefresh(BlogPage);
+export default BlogPage;
