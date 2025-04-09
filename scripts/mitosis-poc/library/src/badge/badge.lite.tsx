@@ -35,7 +35,7 @@ export interface BadgeProps {
 export default function Badge(props: BadgeProps) {
   return (
     <span
-      class={[
+      className={[
         'ds-c-badge',
         props.variation ? `ds-c-badge--${props.variation}` : '',
         props.size === 'big' ? 'ds-c-badge--big' : '',
@@ -44,13 +44,8 @@ export default function Badge(props: BadgeProps) {
         .filter(Boolean)
         .join(' ')}
     >
-      {props.variation ? (
-        <span class="ds-u-visibility--screen-reader">
-          {props.variation}:
-        </span>
-      ) : null}
+      {props.variation && <span className="ds-u-visibility--screen-reader">{props.variation}:</span>}
       {props.children}
     </span>
   );
 }
-
