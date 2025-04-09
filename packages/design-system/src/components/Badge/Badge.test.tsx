@@ -1,4 +1,4 @@
-import Badge from './Badge';
+import Badge from '../mitosis-output/react/src/badge/badge'
 import { render, screen } from '@testing-library/react';
 
 const defaultProps = {

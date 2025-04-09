@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Badge from './Badge';
+// Import Badge from mitosis output:
+import Badge from '../mitosis-output/react/src/badge/badge'
 
 const meta: Meta = {
   component: Badge,
