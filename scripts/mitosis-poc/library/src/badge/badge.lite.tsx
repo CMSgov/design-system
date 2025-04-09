@@ -1,4 +1,4 @@
-// import { useProps, useState, Show } from '@builder.io/mitosis';
+// import { Show } from '@builder.io/mitosis';
 
 // export interface BadgeProps {
 //   className?: string;
@@ -44,7 +44,9 @@ export default function Badge(props: BadgeProps) {
         .filter(Boolean)
         .join(' ')}
     >
-      {props.variation && <span className="ds-u-visibility--screen-reader">{props.variation}:</span>}
+      {props.variation && (
+        <span className="ds-u-visibility--screen-reader">{props.variation}:</span>
+      )}
       {props.children}
     </span>
   );
