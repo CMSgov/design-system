@@ -1,11 +1,11 @@
-// import { Show } from '@builder.io/mitosis';
+import { Show } from '@builder.io/mitosis';
 
-// export interface BadgeProps {
-//   className?: string;
-//   children: any;
-//   size?: 'big';
-//   variation?: 'info' | 'success' | 'warn' | 'alert';
-// }
+export interface BadgeProps {
+  className?: string;
+  children: any;
+  size?: 'big';
+  variation?: 'info' | 'success' | 'warn' | 'alert';
+}
 
 // export default function Badge(props: BadgeProps) {
 //   const variation = props.variation;
@@ -25,13 +25,6 @@
 //   );
 // }
 
-export interface BadgeProps {
-  className?: string;
-  children: any;
-  size?: 'big';
-  variation?: 'info' | 'success' | 'warn' | 'alert';
-}
-
 export default function Badge(props: BadgeProps) {
   return (
     <span
@@ -44,9 +37,9 @@ export default function Badge(props: BadgeProps) {
         .filter(Boolean)
         .join(' ')}
     >
-      {props.variation && (
+      <Show when={props.variation}>
         <span className="ds-u-visibility--screen-reader">{props.variation}:</span>
-      )}
+      </Show>
       {props.children}
     </span>
   );

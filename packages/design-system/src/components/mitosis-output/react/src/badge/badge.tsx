@@ -1,13 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
-// import { useProps, useState, Show } from '@builder.io/mitosis';
-
-// export interface BadgeProps {
-//   className?: string;
-//   children: any;
-//   size?: 'big';
-//   variation?: 'info' | 'success' | 'warn' | 'alert';
-// }
+export interface BadgeProps {
+  className?: string;
+  children: any;
+  size?: 'big';
+  variation?: 'info' | 'success' | 'warn' | 'alert';
+}
 
 // export default function Badge(props: BadgeProps) {
 //   const variation = props.variation;
@@ -27,29 +25,20 @@ import * as React from "react";
 //   );
 // }
 
-export interface BadgeProps {
-  className?: string;
-  children: any;
-  size?: "big";
-  variation?: "info" | "success" | "warn" | "alert";
-}
-
 function Badge(props: BadgeProps) {
   return (
     <span
       className={[
-        "ds-c-badge",
-        props.variation ? `ds-c-badge--${props.variation}` : "",
-        props.size === "big" ? "ds-c-badge--big" : "",
-        props.className ?? "",
+        'ds-c-badge',
+        props.variation ? `ds-c-badge--${props.variation}` : '',
+        props.size === 'big' ? 'ds-c-badge--big' : '',
+        props.className ?? '',
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
     >
       {props.variation ? (
-        <span className="ds-u-visibility--screen-reader">
-          {props.variation}:
-        </span>
+        <span className="ds-u-visibility--screen-reader">{props.variation}:</span>
       ) : null}
       {props.children}
     </span>
