@@ -34,11 +34,30 @@ The design system uses multiples of `8px` for all spacing values: dimensions, pa
 | Heading--2xl | `--spacer-7`    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
 | Heading--3xl | No variable     | 72px  |                                                              |
 
+## Examples
+<h1 class="ds-text-heading--2xl">Spacing example heading (2xl)</h1>
+<div class="ds-u-fill--gray-lightest example-spacer-7 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">
+  <code class="ds-u-font-family--sans">--spacer-7</code>
+</div>
+We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
+<h1 class="ds-text-heading--lg">Spacing example heading (lg)</h1>
+<div class="ds-u-fill--gray-lightest example-spacer-5 ds-u-display--flex ds-u-align-items--center ds-u-justify-content--center">
+  <code class="ds-u-font-family--sans">--spacer-5</code>
+</div>
+We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defence, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.
 
+## Spacing between components
 
-## Learn more
+Existing design components in Figma have built-in spacing, including margins and padding.
 
-- [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
+If you need additional paddings and margins, use spacers to maintain the 8pt rhythm established by the design system. 
+
+- Consider the existing vertical rhythm on { CMS | Healthcare | Medicare | Core } when making decisions about how to vertically space components.
+- As a general rule, default to 16px (`--spacer-2`) above and below each component or content area.
+- Avoid spacing larger than `--spacer-7` either vertically or horizontally.
+- Avoid spacing smaller than `--spacer-half` either vertically or horizontally.
+- Use the existing [grid](/foundation/layout-grid/layout-grid/) to determine horizontal spacing between components. As a general rule, the system uses a 12-column grid with 16px(`--spacer-2`) gutters.
+
 
 | Variable        | Value | Example                                                      |
 | --------------- | ----- | ------------------------------------------------------------ |
@@ -50,3 +69,18 @@ The design system uses multiples of `8px` for all spacing values: dimensions, pa
 | `--spacer-5`    | 40px  | <div class="ds-u-fill--secondary example-spacer-5"></div>    |
 | `--spacer-6`    | 48px  | <div class="ds-u-fill--secondary example-spacer-6"></div>    |
 | `--spacer-7`    | 56px  | <div class="ds-u-fill--secondary example-spacer-7"></div>    |
+
+
+## Accessibility
+Existing components' spacing conforms to accessibility best practices for legibility and interaction.
+
+When creating your own components or layouts, consider these best practices to ensure your content is accessible.
+
+- Use a minimum of 24px (`--spacer-3`) between interactive elements.
+- If not using the `ds-content` class to format text, space between paragraphs of body copy should be two times the font size in use to ensure readability.
+  - For example: for a 16px font size (the system's default body copy size), paragraphs should have 32px (`--spacer-4`) of space beneath or between them.
+
+## Learn more
+
+- [The 8-Point Grid](https://spec.fm/specifics/8-pt-grid)
+
