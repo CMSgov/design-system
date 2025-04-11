@@ -1,7 +1,7 @@
 {
   "name": "astro-react-17-example",
   "type": "module",
-  "version": "12.1.0-beta.0",
+  "version": "12.1.0-beta.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,7 +14,7 @@
     "@astrojs/check": "0.9.4",
     "@astrojs/preact": "4.0.1",
     "@astrojs/react": "4.1.2",
-    "@cmsgov/design-system": "12.1.0-beta.0",
+    "@cmsgov/design-system": "12.1.0-beta.2",
     "astro": "5.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
