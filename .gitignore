@@ -60,3 +60,9 @@ packages/docs/static/storybook
 packages/docs/static/images
 packages/docs/static/fonts
 packages/docs/data
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
