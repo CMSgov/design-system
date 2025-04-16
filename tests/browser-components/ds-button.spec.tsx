@@ -27,23 +27,39 @@ test('renders ds-button', async ({ mount }) => {
   await expect(component).toContainText('Foo');
 });
 
-// test('fires a custom ds-click event on click', async ({ mount, page }) => {
-//   const component = await mount(<ds-button {...defaultProps}></ds-button>);
+test.only('fires a custom ds-click event on click', async ({ mount, page }) => {
+  const component = await mount(<ds-button {...defaultProps}></ds-button>);
 
-//   await page.evaluate(() => {
-//     const buttonRoot = document.querySelector('ds-button');
-//     if (!buttonRoot) return;
+  await page.exposeFunction('handleEvent', (event) => {
+    console.log('handling: ' + event.name);
+  });
+  await page.evaluate(() => {
+    window.addEventListener('click', () => (window as any).handleEvent({ name: 'click' }));
+  });
+  await page.mouse.click(50, 50);
 
-//     (window as any).dsClickFired = false;
+  await page.evaluate(() => {
+    const buttonRoot = document.querySelector('ds-button');
+    if (!buttonRoot) {
+      console.log('no-button-root');
+      return;
+    }
 
-//     buttonRoot.addEventListener('ds-click', () => {
-//       (window as any).dsClickFired = true;
-//     }, { once: true });
-//   });
+    (window as any).dsClickFired = false;
 
-//   await component.click();
+    buttonRoot.addEventListener(
+      'ds-click',
+      () => {
+        (window as any).dsClickFired = true;
+        (window as any).handleEvent({ name: 'ds-click' });
+      },
+      { once: true }
+    );
+  });
 
-//   await page.waitForFunction(() => (window as any).dsClickFired);
+  await component.dispatchEvent('ds-click');
 
-//   expect(true).toBe(true);
-// });
+  await page.waitForFunction(() => (window as any).dsClickFired);
+
+  expect(true).toBe(true);
+});
