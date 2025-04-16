@@ -1,7 +1,7 @@
 {
   "name": "angular-example",
   "private": true,
-  "version": "12.1.0-beta.0",
+  "version": "12.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
-    "@cmsgov/design-system": "12.1.0-beta.0",
+    "@cmsgov/design-system": "12.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
