@@ -1,0 +1,198 @@
+---
+title: Table Elements
+intro: Learn how to build accessible and responsive tables using semantic HTML and CMS Design System utility classes.
+---
+import { Alert } from '@cmsgov/design-system'
+
+## Overview
+
+The CMS Design System encourages using semantic HTML table elements (`<table>`, `<thead>`, `<caption>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`) in combination with our utility CSS classes. 
+This approach improves accessibility and supports framework-agnostic implementations.
+
+This guidance outlines how to replicate the core functionality of our React `Table` component using native HTML and Design System classes.
+
+<Alert variation="warn" heading="Deprecation Notice">
+  The React <code>Table</code> component will eventually be deprecated in favor of these HTML-based patterns.
+</Alert>
+
+### Simple Table
+
+Use a simple table when you need to display static, tabular data with a single header row and consistent column structure.
+
+#### How to build a simple table
+
+- Use the `ds-c-table` class on the `<table>` to apply base styling.
+- Use `ds-c-table__caption` for visible captions to provide context.
+- Use the `ds-u-text-align--left` class on headers and cells to apply consistent alignment.
+- Follow semantic HTML best practices for accessibility, such as using `<th scope="col">` for column headers and `<caption>` for context.
+
+Here’s an example:
+<table class="ds-c-table">
+  <caption class="ds-c-table__caption">Founding documents</caption>
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-text-align--left" role="columnheader" scope="col" id="documentTitle">Document title</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col" id="description">Description</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col" id="links">Links</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col" id="year">Year</th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <td class="ds-u-text-align--left" role="cell" headers="documentTitle" data-title="Document title">Declaration of Independence</td>
+      <td class="ds-u-text-align--left" role="cell" headers="description" data-title="Description">Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
+      <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+        <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">View</a>
+      </td>
+      <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1776</td>
+    </tr>
+    <tr role="row">
+      <td class="ds-u-text-align--left" role="cell" headers="documentTitle" data-title="Document title">Articles of Confederation</td>
+      <td class="ds-u-text-align--left" role="cell" headers="description" data-title="Description">This document served as the United Statesʼ first constitution.</td>
+      <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+        <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">View</a>
+      </td>
+      <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1777</td>
+    </tr>
+    <tr role="row">
+      <td class="ds-u-text-align--left" role="cell" headers="documentTitle" data-title="Document title">The Constitution</td>
+      <td class="ds-u-text-align--left" role="cell" headers="description" data-title="Description">Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states</td>
+      <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+        <a href="https://billofrightsinstitute.org/primary-sources/constitution">View</a>
+      </td>
+      <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1787</td>
+    </tr>
+    <tr role="row">
+      <td class="ds-u-text-align--left" role="cell" headers="documentTitle" data-title="Document title">Bill of Rights</td>
+      <td class="ds-u-text-align--left" role="cell" headers="description" data-title="Description">The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
+      <td class="ds-u-text-align--left" role="cell" headers="links" data-title="Links">
+        <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">View</a>
+      </td>
+      <td class="ds-u-text-align--left" role="cell" headers="year" data-title="Year">1791</td>
+    </tr>
+  </tbody>
+</table>
+
+### Multi-header Table
+
+Use a multi-header table when your data requires grouped columns with separate subheaders.
+
+#### How to build a multi-header table
+
+- To group related columns in the first header row, use `<th colspan="X">`, where X is the number of columns that belong to the group.
+- In the second header row, use `<th scope="col">` for each individual sub-column.
+- Assign `scope="row"` to the first `<th>` in each body row for accessibility.
+- Use `ds-u-text-align--left` for consistent alignment with other table variants.
+
+Here’s an example:
+
+<table class="ds-c-table">
+  <caption class="ds-c-table__caption">Household members</caption>
+  <colgroup span="2"></colgroup>
+  <colgroup span="2"></colgroup>
+  <thead role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-text-align--left" role="columnheader" scope="col"></th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="colgroup" colspan="2">Address</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="colgroup" colspan="2">Employment</th>
+    </tr>
+    <tr role="row">
+      <th class="ds-u-text-align--left" role="columnheader" scope="col">Name</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col">Street</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col">ZIP code</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col">Employer</th>
+      <th class="ds-u-text-align--left" role="columnheader" scope="col">Industry</th>
+    </tr>
+  </thead>
+  <tbody role="rowgroup">
+    <tr role="row">
+      <th class="ds-u-text-align--left" role="rowheader" scope="row">John Doe</th>
+      <td class="ds-u-text-align--left" role="cell">123 Braavos Ave.</td>
+      <td class="ds-u-text-align--left" role="cell">20005</td>
+      <td class="ds-u-text-align--left" role="cell">Acme Co.</td>
+      <td class="ds-u-text-align--left" role="cell">Healthcare</td>
+    </tr>
+    <tr role="row">
+      <th class="ds-u-text-align--left" role="rowheader" scope="row">Jane Doe</th>
+      <td class="ds-u-text-align--left" role="cell">456 King's Landing</td>
+      <td class="ds-u-text-align--left" role="cell">20005</td>
+      <td class="ds-u-text-align--left" role="cell">Acme Co.</td>
+      <td class="ds-u-text-align--left" role="cell">Healthcare</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Stackable Table
+
+Stackable tables are useful when you need to display tabular data on small screens. On narrow viewports, each row stacks vertically, and each cell includes a bolded label pulled from its `data-title` attribute.
+
+#### How to build a stackable table
+
+- Add the `ds-c-table ds-c-table--stacked` classes to your `<table>`. See the next section to choose the appropriate `stacked` variant for your use case.
+- For each `<td>` cell, include a `data-title="[Column name]"` attribute that matches its corresponding header.
+- Use `ds-u-text-align--left` for consistent alignment with other table variants.
+
+#### Choosing a stackable variant
+
+The Design System provides size-based modifiers that control when the table switches to a stacked layout.
+
+| Class | Stacking behavior | Breakpoint |
+|-------|-------------------|------------|
+| `ds-c-table--stacked` | Always stacked, on all screen sizes | — |
+| `ds-c-sm-table--stacked` | Stacked on small screens only | `≤ 544px` |
+| `ds-c-md-table--stacked` | Stacked on medium screens and below | `≤ 768px` |
+| `ds-c-lg-table--stacked` | Stacked on large screens and below | `≤ 1024px` |
+
+The example below uses the `ds-c-table--stacked` class:
+
+<table class="ds-c-table ds-c-table--stacked">
+  <caption class="ds-c-table__caption">Founding documents</caption>
+  <thead>
+    <tr>
+      <th class="ds-u-text-align--left" scope="col">Document title</th>
+      <th class="ds-u-text-align--left" scope="col">Description</th>
+      <th class="ds-u-text-align--left" scope="col">Links</th>
+      <th class="ds-u-text-align--left" scope="col">Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="ds-u-text-align--left" data-title="Document title">Declaration of Independence</td>
+      <td class="ds-u-text-align--left" data-title="Description">Statement adopted by the Continental Congress declaring independence from the British Empire.</td>
+      <td class="ds-u-text-align--left" data-title="Links">
+        <a href="https://billofrightsinstitute.org/founding-documents/declaration-of-independence/">View</a>
+      </td>
+      <td class="ds-u-text-align--left" data-title="Year">1776</td>
+    </tr>
+    <tr>
+      <td class="ds-u-text-align--left" data-title="Document title">Articles of Confederation</td>
+      <td class="ds-u-text-align--left" data-title="Description">This document served as the United Statesʼ first constitution.</td>
+      <td class="ds-u-text-align--left" data-title="Links">
+        <a href="https://www.archives.gov/milestone-documents/articles-of-confederation">View</a>
+      </td>
+      <td class="ds-u-text-align--left" data-title="Year">1777</td>
+    </tr>
+    <tr>
+      <td class="ds-u-text-align--left" data-title="Document title">The Constitution</td>
+      <td class="ds-u-text-align--left" data-title="Description">Replaced the Articles of Confederation with a new form of government. It created a federal system with a national government composed of 3 separated powers, and included both reserved and concurrent powers of states</td>
+      <td class="ds-u-text-align--left" data-title="Links">
+        <a href="https://billofrightsinstitute.org/primary-sources/constitution">View</a>
+      </td>
+      <td class="ds-u-text-align--left" data-title="Year">1787</td>
+    </tr>
+    <tr>
+      <td class="ds-u-text-align--left" data-title="Document title">Bill of Rights</td>
+      <td class="ds-u-text-align--left" data-title="Description">The first ten amendments of the U.S. Constitution guaranteeing rights and freedoms.</td>
+      <td class="ds-u-text-align--left" data-title="Links">
+        <a href="https://billofrightsinstitute.org/founding-documents/bill-of-rights/">View</a>
+      </td>
+      <td class="ds-u-text-align--left" data-title="Year">1791</td>
+    </tr>
+  </tbody>
+</table>
+
+<Alert heading="Coming soon">
+  The Design System will offer guidance and tooling for implementing scrollable tables in both HTML and React. Stay tuned for updates!
+</Alert>
+
