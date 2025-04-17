@@ -90,27 +90,16 @@ export function removeUndefined<T>(obj: T): T {
   return obj;
 }
 
-export const isGroup = (
-  item: AutocompleteItem | AutocompleteItemGroup
-): item is AutocompleteItemGroup => {
-  return (
-    typeof (item as AutocompleteItemGroup).label === 'string' &&
-    Array.isArray((item as AutocompleteItemGroup).items)
-  );
-};
-
 export const findItemById = (
   id: string,
   items: AutocompleteItems
 ): AutocompleteItem | undefined => {
   for (const item of items) {
-    if (isGroup(item)) {
+    if ('items' in item) {
       const match = item.items.find((child) => child.id === id);
       if (match) return match;
     } else {
       if (item.id === id) return item;
     }
   }
-
-  return undefined;
 };

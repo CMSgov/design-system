@@ -233,8 +233,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       : undefined,
     onSelectionChange: onChange
       ? (selectedKey) => {
-          const selectedItem =
-            items && selectedKey != null && findItemById(String(selectedKey), items);
+          const selectedItem = items ? findItemById(String(selectedKey), items) : undefined;
           // We don't call onChange when the user deletes text, even though react-aria will call
           // this function with `null` if the input is cleared out. This is to maintain backwards
           // compatability, but we could consider changing this behavior in the future. If we
