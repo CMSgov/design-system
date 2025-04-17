@@ -12,6 +12,7 @@ import {
   getTextFieldChild,
   getActiveDescendant,
   removeUndefined,
+  findItemById,
 } from './utils';
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
@@ -232,7 +233,8 @@ export const Autocomplete = (props: AutocompleteProps) => {
       : undefined,
     onSelectionChange: onChange
       ? (selectedKey) => {
-          const selectedItem = items ? items.find((item) => selectedKey === item.id) : undefined;
+          const selectedItem =
+            items && selectedKey != null && findItemById(String(selectedKey), items);
           // We don't call onChange when the user deletes text, even though react-aria will call
           // this function with `null` if the input is cleared out. This is to maintain backwards
           // compatability, but we could consider changing this behavior in the future. If we
