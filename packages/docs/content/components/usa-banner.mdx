@@ -48,8 +48,9 @@ The following CSS variables can be overridden to customize UsaBanner components:
 <Alert weight="lightweight">
 
 <p className="ds-c-alert__text">
-  The USA Banner uses predefined variables from a theme's global tokens to determine the default
-  width of its content and gutters (padding).
+  {
+    "The USA Banner uses predefined variables from a theme's global tokens to determine the default width of its content and gutters (padding)."
+  }
 </p>
 
 For most applications this should be sufficient, but for others with custom layouts it can result in the banner's content appearing misaligned with the content of the rest of a page. To fix this, you can customize the `--usa-banner__max-width` and `--usa-banner-gutter-width` variables to match the application's page width and gutter width.
@@ -87,6 +88,7 @@ To illustrate how this works, here's an example of how to customize the banner's
 ## Accessibility testing
 
 ### Keyboard testing
+
 - Confirm that the banner can be accessed, opened, and closed with only a keyboard.
 - When navigating with a keyboard:
   - Use the **Tab** key to move forward and **Shift + Tab** to move backward to reach the banner.
@@ -97,11 +99,13 @@ To illustrate how this works, here's an example of how to customize the banner's
 - The banner button is the first interactive object after the “skip navigation” link. When you navigate your site with a keyboard and bypass the “skip navigation” link, the "Here’s how you know” banner button is the first focusable item on the page.
 
 ### Screen reader testing
+
 Use a screen reader (such as **NVDA**, **JAWS**, or **VoiceOver**) to test the banner.
-- Screen reader announces button. When you use a screen reader and access the banner, the screen reader uses the word "button" to announce the "Here’s how you know" button.  
-- Screen reader announces collapsed and expanded states. When you first access the "Here’s how you know" button while using a screen reader, the screen reader announces that it is "collapsed." When activated, the screen reader announces "expanded."  
-- Screen reader does not announce decorative icons. When you open the banner with a screen reader, you don’t hear any information about the flag, blue government building, or green circled lock icon. When you view the `alt` text for the flag, blue government building, and green circled lock icon, you see that the `alt` attribute has an empty value.  
-- Screen reader announces the lock icon inside the parentheses. When you open the banner with a screen reader, the screen reader uses the words "lock icon"å to announce the lock icon inside the parentheses.  
+
+- Screen reader announces button. When you use a screen reader and access the banner, the screen reader uses the word "button" to announce the "Here’s how you know" button.
+- Screen reader announces collapsed and expanded states. When you first access the "Here’s how you know" button while using a screen reader, the screen reader announces that it is "collapsed." When activated, the screen reader announces "expanded."
+- Screen reader does not announce decorative icons. When you open the banner with a screen reader, you don’t hear any information about the flag, blue government building, or green circled lock icon. When you view the `alt` text for the flag, blue government building, and green circled lock icon, you see that the `alt` attribute has an empty value.
+- Screen reader announces the lock icon inside the parentheses. When you open the banner with a screen reader, the screen reader uses the words "lock icon"å to announce the lock icon inside the parentheses.
 
 From [USWDS' Banner accessibility tests](https://designsystem.digital.gov/components/banner/accessibility-tests/)
 

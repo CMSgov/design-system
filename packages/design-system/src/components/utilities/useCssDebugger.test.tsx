@@ -1,5 +1,5 @@
 import { useCssDebugger } from './useCssDebugger';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 describe('useCssDebugger', () => {
   it('should set --debugger to true', () => {
