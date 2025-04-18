@@ -89,3 +89,17 @@ export function removeUndefined<T>(obj: T): T {
   Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
   return obj;
 }
+
+export const findItemById = (
+  id: string,
+  items: AutocompleteItems
+): AutocompleteItem | undefined => {
+  for (const item of items) {
+    if ('items' in item) {
+      const match = item.items.find((child) => child.id === id);
+      if (match) return match;
+    } else {
+      if (item.id === id) return item;
+    }
+  }
+};

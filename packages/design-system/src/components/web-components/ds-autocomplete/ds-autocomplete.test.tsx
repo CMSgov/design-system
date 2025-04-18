@@ -379,6 +379,52 @@ describe('Autocomplete', () => {
     expect(autocompleteField.value).toBe('');
   });
 
+  it('should dispatch ds-change when a grouped item is selected', async () => {
+    const groupedItems = JSON.stringify([
+      {
+        label: 'Fruits',
+        id: 'group-fruits',
+        items: [
+          { id: 'apple', name: 'Apple' },
+          { id: 'banana', name: 'Banana' },
+        ],
+      },
+      {
+        label: 'Vegetables',
+        id: 'group-vegetables',
+        items: [
+          { id: 'carrot', name: 'Carrot' },
+          { id: 'lettuce', name: 'Lettuce' },
+        ],
+      },
+    ]);
+    const { user } = renderAutocomplete({ items: groupedItems }, { delay: 50 });
+
+    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const mockHandler = jest.fn();
+    autocompleteRoot.addEventListener('ds-change', mockHandler);
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+    await user.click(input);
+    await user.type(input, 'ban');
+
+    const matchingItem = screen.getByRole('option', { name: 'Banana' });
+    await user.click(matchingItem);
+
+    expect(input.value).toBe('Banana');
+    expect(mockHandler).toHaveBeenCalledTimes(1);
+    expect(mockHandler).toHaveBeenCalledWith(
+      expect.objectContaining({
+        detail: {
+          selectedItem: { id: 'banana', name: 'Banana' },
+        },
+      })
+    );
+
+    expectMenuToBeClosed();
+    autocompleteRoot.removeEventListener('ds-change', mockHandler);
+  });
+
   it('should call onChange with null item when "Clear search" is clicked', async () => {
     const { user } = renderAutocomplete();
 
