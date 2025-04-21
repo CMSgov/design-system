@@ -19,6 +19,7 @@ import SpacingUtilityExampleList from './SpacingUtilityExampleList';
 import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
+import ThemeLabel from './ThemeLabel';
 import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
 import { linkAnalytics } from '../../helpers/analytics';
@@ -123,6 +124,7 @@ const customComponents = (theme) => ({
   table: TableWithClassnames,
   TextColorList: (props) => <TextColorList theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
+  ThemeLabel: (props) => <ThemeLabel {...props} />,
   TypographyUsageTable: (props) => <TypographyUsageTable theme={theme} {...props} />,
   ul: (props) => TextWithMaxWidth(props, 'ul'),
 });

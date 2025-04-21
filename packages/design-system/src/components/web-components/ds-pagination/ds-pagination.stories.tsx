@@ -35,7 +35,7 @@ export default {
       description: 'Set to "true" to hide instead of disable navigation buttons. Optional.',
       control: 'boolean',
     },
-    hrefTemplate: {
+    'href-template': {
       description:
         "A string used to generate URLs for each page link. The component will find any instance of `{page}` and replace it with the page number. Defaults to `'#page={page}'`.",
       control: 'text',
