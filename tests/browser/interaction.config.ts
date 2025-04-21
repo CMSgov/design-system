@@ -19,5 +19,6 @@ config.snapshotPathTemplate = 'snapshots/stories-interaction/{arg}--{projectName
 config.testDir = '../../packages/';
 config.testIgnore = ['**/docs/**', '**/design-system-tokens/**'];
 config.testMatch = /.*test\.interaction\.ts/;
+config.outputDir = './test-results/interaction';
 
 export default defineConfig(config);

@@ -9,6 +9,15 @@ import type {
 import { writeFileSync, mkdirSync } from 'fs';
 import path from 'path';
 
+function determineOutputSubdir(testPath: string): string {
+  const standardMatch = testPath.match(/\[\w+\]\s*>\s*([\w-]+)\.test\.ts/);
+  if (standardMatch) return standardMatch[1];
+
+  if (testPath.includes('.interaction.ts')) return 'interaction';
+
+  return 'unknown';
+}
+
 class MyReporter implements Reporter {
   private passCount = 0;
   private failCount = 0;
@@ -18,6 +27,7 @@ class MyReporter implements Reporter {
   private isListMode = false;
   private totalTests = 0;
   private currentTestIndex = 0;
+  private testGroup: string | null = null;
 
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];
@@ -67,6 +77,10 @@ class MyReporter implements Reporter {
 
     const hierarchyPath = this.getHierarchyPath(test);
 
+    if (!this.testGroup) {
+      this.testGroup = determineOutputSubdir(hierarchyPath);
+    }
+
     switch (result.status) {
       case 'passed':
         this.passCount++;
@@ -102,7 +116,11 @@ class MyReporter implements Reporter {
       }
     }
 
-    const reportDirectory = path.resolve(__dirname, 'test-results');
+    if (!this.testGroup) {
+      this.testGroup = 'unknown';
+    }
+
+    const reportDirectory = path.resolve(__dirname, `test-results/${this.testGroup}`);
     const reportPath = path.resolve(reportDirectory, 'test-report.json');
 
     try {
