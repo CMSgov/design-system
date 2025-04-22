@@ -9,12 +9,12 @@ import type {
 import { writeFileSync, mkdirSync } from 'fs';
 import path from 'path';
 
-function determineOutputSubdir(testPath: string): string {
-  const standardMatch = testPath.match(/\[\w+\]\s*>\s*([\w-]+)\.test\.ts/);
-  if (testPath.includes('.interaction.ts')) return 'interaction';
-  if (testPath.includes('stories.test.ts')) return 'playwright';
-  if (standardMatch) return standardMatch[1];
-  return 'unknown';
+function extractTestGroupFromConfigPath(configPath: string | undefined): string {
+  if (configPath === undefined) {
+    return 'unknown';
+  }
+
+  return path.basename(configPath).replace(/\.config\.ts$/, '');
 }
 
 class MyReporter implements Reporter {
@@ -46,7 +46,8 @@ class MyReporter implements Reporter {
     return path.join(' > ');
   }
 
-  onBegin(_: FullConfig, suite: Suite) {
+  onBegin(config: FullConfig, suite: Suite) {
+    this.testGroup = extractTestGroupFromConfigPath(config.configFile);
     const totalFiles = new Set(suite.allTests().map((test) => test.location.file)).size;
     this.totalTests = suite.allTests().length;
 
@@ -75,10 +76,6 @@ class MyReporter implements Reporter {
     if (this.isListMode) return;
 
     const hierarchyPath = this.getHierarchyPath(test);
-
-    if (!this.testGroup) {
-      this.testGroup = determineOutputSubdir(hierarchyPath);
-    }
 
     switch (result.status) {
       case 'passed':
@@ -113,10 +110,6 @@ class MyReporter implements Reporter {
       for (const test of this.failingTests) {
         console.log(`  ${test.path} > ${test.name}`);
       }
-    }
-
-    if (!this.testGroup) {
-      this.testGroup = 'unknown';
     }
 
     const reportDirectory = path.resolve(__dirname, `test-results/${this.testGroup}`);
