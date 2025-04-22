@@ -11,10 +11,9 @@ import path from 'path';
 
 function determineOutputSubdir(testPath: string): string {
   const standardMatch = testPath.match(/\[\w+\]\s*>\s*([\w-]+)\.test\.ts/);
-  if (standardMatch) return standardMatch[1];
-
   if (testPath.includes('.interaction.ts')) return 'interaction';
-
+  if (testPath.includes('stories.test.ts')) return 'playwright';
+  if (standardMatch) return standardMatch[1];
   return 'unknown';
 }
 
