@@ -367,6 +367,39 @@ describe('Autocomplete', () => {
     expect(onChange).toHaveBeenLastCalledWith(null);
   });
 
+  it('calls onChange when a grouped item is selected', async () => {
+    const onChange = jest.fn();
+    const items = [
+      {
+        label: 'Fruits',
+        id: 'group-fruits',
+        items: [
+          { id: 'apple', name: 'Apple' },
+          { id: 'banana', name: 'Banana' },
+        ],
+      },
+      {
+        label: 'Vegetables',
+        id: 'group-vegetables',
+        items: [
+          { id: 'carrot', name: 'Carrot' },
+          { id: 'lettuce', name: 'Lettuce' },
+        ],
+      },
+    ];
+
+    renderAutocomplete({ items, onChange });
+
+    const input = screen.getByRole('combobox');
+    userEvent.click(input);
+    userEvent.type(input, 'ban');
+
+    const bananaOption = await screen.findByRole('option', { name: 'Banana' });
+    userEvent.click(bananaOption);
+
+    expect(onChange).toHaveBeenCalledWith({ id: 'banana', name: 'Banana' });
+  });
+
   it('should select list items by keyboard', () => {
     const onChange = jest.fn();
     renderAutocomplete({ onChange });
