@@ -35,7 +35,7 @@
     "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
   ],
   [
-    "hrefTemplate",
+    "href-template",
     "A string used to generate URLs for each page link. The component will find any instance of {page} and replace it with the page number. Defaults to '#page={page}'.",
     "string"
   ],
