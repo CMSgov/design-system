@@ -10,8 +10,9 @@ import { writeFileSync, mkdirSync } from 'fs';
 import path from 'path';
 
 function extractTestGroupFromConfigPath(configPath: string | undefined): string {
+  // If undefined, we’re likely running a unit test where no config path is provided.
   if (configPath === undefined) {
-    return 'unknown';
+    return 'testing';
   }
 
   return path.basename(configPath).replace(/\.config\.ts$/, '');
@@ -26,7 +27,7 @@ class MyReporter implements Reporter {
   private isListMode = false;
   private totalTests = 0;
   private currentTestIndex = 0;
-  private testGroup: string | null = null;
+  private testGroup = '';
 
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];

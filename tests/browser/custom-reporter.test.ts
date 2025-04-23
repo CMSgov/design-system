@@ -62,7 +62,7 @@ test('JSON report matches snapshot', () => {
   };
   reporter.onEnd(mockResult);
 
-  const reportDirectory = path.resolve(__dirname, 'test-results/unknown');
+  const reportDirectory = path.resolve(__dirname, 'test-results/testing');
   const reportPath = path.resolve(reportDirectory, 'test-report.json');
   const generatedReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
 
