@@ -26,6 +26,7 @@
 - [ ] Verified that running both `npm run test:unit` and `npm run test:browser:all` were each successful
 - [ ] If necessary, updated unit-test snapshots (`npm run test:unit:update`) and browser-test snapshots (`npm run test:browser:all:update`)
 
-### If this is a change to documentation:
+### If this is a change to documentation/content:
 
 - [ ] Checked for spelling and grammatical errors
+- [ ] Communicate the assigned milestone/release date with Design so they can communicate appropriately
