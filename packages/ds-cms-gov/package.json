@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/ds-cms-gov",
-  "version": "12.1.1",
+  "version": "12.2.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -58,7 +58,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "12.1.1",
+    "@cmsgov/design-system": "12.2.0",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.3.0"
   }
