@@ -76,14 +76,14 @@ async function bumpVersions() {
     ),
   });
   sh(
-    `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true`
+    `npm version ${changeLevel} --workspaces=true --preid="beta" --git-tag-version=false --legacy-peer-deps=true --update-workspaces=false`
   );
   // Unstage the design-system-tokens package.json
   sh('git checkout ./packages/design-system-tokens/package.json');
+  // Run npm install
+  sh('npm install');
   // Stage changes to package files
   sh('git add -u **/package.json');
-  // Stage changes to package-lock.json
-  sh('git add -u package-lock.json');
   // And discard all other changes
   sh('git checkout -- .');
   // Verify that there are actually changes staged
@@ -100,6 +100,13 @@ async function bumpVersions() {
   const currentVersionsByPackage = updateVersions();
   sh('git add -u');
   console.log(c.green('Updated versions.json.'));
+
+  // Clean the workspace's modules and reinstall dependencies
+  console.log(c.green('Cleaning workspace node modules.'));
+  sh('npm run clean:modules');
+  console.log(c.green('Installing packages.'));
+  sh('npm install');
+  sh('git add -u');
 
   // Determine our tag names and create the publish commit
   const tags = Object.keys(currentVersionsByPackage).map(
