@@ -55,10 +55,14 @@ test('JSON report matches snapshot', () => {
     { status: 'failed' } as TestResult
   );
 
-  const mockResult: FullResult = { status: 'failed' };
+  const mockResult: FullResult = {
+    status: 'failed',
+    startTime: new Date(),
+    duration: 0,
+  };
   reporter.onEnd(mockResult);
 
-  const reportDirectory = path.resolve(__dirname, 'test-results');
+  const reportDirectory = path.resolve(__dirname, 'test-results/testing');
   const reportPath = path.resolve(reportDirectory, 'test-report.json');
   const generatedReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
 

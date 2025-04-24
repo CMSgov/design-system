@@ -103,7 +103,7 @@ export const config: PlaywrightTestConfig = {
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'never' }], ['./custom-reporter.ts']],
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: './test-results/',
+  outputDir: './test-results/playwright',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
