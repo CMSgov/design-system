@@ -9,6 +9,15 @@ import type {
 import { writeFileSync, mkdirSync } from 'fs';
 import path from 'path';
 
+function extractTestGroupFromConfigPath(configPath: string | undefined): string {
+  // If undefined, we’re likely running a unit test where no config path is provided.
+  if (configPath === undefined) {
+    return 'testing';
+  }
+
+  return path.basename(configPath).replace(/\.config\.ts$/, '');
+}
+
 class MyReporter implements Reporter {
   private passCount = 0;
   private failCount = 0;
@@ -18,6 +27,7 @@ class MyReporter implements Reporter {
   private isListMode = false;
   private totalTests = 0;
   private currentTestIndex = 0;
+  private testGroup = '';
 
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];
@@ -37,7 +47,8 @@ class MyReporter implements Reporter {
     return path.join(' > ');
   }
 
-  onBegin(_: FullConfig, suite: Suite) {
+  onBegin(config: FullConfig, suite: Suite) {
+    this.testGroup = extractTestGroupFromConfigPath(config.configFile);
     const totalFiles = new Set(suite.allTests().map((test) => test.location.file)).size;
     this.totalTests = suite.allTests().length;
 
@@ -102,7 +113,7 @@ class MyReporter implements Reporter {
       }
     }
 
-    const reportDirectory = path.resolve(__dirname, 'test-results');
+    const reportDirectory = path.resolve(__dirname, `test-results/${this.testGroup}`);
     const reportPath = path.resolve(reportDirectory, 'test-report.json');
 
     try {
