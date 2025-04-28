@@ -15,7 +15,6 @@ const InfoPage = ({ children, data, location }: MdxQuery) => {
     fields: { slug },
   } = data.mdx;
   const theme = useTheme();
-  console.log({ slug });
 
   return (
     <Layout

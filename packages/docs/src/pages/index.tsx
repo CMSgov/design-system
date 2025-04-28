@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby';
-
 import Layout from '../components/layout/Layout';
 import SEO from '../components/layout/DocSiteSeo';
 import { MdxQuery } from '../helpers/graphQLTypes';
