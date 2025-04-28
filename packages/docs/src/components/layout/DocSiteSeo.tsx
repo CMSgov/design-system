@@ -16,6 +16,8 @@ const SEO = ({
   const theme = useTheme();
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
+  const siteOrigin =
+    typeof window !== 'undefined' ? window.location.origin : 'https://design.cms.gov';
 
   const ogTitle = slug?.includes('not-in-sidebar') ? baseTitle : tabTitle;
   const ogType = slug?.includes('not-in-sidebar') ? 'website' : 'article';
@@ -29,7 +31,7 @@ const SEO = ({
       <title>{tabTitle}</title>
       <meta property="og:title" content={ogTitle} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={'https://design.cms.gov' + location.pathname} />
+      <meta property="og:url" content={siteOrigin + location.pathname} />
       <meta property="og:description" content={ogDesc} />
       <script>{`window.tealiumEnvironment = "${env}";`}</script>
       <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
