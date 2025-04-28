@@ -101,7 +101,7 @@ const SearchPage = ({ location }: MdxQuery) => {
   );
 };
 
-export const Head = ({ data, location, pageContext }) => {
+export const Head = ({ location }) => {
   return (
     <SEO
       frontmatter={{

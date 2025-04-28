@@ -17,7 +17,7 @@ const NotFoundPage = ({ data, location, children }: MdxQuery) => {
   );
 };
 
-export const Head = ({ data, location, pageContext }) => {
+export const Head = ({ data, location }) => {
   const { frontmatter } = data.mdx;
 
   return <SEO frontmatter={frontmatter} location={location} />;

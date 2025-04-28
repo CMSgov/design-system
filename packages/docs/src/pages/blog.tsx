@@ -43,7 +43,7 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
   );
 };
 
-export const Head = ({ data, location, pageContext }) => {
+export const Head = ({ location }) => {
   return (
     <SEO
       frontmatter={{
