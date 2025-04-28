@@ -1,7 +1,7 @@
 import { withPrefix } from 'gatsby';
 import { getThemeData } from './SideNav/themeVersionData';
 import useTheme from '../../helpers/useTheme';
-import { FrontmatterInterface, LocationInterface } from '../../helpers/graphQLTypes';
+import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 
 const SEO = ({
   frontmatter,
@@ -10,7 +10,7 @@ const SEO = ({
 }: {
   frontmatter: FrontmatterInterface;
   slug?: string;
-  location: LocationInterface;
+  location: Location;
 }) => {
   const env = 'prod';
   const theme = useTheme();
@@ -29,7 +29,7 @@ const SEO = ({
       <title>{tabTitle}</title>
       <meta property="og:title" content={ogTitle} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={location.origin + location.pathname} />
+      <meta property="og:url" content={'https://design.cms.gov' + location.pathname} />
       <meta property="og:description" content={ogDesc} />
       <script>{`window.tealiumEnvironment = "${env}";`}</script>
       <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
