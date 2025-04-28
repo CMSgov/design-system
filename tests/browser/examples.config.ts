@@ -18,6 +18,7 @@ import { defineConfig } from '@playwright/test';
 config.snapshotPathTemplate = 'snapshots/examples/{arg}/{arg}--{projectName}{ext}';
 config.testMatch = /examples\.test\.ts/;
 config.testIgnore = undefined;
+config.outputDir = './test-results/examples';
 config.webServer = {
   command: 'npm run serve:examples',
   port: 8080,

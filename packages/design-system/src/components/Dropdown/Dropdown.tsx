@@ -276,7 +276,6 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
-    'aria-invalid': invalid,
     'aria-describedby': describeField({ ...props, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
     // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
@@ -319,6 +318,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
       {state.isOpen && (
         <DropdownMenu
           {...useSelectProps.menuProps}
+          ariaInvalid={invalid}
           componentClass="ds-c-dropdown"
           labelId={labelProps.id}
           menuId={menuId}
