@@ -1,7 +1,7 @@
 import { withPrefix } from 'gatsby';
 import { getThemeData } from './SideNav/themeVersionData';
 import useTheme from '../../helpers/useTheme';
-import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import { FrontmatterInterface, LocationInterface } from '../../helpers/graphQLTypes';
 
 const SEO = ({
   frontmatter,
@@ -10,7 +10,7 @@ const SEO = ({
 }: {
   frontmatter: FrontmatterInterface;
   slug?: string;
-  location: Location;
+  location: LocationInterface;
 }) => {
   const env = 'prod';
   const theme = useTheme();
