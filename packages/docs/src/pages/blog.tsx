@@ -1,4 +1,5 @@
 import Layout from '../components/layout/Layout';
+import SEO from '../components/layout/DocSiteSeo';
 import useTheme from '../helpers/useTheme';
 import { BlogQuery } from '../helpers/graphQLTypes';
 import { graphql, Link } from 'gatsby';
@@ -39,6 +40,18 @@ const BlogIndexPage = ({ data, location }: BlogQuery) => {
         ))}
       </>
     </Layout>
+  );
+};
+
+export const Head = ({ data, location, pageContext }) => {
+  return (
+    <SEO
+      frontmatter={{
+        title: "What's new",
+      }}
+      slug="blog"
+      location={location}
+    />
   );
 };
 

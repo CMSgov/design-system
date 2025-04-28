@@ -74,7 +74,7 @@ const Layout = ({
 
   return (
     <div data-theme={theme} id={pageId}>
-      <Helmet
+      {/* <Helmet
         title={tabTitle}
         htmlAttributes={{
           lang: 'en',
@@ -107,7 +107,7 @@ const Layout = ({
           title="docThemeCss"
           href={withPrefix(`themes/${theme}-theme.css`)}
         />
-      </Helmet>
+      </Helmet> */}
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />

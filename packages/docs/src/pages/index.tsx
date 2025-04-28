@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout/Layout';
+import SEO from '../components/layout/DocSiteSeo';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
@@ -25,6 +26,15 @@ const IndexPage = ({ children, data, location }: MdxQuery) => {
       <ContentRenderer theme={theme}>{children}</ContentRenderer>
     </Layout>
   );
+};
+
+export const Head = ({ data, location, pageContext }) => {
+  const {
+    frontmatter,
+    fields: { slug },
+  } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} slug={slug} location={location} />;
 };
 
 export const query = graphql`

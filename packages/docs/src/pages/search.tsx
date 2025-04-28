@@ -4,6 +4,7 @@ import { useFlexSearch } from 'react-use-flexsearch';
 import { useStaticQuery, graphql } from 'gatsby';
 import { MdxQuery, SearchDataStore, SearchQuery } from '../helpers/graphQLTypes';
 import Layout from '../components/layout/Layout';
+import SEO from '../components/layout/DocSiteSeo';
 import useTheme from '../helpers/useTheme';
 import { sendSearchInitiatedEvent } from '../helpers/analytics';
 
@@ -97,6 +98,18 @@ const SearchPage = ({ location }: MdxQuery) => {
         </div>
       </div>
     </Layout>
+  );
+};
+
+export const Head = ({ data, location, pageContext }) => {
+  return (
+    <SEO
+      frontmatter={{
+        title: 'Search this site',
+      }}
+      slug="Search"
+      location={location}
+    />
   );
 };
 

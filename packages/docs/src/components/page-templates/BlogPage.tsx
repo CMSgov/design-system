@@ -1,5 +1,6 @@
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
+import SEO from '../layout/DocSiteSeo';
 import PublishDate from '../content/PublishDate';
 import useTheme from '../../helpers/useTheme';
 import type { MdxQuery } from '../../helpers/graphQLTypes';
@@ -46,6 +47,15 @@ const BlogPage = ({ data, location, children }: MdxQuery) => {
       <div className="ds-u-margin-top--4">{backLink}</div>
     </Layout>
   );
+};
+
+export const Head = ({ data, location, pageContext }) => {
+  const {
+    frontmatter,
+    fields: { slug },
+  } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} slug={slug} location={location} />;
 };
 
 export const query = graphql`
