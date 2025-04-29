@@ -15,9 +15,7 @@ const inlineLiClasses = 'hc-c-footer__inline-item';
  * links, like the Privacy Policy, and other helpful things like
  * links to a variety of different languages.
  */
-const InlineLinkLists = function (props: InlineLinkListsProps) {
-  const { primaryDomain } = props;
-
+const InlineLinkLists = function ({ primaryDomain = '' }: InlineLinkListsProps) {
   const inlineLinksTop = {
     'footer.contactUs': `${primaryDomain}/contact-us`,
     'footer.archive': `${primaryDomain}/archive`,
@@ -78,10 +76,6 @@ const InlineLinkLists = function (props: InlineLinkListsProps) {
       </div>
     </div>
   );
-};
-
-InlineLinkLists.defaultProps = {
-  primaryDomain: '',
 };
 
 export default InlineLinkLists;
