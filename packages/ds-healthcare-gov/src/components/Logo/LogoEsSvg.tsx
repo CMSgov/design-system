@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-const LogoEsSvg: React.FC<{ titleId?: string }> = ({ titleId }) => {
+const LogoEsSvg: React.FC<{ titleId?: string }> = ({ titleId = 'hc-c-logo__title' }) => {
   // prettier-ignore
 
   return (
@@ -26,10 +26,6 @@ const LogoEsSvg: React.FC<{ titleId?: string }> = ({ titleId }) => {
       <path className="hc-c-logo__gov" d="M296.83,7.22h2.4L305.11,20l5.82-12.78h2.41l-8,17.53h-.42Z" />
     </svg>
   );
-};
-
-LogoEsSvg.defaultProps = {
-  titleId: 'hc-c-logo__title',
 };
 
 export default LogoEsSvg;
