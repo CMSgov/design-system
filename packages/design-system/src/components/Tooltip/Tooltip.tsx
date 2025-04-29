@@ -33,6 +33,7 @@ export interface BaseTooltipProps {
   closeButtonLabel?: string;
   /**
    * When provided, will render the passed in component for the tooltip trigger. Typically will be a `button`, `a`, or rarely an `input` element.
+   * Default is `'button'`
    */
   component?: React.ReactElement<any> | any | ((...args: any[]) => any);
   /**
@@ -50,11 +51,13 @@ export interface BaseTooltipProps {
   id?: string;
   /**
    * Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.
+   * Default is `15`
    */
   interactiveBorder?: number;
   inversed?: boolean;
   /**
    * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
+   * Default is `[0, 5]`
    */
   offset?: [number, number];
   /**
@@ -67,10 +70,12 @@ export interface BaseTooltipProps {
   onOpen?: () => any;
   /**
    * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
+   * Default is `'top'`
    */
   placement?: Placement;
   /**
    * `maxWidth` styling applied to the tooltip body
+   * Default is `'300px'`
    */
   maxWidth?: string;
   /**
@@ -83,6 +88,7 @@ export interface BaseTooltipProps {
   title: React.ReactNode;
   /**
    * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
+   * Default is `250`
    */
   transitionDuration?: number;
   /**
@@ -91,6 +97,7 @@ export interface BaseTooltipProps {
   triggerAriaLabel?: string;
   /**
    * `zIndex` styling applied to the tooltip body
+   * Default is `9999`
    */
   zIndex?: number;
 }
@@ -141,7 +148,9 @@ export const placements: Placement[] = [
  * provide an `aria-label` on the `<Tooltip>` to ensure an accessible name for
  * the trigger.
  */
+
 export const Tooltip = (props: TooltipProps) => {
+  const { offset = [0, 5] } = props;
   const popper = useRef(null);
   const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
@@ -201,7 +210,7 @@ export const Tooltip = (props: TooltipProps) => {
 
     popper.current = createPopper(triggerElement.current, tooltipElement.current, {
       placement: props.placement,
-      modifiers: [{ name: 'offset', options: { offset: props.offset } }],
+      modifiers: [{ name: 'offset', options: { offset } }],
     });
 
     return () => {
@@ -246,7 +255,7 @@ export const Tooltip = (props: TooltipProps) => {
       ariaLabel,
       children,
       className,
-      component,
+      component = 'button',
       dialog,
       id,
       offset,
@@ -316,13 +325,13 @@ export const Tooltip = (props: TooltipProps) => {
       dialog,
       contentHeading,
       inversed,
-      interactiveBorder,
-      placement,
-      maxWidth,
+      interactiveBorder = 15,
+      placement = 'top',
+      maxWidth = '300px',
       showCloseButton,
       title,
-      transitionDuration,
-      zIndex,
+      transitionDuration = 250, // Equivalent to $animation-speed-1
+      zIndex = 9999,
     } = props;
 
     const tooltipStyle = { maxWidth, zIndex };
@@ -419,16 +428,6 @@ export const Tooltip = (props: TooltipProps) => {
       {renderContent(props)}
     </div>
   );
-};
-
-Tooltip.defaultProps = {
-  component: 'button',
-  interactiveBorder: 15,
-  maxWidth: '300px',
-  offset: [0, 5],
-  placement: 'top',
-  transitionDuration: 250, // Equivalent to $animation-speed-1
-  zIndex: 9999,
 };
 
 export default Tooltip;
