@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 config.snapshotPathTemplate = 'snapshots/storybook-docs/{arg}{ext}';
 config.testMatch = 'storybook-docs.test.ts';
+config.outputDir = './test-results/storybook-docs';
 config.testIgnore = undefined; // Was previously ignoring the storybook-docs tests
 config.projects = [
   {
