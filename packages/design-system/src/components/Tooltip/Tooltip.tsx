@@ -150,7 +150,7 @@ export const placements: Placement[] = [
  */
 
 export const Tooltip = (props: TooltipProps) => {
-  const { offset = [0, 5] } = props;
+  const { placement = 'top', offset = [0, 5] } = props;
   const popper = useRef(null);
   const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
@@ -209,7 +209,7 @@ export const Tooltip = (props: TooltipProps) => {
     if (!triggerElement.current || !tooltipElement.current) return;
 
     popper.current = createPopper(triggerElement.current, tooltipElement.current, {
-      placement: props.placement,
+      placement: placement,
       modifiers: [{ name: 'offset', options: { offset } }],
     });
 
