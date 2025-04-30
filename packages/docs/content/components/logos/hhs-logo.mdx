@@ -17,6 +17,32 @@ core:
 
 <SeeStorybookForGuidance storyId={'components-icons--docs'} />
 
+## Guidance 
+
+### Accessibility
+
+- Logos used in the header and footer are considered functional images per the W3C.
+
+#### General accessibility guidance
+
+- Logos in the header and footer, or that function as links, should be given alternative text that tells the user where clicking the logo will take them – in our case, usually the homepage. 
+- Logos used in the header and footer, or that function as links, should be given focus when navigating by keyboard.
+
+### Accessibility testing
+
+- Alternate text is visible when you hover over the logo
+- Clicking the logo shows a focus state
+
+#### Keyboard testing
+
+- The logo receives focus via keyboard navigation. Using only a keyboard, you can navigate to the logo, use it to go to the appropriate link, and navigate away from it.
+- Focus indicators are clearly visible around logos. When you use a keyboard to tab into a text input, you see an indicator around the input field.
+
+#### Screenreader testing
+
+- Alternative text is read aloud by screenreaders.
+- Screenreader announces that it is on a link, and the link’s destination.
+
 ## Component maturity
 
 <MaturityChecklist
