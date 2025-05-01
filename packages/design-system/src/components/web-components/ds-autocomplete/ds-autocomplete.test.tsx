@@ -398,7 +398,7 @@ describe('Autocomplete', () => {
         ],
       },
     ]);
-    const { user } = renderAutocomplete({ items: groupedItems });
+    const { user } = renderAutocomplete({ items: groupedItems }, { delay: 50 });
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockHandler = jest.fn();
@@ -426,7 +426,7 @@ describe('Autocomplete', () => {
   });
 
   it('should call onChange with null item when "Clear search" is clicked', async () => {
-    renderAutocomplete();
+    const { user } = renderAutocomplete();
 
     const autocompleteRoot = document.querySelector('ds-autocomplete');
     const mockChangeHandler = jest.fn();

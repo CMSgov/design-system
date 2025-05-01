@@ -234,10 +234,12 @@ describe('Dropdown', () => {
     const onChange = jest.fn();
     const { user } = makeDropdown({ value: '1', onChange }, 5);
     const button = getButton();
+
     await user.click(button);
     expectDropdownToBeOpen();
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{Escape}');
+
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();
     expect(onChange).not.toHaveBeenCalled();
@@ -260,6 +262,7 @@ describe('Dropdown', () => {
       </>
     );
     const button = getButton();
+
     await user.click(button);
     await user.keyboard('{ArrowDown}');
     expectDropdownToBeOpen();
@@ -277,76 +280,80 @@ describe('Dropdown', () => {
   });
 
   it('supports single-character type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{l}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('l');
     let options = screen.getAllByRole('option');
     // Lummi tribe option should have focus and is 7th element in array
     expect(options[7]).toHaveFocus();
     // There is a 1 second delay on the type ahead functionality
-    await sleep(1000);
-    userEvent.keyboard('{n}');
+    jest.runAllTimers();
+    await user.keyboard('n');
     options = screen.getAllByRole('option');
     // Nisqually Indian Tribe option should have focus and is 6th element in array
     expect(options[6]).toHaveFocus();
   });
 
   it('can focus across multiple uses of type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     let button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{c}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('c');
     let options = screen.getAllByRole('option');
     // First option starts with c, so it should be in focus
     expect(options[1]).toHaveFocus();
-    userEvent.keyboard('{escape}');
+    await user.keyboard('{Escape}');
     expectDropdownToBeClosed();
     button = getButton();
-    await sleep(10);
-    userEvent.click(button);
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{l}');
+
+    await user.click(button);
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('l');
     options = screen.getAllByRole('option');
     // Lummi tribe option should have focus and is 7th element in array
     expect(options[7]).toHaveFocus();
   });
 
   it('does not move to the next item starting with the same letter', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{c}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('c');
     let options = screen.getAllByRole('option');
     // Confederated Tribes and Bands of the Yakama Nation is the first element in the options list
     expect(options[1]).toHaveFocus();
     // There is a 1 second delay on the type ahead functionality
-    await sleep(1000);
-    userEvent.keyboard('{c}');
+    jest.runAllTimers();
+    await user.keyboard('c');
     options = screen.getAllByRole('option');
     // We do not support moving to the next item starting with the same letter, so expect focus to remain the same
     expect(options[1]).toHaveFocus();
   });
 
   it('supports multi-character type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     const list = screen.getByRole('listbox');
-    userEvent.keyboard('{arrowdown}');
-    userEvent.type(list, 'c');
+    await user.keyboard('{ArrowDown}');
+    await user.type(list, 'c');
     let options = screen.getAllByRole('option');
     // Since we have only typed 'c' at this point we expect focus to be on the first element since it starts with 'c'
     expect(options[1]).toHaveFocus();
-    await sleep(40);
+    jest.advanceTimersByTime(40);
     // We are still within the 1 second type ahead window, so the search string will now be updated to 'cow'
-    userEvent.type(list, 'ow');
+    await user.type(list, 'ow');
     options = screen.getAllByRole('option');
     // Focus should update to the fourth item, the Cowlitz tribe
     expect(options[4]).toHaveFocus();
@@ -360,6 +367,7 @@ describe('Dropdown', () => {
       await user.click(button);
     });
     expectDropdownToBeOpen();
+
     const options = screen.getAllByRole('option');
     expect(options[2]).toHaveFocus();
   });
@@ -490,8 +498,10 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
+
     await user.click(getButton());
     expectDropdownToBeOpen();
+
     const groupLabel = container.querySelector('#group-label-id');
     expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
   });
@@ -519,10 +529,12 @@ describe('Dropdown', () => {
 
     // Clicking an item should call `onChange` but should do nothing else
     // because this is a controlled component
+
     await user.click(button);
     expectDropdownToBeOpen();
     await user.keyboard('{ArrowDown}');
     await user.keyboard('{Enter}');
+
     expect(onChange).toHaveBeenCalled();
     expect(button.textContent).toEqual(options[1].label);
 
