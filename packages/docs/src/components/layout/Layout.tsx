@@ -5,17 +5,13 @@ import PageHeader from './PageHeader';
 import TableOfContents from './TableOfContents';
 import TableOfContentsMobile from './TableOfContentsMobile';
 import HeaderFullWidth from './HeaderFullWidth';
-import { Helmet } from 'react-helmet';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
   LocationInterface,
   FrontmatterInterface,
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
-import { withPrefix } from 'gatsby';
-
 import '../../styles/index.scss';
-import { getThemeData } from './SideNav/themeVersionData';
 import ThemeVersionSection from './SideNav/ThemeVersionSection';
 import FilterDialogManager from './FilterDialog/FilterDialogManager';
 
@@ -66,48 +62,10 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
-  const env = 'prod';
-  const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
-  const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
-
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   return (
     <div data-theme={theme} id={pageId}>
-      <Helmet
-        title={tabTitle}
-        htmlAttributes={{
-          lang: 'en',
-        }}
-      >
-        <meta
-          property="og:title"
-          content={
-            slug?.includes('not-in-sidebar') ? baseTitle : `${frontmatter?.title} - ${baseTitle}`
-          }
-        />
-        <meta
-          property="og:type"
-          content={slug?.includes('not-in-sidebar') ? 'website' : 'article'}
-        />
-        <meta property="og:url" content={location.origin + location.pathname} />
-        <meta
-          property="og:description"
-          content={
-            frontmatter.intro
-              ? frontmatter.intro
-              : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
-          }
-        />
-        <script>{`window.tealiumEnvironment = "${env}";`}</script>
-        <script src="//tags.tiqcdn.com/utag/cmsgov/cms-design/prod/utag.sync.js"></script>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          title="docThemeCss"
-          href={withPrefix(`themes/${theme}-theme.css`)}
-        />
-      </Helmet>
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />
