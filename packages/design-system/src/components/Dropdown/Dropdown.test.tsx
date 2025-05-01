@@ -128,6 +128,7 @@ describe('Dropdown', () => {
   });
 
   it('shows error message', async () => {
+    jest.useFakeTimers();
     const errorId = 'my-error';
     const { container, user } = makeDropdown(
       {
@@ -152,6 +153,7 @@ describe('Dropdown', () => {
   });
 
   it('supports bottom placed error', async () => {
+    jest.useFakeTimers();
     const errorId = 'my-error';
     const { container, user } = makeDropdown(
       {

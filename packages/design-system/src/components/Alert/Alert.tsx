@@ -96,7 +96,7 @@ export const Alert = (props: AlertProps) => {
     autoFocus,
     heading,
     headingId: _headingId,
-    headingLevel,
+    headingLevel = '2',
     hideIcon,
     alertRef,
     role,
@@ -170,10 +170,6 @@ export const Alert = (props: AlertProps) => {
       </div>
     </div>
   );
-};
-
-Alert.defaultProps = {
-  headingLevel: '2',
 };
 
 export default Alert;

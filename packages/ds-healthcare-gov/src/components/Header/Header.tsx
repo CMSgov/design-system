@@ -73,7 +73,7 @@ export interface HeaderProps {
   primaryDomain?: string;
   /**
    * A URL hash used for the "Skip to main content" link. This is
-   * typically the `id` of your "main" content area (ie. `#main`).
+   * typically the `id` of your "main" content area (Defaults to `'#main'`).
    */
   skipNavHref?: string;
   /**
@@ -136,6 +136,7 @@ export const VARIATION_NAMES = {
  * [refer to its full documentation page](https://design.cms.gov/components/header/healthcare-header/?theme=healthcare).
  */
 export const Header = (props: HeaderProps) => {
+  const { skipNavHref = '#main' } = props;
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
@@ -182,7 +183,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      <SkipNav href={props.skipNavHref} onClick={props.onSkipNavClick}>
+      <SkipNav href={skipNavHref} onClick={props.onSkipNavClick}>
         {t('header.skipNav')}
       </SkipNav>
       <UsaBanner id="hc-c-header__usa-banner" />
@@ -225,10 +226,6 @@ export const Header = (props: HeaderProps) => {
       </header>
     </>
   );
-};
-
-Header.defaultProps = {
-  skipNavHref: '#main',
 };
 
 export default Header;

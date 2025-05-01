@@ -65,6 +65,7 @@ const Wrapper = ({
   inversed,
   rootId,
   title,
+  placement = 'top',
   ...otherProps
 }: WrapperProps) => (
   <Tooltip
@@ -76,11 +77,7 @@ const Wrapper = ({
     showCloseButton={parseBooleanAttr(otherProps.showCloseButton)}
     id={rootId}
     title={title}
-    placement={
-      isPossibleValue(otherProps.placement, placements)
-        ? otherProps.placement
-        : (Tooltip.defaultProps.placement as Placement)
-    }
+    placement={isPossibleValue(placement, placements) ? placement : ('top' as Placement)}
   ></Tooltip>
 );
 
