@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEffect } from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
@@ -13,6 +14,8 @@ import {
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
+import { UtagContainer } from '@cmsgov/design-system';
+import { sendViewEvent } from '@cmsgov/design-system';
 
 import '../../styles/index.scss';
 import { getThemeData } from './SideNav/themeVersionData';
@@ -66,11 +69,43 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
-  const env = 'prod';
+  let env: 'dev' | 'github-demo' | 'prod';
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
+
+  useEffect(() => {
+    if (window && (window as UtagContainer)?.utag) {
+      // We can define environment names as we wish
+      // github-demo is a demo deployment off of a specific branch.
+      switch (location.hostname) {
+        case 'localhost':
+          env = 'dev';
+          break;
+        case 'cmsgov.github.io':
+          env = 'github-demo';
+          break;
+        case 'design.cms.gov':
+          env = 'prod';
+          break;
+        default:
+          env = 'prod';
+      }
+
+      const analyticsPayload = {
+        content_language: 'en',
+        content_type: 'html',
+        logged_in: 'false',
+        page_name: tabTitle,
+        page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
+        site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+        site_section: tabTitle,
+      } as any;
+
+      sendViewEvent(analyticsPayload);
+    }
+  }, []);
 
   return (
     <div data-theme={theme} id={pageId}>
@@ -101,6 +136,9 @@ const Layout = ({
         />
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
         <script src={`https://tealium-tags.cms.gov/cms-design/${env}/utag.sync.js`}></script>
+        <script type="text/javascript">
+          {'window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}; window.utag_cfg_ovrd.noview = true;'}
+        </script>
         <link
           rel="stylesheet"
           type="text/css"
