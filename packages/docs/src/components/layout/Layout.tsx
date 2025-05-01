@@ -100,7 +100,6 @@ const Layout = ({
           }
         />
         <script>{`window.tealiumEnvironment = "${env}";`}</script>
-        <script src={`//tags.tiqcdn.com/utag/cmsgov/cms-design/${env}/utag.sync.js`}></script>
         <script src={`https://tealium-tags.cms.gov/cms-design/${env}/utag.sync.js`}></script>
         <link
           rel="stylesheet"

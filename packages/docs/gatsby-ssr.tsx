@@ -2,7 +2,14 @@ const path = require('path');
 const proc = require('process');
 const { readFileSync } = require('fs');
 
-const HeadComponentsJs = (vars) => <script type="text/javascript">{vars}</script>;
+const dangerousHTML = (html) => {
+  return { __html: html };
+};
+
+const HeadComponentsJs = (content) => (
+  <script type="text/javascript" dangerouslySetInnerHTML={content}></script>
+);
+
 const specialPages = ['/404.html', '/404/', '/blog/', '/contact/', '/', '/search/'];
 
 exports.onRenderBody = ({ pathname, setPreBodyComponents }) => {
@@ -23,17 +30,15 @@ exports.onRenderBody = ({ pathname, setPreBodyComponents }) => {
     }
   }
 
-  const utag_data = {
+  const utag_data = `var utag_data = {
     content_language: 'en',
     content_type: 'html',
     logged_in: 'false',
-    page_name: `${pageName}`,
+    page_name: '${pageName}',
     page_type: 'false',
-    site_environment: `${env}`,
-    site_section: `${siteSection}`,
-  };
+    site_environment: '${env}',
+    site_section: '${siteSection}',
+  }`;
 
-  const var_utag_data = `var utag_data =${utag_data}`;
-
-  setPreBodyComponents(HeadComponentsJs(var_utag_data));
+  setPreBodyComponents(HeadComponentsJs(dangerousHTML(utag_data)));
 };
