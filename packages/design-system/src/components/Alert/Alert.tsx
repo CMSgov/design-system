@@ -97,7 +97,7 @@ export const Alert = (props: AlertProps) => {
     heading,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     headingId: _headingId,
-    headingLevel,
+    headingLevel = '2',
     hideIcon,
     alertRef,
     role,
@@ -174,10 +174,6 @@ export const Alert = (props: AlertProps) => {
       </div>
     </div>
   );
-};
-
-Alert.defaultProps = {
-  headingLevel: '2',
 };
 
 export default Alert;

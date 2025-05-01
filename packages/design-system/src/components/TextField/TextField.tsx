@@ -87,6 +87,7 @@ interface BaseTextFieldProps {
   size?: TextFieldSize;
   /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
+   * Defaults to `'text'`
    */
   type?: string;
   /**
@@ -105,7 +106,7 @@ export type TextFieldProps = BaseTextFieldProps &
  * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
  */
 export const TextField = (props: TextFieldProps) => {
-  const { id: originalId, mask, labelMask, className, ...remainingProps } = props;
+  const { id: originalId, mask, labelMask, className, type = 'text', ...remainingProps } = props;
   const id = useId('text-field--', originalId);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -128,8 +129,7 @@ export const TextField = (props: TextFieldProps) => {
 
   let input = (
     <TextInput
-      // TypeScript doesn't know we set this in .defaultProps
-      type={TextField.defaultProps.type}
+      type={type}
       {...cleanFieldProps(remainingProps)}
       id={id}
       aria-invalid={invalid}
@@ -158,10 +158,6 @@ export const TextField = (props: TextFieldProps) => {
       {bottomError}
     </div>
   );
-};
-
-TextField.defaultProps = {
-  type: 'text',
 };
 
 export default TextField;

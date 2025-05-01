@@ -10,6 +10,7 @@ export type TableCellComponent = 'td' | 'th';
 interface BaseTableCellProps {
   /**
    * Set the text-align on the table cell content. Options: left, center, right.
+   * Defaults to `'left'`
    */
   align?: TableCellAlign;
   /**
@@ -71,7 +72,7 @@ export type TableCellProps = Omit<React.ComponentPropsWithoutRef<'th'>, OmitProp
  * `TableHead`, otherwise it will render a `<td>` element.
  */
 export const TableCell = ({
-  align,
+  align = 'left',
   children,
   className,
   component,
@@ -143,10 +144,6 @@ export const TableCell = ({
       {children}
     </Component>
   );
-};
-
-TableCell.defaultProps = {
-  align: 'left',
 };
 
 export default TableCell;
