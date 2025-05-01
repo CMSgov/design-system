@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
-
 import Layout from '../components/layout/Layout';
+import SEO from '../components/layout/DocSiteSeo';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
@@ -39,5 +39,14 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data, location }) => {
+  const {
+    frontmatter,
+    fields: { slug },
+  } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} slug={slug} location={location} />;
+};
 
 export default ContactPage;

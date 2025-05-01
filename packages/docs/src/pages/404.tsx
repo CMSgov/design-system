@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-
+import SEO from '../components/layout/DocSiteSeo';
 import Layout from '../components/layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
@@ -15,6 +15,12 @@ const NotFoundPage = ({ data, location, children }: MdxQuery) => {
       <ContentRenderer theme={theme}>{children}</ContentRenderer>
     </Layout>
   );
+};
+
+export const Head = ({ data, location }) => {
+  const { frontmatter } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} location={location} />;
 };
 
 export const query = graphql`
