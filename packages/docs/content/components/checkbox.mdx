@@ -35,35 +35,6 @@ Checkboxes can have optional checked or unchecked children that are conditionall
   storyId="components-choicelist--choice-children&args=type:checkbox"
 />
 
-## Code
-
-### React
-
-<StorybookDocLinks>
-  <StorybookDocLink storyId="components-choice--docs">Choice</StorybookDocLink>
-  <StorybookDocLink storyId="components-choicelist--docs">Choice List</StorybookDocLink>
-</StorybookDocLinks>
-
-### Web Component
-
-<StorybookDocLinks tech="wc">
-  <StorybookDocLink tech="wc" storyId="web-components-ds-choice--docs">Choice</StorybookDocLink>
-  <StorybookDocLink tech="wc" storyId="web-components-ds-choice-list--docs">Choice List</StorybookDocLink>
-</StorybookDocLinks>
-
-
-### Style customization
-
-The following CSS variables can be overridden to customize choice fields:
-
-<ComponentThemeOptions componentname="choice" />
-
-#### Form components
-
-This component also makes use of form field styles, which can be customized by the following variables:
-
-<ComponentThemeOptions componentname="form" />
-
 ## Guidance
 
 ### When to use
@@ -99,9 +70,9 @@ This component also makes use of form field styles, which can be customized by t
 - You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
 - If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
 
-### Accessibility testing
+## Accessibility
 
-#### General observations
+### General accessibility guidance
 
 - No other interactive elements (such as links or buttons) should be included inside the label or hint text.
 - A group of checkboxes should be wrapped in a `<fieldset>` that includes a `<legend>` element within.
@@ -110,6 +81,8 @@ This component also makes use of form field styles, which can be customized by t
 - Normally an individual checkbox should not be a required field to complete a form but a checkbox group may be.
 - Each input should have a semantic `id` attribute, and its corresponding `label` should have the same value in its `for` attribute.
 - Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. [Read our guidance on color for more information](https://design.cms.gov/foundation/system-color-tokens/#accessibility-considerations).
+
+### Accessibility testing
 
 #### Keyboard testing
 
@@ -135,6 +108,35 @@ This component also makes use of form field styles, which can be customized by t
 - Swiping focuses on a checkbox.
 - Double tapping with the checkbox in focus makes a selection and announces its been selected.
 
+## Code
+
+### React
+
+<StorybookDocLinks>
+  <StorybookDocLink storyId="components-choice--docs">Choice</StorybookDocLink>
+  <StorybookDocLink storyId="components-choicelist--docs">Choice List</StorybookDocLink>
+</StorybookDocLinks>
+
+### Web Component
+
+<StorybookDocLinks tech="wc">
+  <StorybookDocLink tech="wc" storyId="web-components-ds-choice--docs">Choice</StorybookDocLink>
+  <StorybookDocLink tech="wc" storyId="web-components-ds-choice-list--docs">Choice List</StorybookDocLink>
+</StorybookDocLinks>
+
+
+### Style customization
+
+The following CSS variables can be overridden to customize choice fields:
+
+<ComponentThemeOptions componentname="choice" />
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions componentname="form" />
+
 #### Pointer device testing
 
 - Users may select either the text label or the checkbox itself to select an option.
@@ -149,7 +151,6 @@ Read our Form Validations guidance for communicating to users about form errors 
 ## Learn more
 
 - [Form Guidelines](/patterns/Forms/forms/)
-- [GOV.UK Checkbox/Radio buttons discussion](https://paper.dropbox.com/doc/Radio-buttons-oIwWoxwBKClt5IXvDbnpF)
 - ["We've updated the radios and checkboxes on GOV.UK"](https://designnotes.blog.gov.uk/2016/11/30/weve-updated-the-radios-and-checkboxes-on-gov-uk/)
 - [Four steps for choosing form elements on the Web (PDF)](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
 
