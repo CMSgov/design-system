@@ -451,7 +451,9 @@ describe('Autocomplete', () => {
   it('should clear the input value by keyboard', async () => {
     const { user } = renderAutocomplete({}, { delay: 50 });
     const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
-    autocompleteField.focus();
+    await act(async () => {
+      autocompleteField.focus();
+    });
     await user.click(autocompleteField);
     await user.type(autocompleteField, 'c');
 

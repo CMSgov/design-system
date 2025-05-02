@@ -4,7 +4,7 @@ import { t } from '../i18n';
 import { sendFooterLinkEvent } from './analytics';
 
 interface InlineLinkListsProps {
-  primaryDomain: string;
+  primaryDomain?: string;
 }
 
 const inlineLiClasses = 'hc-c-footer__inline-item';
