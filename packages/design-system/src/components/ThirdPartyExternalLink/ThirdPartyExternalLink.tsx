@@ -82,6 +82,4 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
   );
 };
 
-ThirdPartyExternalLink.defaultProps = {};
-
 export default ThirdPartyExternalLink;

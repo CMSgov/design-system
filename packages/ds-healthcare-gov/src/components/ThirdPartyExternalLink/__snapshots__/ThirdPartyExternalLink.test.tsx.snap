@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
+<dialog
+  aria-labelledby="dialog--4__heading"
+  class="ds-c-dialog"
+  id="dialog--4"
+  open=""
+  role="dialog"
+  tabindex="-1"
+>
+  <div
+    class="ds-c-dialog__window"
+  >
+    <div
+      class="ds-c-dialog__header"
+    >
+      <h2
+        class="ds-c-dialog__heading"
+        id="dialog--4__heading"
+      >
+        You are leaving bar.
+      </h2>
+      <button
+        aria-label="Close modal dialog"
+        class="ds-c-close-button ds-c-dialog__close"
+        id="dialog--4__close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          id="dialog--4__close__icon"
+          viewBox="-2 -2 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 13.0332964L13.0332964 0M13.0332964 13.0332964L0 0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="ds-c-dialog__body"
+    >
+      <div
+        id="dialog--4__content"
+      >
+        <p>
+          You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
+        </p>
+        <p>
+          <a
+            href="https://www.healthcare.gov/links-to-other-sites/"
+          >
+            Learn more about links to third-party sites
+          </a>
+          .
+        </p>
+      </div>
+      <div
+        class="ds-c-dialog__actions"
+      >
+        <a
+          class="ds-c-button ds-c-button--solid"
+          href="foo"
+        >
+          Continue
+        </a>
+        <button
+          class="ds-c-button ds-c-button--ghost"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</dialog>
+`;
+
+exports[`ThirdPartyExternalLink renders external link 1`] = `
+<a
+  class="ds-c-external-link"
+  href="foo"
+>
+  External site link
+  <svg
+    aria-hidden="false"
+    aria-labelledby="icon--1__title"
+    class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
+    id="icon--1"
+    role="img"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <title
+      id="icon--1__title"
+    >
+      This link goes to an external site
+    </title>
+    <path
+      d="M497.6,0,334.4.17A14.4,14.4,0,0,0,320,14.57V47.88a14.4,14.4,0,0,0,14.69,14.4l73.63-2.72,2.06,2.06L131.52,340.49a12,12,0,0,0,0,17l23,23a12,12,0,0,0,17,0L450.38,101.62l2.06,2.06-2.72,73.63A14.4,14.4,0,0,0,464.12,192h33.31a14.4,14.4,0,0,0,14.4-14.4L512,14.4A14.4,14.4,0,0,0,497.6,0ZM432,288H416a16,16,0,0,0-16,16V458a6,6,0,0,1-6,6H54a6,6,0,0,1-6-6V118a6,6,0,0,1,6-6H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V304A16,16,0,0,0,432,288Z"
+    />
+  </svg>
+</a>
+`;
