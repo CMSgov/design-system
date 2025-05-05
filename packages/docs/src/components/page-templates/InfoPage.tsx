@@ -11,13 +11,6 @@ import { graphql } from 'gatsby';
 const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
-  if (frontmatter.title === 'Alert') {
-    console.log('Front matter', frontmatter);
-  }
-  if (frontmatter.title === 'Autocomplete') {
-    console.log('Front matter', frontmatter);
-  }
-
   return (
     <Layout
       frontmatter={frontmatter}
