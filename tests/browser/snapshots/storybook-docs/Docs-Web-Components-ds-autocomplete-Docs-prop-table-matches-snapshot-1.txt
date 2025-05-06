@@ -61,7 +61,7 @@
   ],
   [
     "items",
-    "An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined.\n\nWhen setting this attribute directly in HTML, it must be wrapped in single quotes, with double quotes inside the JSON. Example: <ds-autocomplete items='[{ \"id\": \"1\", \"name\": \"Advil\" }]' />\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nTo see more about usuage, read the autocomplete docs.",
+    "An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined.\n\nWhen setting this attribute directly in HTML, it must be wrapped in single quotes, with double quotes inside the JSON. Example: <ds-autocomplete items='[{ \"id\": \"1\", \"name\": \"Advil\" }]' />\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nPlease see examples for usage and read the autocomplete docs.",
     "string"
   ],
   [

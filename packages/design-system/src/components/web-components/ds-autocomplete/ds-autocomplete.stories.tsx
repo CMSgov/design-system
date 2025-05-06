@@ -101,7 +101,7 @@ When setting this attribute directly in HTML, it must be wrapped in single quote
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
      
-To see more about usuage, [read the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs).`,
+Please see examples for usage and [read the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs).`,
       control: 'text',
     },
     label: {
