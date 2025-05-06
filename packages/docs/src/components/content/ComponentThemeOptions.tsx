@@ -72,7 +72,11 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
   );
 
   return (
-    <section className="c-configuration-options ds-u-padding-bottom--3">{componentOptions}</section>
+    <section className="c-configuration-options ds-u-padding-bottom--3">
+      {componentVariables.length > 0
+        ? componentOptions
+        : `No variables available for ${componentname}.`}
+    </section>
   );
 };
 
