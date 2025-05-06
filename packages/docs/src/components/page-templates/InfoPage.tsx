@@ -15,7 +15,6 @@ const InfoPage = ({ children, data, location }: MdxQuery) => {
     fields: { slug },
   } = data.mdx;
   const theme = useTheme();
-
   return (
     <Layout
       frontmatter={frontmatter}
@@ -45,6 +44,10 @@ export const query = graphql`
       frontmatter {
         title
         intro
+        status {
+          level
+          note
+        }
         cmsgov {
           figmaNodeId
         }

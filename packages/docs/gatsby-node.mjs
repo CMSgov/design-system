@@ -30,6 +30,29 @@ export const onCreateWebpackConfig = ({ actions }) => {
 };
 
 /**
+ * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ */
+export const createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MdxFrontmatter {
+      status: ComponentStatus
+    }
+
+    type ComponentStatus {
+      level: ComponentStatusLevel!
+      note: String
+    }
+
+    enum ComponentStatusLevel {
+      use
+      caution
+      avoid
+    }
+  `);
+};
+
+/**
  * @type {import('gatsby').GatsbyNode['onCreateDevServer']}
  */
 export const onCreateDevServer = ({ app }) => {
