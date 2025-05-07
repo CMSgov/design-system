@@ -146,10 +146,6 @@ Please see examples for usage and [read the autocomplete docs](https://design.cm
     textFieldLabel: {
       table: { disable: true },
     },
-    value: {
-      description: 'Input value',
-      control: 'text',
-    },
   },
 };
 export default meta;
@@ -214,7 +210,6 @@ const Template = (args: DSAutocompleteProps) => {
       items={JSON.stringify(filteredItems)}
       label={label}
       hint={hint}
-      value={input}
     />
   );
 };
