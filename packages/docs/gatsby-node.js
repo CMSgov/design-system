@@ -19,6 +19,26 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MdxFrontmatter {
+      status: ComponentStatus
+    }
+
+    type ComponentStatus {
+      level: ComponentStatusLevel!
+      note: String
+    }
+
+    enum ComponentStatusLevel {
+      use
+      caution
+      avoid
+    }
+  `);
+};
+
 exports.onCreateDevServer = ({ app }) => {
   app.use(express.static('static'));
 };
