@@ -1,5 +1,7 @@
 const POLLING_INTERVAL = 10;
+const MAX_OBSERVATIONS = 30_000;
 
+let observations = 0;
 let globalSheets: CSSStyleSheet[] | null = null;
 let subscribers: ShadowRoot[] = [];
 
@@ -48,13 +50,19 @@ function createStyleSheetSnapshot(): string {
  */
 function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
-  setInterval(() => {
+  const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
+      observations = 0;
+    } else {
+      observations += 1;
     }
   }, POLLING_INTERVAL);
+  if (observations >= MAX_OBSERVATIONS) {
+    clearInterval(observationIntervalId);
+  }
 }
 
 function updateStyles() {
