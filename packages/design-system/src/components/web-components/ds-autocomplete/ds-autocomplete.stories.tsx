@@ -94,8 +94,14 @@ const meta: Meta = {
       description: 'Custom CSS class name(s) for the hint element',
     },
     items: {
-      description:
-        'An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined. This parameter needs to be stringified (please see examples for usage and [read more on the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs):).',
+      description: `An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined.
+        
+When setting this attribute directly in HTML, it must be wrapped in single quotes, with double quotes inside the JSON. Example:
+\`<ds-autocomplete items='[{ "id": "1", "name": "Advil" }]' />\`
+
+If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
+     
+Please see examples for usage and [read the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs).`,
       control: 'text',
     },
     label: {
@@ -202,7 +208,6 @@ const Template = (args: DSAutocompleteProps) => {
       };
     }
   }, []);
-
   return (
     <ds-autocomplete
       {...autocompleteArgs}
