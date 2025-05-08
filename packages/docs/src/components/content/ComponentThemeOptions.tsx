@@ -72,7 +72,7 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
     </Table>
   );
 
-  if ((!componentVariables || componentVariables.length == 0) && !isProduction()) {
+  if (componentVariables.length == 0 && !isProduction()) {
     console.error(
       'You are trying to render componentVariables inside of a call to ComponentThemeOptions. The componentVariables array is either undefined or empty. This will prevent the table from rendering.'
     );
