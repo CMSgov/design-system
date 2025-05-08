@@ -1,5 +1,7 @@
 const POLLING_INTERVAL = 10;
-const MAX_OBSERVATIONS = 30_000;
+// We poll once every 10 milliseconds, which means we observe 100 times per second
+// The max to hit over a 30 second period = 30 seconds * 100 observes per second = 3000 observes
+const MAX_OBSERVATIONS = 3000;
 
 let observations = 0;
 let globalSheets: CSSStyleSheet[] | null = null;
@@ -52,17 +54,18 @@ function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
   const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
+
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
       observations = 0;
     } else {
       observations += 1;
+      if (observations >= MAX_OBSERVATIONS) {
+        clearInterval(observationIntervalId);
+      }
     }
   }, POLLING_INTERVAL);
-  if (observations >= MAX_OBSERVATIONS) {
-    clearInterval(observationIntervalId);
-  }
 }
 
 function updateStyles() {
