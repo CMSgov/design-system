@@ -1,6 +1,6 @@
 const POLLING_INTERVAL = 10;
 // We poll once every 10 milliseconds, which means we observe 100 times per second
-// The max to hit over a 30 second period = 30 seconds * 100 observes per second = 3000 observes
+// The max to hit over a 30 second period = 30 seconds * 100 observes per second = 3000 observations
 const MAX_OBSERVATIONS = 3000;
 
 let observations = 0;
@@ -9,8 +9,12 @@ let subscribers: ShadowRoot[] = [];
 
 export function getGlobalStyleSheets() {
   if (globalSheets === null) {
-    globalSheets = copyGlobalStyleSheets();
-    watchForFutureChanges();
+    try {
+      globalSheets = copyGlobalStyleSheets();
+      watchForFutureChanges();
+    } catch (error) {
+      throw new Error(error?.message ?? 'Could not copy global style sheets.');
+    }
   }
 
   return globalSheets;
@@ -54,7 +58,6 @@ function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
   const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
-
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
