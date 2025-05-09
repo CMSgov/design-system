@@ -6,6 +6,7 @@ import { Link, withPrefix } from 'gatsby';
 
 import ButtonMigrationTable from './ButtonMigrationTable';
 import ButtonVariationsTable from './ButtonVariationsTable';
+import ColorContrastGuidelines from './ColorContrastGuidelines';
 import ColorExampleList from './ColorExampleList';
 import ColorRamps from './ColorRamps';
 import ColorTable from './ColorTable';
@@ -107,6 +108,7 @@ const customComponents = (theme) => ({
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
   code: CodeWithSyntaxHighlighting,
+  ColorContrastGuidelines,
   ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
   ColorRamps,
   ColorTable: (props) => <ColorTable theme={theme} {...props} />,
