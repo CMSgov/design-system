@@ -26,7 +26,6 @@ const attributes = [
   'name',
   'no-results-message',
   'root-id',
-  'value',
   ...formAttrs,
 ] as const;
 
@@ -51,7 +50,6 @@ interface WrapperProps
   errorMessage?: string;
   errorPlacement?: string;
   errorMessageClassName?: string;
-  value: string;
   items?: string;
   loading?: string;
   menuHeading?: string;
@@ -71,7 +69,6 @@ const Wrapper = ({
   menuHeadingId,
   name,
   rootId,
-  value,
   ...otherProps
 }: WrapperProps) => {
   return (
@@ -97,7 +94,6 @@ const Wrapper = ({
         label={label}
         hint={hint}
         name={name ?? 'autocomplete'}
-        value={value}
       />
     </Autocomplete>
   );
