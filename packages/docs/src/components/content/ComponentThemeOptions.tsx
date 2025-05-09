@@ -10,6 +10,7 @@ import {
 } from '@cmsgov/design-system';
 import ColorSwatch from './ColorSwatch';
 import { getComponentVariables, ThemeName } from '../../helpers/themeTokens';
+import { isProduction } from '../../helpers/urlUtils';
 
 interface ComponentThemeOptionsProps {
   /**
@@ -71,8 +72,18 @@ const ComponentThemeOptions = ({ theme, componentname }: ComponentThemeOptionsPr
     </Table>
   );
 
+  if (componentVariables.length == 0 && !isProduction()) {
+    console.error(
+      'You are trying to render componentVariables inside of a call to ComponentThemeOptions. The componentVariables array is either undefined or empty. This will prevent the table from rendering.'
+    );
+  }
+
   return (
-    <section className="c-configuration-options ds-u-padding-bottom--3">{componentOptions}</section>
+    componentVariables.length > 0 && (
+      <section className="c-configuration-options ds-u-padding-bottom--3">
+        {componentOptions}
+      </section>
+    )
   );
 };
 
