@@ -1,6 +1,6 @@
-import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import DrawerToggle, { DrawerToggleProps } from './DrawerToggle';
 
 const defaultProps = {
   children: 'content',
@@ -10,11 +10,14 @@ const defaultProps = {
 };
 
 function renderDrawerToggle(props: Partial<DrawerToggleProps> = {}) {
-  return render(
-    <DrawerToggle {...defaultProps} {...props}>
-      content
-    </DrawerToggle>
-  );
+  return {
+    user: userEvent.setup(),
+    ...render(
+      <DrawerToggle {...defaultProps} {...props}>
+        content
+      </DrawerToggle>
+    ),
+  };
 }
 describe('DrawerToggle', () => {
   beforeEach(() => {
@@ -26,9 +29,9 @@ describe('DrawerToggle', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('calls showDrawer() on toggle click', () => {
-    renderDrawerToggle();
-    userEvent.click(screen.getByRole('button'));
+  it('calls showDrawer() on toggle click', async () => {
+    const { user } = renderDrawerToggle();
+    await user.click(screen.getByRole('button'));
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 
