@@ -1,6 +1,7 @@
 import {
   AddIcon,
   AlertCircleIcon,
+  AlertIcon,
   ArrowsStackedIcon,
   ArrowIcon,
   BuildingCircleIcon,
@@ -53,9 +54,14 @@ const iconData = [
     name: 'AddIcon',
   },
   {
-    defaultTitle: 'Alert',
+    defaultTitle: 'Alert Circle Icon',
     component: <AlertCircleIcon />,
     name: 'AlertCircleIcon',
+  },
+  {
+    defaultTitle: 'Alert',
+    component: <AlertIcon />,
+    name: 'AlertIcon',
   },
   {
     defaultTitle: 'Sort',
