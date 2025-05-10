@@ -37,21 +37,6 @@ Radio buttons can have optional checked or unchecked children that are condition
   storyId="components-choicelist--choice-children"
 />
 
-## Code
-
-### React
-
-<StorybookDocLinks>
-  <StorybookDocLink storyId="components-choice--docs">Choice</StorybookDocLink>
-  <StorybookDocLink storyId="components-choicelist--docs">Choice List</StorybookDocLink>
-</StorybookDocLinks>
-
-### Style customization
-
-The following CSS variables can be overridden to customize choice fields:
-
-<ComponentThemeOptions componentname="choice" />
-
 ## Guidance
 
 ### When to use
@@ -83,6 +68,13 @@ The following CSS variables can be overridden to customize choice fields:
 - Add the className `.ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
 - You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
 - If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
+
+## Accessibility 
+The radio button component handles rendering labels, and if you’re using ChoiceList for a set of controls, will also wrap them in `<fieldset>` to maintain accessibility, and `<legend>` to provide context.
+
+### General accessibility guidance
+- For a single radio button, donʼt use `<fieldset>` and `<legend>`.
+- Use semantic tags. Each input should have a semantic tag for the id attribute, and its corresponding label should have the same value in its for attribute.
 
 ### Accessibility testing
 
@@ -134,6 +126,27 @@ If there are `checkedChildren` being used and...
 - Click/tap target area is a minimum of 24x24px.
 
 Read our [Form Validations guidance](/patterns/Forms/validation/) for communicating to users about form errors and how to fix them.
+
+## Code
+
+### React
+
+<StorybookDocLinks>
+  <StorybookDocLink storyId="components-choice--docs">Choice</StorybookDocLink>
+  <StorybookDocLink storyId="components-choicelist--docs">Choice List</StorybookDocLink>
+</StorybookDocLinks>
+
+### Style customization
+
+The following CSS variables can be overridden to customize choice fields:
+
+<ComponentThemeOptions componentname="choice" />
+
+#### Form components
+
+This component also makes use of form field styles, which can be customized by the following variables:
+
+<ComponentThemeOptions componentname="form" />
 
 ## Related patterns
 
