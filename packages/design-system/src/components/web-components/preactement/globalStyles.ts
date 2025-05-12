@@ -24,18 +24,17 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
         .map((rule) => rule.cssText)
         .join(' ');
       sheet.replaceSync(css);
-    } catch {
-      console.warn(
-        'Likely failed to read "cssRules" property from CSSStyleSheet. Do you have crossorigin="anonymous" set on your stylesheets?'
-      );
-    } finally {
       return sheet;
+    } catch (error) {
+      console.warn(
+        `Could not copy global stylesheets. See following error: \n ${error?.message ?? error}`
+      );
     }
   });
 }
 
 function isLinkElement(node: Node): node is HTMLLinkElement {
-  return node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
+  return node?.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
 }
 
 /**
@@ -61,7 +60,6 @@ function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
   const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
-    console.log('watching');
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
