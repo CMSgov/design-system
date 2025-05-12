@@ -9,12 +9,8 @@ let subscribers: ShadowRoot[] = [];
 
 export function getGlobalStyleSheets() {
   if (globalSheets === null) {
-    try {
-      globalSheets = copyGlobalStyleSheets();
-      watchForFutureChanges();
-    } catch (error) {
-      throw new Error(error?.message ?? 'Could not copy global style sheets.');
-    }
+    globalSheets = copyGlobalStyleSheets();
+    watchForFutureChanges();
   }
 
   return globalSheets;
@@ -23,11 +19,18 @@ export function getGlobalStyleSheets() {
 function copyGlobalStyleSheets(): CSSStyleSheet[] {
   return Array.from(document.styleSheets).map((documentSheet) => {
     const sheet = new CSSStyleSheet();
-    const css = Array.from(documentSheet.cssRules)
-      .map((rule) => rule.cssText)
-      .join(' ');
-    sheet.replaceSync(css);
-    return sheet;
+    try {
+      const css = Array.from(documentSheet.cssRules)
+        .map((rule) => rule.cssText)
+        .join(' ');
+      sheet.replaceSync(css);
+    } catch {
+      console.warn(
+        'Likely failed to read "cssRules" property from CSSStyleSheet. Do you have crossorigin="anonymous" set on your stylesheets?'
+      );
+    } finally {
+      return sheet;
+    }
   });
 }
 
@@ -58,6 +61,7 @@ function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
   const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
+    console.log('watching');
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
