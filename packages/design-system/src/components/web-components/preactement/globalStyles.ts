@@ -24,11 +24,12 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
         .map((rule) => rule.cssText)
         .join(' ');
       sheet.replaceSync(css);
-      return sheet;
     } catch (error) {
       console.warn(
         `Could not copy global stylesheets. See following error: \n ${error?.message ?? error}`
       );
+    } finally {
+      return sheet;
     }
   });
 }
