@@ -67,3 +67,14 @@ export function setQueryParam(name: string, value: string, reloadPage: boolean =
     }
   }
 }
+
+/**
+ * isProduction
+ * @returns boolean - true if we are on prod, aka design.cms.gov, and false otherwise
+ */
+export function isProduction(): boolean {
+  if (!window) {
+    return process.env.NODE_ENV === 'production';
+  }
+  return location.hostname == 'design.cms.gov';
+}

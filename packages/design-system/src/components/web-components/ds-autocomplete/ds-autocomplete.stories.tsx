@@ -75,6 +75,11 @@ const meta: Meta = {
       description: 'Enable the error state by providing an error message',
       control: 'text',
     },
+    'error-id': {
+      description:
+        'The ID of the error message applied to this field. If none is provided, the id will be derived from the `root-id` attribute.',
+      control: 'text',
+    },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
       options: [undefined, 'top', 'bottom'],
@@ -89,17 +94,41 @@ const meta: Meta = {
       description: 'An optional hint for the label',
       control: 'text',
     },
+    'hint-id': {
+      description: 'The ID of the hint element',
+      control: 'text',
+    },
     'hint-class-name': {
       control: 'text',
       description: 'Custom CSS class name(s) for the hint element',
     },
     items: {
-      description:
-        'An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined. This parameter needs to be stringified (please see examples for usage and [read more on the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs):).',
+      description: `An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined.
+        
+When setting this attribute directly in HTML, it must be wrapped in single quotes, with double quotes inside the JSON. Example:
+\`<ds-autocomplete items='[{ "id": "1", "name": "Advil" }]' />\`
+
+If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
+     
+Please see examples for usage and [read the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs).`,
       control: 'text',
     },
     label: {
       description: 'A label for the input',
+      control: 'text',
+    },
+    'label-class-name': {
+      description: 'Additional classes to be added to the field label',
+      control: 'text',
+    },
+    'label-id': {
+      description:
+        "A unique `id` to be used on the field label. If one isn't provided, a unique ID will be generated.",
+      control: 'text',
+    },
+    'requirement-label': {
+      description:
+        'Text showing the requirement (e.g., "Optional", or "Required"). In most cases, this should be used to indicate which fields are optional. See the [form guidelines](https://design.cms.gov/patterns/Forms/forms/) for more info.',
       control: 'text',
     },
     loading: {
@@ -139,10 +168,6 @@ const meta: Meta = {
     },
     textFieldLabel: {
       table: { disable: true },
-    },
-    value: {
-      description: 'Input value',
-      control: 'text',
     },
   },
 };
@@ -202,14 +227,12 @@ const Template = (args: DSAutocompleteProps) => {
       };
     }
   }, []);
-
   return (
     <ds-autocomplete
       {...autocompleteArgs}
       items={JSON.stringify(filteredItems)}
       label={label}
       hint={hint}
-      value={input}
     />
   );
 };
