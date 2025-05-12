@@ -73,6 +73,11 @@ Checkboxes can have optional checked or unchecked children that are conditionall
 - If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
 
 ## Accessibility
+The radio button component handles rendering labels, and if you’re using ChoiceList for a set of controls, will also wrap them in `<fieldset>` to maintain accessibility, and `<legend>` to provide context.
+
+### General accessibility guidance
+- For a single radio button, donʼt use `<fieldset>` and `<legend>`.
+- Use semantic tags. Each input should have a semantic tag for the id attribute, and its corresponding label should have the same value in its for attribute.
 - No other interactive elements (such as links or buttons) should be included inside the label or hint text.
 - A group of checkboxes should be wrapped in a `<fieldset>` that includes a `<legend>` element within.
   - The `<legend>` provides context for the grouping, much like a label.
