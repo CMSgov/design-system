@@ -1,5 +1,6 @@
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { linkAnalytics } from '../../helpers/analytics';
+import { StatusIndicator } from './SatusIndicator';
 import { withPrefix } from 'gatsby';
 import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
@@ -16,7 +17,7 @@ type PageHeaderProps = {
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
   const [themeLinks, setThemeLinks] = useState(undefined);
-  const { title, core, intro } = frontmatter;
+  const { title, core, intro, status } = frontmatter;
 
   const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
@@ -40,7 +41,14 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
 
   return (
     <header className={headerClassNames}>
-      <h1 className="ds-text-heading--4xl">{title}</h1>
+      <div className="ds-u-display--flex ds-u-align-items--center ds-u-flex-direction--row">
+        <h1 className="ds-text-heading--4xl">{title}</h1>
+        {status?.level && (
+          <div className="ds-u-margin-left--2">
+            <StatusIndicator level={status.level} />
+          </div>
+        )}
+      </div>
       {intro && (
         <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--1">
           {intro}
