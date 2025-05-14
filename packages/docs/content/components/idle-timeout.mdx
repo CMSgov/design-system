@@ -16,6 +16,19 @@ core:
   minHeight={350}
 />
 
+## Guidance
+
+### When to use
+
+- Use the `IdleTimeout` for authenticated sessions to force logout after a set amount of time on inactivity.
+
+## Accessibility
+
+Idle timeout is a behind-the-scenes function that triggers a modal window using
+the design system’s [modal component](/components/modal-dialog/).
+
+Please refer to the modal component’s [accessibility documentation](/components/modal-dialog/#accessibility/).
+
 ## Code
 
 ### React
@@ -27,12 +40,6 @@ core:
 The following CSS variables can be overridden to customize Dialog components:
 
 <ComponentThemeOptions componentname="dialog" />
-
-## Guidance
-
-### When to use
-
-- Use the IdleTimeout for authenticated sessions to force logout after a set amount of time on inactivity
 
 ### Related patterns
 
