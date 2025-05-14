@@ -27,9 +27,9 @@ const meta: Meta = {
             <ds-button value="rstBtn" class-name="ds-u-margin-right--1">
               Reset
             </ds-button>
-            <ds-button type="submit" value="sbmBtn">
+            <button className="ds-c-button" type="submit" value="sbmBtn">
               Confirm
-            </ds-button>
+            </button>
           </form>
         </span>
       </>
@@ -120,32 +120,54 @@ export default meta;
 
 const Template = (args) => {
   useEffect(() => {
-    const modal = document.querySelector('ds-modal-dialog');
-    const toggleButton = document.getElementById('modal-toggle');
-    const form = modal.querySelector('form[method="dialog"]');
+    const modals = Array.from(document.querySelectorAll('ds-modal-dialog'));
+    const toggleButtons = Array.from(document.querySelectorAll('ds-button'));
+    const forms = Array.from(document.querySelectorAll('form[method="dialog"]'));
 
-    const openModal = () => modal?.setAttribute('is-open', 'true');
-    const closeModal = () => modal?.setAttribute('is-open', 'false');
-
-    const handleExit = (event) => {
-      action('ds-exit')(event);
-      closeModal();
+    const openModal = (event) => {
+      const modal = document.getElementById(event.target.dataset.id);
+      modal?.setAttribute('is-open', 'true');
     };
 
-    modal?.addEventListener('ds-exit', handleExit);
-    toggleButton?.addEventListener('click', openModal);
-    form?.addEventListener('submit', closeModal);
+    const closeModal = (event) => {
+      action('ds-exit')(event);
+      let modal: Element;
+      if (event.target.tagName == 'FORM') {
+        modal = event.target.closest('ds-modal-dialog');
+      } else {
+        modal = document.getElementById(event.target.id);
+      }
+      modal?.setAttribute('is-open', 'false');
+    };
+
+    modals?.forEach((modal) => {
+      modal.addEventListener('ds-exit', closeModal);
+    });
+    toggleButtons?.forEach((button) => {
+      button.addEventListener('click', openModal);
+    });
+    forms?.forEach((form) => {
+      form.addEventListener('submit', closeModal);
+    });
 
     return () => {
-      modal?.removeEventListener('ds-exit', handleExit);
-      toggleButton?.removeEventListener('click', openModal);
-      form?.removeEventListener('submit', closeModal);
+      modals?.forEach((modal) => {
+        modal.removeEventListener('ds-exit', closeModal);
+      });
+      toggleButtons?.forEach((button) => {
+        button.removeEventListener('click', openModal);
+      });
+      forms?.forEach((form) => {
+        form.removeEventListener('submit', closeModal);
+      });
     };
   });
 
   return (
     <>
-      <ds-button id="modal-toggle">Open Modal</ds-button>
+      <ds-button id={`modal_toggle__${args.id}`} data-id={args.id}>
+        Open Modal
+      </ds-button>
       <ds-modal-dialog {...args}></ds-modal-dialog>
     </>
   );
@@ -155,6 +177,7 @@ export const Default = {
   render: Template,
   args: {
     alert: 'false',
+    id: '100',
   },
 };
 
@@ -164,6 +187,7 @@ export const BackdropClickExits = {
     alert: 'false',
     'backdrop-click-exits': 'true',
     heading: 'Dialog Heading',
+    id: '200',
   },
 };
 
@@ -233,5 +257,6 @@ export const PreventScrollExample = {
       </div>
     ),
     heading: 'Dialog Heading',
+    id: '300',
   },
 };
