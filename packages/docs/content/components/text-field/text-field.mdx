@@ -1,6 +1,8 @@
 ---
 title: Text Field
 intro: Text fields allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted). Text fields can span single or multiple lines.
+status:
+  level: use
 cmsgov:
   figmaNodeId: 7-104
 core:
@@ -32,11 +34,13 @@ medicare:
 ## Guidance
 
 ### When to use
+
 - If you can’t reasonably predict a user’s answer to a prompt and there might be wide variability in users’ answers.
 - When using another type of input will make answering more difficult. For example, birthdays and other known dates are easier to type in than they are to select from a calendar picker.
 - When users want to paste in a response.
 
 ### Guidelines
+
 - Don't use placeholder text in form fields. Use hint text instead, if you need to provide contextual information. Placeholder text disappears after a user types a value, therefore users will no longer have that text available when they need to review their entries. People who have cognitive or visual disabilities have additional problems with placeholder text.
 - The length of the text field provides a hint to users as to how much text to write. Do not require users to write paragraphs of text into a single-line input box; use a `<textarea>` instead.
 - Text fields are among the easiest type of input for desktop users but are more difficult for mobile users.
@@ -53,6 +57,7 @@ medicare:
 ## Accessibility
 
 ### Accessibility guidance
+
 - Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
 - Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
 
@@ -73,12 +78,6 @@ A `TextField` component renders an input field as well as supporting UI elements
 The following CSS variables can be overridden to customize Input/Form components:
 
 <ComponentThemeOptions componentname="text-input" />
-
-### Form components
-
-This component also makes use of form field styles, which can be customized by the following variables:
-
-<ComponentThemeOptions componentname="form" />
 
 ## Related patterns
 

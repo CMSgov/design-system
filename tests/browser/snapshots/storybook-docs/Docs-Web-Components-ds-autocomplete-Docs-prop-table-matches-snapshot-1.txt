@@ -35,6 +35,11 @@
     "\"true\"\"false\""
   ],
   [
+    "error-id",
+    "The ID of the error message applied to this field. If none is provided, the id will be derived from the root-id attribute.",
+    "string"
+  ],
+  [
     "error-message",
     "Enable the error state by providing an error message",
     "string"
@@ -60,13 +65,28 @@
     "string"
   ],
   [
+    "hint-id",
+    "The ID of the hint element",
+    "string"
+  ],
+  [
     "items",
-    "An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined. This parameter needs to be stringified (please see examples for usage and read more on the autocomplete docs:).",
+    "An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a \"No results\" message. If you do not yet want to show results, this props should be undefined.\n\nWhen setting this attribute directly in HTML, it must be wrapped in single quotes, with double quotes inside the JSON. Example: <ds-autocomplete items='[{ \"id\": \"1\", \"name\": \"Advil\" }]' />\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nPlease see examples for usage and read the autocomplete docs.",
     "string"
   ],
   [
     "label",
     "A label for the input",
+    "string"
+  ],
+  [
+    "label-class-name",
+    "Additional classes to be added to the field label",
+    "string"
+  ],
+  [
+    "label-id",
+    "A unique id to be used on the field label. If one isn't provided, a unique ID will be generated.",
     "string"
   ],
   [
@@ -100,13 +120,13 @@
     "string"
   ],
   [
-    "root-id",
-    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
+    "requirement-label",
+    "Text showing the requirement (e.g., \"Optional\", or \"Required\"). In most cases, this should be used to indicate which fields are optional. See the form guidelines for more info.",
     "string"
   ],
   [
-    "value",
-    "Input value",
+    "root-id",
+    "A unique ID for this element. A unique ID will be generated if one isn't provided.",
     "string"
   ]
 ]
