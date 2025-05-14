@@ -19,21 +19,21 @@ const statusConfig: Record<
 > = {
   use: {
     variation: 'success',
-    label: 'Fully supported',
+    label: 'Use',
     Icon: CheckIcon,
     className: 'ds-u-margin-right--1',
   },
   caution: {
     variation: 'warn',
-    label: 'Use with caution',
+    label: 'Caution',
     Icon: AlertIcon,
-    className: 'ds-u-margin-right--1',
+    className: '',
   },
   avoid: {
     variation: 'alert',
-    label: 'Not recommended',
+    label: 'Avoid',
     Icon: AlertIcon,
-    className: 'ds-u-margin-right--1',
+    className: '',
   },
 };
 
