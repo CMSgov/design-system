@@ -1,5 +1,8 @@
 ---
 title: Month Picker
+status:
+  level: avoid
+  note: Lacks documented guidance on usage and accessibility. Accessibility testing has not been performed.
 cmsgov:
   figmaNodeId: 6-94
 core:
@@ -21,7 +24,7 @@ The Month Picker component renders a grid of checkboxes with shortened month nam
 ### Accessibility
 
 #### Accessibility
-- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. When using a dark background, consider using the `inversed` prop. [Read our guidance on color for more information.](../../foundation/system-color-tokens/#accessibility-considerations) 
+- Be mindful of color contrast ratios between the checkbox and its background color. For instance, a dark green or blue behind the component will most likely cause problems for users. When using a dark background, consider using the `inversed` prop. [Read our guidance on color for more information.](../../foundation/system-color-tokens/#accessibility-considerations)
 
 ### Accessibility testing
 
@@ -64,12 +67,6 @@ The Month Picker component renders a grid of checkboxes with shortened month nam
 The following CSS variables can be overridden to customize MonthPicker fields:
 
 <ComponentThemeOptions componentname="choice" />
-
-### Form components
-
-This component also makes use of form field styles, which can be customized by the following variables:
-
-<ComponentThemeOptions componentname="form" />
 
 ## Component maturity
 

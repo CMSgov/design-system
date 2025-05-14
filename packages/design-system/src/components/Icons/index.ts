@@ -1,6 +1,7 @@
 export * from './SvgIcon';
 export * from './AddIcon';
 export * from './AlertCircleIcon';
+export * from './AlertIcon';
 export * from './ArrowsStackedIcon';
 export * from './ArrowIcon';
 export * from './BuildingCircleIcon';
@@ -33,5 +34,6 @@ export * from './StarIcon';
 export * from './UsaFlagIcon';
 export * from './UsaLogo';
 export * from './WarningIcon';
+export * from './AlertIcon';
 export * from './WhatsNewIcon';
 export * from './WhiteHouseLogo';

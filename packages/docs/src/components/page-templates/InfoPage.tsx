@@ -11,7 +11,6 @@ import { graphql } from 'gatsby';
 const InfoPage = ({ data, location }: MdxQuery) => {
   const { frontmatter, body, tableOfContents, slug } = data.mdx;
   const theme = useTheme();
-
   return (
     <Layout
       frontmatter={frontmatter}
@@ -32,6 +31,10 @@ export const query = graphql`
       frontmatter {
         title
         intro
+        status {
+          level
+          note
+        }
         cmsgov {
           figmaNodeId
         }
