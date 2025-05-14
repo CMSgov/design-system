@@ -24,6 +24,7 @@ import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
 import { linkAnalytics } from '../../helpers/analytics';
 import TypographyUsageTable from './TypographyUsageTable';
+import { LocationInterface } from '../../../src/helpers/graphQLTypes';
 
 // adds DS styling to tables from markdown
 const TableWithClassnames = (props) => {
@@ -93,7 +94,7 @@ const RE_INTERNAL_URL =
  * A mapping of custom components for mdx syntax
  * Each mapping has a key with the element name and a value of a functional component to be used for that element
  */
-const customComponents = (theme) => ({
+const customComponents = ({ location, theme }: { location: LocationInterface; theme: string }) => ({
   a: (props) => {
     const { href, ...restProps } = props;
     if (href.startsWith('http') && !RE_INTERNAL_URL.test(href)) {
@@ -108,7 +109,7 @@ const customComponents = (theme) => ({
   ButtonMigrationTable: (props) => <ButtonMigrationTable theme={theme} {...props} />,
   ButtonVariationsTable: (props) => <ButtonVariationsTable theme={theme} {...props} />,
   code: CodeWithSyntaxHighlighting,
-  ColorContrastGuidelines,
+  ColorContrastGuidelines: (props) => <ColorContrastGuidelines location={location} {...props} />,
   ColorExampleList: (props) => <ColorExampleList theme={theme} {...props} />,
   ColorRamps,
   ColorTable: (props) => <ColorTable theme={theme} {...props} />,
@@ -139,6 +140,10 @@ interface ContentRendererProps {
    */
   children: React.ReactNode;
   /**
+   * @see https://www.gatsbyjs.com/docs/location-data-from-props/
+   */
+  location: LocationInterface;
+  /**
    * Current theme
    */
   theme: string;
@@ -148,8 +153,8 @@ interface ContentRendererProps {
  * ContentRenderer - a component to standardize the steps needed to display MDX content as page content
  * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/#components for details
  */
-const ContentRenderer = ({ children, theme }: ContentRendererProps) => {
-  return <MDXProvider components={customComponents(theme)}>{children}</MDXProvider>;
+const ContentRenderer = ({ children, location, theme }: ContentRendererProps) => {
+  return <MDXProvider components={customComponents({ location, theme })}>{children}</MDXProvider>;
 };
 
 export default ContentRenderer;
