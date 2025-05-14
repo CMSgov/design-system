@@ -1,6 +1,6 @@
-import ChoiceList, { ChoiceListType } from './ChoiceList';
-import { render, waitFor, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import ChoiceList, { ChoiceListType } from './ChoiceList';
 
 function generateChoices(length: number, customProps = {}) {
   const choices = [];
@@ -28,7 +28,10 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     onChange: () => null,
     ...customProps,
   };
-  return render(<ChoiceList {...props} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    ...render(<ChoiceList {...props} />),
+  };
 }
 
 describe('ChoiceList', () => {
@@ -144,48 +147,53 @@ describe('ChoiceList', () => {
     });
 
     it('calls onChange', async () => {
+      jest.useFakeTimers();
       const onChange = jest.fn();
-      renderChoiceList({ onChange });
+      const { user } = renderChoiceList({ onChange });
       const choiceEl = screen.getByLabelText('Choice 1');
-      userEvent.click(choiceEl);
+      await user.click(choiceEl);
+      jest.runAllTimers();
+
       await waitFor(() => expect(onChange).toHaveBeenCalled());
     });
 
-    it('calls onBlur', () => {
+    it('calls onBlur', async () => {
+      jest.useFakeTimers();
       const onBlur = jest.fn();
-      renderChoiceList({ onBlur });
+      const { user } = renderChoiceList({ onBlur });
       const choiceEl = screen.getByLabelText('Choice 1');
 
       choiceEl.focus();
-      userEvent.tab();
+      await user.tab();
+      jest.runAllTimers();
 
       expect(onBlur).toHaveBeenCalled();
     });
 
-    it('calls onComponentBlur', () => {
+    it('calls onComponentBlur', async () => {
       jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      renderChoiceList({ onBlur, onComponentBlur });
+      const { user } = renderChoiceList({ onBlur, onComponentBlur });
       const choiceEl = screen.getByLabelText('Choice 2');
 
       choiceEl.focus();
-      userEvent.tab();
+      await user.tab();
       jest.runAllTimers();
 
       expect(onBlur).toHaveBeenCalled();
       expect(onComponentBlur).toHaveBeenCalled();
     });
 
-    it('doesnt call onComponentBlur', () => {
+    it('does not call onComponentBlur', async () => {
       jest.useFakeTimers();
       const onBlur = jest.fn();
       const onComponentBlur = jest.fn();
-      renderChoiceList({ onBlur, onComponentBlur, type: 'checkbox' });
+      const { user } = renderChoiceList({ onBlur, onComponentBlur, type: 'checkbox' });
       const choiceEls = screen.getAllByRole('checkbox');
 
       choiceEls[0].focus();
-      userEvent.tab();
+      await user.tab();
       jest.runAllTimers();
 
       expect(onBlur).toHaveBeenCalled();
