@@ -83,6 +83,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       </p>
       <p>
         <ThirdPartyExternalLink
+          analytics={true}
           origin={origin}
           href="https://webaim.org/resources/contrastchecker/"
         >
@@ -90,12 +91,20 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
         </ThirdPartyExternalLink>
       </p>
       <p>
-        <ThirdPartyExternalLink origin={origin} href="https://dequeuniversity.com/color-contrast">
+        <ThirdPartyExternalLink
+          analytics={true}
+          origin={origin}
+          href="https://dequeuniversity.com/color-contrast"
+        >
           Deque Color Contrast Analyzer
         </ThirdPartyExternalLink>
       </p>
       <p>
-        <ThirdPartyExternalLink origin={origin} href="https://www.tpgi.com/color-contrast-checker/">
+        <ThirdPartyExternalLink
+          analytics={true}
+          origin={origin}
+          href="https://www.tpgi.com/color-contrast-checker/"
+        >
           Color Contrast Analyzer by TPGi
         </ThirdPartyExternalLink>
       </p>
