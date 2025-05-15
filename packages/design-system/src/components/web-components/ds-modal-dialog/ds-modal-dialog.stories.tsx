@@ -130,7 +130,7 @@ const Template = (args) => {
 
     const closeModal = (event) => {
       action('ds-exit')(event);
-      const modal = event.target.closest('ds-modal-dialog');
+      const modal = event?.target.closest('ds-modal-dialog');
       modal?.setAttribute('is-open', 'false');
     };
 
