@@ -41,7 +41,7 @@ const RelativeLink: FC<RelativeLinkProps> = ({ children, headingLevel = '2', pat
 
   return (
     <HeadingTag id={relativeLink} style={{ position: 'relative' }}>
-      <a aria-label={ariaLabel} className="anchor before" href={href} data-listener-attached={true}>
+      <a aria-label={ariaLabel} className="anchor before" href={href}>
         <SVGLinkIcon />
       </a>
       {children}
