@@ -22,7 +22,9 @@ const IndexPage = ({ children, data, location }: MdxQuery) => {
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer theme={theme}>{children}</ContentRenderer>
+      <ContentRenderer location={location} theme={theme}>
+        {children}
+      </ContentRenderer>
     </Layout>
   );
 };

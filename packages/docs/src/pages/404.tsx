@@ -12,7 +12,9 @@ const NotFoundPage = ({ data, location, children }: MdxQuery) => {
   const theme = useTheme();
   return (
     <Layout frontmatter={frontmatter} location={location} theme={theme}>
-      <ContentRenderer theme={theme}>{children}</ContentRenderer>
+      <ContentRenderer location={location} theme={theme}>
+        {children}
+      </ContentRenderer>
     </Layout>
   );
 };

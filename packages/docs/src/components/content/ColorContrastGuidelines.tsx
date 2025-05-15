@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
-import { LocationInterface } from 'src/helpers/graphQLTypes';
+import { LocationInterface } from '../../../src/helpers/graphQLTypes';
 
 const SVGLinkIcon = () => (
   <span>
