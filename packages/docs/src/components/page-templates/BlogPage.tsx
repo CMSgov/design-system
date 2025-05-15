@@ -42,7 +42,9 @@ const BlogPage = ({ data, location, children }: MdxQuery) => {
         </header>
       }
     >
-      <ContentRenderer theme={theme}>{children}</ContentRenderer>
+      <ContentRenderer location={location} theme={theme}>
+        {children}
+      </ContentRenderer>
       <PageFeedback />
       <div className="ds-u-margin-top--4">{backLink}</div>
     </Layout>
