@@ -77,7 +77,6 @@ const meta: Meta = {
     },
     'root-id': {
       description: 'A custom `id` attribute for the dialog element',
-      control: 'text',
     },
     'is-open': {
       description: 'Controls whether the dialog is in an open state',
@@ -125,18 +124,13 @@ const Template = (args) => {
     const forms = Array.from(document.querySelectorAll('form[method="dialog"]'));
 
     const openModal = (event) => {
-      const modal = document.getElementById(event.target.dataset.id);
+      const modal = document.querySelector(`[root-id="${event.target.dataset.id}"]`);
       modal?.setAttribute('is-open', 'true');
     };
 
     const closeModal = (event) => {
       action('ds-exit')(event);
-      let modal: Element;
-      if (event.target.tagName == 'FORM') {
-        modal = event.target.closest('ds-modal-dialog');
-      } else {
-        modal = document.getElementById(event.target.id);
-      }
+      const modal = event.target.closest('ds-modal-dialog');
       modal?.setAttribute('is-open', 'false');
     };
 
@@ -165,7 +159,7 @@ const Template = (args) => {
 
   return (
     <>
-      <ds-button id={`modal_toggle__${args.id}`} data-id={args.id}>
+      <ds-button id={`modal_toggle`} data-id={args['root-id']}>
         Open Modal
       </ds-button>
       <ds-modal-dialog {...args}></ds-modal-dialog>
@@ -177,7 +171,7 @@ export const Default = {
   render: Template,
   args: {
     alert: 'false',
-    id: '100',
+    'root-id': '100',
   },
 };
 
@@ -187,7 +181,7 @@ export const BackdropClickExits = {
     alert: 'false',
     'backdrop-click-exits': 'true',
     heading: 'Dialog Heading',
-    id: '200',
+    'root-id': '200',
   },
 };
 
@@ -257,6 +251,6 @@ export const PreventScrollExample = {
       </div>
     ),
     heading: 'Dialog Heading',
-    id: '300',
+    'root-id': '300',
   },
 };
