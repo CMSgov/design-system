@@ -35,11 +35,6 @@
     "string"
   ],
   [
-    "id",
-    "",
-    "string"
-  ],
-  [
     "is-open",
     "Controls whether the dialog is in an open state",
     "\"true\"\"false\""
