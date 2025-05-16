@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEffect, useState } from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
@@ -68,41 +69,51 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
-  let env: 'dev' | 'github-demo' | 'prod';
+  const [env, setEnv] = useState<'dev' | 'github-demo' | 'prod' | undefined>(undefined);
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
-  if (typeof window !== 'undefined' && (window as UtagContainer)?.utag) {
+  useEffect(() => {
+    if (env !== undefined) {
+      const analyticsPayload = {
+        content_language: 'en',
+        content_type: 'html',
+        logged_in: 'false',
+        page_name: tabTitle,
+        page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
+        site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+        site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
+      } as any;
+
+      sendViewEvent(analyticsPayload);
+    }
+  }, [env, location.pathname, location.hostname, tabTitle]);
+
+  useEffect(() => {
     // We can define environment names as we wish
     // github-demo is a demo deployment off of a specific branch.
     switch (location.hostname) {
       case 'localhost':
-        env = 'dev';
+        setEnv('dev');
         break;
       case 'cmsgov.github.io':
-        env = 'github-demo';
+        setEnv('github-demo');
         break;
       case 'design.cms.gov':
-        env = 'prod';
+        setEnv('prod');
         break;
       default:
-        env = 'prod';
+        setEnv('prod');
     }
+  }, [env, location.hostname]);
 
-    const analyticsPayload = {
-      content_language: 'en',
-      content_type: 'html',
-      logged_in: 'false',
-      page_name: tabTitle,
-      page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
-      site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
-      site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
-    } as any;
-
-    sendViewEvent(analyticsPayload);
-  }
+  useEffect(() => {
+    if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
+      window.tealiumEnvironment = env;
+    }
+  }, [env]);
 
   return (
     <div data-theme={theme} id={pageId}>
