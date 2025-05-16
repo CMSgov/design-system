@@ -3,6 +3,8 @@ title: Card (M.gov)
 status:
   level: avoid
   note: Lacks documented guidance on usage and accessibility.
+  targetTheme: medicare
+  targetThemeNote: This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.
 core:
   figmaNodeId: 4334-23875
 medicare:
@@ -11,15 +13,6 @@ medicare:
 ---
 
 import { Alert } from '@cmsgov/design-system';
-
-<ThemeContent neverThemes={['medicare']}>
-  <Alert variation="error">
-    <p class="ds-c-alert__text">
-      This component is only used for Medicare. Please use the theme switcher to view the component
-      with Medicare styles.
-    </p>
-  </Alert>
-</ThemeContent>
 
 ## Examples
 
