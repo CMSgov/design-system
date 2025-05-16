@@ -74,7 +74,7 @@ const Layout = ({
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
-  if (window && (window as UtagContainer)?.utag) {
+  if (typeof window !== 'undefined' && (window as UtagContainer)?.utag) {
     // We can define environment names as we wish
     // github-demo is a demo deployment off of a specific branch.
     switch (location.hostname) {
