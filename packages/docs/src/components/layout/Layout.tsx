@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import { useEffect, useRef } from 'react';
 import Footer from './DocSiteFooter';
 import SideNav from './SideNav/SideNav';
 import PageHeader from './PageHeader';
@@ -68,41 +69,44 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
-  let env: 'dev' | 'github-demo' | 'prod';
+  // Using a ref here because this value shouldn't change after the initial render.
+  const env = useRef('' as 'dev' | 'github-demo' | 'prod');
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
-  if (typeof window !== 'undefined' && (window as UtagContainer)?.utag) {
-    // We can define environment names as we wish
-    // github-demo is a demo deployment off of a specific branch.
-    switch (location.hostname) {
-      case 'localhost':
-        env = 'dev';
-        break;
-      case 'cmsgov.github.io':
-        env = 'github-demo';
-        break;
-      case 'design.cms.gov':
-        env = 'prod';
-        break;
-      default:
-        env = 'prod';
+  useEffect(() => {
+    if (window && (window as UtagContainer)?.utag) {
+      // We can define environment names as we wish
+      // github-demo is a demo deployment off of a specific branch.
+      switch (location.hostname) {
+        case 'localhost':
+          env.current = 'dev';
+          break;
+        case 'cmsgov.github.io':
+          env.current = 'github-demo';
+          break;
+        case 'design.cms.gov':
+          env.current = 'prod';
+          break;
+        default:
+          env.current = 'prod';
+      }
+
+      const analyticsPayload = {
+        content_language: 'en',
+        content_type: 'html',
+        logged_in: 'false',
+        page_name: tabTitle,
+        page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
+        site_environment: env.current, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+        site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
+      } as any;
+
+      sendViewEvent(analyticsPayload);
     }
-
-    const analyticsPayload = {
-      content_language: 'en',
-      content_type: 'html',
-      logged_in: 'false',
-      page_name: tabTitle,
-      page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
-      site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
-      site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
-    } as any;
-
-    sendViewEvent(analyticsPayload);
-  }
+  }, []);
 
   return (
     <div data-theme={theme} id={pageId}>
@@ -131,8 +135,10 @@ const Layout = ({
               : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
           }
         />
-        <script>{`window.tealiumEnvironment = "${env}";`}</script>
-        <script src={`https://tealium-tags.cms.gov/cms-design/${env}/utag.sync.js`}></script>
+        <script>{`window.tealiumEnvironment = "${env.current}";`}</script>
+        <script
+          src={`https://tealium-tags.cms.gov/cms-design/${env.current}/utag.sync.js`}
+        ></script>
         <script type="text/javascript">
           {'window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}; window.utag_cfg_ovrd.noview = true;'}
         </script>
