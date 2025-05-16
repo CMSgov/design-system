@@ -42,7 +42,10 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({ level }) => {
 
   return (
     <Badge variation={variation} className="ds-u-display--inline-flex ds-u-align-items--center">
-      <Icon className={className} aria-hidden />
+      <Icon
+        className={className}
+        style={{ fontSize: '1em', height: '1em', width: '1em', verticalAlign: 'text-bottom' }}
+      />
       {label}
     </Badge>
   );
