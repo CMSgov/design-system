@@ -14,7 +14,6 @@ import {
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import { withPrefix } from 'gatsby';
-import { UtagContainer } from '@cmsgov/design-system';
 import { sendViewEvent } from '@cmsgov/design-system';
 
 import '../../styles/index.scss';
@@ -76,7 +75,7 @@ const Layout = ({
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
   useEffect(() => {
-    if (env !== undefined) {
+    if (env) {
       const analyticsPayload = {
         content_language: 'en',
         content_type: 'html',
@@ -89,7 +88,7 @@ const Layout = ({
 
       sendViewEvent(analyticsPayload);
     }
-  }, [env, location.pathname, location.hostname, tabTitle]);
+  }, [env, location.pathname, tabTitle]);
 
   useEffect(() => {
     // We can define environment names as we wish
@@ -107,7 +106,7 @@ const Layout = ({
       default:
         setEnv('prod');
     }
-  }, [env, location.hostname]);
+  }, [location.hostname]);
 
   useEffect(() => {
     if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
