@@ -22,9 +22,13 @@ const meta: Meta = {
   },
   argTypes: {
     steps: {
-      description: `
-An array of \`StepObjects\` that contain text, state, link URLs, and other info needed to render steps. For more details, refer to the [StepList documentation on storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: The \`component\` prop is excluded in \`ds-step-list\`.
-`,
+      description: `An array of \`StepObject\`s that contain text, state, link URLs, and other info needed to render steps.
+
+When using this in HTML, the attribute must be a stringified JSON array wrapped in single quotes. Example:
+\`<ds-step-list steps='[{ "id": "1", "heading": "Step 1", "completed": "true", "href": "#" }]'\`
+
+For details on other optional properties available on \`StepObject\`, refer to the [StepList documentation on Storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: the \`component\` prop is excluded in \`ds-step-list\`. 
+    `,
       control: 'text',
       table: {
         type: { summary: 'array' },
