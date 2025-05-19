@@ -101,7 +101,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
           </Alert>
         </div>
       )}
-      {targetThemeNote && (
+      {targetThemeNote && targetTheme && (
         <div className="ds-u-measure--wide ds-u-margin-top--2 ds-u-margin-bottom--2">
           <ThemeContent theme={theme} neverThemes={[targetTheme]}>
             <Alert variation="error">
