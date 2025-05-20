@@ -5,7 +5,7 @@ import {
   AutocompleteItems,
   AutocompleteItemGroup,
 } from './Autocomplete';
-import { ComboBoxState, Item, Section } from '../react-aria'; // from react-stately
+import { ComboBoxState, Item, Section } from 'react-stately';
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 

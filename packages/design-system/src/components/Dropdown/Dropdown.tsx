@@ -11,8 +11,8 @@ import useId from '../utilities/useId';
 import useAutofocus from '../utilities/useAutoFocus';
 import { SvgIcon } from '../Icons';
 import { getFirstOptionValue, isOptGroup, parseChildren, validateProps } from './utils';
-import { Item, Section, useSelectState } from '../react-aria'; // from react-stately
-import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from react-aria
+import { Item, Section, useSelectState } from 'react-stately';
+import { HiddenSelect, useButton, useSelect } from 'react-aria';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';

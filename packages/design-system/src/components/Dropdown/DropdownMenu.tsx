@@ -2,8 +2,8 @@ import { RefObject, useEffect, useRef } from 'react';
 import type * as React from 'react';
 import { DropdownMenuOption } from './DropdownMenuOption';
 import { DropdownMenuSection } from './DropdownMenuSection';
-import { ListState, OverlayTriggerState } from '../react-aria'; // from react-stately
-import { AriaPopoverProps, AriaListBoxOptions, useListBox } from '../react-aria'; // from react-aria
+import { ListState, OverlayTriggerState } from 'react-stately';
+import { AriaPopoverProps, AriaListBoxOptions, useListBox } from 'react-aria';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import { DropdownSize } from './Dropdown';
 import classNames from 'classnames';

@@ -15,8 +15,8 @@ import {
   findItemById,
 } from './utils';
 import { t } from '../i18n';
-import { useComboBox } from '../react-aria'; // from react-aria
-import { useComboBoxState } from '../react-aria'; // from react-stately
+import { useComboBox } from 'react-aria';
+import { useComboBoxState } from 'react-stately';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**

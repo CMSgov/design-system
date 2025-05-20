@@ -1,6 +1,6 @@
 import { DropdownMenuOption } from './DropdownMenuOption';
-import { ListState, Node, OverlayTriggerState } from '../react-aria'; // from react-stately
-import { useListBoxSection } from '../react-aria'; // from react-aria
+import { ListState, Node, OverlayTriggerState } from 'react-stately';
+import { useListBoxSection } from 'react-aria';
 
 export interface DropdownMenuOptionProps<T> {
   componentClass: string;
