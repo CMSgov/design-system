@@ -20,8 +20,14 @@ export default {
   argTypes: {
     children: { control: false },
     choices: {
-      description:
-        "The list of choices to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. If you don't specify this attribute, represent your choices as <ds-choice> elements within the <ds-choice-list> component (see examples for details).",
+      description: `
+The list of choices to be rendered as an array of objects
+
+When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes. Example:
+\`<ds-choice-list choices='[{ "label": "Choice 1", "value": "A", "defaultChecked": true }, { "label": "Choice 2", "value": "B", "requirementLabel": "Choice hint text" }]'></ds-choice-list>\`
+
+Alternatively, you can omit the \`choices\` attribute and instead include individual  \`<ds-choice>\` elements as children inside \`<ds-choice-list>\`. See the docs for examples.
+`,
       control: 'object',
     },
     'class-name': {
