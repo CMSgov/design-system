@@ -27,6 +27,8 @@ const meta: Meta = {
 When using this in HTML, the attribute must be a stringified JSON array wrapped in single quotes. Example:
 \`<ds-step-list steps='[{ "id": "1", "heading": "Step 1", "completed": "true", "href": "#" }]'\`
 
+If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
+
 For details on other optional properties available on \`StepObject\`, refer to the [StepList documentation on Storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: the \`component\` prop is excluded in \`ds-step-list\`. 
     `,
       control: 'text',

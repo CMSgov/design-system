@@ -81,8 +81,14 @@ export default {
       control: 'text',
     },
     options: {
-      description:
-        'The list of options to be rendered as an array of objects. If it is defined as an attribute in HTML, it needs to be stringified. Each item must have a `label` and `value`.',
+      description: `
+An array of option objects, each containing a \`label\` and \`value\`, used to populate the dropdown menu.
+
+When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes. Example:
+\`<ds-dropdown options='[{ "label": "Confederated Tribes and Bands of the Yakama Nation", "value": "1" }, { "label": "Cowlitz Indian Tribe", "value": "4" }]'></ds-dropdown>\`
+
+If you're working in JavaScript, use \`JSON.stringify()\` to convert the array before setting the attribute.
+`,
       control: 'object',
     },
     'requirement-label': {
