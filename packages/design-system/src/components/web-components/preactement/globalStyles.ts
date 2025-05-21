@@ -1,5 +1,9 @@
 const POLLING_INTERVAL = 10;
+// We poll once every 10 milliseconds, which means we observe 100 times per second
+// The max to hit over a 30 second period = 30 seconds * 100 observes per second = 3000 observations
+const MAX_OBSERVATIONS = 3000;
 
+let observations = 0;
 let globalSheets: CSSStyleSheet[] | null = null;
 let subscribers: ShadowRoot[] = [];
 
@@ -15,16 +19,23 @@ export function getGlobalStyleSheets() {
 function copyGlobalStyleSheets(): CSSStyleSheet[] {
   return Array.from(document.styleSheets).map((documentSheet) => {
     const sheet = new CSSStyleSheet();
-    const css = Array.from(documentSheet.cssRules)
-      .map((rule) => rule.cssText)
-      .join(' ');
-    sheet.replaceSync(css);
-    return sheet;
+    try {
+      const css = Array.from(documentSheet.cssRules)
+        .map((rule) => rule.cssText)
+        .join(' ');
+      sheet.replaceSync(css);
+    } catch (error) {
+      console.warn(
+        `Could not copy global stylesheets. See following error: \n ${error?.message ?? error}`
+      );
+    } finally {
+      return sheet;
+    }
   });
 }
 
 function isLinkElement(node: Node): node is HTMLLinkElement {
-  return node.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
+  return node?.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
 }
 
 /**
@@ -48,11 +59,17 @@ function createStyleSheetSnapshot(): string {
  */
 function watchForFutureChanges() {
   let stylesheetSnapshot = createStyleSheetSnapshot();
-  setInterval(() => {
+  const observationIntervalId = setInterval(() => {
     const currentSnapshot = createStyleSheetSnapshot();
     if (currentSnapshot !== stylesheetSnapshot) {
       updateStyles();
       stylesheetSnapshot = currentSnapshot;
+      observations = 0;
+    } else {
+      observations += 1;
+      if (observations >= MAX_OBSERVATIONS) {
+        clearInterval(observationIntervalId);
+      }
     }
   }, POLLING_INTERVAL);
 }

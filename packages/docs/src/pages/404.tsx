@@ -4,11 +4,9 @@ import Layout from '../components/layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
-import useSendViewEvent from '../helpers/useSendViewEvent';
 
 const NotFoundPage = ({ data, location, children }: MdxQuery) => {
   const { frontmatter } = data.mdx;
-  useSendViewEvent();
   const theme = useTheme();
   return (
     <Layout frontmatter={frontmatter} location={location} theme={theme}>

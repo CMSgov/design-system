@@ -74,22 +74,6 @@ A dark blue HealthCare.gov favicon appears on all HealthCare.gov web pages.
   <img src={hcgovFavicon} />
 </EmbeddedExample>
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'healthcare-logo--docs'} />
-
-### Style customization
-
-Customize the colors of the logo using CSS.
-
-Available classes:
-
-- `.hc-c-logo__health`
-- `.hc-c-logo__care`
-- `.hc-c-logo__gov`
-
 ## Guidance
 
 ### Usage
@@ -107,6 +91,47 @@ Available classes:
 | <CloseIconThin class='ds-c-icon-color--error' /> Other colors            | <img src={differentColors} alt="Healthcage.gov logo incorrectly used with tan and teal colors"/>     |
 | <CloseIconThin class='ds-c-icon-color--error' /> Outlined                | <img src={outlined} alt="Healthcage.gov logo incorrectly used with a blue outline of the logo"/>     |
 | <CloseIconThin class='ds-c-icon-color--error' /> Squeezed                | <img src={squeezed} alt="Healthcage.gov logo incorrectly used with the logo squeezed"/>              |
+
+## Accessibility
+
+- Logos used in the header and footer are considered functional images per the W3C.
+
+### General accessibility guidance
+
+- Logos in the header and footer, or that function as links, should be given alternative text that tells the user where clicking the logo will take them – in our case, usually the homepage. 
+- Logos used in the header and footer, or that function as links, should be given focus when navigating by keyboard.
+
+### Accessibility testing
+
+- Alternate text is visible when you hover over the logo
+- Clicking the logo shows a focus state
+
+#### Keyboard testing
+
+- The logo receives focus via keyboard navigation. Using only a keyboard, you can navigate to the logo, use it to go to the appropriate link, and navigate away from it.
+- Focus indicators are clearly visible around logos. When you use a keyboard to tab into a text input, you see an indicator around the input field.
+
+#### Screenreader testing
+
+- Alternative text is read aloud by screenreaders.
+- Screenreader announces that it is on a link, and the link’s destination.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'healthcare-logo--docs'} />
+
+### Style customization
+
+Customize the colors of the logo using CSS.
+
+Available classes:
+
+- `.hc-c-logo__health`
+- `.hc-c-logo__care`
+- `.hc-c-logo__gov`
+
 
 ## Component maturity
 

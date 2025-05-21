@@ -1,19 +1,21 @@
+import { sendViewEvent, SkipNav, UsaBanner } from '@cmsgov/design-system';
 import type * as React from 'react';
-import Footer from './DocSiteFooter';
-import SideNav from './SideNav/SideNav';
-import PageHeader from './PageHeader';
-import TableOfContents from './TableOfContents';
-import TableOfContentsMobile from './TableOfContentsMobile';
-import HeaderFullWidth from './HeaderFullWidth';
-import { SkipNav, UsaBanner } from '@cmsgov/design-system';
+import { useEffect, useState } from 'react';
 import {
-  LocationInterface,
   FrontmatterInterface,
+  LocationInterface,
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
 import '../../styles/index.scss';
-import ThemeVersionSection from './SideNav/ThemeVersionSection';
+import Footer from './DocSiteFooter';
 import FilterDialogManager from './FilterDialog/FilterDialogManager';
+import HeaderFullWidth from './HeaderFullWidth';
+import PageHeader from './PageHeader';
+import SideNav from './SideNav/SideNav';
+import { getThemeData } from './SideNav/themeVersionData';
+import ThemeVersionSection from './SideNav/ThemeVersionSection';
+import TableOfContents from './TableOfContents';
+import TableOfContentsMobile from './TableOfContentsMobile';
 
 interface LayoutProps {
   /**
@@ -62,7 +64,51 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
+  const [env, setEnv] = useState<'dev' | 'github-demo' | 'prod' | undefined>(undefined);
+  const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
+  const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
+
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
+
+  useEffect(() => {
+    if (env) {
+      const analyticsPayload = {
+        content_language: 'en',
+        content_type: 'html',
+        logged_in: 'false',
+        page_name: tabTitle,
+        page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
+        site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+        site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
+      } as any;
+
+      sendViewEvent(analyticsPayload);
+    }
+  }, [env, location.pathname, tabTitle]);
+
+  useEffect(() => {
+    // We can define environment names as we wish
+    // github-demo is a demo deployment off of a specific branch.
+    switch (location.hostname) {
+      case 'localhost':
+        setEnv('dev');
+        break;
+      case 'cmsgov.github.io':
+        setEnv('github-demo');
+        break;
+      case 'design.cms.gov':
+        setEnv('prod');
+        break;
+      default:
+        setEnv('prod');
+    }
+  }, [location.hostname]);
+
+  useEffect(() => {
+    if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
+      window.tealiumEnvironment = env;
+    }
+  }, [env]);
 
   return (
     <div data-theme={theme} id={pageId}>
