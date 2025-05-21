@@ -1,5 +1,4 @@
 import { Badge, AlertIcon, CheckIcon } from '@cmsgov/design-system';
-import { BadgeVariation } from '@cmsgov/design-system/dist/react-components/types/Badge/Badge.js';
 import { StatusInterface } from '../../helpers/graphQLTypes';
 import React from 'react';
 
@@ -12,7 +11,9 @@ interface StatusIndicatorProps {
 const statusConfig: Record<
   StatusLevel,
   {
-    variation: BadgeVariation;
+    // Inlined from the `BadgeVariation` type to avoid deep import from @cmsgov/design-system.
+    // Update this if `BadgeVariation` changes.
+    variation: 'info' | 'success' | 'warn' | 'alert';
     label: string;
     Icon: React.ElementType;
     iconClassName?: string;
