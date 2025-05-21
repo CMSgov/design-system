@@ -31,7 +31,7 @@
   ],
   [
     "steps",
-    "An array of StepObjects that contain text, state, link URLs, and other info needed to render steps. For more details, refer to the StepList documentation on storybook. Note: The component prop is excluded in ds-step-list.",
+    "An array of StepObjects that contain text, state, link URLs, and other info needed to render steps.\n\nWhen using this in HTML, the attribute must be a stringified JSON array wrapped in single quotes. Example: <ds-step-list steps='[{ \"id\": \"1\", \"heading\": \"Step 1\", \"completed\": \"true\", \"href\": \"#\" }]'\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on other optional properties available on StepObject, refer to the StepList documentation on Storybook. Note: the component prop is excluded in ds-step-list.",
     "string"
   ],
   [
