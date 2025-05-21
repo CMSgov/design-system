@@ -1,4 +1,5 @@
 import { Badge, AlertIcon, CheckIcon } from '@cmsgov/design-system';
+import { BadgeVariation } from '@cmsgov/design-system/dist/react-components/types/Badge/Badge.js';
 import { StatusInterface } from '../../helpers/graphQLTypes';
 import React from 'react';
 
@@ -11,39 +12,37 @@ interface StatusIndicatorProps {
 const statusConfig: Record<
   StatusLevel,
   {
-    variation: 'success' | 'warn' | 'alert';
+    variation: BadgeVariation;
     label: string;
     Icon: React.ElementType;
-    className: string;
+    iconClassName?: string;
   }
 > = {
   use: {
     variation: 'success',
     label: 'Use',
     Icon: CheckIcon,
-    className: 'ds-u-margin-right--1',
+    iconClassName: 'ds-u-margin-right--1',
   },
   caution: {
     variation: 'warn',
     label: 'Caution',
     Icon: AlertIcon,
-    className: '',
   },
   avoid: {
     variation: 'alert',
     label: 'Avoid',
     Icon: AlertIcon,
-    className: '',
   },
 };
 
 export const StatusIndicator: React.FC<StatusIndicatorProps> = ({ level }) => {
-  const { variation, label, Icon, className } = statusConfig[level];
+  const { variation, label, Icon, iconClassName } = statusConfig[level];
 
   return (
     <Badge variation={variation} className="ds-u-display--inline-flex ds-u-align-items--center">
       <Icon
-        className={className}
+        className={iconClassName}
         style={{ fontSize: '1em', height: '1em', width: '1em', verticalAlign: 'text-bottom' }}
       />
       {label}
