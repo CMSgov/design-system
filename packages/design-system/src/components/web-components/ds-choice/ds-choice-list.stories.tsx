@@ -21,7 +21,7 @@ export default {
     children: { control: false },
     choices: {
       description: `
-The list of choices to be rendered as an array of objects
+The list of choices to be rendered as an array of objects.
 
 When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
 
