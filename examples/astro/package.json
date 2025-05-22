@@ -1,7 +1,7 @@
 {
   "name": "astro-example",
   "type": "module",
-  "version": "12.2.0",
+  "version": "12.3.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,7 +14,7 @@
     "@astrojs/check": "0.9.4",
     "@astrojs/preact": "4.0.1",
     "@astrojs/react": "4.1.2",
-    "@cmsgov/design-system": "12.2.0",
+    "@cmsgov/design-system": "12.3.0",
     "astro": "5.1.2",
     "typescript": "^5.4.3"
   }
