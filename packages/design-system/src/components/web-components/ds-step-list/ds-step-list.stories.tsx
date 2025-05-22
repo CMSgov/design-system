@@ -24,10 +24,30 @@ const meta: Meta = {
     steps: {
       description: `An array of \`StepObject\`s that contain text, state, link URLs, and other info needed to render steps.
 
-When using this in HTML, the attribute must be a stringified JSON array wrapped in single quotes. Example:
-\`<ds-step-list steps='[{ "id": "1", "heading": "Step 1", "completed": "true", "href": "#" }]'\`
+When using this in HTML, the \`steps\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
+
+**Example:**
+\`<ds-step-list
+  steps='[
+    {
+      "id": "1",
+      "heading": "Step 1",
+      "completed": "true",
+      "href": "#step-1"
+    },
+    {
+      "id": "2",
+      "heading": "Step 2",
+      "completed" :"false",
+      "href": "#step-2"
+    },
+  ]'
+>
+</ds-step-list>\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
+
+For details on valid JSON formatting, see [JSON syntax restrictions on MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON#json_syntax_restrictions).
 
 For details on other optional properties available on \`StepObject\`, refer to the [StepList documentation on Storybook](https://design.cms.gov/storybook/?path=/docs/components-steplist--docs). Note: the \`component\` prop is excluded in \`ds-step-list\`. 
     `,

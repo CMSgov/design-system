@@ -23,12 +23,30 @@ export default {
       description: `
 The list of choices to be rendered as an array of objects
 
-When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes. Example:
-\`<ds-choice-list choices='[{ "label": "Choice 1", "value": "A", "defaultChecked": true }, { "label": "Choice 2", "value": "B", "requirementLabel": "Choice hint text" }]'></ds-choice-list>\`
+When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
+
+**Example:**
+\`<ds-choice-list
+  choices='[
+    {
+      "label": "Choice 1",
+      "value": "A",
+      "defaultChecked": true
+    },
+    {
+      "label": "Choice 2",
+      "value": "B",
+      "requirementLabel": "Choice hint text"
+    }
+  ]'
+>
+</ds-choice-list>\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 
-Alternatively, you can omit the \`choices\` attribute and instead include individual  \`<ds-choice>\` elements as children inside \`<ds-choice-list>\`. See the docs for examples.
+For details on valid JSON formatting, see [JSON syntax restrictions on MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON#json_syntax_restrictions).
+
+Alternatively, you can omit the \`choices\` attribute and instead include individual  \`<ds-choice>\` elements as children inside \`<ds-choice-list>\`.
 `,
       control: 'object',
     },

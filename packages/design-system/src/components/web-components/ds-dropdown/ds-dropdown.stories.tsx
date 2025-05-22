@@ -84,10 +84,28 @@ export default {
       description: `
 An array of option objects, each containing a \`label\` and \`value\`, used to populate the dropdown menu.
 
-When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes. Example:
-\`<ds-dropdown options='[{ "label": "Confederated Tribes and Bands of the Yakama Nation", "value": "1" }, { "label": "Cowlitz Indian Tribe", "value": "4" }]'></ds-dropdown>\`
+When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
 
-If you're working in JavaScript, use \`JSON.stringify()\` to convert the array before setting the attribute.
+**Example:**
+\`<ds-dropdown
+  options='[
+    {
+      "label": "Confederated Tribes and Bands of the Yakama Nation",
+      "value": "1"
+    },
+    {
+      "label": "Cowlitz Indian Tribe",
+      "value": "4"
+    }
+  ]'
+>
+</ds-dropdown>\`
+
+If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
+
+For details on valid JSON formatting, see [JSON syntax restrictions on MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON#json_syntax_restrictions).
+
+Alternatively, you can omit the \`options\` attribute and provide \`<option>\` elements as children inside \`<ds-dropdown>\`.
 `,
       control: 'object',
     },
