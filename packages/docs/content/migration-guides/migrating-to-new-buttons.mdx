@@ -16,7 +16,9 @@ import { Alert, Button } from '@cmsgov/design-system';
   variation="warn"
   heading="The CMS Design System v4 release introduces an updated button architecture that is not backward compatible with previous versions of the design system."
 >
-  Review the following sections to become familiar with our new buttons and how to update to them.
+  {
+    'Review the following sections to become familiar with our new buttons and how to update to them.'
+  }
 </Alert>
 
 ## Previous button architecture
@@ -31,7 +33,7 @@ There were button types and styles that existed in child design systems only and
   class="ds-u-border--1"
 />
 
-## New button architecture 
+## New button architecture
 
 The updated button architecture creates a more robust and full-featured set of buttons with multiple color options for each button style, in addition to a full set of "on dark" button variations. The updated approach to language and naming is based on the style of a button (Solid, Outline, Ghost) rather than the priority of the button (Primary, Secondary). This allows themes to define button usage and button priority within theme level guidance and documentation. This approach keeps our language for consistent across the design system and themes for everyone as we move towards a unified design system that can be themed by brand.
 
@@ -45,7 +47,7 @@ The updated button architecture creates a more robust and full-featured set of b
 
 <ButtonVariationsTable />
 
-## Updating your design in Sketch 
+## Updating your design in Sketch
 
 ### Sketch button structure updates
 
@@ -68,7 +70,7 @@ The updated button structure in Sketch will be organized into 2 main groups on l
 
 ### Sketch button layer style updates
 
-We've updated our buttons in Sketch as well to take advantage of layer styles and text styles for various button states. This means we are only providing the default or resting state of each button variation and then if you need to create a button in a focused state or a button in a disabled state you can easily swap the layer and text style for the button to achieve the state you are wanting to use. The text and layer style names should match - For example, the focus text style will match with the focus layer style to style the button in a focus state. 
+We've updated our buttons in Sketch as well to take advantage of layer styles and text styles for various button states. This means we are only providing the default or resting state of each button variation and then if you need to create a button in a focused state or a button in a disabled state you can easily swap the layer and text style for the button to achieve the state you are wanting to use. The text and layer style names should match - For example, the focus text style will match with the focus layer style to style the button in a focus state.
 
 <img
   alt="Switching button text and layer styles to create different states of buttons. Screenshot."
@@ -78,7 +80,7 @@ We've updated our buttons in Sketch as well to take advantage of layer styles an
 
 ### Sketch button icon updates
 
-We've added button icon variations to the default button. You can now add buttons with left and right positioned icons to your designs and use Sketch symbol overrides to change your icon inside the button. 
+We've added button icon variations to the default button. You can now add buttons with left and right positioned icons to your designs and use Sketch symbol overrides to change your icon inside the button.
 
 <img
   alt="Using Sketch overrides to switch icons with the new left and right button symbols. Screenshot."
@@ -90,7 +92,7 @@ We've added button icon variations to the default button. You can now add button
 
 ### Mapping old buttons to new buttons
 
-We have provided automatic migration scripts as part of this migration guide, however it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or plain HTML with CSS classes. 
+We have provided automatic migration scripts as part of this migration guide, however it is helpful to know how the old button variations in your app are mapped to the new button architecture. The following tables show how to map buttons defined in React code or plain HTML with CSS classes.
 
 **Use the theme selector in the left navigation** to see what buttons are available for child design systems.
 
@@ -105,7 +107,7 @@ Migration help has been provided via the `cmsds-migrate` helper script. If you i
 After executing this you will be provided with a list of migration modules to utilize which are named descriptively by function, like this:
 
 ```
- file: 
+ file:
 ❯ html button migration
   migration notice cleanup
   react button-migration
