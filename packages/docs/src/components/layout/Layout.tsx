@@ -84,8 +84,8 @@ const Layout = ({
       content_type: 'html',
       logged_in: 'false',
       page_name: tabTitle,
-      page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
-      site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+      page_type: tabTitle.includes('Page not found') ? 'true' : 'false', // If page is a 404 (error page) this is set to true, otherwise it is false
+      site_environment: env, // Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
       site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
     } as any;
 
