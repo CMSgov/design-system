@@ -132,12 +132,23 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
     return false;
   };
-  const iconStyle = { height: '1em', width: '1em', verticalAlign: 'text-bottom' };
+
+  const iconClass = classNames('ds-u-margin-right--1', {
+    'ds-u-color--success': props.status === 'use',
+    'ds-u-color--warn': props.status === 'caution',
+    'ds-u-color--error': props.status === 'avoid',
+  });
+
+  const iconStyle = {
+    height: '1em',
+    width: '1em',
+    verticalAlign: 'text-bottom',
+  };
   const statusIcon =
     props.status === 'caution' || props.status === 'avoid' ? (
-      <AlertIcon className="ds-u-margin-right--1" style={iconStyle} aria-hidden />
+      <AlertIcon className={iconClass} style={iconStyle} aria-hidden />
     ) : props.status === 'use' ? (
-      <CheckIcon className="ds-u-margin-right--1" style={iconStyle} aria-hidden />
+      <CheckIcon className={iconClass} style={iconStyle} aria-hidden />
     ) : null;
 
   const subnavItems = (): any => {
