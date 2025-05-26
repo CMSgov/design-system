@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
+import { CheckIcon, AlertIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -131,6 +132,13 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
     return false;
   };
+  const iconStyle = { height: '1em', width: '1em', verticalAlign: 'text-bottom' };
+  const statusIcon =
+    props.status === 'caution' || props.status === 'avoid' ? (
+      <AlertIcon className="ds-u-margin-right--1" style={iconStyle} aria-hidden />
+    ) : props.status === 'use' ? (
+      <CheckIcon className="ds-u-margin-right--1" style={iconStyle} aria-hidden />
+    ) : null;
 
   const subnavItems = (): any => {
     if (props.url) {
@@ -153,7 +161,16 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       <VerticalNavItemLabel
         collapsed={collapsed}
         component={props.component}
-        label={props.label}
+        label={
+          hasSubnav() ? (
+            props.label
+          ) : (
+            <>
+              {statusIcon}
+              {props.label}
+            </>
+          )
+        }
         hasSubnav={hasSubnav()}
         onClick={handleLabelClick}
         selected={isSelected()}
