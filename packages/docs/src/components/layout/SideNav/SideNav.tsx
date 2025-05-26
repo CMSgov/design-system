@@ -97,6 +97,9 @@ const SideNav = ({ location }: SideNavProps) => {
                 frontmatter {
                   title
                   order
+                  status {
+                    level
+                  }
                 }
               }
             }

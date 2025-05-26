@@ -60,6 +60,7 @@ export interface VerticalNavItemProps {
    * If this item is currently selected
    */
   selected?: boolean;
+  status?: 'use' | 'caution' | 'avoid';
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
