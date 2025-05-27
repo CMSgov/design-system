@@ -1,8 +1,11 @@
 import { FrontmatterInterface } from '../../helpers/graphQLTypes';
 import { linkAnalytics } from '../../helpers/analytics';
+import StatusIndicator from './StatusIndicator';
+import ThemeContent from '../content/ThemeContent';
 import { withPrefix } from 'gatsby';
 import { makeFigmaUrl, makeGithubUrl, makeStorybookUrl } from '../../helpers/urlUtils';
 import GithubIcon from '../icons/GithubIcon';
+import { Alert } from '@cmsgov/design-system';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +19,11 @@ type PageHeaderProps = {
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
   const [themeLinks, setThemeLinks] = useState(undefined);
-  const { title, core, intro } = frontmatter;
+  const { title, core, intro, status } = frontmatter;
+  const level = status?.level;
+  const note = status?.note;
+  const targetTheme = status?.targetTheme;
+  const targetThemeNote = status?.targetThemeNote;
 
   const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
@@ -40,7 +47,17 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
 
   return (
     <header className={headerClassNames}>
-      <h1 className="ds-text-heading--4xl">{title}</h1>
+      <div className="ds-u-display--flex ds-u-align-items--baseline ds-u-flex-direction--row">
+        <h1 className="ds-text-heading--4xl">{title}</h1>
+        {status?.level && (
+          <div
+            className="ds-u-margin-left--2"
+            style={level === 'use' ? { position: 'relative', top: '-2px' } : undefined}
+          >
+            <StatusIndicator level={level} />
+          </div>
+        )}
+      </div>
       {intro && (
         <p className="ds-u-font-size--lg ds-u-measure--base ds-u-margin-top--1 ds-u-margin-bottom--1">
           {intro}
@@ -78,6 +95,22 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
               Storybook
             </a>
           )}
+        </div>
+      )}
+      {note && level && (
+        <div className="ds-u-measure--wide ds-u-margin-top--2">
+          <Alert variation={level === 'caution' ? 'warn' : 'error'}>
+            <p className="ds-c-alert__text">{note}</p>
+          </Alert>
+        </div>
+      )}
+      {targetThemeNote && targetTheme && (
+        <div className="ds-u-measure--wide ds-u-margin-top--2 ds-u-margin-bottom--2">
+          <ThemeContent theme={theme} neverThemes={[targetTheme]}>
+            <Alert variation="error">
+              <p className="ds-c-alert__text">{targetThemeNote}</p>
+            </Alert>
+          </ThemeContent>
         </div>
       )}
     </header>
