@@ -22,6 +22,11 @@ export interface LocationInterface {
   origin?: string;
 }
 
+export interface StatusInterface {
+  level: 'use' | 'caution' | 'avoid';
+  note?: string;
+}
+
 export interface FrontmatterInterface {
   title: string;
   date?: string;
@@ -30,6 +35,7 @@ export interface FrontmatterInterface {
   healthcare?: ComponentLinksInterface;
   medicare?: ComponentLinksInterface;
   intro?: string;
+  status?: StatusInterface;
 }
 
 /**
