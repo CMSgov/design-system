@@ -2,6 +2,8 @@
 title: Healthcare.gov Footer
 status:
   level: use
+  targetTheme: healthcare
+  targetThemeNote: This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
 core:
   figmaNodeId: 346-13315
 healthcare:
@@ -9,17 +11,6 @@ healthcare:
   githubLink: ds-healthcare-gov/src/components/Footer
   storybookLink: healthcare-footer--docs
 ---
-
-import { Alert } from '@cmsgov/design-system';
-
-<ThemeContent neverThemes={['healthcare']}>
-  <Alert variation="error">
-    <p class="ds-c-alert__text">
-      This component is only used for HealthCare. Please use the theme switcher to view the
-      component with HealthCare styles.
-    </p>
-  </Alert>
-</ThemeContent>
 
 ## Examples
 
