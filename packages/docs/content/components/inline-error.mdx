@@ -16,22 +16,14 @@ core:
   storyId="components-inlineerror--default"
 />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-inlineerror--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-inlineerror--docs'} />
-
 ## Guidance
 
 - Inline errors are built in to all design-system form fields but can be used on their own to create custom fields.
 - Inline errors should sit either directly above or below the input, depending on the theme defaults.
 - Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
 - The form field should have an `aria-describedby` attribute that references the `id` of the error message.
+
+### Guidelines
 
 #### Content
 
@@ -41,21 +33,30 @@ core:
 - Use sentence case.
 - End with a period.
 
-### Accessibility testing
+## Accessibility
 
-#### General observations
+### General accessibility
 
 - Inline error text should be outside of the label element.
-- Inline error messages should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
+- The form field should have an `aria-describedby` attribute that references the
+id of the error message.
 - Inline error text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
+
+### Accessibility Testing 
 
 #### Screen reader testing
 
-- When the input field gets focus, its label should be read first and then its hint (if it has one) and its error message.
+- When the input field gets focus, its label should be read first and then its hint after a slight delay.
 
-## Learn More
+## Code
 
-- [Form Guidelines](/patterns/Forms/forms/)
+### React
+
+<SeeStorybookForGuidance storyId={'components-inlineerror--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-inlineerror--docs'} />
 
 ## Component maturity
 
@@ -73,3 +74,7 @@ core:
   tokensInCode={true}
   tokensInSketch={true}
 />
+
+## Learn More
+
+- [Form Guidelines](/patterns/Forms/forms/)
