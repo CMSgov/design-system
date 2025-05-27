@@ -49,6 +49,78 @@ This component is used by each individual icon component listed below.
   />
 </ThemeContent>
 
+## Guidance
+
+<ThemeContent onlyThemes={['medicare']}>
+
+- <b>Use icons sparingly</b> - Only use if they add value/meaning for the user. Too many icons = users
+  stop paying attention.
+- <b>Use the approved icon for similar actions/purpose</b> - Consistency across the entire site is key
+  for user recognition and trust.{' '}
+- <b>Include a text label with most icons</b> - Users need text to overcome ambiguity.
+- <b>Any new icons or changes in use case need prior approval</b> - Contact the internal CMS Design Guild
+  early in your design process. (See "Foundations" page for process.) -- Specialty icons for similar
+  use cases are rare. Requests will be considered on a case-by-case basis. In reviewing requests, we'll
+  consider use case, similar icons already approved, and impact to users (UX, consistency, Medicare brand,
+  purpose, and accompanying message impact - like immediate & severe bene harm).
+- <b>
+    Icons can be teal, navy, or black (following approved M.gov DS color swatches) unless stated in
+    the use case notes below.
+  </b>
+
+</ThemeContent>
+
+### Guidelines
+
+#### Content
+
+- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered,  or answered incorrectly.
+- Repeat what the form label is asking the user to do, but with slightly more detail.
+- Use the fewest words possible (i.e., don't use "please").
+- Use sentence case.
+- End with a period.
+
+## Accessibility
+
+### General accessibility
+
+- The `<SvgIcon>` component has built-in accessibility features including:
+  - a built-in `title` attribute. For any specific exported icon, the `title` attribute is defaulted, but can be overwritten.
+  - `focusable="false"` which prevents the icon from being focusable
+  - `role="img"` which tells assistive technologies that the icon's purpose is as an image
+  - optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`
+  - an available`ariaHidden` attribute which can be used if the icon's context is described elsewhere. For example, if the icon is part of a button with text, the text may provide the text description instead of the icon component.
+- Make sure that the icon has a minimum contrast ratio of 3:1 against its
+background.
+- If icons accompany a text link, place the icon inside the link to prevent screen
+readers from announcing the link twice.
+
+### Accessibility Testing
+
+- Check that color is not the only method used to convey icon information. When an icon is paired with text, the meaning should be conveyed through the text, not color alone.
+- Icons should meet color contrast requirements: when you view the icon on a page and use ANDI or a color contrast analyzer to look at the hex colors, contrast between the icon and background is at least 3:1.
+- When you use a screen reader or view the page, the icon’s meaning and the way it is announced are the same across all pages.
+
+#### Screen reader testing
+
+Icons provide a text alternative for screen readers when needed.
+
+- When you use a screen reader and navigate to a non-decorative icon, you should hear an appropriate description of the icon.
+- If the icon is purely decorative, you should not hear a description.
+
+#### Keyboard navigation tests
+
+If `focusable="true"`:
+- When you use a keyboard to tab into an interactive icon, you should see an indicator around the icon.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-icons--docs'} />
+
+<ThemeContent onlyThemes={['medicare']}>
+
 ### Changing icon color
 
 Icon components support a few built-in color options that can be applied by using one of the following utility classes.
@@ -92,16 +164,6 @@ In the example below, the `<SvgIcon>` component is used with a custom path.
   </SvgIcon>
 </EmbeddedExample>
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-icons--docs'} />
-
-## Guidance
-
-<ThemeContent onlyThemes={['medicare']}>
-
 ## Guidance
 
 - <b>Use icons sparingly</b> - Only use if they add value/meaning for the user. Too many icons = users
@@ -120,16 +182,6 @@ In the example below, the `<SvgIcon>` component is used with a custom path.
   </b>
 
 </ThemeContent>
-
-### Accessibility
-
-The `<SvgIcon>` component has built-in accessibility features including:
-
-- a built-in `title` attribute. For any specific exported icon, the `title` attribute is defaulted, but can be overwritten.
-- `focusable="false"` which prevents the icon from being focusable
-- `role="img"` which tells assistive technologies that the icon's purpose is as an image
-- optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`
-- an available`ariaHidden` attribute which can be used if the icon's context is described elsewhere. For example, if the icon is part of a button with text, the text may provide the text description instead of the icon component.
 
 ## Component maturity
 
