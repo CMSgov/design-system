@@ -3,6 +3,8 @@ import { placements, Tooltip, TooltipProps } from '../../Tooltip';
 import { Placement } from '@popperjs/core';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { isPossibleValue } from '../utils';
+import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
+import { onAnalyticsEvent } from '../analytics';
 
 const attributes = [
   'active-class-name',
@@ -21,6 +23,7 @@ const attributes = [
   'transition-duration',
   'trigger-aria-label',
   'z-index',
+  ...analyticsOverrideAttrs,
 ] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -49,6 +52,7 @@ interface WrapperProps
     | 'offset'
     | 'placement'
     | 'title'
+    | 'analytics'
   > {
   contentHeading?: string;
   dialog?: string;
@@ -57,9 +61,11 @@ interface WrapperProps
   placement?: string;
   rootId?: string;
   title: string;
+  analytics?: string;
 }
 
 const Wrapper = ({
+  analytics,
   contentHeading,
   dialog,
   inversed,
@@ -69,6 +75,9 @@ const Wrapper = ({
 }: WrapperProps) => (
   <Tooltip
     {...otherProps}
+    {...{
+      analytics: analytics && Boolean(JSON.parse(analytics)),
+    }}
     ariaLabel={otherProps.triggerAriaLabel}
     contentHeading={contentHeading}
     dialog={parseBooleanAttr(dialog)}
@@ -84,4 +93,4 @@ const Wrapper = ({
   ></Tooltip>
 );
 
-define('ds-tooltip', () => Wrapper, { attributes });
+define('ds-tooltip', () => Wrapper, { attributes, events: [onAnalyticsEvent] });

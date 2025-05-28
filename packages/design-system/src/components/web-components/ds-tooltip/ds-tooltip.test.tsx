@@ -1,3 +1,6 @@
+import { UtagContainer } from '../../analytics/index';
+import { testAnalytics } from '../__tests__/analytics';
+import { config } from '../../config';
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-tooltip';
@@ -165,4 +168,53 @@ describe('ds-tooltip', function () {
     const closeButton = screen.queryByLabelText('custom close label text');
     expect(closeButton).not.toBeNull();
   });
+});
+
+describe('Analytics event tracking', () => {
+  beforeEach(() => {
+    config({ tooltipSendsAnalytics: true });
+  });
+
+  afterEach(() => {
+    config({ tooltipSendsAnalytics: false });
+  });
+
+  testAnalytics(
+    'sends inline trigger tooltip analytics event',
+    async ({ tealiumMock, waitForAnalytics }) => {
+      renderTooltip();
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      userEvent.hover(triggerEl);
+      await waitForAnalytics();
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    }
+  );
+
+  testAnalytics(
+    'sends icon and inversed trigger tooltip analytics event',
+    async ({ tealiumMock, waitForAnalytics }) => {
+      renderTooltip();
+      userEvent.hover(screen.getByRole('button'));
+      await waitForAnalytics();
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    }
+  );
+
+  testAnalytics('disables analytics event tracking', async ({ tealiumMock, waitForAnalytics }) => {
+    renderTooltip({ analytics: false });
+    const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+    userEvent.hover(triggerEl);
+    await waitForAnalytics();
+    expect(tealiumMock).not.toBeCalled();
+  });
+
+  testAnalytics(
+    'sends interactive content and tooltip with close button analytics event',
+    async ({ tealiumMock, waitForAnalytics }) => {
+      renderTooltip();
+      userEvent.click(screen.getByRole('button'));
+      await waitForAnalytics();
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    }
+  );
 });

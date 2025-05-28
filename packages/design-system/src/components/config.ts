@@ -47,6 +47,11 @@ export interface Config {
    * To override this setting for an individual alert instance, use the `analytics` prop.
    */
   thirdPartyExternalLinkSendsAnalytics: boolean;
+  /**
+   * Controls whether tooltip components send analytics data by default. To override this
+   * setting for an individual tooltip instance, use the `analytics` prop.
+   */
+  tooltipSendsAnalytics: boolean;
 }
 
 export type PartialConfig = Partial<Config>;
@@ -61,6 +66,7 @@ export const DEFAULTS: Config = Object.freeze({
   headerSendsAnalytics: false,
   footerSendsAnalytics: false,
   thirdPartyExternalLinkSendsAnalytics: false,
+  tooltipSendsAnalytics: false,
 });
 
 export const HEALTHCARE_DEFAULTS: Config = {
@@ -146,4 +152,9 @@ export function helpDrawerSendsAnalytics(): boolean {
 export function setHelpDrawerSendsAnalytics(value: boolean): void {
   depWarning('setHelpDrawerSendsAnalytics');
   config({ helpDrawerSendsAnalytics: value });
+}
+
+export function tooltipSendsAnalytics(): boolean {
+  depWarning('tooltipSendsAnalytics');
+  return config().tooltipSendsAnalytics;
 }
