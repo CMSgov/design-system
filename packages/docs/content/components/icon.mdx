@@ -59,7 +59,7 @@ This component is used by each individual icon component listed below.
   for user recognition and trust.{' '}
 - <b>Include a text label with most icons</b> - Users need text to overcome ambiguity.
 - <b>Any new icons or changes in use case need prior approval</b> - Contact the internal CMS Design Guild
-  early in your design process. (See "Foundations" page for process.) -- Specialty icons for similar
+  early in your design process. (See "Foundations" section for process.) Specialty icons for similar
   use cases are rare. Requests will be considered on a case-by-case basis. In reviewing requests, we'll
   consider use case, similar icons already approved, and impact to users (UX, consistency, Medicare brand,
   purpose, and accompanying message impact - like immediate & severe bene harm).
@@ -74,7 +74,7 @@ This component is used by each individual icon component listed below.
 
 #### Content
 
-- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered,  or answered incorrectly.
+- Describe what the user still needs to do in a mandatory field that has been left incomplete or unanswered, or answered incorrectly.
 - Repeat what the form label is asking the user to do, but with slightly more detail.
 - Use the fewest words possible (i.e., don't use "please").
 - Use sentence case.
@@ -86,14 +86,12 @@ This component is used by each individual icon component listed below.
 
 - The `<SvgIcon>` component has built-in accessibility features including:
   - a built-in `title` attribute. For any specific exported icon, the `title` attribute is defaulted, but can be overwritten.
-  - `focusable="false"` which prevents the icon from being focusable
+  - `focusable="false"` which prevents the icon from being focusable.
   - `role="img"` which tells assistive technologies that the icon's purpose is as an image
-  - optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`
+  - optional `description` attribute which can be used for a more detailed explanation of the icon's contents. Meant to be used to provide more detail than just the `title`.
   - an available`ariaHidden` attribute which can be used if the icon's context is described elsewhere. For example, if the icon is part of a button with text, the text may provide the text description instead of the icon component.
-- Make sure that the icon has a minimum contrast ratio of 3:1 against its
-background.
-- If icons accompany a text link, place the icon inside the link to prevent screen
-readers from announcing the link twice.
+- Make sure that the icon has a minimum contrast ratio of 3:1 against its background.
+- If icons accompany a text link, place the icon inside the link to prevent screen readers from announcing the link twice.
 
 ### Accessibility Testing
 
@@ -118,8 +116,6 @@ If `focusable="true"`:
 ### React
 
 <SeeStorybookForGuidance storyId={'components-icons--docs'} />
-
-<ThemeContent onlyThemes={['medicare']}>
 
 ### Changing icon color
 
@@ -163,25 +159,6 @@ In the example below, the `<SvgIcon>` component is used with a custom path.
     <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1-10.2 8.5-11.5 23.6-3.1 33.8 30 36 74.1 56.6 120.9 56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8-10.1-8.4-25.3-7.1-33.8 3.1z" />
   </SvgIcon>
 </EmbeddedExample>
-
-## Guidance
-
-- <b>Use icons sparingly</b> - Only use if they add value/meaning for the user. Too many icons = users
-  stop paying attention.
-- <b>Use the approved icon for similar actions/purpose</b> - Consistency across the entire site is key
-  for user recognition and trust.{' '}
-- <b>Include a text label with most icons</b> - Users need text to overcome ambiguity.
-- <b>Any new icons or changes in use case need prior approval</b> - Contact the internal CMS Design Guild
-  early in your design process. (See "Foundations" page for process.) -- Specialty icons for similar
-  use cases are rare. Requests will be considered on a case-by-case basis. In reviewing requests, we'll
-  consider use case, similar icons already approved, and impact to users (UX, consistency, Medicare brand,
-  purpose, and accompanying message impact - like immediate & severe bene harm).
-- <b>
-    Icons can be teal, navy, or black (following approved M.gov DS color swatches) unless stated in
-    the use case notes below.
-  </b>
-
-</ThemeContent>
 
 ## Component maturity
 
