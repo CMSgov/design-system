@@ -67,6 +67,9 @@
 .ds-u-color--muted:not(:focus) {
   color: var(--color-muted) !important;
 }
+.ds-u-color--caution {
+  color: var(--color-warn);
+}
 
 // states
 .ds-u-color--error:not(:focus) {

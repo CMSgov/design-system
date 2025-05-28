@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
-import { CheckIcon, AlertIcon } from '../Icons';
+import { CheckCircleIcon, WarningIcon, AlertCircleIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -135,7 +135,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
 
   const iconClass = classNames('ds-u-margin-right--1', {
     'ds-u-color--success': props.status === 'use',
-    'ds-u-color--warn': props.status === 'caution',
+    // 'ds-c-color--caution': props.status === 'caution',
     'ds-u-color--error': props.status === 'avoid',
   });
 
@@ -144,13 +144,22 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
     width: '1em',
     verticalAlign: 'text-bottom',
   };
-  const statusIcon =
-    props.status === 'caution' || props.status === 'avoid' ? (
-      <AlertIcon className={iconClass} style={iconStyle} aria-hidden />
-    ) : props.status === 'use' ? (
-      <CheckIcon className={iconClass} style={iconStyle} aria-hidden />
-    ) : null;
 
+  let statusIcon = null;
+
+  if (props.status === 'use') {
+    statusIcon = <CheckCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
+  } else if (props.status === 'caution') {
+    statusIcon = (
+      <WarningIcon
+        className="ds-u-margin-right--1"
+        style={{ height: '1em', width: '1em', verticalAlign: 'text-bottom', color: '#f4b400' }}
+        aria-hidden
+      />
+    );
+  } else if (props.status === 'avoid') {
+    statusIcon = <AlertCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
+  }
   const subnavItems = (): any => {
     if (props.url) {
       // Since the VerticalNavItemLabel will just toggle the subnav, we
