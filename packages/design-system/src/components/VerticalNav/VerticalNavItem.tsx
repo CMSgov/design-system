@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
-import { CheckIcon, AlertIcon } from '../Icons';
+import { CheckCircleIcon, AlertCircleIcon } from '../Icons';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -146,9 +146,9 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
   };
   const statusIcon =
     props.status === 'caution' || props.status === 'avoid' ? (
-      <AlertIcon className={iconClass} style={iconStyle} aria-hidden />
+      <AlertCircleIcon className={iconClass} style={iconStyle} aria-hidden />
     ) : props.status === 'use' ? (
-      <CheckIcon className={iconClass} style={iconStyle} aria-hidden />
+      <CheckCircleIcon className={iconClass} style={iconStyle} aria-hidden />
     ) : null;
 
   const subnavItems = (): any => {
