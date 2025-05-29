@@ -16,16 +16,6 @@ core:
   storyId="components-hint--default"
 />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-hint--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-hint--docs'} />
-
 ## Guidance
 
 - Hints are built in to all design-system form fields but can be used on their own to create custom fields.
@@ -35,7 +25,9 @@ core:
 - Use hint text to indicate which inputs are optional when there are more required fields than optional.
 - Hint text can also appear after an input box when the text is being used to show the value someone should be entering in the field (e.g., income amount input box displays text after the input box to highlight the amount should be "monthly income".)
 
-### Content
+### Guidelines
+
+#### Content
 
 - Use when appropriate to support a field [label](/components/label).
 - Describe how to best answer the question/form label.
@@ -44,21 +36,27 @@ core:
 - End with a period.
 - Be consistent with phrase and sentence structure.
 
-### Accessibility testing
-
-#### General observations
+## Accessibility
 
 - Hint text should be outside of the label element.
 - Hints should be linked to their corresponding input fields via an `aria-describedby` attribute on the input.
 - Hint text should meet [size and contrast requirements](/foundation/typography/body/#accessibility).
 
+### Accessibility Testing 
+
 #### Screen reader testing
 
 - When the input field gets focus, its label should be read first and then its hint after a slight delay.
 
-## Learn More
+## Code
 
-- [Form Guidelines](/patterns/Forms/forms/)
+### React
+
+<SeeStorybookForGuidance storyId={'components-hint--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-hint--docs'} />
 
 ## Component maturity
 
@@ -76,3 +74,7 @@ core:
   tokensInCode={true}
   tokensInSketch={true}
 />
+
+## Learn More
+
+- [Form Guidelines](/patterns/Forms/forms/)
