@@ -134,9 +134,9 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
   };
 
   const iconClass = classNames('ds-u-margin-right--1', {
-    'ds-u-color--success': props.status === 'use',
-    // 'ds-c-color--caution': props.status === 'caution',
-    'ds-u-color--error': props.status === 'avoid',
+    'ds-c-icon-color--success': props.status === 'use',
+    'ds-c-icon-color--warn': props.status === 'caution',
+    'ds-c-icon-color--error': props.status === 'avoid',
   });
 
   const iconStyle = {
@@ -150,16 +150,11 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
   if (props.status === 'use') {
     statusIcon = <CheckCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
   } else if (props.status === 'caution') {
-    statusIcon = (
-      <WarningIcon
-        className="ds-u-margin-right--1"
-        style={{ height: '1em', width: '1em', verticalAlign: 'text-bottom', color: '#f4b400' }}
-        aria-hidden
-      />
-    );
+    statusIcon = <WarningIcon className={iconClass} style={iconStyle} aria-hidden />;
   } else if (props.status === 'avoid') {
     statusIcon = <AlertCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
   }
+
   const subnavItems = (): any => {
     if (props.url) {
       // Since the VerticalNavItemLabel will just toggle the subnav, we
