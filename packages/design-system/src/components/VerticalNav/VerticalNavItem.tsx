@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
-import { CheckCircleIcon, WarningIcon, AlertCircleIcon } from '../Icons';
+import { StatusIcon } from './StatusIcon';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -133,28 +133,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
     return false;
   };
 
-  const iconClass = classNames('ds-u-margin-right--1', {
-    'ds-c-icon-color--success': props.status === 'use',
-    'ds-c-icon-color--warn': props.status === 'caution',
-    'ds-c-icon-color--error': props.status === 'avoid',
-  });
-
-  const iconStyle = {
-    height: '1em',
-    width: '1em',
-    verticalAlign: 'text-bottom',
-  };
-
-  let statusIcon = null;
-
-  if (props.status === 'use') {
-    statusIcon = <CheckCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
-  } else if (props.status === 'caution') {
-    statusIcon = <WarningIcon className={iconClass} style={iconStyle} aria-hidden />;
-  } else if (props.status === 'avoid') {
-    statusIcon = <AlertCircleIcon className={iconClass} style={iconStyle} aria-hidden />;
-  }
-
   const subnavItems = (): any => {
     if (props.url) {
       // Since the VerticalNavItemLabel will just toggle the subnav, we
@@ -181,7 +159,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
             props.label
           ) : (
             <>
-              {statusIcon}
+              <StatusIcon status={props.status} />
               {props.label}
             </>
           )
