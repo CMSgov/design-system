@@ -61,6 +61,10 @@ export interface VerticalNavItemProps {
    * If this item is currently selected
    */
   selected?: boolean;
+  /**
+   * Intended for a specific use case in the SideNav on design.cms.gov.
+   * Adds a status icon next to the label when used.
+   */
   status?: 'use' | 'caution' | 'avoid';
 }
 
