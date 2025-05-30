@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react';
 import { useEffect, useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
+import NoStoryWebComponentDocTemplate from '../../../../../../.storybook/docs/NoStoryWebComponentDocTemplate.mdx';
 import './ds-drawer';
 import '../ds-button';
 
@@ -11,7 +11,7 @@ const meta: Meta = {
   decorators: [webComponentDecorator],
   parameters: {
     docs: {
-      page: WebComponentDocTemplate,
+      page: NoStoryWebComponentDocTemplate,
       description: {
         component:
           'For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/drawer/).',
@@ -129,12 +129,6 @@ const drawerContent = (
 
 const Template = (args) => {
   const [drawerOpen, setDrawerOpen] = useState(args['is-open'] ?? false);
-
-  useEffect(() => {
-    if (args['is-open'] !== drawerOpen) {
-      setDrawerOpen(args['is-open'] ?? false);
-    }
-  }, []);
 
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
