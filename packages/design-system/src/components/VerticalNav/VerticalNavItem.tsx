@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
+import { StatusIcon } from './StatusIcon';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -60,6 +61,7 @@ export interface VerticalNavItemProps {
    * If this item is currently selected
    */
   selected?: boolean;
+  status?: 'use' | 'caution' | 'avoid';
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
@@ -152,7 +154,16 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       <VerticalNavItemLabel
         collapsed={collapsed}
         component={props.component}
-        label={props.label}
+        label={
+          hasSubnav() ? (
+            props.label
+          ) : (
+            <>
+              <StatusIcon status={props.status} />
+              {props.label}
+            </>
+          )
+        }
         hasSubnav={hasSubnav()}
         onClick={handleLabelClick}
         selected={isSelected()}
