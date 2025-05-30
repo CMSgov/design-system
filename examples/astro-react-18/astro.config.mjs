@@ -6,7 +6,7 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     ssr: {
-      noExternal: ['@cmsgov/design-system'],
+      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
     },
   },
 });
