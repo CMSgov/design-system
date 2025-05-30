@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
-import { StatusIcon } from './StatusIcon';
+import { StatusIcon, StatusType } from './StatusIcon';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -62,10 +62,10 @@ export interface VerticalNavItemProps {
    */
   selected?: boolean;
   /**
-   * Intended for a specific use case in the SideNav on design.cms.gov.
+   * Internal: Used for indicating component status in the SideNav on design.cms.gov.
    * Adds a status icon next to the label when used.
    */
-  status?: 'use' | 'caution' | 'avoid';
+  _status?: StatusType;
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
@@ -159,9 +159,9 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
         collapsed={collapsed}
         component={props.component}
         label={
-          props.status ? (
+          props._status ? (
             <>
-              <StatusIcon status={props.status} />
+              <StatusIcon status={props._status} />
               {props.label}
             </>
           ) : (

@@ -31,7 +31,7 @@ describe('VerticalNavItem', () => {
 
   describe('Status icon', () => {
     it('renders a success icon when status is "use"', () => {
-      renderVerticalNavItem({ status: 'use' });
+      renderVerticalNavItem({ _status: 'use' });
       const icon = document.querySelector('.ds-c-icon-color--success');
       expect(icon).toBeDefined();
       expect(icon).toBeInTheDocument();
@@ -41,14 +41,14 @@ describe('VerticalNavItem', () => {
     });
 
     it('renders a warning icon when status is "caution"', () => {
-      renderVerticalNavItem({ status: 'caution' });
+      renderVerticalNavItem({ _status: 'caution' });
       const icon = document.querySelector('.ds-c-icon-color--warn');
       expect(icon).toBeDefined();
       expect(icon).toBeInTheDocument();
     });
 
     it('renders an alert icon when status is "avoid"', () => {
-      renderVerticalNavItem({ status: 'avoid' });
+      renderVerticalNavItem({ _status: 'avoid' });
       const icon = document.querySelector('.ds-c-icon-color--error');
       expect(icon).toBeDefined();
       expect(icon).toBeInTheDocument();

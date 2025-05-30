@@ -1,7 +1,9 @@
 import { CheckCircleIcon, WarningIcon, AlertCircleIcon } from '../Icons';
 import classNames from 'classnames';
 
-export const StatusIcon = ({ status }) => {
+export type StatusType = 'use' | 'caution' | 'avoid';
+
+export const StatusIcon = ({ status }: { status: StatusType }) => {
   const iconClass = classNames('ds-u-margin-right--1', {
     'ds-c-icon-color--success': status === 'use',
     'ds-c-icon-color--warn': status === 'caution',
