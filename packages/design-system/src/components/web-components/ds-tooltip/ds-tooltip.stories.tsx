@@ -4,6 +4,7 @@ import type { Meta } from '@storybook/react';
 import './ds-tooltip';
 import './ds-tooltip-icon';
 import '../ds-button/ds-button';
+import { analyticsEventDocs, analyticsOverrideArgTypes } from '../shared-attributes/storybook';
 
 const meta: Meta = {
   title: 'Web Components/ds-tooltip',
@@ -102,6 +103,7 @@ const meta: Meta = {
       description: '`zIndex` styling applied to the tooltip body',
       control: 'text',
     },
+    ...analyticsOverrideArgTypes,
   },
   args: {
     title: 'This content is specified by the title attribute.',
@@ -111,6 +113,9 @@ const meta: Meta = {
       page: WebComponentDocTemplate,
       description: {
         component: `For information about how and when to use this component, [refer to its full documentation page](https://design.cms.gov/components/tooltip/).`,
+      },
+      componentEvents: {
+        ...analyticsEventDocs,
       },
       slots: {
         title: {
