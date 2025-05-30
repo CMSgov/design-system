@@ -155,13 +155,13 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
         collapsed={collapsed}
         component={props.component}
         label={
-          hasSubnav() ? (
-            props.label
-          ) : (
+          props.status ? (
             <>
               <StatusIcon status={props.status} />
               {props.label}
             </>
+          ) : (
+            props.label
           )
         }
         hasSubnav={hasSubnav()}
