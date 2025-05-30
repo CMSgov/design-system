@@ -139,7 +139,7 @@ export function tokensToCssProperties(
   ];
 
   const vars = tokenEntries
-    .filter(([_key, token]) => !(token.$type === 'boolean' && !token.$value))
+    .filter(([, token]) => !(token.$type === 'boolean' && !token.$value))
     .map(([key, token]) => {
       const varName = tokenNameToVarName(key);
       const varValue = tokenToCssValue(token, valueRenderConfig);
@@ -235,7 +235,7 @@ export function tokensToSassVars(
   const defaultFlag = useDefaultFlag ? ' !default' : '';
 
   const vars = tokenEntries
-    .filter(([_key, token]) => !(token.$type === 'boolean' && !token.$value))
+    .filter(([, token]) => !(token.$type === 'boolean' && !token.$value))
     .map(([key, token]) => {
       const varName = tokenNameToVarName(key);
       const varValue = tokenToCssValue(token, valueRenderConfig);
