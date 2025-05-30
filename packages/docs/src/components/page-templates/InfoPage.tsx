@@ -34,6 +34,8 @@ export const query = graphql`
         status {
           level
           note
+          targetTheme
+          targetThemeNote
         }
         cmsgov {
           figmaNodeId
