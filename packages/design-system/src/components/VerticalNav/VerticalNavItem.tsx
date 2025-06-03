@@ -62,6 +62,7 @@ export interface VerticalNavItemProps {
    */
   selected?: boolean;
   /**
+   * @ignore
    * Internal: Used for indicating component status in the SideNav on design.cms.gov.
    * Adds a status icon next to the label when used.
    */
