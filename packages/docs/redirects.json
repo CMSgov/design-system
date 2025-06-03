@@ -10,5 +10,9 @@
   {
     "fromPath": "/guidelines/browser-support/",
     "toPath": "/guidelines/support-policies/"
+  },
+  {
+    "fromPath": "/components/text-field/",
+    "toPath": "/components/text-field/text-field/"
   }
 ]

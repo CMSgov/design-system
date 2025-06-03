@@ -68,7 +68,7 @@
     "ev-emitter": "^1.1.1",
     "focus-trap-react": "^10.0.0",
     "globby": "^13.1.2",
-    "inquirer": "^9.0.2",
+    "inquirer": "^12.6.3",
     "lodash": "^4.17.21",
     "ora": "^6.1.2",
     "preact": "10.11.3",
