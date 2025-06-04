@@ -32,7 +32,7 @@ const statusConfig: Record<
   },
   avoid: {
     variation: 'alert',
-    label: 'Avoid',
+    label: "Don't Use",
     Icon: AlertIcon,
   },
 };
