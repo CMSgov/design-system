@@ -29,6 +29,47 @@ describe('VerticalNavItem', () => {
     expect(labelEl).toMatchSnapshot();
   });
 
+  describe('Status icon', () => {
+    it('renders a success icon when status is "use"', () => {
+      renderVerticalNavItem({ _status: 'use' });
+      const icon = document.querySelector('.ds-c-icon-color--success');
+      expect(icon).toBeDefined();
+      expect(icon).toBeInTheDocument();
+
+      expect(icon).toBeInTheDocument();
+      expect(icon).toMatchSnapshot();
+    });
+
+    it('renders a warning icon when status is "caution"', () => {
+      renderVerticalNavItem({ _status: 'caution' });
+      const icon = document.querySelector('.ds-c-icon-color--warn');
+      expect(icon).toBeDefined();
+      expect(icon).toBeInTheDocument();
+    });
+
+    it('renders an alert icon when status is "avoid"', () => {
+      renderVerticalNavItem({ _status: 'avoid' });
+      const icon = document.querySelector('.ds-c-icon-color--error');
+      expect(icon).toBeDefined();
+      expect(icon).toBeInTheDocument();
+    });
+
+    it('does not render a status icon when no status is provided', () => {
+      renderVerticalNavItem();
+
+      const successIcon = document.querySelector('.ds-c-icon-color--success');
+      const warningIcon = document.querySelector('.ds-c-icon-color--warn');
+      const errorIcon = document.querySelector('.ds-c-icon-color--error');
+
+      expect(successIcon).toBeNull();
+      expect(successIcon).not.toBeInTheDocument();
+      expect(warningIcon).toBeNull();
+      expect(warningIcon).not.toBeInTheDocument();
+      expect(errorIcon).toBeNull();
+      expect(errorIcon).not.toBeInTheDocument();
+    });
+  });
+
   it('has additional class names', () => {
     renderVerticalNavItem({ className: 'bar' });
     const navItemEl = screen.getByRole('listitem');
