@@ -2,6 +2,8 @@ import { act, render, screen } from '@testing-library/react';
 import Tooltip from './Tooltip';
 import userEvent from '@testing-library/user-event';
 import TooltipIcon from './TooltipIcon';
+import { UtagContainer } from '../analytics';
+import { config } from '../config';
 
 jest.mock('@popperjs/core');
 
@@ -143,6 +145,49 @@ describe('Tooltip', function () {
       });
       const closeButton = screen.queryByLabelText('custom close label text');
       expect(closeButton).not.toBeNull();
+    });
+  });
+
+  describe('Analytics event tracking', () => {
+    let tealiumMock;
+
+    beforeEach(() => {
+      config({ tooltipSendsAnalytics: true });
+      tealiumMock = jest.fn();
+      (window as any as UtagContainer).utag = {
+        link: tealiumMock,
+      };
+    });
+
+    afterEach(() => {
+      config({ tooltipSendsAnalytics: false });
+      jest.resetAllMocks();
+    });
+
+    it('sends inline trigger tooltip analytics event', () => {
+      renderTooltip();
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      userEvent.hover(triggerEl);
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('sends icon and inversed trigger tooltip analytics event', () => {
+      renderTooltip();
+      userEvent.hover(screen.getByRole('button'));
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('sends interactive content and tooltip with close button analytics event', () => {
+      renderTooltip();
+      userEvent.click(screen.getByRole('button'));
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('disables analytics event tracking', () => {
+      renderTooltip({ analytics: false });
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      userEvent.hover(triggerEl);
+      expect(tealiumMock).not.toBeCalled();
     });
   });
 });
