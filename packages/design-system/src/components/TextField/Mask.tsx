@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { Children, PureComponent, cloneElement, isValidElement } from 'react';
 import type * as React from 'react';
 import classNames from 'classnames';
@@ -6,11 +7,15 @@ import { maskValue, unmaskValue } from './maskHelpers';
 // TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
 export { maskValue, unmaskValue };
 
+/**
+ * Note: Chrome appends a /v modifier to regular expressions, which enables all unicode character set features. As a result,
+ * - and { } characters must be escaped.
+ */
 const maskPattern = {
-  phone: '[0-9-]*',
-  ssn: '[0-9-*]*',
-  zip: '[0-9-]*',
-  currency: '[0-9.,-]*',
+  phone: '[0-9\\-]*',
+  ssn: '[0-9\\-*]*',
+  zip: '[0-9\\-]*',
+  currency: '[0-9.,\\-]*',
 };
 
 const maskOverlayContent = {
