@@ -96,6 +96,7 @@ export interface NavItem {
     frontmatter?: {
       title: string;
       order?: number;
+      status?: StatusInterface;
     };
   };
 }
