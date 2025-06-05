@@ -41,7 +41,7 @@
     "gatsby-source-filesystem": "^4.11.1",
     "lodash.sortby": "^4.7.0",
     "prettier": "^2.6.2",
-    "prismjs": "^1.11.0",
+    "prismjs": "^1.30.0",
     "react-helmet": "^6.1.0",
     "react-use-flexsearch": "^0.1.1",
     "sass": "^1.43.4",
