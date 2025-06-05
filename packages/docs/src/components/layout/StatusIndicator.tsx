@@ -27,12 +27,12 @@ const statusConfig: Record<
   },
   caution: {
     variation: 'warn',
-    label: 'Caution',
+    label: 'Use with caution',
     Icon: AlertIcon,
   },
   avoid: {
     variation: 'alert',
-    label: "Don't Use",
+    label: "Don't use",
     Icon: AlertIcon,
   },
 };
