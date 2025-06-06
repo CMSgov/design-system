@@ -164,22 +164,26 @@ describe('Tooltip', function () {
       jest.resetAllMocks();
     });
 
-    it('sends inline trigger tooltip analytics event', () => {
+    it('sends icon trigger tooltip analytics event on hover', () => {
       renderTooltip();
       const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
       userEvent.hover(triggerEl);
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends icon and inversed trigger tooltip analytics event', () => {
-      renderTooltip();
-      userEvent.hover(screen.getByRole('button'));
+    it('sends inline tooltip analytics event', () => {
+      renderTooltip({ component: 'a', children: 'inline trigger' });
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      userEvent.hover(triggerEl);
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
-    it('sends interactive content and tooltip with close button analytics event', () => {
-      renderTooltip();
-      userEvent.click(screen.getByRole('button'));
+    it('sends dialog tooltip analytics event on open', () => {
+      renderTooltip({
+        dialog: true,
+      });
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      userEvent.click(tooltipTrigger);
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
 
