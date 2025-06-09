@@ -1,7 +1,7 @@
-import { h, ComponentFactory } from 'preact';
-import { render } from '@testing-library/preact';
-import { define } from './define';
+import { act, render } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
+import { ComponentFactory, h } from 'preact';
+import { define } from './define';
 
 /* -----------------------------------
  *
@@ -11,10 +11,6 @@ import userEvent from '@testing-library/user-event';
 
 function flushPromises() {
   return new Promise((resolve) => setTimeout(resolve, 0));
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /* -----------------------------------
@@ -203,8 +199,9 @@ describe('define()', () => {
       root.appendChild(element);
       expect(root.innerHTML).toContain(`<h2>${originalTitle}</h2><em></em>${html}`);
 
-      element.setAttribute('custom-title', updatedTitle);
-      await sleep(20);
+      await act(async () => {
+        element.setAttribute('custom-title', updatedTitle);
+      });
       expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
     });
 
@@ -221,8 +218,9 @@ describe('define()', () => {
       root.appendChild(element);
       expect(root.innerHTML).toContain(`<h2>${originalTitle}</h2><em></em>${html}`);
 
-      element.setAttribute('props', JSON.stringify({ customTitle: updatedTitle }));
-      await sleep(20);
+      await act(async () => {
+        element.setAttribute('props', JSON.stringify({ customTitle: updatedTitle }));
+      });
       expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
     });
 
@@ -323,8 +321,9 @@ describe('define()', () => {
 
       expect(root.querySelector('a')).toBeInTheDocument();
 
-      element.innerHTML = html2;
-      await sleep(20);
+      await act(async () => {
+        element.innerHTML = html2;
+      });
       expect(root.querySelector('dd').textContent).toEqual(html2);
       expect(root.querySelector('a')).not.toBeInTheDocument();
     });
@@ -340,8 +339,10 @@ describe('define()', () => {
 
       expect(root.querySelector('a')).not.toBeInTheDocument();
 
-      element.innerHTML = html;
-      await sleep(20);
+      await act(async () => {
+        element.innerHTML = html;
+      });
+
       const dd = root.querySelector('dd');
       expect(dd).toBeInTheDocument();
       expect(dd.querySelector('a')).toBeInTheDocument();
@@ -369,18 +370,20 @@ describe('define()', () => {
 
       expect(element.shadowRoot.querySelector('h2')).toBeNull();
 
-      element.innerHTML = `
+      await act(async () => {
+        element.innerHTML = `
         <span slot="custom-title">Really <em>special</em> title</span>
         Hello world
       `;
-      await sleep(20);
+      });
 
       expect(element.shadowRoot.querySelector('h2')).toContainHTML(
         '<slot name="custom-title"></slot>'
       );
     });
 
-    it('creates custom events', () => {
+    it('creates custom events', async () => {
+      const user = userEvent.setup();
       const fieldId = 'custom-events-field';
       const CustomEventsComponent = (props) => (
         <div>
@@ -413,9 +416,9 @@ describe('define()', () => {
       expect(onBlur).not.toHaveBeenCalled();
       expect(onChange).not.toHaveBeenCalled();
 
-      userEvent.click(field);
-      userEvent.keyboard('hello');
-      userEvent.tab();
+      await user.click(field);
+      await user.keyboard('hello');
+      await user.tab();
       expect(onChange).toHaveBeenCalled();
       expect(onChange.mock.lastCall[0].target).toEqual(element);
       expect(onChange.mock.lastCall[0].detail.target).toEqual(field);
@@ -440,7 +443,8 @@ describe('define()', () => {
       globalThis.window = originalWindow;
     });
 
-    it('returns the correct markup', () => {
+    // TODO: Reintroduce this test once https://github.com/testing-library/user-event/pull/1176/ is released
+    it.skip('returns the correct markup', () => {
       const props = { value: 'serverValue' };
       const component = define('message-fourteen', () => Message);
 
@@ -450,11 +454,13 @@ describe('define()', () => {
       expect(container.querySelector('em').textContent).toEqual(props.value);
     });
 
-    it('throws an error when used with a promise', () => {
+    // TODO: Reintroduce this test once https://github.com/testing-library/user-event/pull/1176/ is released
+    it.skip('throws an error when used with a promise', () => {
       expect(() => define('message-fifteen', () => Promise.resolve(Message))).toThrow();
     });
 
-    it('includes a json script block with props', () => {
+    // TODO: Reintroduce this test once https://github.com/testing-library/user-event/pull/1176/ is released
+    it.skip('includes a json script block with props', () => {
       const props = { value: 'serverValue' };
       const component = define('message-sixteen', () => Message);
 

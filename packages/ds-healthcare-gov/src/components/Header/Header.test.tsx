@@ -1,7 +1,7 @@
-import Header from './Header';
 import { setLanguage } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import Header from './Header';
 
 function makeHeader(props = {}) {
   props = Object.assign(
@@ -11,7 +11,10 @@ function makeHeader(props = {}) {
     props
   );
 
-  return render(<Header {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<Header {...props} />),
+  };
 }
 
 describe('Header', function () {
@@ -45,11 +48,11 @@ describe('Header', function () {
     setLanguage('en');
   });
 
-  it('toggles openMenu state when handleMenuToggleClick is called', () => {
-    makeHeader();
+  it('toggles openMenu state when handleMenuToggleClick is called', async () => {
+    const { user } = makeHeader();
     const actionMenuOpen = screen.getByLabelText('Open menu');
     expect(actionMenuOpen).toBeInTheDocument();
-    userEvent.click(actionMenuOpen);
+    await user.click(actionMenuOpen);
     const actionMenuClose = screen.getByLabelText('Close menu');
     expect(actionMenuClose).toBeInTheDocument();
   });
@@ -117,9 +120,9 @@ describe('Header', function () {
     expect(container).toMatchSnapshot();
   });
 
-  it('toggles open menu for fully controlled operation', () => {
+  it('toggles open menu for fully controlled operation', async () => {
     const onMenuToggle = jest.fn();
-    makeHeader({
+    const { user } = makeHeader({
       isMenuOpen: false,
       onMenuToggle,
     });
@@ -129,7 +132,7 @@ describe('Header', function () {
     expect(menuButton).toHaveAttribute('aria-expanded', 'false');
     expect(menu).toHaveClass('ds-u-display--none');
 
-    userEvent.click(menuButton);
+    await user.click(menuButton);
     expect(onMenuToggle).toHaveBeenCalled();
   });
 
