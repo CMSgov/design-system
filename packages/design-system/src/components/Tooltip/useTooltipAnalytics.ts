@@ -6,8 +6,6 @@ import { useRef } from 'react';
 export default function useTooltipAnalytics({
   analytics,
   analyticsLabelOverride,
-  analyticsParentHeading,
-  analyticsParentType,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   ariaLabel,
   triggerAriaLabel,
@@ -27,15 +25,11 @@ export default function useTooltipAnalytics({
       getAnalyticsContentFromRefs([contentRef]) ??
       ariaLabel ??
       triggerAriaLabel;
-    const tooltipParentHeading = analyticsParentHeading ?? ' ';
-    const tooltipParentType = analyticsParentType ?? ' ';
 
     return onAnalyticsEvent({
       event_name: 'tooltip_viewed',
       event_extension: eventExtensionText,
       text: tooltipText,
-      parent_component_heading: tooltipParentHeading,
-      parent_component_type: tooltipParentType,
     });
   }
 

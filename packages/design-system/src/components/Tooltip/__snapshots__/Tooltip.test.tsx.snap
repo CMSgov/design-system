@@ -5,8 +5,6 @@ Array [
   Object {
     "event_extension": "Design system integration",
     "event_name": "tooltip_viewed",
-    "parent_component_heading": " ",
-    "parent_component_type": " ",
     "text": "tooltip trigger",
   },
 ]
@@ -17,8 +15,6 @@ Array [
   Object {
     "event_extension": "Design system integration",
     "event_name": "tooltip_viewed",
-    "parent_component_heading": " ",
-    "parent_component_type": " ",
     "text": "tooltip trigger",
   },
 ]
@@ -29,8 +25,6 @@ Array [
   Object {
     "event_extension": "Design system integration",
     "event_name": "tooltip_viewed",
-    "parent_component_heading": " ",
-    "parent_component_type": " ",
     "text": "inline trigger",
   },
 ]
