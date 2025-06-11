@@ -14,6 +14,7 @@ Some of the design system components come with built-in analytics functionality 
 - [Header](/components/header/healthcare-header/) (HealthCare.gov)
 - [Footer](/components/footer/healthcare-footer/) (HealthCare.gov)
 - [Third Party External Link](/components/third-party-external-link/)
+- [Tooltip](/components/tooltip/)
 
 ## Turning it on and off
 
@@ -46,6 +47,7 @@ Here is the list of each component config property for analytics:
 - `headerSendsAnalytics` (HealthCare.gov)
 - `footerSendsAnalytics` (HealthCare.gov)
 - `thirdPartyExternalLinkSendsAnalytics`
+- `tooltipSendsAnalytics`
 
 ## Handling the events
 
@@ -58,7 +60,7 @@ For the global default handler, the design system will currently attempt to pass
 
 <Alert heading="Overriding events in web components">
 
-  If you wish to override the analytics event handling for a particular web component instance by listening to the `ds-analytics-event`, simply listening to the event will not override the default behavior. If you want to keep the component from calling the `defaultAnalyticsFunction` with its events, you must call the `event.preventDefault()` function within your event handler.
+If you wish to override the analytics event handling for a particular web component instance by listening to the `ds-analytics-event`, simply listening to the event will not override the default behavior. If you want to keep the component from calling the `defaultAnalyticsFunction` with its events, you must call the `event.preventDefault()` function within your event handler.
 
 </Alert>
 
