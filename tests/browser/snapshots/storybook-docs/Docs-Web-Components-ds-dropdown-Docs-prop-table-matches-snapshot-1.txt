@@ -86,7 +86,7 @@
   ],
   [
     "options",
-    "An array of option objects, each containing a label and value, used to populate the dropdown menu.\n\nWhen using this in HTML, the options attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.\n\nExample:\n<ds-dropdown\n  options='[\n    {\n      \"label\": \"Confederated Tribes and Bands of the Yakama Nation\",\n      \"value\": \"1\"\n    },\n    {\n      \"label\": \"Cowlitz Indian Tribe\",\n      \"value\": \"4\"\n    }\n  ]'\n>\n</ds-dropdown>\nCopy\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on valid JSON formatting, see JSON syntax restrictions on MDN.\n\nAlternatively, you can omit the options attribute and provide <option> elements as children inside <ds-dropdown>.",
+    "An array of option objects, each containing a label and value, used to populate the dropdown menu.\n\nWhen using this in HTML, the options attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.\n\nExample: `<ds-dropdown options='[ { \"label\": \"Confederated Tribes and Bands of the Yakama Nation\", \"value\": \"1\" }, { \"label\": \"Cowlitz Indian Tribe\", \"value\": \"4\" } ]'\n\n</ds-dropdown>`\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on valid JSON formatting, see JSON syntax restrictions on MDN.\n\nAlternatively, you can omit the options attribute and provide <option> elements as children inside <ds-dropdown>.",
     "See description"
   ],
   [
