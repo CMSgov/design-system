@@ -9,8 +9,13 @@ import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
 import usePrevious from '../utilities/usePrevious';
+import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
+import useTooltipAnalytics from './useTooltipAnalytics';
+import mergeRefs from '../utilities/mergeRefs';
 
-export interface BaseTooltipProps {
+export interface BaseTooltipProps
+  extends Omit<AnalyticsOverrideProps, 'analyticsEventTypeOverride'>,
+    AnalyticsParentDataProps {
   /**
    * Classes applied to the tooltip trigger when the tooltip is active
    */
@@ -146,6 +151,7 @@ export const Tooltip = (props: TooltipProps) => {
   const contentId = useId('tooltip-trigger--', props.id);
   const triggerElement = useRef(null);
   const tooltipElement = useRef(null);
+  const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
 
   const setTriggerElement = (elem) => {
     triggerElement.current = elem;
@@ -221,6 +227,7 @@ export const Tooltip = (props: TooltipProps) => {
   useEffect(() => {
     if (active) {
       props.onOpen && props.onOpen();
+      sendTooltipEvent();
     } else {
       props.onClose && props.onClose();
 
@@ -243,6 +250,9 @@ export const Tooltip = (props: TooltipProps) => {
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
       activeClassName,
+      analytics,
+      analyticsLabelOverride,
+      onAnalyticsEvent,
       ariaLabel,
       children,
       className,
@@ -300,7 +310,7 @@ export const Tooltip = (props: TooltipProps) => {
         aria-label={ariaLabel || triggerAriaLabel || undefined}
         aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
-        ref={setTriggerElement}
+        ref={mergeRefs([contentRef, setTriggerElement])}
         {...others}
         {...linkTriggerOverrides}
         {...eventHandlers}
