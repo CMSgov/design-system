@@ -108,23 +108,22 @@ const meta: Meta = {
 When using this in HTML, the \`items\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.
 
 **Example:**
-\`<ds-autocomplete
-  items='[
-    {
-      "id": "1",
-      "name": "Advil"
-    },
-    {
-      "id": "2",
-      "name": "Benadryl"
-    },
-    {
-      "id": "3",
-      "name": "Claritin"
-    }
-  ]'
->
-</ds-autocomplete>\`
+\`
+items='[
+  {
+    "id": "1",
+    "name": "Advil"
+  },
+  {
+    "id": "2",
+    "name": "Benadryl"
+  },
+  {
+    "id": "3",
+    "name": "Claritin"
+  }
+]'
+\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 
