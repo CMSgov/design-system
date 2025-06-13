@@ -11,6 +11,17 @@ Array [
 ]
 `;
 
+exports[`Alert Analytics event tracking sends analytics event for default/informational variation 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "alert_impression",
+    "heading": "Notice: Ruhroh",
+    "type": "informational",
+  },
+]
+`;
+
 exports[`Alert Analytics event tracking sends analytics event with body-content fallback 1`] = `
 Array [
   Object {
