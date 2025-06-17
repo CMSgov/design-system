@@ -51,7 +51,7 @@ describe('Mask', function () {
     const input = screen.getByRole('textbox');
     expect(input.classList).toContain('ds-c-field--ssn');
     expect(input).toHaveAttribute('type', 'text');
-    expect(input).toHaveAttribute('pattern', '[0-9-*]*');
+    expect(input).toHaveAttribute('pattern', '[0-9\\-*]*');
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
@@ -66,7 +66,7 @@ describe('Mask', function () {
     const input = screen.getByRole('textbox');
     expect(input.classList).toContain('ds-c-field--currency');
     expect(input).toHaveAttribute('type', 'text');
-    expect(input).toHaveAttribute('pattern', '[0-9.,-]*');
+    expect(input).toHaveAttribute('pattern', '[0-9.,\\-]*');
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
