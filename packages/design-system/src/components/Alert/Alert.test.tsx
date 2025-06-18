@@ -160,9 +160,10 @@ describe('Alert', function () {
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
-    it('does not send analytics event for default variation', () => {
+    it('sends analytics event for default/informational variation', () => {
       renderAlert();
-      expect(tealiumMock).not.toBeCalled();
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toBeCalled();
     });
 
     it('disables analytics tracking', () => {

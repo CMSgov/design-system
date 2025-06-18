@@ -47,6 +47,11 @@ export interface Config {
    * To override this setting for an individual alert instance, use the `analytics` prop.
    */
   thirdPartyExternalLinkSendsAnalytics: boolean;
+  /**
+   * Controls whether tooltip components send analytics data by default.
+   * To override this setting for an individual alert instance, use the `analytics` prop.
+   */
+  tooltipSendsAnalytics: boolean;
 }
 
 export type PartialConfig = Partial<Config>;
@@ -61,6 +66,7 @@ export const DEFAULTS: Config = Object.freeze({
   headerSendsAnalytics: false,
   footerSendsAnalytics: false,
   thirdPartyExternalLinkSendsAnalytics: false,
+  tooltipSendsAnalytics: false,
 });
 
 export const HEALTHCARE_DEFAULTS: Config = {
