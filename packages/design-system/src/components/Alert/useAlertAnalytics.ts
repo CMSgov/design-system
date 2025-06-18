@@ -15,11 +15,6 @@ export default function useAlertAnalytics({
         return;
       }
 
-      // Do not send analytics event for default alerts
-      if (!variation) {
-        return;
-      }
-
       const eventHeadingText = analyticsLabelOverride ?? content;
       if (!eventHeadingText) {
         console.error('No content found for Alert analytics event');
@@ -30,7 +25,7 @@ export default function useAlertAnalytics({
         event_name: 'alert_impression',
         event_extension: eventExtensionText,
         heading: eventHeadingText,
-        type: variation,
+        type: variation ?? 'informational',
       });
     },
   });

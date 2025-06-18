@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tooltip Analytics event tracking sends dialog tooltip analytics event on open 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "tooltip_viewed",
+    "text": "tooltip trigger",
+  },
+]
+`;
+
+exports[`Tooltip Analytics event tracking sends icon trigger tooltip analytics event on hover 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "tooltip_viewed",
+    "text": "tooltip trigger",
+  },
+]
+`;
+
+exports[`Tooltip Analytics event tracking sends inline tooltip analytics event 1`] = `
+Array [
+  Object {
+    "event_extension": "Design system integration",
+    "event_name": "tooltip_viewed",
+    "text": "inline trigger",
+  },
+]
+`;
+
 exports[`Tooltip renders custom trigger component 1`] = `
 <a
   aria-describedby="static-id"
