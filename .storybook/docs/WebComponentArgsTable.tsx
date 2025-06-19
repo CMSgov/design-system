@@ -103,7 +103,7 @@ export const WebComponentArgsTable = ({ of }) => {
     return (
       <Tabs>
         <TabPanel key={`${title}`} id={`${title}_id`} tab={title}>
-          {generateTable(argTypes)}
+          {generateTable(argTypes as unknown as Record<string, ArgType>)}
         </TabPanel>
         {Object.keys(subcomponents).map((key) => {
           return (
@@ -115,5 +115,5 @@ export const WebComponentArgsTable = ({ of }) => {
       </Tabs>
     );
   }
-  return generateTable(argTypes);
+  return generateTable(argTypes as unknown as Record<string, ArgType>);
 };
