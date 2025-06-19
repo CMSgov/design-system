@@ -8,7 +8,6 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-viewport'),
-    getAbsolutePath('storybook-addon-fetch-mock'),
     getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
   ],
   previewHead: (head) => `
