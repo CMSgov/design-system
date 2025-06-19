@@ -88,6 +88,7 @@ stories.forEach((story) => {
           await expectScreenshot(page, `${story.id}-${theme}.png`);
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         test(`passes a11y checks`, async ({ browser }, workerInfo) => {
           test.skip(
             !a11yTestProjects.includes(workerInfo.project.name),

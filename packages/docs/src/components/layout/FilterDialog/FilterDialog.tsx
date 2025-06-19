@@ -58,10 +58,11 @@ export interface FilterDialogProps {
  *
  */
 export const FilterDialog = (props: FilterDialogProps) => {
+  const { headingLevel = '3' } = props;
   const id = useRef(props.id || uniqueId('filter-dialog-')).current;
   const headingRef = mergeRefs([props.headingRef, useRef()]);
   const headingId = props.headingId ?? `${id}__heading`;
-  const Heading = `h${props.headingLevel}` as const;
+  const Heading = `h${headingLevel}` as const;
 
   return (
     <NativeDialog
@@ -83,10 +84,6 @@ export const FilterDialog = (props: FilterDialogProps) => {
       </div>
     </NativeDialog>
   );
-};
-
-FilterDialog.defaultProps = {
-  headingLevel: '3',
 };
 
 export default FilterDialog;

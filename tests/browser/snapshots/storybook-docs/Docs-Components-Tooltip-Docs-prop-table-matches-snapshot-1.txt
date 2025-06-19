@@ -46,8 +46,8 @@
   ],
   [
     "component",
-    "When provided, will render the passed in component for the tooltip trigger. Typically will be a button, a, or rarely an input element.\nany",
-    "button"
+    "When provided, will render the passed in component for the tooltip trigger. Typically will be a button, a, or rarely an input element. Default is 'button'\n\nany",
+    "-"
   ],
   [
     "contentHeading",
@@ -66,8 +66,8 @@
   ],
   [
     "interactiveBorder",
-    "Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip.\nnumber",
-    "15"
+    "Sets the size of the invisible border around interactive tooltips that prevents it from immediately hiding when the cursor leaves the tooltip. Default is 15\n\nnumber",
+    "-"
   ],
   [
     "inversed",
@@ -76,13 +76,13 @@
   ],
   [
     "maxWidth",
-    "maxWidth styling applied to the tooltip body\nstring",
-    "\"300px\""
+    "maxWidth styling applied to the tooltip body Default is '300px'\n\nstring",
+    "-"
   ],
   [
     "offset",
-    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info.\n[number, number]",
-    "[0, 5]"
+    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info. Default is [0, 5]\n\n[number, number]",
+    "-"
   ],
   [
     "onAnalyticsEvent",
@@ -101,8 +101,8 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.\n\"auto-end\"\n\"auto-start\"\n\"auto\"\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\nShow 7 more...",
-    "\"top\""
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info. Default is 'top'\n\n\"auto-end\"\n\"auto-start\"\n\"auto\"\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\nShow 7 more...",
+    "-"
   ],
   [
     "ref",
@@ -121,8 +121,8 @@
   ],
   [
     "transitionDuration",
-    "Duration of the react-transition-group CSSTransition. See the timeout option for more info.\nnumber",
-    "250"
+    "Duration of the react-transition-group CSSTransition. See the timeout option for more info. Default is 250\n\nnumber",
+    "-"
   ],
   [
     "triggerAriaLabel",
@@ -131,7 +131,7 @@
   ],
   [
     "zIndex",
-    "zIndex styling applied to the tooltip body\nnumber",
-    "9999"
+    "zIndex styling applied to the tooltip body Default is 9999\n\nnumber",
+    "-"
   ]
 ]
