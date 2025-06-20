@@ -155,7 +155,7 @@
     "prettier": "^2.6.1",
     "react": "17.0.2",
     "react-app-polyfill": "^3.0.0",
-    "react-docgen-typescript": "2.3.0-beta.0",
+    "react-docgen-typescript": "2.4.0",
     "react-dom": "17.0.2",
     "react-test-renderer": "17.0.2",
     "sass": "^1.53.0",
@@ -176,8 +176,5 @@
   },
   "engines": {
     "node": ">=18.20.4"
-  },
-  "overrides": {
-    "react-docgen-typescript": "2.3.0-beta.0"
   }
 }
