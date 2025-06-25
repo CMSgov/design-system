@@ -13,7 +13,11 @@ const meta: Meta = {
       options: ['default', 'info', 'success', 'warn', 'alert'],
       control: { type: 'radio' },
     },
-    children: { control: 'text' },
+    children: {
+      control: 'text',
+      description: 'Label text or HTML.',
+      type: { name: 'string', required: true },
+    },
   },
   parameters: {
     docs: {
