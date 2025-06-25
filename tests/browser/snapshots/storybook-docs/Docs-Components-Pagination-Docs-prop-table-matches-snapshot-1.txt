@@ -45,11 +45,6 @@
     "-"
   ],
   [
-    "ref",
-    "Ref<HTMLElement>",
-    "-"
-  ],
-  [
     "renderHref*",
     "Defines application-specific routing in url for links.\n(page: number) => string",
     "-"

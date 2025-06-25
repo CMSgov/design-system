@@ -1,17 +1,12 @@
 [
   [
-    "children",
+    "children*",
     "Label text or HTML.\nReactNode",
     "-"
   ],
   [
     "className",
     "Additional classes to be added to the root badge element. Useful for adding utility classes.\n\nstring",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLSpanElement>",
     "-"
   ],
   [
