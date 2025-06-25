@@ -1,9 +1,9 @@
 {
   "name": "react-app-example",
-  "version": "12.3.0",
+  "version": "12.4.0",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "12.3.0"
+    "@cmsgov/design-system": "12.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
