@@ -13,7 +13,7 @@ export interface LabelProps {
    * Additional classes to be added to the root element.
    */
   className?: string;
-  /** The root HTML element used to render the label */
+  /** The root HTML element used to render the label. Default is `'label'` */
   component?: LabelComponent;
   /**
    * @deprecated Hints are now their own component called `Hint`.
@@ -88,7 +88,7 @@ export const Label = (props: LabelComponentProps) => {
     fieldId,
     id,
     children,
-    component,
+    component = 'label',
     hint,
     hintId,
     className,
@@ -153,7 +153,5 @@ export const Label = (props: LabelComponentProps) => {
     </>
   );
 };
-
-Label.defaultProps = { component: 'label' };
 
 export default Label;

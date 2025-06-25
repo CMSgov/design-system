@@ -25,7 +25,7 @@ export interface BaseSvgIconProps {
    */
   id?: string;
   /**
-   * If `true` sets inverse fill color.
+   * If `true` sets inverse fill color. Default is `false`.
    */
   inversed?: boolean;
   /**
@@ -48,12 +48,12 @@ export type SvgIconProps = BaseSvgIconProps &
 export type IconCommonProps = Partial<Omit<SvgIconProps, 'children'>>;
 
 export const SvgIcon = ({
-  ariaHidden,
+  ariaHidden = true,
   className,
   children,
   description,
   id,
-  inversed,
+  inversed = false,
   title,
   viewBox,
   ...otherProps
@@ -86,9 +86,4 @@ export const SvgIcon = ({
       {children}
     </svg>
   );
-};
-
-SvgIcon.defaultProps = {
-  ariaHidden: true,
-  inversed: false,
 };

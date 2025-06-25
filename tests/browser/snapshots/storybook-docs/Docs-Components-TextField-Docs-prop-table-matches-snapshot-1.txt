@@ -156,8 +156,8 @@
   ],
   [
     "type",
-    "HTML input type attribute. If you are using type=number please use the numeric prop instead.\nstring",
-    "\"text\""
+    "HTML input type attribute. If you are using type=number please use the numeric prop instead. Defaults to 'text'\n\nstring",
+    "-"
   ],
   [
     "value",

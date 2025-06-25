@@ -3,7 +3,7 @@
 // your build process.
 import { Alert, Button, Drawer, UsaBanner } from '@cmsgov/design-system';
 import { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 const Example = function () {
   const [open, setOpen] = useState(false);
@@ -42,4 +42,5 @@ const Example = function () {
   );
 };
 
-ReactDOM.render(<Example />, document.querySelector('#jsx-root'));
+const root = createRoot(document.querySelector('#jsx-root'));
+root.render(<Example />);

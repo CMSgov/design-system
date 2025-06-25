@@ -81,7 +81,7 @@ export interface AutocompleteProps {
    */
   clearInputText?: React.ReactNode;
   /**
-   * Removes the Clear search button when set to `false`
+   * Removes the Clear search button when set to `false`. Default is `true`.
    */
   clearSearchButton?: boolean;
   /*
@@ -179,12 +179,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const {
     ariaClearLabel,
-    autoCompleteLabel,
+    autoCompleteLabel = 'off',
     autoFocus,
     children,
     className,
     clearInputText,
-    clearSearchButton,
+    clearSearchButton = true,
     focusTrigger,
     inputRef: userInputRef,
     items,
@@ -358,11 +358,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
       )}
     </div>
   );
-};
-
-Autocomplete.defaultProps = {
-  autoCompleteLabel: 'off',
-  clearSearchButton: true,
 };
 
 export default Autocomplete;

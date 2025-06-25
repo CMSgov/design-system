@@ -86,8 +86,8 @@
   ],
   [
     "skipNavHref",
-    "A URL hash used for the \"Skip to main content\" link. This is typically the id of your \"main\" content area (ie. #main).\n\nstring",
-    "\"#main\""
+    "A URL hash used for the \"Skip to main content\" link. This is typically the id of your \"main\" content area (Defaults to '#main').\n\nstring",
+    "-"
   ],
   [
     "submenuBottom",
