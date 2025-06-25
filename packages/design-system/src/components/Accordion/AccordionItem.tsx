@@ -9,7 +9,9 @@ export interface AccordionItemProps {
    * Class to be applied to the header `<button>` of an accordion item.
    */
   buttonClassName?: string;
-
+  /**
+   * Content to display within the accordion item.
+   */
   children?: React.ReactNode;
   /**
    * Class to be applied to the content `<div>` tag of an accordion item.
