@@ -53,7 +53,7 @@ interface BaseTableCellProps {
    */
   stackedTitle?: string;
   /**
-   * @hide-prop This gets set from the parent `TableHead` component
+   * @ignore This gets set from the parent `TableHead` component
    */
   _isTableHeadChild?: boolean;
 }

@@ -11,7 +11,7 @@ export type VerticalNavItemComponent = React.ReactElement<any> | any | ((...args
 export interface VerticalNavItemProps {
   /**
    * Internal prop passed from the parent VerticalNav
-   * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
+   * @ignore This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId?: string;
   /**
