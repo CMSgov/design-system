@@ -14,6 +14,13 @@ const meta: Meta<typeof HelpDrawer> = {
         disable: true,
       },
     },
+    children: {
+      control: 'text',
+      type: {
+        name: 'ReactNode' as 'string',
+        required: true,
+      },
+    },
   },
   args: {
     footerTitle: 'Footer Title',
@@ -65,7 +72,7 @@ export const Default: Story = {
     return (
       <>
         <HelpDrawer {...args} onCloseClick={hideDrawer} isOpen={isDrawerVisible}>
-          {drawerContent}
+          {args.children || drawerContent}
         </HelpDrawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Toggle

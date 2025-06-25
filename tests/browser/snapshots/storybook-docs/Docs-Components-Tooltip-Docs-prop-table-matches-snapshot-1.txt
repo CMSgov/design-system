@@ -105,11 +105,6 @@
     "-"
   ],
   [
-    "ref",
-    "Ref<HTMLButtonElement> & Ref<HTMLAnchorElement>",
-    "-"
-  ],
-  [
     "showCloseButton",
     "Determines if close button is shown in tooltip. It is recommended that the close button is only used if dialog=true\nboolean",
     "-"
