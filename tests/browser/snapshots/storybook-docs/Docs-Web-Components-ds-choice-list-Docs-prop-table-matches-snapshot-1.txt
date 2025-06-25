@@ -6,7 +6,7 @@
   ],
   [
     "choices",
-    "The list of choices to be rendered as an array of objects.\n\nWhen using this in HTML, the choices attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.\n\nExample:\n<ds-choice-list\n  choices='[\n    {\n      \"label\": \"Choice 1\",\n      \"value\": \"A\",\n      \"defaultChecked\": true\n    },\n    {\n      \"label\": \"Choice 2\",\n      \"value\": \"B\",\n      \"requirementLabel\": \"Choice hint text\"\n    }\n  ]'\n>\n</ds-choice-list>\nCopy\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on valid JSON formatting, see JSON syntax restrictions on MDN.\n\nAlternatively, you can omit the choices attribute and instead include individual <ds-choice> elements as children inside <ds-choice-list>.",
+    "The list of choices to be rendered as an array of objects.\n\nWhen using this in HTML, the choices attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.\n\nExample:\nchoices='[\n  {\n    \"label\": \"Choice 1\",\n    \"value\": \"A\",\n    \"defaultChecked\": true\n  },\n  {\n    \"label\": \"Choice 2\",\n    \"value\": \"B\",\n    \"requirementLabel\": \"Choice hint text\"\n  }\n]'\nCopy\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on valid JSON formatting, see JSON syntax restrictions on MDN.\n\nAlternatively, you can omit the choices attribute and instead include individual <ds-choice> elements as children inside <ds-choice-list>.",
     "See description"
   ],
   [
