@@ -5,6 +5,11 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   vite: {
+    resolve: {
+      alias: {
+        '@astrojs/react/client.js': '@astrojs/react/client-v17.js',
+      },
+    },
     ssr: {
       noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
     },

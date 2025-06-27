@@ -95,11 +95,6 @@
     "-"
   ],
   [
-    "ref",
-    "Ref<HTMLFieldSetElement>",
-    "-"
-  ],
-  [
     "requirementLabel",
     "Text showing the requirement (\"Required\", \"Optional\", etc.). See Required and Optional Fields.\nReactNode",
     "-"

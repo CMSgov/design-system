@@ -22,7 +22,8 @@ export interface SpinnerProps {
    */
   filled?: boolean;
   /**
-   * Landmark role so the spinner can receive keyboard focus
+   * Landmark role so the spinner can receive keyboard focus.
+   * Default is `'status'`
    */
   role?: string;
   /**
@@ -36,6 +37,7 @@ export interface SpinnerProps {
  * [refer to its full documentation page](https://design.cms.gov/components/spinner/).
  */
 export const Spinner = (props: SpinnerProps) => {
+  const { role = 'status' } = props;
   const className = classNames(
     'ds-c-spinner',
     props.size && `ds-c-spinner--${props.size}`,
@@ -45,16 +47,12 @@ export const Spinner = (props: SpinnerProps) => {
   );
 
   return (
-    <span className={className} role={props.role}>
+    <span className={className} role={role}>
       <span className="ds-u-visibility--screen-reader">
         {props['aria-valuetext'] ?? t('spinner.ariaText')}
       </span>
     </span>
   );
-};
-
-Spinner.defaultProps = {
-  role: 'status',
 };
 
 export default Spinner;

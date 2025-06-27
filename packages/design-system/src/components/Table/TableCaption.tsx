@@ -11,15 +11,15 @@ export interface TableCaptionProps {
    */
   className?: string;
   /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
+   * @ignore This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */
   _id?: string;
   /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
+   * @ignore This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */
   _scrollActive?: boolean;
   /**
-   * @hide-prop This gets passed from the parent `Table` component when the table `scrollable` prop is set.
+   * @ignore This gets passed from the parent `Table` component when the table `scrollable` prop is set.
    */
   _scrollableNotice?: React.ReactNode;
 }

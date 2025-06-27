@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react';
+import userEvent, { Options } from '@testing-library/user-event';
 
 export function createGenericTestRenderer<T extends unknown[]>(
   customElementSelector: string,
-  renderFn: (...args: T) => React.ReactElement
+  renderFn: (...args: T) => React.ReactElement,
+  userEventSetupOptions: Options = {}
 ) {
   return (...args: T) => {
     const result = render(renderFn(...args));
@@ -32,6 +34,7 @@ export function createGenericTestRenderer<T extends unknown[]>(
       customElement: getCustomElement(result),
       shadowRoot: getShadowRoot(result),
       rerenderTest: createRerenderFunction(result),
+      user: userEvent.setup(userEventSetupOptions),
     };
   };
 }
@@ -45,7 +48,8 @@ export function createTestRenderer<TagName extends keyof JSX.IntrinsicElements>(
   renderFn: (
     attrs?: JSX.IntrinsicElements[TagName],
     children?: React.ReactNode
-  ) => React.ReactElement
+  ) => React.ReactElement,
+  userEventSetupOptions: Options = {}
 ) {
-  return createGenericTestRenderer(tagName, renderFn);
+  return createGenericTestRenderer(tagName, renderFn, userEventSetupOptions);
 }
