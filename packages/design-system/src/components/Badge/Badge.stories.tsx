@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Badge from './Badge';
 
+const badgeOptions = ['', 'info', 'success', 'warn', 'alert'];
+
 const meta: Meta = {
   component: Badge,
   argTypes: {
@@ -10,8 +12,18 @@ const meta: Meta = {
       control: { type: 'radio' },
     },
     variation: {
-      options: ['default', 'info', 'success', 'warn', 'alert'],
-      control: { type: 'radio' },
+      options: badgeOptions,
+      mapping: badgeOptions,
+      control: {
+        type: 'radio',
+        labels: {
+          '': 'default',
+          info: 'info',
+          success: 'success',
+          warn: 'warn',
+          alert: 'alert',
+        },
+      },
     },
     children: {
       control: 'text',
