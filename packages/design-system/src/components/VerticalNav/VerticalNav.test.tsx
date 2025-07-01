@@ -9,7 +9,10 @@ function renderVerticalNav(customProps = {}) {
     },
     ...customProps,
   };
-  return render(<VerticalNav {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<VerticalNav {...props} />),
+  };
 }
 
 describe('VerticalNav', () => {
@@ -73,23 +76,23 @@ describe('VerticalNav', () => {
     expect(listEl.classList).toContain('ds-c-vertical-nav--collapsed');
   });
 
-  it('passes onLinkClick to items', () => {
+  it('passes onLinkClick to items', async () => {
     const mockOnLinkClick = jest.fn();
-    renderVerticalNav({
+    const { user } = renderVerticalNav({
       onLinkClick: mockOnLinkClick,
     });
 
     const navItemEl = screen.getByText('Foo');
 
-    userEvent.click(navItemEl);
+    await user.click(navItemEl);
 
     expect(mockOnLinkClick).toHaveBeenCalled();
   });
 
-  it("gives precedence to item's onClick callback", () => {
+  it("gives precedence to item's onClick callback", async () => {
     const mockOnLinkClick = jest.fn();
     const mockOnClick = jest.fn();
-    renderVerticalNav({
+    const { user } = renderVerticalNav({
       onLinkClick: mockOnLinkClick,
       items: [
         {
@@ -101,7 +104,7 @@ describe('VerticalNav', () => {
 
     const navItemEl = screen.getByText('Link 3');
 
-    userEvent.click(navItemEl);
+    await user.click(navItemEl);
 
     expect(mockOnClick).toHaveBeenCalled();
     expect(mockOnLinkClick).not.toHaveBeenCalled();

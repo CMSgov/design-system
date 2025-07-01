@@ -26,12 +26,12 @@
   ],
   [
     "scrollableNotice",
-    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport.\n\nReactNode",
+    "Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior. This prop will only be used when the Table scrollable prop is set and the table width is wider than the viewport. There is a default Alert set that reads 'Scroll using arrow keys to see more'\n\nReactNode",
     "<Alert />"
   ],
   [
     "stackable",
-    "A stackable variation of the table. When stackable is set, id or headers prop is required in Table\n\nboolean",
+    "A stackable variation of the table. When stackable is set, id or headers prop is required in Table Default sets to 'sm'\n\nboolean",
     "-"
   ],
   [

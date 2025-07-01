@@ -27,23 +27,22 @@ const meta: Meta = {
 When using this in HTML, the \`steps\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
 
 **Example:**
-\`<ds-step-list
-  steps='[
-    {
-      "id": "1",
-      "heading": "Step 1",
-      "completed": "true",
-      "href": "#step-1"
-    },
-    {
-      "id": "2",
-      "heading": "Step 2",
-      "completed" :"false",
-      "href": "#step-2"
-    },
-  ]'
->
-</ds-step-list>\`
+\`
+steps='[
+  {
+    "id": "1",
+    "heading": "Step 1",
+    "completed": "true",
+    "href": "#step-1"
+  },
+  {
+    "id": "2",
+    "heading": "Step 2",
+    "completed" :"false",
+    "href": "#step-2"
+  },
+]'
+\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 

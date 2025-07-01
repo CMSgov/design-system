@@ -13,11 +13,11 @@ export interface LabelProps {
    * Additional classes to be added to the root element.
    */
   className?: string;
-  /** The root HTML element used to render the label */
+  /** The root HTML element used to render the label. Default is `'label'` */
   component?: LabelComponent;
   /**
    * @deprecated Hints are now their own component called `Hint`.
-   * @hide-prop [Deprecated]
+   * @ignore [Deprecated]
    *
    * Enable the error state by providing an error message.
    */
@@ -26,7 +26,7 @@ export interface LabelProps {
    * @deprecated The Label is no longer responsible for rendering the
    * error element from a string. A InlineError should be passed to it which
    * already has an errorId applied.
-   * @hide-prop [Deprecated]
+   * @ignore [Deprecated]
    */
   errorId?: string;
   /**
@@ -36,14 +36,14 @@ export interface LabelProps {
   fieldId?: string;
   /**
    * @deprecated Hints are now their own component called `Hint`.
-   * @hide-prop [Deprecated]
+   * @ignore [Deprecated]
    *
    * Additional hint text to display
    */
   hint?: React.ReactNode;
   /**
    * @deprecated Please render your error message directly with the 'InlineError' component instead of passing to `Label`
-   * @hide-prop [Deprecated]
+   * @ignore [Deprecated]
    *
    * The ID of the hint element
    */
@@ -59,6 +59,7 @@ export interface LabelProps {
   inversed?: boolean;
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
+   * @ignore TODO: Determine if this is deprecated. It's hidden on the storybook side, but not noted here.
    */
   requirementLabel?: React.ReactNode;
   /**
@@ -87,7 +88,7 @@ export const Label = (props: LabelComponentProps) => {
     fieldId,
     id,
     children,
-    component,
+    component = 'label',
     hint,
     hintId,
     className,
@@ -152,7 +153,5 @@ export const Label = (props: LabelComponentProps) => {
     </>
   );
 };
-
-Label.defaultProps = { component: 'label' };
 
 export default Label;
