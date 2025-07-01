@@ -94,7 +94,15 @@ const customComponents = (theme) => ({
   a: (props) => {
     const { href, ...restProps } = props;
     if (href.startsWith('http') && !RE_INTERNAL_URL.test(href)) {
-      return <ThirdPartyExternalLink analytics={true} origin="design.cms.gov" {...props} />;
+      return (
+        <ThirdPartyExternalLink
+          analyticsParentHeading="no value available"
+          analyticsParentType="no value available"
+          analytics={true}
+          origin="design.cms.gov"
+          {...props}
+        />
+      );
     }
     if (href.includes('github.com/CMSgov/design-system') || href.startsWith('https:')) {
       return <a href={href} {...restProps} />;
