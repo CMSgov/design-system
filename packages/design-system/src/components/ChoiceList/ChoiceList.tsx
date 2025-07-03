@@ -9,6 +9,7 @@ import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
 import mergeRefs from '../utilities/mergeRefs';
+import { wrapInSpan } from '../utilities/wrapTextContent';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
@@ -112,16 +113,32 @@ export const ChoiceList = (props: ChoiceListProps) => {
     }, 20);
   };
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { hintId, hintElement } = useHint({ ...props, id });
-  const labelProps = useLabelProps({ ...props, id });
+  // Wrap text props to prevent Google Translate issues
+  const wrappedProps = {
+    ...props,
+    label: wrapInSpan(props.label),
+    hint: wrapInSpan(props.hint),
+    errorMessage: wrapInSpan(props.errorMessage),
+    requirementLabel: wrapInSpan(props.requirementLabel),
+  };
 
-  const choiceItems = choices.map((choiceProps, index) => {
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...wrappedProps, id });
+  const { hintId, hintElement } = useHint({ ...wrappedProps, id });
+  const labelProps = useLabelProps({ ...wrappedProps, id });
+
+  // Wrap choice labels and hints
+  const wrappedChoices = choices.map((choice) => ({
+    ...choice,
+    label: wrapInSpan(choice.label),
+    hint: choice.hint ? wrapInSpan(choice.hint) : undefined,
+  }));
+
+  const choiceItems = wrappedChoices.map((choiceProps, index) => {
     const completeChoiceProps: ChoiceComponentProps = {
       // Allow this to be overridden by the choiceProps
       id: `${id}__choice--${index}`,
       ...choiceProps,
-      inversed: props.inversed,
+      inversed: wrappedProps.inversed,
       name: props.name,
       // onBlur: (onBlur || onComponentBlur) && handleBlur,
       onBlur: handleBlur,
@@ -129,7 +146,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
       size: props.size,
       type: props.type,
       inputClassName: classNames(choiceProps.inputClassName, {
-        'ds-c-choice--error': props.errorMessage,
+        'ds-c-choice--error': wrappedProps.errorMessage,
       }),
       disabled: choiceProps.disabled || props.disabled, // Individual choices can be disabled as well as the entire field
       inputRef: mergeRefs([
@@ -153,7 +170,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
   return (
     <fieldset
       aria-invalid={invalid}
-      aria-describedby={describeField({ ...props, hintId, errorId })}
+      aria-describedby={describeField({ ...wrappedProps, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
       role={props.type === 'radio' ? 'radiogroup' : null}
     >

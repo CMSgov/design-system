@@ -10,6 +10,7 @@ import { t, getLanguage } from '../i18n';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import { wrapInSpan } from '../utilities/wrapTextContent';
 
 export type DateFieldDayDefaultValue = string | number;
 export type DateFieldDayValue = string | number;
@@ -147,15 +148,28 @@ export type DateFieldProps = BaseDateFieldProps &
  */
 export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   const id = useId('date-field--', props.id);
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
-  const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
+
+  // Wrap text props to prevent Google Translate issues
+  const wrappedProps = {
+    ...props,
+    label: wrapInSpan(props.label),
+    hint: wrapInSpan(props.hint),
+    errorMessage: wrapInSpan(props.errorMessage),
+    requirementLabel: wrapInSpan(props.requirementLabel),
+    dayLabel: wrapInSpan(props.dayLabel),
+    monthLabel: wrapInSpan(props.monthLabel),
+    yearLabel: wrapInSpan(props.yearLabel),
+  };
+
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...wrappedProps, id });
+  const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...wrappedProps, id });
+  const labelProps = useLabelProps({ label: t('dateField.label'), ...wrappedProps, id });
   const fieldProps = {
     dayName: 'day',
     monthName: 'month',
     yearName: 'year',
     dateFormatter: defaultDateFormatter,
-    ...cleanFieldProps(props),
+    ...cleanFieldProps(wrappedProps),
     id,
     language: getLanguage(),
   };
@@ -163,7 +177,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
   return (
     <fieldset
       aria-invalid={invalid}
-      aria-describedby={describeField({ ...props, hintId, errorId })}
+      aria-describedby={describeField({ ...wrappedProps, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
     >
       <Label component="legend" {...labelProps} />

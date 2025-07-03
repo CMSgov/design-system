@@ -16,6 +16,7 @@ import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from reac
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import { wrapInSpan } from '../utilities/wrapTextContent';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -161,7 +162,31 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...extraProps
   } = props;
 
-  const optionsAndGroups = options ?? parseChildren(children);
+  // Function to wrap option and optgroup labels
+  const wrapOptions = (items: Array<DropdownOption | DropdownOptGroup>) => {
+    return items.map((item) => {
+      if (isOptGroup(item)) {
+        // Wrap optgroup label and recursively wrap its options
+        return {
+          ...item,
+          label: wrapInSpan(item.label),
+          options: item.options.map((option) => ({
+            ...option,
+            label: wrapInSpan(option.label),
+          })),
+        };
+      } else {
+        // Wrap option label
+        return {
+          ...item,
+          label: wrapInSpan(item.label),
+        };
+      }
+    });
+  };
+
+  const rawOptionsAndGroups = options ?? parseChildren(children);
+  const optionsAndGroups = options ? wrapOptions(rawOptionsAndGroups) : rawOptionsAndGroups;
 
   const renderReactStatelyItem = (item: DropdownOption) => {
     const { label, value, ...extraAttrs } = item;
@@ -215,8 +240,17 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     onSelectionChange,
   });
 
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
-  const { hintId, hintElement } = useHint({ ...props, id });
+  // Wrap text props to prevent Google Translate issues
+  const wrappedProps = {
+    ...props,
+    label: wrapInSpan(props.label),
+    hint: wrapInSpan(props.hint),
+    errorMessage: wrapInSpan(props.errorMessage),
+    requirementLabel: wrapInSpan(props.requirementLabel),
+  };
+
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...wrappedProps, id });
+  const { hintId, hintElement } = useHint({ ...wrappedProps, id });
 
   const onBlur = useCallback(
     // The active element is always the document body during a focus transition,
@@ -246,13 +280,13 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   const labelProps = {
     ...useSelectProps.labelProps,
     ...useLabelProps({
-      ...props,
+      ...wrappedProps,
       id,
       labelClassName: classNames(
         'ds-c-label',
         'ds-c-dropdown__label',
-        props.inversed && 'ds-c-label--inverse',
-        props.labelClassName
+        wrappedProps.inversed && 'ds-c-label--inverse',
+        wrappedProps.labelClassName
       ),
     }),
   };
@@ -268,7 +302,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
-      props.errorMessage && 'ds-c-field--error',
+      wrappedProps.errorMessage && 'ds-c-field--error',
       inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
@@ -276,7 +310,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
-    'aria-describedby': describeField({ ...props, hintId, errorId }),
+    'aria-describedby': describeField({ ...wrappedProps, hintId, errorId }),
     // TODO: Someday we may want to add this `combobox` role back to the button, but right
     // now desktop VoiceOver has an issue. It seems to interpret the selected value in the
     // button as user input that needs to be checked for spelling (default setting). It
@@ -306,7 +340,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
         isDisabled={props.disabled}
         state={state}
         triggerRef={triggerRef}
-        label={props.label}
+        label={wrappedProps.label}
         name={props.name}
       />
       <button {...buttonProps}>
