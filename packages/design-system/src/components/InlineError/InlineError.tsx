@@ -1,8 +1,9 @@
 import type * as React from 'react';
 import classNames from 'classnames';
-import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
+import { AlertCircleIcon } from '../Icons';
 import { t } from '../i18n';
 import useId from '../utilities/useId';
+import { wrapChildrenInSpans } from '../utilities/wrapTextContent';
 
 export interface InlineErrorProps {
   /**
@@ -57,7 +58,7 @@ export function InlineError({
         <>
           <AlertCircleIcon viewBox={viewbox} />
           <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
-          {children}
+          {wrapChildrenInSpans(children)}
         </>
       )}
     </p>

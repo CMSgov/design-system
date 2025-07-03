@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import mergeRefs from '../utilities/mergeRefs';
 import useButtonAnalytics from './useButtonAnalytics';
 import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
+import { wrapChildrenInSpans } from '../utilities/wrapTextContent';
 
 export type ButtonSize = 'small' | 'big';
 
@@ -148,7 +149,7 @@ export const Button = (props: ButtonProps) => {
       onKeyPress={ComponentType === 'a' ? handleKeyPress : undefined}
       {...attrs}
     >
-      {children}
+      {wrapChildrenInSpans(children)}
     </ComponentType>
   );
 };
