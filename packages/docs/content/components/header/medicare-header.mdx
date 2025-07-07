@@ -30,68 +30,7 @@ import consistentHeaderToastImg from '../../../src/images/consistent-header/cons
   </Alert>
 </ThemeContent>
 
-## Code
 
-### HTML
-
-The following example shows what the div element should look like before importing the scripts:
-
-```html
-<div
-  id="root"
-  lang="en"
-  lang-toggle-link="your-language-toggle-link-here"
-  login-url="login-url"
-  logout-url="logout-url"
-  enable-live-chat="true"
-></div>
-```
-
-### JS
-
-Implementers should load the JavaScript and CSS files programmatically from the asset-manifest.json in order to get the latest versions whenever they become available. Here's an example of how to do that in the imp environment, using jQuery.
-
-```js
-loadFilesFromManifest('https://frontend.imp.medicare.gov/', 'asset-manifest.json');
-
-//Gets and parses the entrypoints node of the asset manifest file
-function loadFilesFromManifest(rootURL, manifest) {
-  var manifestURL = rootURL + manifest;
-  $.getJSON(manifestURL, function (json) {
-    importFilesFromArray(json.entrypoints, rootURL);
-  });
-}
-
-//Takes the provided array, parses it and loads
-// all of the JS and CSS files based on their file extension
-function importFilesFromArray(files, rootURL) {
-  for (var i = 0; i < files.length; i++) {
-    if (files[i].endsWith('.js')) importJSFile(rootURL + files[i]);
-    else if (files[i].endsWith('.css')) importCSSFile(rootURL + files[i]);
-  }
-}
-
-//Imports a single JS file
-function importJSFile(url) {
-  var jsElement = document.createElement('script');
-  jsElement.src = url;
-  jsElement.type = 'text/javascript';
-
-  var head = document.head;
-  head.insertBefore(jsElement, head.childNodes[0]);
-}
-
-//Imports a single CSS file
-function importCSSFile(url) {
-  var cssElement = document.createElement('link');
-  cssElement.href = url;
-  cssElement.rel = 'stylesheet';
-  cssElement.type = 'text/css';
-
-  var head = document.head;
-  head.insertBefore(cssElement, head.childNodes[0]);
-}
-```
 
 ## Guidance
 
@@ -237,3 +176,96 @@ Toast notifications should appear below the Medicare Header with a 10px top marg
   - Nothing else is needed on the translation front beyond the lang and lang-toggle-link
 - Is there anything that teams need to do to ensure the proper authenticated\unauth header is displayed to the user?
   - No, there should not be anything that needs to be done from an integration standpoint for the header know the auth\unauth status of the user and this display the proper version of the header.
+
+## Accessibility
+
+The Medicare.gov header has been tested against, and meets, the WCAG 2.1 standard for
+accessibility.
+
+- The header includes the [Skip Nav](/components/skip-nav/?theme=medicare) component.
+- The header includes the [USA-banner](/components/usa-banner/?theme=medicare) component. [Read more about testing USA Banner’s accessibility](/components/usa-banner/#accessibility-testing).
+- The header includes the [Medicare.gov logo](/components/logos/medicare-logo/?theme=medicare). [Read more about testing the logo’s
+accessibility](components/logos/medicare-logo/?theme=medicare).
+
+### Accessibility testing
+
+#### Screen reader testing
+
+When using a screen reader:
+- Screen reader announces each interactive element with its type (link or button)
+and content.
+- Screen reader announces collapsed and expanded states. For example, when
+you first access USA Banner’s “Here’s how you know” button while using a
+screen reader, the screen reader announces that it is “collapsed.” When
+activated, the screen reader announces “expanded.”
+- Screen reader announces the logo as image and link, and the link’s destination.
+
+#### Keyboard testing
+
+When navigating with a keyboard:
+- Use the `Tab` key to move forward and `Shift` + `Tab` to move backward
+through interactive elements.
+- Confirm that focus is clearly visible on each interactive element.
+
+## Code
+
+### HTML
+
+The following example shows what the div element should look like before importing the scripts:
+
+```html
+<div
+  id="root"
+  lang="en"
+  lang-toggle-link="your-language-toggle-link-here"
+  login-url="login-url"
+  logout-url="logout-url"
+  enable-live-chat="true"
+></div>
+```
+
+### JS
+
+Implementers should load the JavaScript and CSS files programmatically from the asset-manifest.json in order to get the latest versions whenever they become available. Here's an example of how to do that in the imp environment, using jQuery.
+
+```js
+loadFilesFromManifest('https://frontend.imp.medicare.gov/', 'asset-manifest.json');
+
+//Gets and parses the entrypoints node of the asset manifest file
+function loadFilesFromManifest(rootURL, manifest) {
+  var manifestURL = rootURL + manifest;
+  $.getJSON(manifestURL, function (json) {
+    importFilesFromArray(json.entrypoints, rootURL);
+  });
+}
+
+//Takes the provided array, parses it and loads
+// all of the JS and CSS files based on their file extension
+function importFilesFromArray(files, rootURL) {
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].endsWith('.js')) importJSFile(rootURL + files[i]);
+    else if (files[i].endsWith('.css')) importCSSFile(rootURL + files[i]);
+  }
+}
+
+//Imports a single JS file
+function importJSFile(url) {
+  var jsElement = document.createElement('script');
+  jsElement.src = url;
+  jsElement.type = 'text/javascript';
+
+  var head = document.head;
+  head.insertBefore(jsElement, head.childNodes[0]);
+}
+
+//Imports a single CSS file
+function importCSSFile(url) {
+  var cssElement = document.createElement('link');
+  cssElement.href = url;
+  cssElement.rel = 'stylesheet';
+  cssElement.type = 'text/css';
+
+  var head = document.head;
+  head.insertBefore(cssElement, head.childNodes[0]);
+}
+```
