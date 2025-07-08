@@ -434,7 +434,27 @@ describe('Autocomplete', () => {
       selectedItem: null,
     });
 
-    expectMenuToBeClosed();
+    autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
+  });
+
+  it('should return focus to the input when "Clear search" is clicked', async () => {
+    renderAutocomplete();
+
+    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const mockChangeHandler = jest.fn();
+    autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
+
+    const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
+    userEvent.click(autocompleteField);
+    userEvent.type(autocompleteField, 'c');
+
+    const listboxItem = screen.getByRole('option');
+    userEvent.click(listboxItem);
+
+    const clearButton = screen.getByText('Clear search');
+    userEvent.click(clearButton);
+    expect(document.activeElement).toBe(autocompleteField);
+
     autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
   });
 

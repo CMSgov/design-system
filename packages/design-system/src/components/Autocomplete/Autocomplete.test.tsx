@@ -350,6 +350,22 @@ describe('Autocomplete', () => {
     expect(autocompleteField.value).toBe('');
   });
 
+  it('should return focus to the input when "Clear search" is clicked', () => {
+    renderAutocomplete();
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    userEvent.click(input);
+    userEvent.type(input, 'c');
+
+    const option = screen.getByRole('option');
+    userEvent.click(option);
+
+    const clearButton = screen.getByText('Clear search');
+    userEvent.click(clearButton);
+
+    expect(document.activeElement).toBe(input);
+  });
+
   it('should call onChange with null item when "Clear search" is clicked', () => {
     const onChange = jest.fn();
     renderAutocomplete({ onChange });
