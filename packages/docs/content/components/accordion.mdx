@@ -26,22 +26,6 @@ medicare:
   <StorybookExample componentName="accordion" storyId="healthcare-accordion--default" />
 </ThemeContent>
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-accordion--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-accordion--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Accordion components:
-
-<ComponentThemeOptions componentname="accordion" />
-
 ## Guidance
 
 ### When to use
@@ -62,13 +46,74 @@ Accordions increase cognitive load and interaction cost, as users have to make d
 - Make the entire header selectable. Allow users to click anywhere in the header area to expand or collapse the content; a larger target is easier to manipulate.
 - Give interactive elements enough space. Make sure interactive elements within the collapsible region are far enough from the headers that users don’t accidentally trigger a collapse.
 
-### Accessibility
+## Accessibility
 
 Keyboard support for the Accordion header includes:
 
 - `Enter` or `Spacebar` - Changes the collapsed/expanded state of the associated accordion panel
 - `Arrow Down` - Moves focus to the next accordion header
 - `Arrow Up` - Moves focus to the previous accordion header
+
+### Accessibility testing
+
+#### Screen reader testing
+
+When using a screen reader:
+
+##### Focus states
+
+- Focus moves in a logical order when using a screen reader. When you use a screen reader and navigate between accordion panels, the order in which the focus proceeds from item to item is logical. (For example, the focus doesn’t skip a link or accordion heading.)
+- Focus indicator is visible when using a screen reader. When you use a screen reader and navigate between accordion panels, the virtual cursor (or JAWS focus) moves from one header to the next.
+- Heading levels are logical. When you use a screen reader and navigate through the accordion panel headings, the heading levels are the correct level for the page outline.
+
+##### Headings
+
+- Heading levels are consistent. When you use a screen reader and navigate through the accordion panel headings, each accordion panel’s heading level is the same. (Typically this is a heading level 2 or 3.)
+- Screen reader announces “collapsed” state. When you use a screen reader and navigate to a closed panel, the screen reader announces that the content is “collapsed.”
+- Screen reader announces “expanded” state. When you use a screen reader and navigate to an open panel, the screen reader announces that the content is “expanded.”
+- Screen reader announces “expanded” state with expected keys. When you use a screen reader and use the `Enter` key or the `Spacebar` on a closed panel, the screen reader announces that the content is “expanded.”
+- Screen reader announces “collapsed” state with expected keys. When you use a screen reader and use the `Enter` key or the `Spacebar` on an open panel, the screen reader announces that the content is “collapsed.”
+
+#### Keyboard testing
+
+When navigating with a keyboard:
+
+##### Accordion panel behavior
+
+- Accordion panel opens with keyboard interaction. When you use the `Enter` key or the `Spacebar` on a closed panel, the panel opens (expands).
+- Accordion panel closes with keyboard interaction. When you use the `Enter` key or the `Spacebar` on an open panel, the panel closes (collapses).
+- Accordion panel does not toggle on hover. When you hover or focus on any accordion panel, the panel neither opens nor closes.
+
+##### Interactive elements
+
+- Interactive elements work after tabbing. When you use the `Tab` key to navigate into an open accordion panel, each interactive item inside that panel (like a link) is selectable.
+
+##### Focus states
+
+- Focus moves out of the accordion without closing the panel. When you navigate out of the accordion, it does not close.
+- Focus moves forward with keyboard interaction. When you navigate through items with the `Tab` key, the order in which the visible focus proceeds from item to item is logical. (For example, the focus doesn’t skip a link or accordion heading.)
+- Focus moves backwards with keyboard interaction. When you navigate through items with `Shift` + `Tab`, the visible focus moves to the previous focusable elements without skipping any items.
+- Focus stays on the panel header. When you use the `Enter` key or the `Spacebar` on a closed panel, the focus highlight stays on the panel header.
+- Focus indicator is clear on the accordion panel. When you `Tab` onto an accordion panel, the focus highlight is clear and visible.
+- Focus indicator is clear on interactive items. When you navigate through interactive content items (like links) with the `Tab` key, each item has a focus highlight that is clear and visible.
+
+From [USWDS’ Accordion accessibility tests](https://designsystem.digital.gov/components/accordion/accessibility-tests/)
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-accordion--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-accordion--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Accordion components:
+
+<ComponentThemeOptions componentname="accordion" />
 
 ## Component maturity
 
