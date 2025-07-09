@@ -32,6 +32,7 @@ const meta: Meta<typeof Pagination> = {
         },
       },
     },
+    ref: { table: { disable: true } },
     startAriaLabel: {
       table: {
         defaultValue: {

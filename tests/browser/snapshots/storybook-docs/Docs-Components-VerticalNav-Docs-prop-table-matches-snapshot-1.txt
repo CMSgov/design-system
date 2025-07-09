@@ -11,8 +11,8 @@
   ],
   [
     "collapsed",
-    "Whether or not the menu is in a collapsed state\nboolean",
-    "false"
+    "Whether or not the menu is in a collapsed state. Defaults to false\n\nboolean",
+    "-"
   ],
   [
     "component",

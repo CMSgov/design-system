@@ -15,6 +15,11 @@
     "-"
   ],
   [
+    "children*",
+    "ReactNode",
+    "-"
+  ],
+  [
     "className",
     "string",
     "-"
@@ -46,7 +51,7 @@
   ],
   [
     "hasFocusTrap",
-    "Enables focus trap functionality within Drawer.\nboolean",
+    "Enables focus trap functionality within Drawer. Default is false.\nboolean",
     "-"
   ],
   [

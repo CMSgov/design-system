@@ -16,6 +16,7 @@ const meta: Meta<typeof Choice> = {
   },
   argTypes: {
     requirementLabel: { control: 'text' },
+    ref: { table: { disable: true } },
   },
   parameters: {
     docs: {
