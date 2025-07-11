@@ -2,9 +2,9 @@
 
 exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
-  aria-labelledby="dialog--4__heading"
+  aria-labelledby="dialog--:r5:__heading"
   class="ds-c-dialog"
-  id="dialog--4"
+  id="dialog--:r5:"
   open=""
   role="dialog"
   tabindex="-1"
@@ -17,20 +17,20 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
     >
       <h2
         class="ds-c-dialog__heading"
-        id="dialog--4__heading"
+        id="dialog--:r5:__heading"
       >
         You are leaving bar.
       </h2>
       <button
         aria-label="Close modal dialog"
         class="ds-c-close-button ds-c-dialog__close"
-        id="dialog--4__close"
+        id="dialog--:r5:__close"
         type="button"
       >
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
-          id="dialog--4__close__icon"
+          id="dialog--:r5:__close__icon"
           viewBox="-2 -2 18 18"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -48,7 +48,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
       class="ds-c-dialog__body"
     >
       <div
-        id="dialog--4__content"
+        id="dialog--:r5:__content"
       >
         <p>
           You're about to connect to a third-party site. Select CONTINUE to proceed or CANCEL to stay on this site.
@@ -91,15 +91,15 @@ exports[`ThirdPartyExternalLink renders external link 1`] = `
   External site link
   <svg
     aria-hidden="false"
-    aria-labelledby="icon--1__title"
+    aria-labelledby="icon--:r0:__title"
     class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
-    id="icon--1"
+    id="icon--:r0:"
     role="img"
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title
-      id="icon--1__title"
+      id="icon--:r0:__title"
     >
       This link goes to an external site
     </title>

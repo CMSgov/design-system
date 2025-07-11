@@ -3,19 +3,19 @@
 exports[`MonthPicker renders a snapshot 1`] = `
 <DocumentFragment>
   <fieldset
-    aria-describedby="month-picker--1__error month-picker--1__hint"
+    aria-describedby="month-picker--:r0:__error month-picker--:r0:__hint"
     aria-invalid="true"
     class="ds-c-fieldset ds-c-month-picker"
   >
     <legend
       class="ds-c-label"
-      id="month-picker--1__label"
+      id="month-picker--:r0:__label"
     >
       Months
     </legend>
     <p
       class="ds-c-hint"
-      id="month-picker--1__hint"
+      id="month-picker--:r0:__hint"
     >
       Guess and test
     </p>
@@ -23,7 +23,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
       aria-atomic="true"
       aria-live="assertive"
       class="ds-c-inline-error"
-      id="month-picker--1__error"
+      id="month-picker--:r0:__error"
     >
       <svg
         aria-hidden="true"
@@ -77,7 +77,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="January"
                 class="ds-c-choice"
-                id="month-picker--1__choice--1"
+                id="month-picker--:r0:__choice--1"
                 name="months"
                 type="checkbox"
                 value="1"
@@ -85,8 +85,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--1"
-                id="month-picker--1__choice--1__label"
+                for="month-picker--:r0:__choice--1"
+                id="month-picker--:r0:__choice--1__label"
               >
                 Jan
               </label>
@@ -103,7 +103,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="February"
                 class="ds-c-choice"
-                id="month-picker--1__choice--2"
+                id="month-picker--:r0:__choice--2"
                 name="months"
                 type="checkbox"
                 value="2"
@@ -111,8 +111,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--2"
-                id="month-picker--1__choice--2__label"
+                for="month-picker--:r0:__choice--2"
+                id="month-picker--:r0:__choice--2__label"
               >
                 Feb
               </label>
@@ -129,7 +129,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="March"
                 class="ds-c-choice"
-                id="month-picker--1__choice--3"
+                id="month-picker--:r0:__choice--3"
                 name="months"
                 type="checkbox"
                 value="3"
@@ -137,8 +137,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--3"
-                id="month-picker--1__choice--3__label"
+                for="month-picker--:r0:__choice--3"
+                id="month-picker--:r0:__choice--3__label"
               >
                 Mar
               </label>
@@ -155,7 +155,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="April"
                 class="ds-c-choice"
-                id="month-picker--1__choice--4"
+                id="month-picker--:r0:__choice--4"
                 name="months"
                 type="checkbox"
                 value="4"
@@ -163,8 +163,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--4"
-                id="month-picker--1__choice--4__label"
+                for="month-picker--:r0:__choice--4"
+                id="month-picker--:r0:__choice--4__label"
               >
                 Apr
               </label>
@@ -181,7 +181,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="May"
                 class="ds-c-choice"
-                id="month-picker--1__choice--5"
+                id="month-picker--:r0:__choice--5"
                 name="months"
                 type="checkbox"
                 value="5"
@@ -189,8 +189,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--5"
-                id="month-picker--1__choice--5__label"
+                for="month-picker--:r0:__choice--5"
+                id="month-picker--:r0:__choice--5__label"
               >
                 May
               </label>
@@ -207,7 +207,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="June"
                 class="ds-c-choice"
-                id="month-picker--1__choice--6"
+                id="month-picker--:r0:__choice--6"
                 name="months"
                 type="checkbox"
                 value="6"
@@ -215,8 +215,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--6"
-                id="month-picker--1__choice--6__label"
+                for="month-picker--:r0:__choice--6"
+                id="month-picker--:r0:__choice--6__label"
               >
                 Jun
               </label>
@@ -233,7 +233,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="July"
                 class="ds-c-choice"
-                id="month-picker--1__choice--7"
+                id="month-picker--:r0:__choice--7"
                 name="months"
                 type="checkbox"
                 value="7"
@@ -241,8 +241,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--7"
-                id="month-picker--1__choice--7__label"
+                for="month-picker--:r0:__choice--7"
+                id="month-picker--:r0:__choice--7__label"
               >
                 Jul
               </label>
@@ -259,7 +259,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="August"
                 class="ds-c-choice"
-                id="month-picker--1__choice--8"
+                id="month-picker--:r0:__choice--8"
                 name="months"
                 type="checkbox"
                 value="8"
@@ -267,8 +267,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--8"
-                id="month-picker--1__choice--8__label"
+                for="month-picker--:r0:__choice--8"
+                id="month-picker--:r0:__choice--8__label"
               >
                 Aug
               </label>
@@ -285,7 +285,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="September"
                 class="ds-c-choice"
-                id="month-picker--1__choice--9"
+                id="month-picker--:r0:__choice--9"
                 name="months"
                 type="checkbox"
                 value="9"
@@ -293,8 +293,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--9"
-                id="month-picker--1__choice--9__label"
+                for="month-picker--:r0:__choice--9"
+                id="month-picker--:r0:__choice--9__label"
               >
                 Sep
               </label>
@@ -311,7 +311,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="October"
                 class="ds-c-choice"
-                id="month-picker--1__choice--10"
+                id="month-picker--:r0:__choice--10"
                 name="months"
                 type="checkbox"
                 value="10"
@@ -319,8 +319,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--10"
-                id="month-picker--1__choice--10__label"
+                for="month-picker--:r0:__choice--10"
+                id="month-picker--:r0:__choice--10__label"
               >
                 Oct
               </label>
@@ -337,7 +337,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="November"
                 class="ds-c-choice"
-                id="month-picker--1__choice--11"
+                id="month-picker--:r0:__choice--11"
                 name="months"
                 type="checkbox"
                 value="11"
@@ -345,8 +345,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--11"
-                id="month-picker--1__choice--11__label"
+                for="month-picker--:r0:__choice--11"
+                id="month-picker--:r0:__choice--11__label"
               >
                 Nov
               </label>
@@ -363,7 +363,7 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <input
                 aria-label="December"
                 class="ds-c-choice"
-                id="month-picker--1__choice--12"
+                id="month-picker--:r0:__choice--12"
                 name="months"
                 type="checkbox"
                 value="12"
@@ -371,8 +371,8 @@ exports[`MonthPicker renders a snapshot 1`] = `
               <label
                 aria-hidden="true"
                 class="ds-c-label"
-                for="month-picker--1__choice--12"
-                id="month-picker--1__choice--12__label"
+                for="month-picker--:r0:__choice--12"
+                id="month-picker--:r0:__choice--12__label"
               >
                 Dec
               </label>

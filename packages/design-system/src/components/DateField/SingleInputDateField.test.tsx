@@ -113,8 +113,8 @@ describe('SingleInputDateField', function () {
 
     it('generates ids when no id is provided', () => {
       renderPicker({ id: undefined });
-      expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
-      expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
+      expect(screen.getByRole('textbox').id).toMatch(/^date-field--[\w:.-]+$/);
+      expect(screen.getByRole('img').id).toMatch(/^date-field--[\w:.-]+__icon$/);
     });
 
     it('selecting a day calls onChange', async () => {

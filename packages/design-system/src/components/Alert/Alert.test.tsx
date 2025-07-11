@@ -118,16 +118,20 @@ describe('Alert', function () {
     it('points aria-labelledby to heading', () => {
       const heading = 'Elvis has left the building';
       renderAlert({ heading, variation: 'error' });
+
       const alert = screen.getByRole('alert');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain(`Alert: ${heading}`);
+      const labelEl = document.getElementById(id!);
+
+      expect(labelEl?.textContent).toContain(`Alert: ${heading}`);
     });
 
     it('falls back aria-labelledby to a11y label when no heading is provided', () => {
       renderAlert();
       const alert = screen.getByRole('region');
       const id = alert.getAttribute('aria-labelledby');
-      expect(alert.querySelector(`#${id}`).textContent).toContain('Notice');
+      const labelEl = document.getElementById(id!);
+      expect(labelEl.textContent).toContain('Notice');
     });
   });
 

@@ -86,7 +86,7 @@ describe('TextField', function () {
 
   it('generates ids when no id is provided', () => {
     const { container } = renderTextField({ id: undefined });
-    const idRegex = /text-field--\d+/;
+    const idRegex = /^text-field--[\w:.-]+$/;
     expect(container.querySelector('input').id).toMatch(idRegex);
     expect(container.querySelector('label').id).toMatch(idRegex);
   });

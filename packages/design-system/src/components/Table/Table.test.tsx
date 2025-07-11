@@ -55,7 +55,7 @@ describe('Table', function () {
     makeTable({ scrollable: true, id: undefined });
     const table = screen.getByRole('table');
     const caption = table.querySelector('caption');
-    expect(caption.id).toMatch(/table-caption--\d+/);
+    expect(caption.id).toMatch(/^table-caption--[\w:.-]+$/);
   });
 
   it('applies responsive stacked table', () => {

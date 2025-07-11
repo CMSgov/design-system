@@ -53,7 +53,7 @@ Array [
 exports[`HelpDrawer renders a snapshot 1`] = `
 <DocumentFragment>
   <dialog
-    aria-labelledby="drawer--2"
+    aria-labelledby="drawer--:r1:"
     class="ds-c-help-drawer ds-c-drawer"
     open=""
     role="dialog"
@@ -67,7 +67,7 @@ exports[`HelpDrawer renders a snapshot 1`] = `
       >
         <h3
           class="ds-c-drawer__header-heading"
-          id="drawer--2"
+          id="drawer--:r1:"
         >
           HelpDrawer title
         </h3>

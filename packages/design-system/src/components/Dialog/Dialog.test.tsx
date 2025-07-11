@@ -25,7 +25,7 @@ function renderDialog(props = {}) {
 describe('Dialog', function () {
   it('generates ids when no id is provided', () => {
     renderDialog({ id: undefined });
-    const idRegex = /dialog--\d+/;
+    const idRegex = /^dialog--[\w:.-]+$/;
     expect(screen.getByRole('dialog').id).toMatch(idRegex);
     expect(screen.getByRole('heading').id).toMatch(idRegex);
   });
