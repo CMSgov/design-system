@@ -80,7 +80,7 @@
   ],
   [
     "inputRef",
-    "Ref<any> | MutableRefObject<any>",
+    "MutableRefObject<any> | Ref<any>",
     "-"
   ],
   [
