@@ -10,20 +10,20 @@ exports[`ds-text-field renders text-field 1`] = `
     >
       <label
         class="ds-c-label"
-        for="text-field--1"
-        id="text-field--1__label"
+        for="text-field--P0-0"
+        id="text-field--P0-0__label"
       />
       <p
         aria-atomic="true"
         aria-live="assertive"
         class="ds-c-inline-error"
-        id="text-field--1__error"
+        id="text-field--P0-0__error"
       />
       <input
         aria-disabled="false"
         aria-invalid="false"
         class="ds-c-field"
-        id="text-field--1"
+        id="text-field--P0-0"
         type="text"
       />
     </div>

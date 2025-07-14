@@ -24,7 +24,7 @@ describe('UsaBanner', function () {
 
   it('generates ids when no id is provided', () => {
     const { container } = renderBanner();
-    const idRegex = /usa-banner--\d+/;
+    const idRegex = /^usa-banner[\w:.-]+$/;
     const button = screen.getByRole('button');
     const panelId = button.getAttribute('aria-controls');
     const panel = container.querySelector(`#${panelId}`);

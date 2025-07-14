@@ -147,7 +147,7 @@ describe('Choice', () => {
       </div>
     );
 
-    const idRegex = /choice--\d+/;
+    const idRegex = /^choice--[\w:.-]+$/;
     const labels = container.querySelectorAll('label');
     const labelA = labels[0];
     const labelB = labels[1];

@@ -3,11 +3,11 @@
 exports[`ds-filter-chip should include children as label 1`] = `
 <button
   class="ds-c-filter-chip__button ds-not-a-real-class"
-  id="filter-chip--1"
+  id="filter-chip--P0-0"
   type="button"
 >
   <span
-    aria-describedby="filter-chip--1-instructions"
+    aria-describedby="filter-chip--P0-0-instructions"
     aria-hidden="true"
     class="ds-c-filter-chip__label"
   >
@@ -15,7 +15,7 @@ exports[`ds-filter-chip should include children as label 1`] = `
   </span>
   <span
     class="ds-u-visibility--screen-reader"
-    id="filter-chip--1-instructions"
+    id="filter-chip--P0-0-instructions"
   >
     
      

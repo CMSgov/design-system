@@ -46,7 +46,7 @@ Array [
 
 exports[`Alert renders alert 1`] = `
 <div
-  aria-labelledby="alert--1__a11y-label"
+  aria-labelledby="alert--P0-0__a11y-label"
   class="ds-c-alert"
   role="region"
 >
@@ -65,7 +65,7 @@ exports[`Alert renders alert 1`] = `
   >
     <span
       class="ds-c-alert__a11y-label ds-u-visibility--screen-reader"
-      id="alert--1__a11y-label"
+      id="alert--P0-0__a11y-label"
     >
       Notice: 
     </span>

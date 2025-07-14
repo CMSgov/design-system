@@ -15,17 +15,17 @@ exports[`Choice applies errorMessage to label 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="choice--11__error"
+          aria-describedby="choice--10__error"
           class="ds-c-choice"
-          id="choice--11"
+          id="choice--10"
           name="foo"
           type="checkbox"
           value="boo"
         />
         <label
           class="ds-c-label"
-          for="choice--11"
-          id="choice--11__label"
+          for="choice--10"
+          id="choice--10__label"
         >
           George Washington
         </label>
@@ -33,7 +33,7 @@ exports[`Choice applies errorMessage to label 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="choice--11__error"
+          id="choice--10__error"
         >
           <svg
             aria-hidden="true"
@@ -75,23 +75,23 @@ exports[`Choice has a hint and requirementLabel 1`] = `
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="choice--8__error choice--8__hint"
+          aria-describedby="choice--7__error choice--7__hint"
           class="ds-c-choice"
-          id="choice--8"
+          id="choice--7"
           name="foo"
           type="checkbox"
           value="boo"
         />
         <label
           class="ds-c-label"
-          for="choice--8"
-          id="choice--8__label"
+          for="choice--7"
+          id="choice--7__label"
         >
           George Washington
         </label>
         <p
           class="ds-c-hint"
-          id="choice--8__hint"
+          id="choice--7__hint"
         >
           Optional. Hello world
         </p>
@@ -99,7 +99,7 @@ exports[`Choice has a hint and requirementLabel 1`] = `
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="choice--8__error"
+          id="choice--7__error"
         />
       </div>
     </div>
@@ -208,17 +208,17 @@ exports[`Choice nested content renders checked and unchecked children appropriat
         class="ds-c-choice-wrapper"
       >
         <input
-          aria-describedby="choice--23__error"
+          aria-describedby="choice--21__error"
           class="ds-c-choice"
-          id="choice--23"
+          id="choice--21"
           name="foo"
           type="checkbox"
           value="boo"
         />
         <label
           class="ds-c-label"
-          for="choice--23"
-          id="choice--23__label"
+          for="choice--21"
+          id="choice--21__label"
         >
           George Washington
         </label>
@@ -226,7 +226,7 @@ exports[`Choice nested content renders checked and unchecked children appropriat
           aria-atomic="true"
           aria-live="assertive"
           class="ds-c-inline-error"
-          id="choice--23__error"
+          id="choice--21__error"
         />
       </div>
       <strong

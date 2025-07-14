@@ -76,7 +76,7 @@ exports[`SimpleFooter renders without crashing 1`] = `
         class="m-c-footer__identityRow"
       >
         <svg
-          aria-labelledby="medicare-gov-logo--1"
+          aria-labelledby="medicare-gov-logo--P0-0"
           class="m-c-footer__medicare-logo"
           height="39"
           preserveAspectRatio="xMidYMid meet"
@@ -89,7 +89,7 @@ exports[`SimpleFooter renders without crashing 1`] = `
           xmlspace="preserve"
         >
           <title
-            id="medicare-gov-logo--1"
+            id="medicare-gov-logo--P0-0"
           >
             Medicare.gov
           </title>
@@ -121,15 +121,15 @@ exports[`SimpleFooter renders without crashing 1`] = `
         </svg>
         <svg
           aria-hidden="false"
-          aria-labelledby="icon--2__title"
+          aria-labelledby="icon--P0-1__title"
           class="ds-c-icon ds-c-icon--hhs-logo m-c-footer__hhs-logo"
-          id="icon--2"
+          id="icon--P0-1"
           role="img"
           viewBox="0 0 252 252"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
-            id="icon--2__title"
+            id="icon--P0-1__title"
           >
             Department of Health and Human Services
           </title>

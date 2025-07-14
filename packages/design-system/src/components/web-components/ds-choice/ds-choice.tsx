@@ -1,8 +1,21 @@
 import type * as React from 'react';
+// import { useId as useReactId } from 'react';
+import { useRef } from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { formAttrs } from '../shared-attributes/form';
+// import uniqueId from 'lodash/uniqueId';
+
+let globalIdCounter = 0;
+
+export function useUniqueId(prefix = '') {
+  const idRef = useRef<string | null>(null);
+  if (idRef.current === null) {
+    idRef.current = `${prefix}${++globalIdCounter}`;
+  }
+  return idRef.current;
+}
 
 const attributes = [
   'checked-children',
@@ -45,15 +58,20 @@ interface WrapperProps
   rootId?: string;
 }
 
-const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProps) => (
-  <Choice
-    {...otherProps}
-    checked={checked && Boolean(JSON.parse(checked))}
-    defaultChecked={defaultChecked && Boolean(JSON.parse(defaultChecked))}
-    disabled={parseBooleanAttr(otherProps.disabled)}
-    id={rootId}
-    inversed={parseBooleanAttr(otherProps.inversed)}
-  ></Choice>
-);
+const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProps) => {
+  const autoId = useUniqueId('choice--');
+  const id = rootId && rootId.trim() !== '' ? rootId : autoId;
+
+  return (
+    <Choice
+      {...otherProps}
+      checked={checked && Boolean(JSON.parse(checked))}
+      defaultChecked={defaultChecked && Boolean(JSON.parse(defaultChecked))}
+      disabled={parseBooleanAttr(otherProps.disabled)}
+      id={id}
+      inversed={parseBooleanAttr(otherProps.inversed)}
+    />
+  );
+};
 
 define('ds-choice', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });

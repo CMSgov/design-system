@@ -33,13 +33,13 @@ describe('ds-filter-chip', () => {
 
   it('generates an id when an empty string is provided', () => {
     renderFilterChip({ 'root-id': '' });
-    const idRegex = /filter-chip--\d+/;
+    const idRegex = /^filter-chip--[\w:.-]+$/;
     expect(screen.getByRole('button').id).toMatch(idRegex);
   });
 
   it('generates an id when undefined is provided', () => {
     renderFilterChip({ 'root-id': undefined });
-    const idRegex = /filter-chip--\d+/;
+    const idRegex = /^filter-chip--[\w:.-]+$/;
     expect(screen.getByRole('button').id).toMatch(idRegex);
   });
 

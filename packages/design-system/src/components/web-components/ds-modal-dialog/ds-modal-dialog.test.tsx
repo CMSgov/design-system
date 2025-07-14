@@ -36,7 +36,7 @@ function getDialog(shadowRoot: ShadowRoot): HTMLDialogElement {
 describe('DS Modal Dialog', function () {
   it('generates ids when no id is provided', () => {
     const { shadowRoot } = renderDialog({ 'root-id': undefined });
-    const idRegex = /dialog--\d+/;
+    const idRegex = /^dialog--[\w:.-]+$/;
     expect(getDialog(shadowRoot).id).toMatch(idRegex);
     expect(getByRole(shadowRoot as any as HTMLElement, 'heading').id).toMatch(idRegex);
   });

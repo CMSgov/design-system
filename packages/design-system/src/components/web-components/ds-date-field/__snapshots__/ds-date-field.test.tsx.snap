@@ -67,10 +67,10 @@ exports[`DateField DateField with picker renders with picker 1`] = `
 
 exports[`DateField generates ids when no id is provided 1`] = `
 <input
-  aria-describedby="date-field--6__hint date-field--6__label-mask"
+  aria-describedby="date-field--P0-0__hint date-field--P0-0__label-mask"
   aria-invalid="false"
   class="ds-c-field"
-  id="date-field--6"
+  id="date-field--P0-0"
   inputmode="numeric"
   name="ds-date-field"
   type="text"

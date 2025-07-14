@@ -2,7 +2,7 @@
 
 exports[`Drawer should render a dialog 1`] = `
 <dialog
-  aria-labelledby="drawer--1"
+  aria-labelledby="drawer--P0-0"
   class="ds-c-drawer"
   open=""
   role="dialog"
@@ -16,7 +16,7 @@ exports[`Drawer should render a dialog 1`] = `
     >
       <h3
         class="ds-c-drawer__header-heading"
-        id="drawer--1"
+        id="drawer--P0-0"
       >
         Test Drawer Heading
       </h3>

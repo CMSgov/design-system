@@ -79,7 +79,7 @@ describe('DateField', () => {
     });
     const inputElement = getInput();
     expect(inputElement).toMatchSnapshot();
-    expect(inputElement.id).toMatch(/date-field--\d+/);
+    expect(inputElement.id).toMatch(/^date-field--[\w:.-]+$/);
   });
 
   it('calls ds-change (onChange) when input changes', async () => {

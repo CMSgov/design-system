@@ -96,7 +96,7 @@ describe('ChoiceList', () => {
 
   it('generates ids when no id is provided', () => {
     const { container } = renderChoiceList({ id: undefined });
-    expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+    expect(container.querySelector('legend').id).toMatch(/^choice-list--[\w:.-]+$/);
 
     const choices = screen.getAllByRole('radio');
     const choiceIdRegex = /choice--\d+/;

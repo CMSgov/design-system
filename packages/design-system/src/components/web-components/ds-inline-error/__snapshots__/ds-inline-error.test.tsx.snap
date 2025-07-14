@@ -5,7 +5,7 @@ exports[`InlineError should render a default inline-error 1`] = `
   aria-atomic="true"
   aria-live="assertive"
   class="ds-c-inline-error"
-  id="inline-error--1"
+  id="inline-error--P0-0"
 >
   <svg
     aria-hidden="true"

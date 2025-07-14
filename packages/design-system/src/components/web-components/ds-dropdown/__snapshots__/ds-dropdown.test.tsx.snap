@@ -11,7 +11,7 @@ exports[`Dropdown renders a dropdown 1`] = `
     >
       <div
         class="ds-c-label ds-c-dropdown__label"
-        id="dropdown--1__label"
+        id="dropdown--P0-0__label"
       >
         Dropdown label
       </div>
@@ -19,7 +19,7 @@ exports[`Dropdown renders a dropdown 1`] = `
         aria-atomic="true"
         aria-live="assertive"
         class="ds-c-inline-error"
-        id="dropdown--1__error"
+        id="dropdown--P0-0__error"
       />
       <div
         aria-hidden="true"
@@ -53,18 +53,18 @@ exports[`Dropdown renders a dropdown 1`] = `
         </label>
       </div>
       <button
-        aria-controls="dropdown--1__menu"
+        aria-controls="dropdown--P0-0__menu"
         aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="dropdown--1__button-content dropdown--1__label"
+        aria-labelledby="dropdown--P0-0__button-content dropdown--P0-0__label"
         class="ds-c-dropdown__button ds-c-field"
-        id="dropdown--1"
+        id="dropdown--P0-0"
         type="button"
       >
         <span
           class="ds-c-dropdown__label-text"
-          id="dropdown--1__button-content"
+          id="dropdown--P0-0__button-content"
         >
           Option 1
         </span>
@@ -99,7 +99,7 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
     >
       <div
         class="ds-c-label ds-c-dropdown__label"
-        id="dropdown--5__label"
+        id="dropdown--P0-0__label"
       >
         Dropdown label
       </div>
@@ -107,7 +107,7 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         aria-atomic="true"
         aria-live="assertive"
         class="ds-c-inline-error"
-        id="dropdown--5__error"
+        id="dropdown--P0-0__error"
       />
       <div
         aria-hidden="true"
@@ -146,18 +146,18 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
         </label>
       </div>
       <button
-        aria-controls="dropdown--5__menu"
+        aria-controls="dropdown--P0-0__menu"
         aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="listbox"
-        aria-labelledby="dropdown--5__button-content dropdown--5__label"
+        aria-labelledby="dropdown--P0-0__button-content dropdown--P0-0__label"
         class="ds-c-dropdown__button ds-c-field"
-        id="dropdown--5"
+        id="dropdown--P0-0"
         type="button"
       >
         <span
           class="ds-c-dropdown__label-text"
-          id="dropdown--5__button-content"
+          id="dropdown--P0-0__button-content"
         >
           Option A-1
         </span>

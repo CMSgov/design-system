@@ -217,7 +217,7 @@ describe('Autocomplete', () => {
   it('generates ids when no root id is provided', async () => {
     const { user } = renderAutocomplete({ 'root-id': undefined, items: defaultItems });
     await open({ user });
-    const idRegex = /autocomplete--\d+/;
+    const idRegex = /^autocomplete--[\w:.-]+$/;
     expect(screen.getByRole('listbox').id).toMatch(idRegex);
     expect(screen.getByRole('combobox').id).toMatch(idRegex);
   });
