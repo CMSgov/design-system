@@ -87,7 +87,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the button element\nRef<any> | MutableRefObject<any>",
+    "Access a reference to the button element\nMutableRefObject<any> | Ref<any>",
     "-"
   ],
   [
