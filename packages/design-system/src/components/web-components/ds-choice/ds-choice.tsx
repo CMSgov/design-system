@@ -1,11 +1,9 @@
 import type * as React from 'react';
-// import { useId as useReactId } from 'react';
 import { useRef } from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { formAttrs } from '../shared-attributes/form';
-// import uniqueId from 'lodash/uniqueId';
 
 let globalIdCounter = 0;
 
