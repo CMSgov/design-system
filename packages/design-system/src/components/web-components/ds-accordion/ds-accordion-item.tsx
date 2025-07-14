@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { define } from '../preactement/define';
 import { AccordionItem, AccordionItemProps } from '../../Accordion';
 import { parseBooleanAttr } from '../wrapperUtils';
+import { useUniqueId } from '../utils';
 
 const attributes = [
   'button-class-name',
@@ -56,6 +57,8 @@ const Wrapper = ({
   customElement,
   ...otherProps
 }: WrapperProps) => {
+  const autoId = useUniqueId('accordion-item--');
+  const id = contentId && contentId.trim() !== '' ? contentId : autoId;
   const parentAccordion = findAccordionAncestor(customElement);
   const bordered = parseBooleanAttr(parentAccordion?.getAttribute('bordered'));
 
@@ -63,7 +66,7 @@ const Wrapper = ({
     <AccordionItem
       {...otherProps}
       defaultOpen={parseBooleanAttr(defaultOpen)}
-      id={contentId}
+      id={id}
       contentClassName={classNames(
         contentClassName,
         bordered && 'ds-c-accordion__content--bordered'

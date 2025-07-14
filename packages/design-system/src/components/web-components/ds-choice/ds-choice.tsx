@@ -1,19 +1,9 @@
 import type * as React from 'react';
-import { useRef } from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { formAttrs } from '../shared-attributes/form';
-
-let globalIdCounter = 0;
-
-export function useUniqueId(prefix = '') {
-  const idRef = useRef<string | null>(null);
-  if (idRef.current === null) {
-    idRef.current = `${prefix}${++globalIdCounter}`;
-  }
-  return idRef.current;
-}
+import { useUniqueId } from '../utils';
 
 const attributes = [
   'checked-children',
