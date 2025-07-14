@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import VerticalNav from './VerticalNav';
 import VerticalNavItem from './VerticalNavItem';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof VerticalNav> = {
   title: 'Components/VerticalNav',
@@ -9,6 +10,7 @@ const meta: Meta<typeof VerticalNav> = {
   args: {
     collapsed: false,
     nested: false,
+    onLinkClick: action('onLinkClick'),
   },
   subcomponents: { VerticalNavItem },
 };
