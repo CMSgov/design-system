@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof MultiInputDateField> = {
   title: 'Components/MultiInputDateField',
@@ -27,6 +28,9 @@ const meta: Meta<typeof MultiInputDateField> = {
   },
   args: {
     label: 'Enter your date of birth.',
+    onBlur: action('onBlur'),
+    onComponentBlur: action('onComponentBlur'),
+    onChange: action('onChange'),
   },
 };
 export default meta;
@@ -58,13 +62,18 @@ export const Controlled: Story = {
   render: function Component(args) {
     const [dateState, setDateState] = useState({ month: '10', day: '30', year: '1980' });
 
+    const onChangeHandler = (dateObject) => {
+      setDateState(dateObject);
+      args.onChange('onChange');
+    };
+
     return (
       <MultiInputDateField
         {...args}
         monthValue={dateState.month}
         dayValue={dateState.day}
         yearValue={dateState.year}
-        onChange={(e, dateObject) => setDateState(dateObject)}
+        onChange={(e, dateObject) => onChangeHandler(dateObject)}
       />
     );
   },
