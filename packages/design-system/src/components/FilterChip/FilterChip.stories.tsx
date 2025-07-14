@@ -7,6 +7,7 @@ const meta: Meta<typeof FilterChip> = {
   component: FilterChip,
   args: {
     label: 'Example Filter Chip',
+    onDelete: action('onDelete'),
   },
   argTypes: {
     ariaClearLabel: {
