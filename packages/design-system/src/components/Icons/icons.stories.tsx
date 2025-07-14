@@ -40,6 +40,16 @@ import {
 export default {
   title: 'Components/Icons',
   component: SvgIcon,
+  argTypes: {
+    ariaHidden: { control: false },
+    className: { control: false },
+    children: { control: false },
+    description: { control: false },
+    id: { control: false },
+    inversed: { control: false },
+    title: { control: false },
+    viewBox: { control: false },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['svg'],
