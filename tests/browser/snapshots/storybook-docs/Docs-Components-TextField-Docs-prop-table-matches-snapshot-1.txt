@@ -71,7 +71,7 @@
   ],
   [
     "inputRef",
-    "Access a reference to the input or textarea element\nMutableRefObject<any> | Ref<any>",
+    "Access a reference to the input or textarea element\nRef<any> | MutableRefObject<any>",
     "-"
   ],
   [
