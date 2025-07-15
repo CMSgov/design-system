@@ -1,11 +1,10 @@
 import { useRef } from 'react';
-
-let globalIdCounter = 0;
+import uniqueId from 'lodash/uniqueId';
 
 export function useUniqueId(prefix = '') {
   const idRef = useRef<string | null>(null);
   if (idRef.current === null) {
-    idRef.current = `${prefix}${++globalIdCounter}`;
+    idRef.current = uniqueId(prefix);
   }
   return idRef.current;
 }
