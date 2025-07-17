@@ -1,11 +1,13 @@
 import SkipNav from './SkipNav';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof SkipNav> = {
   title: 'Components/SkipNav',
   component: SkipNav,
   args: {
-    href: '#main',
+    href: 'javascript:void(0)',
+    onClick: action('onClick'),
   },
   argTypes: {
     children: {

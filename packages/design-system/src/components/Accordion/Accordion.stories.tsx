@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion } from './Accordion';
 import { AccordionItem } from './AccordionItem';
-import { useArgs } from '@storybook/preview-api';
+import { useState } from 'react';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
@@ -44,16 +44,15 @@ export const Default: Story = {
 export const Controlled: Story = {
   args: {
     bordered: true,
-    openItems: [0],
   } as any,
   render: function Component(args) {
-    const [{ openItems }, setOpenItems] = useArgs();
+    const [openItems, setOpenItems] = useState([0]);
 
     const handleChange = function (index: number) {
       if (openItems?.includes(index)) {
-        setOpenItems({ openItems: openItems?.filter((item: number) => item !== index) });
+        setOpenItems([...openItems.filter((item: number) => item !== index)]);
       } else {
-        setOpenItems({ openItems: openItems && [...openItems, index].sort() });
+        openItems && setOpenItems([...openItems, index].sort());
       }
     };
 
