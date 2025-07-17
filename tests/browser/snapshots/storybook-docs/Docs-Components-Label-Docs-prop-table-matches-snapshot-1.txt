@@ -1,13 +1,13 @@
 [
   [
-    "children",
-    "string",
+    "children*",
+    "ReactNode",
     "-"
   ],
   [
     "component",
-    "The root HTML element used to render the label\n\"label\"\n\"legend\"",
-    "\"label\""
+    "The root HTML element used to render the label. Default is 'label'\n\"label\"\n\"legend\"",
+    "-"
   ],
   [
     "fieldId",

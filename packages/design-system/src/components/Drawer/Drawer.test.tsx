@@ -23,6 +23,7 @@ function renderDrawer(props = {}) {
     rerenderDrawer(newProps = {}) {
       return result.rerender(<Drawer {...defaultProps} {...newProps} />);
     },
+    user: userEvent.setup(),
   };
 }
 
@@ -40,35 +41,35 @@ describe('Drawer', () => {
   });
 
   describe('onCloseClick', () => {
-    it('calls onCloseClick on close button click', () => {
+    it('calls onCloseClick on close button click', async () => {
       const onCloseClick = jest.fn();
-      renderDrawer({ onCloseClick });
-      userEvent.click(screen.getByText('Close'));
+      const { user } = renderDrawer({ onCloseClick });
+      await user.click(screen.getByText('Close'));
 
       expect(onCloseClick).toHaveBeenCalled();
     });
 
-    it('should handle `esc` with focus trap enabled', () => {
+    it('should handle `esc` with focus trap enabled', async () => {
       const onCloseClick = jest.fn();
-      renderDrawer({ onCloseClick, hasFocusTrap: true });
-      userEvent.keyboard('{Escape}');
+      const { user } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+      await user.keyboard('{Escape}');
 
       expect(onCloseClick).toHaveBeenCalled();
     });
 
-    it('removes event listener on unmount', () => {
+    it('removes event listener on unmount', async () => {
       const onCloseClick = jest.fn();
-      const { unmount } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+      const { unmount, user } = renderDrawer({ onCloseClick, hasFocusTrap: true });
       unmount();
-      userEvent.keyboard('{Escape}');
+      await user.keyboard('{Escape}');
 
       expect(onCloseClick).not.toHaveBeenCalled();
     });
 
-    it('should not call onCloseClick for other key presses', () => {
+    it('should not call onCloseClick for other key presses', async () => {
       const onCloseClick = jest.fn();
-      renderDrawer({ onCloseClick, hasFocusTrap: true });
-      userEvent.keyboard('a');
+      const { user } = renderDrawer({ onCloseClick, hasFocusTrap: true });
+      await user.keyboard('a');
 
       expect(onCloseClick).not.toHaveBeenCalled();
     });

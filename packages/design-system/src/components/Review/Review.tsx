@@ -48,6 +48,7 @@ const getHeading = (heading, headingLevel) => {
  * [refer to its full documentation page](https://design.cms.gov/components/review/).
  */
 export const Review = (props: ReviewProps) => {
+  const { headingLevel = '3' } = props;
   const handleClick = (event): void => {
     if (props.onEditClick) {
       props.onEditClick(event, props.editHref);
@@ -59,7 +60,7 @@ export const Review = (props: ReviewProps) => {
   return (
     <div className={classes}>
       <div className="ds-c-review__content">
-        {getHeading(props.heading, props.headingLevel)}
+        {getHeading(props.heading, headingLevel)}
         <div className="ds-c-review__body">{props.children}</div>
       </div>
       {props.editContent}
@@ -70,10 +71,6 @@ export const Review = (props: ReviewProps) => {
       )}
     </div>
   );
-};
-
-Review.defaultProps = {
-  headingLevel: '3',
 };
 
 export default Review;

@@ -15,7 +15,8 @@ export interface VerticalNavProps {
    */
   className?: string;
   /**
-   * Whether or not the menu is in a collapsed state
+   * Whether or not the menu is in a collapsed state.
+   * Defaults to `false`
    */
   collapsed?: boolean;
   /**
@@ -51,11 +52,12 @@ export interface VerticalNavProps {
  * [refer to its full documentation page](https://design.cms.gov/components/vertical-navigation/).
  */
 export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
+  const { collapsed = false } = props;
   const classes = classNames(
     {
       'ds-c-vertical-nav': !props.nested,
       'ds-c-vertical-nav__subnav': props.nested,
-      'ds-c-vertical-nav--collapsed': props.collapsed,
+      'ds-c-vertical-nav--collapsed': collapsed,
     },
     props.className
   );
@@ -87,10 +89,6 @@ export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
   );
 
   return props.nested ? navList : <nav {...navProps}>{navList}</nav>;
-};
-
-VerticalNav.defaultProps = {
-  collapsed: false,
 };
 
 export default VerticalNav;

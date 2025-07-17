@@ -11,7 +11,7 @@
   ],
   [
     "compact",
-    "Renders compact layout. Optional.\nboolean",
+    "Renders compact layout. Optional. Defaults to false\n\nboolean",
     "false"
   ],
   [
@@ -36,17 +36,12 @@
   ],
   [
     "isNavigationHidden",
-    "Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.\nboolean",
+    "Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional. Defaults to false\n\nboolean",
     "false"
   ],
   [
     "onPageChange*",
     "A callback function this is invoked whenever a page link is clicked, including the previous and next buttons. It is called with both the event object and the page number.\n(evt: MouseEvent<Element, MouseEvent>, page: number) => void",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLElement>",
     "-"
   ],
   [

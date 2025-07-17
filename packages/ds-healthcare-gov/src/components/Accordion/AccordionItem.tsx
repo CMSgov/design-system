@@ -1,9 +1,20 @@
-import { AccordionItem, MinusCircleIcon, PlusCircleIcon } from '@cmsgov/design-system';
+import {
+  AccordionItem as DSAccordionItem,
+  MinusCircleIcon,
+  PlusCircleIcon,
+} from '@cmsgov/design-system';
+import { AccordionItemProps } from '@cmsgov/design-system/dist/react-components/types/Accordion/AccordionItem.js';
 
-AccordionItem.defaultProps = {
-  ...AccordionItem.defaultProps,
-  closeIconComponent: MinusCircleIcon,
-  openIconComponent: PlusCircleIcon,
+const AccordionItem = function (props: AccordionItemProps) {
+  const { closeIconComponent = MinusCircleIcon, openIconComponent = PlusCircleIcon } = props;
+
+  return (
+    <DSAccordionItem
+      closeIconComponent={closeIconComponent}
+      openIconComponent={openIconComponent}
+      {...props}
+    />
+  );
 };
 
 // We need this for the healthcare story to work, and we also need to declare the side

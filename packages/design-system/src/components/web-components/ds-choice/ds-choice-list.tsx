@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { ReactNode } from 'react';
 import { define } from '../preactement/define';
-import { ChoiceList, ChoiceListProps, ChoiceListType } from '../../ChoiceList/ChoiceList';
+import { ChoiceList, ChoiceListProps } from '../../ChoiceList/ChoiceList';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { ChoiceProps } from '../../ChoiceList/Choice';
 import { findElementsOfType } from '../../utilities/findElementsOfType';

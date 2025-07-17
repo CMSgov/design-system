@@ -1,10 +1,9 @@
-import userEvent from '@testing-library/user-event';
-import { config } from '../../config';
-import { createTestRenderer } from '../__tests__/rendering';
 import { getByRole, screen } from '@testing-library/react';
+import { config } from '../../config';
 import { testAnalytics } from '../__tests__/analytics';
-import './ds-modal-dialog';
+import { createTestRenderer } from '../__tests__/rendering';
 import '../ds-button/ds-button';
+import './ds-modal-dialog';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -106,14 +105,14 @@ describe('DS Modal Dialog', function () {
     expect(getDialog(shadowRoot)).toMatchSnapshot();
   });
 
-  it('triggers the ds-exit custom event when the close button is clicked', () => {
+  it('triggers the ds-exit custom event when the close button is clicked', async () => {
     const onExit = jest.fn();
-    const { shadowRoot } = renderDialog({});
+    const { shadowRoot, user } = renderDialog({});
     const modal = document.querySelector('ds-modal-dialog');
     expect(modal).toBeDefined();
     modal.addEventListener('ds-exit', onExit);
 
-    userEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
+    await user.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
     expect(onExit).toHaveBeenCalled();
     modal.removeEventListener('ds-exit', onExit);
   });

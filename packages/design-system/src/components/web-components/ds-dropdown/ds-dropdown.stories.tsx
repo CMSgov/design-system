@@ -87,19 +87,18 @@ An array of option objects, each containing a \`label\` and \`value\`, used to p
 When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
 
 **Example:**
-\`<ds-dropdown
-  options='[
-    {
-      "label": "Confederated Tribes and Bands of the Yakama Nation",
-      "value": "1"
-    },
-    {
-      "label": "Cowlitz Indian Tribe",
-      "value": "4"
-    }
-  ]'
->
-</ds-dropdown>\`
+\`
+options='[
+  {
+    "label": "Confederated Tribes and Bands of the Yakama Nation",
+    "value": "1"
+  },
+  {
+    "label": "Cowlitz Indian Tribe",
+    "value": "4"
+  }
+]'
+\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 

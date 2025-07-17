@@ -103,11 +103,9 @@ export const HelpDrawerToggleOnDark: Story = {
 
     return (
       <>
-        {isDrawerVisible && (
-          <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading">
-            {drawerContent}
-          </HelpDrawer>
-        )}
+        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
+          {drawerContent}
+        </HelpDrawer>
         <HelpDrawerToggle
           showDrawer={showDrawer}
           helpDrawerOpen={isDrawerVisible || false}
@@ -122,8 +120,5 @@ export const HelpDrawerToggleOnDark: Story = {
     // Must supply `layout: 'fullscreen'` when we use `onDark: true`
     onDark: true,
     layout: 'fullscreen',
-  },
-  args: {
-    onDark: true,
   },
 };
