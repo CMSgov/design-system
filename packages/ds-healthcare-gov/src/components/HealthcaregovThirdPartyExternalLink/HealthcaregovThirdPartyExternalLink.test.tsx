@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ThirdPartyExternalLink from './ThirdPartyExternalLink';
+import HealthcaregovThirdPartyExternalLink from './HealthcaregovThirdPartyExternalLink';
 
 const defaultProps = {
   children: 'External site link',
@@ -12,7 +12,7 @@ function renderThirdPartyExternalLink(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
   return {
     user: userEvent.setup(),
-    ...render(<ThirdPartyExternalLink {...props} />),
+    ...render(<HealthcaregovThirdPartyExternalLink {...props} />),
   };
 }
 
@@ -20,13 +20,13 @@ function getLink() {
   return screen.getByRole('link');
 }
 
-describe('ThirdPartyExternalLink', () => {
+describe('HealthcaregovThirdPartyExternalLink', () => {
   it('renders external link', () => {
     renderThirdPartyExternalLink();
     expect(getLink()).toMatchSnapshot();
   });
 
-  describe('ThirdPartyExternalLink dialog', () => {
+  describe('HealthcaregovThirdPartyExternalLink dialog', () => {
     it('renders external link dialog', async () => {
       const { user } = renderThirdPartyExternalLink();
 
