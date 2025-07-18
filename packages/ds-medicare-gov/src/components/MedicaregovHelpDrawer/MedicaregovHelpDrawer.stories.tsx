@@ -1,13 +1,13 @@
 import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
 // Need this in order for the generated ArgsTable to work
-import { HelpDrawer as CoreHelpDrawer } from '../../../../design-system/src/components/HelpDrawer/HelpDrawer';
-import { HelpDrawer } from './HelpDrawer';
-import { HelpDrawerToggle } from './HelpDrawerToggle';
+import { HelpDrawer as CoreHelpDrawer } from '@cmsgov/design-system';
+import { MedicaregovHelpDrawer } from './MedicaregovHelpDrawer';
+import { MedicaregovHelpDrawerToggle } from './MedicaregovHelpDrawerToggle';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof HelpDrawer> = {
+const meta: Meta<typeof MedicaregovHelpDrawer> = {
   title: 'Medicare/HelpDrawer',
   component: CoreHelpDrawer,
   argTypes: {
@@ -40,7 +40,7 @@ const meta: Meta<typeof HelpDrawer> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof HelpDrawer>;
+type Story = StoryObj<typeof MedicaregovHelpDrawer>;
 
 const drawerContent = (
   <>
@@ -81,12 +81,19 @@ export const HelpDrawerToggleWithDrawer: Story = {
 
     return (
       <>
-        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
+        <MedicaregovHelpDrawer
+          onCloseClick={hideDrawer}
+          heading="Drawer Heading"
+          isOpen={isDrawerVisible}
+        >
           {drawerContent}
-        </HelpDrawer>
-        <HelpDrawerToggle showDrawer={showDrawer} helpDrawerOpen={isDrawerVisible || false}>
+        </MedicaregovHelpDrawer>
+        <MedicaregovHelpDrawerToggle
+          showDrawer={showDrawer}
+          helpDrawerOpen={isDrawerVisible || false}
+        >
           Drawer Toggle
-        </HelpDrawerToggle>
+        </MedicaregovHelpDrawerToggle>
       </>
     );
   },
@@ -103,16 +110,20 @@ export const HelpDrawerToggleOnDark: Story = {
 
     return (
       <>
-        <HelpDrawer onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={isDrawerVisible}>
+        <MedicaregovHelpDrawer
+          onCloseClick={hideDrawer}
+          heading="Drawer Heading"
+          isOpen={isDrawerVisible}
+        >
           {drawerContent}
-        </HelpDrawer>
-        <HelpDrawerToggle
+        </MedicaregovHelpDrawer>
+        <MedicaregovHelpDrawerToggle
           showDrawer={showDrawer}
           helpDrawerOpen={isDrawerVisible || false}
           className="ds-c-button--on-dark"
         >
           Drawer Toggle
-        </HelpDrawerToggle>
+        </MedicaregovHelpDrawerToggle>
       </>
     );
   },
