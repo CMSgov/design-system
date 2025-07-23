@@ -70,11 +70,11 @@ const config: GatsbyConfig = {
       options: {
         config: {
           instrumentationType: 'proAndSPA',
-          accountId: '402306',
+          accountId: '6704482',
           trustKey: '39033',
-          agentID: '1134210514',
-          licenseKey: '5a79be86db',
-          applicationID: '1134210514',
+          agentID: '1134604697',
+          licenseKey: 'NRJS-d12a0b7909b564e0959',
+          applicationID: '1134604697',
           beacon: 'gov-bam.nr-data.net',
           errorBeacon: 'gov-bam.nr-data.net',
         },
