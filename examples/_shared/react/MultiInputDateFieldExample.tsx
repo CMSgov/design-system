@@ -18,13 +18,13 @@ function MultiInputDateFieldExample() {
 
   return (
     <>
-      <h2>Trigger Label Re-render Example</h2>
+      <h2>MultiInputDateField Test</h2>
       <MultiInputDateField
-        label={touched ? <strong>Date of birth in strong</strong> : 'Date of birth'}
+        label={touched ? 'Birthdate*' : 'Birthdate'}
         hint="For example: 10/31/1965"
-        monthLabel={touched ? <span className="dynamic-label">After</span> : 'Before'}
-        dayLabel="Day"
-        yearLabel="Year"
+        monthLabel={touched ? 'Month*' : 'Month'}
+        dayLabel={touched ? 'Day*' : 'Day'}
+        yearLabel={touched ? 'Year*' : 'Year'}
         errorMessage={touched ? errors.year : ''}
         monthValue={date.month}
         dayValue={date.day}
