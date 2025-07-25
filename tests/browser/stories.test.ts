@@ -9,6 +9,7 @@ const storySkipList = [
   'components-dialog--default', // Doesn't show the open dialog
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog
+  'components-dialog--backdrop-click-exits', // Doesn't show the open dialog
   'components-drawer--default', // Doesn't show the open drawer
   'components-drawer--backdrop-click-exits', // Also doesn't show the open drawer
   'components-dropdown--option-groups', // Redundant in its unopened state
