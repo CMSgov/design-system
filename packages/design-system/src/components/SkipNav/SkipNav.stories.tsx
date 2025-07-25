@@ -10,6 +10,10 @@ const meta: Meta<typeof SkipNav> = {
     onClick: action('onClick'),
   },
   argTypes: {
+    href: {
+      description:
+        'The anchor or target for the link (where the link will jump the user to). Note: we are using `javascript:void(0)` to prevent navigation away from this page. A typical use case might have something like `#main`',
+    },
     children: {
       table: {
         defaultValue: {
