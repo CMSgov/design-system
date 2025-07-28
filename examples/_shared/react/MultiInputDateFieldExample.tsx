@@ -24,7 +24,7 @@ function MultiInputDateFieldExample() {
   return (
     <>
       <h2>MultiInputDateField inside a form</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="something">
         <MultiInputDateField
           label={touched ? '*Your birthdate' : 'Date of birth'}
           hint="For example: 10/31/1965"
@@ -32,6 +32,7 @@ function MultiInputDateFieldExample() {
           dayLabel={touched ? '*Day' : 'Day'}
           yearLabel={touched ? '*Year' : 'Year'}
           errorMessage={touched ? errors.year : ''}
+          errorPlacement="bottom"
           monthValue={date.month}
           dayValue={date.day}
           yearValue={date.year}
