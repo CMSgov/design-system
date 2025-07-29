@@ -59,17 +59,20 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === 'bottom' && 'ds-c-inline-error--bottom',
-        !errorMessage && 'ds-u-display--none'
+        errorPlacement === 'bottom' && errorMessage && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}
     </InlineError>
   );
 
-  // Always render error elements to maintain stable DOM structure for Google Translate
-  const topError = errorPlacement === 'top' ? errorElement : null;
-  const bottomError = errorPlacement === 'bottom' ? errorElement : null;
+  let topError;
+  let bottomError;
+  if (errorPlacement === 'top') {
+    topError = errorElement;
+  } else {
+    bottomError = errorElement;
+  }
 
   // If the user has provided an `aria-invalid` attribute, use that as the source
   // of truth; otherwise, it's invalid if there's an error message.

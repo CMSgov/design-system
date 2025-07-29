@@ -1,28 +1,6 @@
 import React from 'react';
 
 /**
- * Wraps text content in a `<span>` element to prevent Google Translate
- * from breaking React's reconciliation process.
- *
- * @param content - The content to be wrapped. Can be `null`, `undefined`, or a React node.
- * @returns The original content if it is a valid React element, or the content wrapped in a `<span>` element.
- * @see https://github.com/facebook/react/issues/11538
- */
-export const wrapInSpan = (content: React.ReactNode): React.ReactNode => {
-  if (content === null || content === undefined) {
-    return content;
-  }
-
-  // If it's already a React element, don't wrap it
-  if (React.isValidElement(content)) {
-    return content;
-  }
-
-  // Wrap text/numbers in a span
-  return <span>{content}</span>;
-};
-
-/**
  * Wraps all text children of a component in `<span>` elements.
  * This function ensures that text-based children are safely wrapped to prevent
  * issues with Google Translate breaking React's reconciliation process.

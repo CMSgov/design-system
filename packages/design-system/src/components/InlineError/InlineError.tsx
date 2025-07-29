@@ -30,7 +30,7 @@ export interface InlineErrorProps {
  * be used on their own to create custom fields.
  *
  * For information about how and when to use this component,
- * [refer to its full documentation page](https://design.cms.gov/components/inline-error/).
+ * @see [refer to its full documentation page](https://design.cms.gov/components/inline-error/).
  */
 export function InlineError({
   children,
@@ -41,7 +41,7 @@ export function InlineError({
 }: InlineErrorProps): React.ReactElement {
   const classes = classNames(
     'ds-c-inline-error',
-    { 'ds-c-inline-error--inverse': inversed },
+    { 'ds-c-inline-error--inverse': inversed, 'ds-u-display--none': !children },
     className
   );
   const viewbox = '36 -12 186 186';
@@ -53,7 +53,6 @@ export function InlineError({
       id={useId('inline-error--', id)}
       aria-live="assertive"
       aria-atomic="true"
-      aria-hidden={!children}
     >
       <AlertCircleIcon viewBox={viewbox} />
       <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
