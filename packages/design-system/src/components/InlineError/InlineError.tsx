@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import { AlertCircleIcon } from '../Icons/AlertCircleIcon';
 import { t } from '../i18n';
@@ -38,6 +38,7 @@ export function InlineError({
   inversed,
   ...otherProps
 }: InlineErrorProps): React.ReactElement {
+  const generatedId = useId('inline-error--', id);
   const classes = classNames(
     'ds-c-inline-error',
     { 'ds-c-inline-error--inverse': inversed },
@@ -45,8 +46,31 @@ export function InlineError({
   );
   const viewbox = '36 -12 186 186';
 
+  const [errorChildren, setErrorChildren] = React.useState();
+  React.useEffect(() => {
+    console.log({children})
+    // @ts-ignore
+    setErrorChildren(children)
+    console.log({errorChildren}) // this is logging stale value from before setState takes effect
+  }, [children])
+
+  // console.groupCollapsed('💥 <InlineError> render');
+  // console.log('id prop:', id);
+  // console.log('generatedId:', generatedId);
+  // console.log('children:', children);
+  // console.log('className:', className);
+  // console.log('children (typeof):', typeof children);
+  // console.log('children (raw):', JSON.stringify(children));
+  // console.log('children (toString):', String(children));
+  // console.log('inversed:', inversed);
+  // console.log('Final class string:', classes);
+  // console.log('otherProps:', otherProps);
+  // console.trace('Render stack trace');
+  // console.groupEnd();
+
   return (
     <p
+      // key={children ? children.toString() : 'no-error'}
       {...otherProps}
       className={classes}
       id={useId('inline-error--', id)}
