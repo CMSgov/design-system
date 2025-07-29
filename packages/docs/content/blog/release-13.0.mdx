@@ -12,7 +12,7 @@ However, because React will no longer be supporting `defaultProps` in [React 19]
 
 For Medicare.gov teams, those components are `HelpDrawer`, `HelpDrawerToggle`, and `ThirdPartyExternalLink`. Those have been renamed to `MedicaregovHelpDrawer`, `MedicaregovHelpDrawerToggle`, and `MedicaregovThirdPartyExternalLink`.
 
-For Healthcare.gov teams, those components are `AccordionItem` and `ThirdPartyExternalLink. Those have been renamed to `HealthcaregovAccordionItem`and`HealthcaregovThirdPartyExternalLink`.
+For Healthcare.gov teams, those components are `AccordionItem` and `ThirdPartyExternalLink`. Those have been renamed to `HealthcaregovAccordionItem` and `HealthcaregovThirdPartyExternalLink`.
 
 Existing import statements such as `import { AccordionItem  } from "@cmsgov/ds-healthcare-gov"` should be changed to `import { HealthcaregovAccordionItem as AccordionItem } from "@cmsgov/ds-healthcare-gov"`.
 
@@ -27,3 +27,12 @@ npx cmsds-migrate
 From the menu, choose the "[v17 healthcare] renamed component" script and run it if you are using the Healthcare Design System. If you are using the Medicare Design System, choose the "[v15 medicare] renamed component" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
 
 </Alert>
+
+Running the migration script will update imports for the aforementioned components. Below is an example of what an import statement might look like before running the migration script and afterward. The appended comment can be safely removed after reviewing the affected files, which the script will outline.
+
+```javascript
+/* before */
+import { ThirdPartyExternalLink } from "@cmsgov/ds-healthcare-gov";
+/* after */
+import { HealthcaregovThirdPartyExternalLink as ThirdPartyExternalLink } from "@cmsgov/ds-healthcare-gov"; /* CMSDS-MIGRATE: `ThirdPartyExternalLink` was renamed `HealthcaregovThirdPartyExternalLink` in ds-healthcare-gov v17 */;
+```
