@@ -10,7 +10,6 @@ import { Label } from '../Label';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
-import { wrapInSpan } from '../utilities/wrapTextContent';
 
 export type TextFieldDefaultValue = string | number;
 export type TextFieldMask = 'currency' | 'phone' | 'ssn' | 'zip';
@@ -123,27 +122,18 @@ export const TextField = (props: TextFieldProps) => {
     }
   }
 
-  // Wrap text props to prevent Google Translate issues
-  const wrappedProps = {
-    ...remainingProps,
-    label: wrapInSpan(remainingProps.label),
-    hint: wrapInSpan(remainingProps.hint),
-    errorMessage: wrapInSpan(remainingProps.errorMessage),
-    requirementLabel: wrapInSpan(remainingProps.requirementLabel),
-  };
-
-  const { errorId, topError, bottomError, invalid } = useInlineError({ ...wrappedProps, id });
-  const { hintId, hintElement } = useHint({ ...wrappedProps, id });
-  const labelProps = useLabelProps({ ...wrappedProps, id });
+  const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
+  const { hintId, hintElement } = useHint({ ...props, id });
+  const labelProps = useLabelProps({ ...props, id });
 
   let input = (
     <TextInput
       // TypeScript doesn't know we set this in .defaultProps
       type={TextField.defaultProps.type}
-      {...cleanFieldProps(wrappedProps)}
+      {...cleanFieldProps(remainingProps)}
       id={id}
       aria-invalid={invalid}
-      aria-describedby={describeField({ ...wrappedProps, errorId, hintId })}
+      aria-describedby={describeField({ ...props, errorId, hintId })}
     />
   );
 

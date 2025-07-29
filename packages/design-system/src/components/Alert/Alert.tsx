@@ -7,7 +7,6 @@ import { InfoCircleIcon, AlertCircleIcon, WarningIcon, CheckCircleIcon } from '.
 import { t } from '../i18n';
 import { AnalyticsOverrideProps } from '../analytics';
 import useId from '../utilities/useId';
-import { wrapChildrenInSpans } from '../utilities/wrapTextContent';
 
 export type AlertHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
 export type AlertRole = 'alert' | 'alertdialog' | 'region' | 'status';
@@ -167,7 +166,7 @@ export const Alert = (props: AlertProps) => {
         ) : (
           a11yLabel
         )}
-        {wrapChildrenInSpans(children)}
+        {children}
       </div>
     </div>
   );

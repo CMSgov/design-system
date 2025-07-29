@@ -2,7 +2,6 @@ import type * as React from 'react';
 import classNames from 'classnames';
 import { Hint } from '../Hint';
 import { InlineError } from '../InlineError';
-import { wrapChildrenInSpans } from '../utilities/wrapTextContent';
 
 export type LabelComponent = 'label' | 'legend';
 export interface LabelProps {
@@ -146,7 +145,7 @@ export const Label = (props: LabelComponentProps) => {
         aria-hidden={labelHidden ? true : undefined}
         {...labelProps}
       >
-        {wrapChildrenInSpans(children)}
+        {children}
       </ComponentType>
       {hintElement}
       {errorElement}
