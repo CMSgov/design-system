@@ -6,6 +6,9 @@ import '../ds-alert';
 import './ds-choice-list';
 import './ds-choice';
 
+const errorPlacements = [undefined, 'top', 'bottom'];
+const sizes = [undefined, 'small'];
+
 const choices = [
   {
     label: 'Choice 1',
@@ -18,12 +21,12 @@ const choices = [
 export default {
   title: 'Web Components/ds-choice-list',
   argTypes: {
-    children: { control: false },
+    children: { table: { disable: true } },
     choices: {
       description: `
 The list of choices to be rendered as an array of objects.
 
-When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
+When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.
 
 **Example:**
 \`
@@ -72,8 +75,16 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
     },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
-      options: [undefined, 'top', 'bottom'],
-      control: { type: 'radio' },
+      options: errorPlacements,
+      mapping: errorPlacements,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          bottom: 'bottom',
+          top: 'top',
+        },
+      },
     },
     'hint-id': {
       description: 'The ID of the hint element',
@@ -120,8 +131,15 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
     },
     size: {
       description: 'Sets the size of the checkbox or radio button.',
-      options: [undefined, 'small'],
-      control: { type: 'radio' },
+      options: sizes,
+      mapping: sizes,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          small: 'small',
+        },
+      },
     },
     type: {
       description: 'Sets the type to render `checkbox` fields or `radio` buttons.',
