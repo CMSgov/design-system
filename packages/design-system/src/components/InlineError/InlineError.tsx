@@ -53,14 +53,11 @@ export function InlineError({
       id={useId('inline-error--', id)}
       aria-live="assertive"
       aria-atomic="true"
+      aria-hidden={!children}
     >
-      {children && (
-        <>
-          <AlertCircleIcon viewBox={viewbox} />
-          <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
-          {wrapChildrenInSpans(children)}
-        </>
-      )}
+      <AlertCircleIcon viewBox={viewbox} />
+      <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
+      {wrapChildrenInSpans(children)}
     </p>
   );
 }
