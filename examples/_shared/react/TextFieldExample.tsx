@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { TextField, Button } from '@cmsgov/design-system';
 
 function TextFieldExample() {
-  const [value, setValue] = useState('Example value');
+  const [value, setValue] = useState('');
   const [touched, setTouched] = useState(false);
   const [error, setError] = useState('');
 
