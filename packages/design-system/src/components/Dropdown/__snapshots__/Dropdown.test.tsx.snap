@@ -242,6 +242,8 @@ exports[`Dropdown shows error message 1`] = `
   >
     Error: 
   </span>
-  Error
+  <span>
+    Error
+  </span>
 </p>
 `;

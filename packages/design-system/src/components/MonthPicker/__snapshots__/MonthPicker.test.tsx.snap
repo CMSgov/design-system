@@ -40,7 +40,9 @@ exports[`MonthPicker renders a snapshot 1`] = `
       >
         Error: 
       </span>
-      Only odd-numbered months accepted until July, except on leap years, then only prime-numbered months that have an "A" in them
+      <span>
+        Only odd-numbered months accepted until July, except on leap years, then only prime-numbered months that have an "A" in them
+      </span>
     </p>
     <div
       class="ds-c-month-picker__buttons ds-u-clearfix"

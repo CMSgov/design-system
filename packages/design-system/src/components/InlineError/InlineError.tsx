@@ -41,7 +41,7 @@ export function InlineError({
 }: InlineErrorProps): React.ReactElement {
   const classes = classNames(
     'ds-c-inline-error',
-    { 'ds-c-inline-error--inverse': inversed, 'ds-u-display--none': !children },
+    { 'ds-c-inline-error--inverse': inversed },
     className
   );
   const viewbox = '36 -12 186 186';
@@ -54,9 +54,13 @@ export function InlineError({
       aria-live="assertive"
       aria-atomic="true"
     >
-      <AlertCircleIcon viewBox={viewbox} />
-      <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
-      {wrapChildrenInSpans(children)}
+      {children && (
+        <>
+          <AlertCircleIcon viewBox={viewbox} />
+          <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
+          {wrapChildrenInSpans(children)}
+        </>
+      )}
     </p>
   );
 }

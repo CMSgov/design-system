@@ -41,7 +41,9 @@ exports[`ChoiceList Radio buttons and Checkboxes is a radio button group 1`] = `
       >
         Error: 
       </span>
-      Hey, you have to pick an answer
+      <span>
+        Hey, you have to pick an answer
+      </span>
     </p>
     <div>
       <div

@@ -79,7 +79,9 @@ exports[`Choice applies errorMessage to label 1`] = `
         >
           Error: 
         </span>
-        Hey! You can't do that!
+        <span>
+          Hey! You can't do that!
+        </span>
       </p>
     </div>
   </div>

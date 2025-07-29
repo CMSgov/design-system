@@ -22,7 +22,9 @@ exports[`InlineError renders inline error 1`] = `
   >
     Error: 
   </span>
-  Error message
+  <span>
+    Error message
+  </span>
 </p>
 `;
 
@@ -48,6 +50,8 @@ exports[`InlineError renders inverse error 1`] = `
   >
     Error: 
   </span>
-  Error message
+  <span>
+    Error message
+  </span>
 </p>
 `;
