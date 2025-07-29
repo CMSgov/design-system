@@ -9,10 +9,13 @@ import {
   analyticsParentDataArgTypes,
 } from '../shared-attributes/storybook';
 
+const dsButtonVariation = [undefined, 'big', 'small'];
+const dsButtonSize = [undefined, 'solid', 'ghost'];
+
 export default {
   title: 'Web Components/ds-button',
   argTypes: {
-    'text content': {
+    children: {
       control: 'text',
       controlsOnly: true,
     },
@@ -27,19 +30,37 @@ export default {
     },
     size: {
       description: 'A string corresponding to Button size classes.',
-      options: [undefined, 'big', 'small'],
-      control: { type: 'radio' },
+      options: dsButtonSize,
+      mapping: dsButtonSize,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          big: 'big',
+          small: 'small',
+        },
+      },
     },
     variation: {
       description: 'A string corresponding to Button variation classes.',
-      options: [undefined, 'solid', 'ghost'],
-      control: { type: 'radio' },
+      options: dsButtonVariation,
+      mapping: dsButtonVariation,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          ghost: 'ghost',
+          solid: 'solid',
+        },
+      },
     },
     ...analyticsOverrideArgTypes,
     ...analyticsParentDataArgTypes,
   },
   args: {
-    'text content': 'Your button text is here',
+    children: 'Your button text is here',
+    variation: 'solid',
+    size: 'small',
   },
   parameters: {
     docs: {
@@ -55,7 +76,7 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ 'text content': text, args }) => {
+const Template = (args) => {
   useEffect(() => {
     const onClick = (event) => {
       action('ds-click')(event);
@@ -65,8 +86,8 @@ const Template = ({ 'text content': text, args }) => {
     return () => {
       button.removeEventListener('ds-click', onClick);
     };
-  });
-  return <ds-button {...args}>{text}</ds-button>;
+  }, []);
+  return <ds-button {...args}>{args.children}</ds-button>;
 };
 
 export const Default = Template.bind({});
