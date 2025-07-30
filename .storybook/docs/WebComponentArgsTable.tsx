@@ -8,9 +8,9 @@ function optToCodeBlock(opt: undefined | string) {
 
 function getTypeLabel(argType: any) {
   const controlType = argType.control?.type ?? argType.control;
-  const mapping = argType?.mapping;
-  if (mapping) {
-    return mapping.filter((type) => type).map((type) => <code>{type}</code>);
+  const options = argType?.options;
+  if (options) {
+    return options.filter((type) => type).map((type) => <code>{type}</code>);
   }
   if (controlType) {
     switch (controlType) {
