@@ -24,13 +24,17 @@ Existing import statements such as `import { AccordionItem  } from "@cmsgov/ds-h
 
 <Alert heading="Running the migration script" id="migration-script-instructions">
 
-We've included a migration script in v13 of the Design System (DS) package, which corresponds to v15 for the Medicare DS (`@cmsgov/ds-medicare-gov`) and v17 for the Healthcare DS (`@cmsgov/ds-healthcare-gov`) to help you find and update outdated references to renamed components. Using your local package manager's task runner, run our `cmsds-migrate` command like so:
+We've included a migration script in v13 of the Design System (DS) package, which corresponds to:
+- v15 for the Medicare DS (`@cmsgov/ds-medicare-gov`)
+- v17 for the Healthcare DS (`@cmsgov/ds-healthcare-gov`)
+
+The goal is to help you find and update outdated references to renamed components. Using your local package manager's task runner, run our `cmsds-migrate` command like so:
 
 ```
 npx cmsds-migrate
 ```
 
-From the menu, choose the "[v17 healthcare] renamed components" script and run it if you are using the Healthcare Design System. If you are using the Medicare Design System, choose the "[v15 medicare] renamed components" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
+From the menu, choose the "[v17 healthcare] renamed components" script and run it if you are using the Healthcare DS (`@cmsgov/ds-healthcare-gov`). If you are using the Medicare DS (`@cmsgov/ds-medicare-gov`), choose the "[v15 medicare] renamed components" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
 
 </Alert>
 
