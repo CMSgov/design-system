@@ -10,9 +10,14 @@ As part of our ongoing efforts to keep our dependencies up to date, we have upgr
 
 However, because React will no longer be supporting `defaultProps` in [React 19](https://18.react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-proptypes-and-defaultprops), we have changed how the Medicare Design System package (`@cmsgov/ds-medicare-gov`) and Healthcare Design System package `@cmsgov/ds-healthcare-gov` inherit components from the core design system (`@cmsgov/design-system`) if they have specific overrides.
 
-For Medicare.gov teams, those components are `HelpDrawer`, `HelpDrawerToggle`, and `ThirdPartyExternalLink`. Those have been renamed to `MedicaregovHelpDrawer`, `MedicaregovHelpDrawerToggle`, and `MedicaregovThirdPartyExternalLink`.
+For Medicare.gov teams, the following components have been renamed:
+- `HelpDrawer` &rarr; `MedicaregovHelpDrawer`
+- `HelpDrawerToggle` &rarr; `MedicaregovHelpDrawerToggle`
+- `ThirdPartyExternalLink` &rarr; `MedicaregovThirdPartyExternalLink`
 
-For Healthcare.gov teams, those components are `AccordionItem` and `ThirdPartyExternalLink`. Those have been renamed to `HealthcaregovAccordionItem` and `HealthcaregovThirdPartyExternalLink`.
+For Healthcare.gov teams, the following components have been renamed:
+- `AccordionItem` &rarr; `HealthcaregovAccordionItem`
+- `ThirdPartyExternalLink` &rarr; `HealthcaregovThirdPartyExternalLink`.
 
 Existing import statements such as `import { AccordionItem  } from "@cmsgov/ds-healthcare-gov"` should be changed to `import { HealthcaregovAccordionItem as AccordionItem } from "@cmsgov/ds-healthcare-gov"`.
 
@@ -24,7 +29,7 @@ We've included a migration script in v13 of the Design System (DS) package, whic
 npx cmsds-migrate
 ```
 
-From the menu, choose the "[v17 healthcare] renamed component" script and run it if you are using the Healthcare Design System. If you are using the Medicare Design System, choose the "[v15 medicare] renamed component" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
+From the menu, choose the "[v17 healthcare] renamed components" script and run it if you are using the Healthcare Design System. If you are using the Medicare Design System, choose the "[v15 medicare] renamed components" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
 
 </Alert>
 
