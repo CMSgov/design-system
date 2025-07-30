@@ -11,6 +11,9 @@ const meta: Meta<typeof MonthPicker> = {
   args: {
     hint: "Month Picker can receive optional help text, giving the user additional information of what's required.",
     inversed: false,
+    onChange: action('onChange'),
+    onClearAll: action('onClearAll'),
+    onSelectAll: action('onSelectAll'),
   },
   argTypes: {
     selectedMonths: { control: 'multi-select', options: monthNumbers },
@@ -53,11 +56,13 @@ const ControlledTemplate: Story = {
     };
 
     const onSelectAll = () => {
+      action('onSelectAll')(args);
       const newSelectedMonths = monthNumbers.filter((m) => !args.disabledMonths?.includes(m));
       updateArgs({ selectedMonths: newSelectedMonths });
     };
 
     const onClearAll = () => {
+      action('onClearAll')(args);
       updateArgs({ selectedMonths: [] });
     };
 

@@ -8,6 +8,7 @@ const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
   args: {
     name: 'dropdown-field',
+    onBlur: action('onBlur'),
   },
   argTypes: {
     errorMessage: { control: 'text' },
