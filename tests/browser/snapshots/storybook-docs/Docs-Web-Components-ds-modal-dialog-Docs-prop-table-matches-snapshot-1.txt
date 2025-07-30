@@ -47,6 +47,6 @@
   [
     "size",
     "Can be one of three values: narrow, wide and full",
-    "\"narrow\"\"wide\"\"full\""
+    "narrowwidefull"
   ]
 ]

@@ -22,7 +22,7 @@
   [
     "size",
     "Sets the size of the chip to larger version. The only acceptable value is \"big\".",
-    "string"
+    "big"
   ],
   [
     "use-alternate-icon",
