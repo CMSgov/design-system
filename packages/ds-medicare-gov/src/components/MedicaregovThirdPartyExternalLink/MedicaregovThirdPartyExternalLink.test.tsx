@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MedicareThirdPartyExternalLink from './MedicaregovThirdPartyExternalLink';
+import { MedicaregovThirdPartyExternalLink } from './MedicaregovThirdPartyExternalLink';
 
 const defaultProps = {
   children: 'External site link',
@@ -12,7 +12,7 @@ function renderThirdPartyExternalLink(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
   return {
     user: userEvent.setup(),
-    ...render(<MedicareThirdPartyExternalLink {...props} />),
+    ...render(<MedicaregovThirdPartyExternalLink {...props} />),
   };
 }
 
