@@ -22,18 +22,6 @@ medicare:
   storyId="components-multiinputdatefield--default"
 />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-multiinputdatefield--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Input/Form components:
-
-<ComponentThemeOptions componentname="text-input" />
-
 ## Guidance
 
 ### When to use
@@ -53,10 +41,37 @@ Generally used for more memorable dates like date of birth, marriage date, or in
 
 - Allow users to enter one-digit numbers with or without the "0" prior to the number. Example: "1" as well as "01" for a month or day.
 
-### Accessibility
+## Accessibility
+
+The multi-input date field component has been tested against, and meets, WCAG 2.0 standards for text size, color contrast, and screen reader usage.
 
 - These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
-- Do not use JavaScript to auto advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+- Do not use JavaScript to auto-advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
+- Avoid using placeholder text
+
+### Accessibility testing
+
+#### Screen reader testing
+
+- Screen readers should announce that each individual field is editable
+- If the field already has content within it, the screen reader should announce the existing contents.
+
+#### Keyboard testing
+
+- Using only a keyboard, you can navigate to each text field, type in it, and navigate away from it.
+- Each field should have a visible focus indicator, and highlight any existing contents, when navigated to
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-multiinputdatefield--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Input/Form components:
+
+<ComponentThemeOptions componentname="text-input" />
 
 ### Related patterns
 
