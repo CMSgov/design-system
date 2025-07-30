@@ -1,7 +1,5 @@
 import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
-// Need this in order for the generated ArgsTable to work
-import { HelpDrawer as CoreHelpDrawer } from '@cmsgov/design-system';
 import { MedicaregovHelpDrawer } from './MedicaregovHelpDrawer';
 import { MedicaregovHelpDrawerToggle } from './MedicaregovHelpDrawerToggle';
 import { action } from '@storybook/addon-actions';
@@ -9,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MedicaregovHelpDrawer> = {
   title: 'Medicare/HelpDrawer',
-  component: CoreHelpDrawer,
+  component: MedicaregovHelpDrawer,
   argTypes: {
     // @ts-ignore - Types are messed up for this story
     backdropClickExits: {
@@ -18,9 +16,6 @@ const meta: Meta<typeof MedicaregovHelpDrawer> = {
         disable: true,
       },
     },
-  },
-  args: {
-    heading: 'Drawer Heading',
   },
   parameters: {
     theme: 'medicare',
