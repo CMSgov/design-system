@@ -71,6 +71,30 @@ export class AppComponent {
     }
   }
 
+  // Autocomplete Data:
+  ariaClearLabel = 'Clear search';
+  ariaCompleteLabel = 'Autocomplete';
+  autofocus = 'true';
+  className = 'ds-c-autocomplete';
+  disabled = 'false';
+  errorId = 'autocomplete-error';
+  errorMessage = 'This is an error message';
+  errorMessageClassName = 'ds-c-autocomplete__error-message';
+  errorPlacement = 'top';
+  hint = 'This is a hint';
+  hintClassName = 'ds-c-autocomplete__hint';
+  hintId = 'autocomplete-hint';
+  items = '[{"value": "Item 1"}, {"value": "Item 2"}, {"value": "Item 3"}]';
+  label = 'Autocomplete Label';
+  labelClassName = 'ds-c-autocomplete__label';
+  labelId = 'autocomplete-label';
+  loading = 'false';
+  menuHeading = 'Autocomplete Menu Heading';
+  menuHeadingId = 'autocomplete-menu-heading';
+  name = 'autocomplete';
+  requirementLabel = 'Required';
+  rootId = 'autocomplete-root';
+
   // Modal Dialog Data:
   is_open = 'false';
   root_id = 'modal-dialog';
