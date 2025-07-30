@@ -9,8 +9,8 @@ import {
   analyticsParentDataArgTypes,
 } from '../shared-attributes/storybook';
 
-const dsButtonVariation = [undefined, 'big', 'small'];
-const dsButtonSize = [undefined, 'solid', 'ghost'];
+const dsButtonSize = [undefined, 'big', 'small'];
+const dsButtonVariation = [undefined, 'solid', 'ghost'];
 
 export default {
   title: 'Web Components/ds-button',
