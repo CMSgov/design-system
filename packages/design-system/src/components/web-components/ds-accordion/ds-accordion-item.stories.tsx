@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
-import { action } from '@storybook/addon-actions';
 import './ds-accordion-item';
 
 export default {
@@ -55,23 +53,3 @@ export default {
   },
   decorators: [webComponentDecorator],
 };
-
-const Template = (args) => {
-  useEffect(() => {
-    const onChange = (event) => {
-      action('ds-change')(event);
-    };
-    const item = document.querySelector('ds-accordion-item');
-    item.addEventListener('ds-change', onChange);
-    return () => {
-      item.removeEventListener('ds-change', onChange);
-    };
-  });
-  return (
-    <ds-accordion-item {...args}>
-      This is some detailed information inside an accordion item.
-    </ds-accordion-item>
-  );
-};
-
-export const Default = Template.bind({});

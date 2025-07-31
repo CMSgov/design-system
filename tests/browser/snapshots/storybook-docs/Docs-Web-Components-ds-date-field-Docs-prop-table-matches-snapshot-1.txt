@@ -22,7 +22,7 @@
   [
     "error-placement",
     "Location of the error message relative to the field input",
-    "\"top\"\"bottom\""
+    "topbottom"
   ],
   [
     "from-date",

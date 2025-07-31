@@ -1,10 +1,5 @@
 [
   [
-    "children",
-    "",
-    ""
-  ],
-  [
     "choices",
     "The list of choices to be rendered as an array of objects.\n\nWhen using this in HTML, the choices attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.\n\nExample:\nchoices='[\n  {\n    \"label\": \"Choice 1\",\n    \"value\": \"A\",\n    \"defaultChecked\": true\n  },\n  {\n    \"label\": \"Choice 2\",\n    \"value\": \"B\",\n    \"requirementLabel\": \"Choice hint text\"\n  }\n]'\nCopy\n\nIf you're setting this attribute in JavaScript, use JSON.stringify() to convert the array into a valid string value.\n\nFor details on valid JSON formatting, see JSON syntax restrictions on MDN.\n\nAlternatively, you can omit the choices attribute and instead include individual <ds-choice> elements as children inside <ds-choice-list>.",
     "See description"
@@ -37,7 +32,7 @@
   [
     "error-placement",
     "Location of the error message relative to the field input",
-    "undefined\"top\"\"bottom\""
+    "topbottom"
   ],
   [
     "hint",
@@ -92,11 +87,11 @@
   [
     "size",
     "Sets the size of the checkbox or radio button.",
-    "undefined\"small\""
+    "small"
   ],
   [
     "type",
     "Sets the type to render checkbox fields or radio buttons.",
-    "\"checkbox\"\"radio\""
+    "checkboxradio"
   ]
 ]

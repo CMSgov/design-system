@@ -40,3 +40,13 @@ export default {
 const Template = ({ 'text content': text, ...args }) => <ds-label {...args}>{text}</ds-label>;
 
 export const Default = Template.bind({});
+
+export const Inversed = Template.bind({});
+Inversed.args = {
+  inversed: 'true',
+};
+Inversed.parameters = {
+  onDark: true,
+  // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+  layout: 'fullscreen',
+};

@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { action } from '@storybook/addon-actions';
 import { webComponentDecorator } from '../storybook';
 import NoStoryWebComponentDocTemplate from '../../../../../../.storybook/docs/NoStoryWebComponentDocTemplate.mdx';
@@ -46,7 +46,7 @@ const meta: Meta = {
     },
     'close-button-variation': {
       description: 'Style variation for the close button ("solid" or "ghost").',
-      control: { type: 'select' },
+      control: { type: 'radio' },
       options: ['solid', 'ghost'],
     },
     children: {
@@ -128,8 +128,6 @@ const drawerContent = (
 );
 
 const Template = (args) => {
-  const [drawerOpen, setDrawerOpen] = useState(args['is-open'] ?? false);
-
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
     const toggleButton = document.querySelector('ds-button');
@@ -138,11 +136,11 @@ const Template = (args) => {
 
     const handleDrawerClose = (event) => {
       action('ds-close-click')(event);
-      setDrawerOpen(false);
+      drawerElement.setAttribute('is-open', 'false');
     };
 
     const handleDrawerOpen = () => {
-      setDrawerOpen(true);
+      drawerElement.setAttribute('is-open', 'true');
     };
 
     drawerElement.addEventListener('ds-close-click', handleDrawerClose);
@@ -152,12 +150,7 @@ const Template = (args) => {
       drawerElement.removeEventListener('ds-close-click', handleDrawerClose);
       toggleButton.removeEventListener('click', handleDrawerOpen);
     };
-  }, [drawerOpen]);
-
-  const formattedArgs = {
-    ...args,
-    'is-open': drawerOpen.toString(),
-  };
+  }, []);
 
   const toggleButtonArgs = {
     'class-name': 'ds-c-drawer__toggle',
@@ -167,8 +160,8 @@ const Template = (args) => {
 
   return (
     <div>
-      <ds-drawer {...formattedArgs}>
-        {drawerContent}
+      <ds-drawer {...args}>
+        {args.children || drawerContent}
         <span slot="footer-body">
           <p className="ds-text-body--md ds-u-margin--0">
             {args['footer-body'] ? args['footer-body'] : 'Default slotted footer content'}
