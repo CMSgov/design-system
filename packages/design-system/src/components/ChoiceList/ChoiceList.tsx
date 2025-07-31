@@ -1,7 +1,6 @@
 import Choice, { ChoiceProps as ChoiceComponentProps } from './Choice';
 import { Label } from '../Label';
 import type * as React from 'react';
-import { createRef } from 'react';
 import classNames from 'classnames';
 import describeField from '../utilities/describeField';
 import useId from '../utilities/useId';

@@ -80,7 +80,8 @@ describe('Review', function () {
     expect(wrapper.classList).toContain('my-class');
   });
 
-  it('calls onClick function when clicked', () => {
+  it('calls onClick function when clicked', async () => {
+    const user = userEvent.setup();
     renderReview();
 
     const els = screen.getAllByRole('link');
@@ -89,7 +90,7 @@ describe('Review', function () {
     const el = screen.getByRole('link');
     expect(el.textContent).toBe(defaultProps.editText);
 
-    userEvent.click(el);
+    await user.click(el);
     expect(defaultProps.onEditClick).toHaveBeenCalledWith(expect.anything(), defaultProps.editHref);
     expect(defaultProps.onEditClick).toHaveBeenCalledTimes(1);
   });

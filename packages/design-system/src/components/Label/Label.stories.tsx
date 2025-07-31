@@ -1,22 +1,18 @@
 import Label from './Label';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const disabledArg = {
-  table: {
-    disable: true,
-  },
-};
-
 const meta: Meta<typeof Label> = {
   title: 'Components/Label',
   component: Label as any,
   argTypes: {
-    errorId: disabledArg,
-    errorMessage: disabledArg,
-    hint: disabledArg,
-    hintId: disabledArg,
-    requirementLabel: disabledArg,
-    ref: disabledArg,
+    children: {
+      control: 'text',
+      type: {
+        name: 'ReactNode' as 'string',
+        required: true,
+      },
+    },
+    ref: { table: { disable: true } },
   },
   args: {
     children: 'Enter your date of birth.',

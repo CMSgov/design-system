@@ -1,6 +1,6 @@
 import ContentRenderer from '../content/ContentRenderer';
 import Layout from '../layout/Layout';
-import avoidRefresh from '../../helpers/avoidRefresh';
+import SEO from '../layout/DocSiteSeo';
 import useTheme from '../../helpers/useTheme';
 import { MdxQuery } from '../../helpers/graphQLTypes';
 import { graphql } from 'gatsby';
@@ -8,8 +8,12 @@ import { graphql } from 'gatsby';
 /**
  * Template for information content pages.
  */
-const InfoPage = ({ data, location }: MdxQuery) => {
-  const { frontmatter, body, tableOfContents, slug } = data.mdx;
+const InfoPage = ({ children, data, location }: MdxQuery) => {
+  const {
+    frontmatter,
+    tableOfContents,
+    fields: { slug },
+  } = data.mdx;
   const theme = useTheme();
   return (
     <Layout
@@ -19,9 +23,20 @@ const InfoPage = ({ data, location }: MdxQuery) => {
       theme={theme}
       tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={body} theme={theme} />
+      <ContentRenderer theme={theme} location={location}>
+        {children}
+      </ContentRenderer>
     </Layout>
   );
+};
+
+export const Head = ({ data, location }) => {
+  const {
+    frontmatter,
+    fields: { slug },
+  } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} slug={slug} location={location} />;
 };
 
 export const query = graphql`
@@ -54,11 +69,12 @@ export const query = graphql`
           githubLink
         }
       }
-      slug
-      body
+      fields {
+        slug
+      }
       tableOfContents(maxDepth: 3)
     }
   }
 `;
 
-export default avoidRefresh(InfoPage);
+export default InfoPage;

@@ -41,7 +41,9 @@ module.exports = {
       },
     ],
     'no-use-before-define': 'off',
-    'no-unused-vars': ['warn', { ignoreRestSiblings: true }],
+    // Disabling the base rule as it can report incorrect errors
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
     'no-undef': 'warn',
     'no-useless-escape': 'warn',
     'standard/computed-property-even-spacing': 'off',

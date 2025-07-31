@@ -21,13 +21,14 @@ describe('SkipNav', function () {
     expect(el.textContent).toBe('Skip to main content');
   });
 
-  it('calls onClick when clicked', () => {
+  it('calls onClick when clicked', async () => {
+    const user = userEvent.setup();
     const click = jest.fn();
     const href = '!#';
     render(<SkipNav href={href} onClick={click} />);
 
     const el = screen.getByRole('link');
-    userEvent.click(el);
+    await user.click(el);
 
     expect(click).toHaveBeenCalled();
   });

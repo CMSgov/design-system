@@ -1,8 +1,8 @@
-import TextField from './TextField';
 import { render, screen } from '@testing-library/react';
-import { DATE_MASK } from './useLabelMask';
 import userEvent from '@testing-library/user-event';
 import { createRef, useEffect, useRef } from 'react';
+import TextField from './TextField';
+import { DATE_MASK } from './useLabelMask';
 
 const defaultProps = {
   label: 'Foo',
@@ -11,7 +11,10 @@ const defaultProps = {
 };
 
 function renderTextField(customProps = {}) {
-  return render(<TextField {...defaultProps} {...customProps} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<TextField {...defaultProps} {...customProps} />),
+  };
 }
 
 describe('TextField', function () {
@@ -88,24 +91,24 @@ describe('TextField', function () {
     expect(container.querySelector('label').id).toMatch(idRegex);
   });
 
-  it('calls onChange when user types', () => {
+  it('calls onChange when user types', async () => {
     const onChange = jest.fn();
-    renderTextField({ onChange });
+    const { user } = renderTextField({ onChange });
     const input = screen.getByRole('textbox') as HTMLInputElement;
-    userEvent.click(input);
-    userEvent.type(input, 'c');
+    await user.click(input);
+    await user.type(input, 'c');
     expect(onChange).toHaveBeenCalledWith(
       expect.objectContaining({ target: expect.objectContaining({ value: 'c' }) })
     );
   });
 
-  it('calls onBlur when input loses focus', () => {
+  it('calls onBlur when input loses focus', async () => {
     const onBlur = jest.fn();
-    renderTextField({ onBlur });
+    const { user } = renderTextField({ onBlur });
     const input = screen.getByRole('textbox') as HTMLInputElement;
-    userEvent.click(input);
+    await user.click(input);
     expect(onBlur).not.toHaveBeenCalled();
-    userEvent.tab();
+    await user.tab();
     expect(onBlur).toHaveBeenCalled();
   });
 

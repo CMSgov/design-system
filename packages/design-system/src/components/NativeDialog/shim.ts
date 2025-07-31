@@ -9,7 +9,7 @@
  */
 function addDialogProperties(dialog: any) {
   function handleKey(event) {
-    if (event.keyCode === 27) {
+    if (event.keyCode === 27 || event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
       dialog.close();

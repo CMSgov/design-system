@@ -50,11 +50,13 @@ interface BaseTableProps {
   /**
    * Additional text or content to display when the horizontal scrollbar is visible to give the user notice of the scroll behavior.
    * This prop will only be used when the `Table` `scrollable` prop is set and the table width is wider than the viewport.
+   * There is a default Alert set that reads 'Scroll using arrow keys to see more'
    */
   scrollableNotice?: React.ReactNode;
   /**
    * A stackable variation of the table.
    * When `stackable` is set, `id` or `headers` prop is required in `Table`
+   * Default sets to `'sm'`
    */
   stackable?: boolean;
   /**
@@ -91,10 +93,14 @@ export const Table = ({
   className,
   compact,
   stackable,
-  stackableBreakpoint,
+  stackableBreakpoint = 'sm',
   striped,
   scrollable,
-  scrollableNotice,
+  scrollableNotice = (
+    <Alert className="ds-c-table__scroll-alert" role="status">
+      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
+    </Alert>
+  ),
   warningDisabled,
   children,
   id,
@@ -188,15 +194,6 @@ export const Table = ({
   ) : (
     table
   );
-};
-
-Table.defaultProps = {
-  scrollableNotice: (
-    <Alert className="ds-c-table__scroll-alert" role="status">
-      <p className="ds-c-alert__text">Scroll using arrow keys to see more</p>
-    </Alert>
-  ),
-  stackableBreakpoint: 'sm',
 };
 
 export default Table;

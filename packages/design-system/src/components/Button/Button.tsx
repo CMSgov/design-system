@@ -85,11 +85,12 @@ export const Button = (props: ButtonProps) => {
     children,
     className,
     inputRef,
-    isAlternate,
+    isAlternate = false,
     onClick,
-    onDark,
+    onDark = false,
     size,
     variation,
+    type = 'button',
     ...otherProps
   } = props;
 
@@ -112,6 +113,7 @@ export const Button = (props: ButtonProps) => {
   const attrs = {
     ...otherProps,
     className: allClassNames,
+    type,
   };
 
   if (ComponentType !== 'button') {
@@ -151,12 +153,6 @@ export const Button = (props: ButtonProps) => {
       {children}
     </ComponentType>
   );
-};
-
-Button.defaultProps = {
-  isAlternate: false,
-  onDark: false,
-  type: 'button' as const,
 };
 
 export default Button;

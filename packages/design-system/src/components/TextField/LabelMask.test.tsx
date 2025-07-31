@@ -1,15 +1,15 @@
+import { act, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import LabelMask from './LabelMask';
 import {
-  DATE_MASK,
-  PHONE_MASK,
-  ZIP_MASK,
-  SSN_MASK,
   CURRENCY_MASK,
+  DATE_MASK,
   MaskFunction,
+  PHONE_MASK,
+  SSN_MASK,
+  ZIP_MASK,
 } from './useLabelMask';
-import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 const allMasks = [
   {
@@ -75,10 +75,17 @@ const TestLabelMask = (props: { mask: MaskFunction }) => {
   );
 };
 
+const renderLabelMask = (mask: MaskFunction) => {
+  return {
+    user: userEvent.setup(),
+    ...render(<TestLabelMask mask={mask} />),
+  };
+};
+
 allMasks.forEach((currentMask) => {
   describe(`${currentMask.name} Label mask`, function () {
     it(`renders default mask, ${currentMask.default}, when no input value set`, () => {
-      const { container } = render(<TestLabelMask mask={currentMask.mask} />);
+      const { container } = renderLabelMask(currentMask.mask);
 
       const input = container.querySelector('input');
       expect(input).toHaveValue('');
@@ -94,43 +101,52 @@ allMasks.forEach((currentMask) => {
     });
 
     describe('updates label mask to reflect', () => {
-      it('complete input value set', () => {
-        const { container } = render(<TestLabelMask mask={currentMask.mask} />);
+      it('complete input value set', async () => {
+        const { container, user } = renderLabelMask(currentMask.mask);
         const data = currentMask.defaultData;
         const maskText = currentMask.defaultResult;
 
         const mask = container.querySelector('.ds-c-label-mask');
         const input = container.querySelector('input');
 
-        userEvent.type(input, data);
+        await act(async () => {
+          await user.type(input, data);
+        });
 
         expect(input).toHaveValue(data);
         expect(mask.textContent).toContain(maskText);
       });
 
-      it('partial input value set', () => {
-        const { container } = render(<TestLabelMask mask={currentMask.mask} />);
+      it('partial input value set', async () => {
+        const { container, user } = renderLabelMask(currentMask.mask);
         const data = currentMask.partialData;
 
         const mask = container.querySelector('.ds-c-label-mask');
         const input = container.querySelector('input');
 
-        userEvent.type(input, data);
+        await act(async () => {
+          await user.type(input, data);
+        });
 
         expect(input).toHaveValue(data);
         expect(mask.textContent).toContain(currentMask.partialResult);
       });
     });
 
-    it('formats input value onBlur', () => {
-      const { container } = render(<TestLabelMask mask={currentMask.mask} />);
+    it('formats input value onBlur', async () => {
+      const { container, user } = renderLabelMask(currentMask.mask);
       const data = currentMask.defaultData;
       const formattedData = currentMask.defaultResultBlur ?? currentMask.defaultResult;
 
       const input = container.querySelector('input');
 
-      userEvent.type(input, data);
-      userEvent.tab();
+      await act(async () => {
+        await user.type(input, data);
+      });
+
+      await act(async () => {
+        await user.tab();
+      });
 
       expect(input).toHaveValue(formattedData);
     });

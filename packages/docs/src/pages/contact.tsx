@@ -1,22 +1,28 @@
 import { graphql } from 'gatsby';
-
 import Layout from '../components/layout/Layout';
+import SEO from '../components/layout/DocSiteSeo';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
 
-const ContactPage = ({ data, location }: MdxQuery) => {
-  const { slug } = data.mdx;
+const ContactPage = ({ children, data, location }: MdxQuery) => {
+  const {
+    frontmatter,
+    fields: { slug },
+    tableOfContents,
+  } = data.mdx;
   const theme = useTheme();
   return (
     <Layout
-      frontmatter={data.mdx.frontmatter}
+      frontmatter={frontmatter}
       location={location}
       slug={slug}
       theme={theme}
-      tableOfContentsData={data.mdx.tableOfContents?.items}
+      tableOfContentsData={tableOfContents?.items}
     >
-      <ContentRenderer data={data.mdx.body} theme={theme} />
+      <ContentRenderer location={location} theme={theme}>
+        {children}
+      </ContentRenderer>
     </Layout>
   );
 };
@@ -24,8 +30,9 @@ export const query = graphql`
   query PageFeedbackQuery {
     mdx(frontmatter: { title: { eq: "Contact us" } }) {
       id
-      body
-      slug
+      fields {
+        slug
+      }
       tableOfContents(maxDepth: 3)
       frontmatter {
         title
@@ -34,5 +41,14 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data, location }) => {
+  const {
+    frontmatter,
+    fields: { slug },
+  } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} slug={slug} location={location} />;
+};
 
 export default ContactPage;

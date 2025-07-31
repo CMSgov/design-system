@@ -21,8 +21,8 @@
   ],
   [
     "role",
-    "Landmark role so the spinner can receive keyboard focus\nstring",
-    "\"status\""
+    "Landmark role so the spinner can receive keyboard focus. Default is 'status'\n\nstring",
+    "-"
   ],
   [
     "size",

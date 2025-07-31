@@ -18,7 +18,7 @@ describe('useClickOutsideHandler', () => {
     expect(callback).toHaveBeenCalled();
   });
 
-  it('should call callback on touchstart outside of element', () => {
+  it('should call callback on touchstart outside of element', async () => {
     const callback = jest.fn();
     render(<TestComponentWithHook callbackFn={callback} />);
     fireEvent.touchStart(document);

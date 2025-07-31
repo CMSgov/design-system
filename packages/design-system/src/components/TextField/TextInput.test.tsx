@@ -1,8 +1,8 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import type * as React from 'react';
 import { createRef, useEffect, useRef } from 'react';
 import TextInput, { OmitProps, TextInputProps } from './TextInput';
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
 const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
   Omit<React.ComponentPropsWithRef<'input'>, OmitProps> &
@@ -13,7 +13,10 @@ const defaultProps: Omit<React.ComponentPropsWithRef<'textarea'>, OmitProps> &
 };
 
 function renderInput(props = {}) {
-  return render(<TextInput {...defaultProps} {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<TextInput {...defaultProps} {...props} />),
+  };
 }
 
 function getInput() {
@@ -117,17 +120,20 @@ describe('TextInput', function () {
     expect(getInput().getAttribute('data-foo')).toBe('bar');
   });
 
-  it('calls onBlur', () => {
+  it('calls onBlur', async () => {
     const onBlur = jest.fn();
-    renderInput({ onBlur });
-    fireEvent.blur(getInput());
+    const { user } = renderInput({ onBlur });
+    getInput().focus();
+    expect(getInput()).toHaveFocus();
+    await user.tab();
+
     expect(onBlur).toHaveBeenCalled();
   });
 
-  it('calls onChange', () => {
+  it('calls onChange', async () => {
     const onChange = jest.fn();
-    renderInput({ onChange });
-    userEvent.type(getInput(), 'hello world');
+    const { user } = renderInput({ onChange });
+    await user.type(getInput(), 'hello world');
     expect(onChange).toHaveBeenCalled();
   });
 

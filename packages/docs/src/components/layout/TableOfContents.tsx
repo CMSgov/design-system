@@ -72,7 +72,7 @@ export const TableOfContentsFeedback = ({ slug }: TableOfContentsFeedbackProps) 
         <li>
           <a
             onClick={linkAnalytics}
-            href={`https://github.com/CMSgov/design-system/edit/main/packages/docs/content/${slug}.mdx`}
+            href={`https://github.com/CMSgov/design-system/edit/main/packages/docs/content${slug}.mdx`}
           >
             Edit this page
           </a>
