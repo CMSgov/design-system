@@ -46,7 +46,7 @@
   ],
   [
     "hasFocusTrap",
-    "Enables focus trap functionality within Drawer. Default is false.\nboolean",
+    "Enables focus trap functionality within Drawer.\nboolean",
     "-"
   ],
   [

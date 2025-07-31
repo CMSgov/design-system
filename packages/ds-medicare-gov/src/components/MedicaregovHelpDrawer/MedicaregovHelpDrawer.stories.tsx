@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MedicaregovHelpDrawer> = {
-  title: 'Medicare/HelpDrawer',
+  title: 'Medicare/MedicaregovHelpDrawer',
   component: MedicaregovHelpDrawer,
   argTypes: {
     // @ts-ignore - Types are messed up for this story
