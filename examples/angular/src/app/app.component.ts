@@ -74,43 +74,55 @@ export class AppComponent {
   }
 
   // Autocomplete Data:
-  id = 'the-autocomplete';
-  items = JSON.stringify([
-    { id: '71', name: 'Acetaminophen' },
-    { id: '72', name: 'Advil' },
-    { id: '73', name: 'Benadryl' },
-    { id: '74', name: 'Claritin' },
-    { id: '75', name: 'Detrol' },
-    { id: '76', name: 'Excedrin' },
-  ]);
-  label = 'Enter and select a drug to see its cost under each plan.';
+  ariaClearLabel = 'Clear search';
+  ariaCompleteLabel = 'Autocomplete';
+  autofocus = 'true';
+  className = 'ds-u-padding-bottom--7';
+  clearSearchButton = 'true';
+  disabled = 'false';
+  errorId = 'autocomplete-error';
+  errorMessage = 'This is an error message';
+  errorMessageClassName = 'ds-c-autocomplete__error-message';
+  errorPlacement = 'top';
   hint =
     'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.';
-  clearSearchButton = 'true';
-  className = 'ds-u-padding-bottom--7';
-
-  // ariaClearLabel = 'Clear search';
-  // ariaCompleteLabel = 'Autocomplete';
-  // autofocus = 'true';
-  // className = 'ds-c-autocomplete';
-  // disabled = 'false';
-  // errorId = 'autocomplete-error';
-  // errorMessage = 'This is an error message';
-  // errorMessageClassName = 'ds-c-autocomplete__error-message';
-  // errorPlacement = 'top';
-  // hint = 'This is a hint';
-  // hintClassName = 'ds-c-autocomplete__hint';
-  // hintId = 'autocomplete-hint';
-  // items = JSON.stringify([{"value": "Item 1"}, {"value": "Item 2"}, {"value": "Item 3"}]);
-  // label = 'Autocomplete Label';
-  // labelClassName = 'ds-c-autocomplete__label';
-  // labelId = 'autocomplete-label';
-  // loading = 'false';
-  // menuHeading = 'Autocomplete Menu Heading';
-  // menuHeadingId = 'autocomplete-menu-heading';
-  // name = 'autocomplete';
-  // requirementLabel = 'Required';
-  // rootId = 'autocomplete-root';
+  hintClassName = 'ds-c-autocomplete__hint';
+  hintId = 'autocomplete-hint';
+  id = 'the-autocomplete';
+  items = JSON.stringify([
+    {
+      id: 'group-a',
+      label: 'Group A',
+      items: [
+        {
+          id: 'alabama',
+          name: 'Alabama',
+        },
+        { id: 'alaska', name: 'Alaska' },
+        { id: 'arizona', name: 'Arizona' },
+        { id: 'arkansas', name: 'Arkansas' },
+      ],
+    },
+    {
+      id: 'group-c',
+      label: 'Group C',
+      items: [
+        { id: 'california', name: 'California' },
+        { id: 'colorado', name: 'Colorado' },
+        { id: 'connecticut', name: 'Connecticut' },
+      ],
+    },
+    { id: 'group-d', label: 'Group D', items: [{ id: 'delaware', name: 'Delaware' }] },
+  ]);
+  label = 'Select a state.';
+  labelClassName = 'ds-c-autocomplete__label';
+  labelId = 'autocomplete-label';
+  loading = 'false';
+  menuHeading = 'States by letter';
+  menuHeadingId = 'autocomplete-menu-heading';
+  name = 'autocomplete';
+  requirementLabel = 'Required';
+  rootId = 'autocomplete-root';
 
   // Modal Dialog Data:
   is_open = 'false';
