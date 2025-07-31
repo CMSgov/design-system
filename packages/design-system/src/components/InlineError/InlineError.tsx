@@ -47,6 +47,8 @@ export function InlineError({
 
   return (
     <p
+      // Adding a key forces React to remount this element when `children` changes.
+      // This helps avoid reconciliation errors caused by Google Translate directly mutating the DOM.
       key={children ? children.toString() : 'no-error'}
       {...otherProps}
       className={classes}
