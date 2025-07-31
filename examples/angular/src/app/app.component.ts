@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { AccordionComponent } from './accordionWrapper/accordion.component';
 import { AccordionItemComponent } from './accordionItemWrapper/accordionItem.component';
 import { AlertComponent } from './alertWrapper/alert.component';
+import { AutocompleteComponent } from './autocompleteWrapper/autocomplete.component';
 import { ButtonComponent } from './buttonWrapper/button.component';
 import { DialogComponent } from './modalDialogWrapper/dialog.component';
 import { ReviewComponent } from './reviewWrapper/review.component';
@@ -15,6 +16,7 @@ import { DrawerComponent } from './drawerWrapper/drawer.component';
     AccordionComponent,
     AccordionItemComponent,
     AlertComponent,
+    AutocompleteComponent,
     ButtonComponent,
     DialogComponent,
     DrawerComponent,
@@ -72,28 +74,43 @@ export class AppComponent {
   }
 
   // Autocomplete Data:
-  ariaClearLabel = 'Clear search';
-  ariaCompleteLabel = 'Autocomplete';
-  autofocus = 'true';
-  className = 'ds-c-autocomplete';
-  disabled = 'false';
-  errorId = 'autocomplete-error';
-  errorMessage = 'This is an error message';
-  errorMessageClassName = 'ds-c-autocomplete__error-message';
-  errorPlacement = 'top';
-  hint = 'This is a hint';
-  hintClassName = 'ds-c-autocomplete__hint';
-  hintId = 'autocomplete-hint';
-  items = '[{"value": "Item 1"}, {"value": "Item 2"}, {"value": "Item 3"}]';
-  label = 'Autocomplete Label';
-  labelClassName = 'ds-c-autocomplete__label';
-  labelId = 'autocomplete-label';
-  loading = 'false';
-  menuHeading = 'Autocomplete Menu Heading';
-  menuHeadingId = 'autocomplete-menu-heading';
-  name = 'autocomplete';
-  requirementLabel = 'Required';
-  rootId = 'autocomplete-root';
+  id = 'the-autocomplete';
+  items = JSON.stringify([
+    { id: '71', name: 'Acetaminophen' },
+    { id: '72', name: 'Advil' },
+    { id: '73', name: 'Benadryl' },
+    { id: '74', name: 'Claritin' },
+    { id: '75', name: 'Detrol' },
+    { id: '76', name: 'Excedrin' },
+  ]);
+  label = 'Enter and select a drug to see its cost under each plan.';
+  hint =
+    'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.';
+  clearSearchButton = 'true';
+  className = 'ds-u-padding-bottom--7';
+
+  // ariaClearLabel = 'Clear search';
+  // ariaCompleteLabel = 'Autocomplete';
+  // autofocus = 'true';
+  // className = 'ds-c-autocomplete';
+  // disabled = 'false';
+  // errorId = 'autocomplete-error';
+  // errorMessage = 'This is an error message';
+  // errorMessageClassName = 'ds-c-autocomplete__error-message';
+  // errorPlacement = 'top';
+  // hint = 'This is a hint';
+  // hintClassName = 'ds-c-autocomplete__hint';
+  // hintId = 'autocomplete-hint';
+  // items = JSON.stringify([{"value": "Item 1"}, {"value": "Item 2"}, {"value": "Item 3"}]);
+  // label = 'Autocomplete Label';
+  // labelClassName = 'ds-c-autocomplete__label';
+  // labelId = 'autocomplete-label';
+  // loading = 'false';
+  // menuHeading = 'Autocomplete Menu Heading';
+  // menuHeadingId = 'autocomplete-menu-heading';
+  // name = 'autocomplete';
+  // requirementLabel = 'Required';
+  // rootId = 'autocomplete-root';
 
   // Modal Dialog Data:
   is_open = 'false';

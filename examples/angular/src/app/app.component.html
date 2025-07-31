@@ -79,7 +79,7 @@
 
     <!-- Wrapped Autocomplete -->
     <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Autocomplete</h2>
-    <app-autocomplete
+    <!-- <app-autocomplete
       [ariaClearLabel]="ariaClearLabel"
       [ariaCompleteLabel]="ariaCompleteLabel"
       [autofocus]="autofocus"
@@ -102,6 +102,15 @@
       [name]="name"
       [requirementLabel]="requirementLabel"
       [rootId]="rootId"
+    >
+    </app-autocomplete> -->
+    <app-autocomplete
+      [id]="id"
+      [items]="items"
+      [label]="label"
+      [hint]="hint"
+      [clearSearchButton]="clearSearchButton"
+      [className]="className"
     >
     </app-autocomplete>
 
