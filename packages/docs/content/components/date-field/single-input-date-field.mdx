@@ -40,7 +40,7 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 
 ### When to consider alternatives
 
-- Don't use if users are entering a date within the last year or a future date. Instead, use the [date picker](/components/date-picker/).
+- Don't use if users are entering a date within the last year or a future date. Instead, use the [date picker](/components/date-field/date-picker/).
 
 ## Accessibility
 
@@ -51,13 +51,15 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 
 #### Screen reader testing
 
-- Screenreaders should announce that the date field is editable.
-- If the field already has content within it, the screenreader should announce the existing contents.
+- Screen readers should announce that the date field is editable.
+- If the field already has content within it, the screen reader should announce the existing contents.
+- Screen readers must announce text fields and their labels in the same order they appear visually on the page.
+- Screen readers must also announce if a field is required.
 
 #### Keyboard testing
 
 - Using only a keyboard, you can navigate to the date field, type in it, and navigate away from it.
-- The field should have a visible focus indicator, and highlight any existing contents, when navigated to.
+- The field should have a visible focus indicator and highlight any existing contents when navigated to.
 
 ## Code
 
