@@ -1,0 +1,48 @@
+---
+title: Release 13.0
+date: 2025-07-28
+intro: React 18 Upgrade
+---
+import { Alert } from '@cmsgov/design-system';
+
+## React 18 Upgrade
+
+As part of our ongoing efforts to keep our dependencies up to date, we have upgraded our React version to 18.3.1 and underlying dependencies to stay up-to-date. This should be a straightforward upgrade for many teams.
+
+However, because React will no longer be supporting `defaultProps` in [React 19](https://18.react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-proptypes-and-defaultprops), we have changed how the Medicare Design System package (`@cmsgov/ds-medicare-gov`) and Healthcare Design System package `@cmsgov/ds-healthcare-gov` inherit components from the core design system (`@cmsgov/design-system`) if they have specific overrides.
+
+For Medicare.gov teams, the following components have been renamed:
+- `HelpDrawer` &rarr; `MedicaregovHelpDrawer`
+- `HelpDrawerToggle` &rarr; `MedicaregovHelpDrawerToggle`
+- `ThirdPartyExternalLink` &rarr; `MedicaregovThirdPartyExternalLink`
+
+For Healthcare.gov teams, the following components have been renamed:
+- `AccordionItem` &rarr; `HealthcaregovAccordionItem`
+- `ThirdPartyExternalLink` &rarr; `HealthcaregovThirdPartyExternalLink`.
+
+Existing import statements such as `import { AccordionItem  } from "@cmsgov/ds-healthcare-gov"` should be changed to `import { HealthcaregovAccordionItem as AccordionItem } from "@cmsgov/ds-healthcare-gov"`.
+
+<Alert heading="Running the migration script" id="migration-script-instructions">
+
+We've included a migration script in v13 of the Design System (DS) package, which corresponds to:
+- v15 for the Medicare DS (`@cmsgov/ds-medicare-gov`)
+- v17 for the Healthcare DS (`@cmsgov/ds-healthcare-gov`)
+
+The goal is to help you find and update outdated references to renamed components. Using your local package manager's task runner, run our `cmsds-migrate` command like so:
+
+```
+npx cmsds-migrate
+```
+
+From the menu, choose the "[v17 healthcare] renamed components" script and run it if you are using the Healthcare DS (`@cmsgov/ds-healthcare-gov`). If you are using the Medicare DS (`@cmsgov/ds-medicare-gov`), choose the "[v15 medicare] renamed components" script instead and run that. If you are unsure of anything, refer back to the release notes or reach out to us!
+
+</Alert>
+
+Running the migration script will update imports for the aforementioned components. Below is an example of what an import statement might look like before running the migration script and afterward. The appended comment can be safely removed after reviewing the affected files, which the script will outline.
+
+```javascript
+/* before */
+import { ThirdPartyExternalLink } from "@cmsgov/ds-healthcare-gov";
+/* after */
+import { HealthcaregovThirdPartyExternalLink as ThirdPartyExternalLink } from "@cmsgov/ds-healthcare-gov"; /* CMSDS-MIGRATE: `ThirdPartyExternalLink` was renamed `HealthcaregovThirdPartyExternalLink` in ds-healthcare-gov v17 */;
+```

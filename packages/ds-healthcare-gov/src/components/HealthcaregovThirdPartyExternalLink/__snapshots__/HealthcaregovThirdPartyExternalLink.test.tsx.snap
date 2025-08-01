@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external link dialog 1`] = `
+exports[`HealthcaregovThirdPartyExternalLink HealthcaregovThirdPartyExternalLink dialog renders external link dialog 1`] = `
 <dialog
   aria-labelledby="dialog--4__heading"
   class="ds-c-dialog"
@@ -83,7 +83,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
 </dialog>
 `;
 
-exports[`ThirdPartyExternalLink renders external link 1`] = `
+exports[`HealthcaregovThirdPartyExternalLink renders external link 1`] = `
 <a
   class="ds-c-external-link"
   href="foo"
