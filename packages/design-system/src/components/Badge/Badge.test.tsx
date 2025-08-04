@@ -34,15 +34,22 @@ describe('Badge', () => {
   });
 
   it('should override the screen reader text when the screenReaderText prop is passed in', () => {
-    renderBadge({ variation: 'success', screenReaderText: 'barbaz' });
+    renderBadge({ variation: 'success', screenReaderText: 'barbaz', hideScreenReaderText: false });
     const srText = screen.getByText('barbaz', { exact: false });
     expect(srText).toBeInTheDocument();
   });
 
-  it('should not override the screen reader text when the prop is just a space', () => {
-    renderBadge({ variation: 'success', screenReaderText: ' ' });
-    // Note 'Success' is the value provided by the variation, not the screen reader text
+  it('should not hide the screen reader text when hideScreenReaderText is false', () => {
+    renderBadge({ variation: 'success', hideScreenReaderText: false });
     const srText = screen.getByText('Success', { exact: false });
     expect(srText).toBeInTheDocument();
+  });
+
+  it('should hide screen reader text and screen reader override text when told to do so', async () => {
+    renderBadge({ variation: 'success', screenReaderText: 'barbaz', hideScreenReaderText: true });
+    const srText = screen.queryByText('Success', { exact: false });
+    const srTextOverride = screen.queryByText('barbaz', { exact: false });
+    expect(srText).not.toBeInTheDocument();
+    expect(srTextOverride).not.toBeInTheDocument();
   });
 });
