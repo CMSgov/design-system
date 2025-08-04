@@ -15,6 +15,11 @@
     "-"
   ],
   [
+    "screenReaderText",
+    "Optional string that replaces the variation type as the supplementary text read out by screen readers\nstring",
+    "-"
+  ],
+  [
     "size",
     "Sets the font size of the Badge. Only supports 'big'\n\"big\"",
     "-"
