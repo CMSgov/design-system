@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import { AccordionComponent } from './accordionWrapper/accordion.component';
 import { AccordionItemComponent } from './accordionItemWrapper/accordionItem.component';
 import { AlertComponent } from './alertWrapper/alert.component';
+import { AutocompleteComponent } from './autocompleteWrapper/autocomplete.component';
 import { ButtonComponent } from './buttonWrapper/button.component';
 import { DialogComponent } from './modalDialogWrapper/dialog.component';
 import { ReviewComponent } from './reviewWrapper/review.component';
@@ -15,6 +16,7 @@ import { DrawerComponent } from './drawerWrapper/drawer.component';
     AccordionComponent,
     AccordionItemComponent,
     AlertComponent,
+    AutocompleteComponent,
     ButtonComponent,
     DialogComponent,
     DrawerComponent,
@@ -70,6 +72,57 @@ export class AppComponent {
       alert('Sorry you did not like this content.');
     }
   }
+
+  // Autocomplete Data:
+  ariaClearLabel = 'Clear search';
+  ariaCompleteLabel = 'Autocomplete';
+  // autofocus = 'true';
+  className = 'ds-u-padding-bottom--7';
+  clearSearchButton = 'true';
+  disabled = 'false';
+  errorId = 'autocomplete-error';
+  // errorMessage = 'This is an error message';
+  errorMessageClassName = 'ds-c-autocomplete__error-message';
+  errorPlacement = 'top';
+  hint =
+    'Type a letter to see results, then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss.';
+  hintClassName = 'ds-c-autocomplete__hint';
+  hintId = 'autocomplete-hint';
+  id = 'the-autocomplete';
+  items = JSON.stringify([
+    {
+      id: 'group-a',
+      label: 'Group A',
+      items: [
+        {
+          id: 'alabama',
+          name: 'Alabama',
+        },
+        { id: 'alaska', name: 'Alaska' },
+        { id: 'arizona', name: 'Arizona' },
+        { id: 'arkansas', name: 'Arkansas' },
+      ],
+    },
+    {
+      id: 'group-c',
+      label: 'Group C',
+      items: [
+        { id: 'california', name: 'California' },
+        { id: 'colorado', name: 'Colorado' },
+        { id: 'connecticut', name: 'Connecticut' },
+      ],
+    },
+    { id: 'group-d', label: 'Group D', items: [{ id: 'delaware', name: 'Delaware' }] },
+  ]);
+  label = 'Select a state.';
+  labelClassName = 'ds-c-autocomplete__label';
+  labelId = 'autocomplete-label';
+  loading = 'false';
+  menuHeading = 'States by letter';
+  menuHeadingId = 'autocomplete-menu-heading';
+  name = 'autocomplete';
+  requirementLabel = 'Required';
+  rootId = 'autocomplete-root';
 
   // Modal Dialog Data:
   is_open = 'false';
