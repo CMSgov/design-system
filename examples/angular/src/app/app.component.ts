@@ -76,12 +76,12 @@ export class AppComponent {
   // Autocomplete Data:
   ariaClearLabel = 'Clear search';
   ariaCompleteLabel = 'Autocomplete';
-  autofocus = 'true';
+  // autofocus = 'true';
   className = 'ds-u-padding-bottom--7';
   clearSearchButton = 'true';
   disabled = 'false';
   errorId = 'autocomplete-error';
-  errorMessage = 'This is an error message';
+  // errorMessage = 'This is an error message';
   errorMessageClassName = 'ds-c-autocomplete__error-message';
   errorPlacement = 'top';
   hint =
