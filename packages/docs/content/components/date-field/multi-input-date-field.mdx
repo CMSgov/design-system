@@ -53,13 +53,15 @@ The multi-input date field component has been tested against, and meets, WCAG 2.
 
 #### Screen reader testing
 
-- Screen readers should announce that each individual field is editable
+- Screen readers should announce that each individual field is editable.
 - If the field already has content within it, the screen reader should announce the existing contents.
+- Whether the field is required or not should be announced by the screen reader.
+- The text content supplied to the label prop should be read first, then any text supplied to the hint prop should be read, then finally the content within the date field.
 
 #### Keyboard testing
 
 - Using only a keyboard, you can navigate to each text field, type in it, and navigate away from it.
-- Each field should have a visible focus indicator, and highlight any existing contents, when navigated to
+- Each field should have a visible focus indicator, and highlight any existing contents, when navigated to.
 
 ## Code
 
