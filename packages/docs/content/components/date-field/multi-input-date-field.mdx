@@ -46,8 +46,8 @@ Generally used for more memorable dates like date of birth, marriage date, or in
 The multi-input date field component has been tested against, and meets, WCAG 2.0 standards for text size, color contrast, and screen reader usage.
 
 - These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/text-field/#guidance).
-- Do not use JavaScript to auto-advance the focus from one field to the next. This makes it difficult for keyboard-only users to navigate and correct mistakes.
-- Instead, utilize the required `label` prop to provide a meaningful description of the multi-input date field. Optionally, you can use the `hint` prop to provide additional contextual information or clearer directions for use. Using the label and hint props provide a number of benefits to users such as lowering the cognitive burden and increasing the interaction area when using the multi-input date field.
+- Our component does not auto-advance the focus from one field to another. This is by design to make sure that keyboard users are able to correct mistakes.
+- Utilize the required `label` prop to provide a meaningful description of the multi-input date field. Optionally, you can use the `hint` prop to provide additional contextual information or clearer directions for use. Using the label and hint props provide a number of benefits to users such as lowering the cognitive burden and increasing the interaction area when using the multi-input date field.
 - Avoid using placeholder text.
 
 ### Accessibility testing
