@@ -32,7 +32,7 @@
   [
     "heading-level",
     "Heading type to override default <h2> used in the screen-reader heading. Optional.",
-    "\"1\"\"2\"\"3\"\"4\"\"5\"\"6\""
+    "123456"
   ],
   [
     "href-template",

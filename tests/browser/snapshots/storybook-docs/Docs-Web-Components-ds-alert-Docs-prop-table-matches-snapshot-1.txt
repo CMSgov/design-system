@@ -22,7 +22,7 @@
   [
     "role",
     "ARIA role, defaults to \"region\"",
-    "undefined\"alert\"\"alertdialog\"\"region\"\"status\""
+    "regionalertalertdialogstatus"
   ],
   [
     "root-id",
@@ -32,11 +32,11 @@
   [
     "variation",
     "A string corresponding to the Alert variation classes",
-    "undefined\"success\"\"warn\"\"error\""
+    "successwarnerror"
   ],
   [
     "weight",
     "A string corresponding to the Alert weight classes",
-    "undefined\"lightweight\""
+    "defaultlightweight"
   ]
 ]

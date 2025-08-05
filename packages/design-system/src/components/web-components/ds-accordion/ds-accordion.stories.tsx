@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
+import { action } from '@storybook/addon-actions';
 import './ds-accordion';
 import './ds-accordion-item';
 import dsAccordionItemStories from './ds-accordion-item.stories';
@@ -36,23 +38,34 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => (
-  <ds-accordion {...args}>
-    <ds-accordion-item heading="First Amendment" default-open="true">
-      <p>
-        We the People of the United States, in Order to form a more perfect Union, establish
-        Justice, insure domestic Tranquility, provide for the common defence, promote the general
-        Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
-        establish this Constitution for the United States of America.
-      </p>
-    </ds-accordion-item>
-    <ds-accordion-item heading="Second Amendment">
-      <p>
-        A well regulated Militia, being necessary to the security of a free State, the right of the
-        people to keep and bear Arms, shall not be infringed.
-      </p>
-    </ds-accordion-item>
-  </ds-accordion>
-);
+const Template = (args) => {
+  useEffect(() => {
+    const accordionItems = Array.from(document.querySelectorAll('ds-accordion-item'));
+    accordionItems.forEach((item) => {
+      item.addEventListener('ds-change', (event) => {
+        action('ds-change')(event);
+      });
+    });
+  }, []);
+
+  return (
+    <ds-accordion {...args}>
+      <ds-accordion-item heading="First Amendment" default-open="true">
+        <p>
+          We the People of the United States, in Order to form a more perfect Union, establish
+          Justice, insure domestic Tranquility, provide for the common defence, promote the general
+          Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+          establish this Constitution for the United States of America.
+        </p>
+      </ds-accordion-item>
+      <ds-accordion-item heading="Second Amendment">
+        <p>
+          A well regulated Militia, being necessary to the security of a free State, the right of
+          the people to keep and bear Arms, shall not be infringed.
+        </p>
+      </ds-accordion-item>
+    </ds-accordion>
+  );
+};
 
 export const Default = Template.bind({});

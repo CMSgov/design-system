@@ -2,6 +2,8 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { webComponentDecorator } from '../storybook';
 import './ds-spinner';
 
+const sizeMapping = [undefined, 'small', 'big'];
+
 export default {
   title: 'Web Components/ds-spinner',
   argTypes: {
@@ -27,9 +29,17 @@ export default {
       description: 'Landmark role so the spinner can receive keyboard focus.',
     },
     size: {
-      control: { type: 'radio' },
       description: 'Smaller or larger variant.',
-      options: [undefined, 'small', 'big'],
+      options: sizeMapping,
+      mapping: sizeMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          small: 'small',
+          big: 'big',
+        },
+      },
     },
   },
   parameters: {
