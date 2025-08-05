@@ -10,6 +10,16 @@
     "-"
   ],
   [
+    "hideScreenReaderText",
+    "Optional boolean that when set to true will hide supplementary text read out by screen readers. Defaults to false.\nboolean",
+    "-"
+  ],
+  [
+    "screenReaderText",
+    "Optional string that replaces the variation type as the supplementary text read out by screen readers. Note this value will be hidden as well if hideScreenReaderText is set to true\nstring",
+    "-"
+  ],
+  [
     "size",
     "Sets the font size of the Badge. Only supports 'big'\n\"big\"",
     "-"
