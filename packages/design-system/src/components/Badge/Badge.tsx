@@ -16,6 +16,14 @@ interface BaseBadgeProps {
    */
   children: string | React.ReactNode;
   /**
+   * Optional string that replaces the variation type as the supplementary text read out by screen readers. Note this value will be hidden as well if `hideScreenReaderText` is set to `true`
+   */
+  screenReaderText?: string;
+  /**
+   * Optional boolean that when set to `true` will hide supplementary text read out by screen readers. Defaults to `false`.
+   */
+  hideScreenReaderText?: boolean;
+  /**
    * Sets the font size of the Badge. Only supports 'big'
    */
   size?: BadgeSize;
@@ -32,16 +40,26 @@ export type BadgeProps = BaseBadgeProps & React.ComponentPropsWithRef<'span'>;
  * [refer to its full documentation page](https://design.cms.gov/components/badge/).
  */
 export const Badge = (props: BadgeProps) => {
-  const { className = '', children, size, variation, ...others } = props;
+  const {
+    className = '',
+    children,
+    hideScreenReaderText = false,
+    screenReaderText,
+    size,
+    variation,
+    ...others
+  } = props;
   const sizeClasses = { big: 'ds-c-badge--big' };
 
   const variationClass = variation && `ds-c-badge--${variation}`;
   const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);
+  const showScreenReaderText = variation && !hideScreenReaderText;
+  const variationText = variation && t(`badge.${variation}`) + ': ';
 
   return (
     <span className={classes} {...others}>
-      {variation && (
-        <span className="ds-u-visibility--screen-reader">{t(`badge.${variation}`)}: </span>
+      {showScreenReaderText && (
+        <span className="ds-u-visibility--screen-reader">{screenReaderText || variationText}</span>
       )}
       {children}
     </span>
