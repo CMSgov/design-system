@@ -55,11 +55,29 @@ medicare:
 - When users are choosing from a specific set of options. Consider [checkboxes](/components/checkbox), [radio buttons](/components/radio/), or a [dropdown](/components/dropdown/) in these cases.
 
 ## Accessibility
+- Avoid placeholder text. Most browsers’ default rendering of placeholder text does not provide a high enough contrast ratio. Instead, utilize the required `label` prop to provide a meaningful description of the text field. Optionally, you can use the `hint` prop to provide additional contextual information or clearer directions for use. Using the `label` and `hint` props provides a number of benefits to users, such as lowering the cognitive burden and increasing the interaction area when using the text field.
+- When working with numeric input, we provide the `mask` and `inputMode` props. Using the appropriate `mask` prop will correctly format user input, thus avoiding the need to break numbers with distinct sections (such as phone numbers, Social Security Numbers, or credit card numbers) into separate text fields.
 
-### Accessibility guidance
+## Accessibility testing
 
-- Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
-- Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
+For mobile devices, text fields should work in both portrait and landscape orientation with no loss of functionality.
+
+### Keyboard navigation
+
+- Users must be able to use only a keyboard to navigate to the text field, type in it, and navigate away from it.
+- Focus indicators must be clearly visible around the text fields.
+
+### Screen reader
+
+- Screen readers must announce text fields and their labels in the same order they appear visually on the page.
+- Screen readers must announce the purpose of each text field (e.g., “Edit, blank. Type in text.”).
+- Screen readers must announce associated labels and instructions when a text field receives focus (e.g., “Enter first name.”).
+- Screen readers must announce any text provided to the `ariaLabel` prop.
+
+### Zoom magnification
+
+- When zoomed to 200%, text fields must remain legible, functional, and properly sized.
+
 
 ## Code
 
