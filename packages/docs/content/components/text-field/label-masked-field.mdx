@@ -32,6 +32,45 @@ The label-mask currently has five built-in implementations: _currency_, _phone n
 
 <StorybookExample componentName="zip" storyId="components-textfield--label-masked-postal-code" />
 
+## Guidance
+
+### When to use
+
+- In fields with a specific expected format like Social Security Number or ZIP code, a label mask allows you to constrain and shape the information being entered without impairing the user's ability to copy/paste or correct mistyping
+
+### When to consider alternatives
+
+- When the input requires a free-form field that doesn't use a common input pattern, masking is not appropriate.
+- When the pattern is too complicated to allow for a valid label mask. A pattern like email, with many possible scenarios for input, is not a good candidate for masking. Allow the user to enter their email address (or other complicated data) and have your validation library confirm before form submission.
+
+### Usage
+
+- Only show error validation messages or stylings after a user has interacted with a particular field
+
+## Accessibility
+- Use a `<fieldset>` to group thematically related form controls, and provide a `<legend>` to label the group. This helps screen reader users navigate the form more easily.
+- Arrange form blocks vertically. This layout is more accessible, especially for users with limited vision who may struggle to scan horizontally.
+- Avoid using placeholder text as a substitute for labels. Most browsers render placeholder text with low contrast, making it difficult to read for many users.
+- Do not split numeric inputs (like phone numbers, Social Security numbers, or credit card numbers) into multiple text fields. Use a single field instead. When fields are broken into segments, the associated labels are often unclear or meaningless to screen reader users.
+
+## Accessibility testing
+
+For mobile devices, text fields should work in both portrait and landscape orientation with no loss of functionality.
+
+### Keyboard navigation
+
+- Users must be able to use only a keyboard to navigate to the text field, type in it, and navigate away from it.
+- Focus indicators must be clearly visible around the text fields.
+
+### Screen reader
+
+- Screen readers must announce text fields and their labels in the same order they appear visually on the page.
+- Screen readers must announce the purpose of each text field (e.g., “Edit, blank. Type in text.”).
+- Screen readers must announce associated labels and instructions when a text field receives focus (e.g., “Enter first name.”).
+
+### Zoom magnification
+- When zoomed to 200%, text fields must remain legible, functional, and properly sized.
+
 ## Code
 
 ### React
@@ -78,25 +117,6 @@ export const MyForm = () => {
   )
 };
 ```
-
-## Guidance
-
-### When to use
-
-- In fields with a specific expected format like Social Security Number or ZIP code, a label mask allows you to constrain and shape the information being entered without impairing the user's ability to copy/paste or correct mistyping
-
-### When to consider alternatives
-
-- When the input requires a free-form field that doesn't use a common input pattern, masking is not appropriate.
-- When the pattern is too complicated to allow for a valid label mask. A pattern like email, with many possible scenarios for input, is not a good candidate for masking. Allow the user to enter their email address (or other complicated data) and have your validation library confirm before form submission.
-
-### Usage
-
-- Only show error validation messages or stylings after a user has interacted with a particular field
-
-### Accessibility
-
-- These text fields should follow the [accessibility guidelines for all text inputs](/components/text-field/#guidance).
 
 ## Learn more
 
