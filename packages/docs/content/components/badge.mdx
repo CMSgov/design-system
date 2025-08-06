@@ -37,22 +37,6 @@ medicare:
 
 <StorybookExample componentName="badge" storyId="components-badge--informational" />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-badge--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-badge--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Badge components:
-
-<ComponentThemeOptions componentname="badge" />
-
 ## Guidance
 
 ### When to use
@@ -73,13 +57,40 @@ The following CSS variables can be overridden to customize Badge components:
 - Users may confuse badges as buttons. Always conduct usability testing to make sure your particular implementation is not causing frustration.
 - Don’t mix interactive and static badges on your site. Once you establish a pattern for how badges behave, users will expect that behavior every time.
 
+## Accessibility
+
+The Badge component has been tested against, and meets, WCAG 2.0 standards for text size, color contrast, and screen reader usage.
+
 ### Accessibility
 
-- When badges are used to call out new content that is dynamically loaded onto a page, be sure to use [ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) to alert screen readers of the change.
+When badges are used to call out new content that is dynamically loaded onto a page, be sure to use ARIA live regions to alert screen readers of the change.
 
-### Future research
+### Accessibility testing
 
-- Further usability testing should be done to ensure badges aren't being confused with buttons. Further iteration can be done with sizing and colors if there is confusion.
+#### Screen reader testing
+
+- Screen readers should announce the badge’s alert status (e.g., `Info`, `Warning`, `Error`, `Success`), followed by its text content
+- When used in an ARIA live region, the screen reader should alert users to the changed content
+
+#### Keyboard testing
+
+Badges are not interactive by default, so they should not get focus and should not show focus rings.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-badge--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-badge--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Badge components:
+
+<ComponentThemeOptions componentname="badge" />
 
 ## Component maturity
 

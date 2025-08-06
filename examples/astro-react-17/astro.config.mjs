@@ -7,8 +7,11 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@astrojs/react/client.js": "@astrojs/react/client-v17.js"
-      }
-    }
-  }
+        '@astrojs/react/client.js': '@astrojs/react/client-v17.js',
+      },
+    },
+    ssr: {
+      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
+    },
+  },
 });

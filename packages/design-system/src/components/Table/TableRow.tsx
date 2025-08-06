@@ -7,7 +7,7 @@ interface BaseTableRowProps {
    */
   children?: React.ReactNode;
   /**
-   * @hide-prop This gets set from the parent `TableHead`
+   * @ignore This gets set from the parent `TableHead`
    */
   _isTableHeadChild?: boolean;
 }

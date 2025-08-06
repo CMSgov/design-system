@@ -136,11 +136,12 @@ describe('Alert', function () {
     );
 
     testAnalytics(
-      'does not send analytics event for default variation',
+      'sends analytics event for default/informational variation',
       async ({ tealiumMock, waitForAnalytics }) => {
         renderAlert();
         await waitForAnalytics();
-        expect(tealiumMock).not.toBeCalled();
+        expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
       }
     );
 

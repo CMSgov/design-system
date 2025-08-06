@@ -2,6 +2,7 @@ import type * as React from 'react';
 import { useState } from 'react';
 import VerticalNav from './VerticalNav';
 import VerticalNavItemLabel from './VerticalNavItemLabel';
+import { StatusIcon, StatusType } from './StatusIcon';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
 
@@ -10,7 +11,7 @@ export type VerticalNavItemComponent = React.ReactElement<any> | any | ((...args
 export interface VerticalNavItemProps {
   /**
    * Internal prop passed from the parent VerticalNav
-   * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
+   * @ignore This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId?: string;
   /**
@@ -61,6 +62,12 @@ export interface VerticalNavItemProps {
    * If this item is currently selected
    */
   selected?: boolean;
+  /**
+   * @ignore
+   * Internal: Used for indicating component status in the SideNav on design.cms.gov.
+   * Adds a status icon next to the label when used.
+   */
+  _status?: StatusType;
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
@@ -154,7 +161,16 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       <VerticalNavItemLabel
         collapsed={collapsed}
         component={props.component}
-        label={props.label}
+        label={
+          props._status ? (
+            <>
+              <StatusIcon status={props._status} />
+              {props.label}
+            </>
+          ) : (
+            props.label
+          )
+        }
         hasSubnav={hasSubnav()}
         onClick={handleLabelClick}
         selected={isSelected()}

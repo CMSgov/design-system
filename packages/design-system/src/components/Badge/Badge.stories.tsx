@@ -4,6 +4,7 @@ import Badge from './Badge';
 const meta: Meta = {
   component: Badge,
   argTypes: {
+    ref: { table: { disable: true } },
     size: {
       options: ['default', 'big'],
       control: { type: 'radio' },
@@ -12,7 +13,11 @@ const meta: Meta = {
       options: ['default', 'info', 'success', 'warn', 'alert'],
       control: { type: 'radio' },
     },
-    children: { control: 'text' },
+    children: {
+      control: 'text',
+      description: 'Label text or HTML.',
+      type: { name: 'string', required: true },
+    },
   },
   parameters: {
     docs: {

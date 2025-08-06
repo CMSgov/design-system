@@ -64,51 +64,29 @@ const Layout = ({
   theme,
   tableOfContentsData,
 }: LayoutProps) => {
-  const [env, setEnv] = useState<'dev' | 'github-demo' | 'prod' | undefined>(undefined);
+  const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
   const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
 
-  useEffect(() => {
-    if (env) {
-      const analyticsPayload = {
-        content_language: 'en',
-        content_type: 'html',
-        logged_in: 'false',
-        page_name: tabTitle,
-        page_type: tabTitle.includes('Page not found') ? 'true' : 'false', //If page is a 404 (error page) this is set to true, otherwise it is false
-        site_environment: env, //Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
-        site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
-      } as any;
-
-      sendViewEvent(analyticsPayload);
-    }
-  }, [env, location.pathname, tabTitle]);
+  if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
+    window.tealiumEnvironment = env;
+  }
 
   useEffect(() => {
-    // We can define environment names as we wish
-    // github-demo is a demo deployment off of a specific branch.
-    switch (location.hostname) {
-      case 'localhost':
-        setEnv('dev');
-        break;
-      case 'cmsgov.github.io':
-        setEnv('github-demo');
-        break;
-      case 'design.cms.gov':
-        setEnv('prod');
-        break;
-      default:
-        setEnv('prod');
-    }
-  }, [location.hostname]);
+    const analyticsPayload = {
+      content_language: 'en',
+      content_type: 'html',
+      logged_in: 'false',
+      page_name: tabTitle,
+      page_type: tabTitle.includes('Page not found') ? 'true' : 'false', // If page is a 404 (error page) this is set to true, otherwise it is false
+      site_environment: env, // Used to include or exclude traffic from different testing environments. Ex: test, test0, imp, production
+      site_section: location.pathname == '/' ? 'index' : location.pathname, // Set the section to the pathname, except in the case of the index.
+    } as any;
 
-  useEffect(() => {
-    if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
-      window.tealiumEnvironment = env;
-    }
-  }, [env]);
+    sendViewEvent(analyticsPayload);
+  }, [location.pathname, tabTitle]);
 
   return (
     <div data-theme={theme} id={pageId}>

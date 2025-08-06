@@ -2,6 +2,8 @@ import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
+import { UtagContainer } from '../analytics';
+import { config } from '../config';
 
 jest.mock('@popperjs/core');
 
@@ -159,6 +161,53 @@ describe('Tooltip', function () {
       });
       const closeButton = screen.queryByLabelText('custom close label text');
       expect(closeButton).not.toBeNull();
+    });
+  });
+
+  describe('Analytics event tracking', () => {
+    let tealiumMock;
+
+    beforeEach(() => {
+      config({ tooltipSendsAnalytics: true });
+      tealiumMock = jest.fn();
+      (window as any as UtagContainer).utag = {
+        link: tealiumMock,
+      };
+    });
+
+    afterEach(() => {
+      config({ tooltipSendsAnalytics: false });
+      jest.resetAllMocks();
+    });
+
+    it('sends icon trigger tooltip analytics event on hover', async () => {
+      renderTooltip();
+      const triggerEl = screen.getByLabelText(triggerAriaLabelText);
+      await userEvent.hover(triggerEl);
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('sends inline tooltip analytics event', async () => {
+      renderTooltip({ component: 'a', children: 'inline trigger' });
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      await userEvent.hover(triggerEl);
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('sends dialog tooltip analytics event on open', async () => {
+      renderTooltip({
+        dialog: true,
+      });
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      await userEvent.click(tooltipTrigger);
+      expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
+    });
+
+    it('disables analytics event tracking', () => {
+      renderTooltip({ analytics: false });
+      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      userEvent.hover(triggerEl);
+      expect(tealiumMock).not.toBeCalled();
     });
   });
 });

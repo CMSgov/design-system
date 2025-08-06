@@ -147,6 +147,7 @@ const analyticsSettingsDecorator = (Story, context) => {
     headerSendsAnalytics: on,
     footerSendsAnalytics: on,
     thirdPartyExternalLinkSendsAnalytics: on,
+    tooltipSendsAnalytics: on,
   });
 
   return <Story {...context} />;
@@ -192,6 +193,7 @@ const preview: Preview = {
       },
     },
   },
+
   parameters: {
     backgrounds: { disable: true },
     controls: {
@@ -212,12 +214,15 @@ const preview: Preview = {
       theme: cmsTheme,
     },
   },
+
   decorators: [
     onDarkDecorator,
     languageSettingDecorator,
     analyticsSettingsDecorator,
     themeSettingDecorator,
   ],
+
+  tags: ['autodocs'],
 };
 
 export default preview;

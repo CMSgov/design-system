@@ -3,7 +3,7 @@ import { TFunction } from '@cmsgov/design-system';
 interface DeConsumerMessageProps {
   deBrokerName?: string;
   /**
-   * @hide-props
+   * @ignore
    */
   t: TFunction;
 }

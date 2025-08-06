@@ -45,8 +45,8 @@ export interface BaseChoiceProps {
    */
   className?: string;
   /**
-   * @hide-prop Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
-   * Default is `false`
+   * @ignore
+   * Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
    */
   _choiceChild?: boolean;
   /**
