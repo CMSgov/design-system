@@ -19,22 +19,6 @@ medicare:
 
 <StorybookExample componentName="tabs" storyId="components-tabs--default" minHeight={400} />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-tabs--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-tabs--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Tab components:
-
-<ComponentThemeOptions componentname="tabs" />
-
 ## Guidance
 
 ### When to use
@@ -52,13 +36,51 @@ The following CSS variables can be overridden to customize Tab components:
 - Tab labels should be descriptive of their content and set the user's expectations.
 - Tab labels should be short — aim for no more than two words.
 
-### Accessibility
+## Accessibility
 
-- Use an anchor link (`a`) to create the tabs. This allows you to link directly to a tab, and allows you to progressively enhance the page, retaining default browser behavior like opening links in a new window. _Note: You'll need to implement the logic for selecting the correct tab based on the current URL._
-- Ensure the HTML markup includes the proper ARIA attributes:
-  - For tabs: `role`, `aria-selected`, `aria-controls`
-  - For the tabs list parent: `role`, `aria-label`
-  - For a tab panel: `role`, `aria-labelledby`
+- Use anchor links (`<a>`) to create tabs. This allows direct linking, supports progressive enhancement, and preserves default browser behavior like opening tabs in a new window.  
+  *Note: You’ll need to implement logic to select the appropriate tab based on the current URL.*
+- Markup should include proper ARIA roles and attributes to ensure accessibility:
+  - **Each tab** (`<a>`):  
+    `role="tab"`, `aria-selected`, `aria-controls`
+  - **Tablist container**:  
+    `role="tablist"`, `aria-label` (use the `ariaLabel` prop to customize)
+  - **Each tab panel**:  
+    `role="tabpanel"`, `aria-labelledby`
+
+## Accessibility testing
+
+### Keyboard navigation
+
+- Users should be able to navigate to each tab using the `Tab` key and navigate backwards using `Shift + Tab`.
+- Pressing `Enter` should activate the focused tab.
+- When a tab has focus, arrow keys (`←`/`→`) should move focus between tabs.
+- A visible focus indicator should clearly show which tab is currently focused or selected.
+
+### Screen reader
+
+Our `Tabs` component applies the correct semantic roles (`tablist`, `tab`, and `tabpanel`) to ensure proper screen reader support.
+
+### Zoom magnification
+
+To ensure tab content remains visible when the screen is magnified, the widths of tabs and tab panels are defined using percentages. As the page is magnified, the height of the tabs increases and content reflows to fit the new dimensions.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-tabs--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-tabs--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Tab components:
+
+<ComponentThemeOptions componentname="tabs" />
+
 
 ### Related patterns
 
