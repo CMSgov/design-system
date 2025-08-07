@@ -42,21 +42,22 @@ medicare:
 
 The filter chip component has been tested against, and meets, WCAG 2.0 standards for size, color contrast, and screen reader usage.
 
-- The filter chip itself does not need a label, as the text content within it is sufficient. However, actions that the filter can take (like remove) do need to be labelled and you should take advantage of the ariaClearLabel prop to do so. That prop will provide additional text for screen reader support.- The chip should receive focus
-- `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
+- The filter chip itself does not need a label, as the text content within it is sufficient. However, actions that the filter can take (like remove) do need to be labelled and you should take advantage of the ariaClearLabel prop to do so. That prop will provide additional text for screen reader support.
+- The chip should receive focus.
+- `Enter`, `Backspace`, and `Delete` will remove the tag when it is in focus.
 
 ### Accessibility testing
 
 #### Screen reader testing
 
-- When navigating to a filter chip, screen readers should announce the label text and any actions, like remove, separately
-- Screen readers should identify filter chips as buttons
+- When navigating to a filter chip, screen readers should announce the label text and any actions (like remove) separately.
+- Screen readers should identify filter chips as buttons.
 
 #### Keyboard testing
 
-- Users should be able to navigate to the chip with their keyboard
-- Filter chips should receive focus
-- `Enter`, `Backspace`, `Delete`, and `Spacebar` should remove the tag or otherwise trigger the filter action when it is in focus
+- Users should be able to navigate to the chip with their keyboard.
+- Filter chips should receive focus.
+- `Enter`, `Backspace`, and `Delete` should remove the tag or otherwise trigger the filter action when it is in focus.
 
 ## Code
 
