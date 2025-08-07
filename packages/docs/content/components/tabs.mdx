@@ -14,6 +14,7 @@ healthcare:
 medicare:
   figmaNodeId: 7-102
 ---
+import { Alert } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -44,9 +45,13 @@ medicare:
   - **Each tab** (`<a>`):  
     `role="tab"`, `aria-selected`, `aria-controls`
   - **Tablist container**:  
-    `role="tablist"`, `aria-label` (use the `ariaLabel` prop to customize)
+    `role="tablist"`, `aria-label` (not applied by default — use the `ariaLabel` prop.)
   - **Each tab panel**:  
     `role="tabpanel"`, `aria-labelledby`
+
+<Alert heading="Use Tabsand TabPanel Together">
+  When you use our <code>Tabs</code> and <code>TabPanel</code> components together, ARIA roles are handled automatically. The <code>Tabs</code> component sets the appropriate <code>aria-controls</code> and manages selection state, while <code>TabPanel</code> sets its own <code>role</code> and receives a generated <code>tabId</code>. We recommend using both components together to ensure accessibility is correctly implemented.
+</Alert>
 
 ## Accessibility testing
 
@@ -60,6 +65,11 @@ medicare:
 ### Screen reader
 
 Our `Tabs` component applies the correct semantic roles (`tablist`, `tab`, and `tabpanel`) to ensure proper screen reader support.
+When implemented correctly, screen readers announce:
+- The label for each tab which is derived by the `tab` prop on each `TabPanel`.
+- Its `role` (e.g., "tab").
+- Its position within the set (e.g., "Tab 1 of 3").
+- Whether the tab is selected.
 
 ### Zoom magnification
 
