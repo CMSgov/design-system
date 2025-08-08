@@ -22,18 +22,6 @@ medicare:
   storyId="components-verticalnav--default-vertical-nav"
 />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-verticalnav--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize VerticalNav components:
-
-<ComponentThemeOptions componentname="vertical-nav" />
-
 ## Guidance
 
 ### When to use
@@ -53,18 +41,39 @@ The following CSS variables can be overridden to customize VerticalNav component
 - Keep the navigation links short and follow sentence case. They can be shorter derivatives of page titles themselves.
 - If the navigation hierarchy is too long, users may miss items at the bottom. If it’s too deep, users may miss items that require too many clicks. Usability test to find the right balance between breadth and depth.
 
-### Accessibility
+## Accessibility
 
-- Users should be able to tab through each link.
-- If you have nested menus that are collapsible, ensure the toggle button has its `aria-controls` and `aria-expanded` attributes set. This is done automatically for you
-  if you're using the React components.
-- If your navigation list is longer than 3 items, consider using a skip navigation link. This allows screen reader and keyboard users to skip to the main content area(s).
-- If a skip navigation link is not an option, consider using:
-  - A valid, descriptive page header
-  - Landmark regions like `<header>`, `<main>`, `<aside>`, `<footer>`
+- If you have nested menus that are collapsible, the component automatically ensures that the `aria-controls` and `aria-expanded` attributes are set properly.
+- If the site has fewer than five pages, consider organizing the page without a navigational hierarchy.
 - When naming the optional `ariaNavLabel` prop, keep in mind:
-  - This prop is necessary only when there is more than one nav element on a page.
-  - Don't include the word "Menu" in the label. Most screen readers will announce that information already. Instead, provide more context to what's in the menu and/or its location. Like "Main" or "Social".
+  - This prop is necessary only when there is more than one `<nav>` element on a page. The Pagination component utilizes a `<nav>` element, so you will need to supply this prop on any page that includes both a Pagination and a VerticalNav component.
+  - Don't include the word "Menu" in the label. Most screen readers will announce that already. Instead, provide more context about the menu’s contents or its location—such as "Main" or "Social".
+
+## Accessibility testing
+
+### Keyboard navigation
+
+- Users must be able to tab through each link using a keyboard to navigate through the vertical navigation.
+- Keyboard focus should not be trapped when navigating through vertical navigation links.
+- When using a keyboard to move through the vertical navigation, there must be a visible outline or focus indicator showing where the focus is.
+
+### Screen reader
+
+- Screen readers must announce the vertical navigation region and its items.
+- Screen readers must provide a direct description of links. When navigating to the vertical navigation with a screen reader, link titles must be read aloud and match the visible text on screen.
+- Screen readers must announce each link’s title, visited state, hierarchy level (e.g., parent or submenu), and the number of links present. Screen readers will also announce whether an expandable submenu is open or collapsed.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-verticalnav--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize VerticalNav components:
+
+<ComponentThemeOptions componentname="vertical-nav" />
 
 ### Related patterns
 
