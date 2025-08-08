@@ -19,7 +19,9 @@ core:
 ## Guidance
 
 - Inline errors are built in to all design-system form fields but can be used on their own to create custom fields.
-- Inline errors should sit either directly above or below the input, depending on the theme defaults.
+- Inline errors should sit either directly above or below the input, depending on the current theme defaults:
+  - In the CMS.gov, Medicare, and Core themes, errors appear above the input.
+  - In the Healthcare theme, errors appear below the input.
 - Visually align inline validation messages with the input fields, so people using screen magnifiers can read them quickly.
 - The form field should have an `aria-describedby` attribute that references the `id` of the error message.
 
