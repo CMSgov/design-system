@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, input, ElementRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 
 @Component({
   selector: 'app-autocomplete',

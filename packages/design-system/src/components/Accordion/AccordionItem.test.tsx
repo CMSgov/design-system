@@ -51,6 +51,13 @@ describe('AccordionItem', function () {
     expect(contentEl.classList).toContain('ds-u-test');
   });
 
+  it('renders additional className for header', () => {
+    renderAccordionItem({ headingClassName: 'ds-u-test' });
+
+    const headerEl = screen.getByRole('heading');
+    expect(headerEl.classList).toContain('ds-u-test');
+  });
+
   it('renders header text', () => {
     renderAccordionItem({ heading: 'Foo' });
 

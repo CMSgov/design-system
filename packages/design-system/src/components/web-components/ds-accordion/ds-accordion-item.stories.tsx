@@ -28,6 +28,11 @@ export default {
       control: 'text',
       description: 'Class to be applied to the outer `<div>` that contains all accordion items.',
     },
+    'heading-class-name': {
+      control: 'text',
+      description:
+        'Class to be applied to the heading `<h{heading-level}>` tag of an accordion item.',
+    },
     'heading-level': {
       description: 'Heading type to override default `<h2>`',
       options: ['1', '2', '3', '4', '5', '6'],

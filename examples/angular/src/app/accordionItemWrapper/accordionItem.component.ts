@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 
 @Component({
   selector: 'app-accordion-item',
@@ -6,4 +6,14 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './accordionItem.component.html',
 })
-export class AccordionItemComponent {}
+export class AccordionItemComponent {
+  buttonClassName = input<string>();
+  contentClassName = input<string>();
+  defaultOpen = input<string>();
+  headingClassName = input<string>();
+  headingLevel = input<string>();
+  id = input<string>();
+  isControlledOpen = input<string>();
+  closeIconComponent = input<string>();
+  openIconComponent = input<string>();
+}

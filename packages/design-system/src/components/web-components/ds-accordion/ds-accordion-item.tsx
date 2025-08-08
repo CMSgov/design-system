@@ -10,6 +10,7 @@ const attributes = [
   'content-id',
   'default-open',
   'heading',
+  'heading-class-name',
   'heading-level',
 ] as const;
 
