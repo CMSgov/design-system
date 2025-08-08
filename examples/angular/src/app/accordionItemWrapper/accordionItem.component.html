@@ -1,4 +1,14 @@
-<ds-accordion-item>
+<ds-accordion-item
+  [attr.button-class-name]="buttonClassName()"
+  [attr.content-class-name]="contentClassName()"
+  [attr.default-open]="defaultOpen()"
+  [attr.heading-class-name]="headingClassName()"
+  [attr.heading-level]="headingLevel()"
+  [attr.id]="id()"
+  [attr.is-controlled-open]="isControlledOpen()"
+  [attr.close-icon-component]="closeIconComponent()"
+  [attr.open-icon-component]="openIconComponent()"
+>
   <div slot="heading">
     <ng-content select="item-heading"></ng-content>
   </div>
