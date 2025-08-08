@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-choice';
 
@@ -11,10 +11,18 @@ const defaultAttrs = {
 };
 
 function renderChoice(customAttrs = {}) {
-  return render(<ds-choice {...defaultAttrs} {...customAttrs} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    ...render(<ds-choice {...defaultAttrs} {...customAttrs} />),
+  };
 }
 
 describe('Choice', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('is a radio', () => {
     const { asFragment } = renderChoice({ type: 'radio' });
     expect(asFragment()).toMatchSnapshot();
@@ -37,10 +45,12 @@ describe('Choice', () => {
     expect(el).not.toBeChecked();
   });
 
-  it('is checked', () => {
-    renderChoice();
+  it('is checked', async () => {
+    jest.useFakeTimers();
+    const { user } = renderChoice();
     const el = screen.getByRole('checkbox');
-    userEvent.click(el);
+    await user.click(el);
+    jest.runAllTimers();
     expect(el).toBeChecked();
   });
 
@@ -156,22 +166,25 @@ describe('Choice', () => {
     expect(labelB.getAttribute('for')).toBe(inputB.id);
   });
 
-  it('fires a custom ds-change event', () => {
-    renderChoice();
+  it('fires a custom ds-change event', async () => {
+    jest.useFakeTimers();
+    const { user } = renderChoice();
 
     const choiceRoot = document.querySelector('ds-choice');
     const mockHandler = jest.fn();
     choiceRoot.addEventListener('ds-change', mockHandler);
 
     const input = screen.getByRole('checkbox');
-    userEvent.click(input);
+    await user.click(input);
+    jest.runAllTimers();
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     choiceRoot.removeEventListener('ds-change', mockHandler);
   });
 
   it('fires a custom ds-blur event', async () => {
-    renderChoice();
+    jest.useFakeTimers();
+    const { user } = renderChoice();
 
     const choiceRoot = document.querySelector('ds-choice');
     const onBlur = jest.fn();
@@ -179,13 +192,10 @@ describe('Choice', () => {
     choiceRoot.addEventListener('ds-blur', onBlur);
     choiceRoot.addEventListener('ds-change', onChange);
 
-    userEvent.tab();
-    userEvent.tab();
-
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-    await act(async () => {
-      await sleep(40);
-    });
+    await user.tab();
+    jest.runAllTimers();
+    await user.tab();
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();
@@ -194,7 +204,9 @@ describe('Choice', () => {
   });
 
   describe('nested content', () => {
-    it('renders checked and unchecked children appropriately', () => {
+    it('renders checked and unchecked children appropriately', async () => {
+      const user = userEvent.setup();
+
       const { asFragment } = render(
         <ds-choice {...defaultAttrs}>
           <div slot="checked-children">
@@ -215,7 +227,7 @@ describe('Choice', () => {
 
       // Then check it and see if it re-rendered
       const input = screen.getByRole('checkbox');
-      userEvent.click(input);
+      await user.click(input);
 
       expect(screen.getByTestId('checked').textContent).toBe('I am checked');
       expect(screen.queryByTestId('unchecked')).toBeNull();

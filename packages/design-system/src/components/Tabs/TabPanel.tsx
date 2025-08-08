@@ -11,6 +11,9 @@ export interface TabPanelProps {
    * A unique `id`, to be used on the rendered panel element.
    */
   id: string;
+  /**
+   * Defaults to `false`
+   */
   selected?: boolean;
   disabled?: boolean;
   /**
@@ -38,12 +41,13 @@ export interface TabPanelProps {
 }
 
 export const TabPanel = (props: TabPanelProps) => {
+  const { selected = false } = props;
   const classes = classnames('ds-c-tabs__panel', props.className);
 
   return (
     <div
       aria-labelledby={props.tabId}
-      aria-hidden={!props.selected}
+      aria-hidden={!selected}
       className={classes}
       id={props.id}
       role="tabpanel"
@@ -55,9 +59,5 @@ export const TabPanel = (props: TabPanelProps) => {
 
 // Set component name to make child.type.displayName available to other components (eg. Tab)
 TabPanel.displayName = 'TabPanel';
-
-TabPanel.defaultProps = {
-  selected: false,
-};
 
 export default TabPanel;

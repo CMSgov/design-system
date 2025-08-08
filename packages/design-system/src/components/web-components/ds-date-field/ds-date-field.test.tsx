@@ -12,7 +12,10 @@ const defaultProps = {
 };
 
 function renderField(props = {}) {
-  return render(<ds-date-field {...props} />);
+  return {
+    user: userEvent.setup(),
+    ...render(<ds-date-field {...props} />),
+  };
 }
 
 function renderPicker(props = {}) {
@@ -55,10 +58,10 @@ describe('DateField', () => {
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
-  it('masks in label', () => {
-    renderField({ value: '11-01' });
+  it('masks in label', async () => {
+    const { user } = renderField({ value: '11-01' });
 
-    userEvent.click(getInput());
+    await user.click(getInput());
 
     const mask = screen.getByText(/11\/01\/YYYY/, {
       selector: 'span:not(.ds-u-visibility--screen-reader)',
@@ -79,8 +82,8 @@ describe('DateField', () => {
     expect(inputElement.id).toMatch(/date-field--\d+/);
   });
 
-  it('calls ds-change (onChange) when input changes', () => {
-    renderField(defaultProps);
+  it('calls ds-change (onChange) when input changes', async () => {
+    const { user } = renderField(defaultProps);
 
     const dateFieldElement = document.querySelector('ds-date-field');
     const mockChangeHandler = jest.fn();
@@ -88,7 +91,7 @@ describe('DateField', () => {
     dateFieldElement.addEventListener('ds-change', mockChangeHandler);
 
     const input = getInput() as HTMLInputElement;
-    userEvent.type(input, '1');
+    await user.type(input, '1');
 
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
     expect(input.value).toBe('1');
@@ -100,8 +103,8 @@ describe('DateField', () => {
     dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('calls ds-change and ds-blur when input loses focus', () => {
-    renderField({ value: '01-02-2000' });
+  it('calls ds-change and ds-blur when input loses focus', async () => {
+    const { user } = renderField({ value: '01-02-2000' });
 
     const dateFieldElement = document.querySelector('ds-date-field');
     const mockChangeHandler = jest.fn();
@@ -111,10 +114,10 @@ describe('DateField', () => {
 
     const input = getInput() as HTMLInputElement;
 
-    userEvent.click(input);
+    await user.click(input);
     expect(input).toHaveFocus();
 
-    userEvent.tab();
+    await user.tab();
     expect(input).not.toHaveFocus();
     expect(mockBlurHandler).toHaveBeenCalledTimes(1);
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
@@ -135,8 +138,8 @@ describe('DateField', () => {
       'to-date': new Date('01-02-2000').toISOString().split('T')[0],
     };
 
-    it('renders with picker', () => {
-      renderPicker(defaultPickerProps);
+    it('renders with picker', async () => {
+      const { user } = renderPicker(defaultPickerProps);
       const label = document.querySelector('.ds-c-label');
       const hint = document.querySelector('.ds-c-hint');
       expect(document.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
@@ -155,7 +158,7 @@ describe('DateField', () => {
       expect(button.firstElementChild.tagName).toBe('svg');
       expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
 
-      userEvent.click(button);
+      await user.click(button);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
   });

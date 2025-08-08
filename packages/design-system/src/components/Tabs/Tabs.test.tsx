@@ -25,7 +25,10 @@ function renderTabs(customProps = {}, children?: React.ReactNode) {
     children = createPanels(1);
   }
 
-  return render(<Tabs {...customProps}>{children}</Tabs>);
+  return {
+    user: userEvent.setup(),
+    ...render(<Tabs {...customProps}>{children}</Tabs>),
+  };
 }
 
 describe('Tabs', function () {
@@ -126,9 +129,9 @@ describe('Tabs', function () {
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
   });
 
-  it('calls onChange', () => {
+  it('calls onChange', async () => {
     const onChangeMock = jest.fn();
-    renderTabs(
+    const { user } = renderTabs(
       {
         onChange: onChangeMock,
         selectedId: getPanelId(1),
@@ -137,38 +140,38 @@ describe('Tabs', function () {
     );
 
     const tabEls = screen.getAllByRole('tab');
-    userEvent.click(tabEls[1]);
+    await user.click(tabEls[1]);
 
     expect(onChangeMock).toHaveBeenCalledTimes(1);
   });
 
-  it('selects the second panel on right arrow keyDown', () => {
-    renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(2));
+  it('selects the second panel on right arrow keyDown', async () => {
+    const { user } = renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(2));
     const tabEls = screen.getAllByRole('tab');
     // Grab all panels. Hidden and visible
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
     tabEls[0].focus();
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
   });
 
-  it('selects the first panel on left arrow keyDown', () => {
-    renderTabs({ defaultSelectedId: 'panel-2' }, createPanels(2));
+  it('selects the first panel on left arrow keyDown', async () => {
+    const { user } = renderTabs({ defaultSelectedId: 'panel-2' }, createPanels(2));
     const tabEls = screen.getAllByRole('tab');
     // Grab all panels. Hidden and visible
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
     tabEls[1].focus();
-    userEvent.keyboard('{ArrowLeft}');
+    await user.keyboard('{ArrowLeft}');
 
     expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
   });
 
-  it('skips disabled tabs on arrow key navigation', () => {
+  it('skips disabled tabs on arrow key navigation', async () => {
     const children = [
       <TabPanel key="1" id="panel-1" tab="Tab 1">
         Content 1
@@ -181,12 +184,12 @@ describe('Tabs', function () {
       </TabPanel>,
     ];
 
-    renderTabs({ defaultSelectedId: 'panel-1' }, children);
+    const { user } = renderTabs({ defaultSelectedId: 'panel-1' }, children);
 
     const tabEls = screen.getAllByRole('tab');
 
     tabEls[0].focus();
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(tabEls[2].getAttribute('aria-selected')).toBe('true');
     expect(tabEls[1].getAttribute('aria-disabled')).toBe('true');
@@ -194,27 +197,27 @@ describe('Tabs', function () {
     expect(tabEls[2]).toHaveFocus();
   });
 
-  it('selects the last panel on left arrow keyDown from first panel', () => {
-    renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(2));
+  it('selects the last panel on left arrow keyDown from first panel', async () => {
+    const { user } = renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(2));
     const tabEls = screen.getAllByRole('tab');
     // Grab all panels. Hidden and visible
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
     tabEls[0].focus();
-    userEvent.keyboard('{ArrowLeft}');
+    await user.keyboard('{ArrowLeft}');
 
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[1].getAttribute('aria-selected')).toBe('true');
   });
 
-  it('selects the first panel on right arrow keyDown from last panel', () => {
-    renderTabs({ defaultSelectedId: 'panel-2' }, createPanels(2));
+  it('selects the first panel on right arrow keyDown from last panel', async () => {
+    const { user } = renderTabs({ defaultSelectedId: 'panel-2' }, createPanels(2));
     const tabEls = screen.getAllByRole('tab');
     // Grab all panels. Hidden and visible
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
     tabEls[1].focus();
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(panelEls[0].getAttribute('aria-hidden')).toBe('false');
     expect(tabEls[0].getAttribute('aria-selected')).toBe('true');

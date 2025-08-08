@@ -10,6 +10,9 @@ const meta: Meta<typeof Button> = {
     children: 'Your button text here',
     onDark: false,
   },
+  argTypes: {
+    ref: { table: { disable: true } },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['a', 'button'],

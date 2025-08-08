@@ -42,7 +42,7 @@
   [
     "headingLevel",
     "Heading type to override default <h2>.\n\"1\"\n\"2\"\n\"3\"\n\"4\"\n\"5\"\n\"6\"",
-    "\"2\""
+    "-"
   ],
   [
     "hideIcon",
@@ -57,11 +57,6 @@
   [
     "onAnalyticsEvent",
     "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nRead more about analytics.\n\n(event: AnalyticsEvent) => void",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLDivElement>",
     "-"
   ],
   [

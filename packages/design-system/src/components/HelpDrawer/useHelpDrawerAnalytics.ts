@@ -1,4 +1,4 @@
-import { useAnalyticsContent, eventExtensionText } from '../analytics';
+import { eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { config } from '../config';
 import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';

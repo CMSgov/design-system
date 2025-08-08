@@ -1,7 +1,7 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import DateInput, { DateInputProps } from './DateInput';
-import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
 
 const defaultProps: DateInputProps = {
   dayName: 'day',
@@ -15,7 +15,10 @@ const defaultProps: DateInputProps = {
 };
 
 function renderDateInput(customProps: Partial<DateInputProps> = {}) {
-  return render(<DateInput {...defaultProps} {...customProps} />);
+  return {
+    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    ...render(<DateInput {...defaultProps} {...customProps} />),
+  };
 }
 
 function expectInvalid(textField: HTMLElement) {
@@ -24,6 +27,11 @@ function expectInvalid(textField: HTMLElement) {
 }
 
 describe('DateInput', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('renders with all defaultProps', () => {
     renderDateInput();
 
@@ -137,52 +145,56 @@ describe('DateInput', () => {
       props.onChange.mockClear();
     });
 
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
+    afterEach(() => {
+      jest.clearAllTimers();
+      jest.useRealTimers();
+    });
 
-    it('calls onBlur when month is blurred', () => {
-      renderDateInput(props);
+    it('calls onBlur when month is blurred', async () => {
+      jest.useFakeTimers();
+      const { user } = renderDateInput(props);
       const monthInput = screen.getByRole('textbox', { name: /month/i });
-      userEvent.click(monthInput);
-      userEvent.tab();
+      await user.click(monthInput);
+      await user.tab();
       expect(props.onBlur).toHaveBeenCalledTimes(1);
       expect(props.onChange).not.toHaveBeenCalled();
     });
 
-    it('calls onChange when day is changed', () => {
-      renderDateInput(props);
+    it('calls onChange when day is changed', async () => {
+      jest.useFakeTimers();
+      const { user } = renderDateInput(props);
       const monthInput = screen.getByRole('textbox', { name: /month/i });
-      userEvent.type(monthInput, '1');
+      await user.type(monthInput, '1');
       expect(props.onBlur).not.toHaveBeenCalled();
       expect(props.onChange).toHaveBeenCalled();
     });
 
     it('calls onComponentBlur when component loses focus', async () => {
+      jest.useFakeTimers();
       const onComponentBlur = jest.fn();
-      renderDateInput({ ...props, onComponentBlur });
+      const { user } = renderDateInput({ ...props, onComponentBlur });
       const lastInput = screen.getByRole('textbox', { name: /year/i });
-      userEvent.type(lastInput, '1');
-      userEvent.tab();
-      // Because of implementation details, this event doesn't fire until 20ms have gone by
-      await sleep(25);
+      await user.type(lastInput, '1');
+      await user.tab();
+      jest.runAllTimers();
+
       expect(onComponentBlur).toHaveBeenCalledTimes(1);
     });
 
     it('does not call onComponentBlur when focus switches to other date component', async () => {
+      jest.useFakeTimers();
       const onComponentBlur = jest.fn();
-      renderDateInput({ ...props, onComponentBlur });
+      const { user } = renderDateInput({ ...props, onComponentBlur });
       const firstInput = screen.getByRole('textbox', { name: /month/i });
-      userEvent.click(firstInput);
+      await user.click(firstInput);
       // Tab to the next input, which is still part of the DateField component
-      userEvent.tab();
-      // Because of implementation details, this event doesn't fire until 20ms have gone by
-      await sleep(25);
+      await user.tab();
       expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
-    it('formats the date as a single string', () => {
-      renderDateInput({
+    it('formats the date as a single string', async () => {
+      jest.useFakeTimers();
+      const { user } = renderDateInput({
         ...props,
         dateFormatter: (values) => `${values.month} ${values.day} ${values.year}`,
         monthDefaultValue: '1',
@@ -190,8 +202,8 @@ describe('DateInput', () => {
         yearDefaultValue: '3333',
       });
       const monthInput = screen.getByRole('textbox', { name: /month/i });
-      userEvent.type(monthInput, '2');
-      userEvent.tab();
+      await user.type(monthInput, '2');
+      await user.tab();
 
       expect(props.onChange).toHaveBeenCalledTimes(1);
       expect(props.onBlur).toHaveBeenCalledTimes(1);

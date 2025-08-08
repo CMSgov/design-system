@@ -16,6 +16,13 @@ const meta: Meta<typeof Drawer> = {
         },
       },
     },
+    children: {
+      control: 'text',
+      type: {
+        name: 'ReactNode' as 'string',
+        required: true,
+      },
+    },
     closeButtonText: {
       table: {
         defaultValue: {
@@ -99,7 +106,7 @@ export const Default: Story = {
           heading="Drawer Heading"
           isOpen={drawerOpen}
         >
-          {drawerContent}
+          {args.children || drawerContent}
         </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Click to toggle drawer
@@ -133,7 +140,7 @@ export const BackdropClickExits: Story = {
           footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="Drawer with Backdrop Click Exit"
         >
-          {drawerContent}
+          {args.children || drawerContent}
         </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
           Click to open drawer

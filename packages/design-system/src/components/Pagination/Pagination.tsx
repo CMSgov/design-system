@@ -21,6 +21,7 @@ interface BasePaginationProps {
   className?: string;
   /**
    * Renders compact layout. Optional.
+   * Defaults to `false`
    */
   compact?: boolean;
   /**
@@ -33,6 +34,7 @@ interface BasePaginationProps {
   headingLevel?: PaginationHeadingLevel;
   /**
    * Determines if navigation is hidden when current page is the first or last of Pagination page set. Optional.
+   * Defaults to `false`
    */
   isNavigationHidden?: boolean;
   /**
@@ -140,12 +142,12 @@ function paginationBuilder(page: number, pages: number): number[] {
 export function Pagination({
   ariaLabel,
   className,
-  compact,
+  compact = false,
   currentPage,
   renderHref,
   onPageChange,
-  headingLevel,
-  isNavigationHidden,
+  headingLevel = '2',
+  isNavigationHidden = false,
   startLabelText,
   startAriaLabel,
   endLabelText,
@@ -304,11 +306,5 @@ export function Pagination({
     </nav>
   );
 }
-
-Pagination.defaultProps = {
-  compact: false,
-  headingLevel: '2',
-  isNavigationHidden: false,
-};
 
 export default Pagination;

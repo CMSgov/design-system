@@ -1,6 +1,5 @@
 import { createTestRenderer } from '../__tests__/rendering';
 import { getByRole } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import './ds-accordion-item';
 
 const defaultAttrs = {
@@ -33,14 +32,14 @@ describe('ds-accordion-item', () => {
     expect(contentEl).toHaveClass('foobar');
   });
 
-  it('fires a custom ds-change event', () => {
-    const { customElement, shadowRoot } = renderAccordionItem();
+  it('fires a custom ds-change event', async () => {
+    const { customElement, shadowRoot, user } = renderAccordionItem();
 
     const mockHandler = jest.fn();
     customElement.addEventListener('ds-change', mockHandler);
 
     const button = getByRole(shadowRoot as any as HTMLElement, 'button');
-    userEvent.click(button);
+    await user.click(button);
 
     expect(mockHandler).toHaveBeenCalledTimes(1);
     customElement.removeEventListener('ds-change', mockHandler);

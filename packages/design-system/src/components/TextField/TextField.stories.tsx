@@ -17,6 +17,7 @@ const meta: Meta<typeof TextField> = {
   argTypes: {
     errorMessage: { control: 'text' },
     hint: { control: 'text' },
+    ref: { table: { disable: true } },
     requirementLabel: { control: 'text' },
     value: { control: 'text' },
   },

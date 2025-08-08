@@ -1,7 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Dropdown from './Dropdown';
 import { createRef, useEffect, useRef } from 'react';
+import Dropdown from './Dropdown';
 
 interface Option {
   label: string;
@@ -60,7 +60,10 @@ function makeDropdown(customProps = {}, options: number | Options = 1) {
   const props = { ...defaultProps, ...customProps };
   const component = <Dropdown {...props} options={generateOptions(options)} />;
 
-  return render(component);
+  return {
+    user: userEvent.setup({ delay: 50, advanceTimers: jest.advanceTimersByTime }),
+    ...render(component),
+  };
 }
 
 function getButton() {
@@ -75,11 +78,12 @@ function expectDropdownToBeClosed() {
   expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 }
 
-async function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 describe('Dropdown', () => {
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+
   it('dropdown matches snapshot', () => {
     const { container } = makeDropdown(
       {
@@ -107,10 +111,11 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field');
   });
 
-  it('adds size classes to the appropriate elements', () => {
-    makeDropdown({ size: 'small' });
+  it('adds size classes to the appropriate elements', async () => {
+    jest.useFakeTimers();
+    const { user } = makeDropdown({ size: 'small' });
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     const listContainer = screen.getByRole('listbox').parentElement;
     expect(button).toHaveClass('ds-c-field--small');
     expect(listContainer).toHaveClass('ds-c-field--small');
@@ -122,9 +127,10 @@ describe('Dropdown', () => {
     expect(button).toHaveClass('ds-c-field--inverse');
   });
 
-  it('shows error message', () => {
+  it('shows error message', async () => {
+    jest.useFakeTimers();
     const errorId = 'my-error';
-    const { container } = makeDropdown(
+    const { container, user } = makeDropdown(
       {
         errorMessage: 'Error',
         errorPlacement: 'top',
@@ -137,7 +143,7 @@ describe('Dropdown', () => {
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
 
-    userEvent.click(button);
+    await user.click(button);
 
     const listbox = screen.getByRole('listbox');
     expect(listbox).toHaveAttribute('aria-invalid', 'true');
@@ -147,8 +153,9 @@ describe('Dropdown', () => {
   });
 
   it('supports bottom placed error', async () => {
+    jest.useFakeTimers();
     const errorId = 'my-error';
-    const { container } = makeDropdown(
+    const { container, user } = makeDropdown(
       {
         errorMessage: 'Error',
         errorPlacement: 'bottom',
@@ -161,7 +168,7 @@ describe('Dropdown', () => {
     expect(button).toHaveAttribute('aria-describedby', errorId);
     expect(button).toHaveClass('ds-c-field--error');
 
-    userEvent.click(button);
+    await user.click(button);
 
     const listbox = screen.getByRole('listbox');
     expect(listbox).toHaveAttribute('aria-invalid', 'true');
@@ -177,20 +184,27 @@ describe('Dropdown', () => {
     expect(button).toHaveAttribute('disabled');
   });
 
-  it('calls the onChange handler', () => {
+  it('calls the onChange handler', async () => {
+    jest.useFakeTimers();
     const onChange = jest.fn();
     const onBlur = jest.fn();
-    makeDropdown({ value: '1', onChange, onBlur }, 5);
+    const { user } = makeDropdown({ value: '1', onChange, onBlur }, 5);
     const button = getButton();
-    userEvent.click(button);
+
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{enter}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
+
+    jest.runAllTimers();
+
     expect(onBlur).not.toHaveBeenCalled();
     expect(onChange).toHaveBeenCalled();
   });
 
   it('calls the onBlur handler', async () => {
+    jest.useFakeTimers();
+    const user = userEvent.setup({ delay: 25, advanceTimers: jest.advanceTimersByTime });
     const onChange = jest.fn();
     const onBlur = jest.fn();
     render(
@@ -204,27 +218,28 @@ describe('Dropdown', () => {
       </>
     );
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.tab();
+    await user.tab();
 
-    await act(async () => {
-      await sleep(40);
-    });
+    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalled();
     expect(onChange).not.toHaveBeenCalled();
     expectDropdownToBeClosed();
   });
 
-  it('pressing Escape closes the menu without making a selection', () => {
+  it('pressing Escape closes the menu without making a selection', async () => {
+    jest.useFakeTimers();
     const onChange = jest.fn();
-    makeDropdown({ value: '1', onChange }, 5);
+    const { user } = makeDropdown({ value: '1', onChange }, 5);
     const button = getButton();
-    userEvent.click(button);
+
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{escape}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Escape}');
+
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();
     expect(onChange).not.toHaveBeenCalled();
@@ -232,6 +247,8 @@ describe('Dropdown', () => {
   });
 
   it('pressing Tab selects the focused item and blurs away', async () => {
+    jest.useFakeTimers();
+    const user = userEvent.setup({ delay: 25, advanceTimers: jest.advanceTimersByTime });
     const onChange = jest.fn();
     const onBlur = jest.fn();
     render(
@@ -245,14 +262,13 @@ describe('Dropdown', () => {
       </>
     );
     const button = getButton();
-    userEvent.click(button);
-    userEvent.keyboard('{arrowdown}');
-    expectDropdownToBeOpen();
-    userEvent.tab();
 
-    await act(async () => {
-      await sleep(40);
-    });
+    await user.click(button);
+    await user.keyboard('{ArrowDown}');
+    expectDropdownToBeOpen();
+    await user.tab();
+
+    jest.runAllTimers();
 
     const list = screen.queryByRole('listbox');
     expect(list).toBeFalsy();
@@ -264,86 +280,94 @@ describe('Dropdown', () => {
   });
 
   it('supports single-character type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{l}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('l');
     let options = screen.getAllByRole('option');
     // Lummi tribe option should have focus and is 7th element in array
     expect(options[7]).toHaveFocus();
     // There is a 1 second delay on the type ahead functionality
-    await sleep(1000);
-    userEvent.keyboard('{n}');
+    jest.runAllTimers();
+    await user.keyboard('n');
     options = screen.getAllByRole('option');
     // Nisqually Indian Tribe option should have focus and is 6th element in array
     expect(options[6]).toHaveFocus();
   });
 
   it('can focus across multiple uses of type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     let button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{c}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('c');
     let options = screen.getAllByRole('option');
     // First option starts with c, so it should be in focus
     expect(options[1]).toHaveFocus();
-    userEvent.keyboard('{escape}');
+    await user.keyboard('{Escape}');
     expectDropdownToBeClosed();
     button = getButton();
-    await sleep(10);
-    userEvent.click(button);
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{l}');
+
+    await user.click(button);
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('l');
     options = screen.getAllByRole('option');
     // Lummi tribe option should have focus and is 7th element in array
     expect(options[7]).toHaveFocus();
   });
 
   it('does not move to the next item starting with the same letter', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{c}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('c');
     let options = screen.getAllByRole('option');
     // Confederated Tribes and Bands of the Yakama Nation is the first element in the options list
     expect(options[1]).toHaveFocus();
     // There is a 1 second delay on the type ahead functionality
-    await sleep(1000);
-    userEvent.keyboard('{c}');
+    jest.runAllTimers();
+    await user.keyboard('c');
     options = screen.getAllByRole('option');
     // We do not support moving to the next item starting with the same letter, so expect focus to remain the same
     expect(options[1]).toHaveFocus();
   });
 
   it('supports multi-character type ahead', async () => {
-    makeDropdown({}, dropdownOptions);
+    jest.useFakeTimers();
+    const { user } = makeDropdown({}, dropdownOptions);
     const button = getButton();
-    userEvent.click(button);
+    await user.click(button);
     const list = screen.getByRole('listbox');
-    userEvent.keyboard('{arrowdown}');
-    userEvent.type(list, 'c');
+    await user.keyboard('{ArrowDown}');
+    await user.type(list, 'c');
     let options = screen.getAllByRole('option');
     // Since we have only typed 'c' at this point we expect focus to be on the first element since it starts with 'c'
     expect(options[1]).toHaveFocus();
-    await sleep(40);
+    jest.advanceTimersByTime(40);
     // We are still within the 1 second type ahead window, so the search string will now be updated to 'cow'
-    userEvent.type(list, 'ow');
+    await user.type(list, 'ow');
     options = screen.getAllByRole('option');
     // Focus should update to the fourth item, the Cowlitz tribe
     expect(options[4]).toHaveFocus();
   });
 
-  it('automatically focuses on the selected option when opening', () => {
-    makeDropdown({ defaultValue: '3' }, 10);
+  it('automatically focuses on the selected option when opening', async () => {
+    jest.useFakeTimers();
+    const { user } = makeDropdown({ defaultValue: '3' }, 10);
     const button = getButton();
-    userEvent.click(button);
+    await act(async () => {
+      await user.click(button);
+    });
     expectDropdownToBeOpen();
+
     const options = screen.getAllByRole('option');
     expect(options[2]).toHaveFocus();
   });
@@ -381,7 +405,8 @@ describe('Dropdown', () => {
     expect(inputRef.mock.lastCall[0].tagName).toEqual('BUTTON');
   });
 
-  it('accepts optgroup children', () => {
+  it('accepts optgroup children', async () => {
+    const user = userEvent.setup({ delay: 25 });
     render(
       <Dropdown {...defaultProps}>
         <optgroup label="Group A">
@@ -396,13 +421,16 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
-    userEvent.click(getButton());
+    await act(async () => {
+      await user.click(getButton());
+    });
     expect(screen.getAllByRole('option').length).toEqual(6);
     const list = screen.getByRole('listbox');
     expect(list).toMatchSnapshot();
   });
 
-  it('accepts DropdownOptGroup objects in options prop', () => {
+  it('accepts DropdownOptGroup objects in options prop', async () => {
+    const user = userEvent.setup({ delay: 25 });
     const options = [
       {
         label: 'Group A',
@@ -422,14 +450,15 @@ describe('Dropdown', () => {
       },
     ];
     render(<Dropdown {...defaultProps} options={options} />);
-    userEvent.click(getButton());
+    await user.click(getButton());
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(2); // Groups
     const items = screen.getAllByRole('option');
     expect(items.length).toEqual(6);
   });
 
-  it('accepts option children', () => {
+  it('accepts option children', async () => {
+    const user = userEvent.setup({ delay: 25 });
     render(
       <Dropdown {...defaultProps}>
         <option value="1">Option 1</option>
@@ -437,12 +466,13 @@ describe('Dropdown', () => {
         <option value="3">Option 3</option>
       </Dropdown>
     );
-    userEvent.click(getButton());
+    await user.click(getButton());
     const list = screen.getByRole('listbox');
     expect(list.children.length).toEqual(3);
   });
 
-  it('passes arbitrary attributes to rendered options', () => {
+  it('passes arbitrary attributes to rendered options', async () => {
+    const user = userEvent.setup();
     render(
       <Dropdown {...defaultProps}>
         <option value="1">Option 1</option>
@@ -452,12 +482,13 @@ describe('Dropdown', () => {
         <option value="3">Option 3</option>
       </Dropdown>
     );
-    userEvent.click(getButton());
+    await user.click(getButton());
     const options = screen.getAllByRole('option');
     expect(options[1]).toHaveAttribute('data-hello-world', 'hi');
   });
 
-  it('passes arbitrary attributes to rendered optgroups', () => {
+  it('passes arbitrary attributes to rendered optgroups', async () => {
+    const user = userEvent.setup();
     const { container } = render(
       <Dropdown {...defaultProps}>
         <option value="1">Option 1</option>
@@ -467,8 +498,10 @@ describe('Dropdown', () => {
         </optgroup>
       </Dropdown>
     );
-    userEvent.click(getButton());
+
+    await user.click(getButton());
     expectDropdownToBeOpen();
+
     const groupLabel = container.querySelector('#group-label-id');
     expect(groupLabel).toHaveAttribute('data-extra-attribute', 'something');
   });
@@ -485,7 +518,8 @@ describe('Dropdown', () => {
     expect(inputRefCallback).toHaveBeenCalled();
   });
 
-  it('can be a controlled component', () => {
+  it('can be a controlled component', async () => {
+    const user = userEvent.setup({ delay: 25 });
     const onChange = jest.fn();
     const options = generateOptions(3);
     const baseProps = { ...defaultProps, onChange, options };
@@ -495,10 +529,12 @@ describe('Dropdown', () => {
 
     // Clicking an item should call `onChange` but should do nothing else
     // because this is a controlled component
-    userEvent.click(button);
+
+    await user.click(button);
     expectDropdownToBeOpen();
-    userEvent.keyboard('{arrowdown}');
-    userEvent.keyboard('{enter}');
+    await user.keyboard('{ArrowDown}');
+    await user.keyboard('{Enter}');
+
     expect(onChange).toHaveBeenCalled();
     expect(button.textContent).toEqual(options[1].label);
 

@@ -1,6 +1,6 @@
-import FilterChip from './FilterChip';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import FilterChip from './FilterChip';
 
 describe('FilterChip', () => {
   const renderFilterChip = (customProps = {}) => {
@@ -10,7 +10,10 @@ describe('FilterChip', () => {
       id: 'static-id',
     };
     const props = { ...defaultProps, ...customProps };
-    return render(<FilterChip {...props} />);
+    return {
+      user: userEvent.setup(),
+      ...render(<FilterChip {...props} />),
+    };
   };
 
   it('should include children as label', () => {
@@ -35,43 +38,43 @@ describe('FilterChip', () => {
   });
 
   describe('onDelete', () => {
-    it('should call onDelete function when clicked', () => {
+    it('should call onDelete function when clicked', async () => {
       const onDelete = jest.fn();
-      renderFilterChip({ onDelete: onDelete });
+      const { user } = renderFilterChip({ onDelete: onDelete });
 
       const chipEl = screen.getByRole('button');
       expect(chipEl).toBeDefined();
 
-      userEvent.click(chipEl);
+      await user.click(chipEl);
       expect(onDelete).toHaveBeenCalled();
     });
 
-    it('should call onDelete when certain keyboard keys are pressed', () => {
+    it('should call onDelete when certain keyboard keys are pressed', async () => {
       const onDelete = jest.fn();
-      renderFilterChip({ onDelete: onDelete });
+      const { user } = renderFilterChip({ onDelete: onDelete });
 
       const chipEl = screen.getByRole('button');
       chipEl.focus();
 
-      userEvent.keyboard('{Enter}');
+      await user.keyboard('{Enter}');
       expect(onDelete).toHaveBeenCalledTimes(1);
-      userEvent.keyboard('{Space}');
+      await user.keyboard('{Space}');
       expect(onDelete).toHaveBeenCalledTimes(2);
-      userEvent.keyboard('{Backspace}');
+      await user.keyboard('{Backspace}');
       expect(onDelete).toHaveBeenCalledTimes(3);
-      userEvent.keyboard('{Delete}');
+      await user.keyboard('{Delete}');
       expect(onDelete).toHaveBeenCalledTimes(4);
     });
 
-    it('should not call onDelete when most keyboard keys are pressed', () => {
+    it('should not call onDelete when most keyboard keys are pressed', async () => {
       const onDelete = jest.fn();
-      renderFilterChip({ onDelete: onDelete });
+      const { user } = renderFilterChip({ onDelete: onDelete });
 
       const chipEl = screen.getByRole('button');
       chipEl.focus();
-      userEvent.keyboard('{Tab}');
+      await user.keyboard('{Tab}');
       expect(onDelete).not.toHaveBeenCalled();
-      userEvent.keyboard('a');
+      await user.keyboard('a');
       expect(onDelete).not.toHaveBeenCalled();
     });
   });
