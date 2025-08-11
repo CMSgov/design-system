@@ -32,6 +32,16 @@ body:
     attributes:
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity/Impact
+      options:
+        - 'High: Affects PI objectives, breaks 508 compliance, breaks application'
+        - 'Medium: Product teams can use workaround but still blocker'
+        - 'Low: Nice to have/UX improvement suggestion'
+    validations:
+      required: true
   - type: markdown
     attributes:
       value: 'Desktop (please complete the following information):'
