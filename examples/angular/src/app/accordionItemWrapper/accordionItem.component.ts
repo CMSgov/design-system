@@ -13,7 +13,6 @@ export class AccordionItemComponent {
   headingClassName = input<string>();
   headingLevel = input<string>();
   id = input<string>();
-  isControlledOpen = input<string>();
   closeIconComponent = input<string>();
   openIconComponent = input<string>();
 }
