@@ -14,6 +14,7 @@ healthcare:
 medicare:
   figmaNodeId: 7-104
 ---
+import { Alert } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -56,10 +57,36 @@ medicare:
 
 ## Accessibility
 
-### Accessibility guidance
+- Avoid using placeholder text as a substitute for labels. Most browsers render placeholder text with low contrast, making it difficult to read for many users. Instead, use the required `label` prop to provide a meaningful description of the text field.
+- Optionally, use the `hint` prop to provide additional contextual information or clearer directions for use. Using the `label` and `hint` props provides benefits such as reducing cognitive load and increasing the interaction area for users navigating with assistive technology.
+- For numeric inputs (e.g., phone numbers, Social Security numbers, credit card numbers), use the `mask` prop together with the `numeric` prop. The `numeric` prop sets `inputMode`, `type`, and `pattern` for better accessibility and consistency, avoiding the pitfalls of `type="number"`. This approach also helps prevent splitting the input into multiple fields, which can result in unclear or inaccessible labeling for screen reader users.
 
-- Group each set of thematically related controls in a `fieldset` element. Use the `legend` element to offer a label within each `fieldset`. The `fieldset` and `legend` elements make it easier for screen reader users to navigate the form.
-- Keep your form blocks in a vertical pattern. This approach is ideal, from an accessibility standpoint, because of limited vision that makes it hard to scan from left to right.
+<Alert heading="Use semantic grouping and accessible layouts">
+  For forms with thematically related grouped inputs (such as date of birth or address fields), use a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> to provide semantic grouping. This helps screen reader users navigate and understand the structure of the form. See our <a href="/patterns/Forms/forms">form guidance</a> for more information.
+  <br /><br />
+  Keep your form blocks in a vertical pattern. This layout is more accessible, especially for users with limited vision who may find it difficult to scan from left to right.
+</Alert>
+
+## Accessibility testing
+
+For mobile devices, text fields should work in both portrait and landscape orientation with no loss of functionality.
+
+### Keyboard navigation
+
+- Users must be able to use only a keyboard to navigate to the text field, type in it, and navigate away from it.
+- Focus indicators must be clearly visible around the text fields.
+
+### Screen reader
+
+- Screen readers must announce text fields and their labels in the same order they appear visually on the page.
+- Screen readers must announce the purpose of each text field (e.g., “Edit, blank. Type in text.”).
+- Screen readers must announce associated labels and instructions when a text field receives focus (e.g., “Enter first name.”).
+- Screen readers must announce any text provided to the `ariaLabel` prop.
+
+### Zoom magnification
+
+- When zoomed to 200%, text fields must remain legible, functional, and properly sized.
+
 
 ## Code
 
