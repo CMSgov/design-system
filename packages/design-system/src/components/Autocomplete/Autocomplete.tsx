@@ -345,6 +345,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
           onClick={() => {
             state.setSelectedKey(null);
             state.setInputValue('');
+            inputRef.current?.focus();
             if (state.selectedKey) {
               onChange?.(null);
             }
