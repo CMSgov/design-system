@@ -19,8 +19,8 @@
     <!-- Wrapped Accordion -->
     <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Accordion</h2>
     <app-accordion [bordered]="bordered" [headingLevel]="headingLevel">
-      <app-accordion-item>
-        <item-heading>The First Ammendment</item-heading>
+      <app-accordion-item defaultOpen="true">
+        <item-heading>The First Amendment</item-heading>
         <ds-alert> This is an alert inside of an accordion item. </ds-alert>
         <p>
           The First Amendment provides several rights protections: to express ideas through speech
@@ -44,8 +44,8 @@
           >
         </div>
       </app-accordion-item>
-      <app-accordion-item>
-        <item-heading>The Third Ammendment</item-heading>
+      <app-accordion-item headingClassName="ds-u-margin-top--1">
+        <item-heading>The Third Amendment</item-heading>
         <ds-alert variation="warn">
           This is an alert inside of an accordion item that is warning you.</ds-alert
         >
@@ -55,8 +55,8 @@
           over private homes.
         </p>
       </app-accordion-item>
-      <app-accordion-item>
-        <item-heading>The Fourth Ammendment</item-heading>
+      <app-accordion-item headingClassName="ds-u-margin-top--1">
+        <item-heading>The Fourth Amendment</item-heading>
         <ds-alert variation="error">
           This is an alert inside of an accordion item that informing you of an error.</ds-alert
         >
@@ -82,12 +82,10 @@
     <app-autocomplete
       [ariaClearLabel]="ariaClearLabel"
       [ariaCompleteLabel]="ariaCompleteLabel"
-      [autofocus]="autofocus"
       [className]="className"
       [disabled]="disabled"
       [errorId]="errorId"
       [errorMessageClassName]="errorMessageClassName"
-      [errorMessage]="errorMessage"
       [errorPlacement]="errorPlacement"
       [hintClassName]="hintClassName"
       [hintId]="hintId"
