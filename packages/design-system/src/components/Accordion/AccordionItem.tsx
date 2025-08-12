@@ -101,9 +101,6 @@ export const AccordionItem = ({
     <OpenIconComponent className="ds-c-accordion__button-icon" id={`${contentId}__icon`} />
   );
 
-  // eslint-disable-next-line no-console
-  console.log({ headingClasses, headingClassName });
-
   if (heading) {
     return (
       <>
