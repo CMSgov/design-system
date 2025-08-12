@@ -19,26 +19,6 @@ medicare:
 
 <StorybookExample componentName="pagination" storyId="components-pagination--default" />
 
-## Code
-
-### React
-
-Pagination requires three properties: `totalPages`, which is the total number of pages, `currentPage`, which acts a means to track the current page, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
-
-Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
-
-<SeeStorybookForGuidance storyId={'components-pagination--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-pagination--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Pagination components:
-
-<ComponentThemeOptions componentname="pagination" />
-
 ## Guidance
 
 Paginated content is any content split into multiple pages determined by a specific amount of content per page, not split by any meaningful attribute, like feature or subject or step. Search results and article collections are often paginated. Readers use the pagination component to move from page to page in paginated content, or directly to the first or last page of the paginated set.
@@ -64,17 +44,59 @@ Paginated content is any content split into multiple pages determined by a speci
 - Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
 - Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
 
-### Accessibility
+## Accessibility
 
-- Use a wrapping `<nav>` element to identify Pagination as a navigation section.
-- If more than one `<nav>` element is present on a page, Pagination **must** have an ARIA label attribute defined on the `<nav>` element that describes its purpose.
-- Use an unordered list for the navigation items as this allows screen readers to voice the number of elements in the Pagination component.
-- Use `aria-current="page"` on the current page's element to properly voice the current page for screen readers.
-- Voice the word "page" before the page numbers.
-- If _Previous_ navigation link has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the first pagination page link.
-- If pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the next pagination page link.
-- If last pagination page has keyboard focus, pressing <kbd>TAB</kbd> key **must** move focus to the _Next_ pagination navigation link.
-- Once a pagination page has been clicked, focus should shift to the top-level piece of content on that page, usually an `<h1>`.
+The Pagination component has been tested against, and meets, WCAG 2.0 standards for text size, color contrast, and screenreader usage.
+
+### Accessibility Guidance
+
+- The Pagination component uses a wrapping `<nav>` element to identify it as a navigation section to screen readers and other assistive technologies.
+- Itʼs likely that you will have more than one `<nav>` on a page. If you do, Pagination **must** have an ARIA label attribute defined on the `<nav>` element that describes its purpose. To do this, supply a string value to the `ariaLabel` prop on the component adequately describing the purpose. “Pagination resultsˮ is a possible option.
+- The component sets `aria-current="page"` on the current page's anchor link element to properly voice the current page for screen readers.
+- Our component adds an aria label to the pagination item with the word “pageˮ and the page number so that screen readers will voice the word "page" before the page numbers automatically.
+- Once a pagination page has been clicked, the user should be redirected to that content and focus should shift to the top-level piece of content on that page, usually an `<h1>`, but this depends on content being paginated over.
+- Uses a link element for the current page to ensure it is announced consistently by screen readers, even when navigating by element or tabbing.
+- Avoid large horizontal gaps between pagination elements, as this may cause users with limited vision or mobility to miss items when scanning. For mobile devices and devices with smaller screens we offer the `compact` boolean prop which changes the layout from using a series of anchor links for each page to instead rendering the text “Page X of Yˮ.
+
+### Accessibility Testing
+
+#### Keyboard navigation
+
+- If the Previous navigation link has keyboard focus, pressing the **TAB** key should move focus to the first pagination page link.
+- If a pagination page link has keyboard focus, pressing **TAB** should move focus to the next pagination link in sequence.
+- If the last pagination page link has keyboard focus, pressing **TAB** should move focus to the Next navigation link.
+- The currently active page link should not receive keyboard focus when pressing **TAB**.
+- Verify that keyboard focus is not trapped in the pagination and that users can tab into and out of the component.
+- Confirm a visible focus indicator appears on each pagination link when using a keyboard.
+
+#### Zoom magnification
+
+- When zoomed to 200%, pagination content must remain legible, functional, and properly sized. The component should automatically adjust to mobile styling.
+
+#### Screen reader
+
+- Screen readers must announce pagination links in the correct visual and numerical order.
+- Screen readers must announce the role and label of each link (e.g., 'link, page 10').
+
+## Code
+
+### React
+
+Pagination requires three properties: `totalPages`, which is the total number of pages, `currentPage`, which acts a means to track the current page, and `onPageChange`, which is a function used to handle state changes when the user clicks a page.
+
+Pagination also comes in two styles: default, which is compact on mobile viewports and expands to reveal individual pages on larger viewports, and `compact`, which maintains the compact layout regardless of viewport size.
+
+<SeeStorybookForGuidance storyId={'components-pagination--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-pagination--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Pagination components:
+
+<ComponentThemeOptions componentname="pagination" />
 
 ## Component maturity
 
