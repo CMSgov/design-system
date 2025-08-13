@@ -19,22 +19,6 @@ medicare:
 
 <StorybookExample componentName="filterChip" storyId="components-filterchip--multiple-chips" />
 
-## Code
-
-### React
-
-<SeeStorybookForGuidance storyId={'components-filterchip--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-filter-chip--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize FilterChip components:
-
-<ComponentThemeOptions componentname="filter-chip" />
-
 ## Guidance
 
 ### When to use
@@ -54,9 +38,42 @@ The following CSS variables can be overridden to customize FilterChip components
 - Allow adequate spacing (at least 8px) between each filter chip, as much as the design will allow.
 - The colors of the Filter Chip can be overriden using the CSS variables listed below, but should not be overriden with colors outside of the color palette.
 
-### Accessibility
+## Accessibility
 
-- `Enter`, `Backspace`, `Delete`, and `Spacebar` will remove the tag when it is in focus
+The filter chip component has been tested against, and meets, WCAG 2.0 standards for size, color contrast, and screen reader usage.
+
+- The filter chip itself does not need a label, as the text content within it is sufficient. However, actions that the filter can take (like remove) do need to be labeled. You should take advantage of the `ariaClearLabel` prop to provide additional text for screen reader support.
+- The chip should receive focus.
+- `Enter`, `Backspace`, and `Delete` will remove the tag when it is in focus.
+
+### Accessibility testing
+
+#### Screen reader testing
+
+- When navigating to a filter chip, screen readers should announce the label text and any actions (like remove) separately.
+- Screen readers should identify filter chips as buttons.
+
+#### Keyboard testing
+
+- Users should be able to navigate to the chip with their keyboard.
+- Filter chips should receive focus.
+- `Enter`, `Backspace`, and `Delete` should remove the tag or otherwise trigger the filter action when it is in focus.
+
+## Code
+
+### React
+
+<SeeStorybookForGuidance storyId={'components-filterchip--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-filter-chip--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize FilterChip components:
+
+<ComponentThemeOptions componentname="filter-chip" />
 
 ## Component maturity
 
