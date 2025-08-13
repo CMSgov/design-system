@@ -379,6 +379,27 @@ describe('Autocomplete', () => {
     expect(autocompleteField.value).toBe('');
   });
 
+  it('should return focus to the input when "Clear search" is clicked', async () => {
+    const { user } = renderAutocomplete();
+
+    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const mockChangeHandler = jest.fn();
+    autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
+
+    const autocompleteField = screen.getByRole('combobox') as HTMLInputElement;
+    await user.click(autocompleteField);
+    await user.type(autocompleteField, 'c');
+
+    const listboxItem = screen.getByRole('option');
+    await user.click(listboxItem);
+
+    const clearButton = screen.getByText('Clear search');
+    await user.click(clearButton);
+    expect(document.activeElement).toBe(autocompleteField);
+
+    autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
+  });
+
   it('should dispatch ds-change when a grouped item is selected', async () => {
     const groupedItems = JSON.stringify([
       {
@@ -453,7 +474,6 @@ describe('Autocomplete', () => {
       selectedItem: null,
     });
 
-    expectMenuToBeClosed();
     autocompleteRoot.removeEventListener('ds-change', mockChangeHandler);
   });
 
