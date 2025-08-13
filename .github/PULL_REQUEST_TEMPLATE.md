@@ -9,7 +9,7 @@
 
 ## Checklist
 
-- [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/WNMGDS/) as `[WNMGDS-####] Title` or [NO-TICKET] if this is unticketed work.
+- [ ] Prefixed the PR title with the [Jira ticket number](https://jira.cms.gov/projects/CMSDS/) as `[CMSDS-####] Title` or [NO-TICKET] if this is unticketed work.
 - [ ] Selected appropriate `Type` (only one) label for this PR, if it is a breaking change, label should only be `Type: Breaking`
 - [ ] Selected appropriate `Impacts`, multiple can be selected.
 - [ ] Selected appropriate release milestone
