@@ -24,6 +24,10 @@ export interface AccordionItemProps {
    */
   heading: React.ReactNode | string;
   /**
+   * Class to be applied to the heading `<h{headingLevel}>` tag of an accordion item.
+   */
+  headingClassName?: string;
+  /**
    *  Heading type to override default `<h2>`.
    */
   headingLevel?: '1' | '2' | '3' | '4' | '5' | '6';
@@ -60,6 +64,7 @@ export const AccordionItem = ({
   contentClassName,
   defaultOpen,
   heading,
+  headingClassName,
   headingLevel,
   id,
   // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
@@ -70,6 +75,7 @@ export const AccordionItem = ({
 }: AccordionItemProps) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
+  const headingClasses = classNames('ds-c-accordion__heading', headingClassName);
   const HeadingTag = `h${headingLevel}` as const;
   const contentId = useId('accordion-item--', id);
   const buttonId = `${contentId}__button`;
@@ -98,7 +104,7 @@ export const AccordionItem = ({
   if (heading) {
     return (
       <>
-        <HeadingTag className="ds-c-accordion__heading">
+        <HeadingTag className={headingClasses}>
           <button
             className={buttonClasses}
             aria-expanded={isItemOpen}
