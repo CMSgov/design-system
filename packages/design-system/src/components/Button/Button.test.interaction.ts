@@ -14,7 +14,7 @@ describeByTheme((theme) => {
 
   test('Button focus', async ({ page }) => {
     await page.goto(storyUrl('components-button--default', theme));
-    await page.locator('text=Your button text here').focus();
+    await page.getByRole('button').focus();
     await expectScreenshot(page, `button--focus--${theme}.png`);
   });
 
