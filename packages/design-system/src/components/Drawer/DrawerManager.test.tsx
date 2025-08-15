@@ -1,5 +1,5 @@
-import { render, screen, getByRole, getByText } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, getByRole, getByText, render, screen } from '@testing-library/react';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 import { Button } from '../Button';
 import { Drawer } from './Drawer';
@@ -22,16 +22,19 @@ const SingleDrawer = ({ heading }) => {
 };
 
 function renderDrawerManager() {
-  return render(
-    <DrawerManager>
-      <p>Dummy content</p>
-      <div>
-        <SingleDrawer heading="drawer one" />
-        <SingleDrawer heading="drawer two" />
-        <SingleDrawer heading="drawer three" />
-      </div>
-    </DrawerManager>
-  );
+  return {
+    user: userEvent.setup(),
+    ...render(
+      <DrawerManager>
+        <p>Dummy content</p>
+        <div>
+          <SingleDrawer heading="drawer one" />
+          <SingleDrawer heading="drawer two" />
+          <SingleDrawer heading="drawer three" />
+        </div>
+      </DrawerManager>
+    ),
+  };
 }
 
 function getActiveDrawer() {
@@ -40,48 +43,62 @@ function getActiveDrawer() {
   return dialog;
 }
 
-function closeActiveDrawer() {
+async function closeActiveDrawer({ user }: { user: UserEvent }) {
   const drawer = getActiveDrawer();
   const closeButton = getByText(drawer, 'Close');
-  userEvent.click(closeButton);
+  await user.click(closeButton);
 }
 
 describe('DrawerManager', () => {
-  it('opens a single dialog', () => {
-    renderDrawerManager();
+  it('opens a single dialog', async () => {
+    const { user } = renderDrawerManager();
 
     // Open the first one
-    userEvent.click(screen.getByText('open drawer one'));
+    await act(async () => {
+      await user.click(screen.getByText('open drawer one'));
+    });
 
     // And close it
-    closeActiveDrawer();
+    await act(async () => {
+      await closeActiveDrawer({ user });
+    });
 
     // Make sure it's closed
     expect(screen.queryByRole('dialog')).toBe(null);
   });
 
-  it('toggles active state of single dialog', () => {
-    renderDrawerManager();
-
+  it('toggles active state of single dialog', async () => {
+    const { user } = renderDrawerManager();
     // Open the first one
-    userEvent.click(screen.getByText('toggle drawer one'));
+    await act(async () => {
+      await user.click(screen.getByText('toggle drawer one'));
+    });
 
     // And close it
-    closeActiveDrawer();
+    await act(async () => {
+      await closeActiveDrawer({ user });
+    });
 
     // Make sure it's closed
     expect(screen.queryByRole('dialog')).toBe(null);
   });
 
-  it('closes the first dialog when the second dialog is openend', () => {
-    renderDrawerManager();
+  it('closes the first dialog when the second dialog is opened', async () => {
+    const { user } = renderDrawerManager();
     const toggle1 = screen.getByText('toggle drawer one');
     const toggle2 = screen.getByText('toggle drawer two');
     const getActiveHeading = () => getByRole(getActiveDrawer(), 'heading');
 
-    userEvent.click(toggle1);
+    await act(async () => {
+      await user.click(toggle1);
+    });
+
     expect(getActiveHeading()).toHaveTextContent('drawer one');
-    userEvent.click(toggle2);
+
+    await act(async () => {
+      await user.click(toggle2);
+    });
+
     expect(getActiveHeading()).toHaveTextContent('drawer two');
   });
 });

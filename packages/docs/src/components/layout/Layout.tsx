@@ -1,25 +1,21 @@
+import { sendViewEvent, SkipNav, UsaBanner } from '@cmsgov/design-system';
 import type * as React from 'react';
 import { useEffect, useState } from 'react';
-import Footer from './DocSiteFooter';
-import SideNav from './SideNav/SideNav';
-import PageHeader from './PageHeader';
-import TableOfContents from './TableOfContents';
-import TableOfContentsMobile from './TableOfContentsMobile';
-import HeaderFullWidth from './HeaderFullWidth';
-import { Helmet } from 'react-helmet';
-import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import {
-  LocationInterface,
   FrontmatterInterface,
+  LocationInterface,
   TableOfContentsItem,
 } from '../../helpers/graphQLTypes';
-import { withPrefix } from 'gatsby';
-import { sendViewEvent } from '@cmsgov/design-system';
-
 import '../../styles/index.scss';
+import Footer from './DocSiteFooter';
+import FilterDialogManager from './FilterDialog/FilterDialogManager';
+import HeaderFullWidth from './HeaderFullWidth';
+import PageHeader from './PageHeader';
+import SideNav from './SideNav/SideNav';
 import { getThemeData } from './SideNav/themeVersionData';
 import ThemeVersionSection from './SideNav/ThemeVersionSection';
-import FilterDialogManager from './FilterDialog/FilterDialogManager';
+import TableOfContents from './TableOfContents';
+import TableOfContentsMobile from './TableOfContentsMobile';
 
 interface LayoutProps {
   /**
@@ -94,43 +90,6 @@ const Layout = ({
 
   return (
     <div data-theme={theme} id={pageId}>
-      <Helmet
-        title={tabTitle}
-        htmlAttributes={{
-          lang: 'en',
-        }}
-      >
-        <meta
-          property="og:title"
-          content={
-            slug?.includes('not-in-sidebar') ? baseTitle : `${frontmatter?.title} - ${baseTitle}`
-          }
-        />
-        <meta
-          property="og:type"
-          content={slug?.includes('not-in-sidebar') ? 'website' : 'article'}
-        />
-        <meta property="og:url" content={location.origin + location.pathname} />
-        <meta
-          property="og:description"
-          content={
-            frontmatter.intro
-              ? frontmatter.intro
-              : 'The CMS Design System is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
-          }
-        />
-        <script>{`window.tealiumEnvironment = "${env}";`}</script>
-        <script src={`https://tealium-tags.cms.gov/cms-design/${env}/utag.sync.js`}></script>
-        <script type="text/javascript">
-          {'window.utag_cfg_ovrd = window.utag_cfg_ovrd || {}; window.utag_cfg_ovrd.noview = true;'}
-        </script>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          title="docThemeCss"
-          href={withPrefix(`themes/${theme}-theme.css`)}
-        />
-      </Helmet>
       <SkipNav href="#main" />
 
       <UsaBanner className="ds-u-display--none ds-u-md-display--block" />

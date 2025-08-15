@@ -45,7 +45,8 @@ export interface BaseChoiceProps {
    */
   className?: string;
   /**
-   * @hide-prop Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
+   * @ignore
+   * Internal prop used to determine if a Choice is the child of a another component (like ChoiceList or MonthPicker). Used to hide excessive error messages.
    */
   _choiceChild?: boolean;
   /**
@@ -110,7 +111,7 @@ const dsChoiceEmitter = new EvEmitter();
  * [radio](https://design.cms.gov/components/radio/) documentation pages.
  */
 
-export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
+export const Choice = ({ _choiceChild = false, ...props }: ChoiceProps) => {
   const initialCheckedState = props.checked ?? props.defaultChecked;
   const [internalCheckedState, setChecked] = useState(initialCheckedState);
   const isControlled = props.checked !== undefined;
@@ -209,10 +210,6 @@ export const Choice = ({ _choiceChild, ...props }: ChoiceProps) => {
       {checked ? checkedChildren : uncheckedChildren}
     </div>
   );
-};
-
-Choice.defaultProps = {
-  _choiceChild: false,
 };
 
 export default Choice;

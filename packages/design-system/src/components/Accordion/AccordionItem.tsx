@@ -9,14 +9,16 @@ export interface AccordionItemProps {
    * Class to be applied to the header `<button>` of an accordion item.
    */
   buttonClassName?: string;
-
+  /**
+   * Content to display within the accordion item.
+   */
   children?: React.ReactNode;
   /**
    * Class to be applied to the content `<div>` tag of an accordion item.
    */
   contentClassName?: string;
   /**
-   * Boolean to expand the accordion.
+   * Boolean to expand the accordion. Default is `false`.
    */
   defaultOpen?: boolean;
   /**
@@ -62,16 +64,16 @@ export const AccordionItem = ({
   buttonClassName,
   children,
   contentClassName,
-  defaultOpen,
+  defaultOpen = false,
   heading,
   headingClassName,
-  headingLevel,
+  headingLevel = '2',
   id,
   // TODO: Explore deprecating `isControlledOpen` in favor of `isOpen`
   isControlledOpen,
   onChange,
-  closeIconComponent,
-  openIconComponent,
+  closeIconComponent = RemoveIcon,
+  openIconComponent = AddIcon,
 }: AccordionItemProps) => {
   const contentClasses = classNames('ds-c-accordion__content', contentClassName);
   const buttonClasses = classNames('ds-c-accordion__button', buttonClassName);
@@ -127,13 +129,6 @@ export const AccordionItem = ({
       </>
     );
   }
-};
-
-AccordionItem.defaultProps = {
-  defaultOpen: false,
-  headingLevel: '2',
-  closeIconComponent: RemoveIcon,
-  openIconComponent: AddIcon,
 };
 
 export default AccordionItem;

@@ -1,6 +1,5 @@
 import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { typescript as typescriptPresets } from '@storybook/core-server/dist/presets/common-preset';
 
 const extensionGlob = '*.stories.@(js|jsx|ts|tsx)';
 
@@ -8,8 +7,8 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
-    'storybook-addon-fetch-mock',
-    '@storybook/addon-webpack5-compiler-babel',
+    getAbsolutePath('@storybook/addon-viewport'),
+    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
   ],
   previewHead: (head) => `
     ${head}
@@ -25,7 +24,14 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      ...typescriptPresets().reactDocgenTypescriptOptions,
+      // Following options are inlined from Storybook's internal defaults (v8.0.5),
+      // since the `typescript` preset function is no longer safely importable in 8.6.1+
+      // Source: https://github.com/storybookjs/storybook/blob/v8.0.5/code/lib/core-server/src/presets/common-preset.ts#L135-L146
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      savePropValueAsString: true,
+      // Added manually to reduce VRT diff noise in union types.
       shouldSortUnions: true,
     },
   },
@@ -33,9 +39,7 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+  docs: {},
 };
 
 export default config;

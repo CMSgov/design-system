@@ -5,7 +5,10 @@ const defaultProps = {
   'default-selected-id': 'panel-1',
 };
 function renderTabs(props = {}, children = []) {
-  return render(<ds-tabs {...(props as any)}>{children}</ds-tabs>);
+  return {
+    user: userEvent.setup(),
+    ...render(<ds-tabs {...(props as any)}>{children}</ds-tabs>),
+  };
 }
 const children = [
   <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
@@ -76,8 +79,8 @@ describe('ds-tabs', () => {
     expect(screen.getByText(/Nested content for tab 1\./)).toBeInTheDocument();
   });
 
-  it('switches tabs when clicked and triggers ds-change event', () => {
-    renderTabs(defaultProps, children);
+  it('switches tabs when clicked and triggers ds-change event', async () => {
+    const { user } = renderTabs(defaultProps, children);
 
     const tabsElement = document.querySelector('ds-tabs');
     const mockChangeHandler = jest.fn();
@@ -85,7 +88,7 @@ describe('ds-tabs', () => {
 
     const tabEls = screen.getAllByRole('tab');
 
-    userEvent.click(tabEls[1]);
+    await user.click(tabEls[1]);
 
     expect(mockChangeHandler).toHaveBeenCalledTimes(1);
     expect(mockChangeHandler.mock.calls[0][0].detail).toEqual({
@@ -101,15 +104,15 @@ describe('ds-tabs', () => {
     tabsElement.removeEventListener('ds-change', mockChangeHandler);
   });
 
-  it('selects the second panel on right arrow keyDown', () => {
-    renderTabs(defaultProps, children);
+  it('selects the second panel on right arrow keyDown', async () => {
+    const { user } = renderTabs(defaultProps, children);
     const tabEls = screen.getAllByRole('tab');
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
 
     tabEls[0].focus();
     expect(tabEls[0]).toHaveFocus();
 
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(tabEls[1]).toHaveFocus();
 
@@ -117,11 +120,11 @@ describe('ds-tabs', () => {
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'false');
   });
 
-  it('skips disabled tabs on arrow key navigation', () => {
-    renderTabs(defaultProps, childrenWithDisabledTabPanel);
+  it('skips disabled tabs on arrow key navigation', async () => {
+    const { user } = renderTabs(defaultProps, childrenWithDisabledTabPanel);
     const tabEls = screen.getAllByRole('tab');
     tabEls[0].focus();
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(tabEls[2].getAttribute('aria-selected')).toBe('true');
     expect(tabEls[1].getAttribute('aria-disabled')).toBe('true');
@@ -129,8 +132,8 @@ describe('ds-tabs', () => {
     expect(tabEls[2]).toHaveFocus();
   });
 
-  it('selects the first panel on left arrow keyDown', () => {
-    renderTabs(defaultProps, children);
+  it('selects the first panel on left arrow keyDown', async () => {
+    const { user } = renderTabs(defaultProps, children);
 
     const tabEls = screen.getAllByRole('tab');
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
@@ -138,37 +141,37 @@ describe('ds-tabs', () => {
     tabEls[1].focus();
     expect(tabEls[1]).toHaveFocus();
 
-    userEvent.keyboard('{ArrowLeft}');
+    await user.keyboard('{ArrowLeft}');
 
     expect(tabEls[0]).toHaveFocus();
     expect(panelEls[0]).toHaveAttribute('aria-hidden', 'false');
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'true');
   });
 
-  it('selects the last panel on left arrow keyDown from first panel', () => {
-    renderTabs(defaultProps, children);
+  it('selects the last panel on left arrow keyDown from first panel', async () => {
+    const { user } = renderTabs(defaultProps, children);
 
     const tabEls = screen.getAllByRole('tab');
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
     tabEls[0].focus();
     expect(tabEls[0]).toHaveFocus();
 
-    userEvent.keyboard('{ArrowLeft}');
+    await user.keyboard('{ArrowLeft}');
 
     expect(tabEls[tabEls.length - 1]).toHaveFocus();
     expect(panelEls[0]).toHaveAttribute('aria-hidden', 'true');
     expect(panelEls[1]).toHaveAttribute('aria-hidden', 'false');
   });
 
-  it('selects the first panel on right arrow keyDown from last panel', () => {
-    renderTabs(defaultProps, children);
+  it('selects the first panel on right arrow keyDown from last panel', async () => {
+    const { user } = renderTabs(defaultProps, children);
 
     const tabEls = screen.getAllByRole('tab');
     const panelEls = screen.getAllByRole('tabpanel', { hidden: true });
     tabEls[tabEls.length - 1].focus();
     expect(tabEls[tabEls.length - 1]).toHaveFocus();
 
-    userEvent.keyboard('{ArrowRight}');
+    await user.keyboard('{ArrowRight}');
 
     expect(tabEls[0]).toHaveFocus();
     expect(panelEls[0]).toHaveAttribute('aria-hidden', 'false');

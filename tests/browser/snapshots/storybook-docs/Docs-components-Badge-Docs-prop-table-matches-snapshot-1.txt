@@ -1,6 +1,6 @@
 [
   [
-    "children",
+    "children*",
     "Label text or HTML.\nReactNode",
     "-"
   ],
@@ -12,11 +12,6 @@
   [
     "hideScreenReaderText",
     "Optional boolean that when set to true will hide supplementary text read out by screen readers. Defaults to false.\nboolean",
-    "-"
-  ],
-  [
-    "ref",
-    "Ref<HTMLSpanElement>",
     "-"
   ],
   [

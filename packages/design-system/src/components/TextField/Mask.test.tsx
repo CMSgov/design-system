@@ -1,19 +1,22 @@
-import Mask from './Mask';
-import { useState } from 'react';
-import { unmaskValue } from './maskHelpers';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
+import Mask from './Mask';
+import { unmaskValue } from './maskHelpers';
 import TextInput from './TextInput';
 
 // Some tests are generated. When a new mask is added, add it here:
 const masks = ['currency', 'ssn', 'zip', 'phone'];
 
 function renderMask(customProps = {}, inputProps = {}) {
-  return render(
-    <Mask {...customProps}>
-      <TextInput name="foo" type="text" {...inputProps} />
-    </Mask>
-  );
+  return {
+    user: userEvent.setup(),
+    ...render(
+      <Mask {...customProps}>
+        <TextInput name="foo" type="text" {...inputProps} />
+      </Mask>
+    ),
+  };
 }
 
 function getInput() {
@@ -67,18 +70,18 @@ describe('Mask', function () {
     expect(input).toHaveAttribute('inputmode', 'numeric');
   });
 
-  it('calls onBlur when the value is the same', () => {
+  it('calls onBlur when the value is the same', async () => {
     const onBlur = jest.fn();
-    renderMask({ mask: 'currency' }, { value: '123', onBlur });
-    userEvent.click(getInput());
-    userEvent.tab();
+    const { user } = renderMask({ mask: 'currency' }, { value: '123', onBlur });
+    await user.click(getInput());
+    await user.tab();
     expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onChange', () => {
+  it('calls onChange', async () => {
     const onChange = jest.fn();
-    renderMask({ mask: 'currency' }, { value: '123', onChange });
-    userEvent.type(getInput(), 'hello');
+    const { user } = renderMask({ mask: 'currency' }, { value: '123', onChange });
+    await user.type(getInput(), 'hello');
     expect(onChange).toHaveBeenCalledTimes('hello'.length);
   });
 
@@ -88,7 +91,8 @@ describe('Mask', function () {
   });
 
   describe('Controlled component behavior', () => {
-    it('will not cause masking until blur when value prop still matches unmasked input', () => {
+    it('will not cause masking until blur when value prop still matches unmasked input', async () => {
+      const user = userEvent.setup();
       // Simulate the change bubbling up to the controlling component and the
       // controlling component then updating the value prop.
       function ControlledComponentParent() {
@@ -109,14 +113,15 @@ describe('Mask', function () {
       expect(getInput().value).toBe('1,000');
 
       // Remove the comma
-      userEvent.type(getInput(), '{arrowleft}{arrowleft}{arrowleft}{backspace}');
+      await user.type(getInput(), '{arrowleft}{arrowleft}{arrowleft}{backspace}');
       expect(getInput().value).toBe('1000');
 
-      userEvent.tab();
+      await user.tab();
       expect(getInput().value).toBe('1,000');
     });
 
-    it('will change the value of the input when value prop changes (beyond unmasked/masked differences)', () => {
+    it('will change the value of the input when value prop changes (beyond unmasked/masked differences)', async () => {
+      const user = userEvent.setup();
       // Simulate a prop change coming from the parent that makes the value entirely different
       function ControlledComponentParent() {
         const [text, setText] = useState('1000');
@@ -132,7 +137,7 @@ describe('Mask', function () {
 
       // Same thing we did in the previous test
       // Remove the comma
-      userEvent.type(getInput(), '{arrowleft}{arrowleft}{arrowleft}{backspace}');
+      await user.type(getInput(), '{arrowleft}{arrowleft}{arrowleft}{backspace}');
       // But this time the parent changed the value to 2000, so we expect it to be masked
       expect(getInput().value).toBe('2,000');
     });

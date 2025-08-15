@@ -16,7 +16,7 @@
   [
     "autoCompleteLabel",
     "Control the TextField autocomplete attribute. Defaults to \"off\" to support accessibility. Read more.\nstring",
-    "\"off\""
+    "-"
   ],
   [
     "autoFocus",
@@ -40,8 +40,8 @@
   ],
   [
     "clearSearchButton",
-    "Removes the Clear search button when set to false\nboolean",
-    "true"
+    "Removes the Clear search button when set to false. Default is true.\nboolean",
+    "-"
   ],
   [
     "focusTrigger",

@@ -35,6 +35,7 @@ const meta: Meta<typeof Tooltip> = {
       ],
       control: 'radio',
     },
+    ref: { table: { disable: true } },
   },
   parameters: {
     docs: {

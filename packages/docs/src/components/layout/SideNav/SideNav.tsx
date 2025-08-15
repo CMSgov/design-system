@@ -86,9 +86,9 @@ const SideNav = ({ location }: SideNavProps) => {
           ext: { eq: ".mdx" }
           relativeDirectory: { nin: ["not-in-sidebar", "blog"] }
         }
-        sort: { fields: [relativeDirectory, name] }
+        sort: [{ relativeDirectory: ASC }, { name: ASC }]
       ) {
-        group(field: relativeDirectory) {
+        group(field: { relativeDirectory: SELECT }) {
           fieldValue
           edges {
             node {

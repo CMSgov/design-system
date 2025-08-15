@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-const LogoEnSvg: React.FC<{ titleId?: string }> = ({ titleId }) => {
+const LogoEnSvg: React.FC<{ titleId?: string }> = ({ titleId = 'hc-c-logo__title' }) => {
   // prettier-ignore
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="25" viewBox="0 0 253.05 31.65" aria-labelledby={titleId} role="img">
@@ -21,10 +21,6 @@ const LogoEnSvg: React.FC<{ titleId?: string }> = ({ titleId }) => {
       <polygon className="hc-c-logo__gov" points="245.03 24.61 244.86 24.61 236.79 7.09 238.8 7.09 244.76 20.04 244.95 20.43 245.13 20.04 251.02 7.09 253.05 7.09 245.03 24.61 245.03 24.61" />
     </svg>
   );
-};
-
-LogoEnSvg.defaultProps = {
-  titleId: 'hc-c-logo__title',
 };
 
 export default LogoEnSvg;

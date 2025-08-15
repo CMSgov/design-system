@@ -11,7 +11,7 @@ export type VerticalNavItemComponent = React.ReactElement<any> | any | ((...args
 export interface VerticalNavItemProps {
   /**
    * Internal prop passed from the parent VerticalNav
-   * @hide-prop This gets passed through from the parent VerticalNav to a nested VerticalNav
+   * @ignore This gets passed through from the parent VerticalNav to a nested VerticalNav
    */
   _selectedId?: string;
   /**
@@ -24,7 +24,8 @@ export interface VerticalNavItemProps {
    */
   component?: VerticalNavItemComponent;
   /**
-   * Whether or not the item's sub-navigation is in a collapsed state by default
+   * Whether or not the item's sub-navigation is in a collapsed state by default.
+   * Defaults to `false`
    */
   defaultCollapsed?: boolean;
   /**
@@ -70,10 +71,11 @@ export interface VerticalNavItemProps {
 }
 
 export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
+  const { defaultCollapsed = false } = props;
   const rootId = useId('vertical-nav-item--', props.id);
   const subnavId = `${rootId}__subnav`;
 
-  const [collapsed, setCollapsed] = useState(props.defaultCollapsed);
+  const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
   /**
    * Note: This event handler will only get called when the VerticalNavItemLabel
@@ -187,10 +189,6 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       )}
     </li>
   );
-};
-
-VerticalNavItem.defaultProps = {
-  defaultCollapsed: false,
 };
 
 export default VerticalNavItem;

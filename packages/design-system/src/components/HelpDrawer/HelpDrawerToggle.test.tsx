@@ -25,10 +25,11 @@ describe('HelpDrawerToggle', () => {
     expect(el).toMatchSnapshot();
   });
 
-  it('calls showDrawer() on toggle click', () => {
+  it('calls showDrawer() on toggle click', async () => {
+    const user = userEvent.setup();
     renderToggle();
     const el = screen.getByRole('button');
-    userEvent.click(el);
+    await user.click(el);
     expect(defaultProps.showDrawer).toHaveBeenCalled();
   });
 

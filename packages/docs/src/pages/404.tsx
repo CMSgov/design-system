@@ -1,23 +1,32 @@
 import { graphql } from 'gatsby';
+import SEO from '../components/layout/DocSiteSeo';
 import Layout from '../components/layout/Layout';
 import { MdxQuery } from '../helpers/graphQLTypes';
 import useTheme from '../helpers/useTheme';
 import ContentRenderer from '../components/content/ContentRenderer';
 
-const NotFoundPage = ({ data, location }: MdxQuery) => {
+const NotFoundPage = ({ data, location, children }: MdxQuery) => {
+  const { frontmatter } = data.mdx;
   const theme = useTheme();
   return (
-    <Layout frontmatter={data.mdx.frontmatter} location={location} theme={theme}>
-      <ContentRenderer data={data.mdx.body} theme={theme} />
+    <Layout frontmatter={frontmatter} location={location} theme={theme}>
+      <ContentRenderer location={location} theme={theme}>
+        {children}
+      </ContentRenderer>
     </Layout>
   );
+};
+
+export const Head = ({ data, location }) => {
+  const { frontmatter } = data.mdx;
+
+  return <SEO frontmatter={frontmatter} location={location} />;
 };
 
 export const query = graphql`
   query PageNotFoundQuery {
     mdx(frontmatter: { title: { eq: "Page not found" } }) {
       id
-      body
       frontmatter {
         title
       }

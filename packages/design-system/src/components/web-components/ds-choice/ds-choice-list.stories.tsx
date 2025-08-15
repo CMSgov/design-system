@@ -26,21 +26,20 @@ The list of choices to be rendered as an array of objects.
 When using this in HTML, the \`choices\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
 
 **Example:**
-\`<ds-choice-list
-  choices='[
-    {
-      "label": "Choice 1",
-      "value": "A",
-      "defaultChecked": true
-    },
-    {
-      "label": "Choice 2",
-      "value": "B",
-      "requirementLabel": "Choice hint text"
-    }
-  ]'
->
-</ds-choice-list>\`
+\`
+choices='[
+  {
+    "label": "Choice 1",
+    "value": "A",
+    "defaultChecked": true
+  },
+  {
+    "label": "Choice 2",
+    "value": "B",
+    "requirementLabel": "Choice hint text"
+  }
+]'
+\`
 
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 
