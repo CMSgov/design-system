@@ -8,6 +8,7 @@ const meta: Meta = {
     children: { control: 'text' },
     // @TODO: deprecate, there is only one option: 'lightweight'
     weight: { table: { disable: true } },
+    ref: { table: { disable: true } },
   },
   args: {
     hideIcon: false,

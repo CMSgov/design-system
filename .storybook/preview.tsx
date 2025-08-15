@@ -193,6 +193,7 @@ const preview: Preview = {
       },
     },
   },
+
   parameters: {
     backgrounds: { disable: true },
     controls: {
@@ -213,12 +214,15 @@ const preview: Preview = {
       theme: cmsTheme,
     },
   },
+
   decorators: [
     onDarkDecorator,
     languageSettingDecorator,
     analyticsSettingsDecorator,
     themeSettingDecorator,
   ],
+
+  tags: ['autodocs'],
 };
 
 export default preview;

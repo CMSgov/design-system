@@ -1,6 +1,5 @@
-import { createTestRenderer } from '../__tests__/rendering';
 import { cleanup, findByRole, getByRole, queryByRole } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { createTestRenderer } from '../__tests__/rendering';
 import './ds-drawer';
 
 const children = (
@@ -107,7 +106,7 @@ describe('Drawer', () => {
   });
 
   it('should call the `ds-close-click` handler when the close button is clicked', async () => {
-    const { shadowRoot } = renderDrawer(
+    const { shadowRoot, user } = renderDrawer(
       {
         'is-open': 'true',
         heading: 'Test Drawer Heading',
@@ -122,44 +121,47 @@ describe('Drawer', () => {
     const closeButton = await findByRole(shadowRoot as any as HTMLElement, 'button', {
       name: /close help drawer/i,
     });
-    userEvent.click(closeButton);
+    await user.click(closeButton);
 
     expect(mockCloseHandler).toHaveBeenCalledTimes(1);
     drawer.removeEventListener('ds-close-click', mockCloseHandler);
   });
 
   it('should handle `esc` with focus trap enabled', async () => {
-    renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+    const { user } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
 
     const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
-    userEvent.keyboard('{Escape}');
+    await user.keyboard('{Escape}');
 
     expect(mockCloseHandler).toHaveBeenCalledTimes(1);
     drawer.removeEventListener('ds-close-click', mockCloseHandler);
   });
 
   // I'm not sure why this one doesn't work, but it may be a race condition
-  it.skip('should not call the event handler after unmounting', () => {
-    const { unmount } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+  it.skip('should not call the event handler after unmounting', async () => {
+    const { unmount, user } = renderDrawer(
+      { 'is-open': 'true', 'has-trap-focus': 'true' },
+      children
+    );
 
     const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
     unmount();
-    userEvent.keyboard('{Escape}');
+    await user.keyboard('{Escape}');
 
     expect(mockCloseHandler).not.toHaveBeenCalled();
   });
 
-  it('should not call onCloseClick for other key presses', () => {
-    renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
+  it('should not call onCloseClick for other key presses', async () => {
+    const { user } = renderDrawer({ 'is-open': 'true', 'has-trap-focus': 'true' }, children);
 
     const drawer = document.querySelector('ds-drawer');
     drawer.addEventListener('ds-close-click', mockCloseHandler);
 
-    userEvent.keyboard('a');
+    await user.keyboard('a');
 
     expect(mockCloseHandler).not.toHaveBeenCalled();
     drawer.removeEventListener('ds-close-click', mockCloseHandler);

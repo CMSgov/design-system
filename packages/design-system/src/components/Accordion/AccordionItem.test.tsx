@@ -11,7 +11,10 @@ const defaultProps = {
 function renderAccordionItem(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
 
-  return render(<AccordionItem {...props}>{defaultChildren}</AccordionItem>);
+  return {
+    user: userEvent.setup(),
+    ...render(<AccordionItem {...props}>{defaultChildren}</AccordionItem>),
+  };
 }
 
 describe('AccordionItem', function () {
@@ -103,18 +106,18 @@ describe('AccordionItem', function () {
 });
 
 describe('Controlled accordion item', function () {
-  it('renders button and should call onClick function when clicked', () => {
+  it('renders button and should call onClick function when clicked', async () => {
     const onClick = jest.fn();
-    renderAccordionItem({ heading: 'Foo', onChange: onClick });
+    const { user } = renderAccordionItem({ heading: 'Foo', onChange: onClick });
 
     const buttonEl = screen.getByRole('button');
-    userEvent.click(buttonEl);
+    await user.click(buttonEl);
     expect(onClick).toHaveBeenCalled();
   });
-  it('uses isControlledOpen as source of truth', () => {
+  it('uses isControlledOpen as source of truth', async () => {
     const onChange = jest.fn();
     const baseProps = { ...defaultProps, children: defaultChildren, onChange };
-    const { rerender } = renderAccordionItem({ ...baseProps, isControlledOpen: false });
+    const { rerender, user } = renderAccordionItem({ ...baseProps, isControlledOpen: false });
 
     const buttonEl = screen.getByRole('button');
     expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
@@ -134,7 +137,7 @@ describe('Controlled accordion item', function () {
     expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
 
     // Even clicking the button shouldn't expand it if it's controlled
-    userEvent.click(buttonEl);
+    await user.click(buttonEl);
     expect(buttonEl).toHaveAttribute('aria-expanded', 'false');
   });
 });

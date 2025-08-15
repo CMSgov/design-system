@@ -31,7 +31,7 @@ export interface DrawerProps {
   footerBody?: React.ReactNode;
   footerTitle?: React.ReactNode;
   /**
-   * Enables focus trap functionality within Drawer.
+   * Enables focus trap functionality within Drawer. Default is `false`.
    */
   hasFocusTrap?: boolean;
   /**
@@ -85,10 +85,10 @@ export const Drawer = (props: DrawerProps) => {
     closeButtonVariation,
     footerBody,
     footerTitle,
-    hasFocusTrap,
+    hasFocusTrap = false,
     heading,
     headingId: userHeadingId,
-    headingLevel,
+    headingLevel = '3',
     headingRef: userHeadingRef,
     isFooterSticky,
     isHeaderSticky,
@@ -153,11 +153,6 @@ export const Drawer = (props: DrawerProps) => {
       </div>
     </NativeDialog>
   );
-};
-
-Drawer.defaultProps = {
-  hasFocusTrap: false,
-  headingLevel: '3' as const,
 };
 
 export default Drawer;

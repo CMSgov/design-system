@@ -35,12 +35,13 @@ describe('VerticalNavItemLabel', () => {
     expect(labelEl.classList).toContain('ds-c-vertical-nav__label--current');
   });
 
-  it('calls onClick', () => {
+  it('calls onClick', async () => {
+    const user = userEvent.setup();
     const mockOnClick = jest.fn();
     renderVerticalNavItemLabel({ onClick: mockOnClick });
     const labelEl = screen.getByText('Foo');
 
-    userEvent.click(labelEl);
+    await user.click(labelEl);
     expect(mockOnClick).toHaveBeenCalled();
   });
 

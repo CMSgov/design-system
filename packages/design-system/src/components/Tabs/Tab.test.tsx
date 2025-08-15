@@ -13,7 +13,10 @@ function renderTab(customProps = {}) {
     ...customProps,
   };
 
-  return render(<Tab {...props}>Label</Tab>);
+  return {
+    user: userEvent.setup(),
+    ...render(<Tab {...props}>Label</Tab>),
+  };
 }
 
 describe('Tab', function () {
@@ -30,12 +33,12 @@ describe('Tab', function () {
     expect(tabEl.getAttribute('aria-selected')).toBe('false');
   });
 
-  it('calls onClick', () => {
+  it('calls onClick', async () => {
     const onClickMock = jest.fn();
-    renderTab({ onClick: onClickMock });
+    const { user } = renderTab({ onClick: onClickMock });
     const tabEl: HTMLAnchorElement = screen.getByRole('tab') as HTMLAnchorElement;
 
-    userEvent.click(tabEl);
+    await user.click(tabEl);
 
     expect(onClickMock).toHaveBeenCalledTimes(1);
     expect(onClickMock).toHaveBeenCalledWith(
@@ -46,12 +49,12 @@ describe('Tab', function () {
     );
   });
 
-  it('calls onKeyDown', () => {
+  it('calls onKeyDown', async () => {
     const onKeyDownMock = jest.fn();
-    renderTab({ onKeyDown: onKeyDownMock });
+    const { user } = renderTab({ onKeyDown: onKeyDownMock });
     const tabEl: HTMLAnchorElement = screen.getByRole('tab') as HTMLAnchorElement;
     tabEl.focus();
-    userEvent.keyboard('{Tab}');
+    await user.keyboard('{Tab}');
 
     expect(onKeyDownMock).toHaveBeenCalledTimes(1);
     expect(onKeyDownMock).toHaveBeenCalledWith(
@@ -62,13 +65,13 @@ describe('Tab', function () {
     );
   });
 
-  it("doesn't call onClick when disabled", () => {
+  it("doesn't call onClick when disabled", async () => {
     const onClickMock = jest.fn();
-    renderTab({ onClick: onClickMock, disabled: true });
+    const { user } = renderTab({ onClick: onClickMock, disabled: true });
     const tabEl: HTMLAnchorElement = screen.getByRole('tab') as HTMLAnchorElement;
 
-    userEvent.click(tabEl);
-    userEvent.keyboard('{Enter}');
+    await user.click(tabEl);
+    await user.keyboard('{Enter}');
 
     expect(onClickMock).not.toHaveBeenCalled();
   });

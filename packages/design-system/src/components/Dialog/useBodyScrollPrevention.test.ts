@@ -1,5 +1,5 @@
 import { useBodyScrollPrevention, CLASS_NAME, PROPERTY_NAME } from './useBodyScrollPrevention';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 describe('useBodyScrollPrevention', () => {
   it('should not add body class when isOpen is false', () => {
