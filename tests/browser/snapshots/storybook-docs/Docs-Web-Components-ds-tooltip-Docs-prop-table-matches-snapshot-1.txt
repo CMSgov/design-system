@@ -42,7 +42,7 @@
   [
     "placement",
     "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.",
-    "\"auto\"\"auto-start\"\"auto-end\"\"left\"\"left-start\"\"left-end\"\"right\"\"right-start\"\"right-end\"\"top\"\"top-start\"\"top-end\"\"bottom\"\"bottom-start\"\"bottom-end\""
+    "autoauto-startauto-endleftleft-startleft-endrightright-startright-endtoptop-starttop-endbottombottom-startbottom-end"
   ],
   [
     "root-id",

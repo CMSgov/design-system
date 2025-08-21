@@ -15,12 +15,12 @@ export default {
     },
     checked: {
       description:
-        "Sets the input's `checked` state. Use this in combination with `onChange` for a controlled component; otherwise, set `defaultChecked`.",
+        "Sets the input's `checked` state. If you want the checkbox to be checked initially before user interaction, use the `default-checked` attribute.",
       control: 'boolean',
     },
     'checked-children': {
       description:
-        'Content to be shown when the choice is checked. See **Checked children and the expose within pattern** on the Guidance tab for detailed instructions.',
+        'Content to be shown when the choice is checked. See **[Checked children and the expose within pattern](https://design.cms.gov/components/checkbox/#checked-children-and-the-expose-within-pattern)** for detailed instructions.',
       control: 'text',
     },
     'unchecked-children': {

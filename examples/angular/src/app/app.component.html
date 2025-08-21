@@ -238,6 +238,30 @@
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
+      <app-accordion [bordered]="bordered" [headingLevel]="headingLevel">
+        <app-accordion-item headingClassName="ds-u-margin-top--1">
+          <item-heading>First Item</item-heading>
+          <ds-alert variation="error">
+            This is an alert inside of an accordion item that informing you of an error.
+          </ds-alert>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </app-accordion-item>
+        <app-accordion-item headingClassName="ds-u-margin-top--1">
+          <item-heading>Second item</item-heading>
+          <ds-alert variation="warning">
+            This is an alert inside of an accordion item that informing you of a warning.
+          </ds-alert>
+          <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum.
+          </p>
+        </app-accordion-item>
+      </app-accordion>
     </app-drawer>
     <app-button
       [additionalClasses]="toggleClasses"

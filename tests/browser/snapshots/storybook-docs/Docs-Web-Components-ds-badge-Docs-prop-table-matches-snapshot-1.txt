@@ -2,11 +2,11 @@
   [
     "size",
     "Sets the size of a badge",
-    "\"default\"\"big\""
+    "defaultbig"
   ],
   [
     "variation",
     "Sets the variation, or color, of a badge",
-    "undefined\"info\"\"success\"\"warn\"\"alert\""
+    "infosuccesswarnalert"
   ]
 ]
