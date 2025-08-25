@@ -340,8 +340,8 @@
 --choice__background-color--inverse: var(--color-transparent);
 --choice__border-color: var(--color-base);
 --choice__border-color--checked: var(--color-primary);
---choice__border-color--error: var(--color-base);
---choice__border-color--error--inverse: var(--color-white);
+--choice__border-color--error: var(--color-error);
+--choice__border-color--error--inverse: var(--color-error-light);
 --choice__border-color--inverse: var(--color-white);
 --choice__border-color--left: var(--color-primary);
 --choice__border-radius: 0px;

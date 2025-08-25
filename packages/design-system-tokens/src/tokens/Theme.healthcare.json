@@ -3119,7 +3119,7 @@
         }
       },
       "border-color--error": {
-        "$value": "{theme.color.base}",
+        "$value": "{theme.color.error}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -3129,7 +3129,7 @@
         }
       },
       "border-color--error--inverse": {
-        "$value": "{theme.color.white}",
+        "$value": "{theme.color.error-light}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
