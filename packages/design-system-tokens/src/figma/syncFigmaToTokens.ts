@@ -10,6 +10,7 @@ import {
   writeTokenFiles,
 } from './translateFigmaToTokens';
 import { readTokenFiles } from '../lib/readTokenFiles';
+import fs from 'fs/promises';
 
 const TOKENS_DIR = path.resolve(__dirname, '..', 'tokens');
 
@@ -26,6 +27,13 @@ async function main() {
 
   const api = new FigmaApi(process.env.PERSONAL_ACCESS_TOKEN);
   const localVariables = await api.getLocalVariables(fileKey);
+  //   await fs.writeFile(
+  //   'localVariables.json',
+  //   JSON.stringify(localVariables, null, 2),
+  //   'utf8'
+  // );
+
+  // console.log('Saved localVariables.json');
 
   const existingTokens = readTokenFiles(TOKENS_DIR);
   const tokensByFile = await tokenFilesFromLocalVariables(localVariables, existingTokens, {

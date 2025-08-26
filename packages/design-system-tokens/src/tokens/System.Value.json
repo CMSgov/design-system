@@ -2531,6 +2531,17 @@
       }
     }
   },
+  "nav-width": {
+    "$value": "951px",
+    "$type": "dimension",
+    "$extensions": {
+      "com.figma": {
+        "hiddenFromPublishing": false,
+        "scopes": ["ALL_SCOPES"],
+        "codeSyntax": {}
+      }
+    }
+  },
   "site-margins": {
     "$value": "3rem",
     "$type": "dimension",
@@ -2839,6 +2850,99 @@
     }
   },
   "font": {
+    "family": {
+      "open-sans": {
+        "$value": [
+          "Open Sans",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "montserrat": {
+        "$value": ["Montserrat", "Avenir", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "rubik": {
+        "$value": [
+          "Rubik",
+          "Seravek",
+          "Gill Sans Nova",
+          "Ubuntu",
+          "Calibri",
+          "DejaVu Sans",
+          "source-sans-pro",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "public-sans": {
+        "$value": [
+          "Public Sans",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "lexend": {
+        "$value": [
+          "Lexend",
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "size": {
       "10": {
         "$value": "0.875rem",
@@ -2935,99 +3039,6 @@
           "com.figma": {
             "hiddenFromPublishing": false,
             "scopes": [],
-            "codeSyntax": {}
-          }
-        }
-      }
-    },
-    "family": {
-      "open-sans": {
-        "$value": [
-          "Open Sans",
-          "Inter",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial Nova",
-          "Nimbus Sans",
-          "Arial",
-          "sans-serif"
-        ],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "montserrat": {
-        "$value": ["Montserrat", "Avenir", "Corbel", "URW Gothic", "source-sans-pro", "sans-serif"],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "rubik": {
-        "$value": [
-          "Rubik",
-          "Seravek",
-          "Gill Sans Nova",
-          "Ubuntu",
-          "Calibri",
-          "DejaVu Sans",
-          "source-sans-pro",
-          "sans-serif"
-        ],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "public-sans": {
-        "$value": [
-          "Public Sans",
-          "Inter",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial Nova",
-          "Nimbus Sans",
-          "Arial",
-          "sans-serif"
-        ],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
-      },
-      "lexend": {
-        "$value": [
-          "Lexend",
-          "Inter",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial Nova",
-          "Nimbus Sans",
-          "Arial",
-          "sans-serif"
-        ],
-        "$type": "fontFamily",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
             "codeSyntax": {}
           }
         }

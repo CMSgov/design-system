@@ -1,0 +1,8 @@
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/5xl. Mode: core
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/5xl. Mode: cmsgov
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/5xl. Mode: healthcare
+❌ Missing Alias: VariableID:894:86806 for variable theme/font/weight/heading/5xl. Mode: medicare
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/md. Mode: core
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/md. Mode: cmsgov
+❌ Missing Alias: VariableID:894:86807 for variable theme/font/weight/heading/md. Mode: healthcare
+❌ Missing Alias: VariableID:894:86806 for variable theme/font/weight/heading/md. Mode: medicare

@@ -1006,6 +1006,7 @@
         "heading": {
           "5xl": {
             "$value": "{theme.font.weight.bold}",
+            "$type": "string",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1066,6 +1067,7 @@
           },
           "md": {
             "$value": "{theme.font.weight.bold}",
+            "$type": "string",
             "$extensions": {
               "com.figma": {
                 "hiddenFromPublishing": false,
@@ -1160,6 +1162,16 @@
           }
         },
         "bold": {
+          "$value": "{font.weight.600}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        },
+        "semibold": {
           "$value": "{font.weight.600}",
           "$extensions": {
             "com.figma": {
@@ -1475,6 +1487,18 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
+          }
+        }
+      }
+    },
+    "autocomplete": {
+      "background-color": {
+        "$value": "{theme.color.white}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
           }
         }
       }
@@ -3932,6 +3956,18 @@
         }
       }
     },
+    "review": {
+      "border-color": {
+        "$value": "{theme.color.border}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      }
+    },
     "steplist": {
       "background-color--current": {
         "$value": "{theme.color.primary}",
@@ -4022,18 +4058,6 @@
               "scopes": ["ALL_SCOPES"],
               "codeSyntax": {}
             }
-          }
-        }
-      }
-    },
-    "review": {
-      "border-color": {
-        "$value": "{theme.color.border}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
           }
         }
       }
@@ -4625,6 +4649,16 @@
           }
         }
       },
+      "color": {
+        "$value": "{theme.color.base}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
       "no-max-width": {
         "$value": true,
         "$type": "boolean",
@@ -4636,9 +4670,41 @@
           }
         }
       },
-      "domain-icon": {
+      "link": {
         "color": {
           "$value": "{theme.color.primary}",
+          "$extensions": {
+            "com.figma": {
+              "hiddenFromPublishing": false,
+              "scopes": ["ALL_SCOPES"],
+              "codeSyntax": {}
+            }
+          }
+        }
+      },
+      "gutter-width": {
+        "$value": "{grid.gutter-width}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "max-width": {
+        "$value": "{site-max-width}",
+        "$extensions": {
+          "com.figma": {
+            "hiddenFromPublishing": false,
+            "scopes": ["ALL_SCOPES"],
+            "codeSyntax": {}
+          }
+        }
+      },
+      "domain-icon": {
+        "color": {
+          "$value": "{theme.color.secondary}",
           "$extensions": {
             "com.figma": {
               "hiddenFromPublishing": false,
