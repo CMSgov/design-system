@@ -196,6 +196,64 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
+  it('keeps label of selected item on Tab blur', async () => {
+    const { user } = renderAutocomplete({
+      items: [
+        { id: '1', name: 'Acetaminophen' },
+        { id: '2', name: 'Acerola' },
+      ],
+    });
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'a');
+    await user.type(input, 'c');
+    await user.type(input, 'e');
+    await user.type(input, '{ArrowDown}');
+    await user.tab();
+
+    expect(input.value).toBe('Acetaminophen');
+  });
+
+  it('keeps label of selected item on Enter', async () => {
+    const { user } = renderAutocomplete({
+      items: [
+        { id: '1', name: 'Acetaminophen' },
+        { id: '2', name: 'Acerola' },
+      ],
+    });
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'a');
+    await user.type(input, 'c');
+    await user.type(input, 'e');
+    await user.type(input, '{ArrowDown}');
+    await user.tab();
+
+    expect(input.value).toBe('Acetaminophen');
+  });
+
+  it('keeps the committed label on Enter with static items', async () => {
+    const { user } = renderAutocomplete({
+      items: [
+        { id: '1', name: 'Acetaminophen' },
+        { id: '2', name: 'Acerola' },
+      ],
+    });
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'ace');
+    await user.type(input, '{ArrowDown}');
+    await user.type(input, '{Enter}');
+
+    expect(input.value).toBe('Acetaminophen');
+  });
+
   it('renders mixed grouped and standalone items', async () => {
     const items = [
       {
