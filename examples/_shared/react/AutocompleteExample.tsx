@@ -41,7 +41,7 @@ function AutocompleteExample() {
         <TextField
           label="Counties"
           name="the-autocomplete"
-          hint="Type, arrow to an option, then press Tab to blur."
+          hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
           value={input}
         />
       </Autocomplete>
