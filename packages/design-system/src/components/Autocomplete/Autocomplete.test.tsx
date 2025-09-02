@@ -231,7 +231,7 @@ describe('Autocomplete', () => {
     await user.type(input, 'c');
     await user.type(input, 'e');
     await user.type(input, '{ArrowDown}');
-    await user.tab();
+    await user.type(input, '{Enter}');
 
     expect(input.value).toBe('Acetaminophen');
   });
