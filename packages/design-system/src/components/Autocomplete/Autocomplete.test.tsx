@@ -196,7 +196,7 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
-  it('keeps label of selected item on Tab blur', async () => {
+  it('keeps the committed label on Tab', async () => {
     const { user } = renderAutocomplete({
       items: [
         { id: '1', name: 'Acetaminophen' },
