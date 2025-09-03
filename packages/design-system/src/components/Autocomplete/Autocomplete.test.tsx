@@ -196,6 +196,28 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
+  it("calls child TextField's event handlers", async () => {
+    const props = {
+      label: 'autocomplete',
+      name: 'autocomplete_field',
+      onFocus: jest.fn(),
+      onChange: jest.fn(),
+      onKeyDown: jest.fn(),
+      // onTouchEnd : jest.fn(), Doesn't look like we can actually test onTouchEnd
+      onBlur: jest.fn(),
+    };
+    const { user } = renderAutocomplete({ children: <TextField {...props} /> });
+    const field = screen.getByRole('combobox');
+    await user.click(field);
+    expect(props.onFocus).toHaveBeenCalledTimes(1);
+    await user.type(field, 'c');
+    await user.type(field, '{ArrowDown}');
+    expect(props.onKeyDown).toHaveBeenCalledTimes(2);
+    expect(props.onChange).toHaveBeenCalledTimes(1);
+    await user.tab();
+    expect(props.onBlur).toHaveBeenCalledTimes(1);
+  });
+
   it('keeps the committed label on Tab', async () => {
     const { user } = renderAutocomplete({
       items: [
