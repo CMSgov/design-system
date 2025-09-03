@@ -211,6 +211,7 @@ describe('Autocomplete', () => {
     await user.click(field);
     expect(props.onFocus).toHaveBeenCalledTimes(1);
     await user.type(field, 'c');
+    // We have to have a selected item for `onChange` to be called.
     await user.type(field, '{ArrowDown}');
     expect(props.onKeyDown).toHaveBeenCalledTimes(2);
     expect(props.onChange).toHaveBeenCalledTimes(1);
