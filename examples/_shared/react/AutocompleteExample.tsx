@@ -1,32 +1,48 @@
-import { Autocomplete, TextField } from '@cmsgov/design-system';
+import { Autocomplete, TextField, AutocompleteItems } from '@cmsgov/design-system';
+import { useMemo, useState } from 'react';
+
+const BASE_ITEMS = [
+  { id: '1', name: 'Cook County, IL' },
+  { id: '2', name: 'Cook County, MD' },
+  { id: '3', name: 'Cook County, TN' },
+  { id: '4', name: 'Boulder County, CO' },
+  { id: '5', name: 'Broward County, FL' },
+];
 
 function AutocompleteExample() {
+  const [input, setInput] = useState('');
+
+  const filteredItems: AutocompleteItems | undefined = useMemo(() => {
+    const query = input.trim().toLowerCase();
+    if (!query) return undefined;
+    const results = BASE_ITEMS.filter(
+      (item: any) => !item.name || item.name.toLowerCase().includes(query)
+    );
+    return results.length ? results : [];
+  }, [input]);
+
+  const onInputValueChange = (val: string) => {
+    setInput(val);
+  };
+
   return (
     <>
-      <h2>Autocomplete Example</h2>
+      <h2>Autocomplete</h2>
       <Autocomplete
-        items={[
-          {
-            id: 'kRf6c2fY',
-            name: 'Cook County, IL',
-          },
-          {
-            id: 'lYf5cGfM',
-            name: 'Cook County, MD',
-          },
-          {
-            id: 'mZfKcGf9',
-            name: 'Cook County, TN',
-          },
-        ]}
-        onChange={(selectedItem) => console.log(selectedItem)}
-        onInputValueChange={(inputVal) => console.log('[Autocomplete]: ' + inputVal)}
+        items={filteredItems}
+        loading={false}
+        loadingMessage="Loading..."
+        noResultsMessage="No results"
+        clearSearchButton
+        ariaClearLabel="Clear search"
+        onChange={(item) => console.log('[onChange]', item)}
+        onInputValueChange={onInputValueChange}
       >
         <TextField
+          label="Counties"
+          name="the-autocomplete"
           hint="Type c then use ARROW keys to change options, ENTER key to make a selection, ESC to dismiss."
-          label="Simple list"
-          name="Downshift_autocomplete"
-          errorMessage="Example error message"
+          value={input}
         />
       </Autocomplete>
     </>
