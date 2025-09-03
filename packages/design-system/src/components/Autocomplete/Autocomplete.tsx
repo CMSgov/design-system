@@ -220,6 +220,10 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const size = textField.props.size;
   const labelId = textField.props.labelId ?? `${id}__label`;
 
+  if (textField.props.value !== undefined) {
+    console.log('Textfield input: value=', textField.props.value);
+  }
+
   const state = useComboBoxState({
     ...autocompleteProps,
     allowsCustomValue: true,
@@ -228,11 +232,22 @@ export const Autocomplete = (props: AutocompleteProps) => {
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
       ? (value) => {
+          console.log('[state] onInputChange', {
+            textFieldValue: textField.props.value,
+            stateInputValue: state.inputValue,
+            passedInValue: value,
+          });
           onInputValueChange(value);
         }
       : undefined,
     onSelectionChange: onChange
       ? (selectedKey) => {
+          console.log('[state] onSelectionChange', {
+            selectedKey,
+            textFieldValue: textField.props.value,
+            stateInputValue: state.inputValue,
+          });
+    
           const selectedItem = items ? findItemById(String(selectedKey), items) : undefined;
           // We don't call onChange when the user deletes text, even though react-aria will call
           // this function with `null` if the input is cleared out. This is to maintain backwards
@@ -291,6 +306,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // field to get results and then blur away and come back, it'll open the results
     // list again without having to press anything on the keyboard.
     onFocus: (event) => {
+      console.log('[focus]', { value: state.inputValue, selected: state.selectedKey });
       useComboboxProps.inputProps.onFocus?.(event);
       textField.props.onFocus?.(event);
       state.open();
@@ -298,10 +314,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // Allow the user to continue to attach their own event handlers to the TextField.
     // The following event handlers would normally be overwritten by useCombobox.
     onChange: (event) => {
+      console.log('[change]', event.target.value);
       useComboboxProps.inputProps.onChange?.(event);
       textField.props.onChange?.(event);
     },
     onBlur: (event) => {
+      console.log('[blur]', { value: state.inputValue, selectedItem: state.selectedItem, selectedKey: state.selectedKey });
       useComboboxProps.inputProps.onBlur?.(event);
       textField.props.onBlur?.(event);
     },
@@ -310,6 +328,12 @@ export const Autocomplete = (props: AutocompleteProps) => {
       textField.props.onTouchEnd?.(event);
     },
     onKeyDown: (event) => {
+      if (['Tab', 'Enter'].includes(event.key)) {
+        console.log('[keydown]', event.key, {
+          value: state.inputValue,
+          selected: state.selectedKey,
+        });
+      }
       useComboboxProps.inputProps.onKeyDown?.(event);
       textField.props.onKeyDown?.(event);
     },
