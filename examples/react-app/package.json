@@ -3,7 +3,7 @@
   "version": "12.4.3",
   "private": true,
   "dependencies": {
-    "@cmsgov/design-system": "12.4.2"
+    "@cmsgov/design-system": "12.4.3"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
