@@ -57,7 +57,7 @@
     "src"
   ],
   "dependencies": {
-    "@cmsgov/design-system": "12.4.2",
+    "@cmsgov/design-system": "12.4.3",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "classnames": "^2.2.5"
