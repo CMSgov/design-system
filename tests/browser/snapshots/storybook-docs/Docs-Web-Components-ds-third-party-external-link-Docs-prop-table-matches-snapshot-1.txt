@@ -36,7 +36,7 @@
   ],
   [
     "learn-more-url",
-    "Optional URL to be used for the \"Learn more\" link.",
+    "Optional URL to be used for the \"Learn more\" link. On Medicare.gov, this value should be set to \"https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites\".",
     "string"
   ],
   [

@@ -23,7 +23,8 @@ export default {
       control: 'text',
     },
     'learn-more-url': {
-      description: 'Optional URL to be used for the "Learn more" link.',
+      description:
+        'Optional URL to be used for the "Learn more" link. On Medicare.gov, this value should be set to "https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites".',
       control: 'text',
     },
     'aria-described-by': {
