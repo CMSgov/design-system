@@ -1,0 +1,47 @@
+[
+  [
+    "analytics",
+    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance. Read more about analytics.",
+    "\"true\"\"false\""
+  ],
+  [
+    "analytics-label-override",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property. Read more about analytics.",
+    "string"
+  ],
+  [
+    "analytics-parent-heading",
+    "If needed for analytics, pass heading text of parent component of button. Read more about analytics.",
+    "string"
+  ],
+  [
+    "analytics-parent-type",
+    "If needed for analytics, pass type of parent component of button. Read more about analytics.",
+    "string"
+  ],
+  [
+    "aria-described-by",
+    "ID reference to provide screen readers with additional context.",
+    "string"
+  ],
+  [
+    "class-name",
+    "Additional CSS classes to apply to the link.",
+    "string"
+  ],
+  [
+    "href",
+    "The URL that the link points to.",
+    "string"
+  ],
+  [
+    "learn-more-url",
+    "Optional URL to be used for the \"Learn more\" link.",
+    "string"
+  ],
+  [
+    "origin",
+    "A short label identifying the third-party origin.",
+    "string"
+  ]
+]
