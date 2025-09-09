@@ -11,6 +11,7 @@ export default {
   title: 'Web Components/ds-third-party-external-link',
   argTypes: {
     children: {
+      description: 'External link text. This text will appear in the button triggering the dialog.',
       control: 'text',
       controlsOnly: true,
     },
@@ -62,8 +63,13 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => (
-  <ds-third-party-external-link {...args}>{args.children}</ds-third-party-external-link>
-);
+const Template = (args) => {
+  const { children, ...otherAttrs } = args;
+  return (
+    <ds-third-party-external-link key={children} {...otherAttrs}>
+      {children}
+    </ds-third-party-external-link>
+  );
+};
 
 export const Default = Template.bind({});
