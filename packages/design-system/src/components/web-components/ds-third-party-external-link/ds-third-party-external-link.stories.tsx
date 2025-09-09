@@ -15,29 +15,27 @@ export default {
       controlsOnly: true,
     },
     href: {
-      description: 'The URL that the link points to.',
+      description: 'External link url. The destination.',
       control: 'text',
     },
     origin: {
-      description: 'A short label identifying the third-party origin.',
+      description:
+        'Text informing the user where they are. This text will appear in both the dialog heading and body.',
       control: 'text',
     },
     'learn-more-url': {
       description:
-        'Optional URL to be used for the "Learn more" link. On Medicare.gov, this value should be set to "https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites".',
+        "Specify the URL users should visit to learn more about your application's external link policy. On Medicare.gov, this value should be set to 'https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites'.",
       control: 'text',
     },
     'aria-described-by': {
-      description: 'ID reference to provide screen readers with additional context.',
+      description:
+        'An id of an another element on the page that provides additional descriptive content for the anchor link.',
       control: 'text',
     },
     'class-name': {
       description: 'Additional CSS classes to apply to the link.',
       control: 'text',
-    },
-    analytics: {
-      description: 'Enable or disable analytics tracking.',
-      control: 'boolean',
     },
     ...analyticsOverrideArgTypes,
     ...analyticsParentDataArgTypes,

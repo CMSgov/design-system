@@ -21,7 +21,7 @@
   ],
   [
     "aria-described-by",
-    "ID reference to provide screen readers with additional context.",
+    "An id of an another element on the page that provides additional descriptive content for the anchor link.",
     "string"
   ],
   [
@@ -31,17 +31,17 @@
   ],
   [
     "href",
-    "The URL that the link points to.",
+    "External link url. The destination.",
     "string"
   ],
   [
     "learn-more-url",
-    "Optional URL to be used for the \"Learn more\" link. On Medicare.gov, this value should be set to \"https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites\".",
+    "Specify the URL users should visit to learn more about your application's external link policy. On Medicare.gov, this value should be set to 'https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites'.",
     "string"
   ],
   [
     "origin",
-    "A short label identifying the third-party origin.",
+    "Text informing the user where they are. This text will appear in both the dialog heading and body.",
     "string"
   ]
 ]
