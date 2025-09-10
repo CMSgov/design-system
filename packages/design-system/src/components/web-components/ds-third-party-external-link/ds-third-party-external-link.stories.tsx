@@ -72,11 +72,7 @@ export default {
 
 const Template = (args) => {
   const { children, ...otherAttrs } = args;
-  return (
-    <ds-third-party-external-link key={children} {...otherAttrs}>
-      {children}
-    </ds-third-party-external-link>
-  );
+  return <ds-third-party-external-link {...otherAttrs}>{children}</ds-third-party-external-link>;
 };
 
 export const Default = Template.bind({});
