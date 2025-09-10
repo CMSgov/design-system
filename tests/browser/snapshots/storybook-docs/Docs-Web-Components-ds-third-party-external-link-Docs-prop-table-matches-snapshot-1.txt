@@ -25,6 +25,11 @@
     "string"
   ],
   [
+    "children",
+    "External link text. Supplied as inner content of the element, not an attribute.\n\nExample:\n<ds-third-party-external-link>\n  Link text\n</ds-third-party-external-link>\nCopy",
+    "string"
+  ],
+  [
     "class-name",
     "Additional CSS classes to apply to the link.",
     "string"

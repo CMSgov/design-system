@@ -11,9 +11,16 @@ export default {
   title: 'Web Components/ds-third-party-external-link',
   argTypes: {
     children: {
-      description: 'External link text. This text will appear in the button triggering the dialog.',
+      description: `External link text. Supplied as inner content of the element, not an attribute.
+
+**Example:**
+\`
+<ds-third-party-external-link>
+  Link text
+</ds-third-party-external-link>
+\``,
       control: 'text',
-      controlsOnly: true,
+      table: { category: 'inner content' },
     },
     href: {
       description: 'External link url. The destination.',
