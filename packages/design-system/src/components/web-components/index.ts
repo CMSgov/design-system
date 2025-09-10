@@ -34,5 +34,6 @@ import './ds-spinner';
 import './ds-step-list';
 import './ds-tabs';
 import './ds-text-field';
+import './ds-third-party-external-link';
 import './ds-tooltip';
 import './ds-usa-banner';
