@@ -78,6 +78,9 @@ stories.forEach((story) => {
           browserContext = await browser.newContext();
           page = await browserContext.newPage();
           await page.goto(`${storyUrl}&globals=theme:${theme}`);
+          await page.waitForLoadState('domcontentloaded');
+          // Ensure fonts are fully resolved before snapshot
+          await page.evaluate(() => document.fonts?.ready);
         });
 
         test.afterAll(async () => {
