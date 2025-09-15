@@ -30,6 +30,7 @@ import {
   QuotationMarkIcon,
   RemoveIcon,
   RssIcon,
+  SearchIcon,
   StarIcon,
   SvgIcon,
   UsaFlagIcon,
@@ -216,6 +217,11 @@ const iconData = [
     defaultTitle: 'RSS',
     component: <RssIcon />,
     name: 'RssIcon',
+  },
+  {
+    defaultTitle: 'Search',
+    component: <SearchIcon />,
+    name: 'SearchIcon',
   },
   {
     defaultTitle: 'Star / Star Filled',
