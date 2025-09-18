@@ -22,7 +22,7 @@
   [
     "error-placement",
     "Location of the error message relative to the field input",
-    "undefined\"top\"\"bottom\""
+    "topbottom"
   ],
   [
     "field-class-name",
@@ -67,7 +67,7 @@
   [
     "label-mask",
     "Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See Label-masked field documentation page for more information.",
-    "undefined\"phone\"\"zip\"\"ssn\"\"currency\""
+    "phonezipssncurrency"
   ],
   [
     "name",
@@ -87,7 +87,7 @@
   [
     "size",
     "Sets the max-width of the input either to \"small\" or \"medium\"",
-    "undefined\"medium\"\"small\""
+    "mediumsmall"
   ],
   [
     "value",

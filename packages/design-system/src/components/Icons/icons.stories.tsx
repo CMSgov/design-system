@@ -30,6 +30,7 @@ import {
   QuotationMarkIcon,
   RemoveIcon,
   RssIcon,
+  SearchIcon,
   StarIcon,
   SvgIcon,
   UsaFlagIcon,
@@ -40,6 +41,16 @@ import {
 export default {
   title: 'Components/Icons',
   component: SvgIcon,
+  argTypes: {
+    ariaHidden: { control: false },
+    className: { control: false },
+    children: { control: false },
+    description: { control: false },
+    id: { control: false },
+    inversed: { control: false },
+    title: { control: false },
+    viewBox: { control: false },
+  },
   parameters: {
     docs: {
       underlyingHtmlElements: ['svg'],
@@ -206,6 +217,11 @@ const iconData = [
     defaultTitle: 'RSS',
     component: <RssIcon />,
     name: 'RssIcon',
+  },
+  {
+    defaultTitle: 'Search',
+    component: <SearchIcon />,
+    name: 'SearchIcon',
   },
   {
     defaultTitle: 'Star / Star Filled',
