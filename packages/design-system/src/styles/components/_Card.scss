@@ -1,0 +1,8 @@
+/* stylelint-disable declaration-no-important -- Evaluate the need for border-radius style here (don't think it's needed) */
+.ds-c-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-radius: 6px !important;
+  box-shadow: var(--shadow-box-card);
+}
+/* stylelint-enable */
