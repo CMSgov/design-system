@@ -13,6 +13,7 @@ As you go through this documentation, keep in mind that the CMS Design System is
 - [`design-system`](?theme=core) (Core Design System)
 - [`ds-healthcare-gov`](?theme=healthcare) (Healthcare.gov Child Design System)
 - [`ds-medicare-gov`](?theme=medicare) (Medicare.gov Child Design System)
+- [`ds-cms-gov`](?theme=cmsgov) (CMS.gov Child Design System)
 
 ## Getting the design system assets
 
@@ -57,6 +58,16 @@ yarn add @cmsgov/ds-healthcare-gov
 npm install --save @cmsgov/ds-medicare-gov
 # or
 yarn add @cmsgov/ds-medicare-gov
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```sh
+npm install --save @cmsgov/ds-cms-gov
+# or
+yarn add @cmsgov/ds-cms-gov
 ```
 
 </ThemeContent>
@@ -116,6 +127,18 @@ A content delivery network (CDN) is a collection of servers that dynamically all
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```html
+<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-cms-gov/11.0.0/css/index.css" />
+<link
+  rel="stylesheet"
+  href="https://design.cms.gov/cdn/ds-cms-gov/11.0.0/css/cms-gov-theme.css"
+/>
+```
+
+</ThemeContent>
+
 #### Example loading web components via CDN
 
 <ThemeContent onlyThemes={['core']}>
@@ -138,6 +161,14 @@ A content delivery network (CDN) is a collection of servers that dynamically all
 
 ```html
 <script src="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/web-components/bundle/web-components.js"></script>
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```html
+<script src="https://design.cms.gov/cdn/ds-cms-gov/9.0.0/web-components/bundle/web-components.js"></script>
 ```
 
 </ThemeContent>
@@ -187,6 +218,20 @@ You will need to include both the main `index.css` along with a theme file which
   <link
     rel="stylesheet"
     href="https://design.cms.gov/cdn/ds-medicare-gov/9.0.0/css/medicare-theme.css"
+  />
+</head>
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```html
+<head>
+  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-cms-gov/9.0.0/css/index.css" />
+  <link
+    rel="stylesheet"
+    href="https://design.cms.gov/cdn/ds-cms-gov/9.0.0/css/cms-theme.css"
   />
 </head>
 ```
@@ -243,6 +288,22 @@ Or you might import it from your JavaScript like this:
 ```js
 import '@cmsgov/ds-medicare-gov/css/index.css';
 import '@cmsgov/ds-medicare-gov/css/medicare-theme.css';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```css
+@import '@cmsgov/ds-cms-gov/css/index';
+@import '@cmsgov/ds-cms-gov/css/cms-theme';
+```
+
+Or you might import it from your JavaScript like this:
+
+```js
+import '@cmsgov/ds-cms-gov/css/index.css';
+import '@cmsgov/ds-cms-gov/css/cms-theme.css';
 ```
 
 </ThemeContent>
@@ -375,6 +436,14 @@ import { Button, TextField } from 'ds-medicare-gov';
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```js
+import { Button, TextField } from 'ds-cms-gov';
+```
+
+</ThemeContent>
+
 <Alert heading="Why switch to Preact?">
 
 If you have a React project, chances are you can actually start using [Preact](https://preactjs.com/) today and save on your total bundle size. For our own component library, [we found that switching to Preact shrunk our bundle by about 92KB](https://github.com/CMSgov/design-system/discussions/2378). The Preact library itself is smaller than React, and so far its claim of full compatability with React has proven true.
@@ -405,6 +474,14 @@ import { Button, TextField } from '@cmsgov/ds-healthcare-gov/preact';
 
 ```js
 import { Button, TextField } from 'ds-medicare-gov/preact';
+```
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['cmsgov']}>
+
+```js
+import { Button, TextField } from 'ds-cms-gov/preact';
 ```
 
 </ThemeContent>
