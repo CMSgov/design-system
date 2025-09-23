@@ -166,7 +166,7 @@ textarea,
 select {
   font: inherit;
 
-  &:not(button, [type='checkbox'], [type='radio']) {
+  &:not(button, [type='checkbox'], [type='hidden'], [type='radio']) {
     display: block;
     margin-block: 0.25em 0;
   }
