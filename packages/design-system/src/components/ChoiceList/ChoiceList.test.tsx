@@ -68,13 +68,19 @@ describe('ChoiceList', () => {
 
     it('renders all choices', () => {
       const numChoices = 3;
-      renderChoiceList({}, numChoices);
+      renderChoiceList({
+        choices: generateChoices(3, {
+          hint: 'Choice hint text',
+        }),
+      });
       const choiceEls = screen.getAllByRole('radio');
       const choice = choiceEls[0] as HTMLInputElement;
+      const hintTexts = screen.getAllByText('Choice hint text');
 
       expect(choiceEls.length).toBe(numChoices);
       expect(choice.name).toBe('spec-field');
       expect(choice.value).toBe('1');
+      expect(hintTexts[0].tagName).toBe('P');
     });
 
     it('is enclosed by a fieldset', () => {
