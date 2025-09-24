@@ -3,6 +3,13 @@
 - Overview of changes
 - A link to the Jira ticket for quick reference
 
+<!--
+  If this PR resolves a GitHub Issue, add that number below.
+  Otherwise, feel free to remove this line.
+-->
+
+- Closes #XXXX
+
 ## How to test
 
 1. Instructions on how to test the changes in this PR.
