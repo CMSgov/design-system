@@ -26,6 +26,7 @@ const meta: Meta<typeof ChoiceList> = {
     errorMessage: { control: 'text' },
     hint: { control: 'text' },
     ref: { table: { disable: true } },
+    requirementLabel: { control: 'text' },
     size: {
       options: [undefined, 'small'],
       control: { type: 'radio' },
