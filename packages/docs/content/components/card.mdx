@@ -1,34 +1,26 @@
 ---
-title: Card (M.gov)
+title: Card
 status:
   level: avoid
   note: Lacks documented guidance on usage and accessibility.
 core:
+  # TODO: update figma node ID once the Figma file is updated with Core Card.
+  # This one goes directly to the Medicare-specific design.
   figmaNodeId: 4334-23875
+  githubLink: design-system/src/components/Card
+  storybookLink: components-card--docs
 medicare:
   githubLink: ds-medicare-gov/src/components/Card
   storybookLink: medicare-card--docs
 ---
 
-import { Alert } from '@cmsgov/design-system';
-
-<ThemeContent neverThemes={['medicare']}>
-  <Alert variation="error">
-    <p class="ds-c-alert__text">
-      {
-        'This component is only used for Medicare. Please use the theme switcher to view the component with Medicare styles.'
-      }
-    </p>
-  </Alert>
-</ThemeContent>
-
 ## Examples
 
-<StorybookExample componentName="card" storyId="medicare-card--default" />
+<StorybookExample componentName="card" storyId="components-card--default" />
 
 ## Accessibility
 
-The [Medicare.gov](https://www.medicare.gov/) Card component is primarily a wrapper for other content. As such, while the component itself passes the relevant WCAG 2.0 accessibility tests, teams should take care to test the card implementation thoroughly, including any elements or components that are nested within it.
+The Card component is primarily a wrapper for other content. As such, while the component itself passes the relevant WCAG 2.0 accessibility tests, teams should take care to test the card implementation thoroughly, including any elements or components that are nested within it.
 
 ### Accessibility testing
 
@@ -42,7 +34,7 @@ Card components often contain text, buttons, and icons. The accessibility of tho
 
 ### React
 
-<SeeStorybookForGuidance storyId={'medicare-card--docs'} />
+<SeeStorybookForGuidance storyId={'components-card--docs'} />
 
 ## Component maturity
 
