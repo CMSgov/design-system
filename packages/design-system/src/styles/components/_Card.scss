@@ -1,0 +1,9 @@
+.ds-c-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-lighter);
+  border-radius: 6px !important;
+
+  // TODO: Resolve missing shadow-box-shadow token.
+  // Once this token is reintroduced, reference it here.
+  // box-shadow: var(--shadow-box-card);
+}

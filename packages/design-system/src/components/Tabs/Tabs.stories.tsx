@@ -8,6 +8,9 @@ const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Tabs',
   component: TabsComponent,
   subcomponents: { TabPanel },
+  args: {
+    onChange: action('onChange'),
+  },
 };
 export default meta;
 

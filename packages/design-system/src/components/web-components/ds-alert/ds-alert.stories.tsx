@@ -3,6 +3,9 @@ import { alertAnalyticsEventDocs, analyticsOverrideArgTypes } from '../shared-at
 import { webComponentDecorator } from '../storybook';
 import './ds-alert';
 
+const roleOptions = ['region', 'alert', 'alertdialog', 'status'];
+const variationOptions = [undefined, 'success', 'warn', 'error'];
+
 export default {
   title: 'Web Components/ds-alert',
   argTypes: {
@@ -21,17 +24,35 @@ export default {
     },
     role: {
       description: 'ARIA `role`, defaults to "region"',
-      options: [undefined, 'alert', 'alertdialog', 'region', 'status'],
-      control: { type: 'radio' },
+      options: roleOptions,
+      mapping: roleOptions,
+      control: {
+        type: 'radio',
+        labels: {
+          region: 'region',
+          alert: 'alert',
+          alertdialog: 'alertdialog',
+          status: 'status',
+        },
+      },
     },
     variation: {
       description: 'A string corresponding to the `Alert` variation classes',
-      options: [undefined, 'success', 'warn', 'error'],
-      control: { type: 'radio' },
+      options: variationOptions,
+      mapping: variationOptions,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          success: 'success',
+          warn: 'warn',
+          error: 'error',
+        },
+      },
     },
     weight: {
       description: 'A string corresponding to the `Alert` weight classes',
-      options: [undefined, 'lightweight'],
+      options: ['default', 'lightweight'],
       control: { type: 'radio' },
     },
     'root-id': {

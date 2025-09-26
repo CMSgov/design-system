@@ -10,6 +10,7 @@ const meta: Meta<typeof SingleInputDateField> = {
     hint: 'If you were born on a leap day, entering the date will either crash our servers or open a portal to an alternate dimension.',
     label: 'Enter your date of birth.',
     name: 'single-input-date-field',
+    onBlur: action('onBlur'),
   },
   argTypes: {
     errorMessage: { control: 'text' },

@@ -1,13 +1,19 @@
 import SkipNav from './SkipNav';
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 const meta: Meta<typeof SkipNav> = {
   title: 'Components/SkipNav',
   component: SkipNav,
   args: {
-    href: '#main',
+    href: 'javascript:void(0)',
+    onClick: action('onClick'),
   },
   argTypes: {
+    href: {
+      description:
+        'The anchor or target for the link (where the link will jump the user to). Note: we are using `javascript:void(0)` to prevent navigation away from this page. A typical use case might have something like `#main`',
+    },
     children: {
       table: {
         defaultValue: {

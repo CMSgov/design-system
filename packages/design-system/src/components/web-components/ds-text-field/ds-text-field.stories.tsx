@@ -4,6 +4,10 @@ import { useEffect } from 'react';
 import { webComponentDecorator } from '../storybook';
 import './ds-text-field';
 
+const errorPlacementMapping = [undefined, 'top', 'bottom'];
+const labelMaskMapping = [undefined, 'phone', 'zip', 'ssn', 'currency'];
+const sizeMapping = [undefined, 'medium', 'small'];
+
 export default {
   title: 'Web Components/ds-text-field',
   argTypes: {
@@ -23,8 +27,16 @@ export default {
     },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
-      options: [undefined, 'top', 'bottom'],
-      control: { type: 'radio' },
+      options: errorPlacementMapping,
+      mapping: errorPlacementMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          top: 'top',
+          bottom: 'bottom',
+        },
+      },
     },
     'field-class-name': {
       description: 'Additional classes to be added to the input element',
@@ -62,8 +74,18 @@ export default {
     'label-mask': {
       description:
         'Providing a mask type here will turn the text field into a label-masked field, where the user input is formatted in a label as the user types and then the input field itself is automatically formatted when the user shifts focus away from the input. See [Label-masked field](https://design.cms.gov/components/text-field/label-masked-field/) documentation page for more information.',
-      options: [undefined, 'phone', 'zip', 'ssn', 'currency'],
-      control: { type: 'radio' },
+      options: labelMaskMapping,
+      mapping: labelMaskMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          phone: 'phone',
+          zip: 'zip',
+          ssn: 'ssn',
+          currency: 'currency',
+        },
+      },
     },
     name: {
       description: "The `input` field's `name` attribute.",
@@ -76,8 +98,9 @@ export default {
     },
     size: {
       description: 'Sets the max-width of the input either to `"small"` or `"medium"`',
-      options: [undefined, 'medium', 'small'],
-      control: { type: 'radio' },
+      options: sizeMapping,
+      mapping: sizeMapping,
+      control: { type: 'radio', undefined: 'default', small: 'small', medium: 'medium' },
     },
     value: {
       description: "The `input` field's `value` attribute",
