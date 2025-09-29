@@ -37,7 +37,7 @@
   [
     "error-placement",
     "Location of the error message relative to the field input",
-    "undefined\"top\"\"bottom\""
+    "topbottom"
   ],
   [
     "field-class-name",
@@ -97,7 +97,7 @@
   [
     "size",
     "Sets the max-width of the input either to \"small\" or \"medium\"",
-    "undefined\"medium\"\"small\""
+    "mediumsmall"
   ],
   [
     "value",

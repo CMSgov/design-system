@@ -2,6 +2,8 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { webComponentDecorator } from '../storybook';
 import './ds-badge';
 
+const dsBadgeOptions = [undefined, 'info', 'success', 'warn', 'alert'];
+
 export default {
   title: 'Web Components/ds-badge',
   argTypes: {
@@ -12,8 +14,18 @@ export default {
     },
     variation: {
       description: 'Sets the variation, or color, of a badge',
-      options: [undefined, 'info', 'success', 'warn', 'alert'],
-      control: { type: 'radio' },
+      options: dsBadgeOptions,
+      mapping: dsBadgeOptions,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          info: 'info',
+          success: 'success',
+          warn: 'warn',
+          alert: 'alert',
+        },
+      },
     },
     size: {
       description: 'Sets the size of a badge',

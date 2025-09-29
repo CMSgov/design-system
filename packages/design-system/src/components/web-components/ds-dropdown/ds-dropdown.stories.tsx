@@ -10,6 +10,8 @@ const options = [
   { label: 'Lummi Tribe of the Lummi Reservation', value: '7' },
 ];
 
+const errorPlacementMapping = [undefined, 'top', 'bottom'];
+
 export default {
   title: 'Web Components/ds-dropdown',
   argTypes: {
@@ -39,8 +41,16 @@ export default {
     },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
-      options: [undefined, 'top', 'bottom'],
-      control: { type: 'radio' },
+      options: errorPlacementMapping,
+      mapping: errorPlacementMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          top: 'top',
+          bottom: 'bottom',
+        },
+      },
     },
     'field-class-name': {
       description: 'Additional classes to be added to the dropdown button element',
@@ -84,7 +94,7 @@ export default {
       description: `
 An array of option objects, each containing a \`label\` and \`value\`, used to populate the dropdown menu.
 
-When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values. 
+When using this in HTML, the \`options\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.
 
 **Example:**
 \`

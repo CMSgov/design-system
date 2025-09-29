@@ -27,7 +27,7 @@
   [
     "close-button-variation",
     "Style variation for the close button (\"solid\" or \"ghost\").",
-    "\"solid\"\"ghost\""
+    "solidghost"
   ],
   [
     "footer-body",
@@ -57,7 +57,7 @@
   [
     "heading-level",
     "Heading level type to override default <h3>.",
-    "\"1\"\"2\"\"3\"\"4\"\"5\""
+    "12345"
   ],
   [
     "is-footer-sticky",

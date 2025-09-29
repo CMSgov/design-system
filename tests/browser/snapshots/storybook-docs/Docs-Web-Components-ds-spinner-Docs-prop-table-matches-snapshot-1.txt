@@ -27,6 +27,6 @@
   [
     "size",
     "Smaller or larger variant.",
-    "undefined\"small\"\"big\""
+    "smallbig"
   ]
 ]

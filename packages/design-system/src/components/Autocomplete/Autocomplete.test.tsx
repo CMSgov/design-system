@@ -196,6 +196,46 @@ describe('Autocomplete', () => {
     expect(listItems[3]).toHaveTextContent('Option 4');
   });
 
+  it('keeps the committed label on Tab', async () => {
+    const { user } = renderAutocomplete({
+      items: [
+        { id: '1', name: 'Acetaminophen' },
+        { id: '2', name: 'Acerola' },
+      ],
+    });
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'a');
+    await user.type(input, 'c');
+    await user.type(input, 'e');
+    await user.type(input, '{ArrowDown}');
+    await user.tab();
+
+    expect(input.value).toBe('Acetaminophen');
+  });
+
+  it('keeps the committed label on Enter', async () => {
+    const { user } = renderAutocomplete({
+      items: [
+        { id: '1', name: 'Acetaminophen' },
+        { id: '2', name: 'Acerola' },
+      ],
+    });
+
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'a');
+    await user.type(input, 'c');
+    await user.type(input, 'e');
+    await user.type(input, '{ArrowDown}');
+    await user.type(input, '{Enter}');
+
+    expect(input.value).toBe('Acetaminophen');
+  });
+
   it('renders mixed grouped and standalone items', async () => {
     const items = [
       {
@@ -360,6 +400,22 @@ describe('Autocomplete', () => {
     });
 
     expect(autocompleteField.value).toBe('');
+  });
+
+  it('should return focus to the input when "Clear search" is clicked', async () => {
+    const { user } = renderAutocomplete();
+    const input = screen.getByRole('combobox') as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, 'c');
+
+    const option = screen.getByRole('option');
+    await user.click(option);
+
+    const clearButton = screen.getByText('Clear search');
+    await user.click(clearButton);
+
+    expect(document.activeElement).toBe(input);
   });
 
   it('should call onChange with null item when "Clear search" is clicked', async () => {

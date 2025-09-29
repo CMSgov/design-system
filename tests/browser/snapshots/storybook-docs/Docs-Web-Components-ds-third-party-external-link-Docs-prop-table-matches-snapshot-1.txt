@@ -1,0 +1,52 @@
+[
+  [
+    "analytics",
+    "Analytics events tracking is enabled by default. Set this value to false to disable tracking for this component instance. Read more about analytics.",
+    "\"true\"\"false\""
+  ],
+  [
+    "analytics-label-override",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property. Read more about analytics.",
+    "string"
+  ],
+  [
+    "analytics-parent-heading",
+    "If needed for analytics, pass heading text of parent component of button. Read more about analytics.",
+    "string"
+  ],
+  [
+    "analytics-parent-type",
+    "If needed for analytics, pass type of parent component of button. Read more about analytics.",
+    "string"
+  ],
+  [
+    "aria-described-by",
+    "An id of an another element on the page that provides additional descriptive content for the anchor link.",
+    "string"
+  ],
+  [
+    "children",
+    "External link text. Supplied as inner content of the element, not an attribute.\n\nExample:\n<ds-third-party-external-link>\n  Link text\n</ds-third-party-external-link>\nCopy",
+    "string"
+  ],
+  [
+    "class-name",
+    "Additional CSS classes to apply to the link.",
+    "string"
+  ],
+  [
+    "href",
+    "External link url. The destination.",
+    "string"
+  ],
+  [
+    "learn-more-url",
+    "Specify the URL users should visit to learn more about your application's external link policy. On Medicare.gov, this value should be set to 'https://www.cms.gov/About-CMS/Agency-Information/Aboutwebsite/PolicyforLinkingtoOutsideWebsites'.",
+    "string"
+  ],
+  [
+    "origin",
+    "Text informing the user where they are. This text will appear in both the dialog heading and body.",
+    "string"
+  ]
+]

@@ -212,3 +212,46 @@ export const UseDialogExample: Story = {
     );
   },
 };
+
+export const BackdropClickExits: Story = {
+  args: {
+    children: <div>Try clicking outside the modal to close it!</div>,
+    backdropClickExits: true,
+  },
+  render: function Component(args) {
+    const [dialogOpen, updateOpen] = useState(false);
+
+    const showModal = () => {
+      updateOpen(true);
+    };
+
+    const hideModal = (...params) => {
+      action('onExit')(...params);
+      updateOpen(false);
+    };
+
+    return (
+      <>
+        <Button onClick={showModal} size="big" variation="solid">
+          Click to show modal
+        </Button>
+
+        <Dialog
+          {...args}
+          onExit={hideModal}
+          actions={
+            <>
+              <Button variation="solid" className="ds-u-margin-right--1">
+                Dialog action
+              </Button>
+              <Button variation="ghost" onClick={hideModal}>
+                Cancel
+              </Button>
+            </>
+          }
+          isOpen={dialogOpen}
+        />
+      </>
+    );
+  },
+};

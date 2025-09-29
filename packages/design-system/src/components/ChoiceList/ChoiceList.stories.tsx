@@ -21,6 +21,7 @@ const meta: Meta<typeof ChoiceList> = {
     // https://github.com/CMSgov/design-system/pull/3003#discussion_r1545916584
     onBlur: action('onBlur'),
     onComponentBlur: action('onComponentBlur'),
+    onChange: action('onChange'),
   },
   argTypes: {
     errorMessage: { control: 'text' },

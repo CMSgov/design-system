@@ -47,7 +47,8 @@ const meta: Meta = {
     size: {
       description:
         'Sets the size of the chip to larger version. The only acceptable value is "big".',
-      control: 'text',
+      control: 'radio',
+      options: [undefined, 'big'],
     },
     'use-alternate-icon': {
       description: 'Use alternate thinner close icon in place of standard.',
