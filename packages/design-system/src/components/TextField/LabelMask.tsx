@@ -1,6 +1,7 @@
 import { Children, cloneElement } from 'react';
 import type * as React from 'react';
 import { useLabelMask, MaskFunction } from './useLabelMask';
+import { TextInputProps } from './TextInput';
 
 export interface LabelMaskProps {
   /**
@@ -21,7 +22,7 @@ export interface LabelMaskProps {
 }
 
 const LabelMask = (props: LabelMaskProps) => {
-  const field = Children.only(props.children as React.ReactElement);
+  const field = Children.only(props.children) as React.ReactElement<TextInputProps>;
   const { labelMask, inputProps } = useLabelMask(props.labelMask, field.props);
   const input = cloneElement(field, inputProps);
 

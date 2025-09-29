@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
  * if the `autoFocus` boolean parameter is truthy.
  */
 export const useAutofocus = <T extends HTMLElement>(autoFocus?: boolean) => {
-  const ref = useRef<T>();
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     if (autoFocus && ref.current?.focus) {

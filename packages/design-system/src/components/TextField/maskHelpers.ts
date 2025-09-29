@@ -126,3 +126,15 @@ export function unmaskValue(value?: string, mask?: string): string {
 
   return value;
 }
+/**
+ * Coerce a string | number | undefined into a safe string.
+ * - string -> returned as-is
+ * - number -> converted with String()
+ * - undefined/null -> ''
+ */
+export function coerceToString(value: string | number | null | undefined): string {
+  if (value === null || value === undefined) {
+    return '';
+  }
+  return String(value);
+}

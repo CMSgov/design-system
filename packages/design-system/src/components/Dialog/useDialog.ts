@@ -24,7 +24,7 @@ export function useDialog<ReturnType = any>(
   renderDialog: (renderProps: UseDialogRenderProps<ReturnType>) => React.ReactElement
 ) {
   const [isOpen, setIsOpen] = useState(false);
-  const resolveRef = useRef<(returnValue: ReturnType) => any>();
+  const resolveRef = useRef<(returnValue: ReturnType) => any>(null);
 
   const resolveClose = (returnValue: ReturnType) => {
     setIsOpen(false);
