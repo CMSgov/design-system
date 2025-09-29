@@ -74,9 +74,11 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
         isOpen={showDialog}
       >
         <p>{t('thirdPartyExternalLink.dialogBody')}</p>
-        <p>
-          <a href={learnMoreUrl}>{t('thirdPartyExternalLink.learnMoreText')}</a>.
-        </p>
+        {learnMoreUrl && (
+          <p>
+            <a href={learnMoreUrl}>{t('thirdPartyExternalLink.learnMoreText')}</a>.
+          </p>
+        )}
       </Dialog>
     </>
   );
