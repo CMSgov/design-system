@@ -18,3 +18,14 @@ export default meta;
 type Story = StoryObj<typeof InlineError>;
 
 export const Default: Story = {};
+
+export const Inverse: Story = {
+  args: {
+    inversed: true,
+  },
+  parameters: {
+    // Must supply `layout: 'fullscreen'` when we use `onDark: true`
+    onDark: true,
+    layout: 'fullscreen',
+  },
+};

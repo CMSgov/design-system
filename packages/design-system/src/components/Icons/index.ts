@@ -30,6 +30,7 @@ export * from './PrintIcon';
 export * from './QuotationMarkIcon';
 export * from './RemoveIcon';
 export * from './RssIcon';
+export * from './SearchIcon';
 export * from './StarIcon';
 export * from './UsaFlagIcon';
 export * from './UsaLogo';

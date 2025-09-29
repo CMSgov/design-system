@@ -1175,8 +1175,8 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --choice__border-color--checked: var(--color-primary);
 --choice__border-color--disabled--inverse: var(--color-gray-light);
 --choice__border-color--disabled: var(--color-gray-light);
---choice__border-color--error--inverse: var(--color-white);
---choice__border-color--error: var(--color-base);
+--choice__border-color--error--inverse: var(--color-error-light);
+--choice__border-color--error: var(--color-error);
 --choice__border-color--focus: var(--color-primary-darker);
 --choice__border-color--inverse: var(--color-white);
 --choice__border-color--left: var(--color-primary);

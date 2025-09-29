@@ -32,11 +32,11 @@
   [
     "size",
     "A string corresponding to Button size classes.",
-    "undefined\"big\"\"small\""
+    "bigsmall"
   ],
   [
     "variation",
     "A string corresponding to Button variation classes.",
-    "undefined\"solid\"\"ghost\""
+    "solidghost"
   ]
 ]

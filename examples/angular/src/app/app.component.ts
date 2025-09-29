@@ -7,6 +7,7 @@ import { ButtonComponent } from './buttonWrapper/button.component';
 import { DialogComponent } from './modalDialogWrapper/dialog.component';
 import { ReviewComponent } from './reviewWrapper/review.component';
 import { DrawerComponent } from './drawerWrapper/drawer.component';
+import { ThirdPartyExternalLinkComponent } from './thirdPartyExternalLinkWrapper/thirdPartyExternalLink.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { DrawerComponent } from './drawerWrapper/drawer.component';
     ButtonComponent,
     DialogComponent,
     DrawerComponent,
+    ThirdPartyExternalLinkComponent,
     ReviewComponent,
   ],
   templateUrl: './app.component.html',
@@ -173,4 +175,9 @@ export class AppComponent {
   closeDrawer() {
     this.drawerOpen = 'false';
   }
+
+  // Third Party Link Data:
+  tplHref = 'https://www.google.com/';
+  learnMoreUrl = 'https://design.cms.gov/components/third-party-external-link/';
+  origin = 'CMS Design System';
 }

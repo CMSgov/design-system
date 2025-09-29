@@ -12,6 +12,9 @@ const elements = (
   </>
 );
 
+const buttonVariationMapping = [undefined, 'solid', 'ghost'];
+const errorPlacementMapping = [undefined, 'top', 'bottom'];
+
 export default {
   title: 'Web Components/ds-month-picker',
   argTypes: {
@@ -19,8 +22,16 @@ export default {
     'button-variation': {
       description:
         'Variation string to be applied to buttons. See [Button component](https://design.cms.gov/storybook/?path=/docs/components-button--docs).',
-      options: [undefined, 'solid', 'ghost'],
-      control: { type: 'radio' },
+      options: buttonVariationMapping,
+      mapping: buttonVariationMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          solid: 'solid',
+          ghost: 'ghost',
+        },
+      },
     },
     'class-name': {
       description: 'Additional classes to be added to the root element.',
@@ -55,8 +66,16 @@ export default {
     },
     'error-placement': {
       description: 'Location of the error message relative to the field input',
-      options: [undefined, 'top', 'bottom'],
-      control: { type: 'radio' },
+      options: errorPlacementMapping,
+      mapping: errorPlacementMapping,
+      control: {
+        type: 'radio',
+        labels: {
+          undefined: 'default',
+          top: 'top',
+          bottom: 'bottom',
+        },
+      },
     },
     'hint-id': {
       description: 'The ID of the hint element',
