@@ -58,8 +58,8 @@ function isTextField(child?: ReactNode): child is ReactElement {
   return child.type === TextField || componentName === 'TextField';
 }
 
-export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
-  let textField;
+export function getTextFieldChild(children: ReactNode): ReactElement<any> | undefined {
+  let textField: ReactElement<any> | undefined;
   Children.forEach(children, (child) => {
     if (isTextField(child)) {
       textField = child;
