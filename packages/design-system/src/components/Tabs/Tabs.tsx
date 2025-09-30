@@ -137,13 +137,15 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const handleTabKeyDown = (evt: React.KeyboardEvent, panelId: string): void => {
-    const tabs = panelChildren().filter((elem): elem is React.ReactElement =>
+    const tabs = panelChildren().filter((elem): elem is React.ReactElement<TabPanelProps> =>
       React.isValidElement(elem)
     );
-    const tabIndex = tabs.findIndex((elem: React.ReactElement<any>) => elem.props.id === panelId);
+    const tabIndex = tabs.findIndex(
+      (elem: React.ReactElement<TabPanelProps>) => elem.props.id === panelId
+    );
 
     let target;
-    const isDisabled = (tab: React.ReactElement<any>) => tab.props.disabled;
+    const isDisabled = (tab: React.ReactElement<TabPanelProps>) => tab.props.disabled;
 
     switch (evt.key) {
       case LEFT_ARROW: {
@@ -155,7 +157,7 @@ export const Tabs = (props: TabsProps) => {
           prevTabIndex = prevTabIndex === 0 ? tabs.length - 1 : prevTabIndex - 1;
         }
 
-        target = (tabs[prevTabIndex] as React.ReactElement<any>).props.id;
+        target = (tabs[prevTabIndex] as React.ReactElement<TabPanelProps>).props.id;
         handleSelectedTabChange(target);
         break;
       }
@@ -168,7 +170,7 @@ export const Tabs = (props: TabsProps) => {
         while (isDisabled(tabs[nextTabIndex])) {
           nextTabIndex = nextTabIndex === tabs.length - 1 ? 0 : nextTabIndex + 1;
         }
-        target = (tabs[nextTabIndex] as React.ReactElement<any>).props.id;
+        target = (tabs[nextTabIndex] as React.ReactElement<TabPanelProps>).props.id;
         handleSelectedTabChange(target);
         break;
       }
