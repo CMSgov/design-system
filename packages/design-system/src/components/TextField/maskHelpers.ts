@@ -126,6 +126,7 @@ export function unmaskValue(value?: string, mask?: string): string {
 
   return value;
 }
+
 /**
  * Coerce a string | number | undefined into a safe string.
  * - string -> returned as-is
