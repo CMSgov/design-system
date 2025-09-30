@@ -57,7 +57,7 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
         if (element.props.children.length > 0) {
           element.props.children.map((child: string | React.ReactElement) => {
             if (typeof child !== 'string') {
-              const { children, slot } = child.props;
+              const { children, slot } = (child as React.ReactElement<any>).props;
 
               if (slot === 'checked-children') {
                 checkedChild = children;

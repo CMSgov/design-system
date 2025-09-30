@@ -30,7 +30,7 @@ const Wrapper = ({ analytics, ...otherProps }: WrapperProps) => (
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-third-party-external-link': JSX.IntrinsicElements['div'] & {
+      'ds-third-party-external-link': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }

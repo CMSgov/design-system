@@ -21,7 +21,7 @@ const Wrapper = ({ ...otherProps }) => {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-simple-footer': JSX.IntrinsicElements['div'] & {
+      'ds-simple-footer': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }

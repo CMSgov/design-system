@@ -37,7 +37,7 @@ export interface ReviewProps {
 }
 
 const getHeading = (heading, headingLevel) => {
-  const Heading = (`h${headingLevel}` || `h3`) as keyof JSX.IntrinsicElements;
+  const Heading = (`h${headingLevel}` || `h3`) as keyof React.JSX.IntrinsicElements;
   if (heading) {
     return <Heading className="ds-c-review__heading">{heading}</Heading>;
   }
