@@ -159,7 +159,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
   const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
     ...cleanFieldProps(remainingProps),
     value,
@@ -172,8 +172,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   });
 
   // Handle alternate ways of closing the day picker
-  const dayPickerRef = useRef();
-  const calendarButtonRef = useRef();
+  const dayPickerRef = useRef(null);
+  const calendarButtonRef = useRef(null);
   useClickOutsideHandler([dayPickerRef, calendarButtonRef], () => setPickerVisible(false));
   usePressEscapeHandler(dayPickerRef, () => {
     setPickerVisible(false);
