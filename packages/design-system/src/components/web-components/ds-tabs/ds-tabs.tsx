@@ -57,7 +57,7 @@ const Wrapper = ({ tabsAriaLabel, ...props }) => {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-tabs': JSX.IntrinsicElements['div'] & {
+      'ds-tabs': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
