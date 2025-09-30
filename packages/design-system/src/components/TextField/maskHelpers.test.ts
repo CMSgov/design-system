@@ -1,4 +1,4 @@
-import { toCurrency, unmaskValue } from './maskHelpers';
+import { toCurrency, unmaskValue, coerceToString } from './maskHelpers';
 
 describe('maskHelpers', function () {
   describe('Currency', () => {
@@ -111,6 +111,25 @@ describe('maskHelpers', function () {
 
       expect(unmaskValue('', name)).toBe('');
       expect(unmaskValue(' 123-456-7890 ', name)).toBe('1234567890');
+    });
+  });
+
+  describe('coerceToString', () => {
+    it('returns the same string when given a string', () => {
+      expect(coerceToString('hello')).toBe('hello');
+    });
+
+    it('converts a number to a string', () => {
+      expect(coerceToString(123)).toBe('123');
+      expect(coerceToString(0)).toBe('0');
+    });
+
+    it('returns empty string when given null', () => {
+      expect(coerceToString(null)).toBe('');
+    });
+
+    it('returns empty string when given undefined', () => {
+      expect(coerceToString(undefined)).toBe('');
     });
   });
 });
