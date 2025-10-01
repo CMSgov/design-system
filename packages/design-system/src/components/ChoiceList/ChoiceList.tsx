@@ -133,7 +133,9 @@ export const ChoiceList = (props: ChoiceListProps) => {
       disabled: choiceProps.disabled || props.disabled, // Individual choices can be disabled as well as the entire field
       inputRef: mergeRefs([
         choiceProps.inputRef,
-        (inputElement) => inputElements.push(inputElement),
+        (inputElement) => {
+          inputElements.push(inputElement);
+        },
       ]),
       _choiceChild: true,
     };

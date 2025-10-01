@@ -18,7 +18,7 @@ const Wrapper = ({ children, ...otherProps }) => {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-review': JSX.IntrinsicElements['div'] & {
+      'ds-review': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
