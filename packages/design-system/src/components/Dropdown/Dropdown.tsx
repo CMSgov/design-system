@@ -235,7 +235,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     [userOnBlur, state]
   );
 
-  const triggerRef = useRef<HTMLButtonElement>();
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const useSelectProps = useSelect(
     { ...props, onBlur, isDisabled: props.disabled },
     state,
@@ -290,7 +290,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     // role: 'combobox',
   };
 
-  const wrapperRef = useRef<HTMLDivElement>();
+  const wrapperRef = useRef<HTMLDivElement>(null);
   useClickOutsideHandler([wrapperRef], () => state.setOpen(false));
 
   return (

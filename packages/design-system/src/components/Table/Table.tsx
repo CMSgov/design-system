@@ -122,7 +122,7 @@ export const Table = ({
     }
   }
 
-  const containerRef = useRef();
+  const containerRef = useRef(null);
   useEffect(() => {
     if (!window || !scrollable) {
       return;
@@ -169,7 +169,7 @@ export const Table = ({
     if (isTableCaption(child)) {
       // Extend props on TableCaption before rendering.
       if (scrollable) {
-        return cloneElement(child, {
+        return cloneElement(child as React.ReactElement<any>, {
           _id: captionId,
           _scrollActive: scrollActive,
           _scrollableNotice: scrollableNotice,

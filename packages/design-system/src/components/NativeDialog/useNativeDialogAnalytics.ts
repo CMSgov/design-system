@@ -35,7 +35,7 @@ export function useNativeDialogAnalytics({
   onOpen,
   onClose,
 }: UseNativeDialogAnalyticsProps) {
-  const headingRef = useRef();
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const prevIsOpen = usePrevious(isOpen);
   useEffect(() => {
     const headingContent = getAnalyticsContentFromRefs([headingRef]);

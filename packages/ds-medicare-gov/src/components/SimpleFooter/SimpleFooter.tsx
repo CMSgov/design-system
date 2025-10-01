@@ -32,7 +32,7 @@ export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
   websiteInfo = 'A federal government website managed and paid for by the U.S. Centers for Medicare and Medicaid Services.',
   onClickLinkAnalytics,
 }: SimpleFooterProps) => {
-  const footerRef = useRef<HTMLElement>();
+  const footerRef = useRef<HTMLElement>(null);
   const baseUrl = language === 'es' ? 'https://es.medicare.gov' : 'https://www.medicare.gov';
 
   useEffect(() => {
