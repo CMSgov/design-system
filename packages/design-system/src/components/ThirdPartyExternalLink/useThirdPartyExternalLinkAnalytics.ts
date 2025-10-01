@@ -11,7 +11,7 @@ export function useThirdPartyExternalLinkAnalytics({
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   href,
 }: ThirdPartyExternalLinkProps) {
-  const contentRef = useRef<HTMLAnchorElement>();
+  const contentRef = useRef<HTMLAnchorElement>(null);
 
   function buttonAnalyticsHandler() {
     if (

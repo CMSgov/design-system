@@ -103,7 +103,7 @@ const Wrapper = ({
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-autocomplete': JSX.IntrinsicElements['div'] & {
+      'ds-autocomplete': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
