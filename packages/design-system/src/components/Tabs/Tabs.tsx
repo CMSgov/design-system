@@ -137,13 +137,15 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const handleTabKeyDown = (evt: React.KeyboardEvent, panelId: string): void => {
-    const tabs = panelChildren().filter((elem): elem is React.ReactElement =>
+    const tabs = panelChildren().filter((elem): elem is React.ReactElement<TabPanelProps> =>
       React.isValidElement(elem)
     );
-    const tabIndex = tabs.findIndex((elem: React.ReactElement) => elem.props.id === panelId);
+    const tabIndex = tabs.findIndex(
+      (elem: React.ReactElement<TabPanelProps>) => elem.props.id === panelId
+    );
 
     let target;
-    const isDisabled = (tab: React.ReactElement) => tab.props.disabled;
+    const isDisabled = (tab: React.ReactElement<TabPanelProps>) => tab.props.disabled;
 
     switch (evt.key) {
       case LEFT_ARROW: {
@@ -154,7 +156,8 @@ export const Tabs = (props: TabsProps) => {
         while (isDisabled(tabs[prevTabIndex])) {
           prevTabIndex = prevTabIndex === 0 ? tabs.length - 1 : prevTabIndex - 1;
         }
-        target = tabs[prevTabIndex].props.id;
+
+        target = (tabs[prevTabIndex] as React.ReactElement<TabPanelProps>).props.id;
         handleSelectedTabChange(target);
         break;
       }
@@ -167,7 +170,7 @@ export const Tabs = (props: TabsProps) => {
         while (isDisabled(tabs[nextTabIndex])) {
           nextTabIndex = nextTabIndex === tabs.length - 1 ? 0 : nextTabIndex + 1;
         }
-        target = tabs[nextTabIndex].props.id;
+        target = (tabs[nextTabIndex] as React.ReactElement<TabPanelProps>).props.id;
         handleSelectedTabChange(target);
         break;
       }
@@ -184,7 +187,7 @@ export const Tabs = (props: TabsProps) => {
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
         return cloneElement(child as React.ReactElement<TabPanelProps>, {
-          selected: selectedId === child.props.id,
+          selected: selectedId === (child as React.ReactElement<TabPanelProps>).props.id,
           tab: undefined,
           tabHref: undefined,
           tabId: panelTabId(child),
@@ -196,7 +199,7 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderTabs = (): React.ReactNode => {
-    const panels = panelChildren() as React.ReactElement[];
+    const panels = panelChildren() as React.ReactElement<TabPanelProps>[];
 
     const tabs = panels.map((panel) => {
       return (
