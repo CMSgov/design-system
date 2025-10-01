@@ -246,9 +246,9 @@ export const Autocomplete = (props: AutocompleteProps) => {
       : undefined,
   });
 
-  const inputRef = useRef<HTMLInputElement>();
-  const listBoxRef = useRef<HTMLElement>();
-  const wrapperRef = useRef<HTMLDivElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listBoxRef = useRef<HTMLElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const useComboboxProps = useComboBox(
     {
       ...autocompleteProps,
