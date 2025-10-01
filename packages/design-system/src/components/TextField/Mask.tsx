@@ -2,7 +2,8 @@
 import { Children, PureComponent, cloneElement, isValidElement } from 'react';
 import type * as React from 'react';
 import classNames from 'classnames';
-import { maskValue, unmaskValue } from './maskHelpers';
+import { maskValue, unmaskValue, coerceToString } from './maskHelpers';
+import { TextInputProps } from './TextInput';
 
 // TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
 export { maskValue, unmaskValue };
@@ -40,7 +41,7 @@ export class Mask extends PureComponent<MaskProps, any> {
     super(props);
 
     const field = this.field();
-    const initialValue = field.props.value || field.props.defaultValue;
+    const initialValue = coerceToString(field.props.value ?? field.props.defaultValue);
 
     this.state = {
       value: maskValue(initialValue, props.mask),
@@ -49,15 +50,21 @@ export class Mask extends PureComponent<MaskProps, any> {
 
   componentDidUpdate(prevProps: MaskProps): void {
     if (this.debouncedOnBlurEvent) {
-      this.field().props.onBlur(this.debouncedOnBlurEvent);
+      this.field().props.onBlur?.(this.debouncedOnBlurEvent);
       this.debouncedOnBlurEvent = null;
     }
 
-    const fieldProps = this.field().props;
+    const field = this.field();
+    const fieldProps = field.props;
     const prevField = Children.only(prevProps.children);
-    const prevFieldProps = isValidElement(prevField) ? prevField.props : {};
+    const prevFieldValue = isValidElement(prevField)
+      ? coerceToString((prevField as React.ReactElement<TextInputProps>).props.value)
+      : '';
+
+    const fieldValue = coerceToString(fieldProps.value);
     const isControlled = fieldProps.value !== undefined;
-    if (isControlled && prevFieldProps.value !== fieldProps.value) {
+
+    if (isControlled && prevFieldValue !== fieldValue) {
       const { mask } = this.props;
       // For controlled components, the value prop should ideally be changed by
       // the controlling component once we've called onChange with our updates.
@@ -66,8 +73,9 @@ export class Mask extends PureComponent<MaskProps, any> {
       // given and what we have locally don't match, that means the controlling
       // component has made its own unrelated change, so we should update our
       // state and mask this new value.
-      if (unmaskValue(fieldProps.value, mask) !== unmaskValue(this.state.value, mask)) {
-        const value = maskValue(fieldProps.value || '', mask);
+
+      if (unmaskValue(fieldValue, mask) !== unmaskValue(this.state.value, mask)) {
+        const value = maskValue(fieldValue, mask);
         this.setState({ value });
       }
     }
@@ -80,8 +88,8 @@ export class Mask extends PureComponent<MaskProps, any> {
    * updates to the field cause the mask to re-render
    * @returns {React.ReactElement} Child TextField
    */
-  field(): React.ReactElement {
-    return Children.only(this.props.children as React.ReactElement);
+  field(): React.ReactElement<TextInputProps> {
+    return Children.only(this.props.children) as React.ReactElement<TextInputProps>;
   }
 
   /**
@@ -91,7 +99,10 @@ export class Mask extends PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleBlur(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
+  handleBlur(
+    evt: React.ChangeEvent<HTMLInputElement>,
+    field: React.ReactElement<TextInputProps>
+  ): void {
     const value = maskValue(evt.target.value, this.props.mask);
 
     // We only debounce the onBlur when we know for sure that
@@ -123,7 +134,10 @@ export class Mask extends PureComponent<MaskProps, any> {
    * @param {Object} evt
    * @param {React.Element} field - Child TextField
    */
-  handleChange(evt: React.ChangeEvent<HTMLInputElement>, field: React.ReactElement): void {
+  handleChange(
+    evt: React.ChangeEvent<HTMLInputElement>,
+    field: React.ReactElement<TextInputProps>
+  ): void {
     this.setState({ value: evt.target.value });
 
     if (typeof field.props.onChange === 'function') {
