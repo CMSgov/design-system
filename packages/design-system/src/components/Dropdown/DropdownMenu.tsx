@@ -43,7 +43,7 @@ export function DropdownMenu<T>({
     `${componentClass}__menu-container`,
     size && `ds-c-field--${size}`
   );
-  const containerRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
   usePressEscapeHandler(containerRef, () => {
     state.setOpen(false);
     (props.triggerRef.current as HTMLButtonElement)?.focus?.();

@@ -107,7 +107,7 @@ export const Dialog = (props: DialogProps) => {
   const headerClassNames = classNames('ds-c-dialog__header', headerClassName);
   const actionsClassNames = classNames('ds-c-dialog__actions', actionsClassName);
 
-  const containerRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Set initial focus
   useEffect(() => {

@@ -76,7 +76,7 @@ const Wrapper = ({
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ds-date-field': JSX.IntrinsicElements['div'] & {
+      'ds-date-field': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
