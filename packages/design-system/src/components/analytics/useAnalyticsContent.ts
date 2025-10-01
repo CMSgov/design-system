@@ -39,7 +39,11 @@ export interface UseAnalyticsContentProps {
  */
 export function useAnalyticsContent({ onMount, onUnmount }: UseAnalyticsContentProps) {
   // Three refs should be enough to support fallback content. Add more in the future if needed
-  const refs: RefObject<any>[] = [useRef(), useRef(), useRef()];
+  const refs: RefObject<HTMLDivElement>[] = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   // According to this lint rule, we need to include all the dependencies of this function in the

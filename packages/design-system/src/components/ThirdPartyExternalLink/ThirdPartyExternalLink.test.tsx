@@ -59,6 +59,17 @@ describe('ThirdPartyExternalLink', () => {
       expect(learnMoreLink.getAttribute('href')).toBe('https://www.google.com/');
     });
 
+    describe('when no learnMoreUrl is defined', () => {
+      it('does not render the Learn More link', async () => {
+        const { user } = renderThirdPartyExternalLink();
+
+        await user.click(getLink());
+
+        const learnMoreLink = screen.queryByText('Learn more about links to third-party sites');
+        expect(learnMoreLink).toBeNull();
+      });
+    });
+
     it('renders confirmation link with custom href', async () => {
       const { user } = renderThirdPartyExternalLink({ href: 'https://www.google.com/' });
 

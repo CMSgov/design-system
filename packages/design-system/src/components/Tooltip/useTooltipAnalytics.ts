@@ -10,7 +10,7 @@ export default function useTooltipAnalytics({
   ariaLabel,
   triggerAriaLabel,
 }: TooltipProps) {
-  const contentRef = useRef<HTMLElement>();
+  const contentRef = useRef<HTMLElement>(null);
 
   function sendTooltipEvent() {
     if (analytics !== true && (!config().tooltipSendsAnalytics || analytics === false)) {

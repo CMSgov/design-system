@@ -13,7 +13,7 @@ export default function useButtonAnalytics({
   type,
   variation,
 }: ButtonProps) {
-  const contentRef = useRef();
+  const contentRef = useRef(null);
 
   function sendButtonEvent() {
     if (analytics !== true && (!config().buttonSendsAnalytics || analytics === false)) {
