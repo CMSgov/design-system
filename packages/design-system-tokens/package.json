@@ -13,7 +13,6 @@
   "scripts": {
     "build": "tsx ./src/css/index.ts",
     "clean": "rm -rf dist/*",
-    "sync:to-figma": "tsx ./src/figma/syncTokensToFigma.ts",
     "sync:from-figma": "tsx ./src/figma/syncFigmaToTokens.ts"
   }
 }
