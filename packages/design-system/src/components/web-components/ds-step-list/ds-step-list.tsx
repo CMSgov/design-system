@@ -45,7 +45,7 @@ const Wrapper = ({
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-step-list': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

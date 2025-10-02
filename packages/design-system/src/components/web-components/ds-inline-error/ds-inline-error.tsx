@@ -13,4 +13,16 @@ const Wrapper = ({ inversed, rootId, ...otherProps }: WrapperProps) => (
   <InlineError {...otherProps} inversed={parseBooleanAttr(inversed)} id={rootId} />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-inline-error': React.JSX.IntrinsicElements['div'] & {
+        [K in (typeof attributes)[number]]?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-inline-error', () => Wrapper, { attributes, shadow: true });

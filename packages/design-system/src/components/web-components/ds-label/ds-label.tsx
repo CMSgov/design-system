@@ -14,4 +14,16 @@ const Wrapper = ({ inversed, rootId, for: fieldId, ...otherProps }: WrapperProps
   <Label {...otherProps} inversed={parseBooleanAttr(inversed)} fieldId={fieldId} id={rootId} />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-label': React.JSX.IntrinsicElements['div'] & {
+        [K in (typeof attributes)[number]]?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-label', () => Wrapper, { attributes });

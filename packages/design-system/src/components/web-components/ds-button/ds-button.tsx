@@ -35,6 +35,18 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-button': React.JSX.IntrinsicElements['div'] & {
+        [K in (typeof attributes)[number]]?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-button', () => Wrapper, {
   attributes,
   events: ['onClick', onAnalyticsEvent],

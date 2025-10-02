@@ -5,7 +5,7 @@ const attributes = ['href'] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-skip-nav': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

@@ -6,7 +6,7 @@ const attributes = ['inversed'] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-tooltip-icon': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

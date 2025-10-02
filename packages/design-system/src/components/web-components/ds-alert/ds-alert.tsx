@@ -32,4 +32,14 @@ const Wrapper = ({ analytics, hideIcon, rootId, ...otherProps }: WrapperProps) =
   />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-alert': any;
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-alert', () => Wrapper, { attributes, events: [onAnalyticsEvent], shadow: true });

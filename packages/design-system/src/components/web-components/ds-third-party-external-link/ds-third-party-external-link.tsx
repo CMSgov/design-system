@@ -28,7 +28,7 @@ const Wrapper = ({ analytics, ...otherProps }: WrapperProps) => (
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-third-party-external-link': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
