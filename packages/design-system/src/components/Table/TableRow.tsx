@@ -22,7 +22,7 @@ export const TableRow = ({ children, _isTableHeadChild, ...tableRowProps }: Tabl
     return Children.map(children, (child: React.ReactElement) => {
       // Extend props before rendering.
       if (child && child.props) {
-        return cloneElement(child, {
+        return cloneElement(child as React.ReactElement<any>, {
           _isTableHeadChild: _isTableHeadChild,
         });
       }
