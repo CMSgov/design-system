@@ -143,7 +143,7 @@ describe('Choice', () => {
 
   it('forwards a mutable object inputRef', () => {
     const MyComponent = () => {
-      const inputRef = useRef<HTMLInputElement>();
+      const inputRef = useRef<HTMLInputElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
         expect(inputRef.current.tagName).toEqual('INPUT');

@@ -12,8 +12,8 @@ export const ThemeVersionSection = () => {
   const themeDisplayName = getThemeData(theme).displayName;
   const themeDialogProps = useFilterDialogManager();
   const versionDialogProps = useFilterDialogManager();
-  const themeButtonRef = useRef<HTMLButtonElement>();
-  const versionButtonRef = useRef<HTMLButtonElement>();
+  const themeButtonRef = useRef<HTMLButtonElement>(null);
+  const versionButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <>
