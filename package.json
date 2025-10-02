@@ -25,6 +25,7 @@
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:builds": "find ./packages ./examples -name 'dist' -type d -depth 2 -exec rm -rf '{}' + && rm -rf ./packages/docs/public && rm -rf ./dist",
     "clean:modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "convert:icons": "tsx ./scripts/convert-icons.ts",
     "deploy-demo": "tsx ./scripts/deploy-demo.ts",
     "lint": "npm run lint:stylelint && npm run lint:eslint",
     "lint:eslint": "eslint ./packages/",
