@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { usePressEscapeHandler } from './usePressEscapeHandler';
 
 const TestComponentWithHook = ({ callbackFn, passRef }: { callbackFn: any; passRef?: boolean }) => {
-  const divRef = useRef();
+  const divRef = useRef(null);
   const refToPass = passRef ? divRef : null;
 
   usePressEscapeHandler(refToPass, callbackFn);
