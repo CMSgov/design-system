@@ -18,7 +18,10 @@ declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'ds-hint': React.JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+        'class-name'?: string;
+        inversed?: string;
+        'requirement-label'?: string;
+        'root-id'?: string;
       };
     }
   }

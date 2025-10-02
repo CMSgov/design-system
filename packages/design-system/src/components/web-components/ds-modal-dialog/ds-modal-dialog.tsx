@@ -65,7 +65,19 @@ declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'ds-modal-dialog': React.JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+        actions?: string;
+        'actions-class-name'?: string;
+        alert?: string | boolean;
+        'backdrop-click-exits'?: string | boolean;
+        'dialog-close-label'?: string;
+        'class-name'?: string;
+        'header-class-name'?: string;
+        heading?: string;
+        'root-id'?: string;
+        'is-open'?: string | boolean;
+        size?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
       };
     }
   }

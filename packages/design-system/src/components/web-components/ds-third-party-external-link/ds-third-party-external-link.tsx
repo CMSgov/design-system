@@ -31,7 +31,13 @@ declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'ds-third-party-external-link': React.JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+        href?: string;
+        origin?: string;
+        'class-name'?: string;
+        'aria-described-by'?: string;
+        'learn-more-url'?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
       };
     }
   }

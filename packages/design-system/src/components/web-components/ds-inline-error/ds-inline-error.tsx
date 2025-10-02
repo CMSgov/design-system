@@ -18,7 +18,9 @@ declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'ds-inline-error': React.JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+        rootId?: string;
+        'class-name'?: string;
+        inversed?: string;
       };
     }
   }

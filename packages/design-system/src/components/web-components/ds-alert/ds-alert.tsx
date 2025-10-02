@@ -36,7 +36,18 @@ const Wrapper = ({ analytics, hideIcon, rootId, ...otherProps }: WrapperProps) =
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-alert': any;
+      'ds-alert': React.JSX.IntrinsicElements['div'] & {
+        'class-name'?: string;
+        heading?: string;
+        'heading-id'?: string;
+        'hide-icon'?: string | boolean;
+        role?: string;
+        weight?: string;
+        variation?: string;
+        'root-id'?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
+      };
     }
   }
 }

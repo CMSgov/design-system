@@ -40,7 +40,20 @@ declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'ds-button': React.JSX.IntrinsicElements['div'] & {
-        [K in (typeof attributes)[number]]?: string;
+        'class-name'?: string;
+        disabled?: string | boolean;
+        href?: string;
+        'is-alternate'?: string | boolean;
+        'is-on-dark'?: string | boolean;
+        size?: string;
+        type?: string;
+        variation?: string;
+        value?: string;
+        target?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
+        'analytics-parent-heading'?: string;
+        'analytics-parent-type'?: string;
       };
     }
   }
