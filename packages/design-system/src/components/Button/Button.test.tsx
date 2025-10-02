@@ -92,7 +92,7 @@ describe('Button', () => {
 
   it('forwards a mutable object inputRef', () => {
     const MyComponent = () => {
-      const inputRef = useRef<HTMLButtonElement>();
+      const inputRef = useRef<HTMLButtonElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
         expect(inputRef.current.tagName).toEqual('BUTTON');

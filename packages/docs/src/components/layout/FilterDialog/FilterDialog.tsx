@@ -60,7 +60,7 @@ export interface FilterDialogProps {
 export const FilterDialog = (props: FilterDialogProps) => {
   const { headingLevel = '3' } = props;
   const id = useRef(props.id || uniqueId('filter-dialog-')).current;
-  const headingRef = mergeRefs([props.headingRef, useRef()]);
+  const headingRef = mergeRefs([props.headingRef, useRef(null)]);
   const headingId = props.headingId ?? `${id}__heading`;
   const Heading = `h${headingLevel}` as const;
 

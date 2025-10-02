@@ -37,12 +37,12 @@ interface ResponsiveExample {
  * To use this example, you must have a corresponding storybook story to reference
  */
 const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
-  const rootRef = useRef<HTMLDivElement>();
-  const exampleWrapperRef = useRef<HTMLDivElement>();
+  const rootRef = useRef<HTMLDivElement>(null);
+  const exampleWrapperRef = useRef<HTMLDivElement>(null);
   const [exampleWrapperWidth, setExampleWrapperWidth] = useState<number>(200);
   const [iframeBreakpoint, setIframeBreakpoint] = useState<keyof typeof breakpoints>('md');
   const [iframeHeight, setIFrameHeight] = useState<number>(200);
-  const iframeRef = useRef<HTMLIFrameElement>();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const iframeUrl = withPrefix(
     `/storybook/iframe.html?id=${storyId}&viewMode=story&globals=theme:${theme}`
   );
