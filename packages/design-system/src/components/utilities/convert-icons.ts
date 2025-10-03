@@ -3,15 +3,8 @@ import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as Icons from '../Icons';
 
-const root = path.join(__dirname, '..');
-const webComponentsPath = path.join(
-  root,
-  'packages',
-  'design-system',
-  'src',
-  'components',
-  'web-components'
-);
+const componentsPath = path.join(__dirname, '..');
+const webComponentsPath = path.join(componentsPath, 'web-components');
 const iconsPath = path.join(webComponentsPath, 'ds-icons');
 
 const icons = Object.keys(Icons);
