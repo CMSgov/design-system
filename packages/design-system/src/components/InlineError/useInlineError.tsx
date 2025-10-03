@@ -76,7 +76,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
 
   // If the user has provided an `aria-invalid` attribute, use that as the source
   // of truth; otherwise, it's invalid if there's an error message.
-  const invalid = props['aria-invalid'] ?? !!errorMessage;
+  const invalid: React.AriaAttributes['aria-invalid'] = props['aria-invalid'] ?? !!errorMessage;
 
   return {
     errorId: errorMessage ? errorId : undefined,

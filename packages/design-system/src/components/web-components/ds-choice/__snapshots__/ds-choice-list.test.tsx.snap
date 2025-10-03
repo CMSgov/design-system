@@ -6,7 +6,6 @@ exports[`ChoiceList accepts HTML as children 1`] = `
     type="checkbox"
   >
     <fieldset
-      aria-invalid="false"
       class="ds-c-fieldset"
     >
       <legend

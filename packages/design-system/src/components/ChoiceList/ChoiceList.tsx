@@ -82,11 +82,11 @@ export type ChoiceListProps = BaseChoiceListProps &
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices } = props;
+  const { onBlur, onComponentBlur, choices, type } = props;
   const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
-    if (props.type !== 'checkbox' && props.choices.length === 1) {
+    if (type !== 'checkbox' && choices.length === 1) {
       console.warn(
         `[Warning]: Use type="checkbox" for components with only one choice. A single radio button is disallowed because it prevents users from deselecting the field.`
       );
@@ -126,7 +126,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
       onBlur: handleBlur,
       onChange: props.onChange,
       size: props.size,
-      type: props.type,
+      type,
       inputClassName: classNames(choiceProps.inputClassName, {
         'ds-c-choice--error': props.errorMessage,
       }),
@@ -151,12 +151,22 @@ export const ChoiceList = (props: ChoiceListProps) => {
     return <Choice key={choiceProps.value} {...completeChoiceProps} />;
   });
 
+  const addDynamicAttrs = () => {
+    const attrs: React.ComponentPropsWithRef<'fieldset'> = {};
+
+    if (type === 'radio') {
+      attrs['aria-invalid'] = invalid;
+      attrs.role = 'radiogroup';
+    }
+
+    return attrs;
+  };
+
   return (
     <fieldset
-      aria-invalid={invalid}
       aria-describedby={describeField({ ...props, hintId, errorId })}
       className={classNames('ds-c-fieldset', props.className)}
-      role={props.type === 'radio' ? 'radiogroup' : null}
+      {...addDynamicAttrs()}
     >
       <Label component="legend" {...labelProps} />
       {hintElement}
