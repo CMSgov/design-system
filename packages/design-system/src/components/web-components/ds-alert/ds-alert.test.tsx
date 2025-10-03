@@ -4,16 +4,6 @@ import './ds-alert';
 import { testAnalytics } from '../__tests__/analytics';
 import { createTestRenderer } from '../__tests__/rendering';
 
-/* eslint-disable @typescript-eslint/no-namespace */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-alert': any;
-    }
-  }
-}
-/* eslint-enable */
-
 const defaultText = 'Ruhroh';
 
 const renderAlert = createTestRenderer('ds-alert', (attrs = {}) => (

@@ -6,7 +6,7 @@ import './ds-autocomplete';
 const defaultItems = JSON.stringify([{ id: 'kRf6c2fY', name: 'Cook County, IL' }]);
 const updatedItems = JSON.stringify([{ id: 'Yf2c6fRk', name: 'Marion County, OR' }]);
 
-type AutocompleteProps = JSX.IntrinsicElements['ds-autocomplete'];
+type AutocompleteProps = React.JSX.IntrinsicElements['ds-autocomplete'];
 
 function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {

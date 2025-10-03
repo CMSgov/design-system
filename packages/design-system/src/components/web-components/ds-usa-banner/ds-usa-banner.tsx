@@ -14,4 +14,16 @@ const Wrapper = ({ rootId, ...otherProps }: WrapperProps) => (
   <UsaBanner {...otherProps} id={rootId} />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-usa-banner': React.JSX.IntrinsicElements['div'] & {
+        [K in (typeof attributes)[number]]?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-usa-banner', () => Wrapper, { attributes });

@@ -1,16 +1,6 @@
 import { createTestRenderer } from '../__tests__/rendering';
 import './ds-hint';
 
-/* eslint-disable @typescript-eslint/no-namespace */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-hint': any;
-    }
-  }
-}
-/* eslint-enable */
-
 // Renaming the renderButton function to view to match TestingLibrary's naming conventions
 const view = createTestRenderer('ds-hint', (attrs = {}) => <ds-hint {...attrs}>Foo</ds-hint>);
 
@@ -21,7 +11,7 @@ describe('Hint', () => {
   });
 
   it('should apply an inverse class', () => {
-    const { shadowRoot } = view({ inversed: true });
+    const { shadowRoot } = view({ inversed: 'true' });
     const hint = shadowRoot.firstChild as HTMLElement;
     expect(hint.className).toContain('ds-c-hint--inverse');
   });

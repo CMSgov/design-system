@@ -2,7 +2,7 @@
 import React from 'react';
 
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-tab-panel': JSX.IntrinsicElements['div'] & {
         id: string;
