@@ -45,7 +45,7 @@ const StorybookExample = ({
 }: StorybookExampleProps) => {
   const [iframeHeight, setiFrameHeight] = useState<number>(200);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const iframeRef = useRef<HTMLIFrameElement>();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const controlArgs = controls ? `&args=${controls}` : '';
   const iframeUrl = withPrefix(
     `/storybook/iframe.html?id=${storyId}${controlArgs}&viewMode=story&globals=theme:${theme}`

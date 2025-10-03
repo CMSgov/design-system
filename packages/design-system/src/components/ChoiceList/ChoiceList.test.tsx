@@ -217,4 +217,27 @@ describe('ChoiceList', () => {
       expect(inputRefCallback).toHaveBeenCalled();
     });
   });
+
+  describe('aria-invalid', () => {
+    describe('when type is radio', () => {
+      it('renders the aria-invalid attribute', () => {
+        renderChoiceList({
+          type: 'radio',
+        });
+        const fieldsetEl = screen.getByRole('radiogroup');
+
+        expect(fieldsetEl).toHaveAttribute('aria-invalid');
+      });
+    });
+    describe('when type is checkbox', () => {
+      it('does not render the aria-invalid attribute', () => {
+        renderChoiceList({
+          type: 'checkbox',
+        });
+        const fieldsetEl = screen.getByRole('group');
+
+        expect(fieldsetEl).not.toHaveAttribute('aria-invalid');
+      });
+    });
+  });
 });
