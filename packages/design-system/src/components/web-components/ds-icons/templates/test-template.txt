@@ -1,0 +1,1 @@
+describe('WEB_COMPONENT_NAME', () => {});
