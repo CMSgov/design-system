@@ -35,6 +35,31 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-button': React.JSX.IntrinsicElements['div'] & {
+        'class-name'?: string;
+        disabled?: string | boolean;
+        href?: string;
+        'is-alternate'?: string | boolean;
+        'is-on-dark'?: string | boolean;
+        size?: string;
+        type?: string;
+        variation?: string;
+        value?: string;
+        target?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
+        'analytics-parent-heading'?: string;
+        'analytics-parent-type'?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-button', () => Wrapper, {
   attributes,
   events: ['onClick', onAnalyticsEvent],

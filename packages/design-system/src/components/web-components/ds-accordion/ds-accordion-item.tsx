@@ -16,7 +16,7 @@ const attributes = [
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-accordion-item': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

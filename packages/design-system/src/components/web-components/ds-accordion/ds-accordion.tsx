@@ -6,7 +6,7 @@ const attributes = ['class-name', 'bordered'] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-accordion': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

@@ -4,16 +4,6 @@ import './ds-button';
 import { testAnalytics } from '../__tests__/analytics';
 import { createTestRenderer } from '../__tests__/rendering';
 
-/* eslint-disable @typescript-eslint/no-namespace */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ds-button': any;
-    }
-  }
-}
-/* eslint-enable */
-
 const defaultProps = {
   children: 'Foo',
 };
@@ -36,7 +26,7 @@ describe('Button', () => {
   });
 
   it('renders disabled button', () => {
-    const { shadowRoot } = view({ disabled: true });
+    const { shadowRoot } = view({ disabled: 'true' });
     expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
@@ -52,7 +42,7 @@ describe('Button', () => {
   it('renders disabled anchor correctly', () => {
     const { shadowRoot } = view({
       href: '#!',
-      disabled: true,
+      disabled: 'true',
       children: 'Link button',
     });
     expect(shadowRoot.firstElementChild).toMatchSnapshot();
@@ -79,9 +69,9 @@ describe('Button', () => {
   it('applies disabled, inverse, alternate, and variation classes together', () => {
     const { shadowRoot } = view({
       href: '#!',
-      disabled: true,
-      'is-on-dark': true,
-      'is-alternate': true,
+      disabled: 'true',
+      'is-on-dark': 'true',
+      'is-alternate': 'true',
       variation: 'ghost',
     });
     const link = getByRole(shadowRoot as any as HTMLElement, 'link');

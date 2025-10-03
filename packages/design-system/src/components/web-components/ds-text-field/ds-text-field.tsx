@@ -66,4 +66,16 @@ const Wrapper = ({ autofocus, rootId, ...otherProps }: WrapperProps) => (
   />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-text-field': React.JSX.IntrinsicElements['div'] & {
+        [K in (typeof attributes)[number]]?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-text-field', () => Wrapper, { attributes, events: ['onChange', 'onBlur'] });
