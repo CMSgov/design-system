@@ -1,6 +1,6 @@
 import { mkdir, readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
-import { convertIcon, convertIcons, customizeTestTemplate } from './convert-icons';
+import { convertIcon, convertIcons, customizeTemplate } from './convert-icons';
 import { existsSync } from 'node:fs';
 
 const tempDir = path.join(__dirname, 'temp');
@@ -47,7 +47,7 @@ describe('convertIcons', () => {
     });
   });
 
-  describe('customizeTestTemplate', () => {
+  describe('customizeTemplate', () => {
     it('replaces WEB_COMPONENT_NAME with the web component name', () => {
       const testTemplate = `
         This a test template. WEB_COMPONENT_NAME should changed to the web
@@ -57,7 +57,7 @@ describe('convertIcons', () => {
       const webComponentName = 'ds-test-icon';
 
       const re = new RegExp(webComponentName);
-      const customizedTemplate = customizeTestTemplate(webComponentName, testTemplate);
+      const customizedTemplate = customizeTemplate(webComponentName, testTemplate);
       expect(customizedTemplate).toMatch(re);
       expect(customizedTemplate).not.toMatch(/WEB_COMPONENT_NAME/);
     });

@@ -16,7 +16,7 @@ const icons = Object.keys(Icons);
  * @param template The test template that will be customized.
  * @returns The customized test template.
  */
-export const customizeTestTemplate = (webComponentName: string, template: string) => {
+export const customizeTemplate = (webComponentName: string, template: string) => {
   return template.replace(/WEB_COMPONENT_NAME/g, webComponentName);
 };
 
@@ -39,7 +39,7 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
     // test file
     writeFile(
       `${filePath}/${webComponentName}.test.tsx`,
-      customizeTestTemplate(webComponentName, testTemplate)
+      customizeTemplate(webComponentName, testTemplate)
     ),
   ]);
 };
