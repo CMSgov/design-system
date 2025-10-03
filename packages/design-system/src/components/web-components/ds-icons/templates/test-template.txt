@@ -1,1 +1,12 @@
-describe('WEB_COMPONENT_NAME', () => {});
+import { createTestRenderer } from '../__tests__/rendering';
+
+const view = createTestRenderer('WEB_COMPONENT_NAME', (attrs = {}) => (
+  <WEB_COMPONENT_NAME {...defaultProps} {...attrs} />
+));
+
+describe('WEB_COMPONENT_NAME', () => {
+  it('renders as an SVG', () => {
+    const { shadowRoot } = view();
+    expect(shadowRoot.firstElementChild.tagName).toBe('SVG');
+  });
+});
