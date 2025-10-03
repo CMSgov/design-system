@@ -43,7 +43,6 @@
     "start": "npm run build:storybook:docs && npm --prefix ./packages/docs run develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
-    "sync:tokens-to-figma": "npm --prefix ./packages/design-system-tokens run sync:to-figma",
     "sync:tokens-from-figma": "npm --prefix ./packages/design-system-tokens run sync:from-figma",
     "test": "npm run test:unit",
     "posttest": "npm run lint",

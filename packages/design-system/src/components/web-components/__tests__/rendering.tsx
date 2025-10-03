@@ -43,10 +43,10 @@ export function createGenericTestRenderer<T extends unknown[]>(
  * This is a convenient version that assumes that the render function will always have
  * attribute and children parameters and can automatically add the type annotations.
  */
-export function createTestRenderer<TagName extends keyof JSX.IntrinsicElements>(
+export function createTestRenderer<TagName extends keyof React.JSX.IntrinsicElements>(
   tagName: TagName,
   renderFn: (
-    attrs?: JSX.IntrinsicElements[TagName],
+    attrs?: React.JSX.IntrinsicElements[TagName],
     children?: React.ReactNode
   ) => React.ReactElement,
   userEventSetupOptions: Options = {}

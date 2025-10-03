@@ -60,6 +60,30 @@ const Wrapper = ({
   </Dialog>
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-modal-dialog': React.JSX.IntrinsicElements['div'] & {
+        actions?: string;
+        'actions-class-name'?: string;
+        alert?: string | boolean;
+        'backdrop-click-exits'?: string | boolean;
+        'dialog-close-label'?: string;
+        'class-name'?: string;
+        'header-class-name'?: string;
+        heading?: string;
+        'root-id'?: string;
+        'is-open'?: string | boolean;
+        size?: string;
+        analytics?: string;
+        'analytics-label-override'?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-modal-dialog', () => Wrapper, {
   attributes,
   events: [onAnalyticsEvent, 'onExit'],

@@ -36,8 +36,10 @@ export interface ReviewProps {
   onEditClick?: (...args: any[]) => any;
 }
 
-const getHeading = (heading, headingLevel) => {
-  const Heading = (`h${headingLevel}` || `h3`) as keyof React.JSX.IntrinsicElements;
+type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+const getHeading = (heading: React.ReactNode, headingLevel: ReviewHeadingLevel) => {
+  const Heading = (`h${headingLevel}` || `h3`) as HeadingTag;
   if (heading) {
     return <Heading className="ds-c-review__heading">{heading}</Heading>;
   }

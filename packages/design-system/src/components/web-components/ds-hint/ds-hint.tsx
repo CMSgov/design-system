@@ -13,4 +13,19 @@ const Wrapper = ({ inversed, rootId, ...otherProps }: WrapperProps) => (
   <Hint {...otherProps} inversed={parseBooleanAttr(inversed)} id={rootId} />
 );
 
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'ds-hint': React.JSX.IntrinsicElements['div'] & {
+        'class-name'?: string;
+        inversed?: string;
+        'requirement-label'?: string;
+        'root-id'?: string;
+      };
+    }
+  }
+}
+/* eslint-enable */
+
 define('ds-hint', () => Wrapper, { attributes, shadow: true });
