@@ -1,1 +1,9 @@
-export const attributes = ['description', 'inversed', 'view-box'] as const;
+export const attributes = [
+  'aria-hidden',
+  'class-name',
+  'description',
+  'id',
+  'inversed',
+  'title',
+  'view-box',
+] as const;
