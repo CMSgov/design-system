@@ -15,6 +15,12 @@ declare global {
 }
 /* eslint-enable */
 
-const Wrapper = (props: IconCommonProps) => (<ICON_NAME {...props} />);
+interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
+  ariaHidden?: string;
+}
+
+const Wrapper = ({ ariaHidden, ...otherProps}: WrapperProps) => (
+  <ICON_NAME ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+);
 
 define('WEB_COMPONENT_NAME', () => Wrapper, { attributes, shadow: true });
