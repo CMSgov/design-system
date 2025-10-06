@@ -1,3 +1,4 @@
+import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -12,3 +13,5 @@ declare global {
   }
 }
 /* eslint-enable */
+
+define('WEB_COMPONENT_NAME', () => ICON_NAME, { attributes });
