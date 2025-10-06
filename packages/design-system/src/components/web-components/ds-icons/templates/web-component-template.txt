@@ -1,0 +1,16 @@
+import { attributes } from './shared-attributes';
+
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace React.JSX {
+    interface IntrinsicElements {
+      'WEB_COMPONENT_NAME': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          [K in (typeof attributes)[number]]?: string;
+        },
+        HTMLElement
+      >;
+    }
+  }
+}
+/* eslint-enable */

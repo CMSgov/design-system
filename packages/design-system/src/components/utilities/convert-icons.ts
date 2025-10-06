@@ -32,10 +32,16 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
   const testTemplate = await readFile(`${iconsPath}/templates/test-template.txt`, {
     encoding: 'utf8',
   });
+  const webComponentTemplate = await readFile(`${iconsPath}/templates/web-component-template.txt`, {
+    encoding: 'utf8',
+  });
 
   await Promise.all([
     // the web component
-    writeFile(`${filePath}/${webComponentName}.tsx`, 'Hello World'),
+    writeFile(
+      `${filePath}/${webComponentName}.tsx`,
+      customizeTemplate(webComponentName, webComponentTemplate)
+    ),
     // test file
     writeFile(
       `${filePath}/${webComponentName}.test.tsx`,

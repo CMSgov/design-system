@@ -1,7 +1,7 @@
 import { createTestRenderer } from '../__tests__/rendering';
 
 const view = createTestRenderer('WEB_COMPONENT_NAME', (attrs = {}) => (
-  <WEB_COMPONENT_NAME {...defaultProps} {...attrs} />
+  <WEB_COMPONENT_NAME {...attrs} />
 ));
 
 describe('WEB_COMPONENT_NAME', () => {
