@@ -4,12 +4,10 @@ import { attributes } from './shared-attributes';
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'WEB_COMPONENT_NAME': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & {
+      'WEB_COMPONENT_NAME':
+        React.SVGProps<SVGSVGElement> & {
           [K in (typeof attributes)[number]]?: string;
-        },
-        HTMLElement
-      >;
+        };
     }
   }
 }
