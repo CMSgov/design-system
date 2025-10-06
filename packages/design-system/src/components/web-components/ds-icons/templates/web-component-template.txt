@@ -1,12 +1,13 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
+import { ICON_NAME, IconCommonProps } from '../../Icons';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
       'WEB_COMPONENT_NAME':
-        React.SVGProps<SVGSVGElement> & {
+        React.JSX.IntrinsicElements['div'] & {
           [K in (typeof attributes)[number]]?: string;
         };
     }
@@ -14,4 +15,6 @@ declare global {
 }
 /* eslint-enable */
 
-define('WEB_COMPONENT_NAME', () => ICON_NAME, { attributes });
+const Wrapper = (props: IconCommonProps) => (<ICON_NAME {...props} />);
+
+define('WEB_COMPONENT_NAME', () => Wrapper, { attributes, shadow: true });

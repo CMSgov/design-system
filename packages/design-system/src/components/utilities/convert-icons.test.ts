@@ -54,10 +54,11 @@ describe('convertIcons', () => {
         component name, regardless of whether is separated by spaces or if
         it('WEB_COMPONENT_NAME').is.in.code()
       `;
+      const iconName = 'TestIcon';
       const webComponentName = 'ds-test-icon';
 
       const re = new RegExp(webComponentName);
-      const customizedTemplate = customizeTemplate(webComponentName, testTemplate);
+      const customizedTemplate = customizeTemplate(iconName, webComponentName, testTemplate);
       expect(customizedTemplate).toMatch(re);
       expect(customizedTemplate).not.toMatch(/WEB_COMPONENT_NAME/);
     });

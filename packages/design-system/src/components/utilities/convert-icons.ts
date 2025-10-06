@@ -12,12 +12,13 @@ const icons = Object.keys(Icons);
 /**
  * Customizes the test template for a specific web component.
  *
+ * @param iconName The name of the icon being converted.
  * @param webComponentName The name of the web component being tested.
  * @param template The test template that will be customized.
  * @returns The customized test template.
  */
-export const customizeTemplate = (webComponentName: string, template: string) => {
-  return template.replace(/WEB_COMPONENT_NAME/g, webComponentName);
+export const customizeTemplate = (iconName: string, webComponentName: string, template: string) => {
+  return template.replace(/WEB_COMPONENT_NAME/g, webComponentName).replace(/ICON_NAME/g, iconName);
 };
 
 /**
@@ -40,12 +41,12 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
     // the web component
     writeFile(
       `${filePath}/${webComponentName}.tsx`,
-      customizeTemplate(webComponentName, webComponentTemplate)
+      customizeTemplate(iconName, webComponentName, webComponentTemplate)
     ),
     // test file
     writeFile(
       `${filePath}/${webComponentName}.test.tsx`,
-      customizeTemplate(webComponentName, testTemplate)
+      customizeTemplate(iconName, webComponentName, testTemplate)
     ),
   ]);
 };
