@@ -16,7 +16,7 @@ const Wrapper = ({ children, ...otherProps }) => {
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-review': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;

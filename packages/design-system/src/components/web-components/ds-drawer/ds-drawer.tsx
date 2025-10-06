@@ -67,7 +67,7 @@ const Wrapper = ({
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-drawer': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;

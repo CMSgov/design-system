@@ -21,7 +21,7 @@ const attributes = [
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-choice-list': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {

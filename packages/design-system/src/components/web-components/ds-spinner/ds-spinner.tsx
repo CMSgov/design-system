@@ -7,7 +7,7 @@ const attributes = ['aria-valuetext', 'class-name', 'inversed', 'filled', 'role'
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
-  namespace JSX {
+  namespace React.JSX {
     interface IntrinsicElements {
       'ds-spinner': React.DetailedHTMLProps<
         React.HTMLAttributes<HTMLElement> & {
