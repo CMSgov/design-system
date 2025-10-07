@@ -4,6 +4,7 @@ export * from './Autocomplete';
 export * from './Badge';
 export * from './NoteBox';
 export * from './Button';
+export * from './Card';
 export * from './ChoiceList';
 export * from './DateField';
 export * from './Dialog';
