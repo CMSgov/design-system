@@ -4,14 +4,18 @@ import { convertIcon, convertIcons, customizeTemplate } from './convert-icons';
 import { existsSync } from 'node:fs';
 
 const iconNames = ['TestIcon', 'ExampleIcon', 'AnotherIcon'];
-const tempDir = path.join(__dirname, 'temp');
+
+let tempDir;
 
 describe('convertIcons', () => {
-  beforeAll(() => {
+  beforeEach(() => {
+    const randomInt = Math.floor(Math.random() * (10000 - 1) + 1);
+    tempDir = path.join(__dirname, `temp-${randomInt}`);
+
     mkdir(tempDir);
   });
 
-  afterAll(() => {
+  afterEach(() => {
     rm(tempDir, { recursive: true, force: true });
   });
 
@@ -29,8 +33,6 @@ describe('convertIcons', () => {
     await convertIcons(iconNames, tempDir);
 
     expect(existsSync(`${tempDir}/index.ts`)).toBe(true);
-
-    await rm(`${tempDir}/index.ts`);
   });
 
   describe('when index file already exists', () => {
@@ -59,14 +61,38 @@ describe('convertIcons', () => {
     });
 
     it('creates a test file next to the component file', async () => {
-      const testFileName = 'ds-test-icon.test.tsx';
-
       await convertIcon(iconName, tempDir);
 
-      const testFile = await readFile(`${tempDir}/${testFileName}`, { encoding: 'utf8' });
+      const testFile = await readFile(`${tempDir}/${webComponentName}.test.tsx`, {
+        encoding: 'utf8',
+      });
 
       const re = new RegExp(String.raw`describe\('${webComponentName}'`);
       expect(testFile).toMatch(re);
+    });
+
+    describe('when the files already exist', () => {
+      it('does not overwrite the files', async () => {
+        const componentFileContents = 'This is test content for the web component file.';
+        const testFileContents = 'This content is for the test file.';
+        const webComponentFilePath = `${tempDir}/${webComponentName}.tsx`;
+        const testFilePath = `${tempDir}/${webComponentName}.test.tsx`;
+
+        await Promise.all([
+          writeFile(webComponentFilePath, componentFileContents),
+          writeFile(testFilePath, testFileContents),
+        ]);
+
+        await convertIcon(iconName, tempDir);
+
+        const [componentFile, testFile] = await Promise.all([
+          readFile(webComponentFilePath, { encoding: 'utf8' }),
+          readFile(testFilePath, { encoding: 'utf8' }),
+        ]);
+
+        expect(componentFile).toMatch(componentFileContents);
+        expect(testFile).toMatch(testFileContents);
+      });
     });
   });
 

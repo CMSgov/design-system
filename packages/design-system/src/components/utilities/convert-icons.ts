@@ -37,18 +37,24 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
     encoding: 'utf8',
   });
 
-  await Promise.all([
-    // the web component
-    writeFile(
-      `${filePath}/${webComponentName}.tsx`,
-      customizeTemplate(iconName, webComponentName, webComponentTemplate)
-    ),
-    // test file
-    writeFile(
-      `${filePath}/${webComponentName}.test.tsx`,
-      customizeTemplate(iconName, webComponentName, testTemplate)
-    ),
-  ]);
+  try {
+    return await Promise.all([
+      // the web component
+      writeFile(
+        `${filePath}/${webComponentName}.tsx`,
+        customizeTemplate(iconName, webComponentName, webComponentTemplate),
+        { flag: 'wx' }
+      ),
+      // test file
+      writeFile(
+        `${filePath}/${webComponentName}.test.tsx`,
+        customizeTemplate(iconName, webComponentName, testTemplate),
+        { flag: 'wx' }
+      ),
+    ]);
+  } catch {
+    return;
+  }
 };
 
 /**
