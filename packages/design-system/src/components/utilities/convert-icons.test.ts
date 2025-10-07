@@ -9,7 +9,7 @@ let tempDir;
 
 describe('convertIcons', () => {
   beforeEach(() => {
-    const randomInt = Math.floor(Math.random() * (10000 - 1) + 1);
+    const randomInt = Math.floor(Math.random() * (100000 - 1) + 1);
     tempDir = path.join(__dirname, `temp-${randomInt}`);
 
     mkdir(tempDir);
@@ -69,6 +69,18 @@ describe('convertIcons', () => {
 
       const re = new RegExp(String.raw`describe\('${webComponentName}'`);
       expect(testFile).toMatch(re);
+    });
+
+    it('appends an import statement to index.ts', async () => {
+      // Create index file
+      await writeFile(`${tempDir}/index.ts`, '');
+
+      await convertIcon(iconName, tempDir);
+
+      const indexFile = await readFile(`${tempDir}/index.ts`, { encoding: 'utf8' });
+      const re = new RegExp(String.raw`import './${webComponentName}'`);
+
+      expect(indexFile).toMatch(re);
     });
 
     describe('when the files already exist', () => {

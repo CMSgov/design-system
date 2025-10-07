@@ -1,5 +1,5 @@
 import { kebabCaseIt } from 'case-it/kebab';
-import { open, readFile, writeFile } from 'node:fs/promises';
+import { appendFile, open, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as Icons from '../Icons';
 
@@ -51,6 +51,7 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
         customizeTemplate(iconName, webComponentName, testTemplate),
         { flag: 'wx' }
       ),
+      appendFile(`${filePath}/index.ts`, `import './${webComponentName}';\n`),
     ]);
   } catch {
     return;
