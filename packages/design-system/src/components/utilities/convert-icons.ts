@@ -1,5 +1,5 @@
 import { kebabCaseIt } from 'case-it/kebab';
-import { readFile, writeFile } from 'node:fs/promises';
+import { open, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as Icons from '../Icons';
 
@@ -58,5 +58,15 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
  * @param filePath The path of the folder where the new files should live.
  */
 export const convertIcons = async (iconNames: string[] = icons, filePath: string = iconsPath) => {
+  // Create the index file if it does not already exist.
+  let indexFile;
+  try {
+    indexFile = await open(`${filePath}/index.ts`, 'wx');
+  } catch {
+    indexFile = null;
+  } finally {
+    await indexFile?.close();
+  }
+
   await Promise.all(iconNames.map((iconName) => convertIcon(iconName, filePath)));
 };

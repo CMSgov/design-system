@@ -1,8 +1,9 @@
-import { mkdir, readFile, rm } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { convertIcon, convertIcons, customizeTemplate } from './convert-icons';
 import { existsSync } from 'node:fs';
 
+const iconNames = ['TestIcon', 'ExampleIcon', 'AnotherIcon'];
 const tempDir = path.join(__dirname, 'temp');
 
 describe('convertIcons', () => {
@@ -15,13 +16,35 @@ describe('convertIcons', () => {
   });
 
   it('creates a file for every icon in the array', async () => {
-    const iconNames = ['TestIcon', 'ExampleIcon', 'AnotherIcon'];
     const webComponentNames = ['ds-test-icon', 'ds-example-icon', 'ds-another-icon'];
 
     await convertIcons(iconNames, tempDir);
 
     webComponentNames.forEach((iconName) => {
       expect(existsSync(`${tempDir}/${iconName}.tsx`)).toBe(true);
+    });
+  });
+
+  it('creates an index file in the filePath', async () => {
+    await convertIcons(iconNames, tempDir);
+
+    expect(existsSync(`${tempDir}/index.ts`)).toBe(true);
+
+    await rm(`${tempDir}/index.ts`);
+  });
+
+  describe('when index file already exists', () => {
+    it('does not overwrite the existing index file', async () => {
+      const indexContents = 'This is existing content in the index file.';
+
+      await writeFile(`${tempDir}/index.ts`, indexContents);
+
+      await convertIcons(iconNames, tempDir);
+
+      const indexFile = await readFile(`${tempDir}/index.ts`, { encoding: 'utf8' });
+      expect(indexFile).toMatch(indexContents);
+
+      await rm(`${tempDir}/index.ts`);
     });
   });
 
