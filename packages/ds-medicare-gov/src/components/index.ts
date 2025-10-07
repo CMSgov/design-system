@@ -12,6 +12,5 @@ export * from './MedicaregovHelpDrawer';
 export * from './MedicaregovLogo';
 export * from './MedicaregovThirdPartyExternalLink';
 export * from './SimpleFooter';
-export { Card } from './Card';
 export * from './Stars';
 export * from './Icons';
