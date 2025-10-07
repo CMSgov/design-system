@@ -7,14 +7,14 @@ const view = createTestRenderer('WEB_COMPONENT_NAME', (attrs = {}) => (
 
 describe('WEB_COMPONENT_NAME', () => {
   it('renders as an SVG', () => {
-    const { shadowRoot } = view();
-    expect(shadowRoot.firstElementChild.tagName).toBe('svg');
+    const { customElement } = view();
+    expect(customElement.firstElementChild.tagName).toBe('svg');
   });
 
   it('passes through a custom title', () => {
     const customTitle = 'test title';
-    const { shadowRoot } = view({ title: customTitle });
-    const titleEl = shadowRoot.firstElementChild.querySelector('title');
+    const { customElement } = view({ title: customTitle });
+    const titleEl = customElement.firstElementChild.querySelector('title');
 
     expect(titleEl.textContent).toBe(customTitle);
   });
