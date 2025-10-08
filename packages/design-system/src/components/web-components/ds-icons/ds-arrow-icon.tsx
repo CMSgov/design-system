@@ -21,8 +21,8 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
   direction?: ArrowIconDirectionType;
 }
 
-const Wrapper = ({ ariaHidden, direction, ...otherProps }: WrapperProps) => (
-  <ArrowIcon ariaHidden={JSON.parse(ariaHidden)} direction={direction} {...otherProps} />
+const Wrapper = ({ ariaHidden, ...otherProps }: WrapperProps) => (
+  <ArrowIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
 );
 
 define('ds-arrow-icon', () => Wrapper, { attributes: arrowAttributes });
