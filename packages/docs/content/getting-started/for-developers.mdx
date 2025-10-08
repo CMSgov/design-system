@@ -100,82 +100,74 @@ A content delivery network (CDN) is a collection of servers that dynamically all
 #### Example loading CSS via CDN
 
 <ThemeContent onlyThemes={['core']}>
-
-```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/13.0.0/css/index.css" />
-<link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/13.0.0/css/core-theme.css" />
-```
-
+  <ThemeCodeBlock
+    theme="core"
+    type="css"
+    files={['css/index.css', 'css/core-theme.css']}
+  />
 </ThemeContent>
-
 <ThemeContent onlyThemes={['healthcare']}>
 
-```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/17.0.0/css/index.css" />
-<link
-  rel="stylesheet"
-  href="https://design.cms.gov/cdn/ds-healthcare-gov/17.0.0/css/healthcare-theme.css"
-/>
-```
+  <ThemeCodeBlock
+    theme="healthcare"
+    type="css"
+    files={['css/index.css', 'css/healthcare-theme.css']}
+  />
 
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
 
-```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/15.0.0/css/index.css" />
-<link
-  rel="stylesheet"
-  href="https://design.cms.gov/cdn/ds-medicare-gov/15.0.0/css/medicare-theme.css"
-/>
-```
+  <ThemeCodeBlock
+    theme="medicare"
+    type="css"
+    files={['css/index.css', 'css/medicare-theme.css']}
+  />
 
 </ThemeContent>
 
 <ThemeContent onlyThemes={['cmsgov']}>
 
-```html
-<link rel="stylesheet" href="https://design.cms.gov/cdn/ds-cms-gov/13.0.0/css/index.css" />
-<link
-  rel="stylesheet"
-  href="https://design.cms.gov/cdn/ds-cms-gov/13.0.0/css/cmsgov-theme.css"
-/>
-```
+  <ThemeCodeBlock
+    theme="cmsgov"
+    type="css"
+    files={['css/index.css', 'css/cmsgov-theme.css']}
+  />
 
 </ThemeContent>
 
 #### Example loading web components via CDN
 
 <ThemeContent onlyThemes={['core']}>
-
-```html
-<script src="https://design.cms.gov/cdn/design-system/13.0.0/web-components/bundle/web-components.js"></script>
-```
-
+  <ThemeCodeBlock
+    theme="core"
+    type="script"
+    files={['web-components/bundle/web-components.js']}
+  />
 </ThemeContent>
 
 <ThemeContent onlyThemes={['healthcare']}>
-
-```html
-<script src="https://design.cms.gov/cdn/ds-healthcare-gov/17.0.0/web-components/bundle/web-components.js"></script>
-```
-
+  <ThemeCodeBlock
+    theme="healthcare"
+    type="script"
+    files={['web-components/bundle/web-components.js']}
+  />
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
-
-```html
-<script src="https://design.cms.gov/cdn/ds-medicare-gov/15.0.0/web-components/bundle/web-components.js"></script>
-```
-
+  <ThemeCodeBlock
+    theme="medicare"
+    type="script"
+    files={['web-components/bundle/web-components.js']}
+  />
 </ThemeContent>
 
 <ThemeContent onlyThemes={['cmsgov']}>
-
-```html
-<script src="https://design.cms.gov/cdn/ds-cms-gov/13.0.0/web-components/bundle/web-components.js"></script>
-```
-
+  <ThemeCodeBlock
+    theme="cmsgov"
+    type="script"
+    files={['web-components/bundle/web-components.js']}
+  />
 </ThemeContent>
 
 ### Option 3: Download assets directly
@@ -191,56 +183,39 @@ No matter what framework you use to build your application, you will need to inc
 You will need to include both the main `index.css` along with a theme file which contains all of the CSS variables needed by the main stylesheet. The simplest way to do that is to include resource link elements in your HTML document, like this:
 
 <ThemeContent onlyThemes={['core']}>
-
-```html
-<head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/13.0.0/css/index.css" />
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/design-system/13.0.0/css/core-theme.css" />
-</head>
-```
-
+  <ThemeCodeBlock
+    theme="core"
+    type="css"
+    wrapper="head"
+    files={['css/index.css', 'css/core-theme.css']}
+  />
 </ThemeContent>
 
 <ThemeContent onlyThemes={['healthcare']}>
-
-```html
-<head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-healthcare-gov/17.0.0/css/index.css" />
-  <link
-    rel="stylesheet"
-    href="https://design.cms.gov/cdn/ds-healthcare-gov/17.0.0/css/healthcare-theme.css"
+  <ThemeCodeBlock
+    theme="healthcare"
+    type="css"
+    wrapper="head"
+    files={['css/index.css', 'css/healthcare-theme.css']}
   />
-</head>
-```
-
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
-
-```html
-<head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-medicare-gov/15.0.0/css/index.css" />
-  <link
-    rel="stylesheet"
-    href="https://design.cms.gov/cdn/ds-medicare-gov/15.0.0/css/medicare-theme.css"
+  <ThemeCodeBlock
+    theme="medicare"
+    type="css"
+    wrapper="head"
+    files={['css/index.css', 'css/medicare-theme.css']}
   />
-</head>
-```
-
 </ThemeContent>
 
 <ThemeContent onlyThemes={['cmsgov']}>
-
-```html
-<head>
-  <link rel="stylesheet" href="https://design.cms.gov/cdn/ds-cms-gov/13.0.0/css/index.css" />
-  <link
-    rel="stylesheet"
-    href="https://design.cms.gov/cdn/ds-cms-gov/13.0.0/css/cmsgov-theme.css"
+  <ThemeCodeBlock
+    theme="cmsgov"
+    type="css"
+    wrapper="head"
+    files={['css/index.css', 'css/cmsgov-theme.css']}
   />
-</head>
-```
-
 </ThemeContent>
 
 If you are getting the files from npm, you will want to change the `href` to reference the files from your local `node_modules` folder. Likewise if you've downloaded the files directly, the `href` will point to wherever you've put your files.
