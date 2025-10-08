@@ -38,7 +38,7 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
   });
 
   try {
-    return await Promise.all([
+    await Promise.all([
       // the web component
       writeFile(
         `${filePath}/${webComponentName}.tsx`,
@@ -51,8 +51,11 @@ export const convertIcon = async (iconName: string, filePath: string = iconsPath
         customizeTemplate(iconName, webComponentName, testTemplate),
         { flag: 'wx' }
       ),
-      appendFile(`${filePath}/index.ts`, `import './${webComponentName}';\n`),
     ]);
+
+    await appendFile(`${filePath}/index.ts`, `import './${webComponentName}';\n`);
+
+    return Promise.resolve();
   } catch {
     return;
   }
