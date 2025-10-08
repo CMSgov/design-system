@@ -396,7 +396,12 @@ export const Tooltip = (props: TooltipProps) => {
     );
 
     return (
-      <CSSTransition in={active} classNames="ds-c-tooltip" timeout={transitionDuration}>
+      <CSSTransition
+        in={active}
+        classNames="ds-c-tooltip"
+        timeout={transitionDuration}
+        nodeRef={tooltipElement}
+      >
         {dialog ? (
           <FocusTrap
             active={active}
