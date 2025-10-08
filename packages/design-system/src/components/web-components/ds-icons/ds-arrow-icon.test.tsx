@@ -18,4 +18,11 @@ describe('ds-arrow-icon', () => {
 
     expect(titleEl.textContent).toBe(customTitle);
   });
+
+  it('passes through the direction attribute', () => {
+    const direction = 'down';
+    const { customElement } = view({ direction: direction });
+
+    expect(customElement.firstElementChild).toHaveClass(`ds-c-icon--arrow-${direction}`);
+  });
 });
