@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
-import { SvgIcon, IconCommonProps } from '../../Icons';
+import { SvgIcon, SvgIconProps } from '../../Icons';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -14,11 +14,11 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
+interface WrapperProps extends Omit<SvgIconProps, 'ariaHidden'> {
   ariaHidden?: string;
 }
 
-const Wrapper = ({ ariaHidden, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
   <SvgIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
 );
 
