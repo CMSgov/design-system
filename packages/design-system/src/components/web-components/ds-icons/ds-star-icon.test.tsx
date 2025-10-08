@@ -18,4 +18,10 @@ describe('ds-star-icon', () => {
 
     expect(titleEl.textContent).toBe(customTitle);
   });
+
+  it('passes through the is-filled attribute', () => {
+    const { customElement } = view({ 'is-filled': 'true' });
+
+    expect(customElement.firstElementChild).toHaveClass('ds-c-icon--star-filled');
+  });
 });
