@@ -18,7 +18,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
   ariaHidden?: string;
 }
 
-const Wrapper = ({ ariaHidden, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
   <CloseIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
 );
 

@@ -20,7 +20,7 @@ interface WrapperProps extends Omit<StarIconProps, 'ariaHidden'> {
   ariaHidden?: string;
 }
 
-const Wrapper = ({ ariaHidden, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
   <StarIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
 );
 
