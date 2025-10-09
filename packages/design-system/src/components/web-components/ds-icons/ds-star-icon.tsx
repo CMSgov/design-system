@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 import { StarIcon, StarIconProps } from '../../Icons';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const starAttributes = [...attributes, 'is-filled'] as const;
 
@@ -21,7 +22,7 @@ interface WrapperProps extends Omit<StarIconProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <StarIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+  <StarIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
 define('ds-star-icon', () => Wrapper, { attributes: starAttributes });

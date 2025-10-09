@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 import { ArrowIcon, ArrowIconDirectionType, IconCommonProps } from '../../Icons';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const arrowAttributes = [...attributes, 'direction'] as const;
 
@@ -22,7 +23,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <ArrowIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+  <ArrowIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
 define('ds-arrow-icon', () => Wrapper, { attributes: arrowAttributes });

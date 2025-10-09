@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 import { AddIcon, IconCommonProps } from '../../Icons';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -19,7 +20,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <AddIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+  <AddIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
 define('ds-add-icon', () => Wrapper, { attributes });

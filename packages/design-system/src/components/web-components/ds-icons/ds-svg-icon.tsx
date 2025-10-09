@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 import { SvgIcon, SvgIconProps } from '../../Icons';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -19,7 +20,7 @@ interface WrapperProps extends Omit<SvgIconProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <SvgIcon ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+  <SvgIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
 define('ds-svg-icon', () => Wrapper, { attributes });

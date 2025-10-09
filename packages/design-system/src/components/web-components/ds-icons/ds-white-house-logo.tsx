@@ -1,6 +1,7 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
 import { WhiteHouseLogo, IconCommonProps } from '../../Icons';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -19,7 +20,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <WhiteHouseLogo ariaHidden={JSON.parse(ariaHidden)} {...otherProps} />
+  <WhiteHouseLogo ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
 define('ds-white-house-logo', () => Wrapper, { attributes });
