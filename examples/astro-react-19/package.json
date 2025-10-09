@@ -1,0 +1,20 @@
+{
+  "name": "astro-react-19-example",
+  "type": "module",
+  "version": "13.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "astro": "^5.14.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
