@@ -59,10 +59,10 @@ export const Hint = ({
   }
 
   return (
-    <p {...otherProps} id={id} className={hintClasses}>
+    <div {...otherProps} id={id} className={hintClasses}>
       {requirementLabel}
       {hintPadding}
       {children}
-    </p>
+    </div>
   );
 };
