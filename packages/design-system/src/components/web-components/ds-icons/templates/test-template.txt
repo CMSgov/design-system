@@ -1,0 +1,21 @@
+import { createTestRenderer } from '../__tests__/rendering';
+import './WEB_COMPONENT_NAME';
+
+const view = createTestRenderer('WEB_COMPONENT_NAME', (attrs = {}) => (
+  <WEB_COMPONENT_NAME aria-hidden="false" {...attrs} />
+));
+
+describe('WEB_COMPONENT_NAME', () => {
+  it('renders as an SVG', () => {
+    const { customElement } = view();
+    expect(customElement.firstElementChild.tagName).toBe('svg');
+  });
+
+  it('passes through a custom title', () => {
+    const customTitle = 'test title';
+    const { customElement } = view({ title: customTitle });
+    const titleEl = customElement.firstElementChild.querySelector('title');
+
+    expect(titleEl.textContent).toBe(customTitle);
+  });
+});
