@@ -20,6 +20,7 @@ import StorybookExample from './StorybookExample';
 import TextColorList from './TextColorList';
 import ThemeContent from './ThemeContent';
 import ThemeLabel from './ThemeLabel';
+import ThemeCodeBlock from './ThemeCodeBlock';
 import StorybookDocLinks from './StorybookDocLinks';
 import StorybookDocLink from './StorybookDocLink';
 import { linkAnalytics } from '../../helpers/analytics';
@@ -138,6 +139,7 @@ const customComponents = ({ location, theme }: { location: LocationInterface; th
   TextColorList: (props) => <TextColorList theme={theme} {...props} />,
   ThemeContent: (props) => <ThemeContent theme={theme} {...props} />,
   ThemeLabel: (props) => <ThemeLabel {...props} />,
+  ThemeCodeBlock: (props) => <ThemeCodeBlock {...props} />,
   TypographyUsageTable: (props) => <TypographyUsageTable theme={theme} {...props} />,
   ul: (props) => TextWithMaxWidth(props, 'ul'),
 });
