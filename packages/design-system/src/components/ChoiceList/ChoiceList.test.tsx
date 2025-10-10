@@ -80,7 +80,7 @@ describe('ChoiceList', () => {
       expect(choiceEls.length).toBe(numChoices);
       expect(choice.name).toBe('spec-field');
       expect(choice.value).toBe('1');
-      expect(hintTexts[0].tagName).toBe('P');
+      expect(hintTexts[0].tagName).toBe('DIV');
     });
 
     it('is enclosed by a fieldset', () => {
