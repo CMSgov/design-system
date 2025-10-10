@@ -22,24 +22,23 @@ function HelpDrawerExample() {
         >
           Toggle the help drawer.
         </HelpDrawerToggle>
-        {showHelpDrawer && (
-          <HelpDrawer
-            footerTitle="Footer Title"
-            footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
-            heading="Help Drawer Heading"
-            onCloseClick={() => setShowHelpDrawer(false)}
-          >
-            <strong>An Explanation</strong>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-          </HelpDrawer>
-        )}
+        <HelpDrawer
+          footerTitle="Footer Title"
+          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
+          heading="Help Drawer Heading"
+          isOpen={showHelpDrawer}
+          onCloseClick={() => setShowHelpDrawer(false)}
+        >
+          <strong>An Explanation</strong>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </p>
+        </HelpDrawer>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
           ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
