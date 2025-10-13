@@ -23,6 +23,7 @@ import './ds-drawer';
 import './ds-dropdown';
 import './ds-filter-chip';
 import './ds-hint';
+import './ds-icons';
 import './ds-inline-error';
 import './ds-label';
 import './ds-modal-dialog';
