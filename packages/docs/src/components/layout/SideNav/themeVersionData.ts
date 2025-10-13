@@ -22,6 +22,10 @@ export function getThemeVersions(theme: string) {
   return versions[themes[theme].packageName];
 }
 
+export function getLatestThemeVersion(theme: string) {
+  return versions[themes[theme].packageName][0];
+}
+
 export function getVersionOptions(theme: string) {
   return getThemeVersions(theme).map((version) => ({
     label: version,
