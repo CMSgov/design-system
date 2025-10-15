@@ -60,7 +60,12 @@ export type AutocompleteItems = Array<AutocompleteItem | AutocompleteItemGroup>;
 
 export interface AutocompleteProps {
   /**
-   * Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.
+   * @deprecated Use the `clearInputText` prop (which sets the visible Clear search button text) instead.
+   *
+   * Providing an `aria-label` on the Clear Search `<button>` can override its visible text label,
+   * which may confuse users who rely on both visual and screen reader feedback when the two differ.
+   * This prop was originally intended to provide a more descriptive label for screen reader users
+   * but is no longer recommended.
    */
   ariaClearLabel?: string;
   /**
@@ -198,6 +203,13 @@ export const Autocomplete = (props: AutocompleteProps) => {
     onInputValueChange,
     ...autocompleteProps
   } = props;
+
+  if (process.env.NODE_ENV !== 'production' && ariaClearLabel) {
+    console.warn(
+      "[Deprecated]: The 'ariaClearLabel' prop is deprecated and will be removed in a future release. " +
+        "Use the 'clearInputText' prop instead to set the visible Clear search button text."
+    );
+  }
 
   const hasValidStandaloneItems = items?.some((item) => !('items' in item));
   const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
