@@ -39,8 +39,12 @@ const meta: Meta = {
   },
   argTypes: {
     'aria-clear-label': {
-      description:
-        "Screen reader-specific label for the Clear search `<button>`. Intended to provide a longer, more descriptive explanation of the button's behavior.",
+      description: `
+**Deprecated:** Use the \`clearInputText\` prop instead to set the visible Clear search button text.
+
+Providing an \`aria-label\` on the Clear Search button can override its visible text label, 
+which may confuse users who rely on both visual and screen reader feedback when the two differ.
+      `,
       control: 'text',
     },
     'aria-complete-label': {
