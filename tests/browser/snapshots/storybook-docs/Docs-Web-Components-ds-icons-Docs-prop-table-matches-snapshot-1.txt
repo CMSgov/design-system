@@ -1,0 +1,37 @@
+[
+  [
+    "aria-hidden",
+    "",
+    "\"true\"\"false\""
+  ],
+  [
+    "class-name",
+    "",
+    "string"
+  ],
+  [
+    "description",
+    "",
+    "string"
+  ],
+  [
+    "id",
+    "",
+    "string"
+  ],
+  [
+    "inversed",
+    "",
+    "\"true\"\"false\""
+  ],
+  [
+    "title",
+    "",
+    "string"
+  ],
+  [
+    "view-box",
+    "",
+    "string"
+  ]
+]
