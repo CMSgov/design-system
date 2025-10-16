@@ -7,18 +7,47 @@ const meta: Meta = {
   title: 'Web Components/ds-icons',
   decorators: [webComponentDecorator],
   argTypes: {
-    'aria-hidden': { control: 'boolean' },
-    'class-name': { control: 'text' },
-    children: { control: false, table: { disable: true } },
-    description: { control: 'text' },
-    id: { control: 'text' },
-    inversed: { control: 'boolean' },
-    title: { control: 'text' },
-    'view-box': { control: 'text' },
+    'aria-hidden': {
+      description:
+        'Describes the value of the `aria-hidden` attribute on the SVG. Defaulted to true with the assumption that most icons are decorative. If the icon does not have any associated label text, set this to `false` and ensure a `title` is provided for improved accessibility.',
+      control: 'boolean',
+    },
+    'class-name': {
+      description: 'Additional CSS classes to be added to the svg element',
+      control: 'text',
+    },
+    children: {
+      description: 'The elements that make up the SVG',
+      control: false,
+      table: { disable: true },
+    },
+    description: {
+      description:
+        'Long-text description of any SVG. Use for complex icons, otherwise `title` prop will suffice.',
+      control: 'text',
+    },
+    id: {
+      description: 'A custom `id` attribute for the SVG',
+      control: 'text',
+    },
+    inversed: {
+      description: 'If `true` sets inverse fill color. Default is `false`.',
+      control: 'boolean',
+    },
+    title: {
+      description: 'The descriptive name for the SVG icon',
+      control: 'text',
+    },
+    'view-box': {
+      description:
+        'A string describing the viewbox of the SVG. It is recommended that the icon is centered and fill up the default viewport size. See [this blog post](https://webdesign.tutsplus.com/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844) for further explanation on viewBox and how to use it.',
+      control: 'text',
+    },
   },
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
+      underlyingHtmlElements: ['svg'],
     },
   },
 };
