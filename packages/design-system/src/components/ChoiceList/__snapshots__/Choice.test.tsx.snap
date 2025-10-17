@@ -107,12 +107,12 @@ exports[`Choice has a hint and requirementLabel 1`] = `
       >
         George Washington
       </label>
-      <p
+      <div
         class="ds-c-hint"
         id="static-id__hint"
       >
         Optional. Hello world
-      </p>
+      </div>
       <p
         aria-atomic="true"
         aria-live="assertive"
