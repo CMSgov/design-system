@@ -47,7 +47,6 @@ const meta: Meta = {
   parameters: {
     docs: {
       page: WebComponentDocTemplate,
-      underlyingHtmlElements: ['svg'],
     },
   },
 };
