@@ -1,37 +1,37 @@
 [
   [
     "aria-hidden",
-    "",
+    "Describes the value of the aria-hidden attribute on the SVG. Defaulted to true with the assumption that most icons are decorative. If the icon does not have any associated label text, set this to false and ensure a title is provided for improved accessibility.",
     "\"true\"\"false\""
   ],
   [
     "class-name",
-    "",
+    "Additional CSS classes to be added to the svg element",
     "string"
   ],
   [
     "description",
-    "",
+    "Long-text description of any SVG. Use for complex icons, otherwise title prop will suffice.",
     "string"
   ],
   [
     "id",
-    "",
+    "A custom id attribute for the SVG",
     "string"
   ],
   [
     "inversed",
-    "",
+    "If true sets inverse fill color. Default is false.",
     "\"true\"\"false\""
   ],
   [
     "title",
-    "",
+    "The descriptive name for the SVG icon",
     "string"
   ],
   [
     "view-box",
-    "",
+    "A string describing the viewbox of the SVG. It is recommended that the icon is centered and fill up the default viewport size. See this blog post for further explanation on viewBox and how to use it.",
     "string"
   ]
 ]
