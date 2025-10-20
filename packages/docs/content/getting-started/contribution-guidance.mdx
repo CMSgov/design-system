@@ -1,0 +1,64 @@
+---
+title: Contribution Guidance
+order: 50
+---
+
+import { Alert } from '@cmsgov/design-system'; 
+
+This page explains how to contribute to the CMS Design System and under what conditions contributions are accepted. Follow this guidance to propose a new component, pattern, or layout for inclusion.
+
+## When to make a contribution proposal
+Use this guide to determine whether submitting a contribution proposal is the right path for your team's needs.
+
+### Submit a contribution proposal if…
+- The design is repeatedly needed across multiple product teams.
+- The design is a generalizable solution that can be reused by more than one team or application.
+- The design follows the design and accessibility guidelines already in place.
+- The design introduces a function, layout, or interaction that is not currently supported by existing CMS DS components.
+- Your team is willing to work with the CMS DS team to support documentation, testing, and ongoing refinement if adopted.
+
+### Do not submit a contribution proposal if…
+- The design can be assembled by combining components that already exist in the CMS Design System.
+- The use case is too niche or specific to a single product or workflow and lacks broader applicability.
+- The proposed design conflicts with accessibility standards, visual style, or content guidance set by the CMS Design System.
+- The design is not yet validated or has not shown repeat demand from other teams or users.
+- The request involves documentation updates, usage guidance, or content rather than a new visual or functional design element. These types of requests should be shared through one of our Slack channels or the bug-reporting workflow, which you can access in [#cms-design-system](https://cmsgov.slack.com/archives/CHH0381RD) or by opening a [GitHub issue](https://github.com/CMSgov/design-system/issues/new?template=propose-a-new-item-for-the-cms-design-system.md).
+
+## Components, patterns, & layouts
+What are the differences between a component, a pattern, and a layout?
+
+- **Components:** Reusable UI elements with defined functions and behaviors. These are the building blocks of the design system. Examples include [buttons](/components/button/), [checkboxes](/components/checkbox/), and [text inputs](/components/text-field/text-field/).
+- **Patterns:** Combinations of components used together to solve common user interactions. Examples include [form validation](/patterns/Forms/validation/) or [utility actions](/patterns/utility-actions/).
+- **Layouts:** Arrangements of components and patterns on a page that define how content is organized and spaced. Examples include the [documentation page](/layouts/documentation-page/) and [Healthcare.gov’s one column page](/layouts/Healthcare/one-col-page-layout/) layouts.
+
+## Steps to take
+If your team would like to add a component, pattern, or layout to the Design System, please follow these steps:
+
+1. **Connect with the CMS Design System team:** Start by reaching out to the CMS Design System team to discuss what you would like to see added. You can connect via the [#cms-design-system](https://cmsgov.slack.com/archives/CHH0381RD), [#hcgov-design-system](https://cmsgov.slack.com/archives/C0111BVM1LZ), or [#mgov-design-system](https://cmsgov.slack.com/archives/C010T7LE5RC) Slack channels, or attend one of our biweekly office hours. This conversation will help determine whether the idea is a good fit for a contribution proposal. If you don’t have access to CMS Slack, you can instead [open a GitHub issue](https://github.com/CMSgov/design-system/issues/new?template=propose-a-new-item-for-the-cms-design-system.md) in our repository.
+2. **Submit a contribution proposal:** Complete and submit a [contribution proposal form](https://confluence.cms.gov/spaces/HCDSG/pages/984161621/Contribution+Proposals). Include any relevant images, discovery research, or Figma files associated with your design. If you don’t have access to CMS Confluence, or if you’d like to report a specific issue with the CMS Design System, you can instead [open a GitHub issue](https://github.com/CMSgov/design-system/issues/new?template=propose-a-new-item-for-the-cms-design-system.md) in our repository.
+3. **CMS Design System team assessment:** Your proposal will be reviewed and assessed by the CMS Design System team.
+4. **Monitor and wait:** Once the proposal is in progress, the phases may include discovery, design, design implementation (engineering), writing guidance, and implementing guidance (engineering). Teams can check the current phase of the contribution by referencing the proposal. The contributing team will be notified once the proposal is complete.
+
+<Alert heading="Note on response times" variation="warn">
+  The CMS DS team sometimes has strict priorities and limited bandwidth to address new contribution proposals. This could affect how quickly the team is able to address your proposal.
+</Alert>
+
+## What to include
+To create a contribution proposal, navigate to our [Contribution Proposal Confluence page](https://confluence.cms.gov/spaces/HCDSG/pages/984161621/Contribution+Proposals), scroll down, and click “Add Proposal.” **Note:** You will need specific permissions to access CMS Confluence.
+
+Once you’ve done this, you’ll be prompted to answer the following questions:
+
+1. Have you verified that this component, pattern, or layout does not already exist in the CMS Design System?
+2. What local need does your proposed component, pattern, or layout solve?
+3. Are there any related or similar components, patterns, or layouts currently in the CMS Design System?
+4. Do any other teams use this pattern or component?
+5. Does this component, pattern, or layout exist in the USWDS?
+6. Are there any other reasons why this component, pattern, or layout would be a good addition to the CMS Design System?
+7. How urgent is this contribution for your team?  
+   - **High:** Blocking current work or tied to a PI objective (**see “Note on urgency” below**)   
+   - **Medium:** Workaround exists but adds friction or inconsistency  
+   - **Low:** Not blocking; would improve experience or efficiency later  
+
+<Alert heading="Note on urgency" variation="warn">
+  Contribution proposals should generally be submitted after something is in production, so it should be rare that a proposal is high urgency.
+</Alert>
