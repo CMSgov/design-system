@@ -7,6 +7,9 @@
     "packages/*",
     "examples/*"
   ],
+  "hoist": [
+    "gatsby/graphql"
+  ],
   "scripts": {
     "build": "npm run build:tokens && npm run build:core && npm run build:healthcare && npm run build:medicare && npm run build:cmsgov && npm run build:cdn-index",
     "build:core": "gulp build",
@@ -60,7 +63,8 @@
     "test:browser:examples": "npm run test:browser -- --config tests/browser/examples.config.ts",
     "test:browser:all": "npm run test:browser && npm run test:browser:interaction -- --no-build && npm run test:browser:storybook-docs -- --no-build && npm run test:browser:examples",
     "test:browser:all:update": "npm run test:browser -- -u && npm run test:browser:interaction -- --no-build -u && npm run test:browser:storybook-docs -- --no-build -u && npm run test:browser:examples -- -u",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "knip": "knip"
   },
   "husky": {
     "hooks": {
@@ -117,7 +121,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@tsconfig/node18": "^18.2.4",
     "@types/jest": "^27.5.1",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.19.130",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.9",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -149,6 +153,7 @@
     "http-server": "^14.1.1",
     "husky": "^7.0.0",
     "jest": "^27.5.1",
+    "knip": "^5.66.2",
     "lint-staged": "^10.0.8",
     "marked": "4.2.4",
     "mini-css-extract-plugin": "^1",
@@ -156,11 +161,11 @@
     "postcss-import": "^15.0.0",
     "preact": "10.11.3",
     "prettier": "^2.6.1",
-    "react": "18.3.1",
+    "react": "19.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-docgen-typescript": "2.4.0",
-    "react-dom": "18.3.1",
-    "react-test-renderer": "18.3.1",
+    "react-dom": "19.2.0",
+    "react-test-renderer": "19.2.0",
     "sass": "^1.53.0",
     "sass-loader": "10.2.1",
     "storybook": "8.6.1",
@@ -170,7 +175,7 @@
     "stylelint-formatter-pretty": "^4.0.0",
     "stylelint-order": "^6.0.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.4.3",
+    "typescript": "^5.9.3",
     "url-loader": "^4.1.1",
     "vite": "^6.2.4",
     "webpack": "^5.76.0",

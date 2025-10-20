@@ -91,8 +91,8 @@ function generateWebpackConfig(options) {
               `${nodeModules}/preact/dist/preact.umd.js.map`,
             ]
           : [
-              `${nodeModules}/react/umd/react.production.min.js`,
-              `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
+              `${nodeModules}/react/cjs/react.production.js`,
+              `${nodeModules}/react-dom/cjs/react-dom.production.js`,
             ],
       })
     );
