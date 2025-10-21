@@ -292,5 +292,19 @@
     >
       Link to external site
     </app-third-party-external-link>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Tooltip</h2>
+    <p class="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
+    <ds-tooltip
+      class-name="ds-c-tooltip__trigger-icon ds-u-display--inline"
+      component="button"
+      root-id="1"
+      trigger-aria-label="This is the aria label."
+    >
+      <ds-tooltip-icon />
+      <div slot="title">
+        <p>Tooltip trigger uses &lt;ds-tooltip-icon&gt; for the trigger content</p>
+      </div>
+    </ds-tooltip>
   </main>
 </div>
