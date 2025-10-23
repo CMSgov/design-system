@@ -4,7 +4,7 @@
   "private": true,
   "description": "CMSDS Design System Tokens",
   "devDependencies": {
-    "@figma/rest-api-spec": "^0.13.0",
+    "@figma/rest-api-spec": "^0.34.0",
     "@inquirer/prompts": "^3.0.3",
     "@types/node": "^18.11.9",
     "tsx": "^4.19.2",

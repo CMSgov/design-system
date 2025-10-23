@@ -363,10 +363,17 @@ export async function tokenFilesFromLocalVariables(
   const tokenFiles: TokensByFile = {};
   const localVariableCollections = localVariablesResponse.meta.variableCollections;
   const localVariables = localVariablesResponse.meta.variables;
+  // 🧺 collect ghost variables here
+  const ghostVariables: any[] = [];
 
   for (const variable of Object.values(localVariables)) {
     // Skip remote variables because we only want to generate tokens for local variables
     if (variable.remote) {
+      continue;
+    }
+
+    if (variable.deletedButReferenced) {
+      ghostVariables.push(variable);
       continue;
     }
 
@@ -396,6 +403,17 @@ export async function tokenFilesFromLocalVariables(
 
       Object.assign(obj, token);
     }
+  }
+
+  if (ghostVariables.length > 0) {
+    const filePath = `ghost-variables-${new Date()
+      .toISOString()
+      .replace(/[:.]/g, "-")}.json`;
+
+    fs.writeFileSync(filePath, JSON.stringify(ghostVariables, null, 2), "utf8");
+    console.log(`Exported ${ghostVariables.length} ghost variables to ${filePath}`);
+  } else {
+    console.log("No ghost variables found 🎉");
   }
 
   return tokenFiles;
