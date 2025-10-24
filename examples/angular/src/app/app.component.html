@@ -216,7 +216,20 @@
       [drawerHeading]="drawerHeading"
       (ds-close-click)="closeDrawer()"
     >
-      <strong> An Explanation <ds-usa-flag-icon /></strong>
+      <strong>
+        An Explanation
+        <ds-tooltip
+          class-name="ds-c-tooltip__trigger-icon ds-u-display--inline"
+          component="button"
+          root-id="1"
+          trigger-aria-label="An icon of a flag of the United States of America."
+        >
+          <ds-usa-flag-icon />
+          <div slot="title">
+            <p>Testing a tooltip inside of a &lt;ds-drawer&gt; element.</p>
+          </div>
+        </ds-tooltip>
+      </strong>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -292,5 +305,19 @@
     >
       Link to external site
     </app-third-party-external-link>
+
+    <h2 class="ds-text-heading--4xl ds-u-margin-top--2">Tooltip</h2>
+    <p class="ds-u-margin--0 ds-u-display--inline">Tooltip with icon trigger</p>
+    <ds-tooltip
+      class-name="ds-c-tooltip__trigger-icon ds-u-display--inline"
+      component="button"
+      root-id="1"
+      trigger-aria-label="This is the aria label."
+    >
+      <ds-tooltip-icon />
+      <div slot="title">
+        <p>Tooltip trigger uses &lt;ds-tooltip-icon&gt; for the trigger content</p>
+      </div>
+    </ds-tooltip>
   </main>
 </div>
