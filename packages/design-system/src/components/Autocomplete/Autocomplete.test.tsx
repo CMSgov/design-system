@@ -388,16 +388,26 @@ describe('Autocomplete', () => {
       expect(screen.queryByTestId('non-text-field')).not.toBeInTheDocument();
     });
 
-    it('throws an error when no TextField child is provided', () => {
-      expect(() =>
-        renderAutocomplete({
-          children: <div>Not a text field</div>,
-        })
-      ).toThrow();
-    });
+    describe('error cases', () => {
+      beforeEach(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => {});
+      });
 
-    it('throws an error when children are missing entirely', () => {
-      expect(() => renderAutocomplete({ children: undefined })).toThrow();
+      afterEach(() => {
+        (console.error as jest.Mock).mockRestore();
+      });
+
+      it('throws an error when no TextField child is provided', () => {
+        expect(() =>
+          renderAutocomplete({
+            children: <div>Not a text field</div>,
+          })
+        ).toThrow();
+      });
+
+      it('throws an error when children are missing entirely', () => {
+        expect(() => renderAutocomplete({ children: undefined })).toThrow();
+      });
     });
   });
 
