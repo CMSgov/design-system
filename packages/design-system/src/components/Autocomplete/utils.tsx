@@ -1,4 +1,4 @@
-import { isValidElement, Children, ReactElement, ReactNode } from 'react';
+import { isValidElement, ReactElement, ReactNode } from 'react';
 import {
   AutocompleteProps,
   AutocompleteItem,
@@ -58,13 +58,15 @@ function isTextField(child?: ReactNode): child is ReactElement {
   return child.type === TextField || componentName === 'TextField';
 }
 
-export function getTextFieldChild(children: ReactNode): ReactElement<any> | undefined {
-  let textField: ReactElement<any> | undefined;
-  Children.forEach(children, (child) => {
+export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
+  const all = Array.isArray(children) ? children : [children];
+
+  let textField;
+  for (const child of all) {
     if (isTextField(child)) {
       textField = child;
     }
-  });
+  }
   return textField;
 }
 
