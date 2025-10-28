@@ -1,2 +1,2 @@
-export * from './NoteBox';
-export * from './NoteBoxQuotation';
+export { default as NoteBox } from './NoteBox';
+export { default as NoteBoxQuotation } from './NoteBoxQuotation';
