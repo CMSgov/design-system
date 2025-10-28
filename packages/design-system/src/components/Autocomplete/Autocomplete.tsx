@@ -228,7 +228,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     statusMessage = renderStatusMessage(noResultsMessage ?? t('autocomplete.noResultsMessage'));
   }
 
-  const textField = getTextFieldChild(children);
+  const textField = getTextFieldChild(children) as React.ReactElement<any>;
   const size = textField.props.size;
   const labelId = textField.props.labelId ?? `${id}__label`;
 
