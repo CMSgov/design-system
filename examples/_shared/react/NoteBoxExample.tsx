@@ -11,7 +11,7 @@ const NoteBoxExample = () => {
       </NoteBox>
       <h2>Note Box Quotation Example</h2>
       <NoteBox heading={<QuotationMarkIcon />}>
-        <NoteBoxQuotation>A Quotation!</NoteBoxQuotation>
+        <NoteBoxQuotation author="Jack Ryan">A Quotation!</NoteBoxQuotation>
       </NoteBox>
     </>
   );
