@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react';
+import { cloneElement } from 'react';
 import type * as React from 'react';
 import { useLabelMask, MaskFunction } from './useLabelMask';
 import { TextInputProps } from './TextInput';
@@ -22,7 +22,13 @@ export interface LabelMaskProps {
 }
 
 const LabelMask = (props: LabelMaskProps) => {
-  const field = Children.only(props.children) as React.ReactElement<TextInputProps>;
+  const allChildren = Array.isArray(props.children) ? props.children : [props.children];
+
+  if (allChildren.length !== 1) {
+    throw new Error('LabelMask expects exactly one child (e.g., <input /> or <TextField />).');
+  }
+
+  const field = allChildren[0] as React.ReactElement<TextInputProps>;
   const { labelMask, inputProps } = useLabelMask(props.labelMask, field.props);
   const input = cloneElement(field, inputProps);
 
