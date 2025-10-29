@@ -19,16 +19,12 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - CMSDS Astro Example</title>
 	</head>
-	<body class="ds-content">
+	<body class="ds-content ds-u-margin-bottom--2">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-	body {
-		margin: 0;
-	}
-
 	/* This is a hack to get around the bad first-child rule */
 	astro-island > h1,
 	astro-island > h2,
