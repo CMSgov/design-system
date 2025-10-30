@@ -89,7 +89,15 @@ export class Mask extends PureComponent<MaskProps, any> {
    * @returns {React.ReactElement} Child TextField
    */
   field(): React.ReactElement<TextInputProps> {
-    return Children.only(this.props.children) as React.ReactElement<TextInputProps>;
+    const allChildren = Array.isArray(this.props.children)
+      ? this.props.children
+      : [this.props.children];
+
+    if (allChildren.length !== 1) {
+      throw new Error('LabelMask expects exactly one child (e.g., <input /> or <TextField />).');
+    }
+
+    return allChildren[0] as React.ReactElement<TextInputProps>;
   }
 
   /**
