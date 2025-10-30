@@ -11,6 +11,44 @@ import {
   ZIP_MASK,
 } from './useLabelMask';
 
+describe('LabelMask (child structure)', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    (console.error as jest.Mock).mockRestore();
+  });
+
+  it('renders correctly when a single valid child is provided', () => {
+    const { getByRole } = render(
+      <LabelMask labelMask={PHONE_MASK}>
+        <input type="text" name="phone" value="" />
+      </LabelMask>
+    );
+
+    const input = getByRole('textbox');
+    expect(input).toBeInTheDocument();
+  });
+
+  it('throws when multiple children are provided', () => {
+    expect(() =>
+      render(
+        <LabelMask labelMask={PHONE_MASK}>
+          <input type="text" name="phone1" value="" />
+          <input type="text" name="phone2" value="" />
+        </LabelMask>
+      )
+    ).toThrow();
+  });
+
+  it('throws when child is not a valid input element', () => {
+    expect(() =>
+      render(<LabelMask labelMask={PHONE_MASK}>{'not a input element'}</LabelMask>)
+    ).toThrow();
+  });
+});
+
 const allMasks = [
   {
     name: 'Date',
