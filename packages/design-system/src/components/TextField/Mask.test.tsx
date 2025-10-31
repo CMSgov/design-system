@@ -300,7 +300,7 @@ describe('Mask', function () {
         )
       ).toThrow();
     });
-    it('throws when child is not a valid input element', () => {
+    it('throws when non-element children are provided (e.g., string or null)', () => {
       expect(() => render(<Mask mask="zip">{'not a input element'}</Mask>)).toThrow();
     });
   });

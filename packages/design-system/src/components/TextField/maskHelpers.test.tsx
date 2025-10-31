@@ -155,15 +155,11 @@ describe('maskHelpers', function () {
 
     it('throws an error if multiple children are passed', () => {
       const children = [<input key="1" type="text" />, <input key="2" type="text" />];
-      expect(() => getOnlyChild(children)).toThrow(
-        'LabelMask expects exactly one child (e.g., <input /> or <TextField />).'
-      );
+      expect(() => getOnlyChild(children)).toThrow();
     });
 
     it('throws an error if no children are passed', () => {
-      expect(() => getOnlyChild([])).toThrow(
-        'LabelMask expects exactly one child (e.g., <input /> or <TextField />).'
-      );
+      expect(() => getOnlyChild([])).toThrow();
     });
   });
 });

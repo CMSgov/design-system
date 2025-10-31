@@ -154,7 +154,7 @@ export function getOnlyChild(children: React.ReactNode): React.ReactElement {
   const allChildren = Array.isArray(children) ? children : [children];
 
   if (allChildren.length !== 1) {
-    throw new Error('LabelMask expects exactly one child (e.g., <input /> or <TextField />).');
+    throw new Error('getOnlyChild expects exactly one valid child.');
   }
 
   return allChildren[0];
