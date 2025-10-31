@@ -272,7 +272,7 @@ describe('Mask', function () {
       expect(getInput().value).toBe('12345-6789');
     });
   });
-  describe('child structure', () => {
+  describe('child structure validation', () => {
     beforeEach(() => {
       jest.spyOn(console, 'error').mockImplementation(() => {});
     });

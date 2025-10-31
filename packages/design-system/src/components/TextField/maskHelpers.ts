@@ -139,3 +139,23 @@ export function coerceToString(value: string | number | null | undefined): strin
   }
   return String(value);
 }
+
+/**
+ * Returns the single child element provided to a component.
+ *
+ * This helper ensures that exactly one valid child is present and returns it.
+ * It does not validate that the child is a specific element type (e.g., `TextField`);
+ *
+ * @param {React.ReactNode} children - The child or children passed into a component.
+ * @returns {React.ReactElement} The single React element.
+ * @throws {Error} If there are zero or more than one children.
+ */
+export function getOnlyChild(children: React.ReactNode): React.ReactElement {
+  const allChildren = Array.isArray(children) ? children : [children];
+
+  if (allChildren.length !== 1) {
+    throw new Error('LabelMask expects exactly one child (e.g., <input /> or <TextField />).');
+  }
+
+  return allChildren[0];
+}
