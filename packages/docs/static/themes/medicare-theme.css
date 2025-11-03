@@ -35,6 +35,7 @@
 --field-max-width: 460px;
 --field-max-width--small: 6rem;
 --field-max-width--medium: 12rem;
+--box-shadow: 0 2px 3px 0 #3232323b;
 --color-white: #ffffff;
 --color-black: #000000;
 --color-transparent: transparent;
@@ -335,6 +336,7 @@
 --button-ghost-dark-alt__color--active: var(--color-gray-lighter);
 --button-ghost-dark-alt__color--hover: var(--color-gray-lightest);
 --button-ghost-dark-alt__color--disabled: var(--color-gray-dark);
+--card__box-shadow: var(--box-shadow);
 --choice__background-color: var(--color-background);
 --choice__background-color--checked: var(--color-secondary);
 --choice__background-color--inverse: transparent;
