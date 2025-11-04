@@ -42,7 +42,7 @@ describe('LabelMask (child structure)', () => {
     ).toThrow();
   });
 
-  it('throws when child is not a valid input element', () => {
+  it('throws when non-element children are provided (e.g., string or null)', () => {
     expect(() =>
       render(<LabelMask labelMask={PHONE_MASK}>{'not a input element'}</LabelMask>)
     ).toThrow();
