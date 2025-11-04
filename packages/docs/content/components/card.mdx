@@ -4,14 +4,9 @@ status:
   level: avoid
   note: Lacks documented guidance on usage and accessibility.
 core:
-  # TODO: update figma node ID once the Figma file is updated with Core Card.
-  # This one goes directly to the Medicare-specific design.
   figmaNodeId: 4334-23875
   githubLink: design-system/src/components/Card
   storybookLink: components-card--docs
-medicare:
-  githubLink: ds-medicare-gov/src/components/Card
-  storybookLink: medicare-card--docs
 ---
 
 ## Examples
@@ -20,7 +15,14 @@ medicare:
 
 ## Accessibility
 
-The Card component is primarily a wrapper for other content. As such, while the component itself passes the relevant WCAG 2.0 accessibility tests, teams should take care to test the card implementation thoroughly, including any elements or components that are nested within it.
+## Accessibility
+
+The `Card` component is a presentational container that visually groups related content. While the component itself meets relevant WCAG 2.0 accessibility criteria, teams should thoroughly test their card implementations to ensure they remain accessible in context. Because the Card is a styled `<div>` with no inherent semantics or interactivity, accessibility relies entirely on the structure and elements placed within it.
+
+### General accessibility guidance
+- Ensure that content within the card (such as text, buttons, or icons) meets all relevant accessibility criteria, including contrast, focus visibility, and heading hierarchy.
+- If a card is meant to be interactive (e.g., clickable to navigate), use a semantic `<a>` or `<button>`. See our [links vs. buttons guidance](https://design.cms.gov/components/button/?theme=core#links-vs-buttons). 
+- Maintain logical heading structure inside cards (e.g., `h2`–`h3` levels) to preserve page hierarchy.
 
 ### Accessibility testing
 
