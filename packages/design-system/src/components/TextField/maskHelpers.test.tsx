@@ -1,4 +1,4 @@
-import { toCurrency, unmaskValue, coerceToString } from './maskHelpers';
+import { toCurrency, unmaskValue, coerceToString, getOnlyChild } from './maskHelpers';
 
 describe('maskHelpers', function () {
   describe('Currency', () => {
@@ -130,6 +130,36 @@ describe('maskHelpers', function () {
 
     it('returns empty string when given undefined', () => {
       expect(coerceToString(undefined)).toBe('');
+    });
+  });
+  describe('getOnlyChild', () => {
+    beforeEach(() => {
+      jest.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      (console.error as jest.Mock).mockRestore();
+    });
+
+    it('returns the child when exactly one element is provided', () => {
+      const child = <input name="foo" type="text" value="12345-6789"></input>;
+      const result = getOnlyChild(child);
+      expect(result).toEqual(child);
+    });
+
+    it('returns the first (and only) element when provided as array of length 1', () => {
+      const child = <input type="text" name="test" />;
+      const result = getOnlyChild([child]);
+      expect(result).toEqual(child);
+    });
+
+    it('throws an error if multiple children are passed', () => {
+      const children = [<input key="1" type="text" />, <input key="2" type="text" />];
+      expect(() => getOnlyChild(children)).toThrow();
+    });
+
+    it('throws an error if no children are passed', () => {
+      expect(() => getOnlyChild([])).toThrow();
     });
   });
 });
