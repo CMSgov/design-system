@@ -33,8 +33,8 @@ describeByTheme((theme) => {
 
     const elem = page.getByRole('combobox');
     await elem.fill('a');
-    await elem.press('ArrowDown', { delay: sleepDuration });
-    await elem.press('ArrowDown', { delay: sleepDuration });
+    await elem.press('ArrowDown');
+    await elem.press('ArrowDown');
 
     await expectScreenshot(page, `autocomplete-itemgroups--interaction--${theme}.png`);
   });
