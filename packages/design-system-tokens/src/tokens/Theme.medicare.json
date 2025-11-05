@@ -1,5 +1,8 @@
 {
   "theme": {
+    "box-shadow": {
+      "$value": "0 2px 3px 0 #3232323b"
+    },
     "color": {
       "white": {
         "$value": "{color.white.solid}",
@@ -3074,6 +3077,11 @@
             "codeSyntax": {}
           }
         }
+      }
+    },
+    "card": {
+      "box-shadow": {
+        "$value": "{theme.box-shadow}"
       }
     },
     "choice": {
