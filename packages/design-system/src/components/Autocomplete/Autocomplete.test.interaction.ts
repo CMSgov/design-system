@@ -2,9 +2,10 @@ import { expect, test } from '@playwright/test';
 import {
   describeByTheme,
   expectScreenshot,
-  sleep,
   storyUrl,
 } from '../../../../../tests/browser/interactionHelpers';
+
+const sleepDuration = 100;
 
 describeByTheme((theme) => {
   test('Autocomplete select hover', async ({ page }, workerInfo) => {
@@ -16,9 +17,8 @@ describeByTheme((theme) => {
 
     await page.goto(storyUrl('components-autocomplete--default', theme));
     const elem = page.getByRole('combobox');
-    await elem.type('c');
-    await sleep(100);
-    await elem.press('ArrowDown');
+    await elem.fill('c');
+    await elem.press('ArrowDown', { delay: sleepDuration });
     await expectScreenshot(page, `autocomplete--type--${theme}.png`);
   });
 
@@ -32,12 +32,9 @@ describeByTheme((theme) => {
     await page.goto(storyUrl('components-autocomplete--item-groups', theme));
 
     const elem = page.getByRole('combobox');
-    await elem.type('a');
-    await sleep(100);
-
-    await elem.press('ArrowDown');
-    await sleep(100);
-    await elem.press('ArrowDown');
+    await elem.fill('a');
+    await elem.press('ArrowDown', { delay: sleepDuration });
+    await elem.press('ArrowDown', { delay: sleepDuration });
 
     await expectScreenshot(page, `autocomplete-itemgroups--interaction--${theme}.png`);
   });
@@ -52,15 +49,12 @@ describeByTheme((theme) => {
     await page.goto(storyUrl('components-autocomplete--default', theme));
 
     const elem = page.getByRole('combobox');
-    await elem.fill('ad');
-    await sleep(100);
-    await page.keyboard.press('ArrowDown');
-    await sleep(100);
+    await elem.pressSequentially('ad', { delay: sleepDuration });
+    await elem.press('ArrowDown');
     // Note: removing the following line will cause the test to fail as the Autocomplete
     // component is currently written.
-    await page.keyboard.press('Enter');
-    await sleep(100);
-    await page.keyboard.press('Tab');
+    await elem.press('Enter', { delay: sleepDuration });
+    await elem.press('Tab');
 
     const clearButton = page.getByText('Clear search');
     await expect(clearButton).toBeFocused();
