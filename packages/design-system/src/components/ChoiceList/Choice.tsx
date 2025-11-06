@@ -28,8 +28,8 @@ export interface BaseChoiceProps {
   checked?: boolean;
   /**
    * Content to be shown when the choice is checked. See
-   * **Checked children and the expose within pattern** on
-   * the Guidance tab for detailed instructions.
+   * [Checked children and the expose within pattern](https://design.cms.gov/components/checkbox/?theme=core#checked-children-and-the-expose-within-pattern)
+   * for detailed instructions.
    */
   checkedChildren?: React.ReactNode;
   /**
