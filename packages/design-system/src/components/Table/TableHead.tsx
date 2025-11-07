@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react';
+import { cloneElement } from 'react';
 import type * as React from 'react';
 
 interface BaseTableHeadProps {
@@ -15,7 +15,8 @@ export type TableHeadProps = Omit<React.ComponentPropsWithoutRef<'thead'>, OmitP
 
 export const TableHead = ({ children, ...tableHeadProps }: TableHeadProps) => {
   const renderChildren = () => {
-    return Children.map(children, (child: React.ReactElement) => {
+    const normalizedChildren = Array.isArray(children) ? children : [children];
+    return normalizedChildren.map((child: React.ReactElement) => {
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {
