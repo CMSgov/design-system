@@ -65,20 +65,12 @@
 
 // Tooltip arrow
 .ds-c-tooltip__arrow {
+  background: var(--tooltip__background-color);
   box-sizing: content-box;
-  height: $spacer-2;
+  height: $spacer-1;
   pointer-events: none;
-  width: $spacer-2;
-
-  &::after {
-    background: var(--tooltip__background-color);
-    box-sizing: content-box;
-    content: '';
-    height: $spacer-1;
-    left: 50%;
-    position: absolute;
-    width: $spacer-1;
-  }
+  position: absolute;
+  width: $spacer-1;
 }
 
 // Interior content of tooltip
@@ -132,7 +124,7 @@
   border-radius: var(--radius-large);
   border-style: solid;
   border-width: var(--tooltip__border-width);
-  display: none;
+  display: inline-block;
   opacity: 0;
 
   // Initial styles for Floating UI
@@ -145,78 +137,48 @@
 // Tooltip transition styles
 // http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
-  display: inline-block;
   opacity: 0;
 }
 
 .ds-c-tooltip-enter-active {
-  display: inline-block;
   opacity: 1;
   transition: opacity var(--animation-speed-1);
 }
 
 .ds-c-tooltip-enter-done {
-  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit {
-  display: inline-block;
   opacity: 1;
 }
 
 .ds-c-tooltip-exit-active {
-  display: inline-block;
   opacity: 0;
   transition: opacity var(--animation-speed-1);
 }
 
 .ds-c-tooltip-exit-done {
-  display: none;
   opacity: 0;
 }
 
 // Tooltip arrow positioning based on placement of trigger
-.ds-c-tooltip[data-popper-placement^='top'] .ds-c-tooltip__arrow {
-  top: 100%;
-
-  &::after {
-    border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    top: 1px;
-    transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  }
+.ds-c-tooltip[data-placement^='top'] .ds-c-tooltip__arrow {
+  border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
+  border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
 }
 
-.ds-c-tooltip[data-popper-placement^='bottom'] .ds-c-tooltip__arrow {
-  top: -8px;
-
-  &::after {
-    border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    bottom: 0;
-    transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  }
+.ds-c-tooltip[data-placement^='bottom'] .ds-c-tooltip__arrow {
+  border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
+  border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
 }
 
-.ds-c-tooltip[data-popper-placement^='left'] .ds-c-tooltip__arrow {
-  right: -8px;
-
-  &::after {
-    border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    left: 0;
-    transform: translateX(50%) translateY(50%) rotate(45deg);
-  }
+.ds-c-tooltip[data-placement^='left'] .ds-c-tooltip__arrow {
+  border-block-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
+  border-inline-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
 }
 
-.ds-c-tooltip[data-popper-placement^='right'] .ds-c-tooltip__arrow {
-  left: -8px;
-
-  &::after {
-    border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
-    left: -2px;
-    transform: translateX(50%) translateY(50%) rotate(45deg);
-  }
+.ds-c-tooltip[data-placement^='right'] .ds-c-tooltip__arrow {
+  border-block-end: var(--tooltip__border-width) solid var(--tooltip__border-color);
+  border-inline-start: var(--tooltip__border-width) solid var(--tooltip__border-color);
 }

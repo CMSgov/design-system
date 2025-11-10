@@ -5,7 +5,7 @@ import TooltipIcon from './TooltipIcon';
 import { UtagContainer } from '../analytics';
 import { config } from '../config';
 
-jest.mock('@popperjs/core');
+jest.mock('@floating-ui/dom');
 
 const triggerAriaLabelText = 'tooltip trigger';
 const defaultProps = {
