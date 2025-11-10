@@ -134,6 +134,12 @@
   border-width: var(--tooltip__border-width);
   display: none;
   opacity: 0;
+
+  // Initial styles for Floating UI
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: max-content;
 }
 
 // Tooltip transition styles
