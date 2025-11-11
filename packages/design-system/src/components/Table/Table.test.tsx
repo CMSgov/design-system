@@ -82,4 +82,57 @@ describe('Table', function () {
 
     expect(region).toEqual(caption);
   });
+  describe('handling non-standard children', () => {
+    it('renders without crashing when children are wrapped in a fragment', () => {
+      const children = (
+        <>
+          <TableCaption>Fragment caption</TableCaption>
+        </>
+      );
+
+      expect(() => {
+        render(<Table>{children}</Table>);
+      }).not.toThrow();
+      const captions = screen.getAllByRole('caption');
+      expect(captions).toHaveLength(1);
+      expect(captions[0].textContent).toBe('Fragment caption');
+    });
+
+    it('renders without crashing when children are nested arrays', () => {
+      const nestedChildren = [
+        [<TableCaption key="a">Caption A</TableCaption>],
+        [<TableCaption key="b">Caption B</TableCaption>],
+      ];
+
+      expect(() => {
+        render(<Table>{nestedChildren}</Table>);
+      }).not.toThrow();
+
+      expect(screen.getAllByText(/Caption/).length).toBe(2);
+    });
+
+    it('renders and logs a validateDOMNesting warning when children include text nodes', () => {
+      const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+      const children = [
+        'Plain text',
+        <TableCaption key="caption">Caption after text</TableCaption>,
+      ];
+
+      expect(() => {
+        render(<Table>{children}</Table>);
+      }).not.toThrow();
+
+      const captions = screen.getAllByRole('caption');
+      expect(captions).toHaveLength(1);
+      expect(captions[0].textContent).toBe('Caption after text');
+      const errorCalls = consoleSpy.mock.calls
+        .flat()
+        .filter((msg) => typeof msg === 'string' && msg.includes('validateDOMNesting'));
+
+      expect(errorCalls.length).toBeGreaterThan(0);
+      expect(errorCalls[0]).toMatch(/validateDOMNesting/);
+
+      consoleSpy.mockRestore();
+    });
+  });
 });
