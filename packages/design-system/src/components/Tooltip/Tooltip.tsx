@@ -372,11 +372,9 @@ export const Tooltip = (props: TooltipProps) => {
           className="ds-c-tooltip__arrow"
           ref={setArrowElement}
           style={{
-            position: 'absolute',
             left: middlewareData.arrow?.x,
             top: middlewareData.arrow?.y,
             [staticSide]: '-5px',
-            transform: 'rotate(45deg)',
           }}
         />
         <div className="ds-c-tooltip__content">
