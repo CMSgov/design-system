@@ -92,7 +92,6 @@ exports[`Tooltip renders dialog tooltip 1`] = `
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
   />
   <div
     class="ds-c-tooltip__content"
@@ -139,7 +138,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     >
       <span
         class="ds-c-tooltip__arrow"
-        data-popper-arrow="true"
       />
       <div
         class="ds-c-tooltip__content"
@@ -167,7 +165,6 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
   />
   <div
     class="ds-c-tooltip__content"
@@ -194,7 +191,6 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
   />
   <div
     class="ds-c-tooltip__content"
