@@ -1,9 +1,7 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import './ds-tooltip';
 import './ds-tooltip-icon';
-
-jest.mock('@popperjs/core');
 
 const customTooltipText = 'Custom tooltip title text for our web component!';
 const customHeadingText = 'Custom tooltip heading text for our web component!';
@@ -161,14 +159,10 @@ describe('ds-tooltip', function () {
       'show-close-button': 'true',
     });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-    await act(async () => {
-      await user.click(tooltipTrigger);
-    });
-    const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-    await act(async () => {
-      await user.click(closeButton);
-    });
-    expect(tooltipTrigger).toEqual(document.activeElement); // eslint-disable-line
+    user.click(tooltipTrigger);
+    const closeButton = await screen.findByLabelText('Close', { selector: 'button' });
+    user.click(closeButton);
+    await waitFor(() => expect(tooltipTrigger).toHaveFocus());
   });
 
   it('close button should take custom aria label', () => {
