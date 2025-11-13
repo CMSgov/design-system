@@ -56,9 +56,6 @@ const meta: Meta = {
       description:
         'Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.',
       options: [
-        'auto',
-        'auto-start',
-        'auto-end',
         'left',
         'left-start',
         'left-end',
