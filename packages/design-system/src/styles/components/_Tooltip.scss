@@ -125,14 +125,14 @@
   border-radius: var(--radius-large);
   border-style: solid;
   border-width: var(--tooltip__border-width);
-  display: inline-block;
+  display: none;
   opacity: 0;
 }
 
 // Tooltip transition styles
 // http://reactcommunity.org/react-transition-group/css-transition
 .ds-c-tooltip-enter {
-  display: none;
+  display: inline-block;
   opacity: 0;
 }
 
@@ -153,6 +153,7 @@
 }
 
 .ds-c-tooltip-exit-active {
+  display: inline-block;
   opacity: 0;
   transition: opacity var(--animation-speed-1);
 }
