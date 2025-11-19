@@ -6,7 +6,7 @@ import { sh, shI, verifyGhInstalled } from './utils';
 import { updateVersions } from './versions';
 import yargs from 'yargs';
 
-const REVIEWERS = ['kim-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
+const REVIEWERS = ['derek-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {
