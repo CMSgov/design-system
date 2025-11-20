@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "13.0.0",
+  "version": "13.1.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -67,7 +67,7 @@
     "date-fns": "^3.0.6",
     "ev-emitter": "^1.1.1",
     "focus-trap-react": "^10.0.0",
-    "globby": "^13.1.2",
+    "globby": "^16.0.0",
     "inquirer": "^13.0.1",
     "lodash": "^4.17.21",
     "ora": "^6.1.2",

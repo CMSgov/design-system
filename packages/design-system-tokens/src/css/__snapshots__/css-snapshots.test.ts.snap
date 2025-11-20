@@ -40,6 +40,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --badge__font-color--success: var(--color-white);
 --badge__font-color--warn: var(--color-base);
 --badge__font-color: var(--color-base);
+--box-shadow: 0 0 0 0 #fff;
 --button-alt__background-color--active: var(--color-gray-lighter);
 --button-alt__background-color--disabled: var(--color-transparent);
 --button-alt__background-color--hover: var(--color-accent-primary);
@@ -186,6 +187,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --button__color--disabled: var(--color-gray-dark);
 --button__color--hover: var(--color-primary-darker);
 --button__color: var(--color-primary);
+--card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
 --choice-label__top-offset: 0.25rem;
@@ -528,6 +530,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --badge__font-color--success: var(--color-white);
 --badge__font-color--warn: var(--color-base);
 --badge__font-color: var(--color-white);
+--box-shadow: 0 0 0 0 #fff;
 --button-alt__background-color--active: var(--color-gray-lighter);
 --button-alt__background-color--disabled: var(--color-transparent);
 --button-alt__background-color--hover: var(--color-gray-lightest);
@@ -674,6 +677,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --button__color--disabled: var(--color-gray-lighter);
 --button__color--hover: var(--color-primary-darker);
 --button__color: var(--color-primary);
+--card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
 --choice-label__top-offset: 0.25rem;
@@ -1016,6 +1020,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --badge__font-color--success: var(--color-white);
 --badge__font-color--warn: var(--color-base);
 --badge__font-color: var(--color-white);
+--box-shadow: 0 4px 4px 0 #00000040;
 --button-alt__background-color--active: var(--color-primary-darkest);
 --button-alt__background-color--disabled: var(--color-white);
 --button-alt__background-color--hover: var(--color-primary);
@@ -1162,6 +1167,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --button__color--disabled: var(--color-gray-lighter);
 --button__color--hover: var(--color-white);
 --button__color: var(--color-primary);
+--card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
 --choice-label__top-offset: 0.25rem;
@@ -1503,6 +1509,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --badge__font-color--success: var(--color-white);
 --badge__font-color--warn: var(--color-base);
 --badge__font-color: var(--color-white);
+--box-shadow: 0 2px 3px 0 #3232323b;
 --button-alt__background-color--active: var(--color-white);
 --button-alt__background-color--disabled: var(--color-white);
 --button-alt__background-color--hover: var(--color-primary-dark);
@@ -1649,6 +1656,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --button__color--disabled: var(--color-gray-lighter);
 --button__color--hover: var(--color-white);
 --button__color: var(--color-secondary);
+--card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
 --choice-label__top-offset: 0.125rem;

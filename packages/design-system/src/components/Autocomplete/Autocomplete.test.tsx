@@ -346,6 +346,71 @@ describe('Autocomplete', () => {
     expect(child).toHaveClass('additional-class');
   });
 
+  describe('getTextFieldChild', () => {
+    it('renders correctly when a single TextField is provided', () => {
+      renderAutocomplete({
+        children: <TextField label="Autocomplete field" name="autocomplete_field" />,
+      });
+
+      const input = screen.getByLabelText('Autocomplete field');
+      expect(input).toBeInTheDocument();
+
+      expect(input.tagName).toBe('INPUT');
+
+      expect(screen.getByRole('combobox', { name: /autocomplete field/i })).toBeInTheDocument();
+    });
+
+    it('renders only the last TextField when multiple are provided', () => {
+      renderAutocomplete({
+        children: [
+          <TextField key="1" label="First field" name="first_field" />,
+          <TextField key="2" label="Second field" name="second_field" />,
+        ],
+      });
+
+      expect(screen.queryByLabelText('First field')).not.toBeInTheDocument();
+      expect(screen.getByLabelText('Second field')).toBeInTheDocument();
+    });
+
+    it('renders correctly when children include one TextField and one non-TextField element', () => {
+      renderAutocomplete({
+        children: [
+          <div key="1" data-testid="non-text-field">
+            Not a TextField
+          </div>,
+          <TextField key="2" label="Valid field" name="valid_field" />,
+        ],
+      });
+
+      const input = screen.getByLabelText('Valid field');
+      expect(input).toBeInTheDocument();
+
+      expect(screen.queryByTestId('non-text-field')).not.toBeInTheDocument();
+    });
+
+    describe('error cases', () => {
+      beforeEach(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => {});
+      });
+
+      afterEach(() => {
+        (console.error as jest.Mock).mockRestore();
+      });
+
+      it('throws an error when no TextField child is provided', () => {
+        expect(() =>
+          renderAutocomplete({
+            children: <div>Not a text field</div>,
+          })
+        ).toThrow();
+      });
+
+      it('throws an error when children are missing entirely', () => {
+        expect(() => renderAutocomplete({ children: undefined })).toThrow();
+      });
+    });
+  });
+
   describe('default props', () => {
     describe('ariaClearLabel deprecation', () => {
       const originalEnv = process.env.NODE_ENV;
