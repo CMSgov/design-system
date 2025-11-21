@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
+import { cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
 import type * as React from 'react';
 import Alert from '../Alert/Alert';
 import TableCaption from './TableCaption';
@@ -165,7 +165,8 @@ export const Table = ({
   };
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
-  const renderedChildren = Children.map(children, (child: React.ReactElement) => {
+  const normalizedChildren = Array.isArray(children) ? children : [children];
+  const renderedChildren = normalizedChildren.map((child: React.ReactElement) => {
     if (isTableCaption(child)) {
       // Extend props on TableCaption before rendering.
       if (scrollable) {

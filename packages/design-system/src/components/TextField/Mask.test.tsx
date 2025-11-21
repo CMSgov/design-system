@@ -272,4 +272,36 @@ describe('Mask', function () {
       expect(getInput().value).toBe('12345-6789');
     });
   });
+  describe('child structure validation', () => {
+    beforeEach(() => {
+      jest.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      (console.error as jest.Mock).mockRestore();
+    });
+
+    it('renders correctly when a single valid child is provided', () => {
+      render(
+        <Mask mask="zip">
+          <input name="foo" type="text" value="12345-6789"></input>
+        </Mask>
+      );
+      expect(getInput().value).toBe('12345-6789');
+    });
+
+    it('throws when multiple children are provided', () => {
+      expect(() =>
+        render(
+          <Mask mask="zip">
+            <input type="text" name="phone1" value="" />
+            <input type="text" name="phone2" value="" />
+          </Mask>
+        )
+      ).toThrow();
+    });
+    it('throws when non-element children are provided (e.g., string or null)', () => {
+      expect(() => render(<Mask mask="zip">{'not a input element'}</Mask>)).toThrow();
+    });
+  });
 });
