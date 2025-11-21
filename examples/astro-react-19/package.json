@@ -1,7 +1,7 @@
 {
   "name": "astro-react-19-example",
   "type": "module",
-  "version": "13.0.0",
+  "version": "13.1.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.0",
+    "@cmsgov/design-system": "13.1.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "astro": "^5.14.3",
