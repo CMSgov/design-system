@@ -1,0 +1,19 @@
+{
+  "codeConnect": {
+    "importPaths": {
+      "src/components/*": "@cms/design-system"
+    },
+    "include": ["/packages/design-system/src/components/**/*.{tsx,jsx}"],
+    "exclude": [
+      "**/fonts",
+      "**/images",
+      "**/*.stories.tsx",
+      "**/styles",
+      "**/*.test.tsx",
+      "**/utilities",
+      "**/web-components"
+    ],
+    "label": "React",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/"
+  }
+}
