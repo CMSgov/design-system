@@ -11,7 +11,7 @@ export default defineConfig({
       },
     },
     ssr: {
-      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
+      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers', '@floating-ui/react-dom'],
     },
   },
 });

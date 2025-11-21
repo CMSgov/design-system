@@ -2,13 +2,21 @@ import type * as React from 'react';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
 import FocusTrap from 'focus-trap-react';
-import { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
-import { createPopper, Placement } from '@popperjs/core';
+import {
+  arrow,
+  autoUpdate,
+  useFloating,
+  flip,
+  limitShift,
+  offset as floatingOffset,
+  Placement,
+  shift,
+} from '@floating-ui/react-dom';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
-import usePrevious from '../utilities/usePrevious';
 import { AnalyticsOverrideProps, AnalyticsParentDataProps } from '../analytics';
 import useTooltipAnalytics from './useTooltipAnalytics';
 import mergeRefs from '../utilities/mergeRefs';
@@ -127,9 +135,6 @@ type OtherProps = Omit<
 export type TooltipProps = BaseTooltipProps & OtherProps;
 
 export const placements: Placement[] = [
-  'auto',
-  'auto-start',
-  'auto-end',
   'top',
   'top-start',
   'top-end',
@@ -155,24 +160,41 @@ export const placements: Placement[] = [
  */
 
 export const Tooltip = (props: TooltipProps) => {
-  const { placement = 'top', offset = [0, 5] } = props;
-  const popper = useRef(null);
+  const { onClose, onOpen, placement = 'top', offset = [0, 5] } = props;
   const contentId = useId('tooltip-trigger--', props.id);
-  const triggerElement = useRef(null);
-  const tooltipElement = useRef(null);
+  const arrowElement = useRef(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
+  const {
+    elements,
+    floatingStyles,
+    middlewareData,
+    placement: finalPlacement,
+    refs,
+    update,
+  } = useFloating<HTMLButtonElement>({
+    placement: placement,
+    middleware: [
+      floatingOffset({ crossAxis: offset[0], mainAxis: offset[1] }),
+      flip(),
+      shift({ limiter: limitShift() }),
+      arrow({ element: arrowElement.current }),
+    ],
+  });
+  const side = finalPlacement.split('-')[0];
+  const staticSide = {
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right',
+  }[side];
 
-  const setTriggerElement = (elem) => {
-    triggerElement.current = elem;
-  };
-  const setTooltipElement = (elem) => {
-    tooltipElement.current = elem;
+  const setArrowElement = (elem) => {
+    arrowElement.current = elem;
   };
 
   const [active, setActive] = useState<boolean>(false);
   const [isHover, setIsHover] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const prevActiveStateVar = usePrevious(active);
 
   const handleEscapeKey = (event: KeyboardEvent) => {
     const ESCAPE_KEY = 27;
@@ -183,8 +205,8 @@ export const Tooltip = (props: TooltipProps) => {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (active && (props.dialog || isMobile)) {
-      const clickedTrigger = triggerElement.current?.contains(event.target);
-      const clickedTooltip = tooltipElement.current?.contains(event.target);
+      const clickedTrigger = elements.reference.contains(event.target as Node);
+      const clickedTooltip = elements.floating?.contains(event.target as Node);
       if (!clickedTooltip && !clickedTrigger) {
         setActive(false);
       }
@@ -212,19 +234,6 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   useEffect(() => {
-    if (!triggerElement.current || !tooltipElement.current) return;
-
-    popper.current = createPopper(triggerElement.current, tooltipElement.current, {
-      placement: placement,
-      modifiers: [{ name: 'offset', options: { offset } }],
-    });
-
-    return () => {
-      if (popper.current) popper.current.destroy();
-    };
-  }, []);
-
-  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleEscapeKey);
     return () => {
@@ -235,26 +244,21 @@ export const Tooltip = (props: TooltipProps) => {
 
   useEffect(() => {
     if (active) {
-      props.onOpen && props.onOpen();
+      onOpen && onOpen();
       sendTooltipEvent();
     } else {
-      props.onClose && props.onClose();
-
-      // if tooltip goes from active to inactive and is the dialog version, focus the trigger
-      if (prevActiveStateVar && (props.dialog || isMobile) && props.showCloseButton) {
-        if (triggerElement && triggerElement.current) {
-          triggerElement.current.focus();
-        }
-      }
+      onClose && onClose();
     }
-  }, [active]);
+  }, [active, onClose, onOpen, sendTooltipEvent]);
 
-  useLayoutEffect(() => {
-    if (popper.current) {
-      popper.current.setOptions(props);
-      popper.current.forceUpdate();
+  // Automatically updates the position of the floating element when necessary
+  // to ensure it stays anchored.
+  useEffect(() => {
+    if (active && elements.reference && elements.floating) {
+      const cleanup = autoUpdate(elements.reference, elements.floating, update);
+      return cleanup;
     }
-  });
+  }, [active, elements, update]);
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
@@ -319,7 +323,7 @@ export const Tooltip = (props: TooltipProps) => {
         aria-label={ariaLabel || triggerAriaLabel || undefined}
         aria-describedby={dialog ? undefined : contentId}
         className={triggerClasses}
-        ref={mergeRefs([contentRef, setTriggerElement])}
+        ref={mergeRefs([contentRef, refs.setReference])}
         {...others}
         {...linkTriggerOverrides}
         {...eventHandlers}
@@ -336,7 +340,6 @@ export const Tooltip = (props: TooltipProps) => {
       contentHeading,
       inversed,
       interactiveBorder = 15,
-      placement = 'top',
       maxWidth = '300px',
       showCloseButton,
       title,
@@ -357,15 +360,23 @@ export const Tooltip = (props: TooltipProps) => {
       <div
         id={contentId}
         tabIndex={dialog ? -1 : null}
-        ref={setTooltipElement}
+        ref={refs.setFloating}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
-        style={tooltipStyle}
-        data-placement={placement}
+        style={{ ...tooltipStyle, ...floatingStyles }}
+        data-placement={finalPlacement}
         aria-hidden={!active}
         role={dialog ? 'dialog' : 'tooltip'}
         {...eventHandlers}
       >
-        <span className="ds-c-tooltip__arrow" data-popper-arrow />
+        <span
+          className="ds-c-tooltip__arrow"
+          ref={setArrowElement}
+          style={{
+            left: middlewareData.arrow?.x,
+            top: middlewareData.arrow?.y,
+            [staticSide]: '-5px',
+          }}
+        />
         <div className="ds-c-tooltip__content">
           {contentHeading || showCloseButton ? (
             <div
@@ -400,7 +411,7 @@ export const Tooltip = (props: TooltipProps) => {
         in={active}
         classNames="ds-c-tooltip"
         timeout={transitionDuration}
-        nodeRef={tooltipElement}
+        nodeRef={refs.floating}
       >
         {dialog ? (
           <FocusTrap
