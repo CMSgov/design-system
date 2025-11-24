@@ -87,12 +87,12 @@ exports[`Tooltip renders dialog tooltip 1`] = `
   data-placement="top"
   id="static-id"
   role="dialog"
-  style="max-width: 300px; z-index: 9999;"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
   tabindex="-1"
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
+    style="bottom: -5px;"
   />
   <div
     class="ds-c-tooltip__content"
@@ -135,11 +135,11 @@ exports[`Tooltip renders inverse tooltip 1`] = `
       data-placement="top"
       id="static-id"
       role="tooltip"
-      style="max-width: 300px; z-index: 9999;"
+      style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     >
       <span
         class="ds-c-tooltip__arrow"
-        data-popper-arrow="true"
+        style="bottom: -5px;"
       />
       <div
         class="ds-c-tooltip__content"
@@ -162,12 +162,12 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
   data-placement="top"
   id="static-id"
   role="dialog"
-  style="max-width: 300px; z-index: 9999;"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
   tabindex="-1"
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
+    style="bottom: -5px;"
   />
   <div
     class="ds-c-tooltip__content"
@@ -189,12 +189,12 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
   data-placement="top"
   id="static-id"
   role="dialog"
-  style="max-width: 300px; z-index: 9999;"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
   tabindex="-1"
 >
   <span
     class="ds-c-tooltip__arrow"
-    data-popper-arrow="true"
+    style="bottom: -5px;"
   />
   <div
     class="ds-c-tooltip__content"
