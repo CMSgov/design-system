@@ -21,6 +21,9 @@
     "build:examples": "tsx ./scripts/build-examples.ts",
     "apply-example-templates": "tsx ./scripts/apply-example-templates.ts",
     "check:maturity": "./scripts/maturityCheck.sh",
+    "connect:build": "npx figma connect -t \"$(grep TOKEN .env | cut -d '=' -f2 | tr -d '\"')\"",
+    "connect:publish": "npx figma connect publish",
+    "connect:unpublish": "npx figma connect unpublish",
     "clean": "npm run clean:cache && npm run clean:builds && npm run clean:modules",
     "clean:cache": "rm -rf packages/docs/.cache",
     "clean:builds": "find ./packages ./examples -name 'dist' -type d -depth 2 -exec rm -rf '{}' + && rm -rf ./packages/docs/public && rm -rf ./dist",
@@ -60,7 +63,7 @@
     "test:browser:examples": "npm run test:browser -- --config tests/browser/examples.config.ts",
     "test:browser:all": "npm run test:browser && npm run test:browser:interaction -- --no-build && npm run test:browser:storybook-docs -- --no-build && npm run test:browser:examples",
     "test:browser:all:update": "npm run test:browser -- -u && npm run test:browser:interaction -- --no-build -u && npm run test:browser:storybook-docs -- --no-build -u && npm run test:browser:examples -- -u",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit --allowImportingTsExtensions"
   },
   "husky": {
     "hooks": {
@@ -98,6 +101,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.4",
     "@babel/register": "^7.8.4",
+    "@figma/code-connect": "^1.3.9",
     "@inquirer/prompts": "^3.0.3",
     "@playwright/test": "1.49.1",
     "@storybook/addon-actions": "8.6.1",
