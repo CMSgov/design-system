@@ -123,7 +123,6 @@ describe('Tooltip', function () {
     });
 
     it('should close tooltip when onClose is clicked', async () => {
-      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
@@ -137,7 +136,6 @@ describe('Tooltip', function () {
     });
 
     it('should return focus back to trigger when closed', async () => {
-      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
@@ -148,6 +146,38 @@ describe('Tooltip', function () {
       user.click(closeButton);
 
       await waitFor(() => expect(tooltipTrigger).toHaveFocus());
+    });
+
+    it('traps focus', async () => {
+      const { user } = renderTooltip({
+        dialog: true,
+        showCloseButton: true,
+        title: <a href="">Test link</a>,
+      });
+
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      expect(document.body).toHaveFocus();
+      await user.click(tooltipTrigger);
+
+      const tooltipContent = await screen.findByRole('dialog');
+      const closeButton = await screen.findByLabelText('Close', { selector: 'button' });
+      const testLink = await screen.findByText('Test link', { selector: 'a' });
+
+      // Focus transferred to tooltip
+      expect(tooltipContent).toHaveFocus();
+
+      // Tab moves the focus to close button
+      await user.tab();
+      expect(closeButton).toHaveFocus();
+
+      // Tab moves the focus to the test link
+      await user.tab();
+      expect(testLink).toHaveFocus();
+
+      // Tab moves the focus back to the close button instead of exiting the
+      // tooltip.
+      await user.tab();
+      expect(closeButton).toHaveFocus();
     });
 
     it('close button should take custom aria label', () => {

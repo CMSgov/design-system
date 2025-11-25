@@ -420,6 +420,9 @@ export const Tooltip = (props: TooltipProps) => {
               fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
               initialFocus: () => document.getElementById(`${contentId}`),
               clickOutsideDeactivates: true,
+              tabbableOptions: {
+                displayCheck: 'none',
+              },
             }}
           >
             {tooltipContent}
