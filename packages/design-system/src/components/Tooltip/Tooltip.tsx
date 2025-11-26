@@ -1,7 +1,6 @@
 import type * as React from 'react';
 // TODO: Update react-transition-group once we update react peer dep
 import CSSTransition from 'react-transition-group/CSSTransition';
-import FocusTrap from 'focus-trap-react';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import {
@@ -413,23 +412,7 @@ export const Tooltip = (props: TooltipProps) => {
         timeout={transitionDuration}
         nodeRef={refs.floating}
       >
-        {dialog ? (
-          <FocusTrap
-            active={active}
-            focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
-              initialFocus: () => document.getElementById(`${contentId}`),
-              clickOutsideDeactivates: true,
-              tabbableOptions: {
-                displayCheck: 'none',
-              },
-            }}
-          >
-            {tooltipContent}
-          </FocusTrap>
-        ) : (
-          tooltipContent
-        )}
+        {tooltipContent}
       </CSSTransition>
     );
   };
