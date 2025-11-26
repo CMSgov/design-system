@@ -56,7 +56,7 @@
     "!src/**/*{.test,.spec,.d}.{jsx,tsx}"
   ],
   "dependencies": {
-    "@floating-ui/react-dom": "^2.1.6",
+    "@floating-ui/react": "^0.27.16",
     "@preact/signals": "1.3.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.9",

@@ -12,7 +12,7 @@ import {
   offset as floatingOffset,
   Placement,
   shift,
-} from '@floating-ui/react-dom';
+} from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
