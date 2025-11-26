@@ -31,8 +31,7 @@ figma.connect(Button, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node
   },
   example: ({ children, onDark, size, variation }) => (
     <Button onClick={() => null} onDark={onDark} size={size} variation={variation}>
-      {' '}
-      <>{children}</>
+      {children}
     </Button>
   ),
 });
