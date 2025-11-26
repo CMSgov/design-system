@@ -1,6 +1,4 @@
 import type * as React from 'react';
-// TODO: Update react-transition-group once we update react peer dep
-import CSSTransition from 'react-transition-group/CSSTransition';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import {
@@ -12,6 +10,7 @@ import {
   offset as floatingOffset,
   Placement,
   shift,
+  useTransitionStyles,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -99,7 +98,7 @@ export interface BaseTooltipProps
    */
   title: React.ReactNode;
   /**
-   * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
+   * Duration of the CSS transition.
    * Default is `250`
    */
   transitionDuration?: number;
@@ -159,7 +158,7 @@ export const placements: Placement[] = [
  */
 
 export const Tooltip = (props: TooltipProps) => {
-  const { onClose, onOpen, placement = 'top', offset = [0, 5] } = props;
+  const { onClose, onOpen, placement = 'top', offset = [0, 5], transitionDuration = 250 } = props;
   const contentId = useId('tooltip-trigger--', props.id);
   const arrowElement = useRef(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
@@ -173,6 +172,7 @@ export const Tooltip = (props: TooltipProps) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const {
+    context,
     elements,
     floatingStyles,
     middlewareData,
@@ -180,6 +180,8 @@ export const Tooltip = (props: TooltipProps) => {
     refs,
     update,
   } = useFloating<HTMLButtonElement>({
+    onOpenChange: setActive,
+    open: active,
     placement: placement,
     middleware: [
       floatingOffset({ crossAxis: offset[0], mainAxis: offset[1] }),
@@ -188,6 +190,10 @@ export const Tooltip = (props: TooltipProps) => {
       arrow({ element: arrowElement.current }),
     ],
   });
+  const { isMounted, styles } = useTransitionStyles(context, {
+    duration: transitionDuration,
+  });
+
   const side = finalPlacement.split('-')[0];
   const staticSide = {
     top: 'bottom',
@@ -343,7 +349,6 @@ export const Tooltip = (props: TooltipProps) => {
       maxWidth = '300px',
       showCloseButton,
       title,
-      transitionDuration = 250, // Equivalent to $animation-speed-1
       zIndex = 9999,
     } = props;
 
@@ -362,7 +367,7 @@ export const Tooltip = (props: TooltipProps) => {
         tabIndex={dialog ? -1 : null}
         ref={refs.setFloating}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
-        style={{ ...tooltipStyle, ...floatingStyles }}
+        style={{ ...tooltipStyle, ...floatingStyles, ...styles }}
         data-placement={finalPlacement}
         aria-hidden={!active}
         role={dialog ? 'dialog' : 'tooltip'}
@@ -406,16 +411,7 @@ export const Tooltip = (props: TooltipProps) => {
       </div>
     );
 
-    return (
-      <CSSTransition
-        in={active}
-        classNames="ds-c-tooltip"
-        timeout={transitionDuration}
-        nodeRef={refs.floating}
-      >
-        {tooltipContent}
-      </CSSTransition>
-    );
+    return tooltipContent;
   };
 
   const mainEventHandlers = props.dialog
@@ -438,7 +434,7 @@ export const Tooltip = (props: TooltipProps) => {
   return (
     <div className="ds-c-tooltip__container" {...mainEventHandlers}>
       {renderTrigger(props)}
-      {renderContent(props)}
+      {isMounted && renderContent(props)}
     </div>
   );
 };

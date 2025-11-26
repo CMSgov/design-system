@@ -87,8 +87,7 @@ const meta: Meta = {
       control: 'text',
     },
     'transition-duration': {
-      description:
-        'Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.',
+      description: 'Duration of the CSS transition.',
       control: 'text',
     },
     'trigger-aria-label': {
