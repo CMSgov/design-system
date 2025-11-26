@@ -11,6 +11,7 @@ import {
   Placement,
   shift,
   useTransitionStyles,
+  FloatingFocusManager,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -158,7 +159,14 @@ export const placements: Placement[] = [
  */
 
 export const Tooltip = (props: TooltipProps) => {
-  const { onClose, onOpen, placement = 'top', offset = [0, 5], transitionDuration = 250 } = props;
+  const {
+    dialog,
+    onClose,
+    onOpen,
+    placement = 'top',
+    offset = [0, 5],
+    transitionDuration = 250,
+  } = props;
   const contentId = useId('tooltip-trigger--', props.id);
   const arrowElement = useRef(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
@@ -178,7 +186,6 @@ export const Tooltip = (props: TooltipProps) => {
     middlewareData,
     placement: finalPlacement,
     refs,
-    update,
   } = useFloating<HTMLButtonElement>({
     onOpenChange: setActive,
     open: active,
@@ -189,6 +196,7 @@ export const Tooltip = (props: TooltipProps) => {
       shift({ limiter: limitShift() }),
       arrow({ element: arrowElement.current }),
     ],
+    whileElementsMounted: autoUpdate,
   });
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
@@ -256,15 +264,6 @@ export const Tooltip = (props: TooltipProps) => {
       onClose && onClose();
     }
   }, [active, onClose, onOpen, sendTooltipEvent]);
-
-  // Automatically updates the position of the floating element when necessary
-  // to ensure it stays anchored.
-  useEffect(() => {
-    if (active && elements.reference && elements.floating) {
-      const cleanup = autoUpdate(elements.reference, elements.floating, update);
-      return cleanup;
-    }
-  }, [active, elements, update]);
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
@@ -411,7 +410,7 @@ export const Tooltip = (props: TooltipProps) => {
       </div>
     );
 
-    return tooltipContent;
+    return isMounted && tooltipContent;
   };
 
   const mainEventHandlers = props.dialog
@@ -434,7 +433,13 @@ export const Tooltip = (props: TooltipProps) => {
   return (
     <div className="ds-c-tooltip__container" {...mainEventHandlers}>
       {renderTrigger(props)}
-      {isMounted && renderContent(props)}
+      {dialog ? (
+        <FloatingFocusManager context={context} initialFocus={refs.floating}>
+          {renderContent(props)}
+        </FloatingFocusManager>
+      ) : (
+        renderContent(props)
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
@@ -58,28 +58,22 @@ describe('Tooltip', function () {
   });
 
   it('closes tooltip when trigger focus is lost', async () => {
-    jest.useFakeTimers();
-    const { container, user } = renderTooltip();
-    const tooltip = container.querySelector('.ds-c-tooltip');
+    const { user } = renderTooltip();
 
     await user.tab();
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
-    expect(tooltip).toHaveClass('ds-c-tooltip-enter');
+    await screen.findByRole('tooltip');
 
     await user.tab();
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
-    expect(tooltip).toHaveClass('ds-c-tooltip-exit');
+    await waitForElementToBeRemoved(() => screen.queryByRole('tooltip'));
   });
 
   describe('tooltip with close', () => {
-    it('renders a close button', () => {
-      renderTooltip({ dialog: true, showCloseButton: true });
-      const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-      expect(closeButton).toBeDefined();
+    it('renders a close button', async () => {
+      const { user } = renderTooltip({ dialog: true, showCloseButton: true });
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      await user.click(tooltipTrigger);
+
+      await screen.findByLabelText('Close', { selector: 'button' });
     });
 
     it('renders heading element', async () => {
@@ -174,20 +168,23 @@ describe('Tooltip', function () {
       await user.tab();
       expect(testLink).toHaveFocus();
 
-      // Tab moves the focus back to the close button instead of exiting the
-      // tooltip.
+      // Floating UI guard prevents focus from leaving the modal.
       await user.tab();
-      expect(closeButton).toHaveFocus();
+      expect(document.activeElement).toHaveAttribute('data-floating-ui-focus-guard', '');
     });
 
-    it('close button should take custom aria label', () => {
-      renderTooltip({
+    it('close button should take custom aria label', async () => {
+      const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
         closeButtonLabel: 'custom close label text',
       });
-      const closeButton = screen.queryByLabelText('custom close label text');
-      expect(closeButton).not.toBeNull();
+
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      expect(document.body).toHaveFocus();
+      await user.click(tooltipTrigger);
+
+      await screen.findByLabelText('custom close label text');
     });
   });
 
