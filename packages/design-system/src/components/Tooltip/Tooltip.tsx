@@ -163,6 +163,15 @@ export const Tooltip = (props: TooltipProps) => {
   const contentId = useId('tooltip-trigger--', props.id);
   const arrowElement = useRef(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
+
+  const setArrowElement = (elem) => {
+    arrowElement.current = elem;
+  };
+
+  const [active, setActive] = useState<boolean>(false);
+  const [isHover, setIsHover] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
   const {
     elements,
     floatingStyles,
@@ -187,14 +196,6 @@ export const Tooltip = (props: TooltipProps) => {
     left: 'right',
   }[side];
 
-  const setArrowElement = (elem) => {
-    arrowElement.current = elem;
-  };
-
-  const [active, setActive] = useState<boolean>(false);
-  const [isHover, setIsHover] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
   const handleEscapeKey = (event: KeyboardEvent) => {
     const ESCAPE_KEY = 27;
     if (active && event.keyCode === ESCAPE_KEY) {
@@ -204,7 +205,7 @@ export const Tooltip = (props: TooltipProps) => {
 
   const handleClickOutside = (event: MouseEvent) => {
     if (active && (props.dialog || isMobile)) {
-      const clickedTrigger = elements.reference.contains(event.target as Node);
+      const clickedTrigger = elements.domReference.contains(event.target as Node);
       const clickedTooltip = elements.floating?.contains(event.target as Node);
       if (!clickedTooltip && !clickedTrigger) {
         setActive(false);
