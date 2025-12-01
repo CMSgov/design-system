@@ -12,6 +12,8 @@ import {
   shift,
   useTransitionStyles,
   FloatingFocusManager,
+  useHover,
+  useInteractions,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -176,7 +178,6 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   const [active, setActive] = useState<boolean>(false);
-  const [isHover, setIsHover] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const {
@@ -198,6 +199,8 @@ export const Tooltip = (props: TooltipProps) => {
     ],
     whileElementsMounted: autoUpdate,
   });
+  const hover = useHover(context, { enabled: !dialog });
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
   });
@@ -235,7 +238,7 @@ export const Tooltip = (props: TooltipProps) => {
 
   const handleBlur = (event: Event) => {
     setTimeout(() => {
-      if (!isHover && event.currentTarget !== event.target) setActive(false);
+      if (event.currentTarget !== event.target) setActive(false);
     }, 10);
   };
 
@@ -332,6 +335,7 @@ export const Tooltip = (props: TooltipProps) => {
         {...others}
         {...linkTriggerOverrides}
         {...eventHandlers}
+        {...getReferenceProps}
       >
         {children}
       </TriggerComponent>
@@ -371,6 +375,7 @@ export const Tooltip = (props: TooltipProps) => {
         aria-hidden={!active}
         role={dialog ? 'dialog' : 'tooltip'}
         {...eventHandlers}
+        {...getFloatingProps}
       >
         <span
           className="ds-c-tooltip__arrow"
@@ -413,25 +418,8 @@ export const Tooltip = (props: TooltipProps) => {
     return isMounted && tooltipContent;
   };
 
-  const mainEventHandlers = props.dialog
-    ? {}
-    : {
-        onMouseEnter: () => {
-          if (!isMobile) {
-            setIsHover(true);
-            setActive(true);
-          }
-        },
-        onMouseLeave: () => {
-          if (!isMobile) {
-            setIsHover(false);
-            setActive(false);
-          }
-        },
-      };
-
   return (
-    <div className="ds-c-tooltip__container" {...mainEventHandlers}>
+    <div className="ds-c-tooltip__container">
       {renderTrigger(props)}
       {dialog ? (
         <FloatingFocusManager context={context} initialFocus={refs.floating}>
