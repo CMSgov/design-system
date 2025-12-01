@@ -15,6 +15,7 @@ import {
   useHover,
   useInteractions,
   useRole,
+  useFocus,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -200,9 +201,10 @@ export const Tooltip = (props: TooltipProps) => {
     ],
     whileElementsMounted: autoUpdate,
   });
+  const focus = useFocus(context, { enabled: !dialog });
   const hover = useHover(context, { enabled: !dialog });
   const role = useRole(context, { role: dialog ? 'dialog' : 'tooltip' });
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover, role]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([focus, hover, role]);
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
   });
@@ -236,12 +238,6 @@ export const Tooltip = (props: TooltipProps) => {
     if (active && (props.dialog || isMobile)) {
       setActive(false);
     }
-  };
-
-  const handleBlur = (event: Event) => {
-    setTimeout(() => {
-      if (event.currentTarget !== event.target) setActive(false);
-    }, 10);
   };
 
   const handleTouch = () => {
@@ -307,25 +303,14 @@ export const Tooltip = (props: TooltipProps) => {
     const linkTriggerOverrides = {
       tabIndex: TriggerComponent === 'a' ? 0 : undefined,
     };
-    const eventHandlers = dialog
-      ? {
-          onTouchStart: () => handleTouch(),
-          onClick: () => {
-            if (!isMobile) {
-              setActive(!active);
-            }
-          },
+    const eventHandlers = {
+      onTouchStart: () => handleTouch(),
+      onClick: () => {
+        if (!isMobile) {
+          setActive(!active);
         }
-      : {
-          onTouchStart: () => handleTouch(),
-          onClick: () => {
-            if (!isMobile) {
-              setActive(!active);
-            }
-          },
-          onFocus: () => setActive(true),
-          onBlur: (event) => handleBlur(event),
-        };
+      },
+    };
 
     return (
       <TriggerComponent
@@ -364,7 +349,6 @@ export const Tooltip = (props: TooltipProps) => {
       border: `${interactiveBorder}px solid transparent`,
       zIndex: -999, // ensures interactive border doesnt cover tooltip content
     };
-    const eventHandlers = dialog ? {} : { onBlur: (event) => handleBlur(event) };
 
     const tooltipContent = (
       <div
@@ -375,7 +359,6 @@ export const Tooltip = (props: TooltipProps) => {
         style={{ ...tooltipStyle, ...floatingStyles, ...styles }}
         data-placement={finalPlacement}
         aria-hidden={!active}
-        {...eventHandlers}
         {...getFloatingProps()}
       >
         <span

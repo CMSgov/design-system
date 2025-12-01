@@ -1,4 +1,4 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
@@ -69,7 +69,7 @@ describe('Tooltip', function () {
     await screen.findByRole('tooltip');
 
     await user.tab();
-    await waitForElementToBeRemoved(() => screen.queryByRole('tooltip'));
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
   });
 
   describe('tooltip with close', () => {
