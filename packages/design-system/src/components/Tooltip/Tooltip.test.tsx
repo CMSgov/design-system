@@ -28,10 +28,14 @@ describe('Tooltip', function () {
     jest.useRealTimers();
   });
 
-  it('renders default trigger icon', () => {
-    renderTooltip();
+  it('renders a tooltip on hover', async () => {
+    const { user } = renderTooltip();
     const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
     expect(triggerEl).toMatchSnapshot();
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+    await user.hover(triggerEl);
+    await screen.findByRole('tooltip');
   });
 
   it('renders inverse tooltip', () => {
@@ -60,7 +64,9 @@ describe('Tooltip', function () {
   it('closes tooltip when trigger focus is lost', async () => {
     const { user } = renderTooltip();
 
+    const triggerEl = screen.getByLabelText(triggerAriaLabelText);
     await user.tab();
+    expect(triggerEl).toHaveFocus();
     await screen.findByRole('tooltip');
 
     await user.tab();
