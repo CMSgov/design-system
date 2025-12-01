@@ -8,6 +8,7 @@ figma.connect(Button, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node
     // leftIcon: figma.boolean('Left Icon'),
     // rightIcon: figma.boolean('Right Icon'),
     // TODO: Extract disabled into a boolean as well.
+    // Design Ticket: https://jira.cms.gov/browse/CMSDS-3721?atlLinkOrigin=c2xhY2staW50ZWdyYXRpb258aXNzdWU%3D
     // disabled: figma.enum("State", {
     //   Disabled: true,
     // }),
@@ -24,6 +25,7 @@ figma.connect(Button, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node
       Big: 'big',
     }),
     // TODO: Convert this property to a boolean within Figma.
+    // Design Ticket: https://jira.cms.gov/browse/CMSDS-3722?atlLinkOrigin=c2xhY2staW50ZWdyYXRpb258aXNzdWU%3D
     // isAlternate: figma.enum('Color', {
     //   "Main": "main",
     //   "Alternate": "alternate"
