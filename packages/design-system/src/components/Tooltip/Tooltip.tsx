@@ -16,6 +16,7 @@ import {
   useInteractions,
   useRole,
   useFocus,
+  useClick,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -180,7 +181,6 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   const [active, setActive] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const {
     context,
@@ -201,10 +201,11 @@ export const Tooltip = (props: TooltipProps) => {
     ],
     whileElementsMounted: autoUpdate,
   });
+  const click = useClick(context, { enabled: dialog });
   const focus = useFocus(context, { enabled: !dialog });
   const hover = useHover(context, { enabled: !dialog });
   const role = useRole(context, { role: dialog ? 'dialog' : 'tooltip' });
-  const { getReferenceProps, getFloatingProps } = useInteractions([focus, hover, role]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, focus, hover, role]);
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
   });
@@ -225,7 +226,7 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (active && (props.dialog || isMobile)) {
+    if (active && props.dialog) {
       const clickedTrigger = elements.domReference.contains(event.target as Node);
       const clickedTooltip = elements.floating?.contains(event.target as Node);
       if (!clickedTooltip && !clickedTrigger) {
@@ -235,17 +236,9 @@ export const Tooltip = (props: TooltipProps) => {
   };
 
   const handleCloseButtonClick = () => {
-    if (active && (props.dialog || isMobile)) {
+    if (active && props.dialog) {
       setActive(false);
     }
-  };
-
-  const handleTouch = () => {
-    // On mobile, touch -> mouseenter -> click events can all be fired simultaneously
-    // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
-    // https://stackoverflow.com/a/65055198
-    setIsMobile(true);
-    setActive(!active);
   };
 
   useEffect(() => {
@@ -303,15 +296,6 @@ export const Tooltip = (props: TooltipProps) => {
     const linkTriggerOverrides = {
       tabIndex: TriggerComponent === 'a' ? 0 : undefined,
     };
-    const eventHandlers = {
-      onTouchStart: () => handleTouch(),
-      onClick: () => {
-        if (!isMobile) {
-          setActive(!active);
-        }
-      },
-    };
-
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
@@ -321,7 +305,6 @@ export const Tooltip = (props: TooltipProps) => {
         ref={mergeRefs([contentRef, refs.setReference])}
         {...others}
         {...linkTriggerOverrides}
-        {...eventHandlers}
         {...getReferenceProps()}
       >
         {children}
