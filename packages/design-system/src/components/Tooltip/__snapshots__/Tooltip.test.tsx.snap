@@ -32,7 +32,6 @@ Array [
 
 exports[`Tooltip renders a tooltip on hover 1`] = `
 <button
-  aria-describedby="static-id"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   type="button"
@@ -57,7 +56,6 @@ exports[`Tooltip renders a tooltip on hover 1`] = `
 
 exports[`Tooltip renders custom trigger component 1`] = `
 <a
-  aria-describedby="static-id"
   aria-label="tooltip trigger"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
@@ -80,44 +78,20 @@ exports[`Tooltip renders custom trigger component 1`] = `
 </a>
 `;
 
-exports[`Tooltip renders default trigger icon 1`] = `
-<button
-  aria-describedby="static-id"
-  aria-label="tooltip trigger"
-  class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-  type="button"
->
-  <span
-    class="ds-c-tooltip-icon__container"
-  >
-    <svg
-      aria-hidden="true"
-      class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-      viewBox="0 0 16 16"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
-        fill-rule="nonzero"
-      />
-    </svg>
-  </span>
-</button>
-`;
-
 exports[`Tooltip renders dialog tooltip 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="static-id"
+  id=":r6:"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-  tabindex="-1"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, -5px); transition-property: opacity; transition-duration: 250ms;"
+  tabindex="0"
 >
   <span
     class="ds-c-tooltip__arrow"
-    style="bottom: -5px;"
+    style="bottom: -5px; left: 0px;"
   />
   <div
     class="ds-c-tooltip__content"
@@ -133,7 +107,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
     class="ds-c-tooltip__container"
   >
     <button
-      aria-describedby="static-id"
       aria-label="tooltip trigger"
       class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
       type="button"
@@ -154,28 +127,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
         </svg>
       </span>
     </button>
-    <div
-      aria-hidden="true"
-      class="ds-c-tooltip ds-c-tooltip--inverse"
-      data-placement="top"
-      id="static-id"
-      role="tooltip"
-      style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-    >
-      <span
-        class="ds-c-tooltip__arrow"
-        style="bottom: -5px;"
-      />
-      <div
-        class="ds-c-tooltip__content"
-      >
-        Tooltip body content
-      </div>
-      <span
-        class="ds-c-tooltip__interactive-border"
-        style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
-      />
-    </div>
   </div>
 </DocumentFragment>
 `;
@@ -183,12 +134,13 @@ exports[`Tooltip renders inverse tooltip 1`] = `
 exports[`Tooltip tooltip with close renders heading element 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="static-id"
+  id=":rc:"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-  tabindex="-1"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
+  tabindex="0"
 >
   <span
     class="ds-c-tooltip__arrow"
@@ -210,11 +162,12 @@ exports[`Tooltip tooltip with close renders heading element 1`] = `
 exports[`Tooltip tooltip with close renders heading element and close button 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="static-id"
+  id=":re:"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
   tabindex="-1"
 >
   <span
