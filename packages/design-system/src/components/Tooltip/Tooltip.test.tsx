@@ -56,8 +56,7 @@ describe('Tooltip', function () {
     const { user } = renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const contentEl = screen.queryByRole('dialog');
-    expect(contentEl).not.toBeNull();
+    const contentEl = await screen.findByRole('dialog');
     expect(contentEl).toMatchSnapshot();
   });
 

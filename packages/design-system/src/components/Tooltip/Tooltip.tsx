@@ -14,6 +14,7 @@ import {
   FloatingFocusManager,
   useHover,
   useInteractions,
+  useRole,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -200,7 +201,8 @@ export const Tooltip = (props: TooltipProps) => {
     whileElementsMounted: autoUpdate,
   });
   const hover = useHover(context, { enabled: !dialog });
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
+  const role = useRole(context, { role: dialog ? 'dialog' : 'tooltip' });
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover, role]);
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
   });
@@ -335,7 +337,7 @@ export const Tooltip = (props: TooltipProps) => {
         {...others}
         {...linkTriggerOverrides}
         {...eventHandlers}
-        {...getReferenceProps}
+        {...getReferenceProps()}
       >
         {children}
       </TriggerComponent>
@@ -373,9 +375,8 @@ export const Tooltip = (props: TooltipProps) => {
         style={{ ...tooltipStyle, ...floatingStyles, ...styles }}
         data-placement={finalPlacement}
         aria-hidden={!active}
-        role={dialog ? 'dialog' : 'tooltip'}
         {...eventHandlers}
-        {...getFloatingProps}
+        {...getFloatingProps()}
       >
         <span
           className="ds-c-tooltip__arrow"
