@@ -17,6 +17,7 @@ import {
   useRole,
   useFocus,
   useClick,
+  useDismiss,
 } from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
@@ -184,7 +185,6 @@ export const Tooltip = (props: TooltipProps) => {
 
   const {
     context,
-    elements,
     floatingStyles,
     middlewareData,
     placement: finalPlacement,
@@ -202,10 +202,17 @@ export const Tooltip = (props: TooltipProps) => {
     whileElementsMounted: autoUpdate,
   });
   const click = useClick(context, { enabled: dialog });
+  const dismiss = useDismiss(context, { enabled: dialog });
   const focus = useFocus(context, { enabled: !dialog });
   const hover = useHover(context, { enabled: !dialog });
   const role = useRole(context, { role: dialog ? 'dialog' : 'tooltip' });
-  const { getReferenceProps, getFloatingProps } = useInteractions([click, focus, hover, role]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    focus,
+    hover,
+    role,
+  ]);
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: transitionDuration,
   });
@@ -218,37 +225,11 @@ export const Tooltip = (props: TooltipProps) => {
     left: 'right',
   }[side];
 
-  const handleEscapeKey = (event: KeyboardEvent) => {
-    const ESCAPE_KEY = 27;
-    if (active && event.keyCode === ESCAPE_KEY) {
-      setActive(false);
-    }
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (active && props.dialog) {
-      const clickedTrigger = elements.domReference.contains(event.target as Node);
-      const clickedTooltip = elements.floating?.contains(event.target as Node);
-      if (!clickedTooltip && !clickedTrigger) {
-        setActive(false);
-      }
-    }
-  };
-
   const handleCloseButtonClick = () => {
     if (active && props.dialog) {
       setActive(false);
     }
   };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscapeKey);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [handleClickOutside, handleEscapeKey]);
 
   useEffect(() => {
     if (active) {

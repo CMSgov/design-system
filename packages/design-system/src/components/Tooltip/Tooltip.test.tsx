@@ -52,12 +52,14 @@ describe('Tooltip', function () {
   });
 
   it('renders dialog tooltip', async () => {
-    jest.useFakeTimers();
     const { user } = renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
     const contentEl = await screen.findByRole('dialog');
     expect(contentEl).toMatchSnapshot();
+
+    await user.keyboard('{Escape}');
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
   });
 
   it('closes tooltip when trigger focus is lost', async () => {
