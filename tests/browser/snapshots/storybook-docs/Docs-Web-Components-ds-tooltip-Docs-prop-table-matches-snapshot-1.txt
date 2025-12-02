@@ -61,7 +61,7 @@
   ],
   [
     "transition-duration",
-    "Duration of the react-transition-group CSSTransition. See the timeout option for more info.",
+    "Duration of the CSS transition.",
     "string"
   ],
   [
