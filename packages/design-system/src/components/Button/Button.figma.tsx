@@ -4,9 +4,6 @@ import figma from '@figma/code-connect';
 figma.connect(Button, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=145%3A8144', {
   props: {
     focused: figma.boolean('Focused'),
-    // TODO: Proper Icon Mapping. What is the proper way to map this onto children?
-    // leftIcon: figma.boolean('Left Icon'),
-    // rightIcon: figma.boolean('Right Icon'),
     // TODO: Extract disabled into a boolean as well.
     // Design Ticket: https://jira.cms.gov/browse/CMSDS-3721?atlLinkOrigin=c2xhY2staW50ZWdyYXRpb258aXNzdWU%3D
     // disabled: figma.enum("State", {
