@@ -370,7 +370,7 @@ export const Tooltip = (props: TooltipProps) => {
     <div className="ds-c-tooltip__container">
       {renderTrigger(props)}
       {dialog ? (
-        <FloatingFocusManager context={context} initialFocus={refs.floating}>
+        <FloatingFocusManager context={context} initialFocus={refs.floating} guards={false}>
           {renderContent(props)}
         </FloatingFocusManager>
       ) : (
