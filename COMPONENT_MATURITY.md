@@ -164,7 +164,7 @@ Verify with code that all props and options that can be used in code have an equ
 
 ### Responsive
 
-All Figma symbols designed for small and large breakpoints.
+All Figma assets designed for small and large breakpoints.
 
 #### When to define as 'Not applicable'?
 
