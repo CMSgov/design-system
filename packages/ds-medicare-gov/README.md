@@ -20,9 +20,9 @@ See the [root CMSDS README](../../README.md).
 
 ## Design assets
 
-You can find the Medicare design system Sketch file and related fonts in the [design-assets folder](./design-assets).
+You can find the Medicare design system fonts in the [design-assets folder](./design-assets).
 
-You can also view the [Medicare InVision Design System Manager design assets](https://cms.invisionapp.com/dsm/cms/medicare?mode=edit).
+You can also view the [Medicare Design System UI Kit Figma File](https://www.figma.com/design/gwpXhAmk5noyDiDEs9DXCq/Medicare.gov-Theme?node-id=718-40190).
 
 ---
 
