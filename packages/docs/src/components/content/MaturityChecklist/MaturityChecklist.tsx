@@ -71,16 +71,6 @@ const MaturityChecklist = (props: MaturityChecklistProps) => (
       </MaturityChecklistItem>
     </ul>
 
-    {/* <h3>Design</h3>
-    <ul className="ds-c-list--bare">
-      <MaturityChecklistItem title="Sketch UI-kit" status={props.completeUiKit}>
-        Includes all Sketch symbols for defined options.
-      </MaturityChecklistItem>
-      <MaturityChecklistItem title="Responsive" status={props.responsiveUiKit}>
-        All Sketch symbols designed for small and large breakpoints.
-      </MaturityChecklistItem>
-    </ul> */}
-
     <h3>Tokens</h3>
     <ul className="ds-c-list--bare">
       <MaturityChecklistItem title="Code" status={props.tokensInCode}>
