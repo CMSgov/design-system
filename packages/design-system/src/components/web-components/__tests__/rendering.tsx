@@ -17,6 +17,8 @@ export function createGenericTestRenderer<T extends unknown[]>(
       return getCustomElement(renderResult).shadowRoot;
     }
 
+    const shadowRoot = getShadowRoot(result);
+
     function createRerenderFunction(renderResult) {
       return (...newArgs: T) => {
         const rerenderResult = renderResult.rerender(renderFn(...newArgs));
@@ -32,7 +34,8 @@ export function createGenericTestRenderer<T extends unknown[]>(
     return {
       ...result,
       customElement: getCustomElement(result),
-      shadowRoot: getShadowRoot(result),
+      shadowElement: shadowRoot.firstElementChild as HTMLElement,
+      shadowRoot,
       rerenderTest: createRerenderFunction(result),
       user: userEvent.setup(userEventSetupOptions),
     };
