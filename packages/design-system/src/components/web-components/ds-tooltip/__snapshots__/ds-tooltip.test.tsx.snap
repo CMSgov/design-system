@@ -8,35 +8,24 @@ exports[`ds-tooltip renders a tooltip 1`] = `
     title="Custom tooltip title text for our web component!"
     trigger-aria-label="tooltip trigger aria label"
   >
-    <div
-      class="ds-c-tooltip__container"
-    >
-      <button
-        aria-label="tooltip trigger aria label"
-        class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
-        type="button"
+    <ds-tooltip-icon>
+      <span
+        class="ds-c-tooltip-icon__container"
       >
-        <ds-tooltip-icon>
-          <span
-            class="ds-c-tooltip-icon__container"
-          >
-            <svg
-              aria-hidden="true"
-              class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-              viewBox="0 0 16 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
-                fill-rule="nonzero"
-              />
-            </svg>
-          </span>
-          <template />
-        </ds-tooltip-icon>
-      </button>
-    </div>
-    <template />
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </span>
+      <template />
+    </ds-tooltip-icon>
   </ds-tooltip>
 </DocumentFragment>
 `;
@@ -186,35 +175,24 @@ exports[`ds-tooltip renders inverse tooltip 1`] = `
     title="Custom tooltip title text for our web component!"
     trigger-aria-label="tooltip trigger aria label"
   >
-    <div
-      class="ds-c-tooltip__container"
-    >
-      <button
-        aria-label="tooltip trigger aria label"
-        class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
-        type="button"
+    <ds-tooltip-icon>
+      <span
+        class="ds-c-tooltip-icon__container"
       >
-        <ds-tooltip-icon>
-          <span
-            class="ds-c-tooltip-icon__container"
-          >
-            <svg
-              aria-hidden="true"
-              class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
-              viewBox="0 0 16 16"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
-                fill-rule="nonzero"
-              />
-            </svg>
-          </span>
-          <template />
-        </ds-tooltip-icon>
-      </button>
-    </div>
-    <template />
+        <svg
+          aria-hidden="true"
+          class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          viewBox="0 0 16 16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm1-3.7V6.4H7v5.9h2zM7 4.9c0 .6.3.9 1 .9s1-.3 1-.9c0-.3-.1-.5-.2-.7-.2-.1-.5-.2-.8-.2-.3 0-.6.1-.8.2-.1.2-.2.4-.2.7z"
+            fill-rule="nonzero"
+          />
+        </svg>
+      </span>
+      <template />
+    </ds-tooltip-icon>
   </ds-tooltip>
 </DocumentFragment>
 `;
