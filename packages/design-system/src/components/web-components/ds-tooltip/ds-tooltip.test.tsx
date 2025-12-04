@@ -1,7 +1,7 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { waitFor, within } from '@testing-library/react';
 import './ds-tooltip';
 import './ds-tooltip-icon';
+import { createTestRenderer } from '../__tests__/rendering';
 
 const customTooltipText = 'Custom tooltip title text for our web component!';
 const customHeadingText = 'Custom tooltip heading text for our web component!';
@@ -26,46 +26,49 @@ const propsWithSlots = {
   ),
 };
 
-function renderTooltip(customProps = {}) {
+const renderTooltip = createTestRenderer('ds-tooltip', (customProps = {}) => {
   const props = { ...defaultProps, ...customProps };
-  return {
-    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
-    ...render(<ds-tooltip {...props} />),
-  };
-}
+  return <ds-tooltip {...props} />;
+});
 
 describe('ds-tooltip', function () {
-  afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
-  });
-
   it('renders a tooltip', () => {
     const { asFragment } = renderTooltip();
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders title and contentHeading when passed in as slots', async () => {
-    const { user } = renderTooltip(propsWithSlots);
+    const { shadowElement, shadowRoot, user } = renderTooltip(propsWithSlots);
 
-    await user.tab();
-    const tooltip = await screen.findByRole('tooltip');
-    expect(tooltip).toHaveTextContent(customTooltipText);
-    expect(tooltip).toHaveTextContent(customHeadingText);
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
+    await user.click(tooltipTrigger);
+
+    const titleSlot = shadowRoot.querySelector("slot[name='title'") as HTMLSlotElement;
+    const [title] = titleSlot.assignedNodes();
+    expect(title).toHaveTextContent(customTooltipText);
+
+    const headingSlot = shadowRoot.querySelector("slot[name='content-heading'") as HTMLSlotElement;
+    const [heading] = headingSlot.assignedNodes();
+    expect(heading).toHaveTextContent(customHeadingText);
   });
 
   it('renders default trigger icon', () => {
-    renderTooltip();
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    const { shadowElement } = renderTooltip();
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     expect(tooltipTrigger).toMatchSnapshot();
   });
 
   it('renders custom trigger component', () => {
-    renderTooltip({
+    const { shadowElement } = renderTooltip({
       component: 'a',
       children: childText,
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     expect(tooltipTrigger).toMatchSnapshot();
   });
 
@@ -75,100 +78,109 @@ describe('ds-tooltip', function () {
   });
 
   it('renders dialog tooltip', async () => {
-    jest.useFakeTimers();
-    const { user } = renderTooltip({ dialog: 'true', children: childText });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    const { shadowElement, user } = renderTooltip({ dialog: 'true', children: childText });
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const contentEl = screen.queryByRole('dialog');
+    const contentEl = shadowContainer.queryByRole('dialog');
     expect(contentEl).not.toBeNull();
     expect(contentEl).toMatchSnapshot();
   });
 
   it('closes tooltip when trigger focus is lost', async () => {
-    const { user } = renderTooltip();
+    const { shadowElement, shadowRoot, user } = renderTooltip();
 
-    const triggerEl = screen.getByLabelText(triggerAriaLabelText);
-    await user.tab();
-    expect(triggerEl).toHaveFocus();
-    await screen.findByRole('tooltip');
+    const shadowContainer = within(shadowElement);
+    const triggerEl = shadowContainer.getByLabelText(triggerAriaLabelText);
+    await user.click(triggerEl);
+    expect(shadowRoot.activeElement).toBe(triggerEl);
+    await shadowContainer.findByRole('tooltip');
 
     await user.tab();
-    await waitFor(() => expect(screen.queryByRole('tooltip')).not.toBeInTheDocument());
+    await waitFor(() => expect(shadowContainer.queryByRole('tooltip')).not.toBeInTheDocument());
   });
 
   it('renders a close button', async () => {
-    const { user } = renderTooltip({
+    const { shadowElement, user } = renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
 
-    await screen.findByLabelText('Close', { selector: 'button' });
+    await shadowContainer.findByLabelText('Close', { selector: 'button' });
   });
 
   it('renders heading element', async () => {
-    jest.useFakeTimers();
-    const { user } = renderTooltip({
+    const { shadowElement, user } = renderTooltip({
       dialog: 'true',
       'content-heading': customHeadingText,
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const contentEl = screen.queryByRole('dialog');
+    const contentEl = shadowContainer.queryByRole('dialog');
     expect(contentEl).toMatchSnapshot();
   });
 
   it('renders heading element and close button', async () => {
-    jest.useFakeTimers();
-    const { user } = renderTooltip({
+    const { shadowElement, user } = renderTooltip({
       dialog: 'true',
       'content-heading': customHeadingText,
       'show-close-button': 'true',
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const contentEl = screen.queryByRole('dialog');
+    const contentEl = shadowContainer.queryByRole('dialog');
     expect(contentEl).toMatchSnapshot();
   });
 
   it('should close tooltip when onClose is clicked', async () => {
-    jest.useFakeTimers();
-    const { user } = renderTooltip({
+    const { shadowElement, user } = renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const closeButton = screen.getByLabelText('Close', { selector: 'button' });
+    const closeButton = shadowContainer.getByLabelText('Close', { selector: 'button' });
     await user.click(closeButton);
-    const tooltipContent = screen.queryByRole('dialog');
+    const tooltipContent = shadowContainer.queryByRole('dialog');
     expect(tooltipContent).toBeNull();
   });
 
   it('should return focus back to trigger when closed', async () => {
-    jest.useFakeTimers();
-    const { user } = renderTooltip({
+    const { shadowElement, shadowRoot, user } = renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
     });
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     user.click(tooltipTrigger);
-    const closeButton = await screen.findByLabelText('Close', { selector: 'button' });
+    const closeButton = await shadowContainer.findByLabelText('Close', { selector: 'button' });
     user.click(closeButton);
-    await waitFor(() => expect(tooltipTrigger).toHaveFocus());
+    await waitFor(() => expect(shadowRoot.activeElement).toBe(tooltipTrigger));
   });
 
   it('close button should take custom aria label', async () => {
-    const { user } = renderTooltip({
+    const { shadowElement, user } = renderTooltip({
       dialog: 'true',
       'show-close-button': 'true',
       'close-button-label': 'custom close label text',
     });
 
-    const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+    const shadowContainer = within(shadowElement);
+    const tooltipTrigger = shadowContainer.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
 
-    await screen.findByLabelText('custom close label text');
+    await shadowContainer.findByLabelText('custom close label text');
   });
 });
