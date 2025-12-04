@@ -81,4 +81,4 @@ const Wrapper = ({
   ></Tooltip>
 );
 
-define('ds-tooltip', () => Wrapper, { attributes });
+define('ds-tooltip', () => Wrapper, { attributes, shadow: true });
