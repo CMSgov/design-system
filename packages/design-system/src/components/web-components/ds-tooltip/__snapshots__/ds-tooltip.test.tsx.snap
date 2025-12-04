@@ -36,7 +36,7 @@ exports[`ds-tooltip renders custom trigger component 1`] = `
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
 >
-  Bog standard child content.
+  <slot />
 </a>
 `;
 
