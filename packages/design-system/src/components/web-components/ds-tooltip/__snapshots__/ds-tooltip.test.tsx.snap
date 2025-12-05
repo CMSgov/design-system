@@ -12,7 +12,6 @@ exports[`ds-tooltip renders a tooltip 1`] = `
       class="ds-c-tooltip__container"
     >
       <button
-        aria-describedby="1234"
         aria-label="tooltip trigger aria label"
         class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
         type="button"
@@ -36,28 +35,6 @@ exports[`ds-tooltip renders a tooltip 1`] = `
           <template />
         </ds-tooltip-icon>
       </button>
-      <div
-        aria-hidden="true"
-        class="ds-c-tooltip"
-        data-placement="top"
-        id="1234"
-        role="tooltip"
-        style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-      >
-        <span
-          class="ds-c-tooltip__arrow"
-          style="bottom: -5px;"
-        />
-        <div
-          class="ds-c-tooltip__content"
-        >
-          Custom tooltip title text for our web component!
-        </div>
-        <span
-          class="ds-c-tooltip__interactive-border"
-          style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
-        />
-      </div>
     </div>
     <template />
   </ds-tooltip>
@@ -66,7 +43,6 @@ exports[`ds-tooltip renders a tooltip 1`] = `
 
 exports[`ds-tooltip renders custom trigger component 1`] = `
 <a
-  aria-describedby="1234"
   aria-label="tooltip trigger aria label"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   tabindex="0"
@@ -77,7 +53,6 @@ exports[`ds-tooltip renders custom trigger component 1`] = `
 
 exports[`ds-tooltip renders default trigger icon 1`] = `
 <button
-  aria-describedby="1234"
   aria-label="tooltip trigger aria label"
   class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon"
   type="button"
@@ -106,12 +81,13 @@ exports[`ds-tooltip renders default trigger icon 1`] = `
 exports[`ds-tooltip renders dialog tooltip 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="1234"
+  id="P0-0"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-  tabindex="-1"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
+  tabindex="0"
 >
   <span
     class="ds-c-tooltip__arrow"
@@ -128,12 +104,13 @@ exports[`ds-tooltip renders dialog tooltip 1`] = `
 exports[`ds-tooltip renders heading element 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="1234"
+  id="P0-0"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-  tabindex="-1"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
+  tabindex="0"
 >
   <span
     class="ds-c-tooltip__arrow"
@@ -155,11 +132,12 @@ exports[`ds-tooltip renders heading element 1`] = `
 exports[`ds-tooltip renders heading element and close button 1`] = `
 <div
   aria-hidden="false"
-  class="ds-c-tooltip ds-c-tooltip-enter ds-c-tooltip-enter-active"
+  class="ds-c-tooltip"
+  data-floating-ui-focusable=""
   data-placement="top"
-  id="1234"
+  id="P0-0"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
   tabindex="-1"
 >
   <span
@@ -212,7 +190,6 @@ exports[`ds-tooltip renders inverse tooltip 1`] = `
       class="ds-c-tooltip__container"
     >
       <button
-        aria-describedby="1234"
         aria-label="tooltip trigger aria label"
         class="ds-c-tooltip__trigger ds-c-tooltip__trigger-icon ds-c-tooltip__trigger--inverse"
         type="button"
@@ -236,28 +213,6 @@ exports[`ds-tooltip renders inverse tooltip 1`] = `
           <template />
         </ds-tooltip-icon>
       </button>
-      <div
-        aria-hidden="true"
-        class="ds-c-tooltip ds-c-tooltip--inverse"
-        data-placement="top"
-        id="1234"
-        role="tooltip"
-        style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
-      >
-        <span
-          class="ds-c-tooltip__arrow"
-          style="bottom: -5px;"
-        />
-        <div
-          class="ds-c-tooltip__content"
-        >
-          Custom tooltip title text for our web component!
-        </div>
-        <span
-          class="ds-c-tooltip__interactive-border"
-          style="left: -15px; top: -15px; border: 15px solid transparent; z-index: -999;"
-        />
-      </div>
     </div>
     <template />
   </ds-tooltip>

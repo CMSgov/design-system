@@ -1,7 +1,4 @@
 import type * as React from 'react';
-// TODO: Update react-transition-group once we update react peer dep
-import CSSTransition from 'react-transition-group/CSSTransition';
-import FocusTrap from 'focus-trap-react';
 import { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import {
@@ -13,7 +10,15 @@ import {
   offset as floatingOffset,
   Placement,
   shift,
-} from '@floating-ui/react-dom';
+  useTransitionStyles,
+  FloatingFocusManager,
+  useHover,
+  useInteractions,
+  useRole,
+  useFocus,
+  useClick,
+  useDismiss,
+} from '@floating-ui/react';
 import useId from '../utilities/useId';
 import { Button } from '../Button';
 import { CloseIconThin } from '../Icons';
@@ -100,7 +105,7 @@ export interface BaseTooltipProps
    */
   title: React.ReactNode;
   /**
-   * Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.
+   * Duration of the CSS transition.
    * Default is `250`
    */
   transitionDuration?: number;
@@ -160,18 +165,33 @@ export const placements: Placement[] = [
  */
 
 export const Tooltip = (props: TooltipProps) => {
-  const { onClose, onOpen, placement = 'top', offset = [0, 5] } = props;
+  const {
+    dialog,
+    onClose,
+    onOpen,
+    placement = 'top',
+    offset = [0, 5],
+    transitionDuration = 250,
+  } = props;
   const contentId = useId('tooltip-trigger--', props.id);
   const arrowElement = useRef(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
+
+  const setArrowElement = (elem) => {
+    arrowElement.current = elem;
+  };
+
+  const [active, setActive] = useState<boolean>(false);
+
   const {
-    elements,
+    context,
     floatingStyles,
     middlewareData,
     placement: finalPlacement,
     refs,
-    update,
   } = useFloating<HTMLButtonElement>({
+    onOpenChange: setActive,
+    open: active,
     placement: placement,
     middleware: [
       floatingOffset({ crossAxis: offset[0], mainAxis: offset[1] }),
@@ -179,7 +199,24 @@ export const Tooltip = (props: TooltipProps) => {
       shift({ limiter: limitShift() }),
       arrow({ element: arrowElement.current }),
     ],
+    whileElementsMounted: autoUpdate,
   });
+  const click = useClick(context, { enabled: dialog });
+  const dismiss = useDismiss(context, { enabled: dialog });
+  const focus = useFocus(context, { enabled: !dialog });
+  const hover = useHover(context, { enabled: !dialog });
+  const role = useRole(context, { role: dialog ? 'dialog' : 'tooltip' });
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    focus,
+    hover,
+    role,
+  ]);
+  const { isMounted, styles } = useTransitionStyles(context, {
+    duration: transitionDuration,
+  });
+
   const side = finalPlacement.split('-')[0];
   const staticSide = {
     top: 'bottom',
@@ -188,59 +225,11 @@ export const Tooltip = (props: TooltipProps) => {
     left: 'right',
   }[side];
 
-  const setArrowElement = (elem) => {
-    arrowElement.current = elem;
-  };
-
-  const [active, setActive] = useState<boolean>(false);
-  const [isHover, setIsHover] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  const handleEscapeKey = (event: KeyboardEvent) => {
-    const ESCAPE_KEY = 27;
-    if (active && event.keyCode === ESCAPE_KEY) {
-      setActive(false);
-    }
-  };
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (active && (props.dialog || isMobile)) {
-      const clickedTrigger = elements.reference.contains(event.target as Node);
-      const clickedTooltip = elements.floating?.contains(event.target as Node);
-      if (!clickedTooltip && !clickedTrigger) {
-        setActive(false);
-      }
-    }
-  };
-
   const handleCloseButtonClick = () => {
-    if (active && (props.dialog || isMobile)) {
+    if (active && props.dialog) {
       setActive(false);
     }
   };
-
-  const handleBlur = (event: Event) => {
-    setTimeout(() => {
-      if (!isHover && event.currentTarget !== event.target) setActive(false);
-    }, 10);
-  };
-
-  const handleTouch = () => {
-    // On mobile, touch -> mouseenter -> click events can all be fired simultaneously
-    // `isMobile` flag is used inside onClick and onMouseEnter handlers, so touch events can be used in isolation on mobile
-    // https://stackoverflow.com/a/65055198
-    setIsMobile(true);
-    setActive(!active);
-  };
-
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscapeKey);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [handleClickOutside, handleEscapeKey]);
 
   useEffect(() => {
     if (active) {
@@ -250,15 +239,6 @@ export const Tooltip = (props: TooltipProps) => {
       onClose && onClose();
     }
   }, [active, onClose, onOpen, sendTooltipEvent]);
-
-  // Automatically updates the position of the floating element when necessary
-  // to ensure it stays anchored.
-  useEffect(() => {
-    if (active && elements.reference && elements.floating) {
-      const cleanup = autoUpdate(elements.reference, elements.floating, update);
-      return cleanup;
-    }
-  }, [active, elements, update]);
 
   const renderTrigger = (props: TooltipProps): React.ReactElement => {
     const {
@@ -297,26 +277,6 @@ export const Tooltip = (props: TooltipProps) => {
     const linkTriggerOverrides = {
       tabIndex: TriggerComponent === 'a' ? 0 : undefined,
     };
-    const eventHandlers = dialog
-      ? {
-          onTouchStart: () => handleTouch(),
-          onClick: () => {
-            if (!isMobile) {
-              setActive(!active);
-            }
-          },
-        }
-      : {
-          onTouchStart: () => handleTouch(),
-          onClick: () => {
-            if (!isMobile) {
-              setActive(!active);
-            }
-          },
-          onFocus: () => setActive(true),
-          onBlur: (event) => handleBlur(event),
-        };
-
     return (
       <TriggerComponent
         type={TriggerComponent === 'button' ? 'button' : undefined}
@@ -326,7 +286,7 @@ export const Tooltip = (props: TooltipProps) => {
         ref={mergeRefs([contentRef, refs.setReference])}
         {...others}
         {...linkTriggerOverrides}
-        {...eventHandlers}
+        {...getReferenceProps()}
       >
         {children}
       </TriggerComponent>
@@ -343,7 +303,6 @@ export const Tooltip = (props: TooltipProps) => {
       maxWidth = '300px',
       showCloseButton,
       title,
-      transitionDuration = 250, // Equivalent to $animation-speed-1
       zIndex = 9999,
     } = props;
 
@@ -354,7 +313,6 @@ export const Tooltip = (props: TooltipProps) => {
       border: `${interactiveBorder}px solid transparent`,
       zIndex: -999, // ensures interactive border doesnt cover tooltip content
     };
-    const eventHandlers = dialog ? {} : { onBlur: (event) => handleBlur(event) };
 
     const tooltipContent = (
       <div
@@ -362,11 +320,10 @@ export const Tooltip = (props: TooltipProps) => {
         tabIndex={dialog ? -1 : null}
         ref={refs.setFloating}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
-        style={{ ...tooltipStyle, ...floatingStyles }}
+        style={{ ...tooltipStyle, ...floatingStyles, ...styles }}
         data-placement={finalPlacement}
         aria-hidden={!active}
-        role={dialog ? 'dialog' : 'tooltip'}
-        {...eventHandlers}
+        {...getFloatingProps()}
       >
         <span
           className="ds-c-tooltip__arrow"
@@ -406,52 +363,19 @@ export const Tooltip = (props: TooltipProps) => {
       </div>
     );
 
-    return (
-      <CSSTransition
-        in={active}
-        classNames="ds-c-tooltip"
-        timeout={transitionDuration}
-        nodeRef={refs.floating}
-      >
-        {dialog ? (
-          <FocusTrap
-            active={active}
-            focusTrapOptions={{
-              fallbackFocus: () => document.getElementById(`${contentId}`).parentElement,
-              initialFocus: () => document.getElementById(`${contentId}`),
-              clickOutsideDeactivates: true,
-            }}
-          >
-            {tooltipContent}
-          </FocusTrap>
-        ) : (
-          tooltipContent
-        )}
-      </CSSTransition>
-    );
+    return isMounted && tooltipContent;
   };
 
-  const mainEventHandlers = props.dialog
-    ? {}
-    : {
-        onMouseEnter: () => {
-          if (!isMobile) {
-            setIsHover(true);
-            setActive(true);
-          }
-        },
-        onMouseLeave: () => {
-          if (!isMobile) {
-            setIsHover(false);
-            setActive(false);
-          }
-        },
-      };
-
   return (
-    <div className="ds-c-tooltip__container" {...mainEventHandlers}>
+    <div className="ds-c-tooltip__container">
       {renderTrigger(props)}
-      {renderContent(props)}
+      {dialog ? (
+        <FloatingFocusManager context={context} initialFocus={refs.floating} guards={false}>
+          {renderContent(props)}
+        </FloatingFocusManager>
+      ) : (
+        renderContent(props)
+      )}
     </div>
   );
 };

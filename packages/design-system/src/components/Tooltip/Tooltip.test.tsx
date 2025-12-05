@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
@@ -17,21 +17,20 @@ const defaultProps = {
 function renderTooltip(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
   return {
-    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    user: userEvent.setup(),
     ...render(<Tooltip {...props} />),
   };
 }
 
 describe('Tooltip', function () {
-  afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
-  });
-
-  it('renders default trigger icon', () => {
-    renderTooltip();
+  it('renders a tooltip on hover', async () => {
+    const { user } = renderTooltip();
     const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
     expect(triggerEl).toMatchSnapshot();
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+
+    await user.hover(triggerEl);
+    await screen.findByRole('tooltip');
   });
 
   it('renders inverse tooltip', () => {
@@ -47,68 +46,51 @@ describe('Tooltip', function () {
     expect(triggerEl).toMatchSnapshot();
   });
 
-  it('renders dialog tooltip', async () => {
-    jest.useFakeTimers();
+  it('behaves like a modal dialog box when dialog is true', async () => {
     const { user } = renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
-    const contentEl = screen.queryByRole('dialog');
-    expect(contentEl).not.toBeNull();
-    expect(contentEl).toMatchSnapshot();
+    const contentEl = await screen.findByRole('dialog');
+    expect(contentEl).toHaveTextContent(defaultProps.title);
+
+    await user.keyboard('{Escape}');
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
   });
 
   it('closes tooltip when trigger focus is lost', async () => {
-    jest.useFakeTimers();
-    const { container, user } = renderTooltip();
-    const tooltip = container.querySelector('.ds-c-tooltip');
+    const { user } = renderTooltip();
+
+    const triggerEl = screen.getByLabelText(triggerAriaLabelText);
+    await user.tab();
+    expect(triggerEl).toHaveFocus();
+    await screen.findByRole('tooltip');
 
     await user.tab();
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
-    expect(tooltip).toHaveClass('ds-c-tooltip-enter');
-
-    await user.tab();
-    act(() => {
-      jest.advanceTimersByTime(100);
-    });
-    expect(tooltip).toHaveClass('ds-c-tooltip-exit');
+    expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
   });
 
   describe('tooltip with close', () => {
-    it('renders a close button', () => {
-      renderTooltip({ dialog: true, showCloseButton: true });
-      const closeButton = screen.getByLabelText('Close', { selector: 'button' });
-      expect(closeButton).toBeDefined();
+    it('renders a close button', async () => {
+      const { user } = renderTooltip({ dialog: true, showCloseButton: true });
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      await user.click(tooltipTrigger);
+
+      await screen.findByLabelText('Close', { selector: 'button' });
     });
 
     it('renders heading element', async () => {
-      jest.useFakeTimers();
+      const contentHeading = 'Tooltip heading content';
       const { user } = renderTooltip({
         dialog: true,
-        contentHeading: 'Tooltip heading content',
+        contentHeading,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
       await user.click(tooltipTrigger);
       const contentEl = screen.queryByRole('dialog');
-      expect(contentEl).toMatchSnapshot();
-    });
-
-    it('renders heading element and close button', async () => {
-      jest.useFakeTimers();
-      const { user } = renderTooltip({
-        dialog: true,
-        contentHeading: 'Tooltip heading content',
-        showCloseButton: true,
-      });
-      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      await user.click(tooltipTrigger);
-      const contentEl = screen.queryByRole('dialog');
-      expect(contentEl).toMatchSnapshot();
+      expect(contentEl).toHaveTextContent(contentHeading);
     });
 
     it('should call onClose when close button is clicked', async () => {
-      jest.useFakeTimers();
       const onClose = jest.fn();
       const { user } = renderTooltip({
         dialog: true,
@@ -123,7 +105,6 @@ describe('Tooltip', function () {
     });
 
     it('should close tooltip when onClose is clicked', async () => {
-      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
@@ -137,7 +118,6 @@ describe('Tooltip', function () {
     });
 
     it('should return focus back to trigger when closed', async () => {
-      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
@@ -150,14 +130,18 @@ describe('Tooltip', function () {
       await waitFor(() => expect(tooltipTrigger).toHaveFocus());
     });
 
-    it('close button should take custom aria label', () => {
-      renderTooltip({
+    it('close button should take custom aria label', async () => {
+      const { user } = renderTooltip({
         dialog: true,
         showCloseButton: true,
         closeButtonLabel: 'custom close label text',
       });
-      const closeButton = screen.queryByLabelText('custom close label text');
-      expect(closeButton).not.toBeNull();
+
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      expect(document.body).toHaveFocus();
+      await user.click(tooltipTrigger);
+
+      await screen.findByLabelText('custom close label text');
     });
   });
 

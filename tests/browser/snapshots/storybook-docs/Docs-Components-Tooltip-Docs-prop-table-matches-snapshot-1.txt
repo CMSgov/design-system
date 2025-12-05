@@ -116,7 +116,7 @@
   ],
   [
     "transitionDuration",
-    "Duration of the react-transition-group CSSTransition. See the timeout option for more info. Default is 250\n\nnumber",
+    "Duration of the CSS transition. Default is 250\n\nnumber",
     "-"
   ],
   [
