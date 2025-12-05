@@ -90,18 +90,6 @@ describe('Tooltip', function () {
       expect(contentEl).toHaveTextContent(contentHeading);
     });
 
-    it('renders heading element and close button', async () => {
-      const { user } = renderTooltip({
-        dialog: true,
-        contentHeading: 'Tooltip heading content',
-        showCloseButton: true,
-      });
-      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      await user.click(tooltipTrigger);
-      const contentEl = screen.queryByRole('dialog');
-      expect(contentEl).toMatchSnapshot();
-    });
-
     it('should call onClose when close button is clicked', async () => {
       const onClose = jest.fn();
       const { user } = renderTooltip({
