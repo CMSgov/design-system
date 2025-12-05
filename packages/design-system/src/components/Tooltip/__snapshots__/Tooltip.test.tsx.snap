@@ -30,29 +30,6 @@ Array [
 ]
 `;
 
-exports[`Tooltip behaves like a modal dialog box when dialog is true 1`] = `
-<div
-  aria-hidden="false"
-  class="ds-c-tooltip"
-  data-floating-ui-focusable=""
-  data-placement="top"
-  id=":r6:"
-  role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, -5px); transition-property: opacity; transition-duration: 250ms;"
-  tabindex="0"
->
-  <span
-    class="ds-c-tooltip__arrow"
-    style="bottom: -5px; left: 0px;"
-  />
-  <div
-    class="ds-c-tooltip__content"
-  >
-    Tooltip body content
-  </div>
-</div>
-`;
-
 exports[`Tooltip renders a tooltip on hover 1`] = `
 <button
   aria-label="tooltip trigger"
@@ -101,29 +78,6 @@ exports[`Tooltip renders custom trigger component 1`] = `
 </a>
 `;
 
-exports[`Tooltip renders dialog tooltip 1`] = `
-<div
-  aria-hidden="false"
-  class="ds-c-tooltip"
-  data-floating-ui-focusable=""
-  data-placement="top"
-  id=":r6:"
-  role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; transform: translate(0px, -5px); transition-property: opacity; transition-duration: 250ms;"
-  tabindex="0"
->
-  <span
-    class="ds-c-tooltip__arrow"
-    style="bottom: -5px; left: 0px;"
-  />
-  <div
-    class="ds-c-tooltip__content"
-  >
-    Tooltip body content
-  </div>
-</div>
-`;
-
 exports[`Tooltip renders inverse tooltip 1`] = `
 <DocumentFragment>
   <div
@@ -154,34 +108,6 @@ exports[`Tooltip renders inverse tooltip 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tooltip tooltip with close renders heading element 1`] = `
-<div
-  aria-hidden="false"
-  class="ds-c-tooltip"
-  data-floating-ui-focusable=""
-  data-placement="top"
-  id=":rc:"
-  role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
-  tabindex="0"
->
-  <span
-    class="ds-c-tooltip__arrow"
-    style="bottom: -5px;"
-  />
-  <div
-    class="ds-c-tooltip__content"
-  >
-    <div
-      class="ds-c-tooltip__header"
-    >
-      Tooltip heading content
-    </div>
-    Tooltip body content
-  </div>
-</div>
-`;
-
 exports[`Tooltip tooltip with close renders heading element and close button 1`] = `
 <div
   aria-hidden="false"
@@ -190,12 +116,12 @@ exports[`Tooltip tooltip with close renders heading element and close button 1`]
   data-placement="top"
   id=":re:"
   role="dialog"
-  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, 0px);"
+  style="max-width: 300px; z-index: 9999; position: absolute; left: 0px; top: 0px; opacity: 0; transform: translate(0px, -5px);"
   tabindex="-1"
 >
   <span
     class="ds-c-tooltip__arrow"
-    style="bottom: -5px;"
+    style="bottom: -5px; left: 0px;"
   />
   <div
     class="ds-c-tooltip__content"

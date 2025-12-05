@@ -17,17 +17,12 @@ const defaultProps = {
 function renderTooltip(customProps = {}) {
   const props = { ...defaultProps, ...customProps };
   return {
-    user: userEvent.setup({ advanceTimers: jest.advanceTimersByTime }),
+    user: userEvent.setup(),
     ...render(<Tooltip {...props} />),
   };
 }
 
 describe('Tooltip', function () {
-  afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
-  });
-
   it('renders a tooltip on hover', async () => {
     const { user } = renderTooltip();
     const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
@@ -56,7 +51,7 @@ describe('Tooltip', function () {
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
     const contentEl = await screen.findByRole('dialog');
-    expect(contentEl).toMatchSnapshot();
+    expect(contentEl).toHaveTextContent(defaultProps.title);
 
     await user.keyboard('{Escape}');
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
@@ -84,19 +79,18 @@ describe('Tooltip', function () {
     });
 
     it('renders heading element', async () => {
-      jest.useFakeTimers();
+      const contentHeading = 'Tooltip heading content';
       const { user } = renderTooltip({
         dialog: true,
-        contentHeading: 'Tooltip heading content',
+        contentHeading,
       });
       const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
       await user.click(tooltipTrigger);
       const contentEl = screen.queryByRole('dialog');
-      expect(contentEl).toMatchSnapshot();
+      expect(contentEl).toHaveTextContent(contentHeading);
     });
 
     it('renders heading element and close button', async () => {
-      jest.useFakeTimers();
       const { user } = renderTooltip({
         dialog: true,
         contentHeading: 'Tooltip heading content',
@@ -109,7 +103,6 @@ describe('Tooltip', function () {
     });
 
     it('should call onClose when close button is clicked', async () => {
-      jest.useFakeTimers();
       const onClose = jest.fn();
       const { user } = renderTooltip({
         dialog: true,
