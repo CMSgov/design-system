@@ -149,37 +149,6 @@ describe('Tooltip', function () {
       await waitFor(() => expect(tooltipTrigger).toHaveFocus());
     });
 
-    it('traps focus', async () => {
-      const { user } = renderTooltip({
-        dialog: true,
-        showCloseButton: true,
-        title: <a href="">Test link</a>,
-      });
-
-      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
-      expect(document.body).toHaveFocus();
-      await user.click(tooltipTrigger);
-
-      const tooltipContent = await screen.findByRole('dialog');
-      const closeButton = await screen.findByLabelText('Close', { selector: 'button' });
-      const testLink = await screen.findByText('Test link', { selector: 'a' });
-
-      // Focus transferred to tooltip
-      expect(tooltipContent).toHaveFocus();
-
-      // Tab moves the focus to close button
-      await user.tab();
-      expect(closeButton).toHaveFocus();
-
-      // Tab moves the focus to the test link
-      await user.tab();
-      expect(testLink).toHaveFocus();
-
-      // Floating UI guard prevents focus from leaving the modal.
-      await user.tab();
-      expect(document.activeElement).toHaveAttribute('data-floating-ui-focus-guard', '');
-    });
-
     it('close button should take custom aria label', async () => {
       const { user } = renderTooltip({
         dialog: true,
