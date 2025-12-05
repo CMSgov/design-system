@@ -51,7 +51,7 @@ describe('Tooltip', function () {
     expect(triggerEl).toMatchSnapshot();
   });
 
-  it('renders dialog tooltip', async () => {
+  it('behaves like a modal dialog box when dialog is true', async () => {
     const { user } = renderTooltip({ dialog: true });
     const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
     await user.click(tooltipTrigger);
