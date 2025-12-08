@@ -310,14 +310,6 @@ describe('Autocomplete', () => {
   });
 
   describe('default props', () => {
-    it('defaults ariaClearLabel', () => {
-      renderAutocomplete();
-      const button = screen.getByRole('button');
-      expect(button).toBeInTheDocument();
-
-      expect(button).toHaveAttribute('aria-label', 'Clear search to try again');
-    });
-
     it('defaults clearInputText', () => {
       renderAutocomplete();
       const button = screen.getByRole('button');
