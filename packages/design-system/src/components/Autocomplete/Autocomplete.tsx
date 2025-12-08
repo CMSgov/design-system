@@ -60,15 +60,6 @@ export type AutocompleteItems = Array<AutocompleteItem | AutocompleteItemGroup>;
 
 export interface AutocompleteProps {
   /**
-   * @deprecated Use the `clearInputText` prop (which sets the visible Clear search button text) instead.
-   *
-   * Providing an `aria-label` on the Clear Search `<button>` can override its visible text label,
-   * which may confuse users who rely on both visual and screen reader feedback when the two differ.
-   * This prop was originally intended to provide a more descriptive label for screen reader users
-   * but is no longer recommended.
-   */
-  ariaClearLabel?: string;
-  /**
    * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
    */
   autoCompleteLabel?: string;
@@ -183,7 +174,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const menuId = `${id}__menu`;
 
   const {
-    ariaClearLabel,
     autoCompleteLabel = 'off',
     autoFocus,
     children,
@@ -203,13 +193,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     onInputValueChange,
     ...autocompleteProps
   } = props;
-
-  if (process.env.NODE_ENV !== 'production' && ariaClearLabel) {
-    console.warn(
-      "[Deprecated]: The 'ariaClearLabel' prop is deprecated and will be removed in a future release. " +
-        "Use the 'clearInputText' prop instead to set the visible Clear search button text."
-    );
-  }
 
   const hasValidStandaloneItems = items?.some((item) => !('items' in item));
   const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
@@ -352,7 +335,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
       {clearSearchButton && (
         <Button
-          aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
             state.setSelectedKey(null);
