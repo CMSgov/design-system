@@ -9,7 +9,6 @@ import { errorPlacementValues, UseInlineErrorProps } from '../../InlineError/use
 import { isPossibleValue } from '../utils';
 
 const attributes = [
-  'aria-clear-label',
   'aria-complete-label',
   // Using the lowercase HTML attribute name rather than `auto-focus` so it's
   // more natural. There's no reason for us to worry about name collisions.
