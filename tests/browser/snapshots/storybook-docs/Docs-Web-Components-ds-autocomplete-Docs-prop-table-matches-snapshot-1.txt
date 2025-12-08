@@ -1,10 +1,5 @@
 [
   [
-    "aria-clear-label",
-    "Deprecated: Use the clearInputText prop instead to set the visible Clear search button text.\n\nProviding an aria-label on the Clear Search button can override its visible text label, which may confuse users who rely on both visual and screen reader feedback when the two differ.",
-    "string"
-  ],
-  [
     "aria-complete-label",
     "Control the TextField autocomplete attribute. Defaults to \"off\" to support accessibility. Read more.",
     "string"
