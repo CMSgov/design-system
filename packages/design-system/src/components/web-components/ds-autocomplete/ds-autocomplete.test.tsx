@@ -12,7 +12,6 @@ function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {
     'root-id': 'static-id',
     id: 'autocomplete--1',
-    'aria-clear-label': 'Clear search to try again',
     'clear-input-text': 'Clear search',
     'clear-search-button': 'true',
     'loading-message': 'Loading...',
