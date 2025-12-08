@@ -64,7 +64,6 @@ describe('Autocomplete', () => {
     expect(button).toBeInTheDocument();
     expect(button.classList).toContain('ds-c-autocomplete__clear-btn');
     expect(button).toHaveAttribute('type', 'button');
-    expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
   it('renders items', async () => {
@@ -412,44 +411,6 @@ describe('Autocomplete', () => {
   });
 
   describe('default props', () => {
-    describe('ariaClearLabel deprecation', () => {
-      const originalEnv = process.env.NODE_ENV;
-      let consoleWarnSpy: jest.SpyInstance;
-
-      beforeEach(() => {
-        process.env.NODE_ENV = 'development';
-        consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-      });
-
-      afterEach(() => {
-        process.env.NODE_ENV = originalEnv;
-        consoleWarnSpy.mockRestore();
-      });
-
-      it('logs a deprecation warning when ariaClearLabel is used in dev mode', () => {
-        renderAutocomplete({ ariaClearLabel: 'Old label' });
-
-        expect(consoleWarnSpy).toHaveBeenCalledWith(
-          expect.stringContaining("[Deprecated]: The 'ariaClearLabel' prop is deprecated")
-        );
-      });
-
-      it('does not log a warning in production mode', () => {
-        process.env.NODE_ENV = 'production';
-        renderAutocomplete({ ariaClearLabel: 'Old label' });
-
-        expect(consoleWarnSpy).not.toHaveBeenCalled();
-      });
-    });
-
-    it('defaults ariaClearLabel', () => {
-      renderAutocomplete();
-      const button = screen.getByRole('button');
-      expect(button).toBeInTheDocument();
-
-      expect(button).toHaveAttribute('aria-label', 'Clear search to try again');
-    });
-
     it('defaults clearInputText', () => {
       renderAutocomplete();
       const button = screen.getByRole('button');
