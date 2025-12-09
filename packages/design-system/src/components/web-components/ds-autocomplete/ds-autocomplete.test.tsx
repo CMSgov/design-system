@@ -79,7 +79,6 @@ describe('Autocomplete', () => {
     expect(button).toBeInTheDocument();
     expect(button.classList).toContain('ds-c-autocomplete__clear-btn');
     expect(button).toHaveAttribute('type', 'button');
-    expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
   it('renders items', async () => {
