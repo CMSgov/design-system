@@ -3,7 +3,6 @@
 exports[`Autocomplete can add a custom class name to the error message 1`] = `
 <DocumentFragment>
   <ds-autocomplete
-    aria-clear-label="Clear search to try again"
     clear-input-text="Clear search"
     clear-search-button="true"
     error-message="Something went wrong"
@@ -68,7 +67,6 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
         </p>
       </div>
       <button
-        aria-label="Clear search to try again"
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
       >
@@ -83,7 +81,6 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
 exports[`Autocomplete displays an error message in the default location for Healthcare 1`] = `
 <DocumentFragment>
   <ds-autocomplete
-    aria-clear-label="Clear search to try again"
     clear-input-text="Clear search"
     clear-search-button="true"
     error-message="Something went wrong"
@@ -147,7 +144,6 @@ exports[`Autocomplete displays an error message in the default location for Heal
         </p>
       </div>
       <button
-        aria-label="Clear search to try again"
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
       >
@@ -162,7 +158,6 @@ exports[`Autocomplete displays an error message in the default location for Heal
 exports[`Autocomplete displays an error message in the default position for Core 1`] = `
 <DocumentFragment>
   <ds-autocomplete
-    aria-clear-label="Clear search to try again"
     clear-input-text="Clear search"
     clear-search-button="true"
     error-message="Something went wrong"
@@ -226,7 +221,6 @@ exports[`Autocomplete displays an error message in the default position for Core
         />
       </div>
       <button
-        aria-label="Clear search to try again"
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
       >
@@ -241,7 +235,6 @@ exports[`Autocomplete displays an error message in the default position for Core
 exports[`Autocomplete renders correctly 1`] = `
 <DocumentFragment>
   <ds-autocomplete
-    aria-clear-label="Clear search to try again"
     clear-input-text="Clear search"
     clear-search-button="true"
     id="autocomplete--1"
@@ -287,7 +280,6 @@ exports[`Autocomplete renders correctly 1`] = `
         />
       </div>
       <button
-        aria-label="Clear search to try again"
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
       >
@@ -329,7 +321,6 @@ Array [
 exports[`Autocomplete sets the display location of the error message 1`] = `
 <DocumentFragment>
   <ds-autocomplete
-    aria-clear-label="Clear search to try again"
     clear-input-text="Clear search"
     clear-search-button="true"
     error-message="Something went wrong"
@@ -394,7 +385,6 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
         </p>
       </div>
       <button
-        aria-label="Clear search to try again"
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
       >
