@@ -6,31 +6,33 @@ figma.connect(
   'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=232%3A65622',
   {
     props: {
-      // These props were automatically mapped based on your linked code:
+      // Changing this state in Figma does not alter the designs?
       disabled: figma.enum('State', {
         Disabled: true,
       }),
+      errorMessage: figma.enum('State', {
+        Error: 'This is the error message.',
+      }),
+      // TODO: Add a number value for the "rows" optional prop to increase the
+      // number of lines that the text field occupies.
       multiline: figma.boolean('Multiline'),
-      multiple: figma.boolean('Multiline'),
-      // No matching props could be found for these Figma properties:
-      // "inputText": figma.string('Input Text'),
-      // "focused": figma.boolean('Focused'),
-      // "hasErrorBottom": figma.boolean('Has error bottom'),
-      // "hasLabel": figma.boolean('Has label'),
-      // "onDark": figma.boolean('On dark'),
-      // "maxWidth": figma.enum('Max Width', {
-      //   "Medium": "medium",
-      //   "Small": "small",
-      //   "Large": "large"
-      // })
+      value: figma.string('Input Text'),
+      inversed: figma.boolean('On dark'),
+      size: figma.enum('Max Width', {
+        Medium: 'medium',
+        Small: 'small',
+        Large: undefined,
+      }),
     },
-    example: (props) => (
+    example: ({ disabled, inversed, multiline, size, value }) => (
       <TextField
-        disabled={props.disabled}
-        multiline={props.multiline}
-        name={/* TODO */}
-        multiple={props.multiple}
-        label={/* TODO */}
+        disabled={disabled}
+        inversed={inversed}
+        multiline={multiline}
+        size={size}
+        name={'Required name of the TextField'}
+        label={'Required label of the TextField'}
+        value={value}
       />
     ),
   }
