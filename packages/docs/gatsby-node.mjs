@@ -2,6 +2,7 @@ import express from 'express';
 import { createFilePath } from 'gatsby-source-filesystem';
 import { createRequire } from "module";
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from "url";
 import redirects from "./redirects.json" with { type: "json" };
 // @ts-check
@@ -203,4 +204,93 @@ export const onCreateBabelConfig = ({ actions }) => {
       runtime: 'automatic',
     },
   });
+};
+
+function humanize(segment) {
+  return segment
+    .split('-')
+    .map(w => w[0].toUpperCase() + w.slice(1))
+    .join(' ');
+}
+
+export const onPostBuild = async ({ graphql, reporter }) => {
+  reporter.info('Creating llms.txt (Markdown) from MDX slugs...');
+
+  const result = await graphql(`
+    {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+      allMdx {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild('Error running GraphQL for llms.txt');
+    return;
+  }
+
+  const siteUrl =
+    result.data.site.siteMetadata.siteUrl.replace(/\/$/, '');
+
+  const pages = result.data.allMdx.nodes;
+
+  // Build a tree grouped by top-level and second-level slug segment
+  const tree = {};
+
+  pages.forEach(({ fields, frontmatter }) => {
+    const slug = fields.slug;
+    const title = frontmatter.title || slug;
+    const parts = slug.split('/').filter(Boolean); // '/foundation/typography/overview' -> ['foundation','typography','overview']
+
+    const top = parts[0];           // e.g. 'foundation' or 'components'
+    const second = parts[1] ?? '';  // e.g. 'typography' or ''
+
+    if (!tree[top]) tree[top] = {};
+    if (!tree[top][second]) tree[top][second] = [];
+
+    tree[top][second].push({ title, slug });
+  });
+
+  // Build Markdown
+  let md = `# CMS Design System – llms.txt\n\n`;
+  md += `Generated automatically at build time from MDX content.\n\n`;
+
+  const topSections = Object.keys(tree).sort();
+
+  for (const top of topSections) {
+    md += `## ${humanize(top)}\n\n`;
+
+    const secondSections = Object.keys(tree[top]).sort();
+
+    for (const second of secondSections) {
+      if (second) {
+        md += `### ${humanize(second)}\n\n`;
+      }
+
+      tree[top][second]
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .forEach(({ title, slug }) => {
+          md += `[${title}](${siteUrl}${slug})\n\n`;
+        });
+    }
+
+    md += '\n';
+  }
+
+  const output = path.join('public', 'llms.txt');
+  fs.writeFileSync(output, md, 'utf8');
+
+  reporter.success(`llms.txt generated at ${output}`);
 };
