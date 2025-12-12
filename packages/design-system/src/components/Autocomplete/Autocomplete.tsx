@@ -78,11 +78,6 @@ export interface AutocompleteProps {
    */
   autoFocus?: boolean;
   /**
-   * @deprecated This is deprecated in favor of autoFocus
-   * @hide-prop [Deprecated]
-   */
-  focusTrigger?: boolean;
-  /**
    * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
    * the `Autocomplete` component will auto-generate one. This prop was provided in cases
    * where an id might need to be passed to multiple components, such as the `htmlFor`
@@ -173,7 +168,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     className,
     clearInputText,
     clearSearchButton = true,
-    focusTrigger,
     inputRef: userInputRef,
     items,
     itemToString,
@@ -265,7 +259,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const textFieldProps = removeUndefined({
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
-    autoFocus: autoFocus || focusTrigger,
+    autoFocus: autoFocus,
     'aria-activedescendant': useComboboxProps.inputProps['aria-activedescendant']
       ? getActiveDescendant(id, state, items)
       : undefined,
