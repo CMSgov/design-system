@@ -85,12 +85,6 @@ export interface AutocompleteProps {
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.
-   * @deprecated This is no longer used
-   * @hide-prop [Deprecated]
-   */
-  getA11yStatusMessage?: any;
-  /**
    * Access a reference to the child `TextField`'s `input` element
    */
   inputRef?: React.Ref<any> | React.MutableRefObject<any>;
