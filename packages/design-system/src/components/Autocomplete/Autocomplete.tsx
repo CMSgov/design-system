@@ -89,12 +89,6 @@ export interface AutocompleteProps {
    */
   inputRef?: React.Ref<any> | React.MutableRefObject<any>;
   /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
-   * @deprecated Please provide a `name` property to each item instead.
-   * @hide-prop [Deprecated]
-   */
-  itemToString?: (item: AutocompleteItem) => string;
-  /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
    * this props should be undefined.
@@ -164,7 +158,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     clearSearchButton = true,
     inputRef: userInputRef,
     items,
-    itemToString,
     label: menuHeading,
     labelId: menuHeadingId,
     loading,
@@ -183,7 +176,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   let statusMessage;
 
   if (hasValidStandaloneItems || hasValidGroupedItems) {
-    reactStatelyItems = renderReactStatelyItems(items, itemToString);
+    reactStatelyItems = renderReactStatelyItems(items);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
     statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
