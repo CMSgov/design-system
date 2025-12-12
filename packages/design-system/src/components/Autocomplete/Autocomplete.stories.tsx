@@ -240,7 +240,6 @@ export const CustomMarkup: Story = {
           </a>
         ),
         className: 'ds-c-autocomplete__search-all',
-        isResult: false,
       },
     ],
   } as AutocompleteArgs,

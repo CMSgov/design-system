@@ -31,13 +31,6 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
    * Custom React node as an alternative to a string-only `name`
    */
   children?: React.ReactNode;
-  /**
-   * Whether this item should be counted as one of the results for the purpose of announcing the
-   * result count to screen readers
-   * @deprecated This is no longer used, as we no longer have custom messaging for screen readers
-   * @hide-prop [Deprecated]
-   */
-  isResult?: boolean;
 }
 
 export interface AutocompleteItemGroup {

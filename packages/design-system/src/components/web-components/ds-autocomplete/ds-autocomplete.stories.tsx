@@ -399,7 +399,6 @@ export const GroupsAndStandaloneItems = {
 //           </a>
 //         ),
 //         className: 'ds-c-autocomplete__search-all',
-//         isResult: false,
 //       },
 //     ],
 //   } as any,
