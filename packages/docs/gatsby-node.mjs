@@ -309,8 +309,8 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     return md;
   };
 
-  let md = `# CMS Design System – llms.txt\n\n`;
-  md += `Generated automatically at build time from MDX content.\n\n`;
+  let md = `# The CMS Design System\n\n`;
+  md += `> TODO: Add a brief description of the CMS Design System.\n\n`;
 
   md += renderNode(tree, 0);
 
