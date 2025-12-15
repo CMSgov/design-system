@@ -308,7 +308,6 @@ export const onPostBuild = async ({ graphql, reporter }) => {
 
       // Recurse into subsections
       md += renderNode(child, depth + 1);
-      md += '\n';
     }
 
     return md;
