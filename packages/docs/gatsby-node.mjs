@@ -273,10 +273,15 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   pages.forEach(({ fields, frontmatter }) => {
     const slug = fields.slug;
     const title = frontmatter.title || slug;
+
+    if (slug.includes("not-in-sidebar") || slug.includes("blog")) {
+      return; 
+    }
+
     addPageToTree(slug, title);
   });
 
-  // Helper to render the tree into markdown
+  // Helper function to render the tree into markdown
   const renderNode = (node, depth = 0) => {
     let md = '';
 
@@ -290,7 +295,7 @@ export const onPostBuild = async ({ graphql, reporter }) => {
       const headingLevel = depth + 2;
       md += `${'#'.repeat(headingLevel)} ${humanize(key)}\n\n`;
 
-      // Pages directly under this heading
+      // Linked pages directly under this heading
       const sortedPages = [...child.pages].sort((a, b) =>
         a.title.localeCompare(b.title)
       );
