@@ -241,53 +241,78 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     return;
   }
 
-  const siteUrl =
-    result.data.site.siteMetadata.siteUrl.replace(/\/$/, '');
-
+  const siteUrl = result.data.site.siteMetadata.siteUrl.replace(/\/$/, '');
   const pages = result.data.allMdx.nodes;
 
-  // Build a tree grouped by top-level and second-level slug segment
-  const tree = {};
+  // Tree node shape: { children: Record<string, Node>, pages: Page[] }
+  const tree = { children: {}, pages: [] };
+
+  const addPageToTree = (slug, title) => {
+    const parts = slug.split('/').filter(Boolean); // '/foundation/typography/overview' -> ['foundation','typography','overview']
+
+    if (parts.length === 0) {
+      tree.pages.push({ title, slug });
+      return;
+    }
+
+    // all but last segment
+    const headingSegments = parts.slice(0, -1);
+    let node = tree;
+
+    headingSegments.forEach((segment) => {
+      if (!node.children[segment]) {
+        node.children[segment] = { children: {}, pages: [] };
+      }
+      node = node.children[segment];
+    });
+
+    // last segment becomes a page under the deepest heading
+    node.pages.push({ title, slug });
+  };
 
   pages.forEach(({ fields, frontmatter }) => {
     const slug = fields.slug;
     const title = frontmatter.title || slug;
-    const parts = slug.split('/').filter(Boolean); // '/foundation/typography/overview' -> ['foundation','typography','overview']
-
-    const top = parts[0];           // e.g. 'foundation' or 'components'
-    const second = parts[1] ?? '';  // e.g. 'typography' or ''
-
-    if (!tree[top]) tree[top] = {};
-    if (!tree[top][second]) tree[top][second] = [];
-
-    tree[top][second].push({ title, slug });
+    addPageToTree(slug, title);
   });
 
-  // Build Markdown
+  // Helper to render the tree into markdown
+  const renderNode = (node, depth = 0) => {
+    let md = '';
+
+    // Render child sections (headings)
+    const sectionKeys = Object.keys(node.children).sort();
+
+    for (const key of sectionKeys) {
+      const child = node.children[key];
+
+      // depth 0 -> ##, depth 1 -> ###, etc.
+      const headingLevel = depth + 2;
+      md += `${'#'.repeat(headingLevel)} ${humanize(key)}\n\n`;
+
+      // Pages directly under this heading
+      const sortedPages = [...child.pages].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+
+      for (const { title, slug } of sortedPages) {
+        md += `- [${title}](${siteUrl}${slug})\n`;
+      }
+
+      if (sortedPages.length) md += '\n';
+
+      // Recurse into subsections
+      md += renderNode(child, depth + 1);
+      md += '\n';
+    }
+
+    return md;
+  };
+
   let md = `# CMS Design System – llms.txt\n\n`;
   md += `Generated automatically at build time from MDX content.\n\n`;
 
-  const topSections = Object.keys(tree).sort();
-
-  for (const top of topSections) {
-    md += `## ${humanize(top)}\n\n`;
-
-    const secondSections = Object.keys(tree[top]).sort();
-
-    for (const second of secondSections) {
-      if (second) {
-        md += `### ${humanize(second)}\n\n`;
-      }
-
-      tree[top][second]
-        .sort((a, b) => a.title.localeCompare(b.title))
-        .forEach(({ title, slug }) => {
-          md += `[${title}](${siteUrl}${slug})\n\n`;
-        });
-    }
-
-    md += '\n';
-  }
+  md += renderNode(tree, 0);
 
   const output = path.join('public', 'llms.txt');
   fs.writeFileSync(output, md, 'utf8');
