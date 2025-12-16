@@ -55,13 +55,12 @@ describe('Label', () => {
 
   it('is inversed', () => {
     const props = {
-      hint: 'Foo',
       inversed: true,
     };
     render(<Label {...props}>{labelText}</Label>);
 
-    const inversedHint = screen.getByText('Foo');
-    expect(inversedHint).toHaveClass('ds-c-hint ds-c-hint--inverse');
+    const inversedHint = screen.getByText(labelText);
+    expect(inversedHint).toHaveClass('ds-c-label ds-c-label--inverse');
     expect(inversedHint).toMatchSnapshot();
   });
 

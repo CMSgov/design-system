@@ -1,6 +1,5 @@
 import type * as React from 'react';
 import classNames from 'classnames';
-import { Hint } from '../Hint';
 
 export type LabelComponent = 'label' | 'legend';
 export interface LabelProps {
@@ -19,20 +18,6 @@ export interface LabelProps {
    * attribute and any related ARIA attributes, such as for the error message.
    */
   fieldId?: string;
-  /**
-   * @deprecated Hints are now their own component called `Hint`.
-   * @ignore [Deprecated]
-   *
-   * Additional hint text to display
-   */
-  hint?: React.ReactNode;
-  /**
-   * @deprecated Please render your error message directly with the 'InlineError' component instead of passing to `Label`
-   * @ignore [Deprecated]
-   *
-   * The ID of the hint element
-   */
-  hintId?: string;
   /**
    * A unique `id` for the label element. Useful for referencing the label from
    * other components with `aria-describedby`.
@@ -74,29 +59,12 @@ export const Label = (props: LabelComponentProps) => {
     id,
     children,
     component = 'label',
-    hint,
-    hintId,
     className,
     inversed,
     requirementLabel,
     labelHidden,
     ...labelProps
   } = props;
-
-  if (process.env.NODE_ENV !== 'production' && (hint || hintId)) {
-    console.warn(
-      "[Deprecated]: Hints are now their own component called 'Hint'. Please render your 'Hint' directly instead of passing them to 'Label'."
-    );
-  }
-
-  let hintElement;
-  if (hint || requirementLabel) {
-    hintElement = (
-      <Hint requirementLabel={requirementLabel} inversed={inversed} id={hintId}>
-        {hint}
-      </Hint>
-    );
-  }
 
   let htmlFor = fieldId;
   if (component === 'legend' && fieldId) {
@@ -120,7 +88,6 @@ export const Label = (props: LabelComponentProps) => {
       >
         {children}
       </ComponentType>
-      {hintElement}
     </>
   );
 };
