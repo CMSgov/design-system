@@ -1,7 +1,6 @@
 import type * as React from 'react';
 import classNames from 'classnames';
 import { Hint } from '../Hint';
-import { InlineError } from '../InlineError';
 
 export type LabelComponent = 'label' | 'legend';
 export interface LabelProps {
@@ -15,20 +14,6 @@ export interface LabelProps {
   className?: string;
   /** The root HTML element used to render the label. Default is `'label'` */
   component?: LabelComponent;
-  /**
-   * @deprecated Hints are now their own component called `Hint`.
-   * @ignore [Deprecated]
-   *
-   * Enable the error state by providing an error message.
-   */
-  errorMessage?: React.ReactNode;
-  /**
-   * @deprecated The Label is no longer responsible for rendering the
-   * error element from a string. A InlineError should be passed to it which
-   * already has an errorId applied.
-   * @ignore [Deprecated]
-   */
-  errorId?: string;
   /**
    * The ID of the field this label is for. This is used for the label's `for`
    * attribute and any related ARIA attributes, such as for the error message.
@@ -93,8 +78,6 @@ export const Label = (props: LabelComponentProps) => {
     hintId,
     className,
     inversed,
-    errorMessage,
-    errorId,
     requirementLabel,
     labelHidden,
     ...labelProps
@@ -106,12 +89,6 @@ export const Label = (props: LabelComponentProps) => {
     );
   }
 
-  if (process.env.NODE_ENV !== 'production' && errorMessage) {
-    console.warn(
-      "[Deprecated]: Passing 'errorMessage' to the 'Label' component is now deprecated. Please render your error message directly with the 'InlineError' component instead."
-    );
-  }
-
   let hintElement;
   if (hint || requirementLabel) {
     hintElement = (
@@ -119,11 +96,6 @@ export const Label = (props: LabelComponentProps) => {
         {hint}
       </Hint>
     );
-  }
-
-  let errorElement = errorMessage;
-  if (typeof errorMessage === 'string') {
-    errorElement = <InlineError id={errorId}>{errorMessage}</InlineError>;
   }
 
   let htmlFor = fieldId;
@@ -149,7 +121,6 @@ export const Label = (props: LabelComponentProps) => {
         {children}
       </ComponentType>
       {hintElement}
-      {errorElement}
     </>
   );
 };
