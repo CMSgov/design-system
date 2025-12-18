@@ -1,11 +1,9 @@
 import TextField from './TextField';
 import figma from '@figma/code-connect';
-// TODO: Label is required, it should not exist as a boolean toggle in the Figma Component.
-// Design ticket: https://jira.cms.gov/browse/CMSDS-3770
 
 figma.connect(
   TextField,
-  'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=232%3A65622',
+  'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/branch/dU67oeFNY0S6sNvuSrDHO0/Design-System-Library?m=auto&node-id=232-65622&t=nQPgsQ0MImbEHusL-1',
   {
     props: {
       // TODO: Changing this state in Figma does not alter the designs.
@@ -21,27 +19,40 @@ figma.connect(
         true: 'bottom',
         false: 'top',
       }),
+      inversed: figma.boolean('On dark'),
+      hintProps: figma.nestedProps('.HintText', { hint: figma.string('Hint text') }),
+      labelProps: figma.nestedProps('.LabelHeading', { label: figma.string('Heading text') }),
       // TODO: Add a number value for the "rows" optional prop to increase the
       // number of lines that the text field occupies. Design ticket: https://jira.cms.gov/browse/CMSDS-3765
       multiline: figma.boolean('Multiline'),
-      value: figma.string('Input Text'),
-      inversed: figma.boolean('On dark'),
       size: figma.enum('Max Width', {
         Medium: 'medium',
         Small: 'small',
         Large: undefined,
       }),
+      value: figma.string('Input Text'),
     },
-    example: ({ disabled, errorMessage, errorPlacement, inversed, multiline, size, value }) => (
+    example: ({
+      disabled,
+      errorMessage,
+      errorPlacement,
+      hintProps,
+      inversed,
+      labelProps,
+      multiline,
+      size,
+      value,
+    }) => (
       <TextField
         disabled={disabled}
         errorMessage={errorMessage}
         errorPlacement={errorPlacement}
+        hint={hintProps.hint}
         inversed={inversed}
         multiline={multiline}
         size={size}
         name="Required name of the TextField"
-        label="Required label of the TextField"
+        label={labelProps.label}
         value={value}
       />
     ),
