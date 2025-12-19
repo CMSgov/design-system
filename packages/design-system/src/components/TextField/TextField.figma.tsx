@@ -3,7 +3,7 @@ import figma from '@figma/code-connect';
 
 figma.connect(
   TextField,
-  'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/branch/dU67oeFNY0S6sNvuSrDHO0/Design-System-Library?m=auto&node-id=232-65622&t=nQPgsQ0MImbEHusL-1',
+  'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/Design-System-Library?m=auto&node-id=232-65622',
   {
     props: {
       // TODO: Changing this state in Figma does not alter the designs.
