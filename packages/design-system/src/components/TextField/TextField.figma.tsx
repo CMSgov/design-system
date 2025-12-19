@@ -6,7 +6,6 @@ figma.connect(
   'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/Design-System-Library?m=auto&node-id=232-65622',
   {
     props: {
-      // TODO: Changing this state in Figma does not alter the designs.
       disabled: figma.enum('State', {
         Disabled: true,
       }),
