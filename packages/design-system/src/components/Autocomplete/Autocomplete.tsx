@@ -87,7 +87,7 @@ export interface AutocompleteProps {
   /**
    * Access a reference to the child `TextField`'s `input` element
    */
-  inputRef?: React.Ref<any> | React.MutableRefObject<any>;
+  inputRef?: React.Ref<any> | React.RefObject<any>;
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
