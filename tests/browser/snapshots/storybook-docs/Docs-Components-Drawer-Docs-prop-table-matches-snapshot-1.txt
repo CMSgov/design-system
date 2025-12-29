@@ -66,7 +66,7 @@
   ],
   [
     "headingRef",
-    "Ref to heading element\nMutableRefObject<any>",
+    "Ref to heading element\nRefObject<any>",
     "-"
   ],
   [

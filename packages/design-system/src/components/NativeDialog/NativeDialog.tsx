@@ -8,7 +8,7 @@ export interface NativeDialogProps extends Omit<DialogHTMLAttributes<HTMLElement
    * Pass `true` to have the dialog close when its backdrop pseudo-element is clicked
    */
   backdropClickExits?: boolean;
-  boundingBoxRef?: React.MutableRefObject<any>;
+  boundingBoxRef?: React.RefObject<any>;
   /**
    * Controls whether the dialog is in an open state
    */

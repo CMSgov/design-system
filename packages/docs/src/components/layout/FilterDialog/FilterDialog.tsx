@@ -36,7 +36,7 @@ export interface FilterDialogProps {
   /**
    * Ref to heading element
    */
-  headingRef?: React.MutableRefObject<any>;
+  headingRef?: React.RefObject<any>;
   /**
    * A custom `id` attribute for the dialog element
    */

@@ -49,7 +49,7 @@ export interface DrawerProps {
   /**
    * Ref to heading element
    */
-  headingRef?: React.MutableRefObject<any>;
+  headingRef?: React.RefObject<any>;
   /**
    * Enables "sticky" position of Drawer header element.
    */
