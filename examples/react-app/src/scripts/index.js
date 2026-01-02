@@ -187,17 +187,16 @@ const Example = function () {
           <h1 className="ds-text-heading--3xl">React-app example</h1>
           <Alert heading="Hello world">
             <p className="ds-c-alert__text">You did it! You&rsquo;ve ran the example.</p>
-            {open && (
-              <Drawer
-                footerTitle="Footer Title"
-                footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
-                heading="Drawer Heading"
-                onCloseClick={() => setOpen(false)}
-                hasFocusTrap={true}
-              >
-                Test
-              </Drawer>
-            )}
+            <Drawer
+              footerTitle="Footer Title"
+              footerBody={<p className="ds-text ds-u-margin--0">Footer content</p>}
+              heading="Drawer Heading"
+              isOpen={open}
+              onCloseClick={() => setOpen(false)}
+              hasFocusTrap={true}
+            >
+              Test
+            </Drawer>
             <Button onClick={() => setOpen(true)} className="ds-u-margin-top--2">
               Learn more
             </Button>
