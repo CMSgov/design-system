@@ -15,12 +15,15 @@ exports[`Dropdown renders a dropdown 1`] = `
       >
         Dropdown label
       </div>
-      <p
+      <div
         aria-atomic="true"
         aria-live="assertive"
-        class="ds-c-inline-error"
-        id="dropdown--1__error"
-      />
+      >
+        <p
+          class="ds-c-inline-error"
+          id="dropdown--1__error"
+        />
+      </div>
       <div
         aria-hidden="true"
         data-a11y-ignore="aria-hidden-focus"
@@ -103,12 +106,15 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
       >
         Dropdown label
       </div>
-      <p
+      <div
         aria-atomic="true"
         aria-live="assertive"
-        class="ds-c-inline-error"
-        id="dropdown--5__error"
-      />
+      >
+        <p
+          class="ds-c-inline-error"
+          id="dropdown--5__error"
+        />
+      </div>
       <div
         aria-hidden="true"
         data-a11y-ignore="aria-hidden-focus"

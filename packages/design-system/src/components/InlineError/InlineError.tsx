@@ -46,21 +46,24 @@ export function InlineError({
   const viewbox = '36 -12 186 186';
 
   return (
-    <p
-      {...otherProps}
-      className={classes}
-      id={useId('inline-error--', id)}
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      {children && (
-        <>
-          <AlertCircleIcon viewBox={viewbox} />
-          <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
-          {children}
-        </>
-      )}
-    </p>
+    <div aria-live="assertive" aria-atomic="true">
+      <p
+        // Adding a key forces React to remount this element when `children` changes.
+        // This helps avoid reconciliation errors caused by Google Translate directly mutating the DOM.
+        key={children ? children.toString() : 'no-error'}
+        {...otherProps}
+        className={classes}
+        id={useId('inline-error--', id)}
+      >
+        {children && (
+          <>
+            <AlertCircleIcon viewBox={viewbox} />
+            <span className="ds-u-visibility--screen-reader">{`${t('inlineError.prefix')}: `}</span>
+            {children}
+          </>
+        )}
+      </p>
+    </div>
   );
 }
 

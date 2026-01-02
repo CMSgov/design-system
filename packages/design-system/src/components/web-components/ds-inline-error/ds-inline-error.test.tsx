@@ -13,13 +13,15 @@ describe('InlineError', () => {
 
   it('should apply an inverse class', () => {
     const { shadowRoot } = view({ inversed: 'true' });
-    const inlineError = shadowRoot.firstChild as HTMLElement;
+    // Since we wrap the inline error text in an aria live region (a Div) we have to query the first child of that node
+    const inlineError = shadowRoot.firstChild.firstChild as HTMLElement;
     expect(inlineError.className).toContain('ds-c-inline-error--inverse');
   });
 
   it('should apply custom classes', () => {
     const { shadowRoot } = view({ 'class-name': 'bar' });
-    const inlineError = shadowRoot.firstChild as HTMLElement;
+    // Since we wrap the inline error text in an aria live region (a Div) we have to query the first child of that node
+    const inlineError = shadowRoot.firstChild.firstChild as HTMLElement;
     expect(inlineError.className).toContain('bar');
   });
 });
