@@ -13,15 +13,13 @@ exports[`ds-text-field renders text-field 1`] = `
         for="text-field--1"
         id="text-field--1__label"
       />
-      <div
+      <p
         aria-atomic="true"
         aria-live="assertive"
-      >
-        <p
-          class="ds-c-inline-error"
-          id="text-field--1__error"
-        />
-      </div>
+        class="ds-c-inline-error"
+        id="text-field--1__error"
+        translate="no"
+      />
       <input
         aria-disabled="false"
         aria-invalid="false"

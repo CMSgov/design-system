@@ -2,8 +2,11 @@
 
 exports[`DateField Date Field with Error renders with error message 1`] = `
 <p
+  aria-atomic="true"
+  aria-live="assertive"
   class="ds-c-inline-error"
   id="static-id__error"
+  translate="no"
 >
   <svg
     aria-hidden="true"
