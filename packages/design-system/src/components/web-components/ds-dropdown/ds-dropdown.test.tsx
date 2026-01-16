@@ -108,7 +108,6 @@ describe('Dropdown', () => {
   });
 
   it('fires a custom ds-change event', async () => {
-    jest.useFakeTimers();
     const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
@@ -126,7 +125,6 @@ describe('Dropdown', () => {
   });
 
   it('fires a custom ds-blur event', async () => {
-    jest.useFakeTimers();
     const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
