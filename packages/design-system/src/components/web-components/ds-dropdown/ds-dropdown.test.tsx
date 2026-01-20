@@ -126,7 +126,6 @@ describe('Dropdown', () => {
   });
 
   it('fires a custom ds-blur event', async () => {
-    jest.useFakeTimers();
     const { user } = renderDropdown();
 
     const dropdownRoot = document.querySelector('ds-dropdown');
@@ -138,7 +137,6 @@ describe('Dropdown', () => {
     const button = screen.getByRole('button');
     await user.click(button);
     await user.tab();
-    jest.runAllTimers();
 
     expect(onBlur).toHaveBeenCalledTimes(1);
     expect(onChange).not.toHaveBeenCalled();
