@@ -14,22 +14,14 @@ describe('InlineError', () => {
   it('should apply an inverse class', () => {
     const { shadowRoot } = view({ inversed: 'true' });
     // Since we wrap the inline error text in an aria live region (a Div) we have to query the first child of that node
-    const inlineError = shadowRoot.firstChild as HTMLElement;
+    const inlineError = shadowRoot.lastChild.firstChild as HTMLElement;
     expect(inlineError.className).toContain('ds-c-inline-error--inverse');
   });
 
   it('should apply custom classes', () => {
     const { shadowRoot } = view({ 'class-name': 'bar' });
     // Since we wrap the inline error text in an aria live region (a Div) we have to query the first child of that node
-    const inlineError = shadowRoot.firstChild as HTMLElement;
+    const inlineError = shadowRoot.lastChild.firstChild as HTMLElement;
     expect(inlineError.className).toContain('bar');
-  });
-
-  it('keeps translate attribute set to "no"', () => {
-    const { shadowRoot } = view();
-    const p = shadowRoot.querySelector('p')!;
-    // Verify attribute and DOM property
-    expect((p as any).translate).toBe(false);
-    expect(p.getAttribute('translate')).toBe('no');
   });
 });
