@@ -51,8 +51,9 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
         <h1 className="ds-text-heading--4xl">{title}</h1>
         {status?.level && (
           <div
-            className="ds-u-margin-left--2"
-            style={level === 'use' ? { position: 'relative', top: '-2px' } : undefined}
+            className={`ds-u-margin-left--2 ${
+              level === 'use' ? 'c-status-indicator__wrapper--use' : ''
+            }`}
           >
             <StatusIndicator level={level} />
           </div>
