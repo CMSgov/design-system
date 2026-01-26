@@ -243,7 +243,6 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     siteUrl,
     pages: mdxNodes,
     title: 'The CMS Design System',
-    description: '> TODO: Add a brief description of the CMS Design System.',
   });
 
   const outputPath = path.join('public', 'llms.txt');
