@@ -242,7 +242,6 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   const markdown = buildLlmsTxt({
     siteUrl,
     pages: mdxNodes,
-    title: 'The CMS Design System',
   });
 
   const outputPath = path.join('public', 'llms.txt');
