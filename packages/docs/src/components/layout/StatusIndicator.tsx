@@ -46,10 +46,7 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({ level }) => {
       hideScreenReaderText
       className="ds-u-display--inline-flex ds-u-align-items--center"
     >
-      <Icon
-        className={iconClassName}
-        style={{ fontSize: '1em', height: '1em', width: '1em', verticalAlign: 'text-bottom' }}
-      />
+      <Icon className={iconClassName} style={{ fontSize: '1em', height: '1em', width: '1em' }} />
       {label}
     </Badge>
   );
