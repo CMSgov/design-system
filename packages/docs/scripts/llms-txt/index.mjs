@@ -16,5 +16,10 @@ export function buildLlmsTxt({ siteUrl, pages, title, description }) {
 
   const tree = buildTree(normalizedPages);
 
-  // TODO: Add logic to render markdwon.
+  return renderLlmsMarkdown({
+    title,
+    description,
+    baseUrl,
+    tree,
+  });
 }

@@ -4,6 +4,8 @@ import { createRequire } from "module";
 import path from 'path';
 import { fileURLToPath } from "url";
 import redirects from "./redirects.json" with { type: "json" };
+import fs from 'node:fs';
+import { buildLlmsTxt } from './scripts/llms-txt/index.mjs';
 // @ts-check
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -203,4 +205,49 @@ export const onCreateBabelConfig = ({ actions }) => {
       runtime: 'automatic',
     },
   });
+};
+
+export const onPostBuild = async ({ graphql, reporter }) => {
+  reporter.info('Creating llms.txt (Markdown) from MDX slugs...');
+
+  const result = await graphql(`
+    {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+      allMdx {
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            intro
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild('Error running GraphQL for llms.txt');
+    return;
+  }
+
+  const siteUrl = result.data.site.siteMetadata.siteUrl;
+  const mdxNodes = result.data.allMdx.nodes;
+
+  const markdown = buildLlmsTxt({
+    siteUrl,
+    pages: mdxNodes,
+    title: 'The CMS Design System',
+    description: '> TODO: Add a brief description of the CMS Design System.',
+  });
+
+  const outputPath = path.join('public', 'llms.txt');
+  fs.writeFileSync(outputPath, markdown, 'utf8');
+
+  reporter.success(`llms.txt generated at ${outputPath}`);
 };
