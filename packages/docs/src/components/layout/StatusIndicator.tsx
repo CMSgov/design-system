@@ -27,12 +27,12 @@ const statusConfig: Record<
   },
   caution: {
     variation: 'warn',
-    label: 'Caution',
+    label: 'Use with caution',
     Icon: AlertIcon,
   },
   avoid: {
     variation: 'alert',
-    label: 'Avoid',
+    label: "Don't use",
     Icon: AlertIcon,
   },
 };
@@ -41,11 +41,12 @@ export const StatusIndicator: React.FC<StatusIndicatorProps> = ({ level }) => {
   const { variation, label, Icon, iconClassName } = statusConfig[level];
 
   return (
-    <Badge variation={variation} className="ds-u-display--inline-flex ds-u-align-items--center">
-      <Icon
-        className={iconClassName}
-        style={{ fontSize: '1em', height: '1em', width: '1em', verticalAlign: 'text-bottom' }}
-      />
+    <Badge
+      variation={variation}
+      hideScreenReaderText
+      className="ds-u-display--inline-flex ds-u-align-items--center"
+    >
+      <Icon className={iconClassName} style={{ fontSize: '1em', height: '1em', width: '1em' }} />
       {label}
     </Badge>
   );
