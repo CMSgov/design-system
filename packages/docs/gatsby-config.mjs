@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm"
 const config = {
   siteMetadata: {
     title: `cms-design-system-docs`,
-    siteUrl: `https://www.design.cms.gov`,
+    siteUrl: `https://design.cms.gov`,
   },
   plugins: [
     'gatsby-plugin-sass',
