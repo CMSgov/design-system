@@ -7,6 +7,7 @@ import { sendNavigationOpenedAnalytics } from '../helpers/analytics';
 export interface DocsNavItem extends Omit<VerticalNavItemProps, 'label'> {
   label: string;
   order: number;
+  status?: 'use' | 'caution' | 'avoid';
 }
 
 // order of labels of level 1 items
@@ -54,6 +55,7 @@ const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: Locati
     id: relativePath,
     selected: isItemSelected(relativePath, location),
     order: frontmatter?.order || 0,
+    ...(frontmatter?.status?.level && { _status: frontmatter.status.level }),
   };
 };
 
