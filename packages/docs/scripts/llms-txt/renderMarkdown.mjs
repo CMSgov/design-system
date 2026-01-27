@@ -1,18 +1,19 @@
 import { humanize } from './text.mjs';
 
 export function renderLlmsMarkdown({ title, description, baseUrl, tree }) {
-  let markDown = `# ${title}\n\n`;
-  if (description) markDown += `${description}\n\n`;
+  let markdown = `# ${title}\n\n`;
+
+  if (description) markdown += `> ${description}\n\n`;
 
   // In case we ever add root-level pages.
-  markDown += renderPagesList(tree.pages, baseUrl);
+  markdown += renderPagesList(tree.pages, baseUrl);
 
-  markDown += renderNode(tree, baseUrl, 0);
-  return markDown;
+  markdown += renderNode(tree, baseUrl, 0);
+  return markdown;
 }
 
 function renderNode(node, baseUrl, depth) {
-  let markDown = '';
+  let markdown = '';
 
   const sectionKeys = Object.keys(node.children).sort();
 
@@ -21,12 +22,12 @@ function renderNode(node, baseUrl, depth) {
     // Compute heading level: depth 0 -> ##, depth 1 -> ###, etc.
     const headingLevel = depth + 2; 
 
-    markDown += `${'#'.repeat(headingLevel)} ${humanize(key)}\n\n`;
-    markDown += renderPagesList(child.pages, baseUrl);
-    markDown += renderNode(child, baseUrl, depth + 1);
+    markdown += `${'#'.repeat(headingLevel)} ${humanize(key)}\n\n`;
+    markdown += renderPagesList(child.pages, baseUrl);
+    markdown += renderNode(child, baseUrl, depth + 1);
   }
 
-  return markDown;
+  return markdown;
 }
 
 function renderPagesList(pages, baseUrl) {
@@ -34,12 +35,12 @@ function renderPagesList(pages, baseUrl) {
   // Sort pages alphabetically by title.
   const sorted = [...pages].sort((a, b) => a.title.localeCompare(b.title));
 
-  let markDown = '';
+  let markdown = '';
 
   for (const { title, slug, intro } of sorted) {
-    markDown += `- [${title}](${baseUrl}${slug})${intro ? `: ${intro}` : ''}\n`;
+    markdown += `- [${title}](${baseUrl}${slug})${intro ? `: ${intro}` : ''}\n`;
   }
-  markDown += '\n';
+  markdown += '\n';
 
-  return markDown;
+  return markdown;
 }

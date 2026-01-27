@@ -215,6 +215,7 @@ export const onPostBuild = async ({ graphql, reporter }) => {
       site {
         siteMetadata {
           siteUrl
+          description
         }
       }
       allMdx {
@@ -237,10 +238,12 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   }
 
   const siteUrl = result.data.site.siteMetadata.siteUrl;
+  const description = result.data.site.siteMetadata.description;
   const mdxNodes = result.data.allMdx.nodes;
 
   const markdown = buildLlmsTxt({
     siteUrl,
+    description,
     pages: mdxNodes,
   });
 
