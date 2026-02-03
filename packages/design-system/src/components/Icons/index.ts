@@ -38,3 +38,7 @@ export * from './WarningIcon';
 export * from './AlertIcon';
 export * from './WhatsNewIcon';
 export * from './WhiteHouseLogo';
+export * from './BirthingFriendlyIcon';
+export * from './AlertTriangleIcon';
+export * from './AlertCircleMedicareIcon';
+export * from './AbuseIcon';
