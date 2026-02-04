@@ -4,7 +4,7 @@ import { SvgIcon, IconCommonProps } from './SvgIcon';
 
 const defaultProps = {
   className: '',
-  viewBox: '0 0 20 20',
+  viewBox: '0 0 24 24',
 };
 
 export function AbuseIcon(props: IconCommonProps): React.ReactElement {

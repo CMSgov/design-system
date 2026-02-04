@@ -1,11 +1,11 @@
 import { createTestRenderer } from '../__tests__/rendering';
-import './ds-alert-circle-medicare-icon';
+import './ds-alert-circle-thin-icon';
 
-const view = createTestRenderer('ds-alert-circle-medicare-icon', (attrs = {}) => (
-  <ds-alert-circle-medicare-icon aria-hidden="false" {...attrs} />
+const view = createTestRenderer('ds-alert-circle-thin-icon', (attrs = {}) => (
+  <ds-alert-circle-thin-icon aria-hidden="false" {...attrs} />
 ));
 
-describe('ds-alert-circle-medicare-icon', () => {
+describe('ds-alert-circle-thin-icon', () => {
   it('renders as an SVG', () => {
     const { customElement } = view();
     expect(customElement.firstElementChild.tagName).toBe('svg');

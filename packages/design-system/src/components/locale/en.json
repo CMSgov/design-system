@@ -36,9 +36,11 @@
     "filter": "{{label}} filter"
   },
   "icons": {
+    "abuse": "Abuse",
     "add": "Add",
     "alertCircle": "Alert",
     "arrowsStacked": "Sort",
+    "birthingFriendly": "Birthing Friendly",
     "calendar": "Calendar",
     "upArrow": "up arrow",
     "downArrow": "down arrow",

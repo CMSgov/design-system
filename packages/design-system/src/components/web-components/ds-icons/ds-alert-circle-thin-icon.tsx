@@ -1,13 +1,13 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
-import { AlertCircleMedicareIcon, IconCommonProps } from '../../Icons';
+import { AlertCircleThinIcon, IconCommonProps } from '../../Icons';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-alert-circle-medicare-icon': React.JSX.IntrinsicElements['div'] & {
+      'ds-alert-circle-thin-icon': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
@@ -20,7 +20,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <AlertCircleMedicareIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
+  <AlertCircleThinIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
-define('ds-alert-circle-medicare-icon', () => Wrapper, { attributes });
+define('ds-alert-circle-thin-icon', () => Wrapper, { attributes });
