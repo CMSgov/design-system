@@ -7,7 +7,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
   templateUrl: './autocomplete.component.html',
 })
 export class AutocompleteComponent {
-  ariaClearLabel = input<string>();
   ariaCompleteLabel = input<string>();
   autofocus = input<string>();
   className = input<string>();

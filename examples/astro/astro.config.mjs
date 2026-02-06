@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [react(), /*preact()*/],
   vite: {
     ssr: {
-      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
+      noExternal: ['@cmsgov/design-system', 'dom-helpers', '@floating-ui/react', '@floating-ui/react-dom'],
     },
   },
 });

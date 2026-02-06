@@ -1,22 +1,14 @@
 import { isValidElement, ReactElement, ReactNode } from 'react';
-import {
-  AutocompleteProps,
-  AutocompleteItem,
-  AutocompleteItems,
-  AutocompleteItemGroup,
-} from './Autocomplete';
+import { AutocompleteItem, AutocompleteItems, AutocompleteItemGroup } from './Autocomplete';
 import { ComboBoxState, Item, Section } from '../react-aria'; // from react-stately
 import { TextField } from '../TextField';
 import { getOptionId } from '../Dropdown/DropdownMenuOption';
 
-export function renderReactStatelyItems(
-  items: AutocompleteItems,
-  itemToString: AutocompleteProps['itemToString']
-) {
+export function renderReactStatelyItems(items: AutocompleteItems) {
   const renderItem = (item: AutocompleteItem) => {
     const { id, name, children, ...extraAttrs } = item;
     return (
-      <Item key={id} textValue={name ?? itemToString?.(item)} {...extraAttrs}>
+      <Item key={id} textValue={name} {...extraAttrs}>
         {children ?? name}
       </Item>
     );

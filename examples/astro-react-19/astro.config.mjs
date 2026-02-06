@@ -7,7 +7,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   vite: {
     ssr: {
-      noExternal: ['@cmsgov/design-system', 'react-transition-group', 'dom-helpers'],
+      noExternal: ['@cmsgov/design-system', 'dom-helpers', '@floating-ui/react', '@floating-ui/react-dom'],
     },
   },
 

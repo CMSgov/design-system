@@ -6,7 +6,6 @@
     "warn": "Advertencia"
   },
   "autocomplete": {
-    "ariaClearLabel": "Borrar búsqueda y volver a intentar",
     "clearInputText": "Borrar búsqueda",
     "loadingMessage": "Cargando...",
     "noResultsMessage": "No hay resultados"

@@ -56,9 +56,6 @@ const meta: Meta = {
       description:
         'Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.',
       options: [
-        'auto',
-        'auto-start',
-        'auto-end',
         'left',
         'left-start',
         'left-end',
@@ -90,8 +87,7 @@ const meta: Meta = {
       control: 'text',
     },
     'transition-duration': {
-      description:
-        'Duration of the `react-transition-group` CSSTransition. See the [`timeout` option](http://reactcommunity.org/react-transition-group/transition#Transition-prop-timeout) for more info.',
+      description: 'Duration of the CSS transition.',
       control: 'text',
     },
     'trigger-aria-label': {

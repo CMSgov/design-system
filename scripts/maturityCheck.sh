@@ -4,7 +4,7 @@ cd packages/docs/content
 
 TOTAL=$(grep -RE 'MaturityChecklist' | wc -l | tr -d ' ')
 
-MC=(a11yStandards color forcedColors screenReaders keyboardNavigable storybook responsive spanish completeUiKit responsiveUiKit tokensInCode tokensInSketch)
+MC=(a11yStandards color forcedColors screenReaders keyboardNavigable storybook responsive spanish completeUiKit responsiveUiKit tokensInCode tokensInFigma)
 
 for i in ${MC[@]}; do
   COUNT=$(grep -RE "${i}=\{" | grep -Ei 'true|null' | wc -l | tr -d ' ')

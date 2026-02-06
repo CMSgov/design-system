@@ -76,7 +76,6 @@ export class AppComponent {
   }
 
   // Autocomplete Data:
-  ariaClearLabel = 'Clear search';
   ariaCompleteLabel = 'Autocomplete';
   // autofocus = 'true';
   className = 'ds-u-padding-bottom--7';

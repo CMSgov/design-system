@@ -31,13 +31,6 @@ export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, '
    * Custom React node as an alternative to a string-only `name`
    */
   children?: React.ReactNode;
-  /**
-   * Whether this item should be counted as one of the results for the purpose of announcing the
-   * result count to screen readers
-   * @deprecated This is no longer used, as we no longer have custom messaging for screen readers
-   * @hide-prop [Deprecated]
-   */
-  isResult?: boolean;
 }
 
 export interface AutocompleteItemGroup {
@@ -59,15 +52,6 @@ export interface AutocompleteItemGroup {
 export type AutocompleteItems = Array<AutocompleteItem | AutocompleteItemGroup>;
 
 export interface AutocompleteProps {
-  /**
-   * @deprecated Use the `clearInputText` prop (which sets the visible Clear search button text) instead.
-   *
-   * Providing an `aria-label` on the Clear Search `<button>` can override its visible text label,
-   * which may confuse users who rely on both visual and screen reader feedback when the two differ.
-   * This prop was originally intended to provide a more descriptive label for screen reader users
-   * but is no longer recommended.
-   */
-  ariaClearLabel?: string;
   /**
    * Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)
    */
@@ -94,11 +78,6 @@ export interface AutocompleteProps {
    */
   autoFocus?: boolean;
   /**
-   * @deprecated This is deprecated in favor of autoFocus
-   * @hide-prop [Deprecated]
-   */
-  focusTrigger?: boolean;
-  /**
    * A unique id to be passed to the child `TextField`. If no id is passed as a prop,
    * the `Autocomplete` component will auto-generate one. This prop was provided in cases
    * where an id might need to be passed to multiple components, such as the `htmlFor`
@@ -106,21 +85,9 @@ export interface AutocompleteProps {
    */
   id?: string;
   /**
-   * Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.
-   * @deprecated This is no longer used
-   * @hide-prop [Deprecated]
-   */
-  getA11yStatusMessage?: any;
-  /**
    * Access a reference to the child `TextField`'s `input` element
    */
-  inputRef?: React.Ref<any> | React.MutableRefObject<any>;
-  /**
-   * Used to determine the string value for the selected item (which is used to compute the `inputValue`).
-   * @deprecated Please provide a `name` property to each item instead.
-   * @hide-prop [Deprecated]
-   */
-  itemToString?: (item: AutocompleteItem) => string;
+  inputRef?: React.Ref<any> | React.RefObject<any>;
   /**
    * Array of objects used to populate the suggestion list that appears below the input as users type.
    * Passing an empty array will show a "No results" message. If you do not yet want to show results,
@@ -183,17 +150,14 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const menuId = `${id}__menu`;
 
   const {
-    ariaClearLabel,
     autoCompleteLabel = 'off',
     autoFocus,
     children,
     className,
     clearInputText,
     clearSearchButton = true,
-    focusTrigger,
     inputRef: userInputRef,
     items,
-    itemToString,
     label: menuHeading,
     labelId: menuHeadingId,
     loading,
@@ -204,13 +168,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
-  if (process.env.NODE_ENV !== 'production' && ariaClearLabel) {
-    console.warn(
-      "[Deprecated]: The 'ariaClearLabel' prop is deprecated and will be removed in a future release. " +
-        "Use the 'clearInputText' prop instead to set the visible Clear search button text."
-    );
-  }
-
   const hasValidStandaloneItems = items?.some((item) => !('items' in item));
   const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
 
@@ -219,7 +176,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   let statusMessage;
 
   if (hasValidStandaloneItems || hasValidGroupedItems) {
-    reactStatelyItems = renderReactStatelyItems(items, itemToString);
+    reactStatelyItems = renderReactStatelyItems(items);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
     statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
@@ -289,7 +246,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
   const textFieldProps = removeUndefined({
     ...useComboboxProps.inputProps,
     autoComplete: autoCompleteLabel,
-    autoFocus: autoFocus || focusTrigger,
+    autoFocus: autoFocus,
     'aria-activedescendant': useComboboxProps.inputProps['aria-activedescendant']
       ? getActiveDescendant(id, state, items)
       : undefined,
@@ -352,7 +309,6 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
       {clearSearchButton && (
         <Button
-          aria-label={ariaClearLabel ?? t('autocomplete.ariaClearLabel')}
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
             state.setSelectedKey(null);

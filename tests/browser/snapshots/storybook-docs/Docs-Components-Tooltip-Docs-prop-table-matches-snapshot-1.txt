@@ -101,7 +101,7 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info. Default is 'top'\n\n\"auto-end\"\n\"auto-start\"\n\"auto\"\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\nShow 7 more...",
+    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info. Default is 'top'\n\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\n\"left\"\n\"right-end\"\n\"right-start\"\nShow 4 more...",
     "-"
   ],
   [
@@ -116,7 +116,7 @@
   ],
   [
     "transitionDuration",
-    "Duration of the react-transition-group CSSTransition. See the timeout option for more info. Default is 250\n\nnumber",
+    "Duration of the CSS transition. Default is 250\n\nnumber",
     "-"
   ],
   [

@@ -34,7 +34,6 @@ function AutocompleteExample() {
         loadingMessage="Loading..."
         noResultsMessage="No results"
         clearSearchButton
-        ariaClearLabel="Clear search"
         onChange={(item) => console.log('[onChange]', item)}
         onInputValueChange={onInputValueChange}
       >
