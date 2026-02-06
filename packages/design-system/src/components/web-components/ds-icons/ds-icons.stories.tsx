@@ -56,6 +56,11 @@ type Story = StoryObj;
 
 const iconData = [
   {
+    defaultTitle: 'Abuse',
+    component: <ds-abuse-icon />,
+    name: 'ds-abuse-icon',
+  },
+  {
     defaultTitle: 'Add',
     component: <ds-add-icon />,
     name: 'ds-add-icon',
@@ -66,9 +71,19 @@ const iconData = [
     name: 'ds-alert-circle-icon',
   },
   {
+    defaultTitle: 'Alert Circle Thin Icon',
+    component: <ds-alert-circle-thin-icon />,
+    name: 'ds-alert-circle-thin-icon',
+  },
+  {
     defaultTitle: 'Alert',
     component: <ds-alert-icon />,
     name: 'ds-alert-icon',
+  },
+  {
+    defaultTitle: 'Alert Triangle Icon',
+    component: <ds-alert-triangle-icon />,
+    name: 'ds-alert-triangle-icon',
   },
   {
     defaultTitle: 'Sort',
@@ -88,6 +103,11 @@ const iconData = [
     name: 'ds-arrow-icon',
     notes:
       'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
+  },
+  {
+    defaultTitle: 'Birthing Friendly',
+    component: <ds-birthing-friendly-icon />,
+    name: 'ds-birthing-friendly-icon',
   },
   {
     defaultTitle: 'Building in circle',

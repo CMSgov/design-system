@@ -36,6 +36,10 @@ import {
   UsaFlagIcon,
   WarningIcon,
   WhatsNewIcon,
+  AbuseIcon,
+  AlertCircleThinIcon,
+  AlertTriangleIcon,
+  BirthingFriendlyIcon,
 } from './index';
 
 export default {
@@ -60,6 +64,11 @@ export default {
 
 const iconData = [
   {
+    defaultTitle: 'Abuse',
+    component: <AbuseIcon />,
+    name: 'AbuseIcon',
+  },
+  {
     defaultTitle: 'Add',
     component: <AddIcon />,
     name: 'AddIcon',
@@ -70,9 +79,19 @@ const iconData = [
     name: 'AlertCircleIcon',
   },
   {
+    defaultTitle: 'Alert Thin Icon',
+    component: <AlertCircleThinIcon />,
+    name: 'AlertCircleThinIcon',
+  },
+  {
     defaultTitle: 'Alert',
     component: <AlertIcon />,
     name: 'AlertIcon',
+  },
+  {
+    defaultTitle: 'Alert Triangle Icon',
+    component: <AlertTriangleIcon />,
+    name: 'AlertTriangleIcon',
   },
   {
     defaultTitle: 'Sort',
@@ -92,6 +111,11 @@ const iconData = [
     name: 'ArrowIcon',
     notes:
       'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
+  },
+  {
+    defaultTitle: 'Birthing Friendly',
+    component: <BirthingFriendlyIcon />,
+    name: 'BirthingFriendlyIcon',
   },
   {
     defaultTitle: 'Building in circle',
