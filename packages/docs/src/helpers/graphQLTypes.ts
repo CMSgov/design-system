@@ -25,6 +25,8 @@ export interface LocationInterface {
 export interface StatusInterface {
   level: 'use' | 'caution' | 'avoid';
   note?: string;
+  targetTheme?: 'core' | 'cmsgov' | 'healthcare' | 'medicare';
+  targetThemeNote?: string;
 }
 
 export interface FrontmatterInterface {
@@ -98,6 +100,7 @@ export interface NavItem {
     frontmatter?: {
       title: string;
       order?: number;
+      status?: StatusInterface;
     };
   };
 }
