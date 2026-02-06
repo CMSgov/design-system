@@ -1,7 +1,7 @@
 import { SkipNav, VerticalNav, Alert } from '@cmsgov/design-system';
 
 export default {
-  title: 'Patterns/Documentation Page',
+  title: 'Patterns/Article Page',
 };
 
 const navItems = [
