@@ -288,7 +288,7 @@ export const AvailableIcons = () => (
       </tr>
     </thead>
     <tbody>
-      {iconData.map(({ defaultTitle, component, name, notes }) => (
+      {iconData.map(({ defaultTitle, component, name, notes = '' }) => (
         <tr key={name}>
           <td>
             <code>{name}</code>

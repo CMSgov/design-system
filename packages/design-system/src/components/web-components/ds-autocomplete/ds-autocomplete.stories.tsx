@@ -38,15 +38,6 @@ const meta: Meta = {
     name: 'autocomplete',
   },
   argTypes: {
-    'aria-clear-label': {
-      description: `
-**Deprecated:** Use the \`clearInputText\` prop instead to set the visible Clear search button text.
-
-Providing an \`aria-label\` on the Clear Search button can override its visible text label, 
-which may confuse users who rely on both visual and screen reader feedback when the two differ.
-      `,
-      control: 'text',
-    },
     'aria-complete-label': {
       description:
         'Control the `TextField` autocomplete attribute. Defaults to "off" to support accessibility. [Read more.](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion)',
@@ -108,7 +99,7 @@ which may confuse users who rely on both visual and screen reader feedback when 
     },
     items: {
       description: `An array of objects used to populate the suggestion list that appears below the input as users type. Passing an empty array will show a "No results" message. If you do not yet want to show results, this props should be undefined.
-        
+
 When using this in HTML, the \`items\` attribute must be a stringified JSON array wrapped in single quotes, with double quotes used for all object keys and string values.
 
 **Example:**
@@ -132,7 +123,7 @@ items='[
 If you're setting this attribute in JavaScript, use \`JSON.stringify()\` to convert the array into a valid string value.
 
 For details on valid JSON formatting, see [JSON syntax restrictions on MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON#json_syntax_restrictions).
-     
+
 Please see examples for usage and [read the autocomplete docs](https://design.cms.gov/storybook/?path=/docs/components-autocomplete--docs).`,
       control: 'text',
     },
@@ -408,7 +399,6 @@ export const GroupsAndStandaloneItems = {
 //           </a>
 //         ),
 //         className: 'ds-c-autocomplete__search-all',
-//         isResult: false,
 //       },
 //     ],
 //   } as any,

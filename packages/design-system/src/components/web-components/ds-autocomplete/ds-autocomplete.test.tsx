@@ -12,7 +12,6 @@ function makeAutocomplete(customProps: AutocompleteProps = {}) {
   const props = {
     'root-id': 'static-id',
     id: 'autocomplete--1',
-    'aria-clear-label': 'Clear search to try again',
     'clear-input-text': 'Clear search',
     'clear-search-button': 'true',
     'loading-message': 'Loading...',
@@ -80,7 +79,6 @@ describe('Autocomplete', () => {
     expect(button).toBeInTheDocument();
     expect(button.classList).toContain('ds-c-autocomplete__clear-btn');
     expect(button).toHaveAttribute('type', 'button');
-    expect(button).toHaveAccessibleName('Clear search to try again');
   });
 
   it('renders items', async () => {
@@ -311,14 +309,6 @@ describe('Autocomplete', () => {
   });
 
   describe('default props', () => {
-    it('defaults ariaClearLabel', () => {
-      renderAutocomplete();
-      const button = screen.getByRole('button');
-      expect(button).toBeInTheDocument();
-
-      expect(button).toHaveAttribute('aria-label', 'Clear search to try again');
-    });
-
     it('defaults clearInputText', () => {
       renderAutocomplete();
       const button = screen.getByRole('button');

@@ -1,5 +1,5 @@
 import { DateObject } from './defaultDateFormatter';
-import { MutableRefObject, PureComponent } from 'react';
+import { RefObject, PureComponent } from 'react';
 import type * as React from 'react';
 import TextField from '../TextField/TextField';
 import classNames from 'classnames';
@@ -72,7 +72,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the day `input`
    */
-  dayFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
+  dayFieldRef?: RefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the day `input`
    */
@@ -102,7 +102,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the month `input`
    */
-  monthFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
+  monthFieldRef?: RefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the month `input`
    */
@@ -120,7 +120,7 @@ export interface DateInputProps {
   /**
    * Access a reference to the year `input`
    */
-  yearFieldRef?: MutableRefObject<any> | ((...args: any[]) => any);
+  yearFieldRef?: RefObject<any> | ((...args: any[]) => any);
   /**
    * Apply error styling to the year `input`
    */
