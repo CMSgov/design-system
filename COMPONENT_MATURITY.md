@@ -60,7 +60,7 @@ Color blindness is tested using a color blindness simulator and visually inspect
 - Errors and warnings that might rely on color
 
 - Code - Run `npm run test:a11y`
-- Design - Designs are verified using a plugin within Sketch to check color contrast and color blindness.
+- Design - Designs are verified using a plugin within Figma to check color contrast and color blindness.
 
 ### Screen readers
 
@@ -154,21 +154,17 @@ Changing the language in the [Storybook controls (internal link)](https://design
 
 ## Design
 
-### Sketch UI-kit
-
-Includes all Sketch symbols for defined options.
-
 #### When to define as 'Not applicable'?
 
 When the component is a utility with no visual element.
 
 #### How to test?
 
-Verify with code that all props and options that can be used in code have an equal option in Sketch.
+Verify with code that all props and options that can be used in code have an equal option in Figma.
 
 ### Responsive
 
-All Sketch symbols designed for small and large breakpoints.
+All Figma assets designed for small and large breakpoints.
 
 #### When to define as 'Not applicable'?
 
@@ -176,7 +172,7 @@ When there are no visual elements to the component.
 
 #### How to test?
 
-Verify that the [small and large breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design/?theme=core 'CMSDS breakpoints')in the Sketch symbols match the responsive components in code.
+Verify that the [small and large breakpoints (internal link)](https://design.cms.gov/foundation/layout-grid/responsive-design/?theme=core 'CMSDS breakpoints')in the Figma symbols match the responsive components in code.
 
 ## Tokens
 
@@ -194,7 +190,7 @@ Look at the style rules for this component and check that token variables are us
 
 ### Design
 
-Tokens implemented in the Sketch.
+Tokens implemented in Figma.
 
 #### When to define as 'Not applicable'?
 
@@ -202,4 +198,4 @@ When there are no styles that tokens can be applied to.
 
 #### How to test?
 
-Open Sketch and click through each element to view styles being used and make sure the styles are linked to tokens in the theme files.
+Open Figma and click through each element to view styles being used and make sure the styles are linked to tokens in the theme files.

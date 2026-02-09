@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import { placements, Tooltip, TooltipProps } from '../../Tooltip';
-import { Placement } from '@popperjs/core';
+import { Placement } from '@floating-ui/dom';
 import { parseBooleanAttr } from '../wrapperUtils';
 import { isPossibleValue } from '../utils';
 

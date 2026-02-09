@@ -39,14 +39,14 @@ import { Alert } from '@cmsgov/design-system';
 
 ## Accessibility
 
-- Use anchor links (`<a>`) to create tabs. This allows direct linking, supports progressive enhancement, and preserves default browser behavior like opening tabs in a new window.  
+- Use anchor links (`<a>`) to create tabs. This allows direct linking, supports progressive enhancement, and preserves default browser behavior like opening tabs in a new window.
   *Note: You’ll need to implement logic to select the appropriate tab based on the current URL.*
 - Markup should include proper ARIA roles and attributes to ensure accessibility:
-  - **Each tab** (`<a>`):  
+  - **Each tab** (`<a>`):
     `role="tab"`, `aria-selected`, `aria-controls`
-  - **Tablist container**:  
+  - **Tablist container**:
     `role="tablist"`, `aria-label` (not applied by default — use the `ariaLabel` prop.)
-  - **Each tab panel**:  
+  - **Each tab panel**:
     `role="tabpanel"`, `aria-labelledby`
 
 <Alert heading="Use Tabs and TabPanel Together">
@@ -115,5 +115,5 @@ The following CSS variables can be overridden to customize Tab components:
   completeUiKit={false}
   responsiveUiKit={false}
   tokensInCode={true}
-  tokensInSketch={true}
+  tokensInFigma={true}
 />
