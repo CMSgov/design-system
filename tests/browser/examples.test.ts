@@ -70,13 +70,6 @@ if (!isSmokeTest) {
     });
   });
 
-  test.describe('astro-react-17', () => {
-    test('matches snapshot', async ({ page }) => {
-      await page.goto(`${DOMAIN}/astro-react-17/dist`);
-      await expectScreenshot(page, 'astro-react-17.png');
-    });
-  });
-
   test.describe('astro-react-18', () => {
     test('matches snapshot', async ({ page }) => {
       await page.goto(`${DOMAIN}/astro-react-18/dist`);

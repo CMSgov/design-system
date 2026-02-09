@@ -17,9 +17,6 @@ const meta: Meta<typeof Tooltip> = {
   argTypes: {
     placement: {
       options: [
-        'auto',
-        'auto-start',
-        'auto-end',
         'left',
         'left-start',
         'left-end',

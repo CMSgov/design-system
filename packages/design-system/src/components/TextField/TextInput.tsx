@@ -52,7 +52,7 @@ export type TextInputProps = Omit<React.ComponentPropsWithoutRef<'input'>, OmitP
    * applicable if this is a multiline field.
    */
   rows?: TextInputRows;
-  inputRef?: React.Ref<any> | React.MutableRefObject<any>;
+  inputRef?: React.Ref<any> | React.RefObject<any>;
   /**
    * Set the max-width of the input either to `'small'` or `'medium'`.
    */
