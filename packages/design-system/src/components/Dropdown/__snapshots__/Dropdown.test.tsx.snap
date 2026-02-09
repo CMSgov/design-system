@@ -144,15 +144,12 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
   >
     Select an option
   </div>
-  <div
+  <p
     aria-atomic="true"
     aria-live="assertive"
-  >
-    <p
-      class="ds-c-inline-error"
-      id="static-id__error"
-    />
-  </div>
+    class="ds-c-inline-error"
+    id="static-id__error"
+  />
   <div
     aria-hidden="true"
     data-a11y-ignore="aria-hidden-focus"
@@ -225,6 +222,8 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
 
 exports[`Dropdown shows error message 1`] = `
 <p
+  aria-atomic="true"
+  aria-live="assertive"
   class="ds-c-inline-error"
   id="my-error"
 >
