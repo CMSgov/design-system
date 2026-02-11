@@ -37,7 +37,7 @@
     "gatsby-plugin-sass": "^6.16.0",
     "gatsby-plugin-sitemap": "^6.16.0",
     "gatsby-remark-autolink-headers": "^6.16.0",
-    "gatsby-source-filesystem": "^5.15.0",
+    "gatsby-source-filesystem": "^5.16.0",
     "lodash.sortby": "^4.7.0",
     "prettier": "^2.6.2",
     "prismjs": "^1.11.0",
