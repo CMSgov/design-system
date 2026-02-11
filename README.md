@@ -1,4 +1,5 @@
 # CMS Design System
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/CMSgov/design-system)
 
 > The design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites. It builds on the [U.S. Web Design System](https://designsystem.digital.gov/) and extends it to support additional CSS and React components, utility classes, and a grid framework to allow teams to quickly prototype and build accessible, responsive, production-ready websites.
 
