@@ -1,5 +1,22 @@
 [
   [
+    "Deprecated: Please provide a `name` property to each item instead."
+  ],
+  [
+    "Deprecated: This is deprecated in favor of autoFocus"
+  ],
+  [
+    "Deprecated: This is no longer used"
+  ],
+  [
+    "Deprecated: Use the `clearInputText` prop (which sets the visible Clear search button text) instead. Providing an `aria-label` on the Clear Search `<button>` can override its visible text label, which may confuse users who rely on both visual and screen reader feedback when the two differ. This prop was originally intended to provide a more descriptive label for screen reader users but is no longer recommended."
+  ],
+  [
+    "ariaClearLabel",
+    "string\nDeprecated: Use the `clearInputText` prop (which sets the visible Clear search button text) instead. Providing an `aria-label` on the Clear Search `<button>` can override its visible text label, which may confuse users who rely on both visual and screen reader feedback when the two differ. This prop was originally intended to provide a more descriptive label for screen reader users but is no longer recommended.",
+    "Clear search to try again"
+  ],
+  [
     "autoCompleteLabel",
     "Control the TextField autocomplete attribute. Defaults to \"off\" to support accessibility. Read more.\nstring",
     "-"
@@ -30,13 +47,28 @@
     "-"
   ],
   [
+    "focusTrigger",
+    "boolean\nDeprecated: This is deprecated in favor of autoFocus",
+    "-"
+  ],
+  [
+    "getA11yStatusMessage",
+    "Customize the default status messages announced to screen reader users via aria-live when autocomplete results are populated.\nany\nDeprecated: This is no longer used",
+    "-"
+  ],
+  [
     "id",
     "A unique id to be passed to the child TextField. If no id is passed as a prop, the Autocomplete component will auto-generate one. This prop was provided in cases where an id might need to be passed to multiple components, such as the htmlFor attribute on a label and the id of an input.\n\nstring",
     "-"
   ],
   [
     "inputRef",
-    "Access a reference to the child TextField's input element\nRef<any>",
+    "Access a reference to the child TextField's input element\nRef<any> | MutableRefObject<any>",
+    "-"
+  ],
+  [
+    "itemToString",
+    "Used to determine the string value for the selected item (which is used to compute the inputValue).\n(item: AutocompleteItem) => string\nDeprecated: Please provide a `name` property to each item instead.",
     "-"
   ],
   [
