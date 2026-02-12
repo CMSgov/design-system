@@ -42,7 +42,7 @@
   [
     "placement",
     "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.",
-    "autoauto-startauto-endleftleft-startleft-endrightright-startright-endtoptop-starttop-endbottombottom-startbottom-end"
+    "leftleft-startleft-endrightright-startright-endtoptop-starttop-endbottombottom-startbottom-end"
   ],
   [
     "root-id",
@@ -61,7 +61,7 @@
   ],
   [
     "transition-duration",
-    "Duration of the react-transition-group CSSTransition. See the timeout option for more info.",
+    "Duration of the CSS transition.",
     "string"
   ],
   [
