@@ -37,8 +37,6 @@ import {
   WarningIcon,
   WhatsNewIcon,
   AbuseIcon,
-  AlertCircleThinIcon,
-  AlertTriangleIcon,
   BirthingFriendlyIcon,
 } from './index';
 
@@ -79,19 +77,9 @@ const iconData = [
     name: 'AlertCircleIcon',
   },
   {
-    defaultTitle: 'Alert Thin Icon',
-    component: <AlertCircleThinIcon />,
-    name: 'AlertCircleThinIcon',
-  },
-  {
     defaultTitle: 'Alert',
     component: <AlertIcon />,
     name: 'AlertIcon',
-  },
-  {
-    defaultTitle: 'Alert Triangle Icon',
-    component: <AlertTriangleIcon />,
-    name: 'AlertTriangleIcon',
   },
   {
     defaultTitle: 'Sort',

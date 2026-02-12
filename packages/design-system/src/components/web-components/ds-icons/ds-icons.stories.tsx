@@ -71,19 +71,9 @@ const iconData = [
     name: 'ds-alert-circle-icon',
   },
   {
-    defaultTitle: 'Alert Circle Thin Icon',
-    component: <ds-alert-circle-thin-icon />,
-    name: 'ds-alert-circle-thin-icon',
-  },
-  {
     defaultTitle: 'Alert',
     component: <ds-alert-icon />,
     name: 'ds-alert-icon',
-  },
-  {
-    defaultTitle: 'Alert Triangle Icon',
-    component: <ds-alert-triangle-icon />,
-    name: 'ds-alert-triangle-icon',
   },
   {
     defaultTitle: 'Sort',

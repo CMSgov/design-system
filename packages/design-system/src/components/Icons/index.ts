@@ -39,6 +39,4 @@ export * from './AlertIcon';
 export * from './WhatsNewIcon';
 export * from './WhiteHouseLogo';
 export * from './BirthingFriendlyIcon';
-export * from './AlertTriangleIcon';
-export * from './AlertCircleThinIcon';
 export * from './AbuseIcon';
