@@ -39,5 +39,3 @@ import './ds-whats-new-icon';
 import './ds-warning-icon';
 import './ds-abuse-icon';
 import './ds-birthing-friendly-icon';
-import './ds-alert-triangle-icon';
-import './ds-alert-circle-thin-icon';
