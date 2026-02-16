@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useState, useRef } from 'react';
+import { cloneElement, isValidElement, useState, useRef } from 'react';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
@@ -180,8 +180,10 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderChildren = (): React.ReactNode => {
-    return Children.map(props.children, (child) => {
-      if (isTabPanel(child) && isValidElement(child)) {
+    const children = Array.isArray(props.children) ? props.children : [props.children];
+
+    return children.map((child) => {
+      if (isValidElement(child) && isTabPanel(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
