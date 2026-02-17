@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+SOPHIA IS DEMOING # Contributor Covenant Code of Conduct
 
 ## Our Pledge
 
