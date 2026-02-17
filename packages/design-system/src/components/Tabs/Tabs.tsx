@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useState, useRef } from 'react';
+import { cloneElement, isValidElement, useState, useRef } from 'react';
 import React from 'react';
 import Tab from './Tab';
 import TabPanel, { TabPanelProps } from './TabPanel';
@@ -59,20 +59,23 @@ const isTabPanel = (child): boolean => {
 /**
  * Get the id of the first TabPanel child
  * @param {Object} props
- * @return {String} The id
+ * @returns The `id` of the first TabPanel child, or `undefined` if none are found
  */
-const getDefaultSelectedId = (props): string => {
-  let selectedId;
+export const getDefaultSelectedId = (props: { children: React.ReactNode }): string | undefined => {
+  const childrenArray = getPanelChildren(props.children);
 
-  // TODO: Use the panelChildren method to pass in an array
-  // of panels, instead of doing it here...
-  Children.forEach(props.children, function (child) {
-    if (isTabPanel(child) && !selectedId) {
-      selectedId = child.props.id;
+  for (const child of childrenArray) {
+    if (isTabPanel(child)) {
+      return child.props.id;
     }
-  });
+  }
+};
 
-  return selectedId;
+export const getPanelChildren = (
+  children: React.ReactNode
+): React.ReactElement<TabPanelProps>[] => {
+  const arr = Array.isArray(children) ? children : [children];
+  return arr.filter(isTabPanel);
 };
 
 /**
@@ -116,10 +119,6 @@ export const Tabs = (props: TabsProps) => {
     }
   };
 
-  const panelChildren = (): React.ReactNode[] => {
-    return Children.toArray(props.children).filter(isTabPanel);
-  };
-
   const handleSelectedTabChange = (newSelectedId: string): void => {
     const { onChange } = props;
     if (onChange) {
@@ -137,8 +136,8 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const handleTabKeyDown = (evt: React.KeyboardEvent, panelId: string): void => {
-    const tabs = panelChildren().filter((elem): elem is React.ReactElement<TabPanelProps> =>
-      React.isValidElement(elem)
+    const tabs = getPanelChildren(props.children).filter(
+      (elem): elem is React.ReactElement<TabPanelProps> => React.isValidElement(elem)
     );
     const tabIndex = tabs.findIndex(
       (elem: React.ReactElement<TabPanelProps>) => elem.props.id === panelId
@@ -181,8 +180,10 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderChildren = (): React.ReactNode => {
-    return Children.map(props.children, (child) => {
-      if (isTabPanel(child) && isValidElement(child)) {
+    const children = Array.isArray(props.children) ? props.children : [props.children];
+
+    return children.map((child) => {
+      if (isValidElement(child) && isTabPanel(child)) {
         // Extend props on panels before rendering. Also removes any props
         // that don't need passed into TabPanel but are used to generate
         // the Tab components
@@ -199,7 +200,7 @@ export const Tabs = (props: TabsProps) => {
   };
 
   const renderTabs = (): React.ReactNode => {
-    const panels = panelChildren() as React.ReactElement<TabPanelProps>[];
+    const panels = getPanelChildren(props.children) as React.ReactElement<TabPanelProps>[];
 
     const tabs = panels.map((panel) => {
       return (
