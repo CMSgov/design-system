@@ -1,3 +1,4 @@
+export * from './SvgIcon';
 export * from './AbuseIcon';
 export * from './AddIcon';
 export * from './AlertCircleIcon';
@@ -32,7 +33,6 @@ export * from './RemoveIcon';
 export * from './RssIcon';
 export * from './SearchIcon';
 export * from './StarIcon';
-export * from './SvgIcon';
 export * from './UsaFlagIcon';
 export * from './UsaLogo';
 export * from './WarningIcon';

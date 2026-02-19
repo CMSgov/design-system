@@ -101,7 +101,7 @@ const iconData = [
       'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
   },
   {
-    defaultTitle: 'Woman Baby',
+    defaultTitle: 'Woman with Baby',
     component: <WomanBabyIcon />,
     name: 'WomanBabyIcon',
   },
