@@ -1,13 +1,13 @@
 import { define } from '../preactement/define';
 import { attributes } from './shared-attributes';
-import { BirthingFriendlyIcon, IconCommonProps } from '../../Icons';
+import { WomanBabyIcon, IconCommonProps } from '../../Icons';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-birthing-friendly-icon': React.JSX.IntrinsicElements['div'] & {
+      'ds-woman-baby-icon': React.JSX.IntrinsicElements['div'] & {
         [K in (typeof attributes)[number]]?: string;
       };
     }
@@ -20,7 +20,7 @@ interface WrapperProps extends Omit<IconCommonProps, 'ariaHidden'> {
 }
 
 const Wrapper = ({ ariaHidden = 'true', ...otherProps }: WrapperProps) => (
-  <BirthingFriendlyIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
+  <WomanBabyIcon ariaHidden={parseBooleanAttr(ariaHidden)} {...otherProps} />
 );
 
-define('ds-birthing-friendly-icon', () => Wrapper, { attributes });
+define('ds-woman-baby-icon', () => Wrapper, { attributes });

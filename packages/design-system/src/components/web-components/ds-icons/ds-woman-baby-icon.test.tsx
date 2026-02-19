@@ -1,11 +1,11 @@
 import { createTestRenderer } from '../__tests__/rendering';
-import './ds-birthing-friendly-icon';
+import './ds-woman-baby-icon';
 
-const view = createTestRenderer('ds-birthing-friendly-icon', (attrs = {}) => (
-  <ds-birthing-friendly-icon aria-hidden="false" {...attrs} />
+const view = createTestRenderer('ds-woman-baby-icon', (attrs = {}) => (
+  <ds-woman-baby-icon aria-hidden="false" {...attrs} />
 ));
 
-describe('ds-birthing-friendly-icon', () => {
+describe('ds-woman-baby-icon', () => {
   it('renders as an SVG', () => {
     const { customElement } = view();
     expect(customElement.firstElementChild.tagName).toBe('svg');

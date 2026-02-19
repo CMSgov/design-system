@@ -37,7 +37,7 @@ import {
   WarningIcon,
   WhatsNewIcon,
   AbuseIcon,
-  BirthingFriendlyIcon,
+  WomanBabyIcon,
 } from './index';
 
 export default {
@@ -101,9 +101,9 @@ const iconData = [
       'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
   },
   {
-    defaultTitle: 'Birthing Friendly',
-    component: <BirthingFriendlyIcon />,
-    name: 'BirthingFriendlyIcon',
+    defaultTitle: 'Woman Baby',
+    component: <WomanBabyIcon />,
+    name: 'WomanBabyIcon',
   },
   {
     defaultTitle: 'Building in circle',

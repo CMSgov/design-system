@@ -38,4 +38,4 @@ import './ds-white-house-logo';
 import './ds-whats-new-icon';
 import './ds-warning-icon';
 import './ds-abuse-icon';
-import './ds-birthing-friendly-icon';
+import './ds-woman-baby-icon';

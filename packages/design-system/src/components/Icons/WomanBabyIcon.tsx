@@ -7,16 +7,11 @@ const defaultProps = {
   viewBox: '0 0 24 24',
 };
 
-export function BirthingFriendlyIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--birthing-friendly ${props.className || ''}`;
+export function WomanBabyIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--woman-baby ${props.className || ''}`;
 
   return (
-    <SvgIcon
-      title={t('icons.birthingFriendly')}
-      {...defaultProps}
-      {...props}
-      className={iconCssClasses}
-    >
+    <SvgIcon title={t('icons.womanBaby')} {...defaultProps} {...props} className={iconCssClasses}>
       <path
         className="cls-1"
         style={{
