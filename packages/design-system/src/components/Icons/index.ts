@@ -35,6 +35,5 @@ export * from './StarIcon';
 export * from './UsaFlagIcon';
 export * from './UsaLogo';
 export * from './WarningIcon';
-export * from './AlertIcon';
 export * from './WhatsNewIcon';
 export * from './WhiteHouseLogo';
