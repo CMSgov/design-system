@@ -256,7 +256,7 @@ const iconData = [
     name: 'ds-whats-new-icon',
   },
   {
-    defaultTitle: 'Woman Baby',
+    defaultTitle: 'Woman with Baby',
     component: <ds-woman-baby-icon />,
     name: 'ds-woman-baby-icon',
   },
