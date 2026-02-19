@@ -95,11 +95,6 @@ const iconData = [
       'Component takes <code>direction</code> prop to determine if it is up, down, left or right.',
   },
   {
-    defaultTitle: 'Woman Baby',
-    component: <ds-woman-baby-icon />,
-    name: 'ds-woman-baby-icon',
-  },
-  {
     defaultTitle: 'Building in circle',
     component: <ds-building-circle-icon />,
     name: 'ds-building-circle-icon',
@@ -259,6 +254,11 @@ const iconData = [
     defaultTitle: 'What’s New',
     component: <ds-whats-new-icon />,
     name: 'ds-whats-new-icon',
+  },
+  {
+    defaultTitle: 'Woman Baby',
+    component: <ds-woman-baby-icon />,
+    name: 'ds-woman-baby-icon',
   },
 ];
 
