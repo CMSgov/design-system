@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import TabPanel from './TabPanel';
 import Tabs from './Tabs';
+import { getPanelChildren, getDefaultSelectedId } from './Tabs';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -252,5 +253,65 @@ describe('Tabs', function () {
     expect(panelEls[0].getAttribute('aria-hidden')).toBe('true');
     expect(panelEls[1].getAttribute('aria-hidden')).toBe('false');
     expect(panelEls[2].getAttribute('aria-hidden')).toBe('true');
+  });
+  describe('getDefaultSelectedId', () => {
+    it('returns the id of the first TabPanel when children is an array', () => {
+      const children = createPanels(3);
+
+      const selected = getDefaultSelectedId({ children });
+
+      expect(selected).toBe(getPanelId(1));
+    });
+
+    it('returns undefined when there are no TabPanel children', () => {
+      const children: React.ReactNode = [null, false, 'hello', <div key="d">nope</div>];
+
+      const selected = getDefaultSelectedId({ children });
+
+      expect(selected).toBeUndefined();
+    });
+  });
+
+  describe('getPanelChildren', () => {
+    it('returns all TabPanel children when children is an array', () => {
+      const children = createPanels(3);
+
+      const result = getPanelChildren(children);
+
+      expect(result).toHaveLength(3);
+      expect(result.map((p) => p.props.id)).toEqual([getPanelId(1), getPanelId(2), getPanelId(3)]);
+    });
+
+    it('works when children is a single TabPanel element (not an array)', () => {
+      const children = createPanels(1)[0];
+
+      const result = getPanelChildren(children);
+
+      expect(result).toHaveLength(1);
+      expect(result[0].props.id).toBe(getPanelId(1));
+    });
+
+    it('filters out non-TabPanel children', () => {
+      const children: React.ReactNode = [
+        <div key="x">not a panel</div>,
+        ...createPanels(2),
+        'hello',
+        null,
+        false,
+      ];
+
+      const result = getPanelChildren(children);
+
+      expect(result).toHaveLength(2);
+      expect(result.map((p) => p.props.id)).toEqual([getPanelId(1), getPanelId(2)]);
+    });
+
+    it('returns an empty array when there are no TabPanel children', () => {
+      const children: React.ReactNode = [<div key="x">nope</div>, 'hello', null, false];
+
+      const result = getPanelChildren(children);
+
+      expect(result).toEqual([]);
+    });
   });
 });
