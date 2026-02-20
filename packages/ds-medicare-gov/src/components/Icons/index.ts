@@ -1,3 +1,4 @@
+export { default as AbuseIcon } from './AbuseIcon';
 export { default as CheckShieldIcon } from './CheckShieldIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
