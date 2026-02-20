@@ -13,7 +13,6 @@ export function WomanBabyIcon(props: IconCommonProps): React.ReactElement {
   return (
     <SvgIcon title={t('icons.womanBaby')} {...defaultProps} {...props} className={iconCssClasses}>
       <path
-        className="cls-1"
         style={{
           fill: '#000',
           strokeWidth: 0,
