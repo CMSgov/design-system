@@ -1,0 +1,68 @@
+---
+title: Form Review
+intro: The Form Review pattern is intended to allow people to review and edit their answers to forms submitted on CMS websites. Particularly for longer, multi-page forms, a Review pattern can reduce data entry errors and give users confidence in their responses.
+cmsgov:
+  figmaNodeId: 16517-3825
+core:
+  figmaNodeId: 16517-3825
+#   storybookLink:
+healthcare:
+  figmaNodeId: 16517-3825
+medicare:
+  figmaNodeId: 16517-3825
+---
+
+## Examples
+
+### Form review, edit by line
+
+Storybook Example
+
+### Form review, edit by section
+
+Storybook Example
+
+### Variations
+
+The Form Review pattern allows you to choose whether users can edit their answers by question or by section.
+
+- Edit by line allows users to change their answers by individual question.
+- Edit by section allows users to return to a section of the form and edit any of the answers within that section.
+
+Please note that the edit by section variation suggests placing the link to the form section next to the heading of the section being reviewed. The `Review` component itself cannot be used to implement that behavior.
+
+## Guidance
+
+This pattern uses the [Review](/components/review/) component.
+
+### When to use
+
+Use the Form Review pattern any time you're asking users to submit information beyond a basic search, to allow them a chance to review their answers and make any changes before submitting.
+
+### Guidelines
+
+- Match the title of the page containing the form with the correct section on the Review, as well as the form labels.
+- Make sure that the form review page follows the same sequence of sections and questions in the form.
+- Use the 'edit by line' pattern when you want users to be able to edit single form fields independently of other fields.
+- Use the 'edit by section' pattern when you want users to be able to edit entire sections of the form. A good use case of this pattern would be if questions in one section impacted questions within the same section.
+- Form Review pages should always include a 'submit' button at the bottom of the review.
+
+### When to consider alternatives
+
+Do not use the `Review` component or the Form Review pattern for forms where the answer is not reviewable or editable. An example here is a search form. The results of the search already provide the user with feedback from their query, and most search forms allow users to redo a search thus rendering the features of the Form Review pattern unneccessary.
+
+## Accessibility
+
+The `Review` component and Form Review pattern are made up of text and links. Provided that the text and links meet their respective accessibility guidelines, the `Review` component and Form Review pattern should as well.
+
+Content designers should ensure that the form content and its subsequent review page meet their product’s content writing guidelines for clarity and ease of understanding.
+
+- Content designers should ensure that the form content meets their product's content writing guidelines for clarity and ease of understanding.
+- Visual designers and engineers should adhere to the accessibility guidance for [links](/foundation/typography/links/#accessibility).
+- Visual designers and engineers should adhere to the accessibility guidance for [buttons](/components/button/).
+
+### Accessibility Testing
+
+Components included on Form Review pages should be tested for accessibility according to their documentation.
+
+This page, as a whole, should also be tested to ensure that there are no focus traps, and that navigation from section to section is as expected.
