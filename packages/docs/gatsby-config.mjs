@@ -1,5 +1,5 @@
 // @ts-check
-import remarkGfm from "remark-gfm"
+import remarkGfm from 'remark-gfm';
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -8,7 +8,8 @@ const config = {
   siteMetadata: {
     title: `cms-design-system-docs`,
     siteUrl: `https://design.cms.gov`,
-    description: 'The CMS design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.'
+    description:
+      'The CMS design system is a set of open source design and front-end development resources for creating Section 508 compliant, responsive, and consistent websites.',
   },
   plugins: [
     'gatsby-plugin-sass',
@@ -70,7 +71,7 @@ const config = {
         mdxOptions: {
           remarkPlugins: [remarkGfm],
         },
-        extensions: [`.mdx`, `.md`]
+        extensions: [`.mdx`, `.md`],
       },
     },
     {
@@ -81,6 +82,7 @@ const config = {
           accountId: '6704482',
           trustKey: '39033',
           agentID: '1134604697',
+          browserAgentVersion: '1.293',
           licenseKey: 'NRJS-d12a0b7909b564e0959',
           applicationID: '1134604697',
           beacon: 'gov-bam.nr-data.net',
