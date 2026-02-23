@@ -1,7 +1,7 @@
 const proc = require('process');
 
 const HeadComponentsJs = (content) => (
-  <script type="text/javascript" dangerouslySetInnerHTML={content}></script>
+  <script key={'tealium-tags'} type="text/javascript" dangerouslySetInnerHTML={content}></script>
 );
 
 exports.onRenderBody = ({ setPreBodyComponents }) => {
