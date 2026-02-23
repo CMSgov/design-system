@@ -1,4 +1,5 @@
 import {
+  BirthingFriendlyIcon,
   RoundedStarIcon,
   PharmacyIcon,
   PiggyBankIcon,
@@ -14,6 +15,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'Birthing Friendly',
+    component: <BirthingFriendlyIcon />,
+    name: 'BirthingFriendlyIcon',
+  },
   {
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
