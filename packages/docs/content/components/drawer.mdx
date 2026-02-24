@@ -41,12 +41,27 @@ A header and/or footer can have a "sticky" position if the following properties 
 - `isHeaderSticky`
 - `isFooterSticky`
 
+<ThemeContent neverThemes={['medicare']}>
+
 <StorybookExample
   componentName="sticky-drawer"
   storyId="components-drawer--default"
   minHeight={300}
   controls="isHeaderSticky:!true"
 />
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={'medicare'}>
+
+<StorybookExample
+  componentName="drawer"
+  storyId="medicare-medicaregovhelpdrawer--help-drawer-toggle-with-drawer"
+  controls="isHeaderSticky:!true"
+  minHeight={300}
+/>
+
+</ThemeContent>
 
 ## Guidance
 
@@ -57,6 +72,7 @@ A header and/or footer can have a "sticky" position if the following properties 
 </ThemeContent>
 
 ### When to use
+
 `Drawer`
 
 - When users need additional information that should remain viewable while they interact with the main page, such as detailed explanations, guidelines, or interactive elements like forms.
@@ -65,10 +81,13 @@ A header and/or footer can have a "sticky" position if the following properties 
 - When optional information is needed to complete a task without overwhelming the primary content on the page.
 
 `HelpDrawer`
+
 - When you need to track how users interact with the content, such as monitoring how often the drawer is opened or engaged with.
 
 ### Guidelines
+
 `Drawer`
+
 - A Drawer is a component that provides a space for displaying medium to long-form content.
 - Link text used to trigger the `Drawer` should be specific and descriptive.
 - Avoid using only "Learn more" to link to help `Drawer` content.
@@ -76,6 +95,7 @@ A header and/or footer can have a "sticky" position if the following properties 
 - The `Drawer` content area should include a close button clearly at the top.
 
 `Help Drawer`
+
 - The `HelpDrawer` extends the `Drawer` by adding analytics capabilities, which can help track user interactions.
 - (Medicare only) All `HelpDrawer` links will include a help icon with the link to indicate the link is a help option.
 
@@ -91,6 +111,7 @@ What do you do when there are multiple drawers on a page? The simplest behaviorâ
 - When the information must be displayed automatically without user initiation. `Drawers` rely on users selecting a link or button to open them. If content needs to appear automatically, such as onboarding tips or error messages, consider inline options that donâ€™t require user action.
 
 ### Display & behavior
+
 - On larger screens, the Drawer is fixed to the side of the screen, whereas on smaller screens, it overlays the entire screen.
 - Content within the Drawer can include a mix of text, HTML elements, or other components, allowing for flexibility in displaying information such as forms, images, links, or lists.
 
@@ -118,9 +139,9 @@ When `hasFocusTrap` is enabled...
 - Keyboard focus is trapped within the Drawer component.
 - Pressing <kbd>Escape</kbd> will close the Drawer.
 - A focus trap should not be used when it's anticipated that the user will rely on the Drawer as a reference resource for doing something outside of the Drawer.
-    - For example, if the user is completing a form, the Drawer may contain a reference guide defining specific requirements on the page.
+  - For example, if the user is completing a form, the Drawer may contain a reference guide defining specific requirements on the page.
 - There are times when it makes sense to trap focus within the Drawer.
-    - One occasion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, e.g., in a mobile layout.
+  - One occasion where it can benefit the user is when the Drawer is anticipated to fill the viewport of a screen, e.g., in a mobile layout.
 
 #### Accessibility testing
 
@@ -164,7 +185,9 @@ When `hasFocusTrap` is enabled...
 ### Web Component
 
 <StorybookDocLinks tech="wc">
-  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">Drawer</StorybookDocLink>
+  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">
+    Drawer
+  </StorybookDocLink>
 </StorybookDocLinks>
 
 ### Style customization
