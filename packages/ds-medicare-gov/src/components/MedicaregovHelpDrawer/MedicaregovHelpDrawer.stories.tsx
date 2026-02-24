@@ -1,35 +1,47 @@
-import { ArgTypes, Description, Primary, Subtitle, Title } from '@storybook/blocks';
 import { useState } from 'react';
 import { MedicaregovHelpDrawer } from './MedicaregovHelpDrawer';
 import { MedicaregovHelpDrawerToggle } from './MedicaregovHelpDrawerToggle';
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
+import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 
 const meta: Meta<typeof MedicaregovHelpDrawer> = {
   title: 'Medicare/MedicaregovHelpDrawer',
   component: MedicaregovHelpDrawer,
   argTypes: {
-    // @ts-ignore - Types are messed up for this story
-    backdropClickExits: {
-      // Until this pattern has solidified, we're not going to advertize this feature.
+    ariaLabel: {
       table: {
-        disable: true,
+        defaultValue: {
+          summary: 'Close help drawer',
+        },
+      },
+    },
+    children: {
+      control: 'text',
+      type: {
+        name: 'ReactNode' as 'string',
+        required: true,
+      },
+    },
+    headingLevel: {
+      table: {
+        defaultValue: {
+          summary: '3',
+        },
       },
     },
   },
+  args: {
+    footerTitle: 'Footer Title',
+    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
+    heading: 'Drawer Heading',
+  },
+  // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
   parameters: {
     theme: 'medicare',
     docs: {
-      // Customize so we can exclude the backdropClickExits
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <ArgTypes exclude={['backdropClickExits']} />
-        </>
-      ),
+      page: NoStoryDocTemplate,
+      underlyingHtmlElements: ['dialog'],
     },
   },
 };
@@ -66,7 +78,7 @@ const drawerContent = (
 );
 
 export const HelpDrawerToggleWithDrawer: Story = {
-  render: function Component() {
+  render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
     const hideDrawer = (...params) => {
@@ -77,11 +89,12 @@ export const HelpDrawerToggleWithDrawer: Story = {
     return (
       <>
         <MedicaregovHelpDrawer
+          {...args}
           onCloseClick={hideDrawer}
           heading="Drawer Heading"
           isOpen={isDrawerVisible}
         >
-          {drawerContent}
+          {args.children || drawerContent}
         </MedicaregovHelpDrawer>
         <MedicaregovHelpDrawerToggle
           showDrawer={showDrawer}
