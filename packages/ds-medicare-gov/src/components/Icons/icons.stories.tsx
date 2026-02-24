@@ -1,4 +1,5 @@
 import {
+  AbuseIcon,
   BirthingFriendlyIcon,
   RoundedStarIcon,
   PharmacyIcon,
@@ -15,6 +16,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'Abuse',
+    component: <AbuseIcon />,
+    name: 'AbuseIcon',
+  },
   {
     defaultTitle: 'Birthing Friendly',
     component: <BirthingFriendlyIcon />,

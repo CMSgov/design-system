@@ -1,3 +1,4 @@
+export { default as AbuseIcon } from './AbuseIcon';
 export { default as BirthingFriendlyIcon } from './BirthingFriendlyIcon';
 export { default as CheckShieldIcon } from './CheckShieldIcon';
 export { default as DrugsIcon } from './DrugsIcon';

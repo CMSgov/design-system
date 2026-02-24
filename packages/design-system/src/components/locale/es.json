@@ -35,6 +35,7 @@
     "filter": "{{label}} del filtro"
   },
   "icons": {
+    "abuse": "Abuso",
     "add": "Añadir",
     "alertCircle": "Alerta",
     "arrowsStacked": "Ordenar",
