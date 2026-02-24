@@ -108,7 +108,7 @@ export const HelpDrawerToggleWithDrawer: Story = {
 };
 
 export const HelpDrawerToggleOnDark: Story = {
-  render: function Component() {
+  render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
     const hideDrawer = (...params) => {
@@ -119,11 +119,12 @@ export const HelpDrawerToggleOnDark: Story = {
     return (
       <>
         <MedicaregovHelpDrawer
+          {...args}
           onCloseClick={hideDrawer}
           heading="Drawer Heading"
           isOpen={isDrawerVisible}
         >
-          {drawerContent}
+          {args.children || drawerContent}
         </MedicaregovHelpDrawer>
         <MedicaregovHelpDrawerToggle
           showDrawer={showDrawer}
