@@ -1,4 +1,5 @@
 import {
+  AbuseIcon,
   RoundedStarIcon,
   PharmacyIcon,
   PiggyBankIcon,
@@ -14,6 +15,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'Abuse',
+    component: <AbuseIcon />,
+    name: 'AbuseIcon',
+  },
   {
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
