@@ -81,7 +81,7 @@ export const EditBySection: Story = {
         <h1>Review & submit your application</h1>
 
         <div className="ds-u-margin-bottom--4">
-          <div className="ds-u-margin-bottom--3 ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
+          <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
             <h2>Personal Information</h2>
             <a href="javascript:void(0)">Edit</a>
           </div>
@@ -100,7 +100,7 @@ export const EditBySection: Story = {
         </div>
 
         <div className="ds-u-margin-bottom--4">
-          <div className="ds-u-margin-bottom--3 ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
+          <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
             <h2>Contact Information</h2>
             <a href="javascript:void(0)">Edit</a>
           </div>
@@ -121,7 +121,7 @@ export const EditBySection: Story = {
         </div>
 
         <div className="ds-u-margin-bottom--4">
-          <div className="ds-u-margin-bottom--3 ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
+          <div className="ds-u-display--flex ds-u-flex-direction--row ds-u-justify-content--between">
             <h2>Employment Information</h2>
             <a href="javascript:void(0)">Edit</a>
           </div>
