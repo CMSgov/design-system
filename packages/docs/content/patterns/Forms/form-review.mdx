@@ -1,5 +1,5 @@
 ---
-title: Form Review
+title: Form review
 intro: The Form Review pattern is intended to allow people to review and edit their answers to forms submitted on CMS websites. Particularly for longer, multi-page forms, a Review pattern can reduce data entry errors and give users confidence in their responses.
 cmsgov:
   figmaNodeId: 16517-3825
@@ -17,7 +17,7 @@ medicare:
 ### Form review, edit by line
 
 <StorybookExample
-  componentName="autocomplete"
+  componentName="form-review"
   storyId="patterns-form-review-examples--edit-by-line"
   minHeight={800}
 />
@@ -25,7 +25,7 @@ medicare:
 ### Form review, edit by section
 
 <StorybookExample
-  componentName="autocomplete"
+  componentName="form-review"
   storyId="patterns-form-review-examples--edit-by-section"
   minHeight={800}
 />
@@ -34,8 +34,8 @@ medicare:
 
 The Form Review pattern allows you to choose whether users can edit their answers by question or by section.
 
-- Edit by line allows users to change their answers by individual question.
-- Edit by section allows users to return to a section of the form and edit any of the answers within that section.
+- [Edit by line](/storybook/?path=/story/patterns-form-review-examples--edit-by-line) allows users to change their answers by individual question.
+- [Edit by section](/storybook/?path=/story/patterns-form-review-examples--edit-by-section) allows users to return to a section of the form and edit any of the answers within that section.
 
 Please note that the edit by section variation suggests placing the link to the form section next to the heading of the section being reviewed. The `Review` component itself cannot be used to implement that behavior.
 
@@ -51,13 +51,13 @@ Use the Form Review pattern any time you're asking users to submit information b
 
 - Match the title of the page containing the form with the correct section on the Review, as well as the form labels.
 - Make sure that the form review page follows the same sequence of sections and questions in the form.
-- Use the 'edit by line' pattern when you want users to be able to edit single form fields independently of other fields.
-- Use the 'edit by section' pattern when you want users to be able to edit entire sections of the form. A good use case of this pattern would be if questions in one section impacted questions within the same section.
-- Form Review pages should always include a 'submit' button at the bottom of the review.
+- Use the '[edit by line](/storybook/?path=/story/patterns-form-review-examples--edit-by-line)' pattern when you want users to be able to edit single form fields independently of other fields.
+- Use the '[edit by section](/storybook/?path=/story/patterns-form-review-examples--edit-by-section)' pattern when you want users to be able to edit entire sections of the form. A good use case of this pattern would be if questions in one section impacted questions within the same section.
+- Form Review pages should always include a `submit` button at the bottom of the review.
 
 ### When to consider alternatives
 
-Do not use the `Review` component or the Form Review pattern for forms where the answer is not reviewable or editable. An example here is a search form. The results of the search already provide the user with feedback from their query, and most search forms allow users to redo a search thus rendering the features of the Form Review pattern unneccessary.
+Do not use the `Review` component or the Form Review pattern for forms where the answer is not reviewable or editable. An example here is a search form. The results of the search already provide the user with feedback from their query, and most search forms allow users to redo a search thus rendering the features of the Form Review pattern unnecessary.
 
 ## Accessibility
 
