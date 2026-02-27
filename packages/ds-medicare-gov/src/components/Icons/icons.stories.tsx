@@ -7,6 +7,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  SwipeIcon,
 } from './index';
 
 export default {
@@ -63,6 +64,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a `variation` prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Swipe',
+    component: <SwipeIcon />,
+    name: 'SwipeIcon',
   },
 ];
 
