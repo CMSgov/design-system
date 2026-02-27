@@ -165,7 +165,6 @@
     "react-app-polyfill": "^3.0.0",
     "react-docgen-typescript": "2.4.0",
     "react-dom": "18.3.1",
-    "react-test-renderer": "18.3.1",
     "sass": "^1.53.0",
     "sass-loader": "10.2.1",
     "storybook": "8.6.1",
