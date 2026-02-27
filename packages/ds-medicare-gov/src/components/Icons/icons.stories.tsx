@@ -6,6 +6,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  HeartIcon,
 } from './index';
 
 export default {
@@ -29,6 +30,17 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: '[variation] Heart',
+    component: (
+      <>
+        <HeartIcon variation="empty" />
+        <HeartIcon variation="filled" />
+      </>
+    ),
+    name: 'HeartIcon',
+    notes: 'Takes a `variation` prop to determine if the heart is filled or just an outline.',
   },
   {
     defaultTitle: 'Information',
