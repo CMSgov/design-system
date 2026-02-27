@@ -6,6 +6,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  AboutIcon,
 } from './index';
 
 export default {
@@ -15,6 +16,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'About',
+    component: <AboutIcon />,
+    name: 'AboutIcon',
+  },
   {
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
