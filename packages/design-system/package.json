@@ -72,7 +72,7 @@
     "preact": "10.19.5",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
-    "react-day-picker": "8.10.1",
+    "react-day-picker": "9.14.0",
     "react-stately": "^3.37.0",
     "yargs": "^17.7.2"
   },
