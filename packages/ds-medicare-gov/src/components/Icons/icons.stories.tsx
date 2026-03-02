@@ -7,6 +7,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  HomeHealthServicesIcon,
 } from './index';
 
 export default {
@@ -35,6 +36,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
   },
   {
     defaultTitle: 'Information',
