@@ -7,6 +7,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  GetStartedIcon,
 } from './index';
 
 export default {
@@ -35,6 +36,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
   },
   {
     defaultTitle: 'Information',
