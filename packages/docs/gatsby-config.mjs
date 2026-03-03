@@ -82,7 +82,6 @@ const config = {
           accountId: '6704482',
           trustKey: '39033',
           agentID: '1134604697',
-          browserAgentVersion: '1.293',
           licenseKey: 'NRJS-d12a0b7909b564e0959',
           applicationID: '1134604697',
           beacon: 'gov-bam.nr-data.net',
