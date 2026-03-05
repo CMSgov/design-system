@@ -8,6 +8,7 @@ import {
   DrugsIcon,
   InfoCircleOutlineIcon,
   SwipeIcon,
+  WheelchairIcon,
   HeartIcon,
 } from './index';
 
@@ -82,6 +83,11 @@ const iconData = [
     defaultTitle: 'Swipe',
     component: <SwipeIcon />,
     name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Wheelchair',
+    component: <WheelchairIcon />,
+    name: 'WheelchairIcon',
   },
 ];
 

@@ -8,3 +8,4 @@ export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
 export { default as SwipeIcon } from './SwipeIcon';
+export { default as WheelchairIcon } from './WheelchairIcon';
