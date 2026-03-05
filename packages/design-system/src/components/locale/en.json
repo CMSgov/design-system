@@ -40,7 +40,9 @@
     "add": "Add",
     "alertCircle": "Alert",
     "arrowsStacked": "Sort",
+    "birthingFriendly": "birthing friendly",
     "calendar": "Calendar",
+    "heart": "Favorite",
     "upArrow": "up arrow",
     "downArrow": "down arrow",
     "leftArrow": "left arrow",
@@ -70,7 +72,8 @@
     "starHalf": "Half Star",
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning",
-    "whatsNew": "What’s New"
+    "whatsNew": "What’s New",
+    "wheelchair": "Wheelchair"
   },
   "idleTimeoutDialog": {
     "heading": "Are you still there?",
