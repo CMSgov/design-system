@@ -7,6 +7,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   InfoCircleOutlineIcon,
+  HospiceIcon,
   WheelchairIcon,
   HeartIcon,
 } from './index';
@@ -37,6 +38,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Hospice',
+    component: <HospiceIcon />,
+    name: 'HospiceIcon',
   },
   {
     defaultTitle: '[variation] Heart',
