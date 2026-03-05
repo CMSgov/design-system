@@ -8,6 +8,8 @@ import {
   DrugsIcon,
   InfoCircleOutlineIcon,
   CostsCircleIcon,
+  WheelchairIcon,
+  HeartIcon,
 } from './index';
 
 export default {
@@ -43,6 +45,18 @@ const iconData = [
     name: 'DrugsIcon',
   },
   {
+    defaultTitle: '[variation] Heart',
+    component: (
+      <>
+        <HeartIcon variation="empty" />
+        <HeartIcon variation="filled" />
+      </>
+    ),
+    name: 'HeartIcon',
+    notes:
+      'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
+  },
+  {
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
@@ -68,7 +82,12 @@ const iconData = [
     ),
     name: 'RoundedStarIcon',
     notes:
-      'Takes a `variation` prop to determine if the star is fully filled, half filled, or just an outline.',
+      'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Wheelchair',
+    component: <WheelchairIcon />,
+    name: 'WheelchairIcon',
   },
 ];
 
