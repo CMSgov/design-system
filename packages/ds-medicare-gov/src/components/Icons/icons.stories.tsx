@@ -1,14 +1,15 @@
 import {
   AbuseIcon,
+  AppleIcon,
   BirthingFriendlyIcon,
-  RoundedStarIcon,
-  PharmacyIcon,
-  PiggyBankIcon,
   CheckShieldIcon,
   DrugsIcon,
-  InfoCircleOutlineIcon,
-  WheelchairIcon,
   HeartIcon,
+  InfoCircleOutlineIcon,
+  PharmacyIcon,
+  PiggyBankIcon,
+  RoundedStarIcon,
+  WheelchairIcon,
 } from './index';
 
 export default {
@@ -22,6 +23,11 @@ const iconData = [
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
     name: 'AbuseIcon',
+  },
+  {
+    defaultTitle: 'Apple',
+    component: <AppleIcon />,
+    name: 'AppleIcon',
   },
   {
     defaultTitle: 'Birthing Friendly',
