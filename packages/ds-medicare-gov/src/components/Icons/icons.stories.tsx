@@ -80,14 +80,14 @@ const iconData = [
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
   },
   {
-    defaultTitle: 'Wheelchair',
-    component: <WheelchairIcon />,
-    name: 'WheelchairIcon',
-  },
-  {
     defaultTitle: 'Swipe',
     component: <SwipeIcon />,
     name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Wheelchair',
+    component: <WheelchairIcon />,
+    name: 'WheelchairIcon',
   },
 ];
 
