@@ -1,5 +1,6 @@
 import {
   AbuseIcon,
+  BirthingFriendlyIcon,
   RoundedStarIcon,
   PharmacyIcon,
   PiggyBankIcon,
@@ -7,6 +8,8 @@ import {
   DrugsIcon,
   InfoCircleOutlineIcon,
   DialysisServicesIcon,
+  WheelchairIcon,
+  HeartIcon,
 } from './index';
 
 export default {
@@ -22,6 +25,11 @@ const iconData = [
     name: 'AbuseIcon',
   },
   {
+    defaultTitle: 'Birthing Friendly',
+    component: <BirthingFriendlyIcon />,
+    name: 'BirthingFriendlyIcon',
+  },
+  {
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
     name: 'CheckShieldIcon',
@@ -35,6 +43,18 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: '[variation] Heart',
+    component: (
+      <>
+        <HeartIcon variation="empty" />
+        <HeartIcon variation="filled" />
+      </>
+    ),
+    name: 'HeartIcon',
+    notes:
+      'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
   },
   {
     defaultTitle: 'Information',
@@ -62,7 +82,12 @@ const iconData = [
     ),
     name: 'RoundedStarIcon',
     notes:
-      'Takes a `variation` prop to determine if the star is fully filled, half filled, or just an outline.',
+      'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Wheelchair',
+    component: <WheelchairIcon />,
+    name: 'WheelchairIcon',
   },
 ];
 
