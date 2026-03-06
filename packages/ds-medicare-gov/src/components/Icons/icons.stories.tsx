@@ -1,14 +1,15 @@
 import {
   AbuseIcon,
   BirthingFriendlyIcon,
-  RoundedStarIcon,
-  PharmacyIcon,
-  PiggyBankIcon,
   CheckShieldIcon,
   DrugsIcon,
-  InfoCircleOutlineIcon,
-  WheelchairIcon,
   HeartIcon,
+  InfoCircleOutlineIcon,
+  PharmacyIcon,
+  PiggyBankIcon,
+  RoundedStarIcon,
+  TeletypewriterIcon,
+  WheelchairIcon,
 } from './index';
 
 export default {
@@ -77,6 +78,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',
