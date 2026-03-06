@@ -9,6 +9,7 @@ import {
   InfoCircleOutlineIcon,
   WheelchairIcon,
   HeartIcon,
+  LongtermCareIcon,
 } from './index';
 
 export default {
@@ -54,6 +55,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Long-term Care',
+    component: <LongtermCareIcon />,
+    name: 'LongtermCareIcon',
   },
   {
     defaultTitle: 'Pharmacy',
