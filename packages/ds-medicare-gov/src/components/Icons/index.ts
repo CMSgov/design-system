@@ -7,4 +7,5 @@ export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
+export { default as TeletypewriterIcon } from './TTYIcon';
 export { default as WheelchairIcon } from './WheelchairIcon';
