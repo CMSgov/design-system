@@ -4,6 +4,7 @@ export { default as CheckShieldIcon } from './CheckShieldIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as HeartIcon } from './HeartIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
+export { default as LongtermCareIcon } from './LongtermCareIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
