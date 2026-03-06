@@ -1,14 +1,15 @@
 import {
   AbuseIcon,
   BirthingFriendlyIcon,
-  RoundedStarIcon,
-  PharmacyIcon,
-  PiggyBankIcon,
   CheckShieldIcon,
   DrugsIcon,
-  InfoCircleOutlineIcon,
-  WheelchairIcon,
   HeartIcon,
+  InfoCircleOutlineIcon,
+  NursingHomeIcon,
+  PharmacyIcon,
+  PiggyBankIcon,
+  RoundedStarIcon,
+  WheelchairIcon,
 } from './index';
 
 export default {
@@ -54,6 +55,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Nursing Home',
+    component: <NursingHomeIcon />,
+    name: 'NursingHomeIcon',
   },
   {
     defaultTitle: 'Pharmacy',
