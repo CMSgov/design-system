@@ -32,13 +32,13 @@ export function useDialogAnalytics({
   // We need to send modal_closed only when it was open and then closed.
   const headingRef = useNativeDialogAnalytics({
     isOpen,
-    onOpen: (content?: string) => {
-      sendDialogEvent(content, {
+    onOpen: ({ headingContent }) => {
+      sendDialogEvent(headingContent, {
         event_name: 'modal_impression',
       });
     },
-    onClose: (content?: string) => {
-      sendDialogEvent(content, {
+    onClose: ({ headingContent }) => {
+      sendDialogEvent(headingContent, {
         event_name: 'modal_closed',
       });
     },

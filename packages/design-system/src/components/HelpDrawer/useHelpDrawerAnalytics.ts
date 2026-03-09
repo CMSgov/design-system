@@ -10,14 +10,14 @@ export default function useHelpDrawerAnalytics({
   isOpen,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
-    content: string | undefined,
-    eventAttributes: { event_name: string }
+    headingContent: string | undefined,
+    eventAttributes: { event_name: string; text?: string }
   ) {
     if (analytics !== true && (!config().helpDrawerSendsAnalytics || analytics === false)) {
       return;
     }
 
-    const eventHeadingText = analyticsLabelOverride ?? content;
+    const eventHeadingText = analyticsLabelOverride ?? headingContent;
 
     if (!eventHeadingText) {
       console.error('No content found for Help Drawer analytics event');
@@ -35,14 +35,15 @@ export default function useHelpDrawerAnalytics({
   // We need to send help_drawer_closed only when it was open and then closed.
   const headingRef = useNativeDialogAnalytics({
     isOpen,
-    onOpen: (content?: string) => {
-      sendHelpDrawerEvent(content, {
+    onOpen: ({ headingContent }) => {
+      sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_opened',
       });
     },
-    onClose: (content?: string) => {
-      sendHelpDrawerEvent(content, {
+    onClose: ({ headingContent, closeButtonText }) => {
+      sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_closed',
+        text: closeButtonText,
       });
     },
   });

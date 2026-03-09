@@ -2,10 +2,15 @@ import { useRef, useEffect } from 'react';
 import getAnalyticsContentFromRefs from '../analytics/getAnalyticsContentFromRefs';
 import usePrevious from '../utilities/usePrevious';
 
+export interface NativeDialogAnalyticsContent {
+  headingContent?: string;
+  closeButtonText?: string;
+}
+
 export interface UseNativeDialogAnalyticsProps {
   isOpen: boolean;
-  onOpen: (content?: string) => any;
-  onClose?: (content?: string) => any;
+  onOpen?: (content: NativeDialogAnalyticsContent) => void;
+  onClose?: (content: NativeDialogAnalyticsContent) => void;
 }
 
 /**
@@ -39,14 +44,25 @@ export function useNativeDialogAnalytics({
   const prevIsOpen = usePrevious(isOpen);
   useEffect(() => {
     const headingContent = getAnalyticsContentFromRefs([headingRef]);
+    const closeButton = headingRef.current?.parentElement?.querySelector(
+      '.ds-c-drawer__close-button'
+    ) as HTMLElement | null;
+
+    const closeButtonText = closeButton?.textContent?.trim() || undefined;
+
+    const analyticsContent = {
+      headingContent,
+      closeButtonText,
+    };
+
     // We want to call onOpen when it's open once and only once.
     // We want to call onClose only when it was open and then closed.
     if (isOpen && isOpen !== prevIsOpen) {
       // It either started open or was closed and now is open
-      onOpen(headingContent);
+      onOpen(analyticsContent);
     } else if (!isOpen && prevIsOpen === true) {
       // Only trigger if it was previously open
-      onClose(headingContent);
+      onClose(analyticsContent);
     }
   }, [isOpen, prevIsOpen]);
 
