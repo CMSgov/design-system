@@ -8,6 +8,7 @@ export default function useHelpDrawerAnalytics({
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   isOpen,
+  triggerButtonText,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     headingContent: string | undefined,
@@ -38,6 +39,7 @@ export default function useHelpDrawerAnalytics({
     onOpen: ({ headingContent }) => {
       sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_opened',
+        text: triggerButtonText ?? 'Open',
       });
     },
     onClose: ({ headingContent, closeButtonText }) => {

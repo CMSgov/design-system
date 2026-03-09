@@ -79,7 +79,7 @@ describe('HelpDrawer', () => {
     });
 
     it('sends analytics event when help drawer starts open', () => {
-      renderHelpDrawer({ isOpen: true });
+      renderHelpDrawer({ isOpen: true, triggerButtonText: 'Toggle' });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
