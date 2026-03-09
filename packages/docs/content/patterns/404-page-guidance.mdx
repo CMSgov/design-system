@@ -27,13 +27,12 @@ core:
 ### Guidelines
 
 - Use the error messaging provided in the 404 pattern designs. Alternative messaging may need to be approved by the CMS Content Team.
-- Let users know what they can do next. This might be advice such as correctin typos in the URL address and updating bookmarks when they find the page they want.
+- Let users know what they can do next. This might be advice such as correcting typos in the URL address and updating bookmarks when they find the page they want.
 - Give users a way out of the "dead end" error page by directing them to the call to action (CTA). This CTA can be a search option to find the page they are looking for or a button leading users to a homepage. If using a button, users should be redirected to the following pages for each theme:
   - **Healthcare**: For authenticated experiences (deep links), if the URL doesn't exist, individuals will log in and land on the _Accounts dashboard_.
   - **Medicare**: [www.medicare.gov/](www.medicare.gov/)
   - **CMS**: [www.cms.gov/](www.cms.gov/)
 - Only include a search option on the error page if there isn't already a search box in the site's header or anywhere else on the page.
-- Both center-aligned and left-aligned 404 page designs are available. Your choice should be guided by the context of your website and the content on the 404 page itself.
 
 ### When to consider alternatives
 
@@ -47,13 +46,11 @@ core:
 ### Display & behavior
 
 - The 404 page should always display the site's standard header and footer. This provides users with familiar navigation and a sense of place, rather than leaving them feeling lost.
-- The page ust be fully responsive, displaying correctly on all screen sizes, from mobile devices to desktop computers.
+- The page must be fully responsive, displaying correctly on all screen sizes, from mobile devices to desktop computers.
 - If interactive elements are included (such as a search bar or button), they should be fully functional.
 - All links on the page, particularly the CTA (e.g., "Return to homepage"), must be clearly labeled and lead to a valid, helpful destination.
 
 ## Accessibility
-
-### Accessibility
 
 - Immediately notify users relying on assistive tech, like screen readers, when they have come across a 404 page.
 - Users who are using a keyboard to navigate the page must be able to access the CTA button or search option on the 404 page.
@@ -70,7 +67,7 @@ core:
 
 All of the analytics functionality described here assumes that your application has the `utag` object stored on the global window object. If your team is not using Tealium for analytics, the functionality described here will not work for you.
 
-In addition to [component level analytics events](https://design.cms.gov/components/analytics/?theme=core), it is recommended [insert Blast documentation link here] that you implement analytics recording on these additional events:
+In addition to [component level analytics events](https://design.cms.gov/components/analytics/?theme=core), it is [recommended](https://confluence.cms.gov/spaces/BLSTANALYT/pages/1247561324/Medicare+404+Pages+Tagging+Strategy+Implementation) that you implement analytics recording on these additional events:
 
 1. Page view or page load
 2. Link interactions that lead to internal pages
