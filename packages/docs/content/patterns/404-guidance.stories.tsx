@@ -4,10 +4,10 @@ export default {
   title: 'Patterns/404 Page guidance',
 };
 
-const PageContent = ({ alignment }) => {
+const PageContent = () => {
   return (
     <main className="ds-l-container">
-      <div className={`ds-l-row ${alignment === 'center' ? 'ds-u-justify-content--center' : ''}`}>
+      <div className="ds-l-row">
         <h1 className="ds-text-heading--5xl">Page Not Found</h1>
         <p>
           Sorry, we cannot find the page. It have moved or be renamed. Check the address is correct
@@ -21,10 +21,6 @@ const PageContent = ({ alignment }) => {
   );
 };
 
-export const CenterAligned = () => {
-  return <PageContent alignment="center" />;
-};
-
-export const LeftAligned = () => {
-  return <PageContent alignment="left" />;
+export const Page = () => {
+  return <PageContent />;
 };
