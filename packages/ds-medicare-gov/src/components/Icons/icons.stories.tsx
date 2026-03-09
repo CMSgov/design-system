@@ -1,4 +1,5 @@
 import {
+  AboutIcon,
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
@@ -20,6 +21,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'About',
+    component: <AboutIcon />,
+    name: 'AboutIcon',
+  },
   {
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,

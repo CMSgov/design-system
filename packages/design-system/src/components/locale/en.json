@@ -35,6 +35,7 @@
     "filter": "{{label}} filter"
   },
   "icons": {
+    "about": "About",
     "abuse": "Abuse",
     "add": "Add",
     "alertCircle": "Alert",
