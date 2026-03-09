@@ -3,6 +3,7 @@ import {
   BirthingFriendlyIcon,
   CheckShieldIcon,
   DrugsIcon,
+  FilterIcon,
   HeartIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
@@ -38,6 +39,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Filters',
+    component: <FilterIcon />,
+    name: 'FilterIcon',
   },
   {
     defaultTitle: '[variation] Heart',
