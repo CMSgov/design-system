@@ -4,11 +4,13 @@ import {
   BirthingFriendlyIcon,
   CheckShieldIcon,
   DrugsIcon,
+  FilterIcon,
   HeartIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  SwipeIcon,
   WheelchairIcon,
 } from './index';
 
@@ -43,6 +45,11 @@ const iconData = [
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Filters',
+    component: <FilterIcon />,
+    name: 'FilterIcon',
   },
   {
     defaultTitle: '[variation] Heart',
@@ -83,6 +90,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Swipe',
+    component: <SwipeIcon />,
+    name: 'SwipeIcon',
   },
   {
     defaultTitle: 'Wheelchair',
