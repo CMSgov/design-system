@@ -16,6 +16,7 @@ Array [
     "event_extension": "Design system integration",
     "event_name": "help_drawer_closed",
     "heading": "HelpDrawer title",
+    "text": "Close",
   },
 ]
 `;
