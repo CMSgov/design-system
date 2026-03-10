@@ -88,10 +88,10 @@ useEffect(() ⇒ {
     const analyticsEvent = {
         content_language: 'en',
         content_type: 'js',
-        Page_name: ’404 Page’,
-        page_type:’true’, // If page is a 404 (error page) this is set to true, otherwise it is false
-        site_environment: ‘prod’,
-        site_section: ‘404 page’
+        Page_name: '404 Page',
+        page_type:'true', // If page is a 404 (error page) this is set to true, otherwise it is false
+        site_environment: 'prod',
+        site_section: '404 page'
     };
     sendViewEvent(analyticsEvent);
 }, [location.pathname]);
