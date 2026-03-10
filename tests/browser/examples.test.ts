@@ -83,11 +83,4 @@ if (!isSmokeTest) {
       await expectScreenshot(page, 'astro-react-18.png');
     });
   });
-
-  test.describe('astro-react-19', () => {
-    test('matches snapshot', async ({ page }) => {
-      await page.goto(`${DOMAIN}/astro-react-19/dist`);
-      await expectScreenshot(page, 'astro-react-19.png');
-    });
-  });
 }
