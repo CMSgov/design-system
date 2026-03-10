@@ -2,7 +2,7 @@ import type * as React from 'react';
 import ExampleFooter from './ExampleFooter';
 
 interface EmbeddedExampleProps {
-  children: React.ReactElement;
+  children: React.ReactElement<any>;
 }
 
 /**
