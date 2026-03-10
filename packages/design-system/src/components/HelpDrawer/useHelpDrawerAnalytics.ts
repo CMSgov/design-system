@@ -9,7 +9,6 @@ export default function useHelpDrawerAnalytics({
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   isOpen,
-  closeButtonText,
   triggerButtonText,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
@@ -47,7 +46,6 @@ export default function useHelpDrawerAnalytics({
     onClose: (headingContent) => {
       sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_closed',
-        text: closeButtonText ?? t('drawer.closeButtonText'),
       });
     },
   });

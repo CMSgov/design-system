@@ -111,14 +111,6 @@ describe('HelpDrawer', () => {
       expect(tealiumMock).toHaveBeenCalledTimes(2);
     });
 
-    it('help_drawer_closed event includes closeButtonText in the analytics text field when provided via props', () => {
-      const { rerenderHelpDrawer } = renderHelpDrawer();
-      expect(tealiumMock).toHaveBeenCalledTimes(1);
-      rerenderHelpDrawer({ isOpen: false, closeButtonText: 'Close this drawer!' });
-      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
-      expect(tealiumMock).toHaveBeenCalledTimes(2);
-    });
-
     it('sends analytics event when heading is non-string', () => {
       renderHelpDrawer({ heading: <span>Hello World</span> });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();

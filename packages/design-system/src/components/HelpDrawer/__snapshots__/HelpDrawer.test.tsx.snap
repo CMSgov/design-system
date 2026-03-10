@@ -1,16 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HelpDrawer Analytics event tracking help_drawer_closed event includes closeButtonText in the analytics text field when provided via props 1`] = `
-Array [
-  Object {
-    "event_extension": "Design system integration",
-    "event_name": "help_drawer_closed",
-    "heading": "HelpDrawer title",
-    "text": "Close this drawer!",
-  },
-]
-`;
-
 exports[`HelpDrawer Analytics event tracking help_drawer_opened event includes triggerButtonText in the analytics text field when provided via props 1`] = `
 Array [
   Object {
@@ -39,7 +28,6 @@ Array [
     "event_extension": "Design system integration",
     "event_name": "help_drawer_closed",
     "heading": "HelpDrawer title",
-    "text": "Close",
   },
 ]
 `;
