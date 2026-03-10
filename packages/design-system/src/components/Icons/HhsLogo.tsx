@@ -8,7 +8,7 @@ const defaultProps = {
   ariaHidden: false,
 };
 
-export function HHSLogo(props: IconCommonProps): React.ReactElement {
+export function HHSLogo(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--hhs-logo ${props.className || ''}`;
 
   return (

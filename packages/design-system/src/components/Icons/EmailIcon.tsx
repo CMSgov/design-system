@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-export function EmailIcon(props: IconCommonProps): React.ReactElement {
+export function EmailIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--email ${props.className || ''}`;
 
   return (

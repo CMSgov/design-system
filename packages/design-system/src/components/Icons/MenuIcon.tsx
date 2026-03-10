@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 448 512',
 };
 
-export function MenuIcon(props: IconCommonProps): React.ReactElement {
+export function MenuIcon(props: IconCommonProps): React.ReactElement<any> {
   const classes = classNames(props.className, 'ds-c-icon--menu');
 
   return (

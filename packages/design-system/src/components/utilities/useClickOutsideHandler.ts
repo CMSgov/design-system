@@ -14,7 +14,7 @@ type ClickOutsideEvent = MouseEvent | TouchEvent;
  * @param handler - called when the event target was outside the "inside" elements
  */
 export function useClickOutsideHandler(
-  insideRefs: RefObject<HTMLElement>[],
+  insideRefs: RefObject<HTMLElement | null>[],
   handler: (e: ClickOutsideEvent) => any
 ) {
   function handleClickOutside(event: ClickOutsideEvent) {

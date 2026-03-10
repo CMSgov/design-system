@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 17 22',
 };
 
-export function PdfIcon(props: IconCommonProps): React.ReactElement {
+export function PdfIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--pdf ${props.className || ''}`;
 
   return (

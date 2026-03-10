@@ -4,7 +4,7 @@
  * Borrowed from https://github.com/gregberge/react-merge-refs/blob/main/src/index.tsx
  */
 export default function mergeRefs<T = any>(
-  refs: Array<React.RefObject<T> | React.Ref<T>>
+  refs: Array<React.RefObject<T | null> | React.Ref<T>>
 ): React.RefCallback<T> {
   return (value) => {
     refs.forEach((ref) => {

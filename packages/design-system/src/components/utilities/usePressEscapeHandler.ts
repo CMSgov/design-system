@@ -8,7 +8,7 @@ import { RefObject, useEffect } from 'react';
  * @param handler - Function called if the escape key is pressed
  */
 export function usePressEscapeHandler(
-  ref: RefObject<HTMLElement> | null | undefined,
+  ref: RefObject<HTMLElement | null> | null | undefined,
   handler: (e: KeyboardEvent) => any
 ) {
   function handleEscapeKey(event: KeyboardEvent) {

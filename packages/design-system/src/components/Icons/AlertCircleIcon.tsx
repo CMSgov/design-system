@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '37 2 135 135',
 };
 
-export function AlertCircleIcon(props: IconCommonProps): React.ReactElement {
+export function AlertCircleIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--alert-circle ${props.className || ''}`;
 
   return (

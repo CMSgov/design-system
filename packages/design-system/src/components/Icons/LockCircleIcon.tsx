@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 54 54',
 };
 
-export function LockCircleIcon(props: IconCommonProps): React.ReactElement {
+export function LockCircleIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--lock-circle ${props.className || ''}`;
 
   return (

@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 291 89',
 };
 
-export function UsaLogo(props: IconCommonProps): React.ReactElement {
+export function UsaLogo(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--usa-logo ${props.className || ''}`;
 
   return (

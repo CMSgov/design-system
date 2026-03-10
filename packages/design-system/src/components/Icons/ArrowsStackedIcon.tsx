@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 10 14',
 };
 
-export function ArrowsStackedIcon(props: IconCommonProps): React.ReactElement {
+export function ArrowsStackedIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--arrows-stacked ${props.className || ''}`;
 
   return (

@@ -145,7 +145,7 @@ export type DateFieldProps = BaseDateFieldProps &
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/date-field/multi-input-date-field/).
  */
-export function MultiInputDateField(props: DateFieldProps): React.ReactElement {
+export function MultiInputDateField(props: DateFieldProps): React.ReactElement<any> {
   const id = useId('date-field--', props.id);
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });

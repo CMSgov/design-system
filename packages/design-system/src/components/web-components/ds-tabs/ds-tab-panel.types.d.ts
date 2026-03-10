@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React from 'react';
+import React, { type JSX } from 'react';
 
 declare global {
   namespace React.JSX {

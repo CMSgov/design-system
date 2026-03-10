@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '27 0 160 135',
 };
 
-export function WarningIcon(props: IconCommonProps): React.ReactElement {
+export function WarningIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--warning ${props.className || ''}`;
 
   return (

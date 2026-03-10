@@ -70,7 +70,7 @@ export interface VerticalNavItemProps {
   _status?: StatusType;
 }
 
-export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement => {
+export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement<any> => {
   const { defaultCollapsed = false } = props;
   const rootId = useId('vertical-nav-item--', props.id);
   const subnavId = `${rootId}__subnav`;

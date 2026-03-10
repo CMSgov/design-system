@@ -12,7 +12,7 @@ const defaultChildren = 'This is an example of a default Review component.';
 
 const renderReview = createGenericTestRenderer(
   'ds-review',
-  (attrs = {}, children: React.ReactNode = null, slotContent: React.ReactElement = null) => (
+  (attrs = {}, children: React.ReactNode = null, slotContent: React.ReactElement<any> = null) => (
     <ds-review {...(attrs as any)}>
       {children}
       {slotContent && <div slot="edit-content">{slotContent}</div>}

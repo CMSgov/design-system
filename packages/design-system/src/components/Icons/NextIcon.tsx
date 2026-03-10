@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 16 13',
 };
 
-export function NextIcon(props: IconCommonProps): React.ReactElement {
+export function NextIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--next ${props.className || ''}`;
 
   return (

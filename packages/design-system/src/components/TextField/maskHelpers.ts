@@ -150,7 +150,7 @@ export function coerceToString(value: string | number | null | undefined): strin
  * @returns {React.ReactElement} The single React element.
  * @throws {Error} If there are zero or more than one children.
  */
-export function getOnlyChild(children: React.ReactNode): React.ReactElement {
+export function getOnlyChild(children: React.ReactNode): React.ReactElement<any> {
   const allChildren = Array.isArray(children) ? children : [children];
 
   if (allChildren.length !== 1) {

@@ -10,7 +10,7 @@ import useId from '../utilities/useId';
 /**
  * Determine if a ReactNode is a TableCaption
  */
-function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
+function isTableCaption(child?: React.ReactNode): child is React.ReactElement<any> {
   if (!child || !isValidElement(child)) {
     return false;
   }
@@ -114,7 +114,7 @@ export const Table = ({
     if (
       scrollable &&
       Array.isArray(children) &&
-      !children.some((child: React.ReactElement) => isTableCaption(child))
+      !children.some((child: React.ReactElement<any>) => isTableCaption(child))
     ) {
       console.warn(
         'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
@@ -166,7 +166,7 @@ export const Table = ({
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
   const normalizedChildren = Array.isArray(children) ? children : [children];
-  const renderedChildren = normalizedChildren.map((child: React.ReactElement) => {
+  const renderedChildren = normalizedChildren.map((child: React.ReactElement<any>) => {
     if (isTableCaption(child)) {
       // Extend props on TableCaption before rendering.
       if (scrollable) {
