@@ -28,7 +28,8 @@
   },
   "drawer": {
     "ariaLabel": "Cerrar ventana de ayuda",
-    "closeButtonText": "Cerrar"
+    "closeButtonText": "Cerrar",
+    "triggerButtonText": "Abrir"
   },
   "filterChip": {
     "ariaClearLabel": "Eliminar",

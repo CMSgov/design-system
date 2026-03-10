@@ -2,13 +2,9 @@ import NativeDialog, { NativeDialogProps } from './NativeDialog';
 import { render } from '@testing-library/react';
 import { useNativeDialogAnalytics } from './useNativeDialogAnalytics';
 
-interface TestDialogContent {
-  headingContent?: string;
-  closeButtonText?: string;
-}
 interface TestDialogProps extends Omit<NativeDialogProps, 'onClose' | 'children'> {
-  onOpen?: (content: TestDialogContent) => void;
-  onClose?: (content: TestDialogContent) => void;
+  onOpen: (content?: string) => any;
+  onClose?: (content?: string) => any;
 }
 
 const defaultProps = {
@@ -53,10 +49,7 @@ describe('useNativeDialogAnalytics', () => {
 
   it('sends analytics event when dialog starts open', () => {
     renderDialog({ isOpen: true });
-    expect(defaultProps.onOpen).toHaveBeenCalledWith({
-      closeButtonText: undefined,
-      headingContent: 'Hello World',
-    });
+    expect(defaultProps.onOpen).toHaveBeenCalledWith('Hello World');
     expect(defaultProps.onOpen).toHaveBeenCalledTimes(1);
     expect(defaultProps.onClose).not.toHaveBeenCalled();
   });
@@ -64,26 +57,17 @@ describe('useNativeDialogAnalytics', () => {
   it('sends analytics event when opening dialog', () => {
     const { rerenderDialog } = renderDialog({ isOpen: false });
     rerenderDialog({ isOpen: true });
-    expect(defaultProps.onOpen).toHaveBeenCalledWith({
-      closeButtonText: undefined,
-      headingContent: 'Hello World',
-    });
+    expect(defaultProps.onOpen).toHaveBeenCalledWith('Hello World');
     expect(defaultProps.onOpen).toHaveBeenCalledTimes(1);
     expect(defaultProps.onClose).not.toHaveBeenCalled();
   });
 
   it('sends analytics event when closing dialog', () => {
     const { rerenderDialog } = renderDialog({ isOpen: true });
-    expect(defaultProps.onOpen).toHaveBeenCalledWith({
-      closeButtonText: undefined,
-      headingContent: 'Hello World',
-    });
+    expect(defaultProps.onOpen).toHaveBeenCalledWith('Hello World');
     expect(defaultProps.onOpen).toHaveBeenCalledTimes(1);
     rerenderDialog({ isOpen: false });
-    expect(defaultProps.onOpen).toHaveBeenCalledWith({
-      closeButtonText: undefined,
-      headingContent: 'Hello World',
-    });
+    expect(defaultProps.onClose).toHaveBeenCalledWith('Hello World');
     expect(defaultProps.onClose).toHaveBeenCalledTimes(1);
     expect(defaultProps.onOpen).toHaveBeenCalledTimes(1);
   });

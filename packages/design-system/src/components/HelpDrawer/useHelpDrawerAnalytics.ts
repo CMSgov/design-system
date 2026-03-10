@@ -1,6 +1,7 @@
 import { eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { config } from '../config';
+import { t } from '../i18n';
 import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
 
 export default function useHelpDrawerAnalytics({
@@ -8,6 +9,7 @@ export default function useHelpDrawerAnalytics({
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   isOpen,
+  closeButtonText,
   triggerButtonText,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
@@ -36,16 +38,16 @@ export default function useHelpDrawerAnalytics({
   // We need to send help_drawer_closed only when it was open and then closed.
   const headingRef = useNativeDialogAnalytics({
     isOpen,
-    onOpen: ({ headingContent }) => {
+    onOpen: (headingContent) => {
       sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_opened',
-        text: triggerButtonText ?? 'Open',
+        text: triggerButtonText ?? t('drawer.triggerButtonText'),
       });
     },
-    onClose: ({ headingContent, closeButtonText }) => {
+    onClose: (headingContent) => {
       sendHelpDrawerEvent(headingContent, {
         event_name: 'help_drawer_closed',
-        text: closeButtonText,
+        text: closeButtonText ?? t('drawer.closeButtonText'),
       });
     },
   });
