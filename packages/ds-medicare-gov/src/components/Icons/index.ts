@@ -1,6 +1,7 @@
 export { default as AboutIcon } from './AboutIcon';
 export { default as AbuseIcon } from './AbuseIcon';
 export { default as BirthingFriendlyIcon } from './BirthingFriendlyIcon';
+export { default as ChecklistIcon } from './ChecklistIcon';
 export { default as CheckShieldIcon } from './CheckShieldIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as FilterIcon } from './FilterIcon';

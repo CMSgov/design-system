@@ -2,6 +2,7 @@ import {
   AboutIcon,
   AbuseIcon,
   BirthingFriendlyIcon,
+  ChecklistIcon,
   CheckShieldIcon,
   DrugsIcon,
   FilterIcon,
@@ -35,6 +36,11 @@ const iconData = [
     defaultTitle: 'Birthing Friendly',
     component: <BirthingFriendlyIcon />,
     name: 'BirthingFriendlyIcon',
+  },
+  {
+    defaultTitle: 'Checklist',
+    component: <ChecklistIcon />,
+    name: 'ChecklistIcon',
   },
   {
     defaultTitle: 'Check with shield',
