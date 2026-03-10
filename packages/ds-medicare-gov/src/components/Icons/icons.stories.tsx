@@ -3,6 +3,7 @@ import {
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
+  DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
   HeartIcon,
@@ -40,6 +41,11 @@ const iconData = [
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
     name: 'CheckShieldIcon',
+  },
+  {
+    defaultTitle: 'Doctors and Clinicians',
+    component: <DoctorsCliniciansIcon />,
+    name: 'DoctorsCliniciansIcon',
   },
   {
     defaultTitle: 'Drugs',
