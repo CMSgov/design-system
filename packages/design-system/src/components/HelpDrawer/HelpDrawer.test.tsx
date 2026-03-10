@@ -79,7 +79,7 @@ describe('HelpDrawer', () => {
     });
 
     it('sends analytics event when help drawer starts open', () => {
-      renderHelpDrawer({ isOpen: true, triggerButtonText: 'Toggle' });
+      renderHelpDrawer({ isOpen: true });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
@@ -92,10 +92,29 @@ describe('HelpDrawer', () => {
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
+    it('help_drawer_opened event includes triggerButtonText in the analytics text field when provided via props', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer({
+        isOpen: false,
+        triggerButtonText: 'Open sesame!',
+      });
+      expect(tealiumMock).not.toHaveBeenCalled();
+      rerenderHelpDrawer({ isOpen: true });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
     it('sends analytics event when closing help drawer', () => {
       const { rerenderHelpDrawer } = renderHelpDrawer();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
       rerenderHelpDrawer({ isOpen: false });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(2);
+    });
+
+    it('help_drawer_closed event includes closeButtonText in the analytics text field when provided via props', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+      rerenderHelpDrawer({ isOpen: false, closeButtonText: 'Close this drawer!' });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(2);
     });
