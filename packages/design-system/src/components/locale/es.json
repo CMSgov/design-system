@@ -35,6 +35,7 @@
     "filter": "{{label}} del filtro"
   },
   "icons": {
+    "about": "Acerca de",
     "abuse": "Abuso",
     "add": "Añadir",
     "alertCircle": "Alerta",
@@ -42,6 +43,7 @@
     "birthingFriendly": "favorable al parto",
     "calendar": "Calendario",
     "dialysisServices": "Servicios de diálisis",
+    "doctorsClinicians": "Médicos y clínicos",
     "upArrow": "flecha hacía arriba",
     "downArrow": "flecha hacía abajo",
     "leftArrow": "flecha a la izquierda",
@@ -53,6 +55,7 @@
     "download": "Descargar",
     "email": "Correo electrónico",
     "externalLink": "Este enlace lo lleva a un sitio externo",
+    "filter": "Filtros",
     "heart": "Favorito",
     "hhsLogo": "Departamento de Salud y Servicios Humanos de los Estados Unidos",
     "image": "Imagen",
@@ -70,6 +73,7 @@
     "starEmpty": "Estrella vacía",
     "starFilled": "Estrella llena",
     "starHalf": "Media Estrella",
+    "swipe": "Desliza",
     "usaLogo": "USA.gov – Gobierno más simple",
     "warning": "Advertencia",
     "whatsNew": "Qué hay de nuevo",

@@ -35,6 +35,7 @@
     "filter": "{{label}} filter"
   },
   "icons": {
+    "about": "About",
     "abuse": "Abuse",
     "add": "Add",
     "alertCircle": "Alert",
@@ -42,6 +43,7 @@
     "birthingFriendly": "birthing friendly",
     "calendar": "Calendar",
     "dialysisServices": "Dialysis services",
+    "doctorsClinicians": "Doctors and Clinicians",
     "heart": "Favorite",
     "upArrow": "up arrow",
     "downArrow": "down arrow",
@@ -54,6 +56,7 @@
     "download": "Download",
     "email": "Email",
     "externalLink": "This link goes to an external site",
+    "filter": "Filters",
     "hhsLogo": "Department of Health and Human Services",
     "image": "Image",
     "infoCircle": "Information",
@@ -70,6 +73,7 @@
     "starEmpty": "Empty Star",
     "starFilled": "Filled Star",
     "starHalf": "Half Star",
+    "swipe": "Swipe",
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning",
     "whatsNew": "What’s New",
