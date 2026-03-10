@@ -5,6 +5,7 @@ import {
   CheckShieldIcon,
   DrugsIcon,
   FilterIcon,
+  HealthcareProviderIcon,
   HeartIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
@@ -50,6 +51,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Healthcare Provider',
+    component: <HealthcareProviderIcon />,
+    name: 'HealthcareProviderIcon',
   },
   {
     defaultTitle: '[variation] Heart',

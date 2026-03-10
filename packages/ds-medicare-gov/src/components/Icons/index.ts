@@ -4,6 +4,7 @@ export { default as BirthingFriendlyIcon } from './BirthingFriendlyIcon';
 export { default as CheckShieldIcon } from './CheckShieldIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as HealthcareProviderIcon } from './HealthcareProviderIcon';
 export { default as HeartIcon } from './HeartIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
