@@ -2,16 +2,16 @@
 title: 404 Page Guidance
 intro: A 404 page informs users that a requested page doesn't exist.
 core:
-    figmaNodeId: 19351-5595
-    storybookLink: patterns-404-page-guidance--docs
+  figmaNodeId: 19351-5595
+  storybookLink: patterns-404-page-guidance--docs
 ---
 
 ## Examples
 
 <StorybookExample
-    componentName="404Page"
-    storyId="patterns-404-page-guidance--page"
-    minHeight={500}
+  componentName="404Page"
+  storyId="patterns-404-page-guidance--page"
+  minHeight={500}
 />
 
 ## Guidance
@@ -84,16 +84,16 @@ import { sendViewEvent } from '@cmsgov/design-system';
 For single page applications utilizing React, you can call this function directly within a `useEffect` callback function. Note: the analytics event passed in as a parameter to the `sendViewEvent` function is an example, and should not be copied and used in your application. Please follow the technical specification for your application.
 
 ```js
-useEffect(() ⇒ {
-    const analyticsEvent = {
-        content_language: 'en',
-        content_type: 'js',
-        Page_name: '404 Page',
-        page_type:'true', // If page is a 404 (error page) this is set to true, otherwise it is false
-        site_environment: 'prod',
-        site_section: '404 page'
-    };
-    sendViewEvent(analyticsEvent);
+useEffect(() => {
+  const analyticsEvent = {
+    content_language: 'en',
+    content_type: 'js',
+    Page_name: '404 Page',
+    page_type: 'true', // If page is a 404 (error page) this is set to true, otherwise it is false
+    site_environment: 'prod',
+    site_section: '404 page',
+  };
+  sendViewEvent(analyticsEvent);
 }, [location.pathname]);
 ```
 
@@ -106,7 +106,7 @@ import { sendLinkEvent } from '@cmsgov/design-system';
 You can use the `sendLinkEvent` function in an `onClick` handler in React, or by listening for click events on specific links.
 
 ```js
-const sendAnalyticsEvent = () ⇒ {
+const sendAnalyticsEvent = () => {
     sendLinkEvent({
         event_name: 'internal_link_click',
     });
