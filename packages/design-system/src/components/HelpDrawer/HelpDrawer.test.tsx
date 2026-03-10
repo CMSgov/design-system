@@ -98,7 +98,7 @@ describe('HelpDrawer', () => {
         triggerButtonText: 'Open sesame!',
       });
       expect(tealiumMock).not.toHaveBeenCalled();
-      rerenderHelpDrawer({ isOpen: true });
+      rerenderHelpDrawer({ isOpen: true, triggerButtonText: 'Open sesame!' });
       expect(tealiumMock.mock.lastCall).toMatchSnapshot();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
