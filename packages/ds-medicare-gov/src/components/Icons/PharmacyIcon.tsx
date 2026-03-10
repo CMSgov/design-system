@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 30 32',
 };
 
-function PharmacyIcon(props: IconCommonProps): React.ReactElement {
+function PharmacyIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--pharmacies ${props.className || ''}`;
 
   return (

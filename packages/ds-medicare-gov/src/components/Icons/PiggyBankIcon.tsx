@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 40 32',
 };
 
-function PiggyBankIcon(props: IconCommonProps): React.ReactElement {
+function PiggyBankIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--piggy-bank ${props.className || ''}`;
 
   return (

@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 33 32',
 };
 
-function AboutIcon(props: IconCommonProps): React.ReactElement {
+function AboutIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--about ${props.className || ''}`;
 
   return (

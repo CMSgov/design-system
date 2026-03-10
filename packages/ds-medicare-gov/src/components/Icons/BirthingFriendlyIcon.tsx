@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 24 24',
 };
 
-function BirthingFriendlyIcon(props: IconCommonProps): React.ReactElement {
+function BirthingFriendlyIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--birthing-friendly ${props.className || ''}`;
 
   return (

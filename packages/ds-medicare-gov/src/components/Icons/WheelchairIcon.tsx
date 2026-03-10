@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 33 32',
 };
 
-function WheelchairIcon(props: IconCommonProps): React.ReactElement {
+function WheelchairIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--wheelchair ${props.className || ''}`;
 
   return (
