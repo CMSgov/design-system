@@ -9,6 +9,7 @@ import {
   InfoCircleOutlineIcon,
   PharmacyIcon,
   PiggyBankIcon,
+  ResourcesIcon,
   RoundedStarIcon,
   SwipeIcon,
   WheelchairIcon,
@@ -77,6 +78,11 @@ const iconData = [
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
+  },
+  {
+    defaultTitle: 'Resources',
+    component: <ResourcesIcon />,
+    name: 'ResourcesIcon',
   },
   {
     defaultTitle: '[variation] Star',
