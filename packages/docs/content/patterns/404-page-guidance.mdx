@@ -30,8 +30,8 @@ core:
 - Let users know what they can do next. This might be advice such as correcting typos in the URL address and updating bookmarks when they find the page they want.
 - Give users a way out of the "dead end" error page by directing them to the call to action (CTA). This CTA can be a search option to find the page they are looking for or a button leading users to a homepage. If using a button, users should be redirected to the following pages for each theme:
   - **Healthcare**: For authenticated experiences (deep links), if the URL doesn't exist, individuals will log in and land on the _Accounts dashboard_.
-  - **Medicare**: [www.medicare.gov/](www.medicare.gov/)
-  - **CMS**: [www.cms.gov/](www.cms.gov/)
+  - **Medicare**: [https://www.medicare.gov/](www.medicare.gov/)
+  - **CMS**: [https:/https:///www.cms.gov/](www.cms.gov/)
 - Only include a search option on the error page if there isn't already a search box in the site's header or anywhere else on the page.
 
 ### When to consider alternatives
@@ -40,7 +40,7 @@ core:
   - Instead, use inline errors when displaying for validation errors. Reference [guidance for inline errors]() for more information.
 - Do not use this pattern for submission errors.
   - Instead, use alerts when displaying errors that occur from interactions on a page. Reference [guidance for alerts]() for more information.
-- Do no use this pattern if a website has been taken down for maintenance.
+- Do not use this pattern if a website has been taken down for maintenance.
   - Instead, use alerts. Reference [guidance for alerts]() for more information.
 
 ### Display & behavior
@@ -55,7 +55,7 @@ core:
 - Immediately notify users relying on assistive tech, like screen readers, when they have come across a 404 page.
 - Users who are using a keyboard to navigate the page must be able to access the CTA button or search option on the 404 page.
 
-### Acessibility testing
+### Accessibility testing
 
 - Confirm that all interactive elements (e.g., links, buttons) can be accessed and operated using a keyboard alone.
 - Test zooming up to 200% and verify that all content remains visible and functional without horizontal scrolling.
@@ -93,7 +93,7 @@ useEffect(() ⇒ {
         site_environment: ‘prod’,
         site_section: ‘404 page’
     };
-    sendViewEvent(analyticsPayload);
+    sendViewEvent(analyticsEvent);
 }, [location.pathname]);
 ```
 

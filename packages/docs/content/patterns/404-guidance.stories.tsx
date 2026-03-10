@@ -10,8 +10,8 @@ const PageContent = () => {
       <div className="ds-l-row">
         <h1 className="ds-text-heading--5xl">Page Not Found</h1>
         <p>
-          Sorry, we cannot find the page. It have moved or be renamed. Check the address is correct
-          and update any bookmarks when you find the page you want.
+          Sorry, we cannot find the page. It may have been moved or be renamed. Check the address is
+          correct and update any bookmarks when you find the page you want.
         </p>
         <Button className="ds-u-margin-top--4" variation="solid" href="javascript:void(0)">
           Go to home
