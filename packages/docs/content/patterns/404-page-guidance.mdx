@@ -30,8 +30,8 @@ core:
 - Let users know what they can do next. This might be advice such as correcting typos in the URL address and updating bookmarks when they find the page they want.
 - Give users a way out of the "dead end" error page by directing them to the call to action (CTA). This CTA can be a search option to find the page they are looking for or a button leading users to a homepage. If using a button, users should be redirected to the following pages for each theme:
   - **Healthcare**: For authenticated experiences (deep links), if the URL doesn't exist, individuals will log in and land on the _Accounts dashboard_.
-  - **Medicare**: [https://www.medicare.gov/](www.medicare.gov/)
-  - **CMS**: [https:/https:///www.cms.gov/](www.cms.gov/)
+  - **Medicare**: [www.medicare.gov/](https://www.medicare.gov/)
+  - **CMS**: [www.cms.gov/](https://`www.cms.gov/)
 - Only include a search option on the error page if there isn't already a search box in the site's header or anywhere else on the page.
 
 ### When to consider alternatives
@@ -88,7 +88,7 @@ useEffect(() => {
   const analyticsEvent = {
     content_language: 'en',
     content_type: 'js',
-    Page_name: '404 Page',
+    page_name: '404 Page',
     page_type: 'true', // If page is a 404 (error page) this is set to true, otherwise it is false
     site_environment: 'prod',
     site_section: '404 page',
@@ -113,7 +113,7 @@ const sendAnalyticsEvent = () => {
 };
 …
 <a
-    href=‘/here’
+    href='/here'
     onClick={sendAnalyticsEvent}
 >
     Click me!
