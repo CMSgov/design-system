@@ -6,7 +6,7 @@ const defaultProps = {
   viewBox: '2 0 40 32',
 };
 
-export function QuotationMarkIcon(props: IconCommonProps): React.ReactElement {
+export function QuotationMarkIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--left-quote ${props.className || ''}`;
 
   return (

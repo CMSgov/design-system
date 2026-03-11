@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-export function WhatsNewIcon(props: IconCommonProps): React.ReactElement {
+export function WhatsNewIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--whats-new ${props.className || ''}`;
 
   return (

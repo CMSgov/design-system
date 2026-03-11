@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '3 3 18 18',
 };
 
-export function AddIcon(props: IconCommonProps): React.ReactElement {
+export function AddIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--add ${props.className || ''}`;
 
   return (

@@ -39,7 +39,7 @@ export const DrawerToggle = ({
   showDrawer,
   drawerOpen,
   ...others
-}: DrawerToggleProps): React.ReactElement => {
+}: DrawerToggleProps): React.ReactElement<any> => {
   const buttonRef = useRef(null);
   const prevDrawerOpenProp = usePrevious(drawerOpen);
 

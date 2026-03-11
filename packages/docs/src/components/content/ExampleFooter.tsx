@@ -4,7 +4,7 @@ interface ExampleFooterProps {
   /**
    * A link or something to render to the right of the code button(s)
    */
-  sourceLink?: React.ReactElement;
+  sourceLink?: React.ReactElement<any>;
 }
 
 /**

@@ -55,7 +55,7 @@ const Wrapper = ({ children, choices, rootId, ...otherProps }: WrapperProps) => 
           uncheckedChild = undefined;
 
         if (element.props.children.length > 0) {
-          element.props.children.map((child: string | React.ReactElement) => {
+          element.props.children.map((child: string | React.ReactElement<any>) => {
             if (typeof child !== 'string') {
               const { children, slot } = (child as React.ReactElement<any>).props;
 

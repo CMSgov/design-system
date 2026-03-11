@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 16 12',
 };
 
-export function CheckIcon(props: IconCommonProps): React.ReactElement {
+export function CheckIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--check ${props.className || ''}`;
 
   return (

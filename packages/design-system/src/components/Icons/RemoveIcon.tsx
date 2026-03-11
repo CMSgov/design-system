@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 24 24',
 };
 
-export function RemoveIcon(props: IconCommonProps): React.ReactElement {
+export function RemoveIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--remove ${props.className || ''}`;
 
   return (

@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 27 32',
 };
 
-function CheckShieldIcon(props: IconCommonProps): React.ReactElement {
+function CheckShieldIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--check-with-shield ${props.className || ''}`;
 
   return (

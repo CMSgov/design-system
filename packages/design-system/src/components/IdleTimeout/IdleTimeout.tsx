@@ -99,7 +99,7 @@ export const IdleTimeout = ({
   showSessionEndButton = false,
   timeToTimeout,
   timeToWarning,
-}: IdleTimeoutProps): React.ReactElement => {
+}: IdleTimeoutProps): React.ReactElement<any> => {
   if (timeToWarning > timeToTimeout) {
     console.error(
       'Error in TimeoutManager component. `timeToWarning` is greater or equal to `timeToTimeout`'

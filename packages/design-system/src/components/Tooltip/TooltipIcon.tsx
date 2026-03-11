@@ -10,7 +10,10 @@ export interface TooltipIconProps extends IconCommonProps {
   inversed?: boolean;
 }
 
-export const TooltipIcon = ({ inversed, ...iconProps }: TooltipIconProps): React.ReactElement => {
+export const TooltipIcon = ({
+  inversed,
+  ...iconProps
+}: TooltipIconProps): React.ReactElement<any> => {
   return (
     <span className="ds-c-tooltip-icon__container">
       <InfoCircleIconThin

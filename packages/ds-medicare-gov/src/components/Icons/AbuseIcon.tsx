@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 24 24',
 };
 
-function AbuseIcon(props: IconCommonProps): React.ReactElement {
+function AbuseIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--abuse ${props.className || ''}`;
 
   return (

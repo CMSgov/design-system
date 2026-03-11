@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '-2 -2 18 18',
 };
 
-export function CloseIconThin(props: IconCommonProps): React.ReactElement {
+export function CloseIconThin(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--close ds-c-icon--close-thin ${props.className || ''}`;
 
   return (

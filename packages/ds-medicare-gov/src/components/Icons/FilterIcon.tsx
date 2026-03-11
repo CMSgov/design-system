@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 33 32',
 };
 
-function FilterIcon(props: IconCommonProps): React.ReactElement {
+function FilterIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--filter ${props.className || ''}`;
 
   return (

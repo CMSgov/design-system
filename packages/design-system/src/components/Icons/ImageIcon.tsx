@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 16 12',
 };
 
-export function ImageIcon(props: IconCommonProps): React.ReactElement {
+export function ImageIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--image ${props.className || ''}`;
 
   return (

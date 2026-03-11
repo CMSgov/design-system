@@ -86,7 +86,7 @@ const ButtonVariationsTable = ({ theme }: ButtonVariationsTableProps) => {
   const uses = themeButtonUsage[theme] ?? {};
   const unused = '(Unused)';
 
-  function b(buttonInstance: ReactElement, isUsed?: boolean) {
+  function b(buttonInstance: ReactElement<any>, isUsed?: boolean) {
     return isUsed === false ? unused : buttonInstance;
   }
 
