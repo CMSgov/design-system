@@ -46,14 +46,14 @@ const iconData = [
     name: 'CheckShieldIcon',
   },
   {
-    defaultTitle: 'Costs Circle Icon',
-    component: <CostsCircleIcon />,
-    name: 'CostsCircleIcon',
-  },
-  {
     defaultTitle: 'Costs',
     component: <CostsIcon />,
     name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Costs Circle Icon',
+    component: <CostsCircleIcon />,
+    name: 'CostsCircleIcon',
   },
   {
     defaultTitle: 'Dialysis Services',
