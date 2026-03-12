@@ -8,6 +8,8 @@ import {
   FilterIcon,
   HeartIcon,
   InfoCircleOutlineIcon,
+  CostsIcon,
+  DialysisServicesIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
@@ -41,6 +43,16 @@ const iconData = [
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
     name: 'CheckShieldIcon',
+  },
+  {
+    defaultTitle: 'Costs',
+    component: <CostsIcon />,
+    name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Dialysis Services',
+    component: <DialysisServicesIcon />,
+    name: 'DialysisServicesIcon',
   },
   {
     defaultTitle: 'Doctors and Clinicians',

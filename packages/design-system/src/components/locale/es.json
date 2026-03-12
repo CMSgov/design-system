@@ -28,7 +28,8 @@
   },
   "drawer": {
     "ariaLabel": "Cerrar ventana de ayuda",
-    "closeButtonText": "Cerrar"
+    "closeButtonText": "Cerrar",
+    "triggerButtonText": "Abrir"
   },
   "filterChip": {
     "ariaClearLabel": "Eliminar",
@@ -42,6 +43,7 @@
     "arrowsStacked": "Ordenar",
     "birthingFriendly": "favorable al parto",
     "calendar": "Calendario",
+    "dialysisServices": "Servicios de diálisis",
     "doctorsClinicians": "Médicos y clínicos",
     "upArrow": "flecha hacía arriba",
     "downArrow": "flecha hacía abajo",
@@ -51,6 +53,7 @@
     "checkCircle": "Marca de verificación en círculo",
     "check": " Marca de cotejo",
     "close": "Cerrar",
+    "costs": "Costos",
     "download": "Descargar",
     "email": "Correo electrónico",
     "externalLink": "Este enlace lo lleva a un sitio externo",
