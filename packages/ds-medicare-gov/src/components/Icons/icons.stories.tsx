@@ -12,6 +12,7 @@ import {
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  SuppliersIcon,
   SwipeIcon,
   WheelchairIcon,
 } from './index';
@@ -102,6 +103,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Suppliers',
+    component: <SuppliersIcon />,
+    name: 'SuppliersIcon',
   },
   {
     defaultTitle: 'Swipe',
