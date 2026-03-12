@@ -28,7 +28,8 @@
   },
   "drawer": {
     "ariaLabel": "Close help drawer",
-    "closeButtonText": "Close"
+    "closeButtonText": "Close",
+    "triggerButtonText": "Open"
   },
   "filterChip": {
     "ariaClearLabel": "Remove",
