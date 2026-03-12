@@ -10,6 +10,7 @@ export { default as HeartIcon } from './HeartIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
+export { default as ResourcesIcon } from './ResourcesIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
 export { default as SwipeIcon } from './SwipeIcon';
 export { default as WheelchairIcon } from './WheelchairIcon';
