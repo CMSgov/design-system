@@ -3,7 +3,13 @@ import classNames from 'classnames';
 import useHelpDrawerAnalytics from './useHelpDrawerAnalytics';
 import { AnalyticsOverrideProps } from '../analytics';
 
-export interface HelpDrawerProps extends DrawerProps, AnalyticsOverrideProps {}
+export interface HelpDrawerProps extends DrawerProps, AnalyticsOverrideProps {
+  /**
+   * Text of the button or link that opens the drawer.
+   * This value is used to populate analytics events for `help_drawer_opened`.
+   */
+  triggerButtonText?: string;
+}
 
 /**
  * For information about how and when to use this component,
