@@ -103,5 +103,10 @@
     "onCloseClick*",
     "Called when the user activates the close button or presses the ESC key if focus trapping is enabled. The parent of this component is responsible for showing or not showing the drawer, so you need to use this callback to make that happen. The dialog does not hide itself.\n\n(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
     "-"
+  ],
+  [
+    "triggerButtonText",
+    "Text of the button or link that opens the drawer. This value is used to populate analytics events for help_drawer_opened.\n\nstring",
+    "-"
   ]
 ]
