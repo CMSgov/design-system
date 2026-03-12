@@ -6,6 +6,7 @@ export { default as DialysisServicesIcon } from './DialysisServicesIcon';
 export { default as DoctorsCliniciansIcon } from './DoctorsCliniciansIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as HealthcareProviderIcon } from './HealthcareProviderIcon';
 export { default as HeartIcon } from './HeartIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
