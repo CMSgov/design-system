@@ -4,11 +4,13 @@ export default {
   title: 'Patterns/404 Page guidance',
 };
 
-const PageContent = () => {
+export const Page = () => {
   return (
     <main className="ds-l-container">
       <div className="ds-l-row">
-        <h1 className="ds-text-heading--5xl">Page Not Found</h1>
+        <h1 className="ds-text-heading--3xl ds-u-font-weight--bold ds-u-color--primary">
+          Page Not Found
+        </h1>
         <p>
           Sorry, we cannot find the page. It may have been moved or be renamed. Check the address is
           correct and update any bookmarks when you find the page you want.
@@ -19,8 +21,4 @@ const PageContent = () => {
       </div>
     </main>
   );
-};
-
-export const Page = () => {
-  return <PageContent />;
 };
