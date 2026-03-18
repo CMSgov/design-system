@@ -4,7 +4,6 @@ import { IconCommonProps } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Costs Circle',
   viewBox: '0 0 32 32',
 };
 
