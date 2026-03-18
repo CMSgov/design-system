@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import { SvgIcon } from '@cmsgov/design-system';
+import { SvgIcon, t } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
 
 const defaultProps = {
@@ -12,7 +12,7 @@ function CostsCircleIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--costs-circle ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.costs')} {...defaultProps} {...props} className={iconCssClasses}>
       <g fill="none" fillRule="evenodd">
         <path
           fillRule="evenodd"
