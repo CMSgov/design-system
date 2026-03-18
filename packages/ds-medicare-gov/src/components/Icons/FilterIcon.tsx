@@ -1,10 +1,10 @@
 import type * as React from 'react';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
+import { t } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Filter',
   viewBox: '0 0 33 32',
 };
 
@@ -12,7 +12,7 @@ function FilterIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--filter ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.filter')} {...defaultProps} {...props} className={iconCssClasses}>
       <g fill="none" fillRule="evenodd">
         <path
           fillRule="evenodd"
