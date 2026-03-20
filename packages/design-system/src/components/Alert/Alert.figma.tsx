@@ -16,7 +16,11 @@ figma.connect(
         true: figma.string('Alert Title'),
         false: undefined,
       }),
-      hideIcon: figma.boolean('Has icon'),
+      // This is goofy because the wording in Figma is reversed from the prop.
+      hideIcon: figma.boolean('Has icon', {
+        true: undefined,
+        false: true,
+      }),
       variation: figma.enum('Alert Type', {
         Info: undefined,
         Success: 'success',
