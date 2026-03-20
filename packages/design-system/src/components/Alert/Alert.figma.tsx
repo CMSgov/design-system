@@ -32,6 +32,10 @@ figma.connect(
         false: undefined,
       }),
     },
-    example: (props) => <Alert {...props} />,
+    example: ({ children, heading, hideIcon, variation, weight }) => (
+      <Alert heading={heading} hideIcon={hideIcon} variation={variation} weight={weight}>
+        {children}
+      </Alert>
+    ),
   }
 );
