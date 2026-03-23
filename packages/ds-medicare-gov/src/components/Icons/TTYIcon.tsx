@@ -12,7 +12,12 @@ function TeletypewriterIcon(props: IconCommonProps): React.ReactElement {
 
   return (
     <span className="icon-wrapper">
-      <SvgIcon title={t('teletypewriter')} {...defaultProps} {...props} className={iconCssClasses}>
+      <SvgIcon
+        title={t('icons.teletypewriter')}
+        {...defaultProps}
+        {...props}
+        className={iconCssClasses}
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
