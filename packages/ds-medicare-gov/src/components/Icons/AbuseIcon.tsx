@@ -1,10 +1,10 @@
 import type * as React from 'react';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
+import { t } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Abuse',
   viewBox: '0 0 24 24',
 };
 
@@ -12,7 +12,7 @@ function AbuseIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--abuse ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.abuse')} {...defaultProps} {...props} className={iconCssClasses}>
       <g fill="none" fillRule="evenodd">
         <path
           fill="#000"

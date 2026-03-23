@@ -92,6 +92,17 @@ describe('HelpDrawer', () => {
       expect(tealiumMock).toHaveBeenCalledTimes(1);
     });
 
+    it('help_drawer_opened event includes triggerButtonText in the analytics text field when provided via props', () => {
+      const { rerenderHelpDrawer } = renderHelpDrawer({
+        isOpen: false,
+        triggerButtonText: 'Open sesame!',
+      });
+      expect(tealiumMock).not.toHaveBeenCalled();
+      rerenderHelpDrawer({ isOpen: true, triggerButtonText: 'Open sesame!' });
+      expect(tealiumMock.mock.lastCall).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalledTimes(1);
+    });
+
     it('sends analytics event when closing help drawer', () => {
       const { rerenderHelpDrawer } = renderHelpDrawer();
       expect(tealiumMock).toHaveBeenCalledTimes(1);
