@@ -36,7 +36,7 @@ export const processMdxForHostedMarkdown = (body) => {
   return result.trim();
 }
 
-export function buildLlmsTxt({ siteUrl, description, pages}) {
+export function buildRootLlmsTxt({ siteUrl, description, pages}) {
   const baseUrl = normalizeSiteUrl(siteUrl);
 
   const normalizedPages = pages

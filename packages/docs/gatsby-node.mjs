@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from "url";
 import redirects from "./redirects.json" with { type: "json" };
 import fs from 'node:fs';
-import { buildLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage } from './scripts/llms-txt/index.mjs';
+import { buildRootLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage } from './scripts/llms-txt/index.mjs';
 // @ts-check
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -238,8 +238,9 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     reporter.panicOnBuild('Error running GraphQL for llms.txt');
     return;
   }
+  const mdxNodes = result.data.allMdx.nodes;
 
-  for (const node of result.data.allMdx.nodes) {
+  for (const node of mdxNodes) {
     const pagePath = normalizePagePath(node.fields.slug);
 
     const cleanedBody = processMdxForHostedMarkdown(node.body);
@@ -250,16 +251,18 @@ export const onPostBuild = async ({ graphql, reporter }) => {
       body: cleanedBody,
     });
 
-    const outputPath = path.join('public', `${pagePath.replace(/^\/|\/$/g, '')}/llms.txt`);
+    const relativePath = pagePath.replace(/^\/|\/$/g, '');
+    const outputPath = path.join('public', relativePath, 'llms.txt');
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, markdown, 'utf8');
   }
 
+  reporter.success(`Generated page-level llms.txt files for ${mdxNodes.length} documentation pages.`);
+
   const siteUrl = result.data.site.siteMetadata.siteUrl;
   const description = result.data.site.siteMetadata.description;
-  const mdxNodes = result.data.allMdx.nodes;
 
-  const markdown = buildLlmsTxt({
+  const markdown = buildRootLlmsTxt({
     siteUrl,
     description,
     pages: mdxNodes,
@@ -268,5 +271,5 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   const outputPath = path.join('public', 'llms.txt');
   fs.writeFileSync(outputPath, markdown, 'utf8');
 
-  reporter.success(`llms.txt generated at ${outputPath}`);
+  reporter.success(`Generated root llms.txt at ${outputPath}`);
 };
