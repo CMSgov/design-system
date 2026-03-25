@@ -10,6 +10,17 @@ import { buildLlmsTxt } from './scripts/llms-txt/index.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const require = createRequire(import.meta.url)
+const normalizePagePath = (slug) => slug.replace(/\d+_/g, '');
+
+const buildMarkdownPage = ({ title, intro, body }) => {
+  return [
+    title ? `# ${title}` : '',
+    intro || '',
+    body || '',
+  ]
+    .filter(Boolean)
+    .join('\n\n');
+};
 
 /**
  * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
@@ -220,6 +231,7 @@ export const onPostBuild = async ({ graphql, reporter }) => {
       }
       allMdx {
         nodes {
+          body
           fields {
             slug
           }
@@ -235,6 +247,19 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   if (result.errors) {
     reporter.panicOnBuild('Error running GraphQL for llms.txt');
     return;
+  }
+
+  for (const node of result.data.allMdx.nodes) {
+    const pagePath = normalizePagePath(node.fields.slug);
+    const markdown = buildMarkdownPage({
+      title: node.frontmatter?.title,
+      intro: node.frontmatter?.intro,
+      body: node.body,
+    });
+
+    const outputPath = path.join('public', `${pagePath.replace(/^\/|\/$/g, '')}.md`);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, markdown, 'utf8');
   }
 
   const siteUrl = result.data.site.siteMetadata.siteUrl;
