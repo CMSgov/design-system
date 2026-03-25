@@ -86,7 +86,7 @@ function processMdxForHostedMarkdown(body) {
         .map((t) => t.replace(/['"]/g, '').trim())
         .filter(Boolean)
         .join(', ');
-      return themeList ? `\n\n_[${themeList} only]_ \n\n` : '\n\n';
+      return themeList ? `\n\n_Theme: ${themeList} only_\n\n` : '\n\n';
     }
   );
 
@@ -98,7 +98,7 @@ function processMdxForHostedMarkdown(body) {
         .map((t) => t.replace(/['"]/g, '').trim())
         .filter(Boolean)
         .join(', ');
-      return themeList ? `\n\n_[not for ${themeList}]_ \n\n` : '\n\n';
+      return themeList ? `\n\n_Not for theme: ${themeList}_\n\n` : '\n\n';
     }
   );
 
