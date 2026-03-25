@@ -5,125 +5,12 @@ import path from 'path';
 import { fileURLToPath } from "url";
 import redirects from "./redirects.json" with { type: "json" };
 import fs from 'node:fs';
-import { buildLlmsTxt } from './scripts/llms-txt/index.mjs';
+import { buildLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage } from './scripts/llms-txt/index.mjs';
 // @ts-check
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const require = createRequire(import.meta.url)
 const normalizePagePath = (slug) => slug.replace(/\d+_/g, '');
-
-const buildMarkdownPage = ({ title, intro, body }) => {
-  return [
-    title ? `# ${title}` : '',
-    intro || '',
-    body || '',
-  ]
-    .filter(Boolean)
-    .join('\n\n');
-};
-
-const STRIP_WITH_CHILDREN = [
-  'StorybookExample',
-  'EmbeddedExample',
-  'SeeStorybookForGuidance',
-  'ButtonVariationsTable',
-  'ComponentThemeOptions',
-  'MaturityChecklist',
-];
-
-const STRIP_SELF_CLOSING = [
-  'StorybookExample',
-  'SeeStorybookForGuidance',
-  'ButtonVariationsTable',
-  'ComponentThemeOptions',
-  'MaturityChecklist',
-  'ArrowIcon',
-  'CloseIconThin',
-  'EmbeddedIcon',
-];
-
-const UNWRAP_TAGS = ['Alert', 'Badge'];
-
-function processMdxForHostedMarkdown(body) {
-  let result = body;
-
-  // 1. Remove import statements.
-  result = result.replace(/^import[\s\S]*?from\s+['"][^'"]+['"];?\s*$/gm, '');
-  result = result.replace(/^import\s+['"][^'"]+['"];?\s*$/gm, '');
-
-  // 2. Remove JSX comments.
-  result = result.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
-
-  // 3. Remove components whose entire block should disappear.
-  for (const component of STRIP_WITH_CHILDREN) {
-    // Paired tags
-    result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?>[\\s\\S]*?<\\/${component}>`, 'g'),
-      ''
-    );
-
-    // Self-closing tags
-    result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?\\s*\\/?>`, 'g'),
-      (match) => (match.endsWith('/>') ? '' : match)
-    );
-  }
-
-  // 4. Remove specific self-closing components entirely.
-  for (const component of STRIP_SELF_CLOSING) {
-    result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?\\s*\\/\\s*>`, 'g'),
-      ''
-    );
-  }
-
-  // 5. Convert ThemeContent opening tags into readable annotations.
-  result = result.replace(
-    /<ThemeContent\s+onlyThemes=\{\[(.*?)\]\}\s*>/g,
-    (_, themes) => {
-      const themeList = themes
-        .split(',')
-        .map((t) => t.replace(/['"]/g, '').trim())
-        .filter(Boolean)
-        .join(', ');
-      return themeList ? `\n\n_Theme: ${themeList} only_\n\n` : '\n\n';
-    }
-  );
-
-  result = result.replace(
-    /<ThemeContent\s+neverThemes=\{\[(.*?)\]\}\s*>/g,
-    (_, themes) => {
-      const themeList = themes
-        .split(',')
-        .map((t) => t.replace(/['"]/g, '').trim())
-        .filter(Boolean)
-        .join(', ');
-      return themeList ? `\n\n_Not for theme: ${themeList}_\n\n` : '\n\n';
-    }
-  );
-
-  result = result.replace(/<\/ThemeContent>/g, '');
-
-  // 6. Unwrap Alert and Badge but keep their content.
-  for (const component of UNWRAP_TAGS) {
-    result = result.replace(new RegExp(`<${component}(\\s[^>]*)?>`, 'g'), '');
-    result = result.replace(new RegExp(`</${component}>`, 'g'), '');
-  }
-
-  // 7. Convert <br /> tags to blank lines.
-  result = result.replace(/<br\s*\/?>/g, '\n\n');
-
-  // 8. Remove JSX space expressions like {' '} or {" "}
-  result = result.replace(/\{['"]\s*['"]\}/g, ' ');
-
-  // 9. Remove any remaining known self-closing PascalCase JSX tags.
-  result = result.replace(/<[A-Z][A-Za-z0-9]*(\s[^>]*)?\s*\/>/g, '');
-
-  // 10. Normalize excessive blank lines.
-  result = result.replace(/\n{3,}/g, '\n\n');
-
-  return result.trim();
-}
 
 /**
  * @type {import('gatsby').GatsbyNode['onCreateWebpackConfig']}
