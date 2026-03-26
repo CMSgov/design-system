@@ -1,14 +1,23 @@
 import {
+  AboutIcon,
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
+  CostsCircleIcon,
+  CostsIcon,
+  DialysisServicesIcon,
+  DoctorsCliniciansIcon,
   DrugsIcon,
+  FilterIcon,
+  GetStartedIcon,
   HeartIcon,
   HospitalIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  SwipeIcon,
+  TeletypewriterIcon,
   WheelchairIcon,
 } from './index';
 
@@ -19,6 +28,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'About',
+    component: <AboutIcon />,
+    name: 'AboutIcon',
+  },
   {
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
@@ -35,14 +49,39 @@ const iconData = [
     name: 'CheckShieldIcon',
   },
   {
+    defaultTitle: 'Costs',
+    component: <CostsIcon />,
+    name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Costs Circle Icon',
+    component: <CostsCircleIcon />,
+    name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Dialysis Services',
+    component: <DialysisServicesIcon />,
+    name: 'DialysisServicesIcon',
+  },
+  {
+    defaultTitle: 'Doctors and Clinicians',
+    component: <DoctorsCliniciansIcon />,
+    name: 'DoctorsCliniciansIcon',
+  },
+  {
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
   },
   {
-    defaultTitle: 'Hospital',
-    component: <HospitalIcon />,
-    name: 'HospitalIcon',
+    defaultTitle: 'Filters',
+    component: <FilterIcon />,
+    name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
   },
   {
     defaultTitle: '[variation] Heart',
@@ -55,6 +94,11 @@ const iconData = [
     name: 'HeartIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
+  },
+  {
+    defaultTitle: 'Hospital',
+    component: <HospitalIcon />,
+    name: 'HospitalIcon',
   },
   {
     defaultTitle: 'Information',
@@ -83,6 +127,16 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Swipe',
+    component: <SwipeIcon />,
+    name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',

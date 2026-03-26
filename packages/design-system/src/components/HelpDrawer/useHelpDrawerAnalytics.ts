@@ -1,6 +1,7 @@
 import { eventExtensionText } from '../analytics';
 import { HelpDrawerProps } from './HelpDrawer';
 import { config } from '../config';
+import { t } from '../i18n';
 import { useNativeDialogAnalytics } from '../NativeDialog/useNativeDialogAnalytics';
 
 export default function useHelpDrawerAnalytics({
@@ -8,10 +9,11 @@ export default function useHelpDrawerAnalytics({
   analyticsLabelOverride,
   onAnalyticsEvent = config().defaultAnalyticsFunction,
   isOpen,
+  triggerButtonText,
 }: HelpDrawerProps) {
   function sendHelpDrawerEvent(
     content: string | undefined,
-    eventAttributes: { event_name: string }
+    eventAttributes: { event_name: string; text?: string }
   ) {
     if (analytics !== true && (!config().helpDrawerSendsAnalytics || analytics === false)) {
       return;
@@ -38,6 +40,7 @@ export default function useHelpDrawerAnalytics({
     onOpen: (content?: string) => {
       sendHelpDrawerEvent(content, {
         event_name: 'help_drawer_opened',
+        text: triggerButtonText ?? t('drawer.triggerButtonText'),
       });
     },
     onClose: (content?: string) => {
