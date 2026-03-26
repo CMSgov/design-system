@@ -22,8 +22,8 @@ export function stripMarkdownSections(input) {
   for (const heading of SECTION_HEADINGS_TO_STRIP) {
     result = result.replace(
       new RegExp(
-        String.raw`^##\s+${escapeRegExp(heading)}\s*$[\s\S]*?(?=^##\s+|\Z)`,
-        'gm'
+        String.raw`^##\s+${escapeRegExp(heading)}\s*$\n?[\s\S]*?(?=^##\s+|(?![\s\S]))`,
+        'gmi'
       ),
       ''
     );
