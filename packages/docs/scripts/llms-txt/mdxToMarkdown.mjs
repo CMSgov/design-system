@@ -37,7 +37,7 @@ function escapeRegExp(value) {
 }
 
 
-export function convertThemeContentToAnnotations(input) {
+export function normalizeThemeContent(input) {
   let result = input;
 
   result = result.replace(
