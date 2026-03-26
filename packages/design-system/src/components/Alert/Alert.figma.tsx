@@ -11,10 +11,9 @@ figma.connect(Alert, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-
       true: figma.string('Alert Title'),
       false: undefined,
     }),
-    // This is goofy because the wording in Figma is reversed from the prop.
-    hideIcon: figma.boolean('Has icon', {
-      true: undefined,
-      false: true,
+    hideIcon: figma.boolean('Hide Icon', {
+      true: true,
+      false: undefined,
     }),
     variation: figma.enum('Alert Type', {
       Info: undefined,
