@@ -1,24 +1,4 @@
-const UNWRAP_TAGS = ['Alert', 'Badge'];
-
-const NON_CONTENT_COMPONENTS = [
-  'StorybookExample',
-  'EmbeddedExample',
-  'SeeStorybookForGuidance',
-  'ButtonVariationsTable',
-  'ComponentThemeOptions',
-  'MaturityChecklist',
-];
-
-const STRIP_SELF_CLOSING = [
-  'StorybookExample',
-  'SeeStorybookForGuidance',
-  'ButtonVariationsTable',
-  'ComponentThemeOptions',
-  'MaturityChecklist',
-  'ArrowIcon',
-  'CloseIconThin',
-  'EmbeddedIcon',
-];
+const UNWRAP_TAGS = ['Alert', 'Badge',];
 
 export function removeImportStatements(input) {
   return input
@@ -30,17 +10,21 @@ export function removeJsxComments(input) {
   return input.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
 }
 
-export function stripComponentsWithChildren(input) {
+const SECTION_HEADINGS_TO_STRIP = [
+  'Code',
+  'Component maturity',
+  'Examples',
+];
+
+export function stripMarkdownSections(input) {
   let result = input;
 
-  for (const component of NON_CONTENT_COMPONENTS) {
+  for (const heading of SECTION_HEADINGS_TO_STRIP) {
     result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?>[\\s\\S]*?<\\/${component}>`, 'g'),
-      ''
-    );
-
-    result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?\\s*\\/\\s*>`, 'g'),
+      new RegExp(
+        String.raw`^##\s+${escapeRegExp(heading)}\s*$[\s\S]*?(?=^##\s+|\Z)`,
+        'gm'
+      ),
       ''
     );
   }
@@ -48,46 +32,51 @@ export function stripComponentsWithChildren(input) {
   return result;
 }
 
-export function stripSelfClosingComponents(input) {
-  let result = input;
-  for (const component of STRIP_SELF_CLOSING) {
-    result = result.replace(
-      new RegExp(`<${component}(\\s[^>]*)?\\s*\\/\\s*>`, 'g'),
-      ''
-    );
-  }
-
-  return result;
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
+
 
 export function convertThemeContentToAnnotations(input) {
   let result = input;
-  // Convert ThemeContent opening tags into readable annotations.
+
   result = result.replace(
-    /<ThemeContent\s+onlyThemes=\{\[(.*?)\]\}\s*>/g,
-    (_, themes) => {
+    /<ThemeContent\s+onlyThemes=\{\[(.*?)\]\}\s*>([\s\S]*?)<\/ThemeContent>/g,
+    (_, themes, content) => {
       const themeList = themes
         .split(',')
         .map((t) => t.replace(/['"]/g, '').trim())
         .filter(Boolean)
         .join(', ');
-      return themeList ? `\n\n_Theme: ${themeList} only_\n\n` : '\n\n';
+
+      const label =
+        themeList.split(',').length > 1
+          ? `**Themes: ${themeList} only**`
+          : `**Theme: ${themeList} only**`;
+
+      return `${label}\n\n${content.trim()}`;
     }
   );
 
   result = result.replace(
-    /<ThemeContent\s+neverThemes=\{\[(.*?)\]\}\s*>/g,
-    (_, themes) => {
+    /<ThemeContent\s+neverThemes=\{\[(.*?)\]\}\s*>([\s\S]*?)<\/ThemeContent>/g,
+    (_, themes, content) => {
       const themeList = themes
         .split(',')
         .map((t) => t.replace(/['"]/g, '').trim())
         .filter(Boolean)
         .join(', ');
-      return themeList ? `\n\n_Not for theme: ${themeList}_\n\n` : '\n\n';
+
+      const label =
+        themeList.split(',').length > 1
+          ? `**Not for themes: ${themeList}**`
+          : `**Not for theme: ${themeList}**`;
+
+      return `${label}\n\n${content.trim()}`;
     }
   );
 
-  return result.replace(/<\/ThemeContent>/g, '');
+  return result;
 }
 
 export function unwrapSimpleComponents(input) {

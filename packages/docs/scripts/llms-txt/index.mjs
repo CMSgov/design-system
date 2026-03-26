@@ -5,9 +5,10 @@ import { renderLlmsMarkdown } from './renderMarkdown.mjs';
 import { 
   removeImportStatements, 
   removeJsxComments, 
-  stripComponentsWithChildren, 
-  stripSelfClosingComponents, 
+  // stripComponentsWithChildren, 
+  // stripSelfClosingComponents, 
   convertThemeContentToAnnotations,
+  stripMarkdownSections,
   unwrapSimpleComponents,
   normalizeMarkdownOutput  
 } from './mdxToMarkdown.mjs'
@@ -27,8 +28,9 @@ export const processMdxForHostedMarkdown = (body) => {
 
   result = removeImportStatements(result);
   result = removeJsxComments(result);
-  result = stripComponentsWithChildren(result);
-  result = stripSelfClosingComponents(result);
+  // result = stripComponentsWithChildren(result);
+  // result = stripSelfClosingComponents(result);
+  result = stripMarkdownSections(result);
   result = convertThemeContentToAnnotations(result);
   result = unwrapSimpleComponents(result);
   result = normalizeMarkdownOutput(result);
