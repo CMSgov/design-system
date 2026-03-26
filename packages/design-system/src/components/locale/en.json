@@ -28,19 +28,24 @@
   },
   "drawer": {
     "ariaLabel": "Close help drawer",
-    "closeButtonText": "Close"
+    "closeButtonText": "Close",
+    "triggerButtonText": "Open"
   },
   "filterChip": {
     "ariaClearLabel": "Remove",
     "filter": "{{label}} filter"
   },
   "icons": {
+    "about": "About",
     "abuse": "Abuse",
     "add": "Add",
     "alertCircle": "Alert",
     "arrowsStacked": "Sort",
     "birthingFriendly": "birthing friendly",
     "calendar": "Calendar",
+    "costs": "Costs",
+    "dialysisServices": "Dialysis services",
+    "doctorsClinicians": "Doctors and Clinicians",
     "heart": "Favorite",
     "upArrow": "up arrow",
     "downArrow": "down arrow",
@@ -53,8 +58,11 @@
     "download": "Download",
     "email": "Email",
     "externalLink": "This link goes to an external site",
+    "getStarted": "Get Started",
+    "filter": "Filters",
     "hhsLogo": "Department of Health and Human Services",
     "homeHealthServices": "Home health services",
+    "hospice": "Hospice",
     "image": "Image",
     "infoCircle": "Information",
     "link": "Link",
@@ -70,6 +78,8 @@
     "starEmpty": "Empty Star",
     "starFilled": "Filled Star",
     "starHalf": "Half Star",
+    "swipe": "Swipe",
+    "teletypewriter": "Teletypewriter",
     "usaLogo": "USA.gov - Government Made Easy",
     "warning": "Warning",
     "whatsNew": "What’s New",

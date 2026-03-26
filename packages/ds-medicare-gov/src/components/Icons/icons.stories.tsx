@@ -1,14 +1,25 @@
 import {
+  AboutIcon,
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
+  CostsCircleIcon,
+  CostsIcon,
+  DialysisServicesIcon,
+  DoctorsCliniciansIcon,
   DrugsIcon,
   HeartIcon,
   HomeHealthServicesIcon,
+  FilterIcon,
+  GetStartedIcon,
+  HeartIcon,
+  HospiceIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  SwipeIcon,
+  TeletypewriterIcon,
   WheelchairIcon,
 } from './index';
 
@@ -19,6 +30,11 @@ export default {
 };
 
 const iconData = [
+  {
+    defaultTitle: 'About',
+    component: <AboutIcon />,
+    name: 'AboutIcon',
+  },
   {
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
@@ -35,9 +51,39 @@ const iconData = [
     name: 'CheckShieldIcon',
   },
   {
+    defaultTitle: 'Costs',
+    component: <CostsIcon />,
+    name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Costs Circle Icon',
+    component: <CostsCircleIcon />,
+    name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Dialysis Services',
+    component: <DialysisServicesIcon />,
+    name: 'DialysisServicesIcon',
+  },
+  {
+    defaultTitle: 'Doctors and Clinicians',
+    component: <DoctorsCliniciansIcon />,
+    name: 'DoctorsCliniciansIcon',
+  },
+  {
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
+  },
+  {
+    defaultTitle: 'Filters',
+    component: <FilterIcon />,
+    name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
   },
   {
     defaultTitle: '[variation] Heart',
@@ -55,6 +101,11 @@ const iconData = [
     defaultTitle: 'Home Health Services',
     component: <HomeHealthServicesIcon />,
     name: 'HomeHealthServicesIcon',
+  },
+  {
+    defaultTitle: 'Hospice',
+    component: <HospiceIcon />,
+    name: 'HospiceIcon',
   },
   {
     defaultTitle: 'Information',
@@ -83,6 +134,16 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Swipe',
+    component: <SwipeIcon />,
+    name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',
