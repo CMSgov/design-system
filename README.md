@@ -93,9 +93,9 @@ These scripts can all be run from the root level of the repo:
 - `npm run release:patch`
   - Interactive script that collects the merge commits from pull requests associated with a given milestone and cherry-picks them onto the current branch (use with release branch)
 - `npm run connect:build`
-  - Initializes the Figma Code Connect CLI pipeline  
+  - Initializes the Figma Code Connect CLI pipeline. This is run when first creating a new Figma Code Connect file.
 - `npm run connect:publish`
-  - Publishes all Figma Code Connect snippets to the target nodes 
+  - Publishes all Figma Code Connect snippets to the target nodes. This should be run when a Figma Code Connect file needs to be connected/published to Figma.
 - `npm run connect:unpublish`
   - Unpublishes all Figma Code Connect snippets
 
