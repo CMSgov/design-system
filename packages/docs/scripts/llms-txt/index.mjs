@@ -23,12 +23,17 @@ export const buildMarkdownPage = ({ title, intro, body }) => {
 
 export const processMdxForHostedMarkdown = (body) => {
   let result = body;
-
+  // ⚠️ NOTE: Order matters — do not rearrange these steps.
+  // Earlier transforms operate on specific JSX structures,
+  // while later steps clean up and normalize the final Markdown output.
   result = removeImportStatements(result);
   result = removeJsxComments(result);
   result = stripMarkdownSections(result);
+  // Handles ThemeContent components
   result = normalizeThemeContent(result);
+  // Unwraps simple components (e.g., Alerts, Badges) but keeps their text 
   result = unwrapSimpleComponents(result);
+  // Final cleanup: removes any remaining JSX.
   result = normalizeMarkdownOutput(result);
 
   return result.trim();
