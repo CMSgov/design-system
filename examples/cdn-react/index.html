@@ -16,9 +16,8 @@
   <body class="ds-base">
     <div id="usa-banner"></div>
     <script>
-      ReactDOM.render(
-        React.createElement(DesignSystem.UsaBanner),
-        document.getElementById('usa-banner')
+      ReactDOM.createRoot(document.getElementById('usa-banner')).render(
+        React.createElement(DesignSystem.UsaBanner)
       );
     </script>
 
@@ -40,24 +39,22 @@
 
         <div id="alert"></div>
         <script>
-          ReactDOM.render(
+          ReactDOM.createRoot(document.getElementById('alert')).render(
             React.createElement(DesignSystem.Alert, {
               heading: 'Hello World',
               children: 'I was rendered with React!',
-            }),
-            document.getElementById('alert')
+            })
           );
         </script>
 
         <form>
           <div id="month-picker"></div>
           <script>
-            ReactDOM.render(
+            ReactDOM.createRoot(document.getElementById('month-picker')).render(
               React.createElement(DesignSystem.MonthPicker, {
                 label: 'Please select the months you lived abroad.',
                 name: 'months',
-              }),
-              document.getElementById('month-picker')
+              })
             );
           </script>
 
