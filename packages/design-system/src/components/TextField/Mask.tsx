@@ -36,7 +36,11 @@ export interface MaskProps {
   mask?: MaskMask;
 }
 
-export class Mask extends PureComponent<MaskProps, any> {
+interface MaskState {
+  value: string;
+}
+
+class MaskClass extends PureComponent<MaskProps, MaskState> {
   constructor(props: MaskProps) {
     super(props);
 
@@ -83,7 +87,7 @@ export class Mask extends PureComponent<MaskProps, any> {
     }
   }
 
-  debouncedOnBlurEvent: any;
+  debouncedOnBlurEvent: React.ChangeEvent<HTMLInputElement> | null = null;
 
   /**
    * To avoid a jarring experience for screen readers, we only
@@ -168,5 +172,7 @@ export class Mask extends PureComponent<MaskProps, any> {
     );
   }
 }
+
+export const Mask = (props: MaskProps) => <MaskClass {...props} />;
 
 export default Mask;
