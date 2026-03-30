@@ -5,7 +5,8 @@ import {
   removeImportStatements,
   stripMarkdownSections,
   normalizeThemeContent,
-  normalizeMarkdownOutput
+  normalizeMarkdownOutput,
+  unwrapSimpleComponents
 } from './mdxToMarkdown.mjs';
 
 import {
@@ -108,34 +109,98 @@ test('normalizeThemeContent: handle multiple themes', () => {
   assert.strictEqual(output, THEME_CONTENT_MULTIPLE_OUTPUT);
 });
 
-// test('normalizeMarkdownOutput removes JSX comments, converts br tags, removes JSX space expressions, strips self-closing JSX tags, and normalizes blank lines', () => {
-//   const input = `Before
-// {/* this is a JSX comment */}
-// Line one<br />Line two
-// Hello{' '}world
-// <CloseIconThin />
-// After
+test('normalizeMarkdownOutput removes JSX comments, converts br tags, removes JSX space expressions, strips self-closing JSX tags, and normalizes blank lines', () => {
+  const input = `Before
+{/* this is a JSX comment */}
+Line one<br />Line two
+Hello{' '}world
+<CloseIconThin />
+After
 
 
 
-// Done`;
+Done`;
 
-//   const expected = `Before
-// Line one
+  const expected = `Before
 
-// Line two
-// Hello world
-// After
+Line one
 
-// Done`;
+Line two
+Hello world
 
-//   const output = normalizeMarkdownOutput(input);
+After
 
-//   assert.strictEqual(output.trim(), expected.trim());
-// });
+Done`;
 
+  const output = normalizeMarkdownOutput(input);
 
+  assert.strictEqual(output.trim(), expected.trim());
+});
 
+test('unwrapSimpleComponents removes Alert tags but preserves their content', () => {
+  const input = `Before
+<Alert heading="Warning">
+This is important content.
+</Alert>
+After`;
 
+  const expected = `Before
 
+This is important content.
 
+After`;
+
+  const output = unwrapSimpleComponents(input);
+
+  assert.strictEqual(output.trim(), expected.trim());
+});
+
+test('unwrapSimpleComponents removes Badge tags but preserves their content', () => {
+  const input = `Before
+<Badge variation="success">Ready</Badge>
+After`;
+
+  const expected = `Before
+Ready
+After`;
+
+  const output = unwrapSimpleComponents(input);
+
+  assert.strictEqual(output.trim(), expected.trim());
+});
+
+test('processMdxForHostedMarkdown preserves fenced code blocks inside ThemeContent while normalizing the theme label', () => {
+  const input = `<ThemeContent onlyThemes={['healthcare']}>
+
+\`\`\`css
+@import '@cmsgov/ds-healthcare-gov/css/index';
+@import '@cmsgov/ds-healthcare-gov/css/healthcare-theme';
+\`\`\`
+
+Or you might import it from your JavaScript like this:
+
+\`\`\`js
+import '@cmsgov/ds-healthcare-gov/css/index.css';
+import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
+\`\`\`
+
+</ThemeContent>`;
+
+  const expected = `**Theme: healthcare only**
+
+\`\`\`css
+@import '@cmsgov/ds-healthcare-gov/css/index';
+@import '@cmsgov/ds-healthcare-gov/css/healthcare-theme';
+\`\`\`
+
+Or you might import it from your JavaScript like this:
+
+\`\`\`js
+import '@cmsgov/ds-healthcare-gov/css/index.css';
+import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
+\`\`\``;
+
+  const output = processMdxForHostedMarkdown(input);
+
+  assert.strictEqual(output.trim(), expected.trim());
+});
