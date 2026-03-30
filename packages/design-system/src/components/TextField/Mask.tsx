@@ -36,8 +36,7 @@ export interface MaskProps {
   mask?: MaskMask;
 }
 
-export const Mask = (props: MaskProps) => {
-  const { children, mask } = props;
+export const Mask = ({ children, mask }: MaskProps) => {
   const field = getOnlyChild(children) as React.ReactElement<TextInputProps>;
   const fieldProps = field.props;
 
