@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { PureComponent, cloneElement, isValidElement } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 import type * as React from 'react';
 import classNames from 'classnames';
 import { maskValue, unmaskValue, coerceToString, getOnlyChild } from './maskHelpers';
@@ -36,42 +36,29 @@ export interface MaskProps {
   mask?: MaskMask;
 }
 
-interface MaskState {
-  value: string;
-}
+export const Mask = (props: MaskProps) => {
+  const { children, mask } = props;
+  const field = getOnlyChild(children) as React.ReactElement<TextInputProps>;
+  const fieldProps = field.props;
 
-class MaskClass extends PureComponent<MaskProps, MaskState> {
-  constructor(props: MaskProps) {
-    super(props);
+  const [value, setValue] = useState<string>(() => {
+    const initialValue = coerceToString(fieldProps.value ?? fieldProps.defaultValue);
+    return maskValue(initialValue, mask);
+  });
+  const debouncedOnBlurEventRef = useRef<React.ChangeEvent<HTMLInputElement> | null>(null);
+  const prevFieldValueRef = useRef<string>(coerceToString(fieldProps.value));
 
-    const field = getOnlyChild(this.props.children) as React.ReactElement<TextInputProps>;
-    const initialValue = coerceToString(field.props.value ?? field.props.defaultValue);
-
-    this.state = {
-      value: maskValue(initialValue, props.mask),
-    };
-  }
-
-  componentDidUpdate(prevProps: MaskProps): void {
-    if (this.debouncedOnBlurEvent) {
-      (getOnlyChild(this.props.children) as React.ReactElement<TextInputProps>).props.onBlur?.(
-        this.debouncedOnBlurEvent
-      );
-      this.debouncedOnBlurEvent = null;
+  useEffect(() => {
+    if (debouncedOnBlurEventRef.current) {
+      fieldProps.onBlur?.(debouncedOnBlurEventRef.current);
+      debouncedOnBlurEventRef.current = null;
     }
 
-    const field = getOnlyChild(this.props.children) as React.ReactElement<TextInputProps>;
-    const fieldProps = field.props;
-    const prevField = getOnlyChild(prevProps.children);
-    const prevFieldValue = isValidElement(prevField)
-      ? coerceToString((prevField as React.ReactElement<TextInputProps>).props.value)
-      : '';
-
     const fieldValue = coerceToString(fieldProps.value);
+    const prevFieldValue = prevFieldValueRef.current;
     const isControlled = fieldProps.value !== undefined;
 
     if (isControlled && prevFieldValue !== fieldValue) {
-      const { mask } = this.props;
       // For controlled components, the value prop should ideally be changed by
       // the controlling component once we've called onChange with our updates.
       // If the change was triggered this way through user input, then the prop
@@ -80,32 +67,21 @@ class MaskClass extends PureComponent<MaskProps, MaskState> {
       // component has made its own unrelated change, so we should update our
       // state and mask this new value.
 
-      if (unmaskValue(fieldValue, mask) !== unmaskValue(this.state.value, mask)) {
-        const value = maskValue(fieldValue, mask);
-        this.setState({ value });
+      if (unmaskValue(fieldValue, mask) !== unmaskValue(value, mask)) {
+        setValue(maskValue(fieldValue, mask));
       }
     }
-  }
 
-  debouncedOnBlurEvent: React.ChangeEvent<HTMLInputElement> | null = null;
+    prevFieldValueRef.current = fieldValue;
+  }, [fieldProps, mask, value]);
 
-  /**
-   * To avoid a jarring experience for screen readers, we only
-   * add/remove characters after the field has been blurred,
-   * rather than when the user is typing in the field
-   * @param {Object} evt
-   * @param {React.Element} field - Child TextField
-   */
-  handleBlur(
-    evt: React.ChangeEvent<HTMLInputElement>,
-    field: React.ReactElement<TextInputProps>
-  ): void {
-    const value = maskValue(evt.target.value, this.props.mask);
+  const handleBlur = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    const nextValue = maskValue(evt.target.value, mask);
 
     // We only debounce the onBlur when we know for sure that
     // this component will re-render (AKA when the value changes)
     // and when an onBlur callback is present
-    const debounce = value !== this.state.value && typeof field.props.onBlur === 'function';
+    const debounce = nextValue !== value && typeof fieldProps.onBlur === 'function';
 
     if (debounce) {
       // We need to retain a reference to the event after the callback
@@ -113,66 +89,50 @@ class MaskClass extends PureComponent<MaskProps, MaskState> {
       // only after the value has been manipulated – this way, the
       // value returned by event.target.value is the value after masking
       evt.persist();
-      this.debouncedOnBlurEvent = evt;
+      debouncedOnBlurEventRef.current = evt;
     }
 
-    this.setState({
-      value,
-    });
+    setValue(nextValue);
 
-    if (!debounce && typeof field.props.onBlur === 'function') {
+    if (!debounce && typeof fieldProps.onBlur === 'function') {
       // If we didn't debounce the onBlur event, then we need to
       // call the onBlur callback from here
-      field.props.onBlur(evt);
+      fieldProps.onBlur(evt);
     }
-  }
+  };
 
-  /**
-   * @param {Object} evt
-   * @param {React.Element} field - Child TextField
-   */
-  handleChange(
-    evt: React.ChangeEvent<HTMLInputElement>,
-    field: React.ReactElement<TextInputProps>
-  ): void {
-    this.setState({ value: evt.target.value });
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+    setValue(evt.target.value);
 
-    if (typeof field.props.onChange === 'function') {
-      field.props.onChange(evt);
+    if (typeof fieldProps.onChange === 'function') {
+      fieldProps.onChange(evt);
     }
-  }
+  };
 
-  render() {
-    const { mask } = this.props;
-    const field = getOnlyChild(this.props.children) as React.ReactElement<TextInputProps>;
+  const modifiedTextField = cloneElement(field, {
+    defaultValue: undefined,
+    fieldClassName: classNames(field.props.fieldClassName, `ds-c-field--${mask}`),
+    onBlur: handleBlur,
+    onChange: handleChange,
+    value,
+    type: 'text',
+    inputMode: 'numeric',
+    pattern: maskPattern[mask],
+  });
 
-    const modifiedTextField = cloneElement(field, {
-      defaultValue: undefined,
-      fieldClassName: classNames(field.props.fieldClassName, `ds-c-field--${mask}`),
-      onBlur: (evt) => this.handleBlur(evt, field),
-      onChange: (evt) => this.handleChange(evt, field),
-      value: this.state.value,
-      type: 'text',
-      inputMode: 'numeric',
-      pattern: maskPattern[this.props.mask],
-    });
+  // UI overlayed on top of a field to support certain masks
+  const maskOverlay = maskOverlayContent[mask] ? (
+    <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
+      {maskOverlayContent[mask]}
+    </div>
+  ) : null;
 
-    // UI overlayed on top of a field to support certain masks
-    const maskOverlay = maskOverlayContent[mask] ? (
-      <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
-        {maskOverlayContent[mask]}
-      </div>
-    ) : null;
-
-    return (
-      <div className={`ds-c-field-mask ds-c-field-mask--${mask}`}>
-        {maskOverlay}
-        {modifiedTextField}
-      </div>
-    );
-  }
-}
-
-export const Mask = (props: MaskProps) => <MaskClass {...props} />;
+  return (
+    <div className={`ds-c-field-mask ds-c-field-mask--${mask}`}>
+      {maskOverlay}
+      {modifiedTextField}
+    </div>
+  );
+};
 
 export default Mask;
