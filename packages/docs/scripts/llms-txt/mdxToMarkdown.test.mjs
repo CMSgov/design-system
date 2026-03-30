@@ -15,6 +15,18 @@ import {
   THEME_CONTENT_SINGLE_OUTPUT,
   THEME_CONTENT_MULTIPLE,
   THEME_CONTENT_MULTIPLE_OUTPUT,
+  SECTIONS_TO_REMOVE_INPUT,
+  REMOVED_SECTIONS_OUTPUT,
+  MIXED_HEADING_INPUT,
+  MIXED_HEADING_OUTPUT,
+  MDX_WITH_ALERT,
+  MDX_WITH_UNWRAPPED_ALERT,
+  MDX_WITH_BADGE,
+  MDX_WITH_UNWRAPPED_BADGE,
+  MIXED_JSX_INPUT,
+  NORMALIZED_MARKDOWN_OUTPUT,
+  THEME_CONTENT_CODEBLOCKS_INPUT,
+  THEME_CONTENT_CODEBLOCKS_OUTPUT,
 } from './mdxFixtures.mjs'
 
 import { processMdxForHostedMarkdown } from './index.mjs'
@@ -29,71 +41,15 @@ test('removeImportStatements removes imports', () => {
 });
 
 test('stripMarkdownSections removes level two headings of Code, Examples, and Component maturity', () => {
-  const input = `## Overview
+  const output = stripMarkdownSections(SECTIONS_TO_REMOVE_INPUT);
 
-Keep this section.
-
-## Code
-
-Remove this code section.
-
-### React
-
-Remove this too.
-
-## Examples
-
-Remove these examples.
-
-## Component maturity
-
-Remove this maturity section.
-
-## Accessibility
-
-Keep this section too.`;
-
-  const expected = `## Overview
-
-Keep this section.
-
-## Accessibility
-
-Keep this section too.`;
-
-  const output = stripMarkdownSections(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), REMOVED_SECTIONS_OUTPUT.trim());
 });
 
 test('stripMarkdownSections removes target sections regardless of heading capitalization', () => {
-  const input = `## Overview
+  const output = stripMarkdownSections(MIXED_HEADING_INPUT);
 
-Keep this section.
-
-## code
-
-Remove this code section.
-
-## Component Maturity
-
-Remove this maturity section.
-
-## Accessibility
-
-Keep this section too.`;
-
-  const expected = `## Overview
-
-Keep this section.
-
-## Accessibility
-
-Keep this section too.`;
-
-  const output = stripMarkdownSections(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), MIXED_HEADING_OUTPUT.trim());
 });
 
 
@@ -110,97 +66,26 @@ test('normalizeThemeContent: handle multiple themes', () => {
 });
 
 test('normalizeMarkdownOutput removes JSX comments, converts br tags, removes JSX space expressions, strips self-closing JSX tags, and normalizes blank lines', () => {
-  const input = `Before
-{/* this is a JSX comment */}
-Line one<br />Line two
-Hello{' '}world
-<CloseIconThin />
-After
 
+  const output = normalizeMarkdownOutput(MIXED_JSX_INPUT);
 
-
-Done`;
-
-  const expected = `Before
-
-Line one
-
-Line two
-Hello world
-
-After
-
-Done`;
-
-  const output = normalizeMarkdownOutput(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), NORMALIZED_MARKDOWN_OUTPUT.trim());
 });
 
 test('unwrapSimpleComponents removes Alert tags but preserves their content', () => {
-  const input = `Before
-<Alert heading="Warning">
-This is important content.
-</Alert>
-After`;
+  const output = unwrapSimpleComponents(MDX_WITH_ALERT);
 
-  const expected = `Before
-
-This is important content.
-
-After`;
-
-  const output = unwrapSimpleComponents(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), MDX_WITH_UNWRAPPED_ALERT.trim());
 });
 
 test('unwrapSimpleComponents removes Badge tags but preserves their content', () => {
-  const input = `Before
-<Badge variation="success">Ready</Badge>
-After`;
+  const output = unwrapSimpleComponents(MDX_WITH_BADGE);
 
-  const expected = `Before
-Ready
-After`;
-
-  const output = unwrapSimpleComponents(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), MDX_WITH_UNWRAPPED_BADGE.trim());
 });
 
 test('processMdxForHostedMarkdown preserves fenced code blocks inside ThemeContent while normalizing the theme label', () => {
-  const input = `<ThemeContent onlyThemes={['healthcare']}>
+  const output = processMdxForHostedMarkdown(THEME_CONTENT_CODEBLOCKS_INPUT);
 
-\`\`\`css
-@import '@cmsgov/ds-healthcare-gov/css/index';
-@import '@cmsgov/ds-healthcare-gov/css/healthcare-theme';
-\`\`\`
-
-Or you might import it from your JavaScript like this:
-
-\`\`\`js
-import '@cmsgov/ds-healthcare-gov/css/index.css';
-import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
-\`\`\`
-
-</ThemeContent>`;
-
-  const expected = `**Theme: healthcare only**
-
-\`\`\`css
-@import '@cmsgov/ds-healthcare-gov/css/index';
-@import '@cmsgov/ds-healthcare-gov/css/healthcare-theme';
-\`\`\`
-
-Or you might import it from your JavaScript like this:
-
-\`\`\`js
-import '@cmsgov/ds-healthcare-gov/css/index.css';
-import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
-\`\`\``;
-
-  const output = processMdxForHostedMarkdown(input);
-
-  assert.strictEqual(output.trim(), expected.trim());
+  assert.strictEqual(output.trim(), THEME_CONTENT_CODEBLOCKS_OUTPUT.trim());
 });
