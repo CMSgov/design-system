@@ -6,10 +6,6 @@ export function removeImportStatements(input) {
     .replace(/^import\s+['"][^'"]+['"];?\s*$/gm, '');
 }
 
-export function removeJsxComments(input) {
-  return input.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
-}
-
 const SECTION_HEADINGS_TO_STRIP = [
   'Code',
   'Component maturity',
@@ -96,6 +92,8 @@ export function unwrapSimpleComponents(input) {
 
 export function normalizeMarkdownOutput(input) {
   return input
+    // Remove JSX comments.
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, '')
     // Convert <br /> tags to blank lines.
     .replace(/<br\s*\/?>/g, '\n\n')
     // Remove JSX space expressions like {' '} or {" "}
