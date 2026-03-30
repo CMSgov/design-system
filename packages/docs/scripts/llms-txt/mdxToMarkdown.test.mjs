@@ -10,29 +10,34 @@ import {
 } from './mdxToMarkdown.mjs';
 
 import {
-  IMPORT_STATEMENTS_INPUT,
-  THEME_CONTENT_SINGLE,
-  THEME_CONTENT_SINGLE_OUTPUT,
-  THEME_CONTENT_MULTIPLE,
-  THEME_CONTENT_MULTIPLE_OUTPUT,
-  SECTIONS_TO_REMOVE_INPUT,
-  REMOVED_SECTIONS_OUTPUT,
-  MIXED_HEADING_INPUT,
-  MIXED_HEADING_OUTPUT,
-  MDX_WITH_ALERT,
-  MDX_WITH_UNWRAPPED_ALERT,
-  MDX_WITH_BADGE,
-  MDX_WITH_UNWRAPPED_BADGE,
-  MIXED_JSX_INPUT,
-  NORMALIZED_MARKDOWN_OUTPUT,
-  THEME_CONTENT_CODEBLOCKS_INPUT,
-  THEME_CONTENT_CODEBLOCKS_OUTPUT,
-} from './mdxFixtures.mjs'
+  REMOVE_IMPORT_STATEMENTS_INPUT,
 
-import { processMdxForHostedMarkdown } from './index.mjs'
+  NORMALIZE_THEME_CONTENT_SINGLE_THEME_INPUT,
+  NORMALIZE_THEME_CONTENT_SINGLE_THEME_OUTPUT,
+  NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_INPUT,
+  NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_OUTPUT,
+
+  STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_INPUT,
+  STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_OUTPUT,
+  STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_INPUT,
+  STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_OUTPUT,
+
+  UNWRAP_SIMPLE_COMPONENTS_ALERT_INPUT,
+  UNWRAP_SIMPLE_COMPONENTS_ALERT_OUTPUT,
+  UNWRAP_SIMPLE_COMPONENTS_BADGE_INPUT,
+  UNWRAP_SIMPLE_COMPONENTS_BADGE_OUTPUT,
+
+  NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_INPUT,
+  NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_OUTPUT,
+
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_INPUT,
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT,
+} from './mdxFixtures.mjs';
+
+import { processMdxForHostedMarkdown } from './index.mjs';
 
 test('removeImportStatements removes imports', () => {
-  const output = removeImportStatements(IMPORT_STATEMENTS_INPUT);
+  const output = removeImportStatements(REMOVE_IMPORT_STATEMENTS_INPUT);
 
   assert.ok(!output.includes("import React from 'react';"));
   assert.ok(!output.includes("import Something from './Something';"));
@@ -41,51 +46,51 @@ test('removeImportStatements removes imports', () => {
 });
 
 test('stripMarkdownSections removes level two headings of Code, Examples, and Component maturity', () => {
-  const output = stripMarkdownSections(SECTIONS_TO_REMOVE_INPUT);
+  const output = stripMarkdownSections(STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_INPUT);
 
-  assert.strictEqual(output.trim(), REMOVED_SECTIONS_OUTPUT.trim());
+  assert.strictEqual(output.trim(), STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_OUTPUT.trim());
 });
 
 test('stripMarkdownSections removes target sections regardless of heading capitalization', () => {
-  const output = stripMarkdownSections(MIXED_HEADING_INPUT);
+  const output = stripMarkdownSections(STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_INPUT);
 
-  assert.strictEqual(output.trim(), MIXED_HEADING_OUTPUT.trim());
+  assert.strictEqual(output.trim(), STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_OUTPUT.trim());
 });
 
 
 test('normalizeThemeContent: handle single theme', () => {
-  const output = normalizeThemeContent(THEME_CONTENT_SINGLE);
+  const output = normalizeThemeContent(NORMALIZE_THEME_CONTENT_SINGLE_THEME_INPUT);
 
-  assert.strictEqual(output, THEME_CONTENT_SINGLE_OUTPUT);
+  assert.strictEqual(output, NORMALIZE_THEME_CONTENT_SINGLE_THEME_OUTPUT);
 });
 
 test('normalizeThemeContent: handle multiple themes', () => {
-  const output = normalizeThemeContent(THEME_CONTENT_MULTIPLE);
+  const output = normalizeThemeContent(NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_INPUT);
 
-  assert.strictEqual(output, THEME_CONTENT_MULTIPLE_OUTPUT);
+  assert.strictEqual(output, NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_OUTPUT);
 });
 
 test('normalizeMarkdownOutput removes JSX comments, converts br tags, removes JSX space expressions, strips self-closing JSX tags, and normalizes blank lines', () => {
 
-  const output = normalizeMarkdownOutput(MIXED_JSX_INPUT);
+  const output = normalizeMarkdownOutput(NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_INPUT);
 
-  assert.strictEqual(output.trim(), NORMALIZED_MARKDOWN_OUTPUT.trim());
+  assert.strictEqual(output.trim(), NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_OUTPUT.trim());
 });
 
 test('unwrapSimpleComponents removes Alert tags but preserves their content', () => {
-  const output = unwrapSimpleComponents(MDX_WITH_ALERT);
+  const output = unwrapSimpleComponents(UNWRAP_SIMPLE_COMPONENTS_ALERT_INPUT);
 
-  assert.strictEqual(output.trim(), MDX_WITH_UNWRAPPED_ALERT.trim());
+  assert.strictEqual(output.trim(), UNWRAP_SIMPLE_COMPONENTS_ALERT_OUTPUT.trim());
 });
 
 test('unwrapSimpleComponents removes Badge tags but preserves their content', () => {
-  const output = unwrapSimpleComponents(MDX_WITH_BADGE);
+  const output = unwrapSimpleComponents(UNWRAP_SIMPLE_COMPONENTS_BADGE_INPUT);
 
-  assert.strictEqual(output.trim(), MDX_WITH_UNWRAPPED_BADGE.trim());
+  assert.strictEqual(output.trim(), UNWRAP_SIMPLE_COMPONENTS_BADGE_OUTPUT.trim());
 });
 
 test('processMdxForHostedMarkdown preserves fenced code blocks inside ThemeContent while normalizing the theme label', () => {
-  const output = processMdxForHostedMarkdown(THEME_CONTENT_CODEBLOCKS_INPUT);
+  const output = processMdxForHostedMarkdown(PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_INPUT);
 
-  assert.strictEqual(output.trim(), THEME_CONTENT_CODEBLOCKS_OUTPUT.trim());
+  assert.strictEqual(output.trim(), PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT.trim());
 });

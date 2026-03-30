@@ -1,62 +1,28 @@
-export const IMPORT_STATEMENTS_INPUT = `import React from 'react';
+export const REMOVE_IMPORT_STATEMENTS_INPUT = `import React from 'react';
 import Something from './Something';
 
 # Heading
 
 Some content here.`;
 
-export const THEME_CONTENT_SINGLE = `<ThemeContent onlyThemes={['core']}>
+export const NORMALIZE_THEME_CONTENT_SINGLE_THEME_INPUT = `<ThemeContent onlyThemes={['core']}>
 Core uses Open Sans for all headings.
 </ThemeContent>`;
 
-export const THEME_CONTENT_SINGLE_OUTPUT = `**Theme: core only**
+export const NORMALIZE_THEME_CONTENT_SINGLE_THEME_OUTPUT = `**Theme: core only**
 
 Core uses Open Sans for all headings.`;
 
-export const THEME_CONTENT_MULTIPLE = `<ThemeContent onlyThemes={['core', 'medicare']}>
+export const NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_INPUT = `<ThemeContent onlyThemes={['core', 'medicare']}>
 Shared theme content.
 </ThemeContent>`;
 
-export const THEME_CONTENT_MULTIPLE_OUTPUT = `**Themes: core, medicare only**
+export const NORMALIZE_THEME_CONTENT_MULTIPLE_THEMES_OUTPUT = `**Themes: core, medicare only**
 
 Shared theme content.`;
 
-export const FULL_PIPELINE_INPUT = `import React from 'react';
 
-# Typography
-
-{/* comment */}
-
-<ThemeContent onlyThemes={['core']}>
-Core uses Open Sans.
-</ThemeContent>
-
-<Alert>
-Pay attention.
-</Alert>
-
-## Code
-
-This should be removed.
-
-Before<br />After
-
-<CloseIconThin />
-`;
-
-export const FULL_PIPELINE_OUTPUT = `# Typography
-
-**Theme: core only**
-
-Core uses Open Sans.
-
-Pay attention.
-
-Before
-
-After`;
-
-export const SECTIONS_TO_REMOVE_INPUT = `## Overview
+export const STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_INPUT = `## Overview
 
 Keep this section.
 
@@ -80,7 +46,7 @@ Remove this maturity section.
 
 Keep this section too.`;
 
-export const REMOVED_SECTIONS_OUTPUT = `## Overview
+export const STRIP_MARKDOWN_SECTIONS_REMOVABLE_SECTIONS_OUTPUT = `## Overview
 
 Keep this section.
 
@@ -88,7 +54,7 @@ Keep this section.
 
 Keep this section too.`;
 
-export const MIXED_HEADING_INPUT = `## Overview
+export const STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_INPUT = `## Overview
 
 Keep this section.
 
@@ -104,7 +70,7 @@ Remove this maturity section.
 
 Keep this section too.`;
 
-export const MIXED_HEADING_OUTPUT = `## Overview
+export const STRIP_MARKDOWN_SECTIONS_MIXED_HEADING_OUTPUT = `## Overview
 
 Keep this section.
 
@@ -112,27 +78,27 @@ Keep this section.
 
 Keep this section too.`;
 
-export const MDX_WITH_ALERT = `Before
+export const UNWRAP_SIMPLE_COMPONENTS_ALERT_INPUT = `Before
 <Alert heading="Warning">
 This is important content.
 </Alert>
 After`;
 
-export const MDX_WITH_UNWRAPPED_ALERT = `Before
+export const UNWRAP_SIMPLE_COMPONENTS_ALERT_OUTPUT = `Before
 
 This is important content.
 
 After`;
 
-export const MDX_WITH_BADGE = `Before
+export const UNWRAP_SIMPLE_COMPONENTS_BADGE_INPUT = `Before
 <Badge variation="success">Ready</Badge>
 After`;
 
-export const MDX_WITH_UNWRAPPED_BADGE = `Before
+export const UNWRAP_SIMPLE_COMPONENTS_BADGE_OUTPUT = `Before
 Ready
 After`;
 
-export const MIXED_JSX_INPUT = `Before
+export const NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_INPUT = `Before
 {/* this is a JSX comment */}
 Line one<br />Line two
 Hello{' '}world
@@ -143,7 +109,7 @@ After
 
 Done`;
 
-export const NORMALIZED_MARKDOWN_OUTPUT = `Before
+export const NORMALIZE_MARKDOWN_OUTPUT_MIXED_JSX_OUTPUT = `Before
 
 Line one
 
@@ -154,7 +120,7 @@ After
 
 Done`;
 
-export const THEME_CONTENT_CODEBLOCKS_INPUT = `<ThemeContent onlyThemes={['healthcare']}>
+export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_INPUT = `<ThemeContent onlyThemes={['healthcare']}>
 
 \`\`\`css
 @import '@cmsgov/ds-healthcare-gov/css/index';
@@ -170,7 +136,7 @@ import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
 
 </ThemeContent>`
 
-export const THEME_CONTENT_CODEBLOCKS_OUTPUT = `**Theme: healthcare only**
+export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT = `**Theme: healthcare only**
 
 \`\`\`css
 @import '@cmsgov/ds-healthcare-gov/css/index';
