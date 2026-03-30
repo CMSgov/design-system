@@ -32,6 +32,9 @@ import {
 
   PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_INPUT,
   PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT,
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_JS_CODEBLOCK,
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_CSS_CODEBLOCK,
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK
 } from './mdxFixtures.mjs';
 
 import { processMdxForHostedMarkdown } from './index.mjs';
@@ -93,4 +96,37 @@ test('processMdxForHostedMarkdown preserves fenced code blocks inside ThemeConte
   const output = processMdxForHostedMarkdown(PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_INPUT);
 
   assert.strictEqual(output.trim(), PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT.trim());
+});
+
+test('processMdxForHostedMarkdown preserves fenced js code blocks', () => {
+  const output = processMdxForHostedMarkdown(
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_JS_CODEBLOCK
+  );
+
+  assert.strictEqual(
+    output.trim(),
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_JS_CODEBLOCK.trim()
+  );
+});
+
+test('processMdxForHostedMarkdown preserves fenced css code blocks', () => {
+  const output = processMdxForHostedMarkdown(
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_CSS_CODEBLOCK
+  );
+
+  assert.strictEqual(
+    output.trim(),
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_CSS_CODEBLOCK.trim()
+  );
+});
+
+test('processMdxForHostedMarkdown preserves fenced html code blocks', () => {
+  const output = processMdxForHostedMarkdown(
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK
+  );
+
+  assert.strictEqual(
+    output.trim(),
+    PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK.trim()
+  );
 });

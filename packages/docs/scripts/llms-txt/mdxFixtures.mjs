@@ -149,3 +149,33 @@ Or you might import it from your JavaScript like this:
 import '@cmsgov/ds-healthcare-gov/css/index.css';
 import '@cmsgov/ds-healthcare-gov/css/healthcare-theme.css';
 \`\`\``;
+
+export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_JS_CODEBLOCK = `Before text
+
+\`\`\`js
+import { Button } from 'foo';
+const example = <Alert />;
+\`\`\`
+
+After text`;
+
+export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_CSS_CODEBLOCK = `Before text
+
+\`\`\`css
+@import '@cmsgov/ds-healthcare-gov/css/index';
+.alert {
+  color: red;
+}
+\`\`\`
+
+After text`;
+
+export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK = `Before text
+
+\`\`\`html
+<ds-alert heading="Heads up">
+  Example content
+</ds-alert>
+\`\`\`
+
+After text`;

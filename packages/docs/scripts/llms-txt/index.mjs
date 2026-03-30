@@ -21,7 +21,7 @@ export const buildMarkdownPage = ({ title, intro, body }) => {
 };
 
 export function processMdxOutsideCodeFences(input, transform) {
-  const regex = /(```js[\w-]*\n[\s\S]*?```)/g;
+  const regex = /(```(?:js|css|html)[\w-]*\n[\s\S]*?```)/g;;
 
   const parts = input.split(regex);
 
