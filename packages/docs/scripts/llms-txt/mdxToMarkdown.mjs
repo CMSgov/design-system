@@ -1,5 +1,11 @@
 const UNWRAP_TAGS = ['Alert', 'Badge',];
 
+/**
+ * Removes ES module import statements from MDX/JavaScript source text.
+ *
+ * @param {string} input - Raw source content that may contain import statements.
+ * @returns {string} The input with top-level import statements removed.
+ */
 export function removeImportStatements(input) {
   return input
     .replace(/^import[\s\S]*?from\s+['"][^'"]+['"];?\s*$/gm, '')
@@ -12,6 +18,12 @@ const SECTION_HEADINGS_TO_STRIP = [
   'Examples',
 ];
 
+/**
+ * Removes configured level-2 markdown sections and all of their content.
+ *
+ * @param {string} input - Markdown content to process.
+ * @returns {string} Markdown with configured sections removed.
+ */
 export function stripMarkdownSections(input) {
   let result = input;
 
@@ -32,7 +44,13 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-
+/**
+ * Converts supported ThemeContent blocks into a plain-text note such as
+ * "Theme: cmsgov only" while preserving the wrapped content.
+ *
+ * @param {string} input - Raw MDX content that may include ThemeContent wrappers.
+ * @returns {string} Markdown content with supported ThemeContent blocks normalized.
+ */
 export function normalizeThemeContent(input) {
   let result = input;
 
@@ -75,6 +93,13 @@ export function normalizeThemeContent(input) {
   return result;
 }
 
+/**
+ * Removes configured simple JSX wrapper components while preserving
+ * their inner text content.
+ *
+ * @param {string} input - MDX content that may contain simple wrapper components.
+ * @returns {string} Content with supported wrapper tags removed.
+ */
 export function unwrapSimpleComponents(input) {
   let result = input;
 
@@ -90,6 +115,14 @@ export function unwrapSimpleComponents(input) {
   return result;
 }
 
+/**
+ * Strips JSX comments, JSX-only spacing expressions, unsupported
+ * self-closing components, converts line-break tags, and collapses
+ * excessive blank lines.
+ *
+ * @param {string} input - Partially transformed MDX/markdown content.
+ * @returns {string} Clean markdown-safe output.
+ */
 export function normalizeMarkdownOutput(input) {
   return input
     // Remove JSX comments.
