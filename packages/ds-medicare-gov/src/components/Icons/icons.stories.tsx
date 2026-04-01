@@ -3,18 +3,22 @@ import {
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
-  DoctorsCliniciansIcon,
-  DrugsIcon,
-  FilterIcon,
-  HeartIcon,
-  InfoCircleOutlineIcon,
   CostsCircleIcon,
   CostsIcon,
   DialysisServicesIcon,
+  DoctorsCliniciansIcon,
+  DrugsIcon,
+  FilterIcon,
+  GetStartedIcon,
+  HeartIcon,
+  HomeHealthServicesIcon,
+  HospiceIcon,
+  InfoCircleOutlineIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
   SwipeIcon,
+  TeletypewriterIcon,
   WheelchairIcon,
 } from './index';
 
@@ -76,6 +80,11 @@ const iconData = [
     name: 'FilterIcon',
   },
   {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
+  },
+  {
     defaultTitle: '[variation] Heart',
     component: (
       <>
@@ -86,6 +95,16 @@ const iconData = [
     name: 'HeartIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
+  },
+  {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
+  },
+  {
+    defaultTitle: 'Hospice',
+    component: <HospiceIcon />,
+    name: 'HospiceIcon',
   },
   {
     defaultTitle: 'Information',
@@ -119,6 +138,11 @@ const iconData = [
     defaultTitle: 'Swipe',
     component: <SwipeIcon />,
     name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',
