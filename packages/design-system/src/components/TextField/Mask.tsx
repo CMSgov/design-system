@@ -74,7 +74,7 @@ export const Mask = ({ children, mask }: MaskProps) => {
     prevFieldValueRef.current = fieldValue;
   }, [fieldProps, mask, value]);
 
-  const handleBlur = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleBlur = (evt: React.FocusEvent<HTMLInputElement>): void => {
     const nextValue = maskValue(evt.target.value, mask);
 
     // We only debounce the onBlur when we know for sure that
