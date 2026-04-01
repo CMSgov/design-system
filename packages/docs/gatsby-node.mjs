@@ -10,6 +10,11 @@ import { buildRootLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage } from
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const require = createRequire(import.meta.url)
+
+// This duplicates `removePositioning` from `casingUtils.ts`.
+// Keep local for now because this `.mjs` build script cannot import the TS
+// utility directly in Node. TODO: move this shared string helper to a
+// runtime-safe ESM utility module that both TS and `.mjs` files can consume.
 const normalizePagePath = (slug) => slug.replace(/\d+_/g, '');
 
 /**
