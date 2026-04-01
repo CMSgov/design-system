@@ -6,7 +6,6 @@
 
 - [Packages](#packages)
 - [Running locally](#running-locally)
-  - [Getting started](#getting-started)
   - [Scripts](#scripts)
   - [Visual regression testing](#visual-regression-testing)
 - [Design assets](#design-assets)
@@ -61,6 +60,8 @@ These scripts can all be run from the root level of the repo:
 - `npm run storybook`
   - Starts storybook for easier local development for the core package
   - `npm run storybook:react` starts Storybook with React instead of Preact
+- `npm run freshen`
+  - Cleans node modules, installs, and builds the packages, storybook and example projects
 - `npm run test`
   - Alias of `npm run test:unit`
 - `npm run test:unit`
@@ -91,6 +92,12 @@ These scripts can all be run from the root level of the repo:
   - Interactive script that generates draft release notes and associated ticket information from [GitHub Milestones](https://github.com/CMSgov/design-system/milestones) in the CMSDS public repository.
 - `npm run release:patch`
   - Interactive script that collects the merge commits from pull requests associated with a given milestone and cherry-picks them onto the current branch (use with release branch)
+- `npm run connect:build`
+  - Initializes the Figma Code Connect CLI pipeline. This is run when first creating a new Figma Code Connect file.
+- `npm run connect:publish`
+  - Publishes all Figma Code Connect snippets to the target nodes. This should be run when a Figma Code Connect file needs to be connected/published to Figma.
+- `npm run connect:unpublish`
+  - Unpublishes all Figma Code Connect snippets
 
 ### Visual regression testing
 
@@ -120,9 +127,9 @@ There are a lot of tests, so it can be helpful to constrain the tests you run lo
 
 ## Design Assets
 
-The CMS Design System provides a [Figma file and library](https://www.figma.com/files/1370666084166866217/team/1372252543729123276) containing components, styles, and design tokens. These assets are regularly updated alongside the codebase, and updates are automatically synced for designers using the Figma Library, across all CMS brands.
+The CMS Design System provides a [Figma file and library](https://www.figma.com/files/1370666084166866217/team/1372252543729123276) containing components, styles, and design tokens. These assets are regularly updated alongside the codebase across all CMS brands.
 
-We use Figma's multi-mode variable system to define theme variants for each of our theme-level tokens. These theme-level tokens can be used in our shared design library. Tokens can be edited by developers comfortable with JSON, and by designers using Figma's variable tables. Changes to tokens can be synced both ways: from the code repository to Figma, and from Figma to the code repository.
+We use Figma's multi-mode variable system to define theme variants for each of our theme-level tokens. These theme-level tokens can be used in our shared design library. Tokens can be edited by developers comfortable with JSON, and by designers using Figma's variable tables.
 
 ## Examples
 
