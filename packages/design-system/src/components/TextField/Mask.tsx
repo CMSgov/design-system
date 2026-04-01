@@ -5,9 +5,6 @@ import classNames from 'classnames';
 import { maskValue, unmaskValue, coerceToString, getOnlyChild } from './maskHelpers';
 import { TextInputProps } from './TextInput';
 
-// TODO: Remove `maskValue` and `unmaskValue` exports with next major release (v3.x.x)
-export { maskValue, unmaskValue };
-
 /**
  * Note: Chrome appends a /v modifier to regular expressions, which enables all unicode character set features. As a result,
  * - and { } characters must be escaped.
@@ -19,11 +16,12 @@ const maskPattern = {
   currency: '[0-9.,\\-]*',
 };
 
+// Naming here is left overly general to support future masks
 const maskOverlayContent = {
   currency: '$',
 };
 
-export type MaskMask = 'currency' | 'phone' | 'ssn' | 'zip';
+export type MaskType = 'currency' | 'phone' | 'ssn' | 'zip';
 
 export interface MaskProps {
   /**
@@ -33,7 +31,7 @@ export interface MaskProps {
   /**
    * The type of mask
    */
-  mask?: MaskMask;
+  mask: MaskType;
 }
 
 export const Mask = ({ children, mask }: MaskProps) => {
@@ -120,15 +118,16 @@ export const Mask = ({ children, mask }: MaskProps) => {
   });
 
   // UI overlayed on top of a field to support certain masks
-  const maskOverlay = maskOverlayContent[mask] ? (
-    <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
-      {maskOverlayContent[mask]}
-    </div>
-  ) : null;
+  const currencyOverlay =
+    mask === 'currency' ? (
+      <div className={`ds-c-field__before ds-c-field__before--currency`}>
+        {maskOverlayContent[mask]}
+      </div>
+    ) : null;
 
   return (
     <div className={`ds-c-field-mask ds-c-field-mask--${mask}`}>
-      {maskOverlay}
+      {currencyOverlay}
       {modifiedTextField}
     </div>
   );
