@@ -38,7 +38,7 @@ function renderPagesList(pages, baseUrl) {
   let markdown = '';
 
   for (const { title, slug, intro } of sorted) {
-    markdown += `- [${title}](${baseUrl}${slug})${intro ? `: ${intro}` : ''}\n`;
+    markdown += `- [${title}](${baseUrl}${slug}/llms.txt)${intro ? `: ${intro}` : ''}\n`;
   }
   markdown += '\n';
 
