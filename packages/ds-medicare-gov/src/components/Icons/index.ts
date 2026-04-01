@@ -10,6 +10,7 @@ export { default as DrugsIcon } from './DrugsIcon';
 export { default as GetStartedIcon } from './GetStartedIcon';
 export { default as FilterIcon } from './FilterIcon';
 export { default as HeartIcon } from './HeartIcon';
+export { default as HomeHealthServicesIcon } from './HomeHealthServicesIcon';
 export { default as HospiceIcon } from './HospiceIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
