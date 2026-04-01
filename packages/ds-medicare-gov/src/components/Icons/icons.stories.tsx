@@ -14,14 +14,13 @@ import {
   HomeHealthServicesIcon,
   HospiceIcon,
   InfoCircleOutlineIcon,
+  LeafIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
   SwipeIcon,
   TeletypewriterIcon,
   WheelchairIcon,
-  HeartIcon,
-  LeafIcon,
 } from './index';
 
 export default {
