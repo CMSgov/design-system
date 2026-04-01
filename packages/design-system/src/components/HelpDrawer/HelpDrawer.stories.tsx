@@ -68,20 +68,14 @@ export const Default: Story = {
       action('onCloseClick')(...params);
       setIsDrawerVisible(false);
     };
-    const toggleButtonText = 'Toggle';
 
     return (
       <>
-        <HelpDrawer
-          {...args}
-          onCloseClick={hideDrawer}
-          isOpen={isDrawerVisible}
-          triggerButtonText={toggleButtonText}
-        >
+        <HelpDrawer {...args} onCloseClick={hideDrawer} isOpen={isDrawerVisible}>
           {args.children || drawerContent}
         </HelpDrawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
-          {toggleButtonText}
+          Toggle
         </Button>
       </>
     );
