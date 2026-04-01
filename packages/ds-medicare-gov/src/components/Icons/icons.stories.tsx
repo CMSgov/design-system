@@ -11,6 +11,7 @@ import {
   FilterIcon,
   GetStartedIcon,
   HeartIcon,
+  HomeHealthServicesIcon,
   HospiceIcon,
   InfoCircleOutlineIcon,
   PharmacyIcon,
@@ -94,6 +95,11 @@ const iconData = [
     name: 'HeartIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
+  },
+  {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
   },
   {
     defaultTitle: 'Hospice',
