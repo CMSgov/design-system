@@ -11,8 +11,10 @@ import {
   FilterIcon,
   GetStartedIcon,
   HeartIcon,
+  HomeHealthServicesIcon,
   HospiceIcon,
   InfoCircleOutlineIcon,
+  LeafIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
@@ -96,6 +98,11 @@ const iconData = [
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
   },
   {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
+  },
+  {
     defaultTitle: 'Hospice',
     component: <HospiceIcon />,
     name: 'HospiceIcon',
@@ -104,6 +111,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Leaf',
+    component: <LeafIcon />,
+    name: 'LeafIcon',
   },
   {
     defaultTitle: 'Pharmacy',

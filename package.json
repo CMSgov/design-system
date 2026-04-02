@@ -55,6 +55,7 @@
     "test:unit:coverage:wc": "npm run test:unit:wc -- --collectCoverage --coverageReporters='json-summary'",
     "test:unit:coverage:all": "npm run test:unit:coverage:react && npm run test:unit:coverage:wc && tsx ./tests/unit/combineTestCoverage.ts",
     "test:unit": "jest --config=tests/unit/jest.config.js",
+    "test:unit:docs": "npm --prefix ./packages/docs run test",
     "test:unit:preact": "PREACT=true jest --config=tests/unit/jest.config.js",
     "test:unit:wc": "WC=true jest --config=tests/unit/jest.config.js",
     "test:browser": "tsx ./scripts/browser-tests.ts",
