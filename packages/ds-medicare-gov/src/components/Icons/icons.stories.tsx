@@ -14,6 +14,7 @@ import {
   HomeHealthServicesIcon,
   HospiceIcon,
   InfoCircleOutlineIcon,
+  LeafIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
@@ -110,6 +111,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Leaf',
+    component: <LeafIcon />,
+    name: 'LeafIcon',
   },
   {
     defaultTitle: 'Pharmacy',
