@@ -18,6 +18,7 @@
     "build:tokens": "npm --prefix ./packages/design-system-tokens run build",
     "build:cdn-index": "tsx ./scripts/build-cdn-indexes.ts",
     "build:docs": "npm run build:storybook:docs && npm --prefix ./packages/docs run build",
+    "build:distributed-docs": "tsx ./scripts/generate-distributed-docs.ts",
     "build:examples": "tsx ./scripts/build-examples.ts",
     "apply-example-templates": "tsx ./scripts/apply-example-templates.ts",
     "check:maturity": "./scripts/maturityCheck.sh",
