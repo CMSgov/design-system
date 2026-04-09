@@ -9,6 +9,7 @@ import {
   unwrapSimpleComponents,
   normalizeMarkdownOutput  
 } from './mdxToMarkdown.mjs'
+import path from 'node:path';
 
 export const buildMarkdownPage = ({ title, intro, body }) => {
   return [
@@ -58,18 +59,66 @@ export const processMdxForHostedMarkdown = (body) => {
   return result.trim();
 };
 
+export function normalizePages(pages) {
+ const normalized = pages.map((mdxNode) => ({
+    slug: mdxNode?.fields?.slug ?? '',
+    title: getPageTitle(mdxNode),
+    intro: getPageIntro(mdxNode),
+    theme: mdxNode?.frontmatter?.status?.targetTheme ?? 'core',
+  }));
+  
+  return normalized.filter((page) => shouldIncludePage(page.slug));
+}
+
+export function buildDocsManifest(pages) {
+  const manifest = {
+    generatedAt: new Date().toISOString(),
+    packages: {
+      'design-system': [],
+      'ds-healthcare-gov': [],
+      'ds-medicare-gov': [],
+      'ds-cms-gov': [],
+    },
+  };
+
+  pages.forEach((page) => {
+    const pageEntry = {
+      path: page.slug,
+      title: page.title,
+      intro: page?.intro ?? '',
+      theme: page?.theme ?? null,
+    };
+
+    switch (page.theme) {
+      case 'healthcare':
+        manifest.packages['ds-healthcare-gov'].push(pageEntry);
+        break;
+      case 'medicare':
+        manifest.packages['ds-medicare-gov'].push(pageEntry);
+        break;
+      case 'cmsgov':
+        manifest.packages['ds-cms-gov'].push(pageEntry);
+        break;
+      // Pages withotu a target theme are included in all packages.
+      case 'core':
+        Object.keys(manifest.packages).forEach((packageKey) => {
+          manifest.packages[packageKey].push(pageEntry);
+        });
+        break;
+      default:
+        throw new Error(
+          `Unknown theme "${page.theme}" for page "${page.slug}".`
+        );
+    }
+  });
+
+  return manifest;
+}
+
 export function buildRootLlmsTxt({ siteUrl, description, pages}) {
   const baseUrl = normalizeSiteUrl(siteUrl);
 
-  const normalizedPages = pages
-    .map((mdxNode) => ({
-      slug: mdxNode?.fields?.slug ?? '',
-      title: getPageTitle(mdxNode),
-      intro: getPageIntro(mdxNode),
-    }))
-    .filter((page) => shouldIncludePage(page.slug));
-
-  const tree = buildTree(normalizedPages);
+  const tree = buildTree(pages);
   const title = 'The CMS Design System Docs';
 
   return renderLlmsMarkdown({
