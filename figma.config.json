@@ -1,8 +1,5 @@
 {
   "codeConnect": {
-    "importPaths": {
-      "src/components/*": "@cms/design-system"
-    },
     "include": [
       "/packages/design-system/src/components/**/*.{tsx,jsx}",
       "/packages/ds-cms-gov/src/components/**/*.{tsx,jsx}",
