@@ -74,7 +74,7 @@ export function buildDocsManifest(pages) {
   const manifest = {
     generatedAt: new Date().toISOString(),
     packages: {
-      'design-system': [],
+      'shared': [],
       'ds-healthcare-gov': [],
       'ds-medicare-gov': [],
       'ds-cms-gov': [],
@@ -101,9 +101,7 @@ export function buildDocsManifest(pages) {
         break;
       // Pages withotu a target theme are included in all packages.
       case 'core':
-        Object.keys(manifest.packages).forEach((packageKey) => {
-          manifest.packages[packageKey].push(pageEntry);
-        });
+        manifest.packages['shared'].push(pageEntry);
         break;
       default:
         throw new Error(
