@@ -70,6 +70,34 @@ export function normalizePages(pages) {
   return normalized.filter((page) => shouldIncludePage(page.slug));
 }
 
+
+/**
+ * Builds a v1 llms manifest for use in the `generate-distributed-docs` script, which will read this manifest to determine 
+ * how to package and distribute docs content to child packages.
+ *
+ * Current schema shape:
+ * {
+ *   generatedAt: string,
+ *   packages: {
+ *     shared: ManifestEntry[],
+ *     'ds-healthcare-gov': ManifestEntry[],
+ *     'ds-medicare-gov': ManifestEntry[],
+ *     'ds-cms-gov': ManifestEntry[],
+ *   }
+ * }
+ *
+ * ManifestEntry:
+ * {
+ *   path: string,   // used to recreate nested dist/docs paths
+ *   title: string,  // not sure if we want to keep this or not
+ *   intro: string,  // same for intro
+ *   theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov'
+ * }
+ *
+ * Notes:
+ * - `shared` contains all core pages that should be copied into every package dist/docs folder
+ * - child package buckets contain only theme-specific pages that should be copied into their respective package dist/docs folder.
+ */
 export function buildDocsManifest(pages) {
   const manifest = {
     generatedAt: new Date().toISOString(),
@@ -99,7 +127,7 @@ export function buildDocsManifest(pages) {
       case 'cmsgov':
         manifest.packages['ds-cms-gov'].push(pageEntry);
         break;
-      // Pages withotu a target theme are included in all packages.
+      // Pages without a target theme are included in all packages.
       case 'core':
         manifest.packages['shared'].push(pageEntry);
         break;
