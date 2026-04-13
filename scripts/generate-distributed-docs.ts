@@ -52,10 +52,10 @@ function main(): void {
     console.log(`Copied docs artifacts to ${distDocsPath}`);
   });
 
-  // Look up each 'shared' entry in manifestJson within DOCS_PUBLIC_DIR/llms.txt and verify it exists.
+  // Look up each shared design system entry in manifestJson within DOCS_PUBLIC_DIR/llms.txt and verify it exists.
   // If it does, copy it to each package's dist/docs nested directory.
   const manifestJson = JSON.parse(fs.readFileSync(docsManifestPath, 'utf-8'));
-  const sharedPages = manifestJson.packages.shared;
+  const sharedPages = manifestJson.packages['design-system'];
   sharedPages.forEach((page: { path: string }) => {
     const sanitizedPath = sanitizeManifestPath(page.path);
     const pagePath = path.resolve(DOCS_PUBLIC_DIR, sanitizedPath, 'llms.txt');

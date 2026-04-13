@@ -79,7 +79,7 @@ export function normalizePages(pages) {
  * {
  *   generatedAt: string,
  *   packages: {
- *     shared: ManifestEntry[],
+ *     'design-system': ManifestEntry[],
  *     'ds-healthcare-gov': ManifestEntry[],
  *     'ds-medicare-gov': ManifestEntry[],
  *     'ds-cms-gov': ManifestEntry[],
@@ -95,14 +95,14 @@ export function normalizePages(pages) {
  * }
  *
  * Notes:
- * - `shared` contains all core pages that should be copied into every package dist/docs folder
+ * - `design-system` contains all core pages that should be copied into every package dist/docs folder
  * - child package buckets contain only theme-specific pages that should be copied into their respective package dist/docs folder.
  */
 export function buildDocsManifest(pages) {
   const manifest = {
     generatedAt: new Date().toISOString(),
     packages: {
-      'shared': [],
+      'design-system': [],
       'ds-healthcare-gov': [],
       'ds-medicare-gov': [],
       'ds-cms-gov': [],
@@ -127,14 +127,9 @@ export function buildDocsManifest(pages) {
       case 'cmsgov':
         manifest.packages['ds-cms-gov'].push(pageEntry);
         break;
-      // Pages without a target theme are included in all packages.
-      case 'core':
-        manifest.packages['shared'].push(pageEntry);
-        break;
+      // Default to theme-agnostic pages to design-system bucket, which will be copied to all child packages.
       default:
-        throw new Error(
-          `Unknown theme "${page.theme}" for page "${page.slug}".`
-        );
+        manifest.packages['design-system'].push(pageEntry);
     }
   });
 
