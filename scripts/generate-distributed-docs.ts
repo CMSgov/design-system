@@ -61,7 +61,8 @@ function main(): void {
     const pagePath = path.resolve(DOCS_PUBLIC_DIR, sanitizedPath, 'llms.txt');
     console.log('Looking for shared page at:', pagePath);
     if (!fs.existsSync(pagePath)) {
-      throw new Error(`llms.txt not found for shared page: ${pagePath}`);
+      console.warn(`llms.txt not found for shared page: ${pagePath}`);
+      return;
     }
     packagePaths.forEach((packagePath) => {
       const distDocsPath = path.resolve(packagePath, 'dist', 'docs');
