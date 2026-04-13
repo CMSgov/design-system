@@ -1,11 +1,16 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const DOCS_PUBLIC_DIR = path.resolve(process.cwd(), 'packages/docs/public');
-const CORE_PACKAGE_PATH = path.resolve(process.cwd(), 'packages/design-system');
-const HEALTHCARE_PACKAGE_PATH = path.resolve(process.cwd(), 'packages/ds-healthcare-gov');
-const MEDICARE_PACKAGE_PATH = path.resolve(process.cwd(), 'packages/ds-medicare-gov');
-const CMS_PACKAGE_PATH = path.resolve(process.cwd(), 'packages/ds-cms-gov');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const DOCS_PUBLIC_DIR = path.resolve(__dirname, '../packages/docs/public');
+
+const CORE_PACKAGE_PATH = path.resolve(__dirname, '../packages/design-system');
+const HEALTHCARE_PACKAGE_PATH = path.resolve(__dirname, '../packages/ds-healthcare-gov');
+const MEDICARE_PACKAGE_PATH = path.resolve(__dirname, '../packages/ds-medicare-gov');
+const CMS_PACKAGE_PATH = path.resolve(__dirname, '../packages/ds-cms-gov');
 
 const packagePaths = [
   CORE_PACKAGE_PATH,
