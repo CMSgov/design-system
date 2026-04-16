@@ -51,6 +51,8 @@ export const processMdxForHostedMarkdown = (body) => {
     // Unwraps simple components (e.g., Alerts, Badges) but keeps their text 
     chunk = unwrapSimpleComponents(chunk);
     chunk = normalizeThemeContent(chunk);
+    // Remove mojibake sequences 
+    chunk = fixMojibake(chunk);
     // Final cleanup: removes any remaining JSX.
     chunk = normalizeMarkdownOutput(chunk);
 
