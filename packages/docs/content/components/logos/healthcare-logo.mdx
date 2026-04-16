@@ -3,6 +3,8 @@ title: Healthcare.gov Logo
 intro: Renders the HealthCare.gov logo in English (default) or Spanish.
 status:
   level: use
+  targetTheme: healthcare
+  targetThemeNote: This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.
 core:
   figmaNodeId: 346-18284
 healthcare:
@@ -11,7 +13,6 @@ healthcare:
   storybookLink: healthcare-logo--docs
 ---
 
-import { Alert } from '@cmsgov/design-system';
 import { CloseIconThin, SvgIcon } from '@cmsgov/design-system';
 import colorBackground from '../../../src/images/HCgov-logo/4_ColorBackground.png';
 import photoBackground from '../../../src/images/HCgov-logo/5_PhotoBackground.png';
@@ -23,16 +24,6 @@ import squeezed from '../../../src/images/HCgov-logo/10_Squeezed.png';
 import hcgovFavicon from '../../../src/images/HCgov-logo/favicon.ico';
 import blackLogoTag from '../../../src/images/HCgov-logo/BlackLogoTag.png';
 import greyLogoTag from '../../../src/images/HCgov-logo/GreyLogoTag.png';
-
-<ThemeContent neverThemes={['healthcare']}>
-  <Alert variation="error">
-    <p class="ds-c-alert__text">
-      {
-        'This component is only used for HealthCare. Please use the theme switcher to view the component with HealthCare styles.'
-      }
-    </p>
-  </Alert>
-</ThemeContent>
 
 In keeping with our theme of trust, the HealthCare.gov identity marker establishes a universal signature across all HealthCare.gov communications. We treat the marker the same across all media. See the rules to follow when using the HealthCare.gov identity marker below.
 
