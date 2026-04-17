@@ -163,7 +163,7 @@ export function fixMojibake(input) {
   let result = input;
 
   for (const [bad, good] of replacements) {
-    result = result.split(bad).join(good);
+    result = result.replaceAll(bad, good);
   }
 
   return result;
