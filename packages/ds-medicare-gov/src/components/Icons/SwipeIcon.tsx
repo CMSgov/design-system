@@ -1,10 +1,10 @@
 import type * as React from 'react';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
+import { t } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Swipe',
   viewBox: '0 0 30 33',
 };
 
@@ -12,7 +12,7 @@ function SwipeIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--swipe ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.swipe')} {...defaultProps} {...props} className={iconCssClasses}>
       <g fill="none" fillRule="evenodd">
         <path
           d="M27.0212 2.91177H18.833C18.4563 2.91177 18.1506 3.12919 18.1506 3.39706C18.1506 3.66494 18.4563 3.88236 18.833 3.88236H27.0212C27.3979 3.88236 27.7036 3.66494 27.7036 3.39706C27.7036 3.12919 27.3979 2.91177 27.0212 2.91177Z"

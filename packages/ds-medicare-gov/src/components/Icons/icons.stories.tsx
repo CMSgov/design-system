@@ -3,15 +3,25 @@ import {
   AbuseIcon,
   BirthingFriendlyIcon,
   CheckShieldIcon,
+  CostsCircleIcon,
+  CostsIcon,
+  DialysisServicesIcon,
+  DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
+  GetStartedIcon,
   HealthcareProviderIcon,
   HeartIcon,
+  HomeHealthServicesIcon,
+  HospiceIcon,
   InfoCircleOutlineIcon,
+  LeafIcon,
+  NursingHomeIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
   SwipeIcon,
+  TeletypewriterIcon,
   WheelchairIcon,
 } from './index';
 
@@ -43,6 +53,26 @@ const iconData = [
     name: 'CheckShieldIcon',
   },
   {
+    defaultTitle: 'Costs',
+    component: <CostsIcon />,
+    name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Costs Circle Icon',
+    component: <CostsCircleIcon />,
+    name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Dialysis Services',
+    component: <DialysisServicesIcon />,
+    name: 'DialysisServicesIcon',
+  },
+  {
+    defaultTitle: 'Doctors and Clinicians',
+    component: <DoctorsCliniciansIcon />,
+    name: 'DoctorsCliniciansIcon',
+  },
+  {
     defaultTitle: 'Drugs',
     component: <DrugsIcon />,
     name: 'DrugsIcon',
@@ -51,6 +81,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
   },
   {
     defaultTitle: 'Healthcare Provider',
@@ -70,9 +105,29 @@ const iconData = [
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
   },
   {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
+  },
+  {
+    defaultTitle: 'Hospice',
+    component: <HospiceIcon />,
+    name: 'HospiceIcon',
+  },
+  {
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Leaf',
+    component: <LeafIcon />,
+    name: 'LeafIcon',
+  },
+  {
+    defaultTitle: 'Nursing Home',
+    component: <NursingHomeIcon />,
+    name: 'NursingHomeIcon',
   },
   {
     defaultTitle: 'Pharmacy',
@@ -101,6 +156,11 @@ const iconData = [
     defaultTitle: 'Swipe',
     component: <SwipeIcon />,
     name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',
