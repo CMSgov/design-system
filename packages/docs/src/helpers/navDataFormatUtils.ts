@@ -13,6 +13,7 @@ export interface DocsNavItem extends Omit<VerticalNavItemProps, 'label'> {
 // order of labels of level 1 items
 const level1ItemOrder = [
   'getting started',
+  'using ai',
   'guidelines',
   'foundation',
   'components',
@@ -96,10 +97,19 @@ export const organizeNavItems = (dataList: DocsNavItem[]): DocsNavItem[] => {
   level1Items.forEach((level1Item: DocsNavItem) => {
     // sort items based on the order defined in frontmatter then id which is the file path for the item
     level1Item.items = sortBy(level1Item.items, ['order', 'id']);
+
+    // Altering the label here means we don't need to write special CSS classes for this one nav item
+    // But it does mean we need to normalize casing before sorting, see line 109 below.
+    if (level1Item.label === 'using ai') {
+      level1Item.label = 'Using AI';
+    }
   });
 
   level1Items.sort((itemA, itemB) => {
-    return level1ItemOrder.indexOf(itemA.label) - level1ItemOrder.indexOf(itemB.label);
+    // Normalizing for case here so we can keep the formatting in our item order array consistent.
+    const labelA = itemA.label.toLowerCase();
+    const labelB = itemB.label.toLowerCase();
+    return level1ItemOrder.indexOf(labelA) - level1ItemOrder.indexOf(labelB);
   });
 
   return Object.values(level1Items);
