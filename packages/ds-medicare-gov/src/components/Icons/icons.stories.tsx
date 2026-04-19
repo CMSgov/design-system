@@ -19,6 +19,7 @@ import {
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  ShareIcon,
   SwipeIcon,
   TeletypewriterIcon,
   WheelchairIcon,
@@ -132,6 +133,11 @@ const iconData = [
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
+  },
+  {
+    defaultTitle: 'Share',
+    component: <ShareIcon />,
+    name: 'ShareIcon',
   },
   {
     defaultTitle: '[variation] Star',

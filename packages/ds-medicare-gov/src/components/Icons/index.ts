@@ -18,6 +18,7 @@ export { default as NursingHomeIcon } from './NursingHomeIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
+export { default as ShareIcon } from './ShareIcon';
 export { default as SwipeIcon } from './SwipeIcon';
 export { default as TeletypewriterIcon } from './TTYIcon';
 export { default as WheelchairIcon } from './WheelchairIcon';
