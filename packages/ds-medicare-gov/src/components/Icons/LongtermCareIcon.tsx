@@ -1,10 +1,9 @@
 import type * as React from 'react';
-import { SvgIcon } from '@cmsgov/design-system';
+import { SvgIcon, t } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Long-term Care',
   viewBox: '0 0 32 32',
 };
 
@@ -13,7 +12,12 @@ function LongtermCareIcon(props: IconCommonProps): React.ReactElement {
 
   return (
     <span className="icon-wrapper">
-      <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+      <SvgIcon
+        title={t('icons.longtermCare')}
+        {...defaultProps}
+        {...props}
+        className={iconCssClasses}
+      >
         <path
           fillRule="evenodd"
           clipRule="evenodd"
