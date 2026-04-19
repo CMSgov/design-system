@@ -13,6 +13,7 @@ export { default as HeartIcon } from './HeartIcon';
 export { default as HomeHealthServicesIcon } from './HomeHealthServicesIcon';
 export { default as HospiceIcon } from './HospiceIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
+export { default as InpatientRehabIcon } from './InpatientRehabIcon';
 export { default as LeafIcon } from './LeafIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
