@@ -10,6 +10,17 @@ import {
   normalizeMarkdownOutput  
 } from './mdxToMarkdown.mjs'
 
+export function normalizePages(pages) {
+ const normalized = pages.map((mdxNode) => ({
+    slug: mdxNode?.fields?.slug ?? '',
+    title: getPageTitle(mdxNode),
+    intro: getPageIntro(mdxNode),
+    theme: mdxNode?.frontmatter?.status?.targetTheme ?? 'core',
+  }));
+  
+  return normalized.filter((page) => shouldIncludePage(page.slug));
+}
+
 export const buildMarkdownPage = ({ title, intro, body }) => {
   return [
     title ? `# ${title}` : '',
@@ -60,16 +71,7 @@ export const processMdxForHostedMarkdown = (body) => {
 
 export function buildRootLlmsTxt({ siteUrl, description, pages}) {
   const baseUrl = normalizeSiteUrl(siteUrl);
-
-  const normalizedPages = pages
-    .map((mdxNode) => ({
-      slug: mdxNode?.fields?.slug ?? '',
-      title: getPageTitle(mdxNode),
-      intro: getPageIntro(mdxNode),
-    }))
-    .filter((page) => shouldIncludePage(page.slug));
-
-  const tree = buildTree(normalizedPages);
+  const tree = buildTree(pages);
   const title = 'The CMS Design System Docs';
 
   return renderLlmsMarkdown({
@@ -78,4 +80,40 @@ export function buildRootLlmsTxt({ siteUrl, description, pages}) {
     baseUrl,
     tree,
   });
+}
+
+export function buildDocsManifest(pages) {
+    const manifest = {
+      generatedAt: new Date().toISOString(),
+      packages: {
+        'design-system': [],
+        'ds-healthcare-gov': [],
+        'ds-medicare-gov': [],
+        'ds-cms-gov': [],
+      },
+  };
+
+  // Exclude pages with "not-in-sidebar" or "blog" in the slug.
+  const filteredPages = pages.filter((page) => {
+    const slug = page.slug;
+    return !slug.includes('not-in-sidebar') && 
+          !slug.includes('blog');
+  });
+
+  filteredPages.forEach((page) => {
+    // Add each page to the appropriate package based on its theme.
+    if (page.theme === 'healthcare') {
+      manifest.packages['ds-healthcare-gov'].push(page);
+    } else if (page.theme === 'medicare') {
+      manifest.packages['ds-medicare-gov'].push(page);
+    } else if (page.theme === 'cms') {
+      manifest.packages['ds-cms-gov'].push(page);
+    } else {
+      // Non-theme-specific pages go in the main design-system package
+      // to avoid duplication across theme packages.
+      manifest.packages['design-system'].push(page);
+    } 
+  });
+
+  return manifest;
 }
