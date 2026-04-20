@@ -90,10 +90,7 @@ function generateWebpackConfig(options) {
               `${nodeModules}/preact/dist/preact.umd.js`,
               `${nodeModules}/preact/dist/preact.umd.js.map`,
             ]
-          : [
-              `${nodeModules}/react/umd/react.production.min.js`,
-              `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
-            ],
+          : [],
       })
     );
   }
