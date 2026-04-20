@@ -1,5 +1,5 @@
 import { normalizeSiteUrl } from './slug.mjs';
-import { getPageTitle, getPageIntro ,shouldIncludeInRootLlms, shouldIncludeInManifest } from './filters.mjs';
+import { getPageTitle, getPageIntro, shouldIncludeInRootLlms, shouldIncludeInManifest } from './filters.mjs';
 import { buildTree } from './buildTree.mjs';
 import { renderLlmsMarkdown } from './renderMarkdown.mjs';
 import { 
