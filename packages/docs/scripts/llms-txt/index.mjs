@@ -81,6 +81,34 @@ export function buildRootLlmsTxt({ siteUrl, description, pages}) {
   });
 }
 
+
+/**
+ * Builds docs-manifest for use in the `generate-distributed-docs` script, which will read this manifest to determine 
+ * how to package and distribute docs content to child packages.
+ *
+ * Current schema shape:
+ * {
+ *   generatedAt: string,
+ *   packages: {
+ *     'design-system': ManifestEntry[],
+ *     'ds-healthcare-gov': ManifestEntry[],
+ *     'ds-medicare-gov': ManifestEntry[],
+ *     'ds-cms-gov': ManifestEntry[],
+ *   }
+ * }
+ *
+ * ManifestEntry:
+ * {
+ *   path: string,   // used to recreate nested dist/docs paths
+ *   title: string,  // not sure if we want to keep this or not
+ *   intro: string,  // same for intro
+ *   theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov'
+ * }
+ *
+ * Notes:
+ * - `design-system` contains all core pages that should be copied into every package dist/docs folder
+ * - child package buckets contain only theme-specific pages that should be copied into their respective package dist/docs folder.
+ */
 export function buildDocsManifest(pages) {
     const manifest = {
       generatedAt: new Date().toISOString(),
@@ -92,7 +120,7 @@ export function buildDocsManifest(pages) {
       },
   };
 
-  // Exclude pages with "not-in-sidebar" or "blog" in the slug.
+  // Exclude any low-value pages from the manifest.
   const filteredPages = pages.filter(shouldIncludeInManifest);
 
   filteredPages.forEach((page) => {
