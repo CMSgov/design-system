@@ -1,5 +1,11 @@
 {
   "codeConnect": {
+    "importPaths": {
+      "packages/design-system/src/components/*": "@cms/design-system",
+      "packages/ds-cms-gov/src/components/*": "@cms/ds-cms-gov",
+      "packages/ds-healthcare-gov/src/components/*": "@cms/ds-healthcare-gov",
+      "packages/ds-medicare-gov/src/components/*": "@cms/ds-medicare-gov"
+    },
     "include": [
       "/packages/design-system/src/components/**/*.{tsx,jsx}",
       "/packages/ds-cms-gov/src/components/**/*.{tsx,jsx}",
