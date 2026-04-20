@@ -3,6 +3,10 @@ import figma from '@figma/code-connect';
 
 figma.connect(Dialog, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=226%3A51813', {
   props: {
+    actions: figma.boolean('Has buttons', {
+      true: figma.children('*Button'),
+      false: false,
+    }),
     heading: figma.string('Heading'),
     children: figma.string('Text'),
     size: figma.enum('Width', {
@@ -13,8 +17,8 @@ figma.connect(Dialog, 'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node
     onExit: () => 'REPLACE ME WITH A CALLBACK FUNCTION',
     isOpen: true,
   },
-  example: ({ children, heading, isOpen, onExit, size }) => (
-    <Dialog heading={heading} isOpen={isOpen} onExit={onExit} size={size}>
+  example: ({ actions, children, heading, isOpen, onExit, size }) => (
+    <Dialog actions={actions} heading={heading} isOpen={isOpen} onExit={onExit} size={size}>
       {children}
     </Dialog>
   ),
