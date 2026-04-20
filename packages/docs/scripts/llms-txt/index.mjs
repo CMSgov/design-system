@@ -81,7 +81,6 @@ export function buildRootLlmsTxt({ siteUrl, description, pages}) {
   });
 }
 
-
 /**
  * Builds docs-manifest for use in the `generate-distributed-docs` script, which will read this manifest to determine 
  * how to package and distribute docs content to child packages.
