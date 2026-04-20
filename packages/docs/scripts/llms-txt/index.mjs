@@ -1,5 +1,5 @@
 import { normalizeSiteUrl } from './slug.mjs';
-import { shouldIncludePage, getPageTitle, getPageIntro } from './filters.mjs';
+import { getPageTitle, getPageIntro ,shouldIncludeInRootLlms, shouldIncludeInManifest } from './filters.mjs';
 import { buildTree } from './buildTree.mjs';
 import { renderLlmsMarkdown } from './renderMarkdown.mjs';
 import { 
@@ -11,14 +11,12 @@ import {
 } from './mdxToMarkdown.mjs'
 
 export function normalizePages(pages) {
- const normalized = pages.map((mdxNode) => ({
+ return pages.map((mdxNode) => ({
     slug: mdxNode?.fields?.slug ?? '',
     title: getPageTitle(mdxNode),
     intro: getPageIntro(mdxNode),
     theme: mdxNode?.frontmatter?.status?.targetTheme ?? 'core',
   }));
-  
-  return normalized.filter((page) => shouldIncludePage(page.slug));
 }
 
 export const buildMarkdownPage = ({ title, intro, body }) => {
@@ -70,8 +68,9 @@ export const processMdxForHostedMarkdown = (body) => {
 };
 
 export function buildRootLlmsTxt({ siteUrl, description, pages}) {
+  const filteredPages = pages.filter(shouldIncludeInRootLlms);
   const baseUrl = normalizeSiteUrl(siteUrl);
-  const tree = buildTree(pages);
+  const tree = buildTree(filteredPages);
   const title = 'The CMS Design System Docs';
 
   return renderLlmsMarkdown({
@@ -94,11 +93,7 @@ export function buildDocsManifest(pages) {
   };
 
   // Exclude pages with "not-in-sidebar" or "blog" in the slug.
-  const filteredPages = pages.filter((page) => {
-    const slug = page.slug;
-    return !slug.includes('not-in-sidebar') && 
-          !slug.includes('blog');
-  });
+  const filteredPages = pages.filter(shouldIncludeInManifest);
 
   filteredPages.forEach((page) => {
     // Add each page to the appropriate package based on its theme.
