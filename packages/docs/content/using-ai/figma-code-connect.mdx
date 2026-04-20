@@ -1,0 +1,100 @@
+---
+title: Working with Figma Code Connect
+---
+
+The CMS Design System Figma library includes [Code Connect](https://github.com/figma/code-connect) snippets for a subset of components. When you pair Code Connect with the [Figma MCP server](https://help.figma.com/hc/en-us/articles/35280968300439-Figma-MCP-collection-What-is-the-Figma-MCP-server), AI coding assistants like GitHub Copilot may generate React code directly from frames and components in the [CMS Design System Figma file](https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/).
+
+This guide covers setup, basic usage, and known limitations.
+
+## Requirements
+
+Before you begin, you need:
+
+- **Figma account** with access to the [CMS Design System Figma file](https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/)
+- **Figma Personal Access Token** — generate one in Figma under _Account settings → Security → Personal access tokens_. The token needs at least **File content: Read** scope.
+- **GitHub Copilot** (or another MCP-compatible AI coding assistant) enabled in your editor
+
+## Connecting to Figma MCP
+
+Figma provides an [official MCP server](https://help.figma.com/hc/en-us/articles/35280968300439-Figma-MCP-collection-What-is-the-Figma-MCP-server) that exposes Figma file content to MCP-compatible clients (like GitHub Copilot).
+
+You can connect to the remote or Desktop Figma MCP Servers. Figma prefers that users connect to their [remote server](https://help.figma.com/hc/en-us/articles/35281350665623-Figma-MCP-collection-How-to-set-up-the-Figma-remote-MCP-server-preferred). The remote server is available on all seats and plans, and does not require updates to the Figma Desktop application to remain current. The desktop server is available for users with a Dev or Full seat for paid plans.
+
+Please follow the instructions provided by Figma to install the server of your choice with the code editor or AI application of your choice:
+
+- [Remote MCP server setup](https://help.figma.com/hc/en-us/articles/35281350665623-Figma-MCP-collection-How-to-set-up-the-Figma-remote-MCP-server-preferred)
+- [Desktop MCP server setup](https://help.figma.com/hc/en-us/articles/35281186390679-Figma-MCP-collection-How-to-setup-the-Figma-desktop-MCP-server-alternative)
+
+## Using Figma MCP with GitHub Copilot
+
+Once connected, you can ask Copilot to generate code from any frame or component in the CMS Design System Figma file. You can do this several ways, but the simplest way is to just select the design elements that you wish to implement in code.
+
+### Basic workflow
+
+1. Open a Figma file with the design you want to implement and find the component or frame
+   - Make sure your file includes the [CMS design system library](https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv)
+2. Select that component or frame
+3. Open VS Code
+4. Begin a new chat with Copilot, and ask Copilot to generate code. For example:
+
+```
+Generate React code for the selected Figma component.
+```
+
+Alternatively, you can use the node ids from Figma.
+
+1. Open a Figma file and find the component or frame you want to implement.
+2. Copy the Figma node link: right-click the component → _Copy link to selection_.
+3. In Copilot Chat, paste the link and ask Copilot to generate code. For example:
+
+```
+Generate React code for this Figma component: https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/...
+```
+
+### Example prompt
+
+```
+Using the CMS Design System, generate a React component for this Figma frame.
+Import from @cms/design-system and use the Code Connect snippet if available.
+
+Figma link: https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=145-8144
+```
+
+Copilot will use the Code Connect metadata published with the design system to produce output like:
+
+```
+import { Button } from '@cms/design-system';
+
+<Button variation="solid" size="small" disabled={false}>
+ Submit
+</Button>;
+```
+
+## Components with Code Connect support
+
+The following components currently have Code Connect snippets. For these components, Figma MCP will produce accurate prop mappings. For all other components, Copilot may still generate reasonable code, but it won't have the same prop-level accuracy.
+
+| Component    | Notes                                                                                                |
+| :----------- | :--------------------------------------------------------------------------------------------------- |
+| `Alert`      | Maps variation, heading, body text, icon visibility, and lightweight style                           |
+| `Badge`      | Maps text content, variation and size                                                                |
+| `Button`     | Maps focus state, variation, size, disabled, on-dark, text content, and alternate styles             |
+| `Card`       | Basic text content mapping; structural slots are not mapped                                          |
+| `FilterChip` | Maps label, size, and onDelete callback placeholder                                                  |
+| `Hint`       | Maps hint text and inversed style                                                                    |
+| `Label`      | Maps label text and inversed style                                                                   |
+| `TextField`  | Maps disabled state, error message and placement, multiline, size, label, input value, and hint text |
+
+All other design system components are present in the Figma file but do not yet have Code Connect snippets. Coverage will expand over time.
+
+## Caveats
+
+**Code Connect coverage is partial.** Currently, only the components listed above have snippets. For everything else, treat Copilot's output as a starting point — verify prop names and values against the [component documentation](https://design.cms.gov/).
+
+**Some prop mappings are placeholders.** For example, the `FilterChip` snippet generates `onDelete={() => 'REPLACE ME WITH A CALLBACK FUNCTION'}` as a placeholder. You will need to replace this with a real handler. Scan generated code for similar placeholder patterns before using it.
+
+**Figma properties don't always map 1:1 to code.** Some Figma component properties exist purely for design tooling (like some "Focused" states) and have no corresponding React prop. Code Connect omits these intentionally.
+
+**Token security.** Your Figma personal access token grants read access to your Figma files. Do not commit it to source control. Use an environment variable or your editor's secrets management instead.
+
+**MCP is an evolving standard.** The Figma MCP server and MCP client support in editors are both actively developed.
