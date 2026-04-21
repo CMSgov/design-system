@@ -1,0 +1,127 @@
+---
+title: 404 Page Guidance
+intro: A 404 page informs users that a requested page doesn't exist.
+core:
+  figmaNodeId: 19351-5595
+  storybookLink: patterns-404-page-guidance--docs
+---
+
+## Examples
+
+<StorybookExample
+  componentName="404Page"
+  storyId="patterns-404-page-guidance--page"
+  minHeight={500}
+/>
+
+## Guidance
+
+### When to use
+
+- When a user navigates to a page that doesn't exist.
+- Users might navigate to a 404 page for a few reasons:
+  - They followed an incorrect link
+  - The page was removed from the website
+  - They entered a typo into the URL
+
+### Guidelines
+
+- Use the error messaging provided in the 404 pattern designs. Alternative messaging may need to be approved by the CMS Content Team.
+- Let users know what they can do next. This might be advice such as correcting typos in the URL address and updating bookmarks when they find the page they want.
+- Give users a way out of the "dead end" error page by directing them to the call to action (CTA). This CTA can be a search option to find the page they are looking for or a button leading users to a homepage. If using a button, users should be redirected to the following pages for each theme:
+  - **Healthcare**: For authenticated experiences (deep links), if the URL doesn't exist, individuals will log in and land on the _Accounts dashboard_.
+  - **Medicare**: [www.medicare.gov/](https://www.medicare.gov/)
+  - **CMS**: [www.cms.gov/](https://www.cms.gov/)
+- Only include a search option on the error page if there isn't already a search box in the site's header or anywhere else on the page.
+
+### When to consider alternatives
+
+- Do not use this pattern for form validation errors.
+  - Instead, use inline errors when displaying for validation errors. Reference [guidance for inline errors]() for more information.
+- Do not use this pattern for submission errors.
+  - Instead, use alerts when displaying errors that occur from interactions on a page. Reference [guidance for alerts]() for more information.
+- Do not use this pattern if a website has been taken down for maintenance.
+  - Instead, use alerts. Reference [guidance for alerts]() for more information.
+
+### Display & behavior
+
+- The 404 page should always display the site's standard header and footer. This provides users with familiar navigation and a sense of place, rather than leaving them feeling lost.
+- The page must be fully responsive, displaying correctly on all screen sizes, from mobile devices to desktop computers.
+- If interactive elements are included (such as a search bar or button), they should be fully functional.
+- All links on the page, particularly the CTA (e.g., "Return to homepage"), must be clearly labeled and lead to a valid, helpful destination.
+
+## Accessibility
+
+- Immediately notify users relying on assistive tech, like screen readers, when they have come across a 404 page.
+- Users who are using a keyboard to navigate the page must be able to access the CTA button or search option on the 404 page.
+
+### Accessibility testing
+
+- Confirm that all interactive elements (e.g., links, buttons) can be accessed and operated using a keyboard alone.
+- Test zooming up to 200% and verify that all content remains visible and functional without horizontal scrolling.
+- Use a screen reader (e.g., VoiceOver, NVDA, or JAWS) to navigate the page and ensure the experience is understandable and complete.
+
+## Code
+
+### Analytics
+
+All of the analytics functionality described here assumes that your application has the `utag` object stored on the global window object. If your team is not using Tealium for analytics, the functionality described here will not work for you.
+
+In addition to [component level analytics events](https://design.cms.gov/components/analytics/?theme=core), it is [recommended](https://confluence.cms.gov/spaces/BLSTANALYT/pages/1247561324/Medicare+404+Pages+Tagging+Strategy+Implementation) that you implement analytics recording on these additional events:
+
+1. Page view or page load
+2. Link interactions that lead to internal pages
+3. Link interactions that lead to external pages
+
+### Page View or Load
+
+We offer the `sendViewEvent` function for page view events. This function can be imported from our design system as follows:
+
+```js
+import { sendViewEvent } from '@cmsgov/design-system';
+```
+
+For single page applications utilizing React, you can call this function directly within a `useEffect` callback function. Note: the analytics event passed in as a parameter to the `sendViewEvent` function is an example, and should not be copied and used in your application. Please follow the technical specification for your application.
+
+```js
+useEffect(() => {
+  const analyticsEvent = {
+    content_language: 'en',
+    content_type: 'js',
+    page_name: '404 Page',
+    page_type: 'true', // If page is a 404 (error page) this is set to true, otherwise it is false
+    site_environment: 'prod',
+    site_section: '404 page',
+  };
+  sendViewEvent(analyticsEvent);
+}, [location.pathname]);
+```
+
+Since the `sendViewEvent` is a regular JavaScript function, it can be imported and used in applications that are not utilizing React. You can call this function within the callback function provided to a [`load` event listener](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event), for example. In either case, you will need to provide an “event” or object containing all of the attributes you wish to track via analytics. Internal Link Interaction We offer the `sendLinkEvent` function for link clicks/interactions. This function can be imported from our design system as follows:
+
+```js
+import { sendLinkEvent } from '@cmsgov/design-system';
+```
+
+You can use the `sendLinkEvent` function in an `onClick` handler in React, or by listening for click events on specific links.
+
+```js
+const sendAnalyticsEvent = () => {
+    sendLinkEvent({
+        event_name: 'internal_link_click',
+    });
+};
+…
+<a
+    href='/here'
+    onClick={sendAnalyticsEvent}
+>
+    Click me!
+</a>
+```
+
+The `sendLinkEvent` function takes in an object that will be handled by your analytics service, and as such will be defined by that service.
+
+### External Link Interaction
+
+For link interactions that lead to external pages, you’ll need to enable `thirdPartyExternalLinkSendsAnalytics` on the [Third Party External Link component](https://design.cms.gov/components/third-party-external-link/?theme=core). For other components that you add to the 404 page, you can control analytics on particular components [as you would normally](https://design.cms.gov/components/analytics/#turning-it-on-and-off).

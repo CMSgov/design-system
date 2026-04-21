@@ -64,7 +64,7 @@
     "chalk": "^5.6.2",
     "classnames": "^2.2.5",
     "date-fns": "^3.0.6",
-    "ev-emitter": "^1.1.1",
+    "ev-emitter": "^2.1.2",
     "globby": "^16.0.0",
     "inquirer": "^13.0.1",
     "lodash": "^4.17.21",
