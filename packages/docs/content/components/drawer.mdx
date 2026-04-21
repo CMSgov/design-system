@@ -198,7 +198,28 @@ The following CSS variables can be overridden to customize Drawer components:
 
 ### Analytics
 
-This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
+The `HelpDrawer` (not `Drawer`) supports analytics tracking. Please see our developer documentation about [using analytics in the design system](/components/analytics/).
+
+To fully populate analytics events for `help_drawer_opened`, the `HelpDrawer` component includes an optional prop called `triggerButtonText`. This prop should contain the text of the button or link that opens the drawer.
+
+The value passed to `triggerButtonText` should match the visible text of the button or link that triggers the drawer so that analytics data accurately reflects what users see and interact with. Providing this value ensures that the `text` field of the `help_drawer_opened` analytics event is populated correctly and matches the analytics event requirements defined by Blast (see [the Blast specification for details](https://confluence.cms.gov/pages/viewpage.action?pageId=979043898&spaceKey=BLSTANALYT&title=AA%20help_drawer_opened)).
+
+```js
+const helpDrawerTriggerText = "Get help with costs";
+
+<Button onClick={showDrawer}>
+  {helpDrawerTriggerText}
+</Button>
+
+<HelpDrawer
+  isOpen={isOpen}
+  heading="HelpDrawer Heading"
+  onCloseClick={() => {}}
+  triggerButtonText={helpDrawerTriggerText}
+>
+  {/* Drawer content goes here */}
+</HelpDrawer>
+```
 
 ## Component maturity
 

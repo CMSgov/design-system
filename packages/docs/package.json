@@ -13,7 +13,8 @@
     "develop": "gatsby clean && gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve",
     "start": "gatsby develop",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --test scripts/llms-txt/mdxToMarkdown.test.mjs"
   },
   "browserslist": [
     ">2% in US and not dead",
