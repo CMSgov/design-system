@@ -15,10 +15,12 @@ import {
   HospiceIcon,
   InfoCircleOutlineIcon,
   LeafIcon,
+  LongtermCareIcon,
   NursingHomeIcon,
   PharmacyIcon,
   PiggyBankIcon,
   RoundedStarIcon,
+  SuppliersIcon,
   SwipeIcon,
   TeletypewriterIcon,
   WheelchairIcon,
@@ -119,6 +121,11 @@ const iconData = [
     name: 'LeafIcon',
   },
   {
+    defaultTitle: 'Long-term Care',
+    component: <LongtermCareIcon />,
+    name: 'LongtermCareIcon',
+  },
+  {
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
@@ -145,6 +152,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Suppliers',
+    component: <SuppliersIcon />,
+    name: 'SuppliersIcon',
   },
   {
     defaultTitle: 'Swipe',

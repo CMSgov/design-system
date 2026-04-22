@@ -136,3 +136,35 @@ export function normalizeMarkdownOutput(input) {
     // Normalize excessive blank lines.
     .replace(/\n{3,}/g, '\n\n');
 }
+/**
+ * Fixes common mojibake sequences that can occur when UTF-8 text is misinterpreted as Latin-1.
+ *
+ * @param {string} text - The input text that may contain mojibake.
+ * @returns {string} The text with common mojibake sequences replaced by their correct characters.
+ */
+export function fixMojibake(input) {
+  if (typeof input !== 'string') return input;
+
+  // Common mojibake sequences and their correct characters.
+  const replacements = new Map([
+    ['â€™', '’'],
+    ['â€˜', '‘'],
+    ['â€œ', '“'],
+    ['â€\u009d', '”'],
+    ['â€“`', '-'],
+    ['â€“', '-'],
+    ['â€”', '—'],
+    ['â€¦', '…'],
+    ['â€¢', '•'],
+    ['Â ', 'Â'],
+    // We can add more replacements here if needed.
+  ]);
+
+  let result = input;
+
+  for (const [bad, good] of replacements) {
+    result = result.replaceAll(bad, good);
+  }
+
+  return result;
+}

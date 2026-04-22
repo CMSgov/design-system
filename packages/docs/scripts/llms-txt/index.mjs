@@ -7,7 +7,8 @@ import {
   normalizeThemeContent,
   stripMarkdownSections,
   unwrapSimpleComponents,
-  normalizeMarkdownOutput  
+  normalizeMarkdownOutput,
+  fixMojibake
 } from './mdxToMarkdown.mjs'
 
 export function normalizePages(pages) {
@@ -58,6 +59,9 @@ export const processMdxForHostedMarkdown = (body) => {
     chunk = stripMarkdownSections(chunk);
     // Unwraps simple components (e.g., Alerts, Badges) but keeps their text 
     chunk = unwrapSimpleComponents(chunk);
+    chunk = normalizeThemeContent(chunk);
+    // Remove mojibake sequences 
+    chunk = fixMojibake(chunk);
     // Final cleanup: removes any remaining JSX.
     chunk = normalizeMarkdownOutput(chunk);
 
