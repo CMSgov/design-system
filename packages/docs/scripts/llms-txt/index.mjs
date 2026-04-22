@@ -1,5 +1,5 @@
 import { normalizeSiteUrl } from './slug.mjs';
-import { shouldIncludePage, getPageTitle, getPageIntro } from './filters.mjs';
+import { getPageTitle, getPageIntro, shouldIncludeInRootLlms, shouldIncludeInManifest } from './filters.mjs';
 import { buildTree } from './buildTree.mjs';
 import { renderLlmsMarkdown } from './renderMarkdown.mjs';
 import { 
@@ -10,6 +10,15 @@ import {
   normalizeMarkdownOutput,
   fixMojibake
 } from './mdxToMarkdown.mjs'
+
+export function normalizePages(pages) {
+ return pages.map((mdxNode) => ({
+    slug: mdxNode?.fields?.slug ?? '',
+    title: getPageTitle(mdxNode),
+    intro: getPageIntro(mdxNode),
+    theme: mdxNode?.frontmatter?.status?.targetTheme ?? 'core',
+  }));
+}
 
 export const buildMarkdownPage = ({ title, intro, body }) => {
   return [
@@ -63,17 +72,9 @@ export const processMdxForHostedMarkdown = (body) => {
 };
 
 export function buildRootLlmsTxt({ siteUrl, description, pages}) {
+  const filteredPages = pages.filter(shouldIncludeInRootLlms);
   const baseUrl = normalizeSiteUrl(siteUrl);
-
-  const normalizedPages = pages
-    .map((mdxNode) => ({
-      slug: mdxNode?.fields?.slug ?? '',
-      title: getPageTitle(mdxNode),
-      intro: getPageIntro(mdxNode),
-    }))
-    .filter((page) => shouldIncludePage(page.slug));
-
-  const tree = buildTree(normalizedPages);
+  const tree = buildTree(filteredPages);
   const title = 'The CMS Design System Docs';
 
   return renderLlmsMarkdown({
@@ -82,4 +83,63 @@ export function buildRootLlmsTxt({ siteUrl, description, pages}) {
     baseUrl,
     tree,
   });
+}
+
+/**
+ * Builds docs-manifest for use in the `generate-distributed-docs` script, which will read this manifest to determine 
+ * how to package and distribute docs content to child packages.
+ *
+ * Current schema shape:
+ * {
+ *   generatedAt: string,
+ *   packages: {
+ *     'design-system': ManifestEntry[],
+ *     'ds-healthcare-gov': ManifestEntry[],
+ *     'ds-medicare-gov': ManifestEntry[],
+ *     'ds-cms-gov': ManifestEntry[],
+ *   }
+ * }
+ *
+ * ManifestEntry:
+ * {
+ *   path: string,   // used to recreate nested dist/docs paths
+ *   title: string,  // not sure if we want to keep this or not
+ *   intro: string,  // same for intro
+ *   theme: 'core' | 'healthcare' | 'medicare' | 'cmsgov'
+ * }
+ *
+ * Notes:
+ * - `design-system` contains all core pages that should be copied into every package dist/docs folder
+ * - child package buckets contain only theme-specific pages that should be copied into their respective package dist/docs folder.
+ */
+export function buildDocsManifest(pages) {
+    const manifest = {
+      generatedAt: new Date().toISOString(),
+      packages: {
+        'design-system': [],
+        'ds-healthcare-gov': [],
+        'ds-medicare-gov': [],
+        'ds-cms-gov': [],
+      },
+  };
+
+  // Exclude any low-value pages from the manifest.
+  const filteredPages = pages.filter(shouldIncludeInManifest);
+
+  filteredPages.forEach((page) => {
+    // Add each page to the appropriate package based on its theme.
+    if (page.theme === 'healthcare') {
+      manifest.packages['ds-healthcare-gov'].push(page);
+    } else if (page.theme === 'medicare') {
+      manifest.packages['ds-medicare-gov'].push(page);
+    } else if (page.theme === 'cms') {
+      manifest.packages['ds-cms-gov'].push(page);
+    } else {
+      // Non-theme-specific pages go in the main design-system package
+      // to avoid duplication across theme packages.
+      manifest.packages['design-system'].push(page);
+    } 
+  });
+
+  return manifest;
 }

@@ -21,7 +21,7 @@
     "build:examples": "tsx ./scripts/build-examples.ts",
     "apply-example-templates": "tsx ./scripts/apply-example-templates.ts",
     "check:maturity": "./scripts/maturityCheck.sh",
-    "connect:build": "npx figma connect -t \"$(grep TOKEN .env | cut -d '=' -f2 | tr -d '\"')\"",
+    "connect:build": "npx figma connect -t \"$(grep TOKEN .env | cut -d '=' -f2 | tr -d '\"')\" --config figma.config.prod.json",
     "connect:publish:dev": "npx figma connect publish --config figma.config.dev.json",
     "connect:publish:prod": "npx figma connect publish --config figma.config.prod.json",
     "connect:unpublish:dev": "npx figma connect unpublish --config figma.config.dev.json",
