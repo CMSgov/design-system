@@ -1,10 +1,10 @@
 import type * as React from 'react';
 import { SvgIcon } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
+import { t } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Birthing Friendly',
   viewBox: '0 0 24 24',
 };
 
@@ -12,7 +12,12 @@ function BirthingFriendlyIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--birthing-friendly ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon
+      title={t('icons.birthingFriendly')}
+      {...defaultProps}
+      {...props}
+      className={iconCssClasses}
+    >
       <path
         style={{
           fill: '#000',

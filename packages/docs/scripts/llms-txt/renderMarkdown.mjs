@@ -1,4 +1,5 @@
 import { humanize } from './text.mjs';
+import { fixMojibake } from './mdxToMarkdown.mjs';
 
 export function renderLlmsMarkdown({ title, description, baseUrl, tree }) {
   let markdown = `# ${title}\n\n`;
@@ -9,7 +10,9 @@ export function renderLlmsMarkdown({ title, description, baseUrl, tree }) {
   markdown += renderPagesList(tree.pages, baseUrl);
 
   markdown += renderNode(tree, baseUrl, 0);
-  return markdown;
+  
+  // In case any mojibake sequences made it through, fix them in the final output.
+  return fixMojibake(markdown);
 }
 
 function renderNode(node, baseUrl, depth) {
@@ -38,7 +41,7 @@ function renderPagesList(pages, baseUrl) {
   let markdown = '';
 
   for (const { title, slug, intro } of sorted) {
-    markdown += `- [${title}](${baseUrl}${slug})${intro ? `: ${intro}` : ''}\n`;
+    markdown += `- [${title}](${baseUrl}${slug}/llms.txt)${intro ? `: ${intro}` : ''}\n`;
   }
   markdown += '\n';
 
