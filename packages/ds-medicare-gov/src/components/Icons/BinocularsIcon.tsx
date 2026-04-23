@@ -1,10 +1,9 @@
 import type * as React from 'react';
-import { SvgIcon } from '@cmsgov/design-system';
+import { SvgIcon, t } from '@cmsgov/design-system';
 import { IconCommonProps } from '@cmsgov/design-system';
 
 const defaultProps = {
   className: '',
-  title: 'Binoculars',
   viewBox: '0 0 32 32',
 };
 
@@ -12,7 +11,7 @@ function BinocularsIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--binoculars ${props.className || ''}`;
 
   return (
-    <SvgIcon {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.binoculars')} {...defaultProps} {...props} className={iconCssClasses}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
