@@ -12,8 +12,16 @@ export const checkPassiveSupport = () => {
       },
     };
 
-    window.addEventListener('test', null, options);
-    window.removeEventListener('test', null, options);
+    window.addEventListener(
+      'test',
+      function (ev) {
+        ev.preventDefault();
+      },
+      options
+    );
+    window.removeEventListener('test', function (ev) {
+      ev.preventDefault();
+    });
   } catch (err) {
     passiveSupported = false;
   }

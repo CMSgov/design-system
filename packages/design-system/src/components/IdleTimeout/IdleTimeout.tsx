@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import { useState, useEffect, useCallback } from 'react';
-import useInterval from './useInterval';
+import { useInterval } from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
 import { checkPassiveSupport } from './utilities/checkPassive';
 import { t } from '../i18n';
