@@ -2,7 +2,6 @@ import type * as React from 'react';
 import { useState, useEffect, useCallback } from 'react';
 import { useInterval } from './useInterval';
 import IdleTimeoutDialog from './IdleTimeoutDialog';
-import { checkPassiveSupport } from './utilities/checkPassive';
 import { t } from '../i18n';
 
 export interface IdleTimeoutProps {
@@ -155,8 +154,7 @@ export const IdleTimeout = ({
   };
 
   const addEventListeners = () => {
-    const passiveSupported = checkPassiveSupport();
-    const options = passiveSupported ? { passive: true } : false;
+    const options = { passive: true };
     document.addEventListener('mousemove', resetTimeouts, options);
     document.addEventListener('keypress', resetTimeouts, options);
   };
