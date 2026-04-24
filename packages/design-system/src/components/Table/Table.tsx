@@ -161,7 +161,7 @@ export const Table = ({
     className: 'ds-c-table__wrapper',
     role: 'region',
     'aria-labelledby': captionId,
-    tabIndex: scrollActive ? 0 : null,
+    tabIndex: scrollActive ? 0 : undefined,
   };
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 

@@ -121,8 +121,8 @@ function writeThemeIndex(theme: keyof typeof themes) {
   ]);
 
   const reactExample = codeBlock([
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react.production.min.js"></script>`,
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-dom.production.min.js"></script>`,
+    `<script src="https://esm.sh/react@19/"></script>`,
+    `<script src="https://esm.sh/react-dom@19"></script>`,
     `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-components.js"></script>`,
   ]);
 

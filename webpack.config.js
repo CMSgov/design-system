@@ -82,20 +82,19 @@ function generateWebpackConfig(options) {
           'react-dom': 'ReactDOM',
         };
 
-    plugins.push(
-      new CopyPlugin({
-        patterns: options.preact
-          ? [
-              `${nodeModules}/preact/dist/preact.min.umd.js`,
-              `${nodeModules}/preact/dist/preact.umd.js`,
-              `${nodeModules}/preact/dist/preact.umd.js.map`,
-            ]
-          : [
-              `${nodeModules}/react/umd/react.production.min.js`,
-              `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
-            ],
-      })
-    );
+    // As of React 19, React no longer include UMD builds and customers should
+    // instead use an ESM-based CDN such as esm.sh.
+    if (options.preact) {
+      plugins.push(
+        new CopyPlugin({
+          patterns: [
+            `${nodeModules}/preact/dist/preact.min.umd.js`,
+            `${nodeModules}/preact/dist/preact.umd.js`,
+            `${nodeModules}/preact/dist/preact.umd.js.map`,
+          ],
+        })
+      );
+    }
   }
   if (options.preact) {
     // If we're using preact, we need to replace resolve references to react
