@@ -281,12 +281,6 @@ const bundleJs = (options) => (cb) => {
     .on('end', cb);
 };
 
-const bundleReactComponents = bundleJs({
-  entryPath: path.resolve(distReactComponents, 'esm', 'index.js'),
-  dest: path.join(distReactComponents, 'bundle'),
-});
-bundleReactComponents.displayName = '📦 bundling react components for cdn distribution';
-
 const bundlePreactComponents = bundleJs({
   entryPath: path.resolve(distPreactComponents, 'esm', 'index.js'),
   dest: path.join(distPreactComponents, 'bundle'),
@@ -305,8 +299,7 @@ bundleWebComponents.displayName = '📦 bundling web components for cdn distribu
 const compileReactComponents = gulp.series(
   compileCjs(path.join(distReactComponents, 'cjs')),
   compileEsm(path.join(distReactComponents, 'esm')),
-  compileTypescriptDefs(),
-  bundleReactComponents
+  compileTypescriptDefs()
 );
 
 const compilePreactComponents = gulp.series(
