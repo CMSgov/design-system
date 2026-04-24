@@ -278,7 +278,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ),
     ref: mergeRefs([
       triggerRef,
-      ...(inputRef ? [inputRef] : []),
+      inputRef as React.Ref<HTMLButtonElement | undefined>,
       useAutofocus<HTMLButtonElement>(props.autoFocus),
     ]),
     'aria-controls': menuId,
