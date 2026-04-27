@@ -8,9 +8,10 @@ figma.connect(
   'https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/branch/bIEm4QxKFj0Lv9G1Nk00f2/Design-System-Library?m=dev&node-id=18176-60557',
   {
     props: {
-      disabled: figma.boolean('Disabled'),
-      error: figma.nestedProps('.ChoiceLabel', {
-        errorMessage: figma.boolean('Has error text', {
+      checked: figma.nestedProps('.CheckboxButton', { state: figma.boolean('Selected') }),
+      disabled: figma.nestedProps('.CheckboxButton', { state: figma.boolean('Disabled') }),
+      error: figma.nestedProps('Choice > Checkbox', {
+        state: figma.boolean('Has error', {
           true: 'This is the error text.',
           false: false,
         }),
@@ -21,32 +22,36 @@ figma.connect(
           false: false,
         }),
       }),
-      // This is not an editable field in Figma. It probably should be.
-      label: 'This is the text',
+      inversed: figma.enum('Inversed', {
+        Yes: true,
+        No: false,
+      }),
+      label: figma.nestedProps('.ChoiceLabel', {
+        text: figma.string('Label text'),
+      }),
       name: 'accessible-name',
-      nested: figma.nestedProps('.CheckboxButton', {
-        checked: figma.boolean('Selected'),
-        size: figma.enum('Size', {
-          Large: undefined,
-          Small: 'small',
-        }),
+      size: figma.enum('Size', {
+        Small: 'small',
+        Large: undefined,
       }),
       value: 'checked',
-      checkedChildren: figma.boolean('Has children', {
-        true: figma.children('*'),
-        false: false,
+      checkedChildren: figma.nestedProps('Choice > Checkbox', {
+        state: figma.boolean('Has child slot', {
+          true: figma.children('Alert'),
+          false: false,
+        }),
       }),
     },
-    example: ({ checkedChildren, disabled, error, hint, label, name, nested, value }) => (
+    example: ({ checked, checkedChildren, disabled, error, hint, label, name, size, value }) => (
       <Choice
-        checked={nested.checked}
-        checkedChildren={checkedChildren}
-        disabled={disabled}
-        errorMessage={error.errorMessage}
+        checked={checked.state}
+        checkedChildren={checkedChildren.state}
+        disabled={disabled.state}
+        errorMessage={error.state}
         hint={hint.text}
-        label={label}
+        label={label.text}
         name={name}
-        size={nested.size}
+        size={size}
         type="checkbox"
         value={value}
       />
