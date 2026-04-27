@@ -1,7 +1,6 @@
 import Choice from './Choice';
 import figma from '@figma/code-connect';
 
-//https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/branch/bIEm4QxKFj0Lv9G1Nk00f2/Design-System-Library?m=dev&node-id=18176-60557
 // https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/?node-id=18238%3A1795
 figma.connect(
   Choice,
