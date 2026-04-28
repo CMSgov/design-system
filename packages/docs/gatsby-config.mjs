@@ -2,7 +2,6 @@
 import remarkGfm from 'remark-gfm';
 import generateNewRelicPlugin from './newRelicConfig.mjs'
 
-
 const newRelicPlugin = generateNewRelicPlugin();
 
 /**
