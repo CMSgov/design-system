@@ -107,7 +107,7 @@
     "@babel/register": "^7.8.4",
     "@figma/code-connect": "^1.4.4",
     "@inquirer/prompts": "^3.0.3",
-    "@playwright/test": "1.49.1",
+    "@playwright/test": "1.55.1",
     "@storybook/addon-actions": "8.6.1",
     "@storybook/addon-essentials": "8.6.1",
     "@storybook/addon-links": "8.6.1",
