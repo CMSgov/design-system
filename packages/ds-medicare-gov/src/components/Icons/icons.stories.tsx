@@ -1,7 +1,9 @@
 import {
   AboutIcon,
   AbuseIcon,
+  BinocularsIcon,
   BirthingFriendlyIcon,
+  ChecklistIcon,
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
@@ -44,9 +46,19 @@ const iconData = [
     name: 'AbuseIcon',
   },
   {
+    defaultTitle: 'Binoculars',
+    component: <BinocularsIcon />,
+    name: 'BinocularsIcon',
+  },
+  {
     defaultTitle: 'Birthing Friendly',
     component: <BirthingFriendlyIcon />,
     name: 'BirthingFriendlyIcon',
+  },
+  {
+    defaultTitle: 'Checklist',
+    component: <ChecklistIcon />,
+    name: 'ChecklistIcon',
   },
   {
     defaultTitle: 'Check with shield',
