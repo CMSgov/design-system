@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-export function LinkIcon(props: IconCommonProps): React.ReactElement {
+export function LinkIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--link ${props.className || ''}`;
 
   return (
