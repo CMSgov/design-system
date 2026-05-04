@@ -18,6 +18,8 @@
       --global__font-size: 1rem;
       --global__line-height: 1.5;
       --radius-default: 3px;
+      --site-max-width: 1104px;
+      --spacer-4: 32px;
     }
 
     * {
@@ -54,6 +56,18 @@
       text-decoration: none;
     }
 
+    .ds-l-container {
+      margin-inline: auto;
+      max-width: var(--site-max-width);
+      padding-inline: calc(var(--spacer-4) * 0.5);
+    }
+
+    .ds-l-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-inline: calc( var(--spacer-4) * -0.5 );
+    }
+
     .ds-text-heading--3xl {
       font-family: var(--global__font-family);
       line-height: var(--font-line-height-heading);
@@ -76,6 +90,12 @@
 
     .ds-u-margin-top--4 {
       margin-block-start: 32px;
+    }
+
+    @media (min-width: 544px) {
+      .ds-l-container {
+        padding-inline: var(--spacer-4);
+      }
     }
 
     @media (min-width: 768px) {
