@@ -2,16 +2,29 @@ import {
   AboutIcon,
   AbuseIcon,
   BirthingFriendlyIcon,
+  ChecklistIcon,
   CheckShieldIcon,
+  CostsCircleIcon,
+  CostsIcon,
+  DialysisServicesIcon,
+  DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
+  GetStartedIcon,
   HeartIcon,
+  HomeHealthServicesIcon,
+  HospiceIcon,
   InfoCircleOutlineIcon,
+  LeafIcon,
+  LongtermCareIcon,
+  NursingHomeIcon,
   PharmacyIcon,
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  SuppliersIcon,
   SwipeIcon,
+  TeletypewriterIcon,
   WheelchairIcon,
 } from './index';
 
@@ -38,9 +51,34 @@ const iconData = [
     name: 'BirthingFriendlyIcon',
   },
   {
+    defaultTitle: 'Checklist',
+    component: <ChecklistIcon />,
+    name: 'ChecklistIcon',
+  },
+  {
     defaultTitle: 'Check with shield',
     component: <CheckShieldIcon />,
     name: 'CheckShieldIcon',
+  },
+  {
+    defaultTitle: 'Costs',
+    component: <CostsIcon />,
+    name: 'CostsIcon',
+  },
+  {
+    defaultTitle: 'Costs Circle Icon',
+    component: <CostsCircleIcon />,
+    name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Dialysis Services',
+    component: <DialysisServicesIcon />,
+    name: 'DialysisServicesIcon',
+  },
+  {
+    defaultTitle: 'Doctors and Clinicians',
+    component: <DoctorsCliniciansIcon />,
+    name: 'DoctorsCliniciansIcon',
   },
   {
     defaultTitle: 'Drugs',
@@ -51,6 +89,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Get Started',
+    component: <GetStartedIcon />,
+    name: 'GetStartedIcon',
   },
   {
     defaultTitle: '[variation] Heart',
@@ -65,9 +108,34 @@ const iconData = [
       'Takes a <code>variation</code> prop to determine if the heart is filled or just an outline.',
   },
   {
+    defaultTitle: 'Home Health Services',
+    component: <HomeHealthServicesIcon />,
+    name: 'HomeHealthServicesIcon',
+  },
+  {
+    defaultTitle: 'Hospice',
+    component: <HospiceIcon />,
+    name: 'HospiceIcon',
+  },
+  {
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Leaf',
+    component: <LeafIcon />,
+    name: 'LeafIcon',
+  },
+  {
+    defaultTitle: 'Long-term Care',
+    component: <LongtermCareIcon />,
+    name: 'LongtermCareIcon',
+  },
+  {
+    defaultTitle: 'Nursing Home',
+    component: <NursingHomeIcon />,
+    name: 'NursingHomeIcon',
   },
   {
     defaultTitle: 'Pharmacy',
@@ -98,9 +166,19 @@ const iconData = [
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
   },
   {
+    defaultTitle: 'Suppliers',
+    component: <SuppliersIcon />,
+    name: 'SuppliersIcon',
+  },
+  {
     defaultTitle: 'Swipe',
     component: <SwipeIcon />,
     name: 'SwipeIcon',
+  },
+  {
+    defaultTitle: 'Teletypewriter',
+    component: <TeletypewriterIcon />,
+    name: 'TeletypewriterIcon',
   },
   {
     defaultTitle: 'Wheelchair',
