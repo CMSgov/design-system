@@ -91,7 +91,7 @@
   ],
   [
     "onChange",
-    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement>) => any",
+    "A callback function that's invoked when a month's checked state is changed. Note: This callback is not called when a month is selected or deselected via the \"Select all\" or \"Clear all\" buttons – use the onSelectAll and onClearAll event handlers for those instances.\n\n(event: ChangeEvent<HTMLInputElement, Element>) => any",
     "-"
   ],
   [

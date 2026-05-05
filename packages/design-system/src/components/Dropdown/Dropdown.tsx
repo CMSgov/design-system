@@ -16,6 +16,7 @@ import { HiddenSelect, useButton, useSelect } from '../react-aria'; // from reac
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
+import { Key } from 'react-stately';
 
 const caretIcon = (
   <SvgIcon title="" viewBox="0 0 448 512" className="ds-u-font-size--sm">
@@ -80,7 +81,7 @@ export interface BaseDropdownProps {
    */
   name: string;
   onBlur?: (...args: any[]) => any;
-  onChange?: (change: DropdownChangeObject) => any;
+  onChange?: (change: DropdownChangeObject) => void;
   /**
    * Text showing the requirement ("Required", "Optional", etc.). See [Required and Optional Fields](https://design.cms.gov/patterns/Forms/forms/#required-and-optional-fields).
    */
@@ -150,6 +151,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     fieldClassName,
     onBlur: userOnBlur,
     onChange,
+    onFocus,
     options,
     size,
     defaultValue,
@@ -192,7 +194,8 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   }
   const [internalValueState, setInternalValueState] = useState(fallbackValue);
   const selectedKey = isControlled ? value : internalValueState;
-  const onSelectionChange = (value: string) => {
+  const onSelectionChange = (key: Key | null) => {
+    const value = key !== null ? key.toString() : '';
     triggerRef.current?.focus?.();
 
     if (onChange) {
@@ -209,7 +212,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
   };
 
   const state = useSelectState({
-    ...props,
+    ...extraProps,
     children: reactStatelyItems,
     selectedKey,
     onSelectionChange,
@@ -237,7 +240,7 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
 
   const triggerRef = useRef<HTMLButtonElement>(null);
   const useSelectProps = useSelect(
-    { ...props, onBlur, isDisabled: props.disabled },
+    { ...extraProps, onBlur, isDisabled: props.disabled },
     state,
     triggerRef
   );
@@ -268,12 +271,16 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
-      props.errorMessage && 'ds-c-field--error',
+      { 'ds-c-field--error': props.errorMessage },
       inversed && 'ds-c-field--inverse',
       size && `ds-c-field--${size}`,
       fieldClassName
     ),
-    ref: mergeRefs([triggerRef, inputRef, useAutofocus<HTMLButtonElement>(props.autoFocus)]),
+    ref: mergeRefs([
+      triggerRef,
+      inputRef as React.Ref<HTMLButtonElement | undefined>,
+      useAutofocus<HTMLButtonElement>(props.autoFocus),
+    ]),
     'aria-controls': menuId,
     'aria-labelledby': `${buttonContentId} ${labelProps.id}`,
     'aria-describedby': describeField({ ...props, hintId, errorId }),
