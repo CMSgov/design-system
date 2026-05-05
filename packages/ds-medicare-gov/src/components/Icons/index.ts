@@ -20,6 +20,7 @@ export { default as LongtermCareIcon } from './LongtermCareIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
+export { default as ResourcesIcon } from './ResourcesIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
 export { default as SuppliersIcon } from './SuppliersIcon';
 export { default as SwipeIcon } from './SwipeIcon';
