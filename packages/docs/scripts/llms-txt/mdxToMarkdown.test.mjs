@@ -6,7 +6,8 @@ import {
   stripMarkdownSections,
   normalizeThemeContent,
   normalizeMarkdownOutput,
-  unwrapSimpleComponents
+  unwrapSimpleComponents,
+  fixMojibake
 } from './mdxToMarkdown.mjs';
 
 import {
@@ -34,7 +35,10 @@ import {
   PROCESS_MDX_FOR_HOSTED_MARKDOWN_THEME_CONTENT_CODEBLOCKS_OUTPUT,
   PROCESS_MDX_FOR_HOSTED_MARKDOWN_JS_CODEBLOCK,
   PROCESS_MDX_FOR_HOSTED_MARKDOWN_CSS_CODEBLOCK,
-  PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK
+  PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK,
+
+  FIX_MOJIBAKE_INPUT,
+  FIX_MOJIBAKE_OUTPUT
 } from './mdxFixtures.mjs';
 
 import { processMdxForHostedMarkdown } from './index.mjs';
@@ -129,4 +133,10 @@ test('processMdxForHostedMarkdown preserves fenced html code blocks', () => {
     output.trim(),
     PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK.trim()
   );
+});
+
+test('fixMojibake fixes common mojibake sequences', () => {
+  const output = fixMojibake(FIX_MOJIBAKE_INPUT);
+
+  assert.strictEqual(output, FIX_MOJIBAKE_OUTPUT);
 });

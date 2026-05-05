@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 30 33',
 };
 
-function SwipeIcon(props: IconCommonProps): React.ReactElement {
+function SwipeIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--swipe ${props.className || ''}`;
 
   return (

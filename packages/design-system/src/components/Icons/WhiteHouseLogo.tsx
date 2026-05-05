@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 670 450',
 };
 
-export function WhiteHouseLogo(props: IconCommonProps): React.ReactElement {
+export function WhiteHouseLogo(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--hhs-logo ${props.className || ''}`;
 
   return (
