@@ -45,6 +45,8 @@ These scripts can all be run from the root level of the repo:
 - `npm run build:docs`
   - Statically builds a copy of the doc site
   - You can then serve it with `npm run serve:docs`
+- `npm run build:distributed-docs`
+  - This
 - `npm run build:storybook`
   - Statically builds a copy of Storybook to `./storybook-static`
   - You can then serve it with `npm run serve:storybook`
