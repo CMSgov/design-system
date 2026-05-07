@@ -113,6 +113,8 @@ function main(): void {
       copyManifestPageToPackages(page, [targetPackagePath]);
     });
   });
+
+  console.log('Successfully populated dist/docs directories with llms.txt files.');
 }
 
 main();
