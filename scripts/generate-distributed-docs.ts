@@ -66,7 +66,7 @@ function copyManifestPageToPackages(page: ManifestPage, targetPackagePaths: stri
 
   targetPackagePaths.forEach((packagePath) => {
     copyFileToDistDocs(sourcePath, packagePath, path.join(sanitizedPath, 'llms.txt'));
-    console.log(`Copied ${page.slug} to ${packagePath}`);
+    console.log(`Copied ${page.slug} to ${packagePath}/dist/docs`);
   });
 }
 
