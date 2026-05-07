@@ -71,7 +71,17 @@ function copyManifestPageToPackages(page: ManifestPage, targetPackagePaths: stri
 }
 
 function readManifest(manifestPath: string): DocsManifest {
-  return JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as DocsManifest;
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as DocsManifest;
+  } catch (error) {
+    throw new Error(
+      [
+        'Failed to read docs manifest.',
+        `Manifest path: ${manifestPath}`,
+        error instanceof Error ? error.message : String(error),
+      ].join('\n')
+    );
+  }
 }
 
 function main(): void {
