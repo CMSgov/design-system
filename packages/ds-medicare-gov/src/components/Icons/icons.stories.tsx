@@ -108,11 +108,6 @@ const iconData = [
     name: 'HealthcareProviderIcon',
   },
   {
-    defaultTitle: 'Healthcare Provider',
-    component: <HealthcareProviderIcon />,
-    name: 'HealthcareProviderIcon',
-  },
-  {
     defaultTitle: '[variation] Heart',
     component: (
       <>
