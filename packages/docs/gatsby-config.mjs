@@ -1,5 +1,8 @@
 // @ts-check
 import remarkGfm from 'remark-gfm';
+import generateNewRelicPlugin from './newRelicConfig.mjs'
+
+const newRelicPlugin = generateNewRelicPlugin();
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -74,21 +77,7 @@ const config = {
         extensions: [`.mdx`, `.md`],
       },
     },
-    {
-      resolve: 'gatsby-plugin-newrelic',
-      options: {
-        config: {
-          instrumentationType: 'proAndSPA',
-          accountId: '6704482',
-          trustKey: '39033',
-          agentID: '1134604697',
-          licenseKey: 'NRJS-d12a0b7909b564e0959',
-          applicationID: '1134604697',
-          beacon: 'gov-bam.nr-data.net',
-          errorBeacon: 'gov-bam.nr-data.net',
-        },
-      },
-    },
+    newRelicPlugin || '',
     {
       resolve: 'gatsby-plugin-local-search',
       options: {
@@ -131,7 +120,7 @@ const config = {
       },
     },
     'gatsby-plugin-client-side-redirect',
-  ],
+  ].filter(Boolean),
 };
 
 if (process.env.PATH_PREFIX) {

@@ -59,7 +59,7 @@ export const IdleTimeoutDialog = ({
   onSessionContinue,
   onSessionForcedEnd,
   showSessionEndButton,
-}: IdleTimeoutDialogProps): React.ReactElement => {
+}: IdleTimeoutDialogProps): React.ReactElement<any> => {
   const renderDialogActions = () => {
     const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--2' : null;
 

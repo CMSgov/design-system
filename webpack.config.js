@@ -68,32 +68,22 @@ function generateWebpackConfig(options) {
         }, {}),
     };
   } else {
-    // If we're not bundling these as web components, don't include the react
-    // or preact runtimes in our bundle because our customers need to interact
+    // If we're not bundling these as web components, don't include the preact
+    // runtimes in our bundle because our customers need to interact
     // with the framework directly in order to use our components, and we don't
     // expose it in our code for them to do so. They should instead load the
     // framework modules before loading our bundle.
-    externals = options.preact
-      ? {
-          preact: 'preact',
-        }
-      : {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        };
+    externals = {
+      preact: 'preact',
+    };
 
     plugins.push(
       new CopyPlugin({
-        patterns: options.preact
-          ? [
-              `${nodeModules}/preact/dist/preact.min.umd.js`,
-              `${nodeModules}/preact/dist/preact.umd.js`,
-              `${nodeModules}/preact/dist/preact.umd.js.map`,
-            ]
-          : [
-              `${nodeModules}/react/umd/react.production.min.js`,
-              `${nodeModules}/react-dom/umd/react-dom.production.min.js`,
-            ],
+        patterns: [
+          `${nodeModules}/preact/dist/preact.min.umd.js`,
+          `${nodeModules}/preact/dist/preact.umd.js`,
+          `${nodeModules}/preact/dist/preact.umd.js.map`,
+        ],
       })
     );
   }
@@ -122,17 +112,13 @@ function generateWebpackConfig(options) {
     );
   }
 
-  if (!options.preact) {
-    output.filename = 'react-components.js';
-  } else if (!options.webComponents) {
+  if (!options.webComponents) {
     output.filename = 'preact-components.js';
   }
 
   if (options.analyzeBundles) {
     let report;
-    if (!options.preact) {
-      report = 'react-components';
-    } else if (!options.webComponents) {
+    if (!options.webComponents) {
       report = 'preact-components';
     } else {
       report = 'web-components';

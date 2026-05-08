@@ -1,0 +1,30 @@
+{
+  "codeConnect": {
+    "importPaths": {
+      "packages/design-system/src/components/*": "@cms/design-system",
+      "packages/ds-cms-gov/src/components/*": "@cms/ds-cms-gov",
+      "packages/ds-healthcare-gov/src/components/*": "@cms/ds-healthcare-gov",
+      "packages/ds-medicare-gov/src/components/*": "@cms/ds-medicare-gov"
+    },
+    "include": [
+      "/packages/design-system/src/components/**/*.{tsx,jsx}",
+      "/packages/ds-cms-gov/src/components/**/*.{tsx,jsx}",
+      "/packages/ds-healthcare-gov/src/components/**/*.{tsx,jsx}",
+      "/packages/ds-medicare-gov/src/components/**/*.{tsx,jsx}"
+    ],
+    "exclude": [
+      "**/fonts",
+      "**/images",
+      "**/*.stories.tsx",
+      "**/styles",
+      "**/*.test.tsx",
+      "**/utilities",
+      "**/web-components"
+    ],
+    "label": "React",
+    "interactiveSetupFigmaFileUrl": "https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/",
+    "documentUrlSubstitutions": {
+      "https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/": "https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/branch/m5vQUe1j796fuQ64nLwEei/"
+    }
+  }
+}
