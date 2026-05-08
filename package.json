@@ -8,7 +8,7 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "npm run build:tokens && npm run build:core && npm run build:healthcare && npm run build:medicare && npm run build:cmsgov && npm run build:cdn-index",
+    "build": "npm run build:tokens && npm run build:core && npm run build:healthcare && npm run build:medicare && npm run build:cmsgov && npm run build:cdn-index && npm run build:docs-and-distributed-docs",
     "build:core": "gulp build",
     "build:healthcare": "gulp build --package packages/ds-healthcare-gov",
     "build:medicare": "gulp build --package packages/ds-medicare-gov",
@@ -18,6 +18,8 @@
     "build:tokens": "npm --prefix ./packages/design-system-tokens run build",
     "build:cdn-index": "tsx ./scripts/build-cdn-indexes.ts",
     "build:docs": "npm run build:storybook:docs && npm --prefix ./packages/docs run build",
+    "build:distributed-docs": "tsx ./scripts/generate-distributed-docs.ts",
+    "build:docs-and-distributed-docs": "npm run build:docs && npm run build:distributed-docs",
     "build:examples": "tsx ./scripts/build-examples.ts",
     "apply-example-templates": "tsx ./scripts/apply-example-templates.ts",
     "check:maturity": "./scripts/maturityCheck.sh",
