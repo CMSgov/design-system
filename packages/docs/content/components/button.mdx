@@ -119,20 +119,19 @@ Buttons can exist in two sizes other than default: "big" or "small".
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1">
-      <ArrowIcon direction="left" className="ds-u-margin-right--05" />
-      Left Icon
-    </Button>
-    <Button className="ds-u-margin-right--1">
-      Right Icon
-      <ArrowIcon direction="right" className="ds-u-margin-left--05" />
-    </Button>
+    <Button className="ds-u-margin-right--1"><ArrowIcon direction="left" className="ds-u-margin-right--05" /> Left Icon</Button>
+    <Button className="ds-u-margin-right--1">Right Icon <ArrowIcon direction="right" className="ds-u-margin-left--05" /></Button>
   </div>
 </EmbeddedExample>
 
 ### Paired buttons or multiple buttons on a page
 
-SOPHIA FIND AN EXAMPLE 
+<EmbeddedExample>
+  <div>
+    <Button className="ds-u-margin-right--1">Back</Button>
+    <Button variation="solid" className="ds-u-margin-right--1">Next</Button>
+  </div>
+</EmbeddedExample>
 
 ## Guidance
 
@@ -160,9 +159,9 @@ Buttons are promises to the user. They must deliver the promise they offer by do
     - **Action submission**: Always include a primary button for preferred action and secondary or ghost button for nonpreferred action. Example: “Save” and “Cancel”
     - **User journey or multiple options to take action**: Include a primary button for preferred action and secondary button for alternate action. If neither option is preferred, use only secondary buttons. Examples: 1) “Preview plans” and “Apply now” 2) “Log in” and “Create account”  3) “Add,” “Edit,” and “Remove.”
   - Positions of paired buttons:
-    - Forms, decisions trees, or progression of steps: Have the preferred action on the right. Example: “Back” on left and “Next” on right.
-    - Informational content and other cases: Have the preferred action on the left. Example: “Create account” on left and “Back to home” on right.
-    - Mobile: Have the preferred action appear before (above) the nonpreferred action. 
+    - *Forms, decisions trees, or progression of steps*: Have the preferred action on the right. Example: “Back” on left and “Next” on right.
+    - *Informational content and other cases*: Have the preferred action on the left. Example: “Create account” on left and “Back to home” on right.
+    - *Mobile*: Have the preferred action appear before (above) the nonpreferred action. 
 - **Multiple buttons on a page**: Use sparingly: Use only when you have multiple main pathways or actions for users to take.  Can use both standard and alternate styling as needed to differentiate the actions and create visual order to the design. 
 - **Buttons on cards**: These are generally links to other pages styled as buttons on the front-end to provide visual importance to help users navigate or continue their journey. When styling links in cards as buttons, use either solid or outline variations. If have more than 1 card on a page, the button styling across the cards needs to match.
 - **Desctructive buttons**: Don’t permit users to take a destructive action with a single button. 
@@ -235,10 +234,6 @@ Generally better to use specific verbs to confirm what the user is starting. For
 </table>
 
 </ThemeContent>
-
-##### Moving through a process or sequential steps after starting
-
-For forward movement to the next page or step.
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -422,7 +417,9 @@ Generally better to use specific verbs if appropriate to confirm an action.
 
 </ThemeContent>
 
-### Accessibility
+## Accessibility
+
+### General accessibility
 
 - Make sure the `type` attribute has the correct value. By default, this is set to `submit` but in most you’ll need to set this to `button` to prevent unwanted behavior when pressed.
 
@@ -433,17 +430,17 @@ Links and buttons are read differently when using a screen reader. In its most b
 - If it goes somewhere, use a link in the form of `<a>`.
 - If it does something on the page such as submitting a form, opening a dialog, canceling an action, or deleting an item, then use a button in the form of `<button>`.
 
-##### Navigating with a screen reader
+#### Keyboard navigation
+
+For users who navigate pages with keyboards instead of a mouse, buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
+
+#### Screen reader navigation
 
 Web browsers and assistive technology aid users by providing lists of common elements like headings, buttons, links, and images, and let you navigate directly to the element of your choosing. This allows screen reader users to speed up their comprehension of the page.
 
 One example of this collection of lists in a screen reader is the [VoiceOver rotor](https://support.apple.com/guide/voiceover/with-the-voiceover-rotor-mchlp2719/mac) on a Mac. To turn on VoiceOver’s rotor, use the keyboard shortcut: **control + alt + U**.
 
 If elements are not coded semantically (a link as a button or a button as a link), then users won't be able to navigate a page as easily.
-
-##### Navigating with a keyboard
-
-For users who navigate pages with keyboards instead of a mouse, buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
 
 #### Icon buttons
 
@@ -479,21 +476,21 @@ Unavailable buttons using the `<button>` tag should have the `disabled` attribut
 
 If a toggle-able button is needed, add `aria-pressed` to the button. Examples of this use case could be: buttons to change settings, buttons to sort with, etc.
 
-#### Accessibility testing
+### Accessibility testing
 
-##### General
+#### General
 
 - The click/tap target area is no smaller than 44x44px.
 - There is a visible focus state.
 
-##### Keyboard
+#### Keyboard
 
 - The spacebar and/or enter key are used to activate the button.
 - Buttons should display a visible focus state when users tab to them.
 
-##### Screen reader
+#### Screen reader
 
-###### Desktop
+##### Desktop
 
 When I navigate to the button:
 
@@ -501,7 +498,7 @@ When I navigate to the button:
 - The text content within the button is clear as to what it does.
 - If applicable, the state (for example: pressed, expanded, etc.) is read.
 
-###### Mobile
+##### Mobile
 
 When I swipe to focus on a button:
 
