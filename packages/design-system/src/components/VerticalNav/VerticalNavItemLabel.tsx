@@ -20,7 +20,7 @@ export interface VerticalNavItemLabelProps {
 
 const DEFAULT_COMPONENT_TYPE = 'div';
 
-export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.ReactElement => {
+export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.ReactElement<any> => {
   /**
    * The type of element rendered ultimately depends on whether
    * this is meant to be a subnav toggle, link, or generic label

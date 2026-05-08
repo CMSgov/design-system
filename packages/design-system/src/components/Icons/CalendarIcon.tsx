@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 448 512',
 };
 
-export function CalendarIcon(props: IconCommonProps): React.ReactElement {
+export function CalendarIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--calendar ${props.className || ''}`;
 
   return (

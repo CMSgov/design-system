@@ -3,7 +3,7 @@ import userEvent, { Options } from '@testing-library/user-event';
 
 export function createGenericTestRenderer<T extends unknown[]>(
   customElementSelector: string,
-  renderFn: (...args: T) => React.ReactElement,
+  renderFn: (...args: T) => React.ReactElement<any>,
   userEventSetupOptions: Options = {}
 ) {
   return (...args: T) => {
@@ -48,7 +48,7 @@ export function createTestRenderer<TagName extends keyof React.JSX.IntrinsicElem
   renderFn: (
     attrs?: React.JSX.IntrinsicElements[TagName],
     children?: React.ReactNode
-  ) => React.ReactElement,
+  ) => React.ReactElement<any>,
   userEventSetupOptions: Options = {}
 ) {
   return createGenericTestRenderer(tagName, renderFn, userEventSetupOptions);

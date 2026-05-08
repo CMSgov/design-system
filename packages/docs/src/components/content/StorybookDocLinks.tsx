@@ -2,7 +2,7 @@ import type * as React from 'react';
 import { humanizeList } from '../../helpers/humanizeList';
 
 interface StorybookDocLinksProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactElement<any> | React.ReactElement<any>[];
   theme: string;
   tech?: 'react' | 'wc';
 }

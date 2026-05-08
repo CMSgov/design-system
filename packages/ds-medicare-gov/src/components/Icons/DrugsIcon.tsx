@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 40 32',
 };
 
-function DrugsIcon(props: IconCommonProps): React.ReactElement {
+function DrugsIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--drugs ${props.className || ''}`;
 
   return (
