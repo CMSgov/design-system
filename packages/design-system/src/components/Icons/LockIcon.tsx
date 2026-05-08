@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 52 64',
 };
 
-export function LockIcon(props: IconCommonProps): React.ReactElement {
+export function LockIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--lock ${props.className || ''}`;
 
   return (

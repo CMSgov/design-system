@@ -51,7 +51,7 @@ export interface VerticalNavProps {
  * For information about how and when to use this component,
  * [refer to its full documentation page](https://design.cms.gov/components/vertical-navigation/).
  */
-export const VerticalNav = (props: VerticalNavProps): React.ReactElement => {
+export const VerticalNav = (props: VerticalNavProps): React.ReactElement<any> => {
   const { collapsed = false } = props;
   const classes = classNames(
     {

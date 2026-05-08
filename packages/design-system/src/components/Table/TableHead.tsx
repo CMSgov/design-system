@@ -16,7 +16,7 @@ export type TableHeadProps = Omit<React.ComponentPropsWithoutRef<'thead'>, OmitP
 export const TableHead = ({ children, ...tableHeadProps }: TableHeadProps) => {
   const renderChildren = () => {
     const normalizedChildren = Array.isArray(children) ? children : [children];
-    return normalizedChildren.map((child: React.ReactElement) => {
+    return normalizedChildren.map((child: React.ReactElement<any>) => {
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {

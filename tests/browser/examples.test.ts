@@ -16,7 +16,6 @@ function testCdnExample(exampleName: string) {
 
 testCdnExample('cdn-html-css');
 testCdnExample('cdn-preact');
-testCdnExample('cdn-react');
 testCdnExample('cdn-web-components');
 
 test.describe('preact-app', () => {

@@ -11,7 +11,7 @@ const defaultProps = {
   viewBox: '0 0 18 16',
 };
 
-export function StarIcon(props: StarIconProps): React.ReactElement {
+export function StarIcon(props: StarIconProps): React.ReactElement<any> {
   // don't want to pass isFilled through to SvgIcon
   const { isFilled, ...otherProps } = props;
   const iconCssClasses = classNames(
