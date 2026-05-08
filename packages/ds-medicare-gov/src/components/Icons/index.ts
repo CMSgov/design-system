@@ -11,6 +11,7 @@ export { default as DoctorsCliniciansIcon } from './DoctorsCliniciansIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as FilterIcon } from './FilterIcon';
 export { default as GetStartedIcon } from './GetStartedIcon';
+export { default as HealthcareProviderIcon } from './HealthcareProviderIcon';
 export { default as HeartIcon } from './HeartIcon';
 export { default as HomeHealthServicesIcon } from './HomeHealthServicesIcon';
 export { default as HospiceIcon } from './HospiceIcon';
