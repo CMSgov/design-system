@@ -12,6 +12,7 @@ import {
   DrugsIcon,
   FilterIcon,
   GetStartedIcon,
+  HealthcareProviderIcon,
   HeartIcon,
   HomeHealthServicesIcon,
   HospiceIcon,
@@ -100,6 +101,11 @@ const iconData = [
     defaultTitle: 'Get Started',
     component: <GetStartedIcon />,
     name: 'GetStartedIcon',
+  },
+  {
+    defaultTitle: 'Healthcare Provider',
+    component: <HealthcareProviderIcon />,
+    name: 'HealthcareProviderIcon',
   },
   {
     defaultTitle: '[variation] Heart',
