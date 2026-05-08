@@ -85,17 +85,11 @@ function readManifest(manifestPath: string): DocsManifest {
 }
 
 function main(): void {
-  const llmsIndexPath = getArtifactPath('llms.txt');
   const docsManifestPath = getArtifactPath('docs-manifest.json');
 
-  assertDocsArtifactsExist([llmsIndexPath, docsManifestPath]);
+  assertDocsArtifactsExist([docsManifestPath]);
 
   const manifestJson = readManifest(docsManifestPath);
-
-  packagePaths.forEach((packagePath) => {
-    copyFileToDistDocs(llmsIndexPath, packagePath, 'llms.txt');
-    console.log(`Copied root llms.txt to ${packagePath}/dist/docs`);
-  });
 
   const sharedPages = manifestJson.packages['design-system'] ?? [];
 
