@@ -3,7 +3,7 @@ import themes from '../../../../../themes.json';
 type ThemeName = keyof typeof themes;
 
 export interface ThemeContentProps {
-  children: React.ReactElement;
+  children: React.ReactElement<any>;
   /**
    * One of the available theme names in lowercase as presented in ThemeNames
    */

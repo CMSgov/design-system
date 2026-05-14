@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 5 17',
 };
 
-export function AlertIcon(props: IconCommonProps): React.ReactElement {
+export function AlertIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--alert ${props.className || ''}`;
   return (
     <SvgIcon title={t('icons.alertCircle')} {...defaultProps} {...props} className={iconCssClasses}>

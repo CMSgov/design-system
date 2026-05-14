@@ -179,3 +179,9 @@ export const PROCESS_MDX_FOR_HOSTED_MARKDOWN_HTML_CODEBLOCK = `Before text
 \`\`\`
 
 After text`;
+
+export const FIX_MOJIBAKE_INPUT =
+  "â€œHelloâ€\u009d â€˜worldâ€™ â€“ dash â€” long â€¦ bullets â€¢ item with spaces";
+
+export const FIX_MOJIBAKE_OUTPUT =
+  "“Hello” ‘world’ - dash — long … bullets • item with spaces";

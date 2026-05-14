@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 15 19',
 };
 
-export function DownloadIcon(props: IconCommonProps): React.ReactElement {
+export function DownloadIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--download ${props.className || ''}`;
 
   return (
