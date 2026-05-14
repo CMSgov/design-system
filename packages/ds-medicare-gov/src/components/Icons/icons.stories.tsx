@@ -16,6 +16,7 @@ import {
   HeartIcon,
   HomeHealthServicesIcon,
   HospiceIcon,
+  HospitalIcon,
   InfoCircleOutlineIcon,
   LeafIcon,
   LongtermCareIcon,
@@ -128,6 +129,11 @@ const iconData = [
     defaultTitle: 'Hospice',
     component: <HospiceIcon />,
     name: 'HospiceIcon',
+  },
+  {
+    defaultTitle: 'Hospital',
+    component: <HospitalIcon />,
+    name: 'HospitalIcon',
   },
   {
     defaultTitle: 'Information',
