@@ -20,7 +20,7 @@ export type TableRowProps = Omit<React.ComponentPropsWithoutRef<'tr'>, OmitProps
 export const TableRow = ({ children, _isTableHeadChild, ...tableRowProps }: TableRowProps) => {
   const renderChildren = () => {
     const normalizedChildren = Array.isArray(children) ? children : [children];
-    return normalizedChildren.map((child: React.ReactElement) => {
+    return normalizedChildren.map((child: React.ReactElement<any>) => {
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {

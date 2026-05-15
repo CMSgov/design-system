@@ -1,7 +1,9 @@
 import {
   AboutIcon,
   AbuseIcon,
+  BinocularsIcon,
   BirthingFriendlyIcon,
+  ChecklistIcon,
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
@@ -10,17 +12,22 @@ import {
   DrugsIcon,
   FilterIcon,
   GetStartedIcon,
+  HealthcareProviderIcon,
   HeartIcon,
   HomeHealthServicesIcon,
   HospiceIcon,
+  HospitalIcon,
   InfoCircleOutlineIcon,
   LeafIcon,
   LoginIcon,
   LogoutIcon,
+  LongtermCareIcon,
   NursingHomeIcon,
   PharmacyIcon,
   PiggyBankIcon,
+  ResourcesIcon,
   RoundedStarIcon,
+  SuppliersIcon,
   SwipeIcon,
   TeletypewriterIcon,
   WheelchairIcon,
@@ -44,9 +51,19 @@ const iconData = [
     name: 'AbuseIcon',
   },
   {
+    defaultTitle: 'Binoculars',
+    component: <BinocularsIcon />,
+    name: 'BinocularsIcon',
+  },
+  {
     defaultTitle: 'Birthing Friendly',
     component: <BirthingFriendlyIcon />,
     name: 'BirthingFriendlyIcon',
+  },
+  {
+    defaultTitle: 'Checklist',
+    component: <ChecklistIcon />,
+    name: 'ChecklistIcon',
   },
   {
     defaultTitle: 'Check with shield',
@@ -89,6 +106,11 @@ const iconData = [
     name: 'GetStartedIcon',
   },
   {
+    defaultTitle: 'Healthcare Provider',
+    component: <HealthcareProviderIcon />,
+    name: 'HealthcareProviderIcon',
+  },
+  {
     defaultTitle: '[variation] Heart',
     component: (
       <>
@@ -111,6 +133,11 @@ const iconData = [
     name: 'HospiceIcon',
   },
   {
+    defaultTitle: 'Hospital',
+    component: <HospitalIcon />,
+    name: 'HospitalIcon',
+  },
+  {
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
@@ -131,6 +158,11 @@ const iconData = [
     name: 'LogoutIcon',
   },
   {
+    defaultTitle: 'Long-term Care',
+    component: <LongtermCareIcon />,
+    name: 'LongtermCareIcon',
+  },
+  {
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
@@ -146,6 +178,11 @@ const iconData = [
     name: 'PiggyBankIcon',
   },
   {
+    defaultTitle: 'Resources',
+    component: <ResourcesIcon />,
+    name: 'ResourcesIcon',
+  },
+  {
     defaultTitle: '[variation] Star',
     component: (
       <>
@@ -157,6 +194,11 @@ const iconData = [
     name: 'RoundedStarIcon',
     notes:
       'Takes a <code>variation</code> prop to determine if the star is fully filled, half filled, or just an outline.',
+  },
+  {
+    defaultTitle: 'Suppliers',
+    component: <SuppliersIcon />,
+    name: 'SuppliersIcon',
   },
   {
     defaultTitle: 'Swipe',
