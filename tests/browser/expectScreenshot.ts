@@ -3,10 +3,12 @@ import { expect, Page } from '@playwright/test';
 export function expectScreenshot(page: Page, filename: string, options: any = {}) {
   return expect(page).toHaveScreenshot(filename, {
     fullPage: true,
-    // We've been getting odd results in our CI tests where the two images are exactly
-    // the same in every way, but Playwright is failing the comparison. We'll try setting
-    // the `maxDiffPixels` to 1 and see if we still get those kinds of false positives.
-    maxDiffPixels: 1,
+    // Previously we used `maxDiffPixels: 1` to avoid false positives in CI, but this
+    // proved to be overly strict—especially after Playwright/browser upgrades where
+    // minor rendering differences are expected.
+    // Switching this to a small ratio-based threshold which should allow for insignificant pixel-level
+    // differences but still catch meaningful visual regressions.
+    maxDiffPixelRatio: 0.01,
     ...options,
   });
 }

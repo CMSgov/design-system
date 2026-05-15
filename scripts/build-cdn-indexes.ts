@@ -120,12 +120,6 @@ function writeThemeIndex(theme: keyof typeof themes) {
     `<script src="https://design.cms.gov/cdn/${system}/${version}/preact-components/bundle/preact-components.js"></script>`,
   ]);
 
-  const reactExample = codeBlock([
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react.production.min.js"></script>`,
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-dom.production.min.js"></script>`,
-    `<script src="https://design.cms.gov/cdn/${system}/${version}/react-components/bundle/react-components.js"></script>`,
-  ]);
-
   const htmlDoc = renderPageHtml(
     theme,
     'CDN package resource index',
@@ -155,9 +149,6 @@ function writeThemeIndex(theme: keyof typeof themes) {
     <h3>Preact components</h3>
     <p>Place the following HTML in your <strong>head</strong> tag:</p>
     ${preactExample}
-    <h3>React components</h3>
-    <p>Place the following HTML in your <strong>head</strong> tag:</p>
-    ${reactExample}
     `
   );
   console.log(

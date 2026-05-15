@@ -154,7 +154,7 @@ export function Pagination({
   endAriaLabel,
   totalPages,
   ...rest
-}: PaginationProps): React.ReactElement {
+}: PaginationProps): React.ReactElement<any> {
   const classes = classNames('ds-c-pagination', { 'ds-c-pagination--compact': compact }, className);
 
   /**
