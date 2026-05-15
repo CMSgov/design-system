@@ -106,7 +106,7 @@
   ],
   [
     "onChange",
-    "(event: ChangeEvent<HTMLInputElement>) => any",
+    "(event: ChangeEvent<HTMLInputElement, Element>) => any",
     "-"
   ],
   [

@@ -39,7 +39,7 @@ export interface UseAnalyticsContentProps {
  */
 export function useAnalyticsContent({ onMount, onUnmount }: UseAnalyticsContentProps) {
   // Three refs should be enough to support fallback content. Add more in the future if needed
-  const refs: RefObject<HTMLDivElement>[] = [
+  const refs: RefObject<HTMLDivElement | null>[] = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),

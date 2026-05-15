@@ -25,7 +25,7 @@ export default function Page({
   index,
   isActive,
   onPageChange,
-}: PageProps): React.ReactElement {
+}: PageProps): React.ReactElement<any> {
   return (
     <>
       {isActive ? (

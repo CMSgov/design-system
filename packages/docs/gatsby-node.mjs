@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from "url";
 import redirects from "./redirects.json" with { type: "json" };
 import fs from 'node:fs';
-import { buildRootLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage } from './scripts/llms-txt/index.mjs';
+import { buildRootLlmsTxt, processMdxForHostedMarkdown, buildMarkdownPage, normalizePages, buildDocsManifest } from './scripts/llms-txt/index.mjs';
 // @ts-check
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -233,6 +233,9 @@ export const onPostBuild = async ({ graphql, reporter }) => {
           frontmatter {
             title
             intro
+              status {    
+                targetTheme
+              }
           }
         }
       }
@@ -267,10 +270,16 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   const siteUrl = result.data.site.siteMetadata.siteUrl;
   const description = result.data.site.siteMetadata.description;
 
+  const normalizedPages = normalizePages(mdxNodes);
+  const manifest = buildDocsManifest(normalizedPages);
+  const manifestOutputPath = path.join('public', 'docs-manifest.json');
+  fs.writeFileSync(manifestOutputPath, JSON.stringify(manifest, null, 2), 'utf8');
+  reporter.success(`Generated docs manifest at ${manifestOutputPath}`);
+
   const markdown = buildRootLlmsTxt({
     siteUrl,
     description,
-    pages: mdxNodes,
+    pages: normalizedPages,
   });
 
   const outputPath = path.join('public', 'llms.txt');
