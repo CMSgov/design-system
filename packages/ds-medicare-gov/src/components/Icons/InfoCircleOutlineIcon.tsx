@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 18 18',
 };
 
-function InfoCircleOutlineIcon(props: IconCommonProps): React.ReactElement {
+function InfoCircleOutlineIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--info-circle-outline ${props.className || ''}`;
 
   return (

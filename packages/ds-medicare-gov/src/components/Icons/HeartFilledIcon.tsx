@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-function HeartFilledIcon(props: IconCommonProps): React.ReactElement {
+function HeartFilledIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--heart-filled ${props.className || ''}`;
 
   return (
