@@ -13,7 +13,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   children?: React.ReactNode;
   componentClass: string;
   heading?: React.ReactNode;
-  labelId: string;
+  labelId?: string;
   menuId: string;
   rootId?: string;
   size?: DropdownSize;

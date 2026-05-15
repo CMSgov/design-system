@@ -73,7 +73,7 @@ describe('Idle Timeout', () => {
       );
     });
 
-    it('should reset countdown if user opts for that', () => {
+    it('should reset countdown if user opts for that', async () => {
       renderIdleTimeout();
       showWarning();
       const keepSessionBtn = screen.getByText('Continue session');
@@ -81,7 +81,7 @@ describe('Idle Timeout', () => {
       expect(screen.queryByRole('dialog')).toBeNull();
       // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
-      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      await screen.findByRole('dialog');
     });
 
     it('should reset countdown if user opts to close modal', async () => {
@@ -93,7 +93,7 @@ describe('Idle Timeout', () => {
       expect(screen.queryByRole('dialog')).toBeNull();
       // This works because the last active time hasn't changed
       jest.advanceTimersByTime(timeTilWarningShown);
-      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      await screen.findByRole('dialog');
     });
 
     it('should call onSessionContinue if user opts to close modal', () => {

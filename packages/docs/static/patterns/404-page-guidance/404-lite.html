@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <style>
+    :root {
+      --button-border-width: 1px;
+      --color-primary: #0071bc;
+      --color-white: #ffffff;
+      --font-line-height-heading: 1.2999999523162842;
+      --font-size-3xl: 2.25rem;
+      --font-size-3xl--mobile: 1.875rem;
+      --font-weight-bold: 700;
+      --global__color: #262626;
+      --global__font-family: 'Open Sans', 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+      --global__font-size: 1rem;
+      --global__line-height: 1.5;
+      --radius-default: 3px;
+      --site-max-width: 1104px;
+      --spacer-4: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      color: var(--global__color);
+      font-family: var(--global__font-family);
+      font-size: var(--global__font-size);
+      line-height: var(--global__line-height);
+      text-rendering: optimizeSpeed;
+    }
+
+    h1 {
+      font: inherit;
+    }
+
+    p {
+      margin-block: 1em 0;
+    }
+
+    .ds-c-button, .ds-c-button:visited {
+      background-color: var(--color-primary);
+      border: var(--button-border-width) solid var(--color-primary);
+      border-radius: var(--radius-default);
+      color: var(--color-white);
+      display: inline-block;
+      font-family: var(--global__font-family);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      padding: 8px 24px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .ds-l-container {
+      margin-inline: auto;
+      max-width: var(--site-max-width);
+      padding-inline: calc(var(--spacer-4) * 0.5);
+    }
+
+    .ds-l-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-inline: calc( var(--spacer-4) * -0.5 );
+    }
+
+    .ds-text-heading--3xl {
+      font-family: var(--global__font-family);
+      line-height: var(--font-line-height-heading);
+      margin: 0;
+      margin-block: 1.5em .5em;
+      font-size: var(--font-size-3xl--mobile);
+    }
+
+    .ds-text-heading--3xl:where(:first-child) {
+      margin-block-start: 0;
+    }
+
+    .ds-u-color--primary {
+      color: var(--color-primary);
+    }
+
+    .ds-u-font-weight--bold {
+      font-weight: var(--font-weight-bold);
+    }
+
+    .ds-u-margin-top--4 {
+      margin-block-start: 32px;
+    }
+
+    @media (min-width: 544px) {
+      .ds-l-container {
+        padding-inline: var(--spacer-4);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .ds-text-heading--3xl {
+        font-size: var(--font-size-3xl);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="ds-l-container">
+    <div class="ds-l-row">
+      <h1 class="ds-text-heading--3xl ds-u-font-weight--bold ds-u-color--primary">
+        Page Not Found
+      </h1>
+      <p>
+        Sorry, we cannot find the page. It may have been moved or be renamed. Check the address is
+                  correct and update any bookmarks when you find the page you want.
+      </p>
+      <a href="https://www.cms.gov/" class="ds-c-button ds-c-button--solid ds-u-margin-top--4">Go to home</a>
+    </div>
+  </main>
+</body>
+</html>

@@ -45,6 +45,10 @@ These scripts can all be run from the root level of the repo:
 - `npm run build:docs`
   - Statically builds a copy of the doc site
   - You can then serve it with `npm run serve:docs`
+- `npm run build:distributed-docs`
+  - Populates each design system package’s `dist/docs` directory with the appropriate hosted Markdown (`llms.txt`) files.
+  - This command depends on artifacts generated in `packages/docs/public`, so run `npm run build:docs` first.
+  - Alternatively, run `npm run build:docs-and-distributed-docs` to execute both commands in the correct order.
 - `npm run build:storybook`
   - Statically builds a copy of Storybook to `./storybook-static`
   - You can then serve it with `npm run serve:storybook`
@@ -94,10 +98,14 @@ These scripts can all be run from the root level of the repo:
   - Interactive script that collects the merge commits from pull requests associated with a given milestone and cherry-picks them onto the current branch (use with release branch)
 - `npm run connect:build`
   - Initializes the Figma Code Connect CLI pipeline. This is run when first creating a new Figma Code Connect file.
-- `npm run connect:publish`
-  - Publishes all Figma Code Connect snippets to the target nodes. This should be run when a Figma Code Connect file needs to be connected/published to Figma.
-- `npm run connect:unpublish`
-  - Unpublishes all Figma Code Connect snippets
+- `npm run connect:publish:dev`
+  - Publishes all Figma Code Connect snippets to the target nodes in the test branch. This should be run when a Figma Code Connect file needs to be connected/published to Figma for testing.
+- `npm run connect:publish:prod`
+  - Publishes all Figma Code Connect snippets to the target nodes in the production branch. This should be run when a Figma Code Connect file needs to be connected/published to Figma for usage by downstream teams.
+- `npm run connect:unpublish:dev`
+  - Unpublishes all Figma Code Connect snippets from the dev branch.
+- `npm run connect:unpublish:prod`
+  - Unpublishes all Figma Code Connect snippets on the production Figma branch.
 
 ### Visual regression testing
 

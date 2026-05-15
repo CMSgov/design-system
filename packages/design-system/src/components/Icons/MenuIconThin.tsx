@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '2 2 30 30',
 };
 
-export const MenuIconThin = (props: IconCommonProps): React.ReactElement => {
+export const MenuIconThin = (props: IconCommonProps): React.ReactElement<any> => {
   const iconCssClasses = `ds-c-icon--hamburger ${props.className}`;
   return (
     <SvgIcon title={t('icons.menu')} {...defaultProps} {...props} className={iconCssClasses}>

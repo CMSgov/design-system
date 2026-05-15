@@ -40,7 +40,7 @@ export function renderStatusMessage(message: ReactNode) {
 /**
  * Determine if a React component is a TextField
  */
-function isTextField(child?: ReactNode): child is ReactElement {
+function isTextField(child?: ReactNode): child is ReactElement<any> {
   if (!child || !isValidElement(child)) {
     return false;
   }
@@ -50,7 +50,7 @@ function isTextField(child?: ReactNode): child is ReactElement {
   return child.type === TextField || componentName === 'TextField';
 }
 
-export function getTextFieldChild(children: ReactNode): ReactElement | undefined {
+export function getTextFieldChild(children: ReactNode): ReactElement<any> | undefined {
   const all = Array.isArray(children) ? children : [children];
 
   let textField;
