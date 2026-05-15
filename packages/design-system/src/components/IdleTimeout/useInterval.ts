@@ -7,8 +7,8 @@ import { useEffect, useRef } from 'react';
  * This custom hook is to ensure that the callback of setInterval receives updated props
  * @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
  * */
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
+export const useInterval = (callback: () => void, delay: number) => {
+  const savedCallback = useRef<() => void | null>(null);
 
   // Remember the latest callback.
   useEffect(() => {
@@ -18,13 +18,11 @@ function useInterval(callback, delay) {
   // Set up the interval.
   useEffect(() => {
     function tick() {
-      savedCallback.current();
+      savedCallback.current && savedCallback.current();
     }
     if (delay !== null) {
       const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
   }, [delay]);
-}
-
-export default useInterval;
+};

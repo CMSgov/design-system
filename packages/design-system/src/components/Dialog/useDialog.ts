@@ -21,7 +21,7 @@ export interface UseDialogRenderProps<ReturnType> {
  * resolves to by what you pass to the `resolveClose` function in your render function.
  */
 export function useDialog<ReturnType = any>(
-  renderDialog: (renderProps: UseDialogRenderProps<ReturnType>) => React.ReactElement
+  renderDialog: (renderProps: UseDialogRenderProps<ReturnType>) => React.ReactElement<any>
 ) {
   const [isOpen, setIsOpen] = useState(false);
   const resolveRef = useRef<(returnValue: ReturnType) => any>(null);
