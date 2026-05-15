@@ -15,7 +15,7 @@ const defaultProps = {
   viewBox: '0 0 320 512',
 };
 
-export function ArrowIcon(props: ArrowIconProps): React.ReactElement {
+export function ArrowIcon(props: ArrowIconProps): React.ReactElement<any> {
   const direction = props.direction || defaultProps.direction;
   const iconCssClasses = classNames(
     'ds-c-icon--arrow',

@@ -15,35 +15,23 @@ medicare:
   figmaNodeId: 6-83
 ---
 
-import { Alert, Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
-
-<Alert heading="Are you upgrading to v4 (healthcare v8, medicare v6)?">
-
-[Take a look at our v4 buttons migration guide](/getting-started/migrating-to-new-buttons) to get started.
-
-</Alert>
+import { Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
 ## Examples
 
-The following tables give an overview of the different available button styles in the selected design system. Each button has three controllable traits that can be used in various combinations. They are:
+There are 3 variations of buttons:
 
-1. _Variation_: which affects the border and background styles
-2. Color: defined as either _main_ or _alternate_
-3. Context: specified as either _on-light_ or _on-dark_
+- **Solid** – Also called a “primary” button.
+- **Outline** – Also called a “secondary” button.
+- **Ghost** – A button without visible outline styling. Ghost buttons appear to look like hyperlinked text, but they have button attributes.
 
-See the examples in the following sections to learn how they can be applied.
+Each button variation is available in a main color and an approved alternate color for both light and dark backgrounds.
 
 <ButtonVariationsTable />
 
 ### Main buttons
 
 #### Solid button
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Use solid buttons for the primary actions we want users to take. These actions are required for the user to move to the next step in the user flow (example: Enroll) or to highlight the main/key action.
-
-</ThemeContent>
 
 <StorybookExample
   componentName="solid-button"
@@ -53,12 +41,6 @@ Use solid buttons for the primary actions we want users to take. These actions a
 
 #### Outline button
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-Use outline buttons for actions available but not the primary action we want users to take (example: Plan details). There doesn't have to be a primary button on the page to use the secondary button.
-
-</ThemeContent>
-
 <StorybookExample
   componentName="outline-button"
   sourceFilePath="components/Button/Button.tsx"
@@ -66,12 +48,6 @@ Use outline buttons for actions available but not the primary action we want use
 />
 
 #### Ghost button
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Use ghost buttons for actions available but do not take priority over a primary or secondary CTAs (example: Cancel).
-
-</ThemeContent>
 
 <StorybookExample
   componentName="ghost-button"
@@ -81,91 +57,39 @@ Use ghost buttons for actions available but do not take priority over a primary 
 
 ### Alternate buttons
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Healthcare.
-</Badge>
-
-</ThemeContent>
-
-Each button variation (outline, solid, ghost) has an alternate option. Alternate buttons can be styled differently than the main buttons.
-
-<ThemeContent neverThemes={['healthcare']}>
+Each button variation (solid, outline, ghost) has an alternate option.
 
 #### Alternate solid button
 
-  <StorybookExample
-    componentName="solid-alt-button"
-    sourceFilePath="components/Button/Button.tsx"
-    storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
-  />
-</ThemeContent>
-
-<ThemeContent neverThemes={['healthcare']}>
+<StorybookExample
+  componentName="solid-alt-button"
+  sourceFilePath="components/Button/Button.tsx"
+  storyId="components-button--default&args=children:Solid;variation:solid;isAlternate:true"
+/>
 
 #### Alternate outline button
 
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Medicare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent neverThemes={['healthcare', 'medicare']}>
-
-  <StorybookExample
+<StorybookExample
     componentName="outline-alt-button"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Outline;isAlternate:true"
   />
-</ThemeContent>
-
-<ThemeContent neverThemes={['healthcare']}>
 
 #### Alternate ghost button
 
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Medicare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent neverThemes={['healthcare','medicare']}>
-
-  <StorybookExample
+<StorybookExample
     componentName="ghost-alt-button"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
   />
-</ThemeContent>
-
+  
 ### On dark background
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Healthcare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent neverThemes={['healthcare']}>
-
-  <StorybookExample
+<StorybookExample
     componentName="on-dark-buttons"
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--variations-on-dark"
   />
-</ThemeContent>
 
 ### Button sizes
 
@@ -173,31 +97,13 @@ Buttons can exist in two sizes other than default: "big" or "small".
 
 #### Big button
 
-<ThemeContent onlyThemes={['healthcare']}>
-
-<Badge variation="alert">
-  <CloseIconThin /> Unused by Healthcare.
-</Badge>
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['core', 'medicare']}>
-
 <EmbeddedExample>
   <div>
     <Button size="big">Big</Button>
   </div>
 </EmbeddedExample>
 
-</ThemeContent>
-
 #### Small button
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-Small outline buttons are used for utility buttons on a page with other primary and secondary actions (example: Edit, Remove, Add another [something]).
-
-</ThemeContent>
 
 <EmbeddedExample>
   <div>
@@ -207,247 +113,96 @@ Small outline buttons are used for utility buttons on a page with other primary 
 
 ### Adding icons
 
-- Add an inline SVG icon and it will become the same color as the button text. For the crispest icon rendering, ensure the icon has a square `viewBox` with values that are multiples of `8` (ie. `24x24`).
+- When adding an inline SVG icon, it will appear in the same color as the button text.
+- For the crispest icon rendering, the icon must have a square `viewBox` with values that are multiples of 8 (e.g., 24x24).
 - Use the margin utility class to add spacing between the icon and button text.
 
 <EmbeddedExample>
   <div>
-    <Button className="ds-u-margin-right--1">
-      <ArrowIcon direction="left" className="ds-u-margin-right--05" />
-      Left Icon
-    </Button>
-    <Button className="ds-u-margin-right--1">
-      Right Icon
-      <ArrowIcon direction="right" className="ds-u-margin-left--05" />
-    </Button>
+    <Button className="ds-u-margin-right--1"><ArrowIcon direction="left" className="ds-u-margin-right--05" /> Left Icon</Button>
+    <Button className="ds-u-margin-right--1">Right Icon <ArrowIcon direction="right" className="ds-u-margin-left--05" /></Button>
   </div>
 </EmbeddedExample>
 
-## Code
+### Paired buttons or multiple buttons on a page
 
-### React
-
-The `Button` component accepts its text as children (AKA inner HTML), which
-means you can also pass in HTML or custom components. This gives you a lot of
-flexibility and supports a variety of advanced use cases. The most common use
-case would be passing in an SVG icon along with the text.
-
-In addition to the supported props listed, you can also pass in additional
-props, which will be passed to the rendered root component. For example,
-you could pass in a `target` prop to pass to the rendered anchor element.
-
-<SeeStorybookForGuidance storyId={'components-button--docs'} />
-
-### Web Component
-
-<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-button--docs'} />
-
-### Style customization
-
-The following CSS variables can be overridden to customize Button components:
-
-<ComponentThemeOptions componentname="button" />
-
-### Analytics
-
-This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
+<EmbeddedExample>
+  <div>
+    <Button className="ds-u-margin-right--1">Back</Button>
+    <Button variation="solid" className="ds-u-margin-right--1">Next</Button>
+  </div>
+</EmbeddedExample>
 
 ## Guidance
 
-Buttons are promises to the user; they must deliver the promise they offer by doing what the button says it will do.
-
-<ThemeContent onlyThemes={['medicare']}>
-
-- Action buttons do NOT include icons.
-  <br /> <i>Exception:</i> Can include icons in buttons in mobile for CTAs outlining functionality.
-  <br /> Examples: Filter, Sort, Map, and Menu.{' '}
-- Buttons use title case. Example: Join Plan or Find Doctors.
-
-When pairing 2 CTAs:
-
-- In forms/decision trees: Have the preferred action be on the right. Example: Back/Next or Cancel/Submit.
-- All other cases: Have the preferred action be on the left. Example: Create Account/Return to Home or Change My Account/Stop Easy Pay.
-
-</ThemeContent>
+Buttons are promises to the user. They must deliver the promise they offer by doing what the button says it will do.
 
 ### When to use
 
-- Use buttons for the most important actions you want users to take on your site, such as "Download," "Sign up," or "Apply."
+- Use buttons to guide users to initiate an action, like “Apply” or “Find plans,” or take the next logical step in their journey or form. 
+- Be judicious: Buttons are reserved for the most important actions you want users to take on your site. 
+- **Solid/primary button**: Use for the primary action you want users to take.
+- **Outline/secondary button**: Use when you have multiple actions available, but it’s not the primary action you want users to take. If there’s no preferred pathway/action, you can use 2 secondary buttons. You don’t have to pair a primary button with a secondary button.
+- **Ghost button**: Use for non-preferred or less common actions, or when you don’t want to draw focus to the action.
+- **Alternate buttons**: Use when there’s more than one button on a page that aren’t paired together and you need to highlight a button that’s not a primary action.
+- **Big button**: Use only for website homepage hero space CTAs that are the start of a user flow or go to multiple pages.
+- **Small button**: Use for: 
+  - Utility actions, like “Print” and “Menu.” 
+  - Tertiary situations, such as inline actions within a step, so users can make changes, like “Edit,” “Remove,” or “Add.” The small button provides the inline action to adjust a particular element on the page, while the primary or secondary buttons take the user to the next step in the form or journey.
+- **Icons with buttons**: Don’t include icons in buttons, except in limited situations:
+  - Utility actions, like print, email, etc.
+  - Mobile CTAs for functionality, like filter, sort, map, and menu.
+  - Branded buttons, like Facebook, Twitter, and YouTube in the website footer.
+- **Paired buttons**:
+  - Use when there’s 2 clear actions related to each other for a particular action, form, or place in the user journey:
+    - **Form progression**: Always include a primary button for preferred action and secondary or ghost button for nonpreferred action. Example: “Next” and “Back”
+    - **Action submission**: Always include a primary button for preferred action and secondary or ghost button for nonpreferred action. Example: “Save” and “Cancel”
+    - **User journey or multiple options to take action**: Include a primary button for preferred action and secondary button for alternate action. If neither option is preferred, use only secondary buttons. Examples: 1) “Preview plans” and “Apply now” 2) “Log in” and “Create account”  3) “Add,” “Edit,” and “Remove.”
+  - Positions of paired buttons:
+    - *Forms, decisions trees, or progression of steps*: Have the preferred action on the right. Example: “Back” on left and “Next” on right.
+    - *Informational content and other cases*: Have the preferred action on the left. Example: “Create account” on left and “Back to home” on right.
+    - *Mobile*: Have the preferred action appear before (above) the nonpreferred action. 
+- **Multiple buttons on a page**: Use sparingly: Use only when you have multiple main pathways or actions for users to take.  Can use both standard and alternate styling as needed to differentiate the actions and create visual order to the design. 
+- **Buttons on cards**: These are generally links to other pages styled as buttons on the front-end to provide visual importance to help users navigate or continue their journey. When styling links in cards as buttons, use either solid or outline variations. If have more than 1 card on a page, the button styling across the cards needs to match.
+- **Destructive buttons**: Don’t permit users to take a destructive action with a single button. 
+  - When including an action that’s non-reversable once taken, always trigger a new pattern, like a pop-up window or other alert, that explains the ramification and forces the user to re-confirm the destructive action. 
+  - You must include a way for the user to stop the destructive action.
+  - When providing the options for the destructive action, always have the opt-out or cancel option be the solid button and the destructive action be the outline button.
 
 ### When to consider alternatives
 
-- Less popular or less important actions may be visually styled as links.
+- Less popular or less important actions may be links.
 - Buttons are for performing actions, not making choices. If you need your users to make a choice, use something else like radio buttons. Alternatively, if one choice is much less important then try styling it as a link instead.
 
 ### Usage
 
-- Avoid using too many buttons on a page. Aim to use only one button per page.
+- Avoid using too many buttons on a page. Too many buttons confuse users and interrupt their willingness to take an action.
+  - Aim for 1 button per page.
+  - If you need more than 1 button, consider the user journey and action you want the user to take. Users focus on primary buttons for their next step.
 - Avoid similar styles elsewhere on the page that could be confused for buttons.
-- Use buttons for the primary action and links for secondary actions.
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-#### Don't
-
-- Use buttons for navigational elements like going to a new page.
-
-</ThemeContent>
+- Avoid disabled buttons. Buttons that are visible but not usable until all required elements in a form are complete cause user confusion and frustration. Instead, use an active button, but establish error messaging if the form isn’t complete. Refer to error alerts.  
 
 **Label text**
 
-- Use sentence case for button labels.
-- Button labels should be as short as possible with “trigger words” that your users will recognize to clearly explain what will happen when the button is clicked (for example, “Save and continue,” “Download” or “Sign up”).
-- Make the first word of the button’s label a verb. For example, instead of “Complaint Filing”, label the button “File a complaint.”
-- If a button has an icon, it should still have accompanying text describing the action.
-
-**Destructive buttons**
-
-- Confirm the user meant to trigger a destructive action before following through with the action.
-- Provide a method for a user to undo a destructive action.
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-### Design guidelines
-
-- Buttons are used for actions; links are used for navigation
-- Buttons do NOT include icons.
-  - Exception: Can include icons in buttons for utility actions like print and save and branded buttons like Facebook, Twitter, and YouTube used in the Footer
-- When pairing 2 buttons the preferred/main action is placed on the left.
-- Ghost buttons are typically used when paired with a Solid or Outline button or to indicate lower priority actions.
-
+- Aim for 4 words or less.
+- No articles or punctuation. Use "&" instead of "and."
+- Pronouns:
+  - Avoid pronouns when going to a page where the user will get generalized information. 
+  - Use first-person pronouns when going to a page with personalized information. Example: “Check if I qualify” 
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
+  - Use sentence case
 </ThemeContent>
-
-### Accessibility
-
-- Make sure the `type` attribute has the correct value. By default, this is set to `submit` but in most you’ll need to set this to `button` to prevent unwanted behavior when pressed.
-
-#### Links vs. buttons
-
-Links and buttons are read differently when using a screen reader. In its most basic form, the rules are:
-
-- If it goes somewhere, use a link in the form of `<a>`.
-- If it does something on the page such as submitting a form, opening a dialog, canceling an action, or deleting an item, then use a button in the form of `<button>`.
-
-##### Navigating with a screen reader
-
-Web browsers and assistive technology aid users by providing lists of common elements like headings, buttons, links, and images, and let you navigate directly to the element of your choosing. This allows screen reader users to speed up their comprehension of the page.
-
-One example of this collection of lists in a screen reader is the [VoiceOver rotor](https://support.apple.com/guide/voiceover/with-the-voiceover-rotor-mchlp2719/mac) on a Mac. To turn on VoiceOver’s rotor, use the keyboard shortcut: **control + alt + U**.
-
-If elements are not coded semantically (a link as a button or a button as a link), then users won't be able to navigate a page as easily.
-
-##### Navigating with a keyboard
-
-For users who navigate pages with keyboards instead of a mouse, buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
-
-#### Icon buttons
-
-An element's name, or accessible name, is how it is identified by browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). Accessible names provide information for assistive technology, such as screen readers, and so icon buttons must include an accessible name*.* If there is no text beside the icon then an `aria-label` or `aria-labelledby` attribute can be used to give the button its accessible name.
-
-#### Size
-
-The click/tap target area must be no smaller than 44x44px.
-
-#### Avoid using disabled buttons
-
-Disabling or making a "button" unavailable until a form or input field is complete can confuse some users.
-
-Why it's a problem:
-
-- They don’t provide feedback and tell the user why they're disabled. They communicate that something isn’t right, but very often that is not enough information.
-- Buttons should have call-to-action text that matches what users want to do, so people try to interact with them yet they aren’t able to be interacted with.
-- They typically have terrible color contrast.
-- Assistive technologies like [screen readers](https://www.nngroup.com/articles/touchscreen-screen-readers/) and [switches](https://en.wikipedia.org/wiki/Switch_access) are usually not able to navigate to disabled buttons.
-
-For these reasons, disabled buttons can be frustrating for all users but especially to those with cognitive disabilities and those who use assistive technologies.
-
-If you have a use case where you **must** use a disabled button, take note:
-
-- If using the `<a>` tag
-  - Add `aria-disabled` attribute set to true as this helps to describe the disabled state to screen reader users.
-  - Remove its `href` attribute. When a link has no `href`, it has no role, no focusability, and no keyboard events.
-  - Do not use the disabled attribute as it is not a valid attribute for `<a>`.
-
-Unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
-
-#### State
-
-If a toggle-able button is needed, add `aria-pressed` to the button. Examples of this use case could be: buttons to change settings, buttons to sort with, etc.
-
-#### Accessibility testing
-
-##### General
-
-- The click/tap target area is no smaller than 44x44px.
-- There is a visible focus state.
-
-##### Keyboard
-
-- The spacebar and/or enter key are used to activate the button.
-- Buttons should display a visible focus state when users tab to them.
-
-##### Screen reader
-
-###### Desktop
-
-When I navigate to the button:
-
-- Its purpose and/or resulting action is read.
-- The text content within the button is clear as to what it does.
-- If applicable, the state (for example: pressed, expanded, etc.) is is read.
-
-###### Mobile
-
-When I swipe to focus on a button:
-
-- Its purpose and/or resulting action is read.
-- The text content within the button is clear as to what it does.
-- If applicable, the state (for example: pressed, expanded, etc.) is is read.
-
-<ThemeContent onlyThemes={['medicare']}>
-
-#### Do's
-
-- Use buttons for clickable actions like "Log in" or "Create an account"
-- Use buttons for javascript triggers that have a clickable element tied to javascript functionality.
-- Use links for navigational elements. `<a>` tags are reserved for navigation.
-
-#### Don't
-
-- Use buttons for navigational elements like going to a new page.
-
+ <ThemeContent onlyThemes={['medicare']}>
+  - Use title case
 </ThemeContent>
-
-### Content
-
-- Describe what will happen, not the current state.
-- Buttons always start with an action word describing the main thing users will do once selected.
-  - Pair it with a noun to help it be clearer. Example: Get tips.
-  - If in a form, it can be just the action word if it's navigating between steps. Example: Cancel, Back, Next.
-- Use the least amount of words possible (no more than 6 with 2-4 being ideal).
-
-<ThemeContent onlyThemes={['healthcare']}>
-
-- Use sentence case for buttons. This conveys a friendlier tone. Note: Some tools and the homepage are using ALL CAPS. There are also a few examples of Title Case. We should change to sentence case for consistency across the site.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-- Use title case for CTA buttons.
-
-</ThemeContent>
+- Describe what will happen, not the current state. Example: "Start over"
+  - Always start with an action verb that describes the main thing users will be able to do once selected.
+  - Pair the action verb with a noun to help it be clearer. Example: “Preview plans” or “Submit application”
+    - In forms, use just the action verb when navigating between steps. Examples: “Next,” “Cancel,” “Back,” “Submit”
+  - In forms and interactive flows, be consistent for steps, and be consistent across tools within the Healthcare, Medicare, or CMS experiences.
+  - Buttons with icons must include a text label. (Don’t use only the icon as a button.)
 
 <ThemeContent onlyThemes={['healthcare', 'medicare']}>
-
-#### Writing content
-
-- Use "&" instead of "and."
-- Avoid using the articles "a", "an", and "the."
-- If you must use an article, don't capitalize it.
-- Avoid all caps unless the word is an acronym, like ZIP.
-- Avoid pronouns unless the future state provides the user with customized information. Example: "Get my results"
-- Limit branded terms, like tool names. As a general rule, we don't use tool names in web content or flow. Rather, content should outline what the user will get/can do when they click the button.
 
 #### Online forms & steps
 
@@ -479,10 +234,6 @@ Generally better to use specific verbs to confirm what the user is starting. For
 </table>
 
 </ThemeContent>
-
-##### Moving through a process or sequential steps after starting
-
-For forward movement to the next page or step.
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -665,6 +416,124 @@ Generally better to use specific verbs if appropriate to confirm an action.
 </table>
 
 </ThemeContent>
+
+## Accessibility
+
+### General accessibility
+
+- Make sure the `type` attribute has the correct value. By default, this is set to `submit` but in most you’ll need to set this to `button` to prevent unwanted behavior when pressed.
+
+#### Links vs. buttons
+
+Links and buttons are read differently when using a screen reader. In its most basic form, the rules are:
+
+- If it goes somewhere, use a link in the form of `<a>`.
+- If it does something on the page such as submitting a form, opening a dialog, canceling an action, or deleting an item, then use a button in the form of `<button>`.
+
+#### Keyboard navigation
+
+For users who navigate pages with keyboards instead of a mouse, buttons can be triggered by pressing the space bar or the enter key while links are only triggered by the enter key. This makes a difference to a screen reader user's flow.
+
+#### Screen reader navigation
+
+Web browsers and assistive technology aid users by providing lists of common elements like headings, buttons, links, and images, and let you navigate directly to the element of your choosing. This allows screen reader users to speed up their comprehension of the page.
+
+One example of this collection of lists in a screen reader is the [VoiceOver rotor](https://support.apple.com/guide/voiceover/with-the-voiceover-rotor-mchlp2719/mac) on a Mac. To turn on VoiceOver’s rotor, use the keyboard shortcut: **control + alt + U**.
+
+If elements are not coded semantically (a link as a button or a button as a link), then users won't be able to navigate a page as easily.
+
+#### Icon buttons
+
+An element's name, or accessible name, is how it is identified by browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). Accessible names provide information for assistive technology, such as screen readers, and so icon buttons must include an accessible name. If there is no text beside the icon then an `aria-label` or `aria-labelledby` attribute can be used to give the button its accessible name.
+
+#### Size
+
+The click/tap target area must be no smaller than 44x44px.
+
+#### Avoid using disabled buttons
+
+Disabling or making a "button" unavailable until a form or input field is complete can confuse some users.
+
+Why it's a problem:
+
+- They don’t provide feedback and tell the user why they're disabled. They communicate that something isn’t right, but very often that is not enough information.
+- Buttons should have call-to-action text that matches what users want to do, so people try to interact with them yet they aren’t able to be interacted with.
+- They typically have terrible color contrast.
+- Assistive technologies like [screen readers](https://www.nngroup.com/articles/touchscreen-screen-readers/) and [switches](https://en.wikipedia.org/wiki/Switch_access) are usually not able to navigate to disabled buttons.
+
+For these reasons, disabled buttons can be frustrating for all users but especially to those with cognitive disabilities and those who use assistive technologies.
+
+If you have a use case where you **must** use a disabled button, take note:
+
+- If using the `<a>` tag
+  - Add `aria-disabled` attribute set to true as this helps to describe the disabled state to screen reader users.
+  - Remove its `href` attribute. When a link has no `href`, it has no role, no focusability, and no keyboard events.
+  - Do not use the disabled attribute as it is not a valid attribute for `<a>`.
+
+Unavailable buttons using the `<button>` tag should have the `disabled` attribute applied. This removes native click and keypress events from the button. It also prevents automated scanners from logging a low contrast error. Finally, it announces the button as "dimmed" or "disabled" to screen readers, offering users additional context.
+
+#### State
+
+If a toggle-able button is needed, add `aria-pressed` to the button. Examples of this use case could be: buttons to change settings, buttons to sort with, etc.
+
+### Accessibility testing
+
+#### General
+
+- The click/tap target area is no smaller than 44x44px.
+- There is a visible focus state.
+
+#### Keyboard
+
+- The spacebar and/or enter key are used to activate the button.
+- Buttons should display a visible focus state when users tab to them.
+
+#### Screen reader
+
+##### Desktop
+
+When I navigate to the button:
+
+- Its purpose and/or resulting action is read.
+- The text content within the button is clear as to what it does.
+- If applicable, the state (for example: pressed, expanded, etc.) is read.
+
+##### Mobile
+
+When I swipe to focus on a button:
+
+- Its purpose and/or resulting action is read.
+- The text content within the button is clear as to what it does.
+- If applicable, the state (for example: pressed, expanded, etc.) is is read.
+
+## Code
+
+### React
+
+The `Button` component accepts its text as children (AKA inner HTML), which
+means you can also pass in HTML or custom components. This gives you a lot of
+flexibility and supports a variety of advanced use cases. The most common use
+case would be passing in an SVG icon along with the text.
+
+In addition to the supported props listed, you can also pass in additional
+props, which will be passed to the rendered root component. For example,
+you could pass in a `target` prop to pass to the rendered anchor element.
+
+<SeeStorybookForGuidance storyId={'components-button--docs'} />
+
+### Web Component
+
+<SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-button--docs'} />
+
+### Style customization
+
+The following CSS variables can be overridden to customize Button components:
+
+<ComponentThemeOptions componentname="button" />
+
+### Analytics
+
+This component has analytics tracking available. [Get developer documentation about using analytics in the design system](/getting-started/for-developers/#analytics).
 
 ## Learn more
 

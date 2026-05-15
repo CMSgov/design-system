@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 20 20',
 };
 
-export function MinusCircleIcon(props: IconCommonProps): React.ReactElement {
+export function MinusCircleIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = classNames('ds-c-icon--minus-circle', props.className);
 
   return (
