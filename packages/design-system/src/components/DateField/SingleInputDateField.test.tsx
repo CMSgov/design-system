@@ -84,6 +84,50 @@ describe('SingleInputDateField', function () {
       return renderField({ ...defaultPickerProps, ...props });
     }
 
+    it('traps focus within the picker when tabbing through controls', async () => {
+      const { user } = renderPicker();
+
+      await user.click(screen.getByRole('button'));
+
+      const dialog = screen.getByRole('dialog');
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>('button:not([disabled]), select:not([disabled])')
+      ).filter((element) => element.tabIndex >= 0);
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      lastElement.focus();
+      expect(lastElement).toHaveFocus();
+
+      await user.tab();
+
+      expect(firstElement).toHaveFocus();
+    });
+
+    it('traps focus within the picker when shift-tabbing before the first control', async () => {
+      const { user } = renderPicker();
+
+      await user.click(screen.getByRole('button'));
+
+      const dialog = screen.getByRole('dialog');
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>('button:not([disabled]), select:not([disabled])')
+      ).filter((element) => element.tabIndex >= 0);
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      firstElement.focus();
+      expect(firstElement).toHaveFocus();
+
+      await user.tab({ shift: true });
+
+      expect(lastElement).toHaveFocus();
+    });
+
     it('renders with picker', async () => {
       const { container, user } = renderPicker();
 
