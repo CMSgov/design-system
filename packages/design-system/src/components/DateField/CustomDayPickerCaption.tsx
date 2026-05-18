@@ -15,25 +15,48 @@ export function CustomDayPickerCaption(props: CaptionProps) {
     locale,
     onMonthChange,
   } = useDayPicker();
+
   const { previousMonth, nextMonth, goToMonth } = useNavigation();
 
   const previousLabel = labelPrevious(previousMonth, { locale });
   const nextLabel = labelNext(nextMonth, { locale });
 
-  const handlePreviousClick: React.MouseEventHandler = () => {
-    if (!previousMonth) return;
-    goToMonth(previousMonth);
-    onMonthChange?.(previousMonth);
+  // After navigating months, move focus to the first enabled select control
+  // instead of relying on the previous/next buttons. The nav buttons can become
+  // disabled at min/max date boundaries, which leads to inconsistent focus behavior.
+  // The caption selects are consistently available and provide a stable focus target.
+  const focusFirstEnabledCaptionControl = (dialog: HTMLElement | null) => {
+    requestAnimationFrame(() => {
+      const firstFocusable = dialog?.querySelector<HTMLElement>('select:not([disabled])');
+
+      firstFocusable?.focus();
+    });
   };
 
-  const handleNextClick: React.MouseEventHandler = () => {
+  const handlePreviousClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    if (!previousMonth) return;
+
+    const dialog = event.currentTarget.closest<HTMLElement>('[role="dialog"]');
+
+    goToMonth(previousMonth);
+    onMonthChange?.(previousMonth);
+
+    focusFirstEnabledCaptionControl(dialog);
+  };
+
+  const handleNextClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     if (!nextMonth) return;
+
+    const dialog = event.currentTarget.closest<HTMLElement>('[role="dialog"]');
+
     goToMonth(nextMonth);
     onMonthChange?.(nextMonth);
+
+    focusFirstEnabledCaptionControl(dialog);
   };
 
   return (
-    <div className={classNames.caption} style={styles.caption}>
+    <div className={classNames.caption} style={styles.caption} data-date-picker-caption>
       <button
         aria-label={previousLabel}
         className="ds-c-single-input-date-field__nav"

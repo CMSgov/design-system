@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SingleInputDateField from './SingleInputDateField';
 
@@ -84,6 +84,39 @@ describe('SingleInputDateField', function () {
       return renderField({ ...defaultPickerProps, ...props });
     }
 
+    it('renders with picker', async () => {
+      const { container, user } = renderPicker();
+
+      const label = container.querySelector('.ds-c-label');
+      const hint = container.querySelector('.ds-c-hint');
+
+      expect(
+        container.querySelector('.ds-c-single-input-date-field--with-picker')
+      ).toBeInTheDocument();
+      expect(label).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-label-mask')).toBeInTheDocument();
+      expect(
+        container.querySelector('.ds-c-single-input-date-field__field-wrapper')
+      ).toBeInTheDocument();
+      expect(screen.getByRole('textbox')).toBeInTheDocument();
+
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveClass('ds-c-single-input-date-field__button');
+      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
+      expect(button.firstElementChild.tagName).toBe('svg');
+      expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
+
+      await user.click(button);
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('generates ids when no id is provided', () => {
+      renderPicker({ id: undefined });
+      expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
+      expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
+    });
+
     it('traps focus within the picker when tabbing through controls', async () => {
       const { user } = renderPicker();
 
@@ -128,37 +161,26 @@ describe('SingleInputDateField', function () {
       expect(lastElement).toHaveFocus();
     });
 
-    it('renders with picker', async () => {
-      const { container, user } = renderPicker();
+    it('moves focus to the month select after navigating months', async () => {
+      const { user } = renderPicker({
+        fromDate: new Date('01-01-2000'),
+        toDate: new Date('04-30-2000'),
+        defaultMonth: new Date('01-01-2000'),
+      });
 
-      const label = container.querySelector('.ds-c-label');
-      const hint = container.querySelector('.ds-c-hint');
+      await user.click(screen.getByRole('button'));
 
-      expect(
-        container.querySelector('.ds-c-single-input-date-field--with-picker')
-      ).toBeInTheDocument();
-      expect(label).toBeInTheDocument();
-      expect(container.querySelector('.ds-c-label-mask')).toBeInTheDocument();
-      expect(
-        container.querySelector('.ds-c-single-input-date-field__field-wrapper')
-      ).toBeInTheDocument();
-      expect(screen.getByRole('textbox')).toBeInTheDocument();
+      const dialog = screen.getByRole('dialog');
 
-      const button = screen.getByRole('button');
-      expect(button).toBeInTheDocument();
-      expect(button).toHaveClass('ds-c-single-input-date-field__button');
-      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
-      expect(button.firstElementChild.tagName).toBe('svg');
-      expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
+      await user.click(within(dialog).getByLabelText(/next/i));
 
-      await user.click(button);
-      expect(screen.getByRole('dialog')).toBeInTheDocument();
-    });
+      const monthSelect = within(dialog).getByRole('combobox', {
+        name: /month/i,
+      });
 
-    it('generates ids when no id is provided', () => {
-      renderPicker({ id: undefined });
-      expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
-      expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
+      await waitFor(() => {
+        expect(monthSelect).toHaveFocus();
+      });
     });
 
     it('selecting a day calls onChange', async () => {
