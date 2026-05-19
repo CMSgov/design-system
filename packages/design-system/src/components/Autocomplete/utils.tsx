@@ -69,7 +69,7 @@ export function getTextFieldChild(children: ReactNode): ReactElement<any> | unde
 export function getActiveDescendant(
   rootId: string,
   state: ComboBoxState<object>,
-  items: AutocompleteItem[]
+  items: AutocompleteItem[] | undefined
 ): string {
   const index = (items ?? []).findIndex((item) => state.selectionManager.focusedKey === item.id);
   return getOptionId(rootId, index);
