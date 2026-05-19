@@ -56,7 +56,7 @@ export function CustomDayPickerCaption(props: CaptionProps) {
   };
 
   return (
-    <div className={classNames.caption} style={styles.caption} data-date-picker-caption>
+    <div className={classNames.caption} style={styles.caption}>
       <button
         aria-label={previousLabel}
         className="ds-c-single-input-date-field__nav"
