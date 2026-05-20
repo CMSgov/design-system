@@ -180,6 +180,30 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     inputRef.current?.focus();
   });
 
+  const handleDayPickerKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), select:not([disabled])'
+      )
+    ).filter((element) => element.tabIndex >= 0);
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    const activeElement = event.currentTarget.ownerDocument.activeElement;
+
+    if (!firstElement || !lastElement || !activeElement) return;
+
+    if (event.shiftKey && activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
+
   // Validate the date string (value) and make date null if it's invalid. We don't want to pass
   // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
   const dateString = DATE_MASK(props.value, true);
@@ -217,7 +241,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
         )}
       </div>
       {pickerVisible && (
-        <div ref={dayPickerRef} role="dialog">
+        <div ref={dayPickerRef} role="dialog" onKeyDown={handleDayPickerKeyDown}>
           <CustomDayPicker
             selected={date}
             onSelect={handlePickerChange}
