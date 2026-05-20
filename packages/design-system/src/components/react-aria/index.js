@@ -6705,8 +6705,6 @@ function $c350ade66beef0af$export$8c18d1b4f7232bbf(props, state) {
     }
   };
   let onBlur = (e) => {
-    console.log('ON BLUR CALLED: LINE 6712');
-    console.log({ popoverRef: popoverRef.current });
     var _popoverRef_current;
     // Ignore blur if focused moved to the button or into the popover.
     if (
