@@ -69,6 +69,7 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
           </p>
         </div>
       </div>
+      <div />
       <button
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
@@ -149,6 +150,7 @@ exports[`Autocomplete displays an error message in the default location for Heal
           </p>
         </div>
       </div>
+      <div />
       <button
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
@@ -229,6 +231,7 @@ exports[`Autocomplete displays an error message in the default position for Core
           type="text"
         />
       </div>
+      <div />
       <button
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
@@ -291,6 +294,7 @@ exports[`Autocomplete renders correctly 1`] = `
           type="text"
         />
       </div>
+      <div />
       <button
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
@@ -399,6 +403,7 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
           </p>
         </div>
       </div>
+      <div />
       <button
         class="ds-c-button ds-c-button--small ds-c-button--ghost ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
         type="button"
