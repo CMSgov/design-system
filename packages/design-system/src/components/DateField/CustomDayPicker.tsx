@@ -27,10 +27,20 @@ type CustomDayPickerProps = Pick<
   | 'toYear'
 >;
 
+const getLocale = () => {
+  const lang = getLanguage();
+  switch (lang) {
+    case 'es':
+      return es;
+    default:
+      return enUS;
+  }
+};
+
 export function CustomDayPicker(props: CustomDayPickerProps) {
   return (
     <DayPicker
-      locale={getLanguage() === 'es' ? es : enUS}
+      locale={getLocale()}
       mode="single"
       footer={
         <span className="ds-u-visibility--screen-reader">
