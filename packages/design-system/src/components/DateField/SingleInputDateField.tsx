@@ -130,7 +130,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const isControlled = remainingProps.value !== undefined;
   const [internalValueState, setInternalValueState] = useState(remainingProps.defaultValue);
   const value = isControlled ? remainingProps.value : internalValueState;
-  const localizedDateHint = getLanguage() === 'en' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
+  // This currently just supports English and non-english date formatting. Maybe could expand later.
+  const lang = getLanguage();
+  const localizedDateHint = lang === 'en' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
   const dateMask = createDateMask(localizedDateHint);
 
   // Set up change handlers
@@ -144,8 +146,13 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     }
   };
 
+  const computeDateValue = (date: Date, lang: string) => {
+    const vals = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+    return lang === 'en' ? `${vals[0]}/${vals[1]}/${vals[2]}` : `${vals[1]}/${vals[0]}/${vals[2]}`;
+  };
+
   const handlePickerChange = (date: Date) => {
-    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    const updatedValue = computeDateValue(date, lang);
     const maskedValue = dateMask(updatedValue);
     if (onChange) {
       onChange(maskedValue, dateMask(updatedValue, true));
@@ -208,8 +215,10 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   // Validate the date string (value) and make date null if it's invalid. We don't want to pass
   // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
-  const dateString = dateMask(props.value, true);
-  const validDateString = isMatch(dateString, 'MM/dd/yyyy');
+  const dateString = dateMask(props.value ?? '', true);
+  // Handle Spanish format dates
+  const testValue = lang === 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
+  const validDateString = isMatch(dateString, testValue);
   const date = validDateString ? new Date(dateString) : null;
 
   return (
