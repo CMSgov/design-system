@@ -22,6 +22,13 @@ export const RE_SSN = /([*\d]{1,3})[\s.-]?([*\d]{1,2})?[\s.-]?([\d{1,4}]+)?/;
 export const RE_ZIP = /(\d{1,5})/;
 export const RE_CURRENCY = /\$?[\d,.-]*/;
 
+type MaskType = 'DATE_MASK' | 'PHONE_MASK' | 'ZIP_MASK' | 'SSN_MASK' | 'CURRENCY_MASK';
+type TaggedFunction = MaskFunction & { __maskType: MaskType };
+const createTaggedFunction = (fn: MaskFunction, fnType: MaskType) => {
+  (fn as TaggedFunction).__maskType = fnType;
+  return fn as TaggedFunction;
+};
+
 /**
  * This function returns a mask function which returns either the formatted match only, or
  * the formatted match + the hint substring which the regular expressions above match against
@@ -41,24 +48,33 @@ const makeMask = (regex: RegExp, hint: string, formatter: (stringMatch: string[]
   };
 };
 
+// We need to be able to localize our Hint text, so wrap original makeMask function:
+export const createDateMask = (hint = 'MM/DD/YYYY'): TaggedFunction => {
+  return createTaggedFunction(
+    makeMask(RE_DATE, hint, (match) => {
+      const [month, day, year] = match.slice(1);
+      const formattedDate = [
+        // We treat all non-numeric characters as a delimiter. If they're using a
+        // delimiter after a month or day, we interpret that as the user supplying
+        // a single digit for month or day, which we will automatically pad for them.
+        month && month.padStart(2, '0'),
+        day && day.padStart(2, '0'),
+        year,
+      ]
+        .filter((s) => s)
+        .join('/');
+
+      return formattedDate;
+    }),
+    'DATE_MASK'
+  );
+};
+
 /**
  * The date mask automatically pads months and days that are one digit
+ * Currently kept for Backwards compatibility
  */
-export const DATE_MASK: MaskFunction = makeMask(RE_DATE, 'MM/DD/YYYY', (match) => {
-  const [month, day, year] = match.slice(1);
-  const formattedDate = [
-    // We treat all non-numeric characters as a delimiter. If they're using a
-    // delimiter after a month or day, we interpret that as the user supplying
-    // a single digit for month or day, which we will automatically pad for them.
-    month && month.padStart(2, '0'),
-    day && day.padStart(2, '0'),
-    year,
-  ]
-    .filter((s) => s)
-    .join('/');
-
-  return formattedDate;
-});
+export const DATE_MASK: TaggedFunction = createDateMask();
 
 /**
  * Formatting for US phone numbers
@@ -97,7 +113,7 @@ export const SSN_MASK: MaskFunction = makeMask(RE_SSN, '###-##-####', (match) =>
 /**
  * Does the same thing as SSN_MASK except that it obfuscates the first five digits
  */
-export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: boolean) => {
+export const SSN_MASK_OBFUSCATED = (rawInput: string, valueOnly?: boolean) => {
   // Use the normal SSN_MASK function just to clean the raw input and format it
   const formatted = SSN_MASK(rawInput, true);
   // We only hide the first five digits of the SSNs
@@ -117,7 +133,7 @@ export const SSN_MASK_OBFUSCATED: MaskFunction = (rawInput: string, valueOnly?: 
  * Currency mask is a little different, we need to modify the incoming content to strip
  * out any commas or dollar signs before evaluating it via the Intl.NumberFormat function.
  */
-export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
+export const CURRENCY_MASK: MaskFunction = makeMask(RE_CURRENCY, '$', (match) => {
   const signed = match[0].includes('-');
   const stripped = match[0].replace(/[^0-9.]/g, '');
   const clipped = stripped.includes('.') ? stripped.slice(0, stripped.indexOf('.') + 3) : stripped;
@@ -131,7 +147,10 @@ export const CURRENCY_MASK = makeMask(RE_CURRENCY, '$', (match) => {
   }
 });
 
-export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInputProps) {
+export function useLabelMask(
+  maskFn: MaskFunction | TaggedFunction,
+  originalInputProps: TextInputProps
+) {
   // TODO: Once we're on React 18, we can use the `useId` hook
   const generatedId = useId('label-mask--');
   const labelMaskId = originalInputProps.id ? `${originalInputProps.id}__label-mask` : generatedId;
@@ -187,7 +206,7 @@ export function useLabelMask(maskFn: MaskFunction, originalInputProps: TextInput
   let currentMask = maskFn(currentValue);
 
   // Date mask needs to return the default empty mask when not focused
-  if (maskFn === DATE_MASK && !focused) {
+  if ('__maskType' in maskFn && maskFn.__maskType === 'DATE_MASK' && !focused) {
     currentMask = maskFn('');
   }
 
