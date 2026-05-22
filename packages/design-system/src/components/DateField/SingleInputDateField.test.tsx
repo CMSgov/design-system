@@ -1,6 +1,7 @@
 import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SingleInputDateField from './SingleInputDateField';
+import * as i18n from '../i18n';
 
 const defaultProps = {
   label: 'Birthday',
@@ -48,6 +49,40 @@ describe('SingleInputDateField', function () {
     expect(input).toHaveAttribute('aria-invalid', 'false');
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
+  });
+
+  it('renders without picker in Spanish', () => {
+    const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
+
+    const { container } = renderField({
+      label: 'Cumpleaños',
+      hint: 'Por favor, ingrese su fecha de nacimiento',
+    });
+
+    expect(container.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
+
+    const label = container.querySelector('.ds-c-label');
+    expect(label).toHaveTextContent('Cumpleaños');
+
+    const hint = container.querySelector('.ds-c-hint');
+    expect(hint).toHaveTextContent('Por favor, ingrese su fecha de nacimiento');
+
+    const mask = container.querySelector('.ds-c-label-mask');
+    expect(mask).toBeInTheDocument();
+    expect(mask).toHaveTextContent('DD/MM/YYYY');
+    expect(mask?.querySelectorAll('span')).toHaveLength(2);
+
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    expect(input.parentElement).toHaveClass('ds-c-single-input-date-field__field-wrapper');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'numeric');
+    expect(input).toHaveAttribute('aria-describedby');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+
+    getLanguageSpy.mockRestore();
   });
 
   it('masks in label', async function () {
@@ -109,6 +144,46 @@ describe('SingleInputDateField', function () {
 
       await user.click(button);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('renders with picker in Spanish', async () => {
+      const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
+
+      const { container, user } = renderField({
+        label: '¿Qué día se mudó?',
+        hint: 'Esta fecha debe estar dentro de los últimos 60 días para calificar',
+        fromDate: new Date('01-01-2000'),
+        toDate: new Date('01-31-2000'),
+        defaultMonth: new Date('01-01-2000'),
+      });
+
+      const label = container.querySelector('.ds-c-label');
+      const hint = container.querySelector('.ds-c-hint');
+
+      expect(
+        container.querySelector('.ds-c-single-input-date-field--with-picker')
+      ).toBeInTheDocument();
+      expect(
+        container.querySelector('.ds-c-single-input-date-field__field-wrapper')
+      ).toBeInTheDocument();
+      expect(screen.getByRole('textbox')).toBeInTheDocument();
+
+      const button = screen.getByRole('button');
+      expect(button).toBeInTheDocument();
+      expect(button).toHaveAttribute('aria-describedby', `${label?.id} ${hint?.id}`);
+      expect(button.firstElementChild?.tagName).toBe('svg');
+      expect(button.firstElementChild?.classList).toContain('ds-c-icon--calendar');
+
+      await user.click(button);
+
+      const dialog = screen.getByRole('dialog');
+      expect(dialog).toBeInTheDocument();
+
+      const [monthSelect] = within(dialog).getAllByRole('combobox');
+      // We format our month display to only have 3 letters:
+      expect(monthSelect).toHaveDisplayValue(/ene/i);
+
+      getLanguageSpy.mockRestore();
     });
 
     it('generates ids when no id is provided', () => {
