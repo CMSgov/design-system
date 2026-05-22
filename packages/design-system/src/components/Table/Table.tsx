@@ -109,6 +109,7 @@ export const Table = ({
   const [scrollActive, setScrollActive] = useState(false);
   const fallbackCaptionId = useId('table-caption--');
   const captionId = id ? `${id}__caption` : fallbackCaptionId;
+  const childKeyPrefix = useId('table-child--');
 
   if (process.env.NODE_ENV !== 'production') {
     if (
@@ -168,9 +169,11 @@ export const Table = ({
   const normalizedChildren = Array.isArray(children) ? children : [children];
   const renderedChildren = normalizedChildren.map((child: React.ReactElement<any>) => {
     if (isTableCaption(child)) {
+      const key = child.key ?? `${childKeyPrefix}`;
       // Extend props on TableCaption before rendering.
       if (scrollable) {
         return cloneElement(child as React.ReactElement<any>, {
+          key,
           _id: captionId,
           _scrollActive: scrollActive,
           _scrollableNotice: scrollableNotice,
