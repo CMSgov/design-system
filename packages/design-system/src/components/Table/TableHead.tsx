@@ -1,5 +1,6 @@
 import { cloneElement } from 'react';
 import type * as React from 'react';
+import useId from '../utilities/useId';
 
 interface BaseTableHeadProps {
   /**
@@ -14,12 +15,15 @@ export type TableHeadProps = Omit<React.ComponentPropsWithoutRef<'thead'>, OmitP
   BaseTableHeadProps;
 
 export const TableHead = ({ children, ...tableHeadProps }: TableHeadProps) => {
+  const childKeyPrefix = useId('table-head-child--');
   const renderChildren = () => {
     const normalizedChildren = Array.isArray(children) ? children : [children];
     return normalizedChildren.map((child: React.ReactElement<any>) => {
+      const key = child?.key ?? `${childKeyPrefix}`;
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {
+          key,
           _isTableHeadChild: true,
         });
       }

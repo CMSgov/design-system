@@ -169,7 +169,7 @@ export const Table = ({
   const normalizedChildren = Array.isArray(children) ? children : [children];
   const renderedChildren = normalizedChildren.map((child: React.ReactElement<any>) => {
     if (isTableCaption(child)) {
-      const key = child.key ?? `${childKeyPrefix}`;
+      const key = child?.key ?? `${childKeyPrefix}`;
       // Extend props on TableCaption before rendering.
       if (scrollable) {
         return cloneElement(child as React.ReactElement<any>, {
