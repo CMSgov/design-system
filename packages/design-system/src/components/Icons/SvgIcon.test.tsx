@@ -65,4 +65,26 @@ describe('SvgIcon', () => {
       expect(iconEl).toMatchSnapshot();
     });
   });
+  describe('icon sizing behavior', () => {
+    it('does not have a hardcoded font-size that overrides parent container sizing', () => {
+      render(
+        <SvgIcon ariaHidden={true} title="test icon" data-testid="sizeTest">
+          <path />
+        </SvgIcon>
+      );
+      const iconEl = screen.getByTestId('sizeTest');
+      const fontSize = iconEl.style.fontSize;
+      expect(fontSize).toBe('');
+    });
+
+    it('renders with correct class for responsive sizing', () => {
+      render(
+        <SvgIcon ariaHidden={true} title="test icon" data-testid="classTest">
+          <path />
+        </SvgIcon>
+      );
+      const iconEl = screen.getByTestId('classTest');
+      expect(iconEl).toHaveClass('ds-c-icon');
+    });
+  });
 });
