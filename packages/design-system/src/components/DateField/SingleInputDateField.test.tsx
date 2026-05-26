@@ -269,7 +269,7 @@ describe('SingleInputDateField', function () {
         await user.click(screen.getByRole('gridcell', { name: /19th/ }));
       });
 
-      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000');
+      expect(onChange).toHaveBeenCalledWith('19/01/2000', '19/01/2000');
     });
   });
 });

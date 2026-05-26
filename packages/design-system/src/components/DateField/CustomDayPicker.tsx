@@ -2,10 +2,9 @@ import CustomDayPickerCaption from './CustomDayPickerCaption';
 import { format } from 'date-fns';
 import { DayPicker, DayPickerSingleProps } from 'react-day-picker';
 import { ArrowsStackedIcon } from '../Icons';
-import { t, getLanguage } from '../i18n';
+import { t, getLocale } from '../i18n';
 import type { Locale } from 'date-fns';
 import { CustomDayPickerDayContent } from './CustomDayPickerDayContent';
-import { enUS, es } from 'date-fns/locale';
 
 /**
  * The default formatter for the Month caption.
@@ -26,16 +25,6 @@ type CustomDayPickerProps = Pick<
   | 'toMonth'
   | 'toYear'
 >;
-
-const getLocale = () => {
-  const lang = getLanguage();
-  switch (lang) {
-    case 'es':
-      return es;
-    default:
-      return enUS;
-  }
-};
 
 export function CustomDayPicker(props: CustomDayPickerProps) {
   return (

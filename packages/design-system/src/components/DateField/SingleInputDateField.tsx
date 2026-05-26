@@ -135,6 +135,14 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const localizedDateHint = lang === 'en' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
   const dateMask = createDateMask(localizedDateHint);
 
+  const destructureDate = (dateString: string): Array<number> => {
+    const dateParts = dateString.split('/');
+    const month = lang === 'en' ? parseInt(dateParts[0]) - 1 : parseInt(dateParts[1]) - 1;
+    const day = lang === 'en' ? parseInt(dateParts[1]) : parseInt(dateParts[0]);
+    const year = parseInt(dateParts[2]);
+    return [month, day, year];
+  };
+
   // Set up change handlers
   const handleInputChange = (event) => {
     const updatedValue = event.currentTarget.value;
@@ -219,7 +227,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   // Handle Spanish format dates
   const testValue = lang === 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
   const validDateString = isMatch(dateString, testValue);
-  const date = validDateString ? new Date(dateString) : null;
+  const [month, day, year] = destructureDate(dateString);
+  const date = validDateString ? new Date(year, month, day) : undefined;
 
   return (
     <div

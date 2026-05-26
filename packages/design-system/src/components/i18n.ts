@@ -1,6 +1,7 @@
 import en from './locale/en.json';
 import es from './locale/es.json';
 import get from 'lodash/get';
+import { enUS, es as esLocale } from 'date-fns/locale';
 
 export type Language = 'en' | 'es';
 
@@ -123,3 +124,17 @@ export function tWithLanguage(lang?: Language) {
     return translate(lang, key, data);
   };
 }
+
+/**
+ *
+ * @returns a Locale object from date-fns for use within the CalendarPicker component
+ */
+export const getLocale = () => {
+  const lang = getLanguage();
+  switch (lang) {
+    case 'es':
+      return esLocale;
+    default:
+      return enUS;
+  }
+};
