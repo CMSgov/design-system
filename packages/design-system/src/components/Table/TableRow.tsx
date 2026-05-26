@@ -22,8 +22,8 @@ export const TableRow = ({ children, _isTableHeadChild, ...tableRowProps }: Tabl
   const childKeyPrefix = useId('table-row-child--');
   const renderChildren = () => {
     const normalizedChildren = Array.isArray(children) ? children : [children];
-    return normalizedChildren.map((child: React.ReactElement<any>) => {
-      const key = child?.key ?? `${childKeyPrefix}`;
+    return normalizedChildren.map((child: React.ReactElement<any>, index: number) => {
+      const key = child?.key ?? `${childKeyPrefix}--${index}`;
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {

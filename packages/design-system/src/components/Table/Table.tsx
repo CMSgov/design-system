@@ -167,21 +167,23 @@ export const Table = ({
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
   const normalizedChildren = Array.isArray(children) ? children : [children];
-  const renderedChildren = normalizedChildren.map((child: React.ReactElement<any>) => {
-    if (isTableCaption(child)) {
-      const key = child?.key ?? `${childKeyPrefix}`;
-      // Extend props on TableCaption before rendering.
-      if (scrollable) {
-        return cloneElement(child as React.ReactElement<any>, {
-          key,
-          _id: captionId,
-          _scrollActive: scrollActive,
-          _scrollableNotice: scrollableNotice,
-        });
+  const renderedChildren = normalizedChildren.map(
+    (child: React.ReactElement<any>, index: number) => {
+      if (isTableCaption(child)) {
+        const key = child?.key ?? `${childKeyPrefix}--${index}`;
+        // Extend props on TableCaption before rendering.
+        if (scrollable) {
+          return cloneElement(child as React.ReactElement<any>, {
+            key,
+            _id: captionId,
+            _scrollActive: scrollActive,
+            _scrollableNotice: scrollableNotice,
+          });
+        }
       }
+      return child;
     }
-    return child;
-  });
+  );
 
   const table = (
     <TableContext.Provider value={contextValue}>

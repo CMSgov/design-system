@@ -18,8 +18,8 @@ export const TableHead = ({ children, ...tableHeadProps }: TableHeadProps) => {
   const childKeyPrefix = useId('table-head-child--');
   const renderChildren = () => {
     const normalizedChildren = Array.isArray(children) ? children : [children];
-    return normalizedChildren.map((child: React.ReactElement<any>) => {
-      const key = child?.key ?? `${childKeyPrefix}`;
+    return normalizedChildren.map((child: React.ReactElement<any>, index: number) => {
+      const key = child?.key ?? `${childKeyPrefix}--${index}`;
       // Extend props before rendering.
       if (child && child.props) {
         return cloneElement(child as React.ReactElement<any>, {
