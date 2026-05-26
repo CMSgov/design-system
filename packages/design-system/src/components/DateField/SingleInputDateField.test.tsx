@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SingleInputDateField from './SingleInputDateField';
 
@@ -115,6 +115,72 @@ describe('SingleInputDateField', function () {
       renderPicker({ id: undefined });
       expect(screen.getByRole('textbox').id).toMatch(/date-field--\d+/);
       expect(screen.getByRole('img').id).toMatch(/date-field--\d+__icon/);
+    });
+
+    it('traps focus within the picker when tabbing through controls', async () => {
+      const { user } = renderPicker();
+
+      await user.click(screen.getByRole('button'));
+
+      const dialog = screen.getByRole('dialog');
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>('button:not([disabled]), select:not([disabled])')
+      ).filter((element) => element.tabIndex >= 0);
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      lastElement.focus();
+      expect(lastElement).toHaveFocus();
+
+      await user.tab();
+
+      expect(firstElement).toHaveFocus();
+    });
+
+    it('traps focus within the picker when shift-tabbing before the first control', async () => {
+      const { user } = renderPicker();
+
+      await user.click(screen.getByRole('button'));
+
+      const dialog = screen.getByRole('dialog');
+
+      const focusableElements = Array.from(
+        dialog.querySelectorAll<HTMLElement>('button:not([disabled]), select:not([disabled])')
+      ).filter((element) => element.tabIndex >= 0);
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      firstElement.focus();
+      expect(firstElement).toHaveFocus();
+
+      await user.tab({ shift: true });
+
+      expect(lastElement).toHaveFocus();
+    });
+
+    it('moves focus to the month select after navigating months', async () => {
+      const { user } = renderPicker({
+        fromDate: new Date('01-01-2000'),
+        toDate: new Date('04-30-2000'),
+        defaultMonth: new Date('01-01-2000'),
+      });
+
+      await user.click(screen.getByRole('button'));
+
+      const dialog = screen.getByRole('dialog');
+
+      await user.click(within(dialog).getByLabelText(/next/i));
+
+      const monthSelect = within(dialog).getByRole('combobox', {
+        name: /month/i,
+      });
+
+      await waitFor(() => {
+        expect(monthSelect).toHaveFocus();
+      });
     });
 
     it('selecting a day calls onChange', async () => {
