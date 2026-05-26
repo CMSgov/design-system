@@ -1,6 +1,7 @@
 import {
   AboutIcon,
   AbuseIcon,
+  AppleIcon,
   BinocularsIcon,
   BirthingFriendlyIcon,
   ChecklistIcon,
@@ -19,6 +20,7 @@ import {
   HospiceIcon,
   HospitalIcon,
   InfoCircleOutlineIcon,
+  InpatientRehabIcon,
   LeafIcon,
   LongtermCareIcon,
   NursingHomeIcon,
@@ -48,6 +50,11 @@ const iconData = [
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
     name: 'AbuseIcon',
+  },
+  {
+    defaultTitle: 'Apple',
+    component: <AppleIcon />,
+    name: 'AppleIcon',
   },
   {
     defaultTitle: 'Binoculars',
@@ -145,6 +152,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Inpatient Rehabilitation',
+    component: <InpatientRehabIcon />,
+    name: 'InpatientRehabilitationIcon',
   },
   {
     defaultTitle: 'Leaf',
