@@ -2,6 +2,7 @@ import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SingleInputDateField from './SingleInputDateField';
 import * as i18n from '../i18n';
+import { es } from 'date-fns/locale';
 
 const defaultProps = {
   label: 'Birthday',
@@ -52,6 +53,9 @@ describe('SingleInputDateField', function () {
   });
 
   it('renders without picker in Spanish', () => {
+    // getLocale handles translation within the DatePicker component
+    const getLocaleSpy = jest.spyOn(i18n, 'getLocale').mockReturnValue(es);
+    // getLanguage is used by our labels and page text for translation
     const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
 
     const { container } = renderField({
@@ -83,6 +87,7 @@ describe('SingleInputDateField', function () {
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
 
     getLanguageSpy.mockRestore();
+    getLocaleSpy.mockRestore();
   });
 
   it('masks in label', async function () {
@@ -147,7 +152,7 @@ describe('SingleInputDateField', function () {
     });
 
     it('renders with picker in Spanish', async () => {
-      const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
+      const getLanguageSpy = jest.spyOn(i18n, 'getLocale').mockReturnValue(es);
 
       const { container, user } = renderField({
         label: '¿Qué día se mudó?',
@@ -269,7 +274,7 @@ describe('SingleInputDateField', function () {
         await user.click(screen.getByRole('gridcell', { name: /19th/ }));
       });
 
-      expect(onChange).toHaveBeenCalledWith('19/01/2000', '19/01/2000');
+      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000');
     });
   });
 });
