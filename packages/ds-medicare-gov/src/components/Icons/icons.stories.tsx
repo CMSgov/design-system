@@ -19,6 +19,7 @@ import {
   HospiceIcon,
   HospitalIcon,
   InfoCircleOutlineIcon,
+  InpatientRehabIcon,
   LeafIcon,
   LongtermCareIcon,
   NursingHomeIcon,
@@ -145,6 +146,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Inpatient Rehabilitation',
+    component: <InpatientRehabIcon />,
+    name: 'InpatientRehabilitationIcon',
   },
   {
     defaultTitle: 'Leaf',
