@@ -1,0 +1,164 @@
+---
+title: For designers
+order: 20
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+Greetings, Designers! The CMS Design System offers flexible and coherent visual styles for government websites. The system provides clean, modern aesthetics that meet high standards of usability and accessibility while promoting credibility and trust.
+
+The CMS Design System uses [Figma](https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/Design-System-Library?m=auto&node-id=718-40190&t=rRYhkftLTZ2TvytT-1) to maintain its visual library.
+
+<Alert hideIcon={true} variation="warn">
+  Sketch access and support ended in 2024. We don't use Sketch. Existing Sketch files may be outdated or cause issues.
+</Alert>
+
+As you review this documentation, keep in mind that the CMS Design System is a [family of child themes](/getting-started/child-design-systems/) that vary by product:
+
+- **[Core](https://design.cms.gov/?theme=core)**: The foundation for the entire Design System. Rarely used by CMS project teams as their default theme.
+- **[Healthcare.gov (theme)](https://design.cms.gov/?theme=healthcare)**: For all teams working on [Healthcare.gov](https://healthcare.gov)
+- **[Medicare.gov (theme)](https://design.cms.gov/?theme=medicare)**: For all teams working on [Medicare.gov](https://medicare.gov)
+- **[CMS.gov (theme)](https://design.cms.gov/?theme=cms)**: For all teams working on [CMS.gov](https://cms.gov)
+
+## Getting the design system assets
+
+Find assets through shared Figma libraries. Although the Design System's code is open source, you need to request access to these libraries to use the CMS Design System.
+
+### How to get access
+
+1. Request CMS Enterprise User Administration (EUA) access and Slack access.
+2. Request access to the CMS Design System libraries through Figma.
+3. Reach out to the Figma Administrator in the [#cms-design-system](/contact/#-slack) Slack channel to confirm access.
+
+Once CMS approves all requests for access, you can access the Figma libraries.
+
+### How to access libraries
+
+Once you have access, the CMS Design System libraries are available in new Figma files by default.
+
+If the libraries are not visible, you can enable them manually:
+
+1. Open the Assets panel in Figma.
+2. Search for the CMS Design System libraries.
+3. Enable the relevant libraries for your project.
+
+You can also view the full Design System in the main [Figma file](https://www.figma.com/design/OYkYP4pC9jwS7j2qafwmiv/Design-System-Library?node-id=718-40190&p=f&t=y9OQHCqVBUoWUyxe-0).
+
+<Alert hideIcon={true}>
+  Edit access to the Design System source files is restricted. Most designers will use the published libraries rather than modifying the source files directly.
+</Alert>
+
+### How to use Figma themes
+
+Figma allows a single file or library to support multiple themes, so you can switch between different product styling. [Get more details from Figma on how to use themes](https://help.figma.com/hc/en-us/articles/5576781786647-Change-themes-in-Figma).
+
+The CMS Design System Figma file includes a Figma Setup page with configuration guidance for themes and child systems.
+
+<Alert hideIcon={true}>
+  If you access the Figma Setup page, check you have access to the CMS Design System Figma file.
+</Alert>
+
+## Working with themes
+
+Visual styles such as color, typography, and spacing may vary across themes. Some components are also theme-specific and are labeled accordingly.
+
+When designing in Figma:
+
+- Keep components set to "auto" whenever possible.
+- Apply the product theme at the page or frame level.
+- Components set to auto will inherit the theme from their parent.
+- If a component is set to a specific theme, it will retain that theme regardless of where it is placed.
+
+## Understanding documentation structure
+
+The CMS Design System documentation is organized into sections that support different parts of the design process:
+
+- **Guidelines:** Best practices and usage recommendations for accessibility, design principles, print guidance, and support policies.
+- **Foundation:** Core design decisions such as color, typography, spacing, and design tokens.
+- **Components:** Reusable UI elements such as buttons, form fields, alerts, and navigation.
+- **Patterns:** Common combinations of components used to support user tasks and flows.
+- **Layouts:** Guidance for page structure, grid systems, and responsive behavior. The grid system is documented in Figma and can be accessed through the Figma grids panel when the library is enabled.
+- **Utilities:** Helper styles used to fine-tune layout and presentation. These are primarily implemented in code and are less commonly used in design files.
+
+Reference these sections throughout your workflow to ensure consistency and alignment with the Design System.
+
+## Reference documentation and real-world examples
+
+You can use the CMS Design System documentation site alongside your design work. The documentation helps you:
+
+- Understand how components are intended to be used.
+- [Check accessibility requirements](/guidelines/accessibility/).
+- Review component behavior and states.
+
+You may also review live CMS products (such as [CMS.gov](https://cms.gov), [Healthcare.gov](https://healthcare.gov), or [Medicare.gov](https://medicare.gov)) to see how components come together in real-world experiences. This can help you:
+
+- See how multiple components are combined within full pages.
+- Understand layout patterns and content structure.
+- Observe how designs adapt across different CMS products.
+
+<Alert hideIcon={true}>
+  Existing products may not always reflect the latest Design System guidance. Always use the Figma libraries and documentation as the source of truth.
+</Alert>
+
+## Designing with components and patterns
+
+CMS sets clear expectations for how to use the Design System. Designers **should follow Design System guidance and use its components and patterns** as defined.
+
+If a requirement can't be met using the Design System, document the gap and consider [submitting a contribution proposal](/getting-started/contribution-guidance/) with the Design System team before introducing custom solutions.
+
+Our Design System components are more than a collection of visual styles. They embody guidance, best practices, and interaction patterns that support accessibility and usability.
+
+### Components
+
+A [component](/components/) is a reusable UI element with a defined function and behavior. These are the building blocks of the Design System. Examples include buttons, checkboxes, and text inputs. Some components have specific usage guidelines that should be followed.
+
+Each component in the Design System is included in Figma as a reusable, themeable component, often with variants and modes. CMS expects teams to use Design System components in their designs unless a documented gap exists.
+
+When designing with components:
+
+- Start with existing components.
+- Use components as intended, including their variants and states.
+- Follow guidance from the component documentation.
+
+### Patterns
+
+A [pattern](/patterns/overview/) is a combination of components used together to solve a common user interaction. Examples include form review or utility actions. Patterns are available in both the CMS Design System documentation and Figma.
+
+CMS expects teams to use Design System patterns as outlined. If a pattern doesn't meet your needs, adapt it only if it remains consistent with the Design System's visual language and accessibility guidelines. If you have significant changes from what's outlined in the Design System, document the use case and consider [submitting a contribution proposal](/getting-started/contribution-guidance/).
+
+When designing with patterns:
+
+- Use existing patterns to guide common user flows.
+- Maintain consistency with established interaction patterns.
+- Adapt patterns carefully while preserving accessibility and usability.
+
+If your design requires a solution outside of the Design System, ensure it meets the same accessibility and interaction standards.
+
+### Spacing
+
+Use consistent [spacing](/foundation/spacing/) to maintain clear layout and visual rhythm.
+
+- Follow the 8px spacing scale used across the Design System.
+- Avoid arbitrary spacing values.
+- Maintain consistent spacing between components and content.
+- Reference spacing guidance in the Design System documentation when needed.
+
+## Using the design system in handoff
+
+Use Design System components consistently from design through implementation.
+
+When preparing designs:
+
+- Use Design System components unless a documented gap exists.
+- Reference the matching documentation pages.
+- Clearly document and justify any deviations from the design system.
+
+This helps ensure that designs can be implemented accurately and remain consistent across products.
+
+## Analytics
+
+[See component-analytics documentation](/components/analytics/) to learn how to enable and configure analytics for design system components.
+
+## Further resources
+
+If you need help while working with the Design System, [please reach out](/contact/) in the CMS Design System Slack channel or connect with the Design System team.
