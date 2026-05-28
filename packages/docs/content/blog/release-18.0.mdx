@@ -1,0 +1,43 @@
+---
+title: Release 18.0
+date: 2026-06-03
+intro: Unified Version Numbers
+---
+
+## Unified version numbers
+
+Starting with this release of the CMS Design System, we will renumber our releases to unify all packages to a single version number. This release was slated to be version 14 of Core & CMS, version 16 of Medicare and version 18 of Healthcare. We have decided to align to the highest version number, which in this case is version 18.
+
+## React 19 upgrade
+
+As part of our ongoing efforts to keep our dependencies up to date, we have upgraded our React version and its underlying dependencies to 19.2.4. This should be a straightforward upgrade for many teams.
+
+The most significant change is the removal of React components from our CDN bundle. ([#4306](https://github.com/CMSgov/design-system/pull/4036)) With version 19, React [removed the UMD builds](https://react.dev/blog/2024/04/25/react-19-upgrade-guide#umd-builds-removed) that enabled our React components to be used within a browser. We are unaware of any teams currently using our components in this way. If you are affected, you will need to [download our NPM packages](https://www.npmjs.com/package/@cmsgov/design-system) in order to continue using our React components.
+
+## Tooltip now uses Floating UI
+
+Our `Tooltip` component relied on a dependency called PopperJS that is now deprecated. We have replaced it with its modern replacement, [Floating UI](https://floating-ui.com/).
+
+The `Tooltip` component should look and function the same as it always has. The only change to the API is the removal of the "auto", "auto-start", and "auto-end" options from the `placement` prop. This behavior now comes by default.
+
+As part of this work, we were able to remove two other dependencies that handled features now covered by Floating UI, `focus-trap-react` and `react-transition-group`.
+
+## Figma Code Connect snippets are here
+Content coming soon!
+
+## LLMs.txt files are now embedded in our NPM packages
+Content coming soon!
+
+## Updates to design.cms.gov
+
+While most of these updates went live before this release, it's worth highlighting some of the changes we've made to [design.cms.gov](https://design.cms.gov/) recently:
+
+- The Documentation Page layout is now the [Article layout](https://design.cms.gov/layouts/article-page/)
+- There is a new [Form review pattern](https://design.cms.gov/patterns/Forms/form-review/?theme=core).
+- For teams that need a self-contained 404 page, we now offer a ["lite" version of our 404 Page Guidance pattern](https://design.cms.gov/patterns/404-page-guidance/#when-to-use).
+- We also added instructions on how to [integrate Figma Code Connect with Microsoft CoPilot](https://design.cms.gov/using-ai/figma-code-connect/#using-figma-mcp-with-github-copilot).
+
+
+## And more!
+
+We removed deprecated props, fixed an issue where the Google Translate Chrome extension caused any page using the `InlineError` component to crash, and added over twenty new icons to the Medicare.gov child theme! See the full [release notes]() for a complete list of all changes in this version.
