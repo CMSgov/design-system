@@ -127,7 +127,8 @@ export function tWithLanguage(lang?: Language) {
 
 /**
  *
- * @returns a Locale object from date-fns for use within the CalendarPicker component
+ * @returns a Locale object from date-fns for use within the CustomDayPicker component
+ * The underlying DayPicker component accepts a Locale object, which we get from the date-fns package.
  */
 export const getLocale = () => {
   const lang = getLanguage();

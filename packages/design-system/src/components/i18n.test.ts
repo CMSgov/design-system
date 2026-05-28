@@ -1,6 +1,7 @@
 import {
   _detectDocumentLanguage,
   getLanguage,
+  getLocale,
   setLanguage,
   getTranslations,
   addTranslations,
@@ -10,6 +11,7 @@ import {
   t,
   tWithLanguage,
 } from './i18n';
+import { enUS, es as esLocale } from 'date-fns/locale';
 
 describe('i18n', () => {
   afterEach(() => {
@@ -48,6 +50,18 @@ describe('i18n', () => {
       expect(getLanguage()).toEqual('en');
       setLanguage('es');
       expect(getLanguage()).toEqual('es');
+    });
+  });
+
+  describe('getLocale', () => {
+    it('returns the English date-fns locale when language is English', () => {
+      setLanguage('en');
+      expect(getLocale()).toBe(enUS);
+    });
+
+    it('returns the Spanish date-fns locale when language is Spanish', () => {
+      setLanguage('es');
+      expect(getLocale()).toBe(esLocale);
     });
   });
 
