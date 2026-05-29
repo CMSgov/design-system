@@ -26,7 +26,9 @@ As part of this work, we were able to remove two other dependencies that handled
 Figma Code Connect helps speed up design to development handoffs. Developers can [use the Figma MCP server](https://design.cms.gov/using-ai/figma-code-connect/) to implement designs as code. Code Connect provides the Figma MCP server with concrete code examples and prop mapping to increase the fidelity of generated code.
 
 ## LLMs.txt files are now embedded in our NPM packages
-Content coming soon!
+[NPM packages](https://www.npmjs.com/package/@cmsgov/design-system) now include a `docs` directory containing AI-friendly text files organized according to the information architecture of [design.cms.gov](https://design.cms.gov/) and authored in pure Markdown. These files are designed to be easier for coding agents and IDE assistants to read and reference during development.
+
+For example, a developer implementing a `Badge` component can point an agent to the local documentation at `node_modules/@cmsgov/{design-system-package}/dist/docs/components/badge/llms.txt` to provide usage & accessibility guidance as context.
 
 ## Updates to design.cms.gov
 
