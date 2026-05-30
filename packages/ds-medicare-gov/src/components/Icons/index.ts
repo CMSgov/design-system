@@ -1,5 +1,6 @@
 export { default as AboutIcon } from './AboutIcon';
 export { default as AbuseIcon } from './AbuseIcon';
+export { default as AppleIcon } from './AppleIcon';
 export { default as BinocularsIcon } from './BinocularsIcon';
 export { default as BirthingFriendlyIcon } from './BirthingFriendlyIcon';
 export { default as ChecklistIcon } from './ChecklistIcon';
@@ -18,6 +19,7 @@ export { default as HomeHealthServicesIcon } from './HomeHealthServicesIcon';
 export { default as HospiceIcon } from './HospiceIcon';
 export { default as HospitalIcon } from './HospitalIcon';
 export { default as InfoCircleOutlineIcon } from './InfoCircleOutlineIcon';
+export { default as InpatientRehabIcon } from './InpatientRehabIcon';
 export { default as LeafIcon } from './LeafIcon';
 export { default as LongtermCareIcon } from './LongtermCareIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
