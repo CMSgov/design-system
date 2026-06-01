@@ -8,6 +8,7 @@ import {
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
+  CreateAccountIcon,
   DialysisServicesIcon,
   DoctorsCliniciansIcon,
   DrugsIcon,
@@ -84,6 +85,11 @@ const iconData = [
     defaultTitle: 'Costs Circle Icon',
     component: <CostsCircleIcon />,
     name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Create Account Icon',
+    component: <CreateAccountIcon />,
+    name: 'CreateAccountIcon',
   },
   {
     defaultTitle: 'Dialysis Services',
