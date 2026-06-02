@@ -23,6 +23,7 @@ export { default as InpatientRehabIcon } from './InpatientRehabIcon';
 export { default as LeafIcon } from './LeafIcon';
 export { default as LongtermCareIcon } from './LongtermCareIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
+export { default as PersonBookIcon } from './PersonBookIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as ResourcesIcon } from './ResourcesIcon';

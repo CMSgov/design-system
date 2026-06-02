@@ -24,6 +24,7 @@ import {
   LeafIcon,
   LongtermCareIcon,
   NursingHomeIcon,
+  PersonBookIcon,
   PharmacyIcon,
   PiggyBankIcon,
   ResourcesIcon,
@@ -172,6 +173,11 @@ const iconData = [
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
+  },
+  {
+    defaultTitle: 'Person with Book',
+    component: <PersonBookIcon />,
+    name: 'PersonBookIcon',
   },
   {
     defaultTitle: 'Pharmacy',
