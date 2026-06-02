@@ -1,12 +1,14 @@
 import {
   AboutIcon,
   AbuseIcon,
+  AppleIcon,
   BinocularsIcon,
   BirthingFriendlyIcon,
   ChecklistIcon,
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
+  CreateAccountIcon,
   DialysisServicesIcon,
   DoctorsCliniciansIcon,
   DrugsIcon,
@@ -18,6 +20,7 @@ import {
   HospiceIcon,
   HospitalIcon,
   InfoCircleOutlineIcon,
+  InpatientRehabIcon,
   LeafIcon,
   LongtermCareIcon,
   NursingHomeIcon,
@@ -50,6 +53,11 @@ const iconData = [
     name: 'AbuseIcon',
   },
   {
+    defaultTitle: 'Apple',
+    component: <AppleIcon />,
+    name: 'AppleIcon',
+  },
+  {
     defaultTitle: 'Binoculars',
     component: <BinocularsIcon />,
     name: 'BinocularsIcon',
@@ -78,6 +86,11 @@ const iconData = [
     defaultTitle: 'Costs Circle Icon',
     component: <CostsCircleIcon />,
     name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Create Account Icon',
+    component: <CreateAccountIcon />,
+    name: 'CreateAccountIcon',
   },
   {
     defaultTitle: 'Dialysis Services',
@@ -140,6 +153,11 @@ const iconData = [
     defaultTitle: 'Information',
     component: <InfoCircleOutlineIcon />,
     name: 'InfoCircleOutlineIcon',
+  },
+  {
+    defaultTitle: 'Inpatient Rehabilitation',
+    component: <InpatientRehabIcon />,
+    name: 'InpatientRehabilitationIcon',
   },
   {
     defaultTitle: 'Leaf',
