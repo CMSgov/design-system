@@ -8,6 +8,7 @@ import {
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
+  CreateAccountIcon,
   DialysisServicesIcon,
   DoctorsCliniciansIcon,
   DrugsIcon,
@@ -23,6 +24,7 @@ import {
   LeafIcon,
   LongtermCareIcon,
   NursingHomeIcon,
+  PersonBookIcon,
   PharmacyIcon,
   PiggyBankIcon,
   ResourcesIcon,
@@ -84,6 +86,11 @@ const iconData = [
     defaultTitle: 'Costs Circle Icon',
     component: <CostsCircleIcon />,
     name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Create Account Icon',
+    component: <CreateAccountIcon />,
+    name: 'CreateAccountIcon',
   },
   {
     defaultTitle: 'Dialysis Services',
@@ -166,6 +173,11 @@ const iconData = [
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
+  },
+  {
+    defaultTitle: 'Person with Book',
+    component: <PersonBookIcon />,
+    name: 'PersonBookIcon',
   },
   {
     defaultTitle: 'Pharmacy',
