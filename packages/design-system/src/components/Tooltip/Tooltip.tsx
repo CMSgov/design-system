@@ -240,7 +240,7 @@ export const Tooltip = (props: TooltipProps) => {
     }
   }, [active, onClose, onOpen, sendTooltipEvent]);
 
-  const renderTrigger = (props: TooltipProps): React.ReactElement => {
+  const renderTrigger = (props: TooltipProps): React.ReactElement<any> => {
     const {
       activeClassName,
       analytics,
@@ -293,7 +293,7 @@ export const Tooltip = (props: TooltipProps) => {
     );
   };
 
-  const renderContent = (props: TooltipProps): React.ReactElement => {
+  const renderContent = (props: TooltipProps): React.ReactElement<any> => {
     const {
       closeButtonLabel,
       dialog,

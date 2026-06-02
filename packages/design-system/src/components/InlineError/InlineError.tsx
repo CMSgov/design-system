@@ -37,7 +37,7 @@ export function InlineError({
   id,
   inversed,
   ...otherProps
-}: InlineErrorProps): React.ReactElement {
+}: InlineErrorProps): React.ReactElement<any> {
   const classes = classNames(
     'ds-c-inline-error',
     { 'ds-c-inline-error--inverse': inversed },

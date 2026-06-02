@@ -8,7 +8,7 @@ const defaultProps = {
   viewBox: '0 0 20 20',
 };
 
-export function PlusCircleIcon(props: IconCommonProps): React.ReactElement {
+export function PlusCircleIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = classNames('ds-c-icon--plus-circle', props.className);
 
   return (

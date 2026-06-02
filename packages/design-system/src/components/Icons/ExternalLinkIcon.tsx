@@ -8,7 +8,7 @@ const defaultProps = {
   ariaHidden: false,
 };
 
-export function ExternalLinkIcon(props: IconCommonProps): React.ReactElement {
+export function ExternalLinkIcon(props: IconCommonProps): React.ReactElement<any> {
   const iconCssClasses = `ds-c-icon--external-link ${props.className || ''}`;
 
   return (

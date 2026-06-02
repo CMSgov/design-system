@@ -10,7 +10,7 @@ import useId from '../utilities/useId';
 /**
  * Determine if a ReactNode is a TableCaption
  */
-function isTableCaption(child?: React.ReactNode): child is React.ReactElement {
+function isTableCaption(child?: React.ReactNode): child is React.ReactElement<any> {
   if (!child || !isValidElement(child)) {
     return false;
   }
@@ -109,12 +109,13 @@ export const Table = ({
   const [scrollActive, setScrollActive] = useState(false);
   const fallbackCaptionId = useId('table-caption--');
   const captionId = id ? `${id}__caption` : fallbackCaptionId;
+  const childKeyPrefix = useId('table-child--');
 
   if (process.env.NODE_ENV !== 'production') {
     if (
       scrollable &&
       Array.isArray(children) &&
-      !children.some((child: React.ReactElement) => isTableCaption(child))
+      !children.some((child: React.ReactElement<any>) => isTableCaption(child))
     ) {
       console.warn(
         'The children prop in `Table` must include `TableCaption` component for scrollable tables.'
@@ -161,24 +162,28 @@ export const Table = ({
     className: 'ds-c-table__wrapper',
     role: 'region',
     'aria-labelledby': captionId,
-    tabIndex: scrollActive ? 0 : null,
+    tabIndex: scrollActive ? 0 : undefined,
   };
   const contextValue = { stackable: !!stackable, warningDisabled: !!warningDisabled };
 
   const normalizedChildren = Array.isArray(children) ? children : [children];
-  const renderedChildren = normalizedChildren.map((child: React.ReactElement) => {
-    if (isTableCaption(child)) {
-      // Extend props on TableCaption before rendering.
-      if (scrollable) {
-        return cloneElement(child as React.ReactElement<any>, {
-          _id: captionId,
-          _scrollActive: scrollActive,
-          _scrollableNotice: scrollableNotice,
-        });
+  const renderedChildren = normalizedChildren.map(
+    (child: React.ReactElement<any>, index: number) => {
+      if (isTableCaption(child)) {
+        const key = child?.key ?? `${childKeyPrefix}--${index}`;
+        // Extend props on TableCaption before rendering.
+        if (scrollable) {
+          return cloneElement(child as React.ReactElement<any>, {
+            key,
+            _id: captionId,
+            _scrollActive: scrollActive,
+            _scrollableNotice: scrollableNotice,
+          });
+        }
       }
+      return child;
     }
-    return child;
-  });
+  );
 
   const table = (
     <TableContext.Provider value={contextValue}>
