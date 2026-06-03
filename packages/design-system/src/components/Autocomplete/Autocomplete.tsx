@@ -17,6 +17,7 @@ import {
 import { t } from '../i18n';
 import { useComboBox } from '../react-aria'; // from react-aria
 import { useComboBoxState } from '../react-aria'; // from react-stately
+import type { CollectionChildren } from '@react-types/shared';
 
 export interface AutocompleteItem extends Omit<React.HTMLAttributes<'option'>, 'name'> {
   /**
@@ -117,7 +118,7 @@ export interface AutocompleteProps {
   /**
    * Called when the user selects an item and the selected item has changed. Called with the item that was selected.
    */
-  onChange?: (selectedItem: AutocompleteItem) => void;
+  onChange?: (selectedItem: AutocompleteItem | null) => void;
   /**
    * Called when the child `TextField` value changes. Is called with a string representing the input value.
    */
@@ -168,15 +169,23 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps
   } = props;
 
-  const hasValidStandaloneItems = items?.some((item) => !('items' in item));
-  const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
+  function hasRenderableItems(items: AutocompleteItems | undefined): items is AutocompleteItems {
+    if (!items?.length) return false;
+
+    const hasValidStandaloneItems = items?.some((item) => !('items' in item));
+    const hasValidGroupedItems = items?.some((item) => 'items' in item && item.items?.length > 0);
+
+    return hasValidStandaloneItems || hasValidGroupedItems;
+  }
 
   // Determine what we'll show based on state
-  let reactStatelyItems = [];
+  let reactStatelyItems: React.ReactElement[] = [];
   let statusMessage;
 
-  if (hasValidStandaloneItems || hasValidGroupedItems) {
-    reactStatelyItems = renderReactStatelyItems(items);
+  if (hasRenderableItems(items)) {
+    // items can be "undefined" but because of the .some checks above we know
+    // items is defined and has a length, hence including the ! here to assert so.
+    reactStatelyItems = renderReactStatelyItems(items!);
   } else if (loading) {
     // If we're waiting for results to load, show the non-selected message
     statusMessage = renderStatusMessage(loadingMessage ?? t('autocomplete.loadingMessage'));
@@ -193,7 +202,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
     ...autocompleteProps,
     allowsCustomValue: true,
     allowsEmptyCollection: true,
-    children: reactStatelyItems,
+    children: reactStatelyItems as CollectionChildren<object>,
     inputValue: textField.props.value,
     onInputChange: onInputValueChange
       ? (value) => {
@@ -217,6 +226,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const listBoxRef = useRef<HTMLElement>(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const useComboboxProps = useComboBox(
     {
@@ -226,7 +236,7 @@ export const Autocomplete = (props: AutocompleteProps) => {
       isDisabled: textField.props.disabled,
       inputRef,
       listBoxRef,
-      popoverRef: listBoxRef,
+      popoverRef,
     },
     state
   );
@@ -259,26 +269,26 @@ export const Autocomplete = (props: AutocompleteProps) => {
     // Restores previous functionality where if you had typed characters into the text
     // field to get results and then blur away and come back, it'll open the results
     // list again without having to press anything on the keyboard.
-    onFocus: (event) => {
+    onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
       useComboboxProps.inputProps.onFocus?.(event);
       textField.props.onFocus?.(event);
       state.open();
     },
     // Allow the user to continue to attach their own event handlers to the TextField.
     // The following event handlers would normally be overwritten by useCombobox.
-    onChange: (event) => {
+    onChange: (event: React.FocusEvent<HTMLInputElement>) => {
       useComboboxProps.inputProps.onChange?.(event);
       textField.props.onChange?.(event);
     },
-    onBlur: (event) => {
+    onBlur: (event: React.FocusEvent<HTMLInputElement>) => {
       useComboboxProps.inputProps.onBlur?.(event);
       textField.props.onBlur?.(event);
     },
-    onTouchEnd: (event) => {
+    onTouchEnd: (event: React.TouchEvent<HTMLInputElement>) => {
       useComboboxProps.inputProps.onTouchEnd?.(event);
       textField.props.onTouchEnd?.(event);
     },
-    onKeyDown: (event) => {
+    onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
       useComboboxProps.inputProps.onKeyDown?.(event);
       textField.props.onKeyDown?.(event);
     },
@@ -290,34 +300,31 @@ export const Autocomplete = (props: AutocompleteProps) => {
     <div className={rootClassName} ref={wrapperRef}>
       {cloneElement(textField, textFieldProps)}
 
-      {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
-        <DropdownMenu
-          {...useComboboxProps.listBoxProps}
-          componentClass="ds-c-autocomplete"
-          heading={menuHeading}
-          labelId={menuHeadingId}
-          menuId={menuId}
-          rootId={id}
-          size={size}
-          state={state}
-          triggerRef={wrapperRef}
-          listBoxRef={listBoxRef}
-        >
-          {statusMessage}
-        </DropdownMenu>
-      )}
-
+      <div ref={popoverRef}>
+        {((state.isOpen && reactStatelyItems.length > 0) || (state.isFocused && statusMessage)) && (
+          <DropdownMenu
+            {...useComboboxProps.listBoxProps}
+            componentClass="ds-c-autocomplete"
+            heading={menuHeading}
+            labelId={menuHeadingId}
+            menuId={menuId}
+            rootId={id}
+            size={size}
+            state={state}
+            triggerRef={wrapperRef}
+            listBoxRef={listBoxRef}
+          >
+            {statusMessage}
+          </DropdownMenu>
+        )}
+      </div>
       {clearSearchButton && (
         <Button
           className="ds-u-padding-right--0 ds-c-autocomplete__clear-btn"
           onClick={() => {
-            state.setSelectedKey(null);
             state.setInputValue('');
             inputRef.current?.focus();
-
-            if (state.selectedKey) {
-              onChange?.(null);
-            }
+            onChange?.(null);
           }}
           size="small"
           variation="ghost"
