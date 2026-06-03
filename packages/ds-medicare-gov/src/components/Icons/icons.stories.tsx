@@ -22,6 +22,7 @@ import {
   InfoCircleOutlineIcon,
   InpatientRehabIcon,
   LeafIcon,
+  MyAccountIcon,
   LongtermCareIcon,
   NursingHomeIcon,
   PersonBookIcon,
@@ -168,6 +169,11 @@ const iconData = [
     defaultTitle: 'Long-term Care',
     component: <LongtermCareIcon />,
     name: 'LongtermCareIcon',
+  },
+  {
+    defaultTitle: 'My Account',
+    component: <MyAccountIcon />,
+    name: 'MyAccountIcon',
   },
   {
     defaultTitle: 'Nursing Home',
