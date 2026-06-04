@@ -8,6 +8,7 @@ import {
   CheckShieldIcon,
   CostsCircleIcon,
   CostsIcon,
+  CreateAccountIcon,
   DialysisServicesIcon,
   DoctorsCliniciansIcon,
   DrugsIcon,
@@ -21,12 +22,15 @@ import {
   InfoCircleOutlineIcon,
   InpatientRehabIcon,
   LeafIcon,
+  MyAccountIcon,
   LongtermCareIcon,
   NursingHomeIcon,
+  PersonBookIcon,
   PharmacyIcon,
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  ShareIcon,
   SuppliersIcon,
   SwipeIcon,
   TeletypewriterIcon,
@@ -84,6 +88,11 @@ const iconData = [
     defaultTitle: 'Costs Circle Icon',
     component: <CostsCircleIcon />,
     name: 'CostsCircleIcon',
+  },
+  {
+    defaultTitle: 'Create Account Icon',
+    component: <CreateAccountIcon />,
+    name: 'CreateAccountIcon',
   },
   {
     defaultTitle: 'Dialysis Services',
@@ -163,9 +172,19 @@ const iconData = [
     name: 'LongtermCareIcon',
   },
   {
+    defaultTitle: 'My Account',
+    component: <MyAccountIcon />,
+    name: 'MyAccountIcon',
+  },
+  {
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
+  },
+  {
+    defaultTitle: 'Person with Book',
+    component: <PersonBookIcon />,
+    name: 'PersonBookIcon',
   },
   {
     defaultTitle: 'Pharmacy',
@@ -181,6 +200,11 @@ const iconData = [
     defaultTitle: 'Resources',
     component: <ResourcesIcon />,
     name: 'ResourcesIcon',
+  },
+  {
+    defaultTitle: 'Share',
+    component: <ShareIcon />,
+    name: 'ShareIcon',
   },
   {
     defaultTitle: '[variation] Star',
