@@ -30,6 +30,7 @@ import {
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  ShareIcon,
   SuppliersIcon,
   SwipeIcon,
   TeletypewriterIcon,
@@ -199,6 +200,11 @@ const iconData = [
     defaultTitle: 'Resources',
     component: <ResourcesIcon />,
     name: 'ResourcesIcon',
+  },
+  {
+    defaultTitle: 'Share',
+    component: <ShareIcon />,
+    name: 'ShareIcon',
   },
   {
     defaultTitle: '[variation] Star',
