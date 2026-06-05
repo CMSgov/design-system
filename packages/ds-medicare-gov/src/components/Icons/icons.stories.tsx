@@ -22,8 +22,10 @@ import {
   InfoCircleOutlineIcon,
   InpatientRehabIcon,
   LeafIcon,
-  MyAccountIcon,
+  LoginIcon,
+  LogoutIcon,
   LongtermCareIcon,
+  MyAccountIcon,
   NursingHomeIcon,
   PersonBookIcon,
   PharmacyIcon,
@@ -165,6 +167,16 @@ const iconData = [
     defaultTitle: 'Leaf',
     component: <LeafIcon />,
     name: 'LeafIcon',
+  },
+  {
+    defaultTitle: 'Login',
+    component: <LoginIcon />,
+    name: 'LoginIcon',
+  },
+  {
+    defaultTitle: 'Logout',
+    component: <LogoutIcon />,
+    name: 'LogoutIcon',
   },
   {
     defaultTitle: 'Long-term Care',
