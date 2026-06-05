@@ -86,5 +86,18 @@ describe('SvgIcon', () => {
       const iconEl = screen.getByTestId('classTest');
       expect(iconEl).toHaveClass('ds-c-icon');
     });
+
+    it('inherits font-size from parent container for responsive sizing', () => {
+      render(
+        <div data-testid="parent" style={{ fontSize: '2rem' }}>
+          <SvgIcon ariaHidden={true} title="test icon" data-testid="sizeInheritTest">
+            <path />
+          </SvgIcon>
+        </div>
+      );
+      const iconEl = screen.getByTestId('sizeInheritTest');
+      // Icon should not override font-size, allowing it to inherit from parent
+      expect(iconEl.style.fontSize).toBe('');
+    });
   });
 });
