@@ -1,9 +1,6 @@
 ---
 name: implement-cmsds-react-components
 description: Implements, modifies, and troubleshoots CMS Design System (CMSDS) React components. Use when users ask for "CMSDS component guidance", "implement a CMSDS component", or "fix CMSDS component usage".
-metadata:
-  author: CMS Design System
-  version: 1.0.0
 ---
 
 # Use CMS Design System Components
