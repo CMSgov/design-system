@@ -30,7 +30,7 @@ interface BaseSingleInputDateFieldProps {
    */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
   /**
-   * Called anytime any date input is changed. This function is called with two arguments.
+   * Called anytime any date input is changed. This function is called with three arguments.
    * The first argument should be used to update whatever state your application uses to
    * supply back to this component's `value` prop in a _controlled component_ pattern.
    *
@@ -38,8 +38,9 @@ interface BaseSingleInputDateFieldProps {
    * @param formattedValue - The input's new value with date formatting applied, included
    *   for convenience. Do not use this value as the component's `value` prop. An appropriate
    *   use for this value would be to run date-validation checks against it.
+   * @param date - The parsed date value when the input contains a fully valid calendar date.
    */
-  onChange?: (updatedValue: string, formattedValue: string) => any;
+  onChange?: (updatedValue: string, formattedValue: string, date?: Date) => any;
   /**
    * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
@@ -143,11 +144,35 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     return [month, day, year];
   };
 
+  const getValidDate = (dateString: string): Date | undefined => {
+    const formattedDate = dateMask(dateString, true);
+    const testValue = lang === 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
+
+    if (!isMatch(formattedDate, testValue)) {
+      return undefined;
+    }
+
+    const [month, day, year] = destructureDate(formattedDate);
+    const date = new Date(year, month, day);
+
+    if (Number.isNaN(date.getTime())) {
+      return undefined;
+    }
+
+    if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
+      return undefined;
+    }
+
+    return date;
+  };
+
   // Set up change handlers
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const updatedValue = event.currentTarget.value;
+    const formattedValue = dateMask(updatedValue, true);
+    const date = getValidDate(updatedValue);
     if (onChange) {
-      onChange(updatedValue, dateMask(updatedValue, true));
+      onChange(updatedValue, formattedValue, date);
     }
     if (!isControlled) {
       setInternalValueState(updatedValue);
@@ -162,8 +187,9 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const handlePickerChange = (date: Date) => {
     const updatedValue = computeDateValue(date, lang);
     const maskedValue = dateMask(updatedValue);
+    const validDate = getValidDate(updatedValue);
     if (onChange) {
-      onChange(maskedValue, dateMask(updatedValue, true));
+      onChange(maskedValue, dateMask(updatedValue, true), validDate);
     }
     if (!isControlled) {
       setInternalValueState(maskedValue);
@@ -223,12 +249,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   // Validate the date string (value) and make date null if it's invalid. We don't want to pass
   // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
-  const dateString = dateMask(props.value ?? '', true);
-  // Handle Spanish format dates
-  const testValue = lang === 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
-  const validDateString = isMatch(dateString, testValue);
-  const [month, day, year] = destructureDate(dateString);
-  const date = validDateString ? new Date(year, month, day) : undefined;
+  const dateString = dateMask(value ?? '', true);
+  const date = getValidDate(dateString);
 
   return (
     <div
@@ -264,7 +286,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
         <div ref={dayPickerRef} role="dialog" onKeyDown={handleDayPickerKeyDown}>
           <CustomDayPicker
             selected={date}
-            onSelect={handlePickerChange}
+            onSelect={(day) => day && handlePickerChange(day)}
             defaultMonth={date ?? defaultMonth}
             {...{
               fromDate,

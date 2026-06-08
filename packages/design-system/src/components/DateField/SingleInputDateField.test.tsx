@@ -93,22 +93,62 @@ describe('SingleInputDateField', function () {
   it('masks in label', async function () {
     const { container, user } = renderField({ value: '11-01' });
     await user.click(getInput());
-    expect(container.querySelector('.ds-c-label-mask').textContent).toContain('11/01/YYYY');
+    expect(container.querySelector('.ds-c-label-mask')?.textContent).toContain('11/01/YYYY');
   });
 
   it('calls onChange when input changes', async function () {
     const onChange = jest.fn();
     const { user } = renderField({ onChange });
     await user.type(getInput(), '1');
-    expect(onChange).toHaveBeenCalledWith('1', '01');
+    expect(onChange).toHaveBeenCalledWith('1', '01', undefined);
   });
 
   it('calls onChange when input loses focus', async function () {
     const onChange = jest.fn();
     const { user } = renderField({ onChange, value: '01-02-2000' });
+    // Months are zero based because of course
+    const expectedDate = new Date(2000, 0, 2);
     await user.click(getInput());
     await user.tab();
-    expect(onChange).toHaveBeenCalledWith('01/02/2000', '01/02/2000');
+    expect(onChange).toHaveBeenCalledWith('01/02/2000', '01/02/2000', expectedDate);
+  });
+
+  it('calls onChange with undefined date when input loses focus with an invalid date', async function () {
+    const onChange = jest.fn();
+    const { user } = renderField({ onChange, value: '02/31/2024' });
+
+    await user.click(getInput());
+    await user.tab();
+
+    expect(onChange).toHaveBeenCalledWith('02/31/2024', '02/31/2024', undefined);
+  });
+
+  it('calls onChange with a valid date when Spanish-formatted input loses focus', async function () {
+    const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
+    const onChange = jest.fn();
+    const { user } = renderField({ onChange, value: '31-01-2000' });
+    // Months are zero based because of course
+    const expectedDate = new Date(2000, 0, 31);
+
+    await user.click(getInput());
+    await user.tab();
+
+    expect(onChange).toHaveBeenCalledWith('31/01/2000', '31/01/2000', expectedDate);
+
+    getLanguageSpy.mockRestore();
+  });
+
+  it('calls onChange with undefined date when Spanish-formatted input is invalid', async function () {
+    const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
+    const onChange = jest.fn();
+    const { user } = renderField({ onChange, value: '31-02-2024' });
+
+    await user.click(getInput());
+    await user.tab();
+
+    expect(onChange).toHaveBeenCalledWith('31/02/2024', '31/02/2024', undefined);
+
+    getLanguageSpy.mockRestore();
   });
 
   describe('with picker', function () {
@@ -152,7 +192,7 @@ describe('SingleInputDateField', function () {
     });
 
     it('renders with picker in Spanish', async () => {
-      const getLanguageSpy = jest.spyOn(i18n, 'getLocale').mockReturnValue(es);
+      const getLocaleSpy = jest.spyOn(i18n, 'getLocale').mockReturnValue(es);
 
       const { container, user } = renderField({
         label: '¿Qué día se mudó?',
@@ -188,7 +228,7 @@ describe('SingleInputDateField', function () {
       // We format our month display to only have 3 letters:
       expect(monthSelect).toHaveDisplayValue(/ene/i);
 
-      getLanguageSpy.mockRestore();
+      getLocaleSpy.mockRestore();
     });
 
     it('generates ids when no id is provided', () => {
@@ -266,6 +306,8 @@ describe('SingleInputDateField', function () {
     it('selecting a day calls onChange', async () => {
       const onChange = jest.fn();
       const { user } = renderPicker({ onChange });
+      // Months are zero based because of course
+      const expectedDate = new Date(2000, 0, 19);
       await act(async () => {
         await user.click(screen.getByRole('button'));
       });
@@ -274,7 +316,7 @@ describe('SingleInputDateField', function () {
         await user.click(screen.getByRole('gridcell', { name: /19th/ }));
       });
 
-      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000');
+      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000', expectedDate);
     });
   });
 });
