@@ -52,13 +52,16 @@ const makeMask = (regex: RegExp, hint: string, formatter: (stringMatch: string[]
 export const createDateMask = (hint = 'MM/DD/YYYY'): TaggedFunction => {
   return createTaggedFunction(
     makeMask(RE_DATE, hint, (match) => {
-      const [month, day, year] = match.slice(1);
+      // Because we translate this, the month and day are swappable, however we do the same padding operation on each.
+      // The only value that stays in the same position is the year.
+      // firstDateAspect & secondDateAspect can represent days OR months. It depends on the translation.
+      const [firstDateAspect, secondDateAspect, year] = match.slice(1);
       const formattedDate = [
         // We treat all non-numeric characters as a delimiter. If they're using a
         // delimiter after a month or day, we interpret that as the user supplying
         // a single digit for month or day, which we will automatically pad for them.
-        month && month.padStart(2, '0'),
-        day && day.padStart(2, '0'),
+        firstDateAspect && firstDateAspect.padStart(2, '0'),
+        secondDateAspect && secondDateAspect.padStart(2, '0'),
         year,
       ]
         .filter((s) => s)
