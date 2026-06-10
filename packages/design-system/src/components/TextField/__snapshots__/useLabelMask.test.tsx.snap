@@ -6,7 +6,9 @@ exports[`useLabelMask renders the appropriate dom for a CURRENCY_MASK 1`] = `
     class="ds-c-label-mask"
     id="static-id__label-mask"
   >
-    <span>
+    <span
+      class=""
+    >
       $
     </span>
     <span
@@ -25,7 +27,9 @@ exports[`useLabelMask renders the appropriate dom for a PHONE_MASK 1`] = `
     class="ds-c-label-mask"
     id="static-id__label-mask"
   >
-    <span>
+    <span
+      class=""
+    >
       ###-###-####
     </span>
     <span
@@ -44,7 +48,9 @@ exports[`useLabelMask renders the appropriate dom for a SSN_MASK 1`] = `
     class="ds-c-label-mask"
     id="static-id__label-mask"
   >
-    <span>
+    <span
+      class=""
+    >
       ###-##-####
     </span>
     <span
@@ -63,7 +69,9 @@ exports[`useLabelMask renders the appropriate dom for a ZIP_MASK 1`] = `
     class="ds-c-label-mask"
     id="static-id__label-mask"
   >
-    <span>
+    <span
+      class=""
+    >
       #####
     </span>
     <span
@@ -89,6 +97,7 @@ exports[`useLabelMask shows masked value when focused 1`] = `
     </span>
     <span
       aria-hidden="true"
+      class=""
     >
       12/DD/YYYY
     </span>
@@ -102,7 +111,9 @@ exports[`useLabelMask shows unfilled mask when not focused 1`] = `
     class="ds-c-label-mask"
     id="static-id__label-mask"
   >
-    <span>
+    <span
+      class=""
+    >
       MM/DD/YYYY
     </span>
     <span
