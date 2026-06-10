@@ -2,7 +2,7 @@ import { act, render, screen, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SingleInputDateField from './SingleInputDateField';
 import * as i18n from '../i18n';
-import { es } from 'date-fns/locale';
+import { es } from 'date-fns/locale/es';
 
 const defaultProps = {
   label: 'Birthday',

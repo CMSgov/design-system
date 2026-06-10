@@ -11,7 +11,8 @@ import {
   t,
   tWithLanguage,
 } from './i18n';
-import { enUS, es as esLocale } from 'date-fns/locale';
+import { enUS } from 'date-fns/locale/en-US';
+import { es as esLocale } from 'date-fns/locale/es';
 
 describe('i18n', () => {
   afterEach(() => {
