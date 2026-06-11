@@ -9,6 +9,10 @@
     "The parsed date value when the input contains a fully valid calendar date."
   ],
   [
+    "date",
+    "The parsed date value when the input contains a fully valid calendar date."
+  ],
+  [
     "defaultMonth",
     "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.\n\nDate",
     "-"
@@ -124,7 +128,7 @@
   ],
   [
     "onBlur",
-    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>) => any",
+    "Called anytime any date input is blurred\n(event: FocusEvent<HTMLInputElement, Element>, date?: Date) => any\ndate\tThe parsed date value when the input contains a fully valid calendar date.",
     "-"
   ],
   [
