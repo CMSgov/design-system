@@ -20,6 +20,9 @@ This builds a production-ready version of the site that can be deployed.
 
 The following scripts can be run from the root directory.
 
+`npm run build:skills-zip`
+This command rebuilds `cms-design-system-skills.zip` in the `static` directory. Run it only after making changes to one or more files in `docs/skills`, then commit the updated zip artifact along with your changes.
+
 `npm install`
 Installs dependencies for all packages. Only needs to be run on first spin up of the project, or if new dependencies are installed.
 
