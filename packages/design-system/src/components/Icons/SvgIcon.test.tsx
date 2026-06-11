@@ -2,8 +2,15 @@ import { render, screen } from '@testing-library/react';
 import { SvgIcon } from './SvgIcon';
 import { AddIcon } from './AddIcon';
 
+interface OverrideProps {
+  'data-testid'?: string;
+  id?: string;
+  ariaHidden?: boolean;
+  description?: string;
+}
+
 describe('SvgIcon', () => {
-  const renderSvgIcon = (overrideProps?) => {
+  const renderSvgIcon = (overrideProps?: OverrideProps) => {
     return render(
       <SvgIcon ariaHidden={false} title="test icon" {...overrideProps}>
         <path />
@@ -63,6 +70,21 @@ describe('SvgIcon', () => {
       renderSvgIcon({ ariaHidden: true, 'data-testid': 'testId' });
       const iconEl = screen.getByTestId('testId');
       expect(iconEl).toMatchSnapshot();
+    });
+  });
+
+  // Unless styles are inlined in the test (which is brittle) we can't really test for
+  // the presence or absence of computed style values. With Jest we can only test for the
+  // absence or presence of a class name.
+  describe('has the correct class', () => {
+    it('renders with correct class for responsive sizing', () => {
+      render(
+        <SvgIcon ariaHidden={true} title="test icon" data-testid="classTest">
+          <path />
+        </SvgIcon>
+      );
+      const iconEl = screen.getByTestId('classTest');
+      expect(iconEl).toHaveClass('ds-c-icon');
     });
   });
 });
