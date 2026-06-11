@@ -5,6 +5,10 @@
     "-"
   ],
   [
+    "date",
+    "The parsed date value when the input contains a fully valid calendar date."
+  ],
+  [
     "defaultMonth",
     "The initial month to show in the calendar picker. If not provided, defaults to the month of the currently selected date.\n\nDate",
     "-"
@@ -125,7 +129,7 @@
   ],
   [
     "onChange",
-    "Called anytime any date input is changed. This function is called with two arguments. The first argument should be used to update whatever state your application uses to supply back to this component's value prop in a controlled component pattern.\n\n(updatedValue: string, formattedValue: string) => any\nupdatedValue\tThe input's new value\nformattedValue\tThe input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.",
+    "Called anytime any date input is changed. This function is called with three arguments. The first argument should be used to update whatever state your application uses to supply back to this component's value prop in a controlled component pattern.\n\n(updatedValue: string, formattedValue: string, date?: Date) => any\nupdatedValue\tThe input's new value\nformattedValue\tThe input's new value with date formatting applied, included for convenience. Do not use this value as the component's `value` prop. An appropriate use for this value would be to run date-validation checks against it.\ndate\tThe parsed date value when the input contains a fully valid calendar date.",
     "-"
   ],
   [
