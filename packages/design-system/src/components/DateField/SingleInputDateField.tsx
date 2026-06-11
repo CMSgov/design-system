@@ -27,8 +27,9 @@ interface BaseSingleInputDateFieldProps {
   name: string;
   /**
    * Called anytime any date input is blurred
+   * @param date - The parsed date value when the input contains a fully valid calendar date.
    */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>, date?: Date) => any;
   /**
    * Called anytime any date input is changed. This function is called with three arguments.
    * The first argument should be used to update whatever state your application uses to
@@ -113,6 +114,7 @@ export type SingleInputDateFieldProps = BaseSingleInputDateFieldProps &
 const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const {
     className,
+    onBlur,
     onChange,
     defaultMonth,
     fromDate,
@@ -184,6 +186,14 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     return lang === 'en' ? `${vals[0]}/${vals[1]}/${vals[2]}` : `${vals[1]}/${vals[0]}/${vals[2]}`;
   };
 
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const updatedValue = event.currentTarget.value;
+    const date = getValidDate(updatedValue);
+    if (onBlur) {
+      onBlur(event, date);
+    }
+  };
+
   const handlePickerChange = (date: Date) => {
     const updatedValue = computeDateValue(date, lang);
     const maskedValue = dateMask(updatedValue);
@@ -207,6 +217,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     ...cleanFieldProps(remainingProps),
     value,
     id,
+    onBlur: handleBlur,
     onChange: handleInputChange,
     type: 'text',
     inputRef,

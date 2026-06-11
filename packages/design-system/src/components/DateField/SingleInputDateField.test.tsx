@@ -10,6 +10,7 @@ const defaultProps = {
   name: 'single-input-date-field',
   value: '',
   onChange: jest.fn(),
+  onBlur: jest.fn(),
   id: 'static-id',
 };
 
@@ -31,15 +32,15 @@ describe('SingleInputDateField', function () {
     expect(container.querySelector('.ds-c-single-input-date-field')).toBeInTheDocument();
 
     const label = container.querySelector('.ds-c-label');
-    expect(label.textContent).toContain('Birthday');
+    expect(label?.textContent).toContain('Birthday');
 
     const hint = container.querySelector('.ds-c-hint');
-    expect(hint.textContent).toContain('Please enter your birthday');
+    expect(hint?.textContent).toContain('Please enter your birthday');
 
     const mask = container.querySelector('.ds-c-label-mask');
     expect(mask).toBeInTheDocument();
-    expect(mask.textContent).toContain('MM/DD/YYYY');
-    expect(mask.querySelectorAll('span')).toHaveLength(2);
+    expect(mask?.textContent).toContain('MM/DD/YYYY');
+    expect(mask?.querySelectorAll('span')).toHaveLength(2);
 
     const input = screen.getByRole('textbox');
     expect(input).toBeInTheDocument();
@@ -138,6 +139,18 @@ describe('SingleInputDateField', function () {
     getLanguageSpy.mockRestore();
   });
 
+  it('calls onFocus with a valid date', async function () {
+    const onBlur = jest.fn();
+    const { user } = renderField({ onBlur, value: '01-02-2000' });
+    // Months are zero based because of course
+    const expectedDate = new Date(2000, 0, 2);
+    await user.click(getInput());
+    await user.tab();
+    const lastCall = onBlur.mock.lastCall;
+    // onBlur can be called with two arguments. We check the second.
+    expect(lastCall[1]).toEqual(expectedDate);
+  });
+
   it('calls onChange with undefined date when Spanish-formatted input is invalid', async function () {
     const getLanguageSpy = jest.spyOn(i18n, 'getLanguage').mockReturnValue('es');
     const onChange = jest.fn();
@@ -183,9 +196,9 @@ describe('SingleInputDateField', function () {
       const button = screen.getByRole('button');
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('ds-c-single-input-date-field__button');
-      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
-      expect(button.firstElementChild.tagName).toBe('svg');
-      expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
+      expect(button).toHaveAttribute('aria-describedby', `${label?.id} ${hint?.id}`);
+      expect(button.firstElementChild?.tagName).toBe('svg');
+      expect(button.firstElementChild?.classList).toContain('ds-c-icon--calendar');
 
       await user.click(button);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
