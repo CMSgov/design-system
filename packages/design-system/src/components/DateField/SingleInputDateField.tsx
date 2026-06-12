@@ -155,6 +155,11 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     }
 
     const [month, day, year] = destructureDate(formattedDate);
+
+    // Years must be 4 digits long.
+    // Fun fact: new Date(202) = Year 0202, which is totally reasonable.
+    if (String(year).length < 4) return undefined;
+
     const date = new Date(year, month, day);
 
     if (Number.isNaN(date.getTime())) {
