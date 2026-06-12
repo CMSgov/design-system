@@ -164,6 +164,19 @@ describe('SingleInputDateField', function () {
     getLanguageSpy.mockRestore();
   });
 
+  it('returns an invalid date when the user only enters 3 digits for the year', async function () {
+    const onBlur = jest.fn();
+    const onChange = jest.fn();
+    const { user } = renderField({ onBlur, onChange });
+    await user.type(getInput(), '1001101');
+    await user.tab();
+    const lastBlur = onBlur.mock.lastCall;
+    const lastChange = onChange.mock.lastCall;
+    // onBlur can be called with two arguments. We check the second.
+    expect(lastBlur[1]).toEqual(undefined);
+    expect(lastChange).toEqual(['10/01/101', '10/01/101', undefined]);
+  });
+
   describe('with picker', function () {
     const defaultPickerProps = {
       label: 'What day did you move?',
