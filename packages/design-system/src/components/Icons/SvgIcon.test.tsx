@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { SvgIcon } from './SvgIcon';
+import { SvgIcon, IconCommonProps } from './SvgIcon';
 import { AddIcon } from './AddIcon';
 
 describe('SvgIcon', () => {
-  const renderSvgIcon = (overrideProps?) => {
+  const renderSvgIcon = (
+    overrideProps?: IconCommonProps & {
+      'data-testid'?: string;
+    }
+  ) => {
     return render(
       <SvgIcon ariaHidden={false} title="test icon" {...overrideProps}>
         <path />
