@@ -89,8 +89,8 @@ define('ds-date-field', () => Wrapper, {
   events: [
     [
       'onChange',
-      (updatedValue: string, formattedValue: string) => ({
-        detail: { updatedValue, formattedValue },
+      (updatedValue: string, formattedValue: string, date?: Date) => ({
+        detail: { updatedValue, formattedValue, date },
       }),
     ],
     'onBlur',

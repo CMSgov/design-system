@@ -50,7 +50,7 @@ module.exports = {
     ['<rootDir>/tests/unit/coverageReporter.js', { file: `coverage-summary-${type}.json`, type }],
   ],
   coveragePathIgnorePatterns: ['/node_modules/'],
-  transformIgnorePatterns: ['node_modules(?!/@cmsgov)'],
+  transformIgnorePatterns: ['node_modules/(?!@cmsgov|date-fns)/'],
   moduleNameMapper: {
     '^@cmsgov/design-system$': '<rootDir>/packages/design-system/src/components/index',
     ...preactModuleMapper,
