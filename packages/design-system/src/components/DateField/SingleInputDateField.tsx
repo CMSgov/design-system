@@ -11,11 +11,11 @@ import useClickOutsideHandler from '../utilities/useClickOutsideHandler';
 import usePressEscapeHandler from '../utilities/usePressEscapeHandler';
 import useId from '../utilities/useId';
 import { CalendarIcon } from '../Icons/CalendarIcon';
-import { DATE_MASK } from '../TextField/useLabelMask';
+import { createDateMask } from '../TextField/useLabelMask';
 import { Label } from '../Label';
 import { TextInput } from '../TextField';
 import { TextInputProps } from '../TextField/TextInput';
-import { t } from '../i18n';
+import { getLanguage, t } from '../i18n';
 import { useLabelProps, UseLabelPropsProps } from '../Label/useLabelProps';
 import { useHint, UseHintProps } from '../Hint/useHint';
 import { useInlineError, UseInlineErrorProps } from '../InlineError/useInlineError';
@@ -27,10 +27,11 @@ interface BaseSingleInputDateFieldProps {
   name: string;
   /**
    * Called anytime any date input is blurred
+   * @param date - The parsed date value when the input contains a fully valid calendar date.
    */
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => any;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>, date?: Date) => any;
   /**
-   * Called anytime any date input is changed. This function is called with two arguments.
+   * Called anytime any date input is changed. This function is called with three arguments.
    * The first argument should be used to update whatever state your application uses to
    * supply back to this component's `value` prop in a _controlled component_ pattern.
    *
@@ -38,8 +39,9 @@ interface BaseSingleInputDateFieldProps {
    * @param formattedValue - The input's new value with date formatting applied, included
    *   for convenience. Do not use this value as the component's `value` prop. An appropriate
    *   use for this value would be to run date-validation checks against it.
+   * @param date - The parsed date value when the input contains a fully valid calendar date.
    */
-  onChange?: (updatedValue: string, formattedValue: string) => any;
+  onChange?: (updatedValue: string, formattedValue: string, date?: Date) => any;
   /**
    * A unique ID for this element. A unique ID will be generated if one isn't provided.
    */
@@ -112,6 +114,7 @@ export type SingleInputDateFieldProps = BaseSingleInputDateFieldProps &
 const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const {
     className,
+    onBlur,
     onChange,
     defaultMonth,
     fromDate,
@@ -130,23 +133,78 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const isControlled = remainingProps.value !== undefined;
   const [internalValueState, setInternalValueState] = useState(remainingProps.defaultValue);
   const value = isControlled ? remainingProps.value : internalValueState;
+  // This currently just supports English and non-english date formatting. Maybe could expand later.
+  const lang = getLanguage();
+  const localizedDateHint = lang === 'en' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
+  const dateMask = createDateMask(localizedDateHint);
+
+  const destructureDate = (dateString: string): Array<number> => {
+    const dateParts = dateString.split('/');
+    const month = lang === 'en' ? parseInt(dateParts[0]) - 1 : parseInt(dateParts[1]) - 1;
+    const day = lang === 'en' ? parseInt(dateParts[1]) : parseInt(dateParts[0]);
+    const year = parseInt(dateParts[2]);
+    return [month, day, year];
+  };
+
+  const getValidDate = (dateString: string): Date | undefined => {
+    const formattedDate = dateMask(dateString, true);
+    const testValue = lang === 'en' ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
+
+    if (!isMatch(formattedDate, testValue)) {
+      return undefined;
+    }
+
+    const [month, day, year] = destructureDate(formattedDate);
+
+    // Years must be 4 digits long.
+    // Fun fact: new Date(202) = Year 0202, which is totally reasonable.
+    if (String(year).length < 4) return undefined;
+
+    const date = new Date(year, month, day);
+
+    if (Number.isNaN(date.getTime())) {
+      return undefined;
+    }
+
+    if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
+      return undefined;
+    }
+
+    return date;
+  };
 
   // Set up change handlers
-  const handleInputChange = (event) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const updatedValue = event.currentTarget.value;
+    const formattedValue = dateMask(updatedValue, true);
+    const date = getValidDate(updatedValue);
     if (onChange) {
-      onChange(updatedValue, DATE_MASK(updatedValue, true));
+      onChange(updatedValue, formattedValue, date);
     }
     if (!isControlled) {
       setInternalValueState(updatedValue);
     }
   };
 
+  const computeDateValue = (date: Date, lang: string) => {
+    const vals = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+    return lang === 'en' ? `${vals[0]}/${vals[1]}/${vals[2]}` : `${vals[1]}/${vals[0]}/${vals[2]}`;
+  };
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const updatedValue = event.currentTarget.value;
+    const date = getValidDate(updatedValue);
+    if (onBlur) {
+      onBlur(event, date);
+    }
+  };
+
   const handlePickerChange = (date: Date) => {
-    const updatedValue = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-    const maskedValue = DATE_MASK(updatedValue);
+    const updatedValue = computeDateValue(date, lang);
+    const maskedValue = dateMask(updatedValue);
+    const validDate = getValidDate(updatedValue);
     if (onChange) {
-      onChange(maskedValue, DATE_MASK(updatedValue, true));
+      onChange(maskedValue, dateMask(updatedValue, true), validDate);
     }
     if (!isControlled) {
       setInternalValueState(maskedValue);
@@ -160,10 +218,11 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
   const { hintId, hintElement } = useHint({ ...props, id });
   const labelProps = useLabelProps({ ...props, id });
   const inputRef = useRef<HTMLInputElement>(null);
-  const { labelMask, inputProps } = useLabelMask(DATE_MASK, {
+  const { labelMask, inputProps } = useLabelMask(dateMask, {
     ...cleanFieldProps(remainingProps),
     value,
     id,
+    onBlur: handleBlur,
     onChange: handleInputChange,
     type: 'text',
     inputRef,
@@ -206,9 +265,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
 
   // Validate the date string (value) and make date null if it's invalid. We don't want to pass
   // a bizarre date to DayPicker like `new Date('01/02')`, which is interpreted as `Jan 02, 2001`
-  const dateString = DATE_MASK(props.value, true);
-  const validDateString = isMatch(dateString, 'MM/dd/yyyy');
-  const date = validDateString ? new Date(dateString) : null;
+  const dateString = dateMask(value ?? '', true);
+  const date = getValidDate(dateString);
 
   return (
     <div
@@ -244,7 +302,7 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
         <div ref={dayPickerRef} role="dialog" onKeyDown={handleDayPickerKeyDown}>
           <CustomDayPicker
             selected={date}
-            onSelect={handlePickerChange}
+            onSelect={(day) => day && handlePickerChange(day)}
             defaultMonth={date ?? defaultMonth}
             {...{
               fromDate,

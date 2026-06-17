@@ -2,7 +2,7 @@ import CustomDayPickerCaption from './CustomDayPickerCaption';
 import { format } from 'date-fns';
 import { DayPicker, DayPickerSingleProps } from 'react-day-picker';
 import { ArrowsStackedIcon } from '../Icons';
-import { t } from '../i18n';
+import { t, getLocale } from '../i18n';
 import type { Locale } from 'date-fns';
 import { CustomDayPickerDayContent } from './CustomDayPickerDayContent';
 
@@ -29,6 +29,7 @@ type CustomDayPickerProps = Pick<
 export function CustomDayPicker(props: CustomDayPickerProps) {
   return (
     <DayPicker
+      locale={getLocale()}
       mode="single"
       footer={
         <span className="ds-u-visibility--screen-reader">
