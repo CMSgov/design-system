@@ -182,7 +182,7 @@
     "typescript": "^5.4.3",
     "url-loader": "^4.1.1",
     "vite": "^6.4.1",
-    "webpack": "^5.76.0",
+    "webpack": "^5.107.2",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
     "yargs": "^17.7.2"
