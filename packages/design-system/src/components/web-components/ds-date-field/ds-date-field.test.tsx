@@ -88,7 +88,7 @@ describe('DateField', () => {
     const dateFieldElement = document.querySelector('ds-date-field');
     const mockChangeHandler = jest.fn();
 
-    dateFieldElement.addEventListener('ds-change', mockChangeHandler);
+    dateFieldElement?.addEventListener('ds-change', mockChangeHandler);
 
     const input = getInput() as HTMLInputElement;
     await user.type(input, '1');
@@ -98,9 +98,55 @@ describe('DateField', () => {
     expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
       updatedValue: '1',
       formattedValue: '01',
+      date: undefined,
     });
 
-    dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
+    dateFieldElement?.removeEventListener('ds-change', mockChangeHandler);
+  });
+
+  it('emits date in ds-change detail for a fully valid calendar date on blur', async () => {
+    const { user } = renderField({ ...defaultProps, value: '01-02-2000' });
+
+    const dateFieldElement = document.querySelector('ds-date-field');
+    const mockChangeHandler = jest.fn();
+
+    dateFieldElement?.addEventListener('ds-change', mockChangeHandler);
+
+    const input = getInput() as HTMLInputElement;
+    const expectedDate = new Date(2000, 0, 2);
+
+    await user.click(input);
+    await user.tab();
+
+    expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
+      updatedValue: '01/02/2000',
+      formattedValue: '01/02/2000',
+      date: expectedDate,
+    });
+
+    dateFieldElement?.removeEventListener('ds-change', mockChangeHandler);
+  });
+
+  it('emits undefined date for an invalid calendar date on blur', async () => {
+    const { user } = renderField({ ...defaultProps, value: '02/31/2024' });
+
+    const dateFieldElement = document.querySelector('ds-date-field');
+    const mockChangeHandler = jest.fn();
+
+    dateFieldElement?.addEventListener('ds-change', mockChangeHandler);
+
+    const input = getInput() as HTMLInputElement;
+
+    await user.click(input);
+    await user.tab();
+
+    expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
+      updatedValue: '02/31/2024',
+      formattedValue: '02/31/2024',
+      date: undefined,
+    });
+
+    dateFieldElement?.removeEventListener('ds-change', mockChangeHandler);
   });
 
   it('calls ds-change and ds-blur when input loses focus', async () => {
@@ -109,8 +155,10 @@ describe('DateField', () => {
     const dateFieldElement = document.querySelector('ds-date-field');
     const mockChangeHandler = jest.fn();
     const mockBlurHandler = jest.fn();
-    dateFieldElement.addEventListener('ds-change', mockChangeHandler);
-    dateFieldElement.addEventListener('ds-blur', mockBlurHandler);
+    // Month is zero based because time is an illusion
+    const expectedDate = new Date(2000, 0, 2);
+    dateFieldElement?.addEventListener('ds-change', mockChangeHandler);
+    dateFieldElement?.addEventListener('ds-blur', mockBlurHandler);
 
     const input = getInput() as HTMLInputElement;
 
@@ -124,10 +172,11 @@ describe('DateField', () => {
     expect(mockChangeHandler.mock.lastCall[0].detail).toEqual({
       updatedValue: '01/02/2000',
       formattedValue: '01/02/2000',
+      date: expectedDate,
     });
 
-    dateFieldElement.removeEventListener('ds-change', mockChangeHandler);
-    dateFieldElement.removeEventListener('ds-blur', mockBlurHandler);
+    dateFieldElement?.removeEventListener('ds-change', mockChangeHandler);
+    dateFieldElement?.removeEventListener('ds-blur', mockBlurHandler);
   });
 
   describe('DateField with picker', () => {
@@ -148,15 +197,15 @@ describe('DateField', () => {
 
       const wrapper = document.querySelector('.ds-c-single-input-date-field__field-wrapper');
       expect(wrapper).toBeInTheDocument();
-      expect(wrapper.querySelector('.ds-c-field')).toBeInTheDocument();
+      expect(wrapper?.querySelector('.ds-c-field')).toBeInTheDocument();
 
       const button = screen.getByRole('button');
       expect(button).toMatchSnapshot();
       expect(button).toBeInTheDocument();
       expect(button).toHaveClass('ds-c-single-input-date-field__button');
-      expect(button).toHaveAttribute('aria-describedby', `${label.id} ${hint.id}`);
-      expect(button.firstElementChild.tagName).toBe('svg');
-      expect(button.firstElementChild.classList).toContain('ds-c-icon--calendar');
+      expect(button).toHaveAttribute('aria-describedby', `${label?.id} ${hint?.id}`);
+      expect(button.firstElementChild?.tagName).toBe('svg');
+      expect(button.firstElementChild?.classList).toContain('ds-c-icon--calendar');
 
       await user.click(button);
       expect(screen.getByRole('dialog')).toBeInTheDocument();
