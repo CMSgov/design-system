@@ -1,6 +1,6 @@
 ---
 title: Autocomplete
-intro: Autocompletes allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
+intro: Autocomplete helps users find and select from a list of suggested options as they type.
 status:
   level: use
 cmsgov:
@@ -24,6 +24,32 @@ The `Autocomplete` component is a parent component that adds autocomplete functi
   storyId="components-autocomplete--default"
   minHeight={500}
 />
+
+## Guidance
+
+### When to use
+
+- If you are returning results from a known domain like a database of zip codes or a taxonomy of keywords
+- If you have a list of options that would cause a [dropdown](/components/dropdown/) to be unusually long
+
+### When to consider alternatives
+
+- When users are choosing from a specific set of options. Consider [checkboxes](/components/checkbox), [radio buttons](/components/radio/), or a [dropdown](/components/dropdown/) in these cases.
+
+### Usage
+
+- Don't use placeholder text in autocomplete fields. Provide a descriptive label that clearly identifies what the user is searching for. People who have cognitive or visual disabilities may have additional difficulty using placeholder text.
+- The length of the text field provides a hint to users as to how much text to write. Do not ask users to write paragraphs of text in this component; use a `textarea` instead.
+
+**[View the "Forms" guidelines for additional guidance and best practices.](/patterns/Forms/forms/)**
+
+## Accessibility
+
+### Guidelines
+
+- The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
+- `<Autocomplete>` allows developers to add hint text in the `<label>` element. This hint `<span>` is added to the markup by passing a `String` into the `hint` prop.
+- `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
 
 ## Code
 
@@ -52,29 +78,9 @@ The following CSS variables can be overridden to customize Autocomplete componen
 
 <ComponentThemeOptions componentname="text-input" />
 
-## Guidance
+### Analytics
 
-### When to use
-
-- If you are returning results from a known domain like a database of zip codes or a taxonomy of keywords
-- If you have a list of options that would cause a [dropdown](/components/dropdown/) to be unusually long
-
-### When to consider alternatives
-
-- When users are choosing from a specific set of options. Consider [checkboxes](/components/checkbox), [radio buttons](/components/radio/), or a [dropdown](/components/dropdown/) in these cases.
-
-### Usage
-
-- Don't use placeholder text in autocomplete fields. Try to write a descriptive label that identifies what the user is searching for. People who have cognitive or visual disabilities have additional problems with placeholder text.
-- The length of the text field provides a hint to users as to how much text to write. Do not ask users to write paragraphs of text in this component; use a `textarea` instead.
-
-**[View the "Forms" guidelines for additional guidance and best practices.](/patterns/Forms/forms/)**
-
-### Accessibility
-
-- The `<Autocomplete>` component has taken special care to ensure accessibility for screenreader devices. It announces the number of results based on `items` matches with the `inputValue` string. The component also reads out the name of each list item when users arrow up or down.
-- `<Autocomplete>` allows developers to add hint text in the `<label>` element. This hint `<span>` is added to the markup by passing a `String` into the `hint` prop.
-- `<Autocomplete>` has a button (styled visually as a link) to clear the search, and refocus the `<input>` element. This resets the local state `selectedItem` to `null`, and will re-read the label and screenreader hint text.
+Currently, this component does not support analytics tracking.
 
 ## Component maturity
 
