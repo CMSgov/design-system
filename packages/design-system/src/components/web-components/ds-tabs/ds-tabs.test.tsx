@@ -261,4 +261,26 @@ describe('ds-tabs', () => {
     expect(tabs[0].classList).toContain('custom-tab');
     expect(panel).toHaveAttribute('aria-labelledby', 'panel-1-tab');
   });
+
+  it('does not throw when rendered without children', () => {
+    // When a wrapper (for example an Angular directive) renders ds-tabs
+    // before its children are populated, parseChildren receives undefined.
+    expect(() => render(<ds-tabs {...(defaultProps as any)}>{undefined}</ds-tabs>)).not.toThrow();
+  });
+
+  it('ignores non-element child nodes such as comment nodes', () => {
+    // Some frameworks insert comment/text nodes alongside the real panels.
+    // Those nodes have no `props`, so they should be skipped rather than crash.
+    const childrenWithNonElement = [
+      null,
+      <ds-tab-panel key="1" id="panel-1" tab="Tab 1">
+        Some content for tab 1
+      </ds-tab-panel>,
+    ];
+    expect(() => renderTabs(defaultProps, childrenWithNonElement)).not.toThrow();
+
+    const tabEls = screen.getAllByRole('tab');
+    expect(tabEls.length).toBe(1);
+    expect(tabEls[0].textContent).toBe('Tab 1');
+  });
 });
