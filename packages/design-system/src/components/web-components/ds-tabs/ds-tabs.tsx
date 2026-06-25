@@ -7,7 +7,11 @@ import { createElement } from 'react';
 const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];
 
 function parseChildren(nodes) {
+  if (!nodes) return null;
+
   return nodes.map((element) => {
+    if (!element || !element.props) return null;
+
     const attrs = element.props;
 
     if (!attrs.id || !attrs.children || !attrs.tab) {
