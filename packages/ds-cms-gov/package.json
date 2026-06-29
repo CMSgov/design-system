@@ -5,9 +5,6 @@
     "access": "public",
     "tag": "latest"
   },
-  "bin": {
-    "cmsds-migrate": "./scripts/cmsds-migrate/src/main.mjs"
-  },
   "description": "A design system for CMS.gov products",
   "repository": {
     "type": "git",
