@@ -1,6 +1,6 @@
 ---
 name: review-cmsds-accessibility
-description: Some description
+description: TODO Add description with specific trigger phrases.
 ---
 
 # Review CMSDS Accessibility
