@@ -125,9 +125,14 @@
   line-height: var(--mgov-line-height-lg);
   letter-spacing: -0.4px;
   color: var(--color-primary);
-  text-decoration: underline;
+  text-decoration: none; /* underline only the label, not the arrow (below) */
   white-space: nowrap;
   padding: var(--spacer-1) 0;
+}
+
+/* Only the label text is underlined — the trailing arrow stays clean. */
+.ds-c-feature-card__link-text {
+  text-decoration: underline;
 }
 
 /* The Large CTA uses the shared <Button> component (variation="solid"); its

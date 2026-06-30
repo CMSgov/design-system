@@ -38,7 +38,7 @@ export function FeatureCard({
         <p className="ds-c-feature-card__body">{body}</p>
         {variant === 'small' ? (
           <a href="#" className="ds-c-feature-card__link">
-            {ctaLabel}
+            <span className="ds-c-feature-card__link-text">{ctaLabel}</span>
             <span aria-hidden="true">→</span>
           </a>
         ) : (
