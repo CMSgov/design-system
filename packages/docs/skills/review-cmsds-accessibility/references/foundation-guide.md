@@ -29,9 +29,9 @@ Append one of the following paths:
 
 Within the relevant page's `llms.txt`, locate the **Accessibility** section.
 
-Review:
+Within that section, review:
 
 - General accessibility guidance.
 - Accessibility testing guidance.
 
-Use these sections as the primary source of truth when reviewing accessibility for the selected foundation topic.
+Use this guidance as the primary source of truth when reviewing accessibility for the selected foundation topic.

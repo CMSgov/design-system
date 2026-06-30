@@ -16,9 +16,9 @@ If `dist/docs` is not present (CMS Design System versions earlier than `v18.0.0`
 
 Within the layout's `llms.txt`, locate the **Accessibility** section.
 
-Review:
+Within that section, review:
 
 - General accessibility guidance.
 - Accessibility testing guidance.
 
-Use these sections as the primary source of truth when reviewing the accessibility of pages that follow the Article Page layout.
+Use this guidance as the primary source of truth when reviewing the accessibility of pages that follow the Article Page layout.

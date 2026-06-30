@@ -28,9 +28,9 @@ Append one of the following paths:
 
 Within the pattern's `llms.txt`, locate the **Accessibility** section.
 
-Review:
+Within that section, review:
 
 - General accessibility guidance.
 - Accessibility testing guidance.
 
-Use these sections as the primary source of truth when reviewing the accessibility of the pattern.
+Use this guidance as the primary source of truth when reviewing the accessibility of the pattern.

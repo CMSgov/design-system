@@ -44,11 +44,11 @@ Append the following relative documentation paths to the local base path: `node_
 
 Within the component's `llms.txt`, locate the **Accessibility** section.
 
-Review:
+Within that section, review:
 
 - General accessibility guidance.
 - Accessibility testing guidance.
 - Keyboard testing.
 - Screen reader testing.
 
-Use these sections as the primary source of truth when evaluating or troubleshooting the component's accessibility.
+Use this guidance as the primary source of truth when evaluating or troubleshooting the component's accessibility.
