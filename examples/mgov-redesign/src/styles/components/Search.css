@@ -1,0 +1,144 @@
+/* ============================================================
+   Search — Medicare.gov redesign
+   Figma node 1658:7942
+
+   A composite, not a DS component: a <form role="search"> wrapping a search
+   field (DS TextField, optionally wrapped in a DS Autocomplete) plus an
+   optional trailing submit <Button>. Supports the variation matrix:
+     • with / without button       (buttonLabel prop)
+     • with / without autocomplete (items prop)
+
+   Field styling reuses the DS field tokens (--text-input__*) — like the
+   TextField wrapper — but shapes the field as a pill with a leading search
+   icon. The Autocomplete menu reuses the Dropdown's detached-card styling.
+   Everything is scoped to .ds-c-mgov-search.
+   ============================================================ */
+
+.ds-c-mgov-search {
+  width: 400px;
+  max-width: 100%;
+
+  /* --- Field tokens (consumed by .ds-c-field) --- */
+  --text-input__border-radius: var(--radius-pill);
+  --text-input__border-width: 1px;
+  --text-input__border-color: rgb(0 0 0 / 30%);
+  --text-input__color: var(--color-black);
+  --text-input__border-width--error: 2px;
+  --text-input__border-color--error: #c30000;
+
+  /* --- Label + hint/error tokens --- */
+  --label__font-size: var(--font-size-md);
+  --label__letter-spacing: -0.4px;
+  --label__text-transform: none;
+  --hint__color: var(--color-black);
+  --inline-error__color: #c30000;
+}
+
+/* Row: field grows; the optional button sits beside it and matches its height. */
+.ds-c-mgov-search__row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px; /* no 12px spacer token */
+}
+
+.ds-c-mgov-search__field {
+  position: relative;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+/* The autocomplete + field fill the field column. */
+.ds-c-mgov-search .ds-c-autocomplete,
+.ds-c-mgov-search .ds-c-field {
+  width: 100%;
+}
+
+/* Pill field with a leading search icon. The icon is a background image so it
+   stays vertically centered on the input regardless of label/hint height. */
+.ds-c-mgov-search .ds-c-field {
+  margin-block: 0;
+  max-width: none;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  padding-inline: 3.5rem var(--spacer-3); /* 56px (icon) / 24px */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230a352f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: var(--spacer-3) center; /* 24px from the left */
+}
+
+/* Active/focus: 2px green border, no DS gold ring, no layout shift. */
+.ds-c-mgov-search .ds-c-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  outline: 2px solid transparent;
+  outline-offset: 0;
+}
+
+/* Label + hint (shown only when showLabel / hint are set). */
+.ds-c-mgov-search .ds-c-label {
+  margin-block: 0 var(--spacer-1);
+  color: var(--color-black);
+}
+
+.ds-c-mgov-search .ds-c-hint {
+  margin-block: var(--spacer-1) 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md);
+  line-height: 21px;
+}
+
+/* Trailing button: stretch to match the field height. */
+.ds-c-mgov-search__button {
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* --- Autocomplete suggestion menu: detached rounded card (same as Dropdown).
+   .ds-c-autocomplete__menu-container @extends .ds-c-dropdown__menu-container in
+   the DS, so it ships the attached-menu styling we override here. --- */
+.ds-c-mgov-search .ds-c-autocomplete__menu-container {
+  border: 1px solid rgb(0 0 0 / 20%); /* re-add the top border the DS removes */
+  border-radius: 16px; /* all four corners */
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 10%);
+  clip-path: none; /* DS clips the top to hide its attached-shadow seam */
+  margin-block-start: var(--spacer-1); /* 8px gap below the field */
+  padding: var(--spacer-1) 12px;
+  overflow: clip;
+}
+
+.ds-c-mgov-search .ds-c-autocomplete__menu-item {
+  padding: var(--spacer-2) var(--spacer-1); /* 16px 8px */
+  border-block-end: 1px solid rgb(0 0 0 / 20%);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+.ds-c-mgov-search .ds-c-autocomplete__menu-item:last-child {
+  border-block-end: none;
+}
+
+.ds-c-mgov-search .ds-c-autocomplete__menu-item--highlighted {
+  background-color: var(--hm-surface-soft); /* #eaf3f0 */
+  color: var(--color-black);
+}
+
+/* The Autocomplete renders its `label` prop as a visible menu heading; the
+   Figma menu has none, so hide it visually while keeping it for assistive tech
+   (it's the listbox's accessible name). */
+.ds-c-mgov-search .ds-c-autocomplete__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

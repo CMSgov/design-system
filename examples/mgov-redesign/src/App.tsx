@@ -5,6 +5,7 @@ import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
+import { Search } from './components/Search';
 import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
 
@@ -138,6 +139,37 @@ function App() {
           hint="This is where you put helpful hint text."
           errorMessage="This is an example error message."
           defaultValue="Filled"
+        />
+      </VariantGroup>
+
+      <VariantGroup label="search — basic (no button, no autocomplete)">
+        <Search name="search-basic" placeholder="Hint" />
+      </VariantGroup>
+
+      <VariantGroup label="search — with button (no autocomplete)">
+        <Search name="search-button" placeholder="Hint" buttonLabel="Add" />
+      </VariantGroup>
+
+      <VariantGroup label="search — with autocomplete (no button)">
+        <Search
+          name="search-ac"
+          placeholder="Search"
+          items={[
+            { id: '1', name: '5mg tablet' },
+            { id: '2', name: '10mg tablet' },
+          ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="search — with autocomplete + button">
+        <Search
+          name="search-ac-button"
+          placeholder="Search"
+          buttonLabel="Add"
+          items={[
+            { id: '1', name: '5mg tablet' },
+            { id: '2', name: '10mg tablet' },
+          ]}
         />
       </VariantGroup>
 
