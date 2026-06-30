@@ -21,18 +21,18 @@
    "Medicare" icon set.
    ============================================================ */
 
-/* Base: full border + radius (replaces the DS left bar). Default = informational blue. */
+/* Base: full border + radius (replaces the DS left bar). Default = informational. */
 .ds-c-mgov-alert.ds-c-alert {
-  border: 1px solid var(--hm-blue-strong); /* #0e3e6e */
+  border: 1px solid var(--hm-info-strong); /* #0e3e6e */
   border-radius: var(--radius-large); /* 8px */
-  background-color: var(--hm-blue-soft); /* #eaf3fa */
+  background-color: var(--hm-info-soft); /* #eaf3fa */
   color: var(--color-black);
   padding: var(--spacer-2); /* 16px */
 }
 
 .ds-c-mgov-alert.ds-c-alert--lightweight {
   background-color: var(--color-white);
-  border-color: var(--hm-blue-strong);
+  border-color: var(--hm-info-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--success {

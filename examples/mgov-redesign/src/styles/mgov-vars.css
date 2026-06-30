@@ -26,9 +26,11 @@
   --hm-blue-soft: #eaf3fa;
   --hm-blue-tint: #dceaf5;
 
-  /* Status / feedback colors (Alert variations).
-     Informational reuses --hm-blue-*; the error strong color is
-     --mgov-color-error (#c30000), shared with field error states. */
+  /* Status / feedback colors (Alert variations). Semantic names; info aliases
+     the blue palette, the error strong color is --mgov-color-error (#c30000),
+     shared with field error states. */
+  --hm-info-soft: var(--hm-blue-soft);
+  --hm-info-strong: var(--hm-blue-strong);
   --hm-success-soft: #f5faf5;
   --hm-success-strong: #008c00;
   --hm-warn-soft: #fff9e8;
