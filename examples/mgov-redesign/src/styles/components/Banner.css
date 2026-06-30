@@ -1,0 +1,116 @@
+/* ============================================================
+   Banner — Figma node 2080:12563
+   Variants: Feature (image + content), Simple (centered)
+   ============================================================ */
+
+.ds-c-banner {
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  width: 1280px;
+}
+
+.ds-c-banner--feature {
+  background-color: var(--color-white);
+  height: 515px;
+  overflow: clip;
+  box-shadow: 0 4px 40px 0 rgb(0 0 0 / 10%);
+}
+
+.ds-c-banner--simple {
+  background-color: var(--hm-blue-soft);
+  flex-direction: column;
+  gap: var(--spacer-3);
+  justify-content: center;
+  padding: 80px 0;
+}
+
+/* Image (Feature only) */
+
+.ds-c-banner__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  overflow: clip;
+}
+
+.ds-c-banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content (Feature only) */
+
+.ds-c-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacer-5);
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  padding: var(--spacer-4) 64px;
+}
+
+/* Copy group */
+
+.ds-c-banner__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  color: var(--hm-ink-strong);
+  word-break: break-word;
+  width: 100%;
+}
+
+.ds-c-banner--simple .ds-c-banner__copy {
+  align-items: center;
+  text-align: center;
+  width: 800px;
+}
+
+/* Heading */
+
+.ds-c-banner__heading {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl); /* 3rem / 48px */
+  line-height: var(--mgov-line-height-xl); /* calc(1em + 2px) → 50px @48px */
+  letter-spacing: -1.92px;
+}
+
+/* Body */
+
+.ds-c-banner__body {
+  font-family: var(--font-family-body); /* Rubik */
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xl); /* 1.5rem / 24px */
+  line-height: var(--mgov-line-height-xsm); /* calc(1em + 12px) → 36px @24px */
+  letter-spacing: -0.6px;
+}
+
+/* Button */
+
+.ds-c-banner__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 40px;
+  overflow: clip;
+  padding: var(--spacer-2) var(--spacer-3);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */
+  letter-spacing: -0.5px;
+  color: var(--color-white);
+  white-space: nowrap;
+  cursor: pointer;
+}

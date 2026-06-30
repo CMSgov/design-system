@@ -1,0 +1,33 @@
+/* ============================================================
+   Breadcrumbs — Figma node 3155:25225
+   Row of underlined links separated by a forward chevron
+   ============================================================ */
+
+.ds-c-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1); /* 8px */
+  padding: var(--spacer-1) 0;
+}
+
+.ds-c-breadcrumbs__link {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
+  letter-spacing: -0.4px;
+  color: var(--hm-ink-strong);
+  text-decoration: underline;
+  white-space: nowrap;
+  padding: var(--spacer-1) 0;
+}
+
+.ds-c-breadcrumbs__separator {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hm-ink-strong);
+}

@@ -1,0 +1,88 @@
+/* ============================================================
+   Tile — Figma node 2080:12486
+   Variants: Small, Large
+   ============================================================ */
+
+.ds-c-tile {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  padding: 20px;
+  width: 380px;
+}
+
+/* Title row (icon + label) */
+
+.ds-c-tile__title {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.ds-c-tile--small .ds-c-tile__title {
+  gap: var(--spacer-1);
+} /* 8px */
+.ds-c-tile--large .ds-c-tile__title {
+  gap: var(--spacer-2);
+} /* 16px */
+
+/* Icon box */
+
+.ds-c-tile__icon-box {
+  background-color: var(--hm-green-tint);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  padding: 10px;
+  border-radius: var(--radius-large); /* 8px */
+  flex-shrink: 0;
+  /* Sizes a DS icon to 24px (renders at 1.5em) and tints it green via currentColor */
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.ds-c-tile--small .ds-c-tile__icon-box {
+  width: 40px;
+  height: 40px;
+}
+
+.ds-c-tile--large .ds-c-tile__icon-box {
+  width: 56px;
+  height: 56px;
+}
+
+/* Label */
+
+.ds-c-tile__label {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--hm-ink-strong);
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px): 24px @20px, 28px @24px */
+  word-break: break-word;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.ds-c-tile--small .ds-c-tile__label {
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  letter-spacing: -0.5px;
+}
+
+.ds-c-tile--large .ds-c-tile__label {
+  font-size: var(--font-size-xl); /* 1.5rem / 24px */
+  letter-spacing: -0.6px;
+}
+
+/* Arrow icon */
+
+.ds-c-tile__arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}

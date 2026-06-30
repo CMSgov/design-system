@@ -1,0 +1,79 @@
+/* ============================================================
+   mgov-redesign shared tokens
+   Single source of truth for the redesign's CSS custom properties.
+   Imported once (in main.tsx); consumed by the component CSS files
+   via var(). Also overrides a handful of DS Button tokens.
+   ============================================================ */
+
+:root,
+::before,
+::after,
+::backdrop {
+  /* Color Tokens */
+  --hm-surface: #fdfdfc;
+  --hm-surface-alt: #f4f7f5;
+  --hm-surface-soft: #eaf3f0;
+  --hm-ink: #16221f;
+  --hm-ink-strong: #0a352f;
+  --hm-ink-muted: #5a6b67;
+  --hm-rule: #dde6e3;
+  --hm-green: var(--color-primary) /* Or just use --color-primary */ --hm-green-strong: var(--color-primary-darkest)
+    /* Or use --color-primary-darkest */ --hm-green-vivid: #1ca085;
+  --hm-green-tint: #e8f4f0;
+  --hm-blue: #2a6fb8;
+  --hm-blue-strong: #0e3e6e;
+  --hm-blue-soft: #eaf3fa;
+
+  /* Typography Tokens */
+
+  /* Font Family */
+  --font-family-heading:
+    "Inter", "Inter Fallback", -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Helvetica", "Arial", system-ui,
+    sans-serif;
+  --font-family-button: var(--font-family-heading);
+  --font-family-link: var(--font-family-heading);
+  /* Font size */
+  --font-size-5xl: 4.5rem; /* Overwritten to 4.5rem, original is 3.125rem */
+  --font-size-4xl: 3.5rem; /* Overwritten to 3.5rem, original is 2.75rem */
+  --font-size-3xl: 3rem; /* Overwritten to 3rem, original is 2.5rem */
+  --font-size-2xl: 2.25rem; /* Overwritten to 2.25rem, original is 2rem */
+  /* Letter Spacing */
+  --mgov-font-letter-spacing-xl: -4%;
+  --mgov-font-letter-spacing-lg: -2.5%;
+  --mgov-font-letter-spacing-sm: 0%;
+  /* Line Height */
+  --font-line-height-heading: calc(1em - 2px) /* Overwritten to .98, original is 1.2999999523162842 */
+  --mgov-line-height-xl: calc(1em + 2px);
+  --mgov-line-height-lg: calc(1em + 4px);
+  --mgov-line-height-md: calc(1em + 6px);
+  --mgov-line-height-sm: calc(1em + 8px);
+  --mgov-line-height-xsm: calc(1em + 12px);
+
+  /* --- :root variable overrides for _Button.scss tokens --- */
+  /* Shape — Large = 40px, Small pill handled via selector override below */
+  --button__border-radius: 40px;
+
+  /* Secondary (outline) button — default .ds-c-button */
+  --button__background-color: var(--color-white);
+  --button__background-color--hover: var(--color-primary-dark);
+  --button__border-color: var(--color-primary);
+  --button__border-color--hover: var(--color-primary-dark);
+  --button__border-color--active: var(--color-primary-light);
+  --button__color: var(--color-primary);
+  --button__color--hover: var(--color-white);
+  --button__color--active: var(--color-primary-light);
+
+  /* Disabled — filled gray with 50% black text */
+  --button__background-color--disabled: var(--color-gray-lighter);
+  --button__border-color--disabled: var(--color-gray-lighter);
+  --button__color--disabled: rgb(0 0 0 / 50%);
+  --button-solid__color--disabled: rgb(0 0 0 / 50%);
+
+  /* Ghost — dark teal text, no background */
+  --button-ghost__color: var(--hm-ink-strong);
+  --button-ghost__color--hover: var(--hm-ink-strong);
+  --button-ghost__color--active: var(--hm-ink-strong);
+  --button-ghost-alt__color: var(--hm-ink-strong);
+  --button-ghost-alt__color--hover: var(--hm-ink-strong);
+  --button-ghost-alt__color--active: var(--hm-ink-strong);
+}

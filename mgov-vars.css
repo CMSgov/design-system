@@ -1,0 +1,484 @@
+:root,
+::before,
+::after,
+::backdrop {
+  /* Color Tokens */
+  --hm-surface: #fdfdfc;
+  --hm-surface-alt: #f4f7f5;
+  --hm-surface-soft: #eaf3f0;
+  --hm-ink: #16221f;
+  --hm-ink-strong: #0a352f;
+  --hm-ink-muted: #5a6b67;
+  --hm-rule: #dde6e3;
+  --hm-green: var(--color-primary) /* Or just use --color-primary */ --hm-green-strong: var(--color-primary-darkest)
+    /* Or use --color-primary-darkest */ --hm-green-vivid: #1ca085;
+  --hm-green-tint: #e8f4f0;
+  --hm-blue: #2a6fb8;
+  --hm-blue-strong: #0e3e6e;
+  --hm-blue-soft: #eaf3fa;
+
+  /* Typography Tokens */
+
+  /* Font Family */
+  --font-family-heading:
+    "Inter", "Inter Fallback", -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Helvetica", "Arial", system-ui,
+    sans-serif;
+  --font-family-button: var(--font-family-heading);
+  --font-family-link: var(--font-family-heading);
+  /* Font size */
+  --font-size-5xl: 4.5rem; /* Overwritten to 4.5rem, original is 3.125rem */
+  --font-size-4xl: 3.5rem; /* Overwritten to 3.5rem, original is 2.75rem */
+  --font-size-3xl: 3rem; /* Overwritten to 3rem, original is 2.5rem */
+  --font-size-2xl: 2.25rem; /* Overwritten to 2.25rem, original is 2rem */
+  /* Letter Spacing */
+  --mgov-font-letter-spacing-xl: -4%;
+  --mgov-font-letter-spacing-lg: -2.5%;
+  --mgov-font-letter-spacing-sm: 0%;
+  /* Line Height */
+  --font-line-height-heading: calc(1em - 2px) /* Overwritten to .98, original is 1.2999999523162842 */
+  --mgov-line-height-xl: calc(1em + 2px);
+  --mgov-line-height-lg: calc(1em + 4px);
+  --mgov-line-height-md: calc(1em + 6px);
+  --mgov-line-height-sm: calc(1em + 8px);
+  --mgov-line-height-xsm: calc(1em + 12px);
+
+  /* --- :root variable overrides for _Button.scss tokens --- */
+  /* Shape — Large = 40px, Small pill handled via selector override below */
+  --button__border-radius: 40px;
+
+  /* Secondary (outline) button — default .ds-c-button */
+  --button__background-color: var(--color-white);
+  --button__background-color--hover: var(--color-primary-dark);
+  --button__border-color: var(--color-primary);
+  --button__border-color--hover: var(--color-primary-dark);
+  --button__border-color--active: var(--color-primary-light);
+  --button__color: var(--color-primary);
+  --button__color--hover: var(--color-white);
+  --button__color--active: var(--color-primary-light);
+
+  /* Disabled — filled gray with 50% black text */
+  --button__background-color--disabled: var(--color-gray-lighter);
+  --button__border-color--disabled: var(--color-gray-lighter);
+  --button__color--disabled: rgb(0 0 0 / 50%);
+  --button-solid__color--disabled: rgb(0 0 0 / 50%);
+
+  /* Ghost — dark teal text, no background */
+  --button-ghost__color: var(--hm-ink-strong);
+  --button-ghost__color--hover: var(--hm-ink-strong);
+  --button-ghost__color--active: var(--hm-ink-strong);
+  --button-ghost-alt__color: var(--hm-ink-strong);
+  --button-ghost-alt__color--hover: var(--hm-ink-strong);
+  --button-ghost-alt__color--active: var(--hm-ink-strong);
+}
+
+/* ============================================================
+   Feature Card — Figma node 2080:12514
+   Variants: Small (400px), Medium (628px), Large (628px)
+   ============================================================ */
+
+.ds-c-feature-card {
+  background-color: var(--color-white);
+  border: 1px solid rgb(0 0 0 / 20%);
+  /* !important + box-shadow reset override the .ds-c-card base
+     (border-radius: 6px !important; box-shadow) when used on <Card> */
+  border-radius: 24px !important;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: clip;
+}
+
+.ds-c-feature-card--small {
+  width: 400px;
+}
+
+.ds-c-feature-card--medium {
+  width: 628px;
+}
+
+.ds-c-feature-card--large {
+  width: 628px;
+}
+
+/* Image */
+
+.ds-c-feature-card__image {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: clip;
+  flex-shrink: 0;
+}
+
+.ds-c-feature-card--small .ds-c-feature-card__image {
+  height: 250px;
+}
+
+.ds-c-feature-card--medium .ds-c-feature-card__image {
+  height: 320px;
+}
+
+.ds-c-feature-card--large .ds-c-feature-card__image {
+  height: 350px;
+}
+
+.ds-c-feature-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+
+.ds-c-feature-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.ds-c-feature-card--small .ds-c-feature-card__content {
+  gap: var(--spacer-2);
+  padding: var(--spacer-3) var(--spacer-4);
+}
+
+.ds-c-feature-card--medium .ds-c-feature-card__content,
+.ds-c-feature-card--large .ds-c-feature-card__content {
+  gap: var(--spacer-4);
+  padding: var(--spacer-5);
+}
+
+/* Title */
+
+.ds-c-feature-card__title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--hm-ink-strong);
+  word-break: break-word;
+  width: 100%;
+}
+
+.ds-c-feature-card--small .ds-c-feature-card__title {
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: 24px;
+  letter-spacing: -0.5px;
+}
+
+.ds-c-feature-card--medium .ds-c-feature-card__title,
+.ds-c-feature-card--large .ds-c-feature-card__title {
+  font-size: var(--font-size-2xl); /* 2.25rem / 36px */
+  line-height: 38px;
+  letter-spacing: -1.44px;
+}
+
+/* Body */
+
+.ds-c-feature-card__body {
+  color: var(--hm-ink-strong);
+  word-break: break-word;
+  width: 100%;
+}
+
+.ds-c-feature-card--small .ds-c-feature-card__body {
+  font-family: var(--font-family-body); /* Rubik */
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: 21px;
+}
+
+.ds-c-feature-card--medium .ds-c-feature-card__body,
+.ds-c-feature-card--large .ds-c-feature-card__body {
+  font-family: var(--font-family-heading); /* Inter Regular */
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: var(--mgov-line-height-sm);
+  letter-spacing: -0.4px;
+}
+
+/* Text link CTA (Small only) */
+
+.ds-c-feature-card__link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: var(--mgov-line-height-lg);
+  letter-spacing: -0.4px;
+  color: var(--color-primary);
+  text-decoration: underline;
+  white-space: nowrap;
+  padding: var(--spacer-1) 0;
+}
+
+/* Button CTA (Medium + Large) */
+
+.ds-c-feature-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacer-2) var(--spacer-3);
+  border-radius: 40px;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: var(--mgov-line-height-lg);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: clip;
+}
+
+.ds-c-feature-card--medium .ds-c-feature-card__button {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.ds-c-feature-card--large .ds-c-feature-card__button {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ============================================================
+   Tile — Figma node 2080:12486
+   Variants: Small, Large
+   ============================================================ */
+
+.ds-c-tile {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1);
+  padding: 20px;
+  width: 380px;
+}
+
+/* Title row (icon + label) */
+
+.ds-c-tile__title {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.ds-c-tile--small .ds-c-tile__title {
+  gap: var(--spacer-1);
+} /* 8px */
+.ds-c-tile--large .ds-c-tile__title {
+  gap: var(--spacer-2);
+} /* 16px */
+
+/* Icon box */
+
+.ds-c-tile__icon-box {
+  background-color: var(--hm-green-tint);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  padding: 10px;
+  border-radius: var(--radius-large); /* 8px */
+  flex-shrink: 0;
+  /* Sizes a DS icon to 24px (renders at 1.5em) and tints it green via currentColor */
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.ds-c-tile--small .ds-c-tile__icon-box {
+  width: 40px;
+  height: 40px;
+}
+
+.ds-c-tile--large .ds-c-tile__icon-box {
+  width: 56px;
+  height: 56px;
+}
+
+/* Label */
+
+.ds-c-tile__label {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--hm-ink-strong);
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px): 24px @20px, 28px @24px */
+  word-break: break-word;
+  flex: 1 0 0;
+  min-width: 0;
+}
+
+.ds-c-tile--small .ds-c-tile__label {
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  letter-spacing: -0.5px;
+}
+
+.ds-c-tile--large .ds-c-tile__label {
+  font-size: var(--font-size-xl); /* 1.5rem / 24px */
+  letter-spacing: -0.6px;
+}
+
+/* Arrow icon */
+
+.ds-c-tile__arrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================================
+   Banner — Figma node 2080:12563
+   Variants: Feature (image + content), Simple (centered)
+   ============================================================ */
+
+.ds-c-banner {
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  width: 1280px;
+}
+
+.ds-c-banner--feature {
+  background-color: var(--color-white);
+  height: 515px;
+  overflow: clip;
+  box-shadow: 0 4px 40px 0 rgb(0 0 0 / 10%);
+}
+
+.ds-c-banner--simple {
+  background-color: var(--hm-blue-soft);
+  flex-direction: column;
+  gap: var(--spacer-3);
+  justify-content: center;
+  padding: 80px 0;
+}
+
+/* Image (Feature only) */
+
+.ds-c-banner__image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  overflow: clip;
+}
+
+.ds-c-banner__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content (Feature only) */
+
+.ds-c-banner__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacer-5);
+  flex: 1 0 0;
+  min-width: 0;
+  height: 100%;
+  padding: var(--spacer-4) 64px;
+}
+
+/* Copy group */
+
+.ds-c-banner__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+  color: var(--hm-ink-strong);
+  word-break: break-word;
+  width: 100%;
+}
+
+.ds-c-banner--simple .ds-c-banner__copy {
+  align-items: center;
+  text-align: center;
+  width: 800px;
+}
+
+/* Heading */
+
+.ds-c-banner__heading {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl); /* 3rem / 48px */
+  line-height: var(--mgov-line-height-xl); /* calc(1em + 2px) → 50px @48px */
+  letter-spacing: -1.92px;
+}
+
+/* Body */
+
+.ds-c-banner__body {
+  font-family: var(--font-family-body); /* Rubik */
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xl); /* 1.5rem / 24px */
+  line-height: var(--mgov-line-height-xsm); /* calc(1em + 12px) → 36px @24px */
+  letter-spacing: -0.6px;
+}
+
+/* Button */
+
+.ds-c-banner__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  border-radius: 40px;
+  overflow: clip;
+  padding: var(--spacer-2) var(--spacer-3);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */
+  letter-spacing: -0.5px;
+  color: var(--color-white);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* ============================================================
+   Breadcrumbs — Figma node 3155:25225
+   Row of underlined links separated by a forward chevron
+   ============================================================ */
+
+.ds-c-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-1); /* 8px */
+  padding: var(--spacer-1) 0;
+}
+
+.ds-c-breadcrumbs__link {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
+  letter-spacing: -0.4px;
+  color: var(--hm-ink-strong);
+  text-decoration: underline;
+  white-space: nowrap;
+  padding: var(--spacer-1) 0;
+}
+
+.ds-c-breadcrumbs__separator {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hm-ink-strong);
+}
