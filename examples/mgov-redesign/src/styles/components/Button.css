@@ -1,0 +1,72 @@
+/* ============================================================
+   Button — Medicare.gov redesign overrides
+   Figma node 1930:5728
+
+   Extends the CMS DS Button (.ds-c-button + variation/size modifiers).
+   Everything is scoped to the .ds-c-mgov-button class (added to the same
+   element as .ds-c-button by the wrapper), so the base DS Button is
+   untouched elsewhere.
+
+   Token overrides sit on .ds-c-mgov-button (custom properties, consumed by
+   the .ds-c-button rules on the same element). Real-property overrides use
+   .ds-c-mgov-button.ds-c-button[...] to outrank the DS rules they replace.
+
+   Variant mapping (DS prop → Figma):
+     (default)          → Secondary (outline green)
+     variation="solid"  → Primary (filled green — DS solid is already green)
+     variation="ghost"  → Ghost (dark-teal underline)
+     disabled           → Disabled (gray fill, 50% black text)
+   Size mapping:
+     size="big"   → Large (20px text, 16/24 padding)
+     size="small" → Small (16px text, 12/20 padding)
+   ============================================================ */
+
+.ds-c-mgov-button {
+  /* Shape: fully-rounded pill for every variant/size (3px → pill) */
+  --button__border-radius: var(--radius-pill);
+
+  /* Secondary (outline) = default .ds-c-button: white fill, green border/text */
+  --button__background-color: var(--color-white);
+  --button__background-color--hover: var(--color-primary-dark);
+  --button__border-color: var(--color-primary);
+  --button__border-color--hover: var(--color-primary-dark);
+  --button__border-color--active: var(--color-primary-light);
+  --button__color: var(--color-primary);
+  --button__color--hover: var(--color-white);
+  --button__color--active: var(--color-primary-light);
+
+  /* Disabled — gray fill, 50% black text (covers outline + solid) */
+  --button__background-color--disabled: var(--color-gray-lighter);
+  --button__border-color--disabled: var(--color-gray-lighter);
+  --button__color--disabled: rgb(0 0 0 / 50%);
+  --button-solid__color--disabled: rgb(0 0 0 / 50%);
+
+  /* Ghost — dark-teal text, no background */
+  --button-ghost__color: var(--hm-ink-strong);
+  --button-ghost__color--hover: var(--hm-ink-strong);
+  --button-ghost__color--active: var(--hm-ink-strong);
+}
+
+/* Typography — font-family and line-height are hardcoded in _Button.scss
+   (var(--font-family-body) / line-height: 1.3), so override with selectors.
+   --mgov-line-height-lg = calc(1em + 4px) resolves to 20px @16px and 24px @20px. */
+.ds-c-mgov-button.ds-c-button {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--mgov-line-height-lg);
+  letter-spacing: -0.4px;
+}
+
+/* Large — DS .ds-c-button--big sets font-size 24px; Figma wants 20px.
+   (Padding 16/24 already matches the DS --big spacing.) */
+.ds-c-mgov-button.ds-c-button--big {
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  letter-spacing: -0.5px;
+}
+
+/* Small — DS .ds-c-button--small sets 14px + 4/8 padding; Figma wants 16px + 12/20. */
+.ds-c-mgov-button.ds-c-button--small {
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  letter-spacing: -0.4px;
+  padding: 12px 20px; /* no 12px / 20px spacer tokens exist */
+}
