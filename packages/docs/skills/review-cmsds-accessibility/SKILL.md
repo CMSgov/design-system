@@ -17,7 +17,7 @@ If you are reviewing a CMS Design System pattern (for example, Forms or the 404 
 
 `references/pattern-guide.md`
 
-If you are reviewing a page layout, refer to:
+If you are reviewing the CMS Design System Article Page layout, refer to:
 
 `references/layout-guide.md`
 
