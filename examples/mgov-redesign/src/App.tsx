@@ -3,6 +3,7 @@ import { InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
 import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
+import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
 import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
@@ -23,23 +24,31 @@ function VariantGroup({ label, children }: { label: string; children: ReactNode 
 function App() {
   return (
     <>
-      <VariantGroup label="feature-card--small">
-        <FeatureCard
-          variant="small"
-          title={APP_LIBRARY_TITLE}
-          body={APP_LIBRARY_BODY}
-          ctaLabel="How to report fraud"
-        />
-      </VariantGroup>
+      <section className="ds-l-container">
+        <div className="ds-l-row">
+          <div className="ds-l-col--12 ds-l-md-col--6">
+            <VariantGroup label="feature-card--small">
+              <FeatureCard
+                variant="small"
+                title={APP_LIBRARY_TITLE}
+                body={APP_LIBRARY_BODY}
+                ctaLabel="How to report fraud"
+              />
+            </VariantGroup>
+          </div>
 
-      <VariantGroup label="feature-card--large">
-        <FeatureCard
-          variant="large"
-          title="Already know the type of coverage you want?"
-          body="We'll ask you about your needs and priorities, and then show you plans that might be a good fit."
-          ctaLabel="Guide me to a plan"
-        />
-      </VariantGroup>
+          <div className="ds-l-col--12 ds-l-md-col--6">
+            <VariantGroup label="feature-card--large">
+              <FeatureCard
+                variant="large"
+                title="Already know the type of coverage you want?"
+                body="We'll ask you about your needs and priorities, and then show you plans that might be a good fit."
+                ctaLabel="Guide me to a plan"
+              />
+            </VariantGroup>
+          </div>
+        </div>
+      </section>
 
       <VariantGroup label="tile--small">
         <Tile size="small" label="New to Medicare" icon={<StarIcon />} />
@@ -129,6 +138,45 @@ function App() {
           hint="This is where you put helpful hint text."
           errorMessage="This is an example error message."
           defaultValue="Filled"
+        />
+      </VariantGroup>
+
+      <VariantGroup label="dropdown (default)">
+        <Dropdown
+          name="dd-default"
+          label="Dosage"
+          defaultValue=""
+          options={[
+            { label: 'Hint', value: '' },
+            { label: '5mg tablet', value: '5' },
+            { label: '10mg tablet', value: '10' },
+          ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="dropdown (filled + hint)">
+        <Dropdown
+          name="dd-hint"
+          label="Dosage"
+          hint="This is where you put helpful hint text."
+          defaultValue="10"
+          options={[
+            { label: '5mg tablet', value: '5' },
+            { label: '10mg tablet', value: '10' },
+          ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="dropdown (error)">
+        <Dropdown
+          name="dd-error"
+          label="Dosage"
+          errorMessage="This is an example error message."
+          defaultValue="10"
+          options={[
+            { label: '5mg tablet', value: '5' },
+            { label: '10mg tablet', value: '10' },
+          ]}
         />
       </VariantGroup>
 

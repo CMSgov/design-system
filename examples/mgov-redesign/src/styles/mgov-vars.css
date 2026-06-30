@@ -17,8 +17,9 @@
   --hm-ink-strong: #0a352f;
   --hm-ink-muted: #5a6b67;
   --hm-rule: #dde6e3;
-  --hm-green: var(--color-primary) /* Or just use --color-primary */ --hm-green-strong: var(--color-primary-darkest)
-    /* Or use --color-primary-darkest */ --hm-green-vivid: #1ca085;
+  --hm-green: var(--color-primary); /* Or just use --color-primary */
+  --hm-green-strong: var(--color-primary-darkest); /* Or use --color-primary-darkest */
+  --hm-green-vivid: #1ca085;
   --hm-green-tint: #e8f4f0;
   --hm-blue: #2a6fb8;
   --hm-blue-strong: #0e3e6e;

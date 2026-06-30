@@ -14,14 +14,15 @@
   flex-direction: column;
   align-items: flex-start;
   overflow: clip;
+  width: 100%;
 }
 
 .ds-c-feature-card--small {
-  width: 400px;
+  max-width: 400px;
 }
 
 .ds-c-feature-card--large {
-  width: 628px;
+  max-width: 628px;
 }
 
 /* Image */
