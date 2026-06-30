@@ -14,13 +14,13 @@ If `dist/docs` is not present (CMS Design System versions earlier than `v18.0.0`
 
 Before deriving the documentation path from the component name, check whether the component appears in one of the exception lists below. If it does, use the mapped path instead.
 
+If local `dist/docs` is unavailable (CMS Design System versions earlier than `v18.0.0`), replace the local base path below with:
+
+`https://design.cms.gov/`
+
 ### Healthcare-specific documentation paths
 
-Use the following relative documentation paths under:
-
-Local base path: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
-
-Remote base path: `https://design.cms.gov/`
+Append the following relative documentation paths to the local base path: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
 
 - `Footer` → `components/footer/healthcare-footer/llms.txt`
 - `HealthcaregovAccordionItem` → `components/accordion/llms.txt`
@@ -32,11 +32,7 @@ Remote base path: `https://design.cms.gov/`
 
 ### Medicare-specific documentation paths
 
-Use the following relative documentation paths under:
-
-Local base path: `node_modules/@cmsgov/ds-medicare-gov/dist/docs/`
-
-Remote base path: `https://design.cms.gov/`
+Append the following relative documentation paths to the local base path: `node_modules/@cmsgov/ds-medicare-gov/dist/docs/`
 
 - `MedicaregovHelpDrawer` → `components/drawer/llms.txt`
 - `MedicaregovLogo` → `components/logos/medicare-logo/llms.txt`
