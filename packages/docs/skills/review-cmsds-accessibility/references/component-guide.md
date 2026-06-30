@@ -26,9 +26,9 @@ Before deriving the documentation path from the component name, check whether th
 
 Use the following relative documentation paths under:
 
-Local: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
+Local base path: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
 
-Remote: https://design.cms.gov/
+Remote base path: https://design.cms.gov/
 
 - `Footer` → `components/footer/healthcare-footer/llms.txt`
 - `HealthcaregovAccordionItem` → `components/accordion/llms.txt`
@@ -42,9 +42,9 @@ Remote: https://design.cms.gov/
 
 Use the following relative documentation paths under:
 
-Local: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
+Local base path: `node_modules/@cmsgov/ds-healthcare-gov/dist/docs/`
 
-Remote: https://design.cms.gov/
+Remote base path: https://design.cms.gov/
 
 - `MedicaregovHelpDrawer` → `components/drawer/llms.txt`
 - `MedicaregovLogo` → `components/logos/medicare-logo/llms.txt`
