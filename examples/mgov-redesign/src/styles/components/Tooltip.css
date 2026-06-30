@@ -1,0 +1,76 @@
+/* ============================================================
+   Tooltip — Medicare.gov redesign overrides
+   Figma node 1658:7993
+
+   Extends the CMS DS Tooltip. The DS `className` prop lands on the trigger,
+   not the popup — and the popup renders inline inside `.ds-c-tooltip__container`
+   (no portal). So the wrapper component wraps the DS Tooltip in a
+   `.ds-c-mgov-tooltip` <span>, and the popup is scoped as a descendant of it:
+
+     .ds-c-mgov-tooltip                 (wrapper span)
+       .ds-c-tooltip__container
+         .ds-c-tooltip__trigger         (trigger)
+         .ds-c-tooltip                  (floating popup card — border + radius)
+           .ds-c-tooltip__arrow
+           .ds-c-tooltip__content       (padding, shadow, text)
+
+   Content typography uses the .ds-c-mgov-tooltip__title / __body classes the
+   caller applies to the `title` content.
+   ============================================================ */
+
+/* Token overrides cascade to the popup border + arrow (which consume them). */
+.ds-c-mgov-tooltip {
+  --tooltip__border-color: rgb(0 0 0 / 30%);
+  --tooltip__color: #262626;
+}
+
+/* Trigger — the DS renders a <button> by default; style it to read as inline
+   link text: reset the button chrome, inherit the surrounding font, and add a
+   link color + underline. */
+.ds-c-mgov-tooltip .ds-c-tooltip__trigger {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Popup card — full border + 12px radius + Figma drop shadow. */
+.ds-c-mgov-tooltip .ds-c-tooltip {
+  border-radius: 12px;
+  box-shadow: 0 10px 10px 0 rgb(0 0 0 / 10%);
+}
+
+/* Inner content — 20px padding, 8px gap between title and body. */
+.ds-c-mgov-tooltip .ds-c-tooltip__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-1); /* 8px */
+  padding: 20px; /* no 20px spacer token */
+  border-radius: 12px;
+  box-shadow: none; /* shadow lives on the outer card above */
+  color: #262626;
+}
+
+/* Title — Inter Semi Bold 20px / 24px */
+.ds-c-mgov-tooltip__title {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* Body — Rubik 16px / 24px */
+.ds-c-mgov-tooltip__body {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: 24px;
+}

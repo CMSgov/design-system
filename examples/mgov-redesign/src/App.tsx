@@ -12,6 +12,7 @@ import { Pill } from './components/Pill';
 import { Search } from './components/Search';
 import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
+import { Tooltip } from './components/Tooltip';
 
 const APP_LIBRARY_TITLE = "Take control of your health data with Medicare's app library";
 const APP_LIBRARY_BODY =
@@ -146,6 +147,23 @@ function App() {
           errorMessage="This is an example error message."
           defaultValue="Filled"
         />
+      </VariantGroup>
+
+      <VariantGroup label="tooltip">
+        <Tooltip
+          title={
+            <>
+              <p className="ds-c-mgov-tooltip__title">Medicare Advantage Plan (Part C)</p>
+              <p className="ds-c-mgov-tooltip__body">
+                A Medicare-approved plan from a private company that offers an alternative to
+                Original Medicare (Part A &amp; Part B) for your health and drug coverage. Most
+                plans include prescription drug coverage.
+              </p>
+            </>
+          }
+        >
+          Medicare Advantage Plan (Part C)
+        </Tooltip>
       </VariantGroup>
 
       <VariantGroup label="pill (with close / without)">
