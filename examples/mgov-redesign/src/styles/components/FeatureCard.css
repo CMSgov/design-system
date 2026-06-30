@@ -1,6 +1,6 @@
 /* ============================================================
    Feature Card — Figma node 2080:12514
-   Variants: Small (400px), Medium (628px), Large (628px)
+   Variants: Small (400px), Large (628px)
    ============================================================ */
 
 .ds-c-feature-card {
@@ -20,10 +20,6 @@
   width: 400px;
 }
 
-.ds-c-feature-card--medium {
-  width: 628px;
-}
-
 .ds-c-feature-card--large {
   width: 628px;
 }
@@ -40,10 +36,6 @@
 
 .ds-c-feature-card--small .ds-c-feature-card__image {
   height: 250px;
-}
-
-.ds-c-feature-card--medium .ds-c-feature-card__image {
-  height: 320px;
 }
 
 .ds-c-feature-card--large .ds-c-feature-card__image {
@@ -70,7 +62,6 @@
   padding: var(--spacer-3) var(--spacer-4);
 }
 
-.ds-c-feature-card--medium .ds-c-feature-card__content,
 .ds-c-feature-card--large .ds-c-feature-card__content {
   gap: var(--spacer-4);
   padding: var(--spacer-5);
@@ -92,7 +83,6 @@
   letter-spacing: -0.5px;
 }
 
-.ds-c-feature-card--medium .ds-c-feature-card__title,
 .ds-c-feature-card--large .ds-c-feature-card__title {
   font-size: var(--font-size-2xl); /* 2.25rem / 36px */
   line-height: 38px;
@@ -114,7 +104,6 @@
   line-height: 21px;
 }
 
-.ds-c-feature-card--medium .ds-c-feature-card__body,
 .ds-c-feature-card--large .ds-c-feature-card__body {
   font-family: var(--font-family-heading); /* Inter Regular */
   font-weight: var(--font-weight-normal);
@@ -140,32 +129,6 @@
   padding: var(--spacer-1) 0;
 }
 
-/* Button CTA (Medium + Large) */
-
-.ds-c-feature-card__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacer-2) var(--spacer-3);
-  border-radius: 40px;
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  line-height: var(--mgov-line-height-lg);
-  letter-spacing: -0.5px;
-  white-space: nowrap;
-  cursor: pointer;
-  overflow: clip;
-}
-
-.ds-c-feature-card--medium .ds-c-feature-card__button {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-}
-
-.ds-c-feature-card--large .ds-c-feature-card__button {
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  color: var(--color-white);
-}
+/* The Large CTA uses the shared <Button> component (variation="solid"); its
+   styling lives in styles/components/Button.css. No button styles are defined
+   here on purpose, so the Button stays independent of the FeatureCard. */

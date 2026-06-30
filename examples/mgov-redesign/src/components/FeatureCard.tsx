@@ -1,13 +1,14 @@
 import { Card } from '@cmsgov/design-system';
+import { Button } from './Button';
 import '../styles/components/FeatureCard.css';
 
-export type FeatureCardVariant = 'small' | 'medium' | 'large';
+export type FeatureCardVariant = 'small' | 'large';
 
 interface FeatureCardProps {
   variant: FeatureCardVariant;
   title: string;
   body: string;
-  /** CTA text. Rendered as an underlined link on `small`, a pill button on `medium`/`large`. */
+  /** CTA text. Rendered as an underlined link on `small`, a shared Button on `medium`/`large`. */
   ctaLabel: string;
   /** Image source. Falls back to a placeholder when omitted. */
   imageSrc?: string;
@@ -41,7 +42,11 @@ export function FeatureCard({
             <span aria-hidden="true">→</span>
           </a>
         ) : (
-          <button className="ds-c-feature-card__button">{ctaLabel}</button>
+          // Large CTA uses the shared Button (filled green) — no FeatureCard-specific
+          // button styling, so the Button stays independent of the FeatureCard.
+          <Button variation="solid" size="big">
+            {ctaLabel}
+          </Button>
         )}
       </div>
     </Card>
