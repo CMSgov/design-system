@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
 import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
+import { Dialog } from './components/Dialog';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
 import { Search } from './components/Search';
@@ -23,6 +25,8 @@ function VariantGroup({ label, children }: { label: string; children: ReactNode 
 }
 
 function App() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <>
       <section className="ds-l-container">
@@ -140,6 +144,33 @@ function App() {
           errorMessage="This is an example error message."
           defaultValue="Filled"
         />
+      </VariantGroup>
+
+      <VariantGroup label="dialog (modal)">
+        <Button variation="solid" size="big" onClick={() => setDialogOpen(true)}>
+          Open dialog
+        </Button>
+        <Dialog
+          isOpen={dialogOpen}
+          heading="A lower-cost option may be available."
+          onExit={() => setDialogOpen(false)}
+          actions={
+            <>
+              <Button size="big" onClick={() => setDialogOpen(false)}>
+                Continue with brand
+              </Button>
+              <Button variation="solid" size="big" onClick={() => setDialogOpen(false)}>
+                Add generic
+              </Button>
+            </>
+          }
+        >
+          <p>
+            <strong>Abilify</strong> comes in a generic version called <strong>aripiprazole</strong>{' '}
+            that may cost less. Would you like to add <strong>aripiprazole</strong> to your drug
+            list instead?
+          </p>
+        </Dialog>
       </VariantGroup>
 
       <VariantGroup label="search — basic (no button, no autocomplete)">

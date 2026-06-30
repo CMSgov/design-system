@@ -1,8 +1,10 @@
 import { Autocomplete, TextField as DsTextField } from '@cmsgov/design-system';
 import type { AutocompleteItem } from '@cmsgov/design-system';
-import type { FormEvent } from 'react';
+import type { ComponentProps } from 'react';
 import { Button } from './Button';
 import '../styles/components/Search.css';
+
+type FormSubmitEvent = Parameters<NonNullable<ComponentProps<'form'>['onSubmit']>>[0];
 
 interface SearchProps {
   /** Accessible name for the field. Shown above the field when `showLabel`, otherwise screen-reader only. */
@@ -46,7 +48,7 @@ export function Search({
   items,
   onSubmit,
 }: SearchProps) {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormSubmitEvent) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     onSubmit?.(String(data.get(name) ?? ''));

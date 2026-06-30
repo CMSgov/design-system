@@ -1,0 +1,76 @@
+/* ============================================================
+   Dialog (Modal dialog) — Medicare.gov redesign overrides
+   Figma node 1658:8014
+
+   Extends the CMS DS Dialog:
+     .ds-c-mgov-dialog                 (the <dialog> overlay; gets className)
+       .ds-c-dialog__window            (the card)
+         .ds-c-dialog__header          (heading + close button)
+           .ds-c-dialog__heading       (<h2>)
+           .ds-c-dialog__close         (icon-only CloseButton)
+         .ds-c-dialog__body
+           {children}
+           .ds-c-dialog__actions       (button group)
+
+   Scoped to .ds-c-mgov-dialog so the base DS Dialog is untouched. The action
+   buttons use the shared <Button> component (styled in Button.css).
+   ============================================================ */
+
+/* Backdrop — dark-teal scrim (Figma) instead of the DS translucent black.
+   Set on the ::backdrop directly (not via --dialog-overlay__background-color),
+   since ::backdrop doesn't reliably inherit custom properties from the dialog.
+   The `+ .backdrop` sibling covers the DS fallback backdrop element. */
+.ds-c-mgov-dialog::backdrop,
+.ds-c-mgov-dialog + .backdrop {
+  background-color: #0a352f73;
+}
+
+/* Card */
+.ds-c-mgov-dialog .ds-c-dialog__window {
+  max-width: 600px;
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 24px;
+  box-shadow: 0 20px 20px 0 rgb(0 0 0 / 8%);
+  color: var(--color-black);
+  padding: var(--spacer-3) var(--spacer-4) var(--spacer-4); /* 24px / 32px / 32px */
+}
+
+/* Header — Figma stacks the close button ABOVE the heading (its own top-right
+   row). The DOM order is heading then close, so column-reverse renders the
+   close on top; the heading keeps the <h2> + aria-labelledby wiring. */
+.ds-c-mgov-dialog .ds-c-dialog__header {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  gap: var(--spacer-2); /* 16px between close and heading */
+  padding-block-end: var(--spacer-2); /* 16px between heading and body */
+}
+
+.ds-c-mgov-dialog .ds-c-dialog__close {
+  align-self: flex-end; /* close stays at top-right */
+}
+
+/* Heading — Inter Semi Bold 36px / 38px (H4) */
+.ds-c-mgov-dialog .ds-c-dialog__heading {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl); /* 2.25rem / 36px */
+  line-height: 38px;
+  letter-spacing: -1.44px;
+  color: var(--color-black);
+}
+
+/* Body — Rubik 16px / 24px */
+.ds-c-mgov-dialog .ds-c-dialog__body {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+/* Actions — button group, 12px gap, 32px above the body */
+.ds-c-mgov-dialog .ds-c-dialog__actions {
+  display: flex;
+  gap: 12px; /* no 12px spacer token */
+  margin-block-start: var(--spacer-4); /* 24px → 32px */
+}

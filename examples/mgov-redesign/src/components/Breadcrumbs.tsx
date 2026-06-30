@@ -11,7 +11,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav className="ds-c-breadcrumbs" aria-label="Breadcrumb">
       {items.map((item, i) => (
-        <Fragment key={item.href}>
+        <Fragment key={`${item.label}-${i}`}>
           {i > 0 && (
             <span className="ds-c-breadcrumbs__separator" aria-hidden="true">
               ›
