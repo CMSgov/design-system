@@ -1,0 +1,146 @@
+/* ============================================================
+   Dropdown — Medicare.gov redesign overrides
+   Figma node 1656:7928
+
+   Extends the CMS DS Dropdown, which renders (all inside the root wrapper):
+     .ds-c-mgov-dropdown                 (wrapper; .ds-c-dropdown)
+       .ds-c-dropdown__label / __label-text
+       .ds-c-hint                        (hint)
+       .ds-c-inline-error                (error)
+       .ds-c-dropdown__button.ds-c-field (the trigger — styled like a field)
+         .ds-c-dropdown__caret
+       .ds-c-dropdown__menu-container    (the popup)
+         .ds-c-dropdown__menu            (ul)
+           .ds-c-dropdown__menu-item (--highlighted / --selected)
+
+   Scoped to .ds-c-mgov-dropdown so the base DS Dropdown is untouched. The
+   trigger reuses the same --text-input__* token approach as the TextField
+   (it's a .ds-c-field too); the menu is restyled from the DS's "attached"
+   menu into Figma's detached rounded card.
+
+   ⚠ NOT possible via CSS overrides (see the component file):
+     - The caret icon GLYPH. The DS renders its own caret SVG (a solid
+       triangle) inside .ds-c-dropdown__caret; Figma uses the thin "Medicare
+       caret small" chevron. CSS can recolor/resize/rotate it but cannot swap
+       the SVG path — that needs a DS component change / fork.
+   ============================================================ */
+
+.ds-c-mgov-dropdown {
+  /* Lay out with MARGINS, not flex. The DS menu is position:absolute with no
+     explicit top, so it relies on its static position landing directly below
+     the trigger in normal flow. A flex wrapper re-anchors that static position
+     to the top of the wrapper (per the flex spec for abs-positioned children),
+     making the menu overlap the field — so keep the wrapper in block layout. */
+  max-width: none;
+  width: 320px;
+
+  /* --- Trigger field tokens (consumed by .ds-c-dropdown__button.ds-c-field) --- */
+  --text-input__border-radius: var(--radius-large); /* 3px → 8px */
+  --text-input__border-width: 1px; /* 2px → 1px */
+  --text-input__border-color: rgb(0 0 0 / 30%); /* gray → 30% black */
+  --text-input__color: var(--color-black);
+  --text-input__border-width--error: 2px; /* 3px → 2px */
+  --text-input__border-color--error: #c30000; /* #b20000 → #c30000 */
+
+  /* --- Label tokens (.ds-c-dropdown__label uses .ds-c-label) --- */
+  --label__font-size: var(--font-size-md); /* 14px → 16px */
+  --label__letter-spacing: -0.4px; /* 0.5px → -0.4px */
+  --label__text-transform: none; /* uppercase → none */
+
+  /* --- Hint + error tokens --- */
+  --hint__color: var(--color-black);
+  --inline-error__color: #c30000;
+}
+
+/* 8px vertical rhythm via margins (label has none; each following element gets
+   an 8px top margin → 8px between consecutive label / hint / error / trigger). */
+.ds-c-mgov-dropdown .ds-c-dropdown__label {
+  margin-block: 0;
+}
+
+.ds-c-mgov-dropdown .ds-c-hint,
+.ds-c-mgov-dropdown .ds-c-inline-error,
+.ds-c-mgov-dropdown .ds-c-dropdown__button {
+  margin-block: var(--spacer-1) 0;
+}
+
+/* Label color isn't tokenized in _Label.scss → set it directly. */
+.ds-c-mgov-dropdown .ds-c-dropdown__label {
+  color: var(--color-black);
+}
+
+/* Trigger typography: Inter Regular 20px (Figma value/placeholder text). */
+.ds-c-mgov-dropdown .ds-c-dropdown__button.ds-c-field {
+  width: 100%;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: 28px;
+  letter-spacing: -0.4px;
+}
+
+/* Active/open + focus: 2px green border, no DS gold ring, no layout shift
+   (inset shadow supplies the extra pixel). */
+.ds-c-mgov-dropdown .ds-c-dropdown__button.ds-c-field:focus,
+.ds-c-mgov-dropdown.ds-c-dropdown--open .ds-c-dropdown__button.ds-c-field {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  outline: 2px solid transparent;
+  outline-offset: 0;
+}
+
+/* The DS makes the trigger's bottom border transparent when open so it merges
+   with the attached menu. Our menu is a detached card, so keep the green border. */
+.ds-c-mgov-dropdown .ds-c-dropdown__button[aria-expanded='true'] {
+  border-block-end-color: var(--color-primary);
+}
+
+/* Hint + error message: Rubik 16px / 21px (Body small). */
+.ds-c-mgov-dropdown .ds-c-hint,
+.ds-c-mgov-dropdown .ds-c-inline-error {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: 21px;
+}
+
+/* --- Menu: detached rounded card (Figma) instead of the DS attached menu --- */
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-container {
+  border: 1px solid rgb(0 0 0 / 20%); /* re-add the top border the DS removes */
+  border-radius: 16px; /* all four corners (DS rounds only the bottom) */
+  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 10%);
+  clip-path: none; /* DS clips the top to hide its attached-shadow seam */
+  margin-block-start: var(--spacer-1); /* 8px gap below the trigger */
+  padding: var(--spacer-1) 12px; /* 8px / 12px — no 12px spacer token exists */
+  overflow: clip;
+}
+
+/* Rows: 16px/8px padding, divider, Rubik 16px/24px. */
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item {
+  padding: var(--spacer-2) var(--spacer-1); /* 16px 8px */
+  border-block-end: 1px solid rgb(0 0 0 / 20%);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item:last-child {
+  border-block-end: none;
+}
+
+/* Highlighted + selected: soft-surface tint, black text, normal weight.
+   (DS selected = solid dark-green fill + white text + bold + a checkmark.) */
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item--highlighted,
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item--selected {
+  background-color: var(--hm-surface-soft); /* #eaf3f0 */
+  color: var(--color-black);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Figma shows no checkmark on the selected row (selection is conveyed by the
+   tint). Hiding the DS indicator matches the design but removes that extra,
+   non-color affordance — flag for a11y review. */
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item-selected-indicator {
+  display: none;
+}
