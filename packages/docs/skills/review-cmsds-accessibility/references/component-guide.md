@@ -1,6 +1,6 @@
 # Review Accessibility for Design System Components
 
-The CMS Design System provides accessibility guidance for each component, including guidance on keyboard navigation, screen reader behavior, and accessibility testing.
+Each CMS Design System component includes documentation on accessibility and how to test the component for accessibility.
 
 ## Locate the component guidance
 
