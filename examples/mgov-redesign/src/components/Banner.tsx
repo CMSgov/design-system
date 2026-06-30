@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { Button } from './Button';
 import '../styles/components/Banner.css';
 
 export type BannerVariant = 'feature' | 'simple';
@@ -37,7 +38,9 @@ export function Banner({
             <p className="ds-c-banner__heading">{heading}</p>
             <p className="ds-c-banner__body">{body}</p>
           </div>
-          <button className="ds-c-banner__button">{buttonLabel}</button>
+          <Button variation="solid" size="big">
+            {buttonLabel}
+          </Button>
         </div>
       </div>
     );
@@ -49,7 +52,9 @@ export function Banner({
         <p className="ds-c-banner__heading">{heading}</p>
         <p className="ds-c-banner__body">{body}</p>
       </div>
-      <button className="ds-c-banner__button">{buttonLabel}</button>
+      <Button variation="solid" size="big">
+        {buttonLabel}
+      </Button>
     </div>
   );
 }

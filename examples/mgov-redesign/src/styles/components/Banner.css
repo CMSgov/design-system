@@ -95,22 +95,5 @@
   letter-spacing: -0.6px;
 }
 
-/* Button */
-
-.ds-c-banner__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-  border-radius: 40px;
-  overflow: clip;
-  padding: var(--spacer-2) var(--spacer-3);
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */
-  letter-spacing: -0.5px;
-  color: var(--color-white);
-  white-space: nowrap;
-  cursor: pointer;
-}
+/* The CTA now uses the shared <Button variation="solid" size="big"> component;
+   its styling lives in styles/components/Button.css. */
