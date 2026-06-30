@@ -1,0 +1,85 @@
+/* ============================================================
+   TextField — Medicare.gov redesign overrides
+   Figma node 1656:7918
+
+   Extends the CMS DS TextField, which renders:
+     .ds-c-mgov-text-field (wrapper)
+       └ .ds-c-label
+       └ .ds-c-hint
+       └ .ds-c-inline-error   (error state)
+       └ .ds-c-field          (the <input>)
+
+   Everything is scoped to the .ds-c-mgov-text-field wrapper so the base
+   DS TextField is untouched. Most rules re-point DS theme tokens (custom
+   properties inherit, so values set on the wrapper reach the descendants
+   that consume them in _TextField.scss / _Label.scss / _Hint.scss). A few
+   target properties that aren't tokenized and need real selectors.
+   ============================================================ */
+
+.ds-c-mgov-text-field {
+  /* 8px gap between label / input / hint / error (Figma) replaces the
+     margin-based spacing baked into the DS field/label/hint rules. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-1);
+  width: 320px;
+
+  /* --- Input tokens consumed by .ds-c-field --- */
+  --text-input__border-radius: var(--radius-large); /* 3px → 8px */
+  --text-input__border-width: 1px; /* 2px → 1px */
+  --text-input__border-color: rgb(0 0 0 / 30%); /* gray → 30% black */
+  --text-input__color: var(--color-black); /* gray-darker → black */
+  --text-input__border-width--error: 2px; /* 3px → 2px */
+  --text-input__border-color--error: #c30000; /* #b20000 → #c30000 */
+
+  /* --- Label tokens consumed by .ds-c-label --- */
+  --label__font-size: var(--font-size-md); /* 14px → 16px */
+  --label__letter-spacing: -0.4px; /* 0.5px → -0.4px */
+  --label__text-transform: none; /* uppercase → none */
+
+  /* --- Hint + inline-error tokens --- */
+  --hint__color: var(--color-black);
+  --inline-error__color: #c30000;
+}
+
+/* Drop the DS margin spacing (the wrapper's flex gap handles it) and let
+   children fill the fixed 320px wrapper. */
+.ds-c-mgov-text-field .ds-c-label,
+.ds-c-mgov-text-field .ds-c-hint,
+.ds-c-mgov-text-field .ds-c-field {
+  margin-block: 0;
+  max-width: none;
+}
+
+/* Label color isn't tokenized in _Label.scss → set it directly. */
+.ds-c-mgov-text-field .ds-c-label {
+  color: var(--color-black);
+}
+
+/* Input typography: Inter Regular 20px / 28px — not tokenized in _TextField.scss. */
+.ds-c-mgov-text-field .ds-c-field {
+  width: 100%;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: 28px;
+  letter-spacing: -0.4px;
+}
+
+/* Active/focus: 2px green border instead of the DS gold focus ring (Figma).
+   Uses an inset shadow for the extra pixel so focusing doesn't shift layout. */
+.ds-c-mgov-text-field .ds-c-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  outline: 2px solid transparent; /* keeps a visible indicator under WHCM */
+  outline-offset: 0;
+}
+
+/* Hint + error message: Rubik 16px / 21px (Body small). */
+.ds-c-mgov-text-field .ds-c-hint,
+.ds-c-mgov-text-field .ds-c-inline-error {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: 21px;
+}
