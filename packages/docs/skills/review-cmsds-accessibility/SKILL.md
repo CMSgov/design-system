@@ -21,14 +21,14 @@ If you are reviewing a page layout, refer to:
 
 `references/layout-guide.md`
 
-If you are reviewing typography guidance or typography usage, refer to:
+If you are reviewing foundational design guidance, such as typography, spacing, or layout grid, refer to:
 
-`references/typography-guide.md`
+`references/foundation-guide.md`
 
 For general CMS Design System accessibility guidance—including supported WCAG conformance, accessibility principles, and links to Section 508 resources—refer to:
 
 `node_modules/@cmsgov/design-system/dist/docs/guidelines/accessibility/llms.txt`
 
-If local documentation is unavailable, use:
+If `dist/docs` is not present (CMS Design System versions earlier than `v18.0.0`), use remote documentation:
 
 https://design.cms.gov/guidelines/accessibility/llms.txt
