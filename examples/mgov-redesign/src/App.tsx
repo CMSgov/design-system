@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
 import { InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
+import { Alert } from './components/Alert';
 import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
@@ -144,6 +145,58 @@ function App() {
           errorMessage="This is an example error message."
           defaultValue="Filled"
         />
+      </VariantGroup>
+
+      <VariantGroup label="alert (informational)">
+        <Alert heading="Confidentiality and medical data sharing">
+          <p>
+            In accordance with HIPAA, this application does not store any data. All data is stored
+            locally on your computer and is not transmitted to any external servers.
+          </p>
+        </Alert>
+      </VariantGroup>
+
+      <VariantGroup label="alert (with buttons)">
+        <Alert heading="Log in to your account to continue">
+          <p>
+            It looks like you may be logged out of your account. Log in to your account to continue.
+          </p>
+          <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
+            <Button variation="solid" size="small">
+              Login
+            </Button>
+            <Button size="small">Cancel</Button>
+          </div>
+        </Alert>
+      </VariantGroup>
+
+      <VariantGroup label="alert (success)">
+        <Alert variation="success" heading="Your application has been submitted">
+          <p>
+            You successfully submitted your application. You will receive a confirmation email
+            within 24 hours.
+          </p>
+        </Alert>
+      </VariantGroup>
+
+      <VariantGroup label="alert (warning)">
+        <Alert variation="warn" heading="Copy your API key to a safe location">
+          <p>Once you leave this page, you will not be able to access it.</p>
+        </Alert>
+      </VariantGroup>
+
+      <VariantGroup label="alert (error)">
+        <Alert variation="error" heading="There was a problem saving your information">
+          <p>Please review the information you entered and try again.</p>
+        </Alert>
+      </VariantGroup>
+
+      <VariantGroup label="alert (lightweight)">
+        <Alert weight="lightweight" heading="You may be able to save money on your monthly premium">
+          <p>
+            Based on your income, you may qualify for a plan that costs less than your current plan.
+          </p>
+        </Alert>
       </VariantGroup>
 
       <VariantGroup label="dialog (modal)">
