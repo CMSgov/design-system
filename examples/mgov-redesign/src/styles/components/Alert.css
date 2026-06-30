@@ -47,7 +47,7 @@
 
 .ds-c-mgov-alert.ds-c-alert--error {
   background-color: #fbe5e6;
-  border-color: #c30000;
+  border-color: var(--mgov-color-error);
 }
 
 /* Body — color only; body text typography comes from .ds-c-mgov-type--body
@@ -67,6 +67,6 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 16px */
   line-height: 20px;
-  letter-spacing: -0.4px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
   color: var(--color-black);
 }

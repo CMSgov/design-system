@@ -54,19 +54,19 @@
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   line-height: var(--mgov-line-height-lg);
-  letter-spacing: -0.4px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
 }
 
 /* Large — DS .ds-c-button--big sets font-size 24px; Figma wants 20px.
    (Padding 16/24 already matches the DS --big spacing.) */
 .ds-c-mgov-button.ds-c-button--big {
   font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  letter-spacing: -0.5px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
 }
 
 /* Small — DS .ds-c-button--small sets 14px + 4/8 padding; Figma wants 16px + 12/20. */
 .ds-c-mgov-button.ds-c-button--small {
   font-size: var(--font-size-md); /* 1rem / 16px */
-  letter-spacing: -0.4px;
-  padding: 12px 20px; /* no 12px / 20px spacer tokens exist */
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
+  padding: var(--mgov-spacer-1-5) 20px; /* 12px / 20px — no 20px spacer token */
 }

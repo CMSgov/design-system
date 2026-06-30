@@ -58,6 +58,29 @@
   --mgov-line-height-xsm: calc(1em + 12px);
   --mgov-line-height-lede: calc(1em + 10px); /* 32px @ 22px (Lede) */
   --mgov-line-height-button: calc(1em + 5px); /* 20px @ 15px (Button) */
+  /* Component line heights paired with fixed-px font sizes */
+  --mgov-line-height-input: 28px; /* 20px field text */
+  --mgov-line-height-hint: 21px; /* 16px hint / error / small body */
+
+  /* Borders */
+  --mgov-border-subtle: rgb(0 0 0 / 20%); /* hairline on cards / menus */
+  --mgov-border-input: rgb(0 0 0 / 30%); /* field + tooltip border */
+
+  /* Status */
+  --mgov-color-error: #c30000; /* field error border + inline-error text */
+
+  /* Radius (DS provides --radius-large 8px and --radius-pill) */
+  --mgov-radius-md: 12px; /* tooltip card */
+  --mgov-radius-lg: 16px; /* tile / detached menu cards */
+  --mgov-radius-xl: 24px; /* banner / feature card / dialog */
+
+  /* Spacing — the 12px step the DS t-shirt scale skips
+     (between --spacer-1 8px and --spacer-2 16px) */
+  --mgov-spacer-1-5: 12px;
+
+  /* Elevation */
+  --mgov-shadow-color: rgb(0 0 0 / 10%);
+  --mgov-shadow-menu: 0 10px 20px 0 var(--mgov-shadow-color); /* dropdown / search menus */
 
   /* Button token overrides were moved out of this global :root block into
      styles/components/Button.css, scoped to .ds-c-mgov-button, so they no

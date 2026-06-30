@@ -37,19 +37,19 @@
   /* --- Trigger field tokens (consumed by .ds-c-dropdown__button.ds-c-field) --- */
   --text-input__border-radius: var(--radius-large); /* 3px → 8px */
   --text-input__border-width: 1px; /* 2px → 1px */
-  --text-input__border-color: rgb(0 0 0 / 30%); /* gray → 30% black */
+  --text-input__border-color: var(--mgov-border-input); /* gray → 30% black */
   --text-input__color: var(--color-black);
   --text-input__border-width--error: 2px; /* 3px → 2px */
-  --text-input__border-color--error: #c30000; /* #b20000 → #c30000 */
+  --text-input__border-color--error: var(--mgov-color-error); /* #b20000 → var(--mgov-color-error) */
 
   /* --- Label tokens (.ds-c-dropdown__label uses .ds-c-label) --- */
   --label__font-size: var(--font-size-md); /* 14px → 16px */
-  --label__letter-spacing: -0.4px; /* 0.5px → -0.4px */
+  --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none; /* uppercase → none */
 
   /* --- Hint + error tokens --- */
   --hint__color: var(--color-black);
-  --inline-error__color: #c30000;
+  --inline-error__color: var(--mgov-color-error);
 }
 
 /* 8px vertical rhythm via margins (label has none; each following element gets
@@ -75,8 +75,8 @@
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
-  line-height: 28px;
-  letter-spacing: -0.4px;
+  line-height: var(--mgov-line-height-input); /* 28px */
+  letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
 }
 
 /* Active/open + focus: 2px green border, no DS gold ring, no layout shift
@@ -101,27 +101,27 @@
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-md); /* 16px */
-  line-height: 21px;
+  line-height: var(--mgov-line-height-hint); /* 21px */
 }
 
 /* --- Menu: detached rounded card (Figma) instead of the DS attached menu --- */
 .ds-c-mgov-dropdown .ds-c-dropdown__menu-container {
-  border: 1px solid rgb(0 0 0 / 20%); /* re-add the top border the DS removes */
-  border-radius: 16px; /* all four corners (DS rounds only the bottom) */
-  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 10%);
+  border: 1px solid var(--mgov-border-subtle); /* re-add the top border the DS removes */
+  border-radius: var(--mgov-radius-lg); /* all four corners (DS rounds only the bottom) */
+  box-shadow: var(--mgov-shadow-menu);
   clip-path: none; /* DS clips the top to hide its attached-shadow seam */
   margin-block-start: var(--spacer-1); /* 8px gap below the trigger */
-  padding: var(--spacer-1) 12px; /* 8px / 12px — no 12px spacer token exists */
+  padding: var(--spacer-1) var(--mgov-spacer-1-5); /* 8px / 12px */
   overflow: clip;
 }
 
 /* Rows: 16px/8px padding, divider, Rubik 16px/24px. */
 .ds-c-mgov-dropdown .ds-c-dropdown__menu-item {
   padding: var(--spacer-2) var(--spacer-1); /* 16px 8px */
-  border-block-end: 1px solid rgb(0 0 0 / 20%);
+  border-block-end: 1px solid var(--mgov-border-subtle);
   font-family: var(--font-family-body);
   font-size: var(--font-size-md); /* 16px */
-  line-height: 24px;
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */
   color: var(--color-black);
 }
 

@@ -4,7 +4,7 @@
    ============================================================ */
 
 .ds-c-banner {
-  border-radius: 24px;
+  border-radius: var(--mgov-radius-xl);
   display: flex;
   align-items: center;
   width: 1280px;
@@ -14,7 +14,7 @@
   background-color: var(--color-white);
   height: 515px;
   overflow: clip;
-  box-shadow: 0 4px 40px 0 rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 40px 0 var(--mgov-shadow-color);
 }
 
 .ds-c-banner--simple {
@@ -85,8 +85,5 @@
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-xl); /* 1.5rem / 24px */
   line-height: var(--mgov-line-height-xsm); /* calc(1em + 12px) → 36px @24px */
-  letter-spacing: -0.6px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
 }
-
-/* The CTA now uses the shared <Button variation="solid" size="big"> component;
-   its styling lives in styles/components/Button.css. */

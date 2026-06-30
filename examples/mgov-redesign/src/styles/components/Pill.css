@@ -24,8 +24,8 @@
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 1rem / 16px */
-  line-height: 24px;
-  letter-spacing: -0.4px;
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
   white-space: nowrap;
   padding: var(--spacer-1) var(--spacer-2); /* 8px 16px */
   margin-inline-end: 0; /* DS adds a right margin; let callers handle spacing */

@@ -27,19 +27,19 @@
   /* --- Input tokens consumed by .ds-c-field --- */
   --text-input__border-radius: var(--radius-large); /* 3px → 8px */
   --text-input__border-width: 1px; /* 2px → 1px */
-  --text-input__border-color: rgb(0 0 0 / 30%); /* gray → 30% black */
+  --text-input__border-color: var(--mgov-border-input); /* gray → 30% black */
   --text-input__color: var(--color-black); /* gray-darker → black */
   --text-input__border-width--error: 2px; /* 3px → 2px */
-  --text-input__border-color--error: #c30000; /* #b20000 → #c30000 */
+  --text-input__border-color--error: var(--mgov-color-error); /* #b20000 → #c30000 */
 
   /* --- Label tokens consumed by .ds-c-label --- */
   --label__font-size: var(--font-size-md); /* 14px → 16px */
-  --label__letter-spacing: -0.4px; /* 0.5px → -0.4px */
+  --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none; /* uppercase → none */
 
   /* --- Hint + inline-error tokens --- */
   --hint__color: var(--color-black);
-  --inline-error__color: #c30000;
+  --inline-error__color: var(--mgov-color-error);
 }
 
 /* Drop the DS margin spacing (the wrapper's flex gap handles it) and let
@@ -62,8 +62,8 @@
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
-  line-height: 28px;
-  letter-spacing: -0.4px;
+  line-height: var(--mgov-line-height-input); /* 28px */
+  letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
 }
 
 /* Active/focus: 2px green border instead of the DS gold focus ring (Figma).
@@ -81,5 +81,5 @@
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-md); /* 16px */
-  line-height: 21px;
+  line-height: var(--mgov-line-height-hint); /* 21px */
 }

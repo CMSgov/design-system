@@ -15,7 +15,7 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 1rem / 16px */
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
-  letter-spacing: -0.4px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
   color: var(--hm-ink-strong);
   text-decoration: underline;
   white-space: nowrap;

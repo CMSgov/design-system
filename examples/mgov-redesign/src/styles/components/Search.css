@@ -21,24 +21,24 @@
   /* --- Field tokens (consumed by .ds-c-field) --- */
   --text-input__border-radius: var(--radius-pill);
   --text-input__border-width: 1px;
-  --text-input__border-color: rgb(0 0 0 / 30%);
+  --text-input__border-color: var(--mgov-border-input);
   --text-input__color: var(--color-black);
   --text-input__border-width--error: 2px;
-  --text-input__border-color--error: #c30000;
+  --text-input__border-color--error: var(--mgov-color-error);
 
   /* --- Label + hint/error tokens --- */
   --label__font-size: var(--font-size-md);
-  --label__letter-spacing: -0.4px;
+  --label__letter-spacing: var(--mgov-font-letter-spacing-lg);
   --label__text-transform: none;
   --hint__color: var(--color-black);
-  --inline-error__color: #c30000;
+  --inline-error__color: var(--mgov-color-error);
 }
 
 /* Row: field grows; the optional button sits beside it and matches its height. */
 .ds-c-mgov-search__row {
   display: flex;
   align-items: stretch;
-  gap: 12px; /* no 12px spacer token */
+  gap: var(--mgov-spacer-1-5); /* 12px */
 }
 
 .ds-c-mgov-search__field {
@@ -61,8 +61,8 @@
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
-  line-height: 28px;
-  letter-spacing: -0.4px;
+  line-height: var(--mgov-line-height-input); /* 28px */
+  letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
   padding-inline: 3.5rem var(--spacer-3); /* 56px (icon) / 24px */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230a352f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -88,7 +88,7 @@
   font-family: var(--font-family-body);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-md);
-  line-height: 21px;
+  line-height: var(--mgov-line-height-hint); /* 21px */
 }
 
 /* Trailing button: stretch to match the field height. */
@@ -101,21 +101,21 @@
    .ds-c-autocomplete__menu-container @extends .ds-c-dropdown__menu-container in
    the DS, so it ships the attached-menu styling we override here. --- */
 .ds-c-mgov-search .ds-c-autocomplete__menu-container {
-  border: 1px solid rgb(0 0 0 / 20%); /* re-add the top border the DS removes */
-  border-radius: 16px; /* all four corners */
-  box-shadow: 0 10px 20px 0 rgb(0 0 0 / 10%);
+  border: 1px solid var(--mgov-border-subtle); /* re-add the top border the DS removes */
+  border-radius: var(--mgov-radius-lg); /* all four corners */
+  box-shadow: var(--mgov-shadow-menu);
   clip-path: none; /* DS clips the top to hide its attached-shadow seam */
   margin-block-start: var(--spacer-1); /* 8px gap below the field */
-  padding: var(--spacer-1) 12px;
+  padding: var(--spacer-1) var(--mgov-spacer-1-5);
   overflow: clip;
 }
 
 .ds-c-mgov-search .ds-c-autocomplete__menu-item {
   padding: var(--spacer-2) var(--spacer-1); /* 16px 8px */
-  border-block-end: 1px solid rgb(0 0 0 / 20%);
+  border-block-end: 1px solid var(--mgov-border-subtle);
   font-family: var(--font-family-body);
   font-size: var(--font-size-md); /* 16px */
-  line-height: 24px;
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */
   color: var(--color-black);
 }
 

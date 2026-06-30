@@ -20,7 +20,7 @@
 
 /* Token overrides cascade to the popup border + arrow (which consume them). */
 .ds-c-mgov-tooltip {
-  --tooltip__border-color: rgb(0 0 0 / 30%);
+  --tooltip__border-color: var(--mgov-border-input);
   --tooltip__color: #262626;
 }
 
@@ -41,8 +41,8 @@
 
 /* Popup card — full border + 12px radius + Figma drop shadow. */
 .ds-c-mgov-tooltip .ds-c-tooltip {
-  border-radius: 12px;
-  box-shadow: 0 10px 10px 0 rgb(0 0 0 / 10%);
+  border-radius: var(--mgov-radius-md);
+  box-shadow: 0 10px 10px 0 var(--mgov-shadow-color);
 }
 
 /* Inner content — 20px padding, 8px gap between title and body. */
@@ -51,7 +51,7 @@
   flex-direction: column;
   gap: var(--spacer-1); /* 8px */
   padding: 20px; /* no 20px spacer token */
-  border-radius: 12px;
+  border-radius: var(--mgov-radius-md);
   box-shadow: none; /* shadow lives on the outer card above */
   color: #262626;
 }

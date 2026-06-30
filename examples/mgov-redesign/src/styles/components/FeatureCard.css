@@ -5,10 +5,10 @@
 
 .ds-c-feature-card {
   background-color: var(--color-white);
-  border: 1px solid rgb(0 0 0 / 20%);
+  border: 1px solid var(--mgov-border-subtle);
   /* !important + box-shadow reset override the .ds-c-card base
      (border-radius: 6px !important; box-shadow) when used on <Card> */
-  border-radius: 24px !important;
+  border-radius: var(--mgov-radius-xl) !important;
   box-shadow: none;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@
   font-family: var(--font-family-body); /* Rubik */
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-md); /* 1rem / 16px */
-  line-height: 21px;
+  line-height: var(--mgov-line-height-hint); /* 21px */
 }
 
 .ds-c-feature-card--large .ds-c-feature-card__body {
@@ -97,7 +97,7 @@
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 1.25rem / 20px */
   line-height: var(--mgov-line-height-sm);
-  letter-spacing: -0.4px;
+  letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
 }
 
 /* Text link CTA (Small only) */
@@ -110,7 +110,7 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 1rem / 16px */
   line-height: var(--mgov-line-height-lg);
-  letter-spacing: -0.4px;
+  letter-spacing: var(--mgov-font-letter-spacing-lg);
   color: var(--color-primary);
   text-decoration: none; /* underline only the label, not the arrow (below) */
   white-space: nowrap;

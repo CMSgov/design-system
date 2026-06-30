@@ -28,8 +28,8 @@
 /* Card */
 .ds-c-mgov-dialog .ds-c-dialog__window {
   max-width: 600px;
-  border: 1px solid rgb(0 0 0 / 20%);
-  border-radius: 24px;
+  border: 1px solid var(--mgov-border-subtle);
+  border-radius: var(--mgov-radius-xl);
   box-shadow: 0 20px 20px 0 rgb(0 0 0 / 8%);
   color: var(--color-black);
   padding: var(--spacer-3) var(--spacer-4) var(--spacer-4); /* 24px / 32px / 32px */
@@ -68,6 +68,6 @@
 /* Actions — button group, 12px gap, 32px above the body */
 .ds-c-mgov-dialog .ds-c-dialog__actions {
   display: flex;
-  gap: 12px; /* no 12px spacer token */
+  gap: var(--mgov-spacer-1-5); /* 12px */
   margin-block-start: var(--spacer-4); /* 24px → 32px */
 }
