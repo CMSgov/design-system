@@ -49,31 +49,7 @@
   --mgov-line-height-sm: calc(1em + 8px);
   --mgov-line-height-xsm: calc(1em + 12px);
 
-  /* --- :root variable overrides for _Button.scss tokens --- */
-  /* Shape — Large = 40px, Small pill handled via selector override below */
-  --button__border-radius: 40px;
-
-  /* Secondary (outline) button — default .ds-c-button */
-  --button__background-color: var(--color-white);
-  --button__background-color--hover: var(--color-primary-dark);
-  --button__border-color: var(--color-primary);
-  --button__border-color--hover: var(--color-primary-dark);
-  --button__border-color--active: var(--color-primary-light);
-  --button__color: var(--color-primary);
-  --button__color--hover: var(--color-white);
-  --button__color--active: var(--color-primary-light);
-
-  /* Disabled — filled gray with 50% black text */
-  --button__background-color--disabled: var(--color-gray-lighter);
-  --button__border-color--disabled: var(--color-gray-lighter);
-  --button__color--disabled: rgb(0 0 0 / 50%);
-  --button-solid__color--disabled: rgb(0 0 0 / 50%);
-
-  /* Ghost — dark teal text, no background */
-  --button-ghost__color: var(--hm-ink-strong);
-  --button-ghost__color--hover: var(--hm-ink-strong);
-  --button-ghost__color--active: var(--hm-ink-strong);
-  --button-ghost-alt__color: var(--hm-ink-strong);
-  --button-ghost-alt__color--hover: var(--hm-ink-strong);
-  --button-ghost-alt__color--active: var(--hm-ink-strong);
+  /* Button token overrides were moved out of this global :root block into
+     styles/components/Button.css, scoped to .ds-c-mgov-button, so they no
+     longer affect every DS Button on the page. */
 }

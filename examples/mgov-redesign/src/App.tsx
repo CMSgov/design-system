@@ -2,7 +2,9 @@ import type { ReactNode } from 'react';
 import { InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
 import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
+import { Button } from './components/Button';
 import { FeatureCard } from './components/FeatureCard';
+import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
 
 const APP_LIBRARY_TITLE = "Take control of your health data with Medicare's app library";
@@ -24,15 +26,6 @@ function App() {
       <VariantGroup label="feature-card--small">
         <FeatureCard
           variant="small"
-          title={APP_LIBRARY_TITLE}
-          body={APP_LIBRARY_BODY}
-          ctaLabel="How to report fraud"
-        />
-      </VariantGroup>
-
-      <VariantGroup label="feature-card--medium">
-        <FeatureCard
-          variant="medium"
           title={APP_LIBRARY_TITLE}
           body={APP_LIBRARY_BODY}
           ctaLabel="How to report fraud"
@@ -110,6 +103,63 @@ function App() {
             { label: 'Sign up', href: '#' },
           ]}
         />
+      </VariantGroup>
+
+      <VariantGroup label="text-field (default)">
+        <TextField name="tf-default" label="Enter some text" />
+      </VariantGroup>
+
+      <VariantGroup label="text-field (filled)">
+        <TextField name="tf-filled" label="Enter some text" defaultValue="Filled" />
+      </VariantGroup>
+
+      <VariantGroup label="text-field (hint)">
+        <TextField
+          name="tf-hint"
+          label="Enter some text"
+          hint="This is where you put helpful hint text."
+          defaultValue="Filled"
+        />
+      </VariantGroup>
+
+      <VariantGroup label="text-field (error)">
+        <TextField
+          name="tf-error"
+          label="Enter some text"
+          hint="This is where you put helpful hint text."
+          errorMessage="This is an example error message."
+          defaultValue="Filled"
+        />
+      </VariantGroup>
+
+      <VariantGroup label="button — primary / secondary / ghost (large)">
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <Button variation="solid" size="big">
+            Primary
+          </Button>
+          <Button size="big">Secondary</Button>
+          <Button variation="ghost" size="big">
+            Ghost
+          </Button>
+          <Button variation="solid" size="big" disabled>
+            Disabled
+          </Button>
+        </div>
+      </VariantGroup>
+
+      <VariantGroup label="button — primary / secondary / ghost (small)">
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <Button variation="solid" size="small">
+            Primary
+          </Button>
+          <Button size="small">Secondary</Button>
+          <Button variation="ghost" size="small">
+            Ghost
+          </Button>
+          <Button variation="solid" size="small" disabled>
+            Disabled
+          </Button>
+        </div>
       </VariantGroup>
     </>
   );
