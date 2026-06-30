@@ -1,6 +1,6 @@
 ---
 name: review-cmsds-accessibility
-description: TODO Add description with specific trigger phrases.
+description: Reviews CMS Design System (CMSDS) accessibility guidance and accessibility testing documentation for components, patterns, layouts, and foundations. Use when users ask for "CMSDS accessibility guidance", "review CMSDS accessibility", "CMSDS accessibility testing", or "fix CMSDS accessibility issues".
 ---
 
 # Review CMSDS Accessibility
