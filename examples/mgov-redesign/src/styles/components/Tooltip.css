@@ -21,7 +21,7 @@
 /* Token overrides cascade to the popup border + arrow (which consume them). */
 .ds-c-mgov-tooltip {
   --tooltip__border-color: var(--mgov-border-input);
-  --tooltip__color: #262626;
+  --tooltip__color: var(--mgov-color-tooltip-ink);
 }
 
 /* Trigger — the DS renders a <button> by default; style it to read as inline
@@ -53,7 +53,7 @@
   padding: 20px; /* no 20px spacer token */
   border-radius: var(--mgov-radius-md);
   box-shadow: none; /* shadow lives on the outer card above */
-  color: #262626;
+  color: var(--mgov-color-tooltip-ink);
 }
 
 /* Title + body just reset the <p> margin; typography comes from

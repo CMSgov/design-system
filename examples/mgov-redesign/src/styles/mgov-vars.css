@@ -26,6 +26,19 @@
   --hm-blue-soft: #eaf3fa;
   --hm-blue-tint: #dceaf5;
 
+  /* Status / feedback colors (Alert variations).
+     Informational reuses --hm-blue-*; the error strong color is
+     --mgov-color-error (#c30000), shared with field error states. */
+  --hm-success-soft: #f5faf5;
+  --hm-success-strong: #008c00;
+  --hm-warn-soft: #fff9e8;
+  --hm-warn-strong: #c97532;
+  --hm-error-soft: #fbe5e6;
+
+  /* Scrim + misc */
+  --mgov-color-backdrop: #0a352f73; /* --hm-ink-strong (#0a352f) @ ~45% alpha */
+  --mgov-color-tooltip-ink: #262626; /* tooltip text + border base */
+
   /* Typography Tokens */
 
   /* Font Family */

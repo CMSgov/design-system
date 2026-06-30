@@ -36,17 +36,17 @@
 }
 
 .ds-c-mgov-alert.ds-c-alert--success {
-  background-color: #f5faf5;
-  border-color: #008c00;
+  background-color: var(--hm-success-soft);
+  border-color: var(--hm-success-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--warn {
-  background-color: #fff9e8;
-  border-color: #c97532;
+  background-color: var(--hm-warn-soft);
+  border-color: var(--hm-warn-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--error {
-  background-color: #fbe5e6;
+  background-color: var(--hm-error-soft);
   border-color: var(--mgov-color-error);
 }
 

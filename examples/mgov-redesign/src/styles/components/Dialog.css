@@ -22,7 +22,7 @@
    The `+ .backdrop` sibling covers the DS fallback backdrop element. */
 .ds-c-mgov-dialog::backdrop,
 .ds-c-mgov-dialog + .backdrop {
-  background-color: #0a352f73;
+  background-color: var(--mgov-color-backdrop);
 }
 
 /* Card */
