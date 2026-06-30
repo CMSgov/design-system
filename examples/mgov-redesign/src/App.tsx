@@ -58,6 +58,45 @@ function App() {
         </div>
       </section>
 
+      <VariantGroup label="typography (type scale)">
+        <div className="ds-u-display--flex ds-u-flex-direction--column">
+          <span className="ds-c-mgov-type--display-xl ds-u-margin-bottom--1">
+            Display/XL — Medicare, made simple.
+          </span>
+          <span className="ds-c-mgov-type--display-lg ds-u-margin-bottom--1">
+            Display/Lg — Medicare, made simple.
+          </span>
+          <span className="ds-c-mgov-type--section-title ds-u-margin-bottom--1">
+            Section Title — What can we help you with?
+          </span>
+          <span className="ds-c-mgov-type--featured-title ds-u-margin-bottom--1">
+            Featured Title — What&apos;s new for 2026
+          </span>
+          <span className="ds-c-mgov-type--pair-title ds-u-margin-bottom--1">
+            Pair Title — Find care near you
+          </span>
+          <span className="ds-c-mgov-type--action-title ds-u-margin-bottom--1">
+            Action Title — Find your account
+          </span>
+          <span className="ds-c-mgov-type--notice-title ds-u-margin-bottom--1">
+            Notice Title — Open Enrollment ends Dec 7
+          </span>
+          <span className="ds-c-mgov-type--lede ds-u-margin-bottom--1">
+            Lede — Find a plan, sign in, or get answers.
+          </span>
+          <span className="ds-c-mgov-type--body ds-u-margin-bottom--1">
+            Body — Medicare is health insurance for people 65 or older.
+          </span>
+          <span className="ds-c-mgov-type--body-small ds-u-margin-bottom--1">
+            Body Small — Sign in to view your plan and claims.
+          </span>
+          <span className="ds-c-mgov-type--text-link ds-u-margin-bottom--1">
+            Text Link — Browse plans in your area →
+          </span>
+          <span className="ds-c-mgov-type--button">Button — Find a Plan</span>
+        </div>
+      </VariantGroup>
+
       <VariantGroup label="tile--small">
         <Tile size="small" label="New to Medicare" icon={<StarIcon />} />
       </VariantGroup>
@@ -153,8 +192,10 @@ function App() {
         <Tooltip
           title={
             <>
-              <p className="ds-c-mgov-tooltip__title">Medicare Advantage Plan (Part C)</p>
-              <p className="ds-c-mgov-tooltip__body">
+              <p className="ds-c-mgov-tooltip__title ds-c-mgov-type--action-title">
+                Medicare Advantage Plan (Part C)
+              </p>
+              <p className="ds-c-mgov-tooltip__body ds-c-mgov-type--body">
                 A Medicare-approved plan from a private company that offers an alternative to
                 Original Medicare (Part A &amp; Part B) for your health and drug coverage. Most
                 plans include prescription drug coverage.
@@ -168,14 +209,20 @@ function App() {
 
       <VariantGroup label="pill (with close / without)">
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-          <Pill onRemove={() => {}}>Dental coverage</Pill>
+          <Pill
+            onRemove={() => {
+              console.log('onRemove fired!');
+            }}
+          >
+            Dental coverage
+          </Pill>
           <Pill>Dental coverage</Pill>
         </div>
       </VariantGroup>
 
       <VariantGroup label="alert (informational)">
         <Alert heading="Confidentiality and medical data sharing">
-          <p>
+          <p className="ds-c-mgov-type--body">
             In accordance with HIPAA, this application does not store any data. All data is stored
             locally on your computer and is not transmitted to any external servers.
           </p>
@@ -184,7 +231,7 @@ function App() {
 
       <VariantGroup label="alert (with buttons)">
         <Alert heading="Log in to your account to continue">
-          <p>
+          <p className="ds-c-mgov-type--body">
             It looks like you may be logged out of your account. Log in to your account to continue.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 12 }}>
@@ -198,7 +245,7 @@ function App() {
 
       <VariantGroup label="alert (success)">
         <Alert variation="success" heading="Your application has been submitted">
-          <p>
+          <p className="ds-c-mgov-type--body">
             You successfully submitted your application. You will receive a confirmation email
             within 24 hours.
           </p>
@@ -207,19 +254,23 @@ function App() {
 
       <VariantGroup label="alert (warning)">
         <Alert variation="warn" heading="Copy your API key to a safe location">
-          <p>Once you leave this page, you will not be able to access it.</p>
+          <p className="ds-c-mgov-type--body">
+            Once you leave this page, you will not be able to access it.
+          </p>
         </Alert>
       </VariantGroup>
 
       <VariantGroup label="alert (error)">
         <Alert variation="error" heading="There was a problem saving your information">
-          <p>Please review the information you entered and try again.</p>
+          <p className="ds-c-mgov-type--body">
+            Please review the information you entered and try again.
+          </p>
         </Alert>
       </VariantGroup>
 
       <VariantGroup label="alert (lightweight)">
         <Alert weight="lightweight" heading="You may be able to save money on your monthly premium">
-          <p>
+          <p className="ds-c-mgov-type--body">
             Based on your income, you may qualify for a plan that costs less than your current plan.
           </p>
         </Alert>
@@ -244,7 +295,7 @@ function App() {
             </>
           }
         >
-          <p>
+          <p className="ds-c-mgov-type--body">
             <strong>Abilify</strong> comes in a generic version called <strong>aripiprazole</strong>{' '}
             that may cost less. Would you like to add <strong>aripiprazole</strong> to your drug
             list instead?

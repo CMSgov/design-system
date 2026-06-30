@@ -35,7 +35,7 @@ export function Banner({
         </div>
         <div className="ds-c-banner__content">
           <div className="ds-c-banner__copy">
-            <p className="ds-c-banner__heading">{heading}</p>
+            <p className="ds-c-banner__heading ds-c-mgov-type--section-title">{heading}</p>
             <p className="ds-c-banner__body">{body}</p>
           </div>
           <Button variation="solid" size="big">

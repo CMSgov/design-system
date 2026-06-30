@@ -34,22 +34,30 @@
     sans-serif;
   --font-family-button: var(--font-family-heading);
   --font-family-link: var(--font-family-heading);
+  /* Font weight — medium (500) isn't in the theme (only 400 / 600) */
+  --font-weight-medium: 500;
   /* Font size */
   --font-size-5xl: 4.5rem; /* Overwritten to 4.5rem, original is 3.125rem */
   --font-size-4xl: 3.5rem; /* Overwritten to 3.5rem, original is 2.75rem */
   --font-size-3xl: 3rem; /* Overwritten to 3rem, original is 2.5rem */
   --font-size-2xl: 2.25rem; /* Overwritten to 2.25rem, original is 2rem */
-  /* Letter Spacing */
-  --mgov-font-letter-spacing-xl: -4%;
-  --mgov-font-letter-spacing-lg: -2.5%;
-  --mgov-font-letter-spacing-sm: 0%;
+  /* In-between sizes the t-shirt scale doesn't cover */
+  --mgov-font-size-22: 1.375rem; /* 22px — Lede */
+  --mgov-font-size-18: 1.125rem; /* 18px — Notice Title */
+  --mgov-font-size-15: 0.9375rem; /* 15px — Body Small, Button */
+  /* Letter Spacing — em (NOT %) so they work in CSS letter-spacing; -4% = -0.04em */
+  --mgov-font-letter-spacing-xl: -0.04em;
+  --mgov-font-letter-spacing-lg: -0.025em;
+  --mgov-font-letter-spacing-sm: 0;
   /* Line Height */
-  --font-line-height-heading: calc(1em - 2px) /* Overwritten to .98, original is 1.2999999523162842 */
+  --font-line-height-heading: calc(1em - 2px); /* Overwritten to .98, original is 1.2999999523162842 */
   --mgov-line-height-xl: calc(1em + 2px);
   --mgov-line-height-lg: calc(1em + 4px);
   --mgov-line-height-md: calc(1em + 6px);
   --mgov-line-height-sm: calc(1em + 8px);
   --mgov-line-height-xsm: calc(1em + 12px);
+  --mgov-line-height-lede: calc(1em + 10px); /* 32px @ 22px (Lede) */
+  --mgov-line-height-button: calc(1em + 5px); /* 20px @ 15px (Button) */
 
   /* Button token overrides were moved out of this global :root block into
      styles/components/Button.css, scoped to .ds-c-mgov-button, so they no

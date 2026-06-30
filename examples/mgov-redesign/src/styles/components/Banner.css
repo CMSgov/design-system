@@ -75,15 +75,8 @@
   width: 800px;
 }
 
-/* Heading */
-
-.ds-c-banner__heading {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-3xl); /* 3rem / 48px */
-  line-height: var(--mgov-line-height-xl); /* calc(1em + 2px) → 50px @48px */
-  letter-spacing: -1.92px;
-}
+/* Heading typography comes from .ds-c-mgov-type--section-title (applied in
+   Banner.tsx); color is inherited from .ds-c-banner__copy. */
 
 /* Body */
 

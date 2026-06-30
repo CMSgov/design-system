@@ -18,7 +18,13 @@ export function Tile({ size, label, href = '#', icon }: TileProps) {
         <span className="ds-c-tile__icon-box" aria-hidden="true">
           {icon}
         </span>
-        <span className="ds-c-tile__label">{label}</span>
+        <span
+          className={`ds-c-tile__label ds-c-mgov-type--${
+            size === 'large' ? 'pair-title' : 'action-title'
+          }`}
+        >
+          {label}
+        </span>
       </span>
       <span className="ds-c-tile__arrow ds-u-color--primary-darkest" aria-hidden="true">
         →

@@ -68,26 +68,13 @@
   padding: var(--spacer-5);
 }
 
-/* Title */
+/* Title — typography comes from .ds-c-mgov-type--action-title (small) /
+   --featured-title (large), applied in FeatureCard.tsx. */
 
 .ds-c-feature-card__title {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
   color: var(--hm-ink-strong);
   word-break: break-word;
   width: 100%;
-}
-
-.ds-c-feature-card--small .ds-c-feature-card__title {
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  line-height: 24px;
-  letter-spacing: -0.5px;
-}
-
-.ds-c-feature-card--large .ds-c-feature-card__title {
-  font-size: var(--font-size-2xl); /* 2.25rem / 36px */
-  line-height: 38px;
-  letter-spacing: -1.44px;
 }
 
 /* Body */

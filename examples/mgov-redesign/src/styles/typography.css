@@ -1,0 +1,121 @@
+/* ============================================================
+   Typography — Medicare.gov redesign
+   Figma "Typography" frame (node 1658:8406)
+
+   One utility class per Figma text style, composed entirely from mgov-vars.css
+   / medicare-theme.css tokens. The token gaps originally flagged here were
+   added to mgov-vars.css, so every value below now resolves to a token:
+
+     - Letter spacing converted from % to em (--mgov-font-letter-spacing-*).
+     - --font-weight-medium: 500 (Text Link, Button).
+     - --mgov-font-size-22 / -18 / -15 (Lede, Notice Title, Body Small/Button).
+     - --mgov-line-height-lede (1em+10px) and --mgov-line-height-button (1em+5px).
+   ============================================================ */
+
+/* Display/XL — Inter · 600 · 72/70 · -4% */
+.ds-c-mgov-type--display-xl {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-5xl); /* 4.5rem / 72px */
+  line-height: var(--font-line-height-heading); /* calc(1em - 2px) → 70px */
+  letter-spacing: var(--mgov-font-letter-spacing-xl); /* -0.04em */
+}
+
+/* Display/Lg — Inter · 600 · 56/56 · -4% */
+.ds-c-mgov-type--display-lg {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-4xl); /* 3.5rem / 56px */
+  line-height: var(--font-line-height-reset); /* 1 → 56px */
+  letter-spacing: var(--mgov-font-letter-spacing-xl); /* -0.04em */
+}
+
+/* Section Title — Inter · 600 · 48/50 · -4% */
+.ds-c-mgov-type--section-title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl); /* 3rem / 48px */
+  line-height: var(--mgov-line-height-xl); /* calc(1em + 2px) → 50px */
+  letter-spacing: var(--mgov-font-letter-spacing-xl); /* -0.04em */
+}
+
+/* Featured Title — Inter · 600 · 36/38 · -4% */
+.ds-c-mgov-type--featured-title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl); /* 2.25rem / 36px */
+  line-height: var(--mgov-line-height-xl); /* calc(1em + 2px) → 38px */
+  letter-spacing: var(--mgov-font-letter-spacing-xl); /* -0.04em */
+}
+
+/* Pair Title — Inter · 600 · 24/28 · -2.5% */
+.ds-c-mgov-type--pair-title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl); /* 1.5rem / 24px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 28px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}
+
+/* Action Title — Inter · 600 · 20/24 · -2.5% */
+.ds-c-mgov-type--action-title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg); /* 1.25rem / 20px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}
+
+/* Notice Title — Inter · 600 · 18/22 · -2.5% */
+.ds-c-mgov-type--notice-title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--mgov-font-size-18); /* 1.125rem / 18px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 22px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}
+
+/* Lede — Rubik · 400 · 22/32 · -2.5% */
+.ds-c-mgov-type--lede {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--mgov-font-size-22); /* 1.375rem / 22px */
+  line-height: var(--mgov-line-height-lede); /* calc(1em + 10px) → 32px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}
+
+/* Body — Rubik · 400 · 16/24 · 0 */
+.ds-c-mgov-type--body {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+}
+
+/* Body Small — Rubik · 400 · 15/21 · 0 */
+.ds-c-mgov-type--body-small {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--mgov-font-size-15); /* 0.9375rem / 15px */
+  line-height: var(--mgov-line-height-md); /* calc(1em + 6px) → 21px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+}
+
+/* Text Link — Inter · 500 · 16/22 · -2.5% (underline applied at usage) */
+.ds-c-mgov-type--text-link {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-medium); /* 500 */
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: var(--mgov-line-height-md); /* calc(1em + 6px) → 22px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}
+
+/* Button — Inter · 500 · 15/20 · -2.5% */
+.ds-c-mgov-type--button {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-medium); /* 500 */
+  font-size: var(--mgov-font-size-15); /* 0.9375rem / 15px */
+  line-height: var(--mgov-line-height-button); /* calc(1em + 5px) → 20px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.025em */
+}

@@ -56,21 +56,9 @@
   color: #262626;
 }
 
-/* Title — Inter Semi Bold 20px / 24px */
-.ds-c-mgov-tooltip__title {
-  margin: 0;
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  line-height: 24px;
-  letter-spacing: -0.5px;
-}
-
-/* Body — Rubik 16px / 24px */
+/* Title + body just reset the <p> margin; typography comes from
+   .ds-c-mgov-type--action-title / --body, applied in the markup. */
+.ds-c-mgov-tooltip__title,
 .ds-c-mgov-tooltip__body {
   margin: 0;
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-md); /* 1rem / 16px */
-  line-height: 24px;
 }

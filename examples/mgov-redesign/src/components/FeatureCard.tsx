@@ -34,7 +34,13 @@ export function FeatureCard({
         {imageSrc && <img src={imageSrc} alt={imageAlt} />}
       </div>
       <div className="ds-c-feature-card__content">
-        <p className="ds-c-feature-card__title">{title}</p>
+        <p
+          className={`ds-c-feature-card__title ds-c-mgov-type--${
+            variant === 'large' ? 'featured-title' : 'action-title'
+          }`}
+        >
+          {title}
+        </p>
         <p className="ds-c-feature-card__body">{body}</p>
         {variant === 'small' ? (
           <a href="#" className="ds-c-feature-card__link">

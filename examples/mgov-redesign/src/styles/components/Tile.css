@@ -57,26 +57,14 @@
   height: 56px;
 }
 
-/* Label */
+/* Label — typography comes from .ds-c-mgov-type--action-title (small) /
+   --pair-title (large), applied in Tile.tsx. */
 
 .ds-c-tile__label {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-bold);
   color: var(--hm-ink-strong);
-  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px): 24px @20px, 28px @24px */
   word-break: break-word;
   flex: 1 0 0;
   min-width: 0;
-}
-
-.ds-c-tile--small .ds-c-tile__label {
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  letter-spacing: -0.5px;
-}
-
-.ds-c-tile--large .ds-c-tile__label {
-  font-size: var(--font-size-xl); /* 1.5rem / 24px */
-  letter-spacing: -0.6px;
 }
 
 /* Arrow icon */

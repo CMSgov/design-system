@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client';
 import '../../../packages/design-system/dist/css/index.css';
 import '../../../packages/ds-medicare-gov/dist/css/medicare-theme.css';
 import './styles/mgov-vars.css';
+import './styles/typography.css';
 import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(

@@ -50,11 +50,9 @@
   border-color: #c30000;
 }
 
-/* Body text — Rubik 16px / 24px (the heading below re-overrides its own font). */
+/* Body — color only; body text typography comes from .ds-c-mgov-type--body
+   applied to the content paragraphs in the markup. */
 .ds-c-mgov-alert .ds-c-alert__body {
-  font-family: var(--font-family-body);
-  font-size: var(--font-size-md); /* 16px */
-  line-height: 24px;
   color: var(--color-black);
 }
 

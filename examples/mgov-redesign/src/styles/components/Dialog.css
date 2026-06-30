@@ -59,12 +59,9 @@
   color: var(--color-black);
 }
 
-/* Body — Rubik 16px / 24px */
+/* Body — color only; body text typography comes from .ds-c-mgov-type--body
+   applied to the content paragraphs in the markup. */
 .ds-c-mgov-dialog .ds-c-dialog__body {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-md); /* 16px */
-  line-height: 24px;
   color: var(--color-black);
 }
 
