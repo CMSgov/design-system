@@ -8,6 +8,7 @@ import { Button } from './components/Button';
 import { Dialog } from './components/Dialog';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
+import { Pill } from './components/Pill';
 import { Search } from './components/Search';
 import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
@@ -145,6 +146,13 @@ function App() {
           errorMessage="This is an example error message."
           defaultValue="Filled"
         />
+      </VariantGroup>
+
+      <VariantGroup label="pill (with close / without)">
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <Pill onRemove={() => {}}>Dental coverage</Pill>
+          <Pill>Dental coverage</Pill>
+        </div>
       </VariantGroup>
 
       <VariantGroup label="alert (informational)">

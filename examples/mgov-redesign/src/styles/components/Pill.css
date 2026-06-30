@@ -1,0 +1,49 @@
+/* ============================================================
+   Pill — Medicare.gov redesign overrides
+   Figma node 3155:25120
+
+   Built on the CMS DS Badge (renders a <span class="ds-c-badge">).
+   Scoped to .ds-c-mgov-pill so the base DS Badge is untouched.
+
+   Two variants (both covered by the wrapper's `onRemove` prop):
+     • with a close (×) button
+     • without
+
+   ⚠ Not overridable via CSS: the close icon GLYPH is the DS CloseIcon; CSS
+   can recolor/size it but not swap it for the Figma "Close small" glyph.
+   ============================================================ */
+
+.ds-c-mgov-pill.ds-c-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacer-1); /* 8px */
+  background-color: var(--hm-blue-tint); /* #dceaf5 */
+  border: 1px solid var(--hm-blue-strong); /* #0e3e6e */
+  border-radius: var(--radius-pill);
+  color: var(--hm-blue-strong);
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md); /* 1rem / 16px */
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  padding: var(--spacer-1) var(--spacer-2); /* 8px 16px */
+  margin-inline-end: 0; /* DS adds a right margin; let callers handle spacing */
+}
+
+/* Remove (×) button — icon-only, inherits the pill's blue-strong color. */
+.ds-c-mgov-pill__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.ds-c-mgov-pill__remove .ds-c-icon {
+  width: 16px;
+  height: 16px;
+}
