@@ -2,9 +2,9 @@
    Typography — Medicare.gov redesign
    Figma "Typography" frame (node 1658:8406)
 
-   One utility class per Figma text style, composed entirely from mgov-vars.css
+   One utility class per Figma text style, composed entirely from shared-tokens.css
    / medicare-theme.css tokens. The token gaps originally flagged here were
-   added to mgov-vars.css, so every value below now resolves to a token:
+   added to shared-tokens.css, so every value below now resolves to a token:
 
      - Letter spacing converted from % to em (--mgov-font-letter-spacing-*).
      - --font-weight-medium: 500 (Text Link, Button).
