@@ -3,19 +3,19 @@
 ::after,
 ::backdrop {
   /* Color Tokens */
-  --hm-surface: #fdfdfc;
-  --hm-surface-alt: #f4f7f5;
-  --hm-surface-soft: #eaf3f0;
-  --hm-ink: #16221f;
-  --hm-ink-strong: #0a352f;
-  --hm-ink-muted: #5a6b67;
-  --hm-rule: #dde6e3;
-  --hm-green: var(--color-primary) /* Or just use --color-primary */ --hm-green-strong: var(--color-primary-darkest)
-    /* Or use --color-primary-darkest */ --hm-green-vivid: #1ca085;
-  --hm-green-tint: #e8f4f0;
-  --hm-blue: #2a6fb8;
-  --hm-blue-strong: #0e3e6e;
-  --hm-blue-soft: #eaf3fa;
+  --mgov-surface: #fdfdfc;
+  --mgov-surface-alt: #f4f7f5;
+  --mgov-surface-soft: #eaf3f0;
+  --mgov-ink: #16221f;
+  --mgov-ink-strong: #0a352f;
+  --mgov-ink-muted: #5a6b67;
+  --mgov-rule: #dde6e3;
+  --mgov-green: var(--color-primary) /* Or just use --color-primary */ --mgov-green-strong: var(--color-primary-darkest)
+    /* Or use --color-primary-darkest */ --mgov-green-vivid: #1ca085;
+  --mgov-green-tint: #e8f4f0;
+  --mgov-blue: #2a6fb8;
+  --mgov-blue-strong: #0e3e6e;
+  --mgov-blue-soft: #eaf3fa;
 
   /* Typography Tokens */
 
@@ -63,12 +63,12 @@
   --button-solid__color--disabled: rgb(0 0 0 / 50%);
 
   /* Ghost — dark teal text, no background */
-  --button-ghost__color: var(--hm-ink-strong);
-  --button-ghost__color--hover: var(--hm-ink-strong);
-  --button-ghost__color--active: var(--hm-ink-strong);
-  --button-ghost-alt__color: var(--hm-ink-strong);
-  --button-ghost-alt__color--hover: var(--hm-ink-strong);
-  --button-ghost-alt__color--active: var(--hm-ink-strong);
+  --button-ghost__color: var(--mgov-ink-strong);
+  --button-ghost__color--hover: var(--mgov-ink-strong);
+  --button-ghost__color--active: var(--mgov-ink-strong);
+  --button-ghost-alt__color: var(--mgov-ink-strong);
+  --button-ghost-alt__color--hover: var(--mgov-ink-strong);
+  --button-ghost-alt__color--active: var(--mgov-ink-strong);
 }
 
 /* ============================================================
@@ -154,7 +154,7 @@
 .ds-c-feature-card__title {
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   width: 100%;
 }
@@ -175,7 +175,7 @@
 /* Body */
 
 .ds-c-feature-card__body {
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   width: 100%;
 }
@@ -278,7 +278,7 @@
 /* Icon box */
 
 .ds-c-tile__icon-box {
-  background-color: var(--hm-green-tint);
+  background-color: var(--mgov-green-tint);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -307,7 +307,7 @@
 .ds-c-tile__label {
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px): 24px @20px, 28px @24px */
   word-break: break-word;
   flex: 1 0 0;
@@ -352,7 +352,7 @@
 }
 
 .ds-c-banner--simple {
-  background-color: var(--hm-blue-soft);
+  background-color: var(--mgov-blue-soft);
   flex-direction: column;
   gap: var(--spacer-3);
   justify-content: center;
@@ -398,7 +398,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacer-2);
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   width: 100%;
 }
@@ -467,7 +467,7 @@
   font-size: var(--font-size-md); /* 1rem / 16px */
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
   letter-spacing: -0.4px;
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   text-decoration: underline;
   white-space: nowrap;
   padding: var(--spacer-1) 0;
@@ -480,5 +480,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
 }
