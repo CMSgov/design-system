@@ -209,6 +209,27 @@ function App() {
         </Tooltip>
       </VariantGroup>
 
+      <VariantGroup label="tooltip (click dialog + close button)">
+        <Tooltip
+          dialog
+          showCloseButton
+          title={
+            <>
+              <p className="ds-c-mgov-tooltip__title ds-c-mgov-type--action-title">
+                Medicare Advantage Plan (Part C)
+              </p>
+              <p className="ds-c-mgov-tooltip__body ds-c-mgov-type--body">
+                A Medicare-approved plan from a private company that offers an alternative to
+                Original Medicare (Part A &amp; Part B) for your health and drug coverage. Most
+                plans include prescription drug coverage.
+              </p>
+            </>
+          }
+        >
+          Medicare Advantage Plan (Part C)
+        </Tooltip>
+      </VariantGroup>
+
       <VariantGroup label="pill (with close / without)">
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <Pill
