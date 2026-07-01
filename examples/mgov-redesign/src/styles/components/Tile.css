@@ -67,10 +67,20 @@
   min-width: 0;
 }
 
-/* Arrow icon */
+/* Arrow — the default `→` glyph, or a caller-supplied icon. Centered so a
+   custom icon (e.g. a DS icon SVG) sits in the middle of the 24px slot. */
 
 .ds-c-tile__arrow {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
+}
+
+.ds-c-tile__arrow svg,
+.ds-c-tile__arrow .ds-c-icon {
+  width: 100%;
+  height: 100%;
 }

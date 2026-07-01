@@ -9,9 +9,14 @@ interface TileProps {
   href?: string;
   /** Icon rendered in the leading icon box, e.g. a design-system icon component. */
   icon?: ReactNode;
+  /**
+   * Trailing arrow. Defaults to a right-facing `→` glyph; pass a node
+   * (e.g. a design-system icon) to use a custom icon instead.
+   */
+  arrow?: ReactNode;
 }
 
-export function Tile({ size, label, href = '#', icon }: TileProps) {
+export function Tile({ size, label, href = '#', icon, arrow = '→' }: TileProps) {
   return (
     <a href={href} className={`ds-c-tile ds-c-tile--${size} ds-u-text-decoration--none`}>
       <span className="ds-c-tile__title">
@@ -27,7 +32,7 @@ export function Tile({ size, label, href = '#', icon }: TileProps) {
         </span>
       </span>
       <span className="ds-c-tile__arrow ds-u-color--primary-darkest" aria-hidden="true">
-        →
+        {arrow}
       </span>
     </a>
   );
