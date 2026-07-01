@@ -51,9 +51,9 @@
 
 /* Heading — Inter Semi Bold 36px / 38px (H4) */
 .ds-c-mgov-dialog .ds-c-dialog__heading {
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl); /* 2.25rem / 36px */
+  font-size: var(--mgov-font-size-36); /* 2.25rem / 36px */
   line-height: 38px;
   letter-spacing: -1.44px;
   color: var(--color-black);

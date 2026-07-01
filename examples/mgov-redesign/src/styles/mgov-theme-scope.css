@@ -1,0 +1,26 @@
+/* ============================================================
+   mgov theme — SCOPED (bounded) option
+   Optional. Maps the Design System's own typography tokens to the redesign's
+   --mgov-* values (defined in shared-tokens.css), but only within a subtree:
+   add class="ds-theme--mgov" to any container (a page, a section, or even a
+   single component) and every DS component inside it adopts the redesign
+   fonts / heading sizes. Outside the wrapper, DS tokens are untouched.
+
+   Use this when you want stock DS components in a bounded area to match the
+   redesign WITHOUT going global. For a whole-page drop-in, either put the
+   class on <html>/<body> or import mgov-theme-global.css instead.
+
+   Requires shared-tokens.css (for the --mgov-* values). Import AT MOST ONE of
+   the theme files.
+   ============================================================ */
+
+.ds-theme--mgov {
+  --font-family-heading: var(--mgov-font-family-heading);
+  --font-family-button: var(--mgov-font-family-heading);
+  --font-family-link: var(--mgov-font-family-heading);
+  --font-size-5xl: var(--mgov-font-size-72);
+  --font-size-4xl: var(--mgov-font-size-56);
+  --font-size-3xl: var(--mgov-font-size-48);
+  --font-size-2xl: var(--mgov-font-size-36);
+  --font-line-height-heading: var(--mgov-line-height-display);
+}

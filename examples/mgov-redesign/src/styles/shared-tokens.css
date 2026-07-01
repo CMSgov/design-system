@@ -1,8 +1,19 @@
 /* ============================================================
    mgov-redesign shared tokens
-   Single source of truth for the redesign's CSS custom properties.
-   Imported once (in main.tsx); consumed by the component CSS files
-   via var(). Also overrides a handful of DS Button tokens.
+   Single source of truth for the redesign's own (--mgov-*) custom
+   properties. Imported once (in main.tsx) and consumed by the component
+   CSS + typography classes via var().
+
+   Everything here is NAMESPACED (--mgov-*), so defining it at :root is
+   additive — it does NOT change any Design System token, and importing this
+   file has no effect on stock DS components. The redesign look is produced
+   only where the .ds-c-mgov-* / .ds-c-mgov-type-- classes are applied.
+
+   To ALSO restyle stock DS components with these values (fonts/heading sizes),
+   import one of the optional theme files, which map DS tokens → the --mgov-*
+   values below:
+     • mgov-theme-scope.css   → .ds-theme--mgov wrapper (bounded to a subtree)
+     • mgov-theme-global.css  → :root (global drop-in, affects the whole page)
    ============================================================ */
 
 :root,
@@ -43,20 +54,20 @@
 
   /* Typography Tokens */
 
-  /* Font Family */
-  --font-family-heading:
+  /* Font family — Inter for the redesign's headings/labels/buttons/links.
+     Namespaced; the optional theme files map the DS --font-family-* tokens
+     to this so stock DS components can pick it up too. */
+  --mgov-font-family-heading:
     "Inter", "Inter Fallback", -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Helvetica", "Arial", system-ui,
     sans-serif;
-  --font-family-button: var(--font-family-heading);
-  --font-family-link: var(--font-family-heading);
   /* Font weight — medium (500) isn't in the theme (only 400 / 600) */
-  --font-weight-medium: 500;
-  /* Font size */
-  --font-size-5xl: 4.5rem; /* Overwritten to 4.5rem, original is 3.125rem */
-  --font-size-4xl: 3.5rem; /* Overwritten to 3.5rem, original is 2.75rem */
-  --font-size-3xl: 3rem; /* Overwritten to 3rem, original is 2.5rem */
-  --font-size-2xl: 2.25rem; /* Overwritten to 2.25rem, original is 2rem */
-  /* In-between sizes the t-shirt scale doesn't cover */
+  --mgov-font-weight-medium: 500;
+  /* Font size — display/heading sizes the DS t-shirt scale doesn't cover
+     (or covers at smaller values); consumed by the .ds-c-mgov-type-- classes. */
+  --mgov-font-size-72: 4.5rem; /* Display/XL */
+  --mgov-font-size-56: 3.5rem; /* Display/Lg */
+  --mgov-font-size-48: 3rem; /* Section Title */
+  --mgov-font-size-36: 2.25rem; /* Featured Title / Dialog heading */
   --mgov-font-size-22: 1.375rem; /* 22px — Lede */
   --mgov-font-size-18: 1.125rem; /* 18px — Notice Title */
   --mgov-font-size-15: 0.9375rem; /* 15px — Body Small, Button */
@@ -65,7 +76,7 @@
   --mgov-font-letter-spacing-lg: -0.025em;
   --mgov-font-letter-spacing-sm: 0;
   /* Line Height */
-  --font-line-height-heading: calc(1em - 2px); /* Overwritten to .98, original is 1.2999999523162842 */
+  --mgov-line-height-display: calc(1em - 2px); /* 70px @72 (Display/XL) */
   --mgov-line-height-xl: calc(1em + 2px);
   --mgov-line-height-lg: calc(1em + 4px);
   --mgov-line-height-md: calc(1em + 6px);

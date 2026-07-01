@@ -72,7 +72,7 @@
 /* Trigger typography: Inter Regular 20px (Figma value/placeholder text). */
 .ds-c-mgov-dropdown .ds-c-dropdown__button.ds-c-field {
   width: 100%;
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */

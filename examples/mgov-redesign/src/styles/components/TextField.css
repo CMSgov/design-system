@@ -59,7 +59,7 @@
 /* Input typography: Inter Regular 20px / 28px — not tokenized in _TextField.scss. */
 .ds-c-mgov-text-field .ds-c-field {
   width: 100%;
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */

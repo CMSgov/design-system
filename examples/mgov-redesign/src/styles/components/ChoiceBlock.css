@@ -101,7 +101,7 @@
 .ds-c-mgov-choice .ds-c-choice + label {
   margin-block-start: 0; /* drop the DS top-offset; the card centers the row */
   max-width: none;
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-bold); /* 600 */
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */

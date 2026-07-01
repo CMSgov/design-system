@@ -92,7 +92,7 @@
   padding: 0 20px; /* no 20px spacer token */
   /* Small button text: Inter 600 · 16/20 · -2.5% — no matching --mgov-type--
      class (text-link is 500/22, the "Button" type style is 15/500). */
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 16px */
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */

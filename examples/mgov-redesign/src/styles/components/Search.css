@@ -58,7 +58,7 @@
 .ds-c-mgov-search .ds-c-field {
   margin-block: 0;
   max-width: none;
-  font-family: var(--font-family-heading);
+  font-family: var(--mgov-font-family-heading);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */
