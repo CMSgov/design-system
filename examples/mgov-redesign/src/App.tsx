@@ -5,6 +5,7 @@ import { Alert } from './components/Alert';
 import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
+import { ChoiceBlock } from './components/ChoiceBlock';
 import { Dialog } from './components/Dialog';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
@@ -421,6 +422,35 @@ function App() {
             Small
           </Button>
         </div>
+      </VariantGroup>
+
+      <VariantGroup label="choice block (radio)">
+        <ChoiceBlock
+          name="cb-radio"
+          type="radio"
+          label="Choose a plan type"
+          choices={[
+            { label: 'Original Medicare', value: 'original', defaultChecked: true },
+            { label: 'Medicare Advantage', value: 'advantage' },
+            {
+              label: 'Medicare Advantage',
+              value: 'advantage-hint',
+              hint: 'Optional helper text.',
+            },
+          ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="choice block (checkbox)">
+        <ChoiceBlock
+          name="cb-check"
+          type="checkbox"
+          label="Add coverage"
+          choices={[
+            { label: 'Dental', value: 'dental', defaultChecked: true },
+            { label: 'Vision', value: 'vision', hint: 'Optional helper text.' },
+          ]}
+        />
       </VariantGroup>
     </>
   );

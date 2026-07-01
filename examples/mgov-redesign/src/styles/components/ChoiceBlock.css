@@ -1,0 +1,101 @@
+/* ============================================================
+   Choice Block — Medicare.gov redesign overrides
+   Figma node 1658:7987 ("List option")
+
+   Extends the CMS DS ChoiceList, which renders per choice:
+     .ds-c-mgov-choice               (the <fieldset>; gets the class)
+       <legend> (list label)
+       .ds-c-choice-wrapper          (grid: [check] [label / hint])  ← the card
+         input.ds-c-choice[type=radio|checkbox]   (the control)
+         label                       (the choice label)
+         .ds-c-hint                  (optional per-choice hint)
+
+   The redesign presents each choice as a bordered "card": a rounded box with a
+   1px border that becomes a 2px green border when selected. The control is
+   restyled through the DS --choice__* tokens (size / colors); the card chrome
+   and the label/hint typography are direct overrides, since the DS doesn't
+   tokenize a boxed/tile choice.
+
+   Selected state is detected with :has(.ds-c-choice:checked) on the wrapper
+   (the card is the input's parent, so a parent selector is required).
+
+   Scoped to .ds-c-mgov-choice so the base DS ChoiceList is untouched.
+
+   ⚠ Not producible via ChoiceList: the Figma "Static" variant (a label-only
+     card with no control) — ChoiceList always renders an input.
+   ⚠ Only the control + label are clickable (standard DS behavior). Making the
+     entire card toggle the choice would need a markup change, not just CSS.
+   ============================================================ */
+
+.ds-c-mgov-choice {
+  width: 420px;
+  max-width: 100%;
+
+  /* --- Control (.ds-c-choice) tokens (consumed by the DS choice rules) --- */
+  --choice__size: 20px; /* control outer box (DS default 32px) */
+  --choice__size-radio: 12px; /* checked radio dot (DS default 22px) */
+  --choice__border-width: 1px; /* unselected ring (DS default 2px) */
+  --choice__border-color: rgb(0 0 0 / 40%); /* Figma unselected control ring */
+  --choice__background-color: var(--color-white);
+  --choice__background-color--checked: var(--color-primary); /* green ring + dot */
+
+  /* Labels/legend: drop the DS medicare theme's uppercase transform. */
+  --label__text-transform: none;
+}
+
+/* --- Card: the per-choice wrapper --- */
+.ds-c-mgov-choice .ds-c-choice-wrapper {
+  align-items: center;
+  column-gap: var(--spacer-1); /* 8px control ↔ text */
+  row-gap: 2px; /* label ↔ hint (Figma gap-2); no 2px spacer token */
+  max-width: none;
+  margin-block-start: var(--mgov-spacer-1-5); /* 12px between cards */
+  padding: var(--spacer-2) var(--spacer-1); /* 16px / 8px */
+  background-color: var(--color-white);
+  border: 1px solid var(--mgov-border-input); /* rgb(0 0 0 / 30%) */
+  border-radius: var(--mgov-radius-md); /* 12px */
+}
+
+/* Selected → 2px green border. border-box keeps the outer size steady, so the
+   content shifts by 1px on select — matching the Figma symbols (both 8px pad). */
+.ds-c-mgov-choice .ds-c-choice-wrapper:has(.ds-c-choice:checked) {
+  border: 2px solid var(--color-primary);
+}
+
+/* Reproduce Figma's 32px "accessory" slot: the 20px control gets 6px on each
+   side so the label aligns one 32px column + gap in from the padding. */
+.ds-c-mgov-choice .ds-c-choice {
+  margin-inline: 6px; /* 20px + 6px + 6px = 32px slot */
+}
+
+/* Checked radio ring is 2px (the DS keeps border-width constant and only
+   recolors; Figma thickens it to 2px green). border-box → no size change. */
+.ds-c-mgov-choice .ds-c-choice[type='radio']:checked {
+  border-width: 2px;
+}
+
+/* --- Label — Action Title (Inter 600 · 20/24 · -2.5%). The DS renders the
+   label element, so the type-style values are set here rather than via the
+   .ds-c-mgov-type--action-title utility class. --- */
+.ds-c-mgov-choice .ds-c-choice + label {
+  margin-block-start: 0; /* drop the DS top-offset; the card centers the row */
+  max-width: none;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold); /* 600 */
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.5px @20px */
+  color: var(--color-black);
+}
+
+/* --- Hint — Body (Rubik 400 · 16/24 · 0). --- */
+.ds-c-mgov-choice .ds-c-hint {
+  margin-block: 0;
+  max-width: none;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+  color: var(--color-black);
+}
