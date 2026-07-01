@@ -37,7 +37,11 @@
   --choice__border-width: 1px; /* unselected ring (DS default 2px) */
   --choice__border-color: rgb(0 0 0 / 40%); /* Figma unselected control ring */
   --choice__background-color: var(--color-white);
-  --choice__background-color--checked: var(--color-primary); /* green ring + dot */
+  /* Colors the radio ring (a direct border-color on the input, which honors
+     this token). The dot/checkbox FILL is set separately below — the DS draws
+     it on a ::before pseudo whose box-shadow doesn't pick up this scoped
+     override in the medicare build. */
+  --choice__background-color--checked: var(--hm-green);
 
   /* Labels/legend: drop the DS medicare theme's uppercase transform. */
   --label__text-transform: none;
@@ -72,6 +76,23 @@
    recolors; Figma thickens it to 2px green). border-box → no size change. */
 .ds-c-mgov-choice .ds-c-choice[type='radio']:checked {
   border-width: 2px;
+}
+
+/* Selected FILL — radio dot + checkbox box. The DS paints this with the
+   ::before box-shadow using --choice__background-color--checked, but that pseudo
+   doesn't honor our scoped token override (only the ring does), so set the fill
+   color directly. The checkmark (::after) stays white. */
+.ds-c-mgov-choice .ds-c-choice:checked::before {
+  box-shadow: inset 0 0 4em 1em var(--hm-green);
+}
+
+/* Shrink the radio dot so a gap shows between it and the 2px ring. The dot is
+   sized via the ::before + --choice__size-radio, but (like the fill color) the
+   pseudo ignores our scoped token override and stretches to fill the ring, so
+   set the size directly: 12px dot in a 20px / 2px-border ring → 2px gap. */
+.ds-c-mgov-choice .ds-c-choice[type='radio']:checked::before {
+  width: 12px;
+  height: 12px;
 }
 
 /* --- Label — Action Title (Inter 600 · 20/24 · -2.5%). The DS renders the
