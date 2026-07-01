@@ -1,72 +1,148 @@
 /* ============================================================
    Button — Medicare.gov redesign overrides
-   Figma node 1930:5728
+   Figma node 1930:5728 (expanded: variant × size × state × icon)
 
-   Extends the CMS DS Button (.ds-c-button + variation/size modifiers).
-   Everything is scoped to the .ds-c-mgov-button class (added to the same
-   element as .ds-c-button by the wrapper), so the base DS Button is
-   untouched elsewhere.
+   Extends the CMS DS Button; everything scoped to .ds-c-mgov-button
+   (added by the wrapper) so the base DS Button is untouched.
 
-   Token overrides sit on .ds-c-mgov-button (custom properties, consumed by
-   the .ds-c-button rules on the same element). Real-property overrides use
-   .ds-c-mgov-button.ds-c-button[...] to outrank the DS rules they replace.
+   Integration approach: re-point the DS Button's own design tokens
+   (--button__* / --button-solid__* / --button-ghost__*, each with
+   --hover / --active / --disabled tiers) so the DS's own rules render
+   the redesign — including hover, pressed (:active) and disabled. This
+   keeps us on the component's public API instead of fighting its
+   selectors, so DS updates/theming still flow through.
+
+   Only the things the DS does NOT tokenize are set with real properties:
+   layout (flex + gap), size (min-height + padding), the ghost underline,
+   and the icon slots. Typography for the Large size comes from the
+   .ds-c-mgov-type--action-title class (applied in Button.tsx); the Small
+   size has no matching type style, so its type is set here.
 
    Variant mapping (DS prop → Figma):
+     variation="solid"  → Primary   (filled green)
      (default)          → Secondary (outline green)
-     variation="solid"  → Primary (filled green — DS solid is already green)
-     variation="ghost"  → Ghost (dark-teal underline)
-     disabled           → Disabled (gray fill, 50% black text)
+     variation="ghost"  → Ghost     (underlined text link)
    Size mapping:
-     size="big"   → Large (20px text, 16/24 padding)
-     size="small" → Small (16px text, 12/20 padding)
+     size="big"   → Large  (56px tall, 24px pad, Action Title text)
+     size="small" → Small  (44px tall, 20px pad, 16/20 text)
    ============================================================ */
 
 .ds-c-mgov-button {
-  /* Shape: fully-rounded pill for every variant/size (3px → pill) */
+  /* Raw state shades not present in the theme scale. */
+  --mgov-button-hover: #104e45; /* darker green — Primary/Ghost hover */
+  --mgov-button-secondary-pressed: #d0e1df; /* Secondary pressed fill */
+  --mgov-button-ghost-disabled: #6d6d6d; /* Ghost disabled text */
+
+  /* Shape (DS token). */
   --button__border-radius: var(--radius-pill);
 
-  /* Secondary (outline) = default .ds-c-button: white fill, green border/text */
-  --button__background-color: var(--color-white);
-  --button__background-color--hover: var(--color-primary-dark);
-  --button__border-color: var(--color-primary);
-  --button__border-color--hover: var(--color-primary-dark);
-  --button__border-color--active: var(--color-primary-light);
-  --button__color: var(--color-primary);
-  --button__color--hover: var(--color-white);
-  --button__color--active: var(--color-primary-light);
-
-  /* Disabled — gray fill, 50% black text (covers outline + solid) */
-  --button__background-color--disabled: var(--color-gray-lighter);
-  --button__border-color--disabled: var(--color-gray-lighter);
-  --button__color--disabled: rgb(0 0 0 / 50%);
+  /* Primary → DS "solid": filled green, white text. */
+  --button-solid__background-color: var(--color-primary); /* #146a5d */
+  --button-solid__background-color--hover: var(--mgov-button-hover); /* #104e45 */
+  --button-solid__background-color--active: var(--color-primary-darkest); /* #0a352f */
+  --button-solid__background-color--disabled: var(--color-gray-lighter); /* #d9d9d9 */
+  --button-solid__color: var(--color-white);
   --button-solid__color--disabled: rgb(0 0 0 / 50%);
 
-  /* Ghost — dark-teal text, no background */
-  --button-ghost__color: var(--hm-ink-strong);
-  --button-ghost__color--hover: var(--hm-ink-strong);
-  --button-ghost__color--active: var(--hm-ink-strong);
+  /* Secondary → DS default (--button__*): white fill, green outline + text.
+     Hover/pressed tint the fill but keep the text green (the DS default flips
+     text to white on fill, which the redesign does not). */
+  --button__background-color: var(--color-white);
+  --button__background-color--hover: var(--hm-surface-soft); /* #eaf3f0 */
+  --button__background-color--active: var(--mgov-button-secondary-pressed); /* #d0e1df */
+  --button__background-color--disabled: var(--color-gray-lighter); /* #d9d9d9 */
+  --button__border-color: var(--color-primary);
+  --button__border-color--hover: var(--color-primary);
+  --button__border-color--active: var(--color-primary);
+  --button__border-color--disabled: transparent; /* disabled drops the outline */
+  --button__color: var(--color-primary);
+  --button__color--hover: var(--color-primary);
+  --button__color--active: var(--color-primary);
+  --button__color--disabled: rgb(0 0 0 / 50%);
+
+  /* Ghost → DS "ghost": transparent fill, green underlined text. */
+  --button-ghost__background-color: transparent;
+  --button-ghost__background-color--hover: transparent;
+  --button-ghost__background-color--active: transparent;
+  --button-ghost__color: var(--color-primary);
+  --button-ghost__color--hover: var(--mgov-button-hover); /* #104e45 */
+  --button-ghost__color--active: var(--color-primary-darkest); /* #0a352f */
+  --button-ghost__color--disabled: var(--mgov-button-ghost-disabled); /* #6d6d6d */
 }
 
-/* Typography — font-family and line-height are hardcoded in _Button.scss
-   (var(--font-family-body) / line-height: 1.3), so override with selectors.
-   --mgov-line-height-lg = calc(1em + 4px) resolves to 20px @16px and 24px @20px. */
+/* --- Layout — flex centering + icon gap (not tokenized by the DS). --- */
 .ds-c-mgov-button.ds-c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacer-half); /* 4px, icon ↔ label */
+  white-space: nowrap;
+}
+
+/* --- Sizes — height + padding (not tokenized). Height via min-height +
+   centering so a taller icon keeps the button height constant.
+   Large typography = .ds-c-mgov-type--action-title (applied in Button.tsx). --- */
+.ds-c-mgov-button.ds-c-button--big {
+  min-height: 56px;
+  padding: 0 var(--spacer-3); /* 24px inline */
+}
+
+.ds-c-mgov-button.ds-c-button--small {
+  min-height: 44px;
+  padding: 0 20px; /* no 20px spacer token */
+  /* Small button text: Inter 600 · 16/20 · -2.5% — no matching --mgov-type--
+     class (text-link is 500/22, the "Button" type style is 15/500). */
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
-  line-height: var(--mgov-line-height-lg);
-  letter-spacing: var(--mgov-font-letter-spacing-lg);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.4px @16px */
 }
 
-/* Large — DS .ds-c-button--big sets font-size 24px; Figma wants 20px.
-   (Padding 16/24 already matches the DS --big spacing.) */
-.ds-c-mgov-button.ds-c-button--big {
-  font-size: var(--font-size-lg); /* 1.25rem / 20px */
-  letter-spacing: var(--mgov-font-letter-spacing-lg);
+/* --- Ghost — underlined text link: no fill/border, no inline padding, wider
+   icon gap. Colors come from the --button-ghost__* tokens above. --- */
+.ds-c-mgov-button.ds-c-button--ghost {
+  min-height: 0;
+  padding-inline: 0;
+  border: 0; /* drop the DS 1px (transparent) border so the text link sits flush */
+  gap: var(--spacer-1); /* 8px */
+  text-decoration: underline; /* not tokenized by the DS */
+}
+.ds-c-mgov-button.ds-c-button--ghost.ds-c-button--big {
+  padding-block: var(--mgov-spacer-1-5); /* 12px */
+}
+.ds-c-mgov-button.ds-c-button--ghost.ds-c-button--small {
+  padding-block: var(--spacer-1); /* 8px */
 }
 
-/* Small — DS .ds-c-button--small sets 14px + 4/8 padding; Figma wants 16px + 12/20. */
-.ds-c-mgov-button.ds-c-button--small {
-  font-size: var(--font-size-md); /* 1rem / 16px */
-  letter-spacing: var(--mgov-font-letter-spacing-lg);
-  padding: var(--mgov-spacer-1-5) 20px; /* 12px / 20px — no 20px spacer token */
+/* --- Leading / trailing icon inline-padding trims (Primary / Secondary).
+   Height holds via min-height, so only the icon-side padding shrinks
+   (24→16 large, 20→12 small). Ghost is padding-inline:0, so it's excluded. --- */
+.ds-c-mgov-button--leading-icon.ds-c-button--big:not(.ds-c-button--ghost) {
+  padding-inline-start: var(--spacer-2); /* 16px */
+}
+.ds-c-mgov-button--leading-icon.ds-c-button--small:not(.ds-c-button--ghost) {
+  padding-inline-start: var(--mgov-spacer-1-5); /* 12px */
+}
+.ds-c-mgov-button--trailing-icon.ds-c-button--big:not(.ds-c-button--ghost) {
+  padding-inline-end: var(--spacer-2); /* 16px */
+}
+.ds-c-mgov-button--trailing-icon.ds-c-button--small:not(.ds-c-button--ghost) {
+  padding-inline-end: var(--mgov-spacer-1-5); /* 12px */
+}
+
+/* --- Icon slot — 32px box holding a 24px glyph (Figma "Accessory"). --- */
+.ds-c-mgov-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 24px; /* sizes a font-relative DS icon */
+}
+.ds-c-mgov-button__icon .ds-c-icon,
+.ds-c-mgov-button__icon svg {
+  width: 24px;
+  height: 24px;
 }

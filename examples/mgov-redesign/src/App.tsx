@@ -402,6 +402,26 @@ function App() {
           </Button>
         </div>
       </VariantGroup>
+
+      <VariantGroup label="button — with icons (leading / trailing)">
+        <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+          <Button variation="solid" size="big" leadingIcon={<StarIcon />}>
+            Primary
+          </Button>
+          <Button size="big" leadingIcon={<StarIcon />}>
+            Secondary
+          </Button>
+          <Button variation="ghost" size="big" leadingIcon={<StarIcon />}>
+            Ghost leading
+          </Button>
+          <Button variation="ghost" size="big" trailingIcon={<StarIcon />}>
+            Ghost trailing
+          </Button>
+          <Button variation="solid" size="small" leadingIcon={<StarIcon />}>
+            Small
+          </Button>
+        </div>
+      </VariantGroup>
     </>
   );
 }

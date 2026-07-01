@@ -96,8 +96,4 @@
   /* Elevation */
   --mgov-shadow-color: rgb(0 0 0 / 10%);
   --mgov-shadow-menu: 0 10px 20px 0 var(--mgov-shadow-color); /* dropdown / search menus */
-
-  /* Button token overrides were moved out of this global :root block into
-     styles/components/Button.css, scoped to .ds-c-mgov-button, so they no
-     longer affect every DS Button on the page. */
 }
