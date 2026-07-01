@@ -43,8 +43,18 @@
      override in the medicare build. */
   --choice__background-color--checked: var(--mgov-green);
 
-  /* Labels/legend: drop the DS medicare theme's uppercase transform. */
+  /* Legend (group label) — match the Dropdown field label: 16px, -0.4px, no
+     uppercase (the color is set directly below, since it isn't tokenized). */
+  --label__font-size: var(--font-size-md); /* 14px → 16px */
+  --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none;
+}
+
+/* Legend color — DS label color isn't tokenized; set it to black to match the
+   Dropdown label (default is gray). Scoped to the legend so the per-choice
+   option labels below keep their Action Title styling. */
+.ds-c-mgov-choice legend {
+  color: var(--color-black);
 }
 
 /* --- Card: the per-choice wrapper --- */
