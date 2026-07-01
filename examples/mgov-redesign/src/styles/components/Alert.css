@@ -50,6 +50,23 @@
   border-color: var(--mgov-color-error);
 }
 
+/* Icon color per variation — matches the variant accent / border (Figma
+   1658:8025). The DS renders .ds-c-alert__icon as an SVG whose paths inherit
+   fill: currentColor, so `color` recolors the glyph. Default/lightweight =
+   informational blue; the colored variants override below. */
+.ds-c-mgov-alert .ds-c-alert__icon {
+  color: var(--hm-info-strong); /* #0e3e6e */
+}
+.ds-c-mgov-alert.ds-c-alert--success .ds-c-alert__icon {
+  color: var(--hm-success-strong); /* #008c00 */
+}
+.ds-c-mgov-alert.ds-c-alert--warn .ds-c-alert__icon {
+  color: var(--hm-warn-strong); /* #c97532 */
+}
+.ds-c-mgov-alert.ds-c-alert--error .ds-c-alert__icon {
+  color: var(--mgov-color-error); /* #c30000 */
+}
+
 /* Body — color only; body text typography comes from .ds-c-mgov-type--body
    applied to the content paragraphs in the markup. */
 .ds-c-mgov-alert .ds-c-alert__body {
