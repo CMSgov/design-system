@@ -60,8 +60,11 @@
 }
 
 /* Body — color only; body text typography comes from .ds-c-mgov-type--body
-   applied to the content paragraphs in the markup. */
-.ds-c-mgov-dialog .ds-c-dialog__body {
+   applied to the content paragraphs in the markup. The paragraph is colored
+   directly (not just via inheritance) so it beats the zero-specificity color
+   default the --type-- classes carry via :where() in typography.css. */
+.ds-c-mgov-dialog .ds-c-dialog__body,
+.ds-c-mgov-dialog .ds-c-dialog__body p {
   color: var(--color-black);
 }
 
