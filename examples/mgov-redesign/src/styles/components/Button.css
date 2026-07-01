@@ -48,7 +48,7 @@
      Hover/pressed tint the fill but keep the text green (the DS default flips
      text to white on fill, which the redesign does not). */
   --button__background-color: var(--color-white);
-  --button__background-color--hover: var(--hm-surface-soft); /* #eaf3f0 */
+  --button__background-color--hover: var(--mgov-surface-soft); /* #eaf3f0 */
   --button__background-color--active: var(--mgov-button-secondary-pressed); /* #d0e1df */
   --button__background-color--disabled: var(--color-gray-lighter); /* #d9d9d9 */
   --button__border-color: var(--color-primary);

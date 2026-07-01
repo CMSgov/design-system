@@ -70,7 +70,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   transition: transform 0.15s ease;
 }
 .ds-c-mgov-filter--open .ds-c-mgov-filter__caret {
@@ -108,7 +108,7 @@
   --choice__background-color: var(--color-white);
   /* Colors the radio ring (honors this token). The dot FILL is set separately
      below — the DS ::before box-shadow doesn't pick up this scoped override. */
-  --choice__background-color--checked: var(--hm-green);
+  --choice__background-color--checked: var(--mgov-green);
   --label__text-transform: none;
 }
 
@@ -159,7 +159,7 @@
 /* Selected FILL — radio dot. The DS ::before box-shadow doesn't honor our
    scoped --choice__background-color--checked override, so set the fill directly. */
 .ds-c-mgov-filter__choices .ds-c-choice:checked::before {
-  box-shadow: inset 0 0 4em 1em var(--hm-green);
+  box-shadow: inset 0 0 4em 1em var(--mgov-green);
 }
 
 /* Shrink the radio dot so a gap shows between it and the 2px ring (matches

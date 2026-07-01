@@ -41,7 +41,7 @@
      this token). The dot/checkbox FILL is set separately below — the DS draws
      it on a ::before pseudo whose box-shadow doesn't pick up this scoped
      override in the medicare build. */
-  --choice__background-color--checked: var(--hm-green);
+  --choice__background-color--checked: var(--mgov-green);
 
   /* Labels/legend: drop the DS medicare theme's uppercase transform. */
   --label__text-transform: none;
@@ -83,7 +83,7 @@
    doesn't honor our scoped token override (only the ring does), so set the fill
    color directly. The checkmark (::after) stays white. */
 .ds-c-mgov-choice .ds-c-choice:checked::before {
-  box-shadow: inset 0 0 4em 1em var(--hm-green);
+  box-shadow: inset 0 0 4em 1em var(--mgov-green);
 }
 
 /* Shrink the radio dot so a gap shows between it and the 2px ring. The dot is

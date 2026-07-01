@@ -33,7 +33,7 @@
 /* Icon box */
 
 .ds-c-tile__icon-box {
-  background-color: var(--hm-green-tint);
+  background-color: var(--mgov-green-tint);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,7 +61,7 @@
    --pair-title (large), applied in Tile.tsx. */
 
 .ds-c-tile__label {
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   flex: 1 0 0;
   min-width: 0;

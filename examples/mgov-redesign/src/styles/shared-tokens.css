@@ -10,35 +10,35 @@
 ::after,
 ::backdrop {
   /* Color Tokens */
-  --hm-surface: #fdfdfc;
-  --hm-surface-alt: #f4f7f5;
-  --hm-surface-soft: #eaf3f0;
-  --hm-ink: #16221f;
-  --hm-ink-strong: #0a352f;
-  --hm-ink-muted: #5a6b67;
-  --hm-rule: #dde6e3;
-  --hm-green: var(--color-primary); /* Or just use --color-primary */
-  --hm-green-strong: var(--color-primary-darkest); /* Or use --color-primary-darkest */
-  --hm-green-vivid: #1ca085;
-  --hm-green-tint: #e8f4f0;
-  --hm-blue: #2a6fb8;
-  --hm-blue-strong: #0e3e6e;
-  --hm-blue-soft: #eaf3fa;
-  --hm-blue-tint: #dceaf5;
+  --mgov-surface: #fdfdfc;
+  --mgov-surface-alt: #f4f7f5;
+  --mgov-surface-soft: #eaf3f0;
+  --mgov-ink: #16221f;
+  --mgov-ink-strong: #0a352f;
+  --mgov-ink-muted: #5a6b67;
+  --mgov-rule: #dde6e3;
+  --mgov-green: var(--color-primary); /* Or just use --color-primary */
+  --mgov-green-strong: var(--color-primary-darkest); /* Or use --color-primary-darkest */
+  --mgov-green-vivid: #1ca085;
+  --mgov-green-tint: #e8f4f0;
+  --mgov-blue: #2a6fb8;
+  --mgov-blue-strong: #0e3e6e;
+  --mgov-blue-soft: #eaf3fa;
+  --mgov-blue-tint: #dceaf5;
 
   /* Status / feedback colors (Alert variations). Semantic names; info aliases
      the blue palette, the error strong color is --mgov-color-error (#c30000),
      shared with field error states. */
-  --hm-info-soft: var(--hm-blue-soft);
-  --hm-info-strong: var(--hm-blue-strong);
-  --hm-success-soft: #f5faf5;
-  --hm-success-strong: #008c00;
-  --hm-warn-soft: #fff9e8;
-  --hm-warn-strong: #c97532;
-  --hm-error-soft: #fbe5e6;
+  --mgov-info-soft: var(--mgov-blue-soft);
+  --mgov-info-strong: var(--mgov-blue-strong);
+  --mgov-success-soft: #f5faf5;
+  --mgov-success-strong: #008c00;
+  --mgov-warn-soft: #fff9e8;
+  --mgov-warn-strong: #c97532;
+  --mgov-error-soft: #fbe5e6;
 
   /* Scrim + misc */
-  --mgov-color-backdrop: #0a352f73; /* --hm-ink-strong (#0a352f) @ ~45% alpha */
+  --mgov-color-backdrop: #0a352f73; /* --mgov-ink-strong (#0a352f) @ ~45% alpha */
   --mgov-color-tooltip-ink: #262626; /* tooltip text + border base */
 
   /* Typography Tokens */

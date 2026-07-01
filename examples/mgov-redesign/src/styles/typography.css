@@ -11,7 +11,7 @@
      - --mgov-font-size-22 / -18 / -15 (Lede, Notice Title, Body Small/Button).
      - --mgov-line-height-lede (1em+10px) and --mgov-line-height-button (1em+5px).
 
-   Color: all type styles default to the redesign ink (#0A352F / --hm-ink-strong).
+   Color: all type styles default to the redesign ink (#0A352F / --mgov-ink-strong).
    It's applied via :where() so it carries ZERO specificity — any component that
    sets its own text color still wins (e.g. the Button's white/green/disabled
    text, which also uses --type--action-title for its font metrics). Without
@@ -32,7 +32,7 @@
     .ds-c-mgov-type--text-link,
     .ds-c-mgov-type--button
   ) {
-  color: var(--hm-ink-strong); /* #0A352F */
+  color: var(--mgov-ink-strong); /* #0A352F */
 }
 
 /* Display/XL — Inter · 600 · 72/70 · -4% */

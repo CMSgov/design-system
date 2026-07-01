@@ -23,30 +23,30 @@
 
 /* Base: full border + radius (replaces the DS left bar). Default = informational. */
 .ds-c-mgov-alert.ds-c-alert {
-  border: 1px solid var(--hm-info-strong); /* #0e3e6e */
+  border: 1px solid var(--mgov-info-strong); /* #0e3e6e */
   border-radius: var(--radius-large); /* 8px */
-  background-color: var(--hm-info-soft); /* #eaf3fa */
+  background-color: var(--mgov-info-soft); /* #eaf3fa */
   color: var(--color-black);
   padding: var(--spacer-2); /* 16px */
 }
 
 .ds-c-mgov-alert.ds-c-alert--lightweight {
   background-color: var(--color-white);
-  border-color: var(--hm-info-strong);
+  border-color: var(--mgov-info-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--success {
-  background-color: var(--hm-success-soft);
-  border-color: var(--hm-success-strong);
+  background-color: var(--mgov-success-soft);
+  border-color: var(--mgov-success-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--warn {
-  background-color: var(--hm-warn-soft);
-  border-color: var(--hm-warn-strong);
+  background-color: var(--mgov-warn-soft);
+  border-color: var(--mgov-warn-strong);
 }
 
 .ds-c-mgov-alert.ds-c-alert--error {
-  background-color: var(--hm-error-soft);
+  background-color: var(--mgov-error-soft);
   border-color: var(--mgov-color-error);
 }
 
@@ -55,13 +55,13 @@
    fill: currentColor, so `color` recolors the glyph. Default/lightweight =
    informational blue; the colored variants override below. */
 .ds-c-mgov-alert .ds-c-alert__icon {
-  color: var(--hm-info-strong); /* #0e3e6e */
+  color: var(--mgov-info-strong); /* #0e3e6e */
 }
 .ds-c-mgov-alert.ds-c-alert--success .ds-c-alert__icon {
-  color: var(--hm-success-strong); /* #008c00 */
+  color: var(--mgov-success-strong); /* #008c00 */
 }
 .ds-c-mgov-alert.ds-c-alert--warn .ds-c-alert__icon {
-  color: var(--hm-warn-strong); /* #c97532 */
+  color: var(--mgov-warn-strong); /* #c97532 */
 }
 .ds-c-mgov-alert.ds-c-alert--error .ds-c-alert__icon {
   color: var(--mgov-color-error); /* #c30000 */

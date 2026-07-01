@@ -124,7 +124,7 @@
 }
 
 .ds-c-mgov-search .ds-c-autocomplete__menu-item--highlighted {
-  background-color: var(--hm-surface-soft); /* #eaf3f0 */
+  background-color: var(--mgov-surface-soft); /* #eaf3f0 */
   color: var(--color-black);
 }
 

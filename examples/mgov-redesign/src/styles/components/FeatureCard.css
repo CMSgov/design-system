@@ -72,7 +72,7 @@
    --featured-title (large), applied in FeatureCard.tsx. */
 
 .ds-c-feature-card__title {
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   width: 100%;
 }
@@ -80,7 +80,7 @@
 /* Body */
 
 .ds-c-feature-card__body {
-  color: var(--hm-ink-strong);
+  color: var(--mgov-ink-strong);
   word-break: break-word;
   width: 100%;
 }

@@ -133,7 +133,7 @@
    (DS selected = solid dark-green fill + white text + bold + a checkmark.) */
 .ds-c-mgov-dropdown .ds-c-dropdown__menu-item--highlighted,
 .ds-c-mgov-dropdown .ds-c-dropdown__menu-item--selected {
-  background-color: var(--hm-surface-soft); /* #eaf3f0 */
+  background-color: var(--mgov-surface-soft); /* #eaf3f0 */
   color: var(--color-black);
   font-weight: var(--font-weight-normal);
 }

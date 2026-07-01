@@ -17,10 +17,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacer-1); /* 8px */
-  background-color: var(--hm-blue-tint); /* #dceaf5 */
-  border: 1px solid var(--hm-blue-strong); /* #0e3e6e */
+  background-color: var(--mgov-blue-tint); /* #dceaf5 */
+  border: 1px solid var(--mgov-blue-strong); /* #0e3e6e */
   border-radius: var(--radius-pill);
-  color: var(--hm-blue-strong);
+  color: var(--mgov-blue-strong);
   font-family: var(--font-family-heading);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 1rem / 16px */
@@ -35,7 +35,7 @@
    already blue-strong). Applies to both variants (with and without the × ).
    Figma node 3675:17217. */
 .ds-c-mgov-pill.ds-c-badge:hover {
-  background-color: var(--hm-blue-strong); /* #0e3e6e */
+  background-color: var(--mgov-blue-strong); /* #0e3e6e */
   color: var(--color-white); /* text; the × icon follows via currentColor */
 }
 
