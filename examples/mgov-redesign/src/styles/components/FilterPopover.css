@@ -1,0 +1,181 @@
+/* ============================================================
+   Filter Popover — Medicare.gov redesign
+   Figma node 1984:4116 (the radio + Clear/Apply dropdown variants)
+
+   A composite, NOT a DS Dropdown extension (see FilterPopover.tsx for why).
+   Structure:
+     .ds-c-mgov-filter                       (positioning root)
+       button.ds-c-field.ds-c-mgov-filter__trigger   (field-style trigger)
+         .ds-c-mgov-filter__value
+         .ds-c-mgov-filter__caret
+       .ds-c-mgov-filter__panel              (detached card popover)
+         .ds-c-mgov-filter__choices          (DS radio ChoiceList, as menu rows)
+         .ds-c-mgov-filter__link             (optional footer link)
+         .ds-c-mgov-filter__actions          (Clear / Apply)
+
+   The trigger reuses .ds-c-field + the --text-input__* tokens (same as the
+   Dropdown/TextField). The panel reuses the detached-card menu styling
+   (border / radius / shadow) from the Dropdown/Search menus. The option rows
+   reuse the radio-control token approach from ChoiceBlock, but laid out as
+   divider-separated menu rows rather than bordered cards.
+   ============================================================ */
+
+.ds-c-mgov-filter {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+
+  /* Field trigger tokens (consumed by .ds-c-field). */
+  --text-input__border-radius: var(--radius-large); /* 8px */
+  --text-input__border-width: 1px;
+  --text-input__border-color: var(--mgov-border-input); /* rgb(0 0 0 / 30%) */
+  --text-input__color: var(--color-black);
+}
+
+/* --- Trigger: field-styled button with a trailing caret --- */
+.ds-c-mgov-filter__trigger.ds-c-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacer-1); /* 8px */
+  width: 100%;
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: var(--mgov-line-height-input); /* 28px */
+  letter-spacing: -0.4px;
+  text-align: start;
+  cursor: pointer;
+}
+
+/* Open / focus: 2px green border, no gold ring, no layout shift (matches the
+   Dropdown trigger). */
+.ds-c-mgov-filter__trigger.ds-c-field:focus,
+.ds-c-mgov-filter--open .ds-c-mgov-filter__trigger.ds-c-field {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  outline: 2px solid transparent;
+  outline-offset: 0;
+}
+
+.ds-c-mgov-filter__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-c-mgov-filter__caret {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--hm-ink-strong);
+  transition: transform 0.15s ease;
+}
+.ds-c-mgov-filter--open .ds-c-mgov-filter__caret {
+  transform: rotate(180deg);
+}
+
+/* --- Panel: detached rounded card (same chrome as the Dropdown/Search menus) --- */
+.ds-c-mgov-filter__panel {
+  position: absolute;
+  z-index: 10;
+  inset-block-start: calc(100% + var(--spacer-1)); /* 8px below the trigger */
+  inset-inline-start: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacer-1) var(--mgov-spacer-1-5) var(--spacer-2); /* 8 / 12 / 16 */
+  background-color: var(--color-white);
+  border: 1px solid var(--mgov-border-subtle); /* rgb(0 0 0 / 20%) */
+  border-radius: var(--mgov-radius-lg); /* 16px */
+  box-shadow: var(--mgov-shadow-menu);
+}
+
+/* --- Options: DS radio ChoiceList rendered as menu rows --- */
+.ds-c-mgov-filter__choices {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  /* Radio control tokens (same values as ChoiceBlock). */
+  --choice__size: 20px;
+  --choice__size-radio: 12px;
+  --choice__border-width: 1px;
+  --choice__border-color: rgb(0 0 0 / 40%);
+  --choice__background-color: var(--color-white);
+  --choice__background-color--checked: var(--color-primary);
+  --label__text-transform: none;
+}
+
+/* Legend is required for a11y but not shown in the design → visually hidden. */
+.ds-c-mgov-filter__choices legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Each choice = a full-width menu row (radio + label). */
+.ds-c-mgov-filter__choices .ds-c-choice-wrapper {
+  align-items: center;
+  column-gap: var(--spacer-1); /* 8px */
+  max-width: none;
+  margin-block-start: 0;
+  padding: var(--spacer-2) var(--spacer-1); /* 16px / 8px */
+}
+
+/* Divider between consecutive options only (not before the first or after the
+   last). ChoiceList renders an always-present empty error live-region <div>
+   before the choices, so match a choice div preceded by another choice div —
+   :has() scopes both sides to real options. */
+.ds-c-mgov-filter__choices > div:has(.ds-c-choice-wrapper) + div:has(.ds-c-choice-wrapper) .ds-c-choice-wrapper {
+  border-block-start: 1px solid var(--mgov-border-subtle);
+}
+
+/* The empty error live-region shouldn't add vertical space above the options. */
+.ds-c-mgov-filter__choices > div:not(:has(.ds-c-choice-wrapper)) {
+  margin: 0;
+}
+
+/* Reproduce Figma's 32px accessory slot around the 20px control. */
+.ds-c-mgov-filter__choices .ds-c-choice {
+  margin-inline: 6px;
+}
+/* Checked radio ring is 2px green (DS keeps width constant and only recolors). */
+.ds-c-mgov-filter__choices .ds-c-choice[type='radio']:checked {
+  border-width: 2px;
+}
+
+/* Option label — Body (Rubik 400 · 16/24), not the ChoiceBlock's Action Title. */
+.ds-c-mgov-filter__choices .ds-c-choice + label {
+  margin-block-start: 0;
+  max-width: none;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+  color: var(--color-black);
+}
+
+/* --- Footer link (optional) — ghost link, left-aligned above the actions --- */
+.ds-c-mgov-filter__link {
+  align-self: flex-start;
+  margin-block-start: var(--spacer-1); /* 8px */
+}
+
+/* --- Actions: Clear + Apply, right-aligned --- */
+.ds-c-mgov-filter__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--mgov-spacer-1-5); /* 12px */
+  padding-block-start: var(--mgov-spacer-1-5); /* 12px */
+}

@@ -6,6 +6,7 @@ import { Banner } from './components/Banner';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
 import { ChoiceBlock } from './components/ChoiceBlock';
+import { FilterPopover } from './components/FilterPopover';
 import { Dialog } from './components/Dialog';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
@@ -450,6 +451,36 @@ function App() {
             { label: 'Dental', value: 'dental', defaultChecked: true },
             { label: 'Vision', value: 'vision', hint: 'Optional helper text.' },
           ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="filter popover (radio + apply)">
+        <FilterPopover
+          name="fp-distance"
+          label="Distance"
+          placeholder="Distance"
+          options={[
+            { label: 'Distance: 1 mile', value: '1' },
+            { label: 'Distance: 5 miles', value: '5' },
+            { label: 'Distance: 10 miles', value: '10' },
+          ]}
+        />
+      </VariantGroup>
+
+      <VariantGroup label="filter popover (with footer link)">
+        <FilterPopover
+          name="fp-plan"
+          label="Plan type"
+          placeholder="Plan type"
+          options={[
+            { label: 'HMO (Health Maintenance Organization)', value: 'hmo' },
+            { label: 'PPO (Preferred Provider Organization)', value: 'ppo' },
+          ]}
+          footerLink={{
+            label: 'Learn about plan types',
+            href: '#',
+            icon: <InfoCircleIcon />,
+          }}
         />
       </VariantGroup>
     </>
