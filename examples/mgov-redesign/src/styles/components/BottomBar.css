@@ -1,0 +1,80 @@
+/* ============================================================
+   Selection Bottom Bar pattern — Medicare.gov redesign (Figma node 2045:11120)
+
+   A sticky footer for multi-select flows: a selection count + instructional
+   body copy, the current selections as removable Pills, and a primary action.
+
+   Spacing uses the DS --spacer scale (8px cadence). The one off-cadence Figma
+   value (12px row gap) is snapped to the nearest step (--spacer-2, 16), and the
+   64px column gap uses --mgov-spacer-8 (one step past the scale's --spacer-7).
+   Colors come from shared-tokens.css / DS tokens. Body copy uses
+   .ds-c-mgov-type--body; the "N of M selected" count uses the "Label" spec
+   (Inter 600 · 16/24 · -2.5%) built from the shared tokens, matching the plan
+   card headings (the DS/redesign type scale has no dedicated Label class).
+   ============================================================ */
+
+.ds-c-mgov-bottom-bar {
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--mgov-spacer-8); /* 64 */
+  align-items: center;
+  width: 100%;
+  padding: var(--spacer-3) var(--spacer-5); /* 24 40 */
+  background-color: var(--color-white);
+  border-block-start: 1px solid var(--mgov-border-medium); /* rgb(0 0 0 / 40%) */
+  box-shadow: var(--mgov-shadow-bottom-bar);
+}
+
+/* --- Left content column --- */
+.ds-c-mgov-bottom-bar__content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2); /* 12 → 16 */
+  align-items: flex-start;
+}
+
+.ds-c-mgov-bottom-bar__text {
+  display: flex;
+  gap: var(--spacer-1); /* 8 */
+  align-items: center;
+  width: 100%;
+}
+/* Body copy fills the row; the count + dot stay at their intrinsic width.
+   Zero the theme's paragraph margin (a <p> carries an asymmetric top margin)
+   so align-items:center lines the copy up with the count + dot, not 8px below. */
+.ds-c-mgov-bottom-bar__text .ds-c-mgov-type--body {
+  flex: 1 0 0;
+  min-width: 0;
+  margin: 0;
+}
+
+/* "N of M selected" — Label spec (Inter 600 · 16/24 · -2.5%). */
+.ds-c-mgov-bottom-bar__count {
+  margin: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: var(--mgov-font-family-heading);
+  font-weight: var(--font-weight-bold); /* 600 */
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* 24px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.4px */
+  color: var(--mgov-ink-strong);
+}
+
+/* 4px separator dot between the count and the instructional copy. */
+.ds-c-mgov-bottom-bar__dot {
+  flex-shrink: 0;
+  width: var(--spacer-half); /* 4 */
+  height: var(--spacer-half); /* 4 */
+  border-radius: var(--radius-pill);
+  background-color: var(--mgov-ink-strong);
+}
+
+/* Selected pills — wrap onto new lines as the selection grows. */
+.ds-c-mgov-bottom-bar__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacer-1); /* 8 */
+}

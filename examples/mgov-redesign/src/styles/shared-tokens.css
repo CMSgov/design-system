@@ -91,6 +91,7 @@
   /* Borders */
   --mgov-border-subtle: rgb(0 0 0 / 20%); /* hairline on cards / menus */
   --mgov-border-input: rgb(0 0 0 / 30%); /* field + tooltip border; section rules */
+  --mgov-border-medium: rgb(0 0 0 / 40%); /* bottom-bar top rule */
   --mgov-border-strong: rgb(0 0 0 / 60%); /* emphasized rule (e.g. plan card title) */
 
   /* Status */
@@ -101,11 +102,14 @@
   --mgov-radius-lg: 16px; /* tile / detached menu cards */
   --mgov-radius-xl: 24px; /* banner / feature card / dialog */
 
-  /* Spacing — the 12px step the DS t-shirt scale skips
-     (between --spacer-1 8px and --spacer-2 16px) */
+  /* Spacing — steps outside the DS t-shirt scale but on its 8px cadence:
+     the 12px step it skips (between --spacer-1 8px and --spacer-2 16px), and
+     64px, one step past the scale's top (--spacer-7 56px). */
   --mgov-spacer-1-5: 12px;
+  --mgov-spacer-8: 64px;
 
   /* Elevation */
   --mgov-shadow-color: rgb(0 0 0 / 10%);
   --mgov-shadow-menu: 0 10px 20px 0 var(--mgov-shadow-color); /* dropdown / search menus */
+  --mgov-shadow-bottom-bar: 0 -5px 10px 0 rgb(0 0 0 / 8%); /* upward cast of a sticky footer */
 }

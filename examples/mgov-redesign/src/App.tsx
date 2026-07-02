@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
 import { Alert } from './components/Alert';
 import { Banner } from './components/Banner';
+import { BottomBar } from './components/BottomBar';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Button } from './components/Button';
 import { ChoiceBlock } from './components/ChoiceBlock';
@@ -536,6 +537,7 @@ function App() {
 
       <VariantGroup label="Patterns">
         <PlanCard />
+        <BottomBar />
       </VariantGroup>
     </>
   );
