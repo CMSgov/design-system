@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-tabs';
+import '../ds-button';
 
 const meta: Meta = {
   title: 'Web Components/ds-tabs',
@@ -90,7 +91,10 @@ const Template = (args) => {
   return (
     <ds-tabs {...args}>
       <ds-tab-panel key="summary" id="summary" tab="Summary">
-        The Bill of Rights is the first ten amendments to the United States Constitution.
+        <p>The Bill of Rights is the first ten amendments to the United States Constitution.</p>
+        <ds-button variation="solid" type="button" className="ds-u-margin-top--2">
+          Download full document
+        </ds-button>
       </ds-tab-panel>
       <ds-tab-panel key="preamble" id="preamble" tab="Preamble">
         <p>
