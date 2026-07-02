@@ -75,7 +75,7 @@ function StarRating({ filled, total = 5 }: { filled: number; total?: number }) {
 
 export function PlanCard() {
   return (
-    <article className={B}>
+    <article className={`${B} ds-u-margin-y--2`}>
       {/* Title */}
       <div className={`ds-c-mgov-plan-card__title`}>
         <p className="ds-c-mgov-type--pair-title">

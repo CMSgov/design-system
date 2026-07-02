@@ -76,6 +76,7 @@
   color: var(--mgov-ink-strong);
   transition: transform 0.15s ease;
 }
+
 .ds-c-mgov-filter--open .ds-c-mgov-filter__caret {
   transform: rotate(180deg);
 }
@@ -157,6 +158,19 @@
 /* Checked radio ring is 2px green (DS keeps width constant and only recolors). */
 .ds-c-mgov-filter__choices .ds-c-choice[type='radio']:checked {
   border-width: 2px;
+}
+
+/* No hover styling — only the selected state should read. The DS repaints the
+   radio border on :hover (var(--choice__border-color--hover) → falls back to
+   the resting grey), at the same specificity as its :checked green-ring rule,
+   so which wins is decided purely by source order. Pin hover to the resting
+   look so hovering never changes the control: unchecked stays grey, the
+   selected radio keeps its green ring. */
+.ds-c-mgov-filter__choices .ds-c-choice[type='radio']:hover:not(:disabled) {
+  border-color: var(--choice__border-color);
+}
+.ds-c-mgov-filter__choices .ds-c-choice[type='radio']:checked:hover:not(:disabled) {
+  border-color: var(--mgov-green);
 }
 
 /* Selected FILL — radio dot. The DS ::before box-shadow doesn't honor our

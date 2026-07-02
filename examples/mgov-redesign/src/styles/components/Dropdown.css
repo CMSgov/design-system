@@ -129,13 +129,20 @@
   border-block-end: none;
 }
 
-/* Highlighted + selected: soft-surface tint, black text, normal weight.
+/* Selected: soft-surface tint, black text, normal weight.
    (DS selected = solid dark-green fill + white text + bold + a checkmark.) */
-.ds-c-mgov-dropdown .ds-c-dropdown__menu-item--highlighted,
 .ds-c-mgov-dropdown .ds-c-dropdown__menu-item--selected {
   background-color: var(--mgov-surface-soft); /* #eaf3f0 */
   color: var(--color-black);
   font-weight: var(--font-weight-normal);
+}
+
+/* No hover styling: neutralize the DS highlight (hover + keyboard) so a
+   highlighted row that isn't the selected one reads as a plain row. The
+   selected row keeps its tint via the :not() guard. */
+.ds-c-mgov-dropdown .ds-c-dropdown__menu-item--highlighted:not(.ds-c-dropdown__menu-item--selected) {
+  background-color: transparent;
+  color: var(--color-black);
 }
 
 /* Figma shows no checkmark on the selected row (selection is conveyed by the
