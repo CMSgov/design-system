@@ -27,6 +27,7 @@
   --mgov-ink: #16221f;
   --mgov-ink-strong: #0a352f;
   --mgov-ink-muted: #5a6b67;
+  --mgov-ink-subtle: rgb(0 0 0 / 60%); /* muted caption / helper text (60% black) */
   --mgov-rule: #dde6e3;
   --mgov-green: var(--color-primary); /* Or just use --color-primary */
   --mgov-green-strong: var(--color-primary-darkest); /* Or use --color-primary-darkest */

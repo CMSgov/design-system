@@ -1,16 +1,19 @@
 /* ============================================================
-   Selection Bottom Bar pattern — Medicare.gov redesign (Figma node 2045:11120)
+   Selection Bottom Bar pattern — Medicare.gov redesign (Figma node 2045:11123)
 
    A sticky footer for multi-select flows: a selection count + instructional
    body copy, the current selections as removable Pills, and a primary action.
+   Four Figma variants (all one component): Pharmacy 1-up / 5-up, Plan Compare,
+   and Pharmacy (Network) where each pill carries an In/Out-of-network helper.
 
    Spacing uses the DS --spacer scale (8px cadence). The one off-cadence Figma
    value (12px row gap) is snapped to the nearest step (--spacer-2, 16), and the
    64px column gap uses --mgov-spacer-8 (one step past the scale's --spacer-7).
    Colors come from shared-tokens.css / DS tokens. Body copy uses
-   .ds-c-mgov-type--body; the "N of M selected" count uses the "Label" spec
-   (Inter 600 · 16/24 · -2.5%) built from the shared tokens, matching the plan
-   card headings (the DS/redesign type scale has no dedicated Label class).
+   .ds-c-mgov-type--body; the network helper uses .ds-c-mgov-type--body-small;
+   the "N of M selected" count uses the "Label" spec (Inter 600 · 16/24 · -2.5%)
+   built from the shared tokens, matching the plan card headings (the
+   DS/redesign type scale has no dedicated Label class).
    ============================================================ */
 
 .ds-c-mgov-bottom-bar {
@@ -72,9 +75,53 @@
   background-color: var(--mgov-ink-strong);
 }
 
-/* Selected pills — wrap onto new lines as the selection grows. */
+/* Selected pills — wrap onto new lines as the selection grows. Top-aligned so
+   network chips (pill + helper row) line their pills up with plain pills. */
 .ds-c-mgov-bottom-bar__pills {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: var(--spacer-1); /* 8 */
+}
+
+/* Capped pills: short labels stay compact, long ones wrap to a second line
+   (never truncate) within a max width. Figma's chips are 200px — on the 8px
+   cadence (25×8). */
+.ds-c-mgov-bottom-bar__pill--capped.ds-c-badge {
+  box-sizing: border-box;
+  max-width: 200px;
+}
+.ds-c-mgov-bottom-bar__pill--capped .ds-c-mgov-pill__label {
+  white-space: normal; /* allow wrapping inside the cap (the badge is nowrap) */
+}
+
+/* --- Network chip: a pill stacked over an In/Out-of-network helper row.
+   The pill sets the column width (capped at 200px), so the chip and its
+   helper track that width automatically. --- */
+.ds-c-mgov-bottom-bar__chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacer-half); /* 4 */
+}
+
+/* Helper row — Body small (Rubik · 15/21), muted 60% black; the icon inherits
+   that color via currentColor. */
+.ds-c-mgov-bottom-bar__helper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacer-half); /* 4 */
+  color: var(--mgov-ink-subtle); /* 60% black */
+}
+
+.ds-c-mgov-bottom-bar__helper-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.ds-c-mgov-bottom-bar__helper-icon .ds-c-icon,
+.ds-c-mgov-bottom-bar__helper-icon svg {
+  width: 16px;
+  height: 16px;
 }

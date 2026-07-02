@@ -21,10 +21,20 @@ import { Tooltip } from './components/Tooltip';
 const APP_LIBRARY_TITLE = "Take control of your health data with Medicare's app library";
 const APP_LIBRARY_BODY =
   'Find secure third-party apps to track your health history, manage medications, share information with providers, and more.';
+const PHARMACY_DESC =
+  'Add up to 5 pharmacies to find the plan with the lowest cost for your drugs.';
 
-function VariantGroup({ label, children }: { label: string; children: ReactNode }) {
+function VariantGroup({
+  label,
+  children,
+  className,
+}: {
+  label: string;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="variant-group ds-u-margin-y--2">
+    <div className={['variant-group ds-u-margin-y--2', className].filter(Boolean).join(' ')}>
       <p className="variant-label">{label}</p>
       {children}
     </div>
@@ -277,6 +287,7 @@ function App() {
 
         <VariantGroup label="tooltip">
           <Tooltip
+            component={'a'}
             title={
               <>
                 <p className="ds-c-mgov-tooltip__title ds-c-mgov-type--action-title">
@@ -537,7 +548,57 @@ function App() {
 
       <VariantGroup label="Patterns">
         <PlanCard />
-        <BottomBar />
+
+        <VariantGroup label="bottom bar — pharmacy (1 selected)" className="variant-group--fill">
+          <BottomBar total={5} description={PHARMACY_DESC} items={[{ label: 'Acme Pharmacy' }]} />
+        </VariantGroup>
+
+        <VariantGroup label="bottom bar — pharmacy (5 selected)" className="variant-group--fill">
+          <BottomBar
+            total={5}
+            description={PHARMACY_DESC}
+            capPillWidth
+            items={[
+              { label: 'Acme Pharmacy' },
+              { label: 'Discount Drug Mart' },
+              { label: 'CVS Pharmacy #04359' },
+              { label: 'CSI Infusion Services' },
+              { label: 'Mail Order Pharmacy' },
+            ]}
+          />
+        </VariantGroup>
+
+        <VariantGroup
+          label="bottom bar — plan compare (2 selected)"
+          className="variant-group--fill"
+        >
+          <BottomBar
+            total={3}
+            description="Add up to 3 plans to compare"
+            items={[
+              { label: 'HumanaChoice Giveback H7617-003 (PPO)' },
+              { label: 'HumanaChoice Giveback H5216-309 (PPO)' },
+            ]}
+          />
+        </VariantGroup>
+
+        <VariantGroup
+          label="bottom bar — pharmacy network (5 selected, in/out of network)"
+          className="variant-group--fill"
+        >
+          <BottomBar
+            total={5}
+            description={PHARMACY_DESC}
+            capPillWidth
+            items={[
+              { label: 'Acme Pharmacy', network: 'in' },
+              { label: 'Discount Drug Mart', network: 'in' },
+              { label: 'CVS Pharmacy #04359', network: 'in' },
+              { label: 'Mail Order Pharmacy', network: 'in' },
+              { label: 'CSI Infusion Services', network: 'out' },
+            ]}
+          />
+        </VariantGroup>
       </VariantGroup>
     </>
   );

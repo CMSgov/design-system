@@ -8,6 +8,8 @@ interface PillProps {
   onRemove?: () => void;
   /** Accessible label for the remove button. */
   removeLabel?: string;
+  /** Extra class(es) on the Badge — e.g. a width cap so long labels truncate. */
+  className?: string;
 }
 
 /**
@@ -18,10 +20,10 @@ interface PillProps {
  * `styles/components/Pill.css`, scoped to that class, so the base DS Badge is
  * untouched. Pass `onRemove` to render the close (×) button.
  */
-export function Pill({ children, onRemove, removeLabel = 'Remove' }: PillProps) {
+export function Pill({ children, onRemove, removeLabel = 'Remove', className }: PillProps) {
   return (
-    <Badge className="ds-c-mgov-pill">
-      {children}
+    <Badge className={['ds-c-mgov-pill', className].filter(Boolean).join(' ')}>
+      <span className="ds-c-mgov-pill__label">{children}</span>
       {onRemove && (
         <button
           type="button"

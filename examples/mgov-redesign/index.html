@@ -27,6 +27,11 @@
         align-items: flex-start; /* size children to their content, don't stretch to full width */
         gap: 8px;
       }
+      /* Opt-in: stretch this group to fill its parent's width (e.g. full-bleed
+         patterns like the bottom bar, so sibling rows share one width). */
+      .variant-group--fill {
+        align-self: stretch;
+      }
       .variant-label {
         font-family: monospace;
         font-size: 12px;
