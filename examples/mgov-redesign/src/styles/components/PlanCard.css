@@ -151,6 +151,19 @@
   margin-block: 0;
 }
 
+/* "Add to compare" — Body (Rubik 400 · 16/24), matching the checkbox-row
+   labels across the Figma designs (newsletter consent, filter options). The
+   DS choice label otherwise picks up the --label__* field-label tokens
+   (Inter, 14px via the theme scale). */
+.ds-c-mgov-plan-card__footer .ds-c-choice + label {
+  margin-block-start: 0;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* 24px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+}
+
 /* --- Icon slots (glyph sizes are icon dimensions, not layout spacing) --- */
 .ds-c-mgov-plan-card__icon {
   display: inline-flex;

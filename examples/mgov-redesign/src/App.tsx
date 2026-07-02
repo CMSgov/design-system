@@ -11,6 +11,7 @@ import { FilterPopover } from './components/FilterPopover';
 import { Dialog } from './components/Dialog';
 import { Dropdown } from './components/Dropdown';
 import { FeatureCard } from './components/FeatureCard';
+import { Newsletter } from './components/Newsletter';
 import { Pill } from './components/Pill';
 import { PlanCard } from './components/PlanCard';
 import { Search } from './components/Search';
@@ -598,6 +599,10 @@ function App() {
               { label: 'CSI Infusion Services', network: 'out' },
             ]}
           />
+        </VariantGroup>
+
+        <VariantGroup label="newsletter signup" className="variant-group--fill">
+          <Newsletter />
         </VariantGroup>
       </VariantGroup>
     </>

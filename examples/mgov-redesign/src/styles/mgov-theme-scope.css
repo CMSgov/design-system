@@ -18,6 +18,12 @@
   --font-family-heading: var(--mgov-font-family-heading);
   --font-family-button: var(--mgov-font-family-heading);
   --font-family-link: var(--mgov-font-family-heading);
+  /* Field labels ("Label" — Inter across the Figma designs). Needs its own
+     re-point: the medicare theme declares --label__font-family at :root as
+     var(--font-family-heading), which resolves to Montserrat THERE — the
+     already-substituted value is what inherits, so re-mapping
+     --font-family-heading inside this scope can't reach it. */
+  --label__font-family: var(--mgov-font-family-heading);
   --font-size-5xl: var(--mgov-font-size-72);
   --font-size-4xl: var(--mgov-font-size-56);
   --font-size-3xl: var(--mgov-font-size-48);

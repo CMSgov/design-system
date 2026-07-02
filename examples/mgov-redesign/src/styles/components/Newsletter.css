@@ -1,0 +1,130 @@
+/* ============================================================
+   Newsletter signup pattern — Medicare.gov redesign (Figma node 2080:16688)
+
+   A dark-green band: title + supporting copy on the left, and an email form
+   (TextField, consent checkbox with privacy-policy link, full-width button)
+   on the right. Composed from the existing mgov TextField / Button and the DS
+   ChoiceList; this file only handles the band layout, the on-dark recoloring,
+   and the consent-row conventions shared with ChoiceBlock / FilterPopover.
+
+   Spacing uses the DS --spacer scale (8px cadence). The band's off-cadence
+   Figma padding (99px) snaps to 96 (--mgov-spacer-12); the 80px inline padding
+   is --mgov-spacer-10. Typography: title = .ds-c-mgov-type--featured-title
+   (applied in markup); the subtitle is the "Body medium" spec (Inter 400 ·
+   20/28 · -2%), which has no type class — built from the same tokens as the
+   field-input text (TextField/Dropdown precedent).
+   ============================================================ */
+
+.ds-c-mgov-newsletter {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; /* stack on narrow screens (Figma frame is fixed 1440) */
+  gap: var(--mgov-spacer-8); /* 64 — column gap when the sides sit apart */
+  width: 100%;
+  padding: var(--mgov-spacer-12) var(--mgov-spacer-10); /* 99 → 96 / 80 */
+  background-color: var(--mgov-ink-strong); /* #0a352f */
+}
+
+/* --- Left: title + supporting copy, white on dark --- */
+.ds-c-mgov-newsletter__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2); /* 16 */
+  flex: 0 1 360px;
+  min-width: 280px;
+}
+
+/* White beats the type classes' :where() ink default (zero specificity). */
+.ds-c-mgov-newsletter__heading {
+  margin: 0;
+  color: var(--color-white);
+}
+
+/* Subtitle — "Body medium" (Inter 400 · 20/28 · -2%): no type class exists;
+   same token recipe as the field-input text. */
+.ds-c-mgov-newsletter__subtitle {
+  margin: 0;
+  font-family: var(--mgov-font-family-heading);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-lg); /* 20px */
+  line-height: var(--mgov-line-height-input); /* 28px */
+  letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
+  color: var(--color-white);
+}
+
+/* --- Right: the form column --- */
+.ds-c-mgov-newsletter__form {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 500px;
+  min-width: 280px;
+}
+
+/* TextField fills the column; its label reads white on the dark band. The
+   label font/weight come from the TextField's own --label__* tokens ("Label"
+   spec, Inter 600); only the on-dark color and the 24px line-height are set
+   here. (Extra .ds-c-mgov-text-field in the selector out-specifies the
+   component's own black label rule regardless of stylesheet order.) */
+.ds-c-mgov-newsletter__form .ds-c-mgov-text-field {
+  width: 100%;
+}
+.ds-c-mgov-newsletter__form .ds-c-mgov-text-field .ds-c-label {
+  color: var(--color-white);
+  line-height: var(--mgov-line-height-sm); /* 24px @16px */
+}
+
+/* --- Consent row: 16px above/below (Figma 56px row = 24px content + 16/16) --- */
+.ds-c-mgov-newsletter__consent {
+  padding-block: var(--spacer-2); /* 16 */
+
+  /* Control tokens — same 20px control recipe as ChoiceBlock/FilterPopover. */
+  --choice__size: 20px;
+  --choice__border-width: 1px;
+  --choice__border-color: rgb(0 0 0 / 40%);
+  --choice__background-color: var(--color-white);
+  --choice__background-color--checked: var(--mgov-green);
+  --label__text-transform: none; /* drop the medicare-theme uppercase */
+}
+
+/* The DS ChoiceList fieldset + wrapper carry margins; the row's padding is the
+   spacing (PlanCard-footer precedent). */
+.ds-c-mgov-newsletter__consent .ds-c-fieldset,
+.ds-c-mgov-newsletter__consent .ds-c-choice-wrapper {
+  margin-block: 0;
+}
+
+.ds-c-mgov-newsletter__consent .ds-c-choice-wrapper {
+  align-items: center;
+  column-gap: var(--spacer-1); /* 8 */
+  max-width: none;
+}
+
+/* Checked FILL — the DS paints it on ::before, which ignores the scoped token
+   override (ChoiceBlock/FilterPopover precedent), so set it directly. */
+.ds-c-mgov-newsletter__consent .ds-c-choice:checked::before {
+  box-shadow: inset 0 0 4em 1em var(--mgov-green);
+}
+
+/* Consent label — Body (Rubik 400 · 16/24), white; the inline link stays
+   white with an underline. */
+.ds-c-mgov-newsletter__consent .ds-c-choice + label {
+  margin-block-start: 0;
+  max-width: none;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* 24px @16px */
+  letter-spacing: var(--mgov-font-letter-spacing-sm); /* 0 */
+  color: var(--color-white);
+}
+.ds-c-mgov-newsletter__consent .ds-c-choice + label a {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+/* --- Button: full-width "Next step" --- */
+.ds-c-mgov-newsletter__form .ds-c-mgov-button {
+  width: 100%;
+}

@@ -32,7 +32,8 @@
   --text-input__border-width--error: 2px; /* 3px → 2px */
   --text-input__border-color--error: var(--mgov-color-error); /* #b20000 → #c30000 */
 
-  /* --- Label tokens consumed by .ds-c-label --- */
+  /* --- Label tokens consumed by .ds-c-label ("Label" — Inter 600 · 16/24 · -2.5%) --- */
+  --label__font-family: var(--mgov-font-family-heading); /* Montserrat → Inter */
   --label__font-size: var(--font-size-md); /* 14px → 16px */
   --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none; /* uppercase → none */
