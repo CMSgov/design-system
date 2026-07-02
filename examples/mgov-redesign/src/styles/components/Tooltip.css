@@ -35,7 +35,7 @@
   background: none;
   font: inherit;
   color: var(--color-primary);
-  text-decoration: underline;
+  text-decoration: dotted underline;
   cursor: pointer;
 }
 

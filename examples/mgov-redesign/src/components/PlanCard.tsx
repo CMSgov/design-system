@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { CheckIcon, ChoiceList, CloseIcon, InfoCircleIcon, StarIcon } from '@cmsgov/design-system';
 import { Button } from './Button';
+import { Tooltip } from './Tooltip';
 import '../styles/components/PlanCard.css';
 
 /**
@@ -66,7 +67,7 @@ function StarRating({ filled, total = 5 }: { filled: number; total?: number }) {
           }`}
           aria-hidden="true"
         >
-          <StarIcon />
+          <StarIcon isFilled={i < filled} />
         </span>
       ))}
     </span>
@@ -86,11 +87,10 @@ export function PlanCard() {
             CareFirst BlueCross BlueShield Medicare Advantage | Plan ID: H0628-013-0
           </p>
           <div className={`ds-c-mgov-plan-card__rating`}>
-            <span
-              className={`ds-c-mgov-type--body ds-c-mgov-plan-card__u-dotted`}
-              style={{ whiteSpace: 'nowrap' }}
-            >
-              Star rating
+            <span className={`ds-c-mgov-type--body`} style={{ whiteSpace: 'nowrap' }}>
+              <Tooltip component={'a'} title="How much users like this thing.">
+                Star rating
+              </Tooltip>
             </span>
             <StarRating filled={4} />
           </div>
@@ -131,7 +131,9 @@ export function PlanCard() {
               <p className={`ds-c-mgov-type--pair-title ds-c-mgov-plan-card__amount`}>$0.00</p>
               <div className={`ds-c-mgov-plan-card__stack`}>
                 <span className="ds-c-mgov-type--text-link">
-                  <span className={`ds-c-mgov-plan-card__u-dotted`}>Retail pharmacy:</span>{' '}
+                  <Tooltip component={'a'} title={'Where you get your drugs'}>
+                    Retail pharmacy:
+                  </Tooltip>{' '}
                   Estimated total drug &amp; premium cost
                 </span>
                 <span className="ds-c-mgov-type--text-link">
@@ -144,18 +146,24 @@ export function PlanCard() {
           <Section heading="Other costs" last>
             <div className={`ds-c-mgov-plan-card__cost-line`}>
               <p className={`ds-c-mgov-type--pair-title ds-c-mgov-plan-card__amount`}>$0.00</p>
-              <span className={`ds-c-mgov-type--text-link ds-c-mgov-plan-card__u-dotted`}>
-                Health deductible
+              <span className={`ds-c-mgov-type--text-link `}>
+                <Tooltip component={'a'} title={'Something about health deductibles.'}>
+                  Health deductible
+                </Tooltip>
               </span>
             </div>
             <div className={`ds-c-mgov-plan-card__cost-line`}>
               <p className={`ds-c-mgov-type--pair-title ds-c-mgov-plan-card__amount`}>$0.00</p>
-              <span className={`ds-c-mgov-type--text-link ds-c-mgov-plan-card__u-dotted`}>
-                Drug deductible
+              <span className={`ds-c-mgov-type--text-link `}>
+                <Tooltip component={'a'} title={'Something about drug deductibles.'}>
+                  Drug deductible
+                </Tooltip>
               </span>
             </div>
-            <span className={`ds-c-mgov-type--text-link ds-c-mgov-plan-card__u-dotted`}>
-              Maximum you pay for health services
+            <span className={`ds-c-mgov-type--text-link `}>
+              <Tooltip component={'a'} title={'Something about the maximum you will pay.'}>
+                Maximum you pay for health services
+              </Tooltip>
             </span>
             <p className="ds-c-mgov-type--pair-title">$13,300 in and out-of-network</p>
             <p className="ds-c-mgov-type--pair-title">$8,300 in-network</p>
