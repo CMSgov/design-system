@@ -90,7 +90,8 @@
 
   /* Borders */
   --mgov-border-subtle: rgb(0 0 0 / 20%); /* hairline on cards / menus */
-  --mgov-border-input: rgb(0 0 0 / 30%); /* field + tooltip border */
+  --mgov-border-input: rgb(0 0 0 / 30%); /* field + tooltip border; section rules */
+  --mgov-border-strong: rgb(0 0 0 / 60%); /* emphasized rule (e.g. plan card title) */
 
   /* Status */
   --mgov-color-error: #c30000; /* field error border + inline-error text */

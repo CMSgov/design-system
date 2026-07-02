@@ -1,0 +1,186 @@
+/* ============================================================
+   Plan Card pattern — Medicare.gov redesign (Figma node 1991:7723)
+
+   Layout for the plan-comparison card. All spacing uses the DS --spacer
+   scale (8px cadence); off-cadence Figma values are snapped to the nearest
+   step (12→16 = --spacer-2, 20→24 = --spacer-3). Colors come from
+   shared-tokens.css and DS tokens; typography from the .ds-c-mgov-type--
+   classes (applied in the markup), except the section headings, which use
+   the "Label" spec (Inter 600 · 16/24 · -2.5%) via the shared tokens since
+   there is no dedicated type class for it.
+   ============================================================ */
+
+.ds-c-mgov-plan-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2); /* 16 */
+  padding: var(--spacer-5); /* 40 */
+  background-color: var(--color-white);
+  border: 1px solid var(--mgov-border-subtle);
+  border-radius: var(--mgov-radius-lg); /* 16 */
+}
+
+/* --- Title --- */
+.ds-c-mgov-plan-card__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-half); /* 4 */
+  padding-block-end: var(--spacer-3); /* 20 → 24 */
+  border-block-end: 1px solid var(--mgov-border-strong);
+}
+.ds-c-mgov-plan-card__title-meta {
+  display: flex;
+  gap: var(--spacer-1); /* 8 */
+  align-items: flex-start;
+}
+.ds-c-mgov-plan-card__title-meta > :first-child {
+  flex: 1 0 0;
+  min-width: 0;
+}
+.ds-c-mgov-plan-card__rating {
+  display: flex;
+  gap: var(--spacer-1); /* 8 */
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 0 0;
+  min-width: 0;
+}
+.ds-c-mgov-plan-card__stars {
+  display: inline-flex;
+}
+
+/* --- Two columns --- */
+.ds-c-mgov-plan-card__cols {
+  display: flex;
+  gap: var(--spacer-5); /* 40 */
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.ds-c-mgov-plan-card__col {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Section --- */
+.ds-c-mgov-plan-card__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2); /* 12 → 16 */
+  padding-block: var(--spacer-3); /* 20 → 24 */
+  border-block-end: 1px solid var(--mgov-border-input);
+}
+.ds-c-mgov-plan-card__section--last {
+  border-block-end: none;
+}
+.ds-c-mgov-plan-card__heading {
+  margin: 0;
+  font-family: var(--mgov-font-family-heading);
+  font-weight: var(--font-weight-bold); /* 600 */
+  font-size: var(--font-size-md); /* 16px */
+  line-height: var(--mgov-line-height-sm); /* 24px */
+  letter-spacing: var(--mgov-font-letter-spacing-lg); /* -0.4px */
+  color: var(--mgov-ink-strong);
+}
+
+/* --- Amount row (dollar figure + adjacent stacked notes) --- */
+.ds-c-mgov-plan-card__amount-row {
+  display: flex;
+  gap: var(--spacer-2); /* 16 */
+  align-items: flex-start;
+}
+.ds-c-mgov-plan-card__amount {
+  width: 100px;
+  flex-shrink: 0;
+}
+.ds-c-mgov-plan-card__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-1); /* 8 */
+  justify-content: center;
+}
+
+/* Amount + inline label (e.g. deductibles) */
+.ds-c-mgov-plan-card__cost-line {
+  display: flex;
+  gap: var(--spacer-2); /* 12 → 16 */
+  align-items: center;
+}
+
+/* --- Lists / rows --- */
+.ds-c-mgov-plan-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-half); /* 4 */
+}
+.ds-c-mgov-plan-card__row {
+  display: flex;
+  gap: var(--spacer-1); /* 8 */
+  align-items: center;
+}
+.ds-c-mgov-plan-card__inline {
+  display: flex;
+  gap: var(--spacer-1); /* 8 */
+  align-items: center;
+}
+
+/* --- Footer --- */
+.ds-c-mgov-plan-card__footer {
+  display: flex;
+  gap: var(--spacer-2); /* 16 */
+  align-items: center;
+  flex-wrap: wrap;
+  /* Drop the medicare theme's uppercase choice label ("Add to compare"). */
+  --label__text-transform: none;
+}
+.ds-c-mgov-plan-card__actions {
+  display: flex;
+  gap: var(--spacer-2); /* 12 → 16 */
+  align-items: center;
+}
+
+/* The DS ChoiceList fieldset + choice-wrapper carry top margins that offset the
+   checkbox below the buttons (align-items:center centers the margin box). Zero
+   them so the checkbox lines up with the button row. */
+.ds-c-mgov-plan-card__footer .ds-c-fieldset,
+.ds-c-mgov-plan-card__footer .ds-c-choice-wrapper {
+  margin-block: 0;
+}
+
+/* --- Icon slots (glyph sizes are icon dimensions, not layout spacing) --- */
+.ds-c-mgov-plan-card__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+.ds-c-mgov-plan-card__icon--lg {
+  font-size: 24px;
+}
+.ds-c-mgov-plan-card__icon--sm {
+  font-size: 18px;
+  color: var(--mgov-ink-strong);
+}
+.ds-c-mgov-plan-card__icon--yes {
+  color: var(--color-primary);
+}
+.ds-c-mgov-plan-card__icon--no {
+  color: var(--mgov-color-error);
+}
+.ds-c-mgov-plan-card__icon--on {
+  color: var(--mgov-ink-strong);
+}
+.ds-c-mgov-plan-card__icon--off {
+  color: var(--color-gray-light);
+}
+
+/* --- Underlines used on some links/notes --- */
+.ds-c-mgov-plan-card__u {
+  text-decoration: underline;
+}
+.ds-c-mgov-plan-card__u-dotted {
+  text-decoration: underline dotted;
+}

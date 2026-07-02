@@ -4,8 +4,8 @@ import { createRoot } from 'react-dom/client';
 // DS base + utilities, Medicare theme tokens, then the redesign's namespaced
 // tokens + typography classes. shared-tokens.css only defines --mgov-* values;
 // it does not change any DS token.
-import '../../../packages/design-system/dist/css/index.css';
-import '../../../packages/ds-medicare-gov/dist/css/medicare-theme.css';
+import '@cmsgov/design-system/css/index.css';
+import '@cmsgov/ds-medicare-gov/css/medicare-theme.css';
 import './styles/shared-tokens.css';
 import './styles/typography.css';
 // Optional theme layer: maps DS tokens → the --mgov-* values within the
@@ -17,7 +17,7 @@ import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <div className="ds-theme--mgov">
+    <div className="ds-theme--mgov ds-content">
       <App />
     </div>
   </StrictMode>

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cmsgov/ds-medicare-gov": "^18.0.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
