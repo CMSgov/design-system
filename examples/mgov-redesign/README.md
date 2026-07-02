@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# Implementation Helpers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This .zip folder contains a basic Vite & React application. Within the /src directory you will find application code that displays components that are derived from the [Triptk Figma file](https://www.figma.com/design/VtAxUgaFMUueWgvi3kNoXJ/-TRIPTK--Medicare.gov-Redesign?node-id=1656-7514&t=G6ZamoVJnyEnkMGR-1).
 
-Currently, two official plugins are available:
+## Goals and what even is this
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Since the Design System cannot consume, audit and release these changes in the allotted time, I've taken a first pass effort at implementing the designs. This has meant:
 
-## React Compiler
+1. Overriding DS tokens where needed
+2. Creating new tokens
+3. Creating new styles
+4. Creating new components
+5. Creating new patterns
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+CAVEAT: I did this in 4 days. I used generative AI to consume the designs and generate the code. I have not had time to fully vette anything here. I reviewed it as I was going and tried my best to guide the AI to do reasonable, helpful and realistic things. That said, I view all of this code in the following way:
 
-## Expanding the ESLint configuration
+This is starter code to get teams going faster. I don't expect any of this code to survive and I hope folks use it to iterate and build out things faster. This is not final code that is endorsed or will be supported long term by the CMS Design System.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Unzip the folder -- you've probably already done this if you are ready this.
+2. Switch to node version 22+: `nvm use 22`
+3. `npm i`
+4. `npm run dev`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+You should see the application running at `localhost:5173` (or some other 517\* port depending on what is avaialable on your local machine).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## Consumption of CSS
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+I've tried to present a few different options depending on what teams need for ingestion of CSS styling. There are three CSS files at the top level of the /src directory that are of interest:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+1. shared-tokens.css
+2. mgov-theme-global.css
+3. mgov-theme-scope.css
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+The shared-tokens.css file are root scoped tokens that are shared across styles in this example application. These are net new tokens that are designed to not conflict or override existing DS tokens.
+
+The tokens contained within mgov-them-global.css are root (global) scoped tokens that DO override DS level tokens. The idea here is that your application needs these tokens everywhere, and you need the overrides everywhere.
+
+For teams who want more control, you can emulate the mgov-theme-scope.css file. Here the token overrides of the DS are scoped to a class that can be applied to any element you want the overrides to take place on. If you want to limit the impact of the overrides, you'll want to reference this approach.
+
+## Organization of the Application
+
+1. The first section shows the expected Typography styles. The classes that support the typography are stored in a top level css file called `typography.css`.
+2. New components are then listed. These include: Filter Popover, Tile, Banner, Breadcrubms and Search.
+3. Existing components are then demonstrated. These are Feature Card (just our Card that has been extended), TextField, Badge (here called the Pill to align with the Figma designs), Alert, Dialog, Dropdown, Button, ChoiceList (here called the Choice Block to align with the Triptk Figma designs), and Tooltip.
+4. Patterns. Cards, Bottom Bar, Newletter Signup, and Quick Tasks
