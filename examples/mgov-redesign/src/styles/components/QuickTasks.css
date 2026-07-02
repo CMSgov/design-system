@@ -1,0 +1,33 @@
+/* ============================================================
+   Quick Tasks pattern — Medicare.gov redesign (Figma node 2102:18774)
+
+   A "Quick tasks" section: Section Title heading over a 3×2 grid of the
+   existing small Tiles (icon box + label + arrow). This file only lays out
+   the section — all card styling lives in Tile.css.
+
+   Spacing on the DS --spacer scale (8px cadence): 48px heading ↔ grid,
+   32px between cards. The grid auto-fits: 3 columns at the design width,
+   collapsing to 2 / 1 on narrower screens (the Figma frame is fixed-width).
+   ============================================================ */
+
+.ds-c-mgov-quick-tasks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-6); /* 48 */
+}
+
+.ds-c-mgov-quick-tasks__heading {
+  margin: 0;
+}
+
+.ds-c-mgov-quick-tasks__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacer-4); /* 32 */
+}
+
+/* Tiles fill their grid column (the standalone Tile is a fixed 380px). */
+.ds-c-mgov-quick-tasks__grid .ds-c-tile {
+  width: 100%;
+}

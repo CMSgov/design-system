@@ -14,6 +14,7 @@ import { FeatureCard } from './components/FeatureCard';
 import { Newsletter } from './components/Newsletter';
 import { Pill } from './components/Pill';
 import { PlanCard } from './components/PlanCard';
+import { QuickTasks } from './components/QuickTasks';
 import { Search } from './components/Search';
 import { TextField } from './components/TextField';
 import { Tile } from './components/Tile';
@@ -603,6 +604,10 @@ function App() {
 
         <VariantGroup label="newsletter signup" className="variant-group--fill">
           <Newsletter />
+        </VariantGroup>
+
+        <VariantGroup label="quick tasks" className="variant-group--fill">
+          <QuickTasks />
         </VariantGroup>
       </VariantGroup>
     </>
