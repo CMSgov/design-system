@@ -18,25 +18,14 @@
    caller applies to the `title` content.
    ============================================================ */
 
-/* Token overrides cascade to the popup border + arrow (which consume them). */
+/* Token overrides cascade to the popup border + arrow (which consume them),
+   and to the trigger: the wrapper applies `component="a"` +
+   `ds-c-tooltip__trigger-link`, so the DS supplies the dotted underline + chrome
+   reset; we only re-point its trigger color to the redesign green. */
 .ds-c-mgov-tooltip {
   --tooltip__border-color: var(--mgov-border-input);
   --tooltip__color: var(--mgov-color-tooltip-ink);
-}
-
-/* Trigger — the DS renders a <button> by default; style it to read as inline
-   link text: reset the button chrome, inherit the surrounding font, and add a
-   link color + underline. */
-.ds-c-mgov-tooltip .ds-c-tooltip__trigger {
-  appearance: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: var(--color-primary);
-  text-decoration: dotted underline;
-  cursor: pointer;
+  --tooltip-trigger__color: var(--color-primary);
 }
 
 /* Popup card — full border + 12px radius + Figma drop shadow. */
