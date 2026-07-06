@@ -18,13 +18,14 @@
   width: 400px;
   max-width: 100%;
 
-  /* --- Field tokens (consumed by .ds-c-field) --- */
+  /* --- Field tokens (consumed by .ds-c-field) ---
+     Border COLORS are deliberately not overridden: resting + error borders
+     use the DS theme tokens (--text-input__border-color → --color-gray,
+     --text-input__border-color--error → --color-error). */
   --text-input__border-radius: var(--radius-pill);
   --text-input__border-width: 1px;
-  --text-input__border-color: var(--mgov-border-input);
   --text-input__color: var(--color-black);
   --text-input__border-width--error: 2px;
-  --text-input__border-color--error: var(--mgov-color-error);
 
   /* --- Label + hint/error tokens --- */
   --label__font-size: var(--font-size-md);

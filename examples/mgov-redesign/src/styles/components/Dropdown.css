@@ -34,13 +34,14 @@
   max-width: none;
   width: 320px;
 
-  /* --- Trigger field tokens (consumed by .ds-c-dropdown__button.ds-c-field) --- */
+  /* --- Trigger field tokens (consumed by .ds-c-dropdown__button.ds-c-field) ---
+     Border COLORS are deliberately not overridden: resting + error borders
+     use the DS theme tokens (--text-input__border-color → --color-gray,
+     --text-input__border-color--error → --color-error). */
   --text-input__border-radius: var(--radius-large); /* 3px → 8px */
   --text-input__border-width: 1px; /* 2px → 1px */
-  --text-input__border-color: var(--mgov-border-input); /* gray → 30% black */
   --text-input__color: var(--color-black);
   --text-input__border-width--error: 2px; /* 3px → 2px */
-  --text-input__border-color--error: var(--mgov-color-error); /* #b20000 → var(--mgov-color-error) */
 
   /* --- Label tokens (.ds-c-dropdown__label uses .ds-c-label; "Label" —
      Inter 600 · 16/24 · -2.5%) --- */

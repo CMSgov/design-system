@@ -25,10 +25,11 @@
   width: 320px;
   max-width: 100%;
 
-  /* Field trigger tokens (consumed by .ds-c-field). */
+  /* Field trigger tokens (consumed by .ds-c-field). The trigger's resting
+     border color is deliberately not overridden — it uses the DS theme token
+     (--text-input__border-color → --color-gray), matching the other fields. */
   --text-input__border-radius: var(--radius-large); /* 8px */
   --text-input__border-width: 1px;
-  --text-input__border-color: var(--mgov-border-input); /* rgb(0 0 0 / 30%) */
   --text-input__color: var(--color-black);
 }
 
