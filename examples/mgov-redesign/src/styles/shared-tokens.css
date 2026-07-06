@@ -115,4 +115,9 @@
   --mgov-shadow-color: rgb(0 0 0 / 10%);
   --mgov-shadow-menu: 0 10px 20px 0 var(--mgov-shadow-color); /* dropdown / search menus */
   --mgov-shadow-bottom-bar: 0 -5px 10px 0 rgb(0 0 0 / 8%); /* upward cast of a sticky footer */
+  /* The DS focus ring (white gap + gold glow) — mirrors the DS's
+     mixins.focus-styles box-shadow, which the DS ships only as a Sass mixin
+     (its geometry isn't tokenized; only the two colors are). Stated once here
+     so field rules can append it to their own shadows via var(). */
+  --mgov-shadow-focus-ring: 0 0 0 3px var(--color-focus-light), 0 0 4px 6px var(--color-focus-dark);
 }

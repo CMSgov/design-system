@@ -70,12 +70,14 @@
   background-position: var(--spacer-3) center; /* 24px from the left */
 }
 
-/* Active/focus: 2px green border, no DS gold ring, no layout shift. */
+/* Active/focus: 2px green border (Figma) PLUS the DS focus ring (white gap +
+   gold glow, appended to the green inset). Outline is left to the DS
+   .ds-c-field:focus rule (transparent 3px — the WHCM indicator). */
 .ds-c-mgov-search .ds-c-field:focus {
   border-color: var(--color-primary);
-  box-shadow: inset 0 0 0 1px var(--color-primary);
-  outline: 2px solid transparent;
-  outline-offset: 0;
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary),
+    var(--mgov-shadow-focus-ring);
 }
 
 /* Label + hint (shown only when showLabel / hint are set). */

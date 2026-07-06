@@ -54,14 +54,19 @@
   cursor: pointer;
 }
 
-/* Open / focus: 2px green border, no gold ring, no layout shift (matches the
-   Dropdown trigger). */
+/* Focus / open: 2px green border (no layout shift) PLUS the DS focus ring
+   (white gap + gold glow) — mirroring the Dropdown, where the DS keeps the
+   ring on the open trigger while focus is in the menu. The DS .ds-c-field:focus
+   rule supplies the WHCM outline when focused; the open state re-declares it
+   here since no DS --open rule exists for this composite. */
 .ds-c-mgov-filter__trigger.ds-c-field:focus,
 .ds-c-mgov-filter--open .ds-c-mgov-filter__trigger.ds-c-field {
   border-color: var(--color-primary);
-  box-shadow: inset 0 0 0 1px var(--color-primary);
-  outline: 2px solid transparent;
-  outline-offset: 0;
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary),
+    var(--mgov-shadow-focus-ring);
+  outline: 3px solid transparent;
+  outline-offset: 3px;
 }
 
 .ds-c-mgov-filter__value {

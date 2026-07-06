@@ -82,14 +82,18 @@
   letter-spacing: -0.4px; /* -2% @20px; no token (-lg is -2.5% → -0.5px) */
 }
 
-/* Active/open + focus: 2px green border, no DS gold ring, no layout shift
-   (inset shadow supplies the extra pixel). */
+/* Focus / open: 2px green border (Figma; inset shadow supplies the extra
+   pixel, no layout shift) PLUS the DS focus ring (white gap + gold glow).
+   The open state gets the ring too — matching the DS, whose own
+   .ds-c-dropdown--open rule keeps the ring on the trigger while focus is in
+   the menu. Outline is not overridden: the DS :focus and --open rules supply
+   the transparent 3px outline (the WHCM focus indicator). */
 .ds-c-mgov-dropdown .ds-c-dropdown__button.ds-c-field:focus,
 .ds-c-mgov-dropdown.ds-c-dropdown--open .ds-c-dropdown__button.ds-c-field {
   border-color: var(--color-primary);
-  box-shadow: inset 0 0 0 1px var(--color-primary);
-  outline: 2px solid transparent;
-  outline-offset: 0;
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary),
+    var(--mgov-shadow-focus-ring);
 }
 
 /* The DS makes the trigger's bottom border transparent when open so it merges
