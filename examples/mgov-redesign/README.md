@@ -45,3 +45,21 @@ For teams who want more control, you can emulate the mgov-theme-scope.css file. 
 2. New components are then listed. These include: Filter Popover, Tile, Banner, Breadcrubms and Search.
 3. Existing components are then demonstrated. These are Feature Card (just our Card that has been extended), TextField, Badge (here called the Pill to align with the Figma designs), Alert, Dialog, Dropdown, Button, ChoiceList (here called the Choice Block to align with the Triptk Figma designs), and Tooltip.
 4. Patterns. Cards, Bottom Bar, Newletter Signup, and Quick Tasks
+
+## Discrepencies and design decisions:
+
+### Focus State
+
+- All components consume the underlying MGov Design System focus ring.
+- There are four components that have additional focus styling, which is an increased border width on focus in addition to the base focus ring:
+  - TextField
+  - Search
+  - Dropdown
+  - Filter Popover
+
+### Border styling
+
+- All components inherit border styling from the Design System
+- There are places where there are exceptions:
+  - Row dividers
+  - Border for the Filter Popover menu and the Dropdown menus
