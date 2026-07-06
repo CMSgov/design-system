@@ -38,6 +38,17 @@ interface FilterPopoverProps {
  *   - Clear resets `staged`; Apply commits it (fires `onApply`) and closes
  *   - clicking outside / Escape closes without committing
  *
+ * Keyboard behavior (mirrors the DS Autocomplete's menu interactions, adapted
+ * to real radio inputs instead of aria-activedescendant):
+ *   - ArrowDown/ArrowUp on the trigger opens the panel and moves focus to the
+ *     staged option (or the first option when nothing is staged)
+ *   - Tab from the open trigger reaches the options natively (real radios;
+ *     arrow keys then move+select within the group, per radio semantics)
+ *   - Escape closes and returns focus to the trigger; Apply commits, closes,
+ *     and returns focus to the trigger
+ *   - tabbing out of the component closes it without committing (light
+ *     dismiss on blur, like the Autocomplete menu)
+ *
  * Styling lives in styles/components/FilterPopover.css.
  */
 export function FilterPopover({
@@ -53,6 +64,11 @@ export function FilterPopover({
   const [applied, setApplied] = useState(defaultValue);
   const [staged, setStaged] = useState(defaultValue);
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  // Set when the panel is opened via ArrowDown/ArrowUp: once it mounts, focus
+  // moves to the staged option (or the first one) — see the effect below.
+  const [focusOptionOnOpen, setFocusOptionOnOpen] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -60,7 +76,10 @@ export function FilterPopover({
       if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus(); // don't strand focus in the unmounting panel
+      }
     };
     document.addEventListener('mousedown', onDocPointer);
     document.addEventListener('keydown', onKey);
@@ -69,6 +88,15 @@ export function FilterPopover({
       document.removeEventListener('keydown', onKey);
     };
   }, [open]);
+
+  // Focus the staged (or first) radio after an arrow-key open mounts the panel.
+  useEffect(() => {
+    if (!open || !focusOptionOnOpen) return;
+    setFocusOptionOnOpen(false);
+    const radios = panelRef.current?.querySelectorAll<HTMLInputElement>('.ds-c-choice');
+    if (!radios?.length) return;
+    ([...radios].find((r) => r.checked) ?? radios[0]).focus();
+  }, [open, focusOptionOnOpen]);
 
   const openPanel = () => {
     setStaged(applied); // discard any prior uncommitted change
@@ -79,8 +107,28 @@ export function FilterPopover({
     setApplied(staged);
     onApply?.(staged);
     setOpen(false);
+    triggerRef.current?.focus(); // panel unmounts; keep focus in the component
   };
   const clear = () => setStaged('');
+
+  // ArrowDown/ArrowUp on the trigger opens the panel and moves focus into the
+  // options — the DS Autocomplete's open-and-highlight gesture.
+  const onTriggerKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault(); // don't scroll the page
+    if (!open) openPanel();
+    setFocusOptionOnOpen(true);
+  };
+
+  // Light dismiss when focus tabs out of the component (like the Autocomplete
+  // menu closing on blur). relatedTarget is null when focus moves to a
+  // non-focusable spot (e.g. clicking the panel's padding) — the outside-click
+  // handler owns those, so only close when focus lands on a real element outside.
+  const onRootBlur = (e: React.FocusEvent) => {
+    if (!open) return;
+    const next = e.relatedTarget as Node | null;
+    if (next && rootRef.current && !rootRef.current.contains(next)) setOpen(false);
+  };
 
   const appliedLabel = options.find((o) => o.value === applied)?.label;
 
@@ -88,6 +136,7 @@ export function FilterPopover({
     <div
       className={['ds-c-mgov-filter', open && 'ds-c-mgov-filter--open'].filter(Boolean).join(' ')}
       ref={rootRef}
+      onBlur={onRootBlur}
     >
       <button
         type="button"
@@ -95,6 +144,8 @@ export function FilterPopover({
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={toggle}
+        onKeyDown={onTriggerKeyDown}
+        ref={triggerRef}
       >
         <span className="ds-c-mgov-filter__value">{appliedLabel ?? placeholder}</span>
         <svg
@@ -117,7 +168,7 @@ export function FilterPopover({
       </button>
 
       {open && (
-        <div className="ds-c-mgov-filter__panel" role="dialog" aria-label={label}>
+        <div className="ds-c-mgov-filter__panel" role="dialog" aria-label={label} ref={panelRef}>
           <DsChoiceList
             className="ds-c-mgov-filter__choices"
             type="radio"
