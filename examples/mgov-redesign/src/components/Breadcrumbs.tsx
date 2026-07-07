@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Button } from './Button';
 import '../styles/components/Breadcrumbs.css';
 
 export type Crumb = { label: string; href: string };
@@ -17,9 +18,9 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
               ›
             </span>
           )}
-          <a href={item.href} className="ds-c-breadcrumbs__link">
+          <Button variation="ghost" size="small" href={item.href}>
             {item.label}
-          </a>
+          </Button>
         </Fragment>
       ))}
     </nav>

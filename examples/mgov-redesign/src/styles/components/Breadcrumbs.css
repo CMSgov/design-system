@@ -10,17 +10,9 @@
   padding: var(--spacer-1) 0;
 }
 
-.ds-c-breadcrumbs__link {
-  font-family: var(--mgov-font-family-heading);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-md); /* 1rem / 16px */
-  line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 20px @16px */
-  letter-spacing: var(--mgov-font-letter-spacing-lg);
-  color: var(--mgov-ink-strong);
-  text-decoration: underline;
-  white-space: nowrap;
-  padding: var(--spacer-1) 0;
-}
+/* Each crumb is the mgov ghost Button (variation="ghost" size="small"), which
+   supplies the link typography, underline, padding, and hover/active/focus
+   states — so no __link rule is needed here. */
 
 .ds-c-breadcrumbs__separator {
   flex-shrink: 0;
