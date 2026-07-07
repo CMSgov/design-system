@@ -69,7 +69,7 @@
     "inquirer": "^14.0.0",
     "lodash": "^4.17.21",
     "ora": "^9.4.1",
-    "preact": "10.19.5",
+    "preact": "10.29.5",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
     "react-day-picker": "8.10.1",
