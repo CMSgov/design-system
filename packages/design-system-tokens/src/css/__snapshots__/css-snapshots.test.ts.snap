@@ -929,7 +929,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --table__padding: var(--spacer-2);
 --tabs-panel__background-color: var(--color-background);
 --tabs__background-color--disabled: var(--color-gray-lighter);
---tabs__background-color--hover: var(--color-primary-lightest);
+--tabs__background-color--hover: var(--color-background);
 --tabs__background-color--selected: var(--color-background);
 --tabs__background-color: var(--color-background);
 --tabs__border-color--disabled: var(--color-gray-lighter);
@@ -937,7 +937,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --tabs__border-color: var(--color-border);
 --tabs__color--active: var(--color-primary-darker);
 --tabs__color--disabled: var(--color-gray-darker);
---tabs__color--hover: var(--color-primary-darker);
+--tabs__color--hover: var(--color-primary);
 --tabs__color--selected: var(--color-primary);
 --tabs__color: var(--color-base);
 --text-input-currency-icon__line-height: var(--text-input__line-height);
@@ -1418,7 +1418,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --table__padding: var(--spacer-2);
 --tabs-panel__background-color: var(--color-background);
 --tabs__background-color--disabled: var(--color-gray-lighter);
---tabs__background-color--hover: var(--color-primary-lightest);
+--tabs__background-color--hover: var(--color-background);
 --tabs__background-color--selected: var(--color-background);
 --tabs__background-color: var(--color-background);
 --tabs__border-color--disabled: var(--color-gray-lighter);
@@ -1426,7 +1426,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --tabs__border-color: var(--color-border);
 --tabs__color--active: var(--color-primary-darker);
 --tabs__color--disabled: var(--color-gray-darker);
---tabs__color--hover: var(--color-primary-darker);
+--tabs__color--hover: var(--color-primary);
 --tabs__color--selected: var(--color-primary);
 --tabs__color: var(--color-base);
 --text-input-currency-icon__line-height: var(--text-input__line-height);
@@ -1906,7 +1906,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --table__padding: var(--spacer-2);
 --tabs-panel__background-color: var(--color-background);
 --tabs__background-color--disabled: var(--color-gray-lighter);
---tabs__background-color--hover: var(--color-primary-lightest);
+--tabs__background-color--hover: var(--color-background);
 --tabs__background-color--selected: var(--color-background);
 --tabs__background-color: var(--color-background);
 --tabs__border-color--disabled: var(--color-gray-lighter);
@@ -1914,7 +1914,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --tabs__border-color: var(--color-border);
 --tabs__color--active: var(--color-primary-darker);
 --tabs__color--disabled: var(--color-gray-darker);
---tabs__color--hover: var(--color-primary-darker);
+--tabs__color--hover: var(--color-primary);
 --tabs__color--selected: var(--color-primary);
 --tabs__color: var(--color-base);
 --text-input-currency-icon__line-height: var(--font-line-height-reset);
