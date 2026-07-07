@@ -68,6 +68,7 @@ exports[`MedicaregovThirdPartyExternalLink MedicaregovThirdPartyExternalLink dia
         <a
           class="ds-c-button ds-c-button--solid"
           href="foo"
+          target="_blank"
         >
           Continue
         </a>

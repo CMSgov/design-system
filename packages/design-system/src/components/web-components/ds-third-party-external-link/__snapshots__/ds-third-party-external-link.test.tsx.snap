@@ -88,6 +88,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         <a
           class="ds-c-button ds-c-button--solid"
           href="foo"
+          target="_blank"
         >
           Continue
         </a>
@@ -185,6 +186,7 @@ exports[`ThirdPartyExternalLink should render ThirdPartyExternalLink 1`] = `
           >
             <button
               class="ds-c-button ds-c-button--solid"
+              target="_blank"
               type="button"
             >
               Continue
