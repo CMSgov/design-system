@@ -8,7 +8,9 @@ exports[`TooltipIcon renders inverse trigger icon 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon ds-c-tooltip-icon--inverse"
+      height="1.5em"
       viewBox="0 0 16 16"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -28,7 +30,9 @@ exports[`TooltipIcon renders normal trigger icon 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      height="1.5em"
       viewBox="0 0 16 16"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

@@ -19,8 +19,10 @@ exports[`Accordion renders accordion 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
+          height="1.5em"
           id="1__icon"
           viewBox="3 3 18 18"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -52,8 +54,10 @@ exports[`Accordion renders accordion 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--add ds-c-accordion__button-icon"
+          height="1.5em"
           id="2__icon"
           viewBox="3 3 18 18"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
