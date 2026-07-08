@@ -77,7 +77,9 @@ exports[`Dropdown renders a dropdown 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
+            height="1.5em"
             viewBox="0 0 448 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -173,7 +175,9 @@ exports[`Dropdown renders a dropdown using html options 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
+            height="1.5em"
             viewBox="0 0 448 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

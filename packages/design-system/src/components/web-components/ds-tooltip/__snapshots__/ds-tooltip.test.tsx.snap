@@ -23,7 +23,9 @@ exports[`ds-tooltip renders a tooltip 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+              height="1.5em"
               viewBox="0 0 16 16"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -64,7 +66,9 @@ exports[`ds-tooltip renders default trigger icon 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+        height="1.5em"
         viewBox="0 0 16 16"
+        width="1.5em"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -159,7 +163,9 @@ exports[`ds-tooltip renders heading element and close button 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          height="1.5em"
           viewBox="-2 -2 18 18"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -201,7 +207,9 @@ exports[`ds-tooltip renders inverse tooltip 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+              height="1.5em"
               viewBox="0 0 16 16"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
