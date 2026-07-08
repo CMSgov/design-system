@@ -53,7 +53,9 @@ exports[`Autocomplete can add a custom class name to the error message 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--alert-circle "
+              height="1.5em"
               viewBox="36 -12 186 186"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -134,7 +136,9 @@ exports[`Autocomplete displays an error message in the default location for Heal
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--alert-circle "
+              height="1.5em"
               viewBox="36 -12 186 186"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -199,7 +203,9 @@ exports[`Autocomplete displays an error message in the default position for Core
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--alert-circle "
+              height="1.5em"
               viewBox="36 -12 186 186"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -387,7 +393,9 @@ exports[`Autocomplete sets the display location of the error message 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--alert-circle "
+              height="1.5em"
               viewBox="36 -12 186 186"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path

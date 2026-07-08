@@ -123,9 +123,11 @@ exports[`SimpleFooter renders without crashing 1`] = `
           aria-hidden="false"
           aria-labelledby="icon--2__title"
           class="ds-c-icon ds-c-icon--hhs-logo m-c-footer__hhs-logo"
+          height="1.5em"
           id="icon--2"
           role="img"
           viewBox="0 0 252 252"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <title
