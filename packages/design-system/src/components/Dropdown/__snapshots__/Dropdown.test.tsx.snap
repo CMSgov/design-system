@@ -39,7 +39,9 @@ exports[`Dropdown accepts optgroup children 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-u-font-size--sm"
+            height="1.5em"
             viewBox="0 0 448 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -211,7 +213,9 @@ exports[`Dropdown dropdown matches snapshot 1`] = `
       <svg
         aria-hidden="true"
         class="ds-c-icon ds-u-font-size--sm"
+        height="1.5em"
         viewBox="0 0 448 512"
+        width="1.5em"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -231,7 +235,9 @@ exports[`Dropdown shows error message 1`] = `
   <svg
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--alert-circle "
+    height="1.5em"
     viewBox="36 -12 186 186"
+    width="1.5em"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
