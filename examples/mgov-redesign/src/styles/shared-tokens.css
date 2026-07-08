@@ -55,10 +55,10 @@
 
   /* Typography Tokens */
 
-  /* Font family — Inter for the redesign's headings/labels/buttons/links.
-     Namespaced; the optional theme files map the DS --font-family-* tokens
-     to this so stock DS components can pick it up too. */
-  --mgov-font-family-heading:
+  /* Font family — Inter is the redesign's sole typeface (headings, body,
+     labels, buttons, links). Namespaced; the optional theme files map the DS
+     --font-family-* tokens to this so stock DS components pick it up too. */
+  --mgov-font-family:
     "Inter", "Inter Fallback", -apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Helvetica", "Arial", system-ui,
     sans-serif;
   /* Font weight — medium (500) isn't in the theme (only 400 / 600) */

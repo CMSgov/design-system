@@ -47,7 +47,7 @@
      16px, -0.4px, no uppercase; the color is set directly below, since it
      isn't tokenized). Option labels/hints keep their own type (direct rules
      below beat these tokens). */
-  --label__font-family: var(--mgov-font-family-heading); /* Montserrat → Inter */
+  --label__font-family: var(--mgov-font-family); /* Montserrat → Inter */
   --label__font-size: var(--font-size-md); /* 14px → 16px */
   --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none;
@@ -114,7 +114,7 @@
 .ds-c-mgov-choice .ds-c-choice + label {
   margin-block-start: 0; /* drop the DS top-offset; the card centers the row */
   max-width: none;
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-bold); /* 600 */
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-lg); /* calc(1em + 4px) → 24px @20px */

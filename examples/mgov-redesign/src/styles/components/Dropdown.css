@@ -45,7 +45,7 @@
 
   /* --- Label tokens (.ds-c-dropdown__label uses .ds-c-label; "Label" —
      Inter 600 · 16/24 · -2.5%) --- */
-  --label__font-family: var(--mgov-font-family-heading); /* Montserrat → Inter */
+  --label__font-family: var(--mgov-font-family); /* Montserrat → Inter */
   --label__font-size: var(--font-size-md); /* 14px → 16px */
   --label__letter-spacing: var(--mgov-font-letter-spacing-lg); /* 0.5px → -0.4px */
   --label__text-transform: none; /* uppercase → none */
@@ -75,7 +75,7 @@
 /* Trigger typography: Inter Regular 20px (Figma value/placeholder text). */
 .ds-c-mgov-dropdown .ds-c-dropdown__button.ds-c-field {
   width: 100%;
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */

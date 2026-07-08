@@ -21,7 +21,7 @@
   border: 1px solid var(--mgov-blue-strong); /* #0e3e6e */
   border-radius: var(--radius-pill);
   color: var(--mgov-blue-strong);
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-md); /* 1rem / 16px */
   line-height: var(--mgov-line-height-sm); /* calc(1em + 8px) → 24px @16px */

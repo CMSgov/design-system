@@ -45,7 +45,7 @@
   /* .ds-c-field only sets a background for the disabled state, so a <button>
      shows the native grey. Match the DS Dropdown trigger's white. */
   background-color: var(--color-background);
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */

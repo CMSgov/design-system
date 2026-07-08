@@ -14,13 +14,13 @@
    ============================================================ */
 
 :root {
-  --font-family-heading: var(--mgov-font-family-heading);
-  --font-family-button: var(--mgov-font-family-heading);
-  --font-family-link: var(--mgov-font-family-heading);
+  --font-family-heading: var(--mgov-font-family);
+  --font-family-button: var(--mgov-font-family);
+  --font-family-link: var(--mgov-font-family);
   /* Field labels ("Label" — Inter across the Figma designs). Explicit so the
      mapping doesn't depend on import order against the medicare theme's own
      :root declaration of --label__font-family. */
-  --label__font-family: var(--mgov-font-family-heading);
+  --label__font-family: var(--mgov-font-family);
   --font-size-5xl: var(--mgov-font-size-72);
   --font-size-4xl: var(--mgov-font-size-56);
   --font-size-3xl: var(--mgov-font-size-48);

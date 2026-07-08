@@ -79,7 +79,7 @@
 }
 .ds-c-mgov-plan-card__heading {
   margin: 0;
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-bold); /* 600 */
   font-size: var(--font-size-md); /* 16px */
   line-height: var(--mgov-line-height-sm); /* 24px */

@@ -46,7 +46,7 @@
    same token recipe as the field-input text. */
 .ds-c-mgov-newsletter__subtitle {
   margin: 0;
-  font-family: var(--mgov-font-family-heading);
+  font-family: var(--mgov-font-family);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-lg); /* 20px */
   line-height: var(--mgov-line-height-input); /* 28px */
