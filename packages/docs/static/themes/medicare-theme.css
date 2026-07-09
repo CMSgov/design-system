@@ -436,12 +436,12 @@
 --tabs__border-color: var(--color-border);
 --tabs__background-color: var(--color-background);
 --tabs__background-color--selected: var(--color-background);
---tabs__background-color--hover: var(--color-primary-lightest);
+--tabs__background-color--hover: var(--color-background);
 --tabs__background-color--disabled: var(--color-gray-lighter);
 --tabs__border-color--selected: var(--color-primary);
 --tabs__border-color--disabled: var(--color-gray-lighter);
 --tabs__color: var(--color-base);
---tabs__color--hover: var(--color-primary-darker);
+--tabs__color--hover: var(--color-primary);
 --tabs__color--selected: var(--color-primary);
 --tabs-panel__background-color: var(--color-background);
 --tabs__color--active: var(--color-primary-darker);

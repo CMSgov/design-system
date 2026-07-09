@@ -4155,7 +4155,7 @@
         }
       },
       "background-color--hover": {
-        "$value": "{theme.color.primary-lightest}",
+        "$value": "{theme.color.background}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
@@ -4205,7 +4205,7 @@
         }
       },
       "color--hover": {
-        "$value": "{theme.color.primary-darker}",
+        "$value": "{theme.color.primary}",
         "$extensions": {
           "com.figma": {
             "hiddenFromPublishing": false,
