@@ -42,7 +42,9 @@ exports[`Tooltip renders a tooltip on hover 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      height="1.5em"
       viewBox="0 0 16 16"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -66,7 +68,9 @@ exports[`Tooltip renders custom trigger component 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+      height="1.5em"
       viewBox="0 0 16 16"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -94,7 +98,9 @@ exports[`Tooltip renders inverse tooltip 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--info-circle-thin ds-c-tooltip-icon"
+          height="1.5em"
           viewBox="0 0 16 16"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

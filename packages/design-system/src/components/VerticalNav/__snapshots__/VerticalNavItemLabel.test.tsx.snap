@@ -34,7 +34,9 @@ exports[`VerticalNavItemLabel with subnav shows a down arrow when collapsed 1`] 
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down"
       direction="down"
+      height="1.5em"
       viewBox="0 0 320 512"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -58,7 +60,9 @@ exports[`VerticalNavItemLabel with subnav shows an up arrow when not collapsed 1
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-up"
       direction="up"
+      height="1.5em"
       viewBox="0 0 320 512"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
