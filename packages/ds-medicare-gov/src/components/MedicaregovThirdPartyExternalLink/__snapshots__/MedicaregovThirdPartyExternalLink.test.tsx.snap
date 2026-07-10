@@ -30,8 +30,10 @@ exports[`MedicaregovThirdPartyExternalLink MedicaregovThirdPartyExternalLink dia
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin "
+          height="1.5em"
           id="dialog--4__close__icon"
           viewBox="-2 -2 18 18"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -93,9 +95,11 @@ exports[`MedicaregovThirdPartyExternalLink renders external link 1`] = `
     aria-hidden="false"
     aria-labelledby="icon--1__title"
     class="ds-c-icon ds-c-icon--external-link ds-c-external-link__icon"
+    height="1.5em"
     id="icon--1"
     role="img"
     viewBox="0 0 512 512"
+    width="1.5em"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title

@@ -36,7 +36,9 @@ exports[`MonthPicker renders a snapshot 1`] = `
           <svg
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--alert-circle "
+            height="1.5em"
             viewBox="36 -12 186 186"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

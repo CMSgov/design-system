@@ -23,6 +23,24 @@ describe('SvgIcon', () => {
     expect(iconEl).toMatchSnapshot();
   });
 
+  it('adds default width and height fallbacks', () => {
+    renderSvgIcon({ 'data-testid': 'iconTest' });
+
+    const iconEl = screen.getByTestId('iconTest');
+
+    expect(iconEl).toHaveAttribute('width', '1.5em');
+    expect(iconEl).toHaveAttribute('height', '1.5em');
+  });
+
+  it('wrapper icon allows width and height to be overridden', () => {
+    render(<AddIcon data-testid="addIconTest" width="2em" height="2em" />);
+
+    const iconEl = screen.getByTestId('addIconTest');
+
+    expect(iconEl).toHaveAttribute('width', '2em');
+    expect(iconEl).toHaveAttribute('height', '2em');
+  });
+
   describe('when ariaHidden is false', () => {
     it('shows accessibility attributes', () => {
       renderSvgIcon({ id: 'static-id' });
