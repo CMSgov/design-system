@@ -1,5 +1,6 @@
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
+import { Button } from '../Button';
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useArgs } from '@storybook/preview-api';
@@ -18,7 +19,11 @@ type Story = StoryObj<typeof TabsComponent>;
 
 const tabPanels = [
   <TabPanel key="summary" id="summary" tab="Summary">
-    The Bill of Rights is the first ten amendments to the United States Constitution.
+    <p>The Bill of Rights is the first ten amendments to the United States Constitution.</p>
+
+    <Button type="button" variation="solid" className="ds-u-margin-top--2">
+      Download full document
+    </Button>
   </TabPanel>,
   <TabPanel key="preamble" id="preamble" tab="Preamble">
     We the People of the United States, in Order to form a more perfect Union, establish Justice,

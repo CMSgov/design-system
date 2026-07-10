@@ -224,6 +224,75 @@ describe('Tabs', function () {
     expect(tabEls[0].getAttribute('aria-selected')).toBe('true');
   });
 
+  it('only includes the selected tab in the tab order', () => {
+    renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(3));
+
+    const tabEls = screen.getAllByRole('tab');
+
+    expect(tabEls[0]).toHaveAttribute('tabIndex', '0');
+    expect(tabEls[1]).toHaveAttribute('tabIndex', '-1');
+    expect(tabEls[2]).toHaveAttribute('tabIndex', '-1');
+  });
+
+  it('updates tab order when arrow navigation selects a new tab', async () => {
+    const { user } = renderTabs({ defaultSelectedId: getPanelId(1) }, createPanels(3));
+    const tabEls = screen.getAllByRole('tab');
+
+    tabEls[0].focus();
+    await user.keyboard('{ArrowRight}');
+
+    expect(tabEls[0]).toHaveAttribute('tabIndex', '-1');
+    expect(tabEls[1]).toHaveAttribute('tabIndex', '0');
+    expect(tabEls[2]).toHaveAttribute('tabIndex', '-1');
+    expect(tabEls[1]).toHaveFocus();
+  });
+
+  it('tabs from the selected tab to the tab panel, then to focusable content within the panel', async () => {
+    const { user } = renderTabs({ defaultSelectedId: 'summary' }, [
+      <TabPanel key="summary" id="summary" tab="Summary">
+        <button type="button">Download full document</button>
+      </TabPanel>,
+      <TabPanel key="preamble" id="preamble" tab="Preambles">
+        API content
+      </TabPanel>,
+    ]);
+
+    const selectedTab = screen.getByRole('tab', { name: 'Summary' });
+    const button = screen.getByRole('button', { name: 'Download full document' });
+
+    selectedTab.focus();
+    await user.tab();
+    expect(screen.getByRole('tabpanel')).toHaveFocus();
+
+    await user.tab();
+    expect(button).toHaveFocus();
+  });
+
+  it('shift+tabs from focusable content back up through the tab panel to the selected tab', async () => {
+    const { user } = renderTabs({ defaultSelectedId: 'summary' }, [
+      <TabPanel key="summary" id="summary" tab="Summary">
+        <button type="button">Download full document</button>
+      </TabPanel>,
+      <TabPanel key="preamble" id="preamble" tab="Preambles">
+        API content
+      </TabPanel>,
+    ]);
+
+    const selectedTab = screen.getByRole('tab', { name: 'Summary' });
+    const tabPanel = screen.getByRole('tabpanel');
+    const button = screen.getByRole('button', {
+      name: 'Download full document',
+    });
+
+    button.focus();
+
+    await user.tab({ shift: true });
+    expect(tabPanel).toHaveFocus();
+
+    await user.tab({ shift: true });
+    expect(selectedTab).toHaveFocus();
+  });
+
   it('can be a controlled component', () => {
     const onChange = jest.fn();
     const children = createPanels(3);
