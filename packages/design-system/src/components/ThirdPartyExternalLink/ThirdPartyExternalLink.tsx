@@ -64,6 +64,7 @@ const ThirdPartyExternalLink = (props: ThirdPartyExternalLinkProps) => {
             href={href}
             analytics
             onAnalyticsEvent={buttonAnalyticsHandler}
+            target="_blank"
           >
             {t('thirdPartyExternalLink.confirmationButtonText')}
           </Button>,

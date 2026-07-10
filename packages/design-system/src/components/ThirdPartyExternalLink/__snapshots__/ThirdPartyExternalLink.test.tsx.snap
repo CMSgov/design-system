@@ -90,6 +90,7 @@ exports[`ThirdPartyExternalLink ThirdPartyExternalLink dialog renders external l
         <a
           class="ds-c-button ds-c-button--solid"
           href="foo"
+          target="_blank"
         >
           Continue
         </a>
