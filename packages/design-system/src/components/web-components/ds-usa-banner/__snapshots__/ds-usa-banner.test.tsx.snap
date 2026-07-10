@@ -15,7 +15,9 @@ exports[`UsaBanner renders correctly 1`] = `
         <svg
           aria-hidden="true"
           class="ds-c-icon ds-c-icon--usa-flag ds-c-usa-banner__header-icon"
+          height="1.5em"
           viewBox="0 0 16 11"
+          width="1.5em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <g
@@ -57,7 +59,9 @@ exports[`UsaBanner renders correctly 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
             direction="down"
+            height="1.5em"
             viewBox="0 0 320 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -80,7 +84,9 @@ exports[`UsaBanner renders correctly 1`] = `
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-down ds-c-usa-banner__action-icon"
               direction="down"
+              height="1.5em"
               viewBox="0 0 320 512"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -96,7 +102,9 @@ exports[`UsaBanner renders correctly 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--close ds-c-icon--close-thin ds-c-usa-banner__button-icon"
+              height="1.5em"
               viewBox="-2 -2 18 18"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -124,7 +132,9 @@ exports[`UsaBanner renders correctly 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--building-circle ds-c-usa-banner__guidance-icon"
+              height="1.5em"
               viewBox="0 0 54 54"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g>
@@ -164,7 +174,9 @@ exports[`UsaBanner renders correctly 1`] = `
             <svg
               aria-hidden="true"
               class="ds-c-icon ds-c-icon--lock-circle ds-c-usa-banner__guidance-icon"
+              height="1.5em"
               viewBox="0 0 54 54"
+              width="1.5em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -195,7 +207,9 @@ exports[`UsaBanner renders correctly 1`] = `
               <svg
                 aria-hidden="true"
                 class="ds-c-icon ds-c-icon--lock ds-c-usa-banner__inline-lock-icon"
+                height="1.5em"
                 viewBox="0 0 52 64"
+                width="1.5em"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

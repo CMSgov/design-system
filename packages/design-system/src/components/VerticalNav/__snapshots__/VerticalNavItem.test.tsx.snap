@@ -4,8 +4,10 @@ exports[`VerticalNavItem Status icon renders a success icon when status is "use"
 <svg
   aria-hidden="true"
   class="ds-c-icon ds-c-icon--check-circle ds-u-margin-right--1 ds-c-icon-color--success"
+  height="1.5em"
   style="height: 1em; width: 1em; vertical-align: text-bottom;"
   viewBox="38 7 135 135"
+  width="1.5em"
   xmlns="http://www.w3.org/2000/svg"
 >
   <path

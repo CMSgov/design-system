@@ -35,7 +35,9 @@ exports[`Pagination should render component 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
             direction="left"
+            height="1.5em"
             viewBox="0 0 320 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -97,7 +99,9 @@ exports[`Pagination should render component 1`] = `
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
             direction="right"
+            height="1.5em"
             viewBox="0 0 320 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -149,7 +153,9 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-left ds-c-pagination__nav--image"
             direction="left"
+            height="1.5em"
             viewBox="0 0 320 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -190,7 +196,9 @@ exports[`Pagination with compact prop enabled should render compact variant 1`] 
             aria-hidden="true"
             class="ds-c-icon ds-c-icon--arrow ds-c-icon--arrow-right ds-c-pagination__nav--image"
             direction="right"
+            height="1.5em"
             viewBox="0 0 320 512"
+            width="1.5em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

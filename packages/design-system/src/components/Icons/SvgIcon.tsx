@@ -77,6 +77,8 @@ export const SvgIcon = ({
       className={svgClasses}
       id={id ?? isSrVisible ? rootId : undefined}
       viewBox={viewBox}
+      width="1.5em"
+      height="1.5em"
       xmlns="http://www.w3.org/2000/svg"
       {...screenReaderProps}
       {...otherProps}

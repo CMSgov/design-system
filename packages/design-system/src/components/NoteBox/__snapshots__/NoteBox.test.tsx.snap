@@ -31,7 +31,9 @@ exports[`NoteBox renders quote option properly 1`] = `
     <svg
       aria-hidden="true"
       class="ds-c-icon ds-c-icon--left-quote "
+      height="1.5em"
       viewBox="2 0 40 32"
+      width="1.5em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

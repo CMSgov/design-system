@@ -8,7 +8,9 @@ exports[`DateField Date Field with Error renders with error message 1`] = `
   <svg
     aria-hidden="true"
     class="ds-c-icon ds-c-icon--alert-circle "
+    height="1.5em"
     viewBox="36 -12 186 186"
+    width="1.5em"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -46,9 +48,11 @@ exports[`DateField DateField with picker renders with picker 1`] = `
     aria-hidden="false"
     aria-labelledby="static-id__icon__title"
     class="ds-c-icon ds-c-icon--calendar "
+    height="1.5em"
     id="static-id__icon"
     role="img"
     viewBox="0 0 448 512"
+    width="1.5em"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title
