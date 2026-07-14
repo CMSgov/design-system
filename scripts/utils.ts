@@ -68,3 +68,7 @@ export async function chooseMilestone() {
 export function versionFromTag(tag: string): string {
   return tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
 }
+
+export function getCurrentBranch() {
+  return sh('git rev-parse --abbrev-ref HEAD');
+}

@@ -2,14 +2,8 @@ import c from 'chalk';
 import { updateChildDSAndExamples } from './bump-child-deps-utils';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
-import { sh, shI, verifyGhInstalled } from './utils';
-import { updateVersions, getPackageVersions } from './versions';
-import {
-  insertVersionsIntoVersionsJson,
-  commitLegacyVersionBump,
-  createLegacyPullRequest,
-  createBranchFromMain,
-} from './legacy-versions';
+import { sh, shI, verifyGhInstalled, getCurrentBranch } from './utils';
+import { updateVersions } from './versions';
 import yargs from 'yargs';
 
 const REVIEWERS = ['derek-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
@@ -28,10 +22,6 @@ async function verifyNoUnstagedChanges() {
 
 function getCurrentCommit() {
   return sh('git rev-parse HEAD');
-}
-
-function getCurrentBranch() {
-  return sh('git rev-parse --abbrev-ref HEAD');
 }
 
 function readLastPublishCommit() {
@@ -147,7 +137,7 @@ async function bumpVersions() {
 /**
  * Assumes that we're on the publish commit when this function is called.
  */
-async function bumpMain() {
+export async function bumpMain() {
   const yes = await confirm({
     message: `Would you like to create a pull request to bump versions on ${c.cyan('main')}?`,
   });
@@ -179,41 +169,6 @@ async function bumpMain() {
   sh(`gh pr create --base main --title "${title}" --body "${body}" ${reviewers}`);
   console.log(c.green('Published a version-bump pull request.'));
 
-  sh(`git checkout ${originalBranch}`);
-}
-
-// TODO: we can also reuse this function in a few places here.
-async function pushBranch(branchName: string) {
-  sh(`git push --set-upstream origin ${branchName}`);
-}
-
-export async function bumpLegacyVersionsOnMain() {
-  const yes = await confirm({
-    message: `Would you like to add these legacy versions to versions.json on ${c.cyan('main')}?`,
-  });
-
-  if (!yes) {
-    console.log(c.green('Skipping legacy version updates on main.'));
-    return;
-  }
-  const originalBranch = getCurrentBranch();
-  const releasedVersions = getPackageVersions();
-  // const releasedVersions = {
-  //   'design-system': '13.2.2',
-  //   'ds-medicare-gov': '15.2.2',
-  //   'ds-healthcare-gov': '17.2.2',
-  //   'ds-cms-gov': '13.2.2',
-  // };
-
-  // Create a branch from the latest main.
-  const tempBranch = await createBranchFromMain();
-  // Insert releasedVersions into versions.json.
-  await insertVersionsIntoVersionsJson(releasedVersions);
-  // Commit, push the branch & open pull request.
-  await commitLegacyVersionBump(releasedVersions);
-  await pushBranch(tempBranch);
-  await createLegacyPullRequest(REVIEWERS);
-  // Back to original branch.
   sh(`git checkout ${originalBranch}`);
 }
 

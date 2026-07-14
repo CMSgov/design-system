@@ -2,7 +2,11 @@ import c from 'chalk';
 import path from 'path';
 import fs from 'node:fs/promises';
 import semver from 'semver';
-import { sh } from './utils';
+import { sh, getCurrentBranch } from './utils';
+// import { getPackageVersions } from './versions';
+import { confirm } from '@inquirer/prompts';
+
+const REVIEWERS = ['tamara-corbalt'];
 
 export const root = path.join(__dirname, '..');
 export async function insertVersionsIntoVersionsJson(releasedVersions: Record<string, string>) {
@@ -75,4 +79,39 @@ export async function createLegacyPullRequest(reviewers: string[]) {
   const formattedReviewers = reviewers.map((r) => `--reviewer "${r}"`).join(' ');
 
   sh(`gh pr create --base main --title "${title}" --body "${body}" ${formattedReviewers}`);
+}
+
+// TODO: we can also reuse this function in a few places here.
+export async function pushBranch(branchName: string) {
+  sh(`git push --set-upstream origin ${branchName}`);
+}
+
+export async function bumpLegacyVersionsOnMain() {
+  const yes = await confirm({
+    message: `Would you like to add these legacy versions to versions.json on ${c.cyan('main')}?`,
+  });
+
+  if (!yes) {
+    console.log(c.green('Skipping legacy version updates on main.'));
+    return;
+  }
+  const originalBranch = getCurrentBranch();
+  // const releasedVersions = getPackageVersions();
+  const releasedVersions = {
+    'design-system': '13.2.2',
+    'ds-medicare-gov': '15.2.2',
+    'ds-healthcare-gov': '17.2.2',
+    'ds-cms-gov': '13.2.2',
+  };
+
+  // Create a branch from the latest main.
+  const tempBranch = await createBranchFromMain();
+  // Insert releasedVersions into versions.json.
+  await insertVersionsIntoVersionsJson(releasedVersions);
+  // Commit, push the branch & open pull request.
+  await commitLegacyVersionBump(releasedVersions);
+  await pushBranch(tempBranch);
+  await createLegacyPullRequest(REVIEWERS);
+  // Back to original branch.
+  sh(`git checkout ${originalBranch}`);
 }

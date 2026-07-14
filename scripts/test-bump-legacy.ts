@@ -1,7 +1,7 @@
 // import { insertVersionsIntoVersionsJson, commitLegacyVersionBump } from './legacy-versions';
-// import { bumpLegacyVersionsOnMain } from './release'
+import { bumpLegacyVersionsOnMain } from './legacy-versions';
 
-// bumpLegacyVersionsOnMain();
+bumpLegacyVersionsOnMain();
 // insertVersionsIntoVersionsJson({
 //   'design-system': '13.2.2',
 //   'ds-medicare-gov': '15.2.2',
