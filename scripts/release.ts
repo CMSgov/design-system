@@ -4,6 +4,7 @@ import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
 import { sh, shI, verifyGhInstalled, getCurrentBranch, REVIEWERS } from './utils';
 import { updateVersions } from './versions';
+import { bumpLegacyVersionsOnMain } from './legacy-versions';
 import yargs from 'yargs';
 
 async function verifyNoUnstagedChanges() {
@@ -215,7 +216,7 @@ function printNextSteps() {
       await verifyNoUnstagedChanges();
       await bumpVersions();
       await bumpMain();
-      // await bumpLegacyVersionsOnMain(bumpedVersions);
+      await bumpLegacyVersionsOnMain();
       await draftReleaseNotes();
       printNextSteps();
     }

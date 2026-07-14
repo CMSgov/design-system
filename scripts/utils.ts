@@ -73,3 +73,8 @@ export function versionFromTag(tag: string): string {
 export function getCurrentBranch() {
   return sh('git rev-parse --abbrev-ref HEAD');
 }
+
+// TODO: Reuse this helper in other release workflows.
+export async function pushBranch(branchName: string) {
+  sh(`git push --set-upstream origin ${branchName}`);
+}

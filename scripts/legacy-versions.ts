@@ -2,33 +2,45 @@ import c from 'chalk';
 import path from 'path';
 import fs from 'node:fs/promises';
 import semver from 'semver';
-import { sh, getCurrentBranch, REVIEWERS } from './utils';
+import { sh, getCurrentBranch, pushBranch, REVIEWERS } from './utils';
 import { getPackageVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
 
 export const root = path.join(__dirname, '..');
+
+/**
+ * Inserts released versions into `versions.json`, preserving descending
+ * semantic version order for each design system.
+ *
+ * @param releasedVersions Mapping of theme package names to released versions.
+ */
 export async function insertVersionsIntoVersionsJson(releasedVersions: Record<string, string>) {
   const versionsFileName = path.join(root, 'versions.json');
 
   const contents = await fs.readFile(versionsFileName, 'utf8');
   const versionsJson = JSON.parse(contents);
 
-  for (const [designSystem, releasedVersion] of Object.entries(releasedVersions)) {
-    const existingVersions = versionsJson[designSystem];
+  for (const [themePackage, releasedVersion] of Object.entries(releasedVersions)) {
+    const existingVersions = versionsJson[themePackage];
 
     if (!Array.isArray(existingVersions)) {
-      throw new Error(`Could not find a version array for "${designSystem}" in versions.json.`);
+      throw new Error(`Could not find a version array for "${themePackage}" in versions.json.`);
     }
 
     const updatedVersions = [...existingVersions, releasedVersion];
     const uniqueVersions = [...new Set(updatedVersions)]; // In case of duplicates
 
-    versionsJson[designSystem] = uniqueVersions.sort(semver.rcompare); // Sorts in descending order.
+    versionsJson[themePackage] = uniqueVersions.sort(semver.rcompare); // Sorts in descending order.
   }
 
   await fs.writeFile(versionsFileName, `${JSON.stringify(versionsJson, null, 2)}\n`);
 }
 
+/**
+ * Commits the `versions.json` updates for a legacy release.
+ *
+ * @param releasedVersions Mapping of theme package names to released versions.
+ */
 export async function commitLegacyVersionBump(releasedVersions: Record<string, string>) {
   sh('git add versions.json');
 
@@ -40,7 +52,7 @@ export async function commitLegacyVersionBump(releasedVersions: Record<string, s
   }
 
   const tags = Object.entries(releasedVersions).map(
-    ([packageName, version]) => `@cmsgov/${packageName}@${version}`
+    ([themePackageName, version]) => `@cmsgov/${themePackageName}@${version}`
   );
 
   const commitMessage = 'Publish Legacy\n\n' + tags.map((tag) => ` - ${tag}`).join('\n');
@@ -50,8 +62,11 @@ export async function commitLegacyVersionBump(releasedVersions: Record<string, s
   console.log(c.green('Created legacy version bump commit.'));
 }
 
-// TODO: This has very similar logic to as in `bumpMain` (release.ts)
-// Refactor so both workflows can use a shared utility.
+/**
+ * Creates and checks out a temporary branch from the latest `main`.
+ *
+ * TODO: Share this branch-creation utility with `bumpMain`.
+ */
 export async function createBranchFromMain() {
   const d = new Date().getDate();
   const m = new Date().getMonth() + 1;
@@ -66,27 +81,28 @@ export async function createBranchFromMain() {
   return tempBranch;
 }
 
-// TODO: Refactor this with the standard main version-bump workflow in
-// `bumpMain` (release.ts) so both use a shared pull-request utility.
+/**
+ * Creates a pull request for the legacy version bump on `main`.
+ *
+ * TODO: Share this pull-request creation logic with `bumpMain`.
+ * @param reviewers GitHub usernames to request for review.
+ */
 export async function createLegacyPullRequest(reviewers: string[]) {
   const d = new Date().getDate();
   const m = new Date().getMonth() + 1;
 
-  const title = `[DO NOT MERGE][TEST LEGACY VERSION BUMP] ${m}/${d} Legacy version bump main`;
+  const title = `[RELEASE] ${m}/${d} Legacy version bump main`;
   const body = 'Adds the released legacy version(s) to versions.json on main.';
   const formattedReviewers = reviewers.map((r) => `--reviewer "${r}"`).join(' ');
 
   sh(`gh pr create --base main --title "${title}" --body "${body}" ${formattedReviewers}`);
 }
 
-// TODO: we can also reuse this function in a few places here.
-export async function pushBranch(branchName: string) {
-  sh(`git push --set-upstream origin ${branchName}`);
-}
-
 export async function bumpLegacyVersionsOnMain() {
   const yes = await confirm({
-    message: `Would you like to add these legacy versions to versions.json on ${c.cyan('main')}?`,
+    message: `Would you like to update versions.json on ${c.cyan(
+      'main'
+    )} for this legacy release? Only do this when releasing a version that is not the latest.`,
   });
 
   if (!yes) {
