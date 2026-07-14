@@ -136,7 +136,7 @@ async function bumpVersions() {
 /**
  * Assumes that we're on the publish commit when this function is called.
  */
-export async function bumpMain() {
+async function bumpMain() {
   const yes = await confirm({
     message: `Would you like to create a pull request to bump versions on ${c.cyan('main')}?`,
   });
