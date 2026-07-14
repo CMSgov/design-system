@@ -2,11 +2,9 @@ import c from 'chalk';
 import path from 'path';
 import fs from 'node:fs/promises';
 import semver from 'semver';
-import { sh, getCurrentBranch } from './utils';
-// import { getPackageVersions } from './versions';
+import { sh, getCurrentBranch, REVIEWERS } from './utils';
+import { getPackageVersions } from './versions';
 import { confirm } from '@inquirer/prompts';
-
-const REVIEWERS = ['tamara-corbalt'];
 
 export const root = path.join(__dirname, '..');
 export async function insertVersionsIntoVersionsJson(releasedVersions: Record<string, string>) {
@@ -96,13 +94,7 @@ export async function bumpLegacyVersionsOnMain() {
     return;
   }
   const originalBranch = getCurrentBranch();
-  // const releasedVersions = getPackageVersions();
-  const releasedVersions = {
-    'design-system': '13.2.2',
-    'ds-medicare-gov': '15.2.2',
-    'ds-healthcare-gov': '17.2.2',
-    'ds-cms-gov': '13.2.2',
-  };
+  const releasedVersions = getPackageVersions();
 
   // Create a branch from the latest main.
   const tempBranch = await createBranchFromMain();

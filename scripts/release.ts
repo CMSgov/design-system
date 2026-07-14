@@ -2,11 +2,9 @@ import c from 'chalk';
 import { updateChildDSAndExamples } from './bump-child-deps-utils';
 import { confirm, select } from '@inquirer/prompts';
 import { hideBin } from 'yargs/helpers';
-import { sh, shI, verifyGhInstalled, getCurrentBranch } from './utils';
+import { sh, shI, verifyGhInstalled, getCurrentBranch, REVIEWERS } from './utils';
 import { updateVersions } from './versions';
 import yargs from 'yargs';
-
-const REVIEWERS = ['derek-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 async function verifyNoUnstagedChanges() {
   if (sh('git status -s')) {

@@ -1,6 +1,7 @@
 import c from 'chalk';
 import { execSync, spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'node:child_process';
 import { select } from '@inquirer/prompts';
+export const REVIEWERS = ['derek-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 /**
  * Execute a shell command and wait for the response. Note that this does not
