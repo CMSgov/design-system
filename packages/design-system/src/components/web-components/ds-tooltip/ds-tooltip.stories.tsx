@@ -1,6 +1,6 @@
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import './ds-tooltip';
 import './ds-tooltip-icon';
 import '../ds-button/ds-button';

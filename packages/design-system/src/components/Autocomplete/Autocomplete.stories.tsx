@@ -3,8 +3,8 @@ import type * as React from 'react';
 import { Autocomplete, AutocompleteItem, AutocompleteProps } from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
+import { action } from 'storybook/actions';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { debounce } from '../utilities/debounce';
 import { MockedDataResponse, searchMock } from './testMocks';
 

@@ -1,7 +1,7 @@
 import Drawer from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof DrawerManager> = {
   title: 'Components/DrawerManager',

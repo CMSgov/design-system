@@ -1,7 +1,7 @@
 import Button from './Button';
 import { NextIcon } from '../Icons';
 import Spinner from '../Spinner/Spinner';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',

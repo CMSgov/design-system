@@ -1,4 +1,4 @@
-import { Markdown, useOf } from '@storybook/blocks';
+import { Markdown, useOf } from '@storybook/addon-docs/blocks';
 import { Tabs, TabPanel } from '../../packages/design-system/src/components';
 
 function optToCodeBlock(opt: undefined | string) {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { MedicaregovHelpDrawer } from './MedicaregovHelpDrawer';
 import { MedicaregovHelpDrawerToggle } from './MedicaregovHelpDrawerToggle';
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
+import { action } from 'storybook/actions';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 
 const meta: Meta<typeof MedicaregovHelpDrawer> = {
