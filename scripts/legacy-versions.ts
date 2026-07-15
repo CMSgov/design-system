@@ -4,7 +4,6 @@ import fs from 'node:fs/promises';
 import semver from 'semver';
 import { sh, getCurrentBranch, pushBranch, REVIEWERS } from './utils';
 import { getPackageVersions } from './versions';
-import { confirm } from '@inquirer/prompts';
 
 export const root = path.join(__dirname, '..');
 
@@ -99,16 +98,7 @@ export async function createLegacyPullRequest(reviewers: string[]) {
 }
 
 export async function bumpLegacyVersionsOnMain() {
-  const yes = await confirm({
-    message: `Would you like to update versions.json on ${c.cyan(
-      'main'
-    )} for this legacy release? Only do this when releasing a version that is not the latest.`,
-  });
-
-  if (!yes) {
-    console.log(c.green('Skipping legacy version updates on main.'));
-    return;
-  }
+  console.log(c.green(`Creating a legacy version-bump branch to merge into ${c.cyan('main')}...`));
   const originalBranch = getCurrentBranch();
   const releasedVersions = getPackageVersions();
 

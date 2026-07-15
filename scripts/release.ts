@@ -137,13 +137,6 @@ async function bumpVersions() {
  * Assumes that we're on the publish commit when this function is called.
  */
 async function bumpMain() {
-  const yes = await confirm({
-    message: `Would you like to create a pull request to bump versions on ${c.cyan('main')}?`,
-  });
-  if (!yes) {
-    console.log(c.green('Skipping version-bump pull request.'));
-    return;
-  }
   console.log(c.green(`Creating a version-bump branch to merge into ${c.cyan('main')}...`));
 
   const d = new Date().getDate();
@@ -215,8 +208,17 @@ function printNextSteps() {
       verifyGhInstalled();
       await verifyNoUnstagedChanges();
       await bumpVersions();
-      await bumpMain();
-      await bumpLegacyVersionsOnMain();
+
+      const isLegacyRelease = await confirm({
+        message: 'Are you releasing an older supported version of the design system?',
+      });
+
+      if (isLegacyRelease) {
+        await bumpLegacyVersionsOnMain();
+      } else {
+        await bumpMain();
+      }
+
       await draftReleaseNotes();
       printNextSteps();
     }
