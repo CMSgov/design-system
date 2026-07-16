@@ -65,8 +65,9 @@ const SearchPage = ({ location }: MdxQuery) => {
               let body = result.body;
               const strLoc = body.toLowerCase().indexOf(query.toLowerCase());
               body = body.slice(Math.max(strLoc - 160, 0), strLoc + 160);
-              const re = new RegExp(query, 'gi');
-              body = body.replace(re, `<mark>${query}</mark>`) + '...';
+              const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const re = new RegExp(escapedQuery, 'gi');
+              body = body.replace(re, '<mark>$&</mark>') + '...';
 
               const sendAnalyticsEvent = () => {
                 sendLinkEvent({
