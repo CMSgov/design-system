@@ -1,6 +1,7 @@
 import c from 'chalk';
 import { execSync, spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'node:child_process';
 import { select } from '@inquirer/prompts';
+export const REVIEWERS = ['derek-cmsds', 'tamara-corbalt', 'jack-ryan-nava-pbc'];
 
 /**
  * Execute a shell command and wait for the response. Note that this does not
@@ -67,4 +68,13 @@ export async function chooseMilestone() {
 
 export function versionFromTag(tag: string): string {
   return tag.replace(/@cmsgov\/.*@(.*)$/, '$1');
+}
+
+export function getCurrentBranch() {
+  return sh('git rev-parse --abbrev-ref HEAD');
+}
+
+// TODO: Reuse this helper in other release workflows.
+export async function pushBranch(branchName: string) {
+  sh(`git push --set-upstream origin ${branchName}`);
 }
