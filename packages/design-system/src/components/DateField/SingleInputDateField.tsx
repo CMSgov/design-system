@@ -199,7 +199,12 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
     }
   };
 
-  const handlePickerChange = (date: Date) => {
+  const handlePickerChange = (date?: Date) => {
+    if (!date) {
+      setPickerVisible(false);
+      inputRef.current?.focus();
+      return;
+    }
     const updatedValue = computeDateValue(date, lang);
     const maskedValue = dateMask(updatedValue);
     const validDate = getValidDate(updatedValue);
@@ -302,7 +307,8 @@ const SingleInputDateField = (props: SingleInputDateFieldProps) => {
         <div ref={dayPickerRef} role="dialog" onKeyDown={handleDayPickerKeyDown}>
           <CustomDayPicker
             selected={date}
-            onSelect={(day) => day && handlePickerChange(day)}
+            required
+            onSelect={handlePickerChange}
             defaultMonth={date ?? defaultMonth}
             {...{
               fromDate,
