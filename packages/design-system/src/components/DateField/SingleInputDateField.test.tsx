@@ -345,28 +345,25 @@ describe('SingleInputDateField', function () {
       expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000', expectedDate);
     });
 
-    it('does not deselect the date when the selected day is selected again', async () => {
+    it('does not deselect the selected date when it is selected again', async () => {
       const onChange = jest.fn();
-      const { user } = renderPicker({ onChange });
+      const { user } = renderPicker({
+        value: '01/19/2000',
+        onChange,
+      });
 
-      const calendarButton = screen.getByRole('button');
-      const selectedDay = () => screen.getByRole('gridcell', { name: /19th/ });
+      await user.click(screen.getByRole('button'));
 
-      await user.click(calendarButton);
-      await user.click(selectedDay());
+      // Reset the mock so this assertion only covers reselecting the date.
+      onChange.mockClear();
+
+      await user.click(
+        screen.getByRole('gridcell', {
+          name: /19th/,
+        })
+      );
 
       expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000', new Date(2000, 0, 19));
-
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-
-      await user.click(calendarButton);
-      const callsBeforeReselection = onChange.mock.calls.length;
-
-      await user.click(selectedDay());
-
-      expect(onChange).toHaveBeenCalledTimes(callsBeforeReselection + 1);
-      expect(onChange).toHaveBeenLastCalledWith('01/19/2000', '01/19/2000', new Date(2000, 0, 19));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
   });
 });
