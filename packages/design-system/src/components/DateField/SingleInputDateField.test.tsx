@@ -344,5 +344,26 @@ describe('SingleInputDateField', function () {
 
       expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000', expectedDate);
     });
+
+    it('does not deselect the selected date when it is selected again', async () => {
+      const onChange = jest.fn();
+      const { user } = renderPicker({
+        value: '01/19/2000',
+        onChange,
+      });
+
+      await user.click(screen.getByRole('button'));
+
+      // Reset the mock so this assertion only covers reselecting the date.
+      onChange.mockClear();
+
+      await user.click(
+        screen.getByRole('gridcell', {
+          name: /19th/,
+        })
+      );
+
+      expect(onChange).toHaveBeenCalledWith('01/19/2000', '01/19/2000', new Date(2000, 0, 19));
+    });
   });
 });

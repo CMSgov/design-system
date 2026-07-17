@@ -17,6 +17,7 @@ type CustomDayPickerProps = Pick<
   DayPickerSingleProps,
   | 'selected'
   | 'onSelect'
+  | 'required'
   | 'defaultMonth'
   | 'fromDate'
   | 'fromMonth'
