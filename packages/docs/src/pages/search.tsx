@@ -7,6 +7,7 @@ import Layout from '../components/layout/Layout';
 import SEO from '../components/layout/DocSiteSeo';
 import useTheme from '../helpers/useTheme';
 import { sendSearchInitiatedEvent } from '../helpers/analytics';
+import markQuery from '../helpers/markQuery';
 
 const SearchPage = ({ location }: MdxQuery) => {
   const [query, setQuery] = useState('');
@@ -65,9 +66,7 @@ const SearchPage = ({ location }: MdxQuery) => {
               let body = result.body;
               const strLoc = body.toLowerCase().indexOf(query.toLowerCase());
               body = body.slice(Math.max(strLoc - 160, 0), strLoc + 160);
-              const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-              const re = new RegExp(escapedQuery, 'gi');
-              body = body.replace(re, '<mark>$&</mark>') + '...';
+              body = markQuery(body, query);
 
               const sendAnalyticsEvent = () => {
                 sendLinkEvent({
