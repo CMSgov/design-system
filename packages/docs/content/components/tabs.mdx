@@ -14,11 +14,35 @@ healthcare:
 medicare:
   figmaNodeId: 7-102
 ---
-import { Alert } from '@cmsgov/design-system';
+import { Alert, AlertCircleIcon, ImageIcon, SearchIcon, Tabs, TabPanel } from '@cmsgov/design-system';
 
 ## Examples
 
 <StorybookExample componentName="tabs" storyId="components-tabs--default" minHeight={400} />
+
+### Adding icons
+
+- When adding an inline SVG icon, it will appear in the same color as the tab text.
+- For the crispest icon rendering, the icon must have a square `viewBox` with values that are multiples of 8 (e.g., 24x24).
+- Use the margin utility class to add spacing between the icon and tab text.
+- Follow the [guidance for adding icons to buttons](/components/button/#adding-icons) to determine when it is appropriate to add icons to tabs.
+
+<EmbeddedExample>
+  <Tabs>
+    <TabPanel id="summary" tab={<div><AlertCircleIcon/> Summary</div>}>
+      The Bill of Rights is the first ten amendments to the United States Constitution.
+    </TabPanel>
+    <TabPanel id="preamble" tab={<div><ImageIcon/> Preamble</div>}>
+      We the People of the United States, in Order to form a more perfect Union, establish
+      Justice, insure domestic Tranquility, provide for the common defence, promote the general
+      Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+      establish this Constitution for the United States of America.
+    </TabPanel>
+    <TabPanel id="disabled" tab={<div><SearchIcon/> Disabled</div>} disabled>
+      You should not see this.
+    </TabPanel>
+  </Tabs>
+</EmbeddedExample>
 
 ## Guidance
 
@@ -70,6 +94,7 @@ When implemented correctly, screen readers announce:
 - Its `role` (e.g., "tab").
 - Its position within the set (e.g., "Tab 1 of 3").
 - Whether the tab is selected.
+- An element's name, or accessible name, is how it is identified by browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). Accessible names provide information for assistive technology, such as screen readers, and so icon tab must include an accessible name. If there is no text beside the icon then an `aria-label` or `aria-labelledby` attribute can be used to give the tab its accessible name.
 
 ### Zoom magnification
 
