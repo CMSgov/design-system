@@ -1,3 +1,4 @@
+import { SearchIcon } from '../Icons';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import { Button } from '../Button';
@@ -108,6 +109,37 @@ export const Controlled: Story = {
     return (
       <TabsComponent {...args} selectedId={selectedId} onChange={onChange}>
         {tabPanels}
+      </TabsComponent>
+    );
+  },
+};
+
+const iconTab = () => {
+  return (
+    <div className="ds-u-display--flex">
+      <span>
+        <SearchIcon /> Summary
+      </span>
+    </div>
+  );
+};
+
+export const WithIcons: Story = {
+  render: function Component(args) {
+    return (
+      <TabsComponent {...args}>
+        <TabPanel id="summary" tab={iconTab()}>
+          The Bill of Rights is the first ten amendments to the United States Constitution.
+        </TabPanel>
+        <TabPanel id="preamble" tab="Preamble">
+          We the People of the United States, in Order to form a more perfect Union, establish
+          Justice, insure domestic Tranquility, provide for the common defence, promote the general
+          Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
+          establish this Constitution for the United States of America.
+        </TabPanel>
+        <TabPanel id="disabled" tab="Disabled" disabled>
+          You should not see this.
+        </TabPanel>
       </TabsComponent>
     );
   },
