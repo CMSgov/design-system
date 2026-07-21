@@ -1,4 +1,4 @@
-import { SearchIcon } from '../Icons';
+import { AlertCircleIcon, ImageIcon, SearchIcon } from '../Icons';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import { Button } from '../Button';
@@ -102,7 +102,7 @@ export const Disabled: Story = {
 export const Controlled: Story = {
   render: function Component(args) {
     const [{ selectedId }, updateArgs] = useArgs();
-    const onChange = (selectedId, prevSelectedId) => {
+    const onChange = (selectedId: string | undefined, prevSelectedId: string | undefined) => {
       action('onChange')(selectedId, prevSelectedId);
       updateArgs({ selectedId });
     };
@@ -114,12 +114,13 @@ export const Controlled: Story = {
   },
 };
 
-const iconTab = () => {
+const tabComponent = (
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
+  text: string
+): React.ReactElement => {
   return (
-    <div className="ds-u-display--flex">
-      <span>
-        <SearchIcon /> Summary
-      </span>
+    <div>
+      <Icon /> {text}
     </div>
   );
 };
@@ -128,16 +129,16 @@ export const WithIcons: Story = {
   render: function Component(args) {
     return (
       <TabsComponent {...args}>
-        <TabPanel id="summary" tab={iconTab()}>
+        <TabPanel id="summary" tab={tabComponent(SearchIcon, 'Summary')}>
           The Bill of Rights is the first ten amendments to the United States Constitution.
         </TabPanel>
-        <TabPanel id="preamble" tab="Preamble">
+        <TabPanel id="preamble" tab={tabComponent(AlertCircleIcon, 'Preamble')}>
           We the People of the United States, in Order to form a more perfect Union, establish
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
         </TabPanel>
-        <TabPanel id="disabled" tab="Disabled" disabled>
+        <TabPanel id="disabled" tab={tabComponent(ImageIcon, 'Disabled')} disabled>
           You should not see this.
         </TabPanel>
       </TabsComponent>
