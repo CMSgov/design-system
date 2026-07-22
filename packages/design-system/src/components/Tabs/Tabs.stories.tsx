@@ -1,4 +1,4 @@
-import { AlertCircleIcon, ImageIcon, SearchIcon } from '../Icons';
+import { AlertCircleIcon, AlertIcon, ImageIcon, SearchIcon, IconCommonProps } from '../Icons';
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import { Button } from '../Button';
@@ -115,12 +115,14 @@ export const Controlled: Story = {
 };
 
 const tabComponent = (
-  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
-  text: string
+  Icon: React.ComponentType<IconCommonProps>,
+  text?: string,
+  ariaHidden?: boolean,
+  ariaLabel?: string
 ): React.ReactElement => {
   return (
     <div>
-      <Icon /> {text}
+      <Icon ariaHidden={ariaHidden} description={ariaLabel} /> {text}
     </div>
   );
 };
@@ -137,6 +139,9 @@ export const WithIcons: Story = {
           Justice, insure domestic Tranquility, provide for the common defence, promote the general
           Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and
           establish this Constitution for the United States of America.
+        </TabPanel>
+        <TabPanel id="iconOnly" tab={tabComponent(AlertIcon, undefined, false, 'Icon Only Tab')}>
+          The corresponding tab for this panel only has an icon!
         </TabPanel>
         <TabPanel id="disabled" tab={tabComponent(ImageIcon, 'Disabled')} disabled>
           You should not see this.

@@ -24,7 +24,7 @@ import { Alert, AlertCircleIcon, ImageIcon, SearchIcon, Tabs, TabPanel } from '@
 
 - When adding an inline SVG icon, it will appear in the same color as the tab text.
 - For the crispest icon rendering, the icon must have a square `viewBox` with values that are multiples of 8 (e.g., 24x24).
-- Use the margin utility class to add spacing between the icon and tab text.
+- Use the [margin utility class](/utilities/margin) to add spacing between the icon and tab text.
 - Follow the [guidance for adding icons to buttons](/components/button/#adding-icons) to determine when it is appropriate to add icons to tabs.
 
 <EmbeddedExample>
@@ -94,7 +94,7 @@ When implemented correctly, screen readers announce:
 - Its `role` (e.g., "tab").
 - Its position within the set (e.g., "Tab 1 of 3").
 - Whether the tab is selected.
-- An element's name, or accessible name, is how it is identified by browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). Accessible names provide information for assistive technology, such as screen readers, and so icon tab must include an accessible name. If there is no text beside the icon then an `aria-label` or `aria-labelledby` attribute can be used to give the tab its accessible name.
+- An accessible name is how browsers and the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree) identify it. Accessible names provide information for assistive technology, such as screen readers, and so icon tab must include an accessible name. If there is no text beside the icon then you must set the `ariaHidden` prop (or `aria-hidden` attribute) to `false`. Icons have built in title attributes which are the default accessible name, however you can set your own accessible name for the icon by passing in a `string` to the `description` prop on the icon component.
 
 ### Zoom magnification
 
