@@ -120,7 +120,7 @@
   }
 
   // SVG icons
-  > svg {
+  svg {
     @include mixins.inline-icon;
   }
 }
