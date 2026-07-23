@@ -99,7 +99,7 @@
   ],
   "devDependencies": {
     "@axe-core/playwright": "^4.4.4",
-    "@babel/core": "^7.21.4",
+    "@babel/core": "^7.29.6",
     "@babel/helper-string-parser": "^7.19.4",
     "@babel/plugin-proposal-decorators": "^7.21.0",
     "@babel/plugin-proposal-export-default-from": "^7.18.10",
@@ -180,7 +180,7 @@
     "tsx": "^4.19.2",
     "typescript": "^5.4.3",
     "url-loader": "^4.1.1",
-    "vite": "^6.4.1",
+    "vite": "^6.4.3",
     "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
