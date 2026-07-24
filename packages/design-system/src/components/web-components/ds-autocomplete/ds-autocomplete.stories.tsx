@@ -441,21 +441,14 @@ export const AsyncItems: Story = {
     const hasResults = input.length > 2 && additionalItems.length;
 
     const searchArtwork = () => {
-      // Note: the response is mocked
-      const searchURL = `https://api.artic.edu/api/v1/artworks/search?q=${input}&fields=id,title,artist_title&limit=10`;
-      fetch(searchURL)
-        .then((response) => {
-          if (response.status === 200) {
-            return response.json();
-          }
-        })
-        .then(({ data }: { data: MockedDataResponse[] }) => {
-          const additionalItems = data.map(({ id, title, artist_title }) => ({
-            id: id.toString(),
-            name: `${title} by ${artist_title}`,
-          }));
-          setAdditionalItems(additionalItems);
-        });
+      const searchPromise = Promise.resolve(searchMock.response.body);
+      searchPromise.then(({ data }: { data: MockedDataResponse[] }) => {
+        const additionalItems = data.map(({ id, title, artist_title }) => ({
+          id: id.toString(),
+          name: `${title} by ${artist_title}`,
+        }));
+        setAdditionalItems(additionalItems);
+      });
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -509,10 +502,5 @@ export const AsyncItems: Story = {
       makeItem('City Landscape'),
       makeItem('Self-Portrait'),
     ],
-  },
-  parameters: {
-    fetchMock: {
-      mocks: [searchMock],
-    },
   },
 };
