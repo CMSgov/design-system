@@ -1,6 +1,6 @@
 import { stepListStepData } from './__mocks__/stepListStepData';
 import { StepList as StepListComponent } from './StepList';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof StepListComponent> = {
   title: 'Components/StepList',

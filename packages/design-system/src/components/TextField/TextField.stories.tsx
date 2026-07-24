@@ -2,8 +2,8 @@ import { useState } from 'react';
 import TextField from './TextField';
 import { unmaskValue } from './maskHelpers';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
+import { action } from 'storybook/actions';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',

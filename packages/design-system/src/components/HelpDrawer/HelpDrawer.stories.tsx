@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { HelpDrawer } from './HelpDrawer';
 import { Button } from '../Button';
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryObj } from '@storybook/react';
+import { action } from 'storybook/actions';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof HelpDrawer> = {
   title: 'Components/HelpDrawer',

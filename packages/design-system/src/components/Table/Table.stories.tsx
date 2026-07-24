@@ -4,7 +4,7 @@ import TableHead from './TableHead';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
 import TableBody from './TableBody';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Table> = {
   title: 'Components/Table',

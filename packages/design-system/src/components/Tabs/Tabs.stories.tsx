@@ -2,9 +2,9 @@ import { AlertCircleIcon, AlertIcon, ImageIcon, SearchIcon, IconCommonProps } fr
 import { Tabs as TabsComponent } from './Tabs';
 import TabPanel from './TabPanel';
 import { Button } from '../Button';
-import type { Meta, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { useArgs } from '@storybook/preview-api';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import { action } from 'storybook/actions';
+import { useArgs } from 'storybook/preview-api';
 
 const meta: Meta<typeof TabsComponent> = {
   title: 'Components/Tabs',

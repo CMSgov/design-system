@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Accordion } from './Accordion';
 import { AccordionItem } from './AccordionItem';
 import { useState } from 'react';

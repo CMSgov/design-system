@@ -1,5 +1,5 @@
 import { Button, Review } from '@cmsgov/design-system';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 
 const meta: Meta = {
   title: 'Patterns/Form Review examples',

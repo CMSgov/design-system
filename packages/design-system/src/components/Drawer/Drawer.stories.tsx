@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Button } from '../Button';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import Drawer from './Drawer';
 import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',

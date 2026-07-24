@@ -1,7 +1,7 @@
 import Tooltip from './Tooltip';
 import TooltipIcon from './TooltipIcon';
 import Button from '../Button/Button';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Tooltip> = {
   title: 'Components/Tooltip',
