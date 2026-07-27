@@ -6,7 +6,7 @@
   ],
   [
     "default-value",
-    "Sets the initial value for the component. This value will be used until the user changes the input, at which point the new value will be handled by the component's internal state. The onChange event will still be triggered with the updated value, but the component will manage the state internally.",
+    "Sets the initial value for the component. This value will be used until the user changes the input, at which point the new value will be handled by the component's internal state.\n\n                The `onChange` event will still be triggered with the updated value, but the component will manage the state internally.",
     "string"
   ],
   [
