@@ -1,12 +1,12 @@
 import './storybookStyles.scss';
 import DocumentationTemplate from './docs/DocumentationTemplate.mdx';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { config } from '../packages/design-system/src/components/config';
 import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-webpack5';
 import cmsTheme from './cmsTheme';
 
 // Rewire analytics events to log to the console
@@ -195,7 +195,7 @@ const preview: Preview = {
   },
 
   parameters: {
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     controls: {
       expanded: true,
       matchers: {
@@ -204,7 +204,7 @@ const preview: Preview = {
       },
     },
     viewport: {
-      viewports: breakpointViewportSizes,
+      options: breakpointViewportSizes,
     },
     docs: {
       page: DocumentationTemplate,

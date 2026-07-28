@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Dialog } from './Dialog';
 import { Button } from '@cmsgov/design-system';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { useDialog } from './useDialog';
 
 const meta: Meta<typeof Dialog> = {

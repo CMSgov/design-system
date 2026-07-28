@@ -6,6 +6,7 @@ import { expectScreenshot } from './expectScreenshot';
 
 const storySkipList = [
   'components-autocomplete--async-items', // Redundant
+  'components-choicelist--choice-children', // Focus bug in Storybook v9
   'components-dialog--default', // Doesn't show the open dialog
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog

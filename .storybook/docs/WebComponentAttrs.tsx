@@ -1,5 +1,5 @@
 import { humanizeList } from '../../packages/docs/src/helpers/humanizeList';
-import { useOf } from '@storybook/blocks';
+import { useOf } from '@storybook/addon-docs/blocks';
 
 interface WebComponentAttrsProps {
   of?: any;

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 import './ds-pagination';
 
 export default {

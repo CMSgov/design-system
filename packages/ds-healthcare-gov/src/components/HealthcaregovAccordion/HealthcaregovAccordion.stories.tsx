@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Accordion } from '@cmsgov/design-system';
 import { HealthcaregovAccordionItem as AccordionItem } from './HealthcaregovAccordionItem';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Healthcare/Accordion',
