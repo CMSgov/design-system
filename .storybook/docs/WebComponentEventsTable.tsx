@@ -1,4 +1,4 @@
-import { Markdown, useOf } from '@storybook/blocks';
+import { Markdown, useOf } from '@storybook/addon-docs/blocks';
 
 /**
  * A table documenting a web component's custom events
