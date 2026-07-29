@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
 import NoStoryWebComponentDocTemplate from '../../../../../../.storybook/docs/NoStoryWebComponentDocTemplate.mdx';
 import './ds-drawer';
@@ -173,17 +173,23 @@ const Template = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  heading: 'Drawer Heading',
-  'footer-title': 'Footer Title',
+export const Default = {
+  render: Template,
+
+  args: {
+    heading: 'Drawer Heading',
+    'footer-title': 'Footer Title',
+  },
 };
 
-export const WithBackdropClickExits = Template.bind({});
-WithBackdropClickExits.args = {
-  'backdrop-click-exits': 'true',
-  'has-focus-trap': 'true',
-  ...Default.args,
+export const WithBackdropClickExits = {
+  render: Template,
+
+  args: {
+    'backdrop-click-exits': 'true',
+    'has-focus-trap': 'true',
+    ...Default.args,
+  },
 };
 
 export default meta;

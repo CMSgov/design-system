@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../../../../../design-system/src/components/web-components/storybook';
 import './ds-simple-footer';
@@ -109,6 +109,8 @@ const Template = (args) => {
   return <ds-simple-footer {...args}></ds-simple-footer>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export default meta;

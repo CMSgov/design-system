@@ -1,6 +1,6 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-tabs';
@@ -180,12 +180,18 @@ const DisabledTemplate = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  'default-selected-id': 'summary',
+export const Default = {
+  render: Template,
+
+  args: {
+    'default-selected-id': 'summary',
+  },
 };
 
-export const Disabled = DisabledTemplate.bind({});
-Disabled.args = {
-  'default-selected-id': 'summary',
+export const Disabled = {
+  render: DisabledTemplate,
+
+  args: {
+    'default-selected-id': 'summary',
+  },
 };

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import Header from './Header';
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from 'storybook/preview-api';
 
 // Because the DS exports the wrapped Header component, Header props are not shown in the args table
 // TODO: look into later if storybook is used more publicly

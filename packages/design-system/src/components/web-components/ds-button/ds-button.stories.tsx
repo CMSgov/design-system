@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import './ds-button';
 import { webComponentDecorator } from '../storybook';
 import {
@@ -90,4 +90,6 @@ const Template = (args) => {
   return <ds-button {...args}>{args.children}</ds-button>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

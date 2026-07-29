@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import { stepListStepData } from '../../StepList/__mocks__/stepListStepData';
@@ -98,7 +98,11 @@ const Template = (args) => {
 };
 
 const serializedSteps = JSON.stringify(stepListStepData);
-export const StepListExample = Template.bind({});
-StepListExample.args = {
-  steps: serializedSteps,
+
+export const StepListExample = {
+  render: Template,
+
+  args: {
+    steps: serializedSteps,
+  },
 };

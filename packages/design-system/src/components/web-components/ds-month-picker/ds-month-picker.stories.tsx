@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
 import './ds-month-picker';
 
@@ -184,7 +184,9 @@ const Template = (args) => {
   return <ds-month-picker {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export const MonthOverrides = {
   render: Template,

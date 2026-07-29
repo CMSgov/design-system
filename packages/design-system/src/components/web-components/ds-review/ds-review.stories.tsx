@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-review';
@@ -78,23 +78,34 @@ const TemplateWithCustomActions = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-
-export const SingleReview = Template.bind({});
-SingleReview.args = {
-  heading: 'A Single Review Component',
-  'edit-href': '#',
+export const Default = {
+  render: Template,
 };
 
-export const MultipleReviews = MultipleReviewsTemplate.bind({});
-MultipleReviews.args = {
-  heading: 'Multiple Review Components',
-  'edit-href': '#',
+export const SingleReview = {
+  render: Template,
+
+  args: {
+    heading: 'A Single Review Component',
+    'edit-href': '#',
+  },
 };
 
-export const CustomActions = TemplateWithCustomActions.bind({});
-CustomActions.args = {
-  heading: 'A Review Component with Custom Actions',
+export const MultipleReviews = {
+  render: MultipleReviewsTemplate,
+
+  args: {
+    heading: 'Multiple Review Components',
+    'edit-href': '#',
+  },
+};
+
+export const CustomActions = {
+  render: TemplateWithCustomActions,
+
+  args: {
+    heading: 'A Review Component with Custom Actions',
+  },
 };
 
 export default meta;

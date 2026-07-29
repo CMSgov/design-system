@@ -53,4 +53,6 @@ const Template = (args) => (
   <ds-badge {...args}>{args.children ?? <>Default badge text</>}</ds-badge>
 );
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

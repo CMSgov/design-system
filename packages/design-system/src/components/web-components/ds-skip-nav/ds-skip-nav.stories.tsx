@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-skip-nav';
@@ -52,4 +52,6 @@ const Template = ({ 'text content': text, ...args }) => {
   return <ds-skip-nav {...args}>{text}</ds-skip-nav>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

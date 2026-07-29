@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
 import '../ds-alert';
 import './ds-choice-list';
@@ -205,7 +205,9 @@ const Template = (args) => {
   return <ds-choice-list {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 const htmlChoices = (
   <>

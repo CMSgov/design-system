@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { action } from '@storybook/addon-actions';
-import type { Meta } from '@storybook/react';
+import { action } from 'storybook/actions';
+import type { Meta } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-date-field';
@@ -176,21 +176,30 @@ const Template = (args) => {
   return <ds-date-field {...formattedArgs} />;
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  name: 'ds-date-field',
+export const Default = {
+  render: Template,
+
+  args: {
+    name: 'ds-date-field',
+  },
 };
 
-export const WithPicker = Template.bind({});
-WithPicker.args = {
-  label: 'What day did you move?',
-  hint: 'This date should be within the past 60 days in order to qualify.',
-  'from-year': '2023',
-  'to-date': new Date('2023-02-15T21:56:34.272Z').toISOString(),
+export const WithPicker = {
+  render: Template,
+
+  args: {
+    label: 'What day did you move?',
+    hint: 'This date should be within the past 60 days in order to qualify.',
+    'from-year': '2023',
+    'to-date': new Date('2023-02-15T21:56:34.272Z').toISOString(),
+  },
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
-  'error-message': 'This is an example error message.',
-  ...WithPicker.args,
+export const WithError = {
+  render: Template,
+
+  args: {
+    'error-message': 'This is an example error message.',
+    ...WithPicker.args,
+  },
 };
