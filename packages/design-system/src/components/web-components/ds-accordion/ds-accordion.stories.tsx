@@ -68,4 +68,6 @@ const Template = (args) => {
   );
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

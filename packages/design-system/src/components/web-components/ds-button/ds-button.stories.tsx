@@ -90,4 +90,6 @@ const Template = (args) => {
   return <ds-button {...args}>{args.children}</ds-button>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

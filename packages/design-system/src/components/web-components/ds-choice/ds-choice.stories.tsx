@@ -178,7 +178,9 @@ const Template = ({
   );
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export const CheckedChildren = {
   render: Template,

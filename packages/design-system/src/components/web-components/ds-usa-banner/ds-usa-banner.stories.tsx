@@ -24,4 +24,6 @@ export default {
 
 const Template = (args) => <ds-usa-banner {...args} />;
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
