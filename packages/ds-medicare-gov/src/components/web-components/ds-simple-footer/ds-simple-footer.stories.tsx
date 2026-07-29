@@ -109,6 +109,8 @@ const Template = (args) => {
   return <ds-simple-footer {...args}></ds-simple-footer>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export default meta;

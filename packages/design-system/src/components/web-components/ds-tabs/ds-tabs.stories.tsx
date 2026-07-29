@@ -180,12 +180,18 @@ const DisabledTemplate = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  'default-selected-id': 'summary',
+export const Default = {
+  render: Template,
+
+  args: {
+    'default-selected-id': 'summary',
+  },
 };
 
-export const Disabled = DisabledTemplate.bind({});
-Disabled.args = {
-  'default-selected-id': 'summary',
+export const Disabled = {
+  render: DisabledTemplate,
+
+  args: {
+    'default-selected-id': 'summary',
+  },
 };

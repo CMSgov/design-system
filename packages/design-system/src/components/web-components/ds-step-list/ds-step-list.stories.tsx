@@ -98,7 +98,11 @@ const Template = (args) => {
 };
 
 const serializedSteps = JSON.stringify(stepListStepData);
-export const StepListExample = Template.bind({});
-StepListExample.args = {
-  steps: serializedSteps,
+
+export const StepListExample = {
+  render: Template,
+
+  args: {
+    steps: serializedSteps,
+  },
 };
