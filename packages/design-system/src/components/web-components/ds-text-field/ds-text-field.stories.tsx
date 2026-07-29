@@ -155,7 +155,9 @@ const Template = (args) => {
   return <ds-text-field {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export const MultilineField = {
   render: Template,

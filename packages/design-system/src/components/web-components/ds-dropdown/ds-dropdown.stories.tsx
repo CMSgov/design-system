@@ -182,7 +182,9 @@ const Template = (args) => {
   return <ds-dropdown {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 const htmlOptions = (
   <>

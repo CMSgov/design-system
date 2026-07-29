@@ -184,7 +184,9 @@ const Template = (args) => {
   return <ds-month-picker {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export const MonthOverrides = {
   render: Template,

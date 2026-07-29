@@ -106,4 +106,6 @@ const Template = (args) => {
   return <ds-pagination {...args} current-page={currentPage} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

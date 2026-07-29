@@ -52,4 +52,6 @@ const Template = ({ 'text content': text, ...args }) => {
   return <ds-skip-nav {...args}>{text}</ds-skip-nav>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
