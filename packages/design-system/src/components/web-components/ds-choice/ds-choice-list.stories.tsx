@@ -205,7 +205,9 @@ const Template = (args) => {
   return <ds-choice-list {...args} />;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 const htmlChoices = (
   <>

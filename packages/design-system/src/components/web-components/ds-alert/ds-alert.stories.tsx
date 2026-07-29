@@ -92,4 +92,6 @@ const Template = ({ heading, children, ...args }) => (
   </ds-alert>
 );
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

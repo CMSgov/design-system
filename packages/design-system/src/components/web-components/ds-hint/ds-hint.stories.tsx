@@ -40,14 +40,20 @@ export default {
 
 const Template = ({ 'text content': text, ...args }) => <ds-hint {...args}>{text}</ds-hint>;
 
-export const Default = Template.bind({});
-
-export const Inversed = Template.bind({});
-Inversed.args = {
-  inversed: 'true',
+export const Default = {
+  render: Template,
 };
-Inversed.parameters = {
-  onDark: true,
-  // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
-  layout: 'fullscreen',
+
+export const Inversed = {
+  render: Template,
+
+  args: {
+    inversed: 'true',
+  },
+
+  parameters: {
+    onDark: true,
+    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
+    layout: 'fullscreen',
+  },
 };

@@ -75,4 +75,6 @@ const Template = (args) => {
   return <ds-third-party-external-link {...otherAttrs}>{children}</ds-third-party-external-link>;
 };
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

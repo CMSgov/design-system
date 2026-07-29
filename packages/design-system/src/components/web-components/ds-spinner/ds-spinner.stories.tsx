@@ -55,7 +55,9 @@ export default {
 
 const Template = ({ ...args }) => <ds-spinner {...args} />;
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
 export const InverseFilledSpinner = {
   render: Template,
