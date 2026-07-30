@@ -110,9 +110,9 @@
     "@figma/code-connect": "^1.4.4",
     "@inquirer/prompts": "^3.0.3",
     "@playwright/test": "1.58.2",
-    "@storybook/addon-links": "9.1.20",
-    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
-    "@storybook/react-webpack5": "9.1.20",
+    "@storybook/addon-links": "10.5.5",
+    "@storybook/addon-webpack5-compiler-babel": "^4.0.1",
+    "@storybook/react-webpack5": "10.5.5",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/preact": "^3.2.4",
     "@testing-library/react": "^16.3.2",
@@ -135,7 +135,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "9.1.20",
+    "eslint-plugin-storybook": "10.5.5",
     "eslint-plugin-testing-library": "^5.6.0",
     "fancy-log": "^2.0.0",
     "gh-pages": "^6.1.1",
@@ -164,7 +164,7 @@
     "react-dom": "19.2.4",
     "sass": "^1.53.0",
     "sass-loader": "16.0.8",
-    "storybook": "9.1.20",
+    "storybook": "10.5.5",
     "stylelint": "16.3.1",
     "stylelint-config-standard-scss": "^13.0.0",
     "stylelint-formatter-pretty": "^4.0.0",
@@ -177,6 +177,6 @@
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
     "yargs": "^17.7.2",
-    "@storybook/addon-docs": "9.1.20"
+    "@storybook/addon-docs": "10.5.5"
   }
 }
