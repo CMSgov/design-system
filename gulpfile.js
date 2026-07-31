@@ -113,7 +113,7 @@ const compileSass = (cb) => {
   gulp
     .src(sassSourcePaths)
     .pipe(gulpif(envDev, sourcemaps.init()))
-    .pipe(sass({ outputStyle: 'expanded' }))
+    .pipe(sass({ style: 'expanded' }))
     .pipe(gulpif(envDev, sourcemaps.write()))
     .pipe(
       postcss([
