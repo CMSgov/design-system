@@ -10,6 +10,7 @@ module.exports = {
     '**/styles/utilities/**',
     '**/docs/public/**',
     '**/docs/static/**',
+    '**/design-system-tokens/styles/**',
   ],
   plugins: ['stylelint-order'],
   reportDescriptionlessDisables: true,
