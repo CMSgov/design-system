@@ -9,7 +9,7 @@ const defaultProps = {
 
 function GetStartedIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--get-started ${props.className || ''}`;
-  t;
+
   return (
     <span className="icon-wrapper">
       <SvgIcon
