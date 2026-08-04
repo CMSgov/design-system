@@ -27,7 +27,7 @@ const rootPath = args.package ?? path.join('packages', 'design-system');
 const isCore = rootPath.includes('design-system') ?? false;
 const analyzeBundles = args['analyze-bundles'];
 
-const tokensPackageFiles = path.join('packages', 'design-system-tokens', 'dist');
+const tokensPackageFiles = path.join('packages', 'design-system-tokens', 'styles');
 const corePackageFiles = path.join('packages', 'design-system', 'dist');
 const distPath = path.join(rootPath, 'dist');
 const distReactComponents = path.join(distPath, 'react-components');
