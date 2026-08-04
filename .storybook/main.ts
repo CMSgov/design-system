@@ -19,7 +19,7 @@ const config: StorybookConfig = {
     `../packages/ds-medicare-gov/src/**/${extensionGlob}`,
     `../packages/docs/content/**/${extensionGlob}`,
   ],
-  staticDirs: ['../packages/design-system-tokens/dist/css-vars'],
+  staticDirs: ['../packages/design-system-tokens/styles/css-vars'],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
