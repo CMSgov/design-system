@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-function LeafIcon(props: IconCommonProps): React.ReactElement {
+function CreateAccountIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--create-account ${props.className || ''}`;
 
   return (
@@ -29,4 +29,4 @@ function LeafIcon(props: IconCommonProps): React.ReactElement {
   );
 }
 
-export default LeafIcon;
+export default CreateAccountIcon;
