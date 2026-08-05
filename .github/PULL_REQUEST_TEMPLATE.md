@@ -21,6 +21,35 @@
 - [ ] Selected appropriate `Impacts`, multiple can be selected.
 - [ ] Selected appropriate release milestone
 
+## AI Usage
+
+- [ ] USED_AI: I attest that I have read, understood, and take ownership of all AI-generated code in this PR.
+- [ ] NO_AI: I did not use AI.
+
+### IF you did use AI please answer these questions:
+
+#### Type of assistance:
+
+- [ ] Code generation
+- [ ] Documentation
+- [ ] Debugging
+- [ ] Testing
+- [ ] Refactoring
+- [ ] Other
+
+#### AI System used:
+
+- [ ] ChatGPT
+- [ ] Claude
+- [ ] Gemini
+- [ ] GitHub Copilot
+
+#### Level of modification:
+
+- [ ] As-is (AI generated all code in this submission)
+- [ ] Modified (You made some changes to the AI's generation)
+- [ ] Used as inspiration
+
 <!-- Feel free to remove items or sections that are not applicable -->
 
 ### If this is a change to design:

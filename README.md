@@ -151,4 +151,4 @@ Please read the [CONTRIBUTING.md](CONTRIBUTING.md) document to learn about contr
 
 To get in touch with the CMS Design System team, please visit [design.cms.gov/contact](https://design.cms.gov/contact) for a list of ways to contact us.
 
-One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE-OF-CONDUCT.md) to learn more.
+One of our goals is to ensure a welcoming environment for all contributors. Please take a look at our [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
