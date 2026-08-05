@@ -1,0 +1,32 @@
+import type * as React from 'react';
+import { SvgIcon, t } from '@cmsgov/design-system';
+import { IconCommonProps } from '@cmsgov/design-system';
+
+const defaultProps = {
+  className: '',
+  viewBox: '0 0 24 19',
+};
+
+function MedicareCardIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--medicare-card ${props.className || ''}`;
+
+  return (
+    <span className="icon-wrapper">
+      {/* TODO: Add Spanish translation - ticket CMSDS-4263 */}
+      <SvgIcon
+        title={t('icons.medicareCard')}
+        {...defaultProps}
+        {...props}
+        className={iconCssClasses}
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M22 0H2C0.895833 0 0 0.895833 0 2V2.66667H24V2C24 0.895833 23.1042 0 22 0ZM0 16.6667C0 17.7708 0.895833 18.6667 2 18.6667H22C23.1042 18.6667 24 17.7708 24 16.6667V4H0V16.6667ZM15 6.66667C14.8167 6.66667 14.6667 6.81667 14.6667 7V7.66667C14.6667 7.85 14.8167 8 15 8H21C21.1833 8 21.3333 7.85 21.3333 7.66667V7C21.3333 6.81667 21.1833 6.66667 21 6.66667H15ZM14.6667 9.66667C14.6667 9.48333 14.8167 9.33333 15 9.33333H21C21.1833 9.33333 21.3333 9.48333 21.3333 9.66667V10.3333C21.3333 10.5167 21.1833 10.6667 21 10.6667H15C14.8167 10.6667 14.6667 10.5167 14.6667 10.3333V9.66667ZM15 12C14.8167 12 14.6667 12.15 14.6667 12.3333V13C14.6667 13.1833 14.8167 13.3333 15 13.3333H21C21.1833 13.3333 21.3333 13.1833 21.3333 13V12.3333C21.3333 12.15 21.1833 12 21 12H15ZM7.33333 6.66667C8.80417 6.66667 10 7.8625 10 9.33333C10 10.8042 8.80417 12 7.33333 12C5.8625 12 4.66667 10.8042 4.66667 9.33333C4.66667 7.8625 5.8625 6.66667 7.33333 6.66667ZM5.33333 13.3333C4.15 13.3333 3.14583 14.1042 2.79583 15.175C2.6625 15.5833 3.0125 16 3.44583 16H11.2208C11.6542 16 12.0042 15.5875 11.8708 15.175C11.5208 14.1042 10.5167 13.3333 9.33333 13.3333H8.99167C8.48333 13.5458 7.92083 13.6667 7.33333 13.6667C6.74583 13.6667 6.1875 13.5458 5.675 13.3333H5.33333Z"
+        />
+      </SvgIcon>
+    </span>
+  );
+}
+
+export default MedicareCardIcon;
