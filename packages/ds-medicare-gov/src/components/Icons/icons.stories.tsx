@@ -25,6 +25,7 @@ import {
   LoginIcon,
   LogoutIcon,
   LongtermCareIcon,
+  MedicareCardIcon,
   MyAccountIcon,
   NursingHomeIcon,
   PersonBookIcon,
@@ -182,6 +183,11 @@ const iconData = [
     defaultTitle: 'Long-term Care',
     component: <LongtermCareIcon />,
     name: 'LongtermCareIcon',
+  },
+  {
+    defaultTitle: 'Medicare Card',
+    component: <MedicareCardIcon />,
+    name: 'MedicareCardIcon',
   },
   {
     defaultTitle: 'My Account',

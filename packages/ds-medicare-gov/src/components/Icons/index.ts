@@ -24,6 +24,7 @@ export { default as LeafIcon } from './LeafIcon';
 export { default as LoginIcon } from './LoginIcon';
 export { default as LogoutIcon } from './LogoutIcon';
 export { default as LongtermCareIcon } from './LongtermCareIcon';
+export { default as MedicareCardIcon } from './MedicareCardIcon';
 export { default as MyAccountIcon } from './MyAccountIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
 export { default as PersonBookIcon } from './PersonBookIcon';
