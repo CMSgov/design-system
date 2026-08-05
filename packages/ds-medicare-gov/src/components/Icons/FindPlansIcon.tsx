@@ -12,7 +12,7 @@ function FindPlansIcon(props: IconCommonProps): React.ReactElement {
 
   return (
     <span className="icon-wrapper">
-      {/* TODO: Add Spanish translation - ticket CMSDS-XXXX */}
+      {/* TODO: Add Spanish translation - ticket CMSDS-4263 */}
       <SvgIcon title={t('icons.findPlans')} {...defaultProps} {...props} className={iconCssClasses}>
         <path
           fillRule="evenodd"
