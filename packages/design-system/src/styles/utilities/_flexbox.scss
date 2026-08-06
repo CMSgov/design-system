@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../base' as *;
 
 $_flex-direction-values: (
@@ -7,8 +8,8 @@ $_flex-direction-values: (
   column-reverse: column-reverse,
 );
 
-@each $name in map-keys($_flex-direction-values) {
-  $value: map-get($_flex-direction-values, $name);
+@each $name in map.keys($_flex-direction-values) {
+  $value: map.get($_flex-direction-values, $name);
   // Example: .ds-u-flex-direction--column
   .ds-u-flex-direction--#{$name} {
     // Example: flex-direction: column
@@ -16,12 +17,12 @@ $_flex-direction-values: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $viewport: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $viewport) {
-    @each $name in map-keys($_flex-direction-values) {
-      $value: map-get($_flex-direction-values, $name);
+    @each $name in map.keys($_flex-direction-values) {
+      $value: map.get($_flex-direction-values, $name);
       // Example: .ds-u-lg-flex-direction--column
       .ds-u-#{$breakpoint}-flex-direction--#{$name} {
         // Example: flex-direction: column
@@ -39,8 +40,8 @@ $_justify-content-values: (
   around: space-around,
 );
 
-@each $name in map-keys($_justify-content-values) {
-  $value: map-get($_justify-content-values, $name);
+@each $name in map.keys($_justify-content-values) {
+  $value: map.get($_justify-content-values, $name);
   // Example: .ds-u-justify-content--start
   .ds-u-justify-content--#{$name} {
     // Example: justify-content: flex-start
@@ -48,12 +49,12 @@ $_justify-content-values: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $viewport: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $viewport) {
-    @each $name in map-keys($_justify-content-values) {
-      $value: map-get($_justify-content-values, $name);
+    @each $name in map.keys($_justify-content-values) {
+      $value: map.get($_justify-content-values, $name);
       // Example: .ds-u-lg-justify-content--start
       .ds-u-#{$breakpoint}-justify-content--#{$name} {
         // Example: justify-content: flex-start
@@ -71,8 +72,8 @@ $_align-items-values: (
   stretch: stretch,
 );
 
-@each $name in map-keys($_align-items-values) {
-  $value: map-get($_align-items-values, $name);
+@each $name in map.keys($_align-items-values) {
+  $value: map.get($_align-items-values, $name);
   // Example: .ds-u-align-items--start
   .ds-u-align-items--#{$name} {
     // Example: align-items: flex-start
@@ -80,12 +81,12 @@ $_align-items-values: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $viewport: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $viewport) {
-    @each $name in map-keys($_align-items-values) {
-      $value: map-get($_align-items-values, $name);
+    @each $name in map.keys($_align-items-values) {
+      $value: map.get($_align-items-values, $name);
       // Example: .ds-u-lg-align-items--start
       .ds-u-#{$breakpoint}-align-items--#{$name} {
         // Example: align-items: flex-start
@@ -101,8 +102,8 @@ $_flex-wrap-values: (
   reverse: wrap-reverse,
 );
 
-@each $name in map-keys($_flex-wrap-values) {
-  $value: map-get($_flex-wrap-values, $name);
+@each $name in map.keys($_flex-wrap-values) {
+  $value: map.get($_flex-wrap-values, $name);
   // Example: .ds-u-flex-wrap--start
   .ds-u-flex-wrap--#{$name} {
     // Example: flex-wrap: flex-start
@@ -110,12 +111,12 @@ $_flex-wrap-values: (
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $viewport: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $viewport: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $viewport) {
-    @each $name in map-keys($_flex-wrap-values) {
-      $value: map-get($_flex-wrap-values, $name);
+    @each $name in map.keys($_flex-wrap-values) {
+      $value: map.get($_flex-wrap-values, $name);
       // Example: .ds-u-lg-flex-wrap--start
       .ds-u-#{$breakpoint}-flex-wrap--#{$name} {
         // Example: flex-wrap: flex-start

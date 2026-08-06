@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../base' as *;
 
 @each $scale, $size in $spacers {
@@ -60,8 +61,8 @@
   margin-block: auto !important;
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $value: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     @each $scale, $size in $spacers {

@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../base' as *;
 @use '../mixins';
 
@@ -13,8 +14,8 @@
   float: none !important;
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $value: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-float--left {
