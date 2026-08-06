@@ -14,6 +14,7 @@ import {
   DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
+  FindPlansIcon,
   GetStartedIcon,
   HealthcareProviderIcon,
   HeartIcon,
@@ -122,6 +123,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Find Plans',
+    component: <FindPlansIcon />,
+    name: 'FindPlansIcon',
   },
   {
     defaultTitle: 'Get Started',
