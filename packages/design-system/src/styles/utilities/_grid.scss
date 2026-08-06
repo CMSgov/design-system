@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../mixins';
 @use '../layout' as *;
 @use '../base' as *;
@@ -76,8 +77,8 @@
   }
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $value: map.get($breakpoints, $breakpoint);
 
   // Allow columns to stretch full width below their breakpoints
   @for $i from 1 through $grid-columns {
