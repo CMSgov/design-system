@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../base' as *;
 
 /*
@@ -49,8 +50,8 @@ Markup:
 
 Style guide: utilities.text-align.responsive
 */
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $value: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-text-align--center {
