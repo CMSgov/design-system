@@ -35,6 +35,7 @@ export { default as PhoneNumberIcon } from './PhoneNumberIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as ResourcesIcon } from './ResourcesIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
+export { default as ScalesIcon } from './ScalesIcon';
 export { default as ShareIcon } from './ShareIcon';
 export { default as SuppliersIcon } from './SuppliersIcon';
 export { default as SwipeIcon } from './SwipeIcon';
