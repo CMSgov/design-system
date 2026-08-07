@@ -23,6 +23,7 @@ module.exports = {
     'declaration-no-important': [true, { severity: 'warning' }],
     'keyframes-name-pattern': null,
     'no-descending-specificity': null,
+    'no-duplicate-selectors': null,
     'selector-class-pattern': null,
     'value-keyword-case': ['lower', { ignoreKeywords: ['currentColor', 'optimizeSpeed'] }],
     'order/order': ['custom-properties', 'declarations', 'rules'],
