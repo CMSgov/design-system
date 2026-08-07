@@ -32,6 +32,7 @@ import {
   NursingHomeIcon,
   PersonBookIcon,
   PharmacyIcon,
+  PhoneNumberIcon,
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
@@ -220,6 +221,11 @@ const iconData = [
     defaultTitle: 'Pharmacy',
     component: <PharmacyIcon />,
     name: 'PharmacyIcon',
+  },
+  {
+    defaultTitle: 'Phone Number',
+    component: <PhoneNumberIcon />,
+    name: 'PhoneNumberIcon',
   },
   {
     defaultTitle: 'Piggy Bank',
