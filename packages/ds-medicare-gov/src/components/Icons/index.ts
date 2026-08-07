@@ -31,6 +31,7 @@ export { default as MyAccountIcon } from './MyAccountIcon';
 export { default as NursingHomeIcon } from './NursingHomeIcon';
 export { default as PersonBookIcon } from './PersonBookIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
+export { default as PhoneNumberIcon } from './PhoneNumberIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as ResourcesIcon } from './ResourcesIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
