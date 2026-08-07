@@ -20,10 +20,10 @@
 }
 
 .ds-c-spinner {
-  @include spinner-size($spacer-4, $spacer-4);
-
   display: inline-block;
   position: relative;
+
+  @include spinner-size($spacer-4, $spacer-4);
 
   .ds-c-button > & {
     @include mixins.inline-icon;
@@ -62,11 +62,13 @@
 .ds-c-spinner--filled {
   @include spinner-size($spacer-4, $spacer-6);
 
-  background-color: var(--spinner__background-color);
-  border-radius: 50%;
-  color: var(--spinner__color);
-  height: $spacer-6;
-  width: $spacer-6;
+  & {
+    background-color: var(--spinner__background-color);
+    border-radius: 50%;
+    color: var(--spinner__color);
+    height: $spacer-6;
+    width: $spacer-6;
+  }
 
   &.ds-c-spinner--inverse {
     background-color: var(--spinner__background-color--inverse);
