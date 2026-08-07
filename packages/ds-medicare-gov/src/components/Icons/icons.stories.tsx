@@ -35,6 +35,7 @@ import {
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  ScalesIcon,
   ShareIcon,
   SuppliersIcon,
   SwipeIcon,
@@ -230,6 +231,11 @@ const iconData = [
     defaultTitle: 'Resources',
     component: <ResourcesIcon />,
     name: 'ResourcesIcon',
+  },
+  {
+    defaultTitle: 'Scales',
+    component: <ScalesIcon />,
+    name: 'ScalesIcon',
   },
   {
     defaultTitle: 'Share',
