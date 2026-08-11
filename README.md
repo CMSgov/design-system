@@ -70,7 +70,7 @@ These scripts can all be run from the root level of the repo:
   - Alias of `npm run test:unit`
 - `npm run test:unit`
   - Runs JS unit tests for all packages
-  - `npm run test:unit -- -u` updates [Jest snapshots](http://facebook.github.io/jest/docs/en/snapshot-testing.html)
+  - `npm run test:unit -- -u` updates [Jest snapshots](https://jestjs.io/docs/snapshot-testing)
   - `npm run test:unit:preact` runs the unit tests in Preact mode
   - `npm run test:unit:wc` runs the unit tests for the web components, which have to run in Preact mode
 - `npm run test:browser`
