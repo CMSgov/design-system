@@ -1,6 +1,7 @@
 import {
   AboutIcon,
   AbuseIcon,
+  AlarmIcon,
   AppleIcon,
   BellIcon,
   BinocularsIcon,
@@ -61,6 +62,11 @@ const iconData = [
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
     name: 'AbuseIcon',
+  },
+  {
+    defaultTitle: 'Alarm',
+    component: <AlarmIcon />,
+    name: 'AlarmIcon',
   },
   {
     defaultTitle: 'Apple',
