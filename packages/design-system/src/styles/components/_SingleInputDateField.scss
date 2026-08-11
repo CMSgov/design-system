@@ -9,7 +9,7 @@
 // the source rules.
 // @use 'react-day-picker/dist/style.css';
 
-/* stylelint-disable declaration-no-important, no-duplicate-selectors -- Ignore inlined 3rd party styles */
+/* stylelint-disable declaration-no-important -- Ignore inlined 3rd party styles */
 :root {
   --rdp-cell-size: #{$spacer-5};
   --rdp-accent-color: var(--color-primary);
