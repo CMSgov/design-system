@@ -1,7 +1,7 @@
 import { TooltipProps } from './Tooltip';
 import { config } from '../config';
 import { getAnalyticsContentFromRefs, eventExtensionText } from '../analytics';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 export default function useTooltipAnalytics({
   analytics,
@@ -12,7 +12,7 @@ export default function useTooltipAnalytics({
 }: TooltipProps) {
   const contentRef = useRef<HTMLElement>(null);
 
-  function sendTooltipEvent() {
+  const sendTooltipEvent = useCallback(() => {
     if (analytics !== true && (!config().tooltipSendsAnalytics || analytics === false)) {
       return;
     }
@@ -31,7 +31,7 @@ export default function useTooltipAnalytics({
       event_extension: eventExtensionText,
       text: tooltipText,
     });
-  }
+  }, [analytics, analyticsLabelOverride, ariaLabel, triggerAriaLabel, onAnalyticsEvent]);
 
   return { contentRef, sendTooltipEvent };
 }
