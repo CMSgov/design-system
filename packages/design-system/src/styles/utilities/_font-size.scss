@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../base' as *;
 
 .ds-u-font-size--sm {
@@ -33,8 +34,8 @@
   font-size: var(--font-size-5xl) !important;
 }
 
-@each $breakpoint in map-keys($breakpoints) {
-  $value: map-get($breakpoints, $breakpoint);
+@each $breakpoint in map.keys($breakpoints) {
+  $value: map.get($breakpoints, $breakpoint);
 
   @media (min-width: $value) {
     .ds-u-#{$breakpoint}-font-size--sm {

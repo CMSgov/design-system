@@ -2,6 +2,7 @@ import {
   AboutIcon,
   AbuseIcon,
   AppleIcon,
+  BellIcon,
   BinocularsIcon,
   BirthingFriendlyIcon,
   ChecklistIcon,
@@ -13,6 +14,7 @@ import {
   DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
+  FindPlansIcon,
   GetStartedIcon,
   HealthcareProviderIcon,
   HeartIcon,
@@ -25,13 +27,16 @@ import {
   LoginIcon,
   LogoutIcon,
   LongtermCareIcon,
+  MedicareCardIcon,
   MyAccountIcon,
   NursingHomeIcon,
   PersonBookIcon,
   PharmacyIcon,
+  PhoneNumberIcon,
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  ScalesIcon,
   ShareIcon,
   SuppliersIcon,
   SwipeIcon,
@@ -60,6 +65,11 @@ const iconData = [
     defaultTitle: 'Apple',
     component: <AppleIcon />,
     name: 'AppleIcon',
+  },
+  {
+    defaultTitle: 'Bell',
+    component: <BellIcon />,
+    name: 'BellIcon',
   },
   {
     defaultTitle: 'Binoculars',
@@ -115,6 +125,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Find Plans',
+    component: <FindPlansIcon />,
+    name: 'FindPlansIcon',
   },
   {
     defaultTitle: 'Get Started',
@@ -184,6 +199,11 @@ const iconData = [
     name: 'LongtermCareIcon',
   },
   {
+    defaultTitle: 'Medicare Card',
+    component: <MedicareCardIcon />,
+    name: 'MedicareCardIcon',
+  },
+  {
     defaultTitle: 'My Account',
     component: <MyAccountIcon />,
     name: 'MyAccountIcon',
@@ -204,6 +224,11 @@ const iconData = [
     name: 'PharmacyIcon',
   },
   {
+    defaultTitle: 'Phone Number',
+    component: <PhoneNumberIcon />,
+    name: 'PhoneNumberIcon',
+  },
+  {
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
@@ -212,6 +237,11 @@ const iconData = [
     defaultTitle: 'Resources',
     component: <ResourcesIcon />,
     name: 'ResourcesIcon',
+  },
+  {
+    defaultTitle: 'Scales',
+    component: <ScalesIcon />,
+    name: 'ScalesIcon',
   },
   {
     defaultTitle: 'Share',

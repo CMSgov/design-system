@@ -1,10 +1,11 @@
-@import '@cmsgov/design-system/src/styles/index';
+@use 'sass:meta';
+@use '../packages/design-system/src/styles/index.scss';
 
 // any @font-face declarations need to be included everywhere to not be
 // wrapped with the data-theme selector below
-@import '@cmsgov/ds-medicare-gov/src/styles/fonts';
-@import '@cmsgov/ds-cms-gov/src/styles/fonts';
-@import '../packages/docs/src/styles/components/exampleGrid';
+@use '../packages/ds-medicare-gov/src/styles/fonts';
+@use '../packages/ds-cms-gov/src/styles/fonts' as fonts2;
+@use '../packages/docs/src/styles/components/exampleGrid';
 
 .utility-example {
   background-color: var(--color-info-lightest);
@@ -28,13 +29,9 @@
 }
 
 [data-theme='healthcare'] {
-  /* stylelint-disable no-invalid-position-at-import-rule -- this rule is geared for standard CSS spec, not sass */
-  @import '@cmsgov/ds-healthcare-gov/src/styles/index';
-  /* stylelint-enable */
+  @include meta.load-css('../packages/ds-healthcare-gov/src/styles/index');
 }
 
 [data-theme='medicare'] {
-  /* stylelint-disable no-invalid-position-at-import-rule -- this rule is geared for standard CSS spec, not sass */
-  @import '@cmsgov/ds-medicare-gov/src/styles/index';
-  /* stylelint-enable */
+  @include meta.load-css('../packages/ds-medicare-gov/src/styles/index');
 }
