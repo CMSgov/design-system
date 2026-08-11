@@ -74,7 +74,7 @@ export interface BaseTooltipProps
   interactiveBorder?: number;
   inversed?: boolean;
   /**
-   * Applies `skidding` and `distance` offsets to the tooltip relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/modifiers/popper-offsets/) for more info.
+   * Sets the distance between the trigger and the tooltip content. Currently we accept offset values for the main and cross axes. Further information can be found in [Floating UI's docs](https://floating-ui.com/docs/offset).
    * Default is `[0, 5]`
    */
   offset?: [number, number];
@@ -87,7 +87,7 @@ export interface BaseTooltipProps
    */
   onOpen?: () => any;
   /**
-   * Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.
+   * Placement of the tooltip body relative to the trigger. See the [Floating UI's docs](https://floating-ui.com/docs/middleware#placement) for more info.
    * Default is `'top'`
    */
   placement?: Placement;

@@ -81,7 +81,7 @@
   ],
   [
     "offset",
-    "Applies skidding and distance offsets to the tooltip relative to the trigger. See the popperjs docs for more info. Default is [0, 5]\n\n[number, number]",
+    "Sets the distance between the trigger and the tooltip content. Currently we accept offset values for the main and cross axes. Further information can be found in Floating UI's docs. Default is [0, 5]\n\n[number, number]",
     "-"
   ],
   [
@@ -101,7 +101,7 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info. Default is 'top'\n\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\n\"left\"\n\"right-end\"\n\"right-start\"\nShow 4 more...",
+    "Placement of the tooltip body relative to the trigger. See the Floating UI's docs for more info. Default is 'top'\n\n\"bottom-end\"\n\"bottom-start\"\n\"bottom\"\n\"left-end\"\n\"left-start\"\n\"left\"\n\"right-end\"\n\"right-start\"\nShow 4 more...",
     "-"
   ],
   [
