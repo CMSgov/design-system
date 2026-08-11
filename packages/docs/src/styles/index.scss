@@ -34,10 +34,10 @@
 
 /* stylelint-disable no-invalid-position-at-import-rule -- Theming imported after base styles */
 [data-theme='healthcare'] {
-  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
+  @import '../../../ds-healthcare-gov/src/styles/components/index';
 }
 
 [data-theme='medicare'] {
-  @import '@cmsgov/ds-medicare-gov/src/styles/components/index';
+  @import '../../../ds-medicare-gov/src/styles/components/index';
 }
 /* stylelint-enable */
