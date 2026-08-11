@@ -1,6 +1,8 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-storybook-example {
   border: 1px solid var(--color-gray-lighter);
-  margin-top: $spacer-2;
+  margin-top: layout.$spacer-2;
 }
 
 .c-storybook-example__iframe-wrapper {
@@ -14,7 +16,7 @@
 }
 
 .c-storybook-example-footer {
-  margin-top: $spacer-1;
+  margin-top: layout.$spacer-1;
   position: relative;
 }
 

@@ -1,20 +1,22 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-page-header__link {
   display: inline-block;
 
   &:not(:last-child) {
-    margin-right: $spacer-2;
+    margin-right: layout.$spacer-2;
   }
 
   .c-github-icon {
     height: 1rem;
-    margin-right: $spacer-half;
+    margin-right: layout.$spacer-half;
     width: 1rem;
   }
 }
 
 .c-page-header__icon {
   height: 1rem;
-  margin-right: $spacer-half;
+  margin-right: layout.$spacer-half;
   vertical-align: middle;
 }
 

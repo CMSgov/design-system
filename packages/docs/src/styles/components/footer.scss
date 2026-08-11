@@ -1,3 +1,5 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-footer {
   border-top: 2px solid var(--color-gray-lighter);
   padding-top: 1.5rem;
@@ -9,7 +11,7 @@
 
   .ds-c-icon--hhs-logo {
     font-size: 2rem;
-    margin-right: $spacer-2;
+    margin-right: layout.$spacer-2;
   }
 }
 
@@ -21,7 +23,7 @@
   }
 
   .c-footer__link:not(:last-child) {
-    margin-right: $spacer-2;
+    margin-right: layout.$spacer-2;
   }
 
   button.c-footer__link {
@@ -38,7 +40,7 @@
   }
 }
 
-@media (max-width: $media-width-md) {
+@media (max-width: layout.$media-width-md) {
   .c-footer__text {
     font-size: var(--font-size-sm);
   }

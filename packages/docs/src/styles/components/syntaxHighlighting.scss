@@ -1,3 +1,5 @@
+@use '../../../../design-system/src/styles/layout';
+
 pre,
 code {
   background-color: var(--color-gray-lightest);
@@ -7,14 +9,14 @@ code {
 pre {
   display: block;
   overflow-x: auto;
-  padding: $spacer-2;
+  padding: layout.$spacer-2;
 }
 
 code {
   display: inline-block;
   font-size: 0.9em;
   margin: 1px;
-  padding: 0 $spacer-half;
+  padding: 0 layout.$spacer-half;
 }
 
 a code {
