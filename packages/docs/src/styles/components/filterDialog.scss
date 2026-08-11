@@ -1,5 +1,5 @@
-@use '@styles/base' as *;
-@use '@styles/mixins';
+@use '../../../../design-system/src/styles/base' as *;
+@use '../../../../design-system/src/styles/mixins';
 
 .ds-c-filter-dialog {
   background-color: var(--dialog__background-color);

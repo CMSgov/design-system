@@ -24,9 +24,7 @@ export const onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        // aliasing @styles a shortcut to core styles directory
         // aliasing fonts & images to catch relative paths defined in core styles
-        '@styles': path.resolve(__dirname, '../design-system/src/styles'),
         '../fonts': path.resolve(__dirname, 'static/fonts'),
         '../images': path.resolve(__dirname, 'static/images'),
         // Force gatsby-plugin-mdx to use the local version of @mdx-js/react instead of
