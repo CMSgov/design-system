@@ -163,7 +163,7 @@
     "react-docgen-typescript": "2.4.0",
     "react-dom": "19.2.4",
     "sass": "^1.53.0",
-    "sass-loader": "10.2.1",
+    "sass-loader": "16.0.8",
     "storybook": "9.1.20",
     "stylelint": "16.3.1",
     "stylelint-config-standard-scss": "^13.0.0",
