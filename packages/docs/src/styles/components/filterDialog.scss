@@ -36,7 +36,9 @@
 .ds-c-filter-dialog__heading {
   @include heading--xl;
 
-  margin-bottom: 0;
+  & {
+    margin-bottom: 0;
+  }
 }
 
 .ds-c-filter-dialog__actions {
