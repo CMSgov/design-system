@@ -1,6 +1,7 @@
 import {
   AboutIcon,
   AbuseIcon,
+  AlarmIcon,
   AppleIcon,
   BellIcon,
   BinocularsIcon,
@@ -14,6 +15,7 @@ import {
   DoctorsCliniciansIcon,
   DrugsIcon,
   FilterIcon,
+  FindCareIcon,
   FindPlansIcon,
   GetStartedIcon,
   HealthcareProviderIcon,
@@ -32,9 +34,11 @@ import {
   NursingHomeIcon,
   PersonBookIcon,
   PharmacyIcon,
+  PhoneNumberIcon,
   PiggyBankIcon,
   ResourcesIcon,
   RoundedStarIcon,
+  ScalesIcon,
   ShareIcon,
   SuppliersIcon,
   SwipeIcon,
@@ -58,6 +62,11 @@ const iconData = [
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
     name: 'AbuseIcon',
+  },
+  {
+    defaultTitle: 'Alarm',
+    component: <AlarmIcon />,
+    name: 'AlarmIcon',
   },
   {
     defaultTitle: 'Apple',
@@ -123,6 +132,11 @@ const iconData = [
     defaultTitle: 'Filters',
     component: <FilterIcon />,
     name: 'FilterIcon',
+  },
+  {
+    defaultTitle: 'Find Care',
+    component: <FindCareIcon />,
+    name: 'FindCareIcon',
   },
   {
     defaultTitle: 'Find Plans',
@@ -222,6 +236,11 @@ const iconData = [
     name: 'PharmacyIcon',
   },
   {
+    defaultTitle: 'Phone Number',
+    component: <PhoneNumberIcon />,
+    name: 'PhoneNumberIcon',
+  },
+  {
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
@@ -230,6 +249,11 @@ const iconData = [
     defaultTitle: 'Resources',
     component: <ResourcesIcon />,
     name: 'ResourcesIcon',
+  },
+  {
+    defaultTitle: 'Scales',
+    component: <ScalesIcon />,
+    name: 'ScalesIcon',
   },
   {
     defaultTitle: 'Share',
