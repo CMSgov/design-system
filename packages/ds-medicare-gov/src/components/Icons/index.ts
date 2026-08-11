@@ -14,6 +14,7 @@ export { default as DialysisServicesIcon } from './DialysisServicesIcon';
 export { default as DoctorsCliniciansIcon } from './DoctorsCliniciansIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as FindCareIcon } from './FindCareIcon';
 export { default as FindPlansIcon } from './FindPlansIcon';
 export { default as GetStartedIcon } from './GetStartedIcon';
 export { default as HealthcareProviderIcon } from './HealthcareProviderIcon';
