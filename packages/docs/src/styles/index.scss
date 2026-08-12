@@ -1,45 +1,42 @@
 // including medicare fonts in build for use with medicare theme
-@import '@cmsgov/ds-medicare-gov/src/styles/fonts';
+@use 'sass:meta';
+@use '../../../ds-medicare-gov/src/styles/fonts';
 
 // including cmsgov fonts in build for use with cmsgov theme
-@import '@cmsgov/ds-cms-gov/src/styles/fonts';
+@use '../../../ds-cms-gov/src/styles/fonts' as fonts2;
+@use '../../../design-system/src/styles/layout';
+@use '../../../design-system/src/styles/index';
+@use 'pages/contact';
+@use 'pages/layout' as layout2;
+@use 'pages/search';
+@use 'components/buttonMigrationTable';
+@use 'components/buttonVariationsTable';
+@use 'components/codeSnippet';
+@use 'components/colorCard';
+@use 'components/colorExampleRow';
+@use 'components/colorSwatch';
+@use 'components/colorRamps';
+@use 'components/colorMigrationTable';
+@use 'components/embeddedExamples';
+@use 'components/exampleGrid';
+@use 'components/filterDialog';
+@use 'components/footer';
+@use 'components/maturityChecklist';
+@use 'components/navigation';
+@use 'components/pageHeader';
+@use 'components/responsiveExample';
+@use 'components/storybookExample';
+@use 'components/syntaxHighlighting';
+@use 'components/textColorList';
+@use 'components/tableOfContents';
+@use 'components/typographyUseageTable';
+@use 'components/spacingUtilityExampleList';
+@use 'components/video';
 
-// @styles is aliased in gatsby-node.js
-@import '@styles/layout';
-@import '@styles/index';
-@import 'pages/contact';
-@import 'pages/layout';
-@import 'pages/search';
-@import 'components/buttonMigrationTable';
-@import 'components/buttonVariationsTable';
-@import 'components/codeSnippet';
-@import 'components/colorCard';
-@import 'components/colorExampleRow';
-@import 'components/colorSwatch';
-@import 'components/colorRamps';
-@import 'components/colorMigrationTable';
-@import 'components/embeddedExamples';
-@import 'components/exampleGrid';
-@import 'components/filterDialog';
-@import 'components/footer';
-@import 'components/maturityChecklist';
-@import 'components/navigation';
-@import 'components/pageHeader';
-@import 'components/responsiveExample';
-@import 'components/storybookExample';
-@import 'components/syntaxHighlighting';
-@import 'components/textColorList';
-@import 'components/tableOfContents';
-@import 'components/typographyUseageTable';
-@import 'components/spacingUtilityExampleList';
-@import 'components/video';
-
-/* stylelint-disable no-invalid-position-at-import-rule -- Theming imported after base styles */
 [data-theme='healthcare'] {
-  @import '@cmsgov/ds-healthcare-gov/src/styles/components/index';
+  @include meta.load-css('../../../ds-healthcare-gov/src/styles/components/index');
 }
 
 [data-theme='medicare'] {
-  @import '@cmsgov/ds-medicare-gov/src/styles/components/index';
+  @include meta.load-css('../../../ds-medicare-gov/src/styles/components/index');
 }
-/* stylelint-enable */

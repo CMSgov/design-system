@@ -1,5 +1,6 @@
-@use '@styles/base' as *;
-@use '@styles/mixins';
+@use '../../../../design-system/src/styles/layout';
+@use '../../../../design-system/src/styles/base' as *;
+@use '../../../../design-system/src/styles/mixins';
 
 .ds-c-filter-dialog {
   background-color: var(--dialog__background-color);
@@ -18,7 +19,7 @@
   z-index: 500;
 
   @media (forced-colors: active) {
-    outline: $spacer-2 solid WindowText;
+    outline: layout.$spacer-2 solid WindowText;
   }
 }
 
@@ -35,7 +36,9 @@
 .ds-c-filter-dialog__heading {
   @include heading--xl;
 
-  margin-bottom: 0;
+  & {
+    margin-bottom: 0;
+  }
 }
 
 .ds-c-filter-dialog__actions {
@@ -48,7 +51,7 @@
 
 .ds-c-filter-dialog__close {
   display: inline-block;
-  margin-left: $spacer-2;
+  margin-left: layout.$spacer-2;
 }
 
 // TODO: Move this somewhere else if it's helpful to have a common "CloseButton" component for different dialogs

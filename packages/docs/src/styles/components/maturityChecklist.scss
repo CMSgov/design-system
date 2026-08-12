@@ -1,6 +1,8 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-maturity-checklist-item {
   display: flex;
-  margin-top: $spacer-2;
+  margin-top: layout.$spacer-2;
 }
 
 .c-maturity-checklist-item__title {
