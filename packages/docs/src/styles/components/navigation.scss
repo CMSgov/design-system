@@ -1,4 +1,5 @@
-@use '@styles/mixins';
+@use '../../../../design-system/src/styles/layout';
+@use '../../../../design-system/src/styles/mixins';
 
 // Mobile
 .c-navigation {
@@ -8,8 +9,8 @@
   .c-navigation__header {
     align-items: center;
     display: flex;
-    gap: $spacer-2;
-    padding: $spacer-2;
+    gap: layout.$spacer-2;
+    padding: layout.$spacer-2;
 
     > button {
       color: currentColor;
@@ -56,7 +57,7 @@
 }
 
 .c-navigation__switchers-wrapper {
-  padding: $spacer-2 $spacer-2 $spacer-2 $spacer-4;
+  padding: layout.$spacer-2 layout.$spacer-2 layout.$spacer-2 layout.$spacer-4;
 }
 
 .c-navigation__settings-button {
@@ -114,7 +115,7 @@
 
 .c-navigation__links-wrapper {
   background-color: var(--color-gray-lightest);
-  padding: $spacer-2;
+  padding: layout.$spacer-2;
 }
 
 .c-theme-switcher label {
@@ -151,7 +152,7 @@
 }
 
 // Desktop
-@media (min-width: $media-width-md) {
+@media (min-width: layout.$media-width-md) {
   .c-navigation {
     // Set it to a fixed width that is wide enough for most links so that it
     // doesn't jump around when we open and close subsections.

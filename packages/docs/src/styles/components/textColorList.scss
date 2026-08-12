@@ -1,12 +1,14 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-text-color-list {
-  margin-top: $spacer-2;
+  margin-top: layout.$spacer-2;
   max-width: var(--measure-wide);
 }
 
 .c-text-color-list__item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: $spacer-1;
+  margin-bottom: layout.$spacer-1;
 
   &:last-child {
     margin-bottom: 0;

@@ -1,6 +1,8 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-button-variations-table {
-  margin-bottom: $spacer-3;
-  margin-top: $spacer-3;
+  margin-bottom: layout.$spacer-3;
+  margin-top: layout.$spacer-3;
 }
 
 .c-button-variations-table td,

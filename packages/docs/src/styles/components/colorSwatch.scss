@@ -1,7 +1,9 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-color-swatch {
   display: inline-block;
-  height: $spacer-4;
-  margin-bottom: $spacer-half;
+  height: layout.$spacer-4;
+  margin-bottom: layout.$spacer-half;
   vertical-align: middle;
-  width: $spacer-4;
+  width: layout.$spacer-4;
 }
