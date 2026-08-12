@@ -86,6 +86,7 @@ const SingleDrawerWithToggle = (...args) => {
         {children}
       </Drawer>
       <Button
+        aria-haspopup="dialog"
         className="ds-c-drawer__toggle ds-u-margin-bottom--2"
         variation="ghost"
         onClick={toggleDrawer}

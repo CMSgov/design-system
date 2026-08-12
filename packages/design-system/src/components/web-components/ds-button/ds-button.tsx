@@ -28,9 +28,9 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   <Button
     {...otherProps}
     {...{
-      isAlternate: isAlternate && Boolean(JSON.parse(isAlternate)),
-      onDark: isOnDark && Boolean(JSON.parse(isOnDark)),
-      analytics: analytics && Boolean(JSON.parse(analytics)),
+      isAlternate: Boolean(isAlternate) && Boolean(JSON.parse(isAlternate as string)),
+      onDark: Boolean(isOnDark) && Boolean(JSON.parse(isOnDark as string)),
+      analytics: Boolean(analytics) && Boolean(JSON.parse(analytics as string)),
     }}
   />
 );
@@ -39,7 +39,7 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-button': React.JSX.IntrinsicElements['div'] & {
+      'ds-button': React.JSX.IntrinsicElements['button'] & {
         'class-name'?: string;
         disabled?: string | boolean;
         href?: string;

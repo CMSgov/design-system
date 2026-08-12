@@ -156,7 +156,8 @@ const Template = (args) => {
     'class-name': 'ds-c-drawer__toggle',
     id: 'ds-button',
     variation: 'ghost',
-  };
+    'aria-haspopup': 'dialog',
+  } as const;
 
   return (
     <div>
