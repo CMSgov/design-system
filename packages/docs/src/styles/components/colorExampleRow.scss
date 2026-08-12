@@ -1,9 +1,11 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-color-example-row {
   align-items: center;
   display: flex;
-  gap: $spacer-1;
+  gap: layout.$spacer-1;
   justify-content: space-between;
-  padding: $spacer-1;
+  padding: layout.$spacer-1;
   position: relative;
   text-align: right;
 

@@ -1,12 +1,14 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-responsive-example__example-wrapper {
   background-color: var(--color-gray-lightest);
-  padding: $spacer-2;
+  padding: layout.$spacer-2;
   position: relative;
   width: 100%;
 }
 
 .c-responsive-example {
-  margin-top: $spacer-3;
+  margin-top: layout.$spacer-3;
 }
 
 .c-responsive-example__iframe {
@@ -19,7 +21,7 @@
   background-color: var(--color-info-lightest);
   bottom: 0;
   font-size: var(--font-size-sm);
-  padding: $spacer-half $spacer-1;
+  padding: layout.$spacer-half layout.$spacer-1;
   position: absolute;
   right: 0;
 }
@@ -43,7 +45,7 @@
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-normal);
   height: 100%;
-  padding: $spacer-2;
+  padding: layout.$spacer-2;
   position: relative;
   width: 100%;
 

@@ -1,8 +1,10 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-color-migration-table {
   width: 100%;
 
   th {
-    padding-bottom: $spacer-1;
+    padding-bottom: layout.$spacer-1;
     text-align: center;
   }
 
@@ -14,13 +16,13 @@
 
   th:first-child,
   td:first-child {
-    padding-right: $spacer-4;
+    padding-right: layout.$spacer-4;
     width: 50%;
   }
 
   th:last-child,
   td:last-child {
-    padding-left: $spacer-4;
+    padding-left: layout.$spacer-4;
     width: 50%;
   }
 

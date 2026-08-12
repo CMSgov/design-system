@@ -1,9 +1,11 @@
+@use '../../../../design-system/src/styles/layout';
+
 .c-typography-usage-table {
   code {
     background: var(--color-background);
   }
 
-  @media (max-width: $media-width-lg) {
+  @media (max-width: layout.$media-width-lg) {
     .ds-u-text-align--right {
       text-align: start !important;
     }

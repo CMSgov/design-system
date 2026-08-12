@@ -1,16 +1,18 @@
+@use '../../../../design-system/src/styles/layout';
+
 .example-label {
   color: var(--color-gray);
   display: block;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
-  margin-bottom: $spacer-1;
+  margin-bottom: layout.$spacer-1;
 }
 
 .example-list {
   article {
     border-bottom: 1px solid var(--color-gray-lighter);
-    padding-bottom: $spacer-2;
-    padding-top: $spacer-2;
+    padding-bottom: layout.$spacer-2;
+    padding-top: layout.$spacer-2;
 
     &:first-child {
       padding-top: 0;
@@ -25,35 +27,35 @@
 
 // Examples for styles > spacing
 .example-spacer-half {
-  height: $spacer-half;
+  height: layout.$spacer-half;
 }
 
 .example-spacer-1 {
-  height: $spacer-1;
+  height: layout.$spacer-1;
 }
 
 .example-spacer-2 {
-  height: $spacer-2;
+  height: layout.$spacer-2;
 }
 
 .example-spacer-3 {
-  height: $spacer-3;
+  height: layout.$spacer-3;
 }
 
 .example-spacer-4 {
-  height: $spacer-4;
+  height: layout.$spacer-4;
 }
 
 .example-spacer-5 {
-  height: $spacer-5;
+  height: layout.$spacer-5;
 }
 
 .example-spacer-6 {
-  height: $spacer-6;
+  height: layout.$spacer-6;
 }
 
 .example-spacer-7 {
-  height: $spacer-7;
+  height: layout.$spacer-7;
 }
 
 .utility-example {
@@ -66,5 +68,5 @@
 }
 
 .c-embedded-example {
-  margin-top: $spacer-2;
+  margin-top: layout.$spacer-2;
 }
