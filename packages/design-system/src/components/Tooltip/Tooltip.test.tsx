@@ -90,6 +90,19 @@ describe('Tooltip', function () {
       expect(contentEl).toHaveTextContent(contentHeading);
     });
 
+    it('calls onOpen once when a user hovers', async () => {
+      const onOpen = jest.fn();
+      const { user } = renderTooltip({
+        onOpen,
+        analytics: true,
+      });
+
+      const tooltipTrigger = screen.getByLabelText(triggerAriaLabelText);
+      await user.hover(tooltipTrigger);
+
+      expect(onOpen).toHaveBeenCalledTimes(1);
+    });
+
     it('should call onClose when close button is clicked', async () => {
       const onClose = jest.fn();
       const { user } = renderTooltip({
