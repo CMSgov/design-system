@@ -26,7 +26,7 @@ export type DrawerToggleProps = ButtonProps & {
    * This function is called with an id that the toggle generates.
    * It can be used in implementing the Drawer for keeping track of which drawer the toggle controls.
    */
-  showDrawer: (string) => any;
+  showDrawer: (id?: string) => any;
 };
 
 /**
@@ -40,7 +40,7 @@ export const DrawerToggle = ({
   drawerOpen,
   ...others
 }: DrawerToggleProps): React.ReactElement<any> => {
-  const buttonRef = useRef(null);
+  const buttonRef = useRef<null | HTMLButtonElement>(null);
   const prevDrawerOpenProp = usePrevious(drawerOpen);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export const DrawerToggle = ({
     if (prevDrawerOpenProp && !drawerOpen && buttonRef.current) {
       buttonRef.current.focus();
     }
-  }, [drawerOpen]);
+  }, [drawerOpen, prevDrawerOpenProp]);
 
   const classes = classNames(
     'ds-c-drawer__toggle',
@@ -58,6 +58,7 @@ export const DrawerToggle = ({
 
   return (
     <Button
+      aria-haspopup="dialog"
       className={classes}
       inputRef={(el) => (buttonRef.current = el)}
       onClick={showDrawer}
