@@ -7,7 +7,7 @@
     "gatsby"
   ],
   "scripts": {
-    "copyThemes": "copyfiles -u 4 ../design-system-tokens/styles/css-vars/*-theme.css ./static/themes/",
+    "copyThemes": "copyfiles -u 4 ../design-system-tokens/dist/css-vars/*-theme.css ./static/themes/",
     "build": "npm run copyThemes && gatsby build",
     "build:skills-zip": "node ./scripts/skills/build-skills-zip.mjs",
     "clean": "gatsby clean",
