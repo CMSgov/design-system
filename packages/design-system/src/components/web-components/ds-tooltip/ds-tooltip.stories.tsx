@@ -54,7 +54,7 @@ const meta: Meta = {
     'max-width': { description: '`maxWidth` styling applied to the tooltip body', control: 'text' },
     placement: {
       description:
-        'Placement of the tooltip body relative to the trigger. See the [`popperjs` docs](https://popper.js.org/docs/v2/constructors/#options) for more info.',
+        "Placement of the tooltip body relative to the trigger. See [Floating UI's docs](https://floating-ui.com/docs/middleware#placement) for more info.",
       options: [
         'left',
         'left-start',

@@ -41,7 +41,7 @@
   ],
   [
     "placement",
-    "Placement of the tooltip body relative to the trigger. See the popperjs docs for more info.",
+    "Placement of the tooltip body relative to the trigger. See Floating UI's docs for more info.",
     "leftleft-startleft-endrightright-startright-endtoptop-starttop-endbottombottom-startbottom-end"
   ],
   [
