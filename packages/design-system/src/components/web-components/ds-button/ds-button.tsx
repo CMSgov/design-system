@@ -19,7 +19,8 @@ const attributes = [
 ];
 
 // Mapping `onDark` to `isOnDark` because props starting with "on" indicate an event handler and tests fail due to this expectation
-interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'analytics'> {
+interface WrapperProps
+  extends Omit<ButtonProps, 'disabled' | 'isAlternate' | 'onDark' | 'analytics'> {
   analytics?: string;
   isAlternate?: string;
   isOnDark?: string;
@@ -40,7 +41,7 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-button': React.JSX.IntrinsicElements['button'] & {
+      'ds-button': Omit<React.JSX.IntrinsicElements['button'], 'disabled'> & {
         'class-name'?: string;
         disabled?: string | boolean;
         href?: string;

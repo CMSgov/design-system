@@ -87,10 +87,10 @@ describe('Button', () => {
     const buttonRoot = document.querySelector('ds-button');
     const buttonEl = getByRole(shadowRoot as any as HTMLElement, 'button');
     const mockHandler = jest.fn();
-    buttonRoot.addEventListener('ds-click', mockHandler);
+    buttonRoot?.addEventListener('ds-click', mockHandler);
     fireEvent.click(buttonEl);
     expect(mockHandler).toHaveBeenCalledTimes(1);
-    buttonRoot.removeEventListener('ds-click', mockHandler);
+    buttonRoot?.removeEventListener('ds-click', mockHandler);
   });
 
   it('fires a custom analytics event on click', () => {
@@ -98,10 +98,10 @@ describe('Button', () => {
     const buttonRoot = document.querySelector('ds-button');
     const buttonEl = getByRole(shadowRoot as any as HTMLElement, 'button');
     const mockHandler = jest.fn();
-    buttonRoot.addEventListener('ds-analytics-event', mockHandler);
+    buttonRoot?.addEventListener('ds-analytics-event', mockHandler);
     fireEvent.click(buttonEl);
     expect(mockHandler).toHaveBeenCalledTimes(1);
-    buttonRoot.removeEventListener('ds-analytics-event', mockHandler);
+    buttonRoot?.removeEventListener('ds-analytics-event', mockHandler);
   });
 
   describe('Analytics', () => {
@@ -163,10 +163,12 @@ describe('Button', () => {
       async ({ tealiumMock, waitForAnalytics }) => {
         let analyticsEvent;
         const { shadowRoot } = view();
-        document.querySelector('ds-button').addEventListener('ds-analytics-event', (event: any) => {
-          event.preventDefault();
-          analyticsEvent = event.detail.event;
-        });
+        document
+          .querySelector('ds-button')
+          ?.addEventListener('ds-analytics-event', (event: any) => {
+            event.preventDefault();
+            analyticsEvent = event.detail.event;
+          });
         fireEvent.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();
