@@ -1,8 +1,8 @@
 import en from './locale/en.json';
 import es from './locale/es.json';
 import get from 'lodash/get';
-import { enUS } from 'date-fns/locale/en-US';
-import { es as esLocale } from 'date-fns/locale/es';
+import enUS from 'date-fns/locale/en-US';
+import esLocale from 'date-fns/locale/es';
 
 export type Language = 'en' | 'es';
 
