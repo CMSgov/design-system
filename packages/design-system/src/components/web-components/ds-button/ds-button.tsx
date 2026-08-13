@@ -2,6 +2,7 @@ import { define } from '../preactement/define';
 import Button, { ButtonProps } from '../../Button/Button';
 import { analyticsOverrideAttrs, analyticsParentDataAttrs } from '../shared-attributes/analytics';
 import { onAnalyticsEvent } from '../analytics';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
   'class-name',
@@ -28,9 +29,9 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   <Button
     {...otherProps}
     {...{
-      isAlternate: Boolean(isAlternate) && Boolean(JSON.parse(isAlternate as string)),
-      onDark: Boolean(isOnDark) && Boolean(JSON.parse(isOnDark as string)),
-      analytics: Boolean(analytics) && Boolean(JSON.parse(analytics as string)),
+      isAlternate: isAlternate !== undefined ? parseBooleanAttr(isAlternate) : undefined,
+      onDark: isOnDark !== undefined ? parseBooleanAttr(isOnDark) : undefined,
+      analytics: analytics !== undefined ? parseBooleanAttr(analytics) : undefined,
     }}
   />
 );
