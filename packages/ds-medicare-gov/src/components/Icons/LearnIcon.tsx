@@ -8,16 +8,11 @@ const defaultProps = {
 };
 
 function LearnIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--personBook ${props.className || ''}`;
+  const iconCssClasses = `ds-c-icon--learn ${props.className || ''}`;
 
   return (
     <span className="icon-wrapper">
-      <SvgIcon
-        title={t('icons.personBook')}
-        {...defaultProps}
-        {...props}
-        className={iconCssClasses}
-      >
+      <SvgIcon title={t('icons.learn')} {...defaultProps} {...props} className={iconCssClasses}>
         <path
           d="M25.4359 14.478C24.2872 13.2683 22.6461 12.4878 20.8 12.4878H19.8974H12.1846H11.282C9.39486 12.4878 7.7128 13.2683 6.56409 14.5561L15.8359 17.1707L25.4359 14.478Z"
           fill="#1E3C70"
