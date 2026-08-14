@@ -8,7 +8,6 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
     "skipLibCheck": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
