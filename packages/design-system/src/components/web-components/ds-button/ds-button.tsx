@@ -2,6 +2,7 @@ import { define } from '../preactement/define';
 import Button, { ButtonProps } from '../../Button/Button';
 import { analyticsOverrideAttrs, analyticsParentDataAttrs } from '../shared-attributes/analytics';
 import { onAnalyticsEvent } from '../analytics';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = [
   'class-name',
@@ -18,7 +19,8 @@ const attributes = [
 ];
 
 // Mapping `onDark` to `isOnDark` because props starting with "on" indicate an event handler and tests fail due to this expectation
-interface WrapperProps extends Omit<ButtonProps, 'isAlternate' | 'onDark' | 'analytics'> {
+interface WrapperProps
+  extends Omit<ButtonProps, 'disabled' | 'isAlternate' | 'onDark' | 'analytics'> {
   analytics?: string;
   isAlternate?: string;
   isOnDark?: string;
@@ -28,9 +30,9 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
   <Button
     {...otherProps}
     {...{
-      isAlternate: isAlternate && Boolean(JSON.parse(isAlternate)),
-      onDark: isOnDark && Boolean(JSON.parse(isOnDark)),
-      analytics: analytics && Boolean(JSON.parse(analytics)),
+      isAlternate: isAlternate !== undefined ? parseBooleanAttr(isAlternate) : undefined,
+      onDark: isOnDark !== undefined ? parseBooleanAttr(isOnDark) : undefined,
+      analytics: analytics !== undefined ? parseBooleanAttr(analytics) : undefined,
     }}
   />
 );
@@ -39,7 +41,7 @@ const Wrapper = ({ isAlternate, isOnDark, analytics, ...otherProps }: WrapperPro
 declare global {
   namespace React.JSX {
     interface IntrinsicElements {
-      'ds-button': React.JSX.IntrinsicElements['div'] & {
+      'ds-button': Omit<React.JSX.IntrinsicElements['button'], 'disabled'> & {
         'class-name'?: string;
         disabled?: string | boolean;
         href?: string;

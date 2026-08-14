@@ -126,6 +126,7 @@ What do you do when there are multiple drawers on a page? The simplest behaviorâ
 ### Accessibility
 
 - The `Drawer` should have an `aria-labelledby` attribute that references the `id` of the heading in the `Drawer`.
+- The toggle element should have `aria-haspopup="dialog"` set on it so that assistive technology can appropriately notify users that the button has an associated dialog.
 - The `Drawer` markup should be placed after the toggle element that triggers it in the HTML structure. This keeps the markup semantically sound and improves accessibility for screen readers.
 - The heading level used within the `Drawer` should fit semantically with the heading levels of the rest of the page. For instance, if the heading level before the `Drawer` toggle link is an `<h2>`, the heading level of the `Drawer` would most likely be an `<h3>`.
 
@@ -160,6 +161,7 @@ When `hasFocusTrap` is enabled...
 ##### Screen reader
 
 - The Drawer toggle indicates the purpose of the Drawer and mirrors the first heading inside the Drawer.
+- The Drawer toggle notifies users that there is an associated `dialog pop up`.
 - When the Drawer is open:
   - Focus is sent to the Drawer.
   - The Drawer's role of `dialog` is read.
@@ -185,9 +187,7 @@ When `hasFocusTrap` is enabled...
 ### Web Component
 
 <StorybookDocLinks tech="wc">
-  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">
-    Drawer
-  </StorybookDocLink>
+  <StorybookDocLink tech="wc" storyId="web-components-ds-drawer--docs">Drawer</StorybookDocLink>
 </StorybookDocLinks>
 
 ### Style customization
