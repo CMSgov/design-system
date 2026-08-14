@@ -7,12 +7,17 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-function AppleIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--apple ${props.className || ''}`;
+function PreventativeServicesIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--preventativeServices ${props.className || ''}`;
 
   return (
     <span className="icon-wrapper">
-      <SvgIcon title={t('icons.apple')} {...defaultProps} {...props} className={iconCssClasses}>
+      <SvgIcon
+        title={t('icons.preventativeServices')}
+        {...defaultProps}
+        {...props}
+        className={iconCssClasses}
+      >
         <path
           d="M13.4041 9.40408C10.4653 7.5102 5.89391 8.62041 4.39187 12.7347C3.41228 15.4122 4.19595 21.2898 7.46125 26.2531C9.28983 29.0612 11.7062 31.2163 12.7511 31.0204C13.7959 30.8898 14.5143 30.3673 15.8857 30.5633C16.7347 30.6939 16.6694 30.6939 17.7143 31.2163C18.7592 31.7388 20.9143 30.7592 21.9592 29.9755C23.0041 29.1918 27.5755 21.0939 26.7919 15.8694C26.1388 11.4939 24.898 10.9714 22.2204 9.79592C19.5429 8.62041 18.0408 9.66531 16.7347 10.3837C16.147 10.6449 14.8408 10.3837 13.4041 9.40408Z"
           fill="#1E3C70"
@@ -30,4 +35,4 @@ function AppleIcon(props: IconCommonProps): React.ReactElement {
   );
 }
 
-export default AppleIcon;
+export default PreventativeServicesIcon;
