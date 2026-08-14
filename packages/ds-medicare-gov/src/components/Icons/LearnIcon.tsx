@@ -7,7 +7,7 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-function PersonWithBookIcon(props: IconCommonProps): React.ReactElement {
+function LearnIcon(props: IconCommonProps): React.ReactElement {
   const iconCssClasses = `ds-c-icon--personBook ${props.className || ''}`;
 
   return (
@@ -43,4 +43,4 @@ function PersonWithBookIcon(props: IconCommonProps): React.ReactElement {
   );
 }
 
-export default PersonWithBookIcon;
+export default LearnIcon;
