@@ -1,7 +1,6 @@
 export { default as AboutIcon } from './AboutIcon';
 export { default as AbuseIcon } from './AbuseIcon';
 export { default as AlarmIcon } from './AlarmIcon';
-export { default as AppleIcon } from './AppleIcon';
 export { default as BellIcon } from './BellIcon';
 export { default as BinocularsIcon } from './BinocularsIcon';
 export { default as BirthingFriendlyIcon } from './BirthingFriendlyIcon';
@@ -35,6 +34,7 @@ export { default as PersonBookIcon } from './PersonBookIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PhoneNumberIcon } from './PhoneNumberIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
+export { default as PreventativeServicesIcon } from './PreventativeServicesIcon';
 export { default as ResourcesIcon } from './ResourcesIcon';
 export { default as RoundedStarIcon } from './RoundedStarIcon';
 export { default as ScalesIcon } from './ScalesIcon';

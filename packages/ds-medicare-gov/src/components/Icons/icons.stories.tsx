@@ -2,7 +2,6 @@ import {
   AboutIcon,
   AbuseIcon,
   AlarmIcon,
-  AppleIcon,
   BellIcon,
   BinocularsIcon,
   BirthingFriendlyIcon,
@@ -33,6 +32,7 @@ import {
   MyAccountIcon,
   NursingHomeIcon,
   PersonBookIcon,
+  PreventativeServicesIcon,
   PharmacyIcon,
   PhoneNumberIcon,
   PiggyBankIcon,
@@ -67,11 +67,6 @@ const iconData = [
     defaultTitle: 'Alarm',
     component: <AlarmIcon />,
     name: 'AlarmIcon',
-  },
-  {
-    defaultTitle: 'Apple',
-    component: <AppleIcon />,
-    name: 'AppleIcon',
   },
   {
     defaultTitle: 'Bell',
@@ -244,6 +239,11 @@ const iconData = [
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
+  },
+  {
+    defaultTitle: 'Preventative Services',
+    component: <PreventativeServicesIcon />,
+    name: 'PreventativeServicesIcon',
   },
   {
     defaultTitle: 'Resources',
