@@ -109,6 +109,7 @@
     "@figma/code-connect": "^1.4.4",
     "@inquirer/prompts": "^3.0.3",
     "@playwright/test": "1.58.2",
+    "@storybook/addon-docs": "9.1.20",
     "@storybook/addon-links": "9.1.20",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/react-webpack5": "9.1.20",
@@ -175,7 +176,6 @@
     "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
-    "yargs": "^17.7.2",
-    "@storybook/addon-docs": "9.1.20"
+    "yargs": "^17.7.2"
   }
 }

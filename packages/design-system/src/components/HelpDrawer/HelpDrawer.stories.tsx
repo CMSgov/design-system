@@ -80,7 +80,12 @@ export const Default: Story = {
         >
           {args.children || drawerContent}
         </HelpDrawer>
-        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+        <Button
+          aria-haspopup="dialog"
+          className="ds-c-drawer__toggle"
+          variation="ghost"
+          onClick={showDrawer}
+        >
           {toggleButtonText}
         </Button>
       </>

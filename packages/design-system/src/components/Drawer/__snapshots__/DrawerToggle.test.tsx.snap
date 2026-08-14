@@ -3,6 +3,7 @@
 exports[`DrawerToggle renders a button 1`] = `
 <DocumentFragment>
   <button
+    aria-haspopup="dialog"
     class="ds-c-button ds-c-button--ghost ds-c-drawer__toggle"
     type="button"
   >

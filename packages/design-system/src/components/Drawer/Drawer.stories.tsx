@@ -108,7 +108,12 @@ export const Default: Story = {
         >
           {args.children || drawerContent}
         </Drawer>
-        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+        <Button
+          aria-haspopup="dialog"
+          className="ds-c-drawer__toggle"
+          variation="ghost"
+          onClick={showDrawer}
+        >
           Click to toggle drawer
         </Button>
       </>
@@ -142,7 +147,12 @@ export const BackdropClickExits: Story = {
         >
           {args.children || drawerContent}
         </Drawer>
-        <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
+        <Button
+          aria-haspopup="dialog"
+          className="ds-c-drawer__toggle"
+          variation="ghost"
+          onClick={showDrawer}
+        >
           Click to open drawer
         </Button>
       </>
