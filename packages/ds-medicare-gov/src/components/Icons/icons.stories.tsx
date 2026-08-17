@@ -24,13 +24,13 @@ import {
   HospitalIcon,
   InfoCircleOutlineIcon,
   InpatientRehabIcon,
-  LeafIcon,
   LoginIcon,
   LogoutIcon,
   LongtermCareIcon,
   MedicareCardIcon,
   MyAccountIcon,
   NursingHomeIcon,
+  PaperlessIcon,
   PersonBookIcon,
   PreventativeServicesIcon,
   PharmacyIcon,
@@ -186,11 +186,6 @@ const iconData = [
     name: 'InpatientRehabilitationIcon',
   },
   {
-    defaultTitle: 'Leaf',
-    component: <LeafIcon />,
-    name: 'LeafIcon',
-  },
-  {
     defaultTitle: 'Login',
     component: <LoginIcon />,
     name: 'LoginIcon',
@@ -219,6 +214,11 @@ const iconData = [
     defaultTitle: 'Nursing Home',
     component: <NursingHomeIcon />,
     name: 'NursingHomeIcon',
+  },
+  {
+    defaultTitle: 'Paperless',
+    component: <PaperlessIcon />,
+    name: 'PaperlessIcon',
   },
   {
     defaultTitle: 'Person with Book',
