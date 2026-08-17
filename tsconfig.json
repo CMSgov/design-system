@@ -3,7 +3,7 @@
     "rootDir": ".",
     "target": "es2020",
     "jsx": "react-jsx",
-    "module": "node18",
+    "module": "nodenext",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
