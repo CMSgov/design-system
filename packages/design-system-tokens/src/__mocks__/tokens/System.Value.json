@@ -2,159 +2,65 @@
   "color": {
     "transparent": {
       "$type": "color",
-      "$value": "#ffffff00",
-      "$extensions": {
-        "com.figma": { "hiddenFromPublishing": false, "scopes": ["ALL_SCOPES"], "codeSyntax": {} }
-      }
+      "$value": "#ffffff00"
     },
     "ocean": {
       "50": {
         "$type": "color",
-        "$value": "#e6f1f8",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#e6f1f8"
       },
       "100": {
         "$type": "color",
-        "$value": "#b3d4eb",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#b3d4eb"
       },
       "200": {
         "$type": "color",
-        "$value": "#80b8de",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#80b8de"
       },
       "300": {
         "$type": "color",
-        "$value": "#4d9cd0",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#4d9cd0"
       },
       "400": {
         "$type": "color",
-        "$value": "#1a7fc3",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#1a7fc3"
       },
       "500": {
         "$type": "color",
-        "$value": "#0071bc",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "#0071bc"
       }
     }
   },
   "radius": {
     "circle": {
       "$type": "dimension",
-      "$value": "100%",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "100%"
     },
     "default": {
       "$type": "dimension",
-      "$value": "3px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "3px"
     },
     "large": {
       "$type": "dimension",
-      "$value": "8px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "8px"
     },
     "medium": {
       "$type": "dimension",
-      "$value": "4px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "4px"
     },
     "small": {
       "$type": "dimension",
-      "$value": "2px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "2px"
     },
     "pill": {
       "$type": "dimension",
-      "$value": "9999px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["CORNER_RADIUS"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "9999px"
     }
   },
   "spacer": {
     "1": {
       "$type": "dimension",
-      "$value": "8px",
-      "$extensions": {
-        "com.figma": {
-          "hiddenFromPublishing": false,
-          "scopes": ["ALL_SCOPES"],
-          "codeSyntax": {}
-        }
-      }
+      "$value": "8px"
     }
   }
 }

@@ -2,60 +2,25 @@
   "theme": {
     "color": {
       "primary-light": {
-        "$value": "{color.ocean.300}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "{color.ocean.300}"
       },
       "primary": {
-        "$value": "{color.ocean.500}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "{color.ocean.500}"
       }
     }
   },
   "component": {
     "alert": {
       "background-color": {
-        "$value": "{theme.color.primary-light}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "{theme.color.primary-light}"
       },
       "border-color": {
-        "$value": "{theme.color.primary}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["ALL_SCOPES"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "{theme.color.primary}"
       }
     },
     "button": {
       "border-radius": {
-        "$value": "{radius.small}",
-        "$extensions": {
-          "com.figma": {
-            "hiddenFromPublishing": false,
-            "scopes": ["CORNER_RADIUS"],
-            "codeSyntax": {}
-          }
-        }
+        "$value": "{radius.small}"
       }
     }
   }
