@@ -2,7 +2,6 @@ import {
   AboutIcon,
   AbuseIcon,
   AlarmIcon,
-  AppleIcon,
   BellIcon,
   BinocularsIcon,
   BirthingFriendlyIcon,
@@ -25,14 +24,15 @@ import {
   HospitalIcon,
   InfoCircleOutlineIcon,
   InpatientRehabIcon,
-  LeafIcon,
-  LearnIcon,
   LoginIcon,
   LogoutIcon,
   LongtermCareIcon,
   MedicareCardIcon,
   MyAccountIcon,
   NursingHomeIcon,
+  PaperlessIcon,
+  PersonBookIcon,
+  PreventativeServicesIcon,
   PharmacyIcon,
   PhoneNumberIcon,
   PiggyBankIcon,
@@ -67,11 +67,6 @@ const iconData = [
     defaultTitle: 'Alarm',
     component: <AlarmIcon />,
     name: 'AlarmIcon',
-  },
-  {
-    defaultTitle: 'Apple',
-    component: <AppleIcon />,
-    name: 'AppleIcon',
   },
   {
     defaultTitle: 'Bell',
@@ -191,16 +186,6 @@ const iconData = [
     name: 'InpatientRehabilitationIcon',
   },
   {
-    defaultTitle: 'Leaf',
-    component: <LeafIcon />,
-    name: 'LeafIcon',
-  },
-  {
-    defaultTitle: 'Learn',
-    component: <LearnIcon />,
-    name: 'LearnIcon',
-  },
-  {
     defaultTitle: 'Login',
     component: <LoginIcon />,
     name: 'LoginIcon',
@@ -231,6 +216,16 @@ const iconData = [
     name: 'NursingHomeIcon',
   },
   {
+    defaultTitle: 'Paperless',
+    component: <PaperlessIcon />,
+    name: 'PaperlessIcon',
+  },
+  {
+    defaultTitle: 'Person with Book',
+    component: <PersonBookIcon />,
+    name: 'PersonBookIcon',
+  },
+  {
     defaultTitle: 'Pharmacy',
     component: <PharmacyIcon />,
     name: 'PharmacyIcon',
@@ -244,6 +239,11 @@ const iconData = [
     defaultTitle: 'Piggy Bank',
     component: <PiggyBankIcon />,
     name: 'PiggyBankIcon',
+  },
+  {
+    defaultTitle: 'Preventative Services',
+    component: <PreventativeServicesIcon />,
+    name: 'PreventativeServicesIcon',
   },
   {
     defaultTitle: 'Resources',

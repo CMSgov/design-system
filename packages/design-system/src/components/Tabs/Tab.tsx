@@ -73,6 +73,7 @@ export const Tab = forwardRef((props: TabProps, ref: any) => {
       aria-selected={props.selected || defaultProps.selected}
       aria-controls={props.panelId}
       href={href}
+      tabIndex={props.selected ? 0 : -1}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       {...sharedTabProps}
