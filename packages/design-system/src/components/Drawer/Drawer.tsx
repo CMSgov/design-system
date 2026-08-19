@@ -146,8 +146,8 @@ export const Drawer = (props: DrawerProps) => {
         </div>
         {(footerTitle || footerBody) && (
           <div className="ds-c-drawer__footer">
-            <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>
-            <div className="ds-c-drawer__footer-body">{footerBody}</div>
+            {footerTitle && <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>}
+            {footerBody && <div className="ds-c-drawer__footer-body">{footerBody}</div>}
           </div>
         )}
       </div>

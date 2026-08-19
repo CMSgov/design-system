@@ -39,11 +39,6 @@ exports[`Drawer renders a dialog 1`] = `
     <div
       class="ds-c-drawer__footer"
     >
-      <h4
-        class="ds-c-drawer__footer-title"
-      >
-        Footer title
-      </h4>
       <div
         class="ds-c-drawer__footer-body"
       >

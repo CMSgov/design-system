@@ -9,7 +9,6 @@ const defaultProps = {
       <p>Some footer content</p>
     </div>
   ),
-  footerTitle: 'Footer title',
   isOpen: true,
   onCloseClick: jest.fn(),
   heading: 'Drawer title',
@@ -38,6 +37,31 @@ describe('Drawer', () => {
     expect(screen.queryByRole('dialog')).toBe(null);
     rerenderDrawer({ isOpen: true });
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
+  });
+
+  describe('footer', () => {
+    it('does not render an empty footer title when footerTitle is not provided', () => {
+      renderDrawer();
+
+      expect(screen.queryByRole('heading', { level: 4 })).not.toBeInTheDocument();
+      expect(screen.getByText('Some footer content')).toBeInTheDocument();
+    });
+
+    it('renders the footer title and body when both are provided', () => {
+      const { container } = renderDrawer({
+        footerTitle: 'Footer title',
+      });
+
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+
+      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(
+        'Footer title'
+      );
+
+      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
+        'Some footer content'
+      );
+    });
   });
 
   describe('onCloseClick', () => {
