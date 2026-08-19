@@ -7,7 +7,9 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }
