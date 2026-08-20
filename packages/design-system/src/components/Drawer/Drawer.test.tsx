@@ -51,7 +51,7 @@ describe('Drawer', () => {
     });
 
     it('renders the footer title and body when both are provided', () => {
-      const { container } = renderDrawer({ footerTitle: footerTitle });
+      const { container } = renderDrawer();
 
       expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
       expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
