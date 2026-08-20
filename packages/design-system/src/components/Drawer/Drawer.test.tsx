@@ -11,6 +11,7 @@ const defaultProps = {
       <p>{footerBodyContent}</p>
     </div>
   ),
+  footerTitle: footerTitle,
   isOpen: true,
   onCloseClick: jest.fn(),
   heading: 'Drawer title',
@@ -43,7 +44,7 @@ describe('Drawer', () => {
 
   describe('footer', () => {
     it('does not render an empty footer title when footerTitle is not provided', () => {
-      renderDrawer();
+      renderDrawer({ footerTitle: undefined });
 
       expect(screen.queryByRole('heading', { level: 4 })).not.toBeInTheDocument();
       expect(screen.getByText(footerBodyContent)).toBeInTheDocument();
