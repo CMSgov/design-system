@@ -61,10 +61,7 @@ describe('Drawer', () => {
     });
 
     it('renders the footer without a body when only footerTitle is provided', () => {
-      const { container } = renderDrawer({
-        footerTitle: footerTitle,
-        footerBody: undefined,
-      });
+      const { container } = renderDrawer({ footerBody: undefined });
 
       expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
       expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
