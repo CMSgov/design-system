@@ -44,10 +44,13 @@ describe('Drawer', () => {
 
   describe('footer', () => {
     it('does not render an empty footer title when footerTitle is not provided', () => {
-      renderDrawer({ footerTitle: undefined });
+      const { container } = renderDrawer({ footerTitle: undefined });
 
-      expect(screen.queryByRole('heading', { level: 4 })).not.toBeInTheDocument();
-      expect(screen.getByText(footerBodyContent)).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-title')).not.toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
+        footerBodyContent
+      );
     });
 
     it('renders the footer title and body when both are provided', () => {
