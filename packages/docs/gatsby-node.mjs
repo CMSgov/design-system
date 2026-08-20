@@ -244,7 +244,9 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     reporter.panicOnBuild('Error running GraphQL for llms.txt');
     return;
   }
+  const siteUrl = result.data.site.siteMetadata.siteUrl;
   const mdxNodes = result.data.allMdx.nodes;
+  const llmsUrls = [];
 
   for (const node of mdxNodes) {
     const pagePath = normalizePagePath(node.fields.slug);
@@ -261,11 +263,11 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     const outputPath = path.join('public', relativePath, 'llms.txt');
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, markdown, 'utf8');
+    llmsUrls.push(`${siteUrl}${pagePath}/llms.txt`)
   }
 
   reporter.success(`Generated page-level llms.txt files for ${mdxNodes.length} documentation pages.`);
 
-  const siteUrl = result.data.site.siteMetadata.siteUrl;
   const description = result.data.site.siteMetadata.description;
 
   const normalizedPages = normalizePages(mdxNodes);
@@ -284,4 +286,20 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   fs.writeFileSync(outputPath, markdown, 'utf8');
 
   reporter.success(`Generated root llms.txt at ${outputPath}`);
+
+  llmsUrls.unshift(`${siteUrl}/llms.txt`);
+
+  const llmsUrlsOutputPath = path.join('build-artifacts', 'llms-urls.txt');
+
+  fs.mkdirSync(path.dirname(llmsUrlsOutputPath), { recursive: true });
+
+  fs.writeFileSync(
+    llmsUrlsOutputPath,
+    `${llmsUrls.join('\n')}\n`,
+    'utf8'
+  );
+
+  reporter.success(
+    `Generated llms.txt URL list at ${llmsUrlsOutputPath}`
+  );
 };
