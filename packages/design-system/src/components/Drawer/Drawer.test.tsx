@@ -2,11 +2,13 @@ import Drawer from './Drawer';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+const footerBodyContent = 'Some footer content';
+const footerTitle = 'Footer title';
 const defaultProps = {
   children: <p>content</p>,
   footerBody: (
     <div>
-      <p>Some footer content</p>
+      <p>{footerBodyContent}</p>
     </div>
   ),
   isOpen: true,
@@ -44,23 +46,28 @@ describe('Drawer', () => {
       renderDrawer();
 
       expect(screen.queryByRole('heading', { level: 4 })).not.toBeInTheDocument();
-      expect(screen.getByText('Some footer content')).toBeInTheDocument();
+      expect(screen.getByText(footerBodyContent)).toBeInTheDocument();
     });
 
     it('renders the footer title and body when both are provided', () => {
+      const { container } = renderDrawer({ footerTitle: footerTitle });
+
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
+      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
+        footerBodyContent
+      );
+    });
+
+    it('renders the footer without a body when only footerTitle is provided', () => {
       const { container } = renderDrawer({
-        footerTitle: 'Footer title',
+        footerTitle: footerTitle,
+        footerBody: undefined,
       });
 
       expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
-
-      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(
-        'Footer title'
-      );
-
-      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
-        'Some footer content'
-      );
+      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
+      expect(container.querySelector('.ds-c-drawer__footer-body')).not.toBeInTheDocument();
     });
   });
 
