@@ -55,6 +55,7 @@ bundle-analysis/
 
 # Doc Site ignores
 .cache/
+packages/docs/build-artifacts
 packages/docs/public
 packages/docs/static/storybook
 packages/docs/static/images
