@@ -40,7 +40,7 @@ const meta: Meta<typeof Drawer> = {
   },
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
+    footerBody: 'Footer body content',
     heading: 'Drawer Heading',
   },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
@@ -98,14 +98,7 @@ export const Default: Story = {
 
     return (
       <>
-        <Drawer
-          {...args}
-          onCloseClick={hideDrawer}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
-          heading="Drawer Heading"
-          isOpen={drawerOpen}
-        >
+        <Drawer {...args} onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={drawerOpen}>
           {args.children || drawerContent}
         </Drawer>
         <Button className="ds-c-drawer__toggle" variation="ghost" onClick={showDrawer}>
@@ -136,8 +129,6 @@ export const BackdropClickExits: Story = {
           isOpen={drawerOpen}
           onCloseClick={hideDrawer}
           backdropClickExits={true}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="Drawer with Backdrop Click Exit"
         >
           {args.children || drawerContent}
