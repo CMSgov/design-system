@@ -244,28 +244,40 @@ export const onPostBuild = async ({ graphql, reporter }) => {
     reporter.panicOnBuild('Error running GraphQL for llms.txt');
     return;
   }
+  const siteUrl = result.data.site.siteMetadata.siteUrl;
   const mdxNodes = result.data.allMdx.nodes;
+  const llmsUrls = [];
+  const failedPages = [];
 
   for (const node of mdxNodes) {
     const pagePath = normalizePagePath(node.fields.slug);
+    try { 
+      const cleanedBody = processMdxForHostedMarkdown(node.body);
 
-    const cleanedBody = processMdxForHostedMarkdown(node.body);
+      const markdown = buildMarkdownPage({
+        title: node.frontmatter?.title,
+        intro: node.frontmatter?.intro,
+        body: cleanedBody,
+      });
 
-    const markdown = buildMarkdownPage({
-      title: node.frontmatter?.title,
-      intro: node.frontmatter?.intro,
-      body: cleanedBody,
-    });
-
-    const relativePath = pagePath.replace(/^\/|\/$/g, '');
-    const outputPath = path.join('public', relativePath, 'llms.txt');
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, markdown, 'utf8');
+      const relativePath = pagePath.replace(/^\/|\/$/g, '');
+      const outputPath = path.join('public', relativePath, 'llms.txt');
+      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+      fs.writeFileSync(outputPath, markdown, 'utf8');
+      llmsUrls.push(`${siteUrl}${pagePath}/llms.txt`)     
+    } catch (error) {
+      failedPages.push(pagePath);
+      reporter.warn(`Failed to generate llms.txt for ${pagePath}: ${error.message}`);
+    }
   }
 
-  reporter.success(`Generated page-level llms.txt files for ${mdxNodes.length} documentation pages.`);
+  if (failedPages.length === 0) {
+    reporter.success(`Generated page-level llms.txt files for all ${mdxNodes.length} documentation pages.`);
+  } else {
+    reporter.warn(`Generated ${llmsUrls.length} of ${mdxNodes.length} page-level llms.txt files.`);
+    reporter.warn(`Failed to generate llms.txt for: ${failedPages.join(', ')}`);
+  }
 
-  const siteUrl = result.data.site.siteMetadata.siteUrl;
   const description = result.data.site.siteMetadata.description;
 
   const normalizedPages = normalizePages(mdxNodes);
@@ -284,4 +296,18 @@ export const onPostBuild = async ({ graphql, reporter }) => {
   fs.writeFileSync(outputPath, markdown, 'utf8');
 
   reporter.success(`Generated root llms.txt at ${outputPath}`);
+
+  llmsUrls.unshift(`${siteUrl}/llms.txt`);
+
+  const llmsUrlsOutputPath = path.join('build-artifacts', 'llms-urls.txt');
+
+  fs.mkdirSync(path.dirname(llmsUrlsOutputPath), { recursive: true });
+
+  fs.writeFileSync(
+    llmsUrlsOutputPath,
+    `${llmsUrls.join('\n')}\n`,
+    'utf8'
+  );
+
+  reporter.success(`Generated llms.txt URL list at ${llmsUrlsOutputPath}.`);
 };
