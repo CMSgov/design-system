@@ -25,12 +25,7 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
         .join(' ');
       sheet.replaceSync(css);
     } catch (error) {
-      // `error` is `unknown`, and the thrown value here is often a `DOMException`, which is
-      // not an `instanceof Error` in browsers, so check for a `message` property instead.
-      const details =
-        typeof error === 'object' && error !== null && 'message' in error
-          ? error.message ?? error
-          : error;
+      const details = error instanceof Error ? error.message : String(error);
       console.warn(`Could not copy global stylesheets. See following error: \n ${details}`);
     } finally {
       return sheet;
