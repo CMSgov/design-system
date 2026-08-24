@@ -9,7 +9,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "alwaysStrict": true,
-    "strictBindCallApply": true
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }
