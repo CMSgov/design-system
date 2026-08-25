@@ -22,9 +22,9 @@ export function usePressEscapeHandler(
     const node = ref ? ref.current : document;
     if (!node) return;
 
-    node.addEventListener('keydown', handleEscapeKey);
+    node.addEventListener('keydown', handleEscapeKey as EventListener);
     return () => {
-      node.removeEventListener('keydown', handleEscapeKey);
+      node.removeEventListener('keydown', handleEscapeKey as EventListener);
     };
   }, [handleEscapeKey]);
 }

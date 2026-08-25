@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "alwaysStrict": true,
     "strictBindCallApply": true,
+    "strictFunctionTypes": true,
     "noImplicitThis": true,
     "useUnknownInCatchVariables": true
   },
