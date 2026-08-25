@@ -51,7 +51,9 @@ function parseOptGroupElement(optgroup: ReactElement<any, 'optgroup'>): Dropdown
   }
   return {
     label,
-    options: findElementsOfType(['option'], optgroup).map(parseOptionElement),
+    options: findElementsOfType(['option'], optgroup).map((option) =>
+      parseOptionElement(option as ReactElement<any, 'option'>)
+    ),
     ...extraProps,
   };
 }

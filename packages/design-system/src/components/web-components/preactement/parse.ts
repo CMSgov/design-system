@@ -109,7 +109,7 @@ function getSlotChildren(children: Array<VNode | string | null>) {
   return h(Fragment, {}, children);
 }
 
-export function createSlotVNode(name?: string): VNode {
+export function createSlotVNode(name?: string): VNode<any> {
   return h('slot', { name });
 }
 

@@ -101,7 +101,7 @@ function createCustomElement<T>(
       onConnected.call(this);
     }
 
-    public attributeChangedCallback(...args) {
+    public attributeChangedCallback(...args: Parameters<typeof onAttributeChange>) {
       onAttributeChange.call(this, ...args);
     }
 
