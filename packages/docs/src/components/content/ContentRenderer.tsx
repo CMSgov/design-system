@@ -50,7 +50,7 @@ const CodeWithSyntaxHighlighting = ({
     language = 'text';
   }
 
-  const highlightedContent = Prism.highlight(children, Prism.languages[language]);
+  const highlightedContent = Prism.highlight(children, Prism.languages[language], language);
   // eslint-disable-next-line react/no-danger
   return <code className={className} dangerouslySetInnerHTML={{ __html: highlightedContent }} />;
 };
