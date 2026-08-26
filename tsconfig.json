@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "typeRoots": ["./@types", "./node_modules/@types"],
     "alwaysStrict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
