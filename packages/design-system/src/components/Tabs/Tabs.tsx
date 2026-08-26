@@ -49,11 +49,15 @@ const RIGHT_ARROW = 'ArrowRight';
  * @param {React.Node} child - a React component
  * @return {Boolean} Is this a TabPanel component?
  */
-const isTabPanel = (child): boolean => {
+const isTabPanel = (child: React.ReactNode): child is React.ReactElement<TabPanelProps> => {
+  if (!isValidElement(child)) {
+    return false;
+  }
+
   const componentName = get(child, 'type.displayName') || get(child, 'type.name');
 
   // Check child.type first and as a fallback, check child.type.displayName follow by child.type.name
-  return child && (child.type === TabPanel || componentName === 'TabPanel');
+  return child.type === TabPanel || componentName === 'TabPanel';
 };
 
 /**
@@ -83,7 +87,7 @@ export const getPanelChildren = (
  * @param {Object} TabPanel component
  * @return {String} Tab ID
  */
-const panelTabId = (panel): string => {
+const panelTabId = (panel: React.ReactElement<TabPanelProps>): string => {
   return panel.props.tabId ?? `${panel.props.id}__tab`;
 };
 
@@ -107,7 +111,7 @@ export const Tabs = (props: TabsProps) => {
 
   const listClasses = classnames('ds-c-tabs', props.tablistClassName);
   // using useRef hook to keep track of elements to focus
-  const tabsRef = useRef({});
+  const tabsRef = useRef<Record<string, HTMLAnchorElement>>({});
 
   /**
    * Update the URL in the browser without adding a new entry to the history.
@@ -214,7 +218,9 @@ export const Tabs = (props: TabsProps) => {
           onKeyDown={handleTabKeyDown}
           panelId={panel.props.id}
           ref={(tab) => {
-            tabsRef.current[panel.props.id] = tab;
+            // `Tab` is declared with an untyped `ref`, so this callback's parameter
+            // widens to `{}`. It always receives the `<a>` that `Tab` renders.
+            tabsRef.current[panel.props.id] = tab as HTMLAnchorElement;
           }}
           selected={selectedId === panel.props.id}
         >

@@ -169,7 +169,9 @@ export function useLabelMask(
 
   const inputProps = {
     ...originalInputProps,
-    defaultValue: undefined,
+    // Cleared so the input is driven by `value` below. Annotated because a bare
+    // `undefined` in an object literal infers `any` under `noImplicitAny`.
+    defaultValue: undefined as undefined,
     value: currentValue,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       setCurrentValue(e.currentTarget.value);

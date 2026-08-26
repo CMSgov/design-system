@@ -1,5 +1,7 @@
 // Deliminate chunks of integers
-const maskDeliminatedRegex = {
+// Keyed by mask name. The `mask` arguments below are plain strings, so callers
+// can pass a name that has no deliminator regex; lookups are guarded.
+const maskDeliminatedRegex: Record<string, RegExp> = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d*)/,

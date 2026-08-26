@@ -116,7 +116,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
    * @param {Array} children - The nested items
    * @return {Boolean}
    */
-  const childIsSelected = (children): boolean => {
+  const childIsSelected = (children?: any[]): boolean => {
     if (children && children.length) {
       return children.some((child: any) => {
         return child.id === props._selectedId || childIsSelected(child.items);

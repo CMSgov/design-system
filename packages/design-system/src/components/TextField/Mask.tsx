@@ -19,7 +19,8 @@ const maskPattern = {
   currency: '[0-9.,\\-]*',
 };
 
-const maskOverlayContent = {
+// Only some masks render an overlay, so every lookup here is guarded.
+const maskOverlayContent: Partial<Record<MaskMask, string>> = {
   currency: '$',
 };
 

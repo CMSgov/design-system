@@ -174,10 +174,10 @@ export const Tooltip = (props: TooltipProps) => {
     transitionDuration = 250,
   } = props;
   const contentId = useId('tooltip-trigger--', props.id);
-  const arrowElement = useRef(null);
+  const arrowElement = useRef<HTMLSpanElement | null>(null);
   const { contentRef, sendTooltipEvent } = useTooltipAnalytics(props);
 
-  const setArrowElement = (elem) => {
+  const setArrowElement = (elem: HTMLSpanElement | null) => {
     arrowElement.current = elem;
   };
 
