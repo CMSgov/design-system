@@ -2,6 +2,7 @@ import { h, render, FunctionComponent, VNode } from 'preact';
 import {
   ErrorTypes,
   CustomElement,
+  IProps,
   isPromise,
   parseJson,
   getElementTag,
@@ -88,12 +89,12 @@ function createCustomElement<T>(
   class TheCustomElement extends HTMLElement implements CustomElement {
     __mounted = false;
     __componentFunction = componentFunction;
-    __component;
+    __component?: CustomElement['__component'];
     __properties = {};
     __options = options;
-    __mutationObserver;
-    __propsSignal;
-    __root = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
+    __mutationObserver?: MutationObserver;
+    __propsSignal: CustomElement['__propsSignal'];
+    __root: Element | ShadowRoot = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -144,8 +145,8 @@ function createCustomElement<T>(
  * This was inspired by Voorhoede's register function here:
  * https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
  */
-function proxyEvents(props, events: IOptions['events'], CustomElement) {
-  const callbacks = {};
+function proxyEvents(props: IProps, events: IOptions['events'], CustomElement: HTMLElement) {
+  const callbacks: IProps = {};
 
   (events || []).forEach((nameOrArray) => {
     const name: string = Array.isArray(nameOrArray) ? nameOrArray[0] : nameOrArray;
@@ -159,7 +160,7 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
     // Convert the event name to a kebab-case format and replace 'on' with 'ds'
     // This prevents the custom events from conflicting with the native events
     const customName = kebabCaseIt(name.replace('on', 'ds'));
-    let existingCallback = () => null;
+    let existingCallback: () => void = () => null;
 
     // Don't know why `existingCallback` is being defined
     // Why would a callback already be defined in props?
@@ -331,7 +332,8 @@ function wrapTemplateHtml(html: string) {
  * See `wrapTemplateHtml` function.
  */
 function unwrapTemplateVNode(vnode: VNode): VNode {
-  const children = vnode.props.children[0].props.children;
+  // `wrapTemplateHtml` guarantees a single wrapping element around the content.
+  const children = (vnode.props.children as VNode<any>[])[0].props.children;
   if (Array.isArray(children) && children.length === 0) {
     // This means the HTML inside it was empty, so the intention is for there to be no
     // children content for the component. The Preact components will expect `undefined`

@@ -100,7 +100,7 @@ export function nodeToPreactVNode(
 }
 
 function getSlotChildren(children: Array<VNode | string | null>) {
-  const isString = (item) => typeof item === 'string';
+  const isString = (item: VNode | string | null) => typeof item === 'string';
 
   if (children.every(isString)) {
     return children.join(' ');
