@@ -218,9 +218,14 @@ export const Tabs = (props: TabsProps) => {
           onKeyDown={handleTabKeyDown}
           panelId={panel.props.id}
           ref={(tab) => {
-            // `Tab` is declared with an untyped `ref`, so this callback's parameter
-            // widens to `{}`. It always receives the `<a>` that `Tab` renders.
-            tabsRef.current[panel.props.id] = tab as HTMLAnchorElement;
+            // `Tab` declares an untyped `ref`, so this callback's parameter widens
+            // to `{}`. React passes the rendered element on attach and `null` on
+            // detach, so drop the entry rather than storing a `null` under it.
+            if (tab) {
+              tabsRef.current[panel.props.id] = tab as HTMLAnchorElement;
+            } else {
+              delete tabsRef.current[panel.props.id];
+            }
           }}
           selected={selectedId === panel.props.id}
         >
