@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "target": "es2015",
+    "target": "es2020",
     "jsx": "react-jsx",
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }

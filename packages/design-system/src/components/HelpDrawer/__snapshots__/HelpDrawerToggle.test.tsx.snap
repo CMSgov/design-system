@@ -2,6 +2,7 @@
 
 exports[`HelpDrawerToggle renders a button 1`] = `
 <button
+  aria-haspopup="dialog"
   class="ds-c-button ds-c-button--ghost ds-c-drawer__toggle ds-c-help-drawer__toggle"
   type="button"
 >

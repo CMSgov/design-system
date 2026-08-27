@@ -97,7 +97,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
     <>
       <div className="c-responsive-example ds-u-border--1" ref={rootRef}>
         <ol className="c-responsive-example__button-list ds-u-border-bottom--1 ds-l-row ds-u-margin--0 ds-u-padding-x--0">
-          {Object.keys(breakpoints).map((breakpointName: keyof typeof breakpoints) => (
+          {(Object.keys(breakpoints) as Array<keyof typeof breakpoints>).map((breakpointName) => (
             <li
               className="c-responsive-example__list-item ds-l-col ds-u-padding-x--0"
               key={`breakpoint-${breakpointName}`}

@@ -275,8 +275,9 @@ export const NoResults: Story = {
 };
 
 export const AsyncItems: Story = {
-  render: function Component(args: AutocompleteArgs) {
-    const { items, textFieldLabel, textFieldHint, label, ...autocompleteArgs } = args;
+  render: function Component(args) {
+    const { items, textFieldLabel, textFieldHint, label, ...autocompleteArgs } =
+      args as AutocompleteArgs;
     const [input, setInput] = useState('');
     const [additionalItems, setAdditionalItems] = useState<AutocompleteItem[]>([]);
     const hasResults = input.length > 2 && additionalItems.length;

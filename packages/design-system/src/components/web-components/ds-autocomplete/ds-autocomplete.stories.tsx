@@ -233,11 +233,14 @@ const Template = (args: DSAutocompleteProps) => {
         action('ds-input-value-change')(event);
         setInput(event.detail.value);
       };
-      element.addEventListener('ds-change', handleOnChange);
-      element.addEventListener('ds-input-value-change', handleOnInputValueChange);
+      element.addEventListener('ds-change', handleOnChange as EventListener);
+      element.addEventListener('ds-input-value-change', handleOnInputValueChange as EventListener);
       return () => {
-        element.removeEventListener('ds-change', handleOnChange);
-        element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
+        element.removeEventListener('ds-change', handleOnChange as EventListener);
+        element.removeEventListener(
+          'ds-input-value-change',
+          handleOnInputValueChange as EventListener
+        );
       };
     }
   }, []);
@@ -473,11 +476,17 @@ export const AsyncItems: Story = {
             debouncedSearch();
           }
         };
-        element.addEventListener('ds-change', handleOnChange);
-        element.addEventListener('ds-input-value-change', handleOnInputValueChange);
+        element.addEventListener('ds-change', handleOnChange as EventListener);
+        element.addEventListener(
+          'ds-input-value-change',
+          handleOnInputValueChange as EventListener
+        );
         return () => {
-          element.removeEventListener('ds-change', handleOnChange);
-          element.removeEventListener('ds-input-value-change', handleOnInputValueChange);
+          element.removeEventListener('ds-change', handleOnChange as EventListener);
+          element.removeEventListener(
+            'ds-input-value-change',
+            handleOnInputValueChange as EventListener
+          );
         };
       }
     }, [debouncedSearch, input]);
