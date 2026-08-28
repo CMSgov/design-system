@@ -1,5 +1,3 @@
-import { VariableCodeSyntax, VariableScope } from '@figma/rest-api-spec';
-
 /**
  * Using this draft Design Token JSON format standard: https://tr.designtokens.org/
  */
@@ -20,16 +18,6 @@ export interface Token {
     | 'textTransform';
   $value: string | number | boolean;
   $description?: string;
-  $extensions?: {
-    /**
-     * The `com.figma` namespace stores Figma-specific variable properties
-     */
-    'com.figma'?: {
-      hiddenFromPublishing?: boolean;
-      scopes?: VariableScope[];
-      codeSyntax?: VariableCodeSyntax;
-    };
-  };
 }
 
 export type TokenOrTokenGroup =

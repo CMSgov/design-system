@@ -51,7 +51,6 @@
     "start": "npm run build:storybook:docs && npm --prefix ./packages/docs run develop",
     "storybook": "storybook dev -p 6006",
     "storybook:react": "PREACT=false storybook dev -p 6006",
-    "sync:tokens-from-figma": "npm --prefix ./packages/design-system-tokens run sync:from-figma",
     "test": "npm run test:unit",
     "posttest": "npm run lint",
     "test:unit:coverage": "npm run test:unit -- --collectCoverage",
@@ -110,6 +109,7 @@
     "@figma/code-connect": "^1.4.4",
     "@inquirer/prompts": "^3.0.3",
     "@playwright/test": "1.58.2",
+    "@storybook/addon-docs": "9.1.20",
     "@storybook/addon-links": "9.1.20",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/react-webpack5": "9.1.20",
@@ -176,7 +176,6 @@
     "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-stream": "^7.0.0",
-    "yargs": "^17.7.2",
-    "@storybook/addon-docs": "9.1.20"
+    "yargs": "^17.7.2"
   }
 }
