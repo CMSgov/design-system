@@ -114,7 +114,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  function handleSelectAll(event) {
+  function handleSelectAll(event: React.MouseEvent | React.KeyboardEvent) {
     if (props.onSelectAll) {
       props.onSelectAll(event);
     }
@@ -132,7 +132,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  function handleClearAll(event) {
+  function handleClearAll(event: React.MouseEvent | React.KeyboardEvent) {
     if (props.onClearAll) {
       props.onClearAll(event);
     }

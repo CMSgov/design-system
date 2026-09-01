@@ -86,7 +86,7 @@ export const NativeDialog = ({
     }
 
     // Bind close event listener for ESC press
-    const handleClose = (event) => {
+    const handleClose = (event: Event) => {
       event.preventDefault();
       // Only call the exit handler if the parent didn't close it by setting isOpen to false
       if (!closingBecauseOfProp) {
@@ -107,7 +107,7 @@ export const NativeDialog = ({
     }
 
     const dialogNode = dialogRef.current;
-    const handleClick = (event) => {
+    const handleClick = (event: MouseEvent) => {
       // In Chrome and Firefox Pointer Events triggered by a key press receive a clientX & clientY value of 0 each.
       // This puts the pointer outside of our dialog element, and so we trigger the exit() event.
       // This causes the exit event to fire twice on keyboard presses if the button you are focusing has an event

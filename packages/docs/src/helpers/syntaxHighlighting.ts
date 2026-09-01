@@ -9,7 +9,7 @@ export function highlightHtmlSyntax(code) {
     parser: 'html',
     plugins: [parserHtml],
   });
-  return Prism.highlight(prettyHtml, Prism.languages.html);
+  return Prism.highlight(prettyHtml, Prism.languages.html, 'html');
 }
 
 export function highlightJsxSyntax(code) {
@@ -18,5 +18,5 @@ export function highlightJsxSyntax(code) {
     parser: 'babel',
     plugins: [parserBabel],
   });
-  return Prism.highlight(prettyJsx, Prism.languages.jsx);
+  return Prism.highlight(prettyJsx, Prism.languages.jsx, 'jsx');
 }

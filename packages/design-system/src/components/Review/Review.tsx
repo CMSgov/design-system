@@ -51,7 +51,7 @@ const getHeading = (heading: React.ReactNode, headingLevel: ReviewHeadingLevel) 
  */
 export const Review = (props: ReviewProps) => {
   const { headingLevel = '3' } = props;
-  const handleClick = (event): void => {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>): void => {
     if (props.onEditClick) {
       props.onEditClick(event, props.editHref);
     }

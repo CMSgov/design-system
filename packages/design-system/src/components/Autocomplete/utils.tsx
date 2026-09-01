@@ -80,7 +80,8 @@ export function getActiveDescendant(
  * Returns the object.
  */
 export function removeUndefined<T>(obj: T): T {
-  Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+  const record = obj as Record<string, unknown>;
+  Object.keys(record).forEach((key) => record[key] === undefined && delete record[key]);
   return obj;
 }
 

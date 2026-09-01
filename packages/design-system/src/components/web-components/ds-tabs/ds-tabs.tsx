@@ -1,12 +1,20 @@
+import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Tabs, TabPanel } from '../../Tabs';
+import { TabsProps } from '../../Tabs/Tabs';
 import { TabPanelProps } from '../../Tabs/TabPanel';
 import { parseBooleanAttr, parseJsonAttr } from '../wrapperUtils';
 import { createElement } from 'react';
 
 const attributes = ['default-selected-id', 'selected-id', 'tablist-class-name', 'tabs-aria-label'];
 
-function parseChildren(nodes) {
+/**
+ * A `ds-tab-panel` child as it arrives from the custom element, whose attributes
+ * are still kebab-cased strings rather than `TabPanelProps`.
+ */
+type TabPanelElement = React.ReactElement<Record<string, any>>;
+
+function parseChildren(nodes?: TabPanelElement[]) {
   if (!nodes) return null;
 
   return nodes.map((element) => {
@@ -45,11 +53,17 @@ function parseChildren(nodes) {
       tabId,
     };
 
-    return createElement(TabPanel, { ...props, ...otherAttributes }, children);
+    // `TabPanelProps` requires `children`, which is supplied positionally below.
+    return createElement(TabPanel, { ...props, ...otherAttributes } as TabPanelProps, children);
   });
 }
 
-const Wrapper = ({ tabsAriaLabel, ...props }) => {
+interface WrapperProps extends Omit<TabsProps, 'ariaLabel' | 'children'> {
+  tabsAriaLabel?: string;
+  children?: TabPanelElement[];
+}
+
+const Wrapper = ({ tabsAriaLabel, ...props }: WrapperProps) => {
   return (
     <Tabs {...props} ariaLabel={tabsAriaLabel}>
       {parseChildren(props.children)}

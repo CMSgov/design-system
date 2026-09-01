@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Spinner } from '../../Spinner';
+import { SpinnerProps } from '../../Spinner/Spinner';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = ['aria-valuetext', 'class-name', 'inversed', 'filled', 'role', 'size'] as const;
@@ -20,7 +21,13 @@ declare global {
 }
 /* eslint-enable */
 
-const Wrapper = ({ ariaValuetext, ...otherProps }) => (
+interface WrapperProps extends Omit<SpinnerProps, 'aria-valuetext' | 'inversed' | 'filled'> {
+  ariaValuetext?: string;
+  inversed?: string;
+  filled?: string;
+}
+
+const Wrapper = ({ ariaValuetext, ...otherProps }: WrapperProps) => (
   <Spinner
     {...otherProps}
     aria-valuetext={ariaValuetext}

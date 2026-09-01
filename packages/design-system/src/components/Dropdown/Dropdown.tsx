@@ -267,7 +267,10 @@ export const Dropdown: React.FC<DropdownProps> = (props: DropdownProps) => {
     ...useButtonProps.buttonProps,
     ...cleanFieldProps(extraProps),
     id,
-    name: undefined,
+    // The `name` belongs on the hidden select, not the trigger button. Annotated
+    // because a bare `undefined` in an object literal infers `any` under
+    // `noImplicitAny`.
+    name: undefined as undefined,
     className: classNames(
       'ds-c-dropdown__button',
       'ds-c-field',
