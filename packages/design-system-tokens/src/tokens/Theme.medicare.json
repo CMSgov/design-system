@@ -29,10 +29,10 @@
         "$value": "{color.white.solid}"
       },
       "background-inverse": {
-        "$value": "{color.teal.500}"
+        "$value": "{color.medicare-green.600}"
       },
       "base": {
-        "$value": "{color.granite.800}"
+        "$value": "{color.granite.900}"
       },
       "base-inverse": {
         "$value": "{color.white.solid}"
@@ -101,43 +101,43 @@
         "$value": "{color.lapis.50}"
       },
       "primary-lightest": {
-        "$value": "{color.teal.50}"
+        "$value": "{color.medicare-green.100}"
       },
       "primary-lighter": {
-        "$value": "{color.teal.100}"
+        "$value": "{color.medicare-green.200}"
       },
       "primary-light": {
-        "$value": "{color.teal.300}"
+        "$value": "{color.medicare-green.300}"
       },
       "primary": {
-        "$value": "{color.teal.500}"
+        "$value": "{color.medicare-green.400}"
       },
       "primary-dark": {
-        "$value": "{color.teal.600}"
+        "$value": "{color.medicare-green.500}"
       },
       "primary-darker": {
-        "$value": "{color.teal.700}"
+        "$value": "{color.medicare-green.600}"
       },
       "primary-darkest": {
         "$value": "{color.teal.800}"
       },
       "secondary-lightest": {
-        "$value": "{color.lapis.50}"
+        "$value": "{color.medicare-blue.100}"
       },
       "secondary-lighter": {
-        "$value": "{color.lapis.100}"
+        "$value": "{color.medicare-blue.200}"
       },
       "secondary-light": {
-        "$value": "{color.lapis.300}"
+        "$value": "{color.medicare-blue.300}"
       },
       "secondary": {
-        "$value": "{color.lapis.500}"
+        "$value": "{color.medicare-blue.400}"
       },
       "secondary-dark": {
-        "$value": "{color.lapis.600}"
+        "$value": "{color.medicare-blue.500}"
       },
       "secondary-darker": {
-        "$value": "{color.lapis.700}"
+        "$value": "{color.medicare-blue.600}"
       },
       "secondary-darkest": {
         "$value": "{color.lapis.800}"
@@ -218,7 +218,7 @@
         "$value": "{color.goldenrod.500}"
       },
       "warn-dark": {
-        "$value": "{color.goldenrod.600}"
+        "$value": "{color.copper.500}"
       },
       "warn-darker": {
         "$value": "{color.goldenrod.700}"
