@@ -67,7 +67,7 @@
     "ev-emitter": "^2.1.2",
     "globby": "^16.0.0",
     "inquirer": "^14.0.0",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "ora": "^9.4.1",
     "preact": "10.19.5",
     "prop-types": "^15.8.1",
