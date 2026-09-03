@@ -394,7 +394,7 @@
         "$type": "color"
       },
       "200": {
-        "$value": "{color.teal.50}",
+        "$value": "#e8f0ef",
         "$type": "color"
       },
       "300": {
@@ -402,7 +402,7 @@
         "$type": "color"
       },
       "400": {
-        "$value": "{color.teal.500}",
+        "$value": "#146a5d",
         "$type": "color"
       },
       "500": {
@@ -410,7 +410,7 @@
         "$type": "color"
       },
       "600": {
-        "$value": "{color.teal.600}",
+        "$value": "#125f54",
         "$type": "color"
       }
     },
