@@ -407,6 +407,8 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --radius-medium: 4px;
 --radius-pill: 9999px;
 --radius-small: 2px;
+--radius-xl: 16px;
+--radius-xxl: 24px;
 --review__border-color: var(--color-border);
 --site-margins-mobile: 1.5rem;
 --site-margins: 3rem;
@@ -897,6 +899,8 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --radius-medium: 4px;
 --radius-pill: 9999px;
 --radius-small: 2px;
+--radius-xl: 16px;
+--radius-xxl: 24px;
 --review__border-color: var(--color-border);
 --site-margins-mobile: 1.5rem;
 --site-margins: 3rem;
@@ -1386,6 +1390,8 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --radius-medium: 4px;
 --radius-pill: 9999px;
 --radius-small: 2px;
+--radius-xl: 16px;
+--radius-xxl: 24px;
 --review__border-color: var(--color-border);
 --site-margins-mobile: 1.5rem;
 --site-margins: 3rem;
@@ -1874,6 +1880,8 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --radius-medium: 4px;
 --radius-pill: 9999px;
 --radius-small: 2px;
+--radius-xl: 16px;
+--radius-xxl: 24px;
 --review__border-color: var(--color-border);
 --site-margins-mobile: 1.5rem;
 --site-margins: 3rem;
