@@ -20,6 +20,24 @@
 - [ ] Selected appropriate `Type` (only one) label for this PR, if it is a breaking change, label should only be `Type: Breaking`
 - [ ] Selected appropriate `Impacts`, multiple can be selected.
 - [ ] Selected appropriate release milestone
+- [ ] Confirmed that the base branch appropriately matches the selected release milestone. In most cases, the base branch should **not** be main. For example, a PR assigned to the `19.0.0` milestone should target `milestone-19-0-0`.
+
+## Merge Guidance
+
+> 🛑 Before merging, confirm whether the PR should be squashed or merged with its commit history preserved.
+
+**Select "Squash and merge" when:**
+
+- Merging a single-feature PR, such as a bug fix, new functionality, or documentation update.
+
+The PR’s commits will be combined into one commit using the PR title, such as: `[CMSDS-####] Description of the change`.
+
+**Select "Create a merge commit" when:**
+
+- Syncing one long-lived branch into another, such as `milestone-18-2-0` into `milestone-19-0-0`.
+- Merging a milestone branch into `main`.
+
+This preserves the branch’s commit history and records the merge explicitly.
 
 ## AI Usage
 
