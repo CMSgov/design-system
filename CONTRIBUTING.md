@@ -13,14 +13,14 @@ If you are interested in running this site locally, please take a look at [setti
 
 - [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account.
 - Identify the [release milestone](https://github.com/CMSgov/design-system/milestones) for your change and create your branch from the corresponding milestone branch. For example, work intended for the `19.0.0` release should branch from `milestone-19-0-0`. If you are unsure where your work fits into our release milestones, [contact our team](https://design.cms.gov/contact/?theme=core).
-- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request). In most cases, the target branch should **not** be `main`.
+- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request). against the corresponding milestone branch. In most cases, the target branch should **not** be `main`.
 
 **Note:** For more information, see [GitHub flow](https://guides.github.com/introduction/flow/).
 
 ### How pull requests are merged
 
-- Single-feature pull requests, such as bug fixes, new functionality, or documentation updates, are squash merged.
-- Merge commits are reserved for syncing long-lived branches and are outside the scope of an individual contribution.
+- Single-feature pull requests, such as bug fixes, new functionality, or documentation updates, use **Squash and merge**.
+- Do not select **Create a merge commit**. This option is reserved for syncing long-lived branches and is outside the scope of an individual contribution.
 
 ## Guiding development principles
 
