@@ -1,46 +1,37 @@
 $font-path: '../fonts' !default;
 
-/* montserrat-600normal - latin */
+/* inter-400 - regular - latin */
 @font-face {
   font-display: swap;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  src: url('#{$font-path}/montserrat/montserrat-latin-600.woff2') format('woff2');
-}
-
-/* rubik-400normal - latin */
-@font-face {
-  font-display: swap;
-  font-family: Rubik;
+  font-family: Inter;
   font-style: normal;
   font-weight: 400;
-  src: url('#{$font-path}/rubik/rubik-latin-400.woff2') format('woff2');
+  src: url('#{$font-path}/inter/inter-latin-400.woff2') format('woff2');
 }
 
-/* rubik-400italic - latin */
+/* inter-400 - italic - latin */
 @font-face {
   font-display: swap;
-  font-family: Rubik;
+  font-family: Inter;
   font-style: italic;
   font-weight: 400;
-  src: url('#{$font-path}/rubik/rubik-latin-400italic.woff2') format('woff2');
+  src: url('#{$font-path}/inter/inter-latin-400italic.woff2') format('woff2');
 }
 
-/* rubik-600normal - latin */
+/* inter-600 - italic - latin */
 @font-face {
   font-display: swap;
-  font-family: Rubik;
+  font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  src: url('#{$font-path}/rubik/rubik-latin-600.woff2') format('woff2');
+  src: url('#{$font-path}/inter/inter-latin-600.woff2') format('woff2');
 }
 
-/* rubik-600italic - latin */
+/* inter-600 - italic - latin */
 @font-face {
   font-display: swap;
-  font-family: Rubik;
+  font-family: Inter;
   font-style: italic;
   font-weight: 600;
-  src: url('#{$font-path}/rubik/rubik-latin-600italic.woff2') format('woff2');
+  src: url('#{$font-path}/inter/inter-latin-600italic.woff2') format('woff2');
 }
