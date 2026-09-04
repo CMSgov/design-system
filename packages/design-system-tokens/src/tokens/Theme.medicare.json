@@ -304,19 +304,19 @@
       },
       "family": {
         "heading": {
-          "$value": "{font.family.montserrat}"
+          "$value": "{font.family.inter}"
         },
         "body": {
-          "$value": "{font.family.rubik}"
+          "$value": "{font.family.inter}"
         },
         "button": {
-          "$value": "{font.family.rubik}"
+          "$value": "{font.family.inter}"
         },
         "link": {
-          "$value": "{font.family.rubik}"
+          "$value": "{font.family.inter}"
         },
         "pagination": {
-          "$value": "{font.family.montserrat}"
+          "$value": "{font.family.inter}"
         }
       },
       "weight": {
