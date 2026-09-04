@@ -999,6 +999,14 @@
     "small": {
       "$value": "2px",
       "$type": "dimension"
+    },
+    "xl": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "xxl": {
+      "$value": "24px",
+      "$type": "dimension"
     }
   },
   "site-margins": {
