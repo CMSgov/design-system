@@ -105,6 +105,16 @@ From [USWDS’ Accordion accessibility tests](https://designsystem.digital.gov/c
 
 <SeeStorybookForGuidance tech="wc" storyId={'web-components-ds-accordion--docs'} />
 
+#### Spacing when using framework wrappers
+
+Wrapping each `ds-accordion-item` in a framework-specific component changes the items’ sibling relationship and may prevent the default spacing between accordion headings from being applied. When this happens, apply the `ds-u-margin-top--1` utility class to the heading of each item after the first.
+
+```html
+<wrapped-accordion-item headingClassName="ds-u-margin-top--1">
+  ...
+</wrapped-accordion-item>
+```
+
 ### Style customization
 
 The following CSS variables can be overridden to customize Accordion components:
