@@ -362,6 +362,58 @@
         "$type": "color"
       }
     },
+    "medicare-blue": {
+      "100": {
+        "$value": "#eaf3fa",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#dceaf5",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#bfd4ea",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#2a6fb8",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#0e3e6e",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0b2f52",
+        "$type": "color"
+      }
+    },
+    "medicare-green": {
+      "100": {
+        "$value": "#F4F7F5",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e8f0ef",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#72A69E",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#146a5d",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#104E45",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0A352F",
+        "$type": "color"
+      }
+    },
     "deepsea": {
       "50": {
         "$value": "#e7e9f5",
