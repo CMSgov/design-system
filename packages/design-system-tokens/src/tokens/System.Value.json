@@ -1141,6 +1141,10 @@
         "$value": "1.125rem",
         "$type": "dimension"
       },
+      "35": {
+        "$value": "1.25rem",
+        "$type": "dimension"
+      },
       "40": {
         "$value": "1.3125rem",
         "$type": "dimension"
@@ -1161,8 +1165,48 @@
         "$value": "3rem",
         "$type": "dimension"
       },
+      "85": {
+        "$value": "3.5rem",
+        "$type": "dimension"
+      },
       "90": {
         "$value": "3.75rem",
+        "$type": "dimension"
+      },
+      "100": {
+        "$value": "4rem",
+        "$type": "dimension"
+      },
+      "110": {
+        "$value": "4.25rem",
+        "$type": "dimension"
+      },
+      "120": {
+        "$value": "4.5rem",
+        "$type": "dimension"
+      },
+      "130": {
+        "$value": "4.75rem",
+        "$type": "dimension"
+      },
+      "140": {
+        "$value": "5rem",
+        "$type": "dimension"
+      },
+      "150": {
+        "$value": "5.25rem",
+        "$type": "dimension"
+      },
+      "160": {
+        "$value": "5.5rem",
+        "$type": "dimension"
+      },
+      "170": {
+        "$value": "5.75rem",
+        "$type": "dimension"
+      },
+      "180": {
+        "$value": "6rem",
         "$type": "dimension"
       }
     },
