@@ -28,7 +28,7 @@
 
 **Select "Squash and merge" when:**
 
-- Merging a single-feature PR, such as a bug fix, new functionality, or documentation update.
+- Merging a single-feature PR, such as a bug fix, new functionality, or documentation update. This is the appropriate method for most PRs.
 
 The PR’s commits will be combined into one commit using the PR title, such as: `[CMSDS-####] Description of the change`.
 

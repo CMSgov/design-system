@@ -12,8 +12,8 @@ If you are interested in running this site locally, please take a look at [setti
 ## Submitting a pull request
 
 - [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account.
-- Identify the [release milestone](https://github.com/CMSgov/design-system/milestones) for your change and create your branch from the corresponding milestone branch. For example, work intended for the `19.0.0` release should branch from `milestone-19-0-0`. If you are unsure where your work fits into our release milestones, [contact our team](https://design.cms.gov/contact/?theme=core).
-- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request). against the corresponding milestone branch. In most cases, the target branch should **not** be `main`.
+- [Contact our team](https://design.cms.gov/contact/?theme=core) to determine the appropriate milestone branch for your change. Create your working branch from that milestone branch.
+- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) targeting the same milestone branch. In most cases, the target branch should **not** be `main`.
 
 **Note:** For more information, see [GitHub flow](https://guides.github.com/introduction/flow/).
 
