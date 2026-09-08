@@ -11,11 +11,16 @@ If you are interested in running this site locally, please take a look at [setti
 
 ## Submitting a pull request
 
-- [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account
-- [Create a branch](https://help.github.com/en/articles/creating-and-deleting-branches-within-your-repository) from `main` that defines what you’re working on (for example, fix-autocomplete-bug).
-- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) against the `main` branch
+- [Fork the design system](https://guides.github.com/activities/forking/) into your GitHub account.
+- [Contact our team](https://design.cms.gov/contact/?theme=core) to determine the appropriate milestone branch for your change. Create your working branch from that milestone branch.
+- [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request) targeting the same milestone branch. In most cases, the target branch should **not** be `main`.
 
-**Note:** more information on the [GitHub flow](https://guides.github.com/introduction/flow/)
+**Note:** For more information, see [GitHub flow](https://guides.github.com/introduction/flow/).
+
+### How pull requests are merged
+
+- Single-feature pull requests, such as bug fixes, new functionality, or documentation updates, use **Squash and merge**.
+- Do not select **Create a merge commit**. This option is reserved for syncing long-lived branches and is outside the scope of an individual contribution.
 
 ## Guiding development principles
 
