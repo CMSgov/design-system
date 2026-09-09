@@ -5,7 +5,7 @@ import { getPanelChildren, getDefaultSelectedId } from './Tabs';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-function getPanelId(number) {
+function getPanelId(number: number) {
   return `panel-${number}`;
 }
 

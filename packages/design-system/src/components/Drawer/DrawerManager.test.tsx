@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Drawer } from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 
-const SingleDrawer = ({ heading }) => {
+const SingleDrawer = ({ heading }: { heading: string }) => {
   const { openDrawer, toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
 
   return (

@@ -1,8 +1,8 @@
-jest.mock('lodash/uniqueId', () => (str) => `${str}snapshot`);
+jest.mock('lodash/uniqueId', () => (str: string) => `${str}snapshot`);
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MultiInputDateField } from './MultiInputDateField';
-import defaultDateFormatter from './defaultDateFormatter';
+import defaultDateFormatter, { DateObject } from './defaultDateFormatter';
 
 describe('MultiInputDateField', () => {
   it('renders', () => {
@@ -53,7 +53,7 @@ describe('MultiInputDateField', () => {
 
   it('accepts a custom dateFormatter', async () => {
     const user = userEvent.setup();
-    const dateFormatter = ({ day, month, year }) => `${year}-${month}-${day}`;
+    const dateFormatter = ({ day, month, year }: DateObject) => `${year}-${month}-${day}`;
     const onChange = jest.fn();
     render(
       <MultiInputDateField

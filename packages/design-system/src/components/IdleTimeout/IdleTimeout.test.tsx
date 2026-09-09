@@ -188,7 +188,7 @@ describe('Idle Timeout', () => {
   });
 
   it('should replace token in message every minute', () => {
-    const formatMessage = (time) => `Your session will end in ${time}.`;
+    const formatMessage = (time: number) => `Your session will end in ${time}.`;
     const { container } = renderIdleTimeout({ formatMessage, timeToWarning: 2 });
     showWarning(MOCK_START_TIME + 2 * 60000);
     expect(container.querySelector('.ds-c-dialog__body').firstChild.textContent).toEqual(
