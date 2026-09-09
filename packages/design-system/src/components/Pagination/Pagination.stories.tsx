@@ -1,4 +1,4 @@
-import Pagination from './Pagination';
+import Pagination, { PaginationProps } from './Pagination';
 import { action } from 'storybook/actions';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useArgs } from 'storybook/preview-api';
@@ -50,7 +50,7 @@ const meta: Meta<typeof Pagination> = {
   },
   render: function Component(args) {
     const [{ currentPage }, updateArgs] = useArgs();
-    const handleSetPage = (evt, page) => {
+    const handleSetPage: PaginationProps['onPageChange'] = (evt, page) => {
       evt.preventDefault();
       action('onPageChange')(evt, page);
       updateArgs({ currentPage: page });

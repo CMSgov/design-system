@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import MultiInputDateField from './MultiInputDateField';
+import { DateObject } from './defaultDateFormatter';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { action } from 'storybook/actions';
 
@@ -62,7 +63,7 @@ export const Controlled: Story = {
   render: function Component(args) {
     const [dateState, setDateState] = useState({ month: '10', day: '30', year: '1980' });
 
-    const onChangeHandler = (dateObject) => {
+    const onChangeHandler = (dateObject: DateObject) => {
       setDateState(dateObject);
       args.onChange('onChange');
     };
