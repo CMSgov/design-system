@@ -6,7 +6,7 @@ export const codeBlock = (lines: string[]) => {
   const stringToCopy = JSON.stringify(lines);
   return `
     <pre class="ds-u-fill--gray-lightest ds-u-font-size--sm ds-u-padding--1 ds-u-margin-y--1 ds-u-overflow--auto"><code>${escaped}</code></pre>
-    <ds-button size="small" onclick='navigator.clipboard.writeText(${stringToCopy}.join("\\n"))'>Copy snippet</ds-button>
+    <button class="ds-c-button ds-c-button--solid" size="small" onclick='navigator.clipboard.writeText(${stringToCopy}.join("\\n"))'>Copy snippet</button>
   `;
 };
 
@@ -63,17 +63,36 @@ const getFontFaceBlocks = (distPath: string): string[] => {
   return css.match(/@font-face\{[^}]*\}/g) ?? [];
 };
 
+// Get the font-family name declared in a single @font-face block, e.g. "Bitter" or "Open Sans".
+const getFontFamily = (block: string): string => {
+  const match = block.match(/font-family:([^;]+)/);
+  return match ? match[1].trim().replace(/^["']|["']$/g, '') : '';
+};
+
+// The distinct font-family names across all blocks, in first-appearance order.
+const getFontFamilies = (blocks: string[]): string[] => [
+  ...new Set(blocks.map(getFontFamily).filter(Boolean)),
+];
+
 // Create blocks of @font-face declarations with the correct location of the font passed in
 // Our dist CSS assumes a relative location for the font files, here we're replacing with the location
 // of the font files on the CDN.
 export const renderFontFaceExample = (system: string, version: string, distPath: string) => {
   const cdnFontsBase = `https://design.cms.gov/cdn/${system}/${version}/fonts/`;
   const blocks = getFontFaceBlocks(distPath);
-  const lines = blocks.flatMap((block, i) => [
-    ...(i > 0 ? [''] : []),
-    ...prettyFontFace(block, cdnFontsBase),
-  ]);
-  return codeBlock(lines);
+  const fontFamilies = getFontFamilies(blocks);
+
+  // Group each family's faces in a collapsible <details>, with the family name
+  // (an <h3>) as the clickable <summary>, wrapping one code block per face.
+  return fontFamilies
+    .map((fontFamily) => {
+      const familyBlocks = blocks.filter((block) => getFontFamily(block) === fontFamily);
+      const codeBlocks = familyBlocks
+        .map((block) => codeBlock(prettyFontFace(block, cdnFontsBase)))
+        .join('\n');
+      return `<br/><details>\n<summary class="ds-text-body--lg">${fontFamily}</summary>\n${codeBlocks}\n</details>`;
+    })
+    .join('\n');
 };
 
 // Consumers must preload only the faces their above-the-fold content renders,
