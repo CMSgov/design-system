@@ -135,12 +135,18 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+// TODO: type these args as React.JSX.IntrinsicElements['ds-text-field'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = (args: Args) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onBlur = (event) => {
+    const onBlur = (event: Event) => {
       action('ds-blur')(event);
     };
     const textField = document.querySelector('ds-text-field');

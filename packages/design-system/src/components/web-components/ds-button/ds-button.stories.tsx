@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
@@ -76,9 +77,9 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-button']) => {
   useEffect(() => {
-    const onClick = (event) => {
+    const onClick = (event: Event) => {
       action('ds-click')(event);
     };
     const button = document.querySelector('ds-button');

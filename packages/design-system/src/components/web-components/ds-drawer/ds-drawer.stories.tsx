@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
 import { action } from 'storybook/actions';
@@ -127,14 +128,14 @@ const drawerContent = (
   </>
 );
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-drawer']) => {
   useEffect(() => {
     const drawerElement = document.querySelector('ds-drawer');
     const toggleButton = document.querySelector('ds-button');
 
     if (!drawerElement || !toggleButton) return;
 
-    const handleDrawerClose = (event) => {
+    const handleDrawerClose = (event: Event) => {
       action('ds-close-click')(event);
       drawerElement.setAttribute('is-open', 'false');
     };
@@ -161,7 +162,10 @@ const Template = (args) => {
 
   return (
     <div>
-      <ds-drawer {...args}>
+      {/* TODO: drop this cast with https://jira.cms.gov/browse/CMSDS-4614. This element's
+          props collapse to an index signature of `[x: string]: string`, which rejects both
+          the spread of its own props type and the element children nested below. */}
+      <ds-drawer {...(args as any)}>
         {args.children || drawerContent}
         <span slot="footer-body">
           <p className="ds-text-body--md ds-u-margin--0">
