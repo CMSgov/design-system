@@ -1428,7 +1428,7 @@
         "$value": "{theme.color.gray}"
       },
       "border-radius": {
-        "$value": "{radius.default}"
+        "$value": "{radius.large}"
       },
       "color": {
         "$value": "{theme.color.gray-darker}"

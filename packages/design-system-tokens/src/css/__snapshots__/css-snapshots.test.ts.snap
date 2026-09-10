@@ -1933,7 +1933,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --text-input__border-color--error: var(--color-error);
 --text-input__border-color--inverse: var(--color-gray);
 --text-input__border-color: var(--color-gray);
---text-input__border-radius: var(--radius-default);
+--text-input__border-radius: var(--radius-large);
 --text-input__border-width--disabled: 1px;
 --text-input__border-width--error: 3px;
 --text-input__border-width: 2px;
