@@ -233,54 +233,62 @@
     "font": {
       "size": {
         "base": {
-          "$value": "{font.size.20}"
+          "$value": "1.25rem",
+          "$type": "dimension"
         },
         "sm": {
-          "$value": "{font.size.10}"
+          "$value": "1rem",
+          "$type": "dimension"
         },
         "md": {
           "$value": "{font.size.20}"
         },
         "lg": {
-          "$value": "1.25rem",
+          "$value": "1.5rem",
           "$type": "dimension"
         },
         "xl": {
-          "$value": "{font.size.50}"
+          "$value": "2.25rem",
+          "$type": "dimension"
         },
-        "2xl--mobile": {
+        "xl--mobile": {
           "$value": "1.75rem",
           "$type": "dimension"
         },
-        "2xl": {
+        "2xl--mobile": {
           "$value": "2rem",
           "$type": "dimension"
         },
+        "2xl": {
+          "$value": "3rem",
+          "$type": "dimension"
+        },
         "3xl--mobile": {
-          "$value": "{font.size.60}"
+          "$value": "2.5rem",
+          "$type": "dimension"
         },
         "3xl": {
-          "$value": "2.5rem",
+          "$value": "3.5rem",
           "$type": "dimension"
         },
         "4xl--mobile": {
-          "$value": "2.5rem",
+          "$value": "3rem",
           "$type": "dimension"
         },
         "4xl": {
-          "$value": "2.75rem",
+          "$value": "4.5rem",
           "$type": "dimension"
         },
         "5xl--mobile": {
-          "$value": "2.5rem",
+          "$value": "3.5rem",
           "$type": "dimension"
         },
         "5xl--tablet": {
-          "$value": "2.75rem",
+          "$value": "3.5rem",
           "$type": "dimension"
         },
         "5xl": {
-          "$value": "3.125rem",
+          "$value": "6rem",
           "$type": "dimension"
         }
       },
