@@ -542,7 +542,7 @@
         "$value": "{theme.color.gray-lighter}"
       },
       "border-radius": {
-        "$value": "{radius.default}"
+        "$value": "{radius.pill}"
       },
       "border-width": {
         "$value": "1px",
