@@ -1,6 +1,6 @@
 $font-path: '../fonts' !default;
 
-/* inter-400 - regular - latin */
+/* inter-400 - normal - latin */
 @font-face {
   font-display: swap;
   font-family: Inter;
@@ -18,7 +18,7 @@ $font-path: '../fonts' !default;
   src: url('#{$font-path}/inter/inter-latin-400italic.woff2') format('woff2');
 }
 
-/* inter-600 - italic - latin */
+/* inter-600 - normal - latin */
 @font-face {
   font-display: swap;
   font-family: Inter;
