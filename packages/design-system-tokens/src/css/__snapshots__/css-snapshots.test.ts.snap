@@ -1656,7 +1656,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --button__border-color--disabled: var(--color-gray-lighter);
 --button__border-color--hover: var(--color-secondary-dark);
 --button__border-color: var(--color-secondary);
---button__border-radius: var(--radius-default);
+--button__border-radius: var(--radius-pill);
 --button__border-width: 1px;
 --button__color--active: var(--color-secondary-light);
 --button__color--disabled: var(--color-gray-lighter);
