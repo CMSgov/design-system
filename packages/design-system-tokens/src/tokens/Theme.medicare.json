@@ -680,7 +680,7 @@
         "$value": "{theme.color.primary}"
       },
       "background-color--active": {
-        "$value": "{theme.color.primary-light}"
+        "$value": "{theme.color.primary-darkest}"
       },
       "background-color--hover": {
         "$value": "{theme.color.primary-dark}"

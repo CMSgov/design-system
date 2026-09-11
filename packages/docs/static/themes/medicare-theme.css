@@ -243,7 +243,7 @@
 --button-dark-alt__color--hover: var(--color-secondary-lighter);
 --button-dark-alt__color--disabled: var(--color-gray-dark);
 --button-solid__background-color: var(--color-primary);
---button-solid__background-color--active: var(--color-primary-light);
+--button-solid__background-color--active: var(--color-primary-darkest);
 --button-solid__background-color--hover: var(--color-primary-dark);
 --button-solid__background-color--disabled: var(--color-gray-lighter);
 --button-solid__border-color: var(--color-primary);
