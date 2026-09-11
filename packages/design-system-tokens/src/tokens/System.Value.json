@@ -1167,6 +1167,18 @@
       }
     },
     "family": {
+      "inter": {
+        "$value": [
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily"
+      },
       "open-sans": {
         "$value": [
           "Open Sans",
