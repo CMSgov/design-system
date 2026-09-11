@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj;
 
-const ListItems = ({ label }) => (
+const ListItems = ({ label }: { label: string }) => (
   <>
     <li>{label} list item 1</li>
     <li>{label} list item 2</li>

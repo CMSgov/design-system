@@ -5,7 +5,7 @@ import { existsSync } from 'node:fs';
 
 const iconNames = ['TestIcon', 'ExampleIcon', 'AnotherIcon'];
 
-let tempDir;
+let tempDir: string;
 
 // These tests are flaky due to the need to read and write from the file system.
 // I'm skipping them because they are not necessary once the script has run.

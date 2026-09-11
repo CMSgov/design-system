@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { act, render } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { ComponentFactory, h } from 'preact';
@@ -385,7 +386,9 @@ describe('define()', () => {
     it('creates custom events', async () => {
       const user = userEvent.setup();
       const fieldId = 'custom-events-field';
-      const CustomEventsComponent = (props) => (
+      const CustomEventsComponent = (
+        props: Pick<React.ComponentProps<'input'>, 'onChange' | 'onBlur'>
+      ) => (
         <div>
           <input type="text" onChange={props.onChange} onBlur={props.onBlur} id={fieldId} />
         </div>
@@ -432,7 +435,7 @@ describe('define()', () => {
   });
 
   describe('when run on the server', () => {
-    let originalWindow;
+    let originalWindow: typeof globalThis.window;
 
     beforeAll(() => {
       originalWindow = globalThis.window;

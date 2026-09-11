@@ -132,7 +132,7 @@ describe('Alert', function () {
   });
 
   describe('Analytics event tracking', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
 
     beforeEach(() => {
       config({ alertSendsAnalytics: true });

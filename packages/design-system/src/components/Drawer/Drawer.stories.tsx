@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../Button';
 import { action } from 'storybook/actions';
-import Drawer from './Drawer';
+import Drawer, { DrawerProps } from './Drawer';
 import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
@@ -91,7 +91,7 @@ export const Default: Story = {
       updateOpen(true);
     };
 
-    const hideDrawer = (...params) => {
+    const hideDrawer: DrawerProps['onCloseClick'] = (...params) => {
       action('onCloseClick')(...params);
       updateOpen(false);
     };
@@ -122,7 +122,7 @@ export const BackdropClickExits: Story = {
       setDrawerOpen(true);
     };
 
-    const hideDrawer = (event) => {
+    const hideDrawer: DrawerProps['onCloseClick'] = (event) => {
       action('onCloseClick')(event);
       setDrawerOpen(false);
     };

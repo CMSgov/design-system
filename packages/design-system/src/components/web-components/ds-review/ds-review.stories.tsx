@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -52,18 +53,20 @@ const meta: Meta = {
 };
 const children = 'This is an example of a default Review component.';
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-review'];
+
+const Template = (args: Args) => {
   return <ds-review {...args}>{children}</ds-review>;
 };
 
-const MultipleReviewsTemplate = (args) => (
+const MultipleReviewsTemplate = (args: Args) => (
   <div>
     <ds-review {...args}>{children}</ds-review>
     <ds-review {...args}>{children}</ds-review>
   </div>
 );
 
-const TemplateWithCustomActions = (args) => {
+const TemplateWithCustomActions = (args: Args) => {
   return (
     <ds-review {...args}>
       {children}

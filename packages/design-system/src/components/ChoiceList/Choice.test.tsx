@@ -200,7 +200,7 @@ describe('Choice', () => {
   });
 
   describe('event handlers and emitters', () => {
-    let props;
+    let props: Partial<ChoiceProps>;
 
     beforeEach(() => {
       props = {

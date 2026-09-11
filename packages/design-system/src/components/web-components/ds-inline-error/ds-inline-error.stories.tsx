@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-inline-error';
@@ -33,7 +34,9 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ 'text content': text, ...args }) => (
+type Args = React.JSX.IntrinsicElements['ds-inline-error'] & { 'text content'?: string };
+
+const Template = ({ 'text content': text, ...args }: Args) => (
   <ds-inline-error {...args}>{text}</ds-inline-error>
 );
 

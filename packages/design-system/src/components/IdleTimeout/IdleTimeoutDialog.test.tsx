@@ -1,4 +1,4 @@
-import IdleTimeoutDialog from './IdleTimeoutDialog';
+import IdleTimeoutDialog, { IdleTimeoutDialogProps } from './IdleTimeoutDialog';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 describe('IdleTimeoutDialog', () => {
@@ -11,7 +11,7 @@ describe('IdleTimeoutDialog', () => {
     onClose: jest.fn(),
     isOpen: true,
   };
-  const renderDialog = (overrideProps?) => {
+  const renderDialog = (overrideProps?: Partial<IdleTimeoutDialogProps>) => {
     return render(<IdleTimeoutDialog {...defaultProps} {...overrideProps} />);
   };
 

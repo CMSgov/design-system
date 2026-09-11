@@ -111,7 +111,7 @@ describe('Button', () => {
   });
 
   describe('Analytics', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
 
     beforeEach(() => {
       config({ buttonSendsAnalytics: true });

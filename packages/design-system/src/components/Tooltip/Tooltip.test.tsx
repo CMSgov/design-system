@@ -159,7 +159,7 @@ describe('Tooltip', function () {
   });
 
   describe('Analytics event tracking', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
 
     beforeEach(() => {
       config({ tooltipSendsAnalytics: true });

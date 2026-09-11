@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { alertAnalyticsEventDocs, analyticsOverrideArgTypes } from '../shared-attributes/storybook';
 import { webComponentDecorator } from '../storybook';
@@ -80,7 +81,7 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ heading, children, ...args }) => (
+const Template = ({ heading, children, ...args }: React.JSX.IntrinsicElements['ds-alert']) => (
   <ds-alert {...args}>
     <span slot="heading">{heading}</span>
     {children ?? (

@@ -55,7 +55,7 @@ export const WithNodeChildren: Story = {
   },
 };
 
-export const WithoutChildren = {
+export const WithoutChildren: Story = {
   ...AlertTemplate,
   args: {
     heading: 'You have a new message',
@@ -63,7 +63,7 @@ export const WithoutChildren = {
   },
 };
 
-export const WithoutHeading = {
+export const WithoutHeading: Story = {
   ...AlertTemplate,
   args: {
     heading: null,

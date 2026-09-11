@@ -1,10 +1,11 @@
+import type * as React from 'react';
 import { render, screen } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import './ds-tabs';
 const defaultProps = {
   'default-selected-id': 'panel-1',
 };
-function renderTabs(props = {}, children = []) {
+function renderTabs(props = {}, children: React.ReactNode[] = []) {
   return {
     user: userEvent.setup(),
     ...render(<ds-tabs {...(props as any)}>{children}</ds-tabs>),
