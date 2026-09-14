@@ -64,8 +64,8 @@ const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: Locati
  * Need to nest level2 items that have subnav items under the relevant level1 items
  */
 export const organizeNavItems = (dataList: DocsNavItem[]): DocsNavItem[] => {
-  const level1ItemMap: { string?: DocsNavItem } = {};
-  const level2Items = [];
+  const level1ItemMap: Record<string, DocsNavItem> = {};
+  const level2Items: DocsNavItem[] = [];
 
   // sort level1 vs level2 items into distinct variables from data list where they are combined
   dataList.forEach((dataItem: DocsNavItem) => {
