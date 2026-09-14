@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { HelpDrawerProps } from '@cmsgov/design-system';
 import { MedicaregovHelpDrawer } from './MedicaregovHelpDrawer';
 import { MedicaregovHelpDrawerToggle } from './MedicaregovHelpDrawerToggle';
 import { action } from 'storybook/actions';
@@ -81,7 +82,7 @@ export const HelpDrawerToggleWithDrawer: Story = {
   render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
-    const hideDrawer = (...params) => {
+    const hideDrawer: HelpDrawerProps['onCloseClick'] = (...params) => {
       action('onCloseClick')(...params);
       setIsDrawerVisible(false);
     };
@@ -111,7 +112,7 @@ export const HelpDrawerToggleOnDark: Story = {
   render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
-    const hideDrawer = (...params) => {
+    const hideDrawer: HelpDrawerProps['onCloseClick'] = (...params) => {
       action('onCloseClick')(...params);
       setIsDrawerVisible(false);
     };
