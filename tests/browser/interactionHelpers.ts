@@ -3,7 +3,7 @@ import themes from '../../themes.json';
 
 export { expectScreenshot } from './expectScreenshot';
 
-export function sleep(ms) {
+export function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -13,8 +13,6 @@ export function storyUrl(storyId: string, theme = 'core'): string {
 
 export function describeByTheme(callback: (theme: string) => any): void {
   Object.keys(themes).forEach((theme) => {
-    if (themes[theme].incomplete) return;
-
     test.describe(theme, () => callback(theme));
   });
 }
