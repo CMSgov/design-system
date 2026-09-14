@@ -146,7 +146,7 @@ describe('Mask', function () {
   describe('Currency', () => {
     // testComponent tests the entire <Mask mask="currency"> component
     // others will simply test the formatting function, toCurrency
-    const testComponent = (value, expected) => {
+    const testComponent = (value: string, expected: string) => {
       renderMask({ mask: 'currency' }, { value });
       expect(getInput().value).toBe(expected);
     };

@@ -109,7 +109,7 @@ describe('ThirdPartyExternalLink', () => {
   });
 
   describe('Analytics event tracking', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
 
     beforeEach(() => {
       config({ thirdPartyExternalLinkSendsAnalytics: true });

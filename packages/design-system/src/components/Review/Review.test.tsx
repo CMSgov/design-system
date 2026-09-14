@@ -1,5 +1,5 @@
 import type * as React from 'react';
-import Review from './Review';
+import Review, { ReviewProps } from './Review';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -11,7 +11,7 @@ const defaultProps = {
   editText: 'edit',
 };
 
-function renderReview(customProps?, children: React.ReactNode = text) {
+function renderReview(customProps?: Partial<ReviewProps>, children: React.ReactNode = text) {
   const props = { ...defaultProps, ...customProps };
   return render(<Review {...props}>{children}</Review>);
 }

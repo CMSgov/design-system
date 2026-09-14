@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { action } from 'storybook/actions';
 import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
@@ -117,20 +118,23 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-modal-dialog'];
+
+const Template = (args: Args) => {
   useEffect(() => {
     const modals = Array.from(document.querySelectorAll('ds-modal-dialog'));
     const toggleButtons = Array.from(document.querySelectorAll('ds-button'));
     const forms = Array.from(document.querySelectorAll('form[method="dialog"]'));
 
-    const openModal = (event) => {
-      const modal = document.querySelector(`[root-id="${event.target.dataset.id}"]`);
+    const openModal = (event: Event) => {
+      const { id } = (event.target as HTMLElement).dataset;
+      const modal = document.querySelector(`[root-id="${id}"]`);
       modal?.setAttribute('is-open', 'true');
     };
 
-    const closeModal = (event) => {
+    const closeModal = (event: Event) => {
       action('ds-exit')(event);
-      const modal = event?.target.closest('ds-modal-dialog');
+      const modal = (event.target as HTMLElement)?.closest('ds-modal-dialog');
       modal?.setAttribute('is-open', 'false');
     };
 
@@ -186,7 +190,7 @@ export const BackdropClickExits = {
 };
 
 export const PreventScrollExample = {
-  render: function Component(args) {
+  render: function Component(args: Args) {
     return (
       <div className="ds-u-measure--base">
         <h1>The United States Constitution</h1>

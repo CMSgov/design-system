@@ -1,4 +1,4 @@
-import MonthPicker from './MonthPicker';
+import MonthPicker, { MonthPickerProps } from './MonthPicker';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { action } from 'storybook/actions';
 import { useArgs } from 'storybook/preview-api';
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof MonthPicker>;
 const ControlledTemplate: Story = {
   render: function Component(args) {
     const [{ selectedMonths }, updateArgs] = useArgs();
-    const onChange = (event) => {
+    const onChange: MonthPickerProps['onChange'] = (event) => {
       action('onChange')(event);
       const month = parseInt(event.currentTarget.value, 10);
       const newSelectedMonths = selectedMonths.slice();

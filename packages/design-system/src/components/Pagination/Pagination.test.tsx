@@ -42,7 +42,7 @@ describe('Pagination', () => {
       currentPage: 1,
       onPageChange: onPageChange,
       id: 'static-id',
-      renderHref: (currentPage) => `#${currentPage}`,
+      renderHref: (currentPage: number) => `#${currentPage}`,
       ...overrideProps,
     };
 
@@ -113,7 +113,7 @@ describe('Pagination', () => {
         renderPagination({
           currentPage: 4,
           totalPages: 8,
-          renderHref: (currentPage) => `#${currentPage}`,
+          renderHref: (currentPage: number) => `#${currentPage}`,
         });
         expect(getPageLink(5).getAttribute('href')).toBe('#5');
       });

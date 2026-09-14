@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import { action } from 'storybook/actions';
 import type { Meta } from '@storybook/react-webpack5';
@@ -143,7 +144,7 @@ const meta: Meta = {
 };
 export default meta;
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-date-field']) => {
   useEffect(() => {
     const element = document.querySelector('ds-date-field');
     if (element) {

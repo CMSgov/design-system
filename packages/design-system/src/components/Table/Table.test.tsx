@@ -77,8 +77,8 @@ describe('Table', function () {
 
   it('scroll table aria-labelledby matches caption id', () => {
     makeTable({ scrollable: true });
-    const region = screen.getByRole('region').attributes['id'];
-    const caption = screen.getByText('A great caption').attributes['aria-labelledby'];
+    const region = screen.getByRole('region').getAttribute('id');
+    const caption = screen.getByText('A great caption').getAttribute('aria-labelledby');
 
     expect(region).toEqual(caption);
   });

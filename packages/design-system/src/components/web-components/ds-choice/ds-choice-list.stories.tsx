@@ -1,4 +1,6 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
+import type { StoryObj } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
@@ -180,15 +182,18 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-choice-list'];
+type Story = StoryObj<Args>;
+
+const Template = (args: Args) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onBlur = (event) => {
+    const onBlur = (event: Event) => {
       action('ds-blur')(event);
     };
-    const onComponentBlur = (event) => {
+    const onComponentBlur = (event: Event) => {
       action('ds-component-blur')(event);
     };
     const choiceList = document.querySelector('ds-choice-list');
@@ -249,7 +254,7 @@ const htmlChoices = (
   </>
 );
 
-export const HTMLChoices = {
+export const HTMLChoices: Story = {
   render: Template,
   args: {
     choices: undefined,

@@ -1,7 +1,14 @@
-import { act, render, renderHook, screen } from '@testing-library/react';
+import {
+  act,
+  render,
+  renderHook,
+  screen,
+  RenderHookResult,
+  RenderResult,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Dialog } from './Dialog';
-import { useDialog } from './useDialog';
+import { useDialog, UseDialogRenderProps } from './useDialog';
 
 enum ResolveValue {
   onExit,
@@ -9,7 +16,9 @@ enum ResolveValue {
   noClick,
 }
 
-const defaultRenderFn = ({ resolveClose, isOpen }) => (
+type DialogHookResult = RenderHookResult<ReturnType<typeof useDialog<ResolveValue>>, unknown>;
+
+const defaultRenderFn = ({ resolveClose, isOpen }: UseDialogRenderProps<ResolveValue>) => (
   <Dialog
     heading="Are we there yet?"
     onExit={() => resolveClose(ResolveValue.onExit)}
@@ -25,7 +34,7 @@ const defaultRenderFn = ({ resolveClose, isOpen }) => (
   </Dialog>
 );
 
-function openDialog(hookRenderResult) {
+function openDialog(hookRenderResult: DialogHookResult) {
   let promise;
   act(() => {
     promise = hookRenderResult.result.current.openDialog();
@@ -34,7 +43,7 @@ function openDialog(hookRenderResult) {
   return promise;
 }
 
-function expectClosed(hookRenderResult, dialogRenderResult) {
+function expectClosed(hookRenderResult: DialogHookResult, dialogRenderResult: RenderResult) {
   hookRenderResult.rerender();
   dialogRenderResult.rerender(hookRenderResult.result.current.dialog);
   expect(dialogRenderResult.container.querySelector('dialog').open).toBe(false);

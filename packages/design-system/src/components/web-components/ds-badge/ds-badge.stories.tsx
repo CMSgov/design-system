@@ -49,8 +49,16 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => (
-  <ds-badge {...args}>{args.children ?? <>Default badge text</>}</ds-badge>
+// TODO: type these args as React.JSX.IntrinsicElements['ds-badge'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = (args: Args) => (
+  // TODO: restore the `<>Default badge text</>` fragment with CMSDS-4614. The index
+  // signature above admits only string children; the rendered output is the same either way.
+  <ds-badge {...args}>{args.children ?? 'Default badge text'}</ds-badge>
 );
 
 export const Default = {

@@ -169,7 +169,7 @@ describe('VerticalNavItem', () => {
   });
 
   describe('with subnav', () => {
-    let props;
+    let props: Partial<VerticalNavItemProps>;
 
     beforeEach(() => {
       props = {

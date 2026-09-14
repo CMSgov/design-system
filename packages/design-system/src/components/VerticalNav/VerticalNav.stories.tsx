@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof VerticalNav>;
 
-const Link = ({ className, ...props }) => (
+const Link = ({ className, ...props }: React.ComponentPropsWithoutRef<'a'>) => (
   <a className={classNames(className, 'special-link')} {...props}>
     {props.children}
   </a>

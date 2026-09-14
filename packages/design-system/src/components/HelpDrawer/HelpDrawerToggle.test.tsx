@@ -1,4 +1,4 @@
-import HelpDrawerToggle from './HelpDrawerToggle';
+import HelpDrawerToggle, { HelpDrawerToggleProps } from './HelpDrawerToggle';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -8,7 +8,7 @@ const defaultProps = {
   showDrawer: jest.fn(),
 };
 
-function renderToggle(customProps?) {
+function renderToggle(customProps?: Partial<HelpDrawerToggleProps>) {
   const props = { ...defaultProps, ...customProps };
 
   return render(<HelpDrawerToggle {...props}>content</HelpDrawerToggle>);

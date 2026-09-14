@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import type { Meta } from '@storybook/react-webpack5';
@@ -132,7 +133,9 @@ const meta: Meta = {
 
 export default meta;
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-tooltip'] & { exampleText?: string };
+
+const Template = (args: Args) => {
   return (
     <>
       {args.exampleText && (

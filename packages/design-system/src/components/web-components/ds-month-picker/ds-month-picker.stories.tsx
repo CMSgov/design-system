@@ -1,4 +1,6 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
+import type { StoryObj } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
@@ -159,15 +161,18 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-month-picker'];
+type Story = StoryObj<Args>;
+
+const Template = (args: Args) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onClearAll = (event) => {
+    const onClearAll = (event: Event) => {
       action('ds-clear-all')(event);
     };
-    const onSelectAll = (event) => {
+    const onSelectAll = (event: Event) => {
       action('ds-select-all')(event);
     };
     const monthPicker = document.querySelector('ds-month-picker');
@@ -188,7 +193,7 @@ export const Default = {
   render: Template,
 };
 
-export const MonthOverrides = {
+export const MonthOverrides: Story = {
   render: Template,
   args: {
     'requirement-label': undefined,

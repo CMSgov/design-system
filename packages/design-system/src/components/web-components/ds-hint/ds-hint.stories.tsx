@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
 import './ds-hint';
@@ -38,7 +39,9 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ 'text content': text, ...args }) => <ds-hint {...args}>{text}</ds-hint>;
+type Args = React.JSX.IntrinsicElements['ds-hint'] & { 'text content'?: string };
+
+const Template = ({ 'text content': text, ...args }: Args) => <ds-hint {...args}>{text}</ds-hint>;
 
 export const Default = {
   render: Template,

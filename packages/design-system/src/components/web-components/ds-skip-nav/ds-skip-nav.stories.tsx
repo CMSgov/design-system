@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import { action } from 'storybook/actions';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
@@ -37,10 +38,12 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ 'text content': text, ...args }) => {
+type Args = React.JSX.IntrinsicElements['ds-skip-nav'] & { 'text content'?: string };
+
+const Template = ({ 'text content': text, ...args }: Args) => {
   useEffect(() => {
     const element = document.querySelector('ds-skip-nav');
-    const handleClick = (event) => {
+    const handleClick = (event: Event) => {
       return action('ds-click')(event);
     };
     element.addEventListener('ds-click', handleClick);

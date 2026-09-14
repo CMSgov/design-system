@@ -1,9 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { SvgIcon } from './SvgIcon';
+import { SvgIcon, SvgIconProps } from './SvgIcon';
 import { AddIcon } from './AddIcon';
 
+// These tests pass `data-*` attributes through to the rendered svg, which React's
+// prop types do not admit in a props object literal the way JSX admits them on an
+// element, so the helper spells out the ones it accepts.
+type SvgIconTestProps = Partial<SvgIconProps> & {
+  [dataAttribute: `data-${string}`]: string;
+};
+
 describe('SvgIcon', () => {
-  const renderSvgIcon = (overrideProps?) => {
+  const renderSvgIcon = (overrideProps?: SvgIconTestProps) => {
     return render(
       <SvgIcon ariaHidden={false} title="test icon" {...overrideProps}>
         <path />

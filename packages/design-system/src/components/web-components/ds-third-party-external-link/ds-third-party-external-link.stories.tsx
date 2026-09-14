@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import './ds-third-party-external-link';
 import { webComponentDecorator } from '../storybook';
@@ -70,7 +71,7 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-third-party-external-link']) => {
   const { children, ...otherAttrs } = args;
   return <ds-third-party-external-link {...otherAttrs}>{children}</ds-third-party-external-link>;
 };

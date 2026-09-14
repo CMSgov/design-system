@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import { Dialog } from './Dialog';
+import { Dialog, DialogProps } from './Dialog';
 import { Button } from '@cmsgov/design-system';
 import { action } from 'storybook/actions';
 import { useDialog } from './useDialog';
@@ -46,7 +46,7 @@ export const Default: Story = {
       updateOpen(true);
     };
 
-    const hideModal = (...params) => {
+    const hideModal: DialogProps['onExit'] = (...params) => {
       action('onExit')(...params);
       updateOpen(false);
     };
@@ -81,7 +81,7 @@ export const PreventScrollExample: Story = {
   render: function Component(args) {
     const [dialogOpen, updateOpen] = useState(false);
     const showModal = () => updateOpen(true);
-    const hideModal = (...params) => {
+    const hideModal: DialogProps['onExit'] = (...params) => {
       action('onExit')(...params);
       updateOpen(false);
     };
@@ -225,7 +225,7 @@ export const BackdropClickExits: Story = {
       updateOpen(true);
     };
 
-    const hideModal = (...params) => {
+    const hideModal: DialogProps['onExit'] = (...params) => {
       action('onExit')(...params);
       updateOpen(false);
     };

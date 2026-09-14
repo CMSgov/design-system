@@ -1,4 +1,4 @@
-import Dropdown from './Dropdown';
+import Dropdown, { DropdownProps } from './Dropdown';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { action } from 'storybook/actions';
 import { useArgs } from 'storybook/preview-api';
@@ -166,7 +166,7 @@ export const Controlled: Story = {
   },
   render: function Component(args) {
     const [{ value }, updateArgs] = useArgs();
-    const onChange = (event) => {
+    const onChange: DropdownProps['onChange'] = (event) => {
       action('onChange')(event);
       updateArgs({ value: event.currentTarget.value });
     };

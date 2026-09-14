@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
@@ -87,19 +88,19 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-pagination']) => {
   const [{ 'current-page': currentPage }, updateArgs] = useArgs();
 
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: CustomEvent<{ page: number }>) => {
       event.preventDefault();
       action('ds-page-change')(event);
       updateArgs({ 'current-page': event.detail.page });
     };
     const pagination = document.querySelector('ds-pagination');
-    pagination.addEventListener('ds-page-change', onChange);
+    pagination.addEventListener('ds-page-change', onChange as EventListener);
     return () => {
-      pagination.removeEventListener('ds-page-change', onChange);
+      pagination.removeEventListener('ds-page-change', onChange as EventListener);
     };
   });
 

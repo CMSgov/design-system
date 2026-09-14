@@ -4,6 +4,7 @@ import TableHead from './TableHead';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
 import TableBody from './TableBody';
+import type * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta: Meta<typeof Table> = {
@@ -26,7 +27,32 @@ export default meta;
 
 type Story = StoryObj<typeof Table>;
 
-const tableTemplateData = {
+/**
+ * The story tables render generically, looking each row's cells up by the
+ * `propName` of the corresponding heading, so a fixture's headings can only name
+ * keys its rows actually have.
+ */
+interface TableFixture<Row> {
+  headings: Array<{ displayName: string; propName: keyof Row & string; bodyComponent?: string }>;
+  data: Row[];
+}
+
+interface FoundingDocument {
+  documentTitle: string;
+  description: string;
+  links: React.ReactElement;
+  year: string;
+}
+
+interface PersonRecord {
+  name: string;
+  street: string;
+  zipcode: string;
+  employer: string;
+  industry: string;
+}
+
+const tableTemplateData: TableFixture<FoundingDocument> = {
   headings: [
     { displayName: 'Document title', propName: 'documentTitle' },
     { displayName: 'Description', propName: 'description' },
@@ -80,7 +106,7 @@ const tableTemplateData = {
   ],
 };
 
-const multiHeaderTableData = {
+const multiHeaderTableData: TableFixture<PersonRecord> = {
   headings: [
     { displayName: 'Name', propName: 'name', bodyComponent: 'th' },
     { displayName: 'Street', propName: 'street' },
@@ -179,7 +205,7 @@ export const MultiHeaderTable: Story = {
             <TableRow key={index}>
               {multiHeaderTableData.headings.map((heading) => (
                 <TableCell
-                  key={`${heading.displayName}-${dataItem[heading.displayName]}`}
+                  key={`${heading.displayName}-${dataItem[heading.propName]}`}
                   component={heading.bodyComponent || ('td' as any)}
                 >
                   {dataItem[heading.propName]}

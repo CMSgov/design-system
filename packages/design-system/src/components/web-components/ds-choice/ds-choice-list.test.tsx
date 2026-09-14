@@ -1,10 +1,11 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { ChoiceListProps } from '../../ChoiceList/ChoiceList';
 import './ds-choice-list';
 import './ds-choice';
 
-function generateChoices(length: number, customProps = {}) {
-  const choices = [];
+function generateChoices(length: number, customProps = {}): ChoiceListProps['choices'] {
+  const choices: ChoiceListProps['choices'] = [];
 
   for (let i = 0; i < length; i++) {
     choices.push({
@@ -26,7 +27,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     'error-message': 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio',
-    'ds-change': () => null,
+    'ds-change': (): void => null,
     ...customProps,
   };
   return {

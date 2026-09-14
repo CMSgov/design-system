@@ -37,7 +37,13 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = ({ 'text content': text, ...args }) => <ds-label {...args}>{text}</ds-label>;
+// TODO: type these args as React.JSX.IntrinsicElements['ds-label'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = ({ 'text content': text, ...args }: Args) => <ds-label {...args}>{text}</ds-label>;
 
 export const Default = {
   render: Template,

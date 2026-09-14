@@ -22,7 +22,13 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => <ds-usa-banner {...args} />;
+// TODO: type these args as React.JSX.IntrinsicElements['ds-usa-banner'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = (args: Args) => <ds-usa-banner {...args} />;
 
 export const Default = {
   render: Template,

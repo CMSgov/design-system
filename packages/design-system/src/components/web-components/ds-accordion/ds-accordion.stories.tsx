@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { webComponentDecorator } from '../storybook';
@@ -38,7 +39,7 @@ export default {
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+const Template = (args: React.JSX.IntrinsicElements['ds-accordion']) => {
   useEffect(() => {
     const accordionItems = Array.from(document.querySelectorAll('ds-accordion-item'));
     accordionItems.forEach((item) => {

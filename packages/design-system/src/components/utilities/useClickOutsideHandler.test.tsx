@@ -2,7 +2,11 @@ import { useRef } from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { useClickOutsideHandler } from './useClickOutsideHandler';
 
-const TestComponentWithHook = ({ callbackFn }) => {
+const TestComponentWithHook = ({
+  callbackFn,
+}: {
+  callbackFn: Parameters<typeof useClickOutsideHandler>[1];
+}) => {
   const divRef = useRef(null);
 
   useClickOutsideHandler([divRef], callbackFn);

@@ -40,12 +40,12 @@ const meta: Meta<typeof Autocomplete> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof Autocomplete>;
+type Story = StoryObj<AutocompleteArgs>;
 
-const Template = (args) => {
+const Template = (args: AutocompleteArgs) => {
   const { items, textFieldLabel, textFieldHint, ...autocompleteArgs } = args;
   const [input, setInput] = useState('');
-  const onInputValueChange = (...args) => {
+  const onInputValueChange: AutocompleteProps['onInputValueChange'] = (...args) => {
     action('onInputValueChange')(args);
     setInput(args[0]);
   };
@@ -53,7 +53,7 @@ const Template = (args) => {
   if (input.length > 0) {
     filteredItems = items
       .map((item) => {
-        if (item.label && item.items) {
+        if ('items' in item) {
           // Handle grouped items
           const filteredGroupItems = item.items.filter(
             (groupItem) =>
@@ -301,7 +301,7 @@ export const AsyncItems: Story = {
       []
     );
 
-    const onInputValueChange = (...args) => {
+    const onInputValueChange: AutocompleteProps['onInputValueChange'] = (...args) => {
       action('onInputValueChange')(args);
       setInput(args[0]);
       if (input.length > 2 && input !== args[0]) {

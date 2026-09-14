@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import type { Meta } from '@storybook/react-webpack5';
 import { useEffect } from 'react';
 import { action } from 'storybook/actions';
@@ -75,21 +76,27 @@ The \`ds-tabs\` component accepts regular \`<ds-tab-panel>\` elements as childre
 
 export default meta;
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-tabs'];
+type TabsChangeEvent = CustomEvent<{ selectedId: string; prevSelectedId: string }>;
+
+const Template = (args: Args) => {
   useEffect(() => {
     const element = document.querySelector('ds-tabs');
-    const handleStorybookChange = (event) => {
+    const handleStorybookChange = (event: TabsChangeEvent) => {
       const { selectedId, prevSelectedId } = event.detail;
       action('ds-change')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
     };
 
-    element.addEventListener('ds-change', handleStorybookChange);
+    element.addEventListener('ds-change', handleStorybookChange as EventListener);
     return () => {
-      element.removeEventListener('ds-change', handleStorybookChange);
+      element.removeEventListener('ds-change', handleStorybookChange as EventListener);
     };
   }, []);
+  // TODO: drop this cast with https://jira.cms.gov/browse/CMSDS-4614. This element's props
+  // collapse to an index signature of `[x: string]: string`, which rejects both the spread of
+  // its own props type and the element children nested below.
   return (
-    <ds-tabs {...args}>
+    <ds-tabs {...(args as any)}>
       <ds-tab-panel key="summary" id="summary" tab="Summary">
         <p>The Bill of Rights is the first ten amendments to the United States Constitution.</p>
         <ds-button variation="solid" type="button" className="ds-u-margin-top--2">
@@ -146,22 +153,25 @@ const Template = (args) => {
   );
 };
 
-const DisabledTemplate = (args) => {
+const DisabledTemplate = (args: Args) => {
   useEffect(() => {
     const element = document.querySelector('ds-tabs');
 
-    const handleStorybookChange = (event) => {
+    const handleStorybookChange = (event: TabsChangeEvent) => {
       const { selectedId, prevSelectedId } = event.detail;
       action('ds-cshange')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
     };
 
-    element.addEventListener('ds-change', handleStorybookChange);
+    element.addEventListener('ds-change', handleStorybookChange as EventListener);
     return () => {
-      element.removeEventListener('ds-change', handleStorybookChange);
+      element.removeEventListener('ds-change', handleStorybookChange as EventListener);
     };
   }, []);
+  // TODO: drop this cast with https://jira.cms.gov/browse/CMSDS-4614. This element's props
+  // collapse to an index signature of `[x: string]: string`, which rejects both the spread of
+  // its own props type and the element children nested below.
   return (
-    <ds-tabs {...args}>
+    <ds-tabs {...(args as any)}>
       <ds-tab-panel key="summary" id="summary" tab="Summary">
         The Bill of Rights is the first ten amendments to the United States Constitution.
       </ds-tab-panel>

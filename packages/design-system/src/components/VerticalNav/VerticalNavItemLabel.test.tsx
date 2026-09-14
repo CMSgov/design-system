@@ -84,7 +84,7 @@ describe('VerticalNavItemLabel', () => {
   });
 
   describe('with subnav', () => {
-    let props;
+    let props: Partial<VerticalNavItemLabelProps>;
 
     beforeEach(() => {
       props = { hasSubnav: true };
