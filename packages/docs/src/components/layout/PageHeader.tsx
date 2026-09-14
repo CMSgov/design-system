@@ -1,4 +1,5 @@
-import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import { ComponentLinksInterface, FrontmatterInterface } from '../../helpers/graphQLTypes';
+import type { ThemeName } from '../../helpers/themeTokens';
 import { linkAnalytics } from '../../helpers/analytics';
 import StatusIndicator from './StatusIndicator';
 import ThemeContent from '../content/ThemeContent';
@@ -18,7 +19,7 @@ type PageHeaderProps = {
  * Page header component that shows the page title and other details
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
-  const [themeLinks, setThemeLinks] = useState(undefined);
+  const [themeLinks, setThemeLinks] = useState<ComponentLinksInterface>(undefined);
   const { title, core, intro, status } = frontmatter;
   const level = status?.level;
   const note = status?.note;
@@ -34,7 +35,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   // Tricks gatsby into re-rendering based on updated theme and frontmatter data
   // Similar issue and debugging strategies found here: https://github.com/gatsbyjs/gatsby/issues/12413
   useEffect(() => {
-    const links = frontmatter[theme];
+    const links = frontmatter[theme as ThemeName];
     setThemeLinks(links);
   }, [frontmatter, theme]);
 
