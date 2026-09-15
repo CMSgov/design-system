@@ -88,30 +88,3 @@ svg {
   line-height: 20px;
   margin-bottom: $spacer-1;
 }
-
-.mct-p1,
-.ds-text-body--lg,
-.mct-p2,
-.ds-text-body--md,
-.mct-p3,
-.ds-text-body--sm {
-  margin-top: 0;
-}
-
-.mct-p1,
-.ds-text-body--lg {
-  line-height: 28px;
-  margin-bottom: 12px;
-}
-
-.mct-p2,
-.ds-text-body--md {
-  line-height: $spacer-3;
-  margin-bottom: $spacer-1;
-}
-
-.mct-p3,
-.ds-text-body--sm {
-  line-height: 20px;
-  margin-bottom: $spacer-1;
-}
