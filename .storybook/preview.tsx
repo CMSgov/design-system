@@ -6,11 +6,11 @@ import { setLanguage } from '../packages/design-system/src/components/i18n';
 import { setLanguage as setLanguageFromPackage } from '@cmsgov/design-system';
 import themes from '../themes.json';
 import type { UtagContainer } from '@cmsgov/design-system';
-import type { Preview } from '@storybook/react-webpack5';
+import type { Decorator, Preview } from '@storybook/react-webpack5';
 import cmsTheme from './cmsTheme';
 
 // Rewire analytics events to log to the console
-let originalUtag;
+let originalUtag: UtagContainer['utag'];
 function mockUtag() {
   originalUtag = (window as UtagContainer).utag;
   (window as UtagContainer).utag = {
@@ -68,7 +68,7 @@ const breakpointViewportSizes = {
   },
 };
 
-const onDarkDecorator = (Story, context) => {
+const onDarkDecorator: Decorator = (Story, context) => {
   let className;
   if (context.parameters.onDark) {
     className = 'ds-base--inverse on-dark-story';
@@ -82,7 +82,7 @@ const onDarkDecorator = (Story, context) => {
   );
 };
 
-const themeSettingDecorator = (Story, context) => {
+const themeSettingDecorator: Decorator = (Story, context) => {
   const { parameters, globals } = context;
   // Prefer the story parameter setting, which is for components that are
   // specific to a brand and only make sense when viewed in that brand theme
@@ -102,7 +102,7 @@ const themeSettingDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-const languageSettingDecorator = (Story, context) => {
+const languageSettingDecorator: Decorator = (Story, context) => {
   const { language } = context.globals;
 
   // Yes, this is a side-effect in a render function, but it's the most performant way
@@ -116,7 +116,7 @@ const languageSettingDecorator = (Story, context) => {
   return <Story {...context} />;
 };
 
-const analyticsSettingsDecorator = (Story, context) => {
+const analyticsSettingsDecorator: Decorator = (Story, context) => {
   const { analytics } = context.globals;
 
   let on = false;
@@ -186,7 +186,7 @@ const preview: Preview = {
       defaultValue: 'core',
       toolbar: {
         icon: 'paintbrush',
-        items: Object.keys(themes).map((key) => ({
+        items: (Object.keys(themes) as Array<keyof typeof themes>).map((key) => ({
           value: key,
           title: `${themes[key].displayName} theme`,
         })),

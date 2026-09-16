@@ -34,7 +34,7 @@ export interface ActionMenuProps {
  * button, and the logged-out variation only displays it on mobile.
  */
 const ActionMenu = function (props: ActionMenuProps) {
-  function onClick(event) {
+  function onClick(event: SyntheticEvent) {
     sendHeaderEvent(props.open ? 'menu closed' : 'menu opened');
     props.onMenuToggleClick(event);
   }

@@ -158,7 +158,7 @@ const formatters = {
 
         return {
           key,
-          label: labelLookup[key] as string,
+          label: labelLookup[key as keyof typeof labelLookup] as string,
           value: formatters.attributes(value),
         };
       });
@@ -207,7 +207,7 @@ const determineComponentUsage = ({
 const getHexCodesByColorNames = (colorNames: string[]) => {
   return colorNames
     .map((colorName) => {
-      const systemColorToken: Token = systemTokens.color[colorName];
+      const systemColorToken = systemTokens.color[colorName as keyof typeof systemTokens.color];
       const systemHexCodes = Object.entries(systemColorToken)
         .filter(([key]) => !key.includes('alpha'))
         .map(([, token]) => ({

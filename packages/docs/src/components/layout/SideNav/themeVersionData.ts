@@ -6,7 +6,7 @@ import themes from '../../../../../../themes.json';
 import versions from '../../../../../../versions.json';
 
 export function getThemeData(theme: string) {
-  return themes[theme];
+  return themes[theme as keyof typeof themes];
 }
 
 const themeOptions = Object.keys(themes).map((key) => ({
@@ -19,11 +19,11 @@ export function getThemeOptions() {
 }
 
 export function getThemeVersions(theme: string) {
-  return versions[themes[theme].packageName];
+  return versions[getThemeData(theme).packageName as keyof typeof versions];
 }
 
 export function getLatestThemeVersion(theme: string) {
-  return versions[themes[theme].packageName][0];
+  return getThemeVersions(theme)[0];
 }
 
 export function getVersionOptions(theme: string) {

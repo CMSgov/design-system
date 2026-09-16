@@ -1,6 +1,6 @@
 const spacerOpts = ['0', '05', '1', '2', '3', '4', '5', '6', '7'];
 
-const PaddingSpacingExample = ({ propName }) => {
+const PaddingSpacingExample = ({ propName }: { propName: string }) => {
   return spacerOpts.map((spacerVal) => {
     const cssClass = `ds-u-${propName}--${spacerVal}`;
     return (
