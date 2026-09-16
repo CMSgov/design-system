@@ -1,7 +1,8 @@
+import type { TFunction } from '@cmsgov/design-system';
 import DeConsumerMessage from './DeConsumerMessage';
 import { render } from '@testing-library/react';
 
-const t = (key, data) => key + (data ? ` | ${JSON.stringify(data)}` : '');
+const t: TFunction = (key, data) => key + (data ? ` | ${JSON.stringify(data)}` : '');
 
 describe('DeConsumerMessage', function () {
   it('renders message with broker name', () => {

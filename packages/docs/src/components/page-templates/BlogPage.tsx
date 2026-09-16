@@ -51,7 +51,7 @@ const BlogPage = ({ data, location, children }: MdxQuery) => {
   );
 };
 
-export const Head = ({ data, location }) => {
+export const Head = ({ data, location }: MdxQuery) => {
   const {
     frontmatter,
     fields: { slug },
