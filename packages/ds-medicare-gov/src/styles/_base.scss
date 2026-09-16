@@ -81,10 +81,12 @@ svg {
 
 .ds-text-heading--md {
   line-height: var(--font-line-height-base);
+  line-height: var(--font-line-height-base);
   margin-bottom: $spacer-2;
 }
 
 .ds-text-heading--sm {
+  line-height: var(--font-line-height-base);
   line-height: var(--font-line-height-base);
   margin-bottom: $spacer-1;
 }
