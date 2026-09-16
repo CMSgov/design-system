@@ -50,41 +50,41 @@ svg {
 }
 
 .ds-text-heading--3xl {
-  line-height: $spacer-5;
+  line-height: var(--font-line-height-heading-lg);
   margin-bottom: 44px;
 
   @media screen and (min-width: $media-width-md) {
-    line-height: $spacer-6;
+    line-height: var(--font-line-height-heading-lg);
     margin-bottom: 52px;
   }
 }
 
 .ds-text-heading--2xl {
-  line-height: $spacer-5;
+  line-height: var(--font-line-height-heading);
   margin-bottom: 44px;
 
   @media screen and (max-width: $media-width-md) {
-    line-height: $spacer-5;
+    line-height: var(--font-line-height-heading);
     margin-bottom: 44px;
   }
 }
 
 .ds-text-heading--xl {
-  line-height: $spacer-4;
+  line-height: var(--font-line-height-heading);
   margin-bottom: $spacer-4;
 }
 
 .ds-text-heading--lg {
-  line-height: 28px;
+  line-height: var(--font-line-height-lead);
   margin-bottom: $spacer-3;
 }
 
 .ds-text-heading--md {
-  line-height: $spacer-3;
+  line-height: var(--font-line-height-base);
   margin-bottom: $spacer-2;
 }
 
 .ds-text-heading--sm {
-  line-height: 20px;
+  line-height: var(--font-line-height-base);
   margin-bottom: $spacer-1;
 }
