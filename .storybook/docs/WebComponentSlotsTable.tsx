@@ -1,9 +1,10 @@
 import { useOf } from '@storybook/addon-docs/blocks';
+import type { Of } from '@storybook/addon-docs/blocks';
 
 /**
  * A table documenting a web component's available slots
  */
-export const WebComponentSlotsTable = ({ of }) => {
+export const WebComponentSlotsTable = ({ of }: { of?: Of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;

@@ -30,24 +30,28 @@ const InlineLinkLists = function ({ primaryDomain = '' }: InlineLinkListsProps) 
     <div className="ds-l-container">
       <div className="hc-c-footer__site-links-row">
         <ul role="list" className="hc-c-footer__list">
-          {Object.getOwnPropertyNames(inlineLinksTop).map(function (key, index) {
-            const entry = inlineLinksTop[key];
-            const isUrl = typeof entry === 'string';
-            const linkText = t(key);
-            const isLastItem = index !== Object.getOwnPropertyNames(inlineLinksTop).length - 1;
-            return (
-              <li key={key} className={inlineLiClasses}>
-                {isUrl ? (
-                  <a href={entry} onClick={() => sendFooterLinkEvent(linkText, entry)}>
-                    {linkText}
-                  </a>
-                ) : (
-                  entry
-                )}
-                {isLastItem ? <span aria-hidden="true" className="hc-c-footer__delimiter" /> : null}
-              </li>
-            );
-          })}
+          {(Object.getOwnPropertyNames(inlineLinksTop) as Array<keyof typeof inlineLinksTop>).map(
+            function (key, index) {
+              const entry = inlineLinksTop[key];
+              const isUrl = typeof entry === 'string';
+              const linkText = t(key);
+              const isLastItem = index !== Object.getOwnPropertyNames(inlineLinksTop).length - 1;
+              return (
+                <li key={key} className={inlineLiClasses}>
+                  {isUrl ? (
+                    <a href={entry} onClick={() => sendFooterLinkEvent(linkText, entry)}>
+                      {linkText}
+                    </a>
+                  ) : (
+                    entry
+                  )}
+                  {isLastItem ? (
+                    <span aria-hidden="true" className="hc-c-footer__delimiter" />
+                  ) : null}
+                </li>
+              );
+            }
+          )}
         </ul>
       </div>
 
@@ -60,7 +64,9 @@ const InlineLinkLists = function ({ primaryDomain = '' }: InlineLinkListsProps) 
           aria-labelledby="hc-c-footer__language-resources"
           className="hc-c-footer__list"
         >
-          {Object.getOwnPropertyNames(languages).map(function (lang) {
+          {(Object.getOwnPropertyNames(languages) as Array<keyof typeof languages>).map(function (
+            lang
+          ) {
             const linkUrl = primaryDomain + languages[lang].href;
             const linkText = languages[lang].label;
             const handleClick = () => sendFooterLinkEvent(linkText, linkUrl, 'Language resources');

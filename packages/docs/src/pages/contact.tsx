@@ -42,7 +42,7 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data, location }) => {
+export const Head = ({ data, location }: MdxQuery) => {
   const {
     frontmatter,
     fields: { slug },

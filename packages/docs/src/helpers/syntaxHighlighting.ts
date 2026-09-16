@@ -3,7 +3,7 @@ import parserBabel from 'prettier/parser-babel';
 import parserHtml from 'prettier/parser-html';
 import prettier from 'prettier';
 
-export function highlightHtmlSyntax(code) {
+export function highlightHtmlSyntax(code: string) {
   const prettyHtml = prettier.format(code, {
     htmlWhitespaceSensitivity: 'ignore',
     parser: 'html',
@@ -12,7 +12,7 @@ export function highlightHtmlSyntax(code) {
   return Prism.highlight(prettyHtml, Prism.languages.html, 'html');
 }
 
-export function highlightJsxSyntax(code) {
+export function highlightJsxSyntax(code: string) {
   const prettyJsx = prettier.format(code, {
     htmlWhitespaceSensitivity: 'ignore',
     parser: 'babel',
