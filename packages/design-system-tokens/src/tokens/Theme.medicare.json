@@ -992,6 +992,11 @@
         "$value": "{theme.color.gray-dark}"
       }
     },
+    "button-font-size": {
+      "large": {
+        "$value": "{theme.font.size.md}"
+      }
+    },
     "card": {
       "box-shadow": {
         "$value": "{theme.box-shadow}"
