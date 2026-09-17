@@ -1796,6 +1796,9 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --font-family-heading: 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-link: 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
 --font-family-pagination: 'Inter', 'Roboto', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', 'Arial', 'sans-serif';
+--font-letter-spacing-lg: -4%;
+--font-letter-spacing-md: -2%;
+--font-letter-spacing-sm: 0%;
 --font-line-height-base: 1.5;
 --font-line-height-heading-lg: 1.2;
 --font-line-height-heading: 1.3;
