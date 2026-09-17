@@ -103,13 +103,17 @@ svg {
 }
 
 @mixin heading--xl {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-xl--mobile);
   font-weight: var(--font-weight-heading-xl);
   line-height: var(--font-line-height-heading);
   letter-spacing: var(--font-letter-spacing-lg);
 
   @include heading;
   @include heading-margins;
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-xl);
+  }
 }
 
 @mixin heading--lg {
