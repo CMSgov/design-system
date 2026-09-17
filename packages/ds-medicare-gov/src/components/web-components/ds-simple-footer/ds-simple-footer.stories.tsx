@@ -77,7 +77,13 @@ const meta: Meta = {
   },
 };
 
-const Template = (args) => {
+// TODO: type these args as React.JSX.IntrinsicElements['ds-simple-footer'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = (args: Args) => {
   useEffect(() => {
     const footer = document.querySelector('ds-simple-footer');
     // Adding custom event listeners to open links in new tabs, allowing us to log and verify

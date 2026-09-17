@@ -1,13 +1,16 @@
 import systemTokens from 'design-system-tokens/src/tokens/System.Value.json';
 import ColorExampleRow from './ColorExampleRow';
 
-const swatches = Object.keys(systemTokens.color).map((swatchName) => {
+const colorNames = Object.keys(systemTokens.color) as Array<keyof typeof systemTokens.color>;
+
+const swatches = colorNames.map((swatchName) => {
   const color = systemTokens.color[swatchName];
   return {
     swatchName,
-    swatchColors: color.$value
-      ? [{ name: swatchName, value: color.$value }]
-      : Object.keys(color).map((name) => ({ name, value: color[name].$value })),
+    swatchColors:
+      '$value' in color
+        ? [{ name: swatchName, value: color.$value }]
+        : Object.entries(color).map(([name, token]) => ({ name, value: token.$value })),
   };
 });
 

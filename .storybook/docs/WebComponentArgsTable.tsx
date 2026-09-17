@@ -1,4 +1,5 @@
 import { Markdown, useOf } from '@storybook/addon-docs/blocks';
+import type { Of } from '@storybook/addon-docs/blocks';
 import { Tabs, TabPanel } from '../../packages/design-system/src/components';
 
 function optToCodeBlock(opt: undefined | string) {
@@ -6,8 +7,9 @@ function optToCodeBlock(opt: undefined | string) {
   return <code>{formattedOpt}</code>;
 }
 
-function getTypeLabel(argType: any) {
-  const controlType = argType.control?.type ?? argType.control;
+function getTypeLabel(argType: ArgType) {
+  const control = argType.control;
+  const controlType = typeof control === 'string' ? control : control?.type;
   const options = argType?.options;
   if (options) {
     return options.filter((type) => type).map((type) => <code>{type}</code>);
@@ -97,7 +99,7 @@ function generateTable(args: Record<string, ArgType>): React.ReactElement {
 /**
  * A table documenting a web component's supported attributes
  */
-export const WebComponentArgsTable = ({ of }) => {
+export const WebComponentArgsTable = ({ of }: { of?: Of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   const argTypes = resolvedOf.type === 'story' ? resolvedOf.story.argTypes : {};
   const subcomponents = resolvedOf.type === 'story' ? resolvedOf.story.subcomponents : undefined;

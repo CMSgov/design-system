@@ -15,17 +15,21 @@ const figmaDocumentIdAndLibraryName = {
 };
 
 // creates links to Figma pages in specific libaries based on theme
-export function makeFigmaUrl(nodeId = '', theme) {
+export function makeFigmaUrl(nodeId = '', theme: string) {
   const figmaURL = 'https://www.figma.com/design/';
-  return join(figmaURL, figmaDocumentIdAndLibraryName[theme], `?node-id=${nodeId}`);
+  return join(
+    figmaURL,
+    figmaDocumentIdAndLibraryName[theme as keyof typeof figmaDocumentIdAndLibraryName],
+    `?node-id=${nodeId}`
+  );
 }
 
 // creates links to storybook story
-export function makeStorybookUrl(storyId, theme, storyType = 'story') {
+export function makeStorybookUrl(storyId: string, theme: string, storyType = 'story') {
   return withPrefix(`/storybook/?path=/${storyType}/${storyId}&globals=theme:${theme}`);
 }
 
-export function makePageUrl(fileRelativePath, location: LocationInterface) {
+export function makePageUrl(fileRelativePath: string, location: LocationInterface) {
   return join(
     '/',
     fileRelativePath.replace('index.mdx', '').replace('.mdx', ''),
