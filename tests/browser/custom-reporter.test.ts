@@ -3,30 +3,32 @@ import path from 'path';
 import MyReporter from './custom-reporter';
 import { Suite, TestCase, TestResult, FullResult, FullConfig } from '@playwright/test/reporter';
 
-test('JSON report matches snapshot', () => {
-  const mockConfig: FullConfig = {
-    forbidOnly: false,
-    fullyParallel: false,
-    globalSetup: null,
-    globalTeardown: null,
-    maxFailures: 0,
-    projects: [],
-    reporter: [],
-    reportSlowTests: null,
-    rootDir: './',
-    quiet: false,
-    shard: null,
-    updateSnapshots: 'missing',
-    version: '1.0',
-    workers: 1,
-    globalTimeout: 0,
-    grep: /.*/,
-    grepInvert: null,
-    metadata: {},
-    preserveOutput: 'always',
-    webServer: null,
-  };
+const mockConfig: FullConfig = {
+  forbidOnly: false,
+  fullyParallel: false,
+  globalSetup: null,
+  globalTeardown: null,
+  maxFailures: 0,
+  projects: [],
+  reporter: [],
+  reportSlowTests: null,
+  rootDir: './',
+  quiet: false,
+  shard: null,
+  updateSnapshots: 'missing',
+  version: '1.0',
+  workers: 1,
+  globalTimeout: 0,
+  grep: /.*/,
+  grepInvert: null,
+  metadata: {},
+  preserveOutput: 'always',
+  webServer: null,
+};
 
+const reportPath = path.resolve(__dirname, 'test-results/testing/test-report.json');
+
+test('JSON report matches snapshot', () => {
   const mockSuite = {
     title: 'Sample Suite',
     allTests: () => [
@@ -34,11 +36,13 @@ test('JSON report matches snapshot', () => {
         title: 'Test 1',
         location: { file: 'sample-suite.test.ts' },
         parent: { title: 'Sample Suite', parent: null },
+        outcome: () => 'expected',
       },
       {
         title: 'Test 2',
         location: { file: 'sample-suite.test.ts' },
         parent: { title: 'Sample Suite', parent: null },
+        outcome: () => 'unexpected',
       },
     ],
   } as unknown as Suite;
@@ -62,9 +66,36 @@ test('JSON report matches snapshot', () => {
   };
   reporter.onEnd(mockResult);
 
-  const reportDirectory = path.resolve(__dirname, 'test-results/testing');
-  const reportPath = path.resolve(reportDirectory, 'test-report.json');
   const generatedReport = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
 
   expect(generatedReport).toMatchSnapshot();
+});
+
+test('does not report a failure when a test fails and then passes on retry', () => {
+  const flakyTest = {
+    title: 'Flaky test',
+    location: { file: 'sample-suite.test.ts' },
+    parent: { title: 'Sample Suite', parent: null },
+    outcome: () => 'flaky',
+  } as unknown as TestCase;
+
+  const mockSuite = {
+    title: 'Sample Suite',
+    allTests: () => [flakyTest],
+  } as unknown as Suite;
+
+  const reporter = new MyReporter();
+  reporter.onBegin(mockConfig, mockSuite);
+
+  // Playwright calls onTestEnd once per attempt, so a retried test reports twice.
+  reporter.onTestEnd(flakyTest, { status: 'failed', retry: 0 } as TestResult);
+  reporter.onTestEnd(flakyTest, { status: 'passed', retry: 1 } as TestResult);
+
+  // A run whose only failure recovered on retry ends as passed.
+  reporter.onEnd({ status: 'passed', startTime: new Date(), duration: 0 } as FullResult);
+
+  const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
+
+  expect(report.summary.failed).toBe(0);
+  expect(report.failingTests).toEqual([]);
 });
