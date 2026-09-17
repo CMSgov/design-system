@@ -387,6 +387,20 @@
         "bold": {
           "$value": "{font.weight.600}"
         }
+      },
+      "letter-spacing": {
+        "lg": {
+          "$value": "-4%",
+          "$type": "dimension"
+        },
+        "md": {
+          "$value": "-2%",
+          "$type": "dimension"
+        },
+        "sm": {
+          "$value": "0%",
+          "$type": "dimension"
+        }
       }
     }
   },

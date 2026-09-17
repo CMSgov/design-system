@@ -1,9 +1,10 @@
 import { Markdown, useOf } from '@storybook/addon-docs/blocks';
+import type { Of } from '@storybook/addon-docs/blocks';
 
 /**
  * A table documenting a web component's custom events
  */
-export const WebComponentEventsTable = ({ of }) => {
+export const WebComponentEventsTable = ({ of }: { of?: Of }) => {
   const resolvedOf = useOf(of || 'story', ['story', 'meta']);
   if (resolvedOf.type !== 'story') {
     return null;

@@ -1,3 +1,4 @@
+import type { MouseEvent } from 'react';
 import classnames from 'classnames';
 import { DefaultLink, LinkIdentifier } from './defaultMenuLinks';
 import { Link } from './Header';
@@ -19,7 +20,7 @@ const MenuLinks = (props: MenuLinksProps) => (
       const isLoginLogoutLink =
         (link as DefaultLink).identifier === LinkIdentifier.LOGIN ||
         (link as DefaultLink).identifier === LinkIdentifier.LOGOUT;
-      function onClick(event) {
+      function onClick(event: MouseEvent<HTMLAnchorElement>) {
         // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
         // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
         // can't actually be coerced into a string. We've had to do a lot of extra work in
