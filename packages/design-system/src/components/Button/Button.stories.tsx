@@ -78,9 +78,6 @@ export const VariationsOnDark: Story = {
   render: () => (
     <>
       <Button onDark>Outline</Button>
-      <Button onDark isAlternate>
-        Alternate
-      </Button>
       <Button onDark variation="solid">
         Solid
       </Button>
