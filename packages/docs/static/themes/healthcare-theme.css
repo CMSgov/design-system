@@ -25,6 +25,7 @@
 --spacer-5: 40px;
 --spacer-6: 48px;
 --spacer-7: 56px;
+--spacer-1-plus-half: 12px;
 --spacer-none: 0px;
 --spacer-half: 4px;
 --grid-columns: 12;
@@ -339,6 +340,8 @@
 --button-ghost-dark-alt__color--hover: var(--color-gray-lightest);
 --button-ghost-dark-alt__color--disabled: var(--color-gray-dark);
 --button-font-size__large: var(--font-size-xl);
+--button-padding-block__small: var(--spacer-half);
+--button-padding-inline__small: var(--spacer-1);
 --card__box-shadow: var(--box-shadow);
 --choice__background-color: var(--color-background);
 --choice__background-color--checked: var(--color-primary);

@@ -997,6 +997,16 @@
         "$value": "{theme.font.size.md}"
       }
     },
+    "button-padding-block": {
+      "small": {
+        "$value": "{spacer.1-plus-half}"
+      }
+    },
+    "button-padding-inline": {
+      "small": {
+        "$value": "{spacer.3}"
+      }
+    },
     "card": {
       "box-shadow": {
         "$value": "{theme.box-shadow}"
