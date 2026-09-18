@@ -554,7 +554,7 @@
         "$value": "{theme.color.primary-lightest}"
       },
       "background-color--disabled": {
-        "$value": "{theme.color.white}"
+        "$value": "{theme.color.gray-lighter}"
       },
       "border-color": {
         "$value": "{theme.color.primary}"
@@ -585,7 +585,7 @@
         "$value": "{theme.color.primary}"
       },
       "color--disabled": {
-        "$value": "{theme.color.gray-lighter}"
+        "$value": "{theme.color.gray-dark}"
       }
     },
     "button-alt": {
@@ -599,7 +599,7 @@
         "$value": "{theme.color.primary-lightest}"
       },
       "background-color--disabled": {
-        "$value": "{theme.color.white}"
+        "$value": "{theme.color.gray-lighter}"
       },
       "border-color": {
         "$value": "{theme.color.primary}"
@@ -623,7 +623,7 @@
         "$value": "{theme.color.primary}"
       },
       "color--disabled": {
-        "$value": "{theme.color.gray-lighter}"
+        "$value": "{theme.color.gray-dark}"
       }
     },
     "button-dark": {
@@ -666,7 +666,7 @@
     },
     "button-dark-alt": {
       "background-color": {
-        "$value": "{theme.color.primary-darkest}"
+        "$value": "{theme.color.white}"
       },
       "background-color--active": {
         "$value": "{theme.color.primary}"
@@ -678,7 +678,7 @@
         "$value": "{theme.color.gray-lighter}"
       },
       "border-color": {
-        "$value": "{theme.color.white}"
+        "$value": "{theme.color.transparent}"
       },
       "border-color--active": {
         "$value": "{theme.color.transparent}"
@@ -690,7 +690,7 @@
         "$value": "{theme.color.transparent}"
       },
       "color": {
-        "$value": "{theme.color.white}"
+        "$value": "{theme.color.primary}"
       },
       "color--active": {
         "$value": "{theme.color.white}"
