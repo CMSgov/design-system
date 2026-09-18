@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Accordion, AccordionProps } from '../../Accordion';
+import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = ['class-name', 'bordered'] as const;
 
@@ -24,7 +25,7 @@ interface WrapperProps extends Omit<AccordionProps, 'bordered'> {
 }
 
 const Wrapper = ({ bordered, ...otherProps }: WrapperProps) => (
-  <Accordion {...otherProps} bordered={bordered && Boolean(JSON.parse(bordered))} />
+  <Accordion {...otherProps} bordered={parseBooleanAttr(bordered)} />
 );
 
 define('ds-accordion', () => Wrapper, { attributes, shadow: true });
