@@ -30,18 +30,18 @@ declare global {
 /* eslint-enable */
 
 function findAccordionAncestor(el: Element): Element | undefined {
-  let parentAccordion;
+  // An element with no parent element — one whose parent is a shadow root, or one that
+  // is not attached — has no ancestor to find, so the walk has to test before it reads.
   let parentElement = el.parentElement;
 
-  do {
+  while (parentElement != null) {
     if (parentElement.tagName === 'DS-ACCORDION') {
-      parentAccordion = parentElement;
-      break;
+      return parentElement;
     }
     parentElement = parentElement.parentElement;
-  } while (parentElement != null);
+  }
 
-  return parentAccordion;
+  return undefined;
 }
 
 interface WrapperProps extends Omit<AccordionItemProps, 'defaultOpen'> {
@@ -58,7 +58,9 @@ const Wrapper = ({
   ...otherProps
 }: WrapperProps) => {
   const parentAccordion = findAccordionAncestor(customElement);
-  const bordered = parseBooleanAttr(parentAccordion?.getAttribute('bordered'));
+  // `getAttribute` reports a missing attribute as `null`, which `parseBooleanAttr` would
+  // otherwise read as a value that is present.
+  const bordered = parseBooleanAttr(parentAccordion?.getAttribute('bordered') ?? undefined);
 
   return (
     <AccordionItem
