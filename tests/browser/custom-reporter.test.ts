@@ -96,6 +96,7 @@ test('does not report a failure when a test fails and then passes on retry', () 
 
   const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
 
-  expect(report.summary.failed).toBe(0);
+  // The retried test is counted once, as a pass, so the counts still add up to the one test run.
+  expect(report.summary).toEqual({ passed: 1, failed: 0, skipped: 0 });
   expect(report.failingTests).toEqual([]);
 });
