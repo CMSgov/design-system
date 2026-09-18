@@ -1062,6 +1062,10 @@
       "$value": "8px",
       "$type": "dimension"
     },
+    "1-plus-half": {
+      "$value": "12px",
+      "$type": "dimension"
+    },
     "2": {
       "$value": "16px",
       "$type": "dimension"

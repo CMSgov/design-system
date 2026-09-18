@@ -329,12 +329,12 @@
   --fontWeight: var(--font-weight-button-lg);
   --space: #{$spacer-2 $spacer-3};
 
-  font-size: var(--font-size-xl);
+  font-size: var(--button-font-size__large);
 }
 
 .ds-c-button--small {
   --fontWeight: var(--font-weight-button-sm);
-  --space: #{$spacer-half $spacer-1};
+  --space: var(--button-padding-block__small) var(--button-padding-inline__small);
 
   font-size: var(--font-size-sm);
 }
