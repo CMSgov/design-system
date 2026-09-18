@@ -126,11 +126,22 @@ svg {
   @include heading-margins;
 }
 
-@mixin heading--sm {
+@mixin heading--md {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-heading-sm);
+  font-weight: var(--font-weight-heading-md);
   line-height: var(--font-line-height-heading);
   letter-spacing: var(--font-letter-spacing-md);
+  color: var(--color-black);
+
+  @include heading;
+  @include heading-margins;
+}
+
+@mixin heading--sm {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-heading-sm);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-sm);
   color: var(--color-black);
 
   @include heading;
@@ -159,7 +170,7 @@ svg {
   }
 
   :where(h6) {
-    @include heading--sm;
+    @include heading--md;
   }
 }
 
@@ -227,9 +238,9 @@ svg {
 }
 
 .ds-text-heading--md {
-  line-height: var(--font-line-height-base);
-  letter-spacing: var(--font-letter-spacing-md);
   margin-bottom: $spacer-2;
+
+  @include heading--md;
 }
 
 .ds-text-heading--sm {
