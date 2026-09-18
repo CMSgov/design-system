@@ -12,7 +12,9 @@ export function parseIntegerAttr(attr?: string): number | undefined {
 }
 
 export function parseJsonAttr(attr?: string): any | string | undefined {
-  const isJsonString = (str?: string): boolean => {
+  if (attr === undefined) return undefined;
+
+  const isJsonString = (str: string): boolean => {
     try {
       JSON.parse(str);
     } catch (e) {
