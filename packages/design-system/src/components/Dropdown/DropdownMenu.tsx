@@ -15,7 +15,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   heading?: React.ReactNode;
   labelId?: string;
   menuId: string;
-  rootId?: string;
+  rootId: string;
   size?: DropdownSize;
   state: ListState<T> & OverlayTriggerState;
   triggerRef: AriaPopoverProps['triggerRef'];
