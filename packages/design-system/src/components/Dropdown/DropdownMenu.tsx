@@ -96,7 +96,7 @@ export function DropdownMenu<T>({
         {...listBoxProps}
         id={menuId}
         aria-invalid={ariaInvalid}
-        aria-labelledby={classNames(labelId, heading && headingId)}
+        aria-labelledby={classNames(labelId, heading ? headingId : undefined)}
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >
