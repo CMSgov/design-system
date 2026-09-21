@@ -226,7 +226,7 @@ export class DateInput extends PureComponent<DateInputProps> {
             ref.current = el;
           }
         }}
-        autoComplete={this.props.autoComplete && `bday-${type}`}
+        autoComplete={this.props.autoComplete ? `bday-${type}` : undefined}
         aria-invalid={this.props[`${type}Invalid`]}
       />
     );
