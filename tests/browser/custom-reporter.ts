@@ -28,6 +28,7 @@ class MyReporter implements Reporter {
   private totalTests = 0;
   private currentTestIndex = 0;
   private testGroup = '';
+  private suite: Suite | undefined;
 
   private getHierarchyPath(test: TestCase): string {
     const path: string[] = [];
@@ -49,6 +50,7 @@ class MyReporter implements Reporter {
 
   onBegin(config: FullConfig, suite: Suite) {
     this.testGroup = extractTestGroupFromConfigPath(config.configFile);
+    this.suite = suite;
     const totalFiles = new Set(suite.allTests().map((test) => test.location.file)).size;
     this.totalTests = suite.allTests().length;
 
@@ -69,7 +71,7 @@ class MyReporter implements Reporter {
     console.log(`Starting the run with ${suite.allTests().length} tests`);
   }
 
-  onTestBegin(_: TestCase) {
+  onTestBegin() {
     this.currentTestIndex++;
   }
 
@@ -78,27 +80,39 @@ class MyReporter implements Reporter {
 
     const hierarchyPath = this.getHierarchyPath(test);
 
-    switch (result.status) {
-      case 'passed':
-        this.passCount++;
-        break;
-      case 'failed':
-        this.failCount++;
-        this.failingTests.push({ path: hierarchyPath, name: test.title });
-        break;
-      case 'skipped':
-        this.skipCount++;
-        this.skippedTests.push({ path: hierarchyPath, name: test.title });
-        break;
-    }
-
     console.log(
       `[${this.currentTestIndex}/${this.totalTests}] ${hierarchyPath} > ${test.title}: ${result.status}`
     );
   }
 
+  // Playwright calls onTestEnd once per attempt, so counting there counts a retried test
+  // twice. A test's final outcome is only settled once every attempt has run.
+  private countOutcomes() {
+    for (const test of this.suite?.allTests() ?? []) {
+      const entry = { path: this.getHierarchyPath(test), name: test.title };
+
+      switch (test.outcome()) {
+        // A test that failed and then passed on retry is not a failure.
+        case 'expected':
+        case 'flaky':
+          this.passCount++;
+          break;
+        case 'unexpected':
+          this.failCount++;
+          this.failingTests.push(entry);
+          break;
+        case 'skipped':
+          this.skipCount++;
+          this.skippedTests.push(entry);
+          break;
+      }
+    }
+  }
+
   onEnd(result: FullResult) {
     if (this.isListMode) return;
+
+    this.countOutcomes();
 
     console.log(`Finished the run: ${result.status}`);
     console.log(`Summary:`);
