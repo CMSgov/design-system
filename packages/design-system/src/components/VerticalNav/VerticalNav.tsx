@@ -44,7 +44,7 @@ export interface VerticalNavProps {
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `id`, `url`
    */
-  onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
+  onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url?: string) => any;
 }
 
 /**
