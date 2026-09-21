@@ -24,9 +24,9 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
   /**
    * The type of element rendered ultimately depends on whether
    * this is meant to be a subnav toggle, link, or generic label
-   * @return {String} The type of HTML tag
+   * @return The tag name or component to render
    */
-  const componentType = (): string => {
+  const componentType = (): React.ElementType => {
     if (props.hasSubnav) {
       return 'button';
     } else if (props.component) {
@@ -40,7 +40,7 @@ export const VerticalNavItemLabel = (props: VerticalNavItemLabelProps): React.Re
 
   const LabelComponent = componentType();
 
-  const handleClick = (evt: React.MouseEvent | React.KeyboardEvent): void => props.onClick(evt);
+  const handleClick = (evt: React.MouseEvent | React.KeyboardEvent): void => props.onClick?.(evt);
 
   const commonProps = {
     className: classNames('ds-c-vertical-nav__label', {
