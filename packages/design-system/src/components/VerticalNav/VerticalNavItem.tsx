@@ -148,7 +148,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       const item = Object.assign({}, props);
       delete item.items;
 
-      return [item].concat(props.items);
+      return [item].concat(props.items ?? []);
     }
 
     return props.items;
