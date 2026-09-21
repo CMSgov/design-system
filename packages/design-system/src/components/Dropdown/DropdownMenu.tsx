@@ -63,8 +63,9 @@ export function DropdownMenu<T>({
   function handleTabKey(event: React.KeyboardEvent<HTMLDivElement>) {
     const TAB_KEY = 9;
     if (event.keyCode === TAB_KEY || event.key === 'Tab') {
-      if (!state.selectionManager.selectedKeys.has(state.selectionManager.focusedKey)) {
-        state.selectionManager.setSelectedKeys([state.selectionManager.focusedKey]);
+      const { focusedKey } = state.selectionManager;
+      if (focusedKey !== null && !state.selectionManager.selectedKeys.has(focusedKey)) {
+        state.selectionManager.setSelectedKeys([focusedKey]);
       }
     }
   }
