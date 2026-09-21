@@ -61,7 +61,7 @@ export const IdleTimeoutDialog = ({
   showSessionEndButton,
 }: IdleTimeoutDialogProps): React.ReactElement<any> => {
   const renderDialogActions = () => {
-    const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--2' : null;
+    const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--2' : undefined;
 
     return (
       <>
@@ -85,7 +85,9 @@ export const IdleTimeoutDialog = ({
     <Dialog
       alert
       id="session-timeout-dialog"
-      isOpen={isOpen}
+      // `Dialog` reads an absent `isOpen` as open, so match that rather than
+      // closing a dialog whose consumer never said either way.
+      isOpen={isOpen ?? true}
       heading={heading}
       actions={renderDialogActions()}
       onExit={onClose}
