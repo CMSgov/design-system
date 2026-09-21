@@ -153,7 +153,7 @@ export class DateInput extends PureComponent<DateInputProps> {
   dayInput: any;
   yearInput: any;
 
-  formatDate(): DateObject {
+  formatDate(): DateObject | undefined {
     if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
       const values = {
         month: this.monthInput.value,

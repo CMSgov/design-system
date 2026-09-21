@@ -209,6 +209,21 @@ describe('DateInput', () => {
       expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
+    it('hands the callbacks no date when there is no dateFormatter', async () => {
+      jest.useFakeTimers();
+      const { user } = renderDateInput(props);
+      const monthInput = screen.getByRole('textbox', { name: /month/i });
+      await user.type(monthInput, '1');
+      await user.tab();
+
+      // `dateFormatter` is what turns the three inputs into a formatted date,
+      // and it is optional, so a caller wiring up `DateInput` directly gets
+      // `undefined` as the second argument rather than a date.
+      expect(props.onChange).toHaveBeenCalledTimes(1);
+      expect(props.onChange.mock.calls[0][1]).toBeUndefined();
+      expect(props.onBlur.mock.calls[0][1]).toBeUndefined();
+    });
+
     it('formats the date as a single string', async () => {
       jest.useFakeTimers();
       const { user } = renderDateInput({
