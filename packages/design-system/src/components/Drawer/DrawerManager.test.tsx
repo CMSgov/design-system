@@ -21,6 +21,11 @@ const SingleDrawer = ({ heading }: { heading: string }) => {
   );
 };
 
+const UnmanagedDrawer = () => {
+  useDrawerManager();
+  return <></>;
+};
+
 function renderDrawerManager() {
   return {
     user: userEvent.setup(),
@@ -100,5 +105,16 @@ describe('DrawerManager', () => {
     });
 
     expect(getActiveHeading()).toHaveTextContent('drawer two');
+  });
+
+  it('says so when it is used outside a DrawerManager', () => {
+    // React logs the render error on its own; the assertion is the throw itself.
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => undefined);
+
+    expect(() => render(<UnmanagedDrawer />)).toThrow(
+      'useDrawerManager must be called inside a DrawerManager'
+    );
+
+    consoleError.mockRestore();
   });
 });
