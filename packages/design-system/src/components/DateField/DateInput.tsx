@@ -175,7 +175,7 @@ export class DateInput extends PureComponent<DateInputProps> {
   }
 
   handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
-    this.props.onChange(evt, this.formatDate());
+    this.props.onChange?.(evt, this.formatDate());
   }
 
   handleComponentBlur(evt: React.FocusEvent<HTMLInputElement>): void {
@@ -189,7 +189,7 @@ export class DateInput extends PureComponent<DateInputProps> {
         document.activeElement !== this.monthInput &&
         document.activeElement !== this.yearInput
       ) {
-        this.props.onComponentBlur(evt, this.formatDate());
+        this.props.onComponentBlur?.(evt, this.formatDate());
       }
     }, 20);
   }

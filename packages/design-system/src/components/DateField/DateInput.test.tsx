@@ -192,6 +192,23 @@ describe('DateInput', () => {
       expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
+    it('does not call onComponentBlur when it is removed before the timeout fires', async () => {
+      jest.useFakeTimers();
+      const onComponentBlur = jest.fn();
+      const { user, rerender } = renderDateInput({ ...props, onComponentBlur });
+      const lastInput = screen.getByRole('textbox', { name: /year/i });
+      await user.click(lastInput);
+      await user.tab();
+
+      // The handler waits 20ms to see where focus landed, and reads the callback
+      // off the current props when it wakes up. A re-render inside that window
+      // can take the callback away before it runs.
+      rerender(<DateInput {...defaultProps} {...props} />);
+
+      expect(() => jest.runAllTimers()).not.toThrow();
+      expect(onComponentBlur).not.toHaveBeenCalled();
+    });
+
     it('formats the date as a single string', async () => {
       jest.useFakeTimers();
       const { user } = renderDateInput({
