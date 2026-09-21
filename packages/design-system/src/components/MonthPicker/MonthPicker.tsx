@@ -95,7 +95,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
   const [selectedMonthsState, setSelectedMonthsState] = useState(defaultSelectedMonths ?? []);
-  const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
+  const selectedMonths = props.selectedMonths ?? selectedMonthsState;
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {
