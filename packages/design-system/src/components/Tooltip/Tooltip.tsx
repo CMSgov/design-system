@@ -297,7 +297,7 @@ export const Tooltip = (props: TooltipProps) => {
     );
   };
 
-  const renderContent = (props: TooltipProps): React.ReactElement<any> => {
+  const renderContent = (props: TooltipProps): React.ReactElement<any> | false => {
     const {
       closeButtonLabel,
       dialog,
@@ -375,7 +375,10 @@ export const Tooltip = (props: TooltipProps) => {
       {renderTrigger(props)}
       {dialog ? (
         <FloatingFocusManager context={context} initialFocus={refs.floating} guards={false}>
-          {renderContent(props)}
+          {/* `renderContent` is `false` once the tooltip has transitioned out, which
+              `FloatingFocusManager` cannot take as a child. The empty fragment keeps the
+              rendered markup as it is; see CMSDS-4639 for the focus guards it leaves behind. */}
+          {renderContent(props) || <></>}
         </FloatingFocusManager>
       ) : (
         renderContent(props)
