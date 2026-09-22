@@ -1220,6 +1220,9 @@
       "color--hover": {
         "$value": "{theme.color.primary-darker}"
       },
+      "font-weight": {
+        "$value": "{theme.font.weight.bold}"
+      },
       "icon": {
         "color": {
           "$value": "{theme.color.primary-darker}"

@@ -1184,6 +1184,9 @@
       "color--hover": {
         "$value": "{theme.color.white}"
       },
+      "font-weight": {
+        "$value": "{theme.font.weight.normal}"
+      },
       "icon": {
         "color": {
           "$value": "{theme.color.base}"
