@@ -28,6 +28,152 @@ svg {
  * Typography overrides
  */
 
+// Local copies of the core heading mixins (design-system/src/styles/_base.scss)
+// so raw h1–h6 in `.ds-content` can consume the Medicare type scale. Kept in this
+// file to keep the theme override self-contained.
+@mixin heading {
+  font-family: var(--font-family-heading);
+  margin: 0;
+}
+
+@mixin heading-margins {
+  margin-block: 1.5em 0.5em;
+
+  &:where(:first-child) {
+    margin-block-start: 0;
+  }
+
+  &:where(:last-child) {
+    margin-block-end: 0;
+  }
+}
+
+@mixin heading--5xl {
+  @include heading;
+
+  font-size: var(--font-size-5xl--mobile);
+  font-weight: var(--font-weight-heading-5xl);
+  line-height: var(--font-line-height-heading-lg);
+  letter-spacing: var(--font-letter-spacing-lg);
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+@mixin heading--4xl {
+  @include heading;
+
+  font-size: var(--font-size-4xl--mobile);
+  font-weight: var(--font-weight-heading-4xl);
+  line-height: var(--font-line-height-heading-lg);
+  letter-spacing: var(--font-letter-spacing-lg);
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+@mixin heading--3xl {
+  font-size: var(--font-size-3xl--mobile);
+  font-weight: var(--font-weight-heading-3xl);
+  line-height: var(--font-line-height-heading-lg);
+  letter-spacing: var(--font-letter-spacing-lg);
+
+  @include heading;
+  @include heading-margins;
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@mixin heading--2xl {
+  font-size: var(--font-size-2xl--mobile);
+  font-weight: var(--font-weight-heading-2xl);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-lg);
+
+  @include heading;
+  @include heading-margins;
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@mixin heading--xl {
+  font-size: var(--font-size-xl--mobile);
+  font-weight: var(--font-weight-heading-xl);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-lg);
+
+  @include heading;
+  @include heading-margins;
+
+  @media (min-width: $media-width-md) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@mixin heading--lg {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-heading-lg);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-md);
+
+  @include heading;
+  @include heading-margins;
+}
+
+@mixin heading--md {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-heading-md);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-md);
+  color: var(--color-black);
+
+  @include heading;
+  @include heading-margins;
+}
+
+@mixin heading--sm {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-heading-sm);
+  line-height: var(--font-line-height-heading);
+  letter-spacing: var(--font-letter-spacing-sm);
+  color: var(--color-black);
+
+  @include heading;
+  @include heading-margins;
+}
+
+.ds-content {
+  :where(h1) {
+    @include heading--4xl;
+  }
+
+  :where(h2) {
+    @include heading--3xl;
+  }
+
+  :where(h3) {
+    @include heading--2xl;
+  }
+
+  :where(h4) {
+    @include heading--xl;
+  }
+
+  :where(h5) {
+    @include heading--lg;
+  }
+
+  :where(h6) {
+    @include heading--md;
+  }
+}
+
 // Specific style overrides that are not easily affected via variables alone.
 .ds-text-heading--5xl,
 .ds-text-heading--4xl,
@@ -49,9 +195,18 @@ svg {
   }
 }
 
+.ds-text-heading--5xl {
+  @include heading--5xl;
+}
+
+.ds-text-heading--4xl {
+  @include heading--4xl;
+}
+
 .ds-text-heading--3xl {
-  line-height: var(--font-line-height-heading-lg);
   margin-bottom: 44px;
+
+  @include heading--3xl;
 
   @media screen and (min-width: $media-width-md) {
     line-height: var(--font-line-height-heading-lg);
@@ -60,8 +215,9 @@ svg {
 }
 
 .ds-text-heading--2xl {
-  line-height: var(--font-line-height-heading);
   margin-bottom: 44px;
+
+  @include heading--2xl;
 
   @media screen and (max-width: $media-width-md) {
     line-height: var(--font-line-height-heading);
@@ -70,21 +226,26 @@ svg {
 }
 
 .ds-text-heading--xl {
-  line-height: var(--font-line-height-heading);
   margin-bottom: $spacer-4;
+
+  @include heading--xl;
 }
 
 .ds-text-heading--lg {
-  line-height: var(--font-line-height-heading);
   margin-bottom: $spacer-3;
+
+  @include heading--lg;
 }
 
 .ds-text-heading--md {
-  line-height: var(--font-line-height-base);
   margin-bottom: $spacer-2;
+
+  @include heading--md;
 }
 
 .ds-text-heading--sm {
   line-height: var(--font-line-height-base);
   margin-bottom: $spacer-1;
+
+  @include heading--sm;
 }
