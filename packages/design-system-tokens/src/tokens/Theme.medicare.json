@@ -1191,31 +1191,43 @@
     },
     "filter-chip": {
       "background-color": {
-        "$value": "{theme.color.secondary-lightest}"
+        "$value": "{theme.color.primary-lighter}"
       },
       "background-color--active": {
-        "$value": "{theme.color.primary}"
+        "$value": "{theme.color.primary-darker}"
+      },
+      "background-color--hover": {
+        "$value": "{theme.color.primary-light}"
       },
       "border-color": {
-        "$value": "{theme.color.secondary}"
+        "$value": "{theme.color.primary-lighter}"
       },
       "border-color--active": {
-        "$value": "{theme.color.primary}"
+        "$value": "{theme.color.primary-darker}"
+      },
+      "border-color--hover": {
+        "$value": "{theme.color.primary-light}"
       },
       "border-radius": {
         "$value": "{radius.pill}"
       },
       "color": {
-        "$value": "{theme.color.base}"
+        "$value": "{theme.color.primary-darker}"
       },
       "color--active": {
         "$value": "{theme.color.white}"
       },
+      "color--hover": {
+        "$value": "{theme.color.primary-darker}"
+      },
       "icon": {
         "color": {
-          "$value": "{theme.color.base}"
+          "$value": "{theme.color.primary-darker}"
         },
         "color-active": {
+          "$value": "{theme.color.primary-darker}"
+        },
+        "color-hover": {
           "$value": "{theme.color.white}"
         }
       }

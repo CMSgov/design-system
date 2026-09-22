@@ -22,11 +22,16 @@
     padding-inline-end: 34px;
   }
 
-  &:active,
-  &:focus,
-  &:hover {
+  &:hover,
+  &:focus-visible {
+    background-color: var(--filter-chip__background-color--hover);
+    border-color: var(--filter-chip__border-color--hover);
+    color: var(--filter-chip__color--hover);
+  }
+
+  &:active {
     background-color: var(--filter-chip__background-color--active);
-    border: 1px solid var(--filter-chip__border-color--active);
+    border-color: var(--filter-chip__border-color--active);
     color: var(--filter-chip__color--active);
   }
 

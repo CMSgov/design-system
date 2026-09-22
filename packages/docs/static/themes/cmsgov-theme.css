@@ -388,13 +388,17 @@
 --drawer__animation-timing: var(--animation-speed-2);
 --filter-chip__background-color: var(--color-primary-lightest);
 --filter-chip__background-color--active: var(--color-primary);
+--filter-chip__background-color--hover: var(--color-primary);
 --filter-chip__border-color: var(--color-primary);
 --filter-chip__border-color--active: var(--color-primary);
+--filter-chip__border-color--hover: var(--color-primary);
 --filter-chip__border-radius: var(--radius-pill);
 --filter-chip__color: var(--color-base);
 --filter-chip__color--active: var(--color-white);
+--filter-chip__color--hover: var(--color-white);
 --filter-chip-icon__color: var(--color-base);
 --filter-chip-icon__color-active: var(--color-white);
+--filter-chip-icon__color-hover: var(--color-white);
 --hint__color: var(--color-muted);
 --hint__color--inverse: var(--color-muted-inverse);
 --label__font-family: var(--font-family-body);
