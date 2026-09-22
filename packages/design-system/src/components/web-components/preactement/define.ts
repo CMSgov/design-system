@@ -1,4 +1,4 @@
-import { h, render, FunctionComponent, VNode } from 'preact';
+import { h, render, Attributes, FunctionComponent, VNode } from 'preact';
 import {
   ErrorTypes,
   CustomElement,
@@ -64,7 +64,7 @@ function createServerSideRenderFunction<P = {}>(
   }
 
   const attributes: Record<string, any> = { server: true };
-  return (props: P) =>
+  return (props: Attributes & P) =>
     h(elementTag, attributes, [
       h('script', {
         type: 'application/json',
@@ -278,19 +278,27 @@ async function onConnected(this: CustomElement) {
  * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
  * for more details.
  */
-function onAttributeChange(this: CustomElement, name: string, _original: string, updated: string) {
+function onAttributeChange(
+  this: CustomElement,
+  name: string,
+  _original: string | null,
+  updated: string | null
+) {
   if (!this.__mounted) {
     return;
   }
 
-  updated = updated == null ? void 0 : updated;
+  // The browser passes `null` for an attribute that has been removed, but the Preact
+  // components expect a missing prop to be `undefined`.
+  const value = updated ?? undefined;
 
   let props = this.__properties;
 
   if (name === 'props') {
-    props = { ...props, ...parseJson.call(this, updated) };
+    // A removed `props` attribute leaves no JSON to parse, which `parseJson` reports.
+    props = { ...props, ...parseJson.call(this, updated ?? '') };
   } else {
-    props = { ...props, [getPropKey(name)]: updated };
+    props = { ...props, [getPropKey(name)]: value };
   }
 
   this.__properties = props;
@@ -331,7 +339,7 @@ function wrapTemplateHtml(html: string) {
 /**
  * See `wrapTemplateHtml` function.
  */
-function unwrapTemplateVNode(vnode: VNode): VNode {
+function unwrapTemplateVNode(vnode: VNode): VNode | undefined {
   // `wrapTemplateHtml` guarantees a single wrapping element around the content.
   const children = (vnode.props.children as VNode<any>[])[0].props.children;
   if (Array.isArray(children) && children.length === 0) {
@@ -429,7 +437,7 @@ function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
   this.appendChild(template);
 
   // Reinstate the mutation observer to watch for user changes
-  this.__mutationObserver.observe(this, { childList: true });
+  this.__mutationObserver?.observe(this, { childList: true });
 }
 
 function renderWithShadowDom(this: CustomElement) {
@@ -483,7 +491,7 @@ function renderPreactComponent(
     vnode,
     slots,
   }: {
-    vnode: VNode;
+    vnode: VNode | undefined;
     slots: Slots;
   }
 ) {

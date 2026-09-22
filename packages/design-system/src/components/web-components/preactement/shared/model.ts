@@ -56,7 +56,7 @@ interface CustomElement<CF = any, C = any> extends HTMLElement {
   __mounted: boolean;
   __componentFunction: CF;
   __component?: C;
-  __properties?: IProps;
+  __properties: IProps;
   __events?: IProps;
   __options: IOptions;
   __mutationObserver?: MutationObserver;

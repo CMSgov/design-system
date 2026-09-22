@@ -36,7 +36,7 @@
   ],
   [
     "onLinkClick",
-    "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, id: string, url: string) => any",
+    "Called when one of the nav links is clicked, with the following arguments: SyntheticEvent, id, url\n\n(evt: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>, id: string, url?: string) => any",
     "-"
   ],
   [

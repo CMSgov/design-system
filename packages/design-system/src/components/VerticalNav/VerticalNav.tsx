@@ -44,7 +44,7 @@ export interface VerticalNavProps {
    * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
    * `id`, `url`
    */
-  onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
+  onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url?: string) => any;
 }
 
 /**
@@ -72,14 +72,16 @@ export const VerticalNav = (props: VerticalNavProps): React.ReactElement<any> =>
           onClick = undefined;
         }
 
-        const selected = item.selected || (props.selectedId && props.selectedId === item.id);
+        const selected = Boolean(
+          item.selected || (props.selectedId && props.selectedId === item.id)
+        );
 
         return (
           <VerticalNavItem
             {...item}
             component={props.component || item.component}
             _selectedId={props.selectedId}
-            key={item.id + item.url + item.label}
+            key={`${item.id}${item.url}${item.label}`}
             onClick={onClick}
             selected={selected}
           />

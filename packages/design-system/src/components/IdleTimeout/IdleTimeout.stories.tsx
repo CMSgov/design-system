@@ -45,6 +45,7 @@ export const ViewDialog: Story = {
     return (
       <IdleTimeoutDialog
         continueSessionText="Continue Session"
+        isOpen
         heading="Are you still there?"
         endSessionButtonText="Logout"
         endSessionUrl="#"

@@ -6,7 +6,7 @@ export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   section: Node<T>;
   state: ListState<T> & OverlayTriggerState;
-  rootId?: string;
+  rootId: string;
 }
 
 export function DropdownMenuSection<T>({

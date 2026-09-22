@@ -270,10 +270,14 @@ export const Tooltip = (props: TooltipProps) => {
     } = props;
 
     const TriggerComponent = component;
-    const triggerClasses = classNames('ds-c-tooltip__trigger', className, {
-      [activeClassName]: activeClassName && active,
-      'ds-c-tooltip__trigger--inverse': inversed,
-    });
+    const triggerClasses = classNames(
+      'ds-c-tooltip__trigger',
+      className,
+      active && activeClassName,
+      {
+        'ds-c-tooltip__trigger--inverse': inversed,
+      }
+    );
     const linkTriggerOverrides = {
       tabIndex: TriggerComponent === 'a' ? 0 : undefined,
     };
@@ -293,7 +297,7 @@ export const Tooltip = (props: TooltipProps) => {
     );
   };
 
-  const renderContent = (props: TooltipProps): React.ReactElement<any> => {
+  const renderContent = (props: TooltipProps): React.ReactElement<any> | false => {
     const {
       closeButtonLabel,
       dialog,
@@ -317,7 +321,7 @@ export const Tooltip = (props: TooltipProps) => {
     const tooltipContent = (
       <div
         id={contentId}
-        tabIndex={dialog ? -1 : null}
+        tabIndex={dialog ? -1 : undefined}
         ref={refs.setFloating}
         className={classNames('ds-c-tooltip', { 'ds-c-tooltip--inverse': inversed })}
         style={{ ...tooltipStyle, ...floatingStyles, ...styles }}
@@ -331,7 +335,7 @@ export const Tooltip = (props: TooltipProps) => {
           style={{
             left: middlewareData.arrow?.x,
             top: middlewareData.arrow?.y,
-            [staticSide]: '-5px',
+            ...(staticSide ? { [staticSide]: '-5px' } : {}),
           }}
         />
         <div className="ds-c-tooltip__content">
@@ -371,7 +375,10 @@ export const Tooltip = (props: TooltipProps) => {
       {renderTrigger(props)}
       {dialog ? (
         <FloatingFocusManager context={context} initialFocus={refs.floating} guards={false}>
-          {renderContent(props)}
+          {/* `renderContent` is `false` once the tooltip has transitioned out, which
+              `FloatingFocusManager` cannot take as a child. The empty fragment keeps the
+              rendered markup as it is; see CMSDS-4639 for the focus guards it leaves behind. */}
+          {renderContent(props) || <></>}
         </FloatingFocusManager>
       ) : (
         renderContent(props)

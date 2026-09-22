@@ -275,4 +275,12 @@ describe('Choice', () => {
       expect(root).toHaveAttribute('aria-atomic', 'true');
     });
   });
+
+  it('is checked when the attribute is present with no value', () => {
+    // The browser reports a valueless attribute as an empty string, which has to read as
+    // `true` the way it does in HTML, not as an absent value.
+    renderChoice({ checked: '' });
+    const el = screen.getByRole('checkbox');
+    expect(el).toBeChecked();
+  });
 });

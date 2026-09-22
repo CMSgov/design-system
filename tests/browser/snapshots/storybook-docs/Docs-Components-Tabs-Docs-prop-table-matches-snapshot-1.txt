@@ -16,7 +16,7 @@
   ],
   [
     "onChange",
-    "A callback function that's invoked when the selected tab is changed. (selectedId, prevSelectedId) => void\n\n(selectedId: string, prevSelectedId: string) => any",
+    "A callback function that's invoked when the selected tab is changed. (selectedId, prevSelectedId) => void\n\n(selectedId: string, prevSelectedId?: string) => any",
     "-"
   ],
   [

@@ -32,6 +32,20 @@ describe('ds-accordion-item', () => {
     expect(contentEl).toHaveClass('foobar');
   });
 
+  it('renders when its parent is a shadow root rather than an element', () => {
+    const host = document.createElement('div');
+    document.body.appendChild(host);
+    const shadowHost = host.attachShadow({ mode: 'open' });
+    const item = document.createElement('ds-accordion-item');
+    item.setAttribute('heading', defaultAttrs.heading);
+
+    // An element whose parent is a shadow root has a null `parentElement`. The walk up
+    // to a `ds-accordion` has to stop there instead of dereferencing it.
+    expect(() => shadowHost.appendChild(item)).not.toThrow();
+
+    host.remove();
+  });
+
   it('fires a custom ds-change event', async () => {
     const { customElement, shadowRoot, user } = renderAccordionItem();
 

@@ -30,7 +30,7 @@ export interface TabsProps {
    * A callback function that's invoked when the selected tab is changed.
    * `(selectedId, prevSelectedId) => void`
    */
-  onChange?: (selectedId: string, prevSelectedId: string) => any;
+  onChange?: (selectedId: string, prevSelectedId?: string) => any;
   /**
    * Additional classes to be added to the component wrapping the tabs
    */

@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import { define } from '../preactement/define';
 import { Choice, ChoiceProps } from '../../ChoiceList/Choice';
-import { parseBooleanAttr } from '../wrapperUtils';
+import { parseBooleanAttr, parseOptionalBooleanAttr } from '../wrapperUtils';
 import { formAttrs } from '../shared-attributes/form';
 
 const attributes = [
@@ -48,8 +48,8 @@ interface WrapperProps
 const Wrapper = ({ checked, defaultChecked, rootId, ...otherProps }: WrapperProps) => (
   <Choice
     {...otherProps}
-    checked={checked && Boolean(JSON.parse(checked))}
-    defaultChecked={defaultChecked && Boolean(JSON.parse(defaultChecked))}
+    checked={parseOptionalBooleanAttr(checked)}
+    defaultChecked={parseOptionalBooleanAttr(defaultChecked)}
     disabled={parseBooleanAttr(otherProps.disabled)}
     id={rootId}
     inversed={parseBooleanAttr(otherProps.inversed)}
