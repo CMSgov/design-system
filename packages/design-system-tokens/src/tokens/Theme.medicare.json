@@ -1257,13 +1257,13 @@
     },
     "link": {
       "color": {
-        "$value": "{theme.color.secondary}"
+        "$value": "{theme.color.primary}"
       },
       "color--active": {
-        "$value": "{theme.color.secondary-dark}"
+        "$value": "{theme.color.primary-dark}"
       },
       "color--hover": {
-        "$value": "{theme.color.secondary-dark}"
+        "$value": "{theme.color.primary-dark}"
       },
       "color--visited": {
         "$value": "{theme.color.visited}"
