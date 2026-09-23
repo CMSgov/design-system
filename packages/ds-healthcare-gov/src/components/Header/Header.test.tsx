@@ -66,71 +66,6 @@ describe('Header', function () {
     setLanguage('en');
   });
 
-  it('toggles openMenu state when toggleMenu is called', async () => {
-    const { user } = makeHeader();
-    expect(getMenuToggle()).toHaveAccessibleName('Open menu');
-    await user.click(getMenuToggle());
-    expect(getMenuToggle()).toHaveAccessibleName('Close menu');
-  });
-
-  it('opens and closes the menu with Enter and Space on the toggle', async () => {
-    const { user } = makeHeader({ loggedIn: true });
-
-    getMenuToggle().focus();
-    await user.keyboard('{Enter}');
-    expectMenuToBeOpen();
-    await user.keyboard('{Enter}');
-    expectMenuToBeClosed();
-    await user.keyboard('[Space]');
-    expectMenuToBeOpen();
-    await user.keyboard('[Space]');
-    expectMenuToBeClosed();
-  });
-
-  it('closes the menu and returns focus to the toggle when Escape is pressed', async () => {
-    const { user } = makeHeader({ loggedIn: true });
-
-    await user.click(getMenuToggle());
-    const tealiumMock = jest.fn();
-    (window as any as UtagContainer).utag = { link: tealiumMock };
-    getMenu().querySelector('a').focus();
-    await user.keyboard('{Escape}');
-
-    expectMenuToBeClosed();
-    expect(getMenuToggle()).toHaveFocus();
-    expect(tealiumMock).not.toHaveBeenCalled();
-  });
-
-  it('leaves the menu closed when Escape is pressed while it is closed', async () => {
-    const { user } = makeHeader({ loggedIn: true });
-
-    getMenuToggle().focus();
-    await user.keyboard('{Escape}');
-
-    expectMenuToBeClosed();
-  });
-
-  it('asks a controlled menu to close when Escape is pressed while it is open', async () => {
-    const onMenuToggle = jest.fn();
-    const { user } = makeHeader({ loggedIn: true, isMenuOpen: true, onMenuToggle });
-
-    getMenu().querySelector('a').focus();
-    await user.keyboard('{Escape}');
-
-    expect(onMenuToggle).toHaveBeenCalledTimes(1);
-    expect(getMenuToggle()).toHaveFocus();
-  });
-
-  it('does not toggle a controlled menu when Escape is pressed while it is closed', async () => {
-    const onMenuToggle = jest.fn();
-    const { user } = makeHeader({ loggedIn: true, isMenuOpen: false, onMenuToggle });
-
-    getMenuToggle().focus();
-    await user.keyboard('{Escape}');
-
-    expect(onMenuToggle).not.toHaveBeenCalled();
-  });
-
   it('passes correct props to SkipNav', () => {
     makeHeader({
       skipNavHref: '',
@@ -194,19 +129,6 @@ describe('Header', function () {
     expect(container).toMatchSnapshot();
   });
 
-  it('toggles open menu for fully controlled operation', async () => {
-    const onMenuToggle = jest.fn();
-    const { user } = makeHeader({
-      isMenuOpen: false,
-      onMenuToggle,
-    });
-
-    expectMenuToBeClosed();
-
-    await user.click(getMenuToggle());
-    expect(onMenuToggle).toHaveBeenCalled();
-  });
-
   it('should render custom classes provided for Logo', () => {
     const customClass = 'custom-class-logo';
     const { baseElement } = makeHeader({
@@ -253,5 +175,87 @@ describe('Header', function () {
 
     expect(actionMenuLink).toBeTruthy();
     expect(menuLink).toBeTruthy();
+  });
+
+  describe('menu', () => {
+    it('changes the toggle label when clicked', async () => {
+      const { user } = makeHeader();
+      expect(getMenuToggle()).toHaveAccessibleName('Open menu');
+      await user.click(getMenuToggle());
+      expect(getMenuToggle()).toHaveAccessibleName('Close menu');
+    });
+
+    it('opens and closes with Enter and Space on the toggle', async () => {
+      const { user } = makeHeader({ loggedIn: true });
+
+      getMenuToggle().focus();
+      await user.keyboard('{Enter}');
+      expectMenuToBeOpen();
+      await user.keyboard('{Enter}');
+      expectMenuToBeClosed();
+      await user.keyboard('[Space]');
+      expectMenuToBeOpen();
+      await user.keyboard('[Space]');
+      expectMenuToBeClosed();
+    });
+
+    it('asks a controlled menu to toggle when the toggle is clicked', async () => {
+      const onMenuToggle = jest.fn();
+      const { user } = makeHeader({
+        isMenuOpen: false,
+        onMenuToggle,
+      });
+
+      expectMenuToBeClosed();
+
+      await user.click(getMenuToggle());
+      expect(onMenuToggle).toHaveBeenCalled();
+    });
+
+    describe('Escape key', () => {
+      it('closes the menu and returns focus to the toggle', async () => {
+        const { user } = makeHeader({ loggedIn: true });
+
+        await user.click(getMenuToggle());
+        const tealiumMock = jest.fn();
+        (window as any as UtagContainer).utag = { link: tealiumMock };
+        getMenu().querySelector('a').focus();
+        await user.keyboard('{Escape}');
+
+        expectMenuToBeClosed();
+        expect(getMenuToggle()).toHaveFocus();
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+
+      it('leaves a closed menu closed', async () => {
+        const { user } = makeHeader({ loggedIn: true });
+
+        getMenuToggle().focus();
+        await user.keyboard('{Escape}');
+
+        expectMenuToBeClosed();
+      });
+
+      it('asks an open controlled menu to close', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({ loggedIn: true, isMenuOpen: true, onMenuToggle });
+
+        getMenu().querySelector('a').focus();
+        await user.keyboard('{Escape}');
+
+        expect(onMenuToggle).toHaveBeenCalledTimes(1);
+        expect(getMenuToggle()).toHaveFocus();
+      });
+
+      it('does not toggle a closed controlled menu', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({ loggedIn: true, isMenuOpen: false, onMenuToggle });
+
+        getMenuToggle().focus();
+        await user.keyboard('{Escape}');
+
+        expect(onMenuToggle).not.toHaveBeenCalled();
+      });
+    });
   });
 });
