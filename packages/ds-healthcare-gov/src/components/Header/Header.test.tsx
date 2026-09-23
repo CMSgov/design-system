@@ -358,7 +358,7 @@ describe('Header', function () {
     describe('clicking outside', () => {
       const headerBottom = <p>Outside the menu</p>;
 
-      it('closes the menu without moving focus to the toggle', async () => {
+      it('closes the menu without moving focus when non-focusable content outside is clicked', async () => {
         const { user } = makeHeader({ loggedIn: true, headerBottom });
 
         await user.click(getMenuToggle());
@@ -371,7 +371,7 @@ describe('Header', function () {
         expect(tealiumMock).not.toHaveBeenCalled();
       });
 
-      it('closes the menu when touched outside', async () => {
+      it('closes the menu when non-focusable content outside is touched', async () => {
         const { user } = makeHeader({ loggedIn: true, headerBottom });
 
         await user.click(getMenuToggle());
@@ -406,7 +406,7 @@ describe('Header', function () {
         expect(tealiumMock.mock.calls[0][0]).toHaveProperty('text', 'menu closed');
       });
 
-      it('asks an open controlled menu to close', async () => {
+      it('asks an open controlled menu to close when non-focusable content outside is clicked', async () => {
         const onMenuToggle = jest.fn();
         const { user } = makeHeader({
           loggedIn: true,
@@ -421,7 +421,38 @@ describe('Header', function () {
         expect(onMenuToggle).toHaveBeenCalledTimes(1);
       });
 
-      it('does not toggle a closed controlled menu', async () => {
+      it('asks an open controlled menu to close once when a focusable element outside is clicked', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          isMenuOpen: true,
+          onMenuToggle,
+          headerBottom: <a href="#outside">Outside link</a>,
+        });
+
+        getMenuToggle().focus();
+        await user.click(screen.getByRole('link', { name: 'Outside link' }));
+
+        expect(onMenuToggle).toHaveBeenCalledTimes(1);
+      });
+
+      it('reports one toggle when a focusable element outside is clicked', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          onMenuToggle,
+          headerBottom: <a href="#outside">Outside link</a>,
+        });
+
+        await user.click(getMenuToggle());
+        onMenuToggle.mockClear();
+        await user.click(screen.getByRole('link', { name: 'Outside link' }));
+
+        expectMenuToBeClosed();
+        expect(onMenuToggle).toHaveBeenCalledTimes(1);
+      });
+
+      it('does not toggle a closed controlled menu when non-focusable content outside is clicked', async () => {
         const onMenuToggle = jest.fn();
         const { user } = makeHeader({
           loggedIn: true,

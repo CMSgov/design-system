@@ -142,6 +142,11 @@ export const Header = (props: HeaderProps) => {
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
   const menuToggleRef = useRef<HTMLButtonElement>(null);
   const actionsRef = useRef<HTMLElement>(null);
+  const isMenuOpenRef = useRef(isMenuOpen);
+
+  useLayoutEffect(() => {
+    isMenuOpenRef.current = isMenuOpen;
+  });
 
   /**
    * Opens or closes the menu. Called when the "Menu" or "Close" button
@@ -156,12 +161,24 @@ export const Header = (props: HeaderProps) => {
   }
 
   /**
+   * Closes the menu when the user presses Escape, moves focus away, or clicks
+   * outside. One action can trigger more than one of these, e.g. clicking a
+   * link outside the menu is both an outside click and a focus change, so
+   * the ref ensures the menu is closed only once until the next render.
+   */
+  function closeMenu() {
+    if (!isMenuOpenRef.current) return;
+    isMenuOpenRef.current = false;
+    toggleMenu();
+  }
+
+  /**
    * Closes the open menu when Escape is pressed within the header actions,
    * and returns focus to the "Menu" button.
    */
   function handleActionsKeyDown(event: React.KeyboardEvent) {
     if (event.key === 'Escape' && isMenuOpen) {
-      toggleMenu();
+      closeMenu();
       menuToggleRef.current?.focus();
     }
   }
@@ -174,7 +191,7 @@ export const Header = (props: HeaderProps) => {
   function handleActionsBlur(event: React.FocusEvent) {
     const nextFocus = event.relatedTarget;
     if (isMenuOpen && nextFocus instanceof Element && !event.currentTarget.contains(nextFocus)) {
-      toggleMenu();
+      closeMenu();
     }
   }
 
@@ -189,7 +206,7 @@ export const Header = (props: HeaderProps) => {
 
     function handleClickOutside(event: MouseEvent | TouchEvent) {
       if (!actionsRef.current?.contains(event.target as Node)) {
-        toggleMenu();
+        closeMenu();
       }
     }
 
