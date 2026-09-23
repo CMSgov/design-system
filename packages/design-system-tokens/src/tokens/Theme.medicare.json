@@ -1223,6 +1223,15 @@
       "font-weight": {
         "$value": "{theme.font.weight.bold}"
       },
+      "min-height": {
+        "$value": "44px"
+      },
+      "padding-block": {
+        "$value": "{spacer.1}"
+      },
+      "padding-inline-start": {
+        "$value": "{spacer.2}"
+      },
       "icon": {
         "color": {
           "$value": "{theme.color.primary-darker}"

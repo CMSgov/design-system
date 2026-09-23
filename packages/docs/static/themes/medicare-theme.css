@@ -400,6 +400,9 @@
 --filter-chip__color--active: var(--color-white);
 --filter-chip__color--hover: var(--color-primary-darker);
 --filter-chip__font-weight: var(--font-weight-bold);
+--filter-chip__min-height: 44px;
+--filter-chip__padding-block: var(--spacer-1);
+--filter-chip__padding-inline-start: var(--spacer-2);
 --filter-chip-icon__color: var(--color-primary-darker);
 --filter-chip-icon__color-active: var(--color-primary-darker);
 --filter-chip-icon__color-hover: var(--color-white);

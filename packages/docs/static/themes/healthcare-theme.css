@@ -396,6 +396,9 @@
 --filter-chip__color--active: var(--color-white);
 --filter-chip__color--hover: var(--color-white);
 --filter-chip__font-weight: var(--font-weight-normal);
+--filter-chip__min-height: 0;
+--filter-chip__padding-block: var(--spacer-half);
+--filter-chip__padding-inline-start: var(--spacer-1);
 --filter-chip-icon__color: var(--color-base);
 --filter-chip-icon__color-active: var(--color-white);
 --filter-chip-icon__color-hover: var(--color-white);

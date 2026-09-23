@@ -1187,6 +1187,15 @@
       "font-weight": {
         "$value": "{theme.font.weight.normal}"
       },
+      "min-height": {
+        "$value": "0"
+      },
+      "padding-block": {
+        "$value": "{spacer.half}"
+      },
+      "padding-inline-start": {
+        "$value": "{spacer.1}"
+      },
       "icon": {
         "color": {
           "$value": "{theme.color.base}"

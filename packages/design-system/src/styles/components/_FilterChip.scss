@@ -10,9 +10,9 @@
   font-weight: var(--filter-chip__font-weight);
   margin-block-start: $spacer-1;
   margin-inline-end: $spacer-1;
-  min-height: 0;
-  padding: $spacer-half $spacer-1;
-  padding-inline-end: 34px;
+  min-height: var(--filter-chip__min-height);
+  padding-block: var(--filter-chip__padding-block);
+  padding-inline: var(--filter-chip__padding-inline-start) 34px;
   position: relative;
   text-align: start;
 
