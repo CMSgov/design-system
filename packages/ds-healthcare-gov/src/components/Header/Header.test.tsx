@@ -36,6 +36,13 @@ function expectMenuToBeClosed() {
 }
 
 describe('Header', function () {
+  let tealiumMock: jest.Mock;
+
+  beforeEach(() => {
+    tealiumMock = jest.fn();
+    (window as any as UtagContainer).utag = { link: tealiumMock };
+  });
+
   it('renders full/homepage header', () => {
     const { container } = makeHeader({});
     expect(container).toMatchSnapshot();
@@ -228,8 +235,7 @@ describe('Header', function () {
 
         await user.click(getMenuToggle());
         expectMenuToBeOpen();
-        const tealiumMock = jest.fn();
-        (window as any as UtagContainer).utag = { link: tealiumMock };
+        tealiumMock.mockClear();
         getMenu().querySelector('a').focus();
         await user.keyboard('{Escape}');
 
@@ -277,8 +283,7 @@ describe('Header', function () {
 
         await user.click(getMenuToggle());
         expectMenuToBeOpen();
-        const tealiumMock = jest.fn();
-        (window as any as UtagContainer).utag = { link: tealiumMock };
+        tealiumMock.mockClear();
         const links = getMenu().querySelectorAll('a');
         links[links.length - 1].focus();
         await user.tab();
