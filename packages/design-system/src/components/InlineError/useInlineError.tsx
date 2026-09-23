@@ -59,7 +59,7 @@ export function useInlineError<T extends UseInlineErrorProps>(props: T) {
       inversed={inversed}
       className={classNames(
         errorMessageClassName,
-        errorPlacement === 'bottom' && errorMessage && 'ds-c-inline-error--bottom'
+        errorPlacement === 'bottom' && Boolean(errorMessage) && 'ds-c-inline-error--bottom'
       )}
     >
       {errorMessage}

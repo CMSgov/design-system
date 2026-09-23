@@ -19,7 +19,7 @@ export interface LabelMaskProps {
    * [Label-masked field](https://design.cms.gov/components/text-field/label-masked-field/)
    * documentation page for more information.
    */
-  labelMask?: MaskFunction;
+  labelMask: MaskFunction;
 }
 
 const LabelMask = (props: LabelMaskProps) => {

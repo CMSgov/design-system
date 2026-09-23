@@ -27,4 +27,18 @@ describe('Hint', () => {
     const hint = shadowRoot.firstChild as HTMLElement;
     expect(hint).toContainHTML('Optional. <slot />');
   });
+
+  it('should generate an id when no root-id is given', () => {
+    const { shadowRoot } = view();
+    const hint = shadowRoot.firstChild as HTMLElement;
+    // A field points its `aria-describedby` at this id, so one has to exist whether or
+    // not the consumer supplied one.
+    expect(hint.id).toMatch(/^hint--\d+$/);
+  });
+
+  it('should use a given root-id', () => {
+    const { shadowRoot } = view({ 'root-id': 'custom_id' });
+    const hint = shadowRoot.firstChild as HTMLElement;
+    expect(hint.id).toBe('custom_id');
+  });
 });

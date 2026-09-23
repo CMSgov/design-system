@@ -21,25 +21,38 @@ describe('ds-accordion', () => {
   });
 
   it('renders with border classes when a bordered prop is set', () => {
-    const { shadowRoot } = renderAccordion({ bordered: 'true' });
+    const { customElement, shadowRoot } = renderAccordion({ bordered: 'true' });
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
     expect(accordion).toHaveClass('ds-c-accordion--bordered');
-    const items = accordion.querySelectorAll('ds-accordion-item');
+    // The items are slotted, so they stay in the light DOM under the custom element.
+    const items = customElement.querySelectorAll('ds-accordion-item');
+    expect(items).toHaveLength(2);
     for (const item of items) {
-      const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
+      const contentEl = item.shadowRoot.querySelector('.ds-c-accordion__content');
       expect(contentEl).toHaveClass('ds-c-accordion__content--bordered');
     }
   });
 
-  it('does not render border classes when border prop is not set', () => {
-    const { shadowRoot } = renderAccordion({ bordered: 'false' });
+  it('does not render border classes when the bordered attribute is absent', () => {
+    const { customElement, shadowRoot } = renderAccordion();
     const accordion = shadowRoot.querySelector('.ds-c-accordion');
     expect(accordion).not.toHaveClass('ds-c-accordion--bordered');
-    const items = accordion.querySelectorAll('ds-accordion-item');
+    const items = customElement.querySelectorAll('ds-accordion-item');
+    expect(items).toHaveLength(2);
     for (const item of items) {
-      const shadowRoot = item.shadowRoot;
-      const contentEl = shadowRoot.querySelector('.ds-c-accordion__content');
+      const contentEl = item.shadowRoot.querySelector('.ds-c-accordion__content');
+      expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
+    }
+  });
+
+  it('does not render border classes when the bordered prop is false', () => {
+    const { customElement, shadowRoot } = renderAccordion({ bordered: 'false' });
+    const accordion = shadowRoot.querySelector('.ds-c-accordion');
+    expect(accordion).not.toHaveClass('ds-c-accordion--bordered');
+    const items = customElement.querySelectorAll('ds-accordion-item');
+    expect(items).toHaveLength(2);
+    for (const item of items) {
+      const contentEl = item.shadowRoot.querySelector('.ds-c-accordion__content');
       expect(contentEl).not.toHaveClass('ds-c-accordion__content--bordered');
     }
   });

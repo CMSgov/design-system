@@ -1,5 +1,6 @@
 import { define } from '../preactement/define';
 import { Hint, HintProps } from '../../Hint';
+import useId from '../../utilities/useId';
 import { parseBooleanAttr } from '../wrapperUtils';
 
 const attributes = ['class-name', 'inversed', 'requirement-label', 'root-id'];
@@ -10,7 +11,9 @@ interface WrapperProps extends Omit<HintProps, 'inversed'> {
 }
 
 const Wrapper = ({ inversed, rootId, ...otherProps }: WrapperProps) => (
-  <Hint {...otherProps} inversed={parseBooleanAttr(inversed)} id={rootId} />
+  // `Hint`'s id is what a field's `aria-describedby` points at, so it falls back to a
+  // generated one the way the rest of the library does rather than going unset.
+  <Hint {...otherProps} inversed={parseBooleanAttr(inversed)} id={useId('hint--', rootId)} />
 );
 
 /* eslint-disable @typescript-eslint/no-namespace */
