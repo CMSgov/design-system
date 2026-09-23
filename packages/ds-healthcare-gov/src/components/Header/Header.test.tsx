@@ -17,6 +17,24 @@ function makeHeader(props = {}) {
   };
 }
 
+function getMenuToggle() {
+  return screen.getByRole('button', { name: /^(Open|Close) menu$/ });
+}
+
+function getMenu() {
+  return document.querySelector('#hc-c-menu');
+}
+
+function expectMenuToBeOpen() {
+  expect(getMenuToggle()).toHaveAttribute('aria-expanded', 'true');
+  expect(getMenu()).not.toHaveAttribute('hidden');
+}
+
+function expectMenuToBeClosed() {
+  expect(getMenuToggle()).toHaveAttribute('aria-expanded', 'false');
+  expect(getMenu()).toHaveAttribute('hidden');
+}
+
 describe('Header', function () {
   it('renders full/homepage header', () => {
     const { container } = makeHeader({});
@@ -50,58 +68,46 @@ describe('Header', function () {
 
   it('toggles openMenu state when handleMenuToggleClick is called', async () => {
     const { user } = makeHeader();
-    const actionMenuOpen = screen.getByLabelText('Open menu');
-    expect(actionMenuOpen).toBeInTheDocument();
-    await user.click(actionMenuOpen);
-    const actionMenuClose = screen.getByLabelText('Close menu');
-    expect(actionMenuClose).toBeInTheDocument();
+    expect(getMenuToggle()).toHaveAccessibleName('Open menu');
+    await user.click(getMenuToggle());
+    expect(getMenuToggle()).toHaveAccessibleName('Close menu');
   });
 
   it('opens and closes the menu with Enter and Space on the toggle', async () => {
-    const { user, baseElement } = makeHeader({ loggedIn: true });
-    const toggle = screen.getByRole('button', { name: 'Open menu' });
-    const menu = baseElement.querySelector('#hc-c-menu');
+    const { user } = makeHeader({ loggedIn: true });
 
-    toggle.focus();
+    getMenuToggle().focus();
     await user.keyboard('{Enter}');
-    expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    expect(menu).not.toHaveAttribute('hidden');
+    expectMenuToBeOpen();
     await user.keyboard('{Enter}');
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('hidden');
+    expectMenuToBeClosed();
     await user.keyboard('[Space]');
-    expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    expect(menu).not.toHaveAttribute('hidden');
+    expectMenuToBeOpen();
     await user.keyboard('[Space]');
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('hidden');
+    expectMenuToBeClosed();
   });
 
   it('closes the menu and returns focus to the toggle when Escape is pressed', async () => {
-    const { user, baseElement } = makeHeader({ loggedIn: true });
-    const toggle = screen.getByRole('button', { name: 'Open menu' });
-    const menu = baseElement.querySelector('#hc-c-menu');
+    const { user } = makeHeader({ loggedIn: true });
 
-    await user.click(toggle);
+    await user.click(getMenuToggle());
     const tealiumMock = jest.fn();
     (window as any as UtagContainer).utag = { link: tealiumMock };
-    menu.querySelector('a').focus();
+    getMenu().querySelector('a').focus();
     await user.keyboard('{Escape}');
 
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('hidden');
-    expect(toggle).toHaveFocus();
+    expectMenuToBeClosed();
+    expect(getMenuToggle()).toHaveFocus();
     expect(tealiumMock).not.toHaveBeenCalled();
   });
 
   it('leaves the menu closed when Escape is pressed while it is closed', async () => {
     const { user } = makeHeader({ loggedIn: true });
-    const toggle = screen.getByRole('button', { name: 'Open menu' });
 
-    toggle.focus();
+    getMenuToggle().focus();
     await user.keyboard('{Escape}');
 
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expectMenuToBeClosed();
   });
 
   it('passes correct props to SkipNav', () => {
@@ -169,17 +175,14 @@ describe('Header', function () {
 
   it('toggles open menu for fully controlled operation', async () => {
     const onMenuToggle = jest.fn();
-    const { user, baseElement } = makeHeader({
+    const { user } = makeHeader({
       isMenuOpen: false,
       onMenuToggle,
     });
 
-    const menuButton = screen.getByRole('button', { name: 'Open menu' });
-    const menu = baseElement.querySelector('#hc-c-menu');
-    expect(menuButton).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('hidden');
+    expectMenuToBeClosed();
 
-    await user.click(menuButton);
+    await user.click(getMenuToggle());
     expect(onMenuToggle).toHaveBeenCalled();
   });
 
