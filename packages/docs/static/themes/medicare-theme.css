@@ -392,9 +392,9 @@
 --filter-chip__background-color: var(--color-primary-lighter);
 --filter-chip__background-color--active: var(--color-primary-darker);
 --filter-chip__background-color--hover: var(--color-primary-light);
---filter-chip__border-color: var(--color-primary-lighter);
+--filter-chip__border-color: var(--color-primary-darker);
 --filter-chip__border-color--active: var(--color-primary-darker);
---filter-chip__border-color--hover: var(--color-primary-light);
+--filter-chip__border-color--hover: var(--color-primary-darker);
 --filter-chip__border-radius: var(--radius-pill);
 --filter-chip__color: var(--color-primary-darker);
 --filter-chip__color--active: var(--color-white);

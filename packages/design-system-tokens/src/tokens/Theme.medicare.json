@@ -1200,13 +1200,13 @@
         "$value": "{theme.color.primary-light}"
       },
       "border-color": {
-        "$value": "{theme.color.primary-lighter}"
+        "$value": "{theme.color.primary-darker}"
       },
       "border-color--active": {
         "$value": "{theme.color.primary-darker}"
       },
       "border-color--hover": {
-        "$value": "{theme.color.primary-light}"
+        "$value": "{theme.color.primary-darker}"
       },
       "border-radius": {
         "$value": "{radius.pill}"
