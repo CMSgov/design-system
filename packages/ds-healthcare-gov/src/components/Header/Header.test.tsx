@@ -1,5 +1,5 @@
 import { setLanguage, UtagContainer } from '@cmsgov/design-system';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Header from './Header';
 
@@ -217,6 +217,7 @@ describe('Header', function () {
         const { user } = makeHeader({ loggedIn: true });
 
         await user.click(getMenuToggle());
+        expectMenuToBeOpen();
         const tealiumMock = jest.fn();
         (window as any as UtagContainer).utag = { link: tealiumMock };
         getMenu().querySelector('a').focus();
@@ -253,6 +254,87 @@ describe('Header', function () {
 
         getMenuToggle().focus();
         await user.keyboard('{Escape}');
+
+        expect(onMenuToggle).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('focus leaving the menu', () => {
+      const headerBottom = <a href="#after">After the header</a>;
+
+      it('closes the menu when Tab moves past the last menu link', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        expectMenuToBeOpen();
+        const tealiumMock = jest.fn();
+        (window as any as UtagContainer).utag = { link: tealiumMock };
+        const links = getMenu().querySelectorAll('a');
+        links[links.length - 1].focus();
+        await user.tab();
+
+        expectMenuToBeClosed();
+        expect(screen.getByRole('link', { name: 'After the header' })).toHaveFocus();
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+
+      it('closes the menu when Shift+Tab moves before the toggle', async () => {
+        const { user } = makeHeader({ loggedIn: true });
+
+        await user.click(getMenuToggle());
+        expectMenuToBeOpen();
+        await user.tab({ shift: true });
+
+        expectMenuToBeClosed();
+      });
+
+      it('keeps the menu open while focus moves between the toggle and menu links', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        await user.tab();
+        expectMenuToBeOpen();
+        await user.tab({ shift: true });
+        expectMenuToBeOpen();
+      });
+
+      it('keeps the menu open when focus leaves the page', async () => {
+        const { user } = makeHeader({ loggedIn: true });
+
+        await user.click(getMenuToggle());
+        fireEvent.focusOut(getMenuToggle(), { relatedTarget: null });
+
+        expectMenuToBeOpen();
+      });
+
+      it('asks an open controlled menu to close', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          isMenuOpen: true,
+          onMenuToggle,
+          headerBottom,
+        });
+
+        expectMenuToBeOpen();
+        const links = getMenu().querySelectorAll('a');
+        links[links.length - 1].focus();
+        await user.tab();
+
+        expect(onMenuToggle).toHaveBeenCalledTimes(1);
+      });
+
+      it('does not toggle a closed controlled menu', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          isMenuOpen: false,
+          onMenuToggle,
+          headerBottom,
+        });
+
+        getMenuToggle().focus();
+        await user.tab();
 
         expect(onMenuToggle).not.toHaveBeenCalled();
       });

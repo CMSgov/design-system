@@ -165,6 +165,18 @@ export const Header = (props: HeaderProps) => {
     }
   }
 
+  /**
+   * Closes the open menu when focus moves to an element outside the header
+   * actions. Focus leaving the page entirely, which has no related target,
+   * leaves the menu open.
+   */
+  function handleActionsBlur(event: React.FocusEvent) {
+    const nextFocus = event.relatedTarget;
+    if (isMenuOpen && nextFocus instanceof Element && !event.currentTarget.contains(nextFocus)) {
+      toggleMenu();
+    }
+  }
+
   const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
   const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
 
@@ -214,6 +226,7 @@ export const Header = (props: HeaderProps) => {
               id="hc-c-header__actions"
               className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
               onKeyDown={handleActionsKeyDown}
+              onBlur={handleActionsBlur}
             >
               <ActionMenu
                 t={t}
