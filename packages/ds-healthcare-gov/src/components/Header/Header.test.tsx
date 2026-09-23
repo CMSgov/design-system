@@ -1,4 +1,4 @@
-import { setLanguage } from '@cmsgov/design-system';
+import { setLanguage, UtagContainer } from '@cmsgov/design-system';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Header from './Header';
@@ -75,6 +75,33 @@ describe('Header', function () {
     await user.keyboard('[Space]');
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
     expect(menu).toHaveAttribute('hidden');
+  });
+
+  it('closes the menu and returns focus to the toggle when Escape is pressed', async () => {
+    const { user, baseElement } = makeHeader({ loggedIn: true });
+    const toggle = screen.getByRole('button', { name: 'Open menu' });
+    const menu = baseElement.querySelector('#hc-c-menu');
+
+    await user.click(toggle);
+    const tealiumMock = jest.fn();
+    (window as any as UtagContainer).utag = { link: tealiumMock };
+    menu.querySelector('a').focus();
+    await user.keyboard('{Escape}');
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(menu).toHaveAttribute('hidden');
+    expect(toggle).toHaveFocus();
+    expect(tealiumMock).not.toHaveBeenCalled();
+  });
+
+  it('leaves the menu closed when Escape is pressed while it is closed', async () => {
+    const { user } = makeHeader({ loggedIn: true });
+    const toggle = screen.getByRole('button', { name: 'Open menu' });
+
+    toggle.focus();
+    await user.keyboard('{Escape}');
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
   });
 
   it('passes correct props to SkipNav', () => {

@@ -2,7 +2,7 @@ import ActionMenu from './ActionMenu';
 import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import type * as React from 'react';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
@@ -140,6 +140,7 @@ export const Header = (props: HeaderProps) => {
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   /**
    * Event handler for when the "Menu" or "Close" button
@@ -151,6 +152,17 @@ export const Header = (props: HeaderProps) => {
     }
 
     props.onMenuToggle?.();
+  }
+
+  /**
+   * Closes the open menu when Escape is pressed within the header actions,
+   * and returns focus to the "Menu" button.
+   */
+  function handleActionsKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Escape' && isMenuOpen) {
+      setInternalIsMenuOpenState(false);
+      menuToggleRef.current?.focus();
+    }
   }
 
   const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
@@ -201,6 +213,7 @@ export const Header = (props: HeaderProps) => {
               aria-label="Profile, applications, and coverage"
               id="hc-c-header__actions"
               className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+              onKeyDown={handleActionsKeyDown}
             >
               <ActionMenu
                 t={t}
@@ -209,6 +222,7 @@ export const Header = (props: HeaderProps) => {
                 loggedIn={props.loggedIn}
                 open={isMenuOpen}
                 links={links}
+                toggleRef={menuToggleRef}
               />
               <Menu
                 beforeLinks={beforeMenuLinks}
