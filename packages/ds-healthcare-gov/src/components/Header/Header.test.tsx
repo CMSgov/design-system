@@ -66,7 +66,7 @@ describe('Header', function () {
     setLanguage('en');
   });
 
-  it('toggles openMenu state when handleMenuToggleClick is called', async () => {
+  it('toggles openMenu state when toggleMenu is called', async () => {
     const { user } = makeHeader();
     expect(getMenuToggle()).toHaveAccessibleName('Open menu');
     await user.click(getMenuToggle());
@@ -108,6 +108,27 @@ describe('Header', function () {
     await user.keyboard('{Escape}');
 
     expectMenuToBeClosed();
+  });
+
+  it('asks a controlled menu to close when Escape is pressed while it is open', async () => {
+    const onMenuToggle = jest.fn();
+    const { user } = makeHeader({ loggedIn: true, isMenuOpen: true, onMenuToggle });
+
+    getMenu().querySelector('a').focus();
+    await user.keyboard('{Escape}');
+
+    expect(onMenuToggle).toHaveBeenCalledTimes(1);
+    expect(getMenuToggle()).toHaveFocus();
+  });
+
+  it('does not toggle a controlled menu when Escape is pressed while it is closed', async () => {
+    const onMenuToggle = jest.fn();
+    const { user } = makeHeader({ loggedIn: true, isMenuOpen: false, onMenuToggle });
+
+    getMenuToggle().focus();
+    await user.keyboard('{Escape}');
+
+    expect(onMenuToggle).not.toHaveBeenCalled();
   });
 
   it('passes correct props to SkipNav', () => {

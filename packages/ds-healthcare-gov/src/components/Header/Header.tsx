@@ -143,10 +143,10 @@ export const Header = (props: HeaderProps) => {
   const menuToggleRef = useRef<HTMLButtonElement>(null);
 
   /**
-   * Event handler for when the "Menu" or "Close" button
-   * within ActionMenu is clicked.
+   * Opens or closes the menu. Called when the "Menu" or "Close" button
+   * within ActionMenu is clicked, and to close the menu by other means.
    */
-  function handleMenuToggleClick() {
+  function toggleMenu() {
     if (!isControlledMenu) {
       setInternalIsMenuOpenState(!isMenuOpen);
     }
@@ -160,7 +160,7 @@ export const Header = (props: HeaderProps) => {
    */
   function handleActionsKeyDown(event: React.KeyboardEvent) {
     if (event.key === 'Escape' && isMenuOpen) {
-      setInternalIsMenuOpenState(false);
+      toggleMenu();
       menuToggleRef.current?.focus();
     }
   }
@@ -218,7 +218,7 @@ export const Header = (props: HeaderProps) => {
               <ActionMenu
                 t={t}
                 firstName={props.firstName}
-                onMenuToggleClick={handleMenuToggleClick}
+                onMenuToggleClick={toggleMenu}
                 loggedIn={props.loggedIn}
                 open={isMenuOpen}
                 links={links}
