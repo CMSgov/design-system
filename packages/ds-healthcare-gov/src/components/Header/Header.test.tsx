@@ -177,6 +177,16 @@ describe('Header', function () {
     expect(menuLink).toBeTruthy();
   });
 
+  it('renders headerBottom inside the header and outside the actions nav', () => {
+    makeHeader({ headerBottom: <p>Bottom content</p> });
+
+    const content = screen.getByText('Bottom content');
+    expect(screen.getByRole('banner', { name: 'global' })).toContainElement(content);
+    expect(
+      screen.getByRole('navigation', { name: 'Profile, applications, and coverage' })
+    ).not.toContainElement(content);
+  });
+
   describe('menu', () => {
     it('changes the toggle label when clicked', async () => {
       const { user } = makeHeader();
