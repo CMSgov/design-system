@@ -57,6 +57,26 @@ describe('Header', function () {
     expect(actionMenuClose).toBeInTheDocument();
   });
 
+  it('opens and closes the menu with Enter and Space on the toggle', async () => {
+    const { user, baseElement } = makeHeader({ loggedIn: true });
+    const toggle = screen.getByRole('button', { name: 'Open menu' });
+    const menu = baseElement.querySelector('#hc-c-menu');
+
+    toggle.focus();
+    await user.keyboard('{Enter}');
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(menu).not.toHaveAttribute('hidden');
+    await user.keyboard('{Enter}');
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(menu).toHaveAttribute('hidden');
+    await user.keyboard('[Space]');
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(menu).not.toHaveAttribute('hidden');
+    await user.keyboard('[Space]');
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(menu).toHaveAttribute('hidden');
+  });
+
   it('passes correct props to SkipNav', () => {
     makeHeader({
       skipNavHref: '',
