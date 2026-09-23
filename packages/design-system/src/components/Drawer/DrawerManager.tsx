@@ -1,7 +1,12 @@
 import { createContext, useState, useContext } from 'react';
 import useId from '../utilities/useId';
 
-export const DrawerContext = createContext(null);
+export interface DrawerContextValue {
+  currentID: string | null;
+  setCurrentID: (id: string | null) => void;
+}
+
+export const DrawerContext = createContext<DrawerContextValue | null>(null);
 
 /**
  * The `DrawerManager` feature is useful when there are multiple help drawer links on a
@@ -65,13 +70,18 @@ export const DrawerContext = createContext(null);
  * [See also the documentation on the drawer component](https://design.cms.gov/components/drawer/).
  */
 export const DrawerManager = (props: any) => {
-  const [currentID, setCurrentID] = useState(null);
+  const [currentID, setCurrentID] = useState<string | null>(null);
 
   return <DrawerContext.Provider value={{ currentID, setCurrentID }} {...props} />;
 };
 
 export const useDrawerManager = () => {
-  const { currentID, setCurrentID } = useContext(DrawerContext);
+  const context = useContext(DrawerContext);
+  if (!context) {
+    throw new Error('useDrawerManager must be called inside a DrawerManager');
+  }
+
+  const { currentID, setCurrentID } = context;
   const id = useId();
 
   const isDrawerOpen = currentID === id;

@@ -1,6 +1,6 @@
 import { define } from '../preactement/define';
 import { availableSizes, Dialog, DialogProps } from '../../Dialog';
-import { parseBooleanAttr } from '../wrapperUtils';
+import { parseBooleanAttr, parseOptionalBooleanAttr } from '../wrapperUtils';
 import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 import { isPossibleValue } from '../utils';
 import { onAnalyticsEvent } from '../analytics';
@@ -54,7 +54,7 @@ const Wrapper = ({
     isOpen={parseBooleanAttr(isOpen)}
     size={isPossibleValue(size, availableSizes) ? size : undefined}
     {...otherProps}
-    analytics={analytics && Boolean(JSON.parse(analytics))}
+    analytics={parseOptionalBooleanAttr(analytics)}
   >
     {children}
   </Dialog>

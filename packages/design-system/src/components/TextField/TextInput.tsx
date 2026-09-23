@@ -104,7 +104,7 @@ const TextInput = (props: TextInputProps) => {
     fieldClassName
   );
 
-  let inputType = type;
+  let inputType: string | undefined = type;
   if (numeric) {
     inputType = 'text';
   } else if (multiline) {
@@ -113,7 +113,7 @@ const TextInput = (props: TextInputProps) => {
 
   const ComponentType = multiline ? 'textarea' : 'input';
 
-  const numberRows: number = typeof rows === 'string' ? parseInt(rows) : rows;
+  const numberRows: number | undefined = typeof rows === 'string' ? parseInt(rows) : rows;
   return (
     <ComponentType
       className={classes}

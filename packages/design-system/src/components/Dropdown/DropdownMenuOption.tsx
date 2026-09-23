@@ -12,7 +12,7 @@ export interface DropdownMenuOptionProps<T> {
   componentClass: string;
   item: Node<T>;
   state: ListState<T> & OverlayTriggerState;
-  rootId?: string;
+  rootId: string;
 }
 
 export function DropdownMenuOption<T>({
@@ -21,7 +21,7 @@ export function DropdownMenuOption<T>({
   state,
   rootId,
 }: DropdownMenuOptionProps<T>) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLLIElement>(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
     { key: item.key, shouldSelectOnPressUp: false },
     state,

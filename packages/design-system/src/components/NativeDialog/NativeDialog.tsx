@@ -43,7 +43,7 @@ export const NativeDialog = ({
   boundingBoxRef,
   ...dialogProps
 }: NativeDialogProps) => {
-  const dialogRef = useRef(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   if (isOpen === undefined) {
     const missingPropMessage =
@@ -58,12 +58,17 @@ export const NativeDialog = ({
 
   // Register dialog with the polyfill if necessary
   useLayoutEffect(() => {
-    shimDialogElement(dialogRef.current);
+    if (dialogRef.current) {
+      shimDialogElement(dialogRef.current);
+    }
   });
 
   // Call imperative show and close functions on mount/unmount
   useEffect(() => {
     const dialogNode = dialogRef.current;
+    if (!dialogNode) {
+      return;
+    }
 
     // Show or hide the dialog based on `isOpen` value. The `dialogNode.open` property is
     // a read-only value that will tell us if our dialog DOM element is actually in the
@@ -107,6 +112,10 @@ export const NativeDialog = ({
     }
 
     const dialogNode = dialogRef.current;
+    if (!dialogNode) {
+      return;
+    }
+
     const handleClick = (event: MouseEvent) => {
       // In Chrome and Firefox Pointer Events triggered by a key press receive a clientX & clientY value of 0 each.
       // This puts the pointer outside of our dialog element, and so we trigger the exit() event.

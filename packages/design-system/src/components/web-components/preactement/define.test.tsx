@@ -206,6 +206,26 @@ describe('define()', () => {
       expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
     });
 
+    it('restores a default prop value when an attribute is removed', async () => {
+      function Greeting({ customTitle = 'default' }: { customTitle?: string }) {
+        return <h2>{customTitle}</h2>;
+      }
+
+      define('message-with-default', () => Greeting, { attributes: ['custom-title'] });
+
+      const element = document.createElement('message-with-default');
+      element.setAttribute('custom-title', 'original');
+      root.appendChild(element);
+      expect(root.innerHTML).toContain('<h2>original</h2>');
+
+      await act(async () => {
+        element.removeAttribute('custom-title');
+      });
+      // The browser reports the removal as `null`, which would override the default. The
+      // prop has to reach the component as `undefined` for the default to apply.
+      expect(root.innerHTML).toContain('<h2>default</h2>');
+    });
+
     it('updates component props when `props` attribute is changed', async () => {
       const originalTitle = 'original';
       const updatedTitle = 'updated!';

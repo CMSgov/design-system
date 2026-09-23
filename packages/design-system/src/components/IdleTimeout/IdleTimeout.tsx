@@ -108,7 +108,7 @@ export const IdleTimeout = ({
   // convert minutes to milliseconds
   const msToTimeout = timeToTimeout * 60000;
   const msToWarning = timeToWarning * 60000;
-  const [checkStatusTime, setCheckStatusTime] = useState<number>(null);
+  const [checkStatusTime, setCheckStatusTime] = useState<number | null>(null);
   const [showWarning, setShowWarning] = useState<boolean>(false);
   const [timeInWarning, setTimeInWarning] = useState<number>(
     Math.ceil(timeToTimeout - timeToWarning)

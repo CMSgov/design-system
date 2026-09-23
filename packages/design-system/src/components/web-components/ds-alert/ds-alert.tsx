@@ -1,5 +1,6 @@
 import { define } from '../preactement/define';
 import { Alert, AlertProps } from '../../Alert';
+import { parseBooleanAttr, parseOptionalBooleanAttr } from '../wrapperUtils';
 import { analyticsOverrideAttrs } from '../shared-attributes/analytics';
 import { onAnalyticsEvent } from '../analytics';
 
@@ -24,10 +25,8 @@ interface WrapperProps extends Omit<AlertProps, 'hideIcon' | 'analytics'> {
 const Wrapper = ({ analytics, hideIcon, rootId, ...otherProps }: WrapperProps) => (
   <Alert
     {...otherProps}
-    {...{
-      analytics: analytics && Boolean(JSON.parse(analytics)),
-      hideIcon: hideIcon && Boolean(JSON.parse(hideIcon)),
-    }}
+    analytics={parseOptionalBooleanAttr(analytics)}
+    hideIcon={parseBooleanAttr(hideIcon)}
     id={rootId}
   />
 );
