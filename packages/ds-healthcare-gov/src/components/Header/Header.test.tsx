@@ -169,15 +169,15 @@ describe('Header', function () {
 
   it('toggles open menu for fully controlled operation', async () => {
     const onMenuToggle = jest.fn();
-    const { user } = makeHeader({
+    const { user, baseElement } = makeHeader({
       isMenuOpen: false,
       onMenuToggle,
     });
 
     const menuButton = screen.getByRole('button', { name: 'Open menu' });
-    const menu = screen.getByRole('list');
+    const menu = baseElement.querySelector('#hc-c-menu');
     expect(menuButton).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveClass('ds-u-display--none');
+    expect(menu).toHaveAttribute('hidden');
 
     await user.click(menuButton);
     expect(onMenuToggle).toHaveBeenCalled();
