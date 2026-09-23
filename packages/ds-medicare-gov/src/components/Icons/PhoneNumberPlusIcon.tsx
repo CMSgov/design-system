@@ -1,0 +1,30 @@
+import type * as React from 'react';
+import { SvgIcon, t } from '@cmsgov/design-system';
+import { IconCommonProps } from '@cmsgov/design-system';
+
+const defaultProps = {
+  className: '',
+  viewBox: '0 0 32 32',
+};
+
+function PhoneNumberPlusIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--phone-number-plus ${props.className || ''}`;
+
+  return (
+    <SvgIcon
+      title={t('icons.phoneNumberPlus')}
+      {...defaultProps}
+      {...props}
+      className={iconCssClasses}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M18.2532 0.0286313L23.1281 1.15361C23.6391 1.27079 24 1.72547 24 2.25046C24 14.2737 14.2549 24 2.25044 24C1.72077 24 1.27077 23.6344 1.15359 23.1282L0.0286127 18.2533C-0.0932599 17.7236 0.183297 17.1798 0.684849 16.9595L5.93474 14.7096C6.39411 14.5127 6.92847 14.644 7.24722 15.033L9.57217 17.8736C13.2424 16.1533 16.1908 13.1627 17.8783 9.5675L15.0377 7.24255C14.6486 6.92849 14.5174 6.38944 14.7143 5.93007L16.9642 0.680181C17.1798 0.183316 17.7236 -0.0932412 18.2532 0.0286313ZM3.7504 6.75023H0.750465C0.337974 6.75023 0.000480652 6.41274 0.000480652 6.00024V4.50027C0.000480652 4.08778 0.337974 3.75029 0.750465 3.75029H3.7504V0.750351C3.7504 0.337859 4.0879 0.000366211 4.50039 0.000366211H6.00036C6.41285 0.000366211 6.75034 0.337859 6.75034 0.750351V3.75029H9.75028C10.1628 3.75029 10.5003 4.08778 10.5003 4.50027V6.00024C10.5003 6.41274 10.1628 6.75023 9.75028 6.75023H6.75034V9.75017C6.75034 10.1627 6.41285 10.5002 6.00036 10.5002H4.50039C4.0879 10.5002 3.7504 10.1627 3.7504 9.75017V6.75023Z"
+        fill="#262626"
+      />
+    </SvgIcon>
+  );
+}
+
+export default PhoneNumberPlusIcon;
