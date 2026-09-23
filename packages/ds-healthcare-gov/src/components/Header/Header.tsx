@@ -2,7 +2,7 @@ import ActionMenu from './ActionMenu';
 import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
-import { useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type * as React from 'react';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
@@ -141,6 +141,7 @@ export const Header = (props: HeaderProps) => {
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
   const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const actionsRef = useRef<HTMLElement>(null);
 
   /**
    * Opens or closes the menu. Called when the "Menu" or "Close" button
@@ -176,6 +177,29 @@ export const Header = (props: HeaderProps) => {
       toggleMenu();
     }
   }
+
+  /**
+   * While the menu is open, closes it when the user clicks or touches
+   * anywhere outside the header actions. A layout effect attaches the
+   * listener as soon as the menu opens; Preact runs plain effects after
+   * paint, which would leave a gap where an outside click does nothing.
+   */
+  useLayoutEffect(() => {
+    if (!isMenuOpen) return;
+
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      if (!actionsRef.current?.contains(event.target as Node)) {
+        toggleMenu();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  });
 
   const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
   const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
@@ -224,6 +248,7 @@ export const Header = (props: HeaderProps) => {
             <nav
               aria-label="Profile, applications, and coverage"
               id="hc-c-header__actions"
+              ref={actionsRef}
               className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
               onKeyDown={handleActionsKeyDown}
               onBlur={handleActionsBlur}

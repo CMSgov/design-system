@@ -354,5 +354,86 @@ describe('Header', function () {
         expect(onMenuToggle).not.toHaveBeenCalled();
       });
     });
+
+    describe('clicking outside', () => {
+      const headerBottom = <p>Outside the menu</p>;
+
+      it('closes the menu without moving focus to the toggle', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        expectMenuToBeOpen();
+        tealiumMock.mockClear();
+        await user.click(screen.getByText('Outside the menu'));
+
+        expectMenuToBeClosed();
+        expect(getMenuToggle()).not.toHaveFocus();
+        expect(tealiumMock).not.toHaveBeenCalled();
+      });
+
+      it('closes the menu when touched outside', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        expectMenuToBeOpen();
+        // fireEvent.touchStart dispatches a misnamed event under @testing-library/preact.
+        fireEvent(
+          screen.getByText('Outside the menu'),
+          new TouchEvent('touchstart', { bubbles: true })
+        );
+
+        expectMenuToBeClosed();
+      });
+
+      it('keeps the menu open when clicking inside it', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        await user.click(getMenu());
+
+        expectMenuToBeOpen();
+      });
+
+      it('closes the menu once when the toggle is clicked', async () => {
+        const { user } = makeHeader({ loggedIn: true, headerBottom });
+
+        await user.click(getMenuToggle());
+        tealiumMock.mockClear();
+        await user.click(getMenuToggle());
+
+        expectMenuToBeClosed();
+        expect(tealiumMock).toHaveBeenCalledTimes(1);
+        expect(tealiumMock.mock.calls[0][0]).toHaveProperty('text', 'menu closed');
+      });
+
+      it('asks an open controlled menu to close', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          isMenuOpen: true,
+          onMenuToggle,
+          headerBottom,
+        });
+
+        expectMenuToBeOpen();
+        await user.click(screen.getByText('Outside the menu'));
+
+        expect(onMenuToggle).toHaveBeenCalledTimes(1);
+      });
+
+      it('does not toggle a closed controlled menu', async () => {
+        const onMenuToggle = jest.fn();
+        const { user } = makeHeader({
+          loggedIn: true,
+          isMenuOpen: false,
+          onMenuToggle,
+          headerBottom,
+        });
+
+        await user.click(screen.getByText('Outside the menu'));
+
+        expect(onMenuToggle).not.toHaveBeenCalled();
+      });
+    });
   });
 });
