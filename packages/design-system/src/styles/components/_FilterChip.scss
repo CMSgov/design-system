@@ -22,8 +22,7 @@
     padding-inline-end: 34px;
   }
 
-  &:hover,
-  &:focus-visible {
+  &:hover {
     background-color: var(--filter-chip__background-color--hover);
     border-color: var(--filter-chip__border-color--hover);
     color: var(--filter-chip__color--hover);
