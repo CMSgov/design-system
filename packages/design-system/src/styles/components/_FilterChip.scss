@@ -28,6 +28,7 @@
     color: var(--filter-chip__color--hover);
   }
 
+  &:focus,
   &:active {
     background-color: var(--filter-chip__background-color--active);
     border-color: var(--filter-chip__border-color--active);
@@ -84,9 +85,16 @@
     width: 12px;
   }
 
-  .ds-c-filter-chip__button:active &,
-  .ds-c-filter-chip__button:focus &,
   .ds-c-filter-chip__button:hover & {
+    border-color: var(--filter-chip__color--hover);
+
+    .ds-c-icon--close {
+      fill: var(--filter-chip__color--hover);
+    }
+  }
+
+  .ds-c-filter-chip__button:focus &,
+  .ds-c-filter-chip__button:active & {
     border-color: var(--filter-chip__color--active);
 
     .ds-c-icon--close {
