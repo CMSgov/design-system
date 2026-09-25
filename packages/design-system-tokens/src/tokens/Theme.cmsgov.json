@@ -1164,10 +1164,16 @@
       "background-color--active": {
         "$value": "{theme.color.primary}"
       },
+      "background-color--hover": {
+        "$value": "{theme.color.primary}"
+      },
       "border-color": {
         "$value": "{theme.color.primary}"
       },
       "border-color--active": {
+        "$value": "{theme.color.primary}"
+      },
+      "border-color--hover": {
         "$value": "{theme.color.primary}"
       },
       "border-radius": {
@@ -1179,13 +1185,20 @@
       "color--active": {
         "$value": "{theme.color.white}"
       },
-      "icon": {
-        "color": {
-          "$value": "{theme.color.base}"
-        },
-        "color-active": {
-          "$value": "{theme.color.white}"
-        }
+      "color--hover": {
+        "$value": "{theme.color.white}"
+      },
+      "font-weight": {
+        "$value": "{theme.font.weight.normal}"
+      },
+      "min-height": {
+        "$value": "0"
+      },
+      "padding-block": {
+        "$value": "{spacer.half}"
+      },
+      "padding-inline-start": {
+        "$value": "{spacer.1}"
       }
     },
     "hint": {

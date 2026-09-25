@@ -7,12 +7,12 @@
   border-radius: var(--filter-chip__border-radius);
   color: var(--filter-chip__color);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--filter-chip__font-weight);
   margin-block-start: $spacer-1;
   margin-inline-end: $spacer-1;
-  min-height: 0;
-  padding: $spacer-half $spacer-1;
-  padding-inline-end: 34px;
+  min-height: var(--filter-chip__min-height);
+  padding-block: var(--filter-chip__padding-block);
+  padding-inline: var(--filter-chip__padding-inline-start) 34px;
   position: relative;
   text-align: start;
 
@@ -22,11 +22,16 @@
     padding-inline-end: 34px;
   }
 
-  &:active,
-  &:focus,
   &:hover {
+    background-color: var(--filter-chip__background-color--hover);
+    border-color: var(--filter-chip__border-color--hover);
+    color: var(--filter-chip__color--hover);
+  }
+
+  &:focus,
+  &:active {
     background-color: var(--filter-chip__background-color--active);
-    border: 1px solid var(--filter-chip__border-color--active);
+    border-color: var(--filter-chip__border-color--active);
     color: var(--filter-chip__color--active);
   }
 
@@ -80,9 +85,16 @@
     width: 12px;
   }
 
-  .ds-c-filter-chip__button:active &,
-  .ds-c-filter-chip__button:focus &,
   .ds-c-filter-chip__button:hover & {
+    border-color: var(--filter-chip__color--hover);
+
+    .ds-c-icon--close {
+      fill: var(--filter-chip__color--hover);
+    }
+  }
+
+  .ds-c-filter-chip__button:focus &,
+  .ds-c-filter-chip__button:active & {
     border-color: var(--filter-chip__color--active);
 
     .ds-c-icon--close {
