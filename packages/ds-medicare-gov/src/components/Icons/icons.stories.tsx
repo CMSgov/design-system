@@ -19,7 +19,7 @@ import {
   DoctorsCliniciansIcon,
   DrugsIcon,
   EHRIcon,
-  EllipsesIcon,
+  EllipsisIcon,
   EMedicareSummaryIcon,
   FilterIcon,
   FindCareIcon,
@@ -177,9 +177,9 @@ const iconData = [
     name: 'EHRIcon',
   },
   {
-    defaultTitle: 'Ellipses',
-    component: <EllipsesIcon />,
-    name: 'EllipsesIcon',
+    defaultTitle: 'Ellipsis',
+    component: <EllipsisIcon />,
+    name: 'EllipsisIcon',
   },
   {
     defaultTitle: 'eMedicare Summary',
@@ -202,7 +202,7 @@ const iconData = [
     name: 'FindPlansIcon',
   },
   {
-    defaultTitle: 'Five star plan',
+    defaultTitle: 'Five-star plan',
     component: <FiveStarPlanIcon />,
     name: 'FiveStarPlanIcon',
   },

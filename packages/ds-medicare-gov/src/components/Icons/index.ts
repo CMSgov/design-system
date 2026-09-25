@@ -18,7 +18,7 @@ export { default as DialysisServicesIcon } from './DialysisServicesIcon';
 export { default as DoctorsCliniciansIcon } from './DoctorsCliniciansIcon';
 export { default as DrugsIcon } from './DrugsIcon';
 export { default as EHRIcon } from './EHRIcon';
-export { default as EllipsesIcon } from './EllipsesIcon';
+export { default as EllipsisIcon } from './EllipsisIcon';
 export { default as EMedicareSummaryIcon } from './EMedicareSummaryIcon';
 export { default as FilterIcon } from './FilterIcon';
 export { default as FindCareIcon } from './FindCareIcon';

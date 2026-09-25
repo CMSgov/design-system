@@ -7,11 +7,11 @@ const defaultProps = {
   viewBox: '0 0 24 24',
 };
 
-function EllipsesIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--ellipses ${props.className || ''}`;
+function EllipsisIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--ellipsis ${props.className || ''}`;
 
   return (
-    <SvgIcon title={t('icons.ellipses')} {...defaultProps} {...props} className={iconCssClasses}>
+    <SvgIcon title={t('icons.ellipsis')} {...defaultProps} {...props} className={iconCssClasses}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -22,4 +22,4 @@ function EllipsesIcon(props: IconCommonProps): React.ReactElement {
   );
 }
 
-export default EllipsesIcon;
+export default EllipsisIcon;
