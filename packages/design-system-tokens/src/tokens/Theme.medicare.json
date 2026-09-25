@@ -1231,17 +1231,6 @@
       },
       "padding-inline-start": {
         "$value": "{spacer.2}"
-      },
-      "icon": {
-        "color": {
-          "$value": "{theme.color.primary-darker}"
-        },
-        "color-active": {
-          "$value": "{theme.color.primary-darker}"
-        },
-        "color-hover": {
-          "$value": "{theme.color.white}"
-        }
       }
     },
     "hint": {

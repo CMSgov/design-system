@@ -1195,17 +1195,6 @@
       },
       "padding-inline-start": {
         "$value": "{spacer.1}"
-      },
-      "icon": {
-        "color": {
-          "$value": "{theme.color.base}"
-        },
-        "color-active": {
-          "$value": "{theme.color.white}"
-        },
-        "color-hover": {
-          "$value": "{theme.color.white}"
-        }
       }
     },
     "hint": {

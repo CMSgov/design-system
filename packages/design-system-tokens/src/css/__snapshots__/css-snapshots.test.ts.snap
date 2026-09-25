@@ -311,9 +311,6 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --field-max-width--medium: 12rem;
 --field-max-width--small: 6rem;
 --field-max-width: 460px;
---filter-chip-icon__color-active: var(--color-white);
---filter-chip-icon__color-hover: var(--color-white);
---filter-chip-icon__color: var(--color-base);
 --filter-chip__background-color--active: var(--color-primary);
 --filter-chip__background-color--hover: var(--color-primary);
 --filter-chip__background-color: var(--color-primary-lightest);
@@ -815,9 +812,6 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --field-max-width--medium: 12rem;
 --field-max-width--small: 6rem;
 --field-max-width: 460px;
---filter-chip-icon__color-active: var(--color-white);
---filter-chip-icon__color-hover: var(--color-white);
---filter-chip-icon__color: var(--color-base);
 --filter-chip__background-color--active: var(--color-primary);
 --filter-chip__background-color--hover: var(--color-primary);
 --filter-chip__background-color: var(--color-primary-lightest);
@@ -1319,9 +1313,6 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --field-max-width--medium: 12rem;
 --field-max-width--small: 6rem;
 --field-max-width: 460px;
---filter-chip-icon__color-active: var(--color-white);
---filter-chip-icon__color-hover: var(--color-white);
---filter-chip-icon__color: var(--color-base);
 --filter-chip__background-color--active: var(--color-primary);
 --filter-chip__background-color--hover: var(--color-primary);
 --filter-chip__background-color: var(--color-primary-lightest);
@@ -1821,9 +1812,6 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --field-max-width--medium: 12rem;
 --field-max-width--small: 6rem;
 --field-max-width: 460px;
---filter-chip-icon__color-active: var(--color-primary-darker);
---filter-chip-icon__color-hover: var(--color-white);
---filter-chip-icon__color: var(--color-primary-darker);
 --filter-chip__background-color--active: var(--color-primary-darker);
 --filter-chip__background-color--hover: var(--color-primary-light);
 --filter-chip__background-color: var(--color-primary-lighter);
