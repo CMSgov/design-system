@@ -5,6 +5,12 @@ import { MultiInputDateField } from './MultiInputDateField';
 import defaultDateFormatter, { DateObject } from './defaultDateFormatter';
 
 describe('MultiInputDateField', () => {
+  it('falls back to its default legend when no label is given', () => {
+    render(<MultiInputDateField label={undefined} />);
+
+    expect(screen.getByText('Date')).toBeInTheDocument();
+  });
+
   it('renders', () => {
     const { container } = render(<MultiInputDateField label="A date field" />);
 

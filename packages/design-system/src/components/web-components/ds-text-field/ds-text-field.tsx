@@ -25,7 +25,7 @@ const attributes = [
   ...formAttrs,
 ];
 
-function getMaskFunction(value: string) {
+function getMaskFunction(value: string | undefined) {
   switch (value) {
     case 'phone':
       return PHONE_MASK;

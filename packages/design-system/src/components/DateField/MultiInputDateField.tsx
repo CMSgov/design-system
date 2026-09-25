@@ -149,7 +149,7 @@ export function MultiInputDateField(props: DateFieldProps): React.ReactElement<a
   const id = useId('date-field--', props.id);
   const { errorId, topError, bottomError, invalid } = useInlineError({ ...props, id });
   const { hintId, hintElement } = useHint({ hint: t('dateField.hint'), ...props, id });
-  const labelProps = useLabelProps({ label: t('dateField.label'), ...props, id });
+  const labelProps = useLabelProps({ ...props, label: props.label ?? t('dateField.label'), id });
   const fieldProps = {
     dayName: 'day',
     monthName: 'month',

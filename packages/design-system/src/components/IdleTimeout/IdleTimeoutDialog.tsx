@@ -22,7 +22,7 @@ export interface IdleTimeoutDialogProps {
   /**
    * Controls whether the dialog is in an open state
    */
-  isOpen?: boolean;
+  isOpen: boolean;
   /**
    * The message text for the warning dialog.
    * Note that using the token `<timeToTimeout>` will be replaced in the message text with the number of minutes until timeout.
@@ -61,7 +61,7 @@ export const IdleTimeoutDialog = ({
   showSessionEndButton,
 }: IdleTimeoutDialogProps): React.ReactElement<any> => {
   const renderDialogActions = () => {
-    const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--2' : null;
+    const continueSessionButtonClasses = showSessionEndButton ? 'ds-u-margin-right--2' : undefined;
 
     return (
       <>

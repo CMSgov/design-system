@@ -105,8 +105,9 @@ export const ChoiceList = (props: ChoiceListProps) => {
     // transition, so in order to check if the newly focused element
     // is one of our choices, we're going to have to wait a bit.
     setTimeout(() => {
-      if (!inputElements.includes(document.activeElement)) {
-        onComponentBlur(evt);
+      const { activeElement } = document;
+      if (!activeElement || !inputElements.includes(activeElement)) {
+        onComponentBlur?.(evt);
       }
     }, 20);
   };
