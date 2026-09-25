@@ -4,7 +4,13 @@ import { DropdownProps, DropdownOption, DropdownOptGroup, DropdownValue } from '
 
 export function validateProps(props: DropdownProps) {
   if (process.env.NODE_ENV !== 'production') {
-    if (props.children && props.options?.length > 0) {
+    // `DropdownProps` already makes these two mutually exclusive, which narrows
+    // one of them away here. The warning is for consumers who get past the types.
+    const { children, options } = props as {
+      children?: ReactNode;
+      options?: Array<DropdownOption | DropdownOptGroup>;
+    };
+    if (children && options?.length) {
       console.warn(
         `Cannot use 'options' and 'children' React properties at the same time in the <Select> component. Please use 'children' for custom options and 'options' for general cases`
       );

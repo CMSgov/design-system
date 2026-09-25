@@ -110,15 +110,17 @@ export const Button = (props: ButtonProps) => {
     className
   );
 
+  const isButton = ComponentType === 'button';
   const attrs = {
     ...otherProps,
     className: allClassNames,
-    type,
+    // Only a `<button>` takes a `type`, and spreading it in conditionally is what
+    // lets the property be absent rather than deleted after the fact.
+    ...(isButton ? { type } : {}),
   };
 
-  if (ComponentType !== 'button') {
+  if (!isButton) {
     delete attrs.disabled;
-    delete attrs.type;
 
     if (props.disabled) {
       attrs.role = 'link';

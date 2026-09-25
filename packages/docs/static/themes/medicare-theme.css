@@ -407,9 +407,9 @@
 --label__text-transform: uppercase;
 --inline-error__color: var(--color-error);
 --inline-error__color--inverse: var(--color-error-lighter);
---link__color: var(--color-secondary);
---link__color--active: var(--color-secondary-dark);
---link__color--hover: var(--color-secondary-dark);
+--link__color: var(--color-primary);
+--link__color--active: var(--color-primary-dark);
+--link__color--hover: var(--color-primary-dark);
 --link__color--visited: var(--color-visited);
 --link__text-decoration-offset: 3px;
 --link__text-decoration-thickness: 1px;

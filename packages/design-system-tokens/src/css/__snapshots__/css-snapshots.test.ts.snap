@@ -1871,10 +1871,10 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --link-inverse__color--hover: var(--color-muted-inverse);
 --link-inverse__color--visited: var(--color-muted-inverse);
 --link-inverse__color: var(--color-base-inverse);
---link__color--active: var(--color-secondary-dark);
---link__color--hover: var(--color-secondary-dark);
+--link__color--active: var(--color-primary-dark);
+--link__color--hover: var(--color-primary-dark);
 --link__color--visited: var(--color-visited);
---link__color: var(--color-secondary);
+--link__color: var(--color-primary);
 --link__text-decoration-offset: 3px;
 --link__text-decoration-thickness--hover: 2px;
 --link__text-decoration-thickness: 1px;

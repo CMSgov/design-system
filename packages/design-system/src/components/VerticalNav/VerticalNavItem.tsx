@@ -34,7 +34,7 @@ export interface VerticalNavItemProps {
    * `id`, `url`.
    * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */
-  onClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
+  onClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url?: string) => any;
   /**
    * Called when this item's subnav is collapsed or expanded, with the
    * following arguments: `id`, `collapsed`
@@ -148,7 +148,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       const item = Object.assign({}, props);
       delete item.items;
 
-      return [item].concat(props.items);
+      return [item].concat(props.items ?? []);
     }
 
     return props.items;

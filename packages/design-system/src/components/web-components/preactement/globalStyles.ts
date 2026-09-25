@@ -33,7 +33,7 @@ function copyGlobalStyleSheets(): CSSStyleSheet[] {
   });
 }
 
-function isLinkElement(node: Node): node is HTMLLinkElement {
+function isLinkElement(node: Node | null): node is HTMLLinkElement {
   return node?.nodeType === Node.ELEMENT_NODE && (node as Element).tagName === 'LINK';
 }
 

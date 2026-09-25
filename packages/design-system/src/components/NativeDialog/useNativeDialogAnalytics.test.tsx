@@ -13,7 +13,7 @@ const defaultProps = {
   onClose: jest.fn(),
 };
 
-function renderDialog(props: { isOpen: boolean }) {
+function renderDialog(props: { isOpen: boolean }, overrides: Partial<TestDialogProps> = {}) {
   const TestDialog = ({ onOpen, onClose, ...dialogProps }: TestDialogProps) => {
     const headingRef = useNativeDialogAnalytics({
       isOpen: dialogProps.isOpen,
@@ -27,11 +27,11 @@ function renderDialog(props: { isOpen: boolean }) {
     );
   };
 
-  const result = render(<TestDialog {...defaultProps} {...props} />);
+  const result = render(<TestDialog {...defaultProps} {...props} {...overrides} />);
   return {
     ...result,
     rerenderDialog(newProps: { isOpen: boolean }) {
-      return result.rerender(<TestDialog {...defaultProps} {...newProps} />);
+      return result.rerender(<TestDialog {...defaultProps} {...newProps} {...overrides} />);
     },
   };
 }
@@ -60,6 +60,12 @@ describe('useNativeDialogAnalytics', () => {
     expect(defaultProps.onOpen).toHaveBeenCalledWith('Hello World');
     expect(defaultProps.onOpen).toHaveBeenCalledTimes(1);
     expect(defaultProps.onClose).not.toHaveBeenCalled();
+  });
+
+  it('does not require an onClose handler', () => {
+    // `onClose` is optional, so closing without one has to be a no-op rather than a crash.
+    const { rerenderDialog } = renderDialog({ isOpen: true }, { onClose: undefined });
+    expect(() => rerenderDialog({ isOpen: false })).not.toThrow();
   });
 
   it('sends analytics event when closing dialog', () => {

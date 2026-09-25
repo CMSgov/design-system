@@ -187,9 +187,9 @@ export const Choice = ({ _choiceChild = false, ...props }: ChoiceProps) => {
   return (
     <div
       className={className}
-      aria-live={ariaLive ?? (checkedChildren ? 'polite' : null)}
-      aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : null)}
-      aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : null)}
+      aria-live={ariaLive ?? (checkedChildren ? 'polite' : undefined)}
+      aria-relevant={ariaRelevant ?? (checkedChildren ? 'additions text' : undefined)}
+      aria-atomic={ariaAtomic ?? (checkedChildren ? 'false' : undefined)}
     >
       <div className="ds-c-choice-wrapper">
         <input
