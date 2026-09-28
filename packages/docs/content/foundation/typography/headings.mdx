@@ -39,14 +39,24 @@ import { css } from 'storybook/theming';
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
-  Medicare.gov uses Montserrat for all headings.
+  Medicare.gov uses Inter for all headings.
 </ThemeContent>
 
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc.) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
 
 ## Responsive typography
 
-`.ds-text-heading-5xl`, `ds-text-heading-4xl`, and `ds-text-heading-3xl` classes are responsive by default.
+<ThemeContent neverThemes={['medicare']}>
+
+`.ds-text-heading-5xl`, `.ds-text-heading-4xl`, and `.ds-text-heading-3xl` classes are responsive by default.
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+`.ds-text-heading--5xl`, `.ds-text-heading--4xl`, `.ds-text-heading--3xl`, `.ds-text-heading--2xl`, and `.ds-text-heading--xl` classes are responsive by default.
+
+</ThemeContent>
 
 To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
 Since the base typography margins and line height is measured in `em` units,
@@ -112,9 +122,6 @@ they'll automatically adjust as you change the font size.
     {
       cssClass: 'ds-text-heading--4xl',
       figmaToken: 'Headings/4xl/4xl - MD-SM',
-      example: {
-        medicare: null,
-      },
     },
     {
       cssClass: 'ds-text-heading--5xl',
@@ -143,9 +150,6 @@ they'll automatically adjust as you change the font size.
     {
       cssClass: 'ds-text-heading--4xl',
       figmaToken: 'Headings/4xl/4xl - MD-SM',
-      example: {
-        medicare: null,
-      },
     },
     {
       cssClass: 'ds-text-heading--5xl',
@@ -169,9 +173,6 @@ they'll automatically adjust as you change the font size.
     {
       cssClass: 'ds-text-heading--4xl',
       figmaToken: 'Headings/4xl/4xl - LG',
-      example: {
-        medicare: null,
-      },
     },
     {
       cssClass: 'ds-text-heading--5xl',
@@ -180,11 +181,27 @@ they'll automatically adjust as you change the font size.
   ]}
 />
 
+<ThemeContent neverThemes={['medicare']}>
+
 | CSS Class              | 545px and below | 545px to 768px | 768px and above |
 | ---------------------- | --------------- | -------------- | --------------- |
 | `.ds-text-heading-5xl` | 36px            | 48px           | 60px            |
 | `.ds-text-heading-4xl` | 36px            | 36px           | 48px            |
 | `.ds-text-heading-3xl` | 30px            | 30px           | 36px            |
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+| CSS Class              | 545px and below | 545px to 768px | 768px and above |
+| ---------------------- | --------------- | -------------- | --------------- |
+| `.ds-text-heading-5xl` | 56px            | 56px           | 96px            |
+| `.ds-text-heading-4xl` | 48px            | 48px           | 72px            |
+| `.ds-text-heading-3xl` | 40px            | 40px           | 56px            |
+| `.ds-text-heading-2xl` | 32px            | 32px           | 48px            |
+| `.ds-text-heading-xl`  | 28px            | 28px           | 36px            |
+
+</ThemeContent>
 
 <ResponsiveExample
   storyId="foundations-typography-headings--responsive-headings"
@@ -373,6 +390,16 @@ The following CSS variables can be overridden to change the type sizes:
 - `--font-size-lg`
 - `--font-size-md`, uses `--font-size-base`
 - `--font-size-sm`
+
+<ThemeContent onlyThemes={['medicare']}>
+
+Medicare headings also apply letter spacing through the following variables, which can be overridden to adjust heading tracking:
+
+- `--font-letter-spacing-lg`, applied to `xl` through `5xl` headings
+- `--font-letter-spacing-md`, applied to `lg` and `md` headings
+- `--font-letter-spacing-sm`, applied to `sm` headings
+
+</ThemeContent>
 
 ## Guidance
 
