@@ -1,6 +1,7 @@
 import {
   AboutIcon,
   AbuseIcon,
+  AddPhoneRepsIcon,
   AlarmIcon,
   BellIcon,
   BinocularsIcon,
@@ -53,7 +54,6 @@ import {
   PaymentHistoryIcon,
   PharmacyIcon,
   PhoneNumberIcon,
-  PhoneNumberPlusIcon,
   PieChartIcon,
   PiggyBankIcon,
   PreventativeServicesIcon,
@@ -85,6 +85,11 @@ const iconData = [
     defaultTitle: 'Abuse',
     component: <AbuseIcon />,
     name: 'AbuseIcon',
+  },
+  {
+    defaultTitle: 'Add Phone Representives',
+    component: <AddPhoneRepsIcon />,
+    name: 'AddPhoneRepsIcon',
   },
   {
     defaultTitle: 'Alarm',
@@ -352,11 +357,6 @@ const iconData = [
     defaultTitle: 'Phone Number',
     component: <PhoneNumberIcon />,
     name: 'PhoneNumberIcon',
-  },
-  {
-    defaultTitle: 'Phone number plus',
-    component: <PhoneNumberPlusIcon />,
-    name: 'PhoneNumberPlusIcon',
   },
   {
     defaultTitle: 'Pie chart',

@@ -1,5 +1,6 @@
 export { default as AboutIcon } from './AboutIcon';
 export { default as AbuseIcon } from './AbuseIcon';
+export { default as AddPhoneRepsIcon } from './AddPhoneRepsIcon';
 export { default as AlarmIcon } from './AlarmIcon';
 export { default as BellIcon } from './BellIcon';
 export { default as BinocularsIcon } from './BinocularsIcon';
@@ -52,7 +53,6 @@ export { default as PasswordShowIcon } from './PasswordShowIcon';
 export { default as PaymentHistoryIcon } from './PaymentHistoryIcon';
 export { default as PharmacyIcon } from './PharmacyIcon';
 export { default as PhoneNumberIcon } from './PhoneNumberIcon';
-export { default as PhoneNumberPlusIcon } from './PhoneNumberPlusIcon';
 export { default as PieChartIcon } from './PieChartIcon';
 export { default as PiggyBankIcon } from './PiggyBankIcon';
 export { default as PreventativeServicesIcon } from './PreventativeServicesIcon';

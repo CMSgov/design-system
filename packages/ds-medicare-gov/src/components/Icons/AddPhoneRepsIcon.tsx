@@ -7,12 +7,12 @@ const defaultProps = {
   viewBox: '0 0 32 32',
 };
 
-function PhoneNumberPlusIcon(props: IconCommonProps): React.ReactElement {
-  const iconCssClasses = `ds-c-icon--phone-number-plus ${props.className || ''}`;
+function AddPhoneRepsIcon(props: IconCommonProps): React.ReactElement {
+  const iconCssClasses = `ds-c-icon--add-phone-reps ${props.className || ''}`;
 
   return (
     <SvgIcon
-      title={t('icons.phoneNumberPlus')}
+      title={t('icons.addPhoneReps')}
       {...defaultProps}
       {...props}
       className={iconCssClasses}
@@ -27,4 +27,4 @@ function PhoneNumberPlusIcon(props: IconCommonProps): React.ReactElement {
   );
 }
 
-export default PhoneNumberPlusIcon;
+export default AddPhoneRepsIcon;
