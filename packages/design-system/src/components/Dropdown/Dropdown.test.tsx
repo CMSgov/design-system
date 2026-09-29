@@ -385,7 +385,7 @@ describe('Dropdown', () => {
     const inputRef = createRef<HTMLButtonElement>();
     makeDropdown({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('BUTTON');
+    expect(inputRef.current!.tagName).toEqual('BUTTON');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -393,7 +393,7 @@ describe('Dropdown', () => {
       const inputRef = useRef<HTMLButtonElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('BUTTON');
+        expect(inputRef.current!.tagName).toEqual('BUTTON');
       }, []);
       return <Dropdown inputRef={inputRef} {...defaultProps} options={generateOptions(2)} />;
     };

@@ -138,7 +138,7 @@ describe('Choice', () => {
     const inputRef = createRef<HTMLInputElement>();
     renderChoice({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('INPUT');
+    expect(inputRef.current!.tagName).toEqual('INPUT');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -146,7 +146,7 @@ describe('Choice', () => {
       const inputRef = useRef<HTMLInputElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('INPUT');
+        expect(inputRef.current!.tagName).toEqual('INPUT');
       }, []);
       return <Choice inputRef={inputRef} {...defaultProps} />;
     };

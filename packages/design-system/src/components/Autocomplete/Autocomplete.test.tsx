@@ -662,7 +662,7 @@ describe('Autocomplete', () => {
     const inputRef = createRef<HTMLInputElement>();
     renderAutocomplete({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('INPUT');
+    expect(inputRef.current!.tagName).toEqual('INPUT');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -670,7 +670,7 @@ describe('Autocomplete', () => {
       const inputRef = useRef<HTMLButtonElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('INPUT');
+        expect(inputRef.current!.tagName).toEqual('INPUT');
       }, []);
       return (
         <Autocomplete items={defaultItems} inputRef={inputRef}>

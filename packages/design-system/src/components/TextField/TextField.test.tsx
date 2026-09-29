@@ -116,7 +116,7 @@ describe('TextField', function () {
     const inputRef = createRef<HTMLInputElement>();
     renderTextField({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('INPUT');
+    expect(inputRef.current!.tagName).toEqual('INPUT');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -124,7 +124,7 @@ describe('TextField', function () {
       const inputRef = useRef<HTMLInputElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('INPUT');
+        expect(inputRef.current!.tagName).toEqual('INPUT');
       }, []);
       return <TextField inputRef={inputRef} {...defaultProps} />;
     };
