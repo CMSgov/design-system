@@ -272,7 +272,7 @@ describe('Autocomplete', () => {
   it('renders Autocomplete component no results', async () => {
     const { user } = renderAutocomplete({ items: [] });
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
@@ -287,7 +287,7 @@ describe('Autocomplete', () => {
       ],
     });
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 

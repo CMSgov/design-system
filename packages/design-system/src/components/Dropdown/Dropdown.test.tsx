@@ -178,7 +178,7 @@ describe('Dropdown', () => {
     // This goofy selector is because we wrap our <p> in a <div> to get the aria-live region in place
     // The <p> used to be the last child of the dropdown, but now that it is wrapped in <div> it is the first child of
     // the last child, which is the <div>.
-    expect(dropdown.lastChild.firstChild).toEqual(error);
+    expect(dropdown!.lastChild!.firstChild).toEqual(error);
   });
 
   it('is disabled', () => {
