@@ -45,7 +45,7 @@ describe('TextInput', function () {
     const { container } = renderInput({ type: 'password' });
     // The password field doesn't have an accessible role!
     const input = container.querySelector('.ds-c-field');
-    expect(input.getAttribute('type')).toBe('password');
+    expect(input!.getAttribute('type')).toBe('password');
   });
 
   it('is disabled', () => {

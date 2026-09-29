@@ -30,8 +30,8 @@ describe('TextField', function () {
 
     const mask = container.querySelector('.ds-c-label-mask');
     expect(mask).toBeInTheDocument();
-    expect(mask.querySelectorAll('span')).toHaveLength(2);
-    expect(mask.textContent).toContain('MM/DD/YYYY');
+    expect(mask!.querySelectorAll('span')).toHaveLength(2);
+    expect(mask!.textContent).toContain('MM/DD/YYYY');
 
     const input = screen.getByRole('textbox');
     expect(input).toBeInTheDocument();
@@ -49,8 +49,8 @@ describe('TextField', function () {
 
     const mask = container.querySelector('.ds-c-field-mask--currency');
     expect(mask).toBeInTheDocument();
-    expect(mask.firstElementChild.classList).toContain('ds-c-field__before--currency');
-    expect(mask.textContent).toContain('$');
+    expect(mask!.firstElementChild!.classList).toContain('ds-c-field__before--currency');
+    expect(mask!.textContent).toContain('$');
 
     const input = screen.getByRole('textbox');
     expect(input).toBeInTheDocument();
@@ -79,16 +79,16 @@ describe('TextField', function () {
     const labelId = 'custom-label-id';
     const errorId = 'custom-error-id';
     const { container } = renderTextField({ id, labelId, errorId, errorMessage: 'hello' });
-    expect(container.querySelector('input').id).toEqual(id);
-    expect(container.querySelector('label').id).toEqual(labelId);
-    expect(container.querySelector('.ds-c-inline-error').id).toEqual(errorId);
+    expect(container.querySelector('input')!.id).toEqual(id);
+    expect(container.querySelector('label')!.id).toEqual(labelId);
+    expect(container.querySelector('.ds-c-inline-error')!.id).toEqual(errorId);
   });
 
   it('generates ids when no id is provided', () => {
     const { container } = renderTextField({ id: undefined });
     const idRegex = /text-field--\d+/;
-    expect(container.querySelector('input').id).toMatch(idRegex);
-    expect(container.querySelector('label').id).toMatch(idRegex);
+    expect(container.querySelector('input')!.id).toMatch(idRegex);
+    expect(container.querySelector('label')!.id).toMatch(idRegex);
   });
 
   it('calls onChange when user types', async () => {
