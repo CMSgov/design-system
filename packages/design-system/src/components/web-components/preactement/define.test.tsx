@@ -470,6 +470,7 @@ describe('define()', () => {
     it.skip('returns the correct markup', () => {
       const props = { value: 'serverValue' };
       const component = define('message-fourteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props) as any);
       expect(container.querySelectorAll('message-fourteen').length).toEqual(1);
@@ -486,6 +487,7 @@ describe('define()', () => {
     it.skip('includes a json script block with props', () => {
       const props = { value: 'serverValue' };
       const component = define('message-sixteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props));
 

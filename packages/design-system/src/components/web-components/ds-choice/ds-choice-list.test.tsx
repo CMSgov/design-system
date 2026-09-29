@@ -27,7 +27,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     'error-message': 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio',
-    'ds-change': (): void => null,
+    'ds-change': (): void => undefined,
     ...customProps,
   };
   return {

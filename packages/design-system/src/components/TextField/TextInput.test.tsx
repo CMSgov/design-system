@@ -70,7 +70,7 @@ describe('TextInput', function () {
 
   it('has a value', () => {
     const value = 'Yay';
-    renderInput({ value, onChange: (): void => null });
+    renderInput({ value, onChange: (): void => undefined });
     expect(getInput()).toHaveValue(value);
   });
 
