@@ -160,7 +160,7 @@ describe('ChoiceList', () => {
   it('calls onChange', async () => {
     jest.useFakeTimers();
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
     const onChange = jest.fn();
     choiceListRoot.addEventListener('ds-change', onChange);
 
@@ -174,7 +174,7 @@ describe('ChoiceList', () => {
   it('calls onBlur', async () => {
     jest.useFakeTimers();
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
     const onBlur = jest.fn();
     choiceListRoot.addEventListener('ds-blur', onBlur);
 
@@ -189,7 +189,7 @@ describe('ChoiceList', () => {
 
   it('calls onComponentBlur', async () => {
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
 
     jest.useFakeTimers();
     const onBlur = jest.fn();
@@ -209,7 +209,7 @@ describe('ChoiceList', () => {
 
   it("doesn't call onComponentBlur", async () => {
     const { user } = renderChoiceList({ type: 'checkbox' });
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
 
     jest.useFakeTimers();
     const onBlur = jest.fn();

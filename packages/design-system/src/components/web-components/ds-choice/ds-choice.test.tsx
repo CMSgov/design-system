@@ -170,7 +170,7 @@ describe('Choice', () => {
     jest.useFakeTimers();
     const { user } = renderChoice();
 
-    const choiceRoot = document.querySelector('ds-choice');
+    const choiceRoot = document.querySelector('ds-choice')!;
     const mockHandler = jest.fn();
     choiceRoot.addEventListener('ds-change', mockHandler);
 
@@ -186,7 +186,7 @@ describe('Choice', () => {
     jest.useFakeTimers();
     const { user } = renderChoice();
 
-    const choiceRoot = document.querySelector('ds-choice');
+    const choiceRoot = document.querySelector('ds-choice')!;
     const onBlur = jest.fn();
     const onChange = jest.fn();
     choiceRoot.addEventListener('ds-blur', onBlur);

@@ -198,7 +198,7 @@ describe('MonthPicker', () => {
     it('triggers `select-all`', async () => {
       const { user } = renderMonthPicker();
       const onSelectAll = jest.fn();
-      const monthPickerRoot = document.querySelector('ds-month-picker');
+      const monthPickerRoot = document.querySelector('ds-month-picker')!;
       monthPickerRoot.addEventListener('ds-select-all', onSelectAll);
 
       const button = screen.getByText('Select all');
@@ -213,7 +213,7 @@ describe('MonthPicker', () => {
         'disabled-months': JSON.stringify(disabledMonths),
       });
       const onSelectAll = jest.fn();
-      const monthPickerRoot = document.querySelector('ds-month-picker');
+      const monthPickerRoot = document.querySelector('ds-month-picker')!;
       monthPickerRoot.addEventListener('ds-select-all', onSelectAll);
 
       const checkboxes = screen.getAllByRole('checkbox');
@@ -239,7 +239,7 @@ describe('MonthPicker', () => {
     it('triggers `on-clear-all`', async () => {
       const { user } = renderMonthPicker();
       const onClearAll = jest.fn();
-      const monthPickerRoot = document.querySelector('ds-month-picker');
+      const monthPickerRoot = document.querySelector('ds-month-picker')!;
       monthPickerRoot.addEventListener('ds-clear-all', onClearAll);
 
       const button = screen.getByText('Clear all');
@@ -257,7 +257,7 @@ describe('MonthPicker', () => {
         'disabled-months': JSON.stringify(disabledMonths),
         'default-selected-months': JSON.stringify(defaultSelectedMonths),
       });
-      const monthPickerRoot = document.querySelector('ds-month-picker');
+      const monthPickerRoot = document.querySelector('ds-month-picker')!;
       const onClearAll = jest.fn();
       monthPickerRoot.addEventListener('ds-clear-all', onClearAll);
 

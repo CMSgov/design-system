@@ -106,7 +106,7 @@ describe('ds-text-field', function () {
     jest.useFakeTimers();
     const { user } = renderTextField();
 
-    const textFieldRoot = document.querySelector('ds-text-field');
+    const textFieldRoot = document.querySelector('ds-text-field')!;
     const mockHandler = jest.fn();
     textFieldRoot.addEventListener('ds-change', mockHandler);
 
@@ -122,7 +122,7 @@ describe('ds-text-field', function () {
     jest.useFakeTimers();
     const { user } = renderTextField();
 
-    const textFieldRoot = document.querySelector('ds-text-field');
+    const textFieldRoot = document.querySelector('ds-text-field')!;
     const onBlur = jest.fn();
     const onChange = jest.fn();
     textFieldRoot.addEventListener('ds-blur', onBlur);
