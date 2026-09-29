@@ -71,7 +71,7 @@ describe('Drawer', () => {
 
     const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
     expect(renderedFooterBodyElement).toBeInTheDocument();
-    expect(renderedFooterBodyElement.textContent).toEqual('Footer Attribute Content');
+    expect(renderedFooterBodyElement!.textContent).toEqual('Footer Attribute Content');
   });
 
   it('renders slotted footer-body when slot content is provided and attribute is not', () => {
@@ -84,8 +84,8 @@ describe('Drawer', () => {
     );
 
     const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
-    const slot = renderedFooterBodyElement.firstElementChild;
-    expect(slot.tagName).toEqual('SLOT');
+    const slot = renderedFooterBodyElement!.firstElementChild;
+    expect(slot!.tagName).toEqual('SLOT');
     expect(slot).toHaveAttribute('name', 'footer-body');
   });
 
@@ -100,8 +100,8 @@ describe('Drawer', () => {
     );
 
     const renderedFooterBodyElement = shadowRoot.querySelector('.ds-c-drawer__footer-body');
-    const slot = renderedFooterBodyElement.firstElementChild;
-    expect(slot.tagName).toEqual('SLOT');
+    const slot = renderedFooterBodyElement!.firstElementChild;
+    expect(slot!.tagName).toEqual('SLOT');
     expect(slot).toHaveAttribute('name', 'footer-body');
   });
 

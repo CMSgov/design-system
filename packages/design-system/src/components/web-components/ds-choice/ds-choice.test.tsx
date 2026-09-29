@@ -248,7 +248,7 @@ describe('Choice', () => {
           </div>
         </ds-choice>
       );
-      const root = container.firstChild.firstChild;
+      const root = container.firstChild!.firstChild;
       expect(root).toHaveAttribute('aria-live', 'polite');
       expect(root).toHaveAttribute('aria-relevant', 'additions text');
       expect(root).toHaveAttribute('aria-atomic', 'false');
@@ -269,7 +269,7 @@ describe('Choice', () => {
           </div>
         </ds-choice>
       );
-      const root = container.firstChild.firstChild;
+      const root = container.firstChild!.firstChild;
       expect(root).toHaveAttribute('aria-live', 'off');
       expect(root).toHaveAttribute('aria-relevant', 'text');
       expect(root).toHaveAttribute('aria-atomic', 'true');

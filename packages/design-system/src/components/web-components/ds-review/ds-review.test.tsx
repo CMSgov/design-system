@@ -24,7 +24,7 @@ describe('Review', () => {
   it('renders review', () => {
     const { shadowRoot } = renderReview(defaultAttrs, defaultChildren);
 
-    expect(shadowRoot.firstElementChild.classList).toContain('ds-c-review');
+    expect(shadowRoot.firstElementChild!.classList).toContain('ds-c-review');
     expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
@@ -78,6 +78,6 @@ describe('Review', () => {
 
   it('adds a class from props', () => {
     const { shadowRoot } = renderReview({ 'class-name': 'my-class' });
-    expect(shadowRoot.firstElementChild.classList).toContain('my-class');
+    expect(shadowRoot.firstElementChild!.classList).toContain('my-class');
   });
 });

@@ -64,7 +64,7 @@ describe('ds-text-field', function () {
     const hintId = input.getAttribute('aria-describedby');
     const hint = container.querySelector(`#${hintId}`);
     expect(hint).toContainHTML('Optional');
-    expect(hint.classList).toContain(customHintClass);
+    expect(hint!.classList).toContain(customHintClass);
   });
 
   it('renders an error message', () => {
