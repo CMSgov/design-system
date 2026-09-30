@@ -103,7 +103,7 @@ describe('Mask', function () {
               name="foo"
               type="text"
               value={text}
-              onChange={(event) => setText(unmaskValue(event.target.value, 'currency'))}
+              onChange={(event) => setText(unmaskValue(event.target.value, 'currency') ?? '')}
             />
           </Mask>
         );
