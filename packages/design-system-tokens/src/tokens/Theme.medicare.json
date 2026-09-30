@@ -1273,10 +1273,10 @@
         "$value": "{theme.color.primary}"
       },
       "color--active": {
-        "$value": "{theme.color.primary-dark}"
+        "$value": "{theme.color.primary-darker}"
       },
       "color--hover": {
-        "$value": "{theme.color.primary-dark}"
+        "$value": "{theme.color.primary-darker}"
       },
       "color--visited": {
         "$value": "{theme.color.visited}"
