@@ -197,6 +197,7 @@ const Template = (args: Args) => {
       action('ds-component-blur')(event);
     };
     const choiceList = document.querySelector('ds-choice-list');
+    if (!choiceList) return;
     choiceList.addEventListener('ds-change', onChange);
     choiceList.addEventListener('ds-blur', onBlur);
     choiceList.addEventListener('ds-component-blur', onComponentBlur);

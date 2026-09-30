@@ -43,6 +43,7 @@ type Args = React.JSX.IntrinsicElements['ds-skip-nav'] & { 'text content'?: stri
 const Template = ({ 'text content': text, ...args }: Args) => {
   useEffect(() => {
     const element = document.querySelector('ds-skip-nav');
+    if (!element) return;
     const handleClick = (event: Event) => {
       return action('ds-click')(event);
     };
