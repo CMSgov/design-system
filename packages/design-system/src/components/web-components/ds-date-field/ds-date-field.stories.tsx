@@ -6,7 +6,7 @@ import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebCompon
 import { webComponentDecorator } from '../storybook';
 import './ds-date-field';
 
-const formatDateArg = (dateArg: string | number | undefined): string => {
+const formatDateArg = (dateArg: string | number | undefined): string | undefined => {
   if (typeof dateArg === 'number') {
     return new Date(dateArg).toISOString();
   }

@@ -65,7 +65,7 @@ export const Controlled: Story = {
 
     const onChangeHandler = (dateObject: DateObject) => {
       setDateState(dateObject);
-      args.onChange('onChange');
+      args.onChange?.('onChange');
     };
 
     return (
