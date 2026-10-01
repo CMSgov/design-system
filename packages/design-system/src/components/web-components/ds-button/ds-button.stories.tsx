@@ -83,6 +83,7 @@ const Template = (args: React.JSX.IntrinsicElements['ds-button']) => {
       action('ds-click')(event);
     };
     const button = document.querySelector('ds-button');
+    if (!button) return;
     button.addEventListener('ds-click', onClick);
     return () => {
       button.removeEventListener('ds-click', onClick);

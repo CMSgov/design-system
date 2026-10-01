@@ -191,8 +191,8 @@ describe('useLabelMask', () => {
     const mask = render(labelMask).container.querySelector('.ds-c-label-mask');
 
     expect(mask).toBeInTheDocument();
-    expect(mask.querySelectorAll('span')).toHaveLength(2);
-    expect(mask.textContent).toContain('MM/DD/YYYY');
+    expect(mask!.querySelectorAll('span')).toHaveLength(2);
+    expect(mask!.textContent).toContain('MM/DD/YYYY');
 
     const input = renderInput(inputProps).container.querySelector('input');
     expect(input).toBeInTheDocument();

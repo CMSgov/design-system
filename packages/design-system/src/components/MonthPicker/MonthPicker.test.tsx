@@ -117,7 +117,7 @@ describe('MonthPicker', () => {
     const onChange = jest.fn();
     const { user } = renderMonthPicker({ onChange });
 
-    const el = screen.queryByLabelText('Jan');
+    const el = screen.getByLabelText('Jan');
     expect(el).not.toBeChecked();
 
     await user.click(el);

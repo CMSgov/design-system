@@ -19,14 +19,14 @@ describe('FilterChip', () => {
   it('should include children as label', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-c-filter-chip__label').textContent).toEqual('Foo');
+    expect(chipEl.querySelector('.ds-c-filter-chip__label')!.textContent).toEqual('Foo');
     expect(chipEl).toMatchSnapshot();
   });
 
   it('should use different aria label if provided', () => {
     renderFilterChip({ ariaClearLabel: 'Clear' });
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
+    expect(chipEl.querySelector('.ds-u-visibility--screen-reader')!.textContent).toEqual(
       'Clear Foo filter .'
     );
   });
@@ -91,7 +91,9 @@ describe('FilterChip', () => {
     const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
 
     expect(iconContainerEl).toBeDefined();
-    expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');
+    expect(iconContainerEl!.classList).toContain(
+      'ds-c-filter-chip__clear-icon-alternate-container'
+    );
     expect(iconContainerEl).toMatchSnapshot();
   });
 });

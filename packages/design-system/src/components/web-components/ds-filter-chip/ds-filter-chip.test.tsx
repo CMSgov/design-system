@@ -19,14 +19,14 @@ describe('ds-filter-chip', () => {
   it('should include children as label', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-c-filter-chip__label').textContent).toEqual('Filter Chip!');
+    expect(chipEl.querySelector('.ds-c-filter-chip__label')!.textContent).toEqual('Filter Chip!');
     expect(chipEl).toMatchSnapshot();
   });
 
   it('should use different aria label if provided', () => {
     renderFilterChip({ 'clear-label': 'Clear' });
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
+    expect(chipEl.querySelector('.ds-u-visibility--screen-reader')!.textContent).toEqual(
       'Clear Filter Chip! filter .'
     );
   });
@@ -48,7 +48,7 @@ describe('ds-filter-chip', () => {
       const onDelete = jest.fn();
       const { user } = renderFilterChip();
 
-      const chipEl = document.querySelector('ds-filter-chip');
+      const chipEl = document.querySelector('ds-filter-chip')!;
       expect(chipEl).toBeDefined();
       chipEl.addEventListener('ds-delete', onDelete);
 
@@ -61,7 +61,7 @@ describe('ds-filter-chip', () => {
       const onDelete = jest.fn();
       const { user } = renderFilterChip();
 
-      const chipEl = document.querySelector('ds-filter-chip');
+      const chipEl = document.querySelector('ds-filter-chip')!;
       chipEl.addEventListener('ds-delete', onDelete);
       screen.getByRole('button').focus();
 
@@ -106,7 +106,9 @@ describe('ds-filter-chip', () => {
     const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
 
     expect(iconContainerEl).toBeDefined();
-    expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');
+    expect(iconContainerEl!.classList).toContain(
+      'ds-c-filter-chip__clear-icon-alternate-container'
+    );
     expect(iconContainerEl).toMatchSnapshot();
   });
 });

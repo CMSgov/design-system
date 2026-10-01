@@ -111,7 +111,7 @@ describe('Dropdown', () => {
     jest.useFakeTimers();
     const { user } = renderDropdown();
 
-    const dropdownRoot = document.querySelector('ds-dropdown');
+    const dropdownRoot = document.querySelector('ds-dropdown')!;
     const mockHandler = jest.fn();
     dropdownRoot.addEventListener('ds-change', mockHandler);
 
@@ -128,7 +128,7 @@ describe('Dropdown', () => {
   it('fires a custom ds-blur event', async () => {
     const { user } = renderDropdown();
 
-    const dropdownRoot = document.querySelector('ds-dropdown');
+    const dropdownRoot = document.querySelector('ds-dropdown')!;
     const onBlur = jest.fn();
     const onChange = jest.fn();
     dropdownRoot.addEventListener('ds-blur', onBlur);

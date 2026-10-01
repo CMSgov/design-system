@@ -27,7 +27,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     'error-message': 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio',
-    'ds-change': (): void => null,
+    'ds-change': (): void => undefined,
     ...customProps,
   };
   return {
@@ -97,7 +97,7 @@ describe('ChoiceList', () => {
 
   it('generates ids when no id is provided', () => {
     const { container } = renderChoiceList({ id: undefined });
-    expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+    expect(container.querySelector('legend')!.id).toMatch(/choice-list--\d+/);
 
     const choices = screen.getAllByRole('radio');
     const choiceIdRegex = /choice--\d+/;
@@ -160,7 +160,7 @@ describe('ChoiceList', () => {
   it('calls onChange', async () => {
     jest.useFakeTimers();
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
     const onChange = jest.fn();
     choiceListRoot.addEventListener('ds-change', onChange);
 
@@ -174,7 +174,7 @@ describe('ChoiceList', () => {
   it('calls onBlur', async () => {
     jest.useFakeTimers();
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
     const onBlur = jest.fn();
     choiceListRoot.addEventListener('ds-blur', onBlur);
 
@@ -189,7 +189,7 @@ describe('ChoiceList', () => {
 
   it('calls onComponentBlur', async () => {
     const { user } = renderChoiceList();
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
 
     jest.useFakeTimers();
     const onBlur = jest.fn();
@@ -209,7 +209,7 @@ describe('ChoiceList', () => {
 
   it("doesn't call onComponentBlur", async () => {
     const { user } = renderChoiceList({ type: 'checkbox' });
-    const choiceListRoot = document.querySelector('ds-choice-list');
+    const choiceListRoot = document.querySelector('ds-choice-list')!;
 
     jest.useFakeTimers();
     const onBlur = jest.fn();

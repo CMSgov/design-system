@@ -46,14 +46,14 @@ function openDialog(hookRenderResult: DialogHookResult) {
 function expectClosed(hookRenderResult: DialogHookResult, dialogRenderResult: RenderResult) {
   hookRenderResult.rerender();
   dialogRenderResult.rerender(hookRenderResult.result.current.dialog);
-  expect(dialogRenderResult.container.querySelector('dialog').open).toBe(false);
+  expect(dialogRenderResult.container.querySelector('dialog')!.open).toBe(false);
 }
 
 describe('useDialog', () => {
   it('should render an unopen dialog at first', () => {
     const hookRenderResult = renderHook(() => useDialog(defaultRenderFn));
     const { container } = render(hookRenderResult.result.current.dialog);
-    expect(container.querySelector('dialog').open).toBe(false);
+    expect(container.querySelector('dialog')!.open).toBe(false);
   });
 
   it('should open the dialog when `openDialog` is called', () => {
