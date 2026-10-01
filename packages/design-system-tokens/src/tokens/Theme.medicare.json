@@ -1252,11 +1252,13 @@
         "$value": "{theme.font.weight.bold}"
       },
       "letter-spacing": {
-        "$value": "0.5px",
-        "$type": "dimension"
+        "$value": "{theme.font.letter-spacing.md}"
+      },
+      "line-height": {
+        "$value": "{theme.font.line-height.base}"
       },
       "text-transform": {
-        "$value": "uppercase",
+        "$value": "none",
         "$type": "textTransform"
       }
     },
