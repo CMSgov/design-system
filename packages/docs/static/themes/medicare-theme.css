@@ -408,8 +408,9 @@
 --label__font-family: var(--font-family-heading);
 --label__font-size: var(--font-size-sm);
 --label__font-weight: var(--font-weight-bold);
---label__letter-spacing: 0.5px;
---label__text-transform: uppercase;
+--label__letter-spacing: var(--font-letter-spacing-md);
+--label__line-height: var(--font-line-height-base);
+--label__text-transform: none;
 --inline-error__color: var(--color-error);
 --inline-error__color--inverse: var(--color-error-lighter);
 --link__color: var(--color-primary);
