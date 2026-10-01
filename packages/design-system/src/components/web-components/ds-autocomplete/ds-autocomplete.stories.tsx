@@ -225,8 +225,8 @@ const Template = (args: DSAutocompleteProps) => {
   useEffect(() => {
     const element = document.querySelector('ds-autocomplete');
     if (element) {
-      const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
-        setInput(event.detail.selectedItem.name ?? '');
+      const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem | null }>) => {
+        setInput(event.detail.selectedItem?.name ?? '');
         return action('ds-change')(event);
       };
       const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
@@ -465,8 +465,8 @@ export const AsyncItems: Story = {
     useEffect(() => {
       const element = document.querySelector('ds-autocomplete');
       if (element) {
-        const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem }>) => {
-          setInput(event.detail.selectedItem.name ?? '');
+        const handleOnChange = (event: CustomEvent<{ selectedItem: AutocompleteItem | null }>) => {
+          setInput(event.detail.selectedItem?.name ?? '');
           return action('ds-change')(event);
         };
         const handleOnInputValueChange = (event: CustomEvent<{ value: string }>) => {
