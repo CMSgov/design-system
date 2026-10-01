@@ -19,8 +19,8 @@ export function createGenericTestRenderer<T extends unknown[]>(
 
     function getShadowRoot(renderResult: RenderResult): ShadowRoot {
       // Light-DOM components have no shadow root, so this is null for them at runtime.
-      // Only the shadow-DOM suites read it; typing it as nullable would push a check
-      // into every one of them.
+      // Only the shadow-DOM suites read it; a nullable return type would force a `!`
+      // or guard at each of their call sites.
       return getCustomElement(renderResult).shadowRoot!;
     }
 
