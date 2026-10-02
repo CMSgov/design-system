@@ -73,63 +73,100 @@ they'll automatically adjust as you change the font size.
   data={[
     {
       cssClass: 'ds-text-heading--sm',
-      figmaToken: 'Headings/Small',
+      figmaToken: {
+        core: 'Headings/Small',
+        cmsgov: 'Headings/Small',
+        healthcare: 'Headings/Small',
+        medicare: 'Not applicable'
+      },
+      example: {
+        medicare: null
+      }
     },
     {
       cssClass: 'ds-text-heading--md',
-      figmaToken: 'Headings/Medium',
+      figmaToken: {
+        core: 'Headings/Medium',
+        cmsgov: 'Headings/Medium',
+        healthcare: 'Headings/Medium',
+        medicare: 'H6'
+      },
       usage: {
         cmsgov: 'Footer headings',
         healthcare: 'H2 in megamenus',
-        medicare: 'Search headers',
       },
     },
     {
       cssClass: 'ds-text-heading--lg',
-      figmaToken: 'Headings/Large',
+      figmaToken: {
+        core: 'Headings/Large',
+        cmsgov: 'Headings/Large',
+        healthcare: 'Headings/Large',
+        medicare: 'H5'
+      },
       usage: {
         healthcare: 'H4 - subsection headings',
-        medicare: 'Footer menu headers',
       },
     },
     {
       cssClass: 'ds-text-heading--xl',
-      figmaToken: 'Headings/XL',
+      figmaToken: {
+        core: 'Headings/XL',
+        cmsgov: 'Headings/XL',
+        healthcare: 'Headings/XL',
+        medicare: 'H4'
+      },
       usage: {
         cmsgov: 'H3 headers in cards',
         healthcare: 'H3 - subsection headings',
-        medicare: 'Card headers',
       },
     },
     {
       cssClass: 'ds-text-heading--2xl',
-      figmaToken: 'Headings/2xl/2xl',
+      figmaToken: {
+        core: 'Headings/2xl/2xl',
+        cmsgov: 'Headings/2xl/2xl',
+        healthcare: 'Headings/2xl/2xl',
+        medicare: 'H3',
+      },
       usage: {
         cmsgov: 'H3 headers',
         healthcare: 'H2 - section headings',
-        medicare: 'Mobile menu drawer header',
       },
     },
     {
       cssClass: 'ds-text-heading--3xl',
-      figmaToken: 'Headings/3xl/3xl - MD-SM',
+      figmaToken: {
+        core: 'Headings/3xl/3xl - MD-SM',
+        cmsgov: 'Headings/3xl/3xl - MD-SM',
+        healthcare: 'Headings/3xl/3xl - MD-SM',
+        medicare: 'H2'
+      },
       usage: {
         cmsgov: 'Search prompt on homepage',
         healthcare: 'H1 for homepage heroes, page headings',
-        medicare: 'Internal page headers',
       },
     },
     {
       cssClass: 'ds-text-heading--4xl',
-      figmaToken: 'Headings/4xl/4xl - MD-SM',
+      figmaToken: {
+        core: 'Headings/4xl/4xl - MD-SM',
+        cmsgov: 'Headings/4xl/4xl - MD-SM',
+        healthcare: 'Headings/4xl/4xl - MD-SM',
+        medicare: 'H1'
+      },
     },
     {
       cssClass: 'ds-text-heading--5xl',
-      figmaToken: 'Headings/5xl/5xl - SM',
+      figmaToken: {
+        core: 'Headings/5xl/5xl - SM',
+        cmsgov: 'Headings/5xl/5xl - SM',
+        healthcare: 'Headings/5xl/5xl - SM',
+        medicare: 'Hero H1'
+      },
       usage: {
         cmsgov: 'H1 on homepage; internal page titles',
         healthcare: 'H1 on Get Coverage; Keep Coverage',
-        medicare: 'Learn, Resources headers',
       },
     },
   ]}
@@ -197,7 +234,7 @@ they'll automatically adjust as you change the font size.
 | ---------------------- | --------------- | -------------- | --------------- |
 | `.ds-text-heading-5xl` | 56px            | 56px           | 96px            |
 | `.ds-text-heading-4xl` | 48px            | 48px           | 72px            |
-| `.ds-text-heading-3xl` | 40px            | 40px           | 56px            |
+| `.ds-text-heading-3xl` | 36px            | 36px           | 56px            |
 | `.ds-text-heading-2xl` | 32px            | 32px           | 48px            |
 | `.ds-text-heading-xl`  | 28px            | 28px           | 36px            |
 
