@@ -9,12 +9,19 @@ export function createGenericTestRenderer<T extends unknown[]>(
   return (...args: T) => {
     const result = render(renderFn(...args));
 
-    function getCustomElement(renderResult: RenderResult) {
-      return renderResult.container.querySelector(customElementSelector);
+    function getCustomElement(renderResult: RenderResult): Element {
+      const element = renderResult.container.querySelector(customElementSelector);
+      if (!element) {
+        throw new Error(`No <${customElementSelector}> in the rendered output`);
+      }
+      return element;
     }
 
     function getShadowRoot(renderResult: RenderResult): ShadowRoot {
-      return getCustomElement(renderResult).shadowRoot;
+      // Light-DOM components have no shadow root, so this is null for them at runtime.
+      // Only the shadow-DOM suites read it; a nullable return type would force a `!`
+      // or guard at each of their call sites.
+      return getCustomElement(renderResult).shadowRoot!;
     }
 
     function createRerenderFunction(renderResult: RenderResult) {

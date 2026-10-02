@@ -83,7 +83,7 @@ describe('ds-tabs', () => {
   it('switches tabs when clicked and triggers ds-change event', async () => {
     const { user } = renderTabs(defaultProps, children);
 
-    const tabsElement = document.querySelector('ds-tabs');
+    const tabsElement = document.querySelector('ds-tabs')!;
     const mockChangeHandler = jest.fn();
     tabsElement.addEventListener('ds-change', mockChangeHandler);
 

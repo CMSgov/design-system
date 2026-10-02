@@ -155,6 +155,7 @@ const Template = ({
       action('ds-blur')(event);
     };
     const choice = document.querySelector('ds-choice');
+    if (!choice) return;
     choice.addEventListener('ds-change', onChange);
     choice.addEventListener('ds-blur', onBlur);
     return () => {

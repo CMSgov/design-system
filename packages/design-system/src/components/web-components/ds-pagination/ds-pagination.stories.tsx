@@ -98,6 +98,7 @@ const Template = (args: React.JSX.IntrinsicElements['ds-pagination']) => {
       updateArgs({ 'current-page': event.detail.page });
     };
     const pagination = document.querySelector('ds-pagination');
+    if (!pagination) return;
     pagination.addEventListener('ds-page-change', onChange as EventListener);
     return () => {
       pagination.removeEventListener('ds-page-change', onChange as EventListener);

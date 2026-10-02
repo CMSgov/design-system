@@ -150,6 +150,7 @@ const Template = (args: Args) => {
       action('ds-blur')(event);
     };
     const textField = document.querySelector('ds-text-field');
+    if (!textField) return;
     textField.addEventListener('ds-change', onChange);
     textField.addEventListener('ds-blur', onBlur);
     return () => {

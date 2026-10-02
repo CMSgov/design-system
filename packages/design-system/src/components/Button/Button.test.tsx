@@ -87,7 +87,7 @@ describe('Button', () => {
     const inputRef = createRef<HTMLButtonElement>();
     renderButton({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('BUTTON');
+    expect(inputRef.current!.tagName).toEqual('BUTTON');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -95,7 +95,7 @@ describe('Button', () => {
       const inputRef = useRef<HTMLButtonElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('BUTTON');
+        expect(inputRef.current!.tagName).toEqual('BUTTON');
       }, []);
       return <Button inputRef={inputRef}>Hello world</Button>;
     };

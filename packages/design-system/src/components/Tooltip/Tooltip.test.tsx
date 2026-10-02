@@ -25,7 +25,7 @@ function renderTooltip(customProps = {}) {
 describe('Tooltip', function () {
   it('renders a tooltip on hover', async () => {
     const { user } = renderTooltip();
-    const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+    const triggerEl = screen.getByLabelText(triggerAriaLabelText);
     expect(triggerEl).toMatchSnapshot();
     expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
 
@@ -183,7 +183,7 @@ describe('Tooltip', function () {
 
     it('sends inline tooltip analytics event', async () => {
       renderTooltip({ component: 'a', children: 'inline trigger' });
-      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      const triggerEl = screen.getByLabelText(triggerAriaLabelText);
       await userEvent.hover(triggerEl);
       expect(tealiumMock.mock.calls[0]).toMatchSnapshot();
     });
@@ -199,7 +199,7 @@ describe('Tooltip', function () {
 
     it('disables analytics event tracking', () => {
       renderTooltip({ analytics: false });
-      const triggerEl = screen.queryByLabelText(triggerAriaLabelText);
+      const triggerEl = screen.getByLabelText(triggerAriaLabelText);
       userEvent.hover(triggerEl);
       expect(tealiumMock).not.toBeCalled();
     });

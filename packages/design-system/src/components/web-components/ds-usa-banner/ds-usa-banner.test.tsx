@@ -29,6 +29,6 @@ describe('UsaBanner', function () {
     const panelId = button.getAttribute('aria-controls');
     const panel = container.querySelector(`#${panelId}`);
     expect(panel).toBeInTheDocument();
-    expect(panel.id).toMatch(idRegex);
+    expect(panel!.id).toMatch(idRegex);
   });
 });

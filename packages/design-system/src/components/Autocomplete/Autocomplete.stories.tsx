@@ -1,6 +1,11 @@
 import { useCallback, useState } from 'react';
 import type * as React from 'react';
-import { Autocomplete, AutocompleteItem, AutocompleteProps } from './Autocomplete';
+import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteItems,
+  AutocompleteProps,
+} from './Autocomplete';
 import TextField from '../TextField/TextField';
 import uniqueId from 'lodash/uniqueId';
 import { action } from 'storybook/actions';
@@ -49,9 +54,9 @@ const Template = (args: AutocompleteArgs) => {
     action('onInputValueChange')(args);
     setInput(args[0]);
   };
-  let filteredItems = null;
+  let filteredItems: AutocompleteItems | undefined;
   if (input.length > 0) {
-    filteredItems = items
+    filteredItems = (items ?? [])
       .map((item) => {
         if ('items' in item) {
           // Handle grouped items
@@ -73,7 +78,7 @@ const Template = (args: AutocompleteArgs) => {
           return !item.name || item.name.toLowerCase().includes(input.toLowerCase()) ? item : null;
         }
       })
-      .filter(Boolean);
+      .filter((item) => item !== null);
   }
 
   return (
@@ -261,7 +266,7 @@ export const LoadingMessage: Story = {
     items: [],
     textFieldLabel: 'This will only show a loading message.',
     textFieldHint: 'List should return string Loading to simulate async data call.',
-  } as AutocompleteArgs,
+  },
 };
 
 export const NoResults: Story = {
@@ -271,7 +276,7 @@ export const NoResults: Story = {
     clearSearchButton: false,
     textFieldLabel: 'This will show a "no results" message.',
     textFieldHint: 'Start typing, but you’ll only get a "no results" message.',
-  } as AutocompleteArgs,
+  },
 };
 
 export const AsyncItems: Story = {

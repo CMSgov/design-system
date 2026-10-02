@@ -345,7 +345,7 @@ describe('define()', () => {
       await act(async () => {
         element.innerHTML = html2;
       });
-      expect(root.querySelector('dd').textContent).toEqual(html2);
+      expect(root.querySelector('dd')!.textContent).toEqual(html2);
       expect(root.querySelector('a')).not.toBeInTheDocument();
     });
 
@@ -366,7 +366,7 @@ describe('define()', () => {
 
       const dd = root.querySelector('dd');
       expect(dd).toBeInTheDocument();
-      expect(dd.querySelector('a')).toBeInTheDocument();
+      expect(dd!.querySelector('a')).toBeInTheDocument();
     });
 
     it('supports shadow dom option', () => {
@@ -382,14 +382,14 @@ describe('define()', () => {
 
       root.appendChild(element);
       expect(element.innerHTML).toMatchSnapshot();
-      expect(element.shadowRoot.innerHTML).toMatchSnapshot();
+      expect(element.shadowRoot!.innerHTML).toMatchSnapshot();
     });
 
     it('shadow version responds to late additions of direct children', async () => {
       const element = document.createElement('shadow-message');
       root.appendChild(element);
 
-      expect(element.shadowRoot.querySelector('h2')).toBeNull();
+      expect(element.shadowRoot!.querySelector('h2')).toBeNull();
 
       await act(async () => {
         element.innerHTML = `
@@ -398,7 +398,7 @@ describe('define()', () => {
       `;
       });
 
-      expect(element.shadowRoot.querySelector('h2')).toContainHTML(
+      expect(element.shadowRoot!.querySelector('h2')).toContainHTML(
         '<slot name="custom-title"></slot>'
       );
     });
@@ -439,7 +439,7 @@ describe('define()', () => {
       expect(onBlur).not.toHaveBeenCalled();
       expect(onChange).not.toHaveBeenCalled();
 
-      await user.click(field);
+      await user.click(field!);
       await user.keyboard('hello');
       await user.tab();
       expect(onChange).toHaveBeenCalled();
@@ -470,11 +470,12 @@ describe('define()', () => {
     it.skip('returns the correct markup', () => {
       const props = { value: 'serverValue' };
       const component = define('message-fourteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props) as any);
       expect(container.querySelectorAll('message-fourteen').length).toEqual(1);
-      expect(container.querySelector('message-fourteen').getAttribute('server')).toEqual('true');
-      expect(container.querySelector('em').textContent).toEqual(props.value);
+      expect(container.querySelector('message-fourteen')!.getAttribute('server')).toEqual('true');
+      expect(container.querySelector('em')!.textContent).toEqual(props.value);
     });
 
     // TODO: Reintroduce this test once https://github.com/testing-library/user-event/pull/1176/ is released
@@ -486,10 +487,11 @@ describe('define()', () => {
     it.skip('includes a json script block with props', () => {
       const props = { value: 'serverValue' };
       const component = define('message-sixteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props));
 
-      expect(container.querySelector('script').textContent).toEqual(JSON.stringify(props));
+      expect(container.querySelector('script')!.textContent).toEqual(JSON.stringify(props));
     });
   });
 });

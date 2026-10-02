@@ -170,7 +170,7 @@ describe('Choice', () => {
     jest.useFakeTimers();
     const { user } = renderChoice();
 
-    const choiceRoot = document.querySelector('ds-choice');
+    const choiceRoot = document.querySelector('ds-choice')!;
     const mockHandler = jest.fn();
     choiceRoot.addEventListener('ds-change', mockHandler);
 
@@ -186,7 +186,7 @@ describe('Choice', () => {
     jest.useFakeTimers();
     const { user } = renderChoice();
 
-    const choiceRoot = document.querySelector('ds-choice');
+    const choiceRoot = document.querySelector('ds-choice')!;
     const onBlur = jest.fn();
     const onChange = jest.fn();
     choiceRoot.addEventListener('ds-blur', onBlur);
@@ -248,7 +248,7 @@ describe('Choice', () => {
           </div>
         </ds-choice>
       );
-      const root = container.firstChild.firstChild;
+      const root = container.firstChild!.firstChild;
       expect(root).toHaveAttribute('aria-live', 'polite');
       expect(root).toHaveAttribute('aria-relevant', 'additions text');
       expect(root).toHaveAttribute('aria-atomic', 'false');
@@ -269,7 +269,7 @@ describe('Choice', () => {
           </div>
         </ds-choice>
       );
-      const root = container.firstChild.firstChild;
+      const root = container.firstChild!.firstChild;
       expect(root).toHaveAttribute('aria-live', 'off');
       expect(root).toHaveAttribute('aria-relevant', 'text');
       expect(root).toHaveAttribute('aria-atomic', 'true');
