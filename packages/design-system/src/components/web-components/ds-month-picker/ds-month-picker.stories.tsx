@@ -176,6 +176,7 @@ const Template = (args: Args) => {
       action('ds-select-all')(event);
     };
     const monthPicker = document.querySelector('ds-month-picker');
+    if (!monthPicker) return;
     monthPicker.addEventListener('ds-change', onChange);
     monthPicker.addEventListener('ds-clear-all', onClearAll);
     monthPicker.addEventListener('ds-select-all', onSelectAll);

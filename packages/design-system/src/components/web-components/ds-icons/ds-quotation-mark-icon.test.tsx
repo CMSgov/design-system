@@ -8,14 +8,14 @@ const view = createTestRenderer('ds-quotation-mark-icon', (attrs = {}) => (
 describe('ds-quotation-mark-icon', () => {
   it('renders as an SVG', () => {
     const { customElement } = view();
-    expect(customElement.firstElementChild.tagName).toBe('svg');
+    expect(customElement.firstElementChild!.tagName).toBe('svg');
   });
 
   it('passes through a custom title', () => {
     const customTitle = 'test title';
     const { customElement } = view({ title: customTitle });
-    const titleEl = customElement.firstElementChild.querySelector('title');
+    const titleEl = customElement.firstElementChild!.querySelector('title');
 
-    expect(titleEl.textContent).toBe(customTitle);
+    expect(titleEl!.textContent).toBe(customTitle);
   });
 });

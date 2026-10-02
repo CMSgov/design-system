@@ -25,7 +25,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
-    onChange: (): void => null,
+    onChange: (): void => undefined,
     ...customProps,
   };
   return {
@@ -92,7 +92,7 @@ describe('ChoiceList', () => {
 
     it('generates ids when no id is provided', () => {
       const { container } = renderChoiceList({ id: undefined });
-      expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+      expect(container.querySelector('legend')!.id).toMatch(/choice-list--\d+/);
 
       const choices = screen.getAllByRole('radio');
       const choiceIdRegex = /choice--\d+/;

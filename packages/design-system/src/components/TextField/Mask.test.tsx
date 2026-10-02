@@ -59,9 +59,9 @@ describe('Mask', function () {
     const { container } = renderMask({ mask: 'currency' });
     const inputPrefix = container.querySelector('.ds-c-field__before--currency');
 
-    expect(inputPrefix.parentElement).toHaveClass('ds-c-field-mask--currency');
-    expect(inputPrefix.classList).toContain('ds-c-field__before');
-    expect(inputPrefix.textContent).toBe('$');
+    expect(inputPrefix!.parentElement).toHaveClass('ds-c-field-mask--currency');
+    expect(inputPrefix!.classList).toContain('ds-c-field__before');
+    expect(inputPrefix!.textContent).toBe('$');
 
     const input = screen.getByRole('textbox');
     expect(input.classList).toContain('ds-c-field--currency');
@@ -103,7 +103,7 @@ describe('Mask', function () {
               name="foo"
               type="text"
               value={text}
-              onChange={(event) => setText(unmaskValue(event.target.value, 'currency'))}
+              onChange={(event) => setText(unmaskValue(event.target.value, 'currency') ?? '')}
             />
           </Mask>
         );

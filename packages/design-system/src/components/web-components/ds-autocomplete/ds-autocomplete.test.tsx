@@ -164,7 +164,7 @@ describe('Autocomplete', () => {
     });
 
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
@@ -244,7 +244,7 @@ describe('Autocomplete', () => {
   it('renders Autocomplete component no results', async () => {
     const { user } = renderAutocomplete({ items: JSON.stringify([]) });
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
@@ -321,7 +321,7 @@ describe('Autocomplete', () => {
   it('should set the input value correctly when a listbox selection is clicked', async () => {
     const { user } = renderAutocomplete();
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockHandler);
 
@@ -372,7 +372,7 @@ describe('Autocomplete', () => {
   it('should return focus to the input when "Clear search" is clicked', async () => {
     const { user } = renderAutocomplete();
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
@@ -411,7 +411,7 @@ describe('Autocomplete', () => {
     ]);
     const { user } = renderAutocomplete({ items: groupedItems }, { delay: 50 });
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockHandler);
 
@@ -439,7 +439,7 @@ describe('Autocomplete', () => {
   it('should call onChange with null item when "Clear search" is clicked', async () => {
     const { user } = renderAutocomplete();
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
@@ -470,7 +470,7 @@ describe('Autocomplete', () => {
   it('should select list items by keyboard', async () => {
     const { user } = renderAutocomplete({}, { delay: 50 });
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 
@@ -501,7 +501,7 @@ describe('Autocomplete', () => {
   it('should not call onChange when an item was not selected', async () => {
     const { user } = renderAutocomplete();
 
-    const autocompleteRoot = document.querySelector('ds-autocomplete');
+    const autocompleteRoot = document.querySelector('ds-autocomplete')!;
     const mockChangeHandler = jest.fn();
     autocompleteRoot.addEventListener('ds-change', mockChangeHandler);
 

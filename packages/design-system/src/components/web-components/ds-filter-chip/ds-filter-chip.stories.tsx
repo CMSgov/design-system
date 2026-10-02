@@ -68,13 +68,12 @@ const listOfChips = [
 const Template = (args: any) => {
   useEffect(() => {
     const chipEl = document.querySelector('ds-filter-chip');
+    if (!chipEl) return;
     const handleDelete = (event: Event) => {
       action('ds-delete')(event);
     };
 
-    if (chipEl) {
-      chipEl.addEventListener('ds-delete', handleDelete);
-    }
+    chipEl.addEventListener('ds-delete', handleDelete);
 
     return () => {
       chipEl.removeEventListener('ds-delete', handleDelete);

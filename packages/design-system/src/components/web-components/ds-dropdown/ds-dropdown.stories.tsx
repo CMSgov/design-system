@@ -176,6 +176,7 @@ const Template = (args: Args) => {
       action('ds-blur')(event);
     };
     const dropdown = document.querySelector('ds-dropdown');
+    if (!dropdown) return;
     dropdown.addEventListener('ds-change', onChange);
     dropdown.addEventListener('ds-blur', onBlur);
     return () => {

@@ -272,7 +272,7 @@ describe('Autocomplete', () => {
   it('renders Autocomplete component no results', async () => {
     const { user } = renderAutocomplete({ items: [] });
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
@@ -287,7 +287,7 @@ describe('Autocomplete', () => {
       ],
     });
     await open({ user });
-    expect(screen.queryByRole('listbox').children.length).toEqual(1);
+    expect(screen.getByRole('listbox').children.length).toEqual(1);
     expect(screen.queryByRole('option')).toHaveTextContent('No results');
   });
 
@@ -662,7 +662,7 @@ describe('Autocomplete', () => {
     const inputRef = createRef<HTMLInputElement>();
     renderAutocomplete({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('INPUT');
+    expect(inputRef.current!.tagName).toEqual('INPUT');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -670,7 +670,7 @@ describe('Autocomplete', () => {
       const inputRef = useRef<HTMLButtonElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('INPUT');
+        expect(inputRef.current!.tagName).toEqual('INPUT');
       }, []);
       return (
         <Autocomplete items={defaultItems} inputRef={inputRef}>

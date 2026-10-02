@@ -45,7 +45,7 @@ describe('TextInput', function () {
     const { container } = renderInput({ type: 'password' });
     // The password field doesn't have an accessible role!
     const input = container.querySelector('.ds-c-field');
-    expect(input.getAttribute('type')).toBe('password');
+    expect(input!.getAttribute('type')).toBe('password');
   });
 
   it('is disabled', () => {
@@ -70,7 +70,7 @@ describe('TextInput', function () {
 
   it('has a value', () => {
     const value = 'Yay';
-    renderInput({ value, onChange: (): void => null });
+    renderInput({ value, onChange: (): void => undefined });
     expect(getInput()).toHaveValue(value);
   });
 
@@ -141,7 +141,7 @@ describe('TextInput', function () {
     const inputRef = createRef<HTMLInputElement>();
     renderInput({ inputRef });
     expect(inputRef.current).toBeInTheDocument();
-    expect(inputRef.current.tagName).toEqual('INPUT');
+    expect(inputRef.current!.tagName).toEqual('INPUT');
   });
 
   it('forwards a mutable object inputRef', () => {
@@ -149,7 +149,7 @@ describe('TextInput', function () {
       const inputRef = useRef<HTMLInputElement>(null);
       useEffect(() => {
         expect(inputRef.current).toBeInTheDocument();
-        expect(inputRef.current.tagName).toEqual('INPUT');
+        expect(inputRef.current!.tagName).toEqual('INPUT');
       }, []);
       return <TextInput inputRef={inputRef} {...defaultProps} />;
     };
