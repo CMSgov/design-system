@@ -140,7 +140,7 @@ svg {
 @mixin heading--sm {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-heading-sm);
-  line-height: var(--font-line-height-heading);
+  line-height: var(--font-line-height-base);
   letter-spacing: var(--font-letter-spacing-sm);
   color: var(--color-black);
 
@@ -209,7 +209,6 @@ svg {
   @include heading--3xl;
 
   @media screen and (min-width: $media-width-md) {
-    line-height: var(--font-line-height-heading-lg);
     margin-bottom: 52px;
   }
 }
@@ -220,7 +219,6 @@ svg {
   @include heading--2xl;
 
   @media screen and (max-width: $media-width-md) {
-    line-height: var(--font-line-height-heading);
     margin-bottom: 44px;
   }
 }
@@ -244,7 +242,6 @@ svg {
 }
 
 .ds-text-heading--sm {
-  line-height: var(--font-line-height-base);
   margin-bottom: $spacer-1;
 
   @include heading--sm;

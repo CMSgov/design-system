@@ -8,6 +8,23 @@ core:
 
 For pages that are mainly about written content or places where you want to use a standard mapping of heading-level styles to semantic heading levels, we have a special `ds-content` CSS class. Applying this class to an element that surrounds your content will automatically apply design system heading styles to the appropriate `h1`, `h2`, `h3`, `h4`, `h5`, and `h6` tags (see [Headings](/foundation/typography/headings)) as well as `ol` and `ul` list tags (see [Lists](/foundation/typography/lists)).
 
+<ThemeContent onlyThemes={['medicare']}>
+
+## Heading mapping
+
+Within `ds-content`, semantic heading levels map to the following Medicare heading size classes:
+
+| HTML element | Heading style          |
+| ------------ | ---------------------- |
+| `h1`         | `.ds-text-heading--4xl` |
+| `h2`         | `.ds-text-heading--3xl` |
+| `h3`         | `.ds-text-heading--2xl` |
+| `h4`         | `.ds-text-heading--xl`  |
+| `h5`         | `.ds-text-heading--lg`  |
+| `h6`         | `.ds-text-heading--md`  |
+
+</ThemeContent>
+
 ## Example
 
 <StorybookExample
