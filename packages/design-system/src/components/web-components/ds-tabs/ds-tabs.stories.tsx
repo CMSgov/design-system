@@ -161,7 +161,7 @@ const DisabledTemplate = (args: Args) => {
 
     const handleStorybookChange = (event: TabsChangeEvent) => {
       const { selectedId, prevSelectedId } = event.detail;
-      action('ds-cshange')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
+      action('ds-change')(`Selected: ${selectedId}, Previous: ${prevSelectedId}`);
     };
 
     element.addEventListener('ds-change', handleStorybookChange as EventListener);
