@@ -54,7 +54,7 @@ export interface MdxQuery {
       };
     };
   };
-  location?: LocationInterface;
+  location: LocationInterface;
   children?: React.ReactNode;
 }
 
@@ -80,7 +80,7 @@ export interface BlogQuery {
         node: {
           body: string;
           fields: {
-            slug?: string;
+            slug: string;
           };
           frontmatter: {
             title: string;
@@ -91,7 +91,7 @@ export interface BlogQuery {
       }[];
     };
   };
-  location?: LocationInterface;
+  location: LocationInterface;
 }
 
 export interface NavItem {
