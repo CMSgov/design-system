@@ -5,7 +5,7 @@ import Ellipses from './Ellipses';
 import Page from './Page';
 import classNames from 'classnames';
 import { ArrowIcon } from '../Icons';
-import { t } from '../i18n';
+import { useTranslation } from '../utilities/useTranslation';
 import useId from '../utilities/useId';
 
 export type PaginationHeadingLevel = '1' | '2' | '3' | '4' | '5' | '6';
@@ -155,6 +155,9 @@ export function Pagination({
   totalPages,
   ...rest
 }: PaginationProps): React.ReactElement<any> {
+  // Reactive translation: re-renders when setLanguage is called so the
+  // page-count readout follows runtime language switches (see #4094).
+  const { t } = useTranslation();
   const classes = classNames('ds-c-pagination', { 'ds-c-pagination--compact': compact }, className);
 
   /**

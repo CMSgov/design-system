@@ -22,12 +22,31 @@ export function _detectDocumentLanguage(): Language | undefined {
 
 let language: Language = _detectDocumentLanguage() ?? 'en';
 
+type LanguageListener = (lang: Language) => void;
+
+const languageListeners = new Set<LanguageListener>();
+
 export function getLanguage() {
   return language;
 }
 
+/**
+ * Subscribe to language changes. Returns an unsubscribe function.
+ * Used by `useTranslation` so components re-render when `setLanguage`
+ * is called; without this, translated output is frozen at first render.
+ */
+export function subscribeToLanguage(listener: LanguageListener): () => void {
+  languageListeners.add(listener);
+  return () => {
+    languageListeners.delete(listener);
+  };
+}
+
 export function setLanguage(lang: Language) {
-  language = lang;
+  if (language !== lang) {
+    language = lang;
+    languageListeners.forEach((listener) => listener(lang));
+  }
 }
 
 type Translations = { [key: string]: string | Translations };

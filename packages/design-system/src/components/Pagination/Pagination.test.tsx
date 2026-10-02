@@ -1,5 +1,6 @@
 import Pagination from './Pagination';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { setLanguage } from '../i18n';
 
 function getNav() {
   return screen.getByRole('navigation');
@@ -271,6 +272,23 @@ describe('Pagination', () => {
       renderPagination({ currentPage: 3, isNavigationHidden: true });
       // Querying in testing-library will not return hidden items
       expect(queryNextLink()).toBeFalsy();
+    });
+  });
+
+  describe('language switching', () => {
+    afterEach(() => {
+      setLanguage('en');
+    });
+
+    it('should update the page-count readout when setLanguage is called', () => {
+      renderPagination();
+      expect(screen.getByText(/Page.*of.*3/)).toBeInTheDocument();
+
+      act(() => {
+        setLanguage('es');
+      });
+
+      expect(screen.getByText(/Página.*de.*3/)).toBeInTheDocument();
     });
   });
 });
