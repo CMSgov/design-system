@@ -53,6 +53,7 @@ const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
 const stories = Object.values(storiesObject).filter((story) => story.name !== 'Docs');
 const themeKeys = Object.keys(themes).filter((key) => !themes[key].incomplete);
+const smokeThemes = ['core', 'medicare'];
 
 stories.forEach((story) => {
   if (storySkipList.includes(story.id)) return;
@@ -69,8 +70,8 @@ stories.forEach((story) => {
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;
 
-      // During smoke tests, only take screenshots in core of core components
-      if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
+      // During smoke tests, only take screenshots in the specified smoke themes
+      if (isSmokeTest && !smokeThemes.includes(theme)) return;
 
       test.describe(`with ${theme} theme`, () => {
         let browserContext: BrowserContext;
