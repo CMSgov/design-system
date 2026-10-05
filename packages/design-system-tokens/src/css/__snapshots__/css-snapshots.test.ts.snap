@@ -1841,7 +1841,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --font-line-height-reset: 1;
 --font-size-2xl--mobile: 2rem;
 --font-size-2xl: 3rem;
---font-size-3xl--mobile: 2.5rem;
+--font-size-3xl--mobile: 2.25rem;
 --font-size-3xl: 3.5rem;
 --font-size-4xl--mobile: 3rem;
 --font-size-4xl: 4.5rem;
