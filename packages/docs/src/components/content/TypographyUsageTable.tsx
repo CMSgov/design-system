@@ -50,7 +50,7 @@ const UnusedBadge = ({ theme }: { theme: ThemeName }) => {
 
   return (
     <Badge className="ds-c-badge--alert">
-      <CloseIconThin /> Unused by {displayName}.
+      <CloseIconThin /> Unused by {displayName}
     </Badge>
   );
 };
