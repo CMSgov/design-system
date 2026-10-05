@@ -9,7 +9,7 @@ const SearchForm = ({ className }: { className?: string }) => {
       method="GET"
       onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
         const formData = new FormData(event.target as HTMLFormElement);
-        const query = formData.get('query').toString();
+        const query = formData.get('query')?.toString() ?? '';
         sendSearchInitiatedEvent(query === '' ? 'no value' : query);
       }}
     >

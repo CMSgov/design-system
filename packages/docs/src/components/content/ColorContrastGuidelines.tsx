@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 import { LocationInterface } from '../../../src/helpers/graphQLTypes';
 
@@ -20,7 +20,11 @@ const SVGLinkIcon = () => (
   </span>
 );
 
-interface RelativeLinkProps extends PropsWithChildren {
+interface RelativeLinkProps {
+  /**
+   * Heading text
+   */
+  children: string;
   /**
    *  Heading type to override default `<h2>`.
    */
@@ -50,7 +54,7 @@ const RelativeLink: FC<RelativeLinkProps> = ({ children, headingLevel = '2', pat
 };
 
 const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) => {
-  const { origin, pathname } = location;
+  const { origin = 'design.cms.gov', pathname } = location;
 
   return (
     <>
