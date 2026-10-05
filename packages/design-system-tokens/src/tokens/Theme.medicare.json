@@ -265,7 +265,7 @@
           "$type": "dimension"
         },
         "3xl--mobile": {
-          "$value": "2.5rem",
+          "$value": "2.25rem",
           "$type": "dimension"
         },
         "3xl": {
