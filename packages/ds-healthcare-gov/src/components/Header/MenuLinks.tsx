@@ -21,12 +21,9 @@ const MenuLinks = (props: MenuLinksProps) => (
         (link as DefaultLink).identifier === LinkIdentifier.LOGIN ||
         (link as DefaultLink).identifier === LinkIdentifier.LOGOUT;
       function onClick(event: MouseEvent<HTMLAnchorElement>) {
-        // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
-        // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
-        // can't actually be coerced into a string. We've had to do a lot of extra work in
-        // other cases to find the text content of a ReactNode after rendering, like in
-        // packages/design-system/src/components/Alert/Alert.tsx#L114
-        sendHeaderEvent(link.label.toString(), link.href);
+        // TODO: send the link's rendered text with https://jira.cms.gov/browse/CMSDS-4659.
+        // link.label is a ReactNode, so .toString() sends an element label as "[object Object]".
+        sendHeaderEvent(link.label?.toString() ?? '', link.href);
         if (link.onClick) {
           return link.onClick(event);
         }
