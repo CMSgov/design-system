@@ -1885,8 +1885,9 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --label__font-family: var(--font-family-heading);
 --label__font-size: var(--font-size-sm);
 --label__font-weight: var(--font-weight-bold);
---label__letter-spacing: 0.5px;
---label__text-transform: uppercase;
+--label__letter-spacing: var(--font-letter-spacing-md);
+--label__line-height: var(--font-line-height-base);
+--label__text-transform: none;
 --link-inverse__color--active: var(--color-muted-inverse);
 --link-inverse__color--hover: var(--color-muted-inverse);
 --link-inverse__color--visited: var(--color-muted-inverse);
