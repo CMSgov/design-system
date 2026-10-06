@@ -122,7 +122,7 @@
 --font-size-xl--mobile: 1.75rem;
 --font-size-2xl--mobile: 2rem;
 --font-size-2xl: 3rem;
---font-size-3xl--mobile: 2.5rem;
+--font-size-3xl--mobile: 2.25rem;
 --font-size-3xl: 3.5rem;
 --font-size-4xl--mobile: 3rem;
 --font-size-4xl: 4.5rem;
@@ -408,8 +408,9 @@
 --label__font-family: var(--font-family-heading);
 --label__font-size: var(--font-size-sm);
 --label__font-weight: var(--font-weight-bold);
---label__letter-spacing: 0.5px;
---label__text-transform: uppercase;
+--label__letter-spacing: var(--font-letter-spacing-md);
+--label__line-height: var(--font-line-height-base);
+--label__text-transform: none;
 --inline-error__color: var(--color-error);
 --inline-error__color--inverse: var(--color-error-lighter);
 --link__color: var(--color-primary);

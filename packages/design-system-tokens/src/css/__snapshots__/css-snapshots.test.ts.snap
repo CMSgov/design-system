@@ -1841,7 +1841,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --font-line-height-reset: 1;
 --font-size-2xl--mobile: 2rem;
 --font-size-2xl: 3rem;
---font-size-3xl--mobile: 2.5rem;
+--font-size-3xl--mobile: 2.25rem;
 --font-size-3xl: 3.5rem;
 --font-size-4xl--mobile: 3rem;
 --font-size-4xl: 4.5rem;
@@ -1885,8 +1885,9 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --label__font-family: var(--font-family-heading);
 --label__font-size: var(--font-size-sm);
 --label__font-weight: var(--font-weight-bold);
---label__letter-spacing: 0.5px;
---label__text-transform: uppercase;
+--label__letter-spacing: var(--font-letter-spacing-md);
+--label__line-height: var(--font-line-height-base);
+--label__text-transform: none;
 --link-inverse__color--active: var(--color-muted-inverse);
 --link-inverse__color--hover: var(--color-muted-inverse);
 --link-inverse__color--visited: var(--color-muted-inverse);
