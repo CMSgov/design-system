@@ -14,7 +14,9 @@
     "strictFunctionTypes": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }
