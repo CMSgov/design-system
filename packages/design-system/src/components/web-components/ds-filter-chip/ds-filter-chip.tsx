@@ -19,7 +19,7 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<FilterChipProps, 'useAlternateIcon'> {
+interface WrapperProps extends FilterChipProps {
   clearLabel?: string;
 }
 
