@@ -28,10 +28,5 @@
     "size",
     "Sets the size of the chip to larger version.\n\"big\"",
     "-"
-  ],
-  [
-    "useAlternateIcon",
-    "Use alternate thinner close icon in place of standard.\nboolean",
-    "-"
   ]
 ]

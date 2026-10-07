@@ -50,19 +50,13 @@ const meta: Meta = {
       control: 'radio',
       options: [undefined, 'big'],
     },
-    'use-alternate-icon': {
-      description: 'Use alternate thinner close icon in place of standard.',
-      control: 'boolean',
-    },
   },
 };
 export default meta;
 
 const listOfChips = [
   { label: 'Example FilterChip' },
-  { label: 'Example with alternate icon', 'use-alternate-icon': 'true' },
   { label: 'Example big filter chip', size: 'big' },
-  { label: 'Example big with alternate icon', 'use-alternate-icon': 'true', size: 'big' },
 ];
 
 const Template = (args: any) => {
@@ -140,11 +134,6 @@ export const MultipleChips = {
       },
     },
     size: {
-      table: {
-        disable: true,
-      },
-    },
-    'use-alternate-icon': {
       table: {
         disable: true,
       },

@@ -47,7 +47,6 @@
 .ds-c-filter-chip__clear-icon-container {
   --size: 18px;
 
-  border: 1px solid var(--filter-chip__color);
   border-radius: 50%;
   display: inline-block;
   height: var(--size);
@@ -59,10 +58,6 @@
   transform: translateY(-50%);
   vertical-align: middle;
   width: var(--size);
-
-  &.ds-c-filter-chip__clear-icon-alternate-container {
-    border: 0;
-  }
 
   .ds-c-icon--close {
     display: block;

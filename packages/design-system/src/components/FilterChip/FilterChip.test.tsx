@@ -85,15 +85,13 @@ describe('FilterChip', () => {
     expect(chipEl.classList).toContain('ds-c-filter-chip__button--big');
   });
 
-  it('should use alternate icon', () => {
-    renderFilterChip({ useAlternateIcon: true });
+  it('should use the default thin icon', () => {
+    renderFilterChip();
     const chipEl = screen.getByRole('button');
     const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
 
     expect(iconContainerEl).toBeDefined();
-    expect(iconContainerEl!.classList).toContain(
-      'ds-c-filter-chip__clear-icon-alternate-container'
-    );
+    expect(iconContainerEl!.classList).toContain('ds-c-filter-chip__clear-icon-container');
     expect(iconContainerEl).toMatchSnapshot();
   });
 });
