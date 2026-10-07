@@ -21,18 +21,27 @@ import { Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
 
 There are 3 variations of buttons:
 
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
+
 - **Solid** – Also called a “primary” button.
 - **Outline** – Also called a “secondary” button.
 - **Ghost** – A button without visible outline styling. Ghost buttons appear to look like hyperlinked text, but they have button attributes.
 
 Each button variation is available in a main color and an approved alternate color for both light and dark backgrounds.
 
-<ButtonVariationsTable />
+</ThemeContent>
 
-<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
+<ThemeContent onlyThemes={['medicare']}>
 
+- **Solid** – Also called a “primary” button.
+- **Outline** – Also called a “secondary” button.
+- **Ghost** – A button without visible outline styling. Ghost buttons appear to look like hyperlinked text, but they have button attributes.
+
+Each button variation is available for both light and dark backgrounds.
 
 </ThemeContent>
+
+<ButtonVariationsTable />
 
 ### Main buttons
 
@@ -59,6 +68,8 @@ Each button variation is available in a main color and an approved alternate col
   sourceFilePath="components/Button/Button.tsx"
   storyId="components-button--default&args=children:Ghost;variation:ghost"
 />
+
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 
 ### Alternate buttons
 
@@ -87,7 +98,9 @@ Each button variation (solid, outline, ghost) has an alternate option.
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
   />
-  
+
+</ThemeContent>
+
 ### On dark background
 
 <StorybookExample
@@ -95,6 +108,8 @@ Each button variation (solid, outline, ghost) has an alternate option.
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--variations-on-dark"
   />
+
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 
 ### Button sizes
 
@@ -115,6 +130,32 @@ Buttons can exist in two sizes other than default: "big" or "small".
     <Button size="small">Small</Button>
   </div>
 </EmbeddedExample>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Button sizes
+
+Buttons can exist in two sizes: "default" and "small."
+
+#### Default button
+
+<EmbeddedExample>
+  <div>
+    <Button size="default">Default</Button>
+  </div>
+</EmbeddedExample>
+
+#### Small button
+
+<EmbeddedExample>
+  <div>
+    <Button size="small">Small</Button>
+  </div>
+</EmbeddedExample>
+
+</ThemeContent>
 
 ### Adding icons
 
