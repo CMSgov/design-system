@@ -55,8 +55,10 @@ const meta: Meta = {
 export default meta;
 
 const listOfChips = [
-  { label: 'Example FilterChip' },
-  { label: 'Example big filter chip', size: 'big' },
+  { label: 'Default' },
+  { label: 'Default without icon', 'hide-icon': 'true' },
+  { label: 'Big', size: 'big' },
+  { label: 'Big without icon', 'hide-icon': 'true', size: 'big' },
 ];
 
 const Template = (args: any) => {

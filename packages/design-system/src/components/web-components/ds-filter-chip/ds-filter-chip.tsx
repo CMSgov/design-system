@@ -1,8 +1,9 @@
 import { define } from '../preactement/define';
 import FilterChip from '../../FilterChip/FilterChip';
 import { FilterChipProps } from '../../FilterChip/FilterChip';
+import { parseBooleanAttr } from '../wrapperUtils';
 
-const attributes = ['clear-label', 'class-name', 'label', 'root-id', 'size'] as const;
+const attributes = ['clear-label', 'class-name', 'label', 'root-id', 'size', 'hide-icon'] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -19,12 +20,18 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends FilterChipProps {
+interface WrapperProps extends Omit<FilterChipProps, 'hideIcon'> {
+  hideIcon?: string;
   clearLabel?: string;
 }
 
-const Wrapper = ({ clearLabel, label, ...otherProps }: WrapperProps) => (
-  <FilterChip ariaClearLabel={clearLabel ?? ''} label={label} {...otherProps} />
+const Wrapper = ({ clearLabel, label, hideIcon, ...otherProps }: WrapperProps) => (
+  <FilterChip
+    ariaClearLabel={clearLabel ?? ''}
+    label={label}
+    hideIcon={parseBooleanAttr(hideIcon)}
+    {...otherProps}
+  />
 );
 
 define('ds-filter-chip', () => Wrapper, {

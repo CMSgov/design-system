@@ -85,7 +85,7 @@ describe('FilterChip', () => {
     expect(chipEl.classList).toContain('ds-c-filter-chip__button--big');
   });
 
-  it('should render close icon by default', () => {
+  it('should render the close icon by default', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
     const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
