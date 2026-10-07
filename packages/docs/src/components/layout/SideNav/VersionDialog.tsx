@@ -7,7 +7,7 @@ import { sendFilterAppliedEvent } from '../../../helpers/analytics';
 export interface ThemeVersionDialogProps {
   theme: string;
   version: string;
-  isOpen?: boolean;
+  isOpen: boolean;
   onExit(...args: any[]): void;
 }
 

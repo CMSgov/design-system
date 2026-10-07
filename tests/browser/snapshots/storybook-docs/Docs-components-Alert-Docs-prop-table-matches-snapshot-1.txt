@@ -1,7 +1,7 @@
 [
   [
     "alertRef",
-    "Access a reference to the alert div element\n(...args: any[]) => any",
+    "Access a reference to the alert div element\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -56,7 +56,7 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nRead more about analytics.\n\n(event: AnalyticsEvent) => void",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nRead more about analytics.\n\n((event: AnalyticsEvent) => void)",
     "-"
   ],
   [

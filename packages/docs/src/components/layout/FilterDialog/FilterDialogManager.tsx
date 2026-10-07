@@ -1,7 +1,12 @@
 import { createContext, useState, useContext, useRef } from 'react';
 import uniqueId from 'lodash/uniqueId';
 
-export const FilterDialogContext = createContext(null);
+export interface FilterDialogContextValue {
+  currentID: string | null;
+  setCurrentID: (id: string | null) => void;
+}
+
+export const FilterDialogContext = createContext<FilterDialogContextValue | null>(null);
 
 /**
  * This is just copied and pasted from our unreleased `DrawerManager` component
@@ -18,13 +23,18 @@ export const FilterDialogContext = createContext(null);
  * prototype, though.
  */
 export const FilterDialogManager = (props: any) => {
-  const [currentID, setCurrentID] = useState(null);
+  const [currentID, setCurrentID] = useState<string | null>(null);
 
   return <FilterDialogContext.Provider value={{ currentID, setCurrentID }} {...props} />;
 };
 
 export const useFilterDialogManager = () => {
-  const { currentID, setCurrentID } = useContext(FilterDialogContext);
+  const context = useContext(FilterDialogContext);
+  if (!context) {
+    throw new Error('useFilterDialogManager must be called inside a FilterDialogManager');
+  }
+
+  const { currentID, setCurrentID } = context;
   const id = useRef(uniqueId('filterDialogManagerID')).current;
 
   const isOpen = currentID === id;

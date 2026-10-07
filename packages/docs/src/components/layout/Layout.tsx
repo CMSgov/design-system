@@ -68,7 +68,7 @@ const Layout = ({
   const baseTitle = theme === 'core' ? 'CMS Design System' : getThemeData(theme).longName;
   const tabTitle = frontmatter?.title ? `${frontmatter.title} - ${baseTitle}` : baseTitle;
 
-  const pageId = slug ? `page--${slug.replace('/', '_')}` : null;
+  const pageId = slug ? `page--${slug.replace('/', '_')}` : undefined;
 
   if (typeof window != 'undefined' && 'tealiumEnvironment' in window) {
     window.tealiumEnvironment = env;
@@ -118,7 +118,7 @@ const Layout = ({
                 <div className="ds-l-lg-col--9">
                   <div className="ds-u-lg-display--none ds-u-margin-bottom--3">
                     <TableOfContentsMobile
-                      title={frontmatter.title}
+                      title={frontmatter?.title}
                       items={tableOfContentsData || []}
                       slug={slug}
                     />
@@ -127,7 +127,7 @@ const Layout = ({
                 </div>
                 <div className="ds-l-lg-col--3 ds-u-display--none ds-u-lg-display--block">
                   <TableOfContents
-                    title={frontmatter.title}
+                    title={frontmatter?.title}
                     items={tableOfContentsData || []}
                     slug={slug}
                   />

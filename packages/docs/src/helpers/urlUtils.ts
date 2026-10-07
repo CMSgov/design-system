@@ -34,7 +34,7 @@ export function makePageUrl(fileRelativePath: string, location: LocationInterfac
     '/',
     fileRelativePath.replace('index.mdx', '').replace('.mdx', ''),
     '/',
-    location.search
+    location.search ?? ''
   );
 }
 

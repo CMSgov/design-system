@@ -38,7 +38,7 @@ const BlogPage = ({ data, location, children }: MdxQuery) => {
           <h1 className="ds-text-heading--4xl ds-u-sm-margin-top--2 ds-u-margin-bottom--1">
             {frontmatter.title}
           </h1>
-          <PublishDate date={frontmatter.date} />
+          {frontmatter.date && <PublishDate date={frontmatter.date} />}
         </header>
       }
     >

@@ -7,8 +7,9 @@
  */
 export const toKebabCase = (currentText: string) => {
   if (currentText && typeof currentText === 'string') {
-    return currentText
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    return (
+      currentText.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g) ?? []
+    )
       .map((x) => x.toLowerCase())
       .join('-');
   }
@@ -23,8 +24,9 @@ export const toKebabCase = (currentText: string) => {
  */
 export const toLowerCaseOneWord = (currentText: string) => {
   if (currentText && typeof currentText === 'string') {
-    return currentText
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    return (
+      currentText.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g) ?? []
+    )
       .map((x) => x.toLowerCase())
       .join('');
   }
