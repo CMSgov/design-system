@@ -54,7 +54,7 @@ const RelativeLink: FC<RelativeLinkProps> = ({ children, headingLevel = '2', pat
 };
 
 const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) => {
-  const { origin = 'design.cms.gov', pathname } = location;
+  const { pathname } = location;
 
   return (
     <>
@@ -88,7 +88,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://webaim.org/resources/contrastchecker/"
         >
           WebAIM Color Contrast Checker
@@ -97,7 +97,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://dequeuniversity.com/color-contrast"
         >
           Deque Color Contrast Analyzer
@@ -106,7 +106,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://www.tpgi.com/color-contrast-checker/"
         >
           Color Contrast Analyzer by TPGi
