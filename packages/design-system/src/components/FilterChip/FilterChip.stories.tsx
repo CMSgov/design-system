@@ -29,9 +29,7 @@ export const MultipleChips: Story = {
   render: function Component() {
     const listOfChips = [
       { label: 'Example FilterChip' },
-      { label: 'Example with alternate icon', useAlternateIcon: true },
       { label: 'Example big filter chip', size: 'big' },
-      { label: 'Example big with alternate icon', useAlternateIcon: true, size: 'big' },
     ];
 
     const onDelete = action('onDelete');
