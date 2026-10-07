@@ -1,12 +1,18 @@
 ---
 title: Medicare Headings
 order: 22
-intro: Heading styles used specifically for Medicare.gov.
+intro: Heading styles used specifically for the 2026 Medicare.gov redesign.
 medicare:
   figmaNodeId: 4052-37058
 ---
 
 import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['medicare']}>
+  <Alert variation="warn" heading="Headings">
+    This page is only for developers and designers working with the Medicare theme. For Core, CMS, and Healthcare specific heading styles, please refer to the [Headings](/foundation/typography/headings) page.
+  </Alert>
+</ThemeContent>
 
 ## Heading font family
 
@@ -138,6 +144,8 @@ The `.ds-text-heading--3xl` through `.ds-text-heading--sm` styles have alternate
 
 ### Style customization
 
+While styles are customizable, please refrain from making styling changes.
+
 The following CSS variables can be overridden to change the type sizes.
 Headings `xl` and larger use a smaller `--mobile` size below the `768px`
 breakpoint:
@@ -159,9 +167,7 @@ Line height is applied through the following variables, which do not change acro
 - `--font-line-height-heading-lg`, applied to `3xl` through `5xl` headings
 - `--font-line-height-heading`, applied to `md` through `2xl` headings
 
-Each heading size has a corresponding weight variable, from `--font-weight-heading-md` through `--font-weight-heading-5xl`. All of them resolve to `--font-weight-bold` in Medicare, so overriding that single variable changes the weight of every heading at once.
-
-Medicare headings also apply letter spacing through the following variables, which can be overridden to adjust heading tracking:
+Medicare headings also apply letter spacing through the following variables:
 
 - `--font-letter-spacing-lg`, applied to `xl` through `5xl` headings
 - `--font-letter-spacing-md`, applied to `lg` and `md` headings
