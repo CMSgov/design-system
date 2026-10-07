@@ -93,7 +93,9 @@ function createCustomElement<T>(
     __properties = {};
     __options = options;
     __mutationObserver?: MutationObserver;
-    __propsSignal: CustomElement['__propsSignal'];
+    // Assigned by `renderPreactComponent` during the first render, which completes before
+    // `__mounted` is set. It is only read once `__mounted` is true.
+    __propsSignal!: CustomElement['__propsSignal'];
     __root: Element | ShadowRoot = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
 
     static observedAttributes = ['props', ...attributes];

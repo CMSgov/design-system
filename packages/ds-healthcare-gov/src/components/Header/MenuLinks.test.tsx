@@ -42,5 +42,14 @@ describe('MenuLinks', function () {
       await user.click(link);
       expect(mock).toHaveBeenCalled();
     });
+
+    it('sends analytics event and runs the link onClick when the link has no label', async () => {
+      const user = userEvent.setup();
+      const onClick = jest.fn();
+      render(<MenuLinks links={[{ href: 'https://www.zombo.com', label: null, onClick }]} />);
+      await user.click(screen.getByRole('link'));
+      expect(mock).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
+      expect(onClick).toHaveBeenCalled();
+    });
   });
 });

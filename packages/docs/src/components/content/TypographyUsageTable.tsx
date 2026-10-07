@@ -89,7 +89,7 @@ const DynamicTableCell = ({
   }
 
   return (
-    <TableCell headers={dataKey} stackedTitle={label} align={isExample ? 'right' : null}>
+    <TableCell headers={dataKey} stackedTitle={label} align={isExample ? 'right' : undefined}>
       {content}
     </TableCell>
   );
@@ -112,7 +112,11 @@ const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps
       <TableHead>
         <TableRow>
           {filteredHeaders.map(({ dataKey, label }) => (
-            <TableCell key={dataKey} id={dataKey} align={dataKey === 'example' ? 'right' : null}>
+            <TableCell
+              key={dataKey}
+              id={dataKey}
+              align={dataKey === 'example' ? 'right' : undefined}
+            >
               {label}
             </TableCell>
           ))}

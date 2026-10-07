@@ -67,7 +67,7 @@ const StorybookExample = ({
    * Returns true if it detects height and resizes.
    */
   const updateIframeHeight = () => {
-    const height = iframeRef?.current.contentDocument.body.offsetHeight;
+    const height = iframeRef.current?.contentDocument?.body.offsetHeight ?? 0;
     if (height > 0) {
       setiFrameHeight(height);
       return true;

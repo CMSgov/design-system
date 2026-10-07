@@ -94,6 +94,20 @@ describe('ActionMenu', function () {
       expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
     });
 
+    it('sends analytics event when a logged-out action menu link with no label is clicked', () => {
+      renderForAnalytics({
+        links: [
+          {
+            label: null,
+            ariaLabel: 'ZOMBO',
+            href: 'https://www.zombo.com',
+          },
+        ],
+      });
+      fireEvent.click(screen.getByRole('link', { name: 'ZOMBO' }));
+      expect(tealiumMock).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
+    });
+
     it('sends analytics event when logged-out menu opened', () => {
       renderForAnalytics({
         links: [{ label: 'label', href: 'href' }],
