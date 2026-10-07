@@ -10,8 +10,6 @@ core:
   storybookLink: foundations-typography-headings--all-headings
 healthcare:
   figmaNodeId: 2070-49066
-medicare:
-  figmaNodeId: 4052-37058
 ---
 
 import {
@@ -38,10 +36,6 @@ import { css } from 'storybook/theming';
   Healthcare.gov uses Open Sans for all headings.
 </ThemeContent>
 
-<ThemeContent onlyThemes={['medicare']}>
-  Medicare.gov uses Inter for all headings.
-</ThemeContent>
-
 The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc.) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
 
 ## Responsive typography
@@ -49,12 +43,6 @@ The design system doesn't style base HTML typography elements (like `h1`, `h2`, 
 <ThemeContent neverThemes={['medicare']}>
 
 `.ds-text-heading-5xl`, `.ds-text-heading-4xl`, and `.ds-text-heading-3xl` classes are responsive by default.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-`.ds-text-heading--5xl`, `.ds-text-heading--4xl`, `.ds-text-heading--3xl`, `.ds-text-heading--2xl`, and `.ds-text-heading--xl` classes are responsive by default.
 
 </ThemeContent>
 
@@ -77,11 +65,7 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/Small',
         cmsgov: 'Headings/Small',
         healthcare: 'Headings/Small',
-        medicare: 'Not applicable'
       },
-      example: {
-        medicare: null
-      }
     },
     {
       cssClass: 'ds-text-heading--md',
@@ -89,7 +73,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/Medium',
         cmsgov: 'Headings/Medium',
         healthcare: 'Headings/Medium',
-        medicare: 'H6'
       },
       usage: {
         cmsgov: 'Footer headings',
@@ -102,7 +85,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/Large',
         cmsgov: 'Headings/Large',
         healthcare: 'Headings/Large',
-        medicare: 'H5'
       },
       usage: {
         healthcare: 'H4 - subsection headings',
@@ -114,7 +96,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/XL',
         cmsgov: 'Headings/XL',
         healthcare: 'Headings/XL',
-        medicare: 'H4'
       },
       usage: {
         cmsgov: 'H3 headers in cards',
@@ -127,7 +108,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/2xl/2xl',
         cmsgov: 'Headings/2xl/2xl',
         healthcare: 'Headings/2xl/2xl',
-        medicare: 'H3',
       },
       usage: {
         cmsgov: 'H3 headers',
@@ -140,7 +120,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/3xl/3xl - MD-SM',
         cmsgov: 'Headings/3xl/3xl - MD-SM',
         healthcare: 'Headings/3xl/3xl - MD-SM',
-        medicare: 'H2'
       },
       usage: {
         cmsgov: 'Search prompt on homepage',
@@ -153,7 +132,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/4xl/4xl - MD-SM',
         cmsgov: 'Headings/4xl/4xl - MD-SM',
         healthcare: 'Headings/4xl/4xl - MD-SM',
-        medicare: 'H1'
       },
     },
     {
@@ -162,7 +140,6 @@ they'll automatically adjust as you change the font size.
         core: 'Headings/5xl/5xl - SM',
         cmsgov: 'Headings/5xl/5xl - SM',
         healthcare: 'Headings/5xl/5xl - SM',
-        medicare: 'Hero H1'
       },
       usage: {
         cmsgov: 'H1 on homepage; internal page titles',
@@ -225,18 +202,6 @@ they'll automatically adjust as you change the font size.
 | `.ds-text-heading-5xl` | 36px            | 48px           | 60px            |
 | `.ds-text-heading-4xl` | 36px            | 36px           | 48px            |
 | `.ds-text-heading-3xl` | 30px            | 30px           | 36px            |
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-| CSS Class              | 545px and below | 545px to 768px | 768px and above |
-| ---------------------- | --------------- | -------------- | --------------- |
-| `.ds-text-heading-5xl` | 56px            | 56px           | 96px            |
-| `.ds-text-heading-4xl` | 48px            | 48px           | 72px            |
-| `.ds-text-heading-3xl` | 36px            | 36px           | 56px            |
-| `.ds-text-heading-2xl` | 32px            | 32px           | 48px            |
-| `.ds-text-heading-xl`  | 28px            | 28px           | 36px            |
 
 </ThemeContent>
 
@@ -367,20 +332,6 @@ Please note that in Figma, the color token is separate from the font token and n
   </div>
 </EmbeddedExample>
 
-<ThemeContent onlyThemes={['medicare']}>
-
-### Custom heading styles
-
-#### Teal heading
-
-Only used for landing pages and marketing material to apply emphasis to words within a header.
-
-<EmbeddedExample>
-  <h3 class="ds-text-heading--lg ds-u-color--primary">Example teal heading</h3>
-</EmbeddedExample>
-
-</ThemeContent>
-
 ### Eyebrow/Eyelash header
 
 In some cases, it is better to group header elements into a header component. This can be referred to as the Eyelash/Eyebrow header where you have the main header and an optional top header (eyebrow) or bottom header (eyelash) header.
@@ -397,7 +348,7 @@ This is an optional header design.
 
 <Alert variation="warn" heading="First and last children">
 
-The design system heading styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. Some examples of what we mean:
+The `.ds-text-heading--3xl` through `.ds-text-heading--sm` styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. The `.ds-text-heading--5xl` and `.ds-text-heading--4xl` styles carry no margins at all, so this does not apply to them. Some examples of what we mean:
 
 ```html
 <main>
@@ -427,16 +378,6 @@ The following CSS variables can be overridden to change the type sizes:
 - `--font-size-lg`
 - `--font-size-md`, uses `--font-size-base`
 - `--font-size-sm`
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Medicare headings also apply letter spacing through the following variables, which can be overridden to adjust heading tracking:
-
-- `--font-letter-spacing-lg`, applied to `xl` through `5xl` headings
-- `--font-letter-spacing-md`, applied to `lg` and `md` headings
-- `--font-letter-spacing-sm`, applied to `sm` headings
-
-</ThemeContent>
 
 ## Guidance
 
