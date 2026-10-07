@@ -45,7 +45,7 @@ exports[`FilterChip should include children as label 1`] = `
 </button>
 `;
 
-exports[`FilterChip should use the default thin icon 1`] = `
+exports[`FilterChip should render close icon by default 1`] = `
 <span
   class="ds-c-filter-chip__clear-icon-container"
 >
