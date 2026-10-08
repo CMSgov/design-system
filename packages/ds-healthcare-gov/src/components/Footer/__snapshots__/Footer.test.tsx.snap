@@ -325,7 +325,9 @@ exports[`Footer renders basic footer 1`] = `
           <li
             class="hc-c-footer__inline-item"
           >
-            <button>
+            <button
+              aria-haspopup="dialog"
+            >
               Privacy settings
             </button>
             <span
@@ -687,7 +689,9 @@ exports[`Footer renders basic footer with props 1`] = `
           <li
             class="hc-c-footer__inline-item"
           >
-            <button>
+            <button
+              aria-haspopup="dialog"
+            >
               Privacy settings
             </button>
             <span

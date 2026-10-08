@@ -55,6 +55,7 @@ export const SimpleFooter: FunctionComponent<SimpleFooterProps> = ({
         <a href={`${baseUrl}/privacy-policy`}>{privacyPolicyLabel}</a>
         <span aria-hidden="true" className="m-c-footer__delimiter" />
         <Button
+          aria-haspopup="dialog"
           className="SimpleFooter__linkButton"
           variation="ghost"
           onClick={(): void => {
