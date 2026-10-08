@@ -14,7 +14,7 @@ type ThemeName = keyof typeof themes;
 
 type DataItem = {
   cssClass: string;
-  figmaToken: string;
+  figmaToken: string | { [key in ThemeName]: string | null };
   example?: string | { [key in ThemeName]: string | null };
   usage?: string | { [key in ThemeName]: string | null };
 };
@@ -34,7 +34,7 @@ export interface TypographyProps {
    */
   headers: Header[];
   /**
-   * An array of objects to be displayed as rows. The available keys are `cssClass`, `figmaToken`, `example`, and `usage`. The `example` and `usage` keys can be a string or an object with keys that match a DS theme that pertain a string specific to that theme. If the `example` value for a theme is `null`, it will render a badge indicating that the class is not used by that theme. If the `example` value is `example-link`, it will render a link.
+   * An array of objects to be displayed as rows. The available keys are `cssClass`, `figmaToken`, `example`, and `usage`. The `figmaToken`, `example`, and `usage` keys can be a string or an object with keys that match a DS theme that pertain a string specific to that theme. If the `example` value for a theme is `null`, it will render a badge indicating that the class is not used by that theme. If the `example` value is `example-link`, it will render a link.
    */
   data: DataItem[];
   /**
@@ -50,7 +50,7 @@ const UnusedBadge = ({ theme }: { theme: ThemeName }) => {
 
   return (
     <Badge className="ds-c-badge--alert">
-      <CloseIconThin /> Unused by {displayName}.
+      <CloseIconThin /> Unused by {displayName}
     </Badge>
   );
 };
@@ -96,9 +96,11 @@ const DynamicTableCell = ({
 };
 
 const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps) => {
-  // core should not display 'usage' column
+  // core and medicare should not display the 'usage' column
   const filteredHeaders =
-    theme === 'core' ? headers.filter(({ dataKey }) => dataKey !== 'usage') : headers;
+    theme === 'core' || theme === 'medicare'
+      ? headers.filter(({ dataKey }) => dataKey !== 'usage')
+      : headers;
 
   return (
     <Table
@@ -124,7 +126,7 @@ const TypographyUsageTable = ({ caption, data, headers, theme }: TypographyProps
       </TableHead>
       <TableBody>
         {data.map((dataItem) => (
-          <TableRow key={dataItem.figmaToken}>
+          <TableRow key={dataItem.cssClass}>
             {filteredHeaders.map((header) => (
               <DynamicTableCell
                 key={header.dataKey}
