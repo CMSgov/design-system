@@ -9,14 +9,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "typeRoots": ["./@types", "./node_modules/@types"],
-    "alwaysStrict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true
+    "strict": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }
