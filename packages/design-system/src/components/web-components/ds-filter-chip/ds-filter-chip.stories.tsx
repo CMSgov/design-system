@@ -50,6 +50,10 @@ const meta: Meta = {
       control: 'radio',
       options: [undefined, 'big'],
     },
+    'hide-icon': {
+      description: 'Hides the close icon. The chip remains dismissible.',
+      control: 'boolean',
+    },
   },
 };
 export default meta;
@@ -136,6 +140,11 @@ export const MultipleChips = {
       },
     },
     size: {
+      table: {
+        disable: true,
+      },
+    },
+    'hide-icon': {
       table: {
         disable: true,
       },
