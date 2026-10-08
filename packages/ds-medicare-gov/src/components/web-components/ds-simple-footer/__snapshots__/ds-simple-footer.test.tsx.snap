@@ -39,6 +39,7 @@ exports[`SimpleFooter renders without crashing 1`] = `
           class="m-c-footer__delimiter"
         />
         <button
+          aria-haspopup="dialog"
           class="ds-c-button ds-c-button--ghost SimpleFooter__linkButton"
           type="button"
         >
