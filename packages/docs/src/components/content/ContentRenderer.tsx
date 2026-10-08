@@ -83,6 +83,9 @@ const PrefixedImg = (props: ComponentProps<'img'>) => {
   // path prefix manually if it isn't already there. When we load fresh with a new HTTP
   // request to a static HTML file, it'll use what's in the HTML, so we add the prefix
   // when statically rendering, which seems to be where Gatsby fails to use it normally.
+  if (props.src === undefined) {
+    return <img {...props} />;
+  }
   const pathPrefix = withPrefix('/');
   const src = props.src.includes(pathPrefix) ? props.src : withPrefix(props.src);
   return <img {...props} src={src} />;

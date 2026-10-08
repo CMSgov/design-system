@@ -1,0 +1,191 @@
+---
+title: Medicare Headings
+order: 22
+intro: Heading styles used specifically for the 2026 Medicare.gov redesign.
+medicare:
+  figmaNodeId: 4052-37058
+---
+
+import { Alert } from '@cmsgov/design-system';
+
+<ThemeContent neverThemes={['medicare']}>
+  <Alert variation="warn" heading="Headings">
+    This page is only for developers and designers working with the Medicare theme. For Core, CMS, and Healthcare specific heading styles, please refer to the [Headings](/foundation/typography/headings) page.
+  </Alert>
+</ThemeContent>
+
+## Heading font family
+
+Medicare.gov uses Inter for all headings.
+
+The design system doesn't style base HTML typography elements (like `h1`, `h2`, `p`, etc.) unless they're inside an element with the [ds-content class](/foundation/typography/content). Instead, it provides heading classes (available on this page) corresponding to visual sizes. These classes can be applied to any heading elements, irrespective of their semantic heading level (`h1` to `h6`). This approach allows teams to first choose the semantic heading level that make the most sense for the document and its accessibility and then choose a visual heading size class that fits the page's visual hierarchy.
+
+## Responsive typography
+
+`.ds-text-heading--5xl`, `.ds-text-heading--4xl`, `.ds-text-heading--3xl`, `.ds-text-heading--2xl`, and `.ds-text-heading--xl` classes are responsive by default.
+
+To apply responsive typography elsewhere, use the [font size utility class](/utilities/font/font-size/#responsive-font-sizes).
+Since the base typography margins and line height is measured in `em` units,
+they'll automatically adjust as you change the font size.
+
+<TypographyUsageTable
+  caption="Heading styles and Figma tokens"
+  headers={[
+    { dataKey: 'cssClass', label: 'CSS class' },
+    { dataKey: 'figmaToken', label: 'Figma token' },
+    { dataKey: 'example', label: 'Example' },
+  ]}
+  data={[
+    {
+      cssClass: 'ds-text-heading--sm',
+      figmaToken: {
+        medicare: 'Not applicable'
+      },
+      example: {
+        medicare: null
+      }
+    },
+    {
+      cssClass: 'ds-text-heading--md',
+      figmaToken: {
+        medicare: 'H6'
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--lg',
+      figmaToken: {
+        medicare: 'H5'
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--xl',
+      figmaToken: {
+        medicare: 'H4'
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--2xl',
+      figmaToken: {
+        medicare: 'H3',
+      }
+    },
+    {
+      cssClass: 'ds-text-heading--3xl',
+      figmaToken: {
+        medicare: 'H2'
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--4xl',
+      figmaToken: {
+        medicare: 'H1'
+      },
+    },
+    {
+      cssClass: 'ds-text-heading--5xl',
+      figmaToken: {
+        medicare: 'Hero H1'
+      }
+    },
+  ]}
+/>
+
+| CSS class               | Below 768px | 768px and above |
+| ----------------------- | ----------- | --------------- |
+| `.ds-text-heading--5xl` | 56px        | 96px            |
+| `.ds-text-heading--4xl` | 48px        | 72px            |
+| `.ds-text-heading--3xl` | 36px        | 56px            |
+| `.ds-text-heading--2xl` | 32px        | 48px            |
+| `.ds-text-heading--xl`  | 28px        | 36px            |
+| `.ds-text-heading--lg`  | 24px        | 24px            |
+| `.ds-text-heading--md`  | 20px        | 20px            |
+| `.ds-text-heading--sm`  | 16px        | 16px            |
+
+
+<ResponsiveExample
+  storyId="foundations-typography-headings--responsive-headings"
+  title="Responsive typography example"
+/>
+
+## Specific examples
+
+### On dark background
+
+<EmbeddedExample>
+  <div class="ds-base--inverse ds-u-padding--2">
+    <h3 class="ds-text-heading--lg">Example heading on dark background</h3>
+    <h3 class="ds-text-heading--lg">
+      <a href="javascript:void(0);">Example link heading on dark background</a>
+    </h3>
+  </div>
+</EmbeddedExample>
+
+## Code
+
+<Alert variation="warn" heading="First and last children">
+
+The `.ds-text-heading--3xl` through `.ds-text-heading--sm` styles have alternate margins for headings that are the first or last child of their parent element. Headings that are the first child have no top margin, and headings that are last children have no bottom margin. The `.ds-text-heading--5xl` and `.ds-text-heading--4xl` styles carry no margins at all, so this does not apply to them. Some examples of what we mean:
+
+```html
+<main>
+  <h1>I'm the first child of my parent.</h1>
+  <h2>I'm not the first child of my parent</h2>
+  <div>
+    <h2>
+      I'm actually the first child of my parent even though I'm not the first heading on the page
+    </h2>
+    <h2>I'm the last child of my parent</h2>
+  </div>
+  <h2>I'm also the last child of my parent</h2>
+</main>
+```
+
+</Alert>
+
+### Style customization
+
+While styles are customizable, please refrain from making styling changes.
+
+The following CSS variables can be overridden to change the type sizes.
+Headings `xl` and larger use a smaller `--mobile` size below the `768px`
+breakpoint:
+
+| Heading | Default (below 768px)     | `md` breakpoint (768px and wider) |
+| ------- | ------------------------- | --------------------------------- |
+| `5xl`   | `--font-size-5xl--mobile` | `--font-size-5xl`                 |
+| `4xl`   | `--font-size-4xl--mobile` | `--font-size-4xl`                 |
+| `3xl`   | `--font-size-3xl--mobile` | `--font-size-3xl`                 |
+| `2xl`   | `--font-size-2xl--mobile` | `--font-size-2xl`                 |
+| `xl`    | `--font-size-xl--mobile`  | `--font-size-xl`                  |
+| `lg`    | `--font-size-lg`          | `--font-size-lg`                  |
+| `md`    | `--font-size-base`        | `--font-size-base`                |
+
+The `lg` and `md` headings use a single size at every viewport width.
+
+Line height is applied through the following variables, which do not change across breakpoints:
+
+- `--font-line-height-heading-lg`, applied to `3xl` through `5xl` headings
+- `--font-line-height-heading`, applied to `md` through `2xl` headings
+
+Medicare headings also apply letter spacing through the following variables:
+
+- `--font-letter-spacing-lg`, applied to `xl` through `5xl` headings
+- `--font-letter-spacing-md`, applied to `lg` and `md` headings
+
+## Guidance
+
+### The `ds-content` class
+
+For pages that are mainly about written content or places where you want to use a standard mapping of heading-level styles to semantic heading levels, consider using the [`ds-content`](/foundation/typography/content/) class.
+
+### Layout dos and don'ts
+
+There should always be a parent/child relationship between headers and content on the page. Every header should have a relationship to something else on the page. This can apply to many different relationships like a header and a form group or a header and list of links. Stray headers or content should be reevaluated.
+
+- Paragraph styles should never be used as a parent to another text element.
+- Header elements should never have equal or smaller font size than the paragraph element.
+- Not all paragraphs need a header, but all headers need children.
+- Every page should have one heading 1 (H1)
+- Headings style appearing under H1 should follow a logical order for information design and supporting various assistive technology devices/software.
+- Don't use a smaller header font size than the body font size
+- Don't use stray headers

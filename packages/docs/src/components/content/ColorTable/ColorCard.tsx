@@ -9,8 +9,8 @@ type ColorCardProps = {
 };
 
 export const ColorCard = ({ attributes }: ColorCardProps) => {
-  const hexCode = attributes.find(({ key }) => key === 'hex').value;
-  const hasCssVariable = attributes.find(({ key }) => key === 'css').value.startsWith('--');
+  const hexCode = attributes.find(({ key }) => key === 'hex')?.value;
+  const hasCssVariable = attributes.find(({ key }) => key === 'css')?.value.startsWith('--');
 
   return (
     <div className="c-color-card ds-l-row">

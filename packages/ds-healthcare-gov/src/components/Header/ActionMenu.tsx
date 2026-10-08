@@ -90,12 +90,10 @@ const ActionMenu = function (props: ActionMenuProps) {
                 <a
                   href={link.href}
                   aria-label={link.ariaLabel}
-                  // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
-                  // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
-                  // can't actually be coerced into a string. We've had to do a lot of extra work in
-                  // other cases to find the text content of a ReactNode after rendering, like in
-                  // packages/design-system/src/components/Alert/Alert.tsx#L114
-                  onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
+                  // TODO: send the link's rendered text with
+                  // https://jira.cms.gov/browse/CMSDS-4659. link.label is a ReactNode, so
+                  // .toString() sends an element label as "[object Object]".
+                  onClick={() => sendHeaderEvent(link.label?.toString() ?? '', link.href)}
                   className={classnames('hc-c-logged-out-links__link', link.className)}
                 >
                   {link.label}

@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 import { ThirdPartyExternalLink } from '@cmsgov/design-system';
 import { LocationInterface } from '../../../src/helpers/graphQLTypes';
 
@@ -20,7 +20,11 @@ const SVGLinkIcon = () => (
   </span>
 );
 
-interface RelativeLinkProps extends PropsWithChildren {
+interface RelativeLinkProps {
+  /**
+   * Heading text
+   */
+  children: string;
   /**
    *  Heading type to override default `<h2>`.
    */
@@ -50,7 +54,7 @@ const RelativeLink: FC<RelativeLinkProps> = ({ children, headingLevel = '2', pat
 };
 
 const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) => {
-  const { origin, pathname } = location;
+  const { pathname } = location;
 
   return (
     <>
@@ -84,7 +88,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://webaim.org/resources/contrastchecker/"
         >
           WebAIM Color Contrast Checker
@@ -93,7 +97,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://dequeuniversity.com/color-contrast"
         >
           Deque Color Contrast Analyzer
@@ -102,7 +106,7 @@ const ColorContrastGuidelines = ({ location }: { location: LocationInterface }) 
       <p>
         <ThirdPartyExternalLink
           analytics={true}
-          origin={origin}
+          origin="design.cms.gov"
           href="https://www.tpgi.com/color-contrast-checker/"
         >
           Color Contrast Analyzer by TPGi

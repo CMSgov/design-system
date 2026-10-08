@@ -8,6 +8,6 @@ describe('LogoEnSvg', function () {
   });
   it('updates the titleId when changed', () => {
     const { container } = render(<LogoEnSvg titleId="foo" />);
-    expect(container.querySelector('title').id).toBe('foo');
+    expect(container.querySelector('title')!.id).toBe('foo');
   });
 });

@@ -71,7 +71,7 @@
   ],
   [
     "onStepLinkClick",
-    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's href property will be passed as a parameter.\n\n(href?: string, stepId?: string) => any",
+    "Function called when a step's Edit, Start, or Resume button/link is clicked. The step's href property will be passed as a parameter.\n\n((href?: string, stepId?: string) => any) | undefined",
     "-"
   ],
   [

@@ -25,7 +25,7 @@ function useTheme() {
         // No query param found, so check localStorage for a theme before
         // falling back to core
         if (STORAGE_TOKEN_NAME in localStorage) {
-          newTheme = localStorage.getItem(STORAGE_TOKEN_NAME);
+          newTheme = localStorage.getItem(STORAGE_TOKEN_NAME) ?? newTheme;
         }
         // if no query param val was set, make sure to set it to the value in local storage or 'core' by default
         setQueryParam(QUERY_PARAM_NAME, newTheme);

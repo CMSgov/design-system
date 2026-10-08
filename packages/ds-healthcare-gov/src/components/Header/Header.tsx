@@ -235,7 +235,7 @@ export const Header = (props: HeaderProps) => {
     languageLinkClassName: props.languageLinkClassName,
   })[variation];
 
-  const links = hasCustomLinks
+  const links = props.links
     ? props.links.concat(defaultLinksForVariation)
     : defaultLinksForVariation;
 

@@ -101,12 +101,12 @@
   ],
   [
     "onBlur",
-    "(...args: any[]) => any",
+    "((...args: any[]) => any)",
     "-"
   ],
   [
     "onChange",
-    "(event: ChangeEvent<HTMLInputElement, Element>) => any",
+    "((event: ChangeEvent<HTMLInputElement, Element>) => any)",
     "-"
   ],
   [

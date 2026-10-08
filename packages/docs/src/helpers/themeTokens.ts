@@ -85,7 +85,7 @@ export function getComponentVariables(
         resolvedToken,
       };
     })
-    .filter((data) => data);
+    .filter((data) => data !== null);
 }
 
 export function getSystemColorTokenFromValue(colorValue: string): string {
@@ -93,6 +93,9 @@ export function getSystemColorTokenFromValue(colorValue: string): string {
     tokensByFile['System.Value.json'],
     ({ $value }) => String($value) === colorValue
   );
+  if (tokenKey === undefined) {
+    throw new Error(`No system color token has the value ${colorValue}`);
+  }
   return tokenKey.split('color.')[1];
 }
 
@@ -116,6 +119,8 @@ type ColorAttributes = {
   figma: string;
   componentUsage?: string[];
 };
+
+type NamedColor = ColorAttributes & { componentUsage: string[] };
 
 type ColorCategoryUsage = {
   name: string;
@@ -174,7 +179,7 @@ const formatters = {
 const sortByLuminance = (a: ColorAttributes, b: ColorAttributes) => {
   const aLuminance = luminanceFromHex(a.hex as HexValue);
   const bLuminance = luminanceFromHex(b.hex as HexValue);
-  return bLuminance - aLuminance;
+  return (bLuminance ?? 0) - (aLuminance ?? 0);
 };
 
 const determineComponentUsage = ({
@@ -223,11 +228,11 @@ const includeNamedColorsInfo = ({
   namedColors,
   hexCodes,
 }: {
-  namedColors: ColorAttributes[];
+  namedColors: NamedColor[];
   hexCodes: {
     hex: string;
   }[];
-}): ColorAttributes[] => {
+}): (Partial<NamedColor> & { hex: string })[] => {
   return hexCodes.map(({ hex }) => {
     // namedColors potentially contains the component usage and css for each hex code
     const match = namedColors.find((color) => color.hex === hex);
@@ -242,8 +247,8 @@ const filterHexCodesByComponentUsageAndColor = ({
   hexCodes,
   namedColors,
 }: {
-  hexCodes: ColorAttributes[];
-  namedColors: ColorAttributes[];
+  hexCodes: (Partial<NamedColor> & { hex: string })[];
+  namedColors: NamedColor[];
 }) => {
   return hexCodes.filter(({ hex }) => {
     // If the hex code is used in a component, don't include it in the list of available colors
@@ -283,7 +288,7 @@ export function determineColorCategoryUsageByTheme({
   const flattenedComponents = flattenedThemeTokens.filter(([key]) => key.includes(`component.`));
   const colorCategories = typeof colorCategory === 'string' ? [colorCategory] : colorCategory;
 
-  const namedColors: ColorAttributes[] = flattenedThemeTokens
+  const namedColors: NamedColor[] = flattenedThemeTokens
     .filter(([colorToken]) => {
       const filterByCategory = colorCategories.some((category) => {
         const colorCategoryKey = `theme.color.${category}`;

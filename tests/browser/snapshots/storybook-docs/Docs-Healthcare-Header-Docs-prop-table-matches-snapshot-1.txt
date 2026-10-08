@@ -71,12 +71,12 @@
   ],
   [
     "onMenuToggle",
-    "() => void",
+    "(() => void)",
     "-"
   ],
   [
     "onSkipNavClick",
-    "An onClick handler used for the \"Skip to main content\" link. This can be used in cases where one would need to manually set the focus on the content area (e.g. where hash routing is being used).\n\n(...args: any[]) => any",
+    "An onClick handler used for the \"Skip to main content\" link. This can be used in cases where one would need to manually set the focus on the content area (e.g. where hash routing is being used).\n\n((...args: any[]) => any)",
     "-"
   ],
   [
