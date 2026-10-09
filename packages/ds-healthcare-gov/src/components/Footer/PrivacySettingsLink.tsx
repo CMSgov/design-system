@@ -9,6 +9,7 @@ interface PrivacySettingsLinkProps {
 
 export const PrivacySettingsLink = (props: PrivacySettingsLinkProps) => (
   <button
+    aria-haspopup="dialog"
     className={props.className}
     onClick={() => (window as UtagContainer).utag?.gdpr?.showConsentPreferences(getLanguage())}
   >

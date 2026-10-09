@@ -3,6 +3,7 @@
 exports[`PrivacySettingsLink should render with custom class and children 1`] = `
 <div>
   <button
+    aria-haspopup="dialog"
     class="ds-t-test-class"
   >
     Custom modal trigger
@@ -12,7 +13,9 @@ exports[`PrivacySettingsLink should render with custom class and children 1`] = 
 
 exports[`PrivacySettingsLink should render with default options 1`] = `
 <div>
-  <button>
+  <button
+    aria-haspopup="dialog"
+  >
     Privacy settings
   </button>
 </div>

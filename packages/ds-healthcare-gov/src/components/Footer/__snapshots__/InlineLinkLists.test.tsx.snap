@@ -54,7 +54,9 @@ exports[`InlineLinkLists renders lists of links 1`] = `
         <li
           class="hc-c-footer__inline-item"
         >
-          <button>
+          <button
+            aria-haspopup="dialog"
+          >
             Privacy settings
           </button>
           <span
@@ -310,7 +312,9 @@ exports[`InlineLinkLists renders lists of links with absolute URLs 1`] = `
         <li
           class="hc-c-footer__inline-item"
         >
-          <button>
+          <button
+            aria-haspopup="dialog"
+          >
             Privacy settings
           </button>
           <span
