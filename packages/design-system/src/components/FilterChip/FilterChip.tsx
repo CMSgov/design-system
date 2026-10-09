@@ -31,6 +31,10 @@ export interface FilterChipProps {
    * Sets the size of the chip to larger version.
    */
   size?: 'big';
+  /**
+   * Hides the close icon. The chip remains dismissible.
+   */
+  hideIcon?: boolean;
 }
 
 /**
@@ -44,6 +48,7 @@ export const FilterChip = ({
   id,
   onDelete,
   size,
+  hideIcon,
 }: FilterChipProps) => {
   const filterChipId = useId('filter-chip--', id);
 
@@ -60,7 +65,10 @@ export const FilterChip = ({
 
   const buttonClassNames = classNames(
     'ds-c-filter-chip__button',
-    size && size === 'big' ? 'ds-c-filter-chip__button--big' : '',
+    {
+      'ds-c-filter-chip__button--big': size === 'big',
+      'ds-c-filter-chip__button--hide-icon': hideIcon,
+    },
     className
   );
 
@@ -84,7 +92,11 @@ export const FilterChip = ({
       <span id={`${filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
         {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
       </span>
-      <span className={iconContainerClassNames}>{<CloseIconThin />}</span>
+      {!hideIcon && (
+        <span className={iconContainerClassNames}>
+          <CloseIconThin />
+        </span>
+      )}
     </button>
   );
 };

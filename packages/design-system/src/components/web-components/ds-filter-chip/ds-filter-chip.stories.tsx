@@ -50,13 +50,19 @@ const meta: Meta = {
       control: 'radio',
       options: [undefined, 'big'],
     },
+    'hide-icon': {
+      description: 'Hides the close icon. The chip remains dismissible.',
+      control: 'boolean',
+    },
   },
 };
 export default meta;
 
 const listOfChips = [
-  { label: 'Example FilterChip' },
-  { label: 'Example big filter chip', size: 'big' },
+  { label: 'Default' },
+  { label: 'Default without icon', 'hide-icon': 'true' },
+  { label: 'Big', size: 'big' },
+  { label: 'Big without icon', 'hide-icon': 'true', size: 'big' },
 ];
 
 const Template = (args: any) => {
@@ -134,6 +140,11 @@ export const MultipleChips = {
       },
     },
     size: {
+      table: {
+        disable: true,
+      },
+    },
+    'hide-icon': {
       table: {
         disable: true,
       },

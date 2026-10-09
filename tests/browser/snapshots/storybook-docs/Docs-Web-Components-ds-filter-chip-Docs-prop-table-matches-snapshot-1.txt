@@ -10,6 +10,11 @@
     "string"
   ],
   [
+    "hide-icon",
+    "Hides the close icon. The chip remains dismissible.",
+    "\"true\"\"false\""
+  ],
+  [
     "label",
     "Text for the filter chip.",
     "string"

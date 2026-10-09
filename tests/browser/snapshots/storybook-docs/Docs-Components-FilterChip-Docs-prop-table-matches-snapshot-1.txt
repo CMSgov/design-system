@@ -10,6 +10,11 @@
     "-"
   ],
   [
+    "hideIcon",
+    "Hides the close icon. The chip remains dismissible.\nboolean",
+    "-"
+  ],
+  [
     "id",
     "Id for filter chip button. If not provided, a unique id will be automatically generated and used.\nstring",
     "-"

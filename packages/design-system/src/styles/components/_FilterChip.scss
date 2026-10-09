@@ -22,6 +22,14 @@
     padding-inline-end: 34px;
   }
 
+  &--hide-icon {
+    padding-inline-end: var(--filter-chip__padding-inline-start);
+
+    &.ds-c-filter-chip__button--big {
+      padding-inline-end: $spacer-2;
+    }
+  }
+
   &:hover {
     background-color: var(--filter-chip__background-color--hover);
     border-color: var(--filter-chip__border-color--hover);
