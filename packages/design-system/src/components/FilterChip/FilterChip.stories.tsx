@@ -28,8 +28,10 @@ export const Default: Story = {};
 export const MultipleChips: Story = {
   render: function Component() {
     const listOfChips = [
-      { label: 'Example FilterChip' },
-      { label: 'Example big filter chip', size: 'big' },
+      { label: 'Default' },
+      { label: 'Default without icon', hideIcon: true },
+      { label: 'Big', size: 'big' },
+      { label: 'Big without icon', size: 'big', hideIcon: true },
     ];
 
     const onDelete = action('onDelete');

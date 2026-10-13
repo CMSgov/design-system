@@ -1,0 +1,46 @@
+---
+title: CMSDS Skills
+---
+
+The CMS Design System provides a skills package that can be used with AI-assisted development tools such as Github CoPilot, Codex, and other compatible agents. These skills help an AI assistant understand how to work with CMS Design System components and documentation so the AI generates code that's more likely to match the design system.
+
+To get started, download the <a href="/cms-design-system-skills.zip" download>CMS Design System skills package</a>. Place the skills in a location recognized by your AI tool or IDE. The installation process and location vary by tool, so consult your tool's documentation for instructions on installing and enabling skills.
+
+## What is a skill?
+
+A skill is a reusable package of instructions and supporting resources that teaches an AI agent how to perform a particular task or workflow. At a minimum, every skill contains a `SKILL.md` file describing its purpose and behavior, but it may also include additional reference materials or utilities.
+
+A typical skill directory might include:
+
+- `SKILL.md` (required) — Defines the purpose of the skill and provides instructions for the AI agent.
+- `references/` (optional) — Supporting documentation that can provide additional context.
+- `scripts/` (optional) — Executable utilities used by the skill.
+- `assets/` (optional) — Templates, images, fonts, or other supporting files.
+
+## How do skills work?
+
+To make skills available, place the skills package in a location recognized by your AI tool or IDE. The exact location varies by tool, so consult your tool's documentation for instructions on installing and enabling skills.
+
+When interacting with an AI agent, the agent determines whether one of the available skills is relevant to the user's request. If so, it may load the corresponding `SKILL.md` file and any supporting resources to guide its response.
+
+## Trigger phrases
+
+Skills are most effective when prompts clearly communicate the intended task. For example the `implement-cmsds-react-components` skill includes trigger phrases such as:
+
+- "CMSDS component guidance"
+  - Example: `Find CMSDS component guidance for Button`
+- "Implement a CMSDS component"
+  - Example: `Implement a CMSDS component called Button`
+- "Fix CMSDS component usage"
+  - Example: `Fix CMSDS component usage for this Button implementation`
+
+You do not need to use these phrases verbatim, but using the language in these triggers makes it more likely that the AI agent will invoke the appropriate skill. In particular, we intentionally include the phrase "CMSDS component" to distinguish this skill from more generic React component skills that may also be available in a user's environment.
+
+For the current trigger language for any CMSDS skill, see the `description` field in the relevant `SKILL.md` file in the [`docs/skills` directory on GitHub](https://github.com/CMSgov/design-system/tree/main/packages/docs/skills).
+
+## Available skills
+
+The CMS Design System currently offers the following skills:
+
+- **Component implementation** (`implement-cmsds-react-components`) — Helps AI tools implement CMS Design System React components according to the documentation and component API. The skill directs the AI to review the relevant component documentation and TypeScript definitions included in installed npm packages before implementation.
+- **Accessibility review** (`review-cmsds-accessibility`) — Helps AI tools locate relevant CMS Design System accessibility guidance, including accessibility testing guidance for components, patterns, foundations, and page layouts. Where available, this includes guidance for keyboard and screen reader testing.
