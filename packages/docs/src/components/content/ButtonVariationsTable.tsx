@@ -58,15 +58,18 @@ const themeButtonUsage: { [theme: string]: ThemeButtonUsage } = {
   },
   medicare: {
     outline: {
-      main: {
-        onDark: false,
-      },
       alternate: {
         onLight: false,
         onDark: false,
       },
     },
     ghost: {
+      alternate: {
+        onLight: false,
+        onDark: false,
+      },
+    },
+    solid: {
       alternate: {
         onLight: false,
         onDark: false,
