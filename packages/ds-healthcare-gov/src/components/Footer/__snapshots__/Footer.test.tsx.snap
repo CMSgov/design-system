@@ -327,6 +327,7 @@ exports[`Footer renders basic footer 1`] = `
           >
             <button
               aria-haspopup="dialog"
+              type="button"
             >
               Privacy settings
             </button>
@@ -691,6 +692,7 @@ exports[`Footer renders basic footer with props 1`] = `
           >
             <button
               aria-haspopup="dialog"
+              type="button"
             >
               Privacy settings
             </button>
