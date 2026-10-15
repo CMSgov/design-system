@@ -341,7 +341,9 @@
 --button-ghost-dark-alt__color--hover: var(--color-secondary-lightest);
 --button-ghost-dark-alt__color--disabled: var(--color-gray-dark);
 --button-font-size__large: var(--font-size-xl);
+--button-padding-block__default: var(--spacer-1);
 --button-padding-block__small: var(--spacer-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-1);
 --card__box-shadow: var(--box-shadow);
 --choice__background-color: var(--color-background);

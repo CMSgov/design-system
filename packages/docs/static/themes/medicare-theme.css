@@ -344,8 +344,11 @@
 --button-ghost-dark-alt__color--active: var(--color-gray-lighter);
 --button-ghost-dark-alt__color--hover: var(--color-gray-lightest);
 --button-ghost-dark-alt__color--disabled: var(--color-gray-dark);
+--button-font-size__default: var(--font-size-md);
 --button-font-size__large: var(--font-size-md);
+--button-padding-block__default: var(--spacer-2);
 --button-padding-block__small: var(--spacer-1-plus-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-3);
 --card__box-shadow: var(--box-shadow);
 --choice__background-color: var(--color-background);
