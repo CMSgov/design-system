@@ -81,11 +81,9 @@ export const Controlled: Story = {
 
 export const Inverted: Story = {
   args: {
-    errorMessage: 'Please enter a year in the past',
     monthDefaultValue: '10',
     dayDefaultValue: '31',
-    yearDefaultValue: '2050',
-    yearInvalid: true,
+    yearDefaultValue: '2023',
     inversed: true,
   },
   parameters: {
