@@ -13,6 +13,8 @@ const DocSiteFooter = () => (
           Plain Writing
         </a>
         <button
+          aria-haspopup="dialog"
+          type="button"
           className="c-footer__link"
           onClick={() =>
             (window as UtagContainer).utag?.gdpr?.showConsentPreferences(getLanguage())
