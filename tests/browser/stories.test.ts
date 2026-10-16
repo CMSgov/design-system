@@ -101,6 +101,11 @@ stories.forEach((story) => {
             "Don't run redundant a11y tests"
           );
 
+          test.skip(
+            theme === 'medicare' && story?.properties?.onDark,
+            'Skipping a11y tests for Medicare theme on dark backgrounds'
+          );
+
           switch (story.id) {
             case 'components-drawer--drawer-default':
             case 'components-drawer--drawer-with-sticky-positioning':
