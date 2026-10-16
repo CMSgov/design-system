@@ -48,6 +48,10 @@ describe('SimpleFooter', () => {
       'href',
       'https://www.medicare.gov/privacy-policy'
     );
+    expect(screen.getByRole('button', { name: /Privacy Setting/i })).toHaveAttribute(
+      'aria-haspopup',
+      'dialog'
+    );
     expect(screen.getByRole('link', { name: /Using This Site/i })).toHaveAttribute(
       'href',
       'https://www.medicare.gov/about-us/using-this-site'

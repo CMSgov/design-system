@@ -24,8 +24,13 @@ There are 3 variations of buttons:
 - **Solid** – Also called a “primary” button.
 - **Outline** – Also called a “secondary” button.
 - **Ghost** – A button without visible outline styling. Ghost buttons appear to look like hyperlinked text, but they have button attributes.
-
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 Each button variation is available in a main color and an approved alternate color for both light and dark backgrounds.
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+Each button variation is available for both light and dark backgrounds.
+</ThemeContent>
 
 <ButtonVariationsTable />
 
@@ -55,6 +60,8 @@ Each button variation is available in a main color and an approved alternate col
   storyId="components-button--default&args=children:Ghost;variation:ghost"
 />
 
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
+
 ### Alternate buttons
 
 Each button variation (solid, outline, ghost) has an alternate option.
@@ -82,7 +89,9 @@ Each button variation (solid, outline, ghost) has an alternate option.
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--default&args=children:Ghost;variation:ghost;isAlternate:true"
   />
-  
+
+</ThemeContent>
+
 ### On dark background
 
 <StorybookExample
@@ -90,6 +99,8 @@ Each button variation (solid, outline, ghost) has an alternate option.
     sourceFilePath="components/Button/Button.tsx"
     storyId="components-button--variations-on-dark"
   />
+
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 
 ### Button sizes
 
@@ -110,6 +121,32 @@ Buttons can exist in two sizes other than default: "big" or "small".
     <Button size="small">Small</Button>
   </div>
 </EmbeddedExample>
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+### Button sizes
+
+Buttons can exist in two sizes: "default" and "small."
+
+#### Default button
+
+<EmbeddedExample>
+  <div>
+    <Button size="default">Default</Button>
+  </div>
+</EmbeddedExample>
+
+#### Small button
+
+<EmbeddedExample>
+  <div>
+    <Button size="small">Small</Button>
+  </div>
+</EmbeddedExample>
+
+</ThemeContent>
 
 ### Adding icons
 
@@ -144,8 +181,10 @@ Buttons are promises to the user. They must deliver the promise they offer by do
 - **Solid/primary button**: Use for the primary action you want users to take.
 - **Outline/secondary button**: Use when you have multiple actions available, but it’s not the primary action you want users to take. If there’s no preferred pathway/action, you can use 2 secondary buttons. You don’t have to pair a primary button with a secondary button.
 - **Ghost button**: Use for non-preferred or less common actions, or when you don’t want to draw focus to the action.
+<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 - **Alternate buttons**: Use when there’s more than one button on a page that aren’t paired together and you need to highlight a button that’s not a primary action.
 - **Big button**: Use only for website homepage hero space CTAs that are the start of a user flow or go to multiple pages.
+</ThemeContent>
 - **Small button**: Use for: 
   - Utility actions, like “Print” and “Menu.” 
   - Tertiary situations, such as inline actions within a step, so users can make changes, like “Edit,” “Remove,” or “Add.” The small button provides the inline action to adjust a particular element on the page, while the primary or secondary buttons take the user to the next step in the form or journey.
