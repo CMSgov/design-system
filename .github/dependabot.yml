@@ -5,7 +5,11 @@ updates:
     schedule:
       interval: 'daily'
   - package-ecosystem: 'npm'
-    directory: '/packages/design-system-docs'
+    directory: '/packages/docs'
+    schedule:
+      interval: 'daily'
+  - package-ecosystem: 'npm'
+    directory: '/packages/ds-cms-gov'
     schedule:
       interval: 'daily'
   - package-ecosystem: 'npm'
