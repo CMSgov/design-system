@@ -100,9 +100,10 @@ stories.forEach((story) => {
             !a11yTestProjects.includes(workerInfo.project.name),
             "Don't run redundant a11y tests"
           );
+
           test.skip(
-            theme === 'medicare',
-            'Temporarily skipping medicare a11y tests until we can fix them'
+            theme === 'medicare' && story?.properties?.onDark,
+            'Skipping a11y tests for Medicare theme on dark backgrounds'
           );
 
           switch (story.id) {
