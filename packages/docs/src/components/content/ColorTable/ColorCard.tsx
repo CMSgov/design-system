@@ -23,7 +23,7 @@ export const ColorCard = ({ attributes }: ColorCardProps) => {
               {key === 'css' && hasCssVariable ? (
                 <code className="ds-u-fill--background">{value}</code>
               ) : (
-                value
+                value.replaceAll('-', ' ')
               )}
             </dd>
           </div>

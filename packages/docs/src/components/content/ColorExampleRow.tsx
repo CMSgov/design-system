@@ -55,7 +55,7 @@ const ColorExampleRow = ({ displayName, displayValue, name, value }: ColorExampl
         {displayName ?? name}
       </code>
       <code className="c-color-example-row__value" id={valueId} style={codeStyle}>
-        {displayValue ?? value}
+        {displayValue.toUpperCase() ?? value.toUpperCase()}
       </code>
     </div>
   );

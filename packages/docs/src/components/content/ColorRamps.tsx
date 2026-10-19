@@ -33,7 +33,7 @@ const ColorRamps = () => (
       return (
         <div className="c-color-ramp__wrapper" key={swatchName}>
           <h2 className="ds-u-text-transform--capitalize" id={swatchName}>
-            {swatchName}
+            {swatchName.replaceAll('-', ' ')}
           </h2>
           <div className="c-color-ramp">
             <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 256 200" width="256">
