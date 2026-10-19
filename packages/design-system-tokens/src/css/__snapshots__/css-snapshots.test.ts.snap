@@ -126,7 +126,9 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --button-ghost__color--disabled: var(--color-gray-dark);
 --button-ghost__color--hover: var(--color-primary);
 --button-ghost__color: var(--color-primary);
+--button-padding-block__default: var(--spacer-1);
 --button-padding-block__small: var(--spacer-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-1);
 --button-solid-alt__background-color--active: var(--color-primary-lightest);
 --button-solid-alt__background-color--disabled: var(--color-gray-lightest);
@@ -627,7 +629,9 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --button-ghost__color--disabled: var(--color-gray-lighter);
 --button-ghost__color--hover: var(--color-primary-darker);
 --button-ghost__color: var(--color-primary);
+--button-padding-block__default: var(--spacer-1);
 --button-padding-block__small: var(--spacer-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-1);
 --button-solid-alt__background-color--active: var(--color-secondary-darkest);
 --button-solid-alt__background-color--disabled: var(--color-gray-lighter);
@@ -1128,7 +1132,9 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --button-ghost__color--disabled: var(--color-gray-lighter);
 --button-ghost__color--hover: var(--color-primary-darker);
 --button-ghost__color: var(--color-primary);
+--button-padding-block__default: var(--spacer-1);
 --button-padding-block__small: var(--spacer-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-1);
 --button-solid-alt__background-color--active: var(--color-primary-darkest);
 --button-solid-alt__background-color--disabled: var(--color-gray-lighter);
@@ -1579,6 +1585,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --button-dark__color--disabled: var(--color-gray-dark);
 --button-dark__color--hover: var(--color-white);
 --button-dark__color: var(--color-primary);
+--button-font-size__default: var(--font-size-md);
 --button-font-size__large: var(--font-size-md);
 --button-ghost-alt__background-color--active: var(--color-transparent);
 --button-ghost-alt__background-color--disabled: var(--color-transparent);
@@ -1628,7 +1635,9 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --button-ghost__color--disabled: var(--color-gray-dark);
 --button-ghost__color--hover: var(--color-primary-dark);
 --button-ghost__color: var(--color-primary);
+--button-padding-block__default: var(--spacer-2);
 --button-padding-block__small: var(--spacer-1-plus-half);
+--button-padding-inline__default: var(--spacer-3);
 --button-padding-inline__small: var(--spacer-3);
 --button-solid-alt__background-color--active: var(--color-primary-darkest);
 --button-solid-alt__background-color--disabled: var(--color-gray-lighter);

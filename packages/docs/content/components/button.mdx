@@ -15,7 +15,7 @@ medicare:
   figmaNodeId: 6-83
 ---
 
-import { Badge, ArrowIcon, Button, CloseIconThin } from '@cmsgov/design-system';
+import { Badge, ArrowIcon, Button, CloseIconThin, Alert } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -25,11 +25,12 @@ There are 3 variations of buttons:
 - **Outline** – Also called a “secondary” button.
 - **Ghost** – A button without visible outline styling. Ghost buttons appear to look like hyperlinked text, but they have button attributes.
 <ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
-Each button variation is available in a main color and an approved alternate color for both light and dark backgrounds.
+  Each button variation is available in a main color and an approved alternate color for both light and dark backgrounds.
 </ThemeContent>
 
 <ThemeContent onlyThemes={['medicare']}>
-Each button variation is available for both light and dark backgrounds.
+  Each button variation is available for both light and dark backgrounds.
+  <Alert variation="warn">Medicare buttons no longer support alternate styles. The `isAlternate` prop has no visual effect.</Alert>
 </ThemeContent>
 
 <ButtonVariationsTable />
@@ -129,6 +130,8 @@ Buttons can exist in two sizes other than default: "big" or "small".
 ### Button sizes
 
 Buttons can exist in two sizes: "default" and "small."
+
+<Alert variation="warn">The default and big sizes are visually identical. Setting `size="big"` has no visual effect.</Alert>
 
 #### Default button
 

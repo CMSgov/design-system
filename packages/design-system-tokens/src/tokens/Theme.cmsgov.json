@@ -980,11 +980,17 @@
       }
     },
     "button-padding-block": {
+      "default": {
+        "$value": "{spacer.1}"
+      },
       "small": {
         "$value": "{spacer.half}"
       }
     },
     "button-padding-inline": {
+      "default": {
+        "$value": "{spacer.3}"
+      },
       "small": {
         "$value": "{spacer.1}"
       }

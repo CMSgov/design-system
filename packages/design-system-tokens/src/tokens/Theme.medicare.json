@@ -1007,16 +1007,25 @@
       }
     },
     "button-font-size": {
+      "default": {
+        "$value": "{theme.font.size.md}"
+      },
       "large": {
         "$value": "{theme.font.size.md}"
       }
     },
     "button-padding-block": {
+      "default": {
+        "$value": "{spacer.2}"
+      },
       "small": {
         "$value": "{spacer.1-plus-half}"
       }
     },
     "button-padding-inline": {
+      "default": {
+        "$value": "{spacer.3}"
+      },
       "small": {
         "$value": "{spacer.3}"
       }
