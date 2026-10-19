@@ -121,7 +121,7 @@
     "@types/jest": "^27.5.1",
     "@types/lodash": "^4.17.25",
     "@types/lodash.sortby": "^4.7.9",
-    "@types/node": "^18.11.9",
+    "@types/node": "^22.20.5",
     "@types/prismjs": "^1.26.6",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

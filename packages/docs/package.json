@@ -49,7 +49,7 @@
     "url-join": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.11.9",
+    "@types/node": "^22.20.5",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.9",
     "copyfiles": "^2.4.1"
