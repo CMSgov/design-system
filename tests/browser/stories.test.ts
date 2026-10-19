@@ -48,6 +48,11 @@ const storyUseAxeLegacyModeList = [
   'web-components-ds-drawer--default',
 ];
 
+const onDarkSkipList = [
+  'components-inlineerror--inverse',
+  'web-components-ds-inline-error--inversed',
+];
+
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
@@ -102,7 +107,7 @@ stories.forEach((story) => {
           );
 
           test.skip(
-            theme === 'medicare' && story?.properties?.onDark,
+            theme === 'medicare' && onDarkSkipList.includes(story.id),
             'Skipping a11y tests for Medicare theme on dark backgrounds'
           );
 
