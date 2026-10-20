@@ -16,46 +16,65 @@ interface ColorProps extends PropsWithChildren {
    * Whether to match the color category exactly or not
    */
   exactMatch?: boolean;
+  /**
+   * Displays active and available colors in one accordion.
+   */
+  singleAccordion?: boolean;
 }
 
-const ColorTable: FC<ColorProps> = ({ colorCategory, theme, exactMatch }) => {
+const ColorTable: FC<ColorProps> = ({ colorCategory, theme, exactMatch, singleAccordion }) => {
   const { activeColors, availableColors } = determineColorCategoryUsageByTheme({
     colorCategory,
     themeName: theme,
     exactMatch,
   });
 
-  return (
-    <>
-      {Boolean(activeColors.length) && (
-        <Accordion bordered className="ds-u-margin-top--2">
-          <AccordionItem heading="Active Colors" defaultOpen={true}>
-            <p className="ds-u-margin-bottom--2">
-              These colors are currently found in components throughout the design system, but don’t
-              represent the entire available palette.
-            </p>
-            {activeColors.map(({ name, attributes }) => (
-              <ColorCard key={name} attributes={attributes} />
-            ))}
-          </AccordionItem>
-        </Accordion>
-      )}
-      {Boolean(availableColors.length) && (
-        <Accordion bordered>
-          <AccordionItem heading="Available Colors" defaultOpen={false}>
-            <p className="ds-u-margin-bottom--2">
-              These colors are available as part of the system palette, but are not currently used
-              in existing components. Using these colors?{' '}
-              <a href="https://confluence.cms.gov/x/U26MRw">Let the DS team know.</a>
-            </p>
-            {availableColors.map(({ name, attributes }) => (
-              <ColorCard key={name} attributes={attributes} />
-            ))}
-          </AccordionItem>
-        </Accordion>
-      )}
-    </>
-  );
+  const colorAccordion = () => {
+    return singleAccordion ? (
+      <>
+        {(Boolean(activeColors.length) || Boolean(availableColors.length)) && (
+          <Accordion bordered className="ds-u-margin-top--2">
+            <AccordionItem heading="Colors" defaultOpen={true}>
+              {[...activeColors, ...availableColors].map(({ name, attributes }) => (
+                <ColorCard key={name} attributes={attributes} />
+              ))}
+            </AccordionItem>
+          </Accordion>
+        )}
+      </>
+    ) : (
+      <>
+        {Boolean(activeColors.length) && (
+          <Accordion bordered className="ds-u-margin-top--2">
+            <AccordionItem heading="Active Colors" defaultOpen={true}>
+              <p className="ds-u-margin-bottom--2">
+                These colors are currently found in components throughout the design system, but
+                don’t represent the entire available palette.
+              </p>
+              {activeColors.map(({ name, attributes }) => (
+                <ColorCard key={name} attributes={attributes} />
+              ))}
+            </AccordionItem>
+          </Accordion>
+        )}
+        {Boolean(availableColors.length) && (
+          <Accordion bordered>
+            <AccordionItem heading="Available Colors" defaultOpen={false}>
+              <p className="ds-u-margin-bottom--2">
+                These colors are available as part of the system palette, but are not currently used
+                in existing components. Using these colors?{' '}
+                <a href="https://confluence.cms.gov/x/U26MRw">Let the DS team know.</a>
+              </p>
+              {availableColors.map(({ name, attributes }) => (
+                <ColorCard key={name} attributes={attributes} />
+              ))}
+            </AccordionItem>
+          </Accordion>
+        )}
+      </>
+    );
+  };
+  return <>{colorAccordion()}</>;
 };
 
 export default ColorTable;
