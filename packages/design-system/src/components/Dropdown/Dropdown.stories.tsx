@@ -145,6 +145,7 @@ export const HtmlOptions: Story = {
 export const InverseOption: Story = {
   args: {
     options: dropdownOptions,
+    errorMessage: 'This is an example error message.',
     hint: 'This component is on an inversed background.',
     label: 'Select your tribe name.',
     inversed: true,

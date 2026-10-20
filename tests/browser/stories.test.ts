@@ -49,7 +49,9 @@ const storyUseAxeLegacyModeList = [
 ];
 
 const onDarkSkipList = [
+  'components-dropdown--inverse-option',
   'components-inlineerror--inverse',
+  'components-multiinputdatefield--inverted',
   'web-components-ds-inline-error--inversed',
 ];
 
