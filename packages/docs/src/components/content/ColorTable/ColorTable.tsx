@@ -35,9 +35,11 @@ const ColorTable: FC<ColorProps> = ({ colorCategory, theme, exactMatch, singleAc
         {(Boolean(activeColors.length) || Boolean(availableColors.length)) && (
           <Accordion bordered className="ds-u-margin-top--2">
             <AccordionItem heading="Colors" defaultOpen={true}>
-              {[...activeColors, ...availableColors].map(({ name, attributes }) => (
-                <ColorCard key={name} attributes={attributes} />
-              ))}
+              {[...activeColors, ...availableColors]
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
+                .map(({ name, attributes }) => (
+                  <ColorCard key={name} attributes={attributes} />
+                ))}
             </AccordionItem>
           </Accordion>
         )}
