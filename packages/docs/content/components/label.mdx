@@ -1,11 +1,16 @@
 ---
-title: Label & Legend
-intro: Labels & legends describe individual form fields or fieldsets.
+title: Form Label
+intro: Form labels describe individual form fields or fieldsets.
 status:
   level: use
 core:
+  figmaNodeID: 6-90
   githubLink: design-system/src/components/Label
   storybookLink: components-label--docs
+cmsgov:
+  figmaNodeId: 6-90
+healthcare:
+  figmaNodeId: 6-90
 ---
 
 ## Examples
@@ -29,21 +34,22 @@ core:
 
 ## Guidance
 
-- Labels/Legends are built into all design-system form fields but can be used on their own to create custom fields.
-- Label/Legend text should be short and in sentence case.
-- Avoid colons at the end of labels and legends.
-- Don't place links or other interactive text in labels or legends. Those should go in the [hint text](/components/hint).
+- Form labels are built into all design system form fields, but can be used on their own, as shown here, to create custom fields.
+- Note that in Figma, the Form Label is shown together with the Hint and an error state.
+- Form label text should be short and in sentence case.
+- Avoid colons at the end of form labels.
+- Don't place links or other interactive text in form labels. Those should go in the [hint text](/components/hint).
 - Don't use a field's placeholder attribute as the primary way to label the field.
 
 ### Label
 
 - Each form field should have a clear, brief, and descriptive label.
-- Labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
-- Labels should be placed above their fields.
+- Form labels should have a `for` attribute, referencing the corresponding input's unique `id` attribute. Only one label can be associated to each unique form element.
+- Form labels should be placed above their fields.
 
 ### Legend
 
-- Use a single legend for fieldset (required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
+- Use a single form label as a legend for fieldset (required). One example of a common use of fieldset and legend is a question with radio button options for answers. The question text and radio buttons are wrapped in a fieldset, with the question itself being inside the legend tag.
 
 ### Content
 
