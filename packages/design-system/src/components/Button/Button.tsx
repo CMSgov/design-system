@@ -35,7 +35,7 @@ interface CommonButtonProps extends AnalyticsOverrideProps, AnalyticsParentDataP
    */
   isAlternate?: boolean;
   /**
-   * Returns the [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html).
+   * Returns the [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object).
    * Not called when the Button is disabled.
    */
   onClick?: (...args: any[]) => any;
