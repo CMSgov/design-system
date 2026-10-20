@@ -31,25 +31,13 @@ We chose colors that offer a range of uses and that meet or exceed standards in 
 
 The guidelines indicate how colors should be applied, noting where some should be utilized sparingly and with purpose for specific components like errors or messaging.
 
-<ThemeContent onlyThemes={['medicare']}>
-
-Medicare.gov's primary palette is a green ramp introduced in version 19. It provides six values rather than the fuller range found elsewhere in the system palette, so confirm the contrast of the step you choose instead of assuming a lighter or darker neighbor is available. Note: `--color-primary-darker` and `--color-primary-darkest` currently use the same hex value. Default to using `color-primary-darker`.
-
-</ThemeContent>
-
 <ColorTable colorCategory="primary" />
 
 ### Secondary colors
 
-<ThemeContent onlyThemes={['core']}>
+<ThemeContent onlyThemes={['core', 'medicare']}>
 
 These are accent colors to provide additional lightness and style to pages looking for a more modern flair. These colors should be used to highlight important features on a page, such as buttons, or for visual style elements, such as illustrations. They should be used sparingly and never draw the eye to more than one piece of information at a time.
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-Medicare.gov's secondary palette is a blue ramp reserved for selection states. It is applied to checkboxes and radio buttons to show when an option is checked or focused, and is not used for buttons, links, or decorative elements. Reach for the primary palette when you need to draw attention to an action.
 
 </ThemeContent>
 
@@ -60,12 +48,6 @@ Medicare.gov's secondary palette is a blue ramp reserved for selection states. I
 Accent colors are used sparingly to support primary and secondary colors in designs and illustrations.
 
 ### Primary accent colors
-
-<ThemeContent onlyThemes={['medicare']}>
-
-In the Medicare theme, the accent palette draws from the same system ramp as the error palette, so the swatches below are the same reds shown under Status colors. Avoid using an accent color to communicate status: a red accent reads as an error to most people regardless of intent. Use the error tokens when you mean error, and keep accent colors for decorative support.
-
-</ThemeContent>
 
 <ColorTable colorCategory="accent-primary" />
 
