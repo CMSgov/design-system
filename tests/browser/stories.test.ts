@@ -48,6 +48,8 @@ const storyUseAxeLegacyModeList = [
   'web-components-ds-drawer--default',
 ];
 
+// We're specifically skipping these on dark stories. We know that the inline error on dark styles do not pass a11y color contrast.
+// However, we're deprecating dark mode support for the Medicare theme generally.
 const onDarkSkipList = [
   'components-dropdown--inverse-option',
   'components-inlineerror--inverse',
