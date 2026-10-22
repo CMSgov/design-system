@@ -50,19 +50,7 @@ provided by the user.
 
 ### Lightweight
 
-<<<<<<< HEAD
-<ThemeContent onlyThemes={['core', 'cmsgov', 'healthcare']}>
-  The lightweight alert highlights information that is not as urgent as informational alerts.
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-  <Badge className="ds-c-badge--alert"><CloseIconThin /> Unused by Medicare</Badge>
-</ThemeContent>
-
-<ThemeContent neverThemes={['medicare']}>
-=======
 The lightweight alert highlights information that is not as urgent as informational alerts.
->>>>>>> 19fedf03d ([NO TICKET] Update Alert guidance for new Medicare Figma library)
 
 <StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
 
@@ -142,7 +130,7 @@ Never use success alerts on static pages.
 - Alerts may be displayed statically on a page, appearing immediately when the webpage is first loaded, or dynamically loaded on a page, appearing based on specific conditions or user interactions, like clicking a button, submitting a form, or fulfilling certain criteria on the page.
 - Alerts have a thin border on all sides and a light tinted background that matches the alert type. The icon, when included, appears inline with the heading.
 - Alerts with icons are preferred. The default and warning alerts can be used without an icon if they require a large amount of content. Such instances should be rare. Validate the design and spacing on mobile to help make this decision.
-- Alerts can include a heading and body, a heading only, or a body only. A heading-only alert is a compact, single-line alert and can include a link aligned to the right of the heading, such as “Learn more.”
+- Alerts can include a heading and body text, a heading only, or a body text only. A heading-only alert is a compact, single-line alert and can include a link aligned to the right of the heading, such as “Learn more.”
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
   - Alerts can include buttons for the user to respond. Use one primary button and, if needed, one secondary button. Place buttons below the alert body.
   - Use buttons only when the alert asks the user to take an action. For navigation or additional information, use a link instead.
@@ -252,13 +240,7 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
 ### Report an accessibility bug
 
-<<<<<<< HEAD
-If you have access to CMS internal tools, report accessibility issues through the [CMSDS bug reporting workflow in Confluence](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323).
-
-If you do not have access to CMS internal tools, report accessibility issues using the [public GitHub issue template](https://github.com/CMSgov/design-system/issues/new?template=propose-a-new-item-for-the-cms-design-system.md).
-=======
 If you encounter a bug with the accessibility of the alert component, [refer to our bug reporting confluence page](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323) and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
->>>>>>> 19fedf03d ([NO TICKET] Update Alert guidance for new Medicare Figma library)
 
 ## Code
 
