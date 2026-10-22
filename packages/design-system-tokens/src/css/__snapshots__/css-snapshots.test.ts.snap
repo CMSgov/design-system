@@ -1736,7 +1736,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --color-accent-primary-lighter: #e8b3b3;
 --color-accent-primary-lightest: #f7e6e6;
 --color-accent-primary: #b20000;
---color-background-inverse: #0A352F;
+--color-background-inverse: #0a352f;
 --color-background: #ffffff;
 --color-base-inverse: #ffffff;
 --color-base: #262626;
@@ -1769,12 +1769,12 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --color-info: #1e3c70;
 --color-muted-inverse: #e9ecf1;
 --color-muted: #595959;
---color-primary-dark: #104E45;
---color-primary-darker: #0A352F;
+--color-primary-dark: #104e45;
+--color-primary-darker: #0a352f;
 --color-primary-darkest: #0a352f;
---color-primary-light: #72A69E;
+--color-primary-light: #72a69e;
 --color-primary-lighter: #e8f0ef;
---color-primary-lightest: #F4F7F5;
+--color-primary-lightest: #f4f7f5;
 --color-primary: #146a5d;
 --color-secondary-dark: #0e3e6e;
 --color-secondary-darker: #0b2f52;

@@ -390,7 +390,7 @@
     },
     "medicare-green": {
       "100": {
-        "$value": "#F4F7F5",
+        "$value": "#f4f7f5",
         "$type": "color"
       },
       "200": {
@@ -398,7 +398,7 @@
         "$type": "color"
       },
       "300": {
-        "$value": "#72A69E",
+        "$value": "#72a69e",
         "$type": "color"
       },
       "400": {
@@ -406,11 +406,11 @@
         "$type": "color"
       },
       "500": {
-        "$value": "#104E45",
+        "$value": "#104e45",
         "$type": "color"
       },
       "600": {
-        "$value": "#0A352F",
+        "$value": "#0a352f",
         "$type": "color"
       }
     },
