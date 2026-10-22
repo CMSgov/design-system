@@ -1195,6 +1195,10 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --choice__size-radio--small: 12px;
 --choice__size-radio: 22px;
 --choice__size: 32px;
+--color-accent-primary-1000: #160500;
+--color-accent-primary-200: #ee9b81;
+--color-accent-primary-400: #e04a1c;
+--color-accent-primary-900: #421001;
 --color-accent-primary-dark: #c73103;
 --color-accent-primary-darker: #9b2602;
 --color-accent-primary-darkest: #6f1b02;
