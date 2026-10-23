@@ -147,18 +147,21 @@ label,
 
 // Checkbox styles
 .ds-c-choice[type='checkbox'] {
+  // The checkmark is an L-shaped corner rotated -45deg, so what you see is the
+  // diagonal of its border box. These fractions of --choice__icon-size keep that
+  // rendered footprint equal to the token.
   &::after {
     background-color: transparent;
     border: solid;
     border-block-start-color: transparent;
     border-color: var(--color-white);
-    border-width: 0 0 4px 4px;
+    border-width: 0 0 calc(var(--choice__icon-size) / 4) calc(var(--choice__icon-size) / 4);
     content: '';
     grid-area: 1/-1;
-    height: 4px;
+    height: calc(var(--choice__icon-size) / 4);
     opacity: 0;
     transform: rotate(-45deg) translateX(0.075em);
-    width: 10px;
+    width: calc(var(--choice__icon-size) * 0.625);
   }
 
   &:checked {
@@ -193,6 +196,7 @@ label,
 
   &:checked {
     border-color: var(--choice__background-color--checked);
+    border-width: var(--choice__border-width--checked);
 
     &:disabled {
       border-color: var(--choice__border-color--disabled);
@@ -263,13 +267,14 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-inline-start: $spacer-half solid var(--choice__border-color--left);
+  border-inline-start: var(--choice__border-width--left) solid var(--choice__border-color--left);
   margin-block: $spacer-1 $spacer-2;
 
   // @TODO: get rid of this calc
-  // The origin of this 2px shift is fuzzy, it seems like it's based on
-  // the border on alerts and healthcare.gov insets.
-  margin-inline-start: calc((var(--choice__size) * 0.5) - 2px);
+  // Centers the line under the choice control it belongs to.
+  margin-inline-start: calc(
+    (var(--choice__size) * 0.5) - (var(--choice__border-width--left) * 0.5)
+  );
   padding: $spacer-2;
   padding-inline-end: 0;
 
