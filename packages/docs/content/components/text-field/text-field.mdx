@@ -65,7 +65,6 @@ import { Alert } from '@cmsgov/design-system';
 - Single-line fields can include a button to the right of the field, such as "Add."
 - Multiline fields show a resize handle in the bottom-right corner. If the field includes a button, the button aligns to the top right.
 - Masked fields show the mask pattern inside the field, such as `___ __ ____` for a Social Security number. Use hint text to give an example, such as "For example, 123 45 6789."
-- Date fields can include a calendar button to the right of the field.
 
 ## Accessibility
 
@@ -74,7 +73,7 @@ import { Alert } from '@cmsgov/design-system';
 - For numeric inputs (e.g., phone numbers, Social Security numbers, credit card numbers), use the `mask` prop together with the `numeric` prop. The `numeric` prop sets `inputMode`, `type`, and `pattern` for better accessibility and consistency, avoiding the pitfalls of `type="number"`. This approach also helps prevent splitting the input into multiple fields, which can result in unclear or inaccessible labeling for screen reader users.
 - Don't rely on color alone to show an error. The error state uses a red border, an icon, and message text.
 - Make sure the green active border and the red error border meet 3:1 color contrast against the background.
-- Give icon-only buttons, such as the calendar button, an accessible name that says what they do.
+- Give icon-only buttons an accessible name that says what they do.
 
 <Alert heading="Use semantic grouping and accessible layouts">
   For forms with thematically related grouped inputs (such as date of birth or address fields), use a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> to provide semantic grouping. This helps screen reader users navigate and understand the structure of the form. See our <a href="/patterns/Forms/forms">form guidance</a> for more information.
