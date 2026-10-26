@@ -218,7 +218,6 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --choice__border-width: 2px;
 --choice__color--disabled: var(--color-muted);
 --choice__color--unchecked: var(--color-white);
---choice__icon-size: 16px;
 --choice__size--small: 20px;
 --choice__size-radio--small: 12px;
 --choice__size-radio: 22px;
@@ -724,7 +723,6 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --choice__border-width: 2px;
 --choice__color--disabled: var(--color-muted);
 --choice__color--unchecked: var(--color-white);
---choice__icon-size: 16px;
 --choice__size--small: 20px;
 --choice__size-radio--small: 12px;
 --choice__size-radio: 22px;
@@ -1230,7 +1228,6 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --choice__border-width: 2px;
 --choice__color--disabled: var(--color-muted);
 --choice__color--unchecked: var(--color-white);
---choice__icon-size: 16px;
 --choice__size--small: 20px;
 --choice__size-radio--small: 12px;
 --choice__size-radio: 22px;
@@ -1713,7 +1710,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
---choice-label__top-offset: 0.125rem;
+--choice-label__top-offset: 0rem;
 --choice-wrapper__gap--small: 0.75rem;
 --choice-wrapper__gap: 1rem;
 --choice__background-color--checked: var(--color-primary);
@@ -1736,7 +1733,6 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --choice__border-width: 1px;
 --choice__color--disabled: var(--color-muted);
 --choice__color--unchecked: var(--color-white);
---choice__icon-size: 16px;
 --choice__size--small: 20px;
 --choice__size-radio--small: 12px;
 --choice__size-radio: 16px;
