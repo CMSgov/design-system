@@ -1106,6 +1106,10 @@
         "top-offset": {
           "$value": "0rem",
           "$type": "dimension"
+        },
+        "top-offset--small": {
+          "$value": "0em",
+          "$type": "dimension"
         }
       },
       "background-color--disabled": {
