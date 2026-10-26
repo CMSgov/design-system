@@ -41,7 +41,7 @@ export interface VerticalNavProps {
   nested?: boolean;
   /**
    * Called when one of the nav links is clicked, with the following arguments:
-   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object),
    * `id`, `url`
    */
   onLinkClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;

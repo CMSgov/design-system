@@ -145,6 +145,18 @@
       "accent-primary-lightest": {
         "$value": "{color.persimmon.50}"
       },
+      "accent-primary-200": {
+        "$value": "{color.persimmon.200}"
+      },
+      "accent-primary-400": {
+        "$value": "{color.persimmon.400}"
+      },
+      "accent-primary-900": {
+        "$value": "{color.persimmon.900}"
+      },
+      "accent-primary-1000": {
+        "$value": "{color.persimmon.1000}"
+      },
       "accent-primary-lighter": {
         "$value": "{color.persimmon.100}"
       },
