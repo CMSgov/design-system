@@ -1074,7 +1074,7 @@
         "$value": "2px",
         "$type": "dimension"
       },
-      "border-width--left": {
+      "border-width--start": {
         "$value": "1px",
         "$type": "dimension"
       },

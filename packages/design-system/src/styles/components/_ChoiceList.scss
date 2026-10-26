@@ -262,13 +262,13 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-inline-start: var(--choice__border-width--left) solid var(--choice__border-color--left);
+  border-inline-start: var(--choice__border-width--start) solid var(--choice__border-color--start);
   margin-block: $spacer-1 $spacer-2;
 
   // @TODO: get rid of this calc
   // Centers the line under the choice control it belongs to.
   margin-inline-start: calc(
-    (var(--choice__size) * 0.5) - (var(--choice__border-width--left) * 0.5)
+    (var(--choice__size) * 0.5) - (var(--choice__border-width--start) * 0.5)
   );
   padding: $spacer-2;
   padding-inline-end: 0;

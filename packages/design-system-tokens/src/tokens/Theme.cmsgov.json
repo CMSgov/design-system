@@ -1040,7 +1040,7 @@
         "$value": "2px",
         "$type": "dimension"
       },
-      "border-width--left": {
+      "border-width--start": {
         "$value": "{spacer.half}"
       },
       "color--unchecked": {
