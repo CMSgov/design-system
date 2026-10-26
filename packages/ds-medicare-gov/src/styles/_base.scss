@@ -204,45 +204,25 @@ svg {
 }
 
 .ds-text-heading--3xl {
-  margin-bottom: 44px;
-
   @include heading--3xl;
-
-  @media screen and (min-width: $media-width-md) {
-    margin-bottom: 52px;
-  }
 }
 
 .ds-text-heading--2xl {
-  margin-bottom: 44px;
-
   @include heading--2xl;
-
-  @media screen and (max-width: $media-width-md) {
-    margin-bottom: 44px;
-  }
 }
 
 .ds-text-heading--xl {
-  margin-bottom: $spacer-4;
-
   @include heading--xl;
 }
 
 .ds-text-heading--lg {
-  margin-bottom: $spacer-3;
-
   @include heading--lg;
 }
 
 .ds-text-heading--md {
-  margin-bottom: $spacer-2;
-
   @include heading--md;
 }
 
 .ds-text-heading--sm {
-  margin-bottom: $spacer-1;
-
   @include heading--sm;
 }
