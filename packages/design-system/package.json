@@ -63,7 +63,7 @@
     "case-it": "^1.0.1",
     "chalk": "^6.0.1",
     "classnames": "^2.2.5",
-    "date-fns": "^4.3.0",
+    "date-fns": "^3.6.0",
     "ev-emitter": "^2.1.2",
     "globby": "^16.0.0",
     "inquirer": "^14.0.0",
