@@ -1039,10 +1039,6 @@
       "border-width--left": {
         "$value": "{spacer.half}"
       },
-      "icon-size": {
-        "$value": "16px",
-        "$type": "dimension"
-      },
       "color--unchecked": {
         "$value": "{theme.color.white}"
       },

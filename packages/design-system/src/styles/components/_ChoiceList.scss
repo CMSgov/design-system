@@ -147,21 +147,18 @@ label,
 
 // Checkbox styles
 .ds-c-choice[type='checkbox'] {
-  // The checkmark is an L-shaped corner rotated -45deg, so what you see is the
-  // diagonal of its border box. These fractions of --choice__icon-size keep that
-  // rendered footprint equal to the token.
   &::after {
     background-color: transparent;
     border: solid;
     border-block-start-color: transparent;
     border-color: var(--color-white);
-    border-width: 0 0 calc(var(--choice__icon-size) / 4) calc(var(--choice__icon-size) / 4);
+    border-width: 0 0 4px 4px;
     content: '';
     grid-area: 1/-1;
-    height: calc(var(--choice__icon-size) / 4);
+    height: 4px;
     opacity: 0;
     transform: rotate(-45deg) translateX(0.075em);
-    width: calc(var(--choice__icon-size) * 0.625);
+    width: 10px;
   }
 
   &:checked {
@@ -224,10 +221,8 @@ label,
     border-color: var(--choice__border-color--error--inverse);
   }
 
-  // Medicare.gov has a different hover state for checked choices
-  // If a theme doesn't have a hover state for checked choices, it will fall back to the normal hover state
   &:not(:disabled):hover {
-    border-color: var(--choice__border-color--hover, var(--choice__border-color--inverse));
+    border-color: var(--choice__border-color--inverse);
   }
 
   // Disabled

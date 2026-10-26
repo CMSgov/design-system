@@ -1078,10 +1078,6 @@
         "$value": "1px",
         "$type": "dimension"
       },
-      "icon-size": {
-        "$value": "16px",
-        "$type": "dimension"
-      },
       "color--unchecked": {
         "$value": "{theme.color.white}"
       },
@@ -1108,7 +1104,7 @@
           "$value": "{theme.color.muted-inverse}"
         },
         "top-offset": {
-          "$value": "0.125rem",
+          "$value": "0rem",
           "$type": "dimension"
         }
       },
