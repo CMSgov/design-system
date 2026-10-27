@@ -6,7 +6,7 @@ Web components, or [custom elements](https://developer.mozilla.org/en-US/docs/We
 
 You can think of web components as a superset of HTML elements. Once your project's been properly set up to use them (see steps below for that), you can use a web component just as you would any other HTML element. For instance, if you want to use our web component button, you'd simply use `<ds-button>` anywhere you'd typically use `<button>` and you should inherit all the built-in properties, functions and styles that come with it.
 
-As already mentioned, using these web components requires an initial setup and the complexity of said setup can vary depending on the tech stack of a given project. We’ve included steps for getting started for the tech stacks we most commonly see: native web projects (a great option for Jekyll or Drupal teams), Angular, Vue, and Svelte.
+As already mentioned, using these web components requires an initial setup and the complexity of said setup can vary depending on the tech stack of a given project.
 
 ## For native web projects (HTML, CSS, and JavaScript)
 
