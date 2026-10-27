@@ -41,7 +41,7 @@ label,
   }
 
   .ds-c-choice--small + & {
-    margin-block-start: -0.125em;
+    margin-block-start: var(--choice-label__top-offset--small);
   }
 
   // Disabled label styles
@@ -193,6 +193,7 @@ label,
 
   &:checked {
     border-color: var(--choice__background-color--checked);
+    border-width: var(--choice__border-width--checked);
 
     &:disabled {
       border-color: var(--choice__border-color--disabled);
@@ -220,10 +221,8 @@ label,
     border-color: var(--choice__border-color--error--inverse);
   }
 
-  // Medicare.gov has a different hover state for checked choices
-  // If a theme doesn't have a hover state for checked choices, it will fall back to the normal hover state
   &:not(:disabled):hover {
-    border-color: var(--choice__border-color--hover, var(--choice__border-color--inverse));
+    border-color: var(--choice__border-color--inverse);
   }
 
   // Disabled
@@ -263,13 +262,14 @@ label,
 
 // Checked children container
 .ds-c-choice__checkedChild {
-  border-inline-start: $spacer-half solid var(--choice__border-color--left);
+  border-inline-start: var(--choice__border-width--start) solid var(--choice__border-color--start);
   margin-block: $spacer-1 $spacer-2;
 
   // @TODO: get rid of this calc
-  // The origin of this 2px shift is fuzzy, it seems like it's based on
-  // the border on alerts and healthcare.gov insets.
-  margin-inline-start: calc((var(--choice__size) * 0.5) - 2px);
+  // Centers the line under the choice control it belongs to.
+  margin-inline-start: calc(
+    (var(--choice__size) * 0.5) - (var(--choice__border-width--start) * 0.5)
+  );
   padding: $spacer-2;
   padding-inline-end: 0;
 

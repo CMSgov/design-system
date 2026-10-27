@@ -354,9 +354,11 @@
 --choice__border-color--error: var(--color-base);
 --choice__border-color--error--inverse: var(--color-white);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-primary);
+--choice__border-color--start: var(--color-primary);
 --choice__border-radius: 0px;
 --choice__border-width: 2px;
+--choice__border-width--checked: 2px;
+--choice__border-width--start: var(--spacer-half);
 --choice__color--unchecked: var(--color-white);
 --choice__color--disabled: var(--color-muted);
 --choice__size--small: 20px;
@@ -365,6 +367,7 @@
 --choice-label__color--disabled: var(--color-muted);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__top-offset: 0.25rem;
+--choice-label__top-offset--small: -0.125em;
 --choice__background-color--disabled: var(--color-gray-lighter);
 --choice__border-color--disabled: var(--color-gray-light);
 --choice__border-color--focus: var(--color-primary-darker);
