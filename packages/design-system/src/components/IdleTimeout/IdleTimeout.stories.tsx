@@ -52,6 +52,7 @@ export const ViewDialog: Story = {
         onClose={action('onClose')}
         onSessionContinue={action('onSessionContinue')}
         onSessionForcedEnd={action('onSessionForcedEnd')}
+        isOpen
         showSessionEndButton
       />
     );
