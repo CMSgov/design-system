@@ -37,12 +37,11 @@ Apply one of the size modifier classes to the `ds-c-dialog` element to change th
 
 ### When to consider alternatives
 
-- For less urgent information, consider an [alert](/components/alert/).
+- If the user doesn't need to take an action before continuing, use an [alert](/components/alert/) instead of a modal dialog.
 
 ### Display & behavior
 
-- Include a close button.
-- Place the secondary button before the primary button.
+- Enable the `backdropClickExits` prop to let users click outside the dialog to close it. Otherwise, users must click the close button or press `Esc`.
 
 ## Accessibility
 
@@ -51,6 +50,7 @@ Apply one of the size modifier classes to the `ds-c-dialog` element to change th
 - `Enter` or `Space` to select the highlighted item.
 - `Tab` to move the focus sequentially through the list of focusable items.
 - `Shift + Tab` to move the focus sequentially through the list of focusable items in reversed order.
+- `Esc` to close the dialog.
 
 ### Focus Management
 
@@ -74,7 +74,7 @@ The following CSS variables can be overridden to customize Dialog components:
 
 ### Analytics
 
-This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/getting-started/for-developers/#analytics).
+This component has analytics tracking available. Please see our developer documentation about [using analytics in the design system](/components/analytics/).
 
 ## Learn more
 
