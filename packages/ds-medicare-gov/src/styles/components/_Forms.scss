@@ -9,7 +9,8 @@
 input[type='radio'] + .ds-c-label,
 input[type='checkbox'] + .ds-c-label {
   font-size: var(--font-size-md);
-  font-weight: var(--font-weight-normal);
-  letter-spacing: 0;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--font-letter-spacing-sm);
+  line-height: var(--font-line-height-heading);
   text-transform: none;
 }
