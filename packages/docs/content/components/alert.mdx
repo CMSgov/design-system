@@ -119,16 +119,18 @@ Never use success alerts on static pages.
 
 ### When to consider alternatives
 
-- For less critical messages or less-urgent information, consider hint text or inline help text.
+- Use [inline error](/components/inline-error/) text to display error messages for form fields.
+- Use [modal dialogs](/components/modal-dialog/) when you need to confirm user actions.
+- Use [help text](/components/hint/) to explain how to fill out a form field.
+- Use [tooltips](/components/tooltip/) for static messages that explain how to use certain page elements or to provide additional information.
 - When the goal is to guide user input, utilizing hint text or inline help can be more effective in providing real-time guidance within form fields.
 - If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation [modal dialog](/components/modal-dialog/), to allow the user to confirm that this is what they want.
 - When you need to display content that isn't related to the user’s current goal.
-- If the user needs more than one or two actions in response to the message, consider a [modal dialog](/components/modal-dialog/) or another pattern that gives the actions more room.
 
 ### Display & behavior
 
 - Alerts may be displayed statically on a page, appearing immediately when the webpage is first loaded, or dynamically loaded on a page, appearing based on specific conditions or user interactions, like clicking a button, submitting a form, or fulfilling certain criteria on the page.
-- Alerts with icons are preferred. The default and warning alerts can be used without an icon if they require a large amount of content. Such instances should be rare. Validate the design and spacing on mobile to help make this decision.
+- Alerts with icons are preferred. An alert doesn’t need to include an icon if it requires a large amount of content. Such instances should be rare. Validate the design and spacing on mobile to help make this decision.
 - Alerts can include a heading and body text, a heading only, or body text only. A heading-only alert is a compact, single-line alert and can include a link aligned to the right of the heading, such as “Learn more.”
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
   - Alerts can include buttons that let the user respond. Use one primary button and, if needed, one secondary button. Place buttons below the alert body.
@@ -141,16 +143,16 @@ Never use success alerts on static pages.
 
 - Keep alerts short—Use the fewest words possible to convey the concept or issue.
   - Best practice is no more than 2-3 short sentences.
-  - If longer, consider adding a link to a help drawer to provide more details.
+  - If longer, consider adding a button that opens a help drawer to provide more details.
 - Use plain language, active voice, and imperative style when providing directions.
 - Avoid jargon and computer code, like “Message 1234,” or code snippets, such as -h, -
   p 8080, -d /var/www/html.
 - Alert content can include:
   - A heading (not required)
-  - Links, including links that open a help drawer
+  - Links
   - Bulleted or numbered lists
-  - Buttons, when the user needs to take an action in response to the alert
-- Don't use tooltips in alerts.
+  - Buttons, including buttons that open a help drawer, when the user needs to take an action in response to the alert
+- Don't use tooltips in alerts. Alerts hold information people need right away, and tooltips stay hidden until someone hovers over them.
 - Keep the number of interactive elements, such as links and buttons, low. The more interactive elements you add, the less effective and more confusing an alert becomes.
 - [Plain Language Guide: Writing (Digital.gov)](https://digital.gov/guides/plain-language/writing)
 
@@ -169,7 +171,7 @@ Never use success alerts on static pages.
   - Imperative style for directions to correct the error or action to take.
   - Don’t use words like "please" or "sorry," or informal language like “oops.”
   - Sentence case and include punctuation. Don’t use exclamation points.
-- If the action to correct the error has multiple steps or is complex, consider adding a link that opens a help drawer with more details.
+- If the action to correct the error has multiple steps or is complex, consider adding a button that opens a help drawer with more details.
 - [Get details about inline error messages that pair with error alerts.](https://design.cms.gov/components/inline-error/)
 
 ### Accessibility
