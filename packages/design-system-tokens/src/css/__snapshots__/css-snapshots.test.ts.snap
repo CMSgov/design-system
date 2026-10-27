@@ -195,6 +195,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
+--choice-label__top-offset--small: -0.125em;
 --choice-label__top-offset: 0.25rem;
 --choice-wrapper__gap--small: 0.5rem;
 --choice-wrapper__gap: 0.5rem;
@@ -700,6 +701,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
+--choice-label__top-offset--small: -0.125em;
 --choice-label__top-offset: 0.25rem;
 --choice-wrapper__gap--small: 0.5rem;
 --choice-wrapper__gap: 0.5rem;
@@ -1205,6 +1207,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
+--choice-label__top-offset--small: -0.125em;
 --choice-label__top-offset: 0.25rem;
 --choice-wrapper__gap--small: 0.5rem;
 --choice-wrapper__gap: 0.5rem;
@@ -1710,6 +1713,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --card__box-shadow: var(--box-shadow);
 --choice-label__color--disabled--inverse: var(--color-muted-inverse);
 --choice-label__color--disabled: var(--color-muted);
+--choice-label__top-offset--small: 0em;
 --choice-label__top-offset: 0rem;
 --choice-wrapper__gap--small: 0.75rem;
 --choice-wrapper__gap: 1rem;
