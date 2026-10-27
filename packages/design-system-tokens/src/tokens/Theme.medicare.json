@@ -1040,16 +1040,16 @@
         "$value": "{theme.color.background}"
       },
       "background-color--checked": {
-        "$value": "{theme.color.secondary}"
+        "$value": "{theme.color.primary}"
       },
       "background-color--inverse": {
         "$value": "{color.transparent}"
       },
       "border-color": {
-        "$value": "{theme.color.base}"
+        "$value": "{theme.color.gray}"
       },
       "border-color--checked": {
-        "$value": "{theme.color.secondary}"
+        "$value": "{theme.color.primary}"
       },
       "border-color--error": {
         "$value": "{theme.color.base}"
@@ -1060,15 +1060,22 @@
       "border-color--inverse": {
         "$value": "{theme.color.white}"
       },
-      "border-color--left": {
-        "$value": "{theme.color.secondary}"
+      "border-color--start": {
+        "$value": "{theme.color.gray}"
       },
       "border-radius": {
-        "$value": "3px",
-        "$type": "dimension"
+        "$value": "{radius.medium}"
       },
       "border-width": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "border-width--checked": {
         "$value": "2px",
+        "$type": "dimension"
+      },
+      "border-width--start": {
+        "$value": "1px",
         "$type": "dimension"
       },
       "color--unchecked": {
@@ -1097,7 +1104,11 @@
           "$value": "{theme.color.muted-inverse}"
         },
         "top-offset": {
-          "$value": "0.125rem",
+          "$value": "0rem",
+          "$type": "dimension"
+        },
+        "top-offset--small": {
+          "$value": "0em",
           "$type": "dimension"
         }
       },
@@ -1108,7 +1119,7 @@
         "$value": "{theme.color.gray-light}"
       },
       "border-color--focus": {
-        "$value": "{theme.color.secondary-darker}"
+        "$value": "{theme.color.primary}"
       },
       "border-color--disabled--inverse": {
         "$value": "{theme.color.gray-light}"

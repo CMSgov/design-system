@@ -1025,7 +1025,7 @@
       "border-color--inverse": {
         "$value": "{theme.color.white}"
       },
-      "border-color--left": {
+      "border-color--start": {
         "$value": "{theme.color.primary}"
       },
       "border-radius": {
@@ -1035,6 +1035,13 @@
       "border-width": {
         "$value": "2px",
         "$type": "dimension"
+      },
+      "border-width--checked": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
+      "border-width--start": {
+        "$value": "{spacer.half}"
       },
       "color--unchecked": {
         "$value": "{theme.color.white}"
@@ -1063,6 +1070,10 @@
         },
         "top-offset": {
           "$value": "0.25rem",
+          "$type": "dimension"
+        },
+        "top-offset--small": {
+          "$value": "-0.125em",
           "$type": "dimension"
         }
       },
