@@ -41,7 +41,7 @@ label,
   }
 
   .ds-c-choice--small + & {
-    margin-block-start: var(--choice-label-top-offset--small);
+    margin-block-start: var(--choice-label__top-offset--small);
   }
 
   // Disabled label styles

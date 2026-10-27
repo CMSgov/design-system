@@ -353,7 +353,7 @@
 --choice__border-color--error: var(--color-error);
 --choice__border-color--error--inverse: var(--color-error-light);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-primary);
+--choice__border-color--start: var(--color-primary);
 --choice__border-radius: 0px;
 --choice__border-width: 2px;
 --choice__border-width--checked: 2px;

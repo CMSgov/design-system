@@ -1024,7 +1024,7 @@
       "border-color--inverse": {
         "$value": "{theme.color.white}"
       },
-      "border-color--left": {
+      "border-color--start": {
         "$value": "{theme.color.primary}"
       },
       "border-radius": {

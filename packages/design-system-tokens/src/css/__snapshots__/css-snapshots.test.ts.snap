@@ -211,7 +211,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --choice__border-color--error: var(--color-base);
 --choice__border-color--focus: var(--color-primary-darker);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-primary);
+--choice__border-color--start: var(--color-primary);
 --choice__border-color: var(--color-base);
 --choice__border-radius: 0px;
 --choice__border-width--checked: 2px;
@@ -717,7 +717,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --choice__border-color--error: var(--color-base);
 --choice__border-color--focus: var(--color-primary-darker);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-primary);
+--choice__border-color--start: var(--color-primary);
 --choice__border-color: var(--color-base);
 --choice__border-radius: 0px;
 --choice__border-width--checked: 2px;
@@ -1223,7 +1223,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --choice__border-color--error: var(--color-error);
 --choice__border-color--focus: var(--color-primary-darker);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-primary);
+--choice__border-color--start: var(--color-primary);
 --choice__border-color: var(--color-base);
 --choice__border-radius: 0px;
 --choice__border-width--checked: 2px;
@@ -1729,7 +1729,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --choice__border-color--error: var(--color-base);
 --choice__border-color--focus: var(--color-primary);
 --choice__border-color--inverse: var(--color-white);
---choice__border-color--left: var(--color-gray);
+--choice__border-color--start: var(--color-gray);
 --choice__border-color: var(--color-gray);
 --choice__border-radius: var(--radius-medium);
 --choice__border-width--checked: 2px;
