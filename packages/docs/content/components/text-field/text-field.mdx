@@ -94,7 +94,7 @@ For mobile devices, text fields should work in both portrait and landscape orien
 - Screen readers must announce associated labels and instructions when a text field receives focus (e.g., “Enter first name.”).
 - Screen readers must announce any text provided to the `ariaLabel` prop.
 - Screen readers must announce the error message when a field with an error receives focus.
-- Screen readers must announce disabled fields as unavailable.
+- Screen readers handle disabled fields differently depending on the vendor. Disabled fields are also removed from the tab order, but are available via virtual cursor with VoiceOver. If the virtual cursor selects a disabled field, expect VoiceOver to state that it is "dimmed".
 - Screen readers must announce the name of any button next to a field.
 
 ### Zoom magnification
