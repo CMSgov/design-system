@@ -58,10 +58,6 @@ import { Alert } from '@cmsgov/design-system';
 ### Display & behavior
 
 - Place the label above the field. Place hint text between the label and the field.
-- Text fields have these states: default, active, filled, error, and disabled.
-  - **Active:** a green border shows which field has focus.
-  - **Error:** the border turns red. An error message with an icon appears below the field.
-  - **Disabled:** the field has a gray fill. Users can't edit it.
 - Single-line fields can include a button to the right of the field, such as "Add."
 - Multiline fields show a resize handle in the bottom-right corner. If the field includes a button, the button aligns to the top right.
 - Masked fields show the mask pattern inside the field, such as `___ __ ____` for a Social Security number. Use hint text to give an example, such as "For example, 123 45 6789."
@@ -71,8 +67,8 @@ import { Alert } from '@cmsgov/design-system';
 - Avoid using placeholder text as a substitute for labels. Most browsers render placeholder text with low contrast, making it difficult to read for many users. Instead, use the required `label` prop to provide a meaningful description of the text field.
 - Optionally, use the `hint` prop to provide additional contextual information or clearer directions for use. Using the `label` and `hint` props provides benefits such as reducing cognitive load and increasing the interaction area for users navigating with assistive technology.
 - For numeric inputs (e.g., phone numbers, Social Security numbers, credit card numbers), use the `mask` prop together with the `numeric` prop. The `numeric` prop sets `inputMode`, `type`, and `pattern` for better accessibility and consistency, avoiding the pitfalls of `type="number"`. This approach also helps prevent splitting the input into multiple fields, which can result in unclear or inaccessible labeling for screen reader users.
-- Don't rely on color alone to show an error. The error state uses a red border, an icon, and message text.
-- Make sure the green active border and the red error border meet 3:1 color contrast against the background.
+- Don't rely on color alone to show an error. The error state also includes an icon and message text.
+- Make sure the focus and error indicators meet 3:1 color contrast against the background.
 - Give icon-only buttons an accessible name that says what they do.
 
 <Alert heading="Use semantic grouping and accessible layouts">
