@@ -10,7 +10,7 @@
  */
 .ds-l-container {
   margin-inline: auto;
-  max-width: var(--site-max-width);
+  max-width: var(--theme-site-max-width);
   padding-inline: calc(var(--grid-gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
