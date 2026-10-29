@@ -482,7 +482,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --text-input__divider-color: var(--color-gray-light);
 --text-input__line-height: 1.2999999523162842;
 --text-input__padding: var(--spacer-1);
---theme-site-max-width: 1280px;
+--theme-site-max-width: var(--site-max-width);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
 --tooltip-trigger__color: var(--color-base);

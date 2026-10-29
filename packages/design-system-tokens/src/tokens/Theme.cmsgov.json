@@ -371,7 +371,7 @@
       }
     },
     "theme-site-max-width": {
-      "$value": "1280px",
+      "$value": "{site-max-width}",
       "$type": "dimension"
     }
   },
