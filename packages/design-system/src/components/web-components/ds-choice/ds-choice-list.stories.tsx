@@ -224,11 +224,11 @@ const htmlChoices = (
       value="checked children"
     >
       <div slot="checked-children">
-        <div className="ds-c-choice__checkedChild">
+        <div className="ds-c-choice__checked-child">
           <ds-alert heading="🫣 Tag! You're it!">
             You can reveal content by applying <code>checked-children</code> to the{' '}
             <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
-            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            <code>div</code> element with the class <code>ds-c-choice__checked-child</code> to
             whatever content you want to show/hide so it gets side border showing an association
             with its choice parent.
           </ds-alert>
@@ -241,11 +241,11 @@ const htmlChoices = (
       value="unchecked children"
     >
       <div slot="unchecked-children">
-        <div className="ds-c-choice__checkedChild">
+        <div className="ds-c-choice__checked-child">
           <ds-alert variation="warn" heading="I banish thee!">
             You can hide content by applying <code>unchecked-children</code> to the{' '}
             <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
-            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            <code>div</code> element with the class <code>ds-c-choice__checked-child</code> to
             whatever content you want to show/hide so it gets side border showing an association
             with its choice parent.
           </ds-alert>
