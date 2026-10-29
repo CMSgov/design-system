@@ -1904,10 +1904,10 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --inline-error__color--inverse: var(--color-error-lighter);
 --inline-error__color: var(--color-error);
 --label__font-family: var(--font-family-heading);
---label__font-size: var(--font-size-sm);
+--label__font-size: var(--font-size-base);
 --label__font-weight: var(--font-weight-bold);
 --label__letter-spacing: var(--font-letter-spacing-md);
---label__line-height: var(--font-line-height-base);
+--label__line-height: var(--font-line-height-heading);
 --label__text-transform: none;
 --link-inverse__color--active: var(--color-muted-inverse);
 --link-inverse__color--hover: var(--color-muted-inverse);
