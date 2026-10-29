@@ -369,6 +369,10 @@
           "$value": "{font.weight.600}"
         }
       }
+    },
+    "theme-site-max-width": {
+      "$value": "{site-max-width}",
+      "$type": "dimension"
     }
   },
   "component": {
