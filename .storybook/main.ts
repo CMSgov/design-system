@@ -37,6 +37,13 @@ const config: StorybookConfig = {
     name: '@storybook/react-webpack5',
     options: {},
   },
+  core: {
+    disableWhatsNewNotifications: true,
+  },
+  features: {
+    sidebarOnboardingChecklist: false,
+    menuOnboardingChecklist: false,
+  },
   docs: {},
 };
 
