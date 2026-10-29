@@ -15,7 +15,7 @@ medicare:
   figmaNodeId: 6-80
 ---
 
-import { Alert, Badge, CloseIconThin } from '@cmsgov/design-system';
+import { Alert } from '@cmsgov/design-system';
 
 ## Examples
 
@@ -50,19 +50,9 @@ provided by the user.
 
 ### Lightweight
 
-<ThemeContent onlyThemes={['core', 'cmsgov', 'healthcare']}>
-  The lightweight alert highlights information that is not as urgent as informational alerts.
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-  <Badge className="ds-c-badge--alert"><CloseIconThin /> Unused by Medicare</Badge>
-</ThemeContent>
-
-<ThemeContent neverThemes={['medicare']}>
+The lightweight alert highlights information that is not as urgent as informational alerts.
 
 <StorybookExample componentName="lightweight alert" storyId="components-alert--lightweight" />
-
-</ThemeContent>
 
 ## Guidance
 
@@ -129,16 +119,22 @@ Never use success alerts on static pages.
 
 ### When to consider alternatives
 
-- For less critical messages or less-urgent information, consider tooltips, hint text, or inline help text.
+- Use [inline error](/components/inline-error/) text to display error messages for form fields.
+- Use [modal dialogs](/components/modal-dialog/) when you need to confirm user actions.
+- Use [help text](/components/hint/) to explain how to fill out a form field.
+- Use [tooltips](/components/tooltip/) for static messages that explain how to use certain page elements or to provide additional information.
 - When the goal is to guide user input, utilizing hint text or inline help can be more effective in providing real-time guidance within form fields.
-- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation modal dialogue, to allow the user to confirm that this is what they want.
+- If an action will result in destroying a user’s work (for example, deleting an application) use a more intrusive pattern, such as a confirmation [modal dialog](/components/modal-dialog/), to allow the user to confirm that this is what they want.
 - When you need to display content that isn't related to the user’s current goal.
 
 ### Display & behavior
 
 - Alerts may be displayed statically on a page, appearing immediately when the webpage is first loaded, or dynamically loaded on a page, appearing based on specific conditions or user interactions, like clicking a button, submitting a form, or fulfilling certain criteria on the page.
 - Alerts with icons are preferred. An alert doesn’t need to include an icon if it requires a large amount of content. Such instances should be rare. Validate the design and spacing on mobile to help make this decision.
+- Alerts can include a heading and body text, a heading only, or body text only. A heading-only alert is a compact, single-line alert and can include a link aligned to the right of the heading, such as “Learn more.”
 - When the user is required to do something in response to an alert, let them know what they need to do and make that task as easy as possible.
+  - Alerts can include buttons that let the user respond. Use one primary button and, if needed, one secondary button. Place buttons below the alert body.
+  - Use buttons only when the alert asks the user to take an action. For navigation or additional information, use a link instead.
 - Don’t use alerts with a timer or dismiss button.
 
 ### Content guidelines
@@ -147,35 +143,35 @@ Never use success alerts on static pages.
 
 - Keep alerts short—Use the fewest words possible to convey the concept or issue.
   - Best practice is no more than 2-3 short sentences.
-  - If longer, consider adding a link to a help drawer to provide more details.
+  - If longer, consider adding a button that opens a help drawer to provide more details.
 - Use plain language, active voice, and imperative style when providing directions.
 - Avoid jargon and computer code, like “Message 1234,” or code snippets, such as -h, -
   p 8080, -d /var/www/html.
 - Alert content can include:
   - A heading (not required)
-  - Navigational links
-  - “Trigger words” to open help drawer for more details o Bulleted or numbered lists
+  - Links
+  - Bulleted or numbered lists
+  - Buttons, including buttons that open a help drawer, when the user needs to take an action in response to the alert
+- Don't use tooltips in alerts. Alerts hold information people need right away, and tooltips stay hidden until someone hovers over them.
+- Keep the number of interactive elements, such as links and buttons, low. The more interactive elements you add, the less effective and more confusing an alert becomes.
 - [Plain Language Guide: Writing (Digital.gov)](https://digital.gov/guides/plain-language/writing)
 
 #### Heading content
 
-- Alert headings are optional, but preferred. They draw attention and frame the information in the alert.
-- Bold alert headings and use sentence case.
+- Alert headings are optional, but preferred. They draw attention and frame the information in the alert. Keep headings short and put details in the body. If an alert has no body, the heading should state the full message in one short sentence.
+- Alert headings are bold and the same size as the body text. Use sentence case.
 - Don’t include punctuation, unless it’s a question.
 
 #### Content for error alerts
 
 - Help the user correct the error —Don’t place blame on the user.
-- Keep error alerts short, using the fewest words possible to describe what went
-  wrong and what the user needs to do.
-- Alerts support various types and lengths of content from ~45 to ~80 characters
-  wide.
+- Keep error alerts short, using the fewest words possible to describe what went wrong and what the user needs to do.
 - When writing error alerts, use:
   - Plain language and active voice. Use contractions.
   - Imperative style for directions to correct the error or action to take.
   - Don’t use words like "please" or "sorry," or informal language like “oops.”
   - Sentence case and include punctuation. Don’t use exclamation points.
-- If action to correct error has multiple steps or is complex, consider adding trigger text for a help drawer to provide more details.
+- If the action to correct the error has multiple steps or is complex, consider adding a button that opens a help drawer with more details.
 - [Get details about inline error messages that pair with error alerts.](https://design.cms.gov/components/inline-error/)
 
 ### Accessibility
@@ -187,7 +183,10 @@ Never use success alerts on static pages.
 - Immediately notify users relying on assistive tech, like screen readers, when an alert appears.
 - Users who are using a keyboard to navigate the page must be able to access the alert and its content in the right order.
 - Don’t visually hide alert messages on the page and then make them visible when needed. Users of older assistive technologies may still be able to perceive the alert messages even if they aren’t currently applicable.
-- If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an aria-label or aria-labeled by attribute.
+- If you have multiple alert components on a page, tailor the accessible text to differentiate between each by using an `aria-label` or `aria-labelledby` attribute.
+- The alert container is not interactive and doesn’t have a focus state. Only the links and buttons inside an alert are focusable and have focus states.
+- Don’t rely on color alone to communicate the type of alert. The heading and body text must make the meaning clear, especially for alerts without an icon.
+- Alert text, borders, and icons have sufficient color contrast against the alert’s tinted background.
 
 #### Accessibility for dynamic alerts
 
@@ -226,6 +225,7 @@ Never use success alerts on static pages.
 ##### Keyboard testing
 
 - When using features that trigger the display of an alert, I should see or hear the alert announced, but focus DOESN'T transfer automatically when the alert appears.
+- When an alert includes links or buttons, I should be able to reach each one with the tab key in a logical order, and each should show a visible focus state.
 - When using features that trigger the display of an [alert dialog (modal)](/components/modal-dialog/), I should see or hear the alert announced, and focus DOES transfer automatically when the alert appears.
 
 ##### Screen reader testing
@@ -239,9 +239,7 @@ When using a screen reader (NVDA, JAWS, VoiceOver, TalkBack):
 
 ### Report an accessibility bug
 
-If you have access to CMS internal tools, report accessibility issues through the [CMSDS bug reporting workflow in Confluence](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323).
-
-If you do not have access to CMS internal tools, report accessibility issues using the [public GitHub issue template](https://github.com/CMSgov/design-system/issues/new?template=propose-a-new-item-for-the-cms-design-system.md).
+If you encounter a bug with the accessibility of the alert component, [refer to our bug reporting confluence page](https://confluence.cms.gov/pages/viewpage.action?pageId=1138979323) and use CMSDS bug reporting workflow in our #cms-design-system-team slack channel.
 
 ## Code
 
