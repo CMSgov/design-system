@@ -1266,7 +1266,7 @@
         "$value": "{theme.font.family.heading}"
       },
       "font-size": {
-        "$value": "{theme.font.size.sm}"
+        "$value": "{theme.font.size.base}"
       },
       "font-weight": {
         "$value": "{theme.font.weight.bold}"
@@ -1275,7 +1275,7 @@
         "$value": "{theme.font.letter-spacing.md}"
       },
       "line-height": {
-        "$value": "{theme.font.line-height.base}"
+        "$value": "{theme.font.line-height.heading}"
       },
       "text-transform": {
         "$value": "none",
