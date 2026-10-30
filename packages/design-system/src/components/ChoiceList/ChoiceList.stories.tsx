@@ -130,7 +130,7 @@ export const ChoiceChildren: Story = {
         value: 'A',
         defaultChecked: true,
         checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
+          <div className="ds-c-choice__checked-child">
             <Alert heading="You'll save more with this option">
               Based on the household information you provided, this option will give you the maximum
               savings. We are adding some filler text just to show what it looks like when you have
@@ -144,7 +144,7 @@ export const ChoiceChildren: Story = {
         hint: 'Choice hint text',
         value: 'B',
         checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
+          <div className="ds-c-choice__checked-child">
             <Alert variation="warn" heading="Are you sure?">
               Based on the household information you provided, you can actually save more with the
               other option. You are free to change this at any point during the application process
