@@ -11,10 +11,10 @@
 .ds-l-container {
   margin-inline: auto;
   max-width: var(--theme-site-max-width);
-  padding-inline: calc(var(--grid-gutter-width) * 0.5);
+  padding-inline: calc(var(--theme-grid-gutter-width) * 0.5);
 
   @media (min-width: $media-width-sm) {
-    padding-inline: var(--grid-gutter-width);
+    padding-inline: var(--theme-grid-gutter-width);
   }
 }
 
@@ -28,7 +28,7 @@
 }
 
 .ds-l-row {
-  margin-inline: calc(var(--grid-gutter-width) * -0.5);
+  margin-inline: calc(var(--theme-grid-gutter-width) * -0.5);
 }
 
 .ds-l-form-row {
@@ -46,7 +46,7 @@
   box-sizing: border-box;
   min-height: 1px; // Prevent columns from collapsing when empty
   min-width: 0; // Resize columns as expected (https://css-tricks.com/flexbox-truncated-text/)
-  padding-inline: calc(var(--grid-gutter-width) * 0.5);
+  padding-inline: calc(var(--theme-grid-gutter-width) * 0.5);
   width: 100%;
 }
 
