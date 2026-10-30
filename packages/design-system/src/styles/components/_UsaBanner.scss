@@ -28,7 +28,7 @@
 
 .ds-c-usa-banner__header,
 .ds-c-usa-banner__guidance-container {
-  --gutter-width: var(--usa-banner-gutter-width, var(--grid-gutter-width));
+  --gutter-width: var(--usa-banner-gutter-width, var(--theme-grid-gutter-width));
 
   margin-inline: auto;
 
