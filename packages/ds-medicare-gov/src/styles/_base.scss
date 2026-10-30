@@ -77,7 +77,7 @@ svg {
 @mixin heading--3xl {
   font-size: var(--font-size-3xl--mobile);
   font-weight: var(--font-weight-heading-3xl);
-  line-height: var(--font-line-height-heading-lg);
+  line-height: var(--font-line-height-heading);
   letter-spacing: var(--font-letter-spacing-md);
 
   @include heading;

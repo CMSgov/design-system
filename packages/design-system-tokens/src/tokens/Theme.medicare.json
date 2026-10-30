@@ -245,31 +245,31 @@
           "$type": "dimension"
         },
         "lg": {
-          "$value": "1.5rem",
+          "$value": "1.25rem",
           "$type": "dimension"
         },
         "xl": {
-          "$value": "2.25rem",
+          "$value": "1.5rem",
           "$type": "dimension"
         },
         "xl--mobile": {
-          "$value": "1.75rem",
+          "$value": "1.5rem",
           "$type": "dimension"
         },
         "2xl--mobile": {
-          "$value": "2rem",
+          "$value": "1.75rem",
           "$type": "dimension"
         },
         "2xl": {
-          "$value": "3rem",
-          "$type": "dimension"
-        },
-        "3xl--mobile": {
           "$value": "2.25rem",
           "$type": "dimension"
         },
+        "3xl--mobile": {
+          "$value": "2rem",
+          "$type": "dimension"
+        },
         "3xl": {
-          "$value": "3.5rem",
+          "$value": "3rem",
           "$type": "dimension"
         },
         "4xl--mobile": {
