@@ -55,6 +55,7 @@ svg {
   font-weight: var(--font-weight-heading-5xl);
   line-height: var(--font-line-height-heading-lg);
   letter-spacing: var(--font-letter-spacing-md);
+  letter-spacing: var(--font-letter-spacing-md);
 
   @media (min-width: $media-width-md) {
     font-size: var(--font-size-5xl);
@@ -77,7 +78,7 @@ svg {
 @mixin heading--3xl {
   font-size: var(--font-size-3xl--mobile);
   font-weight: var(--font-weight-heading-3xl);
-  line-height: var(--font-line-height-heading);
+  line-height: var(--font-line-height-heading-lg);
   letter-spacing: var(--font-letter-spacing-md);
 
   @include heading;
