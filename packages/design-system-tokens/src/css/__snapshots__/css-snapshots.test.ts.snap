@@ -482,6 +482,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 --text-input__divider-color: var(--color-gray-light);
 --text-input__line-height: 1.2999999523162842;
 --text-input__padding: var(--spacer-1);
+--theme-grid-gutter-width: var(--grid-gutter-width);
 --theme-site-max-width: var(--site-max-width);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
@@ -989,6 +990,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 --text-input__divider-color: var(--color-gray-light);
 --text-input__line-height: 1.2999999523162842;
 --text-input__padding: var(--spacer-1);
+--theme-grid-gutter-width: var(--grid-gutter-width);
 --theme-site-max-width: var(--site-max-width);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
@@ -1495,6 +1497,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 --text-input__divider-color: var(--color-gray-light);
 --text-input__line-height: 1.2999999523162842;
 --text-input__padding: var(--spacer-1);
+--theme-grid-gutter-width: var(--grid-gutter-width);
 --theme-site-max-width: var(--site-max-width);
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
@@ -2007,6 +2010,7 @@ exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
 --text-input__divider-color: var(--color-gray-light);
 --text-input__line-height: 1.2999999523162842;
 --text-input__padding: var(--spacer-2);
+--theme-grid-gutter-width: var(--spacer-3);
 --theme-site-max-width: 1280px;
 --tooltip-icon__color--inverse: var(--color-white);
 --tooltip-icon__color: var(--color-primary);
