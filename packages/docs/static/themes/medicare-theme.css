@@ -178,6 +178,10 @@
 --accordion-button__border-bottom-width--expanded: var(--color-transparent);
 --accordion-content__background-color: var(--color-white);
 --accordion-content__border-width: .5px;
+--accordion-content__border-width--unbordered: .5px;
+--accordion-content__padding-right: var(--spacer-2);
+--accordion-content__padding-bottom: var(--spacer-2);
+--accordion-content__padding-left: var(--spacer-2);
 --accordion__background-color: var(--color-primary-lightest);
 --accordion__background-color--hover: var(--color-primary-light);
 --accordion__border-color: var(--color-primary-light);

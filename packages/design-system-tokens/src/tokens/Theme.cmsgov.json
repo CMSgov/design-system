@@ -445,6 +445,18 @@
         "border-width": {
           "$value": "1px",
           "$type": "dimension"
+        },
+        "border-width--unbordered": {
+          "$value": "0px"
+        },
+        "padding-right": {
+          "$value": "{spacer.3}"
+        },
+        "padding-bottom": {
+          "$value": "{spacer.1}"
+        },
+        "padding-left": {
+          "$value": "{spacer.4}"
         }
       },
       "background-color": {

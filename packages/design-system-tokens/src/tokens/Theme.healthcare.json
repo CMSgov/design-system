@@ -441,6 +441,15 @@
         },
         "border-width": {
           "$value": "{spacer.half}"
+        },
+        "border-width--unbordered": {
+          "$value": "0px"
+        },
+        "padding-right": {
+          "$value": "{spacer.3}"
+        },
+        "padding-bottom": {
+          "$value": "{spacer.1}"
         }
       },
       "background-color": {
