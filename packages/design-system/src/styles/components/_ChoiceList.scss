@@ -258,10 +258,8 @@ label,
   }
 }
 
-// TODO: rename to .ds-c-choice__checked-child
-
 // Checked children container
-.ds-c-choice__checkedChild {
+.ds-c-choice__checked-child {
   border-inline-start: var(--choice__border-width--start) solid var(--choice__border-color--start);
   margin-block: $spacer-1 $spacer-2;
 

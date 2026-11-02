@@ -64,10 +64,10 @@ Radio buttons can have optional checked or unchecked children that are condition
 
 - The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
 - Checked children can be exposed by checking the parent checkbox or radio button
-- The `checkedChildren` prop should return one or more items wrapped in a `div` with the following className: `.ds-c-choice__checkedChild`. This class sets the spacing and border color for the exposed elements.
-- Add the className `.ds-c-choice__checkedChild--inverse` to the `div` to show the inverse white border
+- The `checkedChildren` prop should return one or more items wrapped in a `div` with the following className: `.ds-c-choice__checked-child`. This class sets the spacing and border color for the exposed elements.
+- Add the className `.ds-c-choice__checked-child--inverse` to the `div` to show the inverse white border
 - You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
-- If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checkedChild--small` to your checked child container
+- If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checked-child--small` to your checked child container
 
 ## Accessibility
 The radio button component handles rendering labels, and if you’re using ChoiceList for a set of controls, will also wrap them in `<fieldset>` to maintain accessibility, and `<legend>` to provide context.
