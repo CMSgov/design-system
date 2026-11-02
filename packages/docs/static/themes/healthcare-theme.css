@@ -154,6 +154,7 @@
 --font-weight-normal: 400;
 --font-weight-bold: 700;
 --theme-site-max-width: var(--site-max-width);
+--theme-grid-gutter-width: var(--grid-gutter-width);
 --global__color: var(--color-base);
 --global__color--inverse: var(--color-base-inverse);
 --global__font-family: var(--font-family-body);

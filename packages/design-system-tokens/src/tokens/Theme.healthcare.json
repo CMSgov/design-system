@@ -370,6 +370,9 @@
     "theme-site-max-width": {
       "$value": "{site-max-width}",
       "$type": "dimension"
+    },
+    "theme-grid-gutter-width": {
+      "$value": "{grid.gutter-width}"
     }
   },
   "component": {
