@@ -165,14 +165,14 @@
 --global__font-family: var(--font-family-body);
 --global__font-size: var(--font-size-base);
 --global__line-height: var(--font-line-height-base);
---accordion__color: var(--color-base);
+--accordion__color: var(--color-black);
 --accordion__border-top-left-radius: var(--radius-xl);
 --accordion__border-top-right-radius: var(--radius-xl);
 --accordion__border-bottom-left-radius: var(--radius-xl);
 --accordion__border-bottom-left-radius--expanded: 0px;
 --accordion__border-bottom-right-radius: var(--radius-xl);
 --accordion__border-bottom-right-radius--expanded: 0px;
---accordion-button__color: var(--color-base);
+--accordion-button__color: var(--color-black);
 --accordion-button__border-width: .5px;
 --accordion-button__border-color: var(--color-primary-light);
 --accordion-button__border-bottom-width--expanded: var(--color-transparent);

@@ -431,7 +431,7 @@
     },
     "accordion": {
       "color": {
-        "$value": "{theme.color.base}"
+        "$value": "{theme.color.black}"
       },
       "border-top-left-radius": {
         "$value": "{radius.xl}",
@@ -459,7 +459,7 @@
       },
       "button": {
         "color": {
-          "$value": "{theme.color.base}"
+          "$value": "{theme.color.black}"
         },
         "border-width": {
           "$value": ".5px"
