@@ -413,9 +413,6 @@
         "$value": "0px",
         "$type": "dimension"
       },
-      "border-width": {
-        "$value": "{spacer.half}"
-      },
       "button": {
         "color": {
           "$value": "{theme.color.primary}"
@@ -424,6 +421,9 @@
       "content": {
         "background-color": {
           "$value": "{theme.color.transparent}"
+        },
+        "border-width": {
+          "$value": "{spacer.half}"
         }
       },
       "background-color": {

@@ -434,23 +434,20 @@
         "$value": "{theme.color.base}"
       },
       "border-top-left-radius": {
-        "$value": "0px",
+        "$value": "{radius.xl}",
         "$type": "dimension"
       },
       "border-top-right-radius": {
-        "$value": "0px",
+        "$value": "{radius.xl}",
         "$type": "dimension"
       },
       "border-bottom-left-radius": {
-        "$value": "0px",
+        "$value": "{radius.xl}",
         "$type": "dimension"
       },
       "border-bottom-right-radius": {
-        "$value": "0px",
+        "$value": "{radius.xl}",
         "$type": "dimension"
-      },
-      "border-width": {
-        "$value": "{spacer.half}"
       },
       "button": {
         "color": {
@@ -460,16 +457,19 @@
       "content": {
         "background-color": {
           "$value": "{theme.color.white}"
+        },
+        "border-width": {
+          "$value": "{spacer.half}"
         }
       },
       "background-color": {
-        "$value": "{theme.color.gray-lightest}"
+        "$value": "{theme.color.primary-lightest}"
       },
       "background-color--hover": {
-        "$value": "{theme.color.gray-lighter}"
+        "$value": "{theme.color.primary-light}"
       },
       "border-color": {
-        "$value": "{theme.color.gray-lightest}"
+        "$value": "{theme.color.primary-light}"
       }
     },
     "alert": {

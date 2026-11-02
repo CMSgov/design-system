@@ -416,10 +416,6 @@
         "$value": "0px",
         "$type": "dimension"
       },
-      "border-width": {
-        "$value": "1px",
-        "$type": "dimension"
-      },
       "button": {
         "color": {
           "$value": "{theme.color.base}"
@@ -428,6 +424,10 @@
       "content": {
         "background-color": {
           "$value": "{theme.color.white}"
+        },
+        "border-width": {
+          "$value": "1px",
+          "$type": "dimension"
         }
       },
       "background-color": {

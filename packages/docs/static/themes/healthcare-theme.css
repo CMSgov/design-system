@@ -168,6 +168,7 @@
 --accordion__border-width: var(--spacer-half);
 --accordion-button__color: var(--color-primary);
 --accordion-content__background-color: var(--color-transparent);
+--accordion-content__border-width: var(--spacer-half);
 --accordion__background-color: var(--color-transparent);
 --accordion__background-color--hover: var(--color-transparent);
 --accordion__border-color: var(--color-transparent);
