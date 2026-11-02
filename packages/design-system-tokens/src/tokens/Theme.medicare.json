@@ -458,6 +458,9 @@
         },
         "border-color": {
           "$value": "{theme.color.primary-light}"
+        },
+        "border-bottom-width--expanded": {
+          "$value": "{theme.color.transparent}"
         }
       },
       "content": {
@@ -465,7 +468,7 @@
           "$value": "{theme.color.white}"
         },
         "border-width": {
-          "$value": "{spacer.half}"
+          "$value": ".5px"
         }
       },
       "background-color": {

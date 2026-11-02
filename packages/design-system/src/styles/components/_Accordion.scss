@@ -28,6 +28,14 @@ ds-accordion-item:not(:first-child) {
   text-align: start;
   width: 100%;
 
+  &[aria-expanded='true'] {
+    // border-bottom-left-radius:
+    //   var(--accordion__border-bottom-left-radius--expanded);
+    // border-bottom-right-radius:
+    //   var(--accordion__border-bottom-right-radius--expanded);
+    border-bottom-color: var(--accordion-button__border-bottom-width--expanded);
+  }
+
   &:hover {
     background-color: var(--accordion__background-color--hover);
   }

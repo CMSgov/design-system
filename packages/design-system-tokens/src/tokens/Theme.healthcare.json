@@ -422,6 +422,9 @@
         },
         "border-color": {
           "$value": "{color.transparent}"
+        },
+        "border-bottom-width--expanded": {
+          "$value": "{theme.color.transparent}"
         }
       },
       "content": {
