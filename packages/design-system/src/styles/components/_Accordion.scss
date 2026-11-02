@@ -17,7 +17,7 @@ ds-accordion-item:not(:first-child) {
 
 .ds-c-accordion__button {
   background-color: var(--accordion__background-color);
-  border: 0;
+  border: var(--accordion-button__border-width) solid var(--accordion-button__border-color);
   border-radius: var(--accordion__border-top-left-radius) var(--accordion__border-top-right-radius)
     var(--accordion__border-bottom-right-radius) var(--accordion__border-bottom-left-radius);
   color: var(--accordion-button__color);

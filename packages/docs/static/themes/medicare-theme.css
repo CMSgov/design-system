@@ -170,8 +170,9 @@
 --accordion__border-top-right-radius: var(--radius-xl);
 --accordion__border-bottom-left-radius: var(--radius-xl);
 --accordion__border-bottom-right-radius: var(--radius-xl);
---accordion__border-width: var(--spacer-half);
 --accordion-button__color: var(--color-base);
+--accordion-button__border-width: .5px;
+--accordion-button__border-color: var(--color-primary-light);
 --accordion-content__background-color: var(--color-white);
 --accordion-content__border-width: var(--spacer-half);
 --accordion__background-color: var(--color-primary-lightest);

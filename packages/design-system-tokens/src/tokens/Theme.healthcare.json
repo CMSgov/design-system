@@ -416,6 +416,12 @@
       "button": {
         "color": {
           "$value": "{theme.color.primary}"
+        },
+        "border-width": {
+          "$value": "0"
+        },
+        "border-color": {
+          "$value": "{color.transparent}"
         }
       },
       "content": {

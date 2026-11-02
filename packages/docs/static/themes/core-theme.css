@@ -166,8 +166,9 @@
 --accordion__border-top-right-radius: 0px;
 --accordion__border-bottom-left-radius: 0px;
 --accordion__border-bottom-right-radius: 0px;
---accordion__border-width: var(--spacer-half);
 --accordion-button__color: var(--color-base);
+--accordion-button__border-width: 0;
+--accordion-button__border-color: transparent;
 --accordion-content__background-color: var(--color-white);
 --accordion-content__border-width: var(--spacer-half);
 --accordion__background-color: var(--color-gray-lightest);

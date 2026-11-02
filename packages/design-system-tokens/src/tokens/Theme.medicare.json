@@ -452,6 +452,12 @@
       "button": {
         "color": {
           "$value": "{theme.color.base}"
+        },
+        "border-width": {
+          "$value": ".5px"
+        },
+        "border-color": {
+          "$value": "{theme.color.primary-light}"
         }
       },
       "content": {
