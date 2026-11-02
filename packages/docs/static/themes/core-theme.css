@@ -165,7 +165,9 @@
 --accordion__border-top-left-radius: 0px;
 --accordion__border-top-right-radius: 0px;
 --accordion__border-bottom-left-radius: 0px;
+--accordion__border-bottom-left-radius--expanded: 0px;
 --accordion__border-bottom-right-radius: 0px;
+--accordion__border-bottom-right-radius--expanded: 0px;
 --accordion-button__color: var(--color-base);
 --accordion-button__border-width: 0;
 --accordion-button__border-color: transparent;

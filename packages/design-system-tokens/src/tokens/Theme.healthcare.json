@@ -409,7 +409,15 @@
         "$value": "0px",
         "$type": "dimension"
       },
+      "border-bottom-left-radius--expanded": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
       "border-bottom-right-radius": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
+      "border-bottom-right-radius--expanded": {
         "$value": "0px",
         "$type": "dimension"
       },
