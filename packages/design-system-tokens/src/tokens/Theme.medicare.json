@@ -406,6 +406,9 @@
     "theme-site-max-width": {
       "$value": "1280px",
       "$type": "dimension"
+    },
+    "theme-grid-gutter-width": {
+      "$value": "{spacer.3}"
     }
   },
   "component": {

@@ -159,6 +159,7 @@
 --font-letter-spacing-md: -2%;
 --font-letter-spacing-sm: 0%;
 --theme-site-max-width: 1280px;
+--theme-grid-gutter-width: var(--spacer-3);
 --global__color: var(--color-base);
 --global__color--inverse: var(--color-base-inverse);
 --global__font-family: var(--font-family-body);
