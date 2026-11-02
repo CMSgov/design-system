@@ -450,6 +450,9 @@
         },
         "padding-bottom": {
           "$value": "{spacer.1}"
+        },
+        "padding-left": {
+          "$value": "{spacer.4}"
         }
       },
       "background-color": {
