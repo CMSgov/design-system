@@ -86,6 +86,11 @@ The following CSS variables can be overridden to theme the font size utility:
 - `--font-size-3xl`
 - `--font-size-2xl`
 - `--font-size-xl`
+<ThemeContent onlyThemes={['medicare']}>
+- `--font-size-md` & `--font-size-lg` use `--font-size-base`
+</ThemeContent>
+<ThemeContent neverThemes={['medicare']}>
 - `--font-size-lg`
-- `--font-size-md`, uses `--font-size-base`
+- `--font-size-md` uses `--font-size-base`
+</ThemeContent>
 - `--font-size-sm`
