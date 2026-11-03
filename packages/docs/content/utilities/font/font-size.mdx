@@ -2,6 +2,7 @@
 title: Font Size
 ---
 
+
 import { Alert } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
 
@@ -41,6 +42,15 @@ Use the font size utility to make the text larger or smaller.
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--xl</code>
             <div class="ds-u-font-size--xl">{loremIpsumGenerator('s')}</div>
         </article>
+        <ThemeContent onlyThemes={['medicare']}>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code> or
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--base</code> or
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--md</code>
+            <div class="ds-u-font-size--base">{loremIpsumGenerator('s')}</div>
+        </article>
+        </ThemeContent>
+        <ThemeContent neverThemes={['medicare']}>
         <article>
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code>
             <div class="ds-u-font-size--lg">{loremIpsumGenerator('s')}</div>
@@ -50,6 +60,7 @@ Use the font size utility to make the text larger or smaller.
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--md</code>
             <div class="ds-u-font-size--base">{loremIpsumGenerator('s')}</div>
         </article>
+        </ThemeContent>
         <article>
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--sm</code>
             <div class="ds-u-font-size--sm">{loremIpsumGenerator('s')}</div>
