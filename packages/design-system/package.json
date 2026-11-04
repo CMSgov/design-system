@@ -1,6 +1,6 @@
 {
   "name": "@cmsgov/design-system",
-  "version": "18.1.0",
+  "version": "18.2.0",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -68,7 +68,7 @@
     "globby": "^16.0.0",
     "inquirer": "^14.0.0",
     "lodash": "^4.17.21",
-    "ora": "^9.4.1",
+    "ora": "^10.0.0",
     "preact": "10.19.5",
     "prop-types": "^15.8.1",
     "react-aria": "^3.27.0",
@@ -81,6 +81,6 @@
     "react-dom": ">=19.2.4"
   },
   "engines": {
-    "node": ">=18.20.4"
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
   }
 }
