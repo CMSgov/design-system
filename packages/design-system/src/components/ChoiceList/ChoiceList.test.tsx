@@ -56,6 +56,22 @@ describe('ChoiceList', () => {
       expect(choiceEl.type).toBe('checkbox');
     });
 
+    it('applies the item class to each Choice', () => {
+      const { container } = renderChoiceList({}, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(3);
+    });
+
+    it('preserves a custom className on a Choice alongside the item class', () => {
+      renderChoiceList({
+        type: 'checkbox',
+        choices: generateChoices(1, { className: 'custom-class' }),
+      });
+      const choiceEl = screen.getByLabelText('Choice 1');
+
+      expect(choiceEl.closest('.ds-c-choice-list__item')).toHaveClass('custom-class');
+    });
+
     it('is a checkbox', () => {
       renderChoiceList({
         choices: generateChoices(1),

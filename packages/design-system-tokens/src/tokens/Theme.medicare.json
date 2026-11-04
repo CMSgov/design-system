@@ -1146,6 +1146,39 @@
         }
       }
     },
+    "choice-list": {
+      "item": {
+        "background-color": {
+          "$value": "{theme.color.white}"
+        },
+        "background-color--hover": {
+          "$value": "{color.medicare-green.200}"
+        },
+        "border-color": {
+          "$value": "{theme.color.gray-light}"
+        },
+        "border-color--checked": {
+          "$value": "{theme.color.primary}"
+        },
+        "border-radius": {
+          "$value": "{radius.large}"
+        },
+        "border-width": {
+          "$value": "1px",
+          "$type": "dimension"
+        },
+        "border-width--checked": {
+          "$value": "2px",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{spacer.2}"
+        },
+        "padding": {
+          "$value": "{spacer.2}"
+        }
+      }
+    },
     "date-field": {
       "show-separators": {
         "$value": false,

@@ -128,6 +128,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
       onChange: props.onChange,
       size: props.size,
       type,
+      className: classNames(choiceProps.className, 'ds-c-choice-list__item'),
       inputClassName: classNames(choiceProps.inputClassName, {
         'ds-c-choice--error': props.errorMessage,
       }),
