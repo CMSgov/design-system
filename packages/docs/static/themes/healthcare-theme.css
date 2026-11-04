@@ -170,7 +170,7 @@
 --accordion-button__color: var(--color-primary);
 --accordion-button__border-width: 0;
 --accordion-button__border-color: transparent;
---accordion-button__border-bottom-width--expanded: var(--color-transparent);
+--accordion-button__border-bottom-color--expanded: var(--color-transparent);
 --accordion-content__background-color: var(--color-transparent);
 --accordion-content__border-width: var(--spacer-half);
 --accordion-content__border-width--unbordered: 0px;

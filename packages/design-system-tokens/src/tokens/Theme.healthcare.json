@@ -431,7 +431,7 @@
         "border-color": {
           "$value": "{color.transparent}"
         },
-        "border-bottom-width--expanded": {
+        "border-bottom-color--expanded": {
           "$value": "{theme.color.transparent}"
         }
       },

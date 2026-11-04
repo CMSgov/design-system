@@ -31,7 +31,7 @@ ds-accordion-item:not(:first-child) {
   &[aria-expanded='true'] {
     border-bottom-left-radius: var(--accordion__border-bottom-left-radius--expanded);
     border-bottom-right-radius: var(--accordion__border-bottom-right-radius--expanded);
-    border-bottom-color: var(--accordion-button__border-bottom-width--expanded);
+    border-bottom-color: var(--accordion-button__border-bottom-color--expanded);
   }
 
   &:hover {

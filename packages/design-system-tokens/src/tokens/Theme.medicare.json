@@ -467,7 +467,7 @@
         "border-color": {
           "$value": "{theme.color.primary-light}"
         },
-        "border-bottom-width--expanded": {
+        "border-bottom-color--expanded": {
           "$value": "{theme.color.transparent}"
         }
       },

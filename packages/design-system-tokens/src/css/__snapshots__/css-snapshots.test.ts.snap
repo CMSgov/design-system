@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
-"--accordion-button__border-bottom-width--expanded: var(--color-gray-lightest);
+"--accordion-button__border-bottom-color--expanded: var(--color-gray-lightest);
 --accordion-button__border-color: transparent;
 --accordion-button__border-width: 0;
 --accordion-button__color: var(--color-base);
@@ -518,7 +518,7 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
-"--accordion-button__border-bottom-width--expanded: var(--color-gray-lightest);
+"--accordion-button__border-bottom-color--expanded: var(--color-gray-lightest);
 --accordion-button__border-color: transparent;
 --accordion-button__border-width: 0;
 --accordion-button__color: var(--color-base);
@@ -1035,7 +1035,7 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
-"--accordion-button__border-bottom-width--expanded: var(--color-transparent);
+"--accordion-button__border-bottom-color--expanded: var(--color-transparent);
 --accordion-button__border-color: transparent;
 --accordion-button__border-width: 0;
 --accordion-button__color: var(--color-primary);
@@ -1551,7 +1551,7 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
-"--accordion-button__border-bottom-width--expanded: var(--color-transparent);
+"--accordion-button__border-bottom-color--expanded: var(--color-transparent);
 --accordion-button__border-color: var(--color-primary-light);
 --accordion-button__border-width: .5px;
 --accordion-button__color: var(--color-black);
