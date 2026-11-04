@@ -175,6 +175,7 @@
 --accordion-button__border-width: .5px;
 --accordion-button__border-color: var(--color-primary-light);
 --accordion-button__border-bottom-color--expanded: var(--color-transparent);
+--accordion-button__heading-font-size: var(--font-size-xl);
 --accordion-content__background-color: var(--color-white);
 --accordion-content__border-width: .5px;
 --accordion-content__border-width--unbordered: .5px;

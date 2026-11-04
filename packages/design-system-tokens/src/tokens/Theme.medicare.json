@@ -465,6 +465,9 @@
         },
         "border-bottom-color--expanded": {
           "$value": "{theme.color.transparent}"
+        },
+        "heading-font-size": {
+          "$value": "{theme.font.size.xl}"
         }
       },
       "content": {
