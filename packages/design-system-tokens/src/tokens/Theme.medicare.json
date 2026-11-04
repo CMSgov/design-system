@@ -468,6 +468,12 @@
         },
         "heading-font-size": {
           "$value": "{theme.font.size.xl}"
+        },
+        "heading-line-height": {
+          "$value": "{theme.font.line-height.heading}"
+        },
+        "heading-letter-spacing": {
+          "$value": "{theme.font.letter-spacing.sm}"
         }
       },
       "content": {

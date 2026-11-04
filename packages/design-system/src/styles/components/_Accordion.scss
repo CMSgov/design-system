@@ -9,6 +9,8 @@
   font: inherit;
   margin-block: 0;
   font-size: var(--accordion-button__heading-font-size, inherit);
+  line-height: var(--accordion-button__heading-line-height, inherit);
+  letter-spacing: var(--accordion-button__heading-letter-spacing, inherit);
 }
 
 .ds-c-accordion__heading:not(:first-child),
