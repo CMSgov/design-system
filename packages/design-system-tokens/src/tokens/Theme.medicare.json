@@ -458,7 +458,7 @@
           "$value": "{theme.color.black}"
         },
         "border-width": {
-          "$value": ".5px"
+          "$value": "1px"
         },
         "border-color": {
           "$value": "{theme.color.primary-light}"
@@ -481,10 +481,10 @@
           "$value": "{theme.color.white}"
         },
         "border-width": {
-          "$value": ".5px"
+          "$value": "1px"
         },
         "border-width--unbordered": {
-          "$value": ".5px"
+          "$value": "1px"
         },
         "padding-right": {
           "$value": "{spacer.2}"
