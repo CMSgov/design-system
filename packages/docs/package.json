@@ -44,7 +44,7 @@
     "prettier": "^2.6.2",
     "prismjs": "^1.11.0",
     "react-use-flexsearch": "^0.1.1",
-    "remark-gfm": "3.0.1",
+    "remark-gfm": "4.0.1",
     "sass": "^1.43.4",
     "url-join": "^4.0.1"
   },
