@@ -46,7 +46,7 @@
     "react-use-flexsearch": "^0.1.1",
     "remark-gfm": "3.0.1",
     "sass": "^1.43.4",
-    "url-join": "^4.0.1"
+    "url-join": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
