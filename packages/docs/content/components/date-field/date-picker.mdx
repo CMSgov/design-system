@@ -34,10 +34,6 @@ Allow users to have flexibility in entering the date, such as allowing one-digit
 - Example: "01" for a month or day. Leading zeros for single digits are necessary if you do not include separating characters between the month, day and year values.
 - Example: "05/18/2022" as well as "05182022".
 
-Include the expected date format in the hint text so it stays visible as users enter the date.
-
-- Example: "For example, 05/18/2022"
-
 ### When to consider alternatives
 
 - Don't use if users are entering a memorable date. Instead, use either [single-](/components/single-input-date-field/) or [multi-input](/components/multi-input-date-field/) date fields.
@@ -51,7 +47,6 @@ Include the expected date format in the hint text so it stays visible as users e
 - The calendar button uses `aria-describedby` to connect the required label text (supplied via the `label` prop) and the optional hint text (provided by the `hint` prop), to ensure screen readers announce contextual information when the open calendar button receives focus.
 - Users will be able to enter a variety of date formats that automatically format to the correct date format of MM/DD/YYYY. This change happens once the form field loses focus. For example, a user enters a date as "04122020" and it changes to "04/12/2020" once focus leaves the date input.
 - Focus automatically returns to the date input field after date selection.
-- Do not rely on placeholder text alone to communicate the date format.
 
 #### Accessibility Testing
 
