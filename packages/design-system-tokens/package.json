@@ -6,7 +6,7 @@
   "devDependencies": {
     "@figma/rest-api-spec": "^0.13.0",
     "@inquirer/prompts": "^3.0.3",
-    "@types/node": "^18.11.9",
+    "@types/node": "^24.19.2",
     "tsx": "^4.19.2",
     "typescript": "^5.4.3"
   },
