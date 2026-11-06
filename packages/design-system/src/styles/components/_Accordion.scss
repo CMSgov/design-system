@@ -8,6 +8,9 @@
 .ds-c-accordion__heading {
   font: inherit;
   margin-block: 0;
+  font-size: var(--accordion-button__heading-font-size, inherit);
+  line-height: var(--accordion-button__heading-line-height, inherit);
+  letter-spacing: var(--accordion-button__heading-letter-spacing, inherit);
 }
 
 .ds-c-accordion__heading:not(:first-child),
@@ -17,7 +20,7 @@ ds-accordion-item:not(:first-child) {
 
 .ds-c-accordion__button {
   background-color: var(--accordion__background-color);
-  border: 0;
+  border: var(--accordion-button__border-width) solid var(--accordion-button__border-color);
   border-radius: var(--accordion__border-top-left-radius) var(--accordion__border-top-right-radius)
     var(--accordion__border-bottom-right-radius) var(--accordion__border-bottom-left-radius);
   color: var(--accordion-button__color);
@@ -27,6 +30,12 @@ ds-accordion-item:not(:first-child) {
   padding: $spacer-2 $spacer-3 $spacer-2 $spacer-3;
   text-align: start;
   width: 100%;
+
+  &[aria-expanded='true'] {
+    border-bottom-left-radius: var(--accordion__border-bottom-left-radius--expanded);
+    border-bottom-right-radius: var(--accordion__border-bottom-right-radius--expanded);
+    border-bottom-color: var(--accordion-button__border-bottom-color--expanded);
+  }
 
   &:hover {
     background-color: var(--accordion__background-color--hover);
@@ -68,8 +77,13 @@ ds-accordion-item:not(:first-child) {
 
 .ds-c-accordion__content {
   background-color: var(--accordion-content__background-color);
+  border: var(--accordion-content__border-width--unbordered) solid var(--accordion__border-color);
+  border-block-start: 0;
+  border-bottom-left-radius: var(--accordion__border-bottom-left-radius);
+  border-bottom-right-radius: var(--accordion__border-bottom-right-radius);
   overflow: auto;
-  padding: $spacer-2 $spacer-3 $spacer-1 $spacer-4;
+  padding: $spacer-2 var(--accordion-content__padding-right)
+    var(--accordion-content__padding-bottom) var(--accordion-content__padding-left);
 }
 
 .ds-c-accordion__content,
@@ -85,7 +99,7 @@ ds-accordion-item {
 
 .ds-c-accordion--bordered .ds-c-accordion__content,
 .ds-c-accordion__content--bordered {
-  border: var(--accordion__border-width) solid var(--accordion__border-color);
-  border-block-start: 0;
+  border-width: var(--accordion-content__border-width);
+  border-block-start-width: 0;
   padding: $spacer-2 $spacer-2;
 }
