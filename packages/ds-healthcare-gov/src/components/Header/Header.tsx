@@ -2,7 +2,7 @@ import ActionMenu from './ActionMenu';
 import DeConsumerMessage from './DeConsumerMessage';
 import Logo from '../Logo/Logo';
 import Menu from './Menu';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import type * as React from 'react';
 import { SkipNav, UsaBanner } from '@cmsgov/design-system';
 import { t } from '../i18n';
@@ -140,18 +140,83 @@ export const Header = (props: HeaderProps) => {
   const isControlledMenu = props.isMenuOpen !== undefined && props.onMenuToggle !== undefined;
   const [internalIsMenuOpenState, setInternalIsMenuOpenState] = useState(false);
   const isMenuOpen = isControlledMenu ? props.isMenuOpen : internalIsMenuOpenState;
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const actionsRef = useRef<HTMLElement>(null);
+  const isMenuOpenRef = useRef(isMenuOpen);
+
+  useLayoutEffect(() => {
+    isMenuOpenRef.current = isMenuOpen;
+  });
 
   /**
-   * Event handler for when the "Menu" or "Close" button
-   * within ActionMenu is clicked.
+   * Opens or closes the menu. Called when the "Menu" or "Close" button
+   * within ActionMenu is clicked, and to close the menu by other means.
    */
-  function handleMenuToggleClick() {
+  function toggleMenu() {
     if (!isControlledMenu) {
       setInternalIsMenuOpenState(!isMenuOpen);
     }
 
     props.onMenuToggle?.();
   }
+
+  /**
+   * Closes the menu when the user presses Escape, moves focus away, or clicks
+   * outside. One action can trigger more than one of these, e.g. clicking a
+   * link outside the menu is both an outside click and a focus change, so
+   * the ref ensures the menu is closed only once until the next render.
+   */
+  function closeMenu() {
+    if (!isMenuOpenRef.current) return;
+    isMenuOpenRef.current = false;
+    toggleMenu();
+  }
+
+  /**
+   * Closes the open menu when Escape is pressed within the header actions,
+   * and returns focus to the "Menu" button.
+   */
+  function handleActionsKeyDown(event: React.KeyboardEvent) {
+    if (event.key === 'Escape' && isMenuOpen) {
+      closeMenu();
+      menuToggleRef.current?.focus();
+    }
+  }
+
+  /**
+   * Closes the open menu when focus moves to an element outside the header
+   * actions. Focus leaving the page entirely, which has no related target,
+   * leaves the menu open.
+   */
+  function handleActionsBlur(event: React.FocusEvent) {
+    const nextFocus = event.relatedTarget;
+    if (isMenuOpen && nextFocus instanceof Element && !event.currentTarget.contains(nextFocus)) {
+      closeMenu();
+    }
+  }
+
+  /**
+   * While the menu is open, closes it when the user clicks or touches
+   * anywhere outside the header actions. A layout effect attaches the
+   * listener as soon as the menu opens; Preact runs plain effects after
+   * paint, which would leave a gap where an outside click does nothing.
+   */
+  useLayoutEffect(() => {
+    if (!isMenuOpen) return;
+
+    function handleClickOutside(event: MouseEvent | TouchEvent) {
+      if (!actionsRef.current?.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  });
 
   const variation = props.loggedIn ? VARIATION_NAMES.LOGGED_IN : VARIATION_NAMES.LOGGED_OUT;
   const classes = classnames(`hc-c-header hc-c-header--${variation}`, props.className);
@@ -200,15 +265,19 @@ export const Header = (props: HeaderProps) => {
             <nav
               aria-label="Profile, applications, and coverage"
               id="hc-c-header__actions"
+              ref={actionsRef}
               className="hc-c-header__actions ds-l-col ds-l-col--auto ds-u-margin-left--auto ds-u-font-weight--bold"
+              onKeyDown={handleActionsKeyDown}
+              onBlur={handleActionsBlur}
             >
               <ActionMenu
                 t={t}
                 firstName={props.firstName}
-                onMenuToggleClick={handleMenuToggleClick}
+                onMenuToggleClick={toggleMenu}
                 loggedIn={props.loggedIn}
                 open={isMenuOpen}
                 links={links}
+                toggleRef={menuToggleRef}
               />
               <Menu
                 beforeLinks={beforeMenuLinks}

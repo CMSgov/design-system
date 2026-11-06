@@ -1,46 +1,19 @@
 import path from 'path';
 import themes from '../themes.json';
 import packageVersions from '../versions.json';
+import {
+  codeBlock,
+  renderPageHtml,
+  renderFontFaceExample,
+  renderFontPreloadExample,
+} from './build-cdn-helpers';
 import fs from 'node:fs';
 import c from 'chalk';
 
-function codeBlock(lines: string[]) {
-  const escaped = lines.join('\n').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const stringToCopy = JSON.stringify(lines);
-  return `
-    <pre class="ds-u-fill--gray-lightest ds-u-font-size--sm ds-u-padding--1 ds-u-margin-y--1 ds-u-overflow--auto"><code>${escaped}</code></pre>
-    <ds-button size="small" onclick='navigator.clipboard.writeText(${stringToCopy}.join("\\n"))'>Copy snippet</ds-button>
-  `;
-}
-function renderPageHtml(theme: keyof typeof themes, title: string, mainContent: string) {
-  const system = themes[theme].packageName;
-  const version = packageVersions[system as keyof typeof packageVersions][0];
-  return `<!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>${title} - CMSDS</title>
-      <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/index.css" />
-      <link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/${theme}-theme.css" />
-    </head>
-    <body>
-      <ds-usa-banner></ds-usa-banner>
-      <header class="ds-base--inverse ds-u-padding-y--3">
-        <div class="ds-l-container">
-          <h1 class="ds-text-heading--2xl">${title}</h1>
-        </div>
-      </header>
-      <div class="ds-l-container ds-content ds-u-padding-y--4">
-        ${mainContent}
-      </div>
-      <script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/web-components.js"></script>
-    </body>
-  </html>`;
-}
-
 function writeCdnIndex() {
   const theme = 'core';
+  const system = themes[theme].packageName;
+  const version = packageVersions[system as keyof typeof packageVersions][0];
 
   const packageSections = Object.keys(themes).map((theme) => {
     const { packageName } = themes[theme as keyof typeof themes];
@@ -65,6 +38,8 @@ function writeCdnIndex() {
   });
 
   const htmlDoc = renderPageHtml(
+    system,
+    version,
     theme,
     'CDN all package versions index',
     `
@@ -97,6 +72,8 @@ function writeThemeIndex(theme: keyof typeof themes) {
     `<link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/index.css" />`,
     `<link rel="stylesheet" href="https://design.cms.gov/cdn/${system}/${version}/css/${theme}-theme.css" />`,
   ]);
+  const fontFaceExample = renderFontFaceExample(system, version, distPath);
+  const fontPreloadExample = renderFontPreloadExample(system, version, distPath);
 
   const webComponentsAllExample = codeBlock([
     `<script src="https://design.cms.gov/cdn/${system}/${version}/web-components/bundle/all.js"></script>`,
@@ -121,6 +98,8 @@ function writeThemeIndex(theme: keyof typeof themes) {
   ]);
 
   const htmlDoc = renderPageHtml(
+    system,
+    version,
     theme,
     'CDN package resource index',
     `
@@ -140,6 +119,21 @@ function writeThemeIndex(theme: keyof typeof themes) {
     <h2>How to load the CSS</h2>
     <p>Place the following HTML in your <strong>head</strong> tag:</p>
     ${cssExample}
+    <h2>How to load the fonts</h2>
+    <p class="ds-u-measure--wide">
+      The fonts load automatically when you include the CSS above — no extra setup
+      needed. If you use your own stylesheet and only want our font files, add these
+      <code>@font-face</code> declarations, which point at the fonts hosted on this CDN:
+    </p>
+    ${fontFaceExample}
+    <h3>Optional: preload for faster text rendering</h3>
+    <p class="ds-u-measure--wide">
+      Preload only the specific font faces you need.
+      <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload">Learn more about preloading at MDN</a>.
+      Every font preload must also include <code>crossorigin</code>, or the
+      browser downloads the file twice. For example:
+    </p>
+    ${fontPreloadExample}
     <h2>How to load the JavaScript components</h2>
     <h3>Web components</h3>
     <p>To import all web components, place the following code at the end of your <strong>body</strong> tag:</p>

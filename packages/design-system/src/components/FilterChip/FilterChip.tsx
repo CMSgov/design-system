@@ -28,7 +28,10 @@ export interface FilterChipProps {
    */
   onDelete: () => any;
   /**
-   *  Use alternate thinner close icon in place of standard.
+   * Uses the thin close icon instead of the standard icon.
+   *
+   * @deprecated Set useAlternateIcon={true} to use the thin icon until v19.
+   * In v19, the thin icon will become the default and this prop will be removed.
    */
   useAlternateIcon?: boolean;
   /**

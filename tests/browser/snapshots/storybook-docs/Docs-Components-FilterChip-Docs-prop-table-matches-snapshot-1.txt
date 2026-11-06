@@ -1,5 +1,8 @@
 [
   [
+    "Deprecated: Set useAlternateIcon={true} to use the thin icon until v19. In v19, the thin icon will become the default and this prop will be removed."
+  ],
+  [
     "ariaClearLabel",
     "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
     "Remove"
@@ -31,7 +34,7 @@
   ],
   [
     "useAlternateIcon",
-    "Use alternate thinner close icon in place of standard.\nboolean",
+    "Uses the thin close icon instead of the standard icon.\nboolean\nDeprecated: Set useAlternateIcon={true} to use the thin icon until v19. In v19, the thin icon will become the default and this prop will be removed.",
     "-"
   ]
 ]

@@ -37,6 +37,7 @@ accessibility.
 - The header includes the [USA-banner](/components/usa-banner/?theme=healthcare) component. [Read more about testing USA Banner’s accessibility](/components/usa-banner/#accessibility-testing).
 - The header includes the [Healthcare.gov logo](/components/logos/healthcare-logo/?theme=healthcare). [Read more about testing the logo’s
 accessibility](/components/logos/healthcare-logo/?theme=healthcare).
+- The menu closes when the user selects or touches anywhere outside it.
 
 ### Accessibility testing
 
@@ -57,6 +58,9 @@ When navigating with a keyboard:
 - Use the `Tab` key to move forward and `Shift` + `Tab` to move backward
 through interactive elements.
 - Confirm that focus is clearly visible on each interactive element.
+- With the menu open, press `Escape`. Confirm the menu closes and focus returns to the “Menu” button.
+- With the menu open, press `Tab` past the last menu link, or `Shift` + `Tab` before the “Menu”
+button. Confirm the menu closes and focus moves to the next element.
 
 ## Code
 

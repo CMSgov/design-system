@@ -48,11 +48,21 @@ const storyUseAxeLegacyModeList = [
   'web-components-ds-drawer--default',
 ];
 
+// We're specifically skipping these on dark stories. We know that the inline error on dark styles do not pass a11y color contrast.
+// However, we're deprecating dark mode support for the Medicare theme generally.
+const onDarkSkipList = [
+  'components-dropdown--inverse-option',
+  'components-inlineerror--inverse',
+  'components-multiinputdatefield--inverted',
+  'web-components-ds-inline-error--inversed',
+];
+
 const isSmokeTest = Boolean(process.env.SMOKE && JSON.parse(process.env.SMOKE));
 const a11yTestProjects = ['chromium', 'Mobile Chrome'];
 
 const stories = Object.values(storiesObject).filter((story) => story.name !== 'Docs');
 const themeKeys = Object.keys(themes).filter((key) => !themes[key].incomplete);
+const smokeThemes = ['core', 'medicare'];
 
 stories.forEach((story) => {
   if (storySkipList.includes(story.id)) return;
@@ -69,8 +79,8 @@ stories.forEach((story) => {
       // Don't capture theme-specific components outside their themes, all themes get core components
       if (storyNotInTheme && storyNotInCore) return;
 
-      // During smoke tests, only take screenshots in core of core components
-      if (isSmokeTest && (theme !== 'core' || storyNotInCore)) return;
+      // During smoke tests, only take screenshots in the specified smoke themes
+      if (isSmokeTest && !smokeThemes.includes(theme)) return;
 
       test.describe(`with ${theme} theme`, () => {
         let browserContext: BrowserContext;
@@ -99,9 +109,10 @@ stories.forEach((story) => {
             !a11yTestProjects.includes(workerInfo.project.name),
             "Don't run redundant a11y tests"
           );
+
           test.skip(
-            theme === 'medicare',
-            'Temporarily skipping medicare a11y tests until we can fix them'
+            theme === 'medicare' && onDarkSkipList.includes(story.id),
+            'Skipping a11y tests for Medicare theme on dark backgrounds'
           );
 
           switch (story.id) {

@@ -1,5 +1,5 @@
 import { Button, CloseIconThin, MenuIcon, TFunction } from '@cmsgov/design-system';
-import { SyntheticEvent } from 'react';
+import { RefObject, SyntheticEvent } from 'react';
 import classnames from 'classnames';
 import { sendHeaderEvent } from './analytics';
 import { Link } from './Header';
@@ -23,6 +23,10 @@ export interface ActionMenuProps {
    * user is logged out
    */
   links: Link[];
+  /**
+   * Ref to the menu toggle button, so focus can be returned to it
+   */
+  toggleRef?: RefObject<HTMLButtonElement | null>;
 }
 
 /**
@@ -48,6 +52,7 @@ const ActionMenu = function (props: ActionMenuProps) {
         'ds-u-display--inline-block ds-u-sm-display--none': !props.loggedIn,
       })}
       onClick={onClick}
+      inputRef={props.toggleRef}
       size="small"
     >
       {props.open ? (
