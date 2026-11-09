@@ -1,11 +1,12 @@
 /**
 ** Medicare renders each Choice inside a ChoiceList as a bordered block.
 ** The class is only applied by ChoiceList, so standalone Choice components,
-** MonthPicker and MultiInputDateField keep the shared treatment.
+** MonthPicker and MultiInputDateField do not receive these style rules.
 **
 ** Order of styles follows the core component: normal > checked > hover.
 */
 .ds-c-choice-list__item {
+  // We want the border to be applied without affecting the overall block size, so we calculate the delta for checked state.
   --choice-list-item-border-delta: calc(
     var(--choice-list-item__border-width--checked) - var(--choice-list-item__border-width)
   );
@@ -18,7 +19,6 @@
   max-width: var(--measure-wide);
   padding: var(--choice-list-item-padding);
 
-  // The block now owns the spacing and measure cap the wrapper used to carry.
   > .ds-c-choice-wrapper {
     margin-block-start: 0;
     max-width: none;
@@ -31,13 +31,10 @@
 
   /**
   ** Stretch the real `label` out to the edges of the block so the whole block
-  ** is a click target. This has to be the label element and not an overlay:
-  ** browsers skip label activation when the pointer ends a text selection, so
-  ** dragging to select label text does not toggle the choice. An absolutely
-  ** positioned overlay would capture that drag and toggle it.
+  ** is a click target.
   **
-  ** The negative inline-start margin pulls the label under the control and out
-  ** to the border; the matching padding puts the text back where it started.
+  ** The negative block-start and inline-start margin pulls the label to the top of the block and then to the left of the block,
+  ** up to the border; the matching padding puts the text back where it started.
   */
   .ds-c-choice + .ds-c-label {
     margin-block-start: calc(var(--choice-list-item-padding) * -1);
