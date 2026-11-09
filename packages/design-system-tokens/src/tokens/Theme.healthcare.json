@@ -409,21 +409,50 @@
         "$value": "0px",
         "$type": "dimension"
       },
+      "border-bottom-left-radius--expanded": {
+        "$value": "0px",
+        "$type": "dimension"
+      },
       "border-bottom-right-radius": {
         "$value": "0px",
         "$type": "dimension"
       },
-      "border-width": {
-        "$value": "{spacer.half}"
+      "border-bottom-right-radius--expanded": {
+        "$value": "0px",
+        "$type": "dimension"
       },
       "button": {
         "color": {
           "$value": "{theme.color.primary}"
+        },
+        "border-width": {
+          "$value": "0"
+        },
+        "border-color": {
+          "$value": "{color.transparent}"
+        },
+        "border-bottom-color--expanded": {
+          "$value": "{theme.color.transparent}"
         }
       },
       "content": {
         "background-color": {
           "$value": "{theme.color.transparent}"
+        },
+        "border-width": {
+          "$value": "{spacer.half}"
+        },
+        "border-width--unbordered": {
+          "$value": "0px"
+        },
+        "padding-right": {
+          "$value": "{spacer.3}"
+        },
+        "padding-bottom": {
+          "$value": "{spacer.1}"
+        },
+        "padding-left": {
+          "$value": "{spacer.4}"
         }
       },
       "background-color": {
