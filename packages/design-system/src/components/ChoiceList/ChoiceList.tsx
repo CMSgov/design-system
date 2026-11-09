@@ -11,6 +11,7 @@ import mergeRefs from '../utilities/mergeRefs';
 
 export type ChoiceListSize = 'small';
 export type ChoiceListType = 'checkbox' | 'radio';
+export type ChoiceListVariation = 'default' | 'tile';
 
 // Omit props that we override with values from the ChoiceList
 type OmitChoiceProp = 'inversed' | 'name' | 'onBlur' | 'onChange' | 'size' | 'type';
@@ -63,6 +64,13 @@ export interface BaseChoiceListProps {
    * Sets the type to render `checkbox` fields or `radio` buttons
    */
   type: ChoiceListType;
+  /**
+   * Sets the visual treatment applied to each choice.
+   * Set to `'tile'` to render each choice as a bordered tile, which gives the
+   * choice a larger click target. `'tile'` is currently only styled in the
+   * Medicare theme; other themes render the default appearance.
+   */
+  variation?: ChoiceListVariation;
 }
 
 export type ChoiceListProps = BaseChoiceListProps &
@@ -82,7 +90,7 @@ export type ChoiceListProps = BaseChoiceListProps &
  * [HTML input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
  */
 export const ChoiceList = (props: ChoiceListProps) => {
-  const { onBlur, onComponentBlur, choices, type } = props;
+  const { onBlur, onComponentBlur, choices, type, variation = 'default' } = props;
   const id = useId('choice-list--', props.id);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -128,7 +136,12 @@ export const ChoiceList = (props: ChoiceListProps) => {
       onChange: props.onChange,
       size: props.size,
       type,
-      className: classNames(choiceProps.className, 'ds-c-choice-list__item'),
+      // Fall back to `undefined` so choices outside the tile variation render
+      // without a `class` attribute, exactly as they did before it existed.
+      className:
+        classNames(choiceProps.className, {
+          'ds-c-choice-list__item': variation === 'tile',
+        }) || undefined,
       inputClassName: classNames(choiceProps.inputClassName, {
         'ds-c-choice--error': props.errorMessage,
       }),

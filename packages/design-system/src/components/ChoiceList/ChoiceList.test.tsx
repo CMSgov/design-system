@@ -56,8 +56,20 @@ describe('ChoiceList', () => {
       expect(choiceEl.type).toBe('checkbox');
     });
 
-    it('applies the item class to each Choice', () => {
+    it('does not apply the item class when variation is omitted', () => {
       const { container } = renderChoiceList({}, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(0);
+    });
+
+    it('does not apply the item class when variation is explicitly default', () => {
+      const { container } = renderChoiceList({ variation: 'default' }, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(0);
+    });
+
+    it('applies the item class to each Choice in the tile variation', () => {
+      const { container } = renderChoiceList({ variation: 'tile' }, 3);
 
       expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(3);
     });
@@ -65,6 +77,7 @@ describe('ChoiceList', () => {
     it('preserves a custom className on a Choice alongside the item class', () => {
       renderChoiceList({
         type: 'checkbox',
+        variation: 'tile',
         choices: generateChoices(1, { className: 'custom-class' }),
       });
       const choiceEl = screen.getByLabelText('Choice 1');
