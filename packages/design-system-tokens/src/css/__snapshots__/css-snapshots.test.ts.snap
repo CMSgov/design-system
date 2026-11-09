@@ -1,16 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
-"--accordion-button__color: var(--color-base);
+"--accordion-button__border-bottom-color--expanded: var(--color-gray-lightest);
+--accordion-button__border-color: transparent;
+--accordion-button__border-width: 0;
+--accordion-button__color: var(--color-base);
 --accordion-content__background-color: var(--color-white);
+--accordion-content__border-width--unbordered: 0px;
+--accordion-content__border-width: 1px;
+--accordion-content__padding-bottom: var(--spacer-1);
+--accordion-content__padding-left: var(--spacer-4);
+--accordion-content__padding-right: var(--spacer-3);
 --accordion__background-color--hover: var(--color-primary-lighter);
 --accordion__background-color: var(--color-primary-lightest);
+--accordion__border-bottom-left-radius--expanded: 0px;
 --accordion__border-bottom-left-radius: 0px;
+--accordion__border-bottom-right-radius--expanded: 0px;
 --accordion__border-bottom-right-radius: 0px;
 --accordion__border-color: var(--color-gray-lightest);
 --accordion__border-top-left-radius: 20px;
 --accordion__border-top-right-radius: 20px;
---accordion__border-width: 1px;
 --accordion__color: var(--color-base);
 --alert-bar__width: var(--spacer-1);
 --alert__background-color--error: var(--color-error-lightest);
@@ -509,16 +518,25 @@ exports[`CSS snapshots variables in cmsgov-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
-"--accordion-button__color: var(--color-base);
+"--accordion-button__border-bottom-color--expanded: var(--color-gray-lightest);
+--accordion-button__border-color: transparent;
+--accordion-button__border-width: 0;
+--accordion-button__color: var(--color-base);
 --accordion-content__background-color: var(--color-white);
+--accordion-content__border-width--unbordered: 0px;
+--accordion-content__border-width: var(--spacer-half);
+--accordion-content__padding-bottom: var(--spacer-1);
+--accordion-content__padding-left: var(--spacer-4);
+--accordion-content__padding-right: var(--spacer-3);
 --accordion__background-color--hover: var(--color-gray-lighter);
 --accordion__background-color: var(--color-gray-lightest);
+--accordion__border-bottom-left-radius--expanded: 0px;
 --accordion__border-bottom-left-radius: 0px;
+--accordion__border-bottom-right-radius--expanded: 0px;
 --accordion__border-bottom-right-radius: 0px;
 --accordion__border-color: var(--color-gray-lightest);
 --accordion__border-top-left-radius: 0px;
 --accordion__border-top-right-radius: 0px;
---accordion__border-width: var(--spacer-half);
 --accordion__color: var(--color-base);
 --alert-bar__width: var(--spacer-1);
 --alert__background-color--error: var(--color-error-lightest);
@@ -1017,16 +1035,25 @@ exports[`CSS snapshots variables in core-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
-"--accordion-button__color: var(--color-primary);
+"--accordion-button__border-bottom-color--expanded: var(--color-transparent);
+--accordion-button__border-color: transparent;
+--accordion-button__border-width: 0;
+--accordion-button__color: var(--color-primary);
 --accordion-content__background-color: var(--color-transparent);
+--accordion-content__border-width--unbordered: 0px;
+--accordion-content__border-width: var(--spacer-half);
+--accordion-content__padding-bottom: var(--spacer-1);
+--accordion-content__padding-left: var(--spacer-4);
+--accordion-content__padding-right: var(--spacer-3);
 --accordion__background-color--hover: var(--color-transparent);
 --accordion__background-color: var(--color-transparent);
+--accordion__border-bottom-left-radius--expanded: 0px;
 --accordion__border-bottom-left-radius: 0px;
+--accordion__border-bottom-right-radius--expanded: 0px;
 --accordion__border-bottom-right-radius: 0px;
 --accordion__border-color: var(--color-transparent);
 --accordion__border-top-left-radius: 0px;
 --accordion__border-top-right-radius: 0px;
---accordion__border-width: var(--spacer-half);
 --accordion__color: var(--color-base);
 --alert-bar__width: var(--spacer-1);
 --alert__background-color--error: var(--color-error-lightest);
@@ -1524,17 +1551,29 @@ exports[`CSS snapshots variables in healthcare-theme.css match snapshot 1`] = `
 `;
 
 exports[`CSS snapshots variables in medicare-theme.css match snapshot 1`] = `
-"--accordion-button__color: var(--color-base);
+"--accordion-button__border-bottom-color--expanded: var(--color-transparent);
+--accordion-button__border-color: var(--color-primary-light);
+--accordion-button__border-width: 1px;
+--accordion-button__color: var(--color-black);
+--accordion-button__heading-font-size: var(--font-size-xl);
+--accordion-button__heading-letter-spacing: var(--font-letter-spacing-sm);
+--accordion-button__heading-line-height: var(--font-line-height-heading);
 --accordion-content__background-color: var(--color-white);
---accordion__background-color--hover: var(--color-gray-lighter);
---accordion__background-color: var(--color-gray-lightest);
---accordion__border-bottom-left-radius: 0px;
---accordion__border-bottom-right-radius: 0px;
---accordion__border-color: var(--color-gray-lightest);
---accordion__border-top-left-radius: 0px;
---accordion__border-top-right-radius: 0px;
---accordion__border-width: var(--spacer-half);
---accordion__color: var(--color-base);
+--accordion-content__border-width--unbordered: 1px;
+--accordion-content__border-width: 1px;
+--accordion-content__padding-bottom: var(--spacer-2);
+--accordion-content__padding-left: var(--spacer-2);
+--accordion-content__padding-right: var(--spacer-2);
+--accordion__background-color--hover: var(--color-primary-light);
+--accordion__background-color: var(--color-primary-lightest);
+--accordion__border-bottom-left-radius--expanded: 0px;
+--accordion__border-bottom-left-radius: var(--radius-xl);
+--accordion__border-bottom-right-radius--expanded: 0px;
+--accordion__border-bottom-right-radius: var(--radius-xl);
+--accordion__border-color: var(--color-primary-light);
+--accordion__border-top-left-radius: var(--radius-xl);
+--accordion__border-top-right-radius: var(--radius-xl);
+--accordion__color: var(--color-black);
 --alert-bar__width: var(--spacer-1);
 --alert__background-color--error: var(--color-error-lightest);
 --alert__background-color--lightweight: var(--color-white);
