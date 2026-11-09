@@ -382,6 +382,15 @@
 --choice__background-color--disabled--inverse: #e9ecf126;
 --choice-wrapper__gap: 1rem;
 --choice-wrapper__gap--small: 0.75rem;
+--choice-list-item__background-color: var(--color-white);
+--choice-list-item__background-color--hover: #e8f0ef;
+--choice-list-item__border-color: var(--color-gray-light);
+--choice-list-item__border-color--checked: var(--color-primary);
+--choice-list-item__border-radius: var(--radius-large);
+--choice-list-item__border-width: 1px;
+--choice-list-item__border-width--checked: 2px;
+--choice-list-item__gap: var(--spacer-2);
+--choice-list-item__padding: var(--spacer-2);
 --day-picker-button__background-color--hover: var(--color-primary-lightest);
 --dialog__background-color: var(--color-background);
 --dialog-overlay__background-color: var(--color-transparent-black-alpha50);

@@ -32,6 +32,9 @@
   /**
   ** Stretch the real `label` out to the edges of the block so the whole block
   ** is a click target.
+  ** 
+  ** Important heads up: any changes to markup (meaning the label is no longer the immediate next sibling of the input)
+  ** will break this styling.
   **
   ** The negative block-start and inline-start margin pulls the label to the top of the block and then to the left of the block,
   ** up to the border; the matching padding puts the text back where it started.
