@@ -5,7 +5,7 @@
 **
 ** Order of styles follows the core component: normal > checked > hover.
 */
-.ds-c-choice-list__item {
+.ds-c-choice-list__tiled-item {
   // We want the border to be applied without affecting the overall block size, so we calculate the delta for checked state.
   --choice-list-item-border-delta: calc(
     var(--choice-list-item__border-width--checked) - var(--choice-list-item__border-width)

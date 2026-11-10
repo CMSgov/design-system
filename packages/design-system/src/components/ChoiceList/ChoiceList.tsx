@@ -140,7 +140,7 @@ export const ChoiceList = (props: ChoiceListProps) => {
       // without a `class` attribute, exactly as they did before it existed.
       className:
         classNames(choiceProps.className, {
-          'ds-c-choice-list__item': variation === 'tile',
+          'ds-c-choice-list__tiled-item': variation === 'tile',
         }) || undefined,
       inputClassName: classNames(choiceProps.inputClassName, {
         'ds-c-choice--error': props.errorMessage,

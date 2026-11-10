@@ -59,19 +59,19 @@ describe('ChoiceList', () => {
     it('does not apply the item class when variation is omitted', () => {
       const { container } = renderChoiceList({}, 3);
 
-      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(0);
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
     });
 
     it('does not apply the item class when variation is explicitly default', () => {
       const { container } = renderChoiceList({ variation: 'default' }, 3);
 
-      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(0);
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
     });
 
     it('applies the item class to each Choice in the tile variation', () => {
       const { container } = renderChoiceList({ variation: 'tile' }, 3);
 
-      expect(container.querySelectorAll('.ds-c-choice-list__item')).toHaveLength(3);
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(3);
     });
 
     it('preserves a custom className on a Choice alongside the item class', () => {
@@ -82,7 +82,7 @@ describe('ChoiceList', () => {
       });
       const choiceEl = screen.getByLabelText('Choice 1');
 
-      expect(choiceEl.closest('.ds-c-choice-list__item')).toHaveClass('custom-class');
+      expect(choiceEl.closest('.ds-c-choice-list__tiled-item')).toHaveClass('custom-class');
     });
 
     it('is a checkbox', () => {
