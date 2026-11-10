@@ -85,6 +85,20 @@ describe('ChoiceList', () => {
       expect(choiceEl.closest('.ds-c-choice-list__tiled-item')).toHaveClass('custom-class');
     });
 
+    // This test is to catch any changes to markup that could break our MGov specific selector
+    it('has a choice that is a sibling of a label', () => {
+      const { container } = renderChoiceList({
+        type: 'checkbox',
+        variation: 'tile',
+        choices: generateChoices(1),
+      });
+      // Querying by class name instead of label because we want to make sure the DOM order matches the selector
+      const choiceEl = container.querySelector('.ds-c-choice');
+      const labelEl = choiceEl?.nextElementSibling;
+
+      expect(labelEl?.tagName).toBe('LABEL');
+    });
+
     it('is a checkbox', () => {
       renderChoiceList({
         choices: generateChoices(1),
