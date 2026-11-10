@@ -85,6 +85,10 @@
     border-width: var(--choice-list-item__border-width--checked);
   }
 
+  &:has(.ds-c-choice:disabled) {
+    border: var(--choice-list-item__border-width) solid var(--choice-list-item__border-color) !important;
+  }
+
   // Hover changes the background and checked changes the border, so the two
   // compose without a combined state. Disabled choices get neither.
   &:has(.ds-c-choice:not(:disabled)):hover {
