@@ -30,7 +30,7 @@ export interface VerticalNavItemProps {
   defaultCollapsed?: boolean;
   /**
    * Called when the link is clicked, with the following arguments:
-   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object),
    * `id`, `url`.
    * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */

@@ -45,7 +45,6 @@ export const ViewDialog: Story = {
     return (
       <IdleTimeoutDialog
         continueSessionText="Continue Session"
-        isOpen
         heading="Are you still there?"
         endSessionButtonText="Logout"
         endSessionUrl="#"
@@ -53,6 +52,7 @@ export const ViewDialog: Story = {
         onClose={action('onClose')}
         onSessionContinue={action('onSessionContinue')}
         onSessionForcedEnd={action('onSessionForcedEnd')}
+        isOpen
         showSessionEndButton
       />
     );

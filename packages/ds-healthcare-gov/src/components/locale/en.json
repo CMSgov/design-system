@@ -10,7 +10,6 @@
   },
   "header": {
     "close": "Close",
-    "closeMenu": "Close menu",
     "deBrokerNameFallback": "the enrollment partner",
     "deConsumerMessage": "Be sure to finish your application before you return to {{brokerName}}'s website.",
     "español": "Español",
@@ -20,7 +19,6 @@
     "menu": "Menu",
     "myApplicationsAndCoverage": "My applications & coverage",
     "myProfile": "My profile",
-    "openMenu": "Open menu",
     "skipNav": "Skip to main content"
   }
 }

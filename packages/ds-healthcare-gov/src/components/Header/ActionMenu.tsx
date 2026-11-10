@@ -47,7 +47,6 @@ const ActionMenu = function (props: ActionMenuProps) {
     <Button
       aria-controls={menuId}
       aria-expanded={!!props.open}
-      aria-label={props.open ? props.t('header.closeMenu') : props.t('header.openMenu')}
       className={classnames('hc-c-action-menu-button', 'ds-u-sm-margin-left--2', {
         'ds-u-display--inline-block ds-u-sm-display--none': !props.loggedIn,
       })}
