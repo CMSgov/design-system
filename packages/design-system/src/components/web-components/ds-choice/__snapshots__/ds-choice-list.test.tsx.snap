@@ -21,9 +21,7 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           id="choice-list--11__error"
         />
       </div>
-      <div
-        class="ds-c-choice-list__item"
-      >
+      <div>
         <div
           class="ds-c-choice-wrapper"
         >
@@ -42,9 +40,7 @@ exports[`ChoiceList accepts HTML as children 1`] = `
           </label>
         </div>
       </div>
-      <div
-        class="ds-c-choice-list__item"
-      >
+      <div>
         <div
           class="ds-c-choice-wrapper"
         >
@@ -126,9 +122,7 @@ exports[`ChoiceList is a radio button group 1`] = `
           Hey, you have to pick an answer
         </p>
       </div>
-      <div
-        class="ds-c-choice-list__item"
-      >
+      <div>
         <div
           class="ds-c-choice-wrapper"
         >
@@ -148,9 +142,7 @@ exports[`ChoiceList is a radio button group 1`] = `
           </label>
         </div>
       </div>
-      <div
-        class="ds-c-choice-list__item"
-      >
+      <div>
         <div
           class="ds-c-choice-wrapper"
         >
