@@ -1,13 +1,12 @@
-import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const extensionGlob = '*.stories.@(js|jsx|ts|tsx)';
 
 const config: StorybookConfig = {
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-    getAbsolutePath('@storybook/addon-docs'),
+    '@storybook/addon-links',
+    '@storybook/addon-webpack5-compiler-babel',
+    '@storybook/addon-docs',
   ],
   previewHead: (head) => `
     ${head}
@@ -35,14 +34,17 @@ const config: StorybookConfig = {
     },
   },
   framework: {
-    name: getAbsolutePath('@storybook/react-webpack5'),
+    name: '@storybook/react-webpack5',
     options: {},
+  },
+  core: {
+    disableWhatsNewNotifications: true,
+  },
+  features: {
+    sidebarOnboardingChecklist: false,
+    menuOnboardingChecklist: false,
   },
   docs: {},
 };
 
 export default config;
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}

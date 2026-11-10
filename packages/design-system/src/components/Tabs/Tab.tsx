@@ -22,14 +22,14 @@ export interface TabProps {
   href?: string;
   /**
    * Called when the tab is clicked, with the following arguments:
-   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object),
    * `panelId`, `id`, `href`
    */
   onClick?: (evt: React.MouseEvent, panelId: string, id: string, href: string) => any;
   /**
    * Called when the tab is selected and a keydown event is triggered.
    * Called with the following arguments:
-   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object),
    * `panelId`, `id`, `href`
    */
   onKeyDown?: (evt: React.KeyboardEvent, panelId: string, id: string, href: string) => any;
