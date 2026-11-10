@@ -41,7 +41,7 @@
     "gatsby-remark-autolink-headers": "^6.16.0",
     "gatsby-source-filesystem": "^5.16.0",
     "lodash.sortby": "^4.7.0",
-    "prettier": "^2.6.2",
+    "prettier": "^3.9.10",
     "prismjs": "^1.11.0",
     "react-use-flexsearch": "^0.1.1",
     "remark-gfm": "3.0.1",
