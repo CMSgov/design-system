@@ -86,7 +86,7 @@
   }
 
   &:has(.ds-c-choice:disabled) {
-    border: var(--choice-list-item__border-width) solid var(--choice-list-item__border-color) !important;
+    border-color: var(--choice-list-item__border-color);
   }
 
   // Hover changes the background and checked changes the border, so the two
