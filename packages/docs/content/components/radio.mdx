@@ -77,6 +77,14 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 
 </ThemeContent>
 
+<ThemeContent onlyThemes={['medicare]}>
+
+  ### Checked children and the expose within pattern
+  
+    The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. The new Medicare.gov theme disallows using `checkedChildren` by design. 
+
+</ThemeContent>
+
 ## Accessibility
 The radio button component handles rendering labels, and if you’re using ChoiceList for a set of controls, will also wrap them in `<fieldset>` to maintain accessibility, and `<legend>` to provide context.
 
