@@ -262,3 +262,10 @@ export const HTMLChoices: Story = {
     children: htmlChoices,
   },
 };
+
+export const Tile: Story = {
+  render: Template,
+  args: {
+    variation: 'tile',
+  },
+};

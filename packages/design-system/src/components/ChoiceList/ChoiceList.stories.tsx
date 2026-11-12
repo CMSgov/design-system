@@ -32,6 +32,11 @@ const meta: Meta<typeof ChoiceList> = {
       options: [undefined, 'small'],
       control: { type: 'radio' },
     },
+    variation: {
+      options: ['default', 'tile'],
+      control: { type: 'radio' },
+      table: { defaultValue: { summary: 'default' } },
+    },
   },
 };
 export default meta;
@@ -61,6 +66,25 @@ export const SmallOption: Story = {
     name: 'size-variants',
     type: 'radio',
     size: 'small',
+  },
+};
+
+export const TileRadio: Story = {
+  args: {
+    label: 'Choose an option.',
+    hint: 'This is some helpful hint text.',
+    name: 'tile-radio-choices',
+    type: 'radio',
+    variation: 'tile',
+  },
+};
+
+export const TileCheckbox: Story = {
+  args: {
+    label: 'Check some boxes.',
+    name: 'tile-checkbox-choices',
+    type: 'checkbox',
+    variation: 'tile',
   },
 };
 

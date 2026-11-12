@@ -1125,17 +1125,77 @@
       "color--disabled": {
         "$value": "{theme.color.muted}"
       },
-      "size--small": {
-        "$value": "20px",
+      "size": {
+        "$value": "24px",
         "$type": "dimension"
+      },
+      "size--small": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "size-checkbox": {
+        "height": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "10px",
+          "$type": "dimension"
+        }
+      },
+      "size-checkbox--small": {
+        "height": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "10px",
+          "$type": "dimension"
+        }
       },
       "size-radio": {
         "$value": "16px",
         "$type": "dimension"
       },
       "size-radio--small": {
-        "$value": "12px",
+        "$value": "16px",
         "$type": "dimension"
+      },
+      "stroke-checkbox": {
+        "top": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "right": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "bottom": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "left": {
+          "$value": "4px",
+          "$type": "dimension"
+        }
+      },
+      "stroke-checkbox--small": {
+        "top": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "right": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "bottom": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "left": {
+          "$value": "4px",
+          "$type": "dimension"
+        }
       },
       "label": {
         "color--disabled": {
@@ -1165,10 +1225,6 @@
       "border-color--disabled--inverse": {
         "$value": "{theme.color.gray-light}"
       },
-      "size": {
-        "$value": "24px",
-        "$type": "dimension"
-      },
       "background-color--disabled--inverse": {
         "$value": "#e9ecf126",
         "$type": "color"
@@ -1179,8 +1235,41 @@
           "$type": "dimension"
         },
         "gap--small": {
-          "$value": "0.75rem",
+          "$value": "1rem",
           "$type": "dimension"
+        }
+      }
+    },
+    "choice-list": {
+      "item": {
+        "background-color": {
+          "$value": "{theme.color.white}"
+        },
+        "background-color--hover": {
+          "$value": "{color.medicare-green.200}"
+        },
+        "border-color": {
+          "$value": "{theme.color.gray-light}"
+        },
+        "border-color--checked": {
+          "$value": "{theme.color.primary}"
+        },
+        "border-radius": {
+          "$value": "{radius.large}"
+        },
+        "border-width": {
+          "$value": "1px",
+          "$type": "dimension"
+        },
+        "border-width--checked": {
+          "$value": "2px",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{spacer.2}"
+        },
+        "padding": {
+          "$value": "{spacer.2}"
         }
       }
     },
