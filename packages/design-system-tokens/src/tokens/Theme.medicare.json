@@ -537,6 +537,20 @@
       "background-color--warn": {
         "$value": "{theme.color.warn-lightest}"
       },
+      "icon": {
+        "color--info": {
+          "$value": "{theme.color.secondary-dark}"
+        },
+        "color--error": {
+          "$value": "{theme.color.error}"
+        },
+        "color--warn": {
+          "$value": "{theme.color.focus-dark}"
+        },
+        "color--success": {
+          "$value": "{theme.color.success}"
+        }
+      },
       "icon-size": {
         "$value": "{font.size.50}"
       },

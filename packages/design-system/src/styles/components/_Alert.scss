@@ -53,6 +53,7 @@
 .ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
   font-size: var(--alert__icon-size);
+  color: var(--alert-icon__color--info, inherit);
 
   // Make height and width directly relative to the font size so the alert icon-size
   // variable can be used accurately in Figma too.
@@ -85,14 +86,26 @@
 .ds-c-alert--error {
   background-color: var(--alert__background-color--error);
   border-color: var(--alert__border-color--error);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--error, inherit);
+  }
 }
 
 .ds-c-alert--warn {
   background-color: var(--alert__background-color--warn);
   border-color: var(--alert__border-color--warn);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--warn, inherit);
+  }
 }
 
 .ds-c-alert--success {
   background-color: var(--alert__background-color--success);
   border-color: var(--alert__border-color--success);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--success, inherit);
+  }
 }

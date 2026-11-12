@@ -197,6 +197,10 @@
 --alert__background-color--error: var(--color-error-lightest);
 --alert__background-color--success: var(--color-success-lightest);
 --alert__background-color--warn: var(--color-warn-lightest);
+--alert-icon__color--info: var(--color-secondary-dark);
+--alert-icon__color--error: var(--color-error);
+--alert-icon__color--warn: var(--color-focus-dark);
+--alert-icon__color--success: var(--color-success);
 --alert__icon-size: 1.5rem;
 --alert__padding: var(--spacer-2);
 --alert-bar__width: var(--spacer-1);
