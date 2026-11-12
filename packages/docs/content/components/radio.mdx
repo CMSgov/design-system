@@ -29,7 +29,7 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 
 <ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
 
-  ### Radio button children
+  ### Radio children
     
   Radio buttons can have optional checked or unchecked children that are conditionally shown based on the state of the checkbox.
   
@@ -38,6 +38,14 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
     sourceFilePath="components/ChoiceList/Choice.tsx"
     storyId="components-choicelist--choice-children"
   />
+
+</ThemeContent>
+
+<ThemeContent onlyThemes={['medicare']}>
+
+  ### Checked children and the expose within pattern
+  
+  The `<Choice>` component includes a checkedChildren prop that can expose hidden text information or form elements, but it will be deprecated in a future release. The new Medicare.gov theme disallows using `checkedChildren` by design. 
 
 </ThemeContent>
 
@@ -77,11 +85,11 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 
 </ThemeContent>
 
-<ThemeContent onlyThemes={['medicare]}>
+<ThemeContent onlyThemes={['medicare']}>
 
   ### Checked children and the expose within pattern
-  
-    The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. The new Medicare.gov theme disallows using `checkedChildren` by design. 
+
+  The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements, but it will be deprecated in a future release. The new Medicare.gov theme disallows using `checkedChildren` by design.
 
 </ThemeContent>
 
