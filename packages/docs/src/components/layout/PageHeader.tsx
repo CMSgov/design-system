@@ -26,7 +26,8 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const targetTheme = status?.targetTheme;
   const targetThemeNote = status?.targetThemeNote;
 
-  const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
+  const figmaNodeId =
+    themeLinks?.figmaNodeId === null ? null : themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
