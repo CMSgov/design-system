@@ -2,6 +2,7 @@
 
 .ds-c-alert {
   background-color: var(--alert__background-color);
+  border: var(--alert__border-width, 0) solid var(--alert__border-left-color);
   border-inline-start: var(--alert-bar__width) solid var(--alert__border-left-color);
   color: var(--alert__font-color);
   display: flex;

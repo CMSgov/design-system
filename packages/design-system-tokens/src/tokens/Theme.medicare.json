@@ -522,6 +522,9 @@
       "border-color--warn": {
         "$value": "{theme.color.warn}"
       },
+      "border-width": {
+        "$value": "1px"
+      },
       "font-color": {
         "$value": "{theme.color.base}"
       },
@@ -559,7 +562,7 @@
       },
       "bar": {
         "width": {
-          "$value": "{spacer.1}"
+          "$value": "1px"
         }
       }
     },

@@ -192,6 +192,7 @@
 --alert__border-color--error: var(--color-error);
 --alert__border-color--success: var(--color-success);
 --alert__border-color--warn: var(--color-warn);
+--alert__border-width: 1px;
 --alert__font-color: var(--color-base);
 --alert__background-color: var(--color-info-lightest);
 --alert__background-color--error: var(--color-error-lightest);
@@ -203,7 +204,7 @@
 --alert-icon__color--success: var(--color-success);
 --alert__icon-size: 1.5rem;
 --alert__padding: var(--spacer-2);
---alert-bar__width: var(--spacer-1);
+--alert-bar__width: 1px;
 --badge__background-color--alert: var(--color-error);
 --badge__background-color--info: var(--color-primary);
 --badge__background-color--success: var(--color-success);
