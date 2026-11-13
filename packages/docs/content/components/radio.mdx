@@ -27,25 +27,13 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
   storyId="components-choicelist--default-radio"
 />
 
-<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
-
-  ### Radio children
-    
-  Radio buttons can have optional checked or unchecked children that are conditionally shown based on the state of the checkbox.
+### Checked children and the expose within pattern
   
-  <StorybookExample
-    componentName="choice"
-    sourceFilePath="components/ChoiceList/Choice.tsx"
-    storyId="components-choicelist--choice-children"
-  />
-
-</ThemeContent>
+The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements, but it will be deprecated in a future release.
 
 <ThemeContent onlyThemes={['medicare']}>
 
-  ### Checked children and the expose within pattern
-  
-  The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements, but it will be deprecated in a future release. The new Medicare.gov theme disallows using `checkedChildren` by design. 
+   The new Medicare.gov theme disallows using `checkedChildren` by design. 
 
 </ThemeContent>
 
@@ -72,27 +60,6 @@ A `ChoiceList` component can be used to render a [radio](/components/radio/) but
 
 **[View the "Forms" guidelines for additional guidance and best practices.](/patterns/Forms/forms/)**
 
-<ThemeContent onlyThemes={['core', 'healthcare', 'cmsgov']}>
-
-### Checked children and the expose within pattern
-
-  - The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements. This **expose within** pattern is especially useful if you need to collect data from follow up questions or give just-in-time feedback.
-  - Checked children can be exposed by checking the parent checkbox or radio button
-  - The `checkedChildren` prop should return one or more items wrapped in a `div` with the following className: `.ds-c-choice__checked-child`. This class sets the spacing and border color for the exposed elements.
-  - Add the className `.ds-c-choice__checked-child--inverse` to the `div` to show the inverse white border
-  - You may need to add the className `.ds-u-margin--0` to your child element(s) to avoid extra top margin
-  - If you opt for smaller radio buttons or checkboxes, add className `.ds-c-choice__checked-child--small` to your checked child container
-
-</ThemeContent>
-
-<ThemeContent onlyThemes={['medicare']}>
-
-  ### Checked children and the expose within pattern
-
-  The `<Choice>` component includes a `checkedChildren` prop that can expose hidden text information or form elements, but it will be deprecated in a future release. The new Medicare.gov theme disallows using `checkedChildren` by design.
-
-</ThemeContent>
-
 ## Accessibility
 The radio button component handles rendering labels, and if you’re using ChoiceList for a set of controls, will also wrap them in `<fieldset>` to maintain accessibility, and `<legend>` to provide context.
 
@@ -117,11 +84,6 @@ The radio button component handles rendering labels, and if you’re using Choic
 - There is a visible focus state.
 - The change in state is visible.
 
-If there are `checkedChildren` being used and...
-
-- ...short conditional content, such as an alert, is present, users can tab to any interactive elements within the conditional content.
-- ...lengthier conditional content is present, users should most likely be on the first legend or label element of the conditional content. They can then tab to any interactive elements within the conditional content.
-
 #### Screen reader testing
 
 **For desktop users**
@@ -132,11 +94,6 @@ If there are `checkedChildren` being used and...
 - The radio button element should be identified with a role of radio.
 - If hints or errors are present, they are read after the label.
 - When the radio button is selected, that state is read out
-
-If there are `checkedChildren` being used and...
-
-- ...short conditional content, such as an alert, is present, users will hear the child elements read out after the radio is selected because of the aria-live being used.
-- ...lengthier conditional content is present, users will not hear the child elements being read as they are displayed.
 
 **For mobile users**
 
