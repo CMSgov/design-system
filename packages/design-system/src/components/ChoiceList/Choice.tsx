@@ -30,10 +30,12 @@ export interface BaseChoiceProps {
    * Content to be shown when the choice is checked. See
    * [Checked children and the expose within pattern](https://design.cms.gov/components/checkbox/?theme=core#checked-children-and-the-expose-within-pattern)
    * for detailed instructions.
+   * @deprecated This option will be removed in a future release of the design system.
    */
   checkedChildren?: React.ReactNode;
   /**
    * Content to be shown when the choice is not checked
+   * @deprecated This option will be removed in a future release of the design system.
    */
   uncheckedChildren?: React.ReactNode;
   /**
@@ -66,6 +68,9 @@ export interface BaseChoiceProps {
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
+  /**
+   * Note: this prop has no effect in the Medicare theme.
+   */
   size?: ChoiceSize;
   /**
    * The `input` field's `name` attribute
