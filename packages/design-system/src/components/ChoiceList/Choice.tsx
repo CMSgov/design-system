@@ -117,6 +117,14 @@ const dsChoiceEmitter = new EvEmitter();
  */
 
 export const Choice = ({ _choiceChild = false, ...props }: ChoiceProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.checkedChildren || props.uncheckedChildren) {
+      console.warn(
+        `[Warning]: The 'checkedChildren' and 'uncheckedChildren' props are deprecated and will be removed in a future release of the design system.`
+      );
+    }
+  }
+
   const initialCheckedState = props.checked ?? props.defaultChecked;
   const [internalCheckedState, setChecked] = useState(initialCheckedState);
   const isControlled = props.checked !== undefined;
