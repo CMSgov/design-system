@@ -30,10 +30,12 @@ export interface BaseChoiceProps {
    * Content to be shown when the choice is checked. See
    * [Checked children and the expose within pattern](https://design.cms.gov/components/checkbox/?theme=core#checked-children-and-the-expose-within-pattern)
    * for detailed instructions.
+   * @deprecated This option will be removed in a future release of the design system.
    */
   checkedChildren?: React.ReactNode;
   /**
    * Content to be shown when the choice is not checked
+   * @deprecated This option will be removed in a future release of the design system.
    */
   uncheckedChildren?: React.ReactNode;
   /**
@@ -66,6 +68,9 @@ export interface BaseChoiceProps {
    * Applies the "inverse" UI theme
    */
   inversed?: boolean;
+  /**
+   * Note: this prop has no effect in the Medicare theme.
+   */
   size?: ChoiceSize;
   /**
    * The `input` field's `name` attribute
@@ -112,6 +117,14 @@ const dsChoiceEmitter = new EvEmitter();
  */
 
 export const Choice = ({ _choiceChild = false, ...props }: ChoiceProps) => {
+  if (process.env.NODE_ENV !== 'production') {
+    if (props.checkedChildren || props.uncheckedChildren) {
+      console.warn(
+        `[Warning]: The 'checkedChildren' and 'uncheckedChildren' props are deprecated and will be removed in a future release of the design system.`
+      );
+    }
+  }
+
   const initialCheckedState = props.checked ?? props.defaultChecked;
   const [internalCheckedState, setChecked] = useState(initialCheckedState);
   const isControlled = props.checked !== undefined;
