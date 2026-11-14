@@ -71,7 +71,7 @@ export const SmallOption: Story = {
 
 export const TileRadio: Story = {
   args: {
-    label: 'Choose an option.',
+    label: "Choose an option.  Make sure you're on the Medicare theme.",
     hint: 'This is some helpful hint text.',
     name: 'tile-radio-choices',
     type: 'radio',
@@ -81,7 +81,7 @@ export const TileRadio: Story = {
 
 export const TileCheckbox: Story = {
   args: {
-    label: 'Check some boxes.',
+    label: "Check some boxes.  Make sure you're on the Medicare theme.",
     name: 'tile-checkbox-choices',
     type: 'checkbox',
     variation: 'tile',

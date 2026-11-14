@@ -58,6 +58,7 @@ export interface BaseChoiceListProps {
   onChange?: (...args: any[]) => any;
   /**
    * Sets the size of the checkbox or radio button
+   * Note: this prop has no effect in the Medicare theme.
    */
   size?: ChoiceListSize;
   /**
