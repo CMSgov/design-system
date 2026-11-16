@@ -40,7 +40,10 @@
   &:focus {
     @include mixins.focus-styles;
 
-    border: var(--text-input__border-width--focused) solid var(--text-input__border-color--focused);
+    &:not(.ds-c-field--error) {
+      border: var(--text-input__border-width--focused) solid
+        var(--text-input__border-color--focused);
+    }
   }
 }
 
