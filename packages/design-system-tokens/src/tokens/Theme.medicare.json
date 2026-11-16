@@ -522,6 +522,9 @@
       "border-color--warn": {
         "$value": "{theme.color.warn}"
       },
+      "border-color--lightweight": {
+        "$value": "{theme.color.gray}"
+      },
       "border-width": {
         "$value": "1px"
       },

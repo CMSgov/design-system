@@ -192,6 +192,7 @@
 --alert__border-color--error: var(--color-error);
 --alert__border-color--success: var(--color-success);
 --alert__border-color--warn: var(--color-warn);
+--alert__border-color--lightweight: var(--color-gray);
 --alert__border-width: 1px;
 --alert__border-radius: var(--radius-large);
 --alert__font-color: var(--color-base);

@@ -26,6 +26,7 @@
 
   &.ds-c-alert--lightweight {
     background-color: var(--alert__background-color--lightweight);
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-left-color));
   }
 }
 
