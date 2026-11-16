@@ -188,14 +188,14 @@
 --accordion__background-color--hover: var(--color-primary-light);
 --accordion__border-color: var(--color-primary-light);
 --alert__background-color--lightweight: var(--color-white);
---alert__border-left-color: var(--color-info);
+--alert__border-left-color: var(--color-secondary-dark);
 --alert__border-color--error: var(--color-error);
 --alert__border-color--success: var(--color-success);
 --alert__border-color--warn: var(--color-warn);
 --alert__border-width: 1px;
 --alert__border-radius: var(--radius-xl);
 --alert__font-color: var(--color-base);
---alert__background-color: var(--color-info-lightest);
+--alert__background-color: var(--color-secondary-lightest);
 --alert__background-color--error: var(--color-error-lightest);
 --alert__background-color--success: var(--color-success-lightest);
 --alert__background-color--warn: var(--color-warn-lightest);

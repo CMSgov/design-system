@@ -511,7 +511,7 @@
         "$value": "{theme.color.white}"
       },
       "border-left-color": {
-        "$value": "{theme.color.info}"
+        "$value": "{theme.color.secondary-dark}"
       },
       "border-color--error": {
         "$value": "{theme.color.error}"
@@ -532,7 +532,7 @@
         "$value": "{theme.color.base}"
       },
       "background-color": {
-        "$value": "{theme.color.info-lightest}"
+        "$value": "{theme.color.secondary-lightest}"
       },
       "background-color--error": {
         "$value": "{theme.color.error-lightest}"
