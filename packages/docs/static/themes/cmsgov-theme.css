@@ -491,10 +491,12 @@
 --text-input__border-width: 2px;
 --text-input__border-width--disabled: 2px;
 --text-input__border-width--error: 3px;
+--text-input__border-width--focused: 2px;
 --text-input__border-color: var(--color-base);
 --text-input__border-color--disabled: var(--color-gray-light);
 --text-input__border-color--error: var(--color-error);
 --text-input__border-color--error--inverse: var(--color-error-light);
+--text-input__border-color--focused: var(--color-base);
 --text-input__border-color--inverse: var(--color-black);
 --text-input__border-radius: var(--radius-default);
 --text-input__color: var(--color-base);

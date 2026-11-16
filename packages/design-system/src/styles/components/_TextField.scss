@@ -39,6 +39,8 @@
 
   &:focus {
     @include mixins.focus-styles;
+
+    border: var(--text-input__border-width--focused) solid var(--text-input__border-color--focused);
   }
 }
 

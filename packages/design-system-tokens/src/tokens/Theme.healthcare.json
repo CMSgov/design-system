@@ -1552,6 +1552,10 @@
         "$value": "3px",
         "$type": "dimension"
       },
+      "border-width--focused": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
       "border-color": {
         "$value": "{theme.color.base}"
       },
@@ -1563,6 +1567,9 @@
       },
       "border-color--error--inverse": {
         "$value": "{theme.color.error-light}"
+      },
+      "border-color--focused": {
+        "$value": "{theme.color.base}"
       },
       "border-color--inverse": {
         "$value": "{theme.color.black}"
