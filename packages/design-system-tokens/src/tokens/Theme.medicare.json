@@ -525,6 +525,9 @@
       "border-width": {
         "$value": "1px"
       },
+      "border-radius": {
+        "$value": "{radius.xl}"
+      },
       "font-color": {
         "$value": "{theme.color.base}"
       },
