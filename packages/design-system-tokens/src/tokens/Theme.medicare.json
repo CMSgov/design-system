@@ -520,7 +520,7 @@
         "$value": "{theme.color.success}"
       },
       "border-color--warn": {
-        "$value": "{theme.color.warn}"
+        "$value": "{theme.color.warn-dark}"
       },
       "border-color--lightweight": {
         "$value": "{theme.color.gray}"
@@ -554,7 +554,7 @@
           "$value": "{theme.color.error}"
         },
         "color--warn": {
-          "$value": "{theme.color.focus-dark}"
+          "$value": "{theme.color.warn-dark}"
         },
         "color--success": {
           "$value": "{theme.color.success}"
