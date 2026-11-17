@@ -93,6 +93,10 @@
   .ds-c-alert__icon {
     color: var(--alert-icon__color--error, inherit);
   }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--error));
+  }
 }
 
 .ds-c-alert--warn {
@@ -102,6 +106,10 @@
   .ds-c-alert__icon {
     color: var(--alert-icon__color--warn, inherit);
   }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--warn));
+  }
 }
 
 .ds-c-alert--success {
@@ -110,5 +118,9 @@
 
   .ds-c-alert__icon {
     color: var(--alert-icon__color--success, inherit);
+  }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--success));
   }
 }
