@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import TextField from './TextField';
-import { Button } from '../Button';
 import { unmaskValue } from './maskHelpers';
 import { PHONE_MASK, SSN_MASK, ZIP_MASK, CURRENCY_MASK } from './useLabelMask';
 import { action } from 'storybook/actions';
@@ -208,25 +207,6 @@ export const LabelMaskedCurrency: Story = {
     hint: 'This should be a dollar amount.',
     labelMask: 'CURRENCY_MASK' as any,
     numeric: true,
-  },
-  argTypes: {
-    mask: disabledArg,
-  },
-};
-
-export const TrailingButton: Story = {
-  ...ControlledTemplate,
-  args: {
-    name: 'labelMask-currency',
-    label: 'Enter your estimated yearly income.',
-    hint: 'This should be a dollar amount.',
-    labelMask: 'CURRENCY_MASK' as any,
-    numeric: true,
-    trailingButton: (
-      <Button variation="solid" type="button">
-        Click Here
-      </Button>
-    ),
   },
   argTypes: {
     mask: disabledArg,

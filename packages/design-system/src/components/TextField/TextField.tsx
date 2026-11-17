@@ -1,5 +1,4 @@
 import type * as React from 'react';
-import { isValidElement } from 'react';
 import LabelMask from './LabelMask';
 import Mask from './Mask';
 import TextInput from './TextInput';
@@ -87,10 +86,6 @@ interface BaseTextFieldProps {
    */
   size?: TextFieldSize;
   /**
-   * A trailing button to be displayed next to or below the input element. It will display below if the input is multiline.
-   */
-  trailingButton?: React.ReactElement<any>;
-  /**
    * HTML `input` [type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#<input>_types) attribute. If you are using `type=number` please use the numeric prop instead.
    * Defaults to `'text'`
    */
@@ -111,15 +106,7 @@ export type TextFieldProps = BaseTextFieldProps &
  * [refer to its full documentation page](https://design.cms.gov/components/text-field/).
  */
 export const TextField = (props: TextFieldProps) => {
-  const {
-    id: originalId,
-    mask,
-    labelMask,
-    className,
-    type = 'text',
-    trailingButton,
-    ...remainingProps
-  } = props;
+  const { id: originalId, mask, labelMask, className, type = 'text', ...remainingProps } = props;
   const id = useId('text-field--', originalId);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -132,16 +119,6 @@ export const TextField = (props: TextFieldProps) => {
     if (mask && labelMask) {
       console.warn(
         "The 'mask' and 'labelMask' fields are mutually exclusive. Please use either one or the other."
-      );
-    }
-
-    if (
-      props.disabled &&
-      isValidElement<{ disabled?: boolean }>(trailingButton) &&
-      !trailingButton.props.disabled
-    ) {
-      console.warn(
-        "A disabled 'TextField' was given a 'trailingButton' that is not disabled. Pass 'disabled' to the button as well so the field and its button stay in sync."
       );
     }
   }
@@ -171,20 +148,13 @@ export const TextField = (props: TextFieldProps) => {
     <div
       className={classNames(
         'ds-u-clearfix', // fixes issue where the label's margin is collapsed
-        className,
-        trailingButton && 'ds-c-text-field--with-trailing-button',
-        trailingButton &&
-          remainingProps.multiline &&
-          'ds-c-text-field--with-trailing-button-multiline'
+        className
       )}
     >
       <Label {...labelProps} fieldId={id} />
       {hintElement}
       {topError}
-      <div className="ds-c-field-group">
-        {input}
-        {trailingButton && <div className="ds-c-text-field--trailing-button">{trailingButton}</div>}
-      </div>
+      {input}
       {bottomError}
     </div>
   );
