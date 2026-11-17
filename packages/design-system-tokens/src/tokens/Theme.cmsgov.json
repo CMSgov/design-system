@@ -1343,6 +1343,10 @@
       },
       "color--inverse": {
         "$value": "{theme.color.error-light}"
+      },
+
+      "font-weight": {
+        "$value": "{theme.font.weight.normal}"
       }
     },
     "link": {

@@ -1418,6 +1418,9 @@
       },
       "color--inverse": {
         "$value": "{theme.color.error-lighter}"
+      },
+      "font-weight": {
+        "$value": "{theme.font.weight.bold}"
       }
     },
     "link": {

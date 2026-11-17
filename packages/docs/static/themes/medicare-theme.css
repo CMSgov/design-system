@@ -453,6 +453,7 @@
 --label__text-transform: none;
 --inline-error__color: var(--color-error);
 --inline-error__color--inverse: var(--color-error-lighter);
+--inline-error__font-weight: var(--font-weight-bold);
 --link__color: var(--color-primary);
 --link__color--active: var(--color-primary-darker);
 --link__color--hover: var(--color-primary-darker);

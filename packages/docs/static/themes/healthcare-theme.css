@@ -440,6 +440,7 @@
 --label__text-transform: inherit;
 --inline-error__color: var(--color-error);
 --inline-error__color--inverse: var(--color-error-lighter);
+--inline-error__font-weight: var(--font-weight-normal);
 --link__color: var(--color-primary);
 --link__color--active: var(--color-primary-darkest);
 --link__color--hover: var(--color-primary-darker);
