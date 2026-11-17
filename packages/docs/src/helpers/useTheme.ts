@@ -10,10 +10,10 @@ function isThemeName(value: string | null): value is string {
 }
 
 /**
- * Checks for current theme using query params and then localStorage
- * in that order. If neither is detected, set localStorage to 'core'
- * and return 'core. If either is found, set localStorage if needed
- * and return found value
+ * Returns the theme from the `theme` query param, then from localStorage
+ * after the first render, defaulting to 'core'. Values not in themes.json
+ * are ignored. The query param will always end up matching the returned
+ * theme.
  */
 function useTheme() {
   const queryParamValue = getQueryParamValue(QUERY_PARAM_NAME);
