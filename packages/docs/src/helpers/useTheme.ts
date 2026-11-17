@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { getQueryParamValue, setQueryParam } from './urlUtils';
+import themes from '../../../../themes.json';
 
 const STORAGE_TOKEN_NAME = 'cmsds_theme';
 const QUERY_PARAM_NAME = 'theme';
+
+function isThemeName(value: string | null): value is string {
+  return value !== null && Object.keys(themes).includes(value);
+}
 
 /**
  * Checks for current theme using query params and then localStorage
@@ -11,7 +16,8 @@ const QUERY_PARAM_NAME = 'theme';
  * and return found value
  */
 function useTheme() {
-  const themeQueryParam = getQueryParamValue(QUERY_PARAM_NAME);
+  const queryParamValue = getQueryParamValue(QUERY_PARAM_NAME);
+  const themeQueryParam = isThemeName(queryParamValue) ? queryParamValue : null;
   const [theme, setTheme] = useState(themeQueryParam ?? 'core');
 
   useEffect(() => {
@@ -24,8 +30,9 @@ function useTheme() {
       } else {
         // No query param found, so check localStorage for a theme before
         // falling back to core
-        if (STORAGE_TOKEN_NAME in localStorage) {
-          newTheme = localStorage.getItem(STORAGE_TOKEN_NAME);
+        const storedTheme = localStorage.getItem(STORAGE_TOKEN_NAME);
+        if (isThemeName(storedTheme)) {
+          newTheme = storedTheme;
         }
         // if no query param val was set, make sure to set it to the value in local storage or 'core' by default
         setQueryParam(QUERY_PARAM_NAME, newTheme);
