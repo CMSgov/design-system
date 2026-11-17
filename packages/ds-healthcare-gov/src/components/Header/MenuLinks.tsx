@@ -37,6 +37,7 @@ const MenuLinks = (props: MenuLinksProps) => (
         >
           <a
             href={link.href}
+            aria-label={link.ariaLabel}
             onClick={onClick}
             className={classnames('hc-c-menu__link', link.className)}
           >

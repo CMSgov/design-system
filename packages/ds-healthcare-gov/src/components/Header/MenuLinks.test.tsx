@@ -24,6 +24,22 @@ describe('MenuLinks', function () {
     expect(container).toMatchSnapshot();
   });
 
+  it('applies ariaLabel to a menu links', () => {
+    render(
+      <MenuLinks
+        links={[
+          { href: '#foo', ariaLabel: 'Foo label', label: 'Foo' },
+          { href: '#bar', ariaLabel: 'Bar label', label: 'Bar' },
+        ]}
+      />
+    );
+
+    const firstLink = screen.getByRole('link', { name: 'Foo label' });
+    expect(firstLink).toHaveAttribute('aria-label', 'Foo label');
+    const secondLink = screen.getByRole('link', { name: 'Bar label' });
+    expect(secondLink).toHaveAttribute('aria-label', 'Bar label');
+  });
+
   describe('analytics', () => {
     const mock = jest.fn();
 

@@ -10,6 +10,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
+        aria-label="Foo label"
         class="hc-c-menu__link"
         href="#foo"
       >
@@ -20,6 +21,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
+        aria-label="Bar label"
         class="hc-c-menu__link"
         href="#bar"
       >
@@ -30,6 +32,7 @@ exports[`MenuLinks renders list of links 1`] = `
       class="ds-u-margin--0 "
     >
       <a
+        aria-label="Baz label"
         class="hc-c-menu__link"
         href="#baz"
       >
