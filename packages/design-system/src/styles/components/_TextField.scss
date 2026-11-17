@@ -1,6 +1,18 @@
 @use '../mixins';
 @use '../layout' as *;
 
+@mixin stack-field-group {
+  flex-flow: column nowrap;
+
+  > .ds-c-label-mask,
+  > .ds-c-field,
+  > .ds-c-field-mask,
+  > .ds-c-text-field--trailing-button {
+    align-self: flex-start;
+    flex: 0 0 auto;
+  }
+}
+
 .ds-c-field {
   appearance: none;
   border: var(--text-input__border-width) solid var(--text-input__border-color);
@@ -75,5 +87,45 @@ Inverse theme
   &.ds-c-field--inverse {
     border: var(--text-input__border-width--error) solid
       var(--text-input__border-color--error--inverse);
+  }
+}
+
+// Trailing Button
+// ==============================
+.ds-c-field-group {
+  .ds-c-text-field--with-trailing-button & {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--spacer-1);
+    margin-block-start: var(--spacer-1);
+
+    > .ds-c-label-mask {
+      flex: 0 0 100%;
+    }
+
+    > .ds-c-field,
+    > .ds-c-field-mask {
+      flex: 1 1 0%;
+      min-width: 0;
+      margin: 0;
+    }
+
+    > .ds-c-text-field--trailing-button {
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: $media-width-sm) {
+      @include stack-field-group;
+    }
+
+    .ds-c-field {
+      margin: 0;
+    }
+  }
+
+  .ds-c-text-field--with-trailing-button-multiline & {
+    @include stack-field-group;
   }
 }
