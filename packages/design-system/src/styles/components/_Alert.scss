@@ -126,5 +126,5 @@
 }
 
 :where(.ds-c-alert) a {
-  color: var(--alert__link-color), var(--link__color);
+  color: var(--alert__link-color, var(--link__color));
 }
