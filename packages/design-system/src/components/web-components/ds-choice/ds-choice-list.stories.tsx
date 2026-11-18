@@ -132,7 +132,8 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
       control: 'text',
     },
     size: {
-      description: 'Sets the size of the checkbox or radio button.',
+      description:
+        'Sets the size of the checkbox or radio button. Note: in the Medicare theme this has no effect.',
       options: sizes,
       mapping: sizes,
       control: {
