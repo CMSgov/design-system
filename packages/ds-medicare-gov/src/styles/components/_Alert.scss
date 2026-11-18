@@ -1,0 +1,7 @@
+:where(.ds-c-alert) a {
+  color: var(--alert__link-color);
+
+  &:hover {
+    color: var(--alert__link-color);
+  }
+}
