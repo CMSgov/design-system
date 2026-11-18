@@ -546,6 +546,9 @@
       "background-color--warn": {
         "$value": "{theme.color.warn-lightest}"
       },
+      "link-color": {
+        "$value": "{theme.color.gray-darkest}"
+      },
       "icon": {
         "color--info": {
           "$value": "{theme.color.secondary-dark}"

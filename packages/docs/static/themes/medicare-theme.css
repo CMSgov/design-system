@@ -200,6 +200,7 @@
 --alert__background-color--error: var(--color-error-lightest);
 --alert__background-color--success: var(--color-success-lightest);
 --alert__background-color--warn: var(--color-warn-lightest);
+--alert__link-color: var(--color-gray-darkest);
 --alert-icon__color--info: var(--color-secondary-dark);
 --alert-icon__color--error: var(--color-error);
 --alert-icon__color--warn: var(--color-warn-dark);
