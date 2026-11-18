@@ -39,6 +39,11 @@
 
   &:focus {
     @include mixins.focus-styles;
+
+    &:not(.ds-c-field--error) {
+      border: var(--text-input__border-width--focused) solid
+        var(--text-input__border-color--focused);
+    }
   }
 }
 

@@ -95,6 +95,8 @@ const themeSettingDecorator: Decorator = (Story, context) => {
 
   if (theme === 'healthcare') {
     config(config.HEALTHCARE_DEFAULTS);
+  } else if (theme === 'medicare') {
+    config(config.MEDICARE_DEFAULTS);
   } else {
     config(config.DEFAULTS);
   }
