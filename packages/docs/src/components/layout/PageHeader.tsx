@@ -26,7 +26,9 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   const targetTheme = status?.targetTheme;
   const targetThemeNote = status?.targetThemeNote;
 
-  const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
+  // We handle null here specially so that we can hide links for components that do not have designs in Figma.
+  const figmaNodeId =
+    themeLinks?.figmaNodeId === null ? null : themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;

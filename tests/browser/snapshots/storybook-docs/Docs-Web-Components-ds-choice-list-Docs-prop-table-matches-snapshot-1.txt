@@ -86,7 +86,7 @@
   ],
   [
     "size",
-    "Sets the size of the checkbox or radio button.",
+    "Sets the size of the checkbox or radio button. Note: in the Medicare theme this has no effect.",
     "small"
   ],
   [
