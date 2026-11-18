@@ -1,7 +1,6 @@
-:where(.ds-c-alert) a {
+// Use gray for Medicare alert links by default and on hover because the
+// standard green clashes with some alert backgrounds.ert variant background colors.
+:where(.ds-c-alert) a,
+:where(.ds-c-alert) a:hover {
   color: var(--alert__link-color);
-
-  &:hover {
-    color: var(--alert__link-color);
-  }
 }
