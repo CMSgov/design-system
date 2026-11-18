@@ -11,7 +11,7 @@ const figmaDocumentIdAndLibraryName = {
   cmsgov: 'p2z3UL1N4fP10z47F7am1v/CMS-Design-System-Library',
   core: 'OYkYP4pC9jwS7j2qafwmiv/CMS-Global-Library',
   healthcare: '4Z66yMTWr5rlEhYBvLx58j/HCgov-Design-System-Library',
-  medicare: 'gwpXhAmk5noyDiDEs9DXCq/Mgov-Design-System-Library',
+  medicare: 'TsQ4oZvT4UaS6Mh83d0ryK',
 };
 
 // creates links to Figma pages in specific libaries based on theme

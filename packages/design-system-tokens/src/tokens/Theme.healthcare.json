@@ -1097,6 +1097,26 @@
         "$value": "20px",
         "$type": "dimension"
       },
+      "size-checkbox": {
+        "height": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "10px",
+          "$type": "dimension"
+        }
+      },
+      "size-checkbox--small": {
+        "height": {
+          "$value": "3px",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "7px",
+          "$type": "dimension"
+        }
+      },
       "size-radio": {
         "$value": "22px",
         "$type": "dimension"
@@ -1104,6 +1124,42 @@
       "size-radio--small": {
         "$value": "12px",
         "$type": "dimension"
+      },
+      "stroke-checkbox": {
+        "top": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "right": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "bottom": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "left": {
+          "$value": "4px",
+          "$type": "dimension"
+        }
+      },
+      "stroke-checkbox--small": {
+        "top": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "right": {
+          "$value": "0px",
+          "$type": "dimension"
+        },
+        "bottom": {
+          "$value": "3px",
+          "$type": "dimension"
+        },
+        "left": {
+          "$value": "3px",
+          "$type": "dimension"
+        }
       },
       "label": {
         "color--disabled": {

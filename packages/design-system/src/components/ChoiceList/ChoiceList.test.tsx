@@ -56,6 +56,49 @@ describe('ChoiceList', () => {
       expect(choiceEl.type).toBe('checkbox');
     });
 
+    it('does not apply the item class when variation is omitted', () => {
+      const { container } = renderChoiceList({}, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
+    });
+
+    it('does not apply the item class when variation is explicitly default', () => {
+      const { container } = renderChoiceList({ variation: 'default' }, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
+    });
+
+    it('applies the item class to each Choice in the tile variation', () => {
+      const { container } = renderChoiceList({ variation: 'tile' }, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(3);
+    });
+
+    it('preserves a custom className on a Choice alongside the item class', () => {
+      renderChoiceList({
+        type: 'checkbox',
+        variation: 'tile',
+        choices: generateChoices(1, { className: 'custom-class' }),
+      });
+      const choiceEl = screen.getByLabelText('Choice 1');
+
+      expect(choiceEl.closest('.ds-c-choice-list__tiled-item')).toHaveClass('custom-class');
+    });
+
+    // This test is to catch any changes to markup that could break our MGov specific selector
+    it('has a choice that is a sibling of a label', () => {
+      const { container } = renderChoiceList({
+        type: 'checkbox',
+        variation: 'tile',
+        choices: generateChoices(1),
+      });
+      // Querying by class name instead of label because we want to make sure the DOM order matches the selector
+      const choiceEl = container.querySelector('.ds-c-choice');
+      const labelEl = choiceEl?.nextElementSibling;
+
+      expect(labelEl?.tagName).toBe('LABEL');
+    });
+
     it('is a checkbox', () => {
       renderChoiceList({
         choices: generateChoices(1),

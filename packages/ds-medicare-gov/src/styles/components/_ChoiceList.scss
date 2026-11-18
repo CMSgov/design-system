@@ -1,0 +1,97 @@
+/**
+** Medicare renders each Choice inside a ChoiceList as a bordered block.
+** The class is only applied by ChoiceList, so standalone Choice components,
+** MonthPicker and MultiInputDateField do not receive these style rules.
+**
+** Order of styles follows the core component: normal > checked > hover.
+*/
+.ds-c-choice-list__tiled-item {
+  // We want the border to be applied without affecting the overall block size, so we calculate the delta for checked state.
+  --choice-list-item-border-delta: calc(
+    var(--choice-list-item__border-width--checked) - var(--choice-list-item__border-width)
+  );
+  --choice-list-item-padding: var(--choice-list-item__padding);
+
+  background-color: var(--choice-list-item__background-color);
+  border: var(--choice-list-item__border-width) solid var(--choice-list-item__border-color);
+  border-radius: var(--choice-list-item__border-radius);
+  margin-block-start: var(--choice-list-item__gap);
+  max-width: var(--measure-wide);
+  padding: var(--choice-list-item-padding);
+
+  > .ds-c-choice-wrapper {
+    margin-block-start: 0;
+    max-width: none;
+  }
+
+  // Keep the control painted above the stretched label below.
+  .ds-c-choice {
+    z-index: 1;
+  }
+
+  /**
+  ** Stretch the real `label` out to the edges of the block so the whole block
+  ** is a click target.
+  ** 
+  ** Important heads up: any changes to markup (meaning the label is no longer the immediate next sibling of the input)
+  ** will break this styling.
+  **
+  ** The negative block-start and inline-start margin pulls the label to the top of the block and then to the left of the block,
+  ** up to the border; the matching padding puts the text back where it started.
+  */
+  .ds-c-choice + .ds-c-label {
+    margin-block-start: calc(var(--choice-list-item-padding) * -1);
+    margin-inline: calc(
+        (var(--choice__size) + var(--choice-wrapper__gap) + var(--choice-list-item-padding)) * -1
+      )
+      calc(var(--choice-list-item-padding) * -1);
+    max-width: none;
+    padding-block-start: var(--choice-list-item-padding);
+    padding-inline: calc(
+        var(--choice__size) + var(--choice-wrapper__gap) + var(--choice-list-item-padding)
+      )
+      var(--choice-list-item-padding);
+  }
+
+  /**
+  ** With no hint beneath it, the label can claim the bottom padding as well.
+  ** Hint text keeps its current behavior: selectable, and not a click target.
+  **
+  ** The checked-child exclusion keeps the label from overhanging content
+  ** revealed by the expose within pattern, which would otherwise make the top
+  ** of that content toggle the choice. Expose within is slated for deprecation
+  ** and is not part of this design, so if the pattern is removed this guard can
+  ** go with it and the rule can apply to every hintless choice.
+  */
+  &:not(:has(.ds-c-choice__checked-child))
+    .ds-c-choice-wrapper:not(:has(.ds-c-hint))
+    .ds-c-choice
+    + .ds-c-label {
+    margin-block-end: calc(var(--choice-list-item-padding) * -1);
+    padding-block-end: var(--choice-list-item-padding);
+  }
+
+  /**
+  ** Checked swaps border width rather than painting an inset shadow, because
+  ** box shadows are dropped in forced-colors mode while border widths survive.
+  ** Padding absorbs the extra pixel so the block does not change size.
+  */
+  &:has(.ds-c-choice:checked) {
+    --choice-list-item-padding: calc(
+      var(--choice-list-item__padding) - var(--choice-list-item-border-delta)
+    );
+
+    border-color: var(--choice-list-item__border-color--checked);
+    border-width: var(--choice-list-item__border-width--checked);
+  }
+
+  &:has(.ds-c-choice:disabled) {
+    border-color: var(--choice-list-item__border-color);
+  }
+
+  // Hover changes the background and checked changes the border, so the two
+  // compose without a combined state. Disabled choices get neither.
+  &:has(.ds-c-choice:not(:disabled)):hover {
+    background-color: var(--choice-list-item__background-color--hover);
+  }
+}
