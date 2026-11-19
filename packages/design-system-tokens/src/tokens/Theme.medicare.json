@@ -511,7 +511,7 @@
         "$value": "{theme.color.white}"
       },
       "border-left-color": {
-        "$value": "{theme.color.info}"
+        "$value": "{theme.color.secondary-dark}"
       },
       "border-color--error": {
         "$value": "{theme.color.error}"
@@ -520,13 +520,22 @@
         "$value": "{theme.color.success}"
       },
       "border-color--warn": {
-        "$value": "{theme.color.warn}"
+        "$value": "{theme.color.warn-dark}"
+      },
+      "border-color--lightweight": {
+        "$value": "{theme.color.gray}"
+      },
+      "border-width": {
+        "$value": "1px"
+      },
+      "border-radius": {
+        "$value": "{radius.large}"
       },
       "font-color": {
         "$value": "{theme.color.base}"
       },
       "background-color": {
-        "$value": "{theme.color.info-lightest}"
+        "$value": "{theme.color.secondary-lightest}"
       },
       "background-color--error": {
         "$value": "{theme.color.error-lightest}"
@@ -537,6 +546,23 @@
       "background-color--warn": {
         "$value": "{theme.color.warn-lightest}"
       },
+      "link-color": {
+        "$value": "{theme.color.gray-darkest}"
+      },
+      "icon": {
+        "color--info": {
+          "$value": "{theme.color.secondary-dark}"
+        },
+        "color--error": {
+          "$value": "{theme.color.error}"
+        },
+        "color--warn": {
+          "$value": "{theme.color.warn-dark}"
+        },
+        "color--success": {
+          "$value": "{theme.color.success}"
+        }
+      },
       "icon-size": {
         "$value": "{font.size.50}"
       },
@@ -545,7 +571,7 @@
       },
       "bar": {
         "width": {
-          "$value": "{spacer.1}"
+          "$value": "1px"
         }
       }
     },
