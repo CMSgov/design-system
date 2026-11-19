@@ -115,6 +115,13 @@ export const DisabledRadio: Story = {
 };
 
 export const ChoiceChildren: Story = {
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
   args: {
     name: 'radio_choices',
     type: 'radio',
