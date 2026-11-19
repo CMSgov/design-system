@@ -81,17 +81,17 @@
   ],
   [
     "onBlur",
-    "Called anytime any choice is blurred\n(...args: any[]) => any",
+    "Called anytime any choice is blurred\n((...args: any[]) => any)",
     "-"
   ],
   [
     "onChange",
-    "(...args: any[]) => any",
+    "((...args: any[]) => any)",
     "-"
   ],
   [
     "onComponentBlur",
-    "Called when any choice is blurred and the focus does not land on one of the other choices inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
+    "Called when any choice is blurred and the focus does not land on one of the other choices inside this component (i.e., when the whole component loses focus)\n\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -101,12 +101,17 @@
   ],
   [
     "size",
-    "Sets the size of the checkbox or radio button\n\"small\"",
+    "Sets the size of the checkbox or radio button Note: this prop has no effect in the Medicare theme.\n\n\"small\"",
     "-"
   ],
   [
     "type*",
     "Sets the type to render checkbox fields or radio buttons\n\"checkbox\"\n\"radio\"",
     "-"
+  ],
+  [
+    "variation",
+    "Sets the visual treatment applied to each choice. Set to 'tile' to render each choice as a bordered tile, which gives the choice a larger click target. 'tile' is currently only styled in the Medicare theme; other themes render the default appearance.\n\n\"default\"\n\"tile\"",
+    "default"
   ]
 ]
