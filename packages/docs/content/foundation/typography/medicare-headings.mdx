@@ -94,10 +94,10 @@ they'll automatically adjust as you change the font size.
 | ----------------------- | ----------- | --------------- |
 | `.ds-text-heading--5xl` | 56px        | 96px            |
 | `.ds-text-heading--4xl` | 48px        | 72px            |
-| `.ds-text-heading--3xl` | 36px        | 56px            |
-| `.ds-text-heading--2xl` | 32px        | 48px            |
-| `.ds-text-heading--xl`  | 28px        | 36px            |
-| `.ds-text-heading--lg`  | 24px        | 24px            |
+| `.ds-text-heading--3xl` | 32px        | 48px            |
+| `.ds-text-heading--2xl` | 28px        | 36px            |
+| `.ds-text-heading--xl`  | 24px        | 24px            |
+| `.ds-text-heading--lg`  | 20px        | 20px            |
 | `.ds-text-heading--md`  | 20px        | 20px            |
 | `.ds-text-heading--sm`  | 16px        | 16px            |
 
@@ -159,18 +159,20 @@ breakpoint:
 | `xl`    | `--font-size-xl--mobile`  | `--font-size-xl`                  |
 | `lg`    | `--font-size-lg`          | `--font-size-lg`                  |
 | `md`    | `--font-size-base`        | `--font-size-base`                |
+| `sm`    | `--font-size-sm`          | `--font-size-sm`                  |
 
-The `lg` and `md` headings use a single size at every viewport width.
+The `lg`, `md`, and `sm` headings use a single size at every viewport width.
 
-Line height is applied through the following variables, which do not change across breakpoints:
+Line height is applied through the following variables:
 
-- `--font-line-height-heading-lg`, applied to `3xl` through `5xl` headings
-- `--font-line-height-heading`, applied to `md` through `2xl` headings
+- `--font-line-height-heading-lg`, applied to `4xl` and `5xl` headings, and to `3xl` headings below `768px`
+- `--font-line-height-heading`, applied to `md` through `2xl` headings, and to `3xl` headings at `768px` and wider
+- `--font-line-height-base`, applied to `sm` headings
 
 Medicare headings also apply letter spacing through the following variables:
 
-- `--font-letter-spacing-lg`, applied to `xl` through `5xl` headings
-- `--font-letter-spacing-md`, applied to `lg` and `md` headings
+- `--font-letter-spacing-md`, applied to `md` through `5xl` headings
+- `--font-letter-spacing-sm`, applied to `sm` headings
 
 ## Guidance
 

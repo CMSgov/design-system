@@ -2,7 +2,7 @@ import { HelpDrawer, CloseIconThin, HelpDrawerProps } from '@cmsgov/design-syste
 
 const MedicaregovHelpDrawer = function (props: HelpDrawerProps) {
   const {
-    closeButtonText = <CloseIconThin className="ds-u-font-size--lg" />,
+    closeButtonText = <CloseIconThin className="ds-u-font-size--md" />,
     closeButtonVariation = 'ghost',
   } = props;
 

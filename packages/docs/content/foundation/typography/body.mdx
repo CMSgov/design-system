@@ -108,9 +108,21 @@ Only used for footnotes, fine print, and legal jargon.
 
 The following CSS variables can be overridden to change the type sizes:
 
+<ThemeContent onlyThemes={['medicare']}>
+
+- `--font-size-xl`, used by `.ds-text-body--lg` in Medicare
+- `--font-size-md`, uses `--font-size-base`
+- `--font-size-sm`
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['medicare']}>
+
 - `--font-size-lg`
 - `--font-size-md`, uses `--font-size-base`
 - `--font-size-sm`
+
+</ThemeContent>
 
 ## Guidance
 
