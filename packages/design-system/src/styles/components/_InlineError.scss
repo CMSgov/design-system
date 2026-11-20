@@ -3,7 +3,7 @@
 .ds-c-inline-error {
   color: var(--inline-error__color);
   display: block;
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--inline-error__font-weight);
   margin-block: 0;
   max-width: var(--field-max-width);
 }

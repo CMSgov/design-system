@@ -50,6 +50,7 @@
     "./dist/preact-components/esm/web-components/**/*.js",
     "./dist/web-components/**/*.js",
     "./dist/{react,preact}-components/esm/index.js",
+    "./dist/{react,preact}-components/esm/config.js",
     "./dist/{react,preact}-components/esm/ThirdPartyExternalLink/*"
   ],
   "files": [

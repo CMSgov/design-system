@@ -2,7 +2,9 @@
 
 .ds-c-alert {
   background-color: var(--alert__background-color);
+  border: var(--alert__border-width, 0) solid var(--alert__border-left-color);
   border-inline-start: var(--alert-bar__width) solid var(--alert__border-left-color);
+  border-radius: var(--alert__border-radius, 0);
   color: var(--alert__font-color);
   display: flex;
   padding: var(--alert__padding);
@@ -24,6 +26,7 @@
 
   &.ds-c-alert--lightweight {
     background-color: var(--alert__background-color--lightweight);
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-left-color));
   }
 }
 
@@ -53,6 +56,7 @@
 .ds-c-alert__icon.ds-c-icon {
   flex-shrink: 0;
   font-size: var(--alert__icon-size);
+  color: var(--alert-icon__color--info, inherit);
 
   // Make height and width directly relative to the font size so the alert icon-size
   // variable can be used accurately in Figma too.
@@ -85,14 +89,38 @@
 .ds-c-alert--error {
   background-color: var(--alert__background-color--error);
   border-color: var(--alert__border-color--error);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--error, inherit);
+  }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--error));
+  }
 }
 
 .ds-c-alert--warn {
   background-color: var(--alert__background-color--warn);
   border-color: var(--alert__border-color--warn);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--warn, inherit);
+  }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--warn));
+  }
 }
 
 .ds-c-alert--success {
   background-color: var(--alert__background-color--success);
   border-color: var(--alert__border-color--success);
+
+  .ds-c-alert__icon {
+    color: var(--alert-icon__color--success, inherit);
+  }
+
+  &.ds-c-alert--lightweight {
+    border-color: var(--alert__border-color--lightweight, var(--alert__border-color--success));
+  }
 }
