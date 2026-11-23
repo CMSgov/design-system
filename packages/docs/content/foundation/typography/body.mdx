@@ -11,19 +11,10 @@ core:
 healthcare:
   figmaNodeId: 2076-51422
 medicare:
-  figmaNodeId: 4062-38373
+  figmaNodeId: 887-14615
 ---
 
-import { Alert } from '@cmsgov/design-system';
 import loremIpsumGenerator from '../../../src/helpers/loremIpsumGenerator';
-
-<Alert heading="Typography sizing updates!">
-  <p class="ds-c-alert__text">
-    We've updated typography sizing variables and class names to separate semantics from
-    presentation. Read about how{' '}
-    <a href="https://design.cms.gov/migration-guides/agnostic-typography-classes">you can update</a>.
-  </p>
-</Alert>
 
 <ThemeContent onlyThemes={['healthcare']}>
 
@@ -137,6 +128,8 @@ The following CSS variables can be overridden to change the type sizes:
 
 - Don't use a header that is smaller than the body font size
 - Don't have stray headers in the body of your page
+- Don't use any text smaller than 16px
+- Don't use all caps in any context. Note: this is a change from the legacy Medicare.gov theme, which used all caps for form labels.
 
 </ThemeContent>
 
@@ -175,16 +168,13 @@ Captions, disclaimers, footnotes and text that is there for legal reasons can us
 
 <ThemeContent onlyThemes={['medicare']}>
 
-- The default size for body content is 20px.
-- The Inter font is used for all text content.
-- The smallest paragraph text for legibility to the Medicare audience should not be smaller than 16 px (except for legal/caption text).
-- Uppercase font should not be used (exception for form elements).
-
 ### Body styles
+
+- The Inter font is used for all text content.
 
 There are 4 text styles that can be used.
 
-- Default style - Is the default text style for body content
+- Default style - Is the default text style for body content. It defaults to 20px.
 - Link style - Links use the Inter font and will always be Medicare Green 400 (#146a5d).
 - Text on dark backgrounds - Used for text on dark backgrounds.
 - Text links on dark backgrounds - Used for links on dark backgrounds.
