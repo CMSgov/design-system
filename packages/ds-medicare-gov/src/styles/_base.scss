@@ -226,3 +226,7 @@ svg {
 .ds-text-heading--sm {
   @include heading--sm;
 }
+
+.ds-text-body--lg {
+  font-size: var(--font-size-xl);
+}
