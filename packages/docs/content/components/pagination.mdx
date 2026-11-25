@@ -44,6 +44,14 @@ Paginated content is any content split into multiple pages determined by a speci
 - Do not use buttons for URL-based pagination. Because the URL is updated, the browser history stack updates and a link is the correct tag to use.
 - Consider page load, performance, and the user's scrolling preferences when determining how many items are displayed on each page.
 
+### Display & behavior
+
+Pagination shows a link for every page when there are 7 pages or fewer. When there are more than 7 pages, it replaces some of the in-between page links with an ellipsis (…). For example, with 8 pages, the links to pages 6 and 7 are replaced with an ellipsis.
+
+This happens automatically. You don't need to choose it.
+
+Previous and Next links help people move one page at a time.
+
 ## Accessibility
 The Pagination component has been tested against, and meets, WCAG 2.1 standards for text size, color contrast, and screenreader usage.
 
