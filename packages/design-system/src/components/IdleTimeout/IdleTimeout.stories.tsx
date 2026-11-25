@@ -30,11 +30,11 @@ type Story = StoryObj<typeof IdleTimeout>;
 
 export const Default: Story = {
   render: function Component(args) {
-    const [{ timeToTimeout, timeToWarning }] = useArgs();
+    const [{ timeToWarning }] = useArgs();
     return (
       <>
         <p>Idle Timeout modal will show after {timeToWarning} minutes of inactivity.</p>
-        <IdleTimeout timeToTimeout={timeToTimeout} timeToWarning={timeToWarning} {...args} />
+        <IdleTimeout {...args} />
       </>
     );
   },
@@ -52,6 +52,7 @@ export const ViewDialog: Story = {
         onClose={action('onClose')}
         onSessionContinue={action('onSessionContinue')}
         onSessionForcedEnd={action('onSessionForcedEnd')}
+        isOpen
         showSessionEndButton
       />
     );

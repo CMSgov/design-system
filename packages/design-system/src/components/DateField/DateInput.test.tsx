@@ -192,6 +192,38 @@ describe('DateInput', () => {
       expect(onComponentBlur).not.toHaveBeenCalled();
     });
 
+    it('does not call onComponentBlur when it is removed before the timeout fires', async () => {
+      jest.useFakeTimers();
+      const onComponentBlur = jest.fn();
+      const { user, rerender } = renderDateInput({ ...props, onComponentBlur });
+      const lastInput = screen.getByRole('textbox', { name: /year/i });
+      await user.click(lastInput);
+      await user.tab();
+
+      // The handler waits 20ms to see where focus landed, and reads the callback
+      // off the current props when it wakes up. A re-render inside that window
+      // can take the callback away before it runs.
+      rerender(<DateInput {...defaultProps} {...props} />);
+
+      expect(() => jest.runAllTimers()).not.toThrow();
+      expect(onComponentBlur).not.toHaveBeenCalled();
+    });
+
+    it('hands the callbacks no date when there is no dateFormatter', async () => {
+      jest.useFakeTimers();
+      const { user } = renderDateInput(props);
+      const monthInput = screen.getByRole('textbox', { name: /month/i });
+      await user.type(monthInput, '1');
+      await user.tab();
+
+      // `dateFormatter` is what turns the three inputs into a formatted date,
+      // and it is optional, so a caller wiring up `DateInput` directly gets
+      // `undefined` as the second argument rather than a date.
+      expect(props.onChange).toHaveBeenCalledTimes(1);
+      expect(props.onChange.mock.calls[0][1]).toBeUndefined();
+      expect(props.onBlur.mock.calls[0][1]).toBeUndefined();
+    });
+
     it('formats the date as a single string', async () => {
       jest.useFakeTimers();
       const { user } = renderDateInput({

@@ -86,7 +86,7 @@ export const TableCell = ({
 }: TableCellProps) => {
   const { stackable, warningDisabled } = useContext(TableContext);
 
-  let Component;
+  let Component: TableCellComponent;
   if (component) {
     Component = component;
   } else {

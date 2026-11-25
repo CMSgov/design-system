@@ -1,5 +1,7 @@
 // Deliminate chunks of integers
-const maskDeliminatedRegex = {
+// Keyed by mask name. The `mask` arguments below are plain strings, so callers
+// can pass a name that has no deliminator regex; lookups are guarded.
+const maskDeliminatedRegex: Record<string, RegExp> = {
   phone: /(\d{3})(\d{1,3})?(\d+)?/,
   ssn: /([*\d]{3})([*\d]{1,2})?([*\d]+)?/,
   zip: /(\d{5})(\d*)/,
@@ -38,7 +40,7 @@ function deliminateRegexGroups(value: string, rx: RegExp): string {
  * @param {String} mask
  * @returns {Boolean}
  */
-function isValueMaskable(value: string, mask?: string): boolean {
+function isValueMaskable(value: string | undefined, mask?: string): value is string {
   if (value && typeof value === 'string') {
     const hasDigits = value.match(/\d/);
     const hasDigitsAsterisks = value.match(/[\d*]/g);
@@ -95,7 +97,7 @@ export function maskValue(value = '', mask?: string): string {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       value = toCurrency(value);
-    } else if (maskDeliminatedRegex[mask]) {
+    } else if (mask && maskDeliminatedRegex[mask]) {
       // Use deliminator regex to mask value and remove unwanted characters
       // If the regex does not match, return the numeric digits.
       value = deliminateRegexGroups(value, maskDeliminatedRegex[mask]);
@@ -110,7 +112,7 @@ export function maskValue(value = '', mask?: string): string {
  * @param {String} mask
  * @returns {String}
  */
-export function unmaskValue(value?: string, mask?: string): string {
+export function unmaskValue(value?: string, mask?: string): string | undefined {
   if (isValueMaskable(value, mask)) {
     if (mask === 'currency') {
       // Preserve only digits, decimal point, or negative symbol
@@ -118,7 +120,7 @@ export function unmaskValue(value?: string, mask?: string): string {
       if (matches) {
         value = matches.join('');
       }
-    } else if (maskDeliminatedRegex[mask]) {
+    } else if (mask && maskDeliminatedRegex[mask]) {
       // Remove the deliminators and revert to single ungrouped string
       value = toDigitsAndAsterisks(value);
     }

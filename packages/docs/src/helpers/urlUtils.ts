@@ -11,26 +11,30 @@ const figmaDocumentIdAndLibraryName = {
   cmsgov: 'p2z3UL1N4fP10z47F7am1v/CMS-Design-System-Library',
   core: 'OYkYP4pC9jwS7j2qafwmiv/CMS-Global-Library',
   healthcare: '4Z66yMTWr5rlEhYBvLx58j/HCgov-Design-System-Library',
-  medicare: 'gwpXhAmk5noyDiDEs9DXCq/Mgov-Design-System-Library',
+  medicare: 'TsQ4oZvT4UaS6Mh83d0ryK',
 };
 
 // creates links to Figma pages in specific libaries based on theme
-export function makeFigmaUrl(nodeId = '', theme) {
+export function makeFigmaUrl(nodeId = '', theme: string) {
   const figmaURL = 'https://www.figma.com/design/';
-  return join(figmaURL, figmaDocumentIdAndLibraryName[theme], `?node-id=${nodeId}`);
+  return join(
+    figmaURL,
+    figmaDocumentIdAndLibraryName[theme as keyof typeof figmaDocumentIdAndLibraryName],
+    `?node-id=${nodeId}`
+  );
 }
 
 // creates links to storybook story
-export function makeStorybookUrl(storyId, theme, storyType = 'story') {
+export function makeStorybookUrl(storyId: string, theme: string, storyType = 'story') {
   return withPrefix(`/storybook/?path=/${storyType}/${storyId}&globals=theme:${theme}`);
 }
 
-export function makePageUrl(fileRelativePath, location: LocationInterface) {
+export function makePageUrl(fileRelativePath: string, location: LocationInterface) {
   return join(
     '/',
     fileRelativePath.replace('index.mdx', '').replace('.mdx', ''),
     '/',
-    location.search
+    location.search ?? ''
   );
 }
 

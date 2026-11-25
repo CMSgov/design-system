@@ -61,9 +61,9 @@ const ControlledTemplate: Story = {
     // controlled or uncontrolled. The TextField itself is always controlled by our story,
     // but whether this story is controlled by args depends on whether the user has
     // supplied a new value of the `value` arg to this story.
-    const [localValue, setLocalValue] = useState();
+    const [localValue, setLocalValue] = useState<string>();
     const value = args.value ?? localValue ?? '';
-    const onChange = (event) => {
+    const onChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       action('onChange')(event);
       setLocalValue(event.currentTarget.value);
     };

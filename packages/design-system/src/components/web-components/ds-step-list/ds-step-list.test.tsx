@@ -3,7 +3,7 @@ import { stepListStepData } from '../../StepList/__mocks__/stepListStepData';
 import './ds-step-list';
 
 // Modify stepListStepData to include sub-sub steps.
-stepListStepData[1].steps[0]['steps'] = [
+stepListStepData[1].steps![0]['steps'] = [
   {
     id: 'household.overall.children',
     heading: 'Children’s information',

@@ -8,7 +8,7 @@
  * Add shims for dialog functions and properties to the provided element object.
  */
 function addDialogProperties(dialog: any) {
-  function handleKey(event) {
+  function handleKey(event: KeyboardEvent) {
     if (event.keyCode === 27 || event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();

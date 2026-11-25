@@ -18,7 +18,7 @@ function getAsyncComponent(component: Promise<IComponent>, tagName: string): Pro
  * -------------------------------- */
 
 function getComponentResult(response: IComponent, tagName: string) {
-  let result = void 0;
+  let result: IComponent = void 0;
 
   if (typeof response === 'function') {
     return response;

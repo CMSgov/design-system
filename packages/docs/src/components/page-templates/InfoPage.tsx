@@ -30,7 +30,7 @@ const InfoPage = ({ children, data, location }: MdxQuery) => {
   );
 };
 
-export const Head = ({ data, location }) => {
+export const Head = ({ data, location }: MdxQuery) => {
   const {
     frontmatter,
     fields: { slug },

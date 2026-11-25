@@ -70,7 +70,7 @@
         "$type": "color"
       },
       "700": {
-        "$value": "#5a5a5a",
+        "$value": "#595959",
         "$type": "color"
       },
       "800": {
@@ -359,6 +359,58 @@
       },
       "1000": {
         "$value": "#03060b",
+        "$type": "color"
+      }
+    },
+    "medicare-blue": {
+      "100": {
+        "$value": "#eaf3fa",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#dceaf5",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#bfd4ea",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#2a6fb8",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#0e3e6e",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0b2f52",
+        "$type": "color"
+      }
+    },
+    "medicare-green": {
+      "100": {
+        "$value": "#f4f7f5",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e8f0ef",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#72a69e",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#146a5d",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#104e45",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#0a352f",
         "$type": "color"
       }
     },
@@ -947,6 +999,14 @@
     "small": {
       "$value": "2px",
       "$type": "dimension"
+    },
+    "xl": {
+      "$value": "16px",
+      "$type": "dimension"
+    },
+    "xxl": {
+      "$value": "24px",
+      "$type": "dimension"
     }
   },
   "site-margins": {
@@ -1000,6 +1060,10 @@
   "spacer": {
     "1": {
       "$value": "8px",
+      "$type": "dimension"
+    },
+    "1-plus-half": {
+      "$value": "12px",
       "$type": "dimension"
     },
     "2": {
@@ -1107,6 +1171,18 @@
       }
     },
     "family": {
+      "inter": {
+        "$value": [
+          "Inter",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial Nova",
+          "Nimbus Sans",
+          "Arial",
+          "sans-serif"
+        ],
+        "$type": "fontFamily"
+      },
       "open-sans": {
         "$value": [
           "Open Sans",

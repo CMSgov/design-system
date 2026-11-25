@@ -10,6 +10,11 @@
     "string"
   ],
   [
+    "hide-icon",
+    "Hides the close icon. The chip remains dismissible.",
+    "\"true\"\"false\""
+  ],
+  [
     "label",
     "Text for the filter chip.",
     "string"
@@ -23,10 +28,5 @@
     "size",
     "Sets the size of the chip to larger version. The only acceptable value is \"big\".",
     "big"
-  ],
-  [
-    "use-alternate-icon",
-    "Use alternate thinner close icon in place of standard.",
-    "\"true\"\"false\""
   ]
 ]

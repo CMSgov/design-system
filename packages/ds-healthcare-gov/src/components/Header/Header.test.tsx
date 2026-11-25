@@ -18,11 +18,15 @@ function makeHeader(props = {}) {
 }
 
 function getMenuToggle() {
-  return screen.getByRole('button', { name: /^(Open|Close) menu$/ });
+  return screen.getByRole('button', { name: 'Menu' });
 }
 
 function getMenu() {
-  return document.querySelector('#hc-c-menu');
+  const menu = document.querySelector('#hc-c-menu');
+  if (!menu) {
+    throw new Error('No #hc-c-menu in the rendered output');
+  }
+  return menu;
 }
 
 function expectMenuToBeOpen() {
@@ -142,7 +146,7 @@ describe('Header', function () {
       logoClassName: customClass,
     });
     const logo = baseElement.querySelector('.hc-c-logo');
-    expect(logo.className.includes(customClass)).toBe(true);
+    expect(logo!.className.includes(customClass)).toBe(true);
   });
 
   it('should render custom class and id provided for language switch link', () => {
@@ -195,11 +199,16 @@ describe('Header', function () {
   });
 
   describe('menu', () => {
-    it('changes the toggle label when clicked', async () => {
+    it('keeps the toggle name consistent and updates its expanded state when clicked', async () => {
       const { user } = makeHeader();
-      expect(getMenuToggle()).toHaveAccessibleName('Open menu');
+
+      expect(getMenuToggle()).toHaveAccessibleName('Menu');
+      expect(getMenuToggle()).toHaveAttribute('aria-expanded', 'false');
+
       await user.click(getMenuToggle());
-      expect(getMenuToggle()).toHaveAccessibleName('Close menu');
+
+      expect(getMenuToggle()).toHaveAccessibleName('Menu');
+      expect(getMenuToggle()).toHaveAttribute('aria-expanded', 'true');
     });
 
     it('opens and closes with Enter and Space on the toggle', async () => {
@@ -236,7 +245,7 @@ describe('Header', function () {
         await user.click(getMenuToggle());
         expectMenuToBeOpen();
         tealiumMock.mockClear();
-        getMenu().querySelector('a').focus();
+        getMenu().querySelector('a')!.focus();
         await user.keyboard('{Escape}');
 
         expectMenuToBeClosed();
@@ -257,7 +266,7 @@ describe('Header', function () {
         const onMenuToggle = jest.fn();
         const { user } = makeHeader({ loggedIn: true, isMenuOpen: true, onMenuToggle });
 
-        getMenu().querySelector('a').focus();
+        getMenu().querySelector('a')!.focus();
         await user.keyboard('{Escape}');
 
         expect(onMenuToggle).toHaveBeenCalledTimes(1);

@@ -19,7 +19,10 @@ const maskPattern = {
   currency: '[0-9.,\\-]*',
 };
 
-const maskOverlayContent = {
+// Only `currency` renders an overlay, so a lookup can be undefined. `Partial`
+// keeps the type honest about that; the call site checks before rendering —
+// see `maskOverlay` below.
+const maskOverlayContent: Partial<Record<MaskMask, string>> = {
   currency: '$',
 };
 
@@ -150,15 +153,16 @@ export class Mask extends PureComponent<MaskProps, any> {
       value: this.state.value,
       type: 'text',
       inputMode: 'numeric',
-      pattern: maskPattern[this.props.mask],
+      pattern: mask ? maskPattern[mask] : undefined,
     });
 
     // UI overlayed on top of a field to support certain masks
-    const maskOverlay = maskOverlayContent[mask] ? (
-      <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
-        {maskOverlayContent[mask]}
-      </div>
-    ) : null;
+    const maskOverlay =
+      mask && maskOverlayContent[mask] ? (
+        <div className={`ds-c-field__before ds-c-field__before--${mask}`}>
+          {maskOverlayContent[mask]}
+        </div>
+      ) : null;
 
     return (
       <div className={`ds-c-field-mask ds-c-field-mask--${mask}`}>

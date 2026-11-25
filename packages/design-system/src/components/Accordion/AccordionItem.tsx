@@ -84,7 +84,7 @@ export const AccordionItem = ({
   const isControlled = isControlledOpen !== undefined;
   const [isOpen, setIsOpen] = useState(isControlled ? isControlledOpen : defaultOpen);
 
-  const handleClick = (event) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onChange?.(event);
 
     if (!isControlled) {

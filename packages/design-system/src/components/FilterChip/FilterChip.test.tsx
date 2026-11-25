@@ -19,14 +19,14 @@ describe('FilterChip', () => {
   it('should include children as label', () => {
     renderFilterChip();
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-c-filter-chip__label').textContent).toEqual('Foo');
+    expect(chipEl.querySelector('.ds-c-filter-chip__label')!.textContent).toEqual('Foo');
     expect(chipEl).toMatchSnapshot();
   });
 
   it('should use different aria label if provided', () => {
     renderFilterChip({ ariaClearLabel: 'Clear' });
     const chipEl = screen.getByRole('button');
-    expect(chipEl.querySelector('.ds-u-visibility--screen-reader').textContent).toEqual(
+    expect(chipEl.querySelector('.ds-u-visibility--screen-reader')!.textContent).toEqual(
       'Clear Foo filter .'
     );
   });
@@ -85,13 +85,31 @@ describe('FilterChip', () => {
     expect(chipEl.classList).toContain('ds-c-filter-chip__button--big');
   });
 
-  it('should use alternate icon', () => {
-    renderFilterChip({ useAlternateIcon: true });
+  it('should render the close icon by default', () => {
+    renderFilterChip();
     const chipEl = screen.getByRole('button');
     const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
 
-    expect(iconContainerEl).toBeDefined();
-    expect(iconContainerEl.classList).toContain('ds-c-filter-chip__clear-icon-alternate-container');
+    expect(iconContainerEl).toBeInTheDocument();
     expect(iconContainerEl).toMatchSnapshot();
+    expect(chipEl).not.toHaveClass('ds-c-filter-chip__button--hide-icon');
+  });
+
+  it('should not render the close icon when hideIcon is true', () => {
+    renderFilterChip({ hideIcon: true });
+    const chipEl = screen.getByRole('button');
+    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
+
+    expect(iconContainerEl).toBeNull();
+    expect(chipEl).toHaveClass('ds-c-filter-chip__button--hide-icon');
+  });
+
+  it('should render close icon if hideIcon is set to false', () => {
+    renderFilterChip({ hideIcon: false });
+    const chipEl = screen.getByRole('button');
+    const iconContainerEl = chipEl.querySelector('.ds-c-filter-chip__clear-icon-container');
+
+    expect(iconContainerEl).toBeInTheDocument();
+    expect(chipEl).not.toHaveClass('ds-c-filter-chip__button--hide-icon');
   });
 });

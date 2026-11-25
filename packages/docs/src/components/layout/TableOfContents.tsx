@@ -31,7 +31,11 @@ export interface TableOfContentsProps {
 
 export type TableOfContentsFeedbackProps = Pick<TableOfContentsProps, 'slug'>;
 
-export const TableOfContentsList = ({ items, level, className = '' }: TableOfContentsProps) => {
+export const TableOfContentsList = ({
+  items,
+  level,
+  className = '',
+}: TableOfContentsProps & { level: number }) => {
   const itemClasses =
     level == 1
       ? 'c-table-of-contents__list-item c-table-of-contents__list-item--no-marker'

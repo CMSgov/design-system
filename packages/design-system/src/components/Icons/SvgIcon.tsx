@@ -65,7 +65,7 @@ export const SvgIcon = ({
   const descriptionId = `${rootId}__desc`;
   const ariaLabelledBy = description ? `${titleId} ${descriptionId}` : titleId;
   const isSrVisible = !ariaHidden;
-  const screenReaderProps = {};
+  const screenReaderProps: { 'aria-labelledby'?: string; role?: string } = {};
   if (isSrVisible) {
     screenReaderProps['aria-labelledby'] = ariaLabelledBy;
     screenReaderProps['role'] = 'img';

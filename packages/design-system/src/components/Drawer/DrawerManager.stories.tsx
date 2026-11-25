@@ -1,4 +1,4 @@
-import Drawer from './Drawer';
+import Drawer, { DrawerProps } from './Drawer';
 import { DrawerManager, useDrawerManager } from './DrawerManager';
 import { Button } from '../Button';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
@@ -70,8 +70,10 @@ const drawerContent3 = {
   ),
 };
 
-const SingleDrawerWithToggle = (...args) => {
-  const { heading, children } = args[0];
+const SingleDrawerWithToggle = ({
+  heading,
+  children,
+}: Pick<DrawerProps, 'heading' | 'children'>) => {
   const { toggleDrawer, closeDrawer, isDrawerOpen } = useDrawerManager();
 
   return (

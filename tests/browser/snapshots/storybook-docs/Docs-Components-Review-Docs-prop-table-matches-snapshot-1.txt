@@ -41,7 +41,7 @@
   ],
   [
     "onEditClick",
-    "An optional function that is executed on edit link click. The event and props.editHref value are passed to this function.\n\n(...args: any[]) => any",
+    "An optional function that is executed on edit link click. The event and props.editHref value are passed to this function.\n\n((...args: any[]) => any)",
     "-"
   ]
 ]

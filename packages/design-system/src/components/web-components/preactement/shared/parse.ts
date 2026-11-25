@@ -32,7 +32,7 @@ function parseJson(this: CustomElement, value: string) {
  * -------------------------------- */
 
 function getAttributeObject(attributes: NamedNodeMap): IProps {
-  const result = {};
+  const result: IProps = {};
 
   if (!attributes?.length) {
     return result;
@@ -56,7 +56,7 @@ function getAttributeObject(attributes: NamedNodeMap): IProps {
 function getAttributeProps(attributes: NamedNodeMap, allowed?: readonly string[]): IProps {
   const values = getAttributeObject(attributes);
 
-  let result = {};
+  const result: IProps = {};
 
   for (const key of Object.keys(values)) {
     if (allowed?.indexOf(key) === -1) {

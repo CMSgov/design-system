@@ -107,14 +107,12 @@ describe('DS Modal Dialog', function () {
 
   it('triggers the ds-exit custom event when the close button is clicked', async () => {
     const onExit = jest.fn();
-    const { shadowRoot, user } = renderDialog({});
-    const modal = document.querySelector('ds-modal-dialog');
-    expect(modal).toBeDefined();
-    modal.addEventListener('ds-exit', onExit);
+    const { customElement, shadowRoot, user } = renderDialog({});
+    customElement.addEventListener('ds-exit', onExit);
 
     await user.click(getByRole(shadowRoot as any as HTMLElement, 'button'));
     expect(onExit).toHaveBeenCalled();
-    modal.removeEventListener('ds-exit', onExit);
+    customElement.removeEventListener('ds-exit', onExit);
   });
 
   it('is closed until is-open is set to true', () => {
@@ -127,14 +125,12 @@ describe('DS Modal Dialog', function () {
   });
 
   it('opens if the is-open prop is set to true', () => {
-    const { rerenderTest, shadowRoot } = renderDialog({ 'is-open': 'false' });
-    const modal = document.querySelector('ds-modal-dialog');
-    expect(modal).toBeDefined();
-    expect(modal.getAttribute('is-open')).toBe('false');
+    const { customElement, rerenderTest, shadowRoot } = renderDialog({ 'is-open': 'false' });
+    expect(customElement.getAttribute('is-open')).toBe('false');
 
-    modal.setAttribute('is-open', 'true');
+    customElement.setAttribute('is-open', 'true');
     rerenderTest({});
-    expect(modal.getAttribute('is-open')).toBe('true');
+    expect(customElement.getAttribute('is-open')).toBe('true');
     expect(getDialog(shadowRoot).open).toBe(true);
   });
 
@@ -227,13 +223,11 @@ describe('DS Modal Dialog', function () {
       'allows default analytics function to be ovewridden',
       async ({ tealiumMock, waitForAnalytics }) => {
         let analyticsEvent;
-        const { rerenderTest } = renderDialog({ 'is-open': 'false' });
-        document
-          .querySelector('ds-modal-dialog')
-          .addEventListener('ds-analytics-event', (event: any) => {
-            event.preventDefault();
-            analyticsEvent = event.detail.event;
-          });
+        const { customElement, rerenderTest } = renderDialog({ 'is-open': 'false' });
+        customElement.addEventListener('ds-analytics-event', (event: any) => {
+          event.preventDefault();
+          analyticsEvent = event.detail.event;
+        });
         rerenderTest({ 'is-open': 'true' });
         await waitForAnalytics();
         expect(tealiumMock).not.toHaveBeenCalled();

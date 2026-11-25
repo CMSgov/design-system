@@ -3,6 +3,7 @@
 exports[`Hint should render a default hint 1`] = `
 <p
   class="ds-c-hint"
+  id="hint--1"
 >
   <slot />
 </p>

@@ -55,7 +55,8 @@ describe('maskHelpers', function () {
 
     it('exits when value is undefined or null', () => {
       expect(unmaskValue()).toBeUndefined();
-      expect(unmaskValue(null)).toBeNull();
+      // Covers untyped JS callers, which can pass null despite the signature.
+      expect(unmaskValue(null as unknown as string)).toBeNull();
     });
 
     it('returns same string back when there are no numeric characters in the value', () => {

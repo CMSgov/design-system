@@ -97,7 +97,7 @@ export const Drawer = (props: DrawerProps) => {
     ...otherProps
   } = props;
 
-  const headingRef = useRef(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const headingId = useId('drawer--', userHeadingId);
 
   const Heading = `h${headingLevel}` as const;
@@ -112,7 +112,7 @@ export const Drawer = (props: DrawerProps) => {
       aria-labelledby={headingId}
       {...otherProps}
     >
-      <div className="ds-c-drawer__window" tabIndex={isFooterSticky && -1}>
+      <div className="ds-c-drawer__window" tabIndex={isFooterSticky ? -1 : undefined}>
         <div className="ds-c-drawer__header">
           <Heading
             id={headingId}
@@ -146,8 +146,8 @@ export const Drawer = (props: DrawerProps) => {
         </div>
         {(footerTitle || footerBody) && (
           <div className="ds-c-drawer__footer">
-            <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>
-            <div className="ds-c-drawer__footer-body">{footerBody}</div>
+            {footerTitle && <h4 className="ds-c-drawer__footer-title">{footerTitle}</h4>}
+            {footerBody && <div className="ds-c-drawer__footer-body">{footerBody}</div>}
           </div>
         )}
       </div>

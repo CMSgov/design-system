@@ -38,7 +38,7 @@ export interface ActionMenuProps {
  * button, and the logged-out variation only displays it on mobile.
  */
 const ActionMenu = function (props: ActionMenuProps) {
-  function onClick(event) {
+  function onClick(event: SyntheticEvent) {
     sendHeaderEvent(props.open ? 'menu closed' : 'menu opened');
     props.onMenuToggleClick(event);
   }
@@ -47,7 +47,6 @@ const ActionMenu = function (props: ActionMenuProps) {
     <Button
       aria-controls={menuId}
       aria-expanded={!!props.open}
-      aria-label={props.open ? props.t('header.closeMenu') : props.t('header.openMenu')}
       className={classnames('hc-c-action-menu-button', 'ds-u-sm-margin-left--2', {
         'ds-u-display--inline-block ds-u-sm-display--none': !props.loggedIn,
       })}
@@ -90,12 +89,10 @@ const ActionMenu = function (props: ActionMenuProps) {
                 <a
                   href={link.href}
                   aria-label={link.ariaLabel}
-                  // TODO: .toString() here pacifies TypeScript, but TypeScript has actually found a
-                  // potential bug here where we allow link.label to be a ReactNode, but a ReactNode
-                  // can't actually be coerced into a string. We've had to do a lot of extra work in
-                  // other cases to find the text content of a ReactNode after rendering, like in
-                  // packages/design-system/src/components/Alert/Alert.tsx#L114
-                  onClick={() => sendHeaderEvent(link.label.toString(), link.href)}
+                  // TODO: send the link's rendered text with
+                  // https://jira.cms.gov/browse/CMSDS-4659. link.label is a ReactNode, so
+                  // .toString() sends an element label as "[object Object]".
+                  onClick={() => sendHeaderEvent(link.label?.toString() ?? '', link.href)}
                   className={classnames('hc-c-logged-out-links__link', link.className)}
                 >
                   {link.label}

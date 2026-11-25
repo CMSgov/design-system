@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
@@ -145,15 +146,16 @@ const Template = ({
   'checked-children': checkedChildren,
   'unchecked-children': uncheckedChildren,
   ...args
-}) => {
+}: React.JSX.IntrinsicElements['ds-choice']) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onBlur = (event) => {
+    const onBlur = (event: Event) => {
       action('ds-blur')(event);
     };
     const choice = document.querySelector('ds-choice');
+    if (!choice) return;
     choice.addEventListener('ds-change', onChange);
     choice.addEventListener('ds-blur', onBlur);
     return () => {

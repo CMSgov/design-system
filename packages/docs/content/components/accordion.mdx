@@ -17,6 +17,8 @@ medicare:
   figmaNodeId: 6-79
 ---
 
+import { Alert } from '@cmsgov/design-system';
+
 ## Examples
 
 <ThemeContent neverThemes={['healthcare']}>
@@ -96,6 +98,9 @@ When navigating with a keyboard:
 From [USWDS’ Accordion accessibility tests](https://designsystem.digital.gov/components/accordion/accessibility-tests/)
 
 ## Code
+<ThemeContent onlyThemes={['medicare']}>
+  <Alert>In the Medicare theme, accordions always display a border, regardless of the `bordered` prop.</Alert>
+</ThemeContent>
 
 ### React
 

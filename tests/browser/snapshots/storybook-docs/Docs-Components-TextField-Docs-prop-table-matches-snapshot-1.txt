@@ -96,7 +96,7 @@
   ],
   [
     "labelMask",
-    "Applies date format masking to the input value entered and renders to a text field above the input. Passing true to valueOnly will return just the formatted value entered.\n\n(rawInput: string, valueOnly?: boolean) => string",
+    "Applies date format masking to the input value entered and renders to a text field above the input. Passing true to valueOnly will return just the formatted value entered.\n\n((rawInput: string, valueOnly?: boolean) => string)",
     "-"
   ],
   [
@@ -121,12 +121,12 @@
   ],
   [
     "onBlur",
-    "(...args: any[]) => any",
+    "((...args: any[]) => any)",
     "-"
   ],
   [
     "onChange",
-    "(...args: any[]) => any",
+    "((...args: any[]) => any)",
     "-"
   ],
   [

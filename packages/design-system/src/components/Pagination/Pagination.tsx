@@ -163,7 +163,7 @@ export function Pagination({
    */
 
   const pageChange = useCallback(
-    (page) => (evt: React.MouseEvent) => onPageChange(evt, page),
+    (page: number) => (evt: React.MouseEvent) => onPageChange(evt, page),
     [onPageChange]
   );
 

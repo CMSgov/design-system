@@ -16,7 +16,7 @@
   ],
   [
     "formatMessage",
-    "A formatting function that returns the string to be used in the warning modal. The formatting function is provided the timeTilTimeout (in minutes).\n\n(timeTilTimeout: number) => ReactNode",
+    "A formatting function that returns the string to be used in the warning modal. The formatting function is provided the timeTilTimeout (in minutes).\n\n((timeTilTimeout: number) => ReactNode)",
     "(timeTilTimeout: number): React.ReactNode => { const unitOfTime = timeTilTimeout === 1 ? t('idleTimeoutDialog.min') : t('idleTimeoutDialog.mins'); return ( <p> {t('idleTimeoutDialog.messageLine1')} <br /> {t('idleTimeoutDialog.messageLine2')} <strong> {timeTilTimeout} {unitOfTime} </strong> . <br /> <br /> {t('idleTimeoutDialog.continueSessionMessage')} </p> ); }"
   ],
   [
@@ -26,12 +26,12 @@
   ],
   [
     "onSessionContinue",
-    "Optional function that is called when the user chooses to keep the session alive. This function is called by the 'continue session' button or the 'close' button. The IdleTimeout component will reset the countdown internally.\n\n(...args: any[]) => any",
+    "Optional function that is called when the user chooses to keep the session alive. This function is called by the 'continue session' button or the 'close' button. The IdleTimeout component will reset the countdown internally.\n\n((...args: any[]) => any)",
     "-"
   ],
   [
     "onSessionForcedEnd",
-    "Optional function that is called when the session is manually ended by user. If not provided, the behavior of onTimeout will be used.\n\n(...args: any[]) => any",
+    "Optional function that is called when the session is manually ended by user. If not provided, the behavior of onTimeout will be used.\n\n((...args: any[]) => any)",
     "-"
   ],
   [

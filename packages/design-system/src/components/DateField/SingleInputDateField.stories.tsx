@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SingleInputDateField from './SingleInputDateField';
+import SingleInputDateField, { SingleInputDateFieldProps } from './SingleInputDateField';
 import { action } from 'storybook/actions';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
@@ -35,8 +35,8 @@ const UncontrolledTemplate: Story = {
 
 const ControlledTemplate: Story = {
   render: function Component(args) {
-    const [dateString, updateDate] = useState();
-    const onChange = (...params) => {
+    const [dateString, updateDate] = useState<string>();
+    const onChange: SingleInputDateFieldProps['onChange'] = (...params) => {
       action('onChange')(...params);
       updateDate(params[0]);
     };

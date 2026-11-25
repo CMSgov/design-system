@@ -13,8 +13,12 @@ const DocSiteFooter = () => (
           Plain Writing
         </a>
         <button
+          aria-haspopup="dialog"
+          type="button"
           className="c-footer__link"
-          onClick={() => (window as UtagContainer).utag?.gdpr.showConsentPreferences(getLanguage())}
+          onClick={() =>
+            (window as UtagContainer).utag?.gdpr?.showConsentPreferences(getLanguage())
+          }
         >
           Privacy settings
         </button>

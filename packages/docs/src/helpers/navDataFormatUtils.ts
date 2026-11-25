@@ -64,8 +64,8 @@ const formatNavItemData = ({ childMdx, relativePath }: NavItem, location: Locati
  * Need to nest level2 items that have subnav items under the relevant level1 items
  */
 export const organizeNavItems = (dataList: DocsNavItem[]): DocsNavItem[] => {
-  const level1ItemMap: { string?: DocsNavItem } = {};
-  const level2Items = [];
+  const level1ItemMap: Record<string, DocsNavItem> = {};
+  const level2Items: DocsNavItem[] = [];
 
   // sort level1 vs level2 items into distinct variables from data list where they are combined
   dataList.forEach((dataItem: DocsNavItem) => {
@@ -83,11 +83,13 @@ export const organizeNavItems = (dataList: DocsNavItem[]): DocsNavItem[] => {
 
     const [level1Name, level2Name] = level2Item.label.split('/');
 
-    level1ItemMap[level1Name].items.push({ ...level2Item, label: level2Name });
+    const level1Item = level1ItemMap[level1Name];
+    level1Item.items = level1Item.items ?? [];
+    level1Item.items.push({ ...level2Item, label: level2Name });
 
     if (!level2Item.defaultCollapsed) {
       // if any level2 item is default expanded, make sure that level1 item also gets default expanded
-      level1ItemMap[level1Name].defaultCollapsed = level2Item.defaultCollapsed;
+      level1Item.defaultCollapsed = level2Item.defaultCollapsed;
     }
   });
 

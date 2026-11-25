@@ -95,7 +95,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
   const monthsLong = getMonthNames(locale, false);
   const isControlled = props.selectedMonths !== undefined;
   const [selectedMonthsState, setSelectedMonthsState] = useState(defaultSelectedMonths ?? []);
-  const selectedMonths = isControlled ? props.selectedMonths : selectedMonthsState;
+  const selectedMonths = props.selectedMonths ?? selectedMonthsState;
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     if (props.onChange) {
@@ -114,7 +114,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  function handleSelectAll(event) {
+  function handleSelectAll(event: React.MouseEvent | React.KeyboardEvent) {
     if (props.onSelectAll) {
       props.onSelectAll(event);
     }
@@ -132,7 +132,7 @@ export const MonthPicker = (props: MonthPickerProps) => {
     }
   }
 
-  function handleClearAll(event) {
+  function handleClearAll(event: React.MouseEvent | React.KeyboardEvent) {
     if (props.onClearAll) {
       props.onClearAll(event);
     }

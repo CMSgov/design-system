@@ -1,8 +1,5 @@
 [
   [
-    "Deprecated: Set useAlternateIcon={true} to use the thin icon until v19. In v19, the thin icon will become the default and this prop will be removed."
-  ],
-  [
     "ariaClearLabel",
     "Labels filter action, i.e., \"Remove.\" For screenreader support.\nstring",
     "Remove"
@@ -10,6 +7,11 @@
   [
     "className",
     "Class to be applied to the outer <div> that contains filter chip button.\nstring",
+    "-"
+  ],
+  [
+    "hideIcon",
+    "Hides the close icon. The chip remains dismissible.\nboolean",
     "-"
   ],
   [
@@ -30,11 +32,6 @@
   [
     "size",
     "Sets the size of the chip to larger version.\n\"big\"",
-    "-"
-  ],
-  [
-    "useAlternateIcon",
-    "Uses the thin close icon instead of the standard icon.\nboolean\nDeprecated: Set useAlternateIcon={true} to use the thin icon until v19. In v19, the thin icon will become the default and this prop will be removed.",
     "-"
   ]
 ]

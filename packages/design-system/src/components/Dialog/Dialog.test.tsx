@@ -62,7 +62,7 @@ describe('Dialog', function () {
   });
 
   describe('Analytics event tracking', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
     const defaultEvent = {
       event_name: 'modal_impression',
       heading: 'dialog heading',

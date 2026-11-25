@@ -15,7 +15,7 @@ interface DropdownMenuProps<T> extends AriaListBoxOptions<T> {
   heading?: React.ReactNode;
   labelId?: string;
   menuId: string;
-  rootId?: string;
+  rootId: string;
   size?: DropdownSize;
   state: ListState<T> & OverlayTriggerState;
   triggerRef: AriaPopoverProps['triggerRef'];
@@ -63,8 +63,9 @@ export function DropdownMenu<T>({
   function handleTabKey(event: React.KeyboardEvent<HTMLDivElement>) {
     const TAB_KEY = 9;
     if (event.keyCode === TAB_KEY || event.key === 'Tab') {
-      if (!state.selectionManager.selectedKeys.has(state.selectionManager.focusedKey)) {
-        state.selectionManager.setSelectedKeys([state.selectionManager.focusedKey]);
+      const { focusedKey } = state.selectionManager;
+      if (focusedKey !== null && !state.selectionManager.selectedKeys.has(focusedKey)) {
+        state.selectionManager.setSelectedKeys([focusedKey]);
       }
     }
   }
@@ -96,7 +97,7 @@ export function DropdownMenu<T>({
         {...listBoxProps}
         id={menuId}
         aria-invalid={ariaInvalid}
-        aria-labelledby={classNames(labelId, heading && headingId)}
+        aria-labelledby={classNames(labelId, heading ? headingId : undefined)}
         className={`${componentClass}__menu`}
         ref={listBoxRef}
       >

@@ -1,4 +1,5 @@
-import { FrontmatterInterface } from '../../helpers/graphQLTypes';
+import { ComponentLinksInterface, FrontmatterInterface } from '../../helpers/graphQLTypes';
+import type { ThemeName } from '../../helpers/themeTokens';
 import { linkAnalytics } from '../../helpers/analytics';
 import StatusIndicator from './StatusIndicator';
 import ThemeContent from '../content/ThemeContent';
@@ -18,14 +19,16 @@ type PageHeaderProps = {
  * Page header component that shows the page title and other details
  */
 const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => {
-  const [themeLinks, setThemeLinks] = useState(undefined);
+  const [themeLinks, setThemeLinks] = useState<ComponentLinksInterface | undefined>(undefined);
   const { title, core, intro, status } = frontmatter;
   const level = status?.level;
   const note = status?.note;
   const targetTheme = status?.targetTheme;
   const targetThemeNote = status?.targetThemeNote;
 
-  const figmaNodeId = themeLinks?.figmaNodeId || core?.figmaNodeId || null;
+  // We handle null here specially so that we can hide links for components that do not have designs in Figma.
+  const figmaNodeId =
+    themeLinks?.figmaNodeId === null ? null : themeLinks?.figmaNodeId || core?.figmaNodeId || null;
   const figmaTheme = themeLinks?.figmaNodeId ? theme : 'core';
   const ghPath = themeLinks?.githubLink || core?.githubLink || null;
   const storyId = themeLinks?.storybookLink || core?.storybookLink || null;
@@ -34,7 +37,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
   // Tricks gatsby into re-rendering based on updated theme and frontmatter data
   // Similar issue and debugging strategies found here: https://github.com/gatsbyjs/gatsby/issues/12413
   useEffect(() => {
-    const links = frontmatter[theme];
+    const links = frontmatter[theme as ThemeName];
     setThemeLinks(links);
   }, [frontmatter, theme]);
 
@@ -49,7 +52,7 @@ const PageHeader = ({ frontmatter = { title: '' }, theme }: PageHeaderProps) => 
     <header className={headerClassNames}>
       <div className="ds-u-display--flex ds-u-align-items--baseline ds-u-flex-direction--row">
         <h1 className="ds-text-heading--4xl">{title}</h1>
-        {status?.level && (
+        {level && (
           <div
             className={`ds-u-margin-left--2 ${
               level === 'use' ? 'c-status-indicator__wrapper--use' : ''

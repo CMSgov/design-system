@@ -93,7 +93,13 @@ For details on other optional properties available on \`StepObject\`, refer to t
 };
 export default meta;
 
-const Template = (args) => {
+// TODO: type these args as React.JSX.IntrinsicElements['ds-step-list'] once its wrapper
+// declares `attributes` as const — https://jira.cms.gov/browse/CMSDS-4614. Until then that
+// mapped type collapses to an index signature of `[x: string]: string`, which cannot be
+// spread back onto its own element, so the args are the string attributes it really accepts.
+type Args = Record<string, string>;
+
+const Template = (args: Args) => {
   return <ds-step-list {...args} />;
 };
 

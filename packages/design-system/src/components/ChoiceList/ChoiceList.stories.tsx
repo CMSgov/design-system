@@ -32,6 +32,11 @@ const meta: Meta<typeof ChoiceList> = {
       options: [undefined, 'small'],
       control: { type: 'radio' },
     },
+    variation: {
+      options: ['default', 'tile'],
+      control: { type: 'radio' },
+      table: { defaultValue: { summary: 'default' } },
+    },
   },
 };
 export default meta;
@@ -61,6 +66,25 @@ export const SmallOption: Story = {
     name: 'size-variants',
     type: 'radio',
     size: 'small',
+  },
+};
+
+export const TileRadio: Story = {
+  args: {
+    label: "Choose an option.  Make sure you're on the Medicare theme.",
+    hint: 'This is some helpful hint text.',
+    name: 'tile-radio-choices',
+    type: 'radio',
+    variation: 'tile',
+  },
+};
+
+export const TileCheckbox: Story = {
+  args: {
+    label: "Check some boxes.  Make sure you're on the Medicare theme.",
+    name: 'tile-checkbox-choices',
+    type: 'checkbox',
+    variation: 'tile',
   },
 };
 
@@ -115,6 +139,13 @@ export const DisabledRadio: Story = {
 };
 
 export const ChoiceChildren: Story = {
+  parameters: {
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  },
   args: {
     name: 'radio_choices',
     type: 'radio',
@@ -130,7 +161,7 @@ export const ChoiceChildren: Story = {
         value: 'A',
         defaultChecked: true,
         checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
+          <div className="ds-c-choice__checked-child">
             <Alert heading="You'll save more with this option">
               Based on the household information you provided, this option will give you the maximum
               savings. We are adding some filler text just to show what it looks like when you have
@@ -144,7 +175,7 @@ export const ChoiceChildren: Story = {
         hint: 'Choice hint text',
         value: 'B',
         checkedChildren: (
-          <div className="ds-c-choice__checkedChild">
+          <div className="ds-c-choice__checked-child">
             <Alert variation="warn" heading="Are you sure?">
               Based on the household information you provided, you can actually save more with the
               other option. You are free to change this at any point during the application process

@@ -8,15 +8,15 @@ const view = createTestRenderer('ds-svg-icon', (attrs = {}) => (
 describe('ds-svg-icon', () => {
   it('renders as an SVG', () => {
     const { customElement } = view();
-    expect(customElement.firstElementChild.tagName).toBe('svg');
+    expect(customElement.firstElementChild!.tagName).toBe('svg');
   });
 
   it('passes through a custom title', () => {
     const customTitle = 'test title';
     const { customElement } = view({ title: customTitle });
-    const titleEl = customElement.firstElementChild.querySelector('title');
+    const titleEl = customElement.firstElementChild!.querySelector('title');
 
-    expect(titleEl.textContent).toBe(customTitle);
+    expect(titleEl!.textContent).toBe(customTitle);
   });
 
   it('passes through children', () => {
@@ -27,7 +27,7 @@ describe('ds-svg-icon', () => {
         <path d={customPath} />
       </ds-svg-icon>
     ))();
-    const pathEl = customElement.firstElementChild.querySelector('path');
+    const pathEl = customElement.firstElementChild!.querySelector('path');
 
     expect(pathEl).toHaveAttribute('d', customPath);
   });
