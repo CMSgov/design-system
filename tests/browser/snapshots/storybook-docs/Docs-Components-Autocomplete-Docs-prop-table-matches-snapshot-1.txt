@@ -71,12 +71,12 @@
   ],
   [
     "onChange",
-    "Called when the user selects an item and the selected item has changed. Called with the item that was selected.\n(selectedItem: AutocompleteItem) => void",
+    "Called when the user selects an item and the selected item has changed. Called with the item that was selected.\n((selectedItem: AutocompleteItem | null) => void)",
     "-"
   ],
   [
     "onInputValueChange",
-    "Called when the child TextField value changes. Is called with a string representing the input value.\n(inputValue: string) => void",
+    "Called when the child TextField value changes. Is called with a string representing the input value.\n((inputValue: string) => void)",
     "-"
   ]
 ]

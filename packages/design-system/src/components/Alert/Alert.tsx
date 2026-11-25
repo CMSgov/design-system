@@ -140,14 +140,16 @@ export const Alert = (props: AlertProps) => {
     default: { role: 'region', icon: InfoCircleIcon },
   };
 
-  const dynamicRole = role ?? (variationConfig[variation]?.role || variationConfig.default.role);
+  const dynamicRole =
+    role ?? (variationConfig[variation ?? 'default']?.role || variationConfig.default.role);
 
   function getIcon() {
     if (hideIcon) {
       return null;
     }
 
-    const IconComponent = variationConfig[variation]?.icon || variationConfig.default.icon;
+    const IconComponent =
+      variationConfig[variation ?? 'default']?.icon || variationConfig.default.icon;
     return <IconComponent className="ds-c-alert__icon" />;
   }
 
@@ -155,7 +157,7 @@ export const Alert = (props: AlertProps) => {
     <div
       className={classes}
       ref={mergeRefs([alertRef, focusRef])}
-      tabIndex={alertRef || autoFocus ? -1 : null}
+      tabIndex={alertRef || autoFocus ? -1 : undefined}
       role={dynamicRole}
       aria-labelledby={heading ? headingId : a11yLabelId}
       {...alertProps}

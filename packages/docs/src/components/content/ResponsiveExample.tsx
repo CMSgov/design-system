@@ -78,7 +78,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
 
   // when the iframe content resizes, recalculate the height at which it should be shown
   const handleIframeResize = () => {
-    if (iframeRef.current) {
+    if (iframeRef.current?.contentDocument) {
       const height = iframeRef.current.contentDocument.body.offsetHeight;
       setIFrameHeight(height);
     }
@@ -86,7 +86,7 @@ const ResponsiveExample = ({ storyId, title, theme }: ResponsiveExample) => {
 
   // when the iframe's content loads, set up listener and calculate height of iframe
   const onIFrameLoad = () => {
-    if (iframeRef.current) {
+    if (iframeRef.current?.contentWindow && iframeRef.current.contentDocument) {
       iframeRef.current.contentWindow.addEventListener('resize', handleIframeResize);
       iframeRef.current.contentDocument.documentElement.classList.add('ds-u-overflow--hidden');
       handleIframeResize();

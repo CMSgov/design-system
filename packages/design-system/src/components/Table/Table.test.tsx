@@ -55,7 +55,7 @@ describe('Table', function () {
     makeTable({ scrollable: true, id: undefined });
     const table = screen.getByRole('table');
     const caption = table.querySelector('caption');
-    expect(caption.id).toMatch(/table-caption--\d+/);
+    expect(caption!.id).toMatch(/table-caption--\d+/);
   });
 
   it('applies responsive stacked table', () => {
@@ -77,8 +77,8 @@ describe('Table', function () {
 
   it('scroll table aria-labelledby matches caption id', () => {
     makeTable({ scrollable: true });
-    const region = screen.getByRole('region').attributes['id'];
-    const caption = screen.getByText('A great caption').attributes['aria-labelledby'];
+    const region = screen.getByRole('region').getAttribute('id');
+    const caption = screen.getByText('A great caption').getAttribute('aria-labelledby');
 
     expect(region).toEqual(caption);
   });

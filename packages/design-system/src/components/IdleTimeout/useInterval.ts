@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react';
  * This custom hook is to ensure that the callback of setInterval receives updated props
  * @see https://overreacted.io/making-setinterval-declarative-with-react-hooks/
  * */
-export const useInterval = (callback: () => void, delay: number) => {
+export const useInterval = (callback: () => void, delay: number | null) => {
   const savedCallback = useRef<() => void | null>(null);
 
   // Remember the latest callback.

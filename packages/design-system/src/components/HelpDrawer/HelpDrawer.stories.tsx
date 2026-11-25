@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HelpDrawer } from './HelpDrawer';
+import { HelpDrawer, HelpDrawerProps } from './HelpDrawer';
 import { Button } from '../Button';
 import { action } from 'storybook/actions';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
@@ -64,7 +64,7 @@ export const Default: Story = {
   render: function Component(args) {
     const [isDrawerVisible, setIsDrawerVisible] = useState(false);
     const showDrawer = () => setIsDrawerVisible(true);
-    const hideDrawer = (...params) => {
+    const hideDrawer: HelpDrawerProps['onCloseClick'] = (...params) => {
       action('onCloseClick')(...params);
       setIsDrawerVisible(false);
     };

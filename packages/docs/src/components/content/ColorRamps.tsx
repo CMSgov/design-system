@@ -1,13 +1,16 @@
 import systemTokens from 'design-system-tokens/src/tokens/System.Value.json';
 import ColorExampleRow from './ColorExampleRow';
 
-const swatches = Object.keys(systemTokens.color).map((swatchName) => {
+const colorNames = Object.keys(systemTokens.color) as Array<keyof typeof systemTokens.color>;
+
+const swatches = colorNames.map((swatchName) => {
   const color = systemTokens.color[swatchName];
   return {
     swatchName,
-    swatchColors: color.$value
-      ? [{ name: swatchName, value: color.$value }]
-      : Object.keys(color).map((name) => ({ name, value: color[name].$value })),
+    swatchColors:
+      '$value' in color
+        ? [{ name: swatchName, value: color.$value }]
+        : Object.entries(color).map(([name, token]) => ({ name, value: token.$value })),
   };
 });
 
@@ -30,7 +33,7 @@ const ColorRamps = () => (
       return (
         <div className="c-color-ramp__wrapper" key={swatchName}>
           <h2 className="ds-u-text-transform--capitalize" id={swatchName}>
-            {swatchName}
+            {swatchName.replace(/-/g, ' ')}
           </h2>
           <div className="c-color-ramp">
             <svg className="c-color-ramp__transparency-pattern" viewBox="0 0 256 200" width="256">

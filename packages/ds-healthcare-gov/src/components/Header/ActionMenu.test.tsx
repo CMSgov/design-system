@@ -66,10 +66,10 @@ describe('ActionMenu', function () {
   });
 
   describe('analytics', () => {
-    const mock = jest.fn();
+    const tealiumMock = jest.fn();
 
     beforeEach(() => {
-      (window as any as UtagContainer).utag = { link: mock };
+      (window as any as UtagContainer).utag = { link: tealiumMock };
       jest.clearAllMocks();
     });
 
@@ -90,8 +90,22 @@ describe('ActionMenu', function () {
         ],
       });
       fireEvent.click(screen.getByText('ZOMBO'));
-      expect(mock).toHaveBeenCalled();
-      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
+    });
+
+    it('sends analytics event when a logged-out action menu link with no label is clicked', () => {
+      renderForAnalytics({
+        links: [
+          {
+            label: null,
+            ariaLabel: 'ZOMBO',
+            href: 'https://www.zombo.com',
+          },
+        ],
+      });
+      fireEvent.click(screen.getByRole('link', { name: 'ZOMBO' }));
+      expect(tealiumMock).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
     });
 
     it('sends analytics event when logged-out menu opened', () => {
@@ -99,8 +113,8 @@ describe('ActionMenu', function () {
         links: [{ label: 'label', href: 'href' }],
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(mock).toHaveBeenCalled();
-      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -110,8 +124,8 @@ describe('ActionMenu', function () {
         links: [{ label: 'label', href: 'href' }],
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(mock).toHaveBeenCalled();
-      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -120,8 +134,8 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(mock).toHaveBeenCalled();
-      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
 
@@ -131,8 +145,8 @@ describe('ActionMenu', function () {
         loggedIn: true,
       });
       fireEvent.click(screen.getByRole('button'));
-      expect(mock).toHaveBeenCalled();
-      expect(window['utag'].link.mock.calls[0][0]).toMatchSnapshot();
+      expect(tealiumMock).toHaveBeenCalled();
+      expect(tealiumMock.mock.calls[0][0]).toMatchSnapshot();
       expect(handleMenuToggleClick).toHaveBeenCalled();
     });
   });

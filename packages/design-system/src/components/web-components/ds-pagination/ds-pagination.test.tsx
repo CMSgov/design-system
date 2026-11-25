@@ -72,7 +72,7 @@ describe('Pagination', () => {
   describe('interactivity', () => {
     describe('onPageChange', () => {
       function bindHandler() {
-        const root = document.querySelector('ds-pagination');
+        const root = document.querySelector('ds-pagination')!;
         const mockHandler = jest.fn();
         root.addEventListener('ds-page-change', mockHandler);
         return mockHandler;

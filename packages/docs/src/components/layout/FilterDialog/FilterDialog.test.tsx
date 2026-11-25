@@ -31,7 +31,7 @@ describe('FilterDialog', () => {
   it('passes a ref to the heading', () => {
     const headingRef = createRef<HTMLHeadingElement>();
     renderFilterDialog({ headingRef });
-    expect(headingRef.current.textContent).toEqual(defaultProps.heading);
+    expect(headingRef.current!.textContent).toEqual(defaultProps.heading);
   });
 
   it('allows a custom headingLevel to be set', () => {

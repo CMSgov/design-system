@@ -8,11 +8,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "alwaysStrict": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true
+    "typeRoots": ["./@types", "./node_modules/@types"],
+    "strict": true
   },
   "include": ["packages/**/src/**/*", ".storybook/**/*"]
 }

@@ -58,7 +58,7 @@ describe('HelpDrawer', () => {
   });
 
   describe('Analytics event tracking', () => {
-    let tealiumMock;
+    let tealiumMock: jest.Mock;
 
     beforeEach(() => {
       config({ helpDrawerSendsAnalytics: true });

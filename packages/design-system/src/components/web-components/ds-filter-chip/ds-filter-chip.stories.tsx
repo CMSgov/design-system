@@ -50,8 +50,8 @@ const meta: Meta = {
       control: 'radio',
       options: [undefined, 'big'],
     },
-    'use-alternate-icon': {
-      description: 'Use alternate thinner close icon in place of standard.',
+    'hide-icon': {
+      description: 'Hides the close icon. The chip remains dismissible.',
       control: 'boolean',
     },
   },
@@ -59,22 +59,21 @@ const meta: Meta = {
 export default meta;
 
 const listOfChips = [
-  { label: 'Example FilterChip' },
-  { label: 'Example with alternate icon', 'use-alternate-icon': 'true' },
-  { label: 'Example big filter chip', size: 'big' },
-  { label: 'Example big with alternate icon', 'use-alternate-icon': 'true', size: 'big' },
+  { label: 'Default' },
+  { label: 'Default without icon', 'hide-icon': 'true' },
+  { label: 'Big', size: 'big' },
+  { label: 'Big without icon', 'hide-icon': 'true', size: 'big' },
 ];
 
 const Template = (args: any) => {
   useEffect(() => {
     const chipEl = document.querySelector('ds-filter-chip');
+    if (!chipEl) return;
     const handleDelete = (event: Event) => {
       action('ds-delete')(event);
     };
 
-    if (chipEl) {
-      chipEl.addEventListener('ds-delete', handleDelete);
-    }
+    chipEl.addEventListener('ds-delete', handleDelete);
 
     return () => {
       chipEl.removeEventListener('ds-delete', handleDelete);
@@ -145,7 +144,7 @@ export const MultipleChips = {
         disable: true,
       },
     },
-    'use-alternate-icon': {
+    'hide-icon': {
       table: {
         disable: true,
       },

@@ -1,4 +1,6 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
+import type { StoryObj } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
 import './ds-dropdown';
@@ -162,15 +164,19 @@ Alternatively, you can omit the \`options\` attribute and provide \`<option>\` e
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-dropdown'];
+type Story = StoryObj<Args>;
+
+const Template = (args: Args) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onBlur = (event) => {
+    const onBlur = (event: Event) => {
       action('ds-blur')(event);
     };
     const dropdown = document.querySelector('ds-dropdown');
+    if (!dropdown) return;
     dropdown.addEventListener('ds-change', onChange);
     dropdown.addEventListener('ds-blur', onBlur);
     return () => {
@@ -201,7 +207,7 @@ const htmlOptions = (
   </>
 );
 
-export const HtmlOptions = {
+export const HtmlOptions: Story = {
   render: Template,
   args: {
     options: undefined,
@@ -227,7 +233,7 @@ const htmlOptGroups = (
   </>
 );
 
-export const HtmlOptionGroups = {
+export const HtmlOptionGroups: Story = {
   render: Template,
   args: {
     options: undefined,

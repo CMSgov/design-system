@@ -20,7 +20,7 @@ export const HtmlElementArgs = ({ of }: HtmlElementArgsProps) => {
     return null;
   }
 
-  const elements = resolvedOf.story.parameters?.docs?.underlyingHtmlElements;
+  const elements: string[] = resolvedOf.story.parameters?.docs?.underlyingHtmlElements;
   if (!elements) {
     return null;
   }

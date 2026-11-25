@@ -1,7 +1,7 @@
 import type * as React from 'react';
 import classNames from 'classnames';
 import useId from '../utilities/useId';
-import { CloseIcon, CloseIconThin } from '../Icons';
+import { CloseIconThin } from '../Icons';
 import { t } from '../i18n';
 
 const actionableKeys = ['Enter', 'Space', 'Backspace', 'Delete'];
@@ -28,16 +28,13 @@ export interface FilterChipProps {
    */
   onDelete: () => any;
   /**
-   * Uses the thin close icon instead of the standard icon.
-   *
-   * @deprecated Set useAlternateIcon={true} to use the thin icon until v19.
-   * In v19, the thin icon will become the default and this prop will be removed.
-   */
-  useAlternateIcon?: boolean;
-  /**
    * Sets the size of the chip to larger version.
    */
   size?: 'big';
+  /**
+   * Hides the close icon. The chip remains dismissible.
+   */
+  hideIcon?: boolean;
 }
 
 /**
@@ -51,7 +48,7 @@ export const FilterChip = ({
   id,
   onDelete,
   size,
-  useAlternateIcon,
+  hideIcon,
 }: FilterChipProps) => {
   const filterChipId = useId('filter-chip--', id);
 
@@ -68,14 +65,14 @@ export const FilterChip = ({
 
   const buttonClassNames = classNames(
     'ds-c-filter-chip__button',
-    size && size === 'big' ? 'ds-c-filter-chip__button--big' : '',
+    {
+      'ds-c-filter-chip__button--big': size === 'big',
+      'ds-c-filter-chip__button--hide-icon': hideIcon,
+    },
     className
   );
 
-  const iconContainerClassNames = classNames(
-    'ds-c-filter-chip__clear-icon-container',
-    useAlternateIcon ? 'ds-c-filter-chip__clear-icon-alternate-container' : ''
-  );
+  const iconContainerClassNames = classNames('ds-c-filter-chip__clear-icon-container');
 
   return (
     <button
@@ -95,9 +92,11 @@ export const FilterChip = ({
       <span id={`${filterChipId}-instructions`} className="ds-u-visibility--screen-reader">
         {ariaClearLabel ?? t('filterChip.ariaClearLabel')} {t('filterChip.filter', { label })} .
       </span>
-      <span className={iconContainerClassNames}>
-        {useAlternateIcon ? <CloseIconThin /> : <CloseIcon />}
-      </span>
+      {!hideIcon && (
+        <span className={iconContainerClassNames}>
+          <CloseIconThin />
+        </span>
+      )}
     </button>
   );
 };

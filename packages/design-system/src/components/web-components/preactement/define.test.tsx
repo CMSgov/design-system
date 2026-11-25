@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import { act, render } from '@testing-library/preact';
 import userEvent from '@testing-library/user-event';
 import { ComponentFactory, h } from 'preact';
@@ -205,6 +206,26 @@ describe('define()', () => {
       expect(root.innerHTML).toContain(`<h2>${updatedTitle}</h2><em></em>${html}`);
     });
 
+    it('restores a default prop value when an attribute is removed', async () => {
+      function Greeting({ customTitle = 'default' }: { customTitle?: string }) {
+        return <h2>{customTitle}</h2>;
+      }
+
+      define('message-with-default', () => Greeting, { attributes: ['custom-title'] });
+
+      const element = document.createElement('message-with-default');
+      element.setAttribute('custom-title', 'original');
+      root.appendChild(element);
+      expect(root.innerHTML).toContain('<h2>original</h2>');
+
+      await act(async () => {
+        element.removeAttribute('custom-title');
+      });
+      // The browser reports the removal as `null`, which would override the default. The
+      // prop has to reach the component as `undefined` for the default to apply.
+      expect(root.innerHTML).toContain('<h2>default</h2>');
+    });
+
     it('updates component props when `props` attribute is changed', async () => {
       const originalTitle = 'original';
       const updatedTitle = 'updated!';
@@ -324,7 +345,7 @@ describe('define()', () => {
       await act(async () => {
         element.innerHTML = html2;
       });
-      expect(root.querySelector('dd').textContent).toEqual(html2);
+      expect(root.querySelector('dd')!.textContent).toEqual(html2);
       expect(root.querySelector('a')).not.toBeInTheDocument();
     });
 
@@ -345,7 +366,7 @@ describe('define()', () => {
 
       const dd = root.querySelector('dd');
       expect(dd).toBeInTheDocument();
-      expect(dd.querySelector('a')).toBeInTheDocument();
+      expect(dd!.querySelector('a')).toBeInTheDocument();
     });
 
     it('supports shadow dom option', () => {
@@ -361,14 +382,14 @@ describe('define()', () => {
 
       root.appendChild(element);
       expect(element.innerHTML).toMatchSnapshot();
-      expect(element.shadowRoot.innerHTML).toMatchSnapshot();
+      expect(element.shadowRoot!.innerHTML).toMatchSnapshot();
     });
 
     it('shadow version responds to late additions of direct children', async () => {
       const element = document.createElement('shadow-message');
       root.appendChild(element);
 
-      expect(element.shadowRoot.querySelector('h2')).toBeNull();
+      expect(element.shadowRoot!.querySelector('h2')).toBeNull();
 
       await act(async () => {
         element.innerHTML = `
@@ -377,7 +398,7 @@ describe('define()', () => {
       `;
       });
 
-      expect(element.shadowRoot.querySelector('h2')).toContainHTML(
+      expect(element.shadowRoot!.querySelector('h2')).toContainHTML(
         '<slot name="custom-title"></slot>'
       );
     });
@@ -385,7 +406,9 @@ describe('define()', () => {
     it('creates custom events', async () => {
       const user = userEvent.setup();
       const fieldId = 'custom-events-field';
-      const CustomEventsComponent = (props) => (
+      const CustomEventsComponent = (
+        props: Pick<React.ComponentProps<'input'>, 'onChange' | 'onBlur'>
+      ) => (
         <div>
           <input type="text" onChange={props.onChange} onBlur={props.onBlur} id={fieldId} />
         </div>
@@ -416,7 +439,7 @@ describe('define()', () => {
       expect(onBlur).not.toHaveBeenCalled();
       expect(onChange).not.toHaveBeenCalled();
 
-      await user.click(field);
+      await user.click(field!);
       await user.keyboard('hello');
       await user.tab();
       expect(onChange).toHaveBeenCalled();
@@ -432,7 +455,7 @@ describe('define()', () => {
   });
 
   describe('when run on the server', () => {
-    let originalWindow;
+    let originalWindow: typeof globalThis.window;
 
     beforeAll(() => {
       originalWindow = globalThis.window;
@@ -447,11 +470,12 @@ describe('define()', () => {
     it.skip('returns the correct markup', () => {
       const props = { value: 'serverValue' };
       const component = define('message-fourteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props) as any);
       expect(container.querySelectorAll('message-fourteen').length).toEqual(1);
-      expect(container.querySelector('message-fourteen').getAttribute('server')).toEqual('true');
-      expect(container.querySelector('em').textContent).toEqual(props.value);
+      expect(container.querySelector('message-fourteen')!.getAttribute('server')).toEqual('true');
+      expect(container.querySelector('em')!.textContent).toEqual(props.value);
     });
 
     // TODO: Reintroduce this test once https://github.com/testing-library/user-event/pull/1176/ is released
@@ -463,10 +487,11 @@ describe('define()', () => {
     it.skip('includes a json script block with props', () => {
       const props = { value: 'serverValue' };
       const component = define('message-sixteen', () => Message);
+      if (!component) throw new Error('define() returned no server-side component');
 
       const { container } = render(h(component, props));
 
-      expect(container.querySelector('script').textContent).toEqual(JSON.stringify(props));
+      expect(container.querySelector('script')!.textContent).toEqual(JSON.stringify(props));
     });
   });
 });

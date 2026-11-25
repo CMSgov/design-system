@@ -1,4 +1,6 @@
+import type * as React from 'react';
 import { useEffect } from 'react';
+import type { StoryObj } from '@storybook/react-webpack5';
 import WebComponentDocTemplate from '../../../../../../.storybook/docs/WebComponentDocTemplate.mdx';
 import { action } from 'storybook/actions';
 import { webComponentDecorator } from '../storybook';
@@ -130,7 +132,8 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
       control: 'text',
     },
     size: {
-      description: 'Sets the size of the checkbox or radio button.',
+      description:
+        'Sets the size of the checkbox or radio button. Note: in the Medicare theme this has no effect.',
       options: sizes,
       mapping: sizes,
       control: {
@@ -180,18 +183,22 @@ Alternatively, you can omit the \`choices\` attribute and instead include indivi
   decorators: [webComponentDecorator],
 };
 
-const Template = (args) => {
+type Args = React.JSX.IntrinsicElements['ds-choice-list'];
+type Story = StoryObj<Args>;
+
+const Template = (args: Args) => {
   useEffect(() => {
-    const onChange = (event) => {
+    const onChange = (event: Event) => {
       action('ds-change')(event);
     };
-    const onBlur = (event) => {
+    const onBlur = (event: Event) => {
       action('ds-blur')(event);
     };
-    const onComponentBlur = (event) => {
+    const onComponentBlur = (event: Event) => {
       action('ds-component-blur')(event);
     };
     const choiceList = document.querySelector('ds-choice-list');
+    if (!choiceList) return;
     choiceList.addEventListener('ds-change', onChange);
     choiceList.addEventListener('ds-blur', onBlur);
     choiceList.addEventListener('ds-component-blur', onComponentBlur);
@@ -218,11 +225,11 @@ const htmlChoices = (
       value="checked children"
     >
       <div slot="checked-children">
-        <div className="ds-c-choice__checkedChild">
+        <div className="ds-c-choice__checked-child">
           <ds-alert heading="🫣 Tag! You're it!">
             You can reveal content by applying <code>checked-children</code> to the{' '}
             <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
-            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            <code>div</code> element with the class <code>ds-c-choice__checked-child</code> to
             whatever content you want to show/hide so it gets side border showing an association
             with its choice parent.
           </ds-alert>
@@ -235,11 +242,11 @@ const htmlChoices = (
       value="unchecked children"
     >
       <div slot="unchecked-children">
-        <div className="ds-c-choice__checkedChild">
+        <div className="ds-c-choice__checked-child">
           <ds-alert variation="warn" heading="I banish thee!">
             You can hide content by applying <code>unchecked-children</code> to the{' '}
             <code>slot</code> attribute of an HTML element. Do not forget to include a{' '}
-            <code>div</code> element with the class <code>ds-c-choice__checkedChild</code> to
+            <code>div</code> element with the class <code>ds-c-choice__checked-child</code> to
             whatever content you want to show/hide so it gets side border showing an association
             with its choice parent.
           </ds-alert>
@@ -249,10 +256,17 @@ const htmlChoices = (
   </>
 );
 
-export const HTMLChoices = {
+export const HTMLChoices: Story = {
   render: Template,
   args: {
     choices: undefined,
     children: htmlChoices,
+  },
+};
+
+export const Tile: Story = {
+  render: Template,
+  args: {
+    variation: 'tile',
   },
 };

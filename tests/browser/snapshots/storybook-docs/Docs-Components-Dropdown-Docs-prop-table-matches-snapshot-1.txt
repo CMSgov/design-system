@@ -117,12 +117,12 @@
   ],
   [
     "onBlur",
-    "(...args: any[]) => any",
+    "((...args: any[]) => any)",
     "-"
   ],
   [
     "onChange",
-    "(change: DropdownChangeObject) => void",
+    "((change: DropdownChangeObject) => void)",
     "-"
   ],
   [

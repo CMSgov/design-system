@@ -12,7 +12,11 @@ const defaultChildren = 'This is an example of a default Review component.';
 
 const renderReview = createGenericTestRenderer(
   'ds-review',
-  (attrs = {}, children: React.ReactNode = null, slotContent: React.ReactElement<any> = null) => (
+  (
+    attrs = {},
+    children: React.ReactNode = null,
+    slotContent: React.ReactElement<any> | null = null
+  ) => (
     <ds-review {...(attrs as any)}>
       {children}
       {slotContent && <div slot="edit-content">{slotContent}</div>}
@@ -24,7 +28,7 @@ describe('Review', () => {
   it('renders review', () => {
     const { shadowRoot } = renderReview(defaultAttrs, defaultChildren);
 
-    expect(shadowRoot.firstElementChild.classList).toContain('ds-c-review');
+    expect(shadowRoot.firstElementChild!.classList).toContain('ds-c-review');
     expect(shadowRoot.firstElementChild).toMatchSnapshot();
   });
 
@@ -78,6 +82,6 @@ describe('Review', () => {
 
   it('adds a class from props', () => {
     const { shadowRoot } = renderReview({ 'class-name': 'my-class' });
-    expect(shadowRoot.firstElementChild.classList).toContain('my-class');
+    expect(shadowRoot.firstElementChild!.classList).toContain('my-class');
   });
 });

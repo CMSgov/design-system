@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ChoiceList, { ChoiceListType } from './ChoiceList';
+import ChoiceList, { ChoiceListProps, ChoiceListType } from './ChoiceList';
 
-function generateChoices(length: number, customProps = {}) {
-  const choices = [];
+function generateChoices(length: number, customProps = {}): ChoiceListProps['choices'] {
+  const choices: ChoiceListProps['choices'] = [];
 
   for (let i = 0; i < length; i++) {
     choices.push({
@@ -25,7 +25,7 @@ function renderChoiceList(customProps = {}, choicesCount = 2) {
     errorMessage: 'Hey, you have to pick an answer',
     name: 'spec-field',
     type: 'radio' as ChoiceListType,
-    onChange: () => null,
+    onChange: (): void => undefined,
     ...customProps,
   };
   return {
@@ -54,6 +54,49 @@ describe('ChoiceList', () => {
       const choiceEl = screen.getByLabelText('Choice 1') as HTMLInputElement;
 
       expect(choiceEl.type).toBe('checkbox');
+    });
+
+    it('does not apply the item class when variation is omitted', () => {
+      const { container } = renderChoiceList({}, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
+    });
+
+    it('does not apply the item class when variation is explicitly default', () => {
+      const { container } = renderChoiceList({ variation: 'default' }, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(0);
+    });
+
+    it('applies the item class to each Choice in the tile variation', () => {
+      const { container } = renderChoiceList({ variation: 'tile' }, 3);
+
+      expect(container.querySelectorAll('.ds-c-choice-list__tiled-item')).toHaveLength(3);
+    });
+
+    it('preserves a custom className on a Choice alongside the item class', () => {
+      renderChoiceList({
+        type: 'checkbox',
+        variation: 'tile',
+        choices: generateChoices(1, { className: 'custom-class' }),
+      });
+      const choiceEl = screen.getByLabelText('Choice 1');
+
+      expect(choiceEl.closest('.ds-c-choice-list__tiled-item')).toHaveClass('custom-class');
+    });
+
+    // This test is to catch any changes to markup that could break our MGov specific selector
+    it('has a choice that is a sibling of a label', () => {
+      const { container } = renderChoiceList({
+        type: 'checkbox',
+        variation: 'tile',
+        choices: generateChoices(1),
+      });
+      // Querying by class name instead of label because we want to make sure the DOM order matches the selector
+      const choiceEl = container.querySelector('.ds-c-choice');
+      const labelEl = choiceEl?.nextElementSibling;
+
+      expect(labelEl?.tagName).toBe('LABEL');
     });
 
     it('is a checkbox', () => {
@@ -92,7 +135,7 @@ describe('ChoiceList', () => {
 
     it('generates ids when no id is provided', () => {
       const { container } = renderChoiceList({ id: undefined });
-      expect(container.querySelector('legend').id).toMatch(/choice-list--\d+/);
+      expect(container.querySelector('legend')!.id).toMatch(/choice-list--\d+/);
 
       const choices = screen.getAllByRole('radio');
       const choiceIdRegex = /choice--\d+/;

@@ -16,6 +16,7 @@ const attributes = [
   'root-id',
   'size',
   'type',
+  'variation',
   ...formAttrs,
 ] as const;
 

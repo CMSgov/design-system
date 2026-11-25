@@ -8,14 +8,14 @@ const view = createTestRenderer('ds-white-house-logo', (attrs = {}) => (
 describe('ds-white-house-logo', () => {
   it('renders as an SVG', () => {
     const { customElement } = view();
-    expect(customElement.firstElementChild.tagName).toBe('svg');
+    expect(customElement.firstElementChild!.tagName).toBe('svg');
   });
 
   it('passes through a custom title', () => {
     const customTitle = 'test title';
     const { customElement } = view({ title: customTitle });
-    const titleEl = customElement.firstElementChild.querySelector('title');
+    const titleEl = customElement.firstElementChild!.querySelector('title');
 
-    expect(titleEl.textContent).toBe(customTitle);
+    expect(titleEl!.textContent).toBe(customTitle);
   });
 });

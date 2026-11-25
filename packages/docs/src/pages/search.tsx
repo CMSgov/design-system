@@ -15,7 +15,7 @@ const SearchPage = ({ location }: MdxQuery) => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setQuery(params.get('query'));
+    setQuery(params.get('query') ?? '');
   }, [location.search]);
 
   const searchData: SearchQuery = useStaticQuery(graphql`
@@ -101,7 +101,7 @@ const SearchPage = ({ location }: MdxQuery) => {
   );
 };
 
-export const Head = ({ location }) => {
+export const Head = ({ location }: MdxQuery) => {
   return (
     <SEO
       frontmatter={{

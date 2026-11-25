@@ -131,11 +131,11 @@ allMasks.forEach((currentMask) => {
       expect(input).toHaveAttribute('type', 'text');
 
       const mask = container.querySelector('.ds-c-label-mask');
-      expect(mask.textContent).toContain(currentMask.default);
-      expect(mask.firstChild.textContent).toContain(currentMask.default);
-      expect(mask.lastChild).toHaveAttribute('aria-hidden', 'true');
-      expect(mask.lastChild).toHaveClass('ds-u-display--none');
-      expect(mask.lastChild.textContent).toContain(currentMask.default);
+      expect(mask!.textContent).toContain(currentMask.default);
+      expect(mask!.firstChild!.textContent).toContain(currentMask.default);
+      expect(mask!.lastChild).toHaveAttribute('aria-hidden', 'true');
+      expect(mask!.lastChild).toHaveClass('ds-u-display--none');
+      expect(mask!.lastChild!.textContent).toContain(currentMask.default);
     });
 
     describe('updates label mask to reflect', () => {
@@ -148,11 +148,11 @@ allMasks.forEach((currentMask) => {
         const input = container.querySelector('input');
 
         await act(async () => {
-          await user.type(input, data);
+          await user.type(input!, data);
         });
 
         expect(input).toHaveValue(data);
-        expect(mask.textContent).toContain(maskText);
+        expect(mask!.textContent).toContain(maskText);
       });
 
       it('partial input value set', async () => {
@@ -163,11 +163,11 @@ allMasks.forEach((currentMask) => {
         const input = container.querySelector('input');
 
         await act(async () => {
-          await user.type(input, data);
+          await user.type(input!, data);
         });
 
         expect(input).toHaveValue(data);
-        expect(mask.textContent).toContain(currentMask.partialResult);
+        expect(mask!.textContent).toContain(currentMask.partialResult);
       });
     });
 
@@ -179,7 +179,7 @@ allMasks.forEach((currentMask) => {
       const input = container.querySelector('input');
 
       await act(async () => {
-        await user.type(input, data);
+        await user.type(input!, data);
       });
 
       await act(async () => {

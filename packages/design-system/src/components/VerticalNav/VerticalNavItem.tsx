@@ -30,11 +30,11 @@ export interface VerticalNavItemProps {
   defaultCollapsed?: boolean;
   /**
    * Called when the link is clicked, with the following arguments:
-   * [`SyntheticEvent`](https://facebook.github.io/react/docs/events.html),
+   * [`SyntheticEvent`](https://react.dev/reference/react-dom/components/common#react-event-object),
    * `id`, `url`.
    * This takes precedence over the `VerticalNav` `onLinkClick` prop
    */
-  onClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url: string) => any;
+  onClick?: (evt: React.MouseEvent | React.KeyboardEvent, id: string, url?: string) => any;
   /**
    * Called when this item's subnav is collapsed or expanded, with the
    * following arguments: `id`, `collapsed`
@@ -116,7 +116,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
    * @param {Array} children - The nested items
    * @return {Boolean}
    */
-  const childIsSelected = (children): boolean => {
+  const childIsSelected = (children?: any[]): boolean => {
     if (children && children.length) {
       return children.some((child: any) => {
         return child.id === props._selectedId || childIsSelected(child.items);
@@ -148,7 +148,7 @@ export const VerticalNavItem = (props: VerticalNavItemProps): React.ReactElement
       const item = Object.assign({}, props);
       delete item.items;
 
-      return [item].concat(props.items);
+      return [item].concat(props.items ?? []);
     }
 
     return props.items;

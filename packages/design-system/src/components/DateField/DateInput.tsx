@@ -153,7 +153,7 @@ export class DateInput extends PureComponent<DateInputProps> {
   dayInput: any;
   yearInput: any;
 
-  formatDate(): DateObject {
+  formatDate(): DateObject | undefined {
     if (this.props.dateFormatter && this.monthInput && this.dayInput && this.yearInput) {
       const values = {
         month: this.monthInput.value,
@@ -175,7 +175,7 @@ export class DateInput extends PureComponent<DateInputProps> {
   }
 
   handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
-    this.props.onChange(evt, this.formatDate());
+    this.props.onChange?.(evt, this.formatDate());
   }
 
   handleComponentBlur(evt: React.FocusEvent<HTMLInputElement>): void {
@@ -189,7 +189,7 @@ export class DateInput extends PureComponent<DateInputProps> {
         document.activeElement !== this.monthInput &&
         document.activeElement !== this.yearInput
       ) {
-        this.props.onComponentBlur(evt, this.formatDate());
+        this.props.onComponentBlur?.(evt, this.formatDate());
       }
     }, 20);
   }
@@ -226,7 +226,7 @@ export class DateInput extends PureComponent<DateInputProps> {
             ref.current = el;
           }
         }}
-        autoComplete={this.props.autoComplete && `bday-${type}`}
+        autoComplete={this.props.autoComplete ? `bday-${type}` : undefined}
         aria-invalid={this.props[`${type}Invalid`]}
       />
     );

@@ -37,7 +37,7 @@ describe('parse', () => {
     it('correctly converts an HTML string into a VDom tree', () => {
       const { vnode } = templateToPreactVNode(makeTemplate(testHtml));
       const { container } = render(vnode);
-      expect(container.querySelector('h1').textContent).toEqual(testHeading);
+      expect(container.querySelector('h1')!.textContent).toEqual(testHeading);
     });
 
     describe('slots', () => {

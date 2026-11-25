@@ -3,14 +3,7 @@ import FilterChip from '../../FilterChip/FilterChip';
 import { FilterChipProps } from '../../FilterChip/FilterChip';
 import { parseBooleanAttr } from '../wrapperUtils';
 
-const attributes = [
-  'clear-label',
-  'class-name',
-  'label',
-  'root-id',
-  'size',
-  'use-alternate-icon',
-] as const;
+const attributes = ['clear-label', 'class-name', 'label', 'root-id', 'size', 'hide-icon'] as const;
 
 /* eslint-disable @typescript-eslint/no-namespace */
 declare global {
@@ -27,16 +20,16 @@ declare global {
 }
 /* eslint-enable */
 
-interface WrapperProps extends Omit<FilterChipProps, 'useAlternateIcon'> {
-  useAlternateIcon?: string;
+interface WrapperProps extends Omit<FilterChipProps, 'hideIcon'> {
+  hideIcon?: string;
   clearLabel?: string;
 }
 
-const Wrapper = ({ clearLabel, label, useAlternateIcon, ...otherProps }: WrapperProps) => (
+const Wrapper = ({ clearLabel, label, hideIcon, ...otherProps }: WrapperProps) => (
   <FilterChip
     ariaClearLabel={clearLabel ?? ''}
     label={label}
-    useAlternateIcon={parseBooleanAttr(useAlternateIcon)}
+    hideIcon={parseBooleanAttr(hideIcon)}
     {...otherProps}
   />
 );

@@ -77,6 +77,11 @@ export const HEALTHCARE_DEFAULTS: Config = {
   thirdPartyExternalLinkSendsAnalytics: true,
 };
 
+export const MEDICARE_DEFAULTS: Config = {
+  ...DEFAULTS,
+  errorPlacementDefault: 'bottom',
+};
+
 const _config = { ...DEFAULTS };
 
 export function config(incomingConfig?: PartialConfig): Config {
@@ -86,6 +91,7 @@ export function config(incomingConfig?: PartialConfig): Config {
 
 config.DEFAULTS = DEFAULTS;
 config.HEALTHCARE_DEFAULTS = HEALTHCARE_DEFAULTS;
+config.MEDICARE_DEFAULTS = MEDICARE_DEFAULTS;
 
 // Deprecated stuff
 

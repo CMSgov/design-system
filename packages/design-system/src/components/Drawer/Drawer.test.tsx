@@ -2,14 +2,16 @@ import Drawer from './Drawer';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+const footerBodyContent = 'Some footer content';
+const footerTitle = 'Footer title';
 const defaultProps = {
   children: <p>content</p>,
   footerBody: (
     <div>
-      <p>Some footer content</p>
+      <p>{footerBodyContent}</p>
     </div>
   ),
-  footerTitle: 'Footer title',
+  footerTitle: footerTitle,
   isOpen: true,
   onCloseClick: jest.fn(),
   heading: 'Drawer title',
@@ -38,6 +40,36 @@ describe('Drawer', () => {
     expect(screen.queryByRole('dialog')).toBe(null);
     rerenderDrawer({ isOpen: true });
     expect((screen.getByRole('dialog') as HTMLDialogElement).open).toBe(true);
+  });
+
+  describe('footer', () => {
+    it('does not render an empty footer title when footerTitle is not provided', () => {
+      const { container } = renderDrawer({ footerTitle: undefined });
+
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-title')).not.toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
+        footerBodyContent
+      );
+    });
+
+    it('renders the footer title and body when both are provided', () => {
+      const { container } = renderDrawer();
+
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
+      expect(container.querySelector('.ds-c-drawer__footer-body')).toHaveTextContent(
+        footerBodyContent
+      );
+    });
+
+    it('renders the footer without a body when only footerTitle is provided', () => {
+      const { container } = renderDrawer({ footerBody: undefined });
+
+      expect(container.querySelector('.ds-c-drawer__footer')).toBeInTheDocument();
+      expect(container.querySelector('.ds-c-drawer__footer-title')).toHaveTextContent(footerTitle);
+      expect(container.querySelector('.ds-c-drawer__footer-body')).not.toBeInTheDocument();
+    });
   });
 
   describe('onCloseClick', () => {

@@ -52,7 +52,7 @@ export const Badge = (props: BadgeProps) => {
   const sizeClasses = { big: 'ds-c-badge--big' };
 
   const variationClass = variation && `ds-c-badge--${variation}`;
-  const classes = classNames('ds-c-badge', variationClass, sizeClasses[size], className);
+  const classes = classNames('ds-c-badge', variationClass, size && sizeClasses[size], className);
   const showScreenReaderText = variation && !hideScreenReaderText;
   const variationText = variation && t(`badge.${variation}`) + ': ';
 

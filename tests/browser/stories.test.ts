@@ -6,7 +6,6 @@ import { expectScreenshot } from './expectScreenshot';
 
 const storySkipList = [
   'components-autocomplete--async-items', // Redundant
-  'components-choicelist--choice-children', // Focus bug in Storybook v9
   'components-dialog--default', // Doesn't show the open dialog
   'components-dialog--prevent-scroll-example', // Doesn't show the open dialog
   'components-dialog--use-dialog-example', // Doesn't show the open dialog
@@ -51,6 +50,7 @@ const storyUseAxeLegacyModeList = [
 // We're specifically skipping these on dark stories. We know that the inline error on dark styles do not pass a11y color contrast.
 // However, we're deprecating dark mode support for the Medicare theme generally.
 const onDarkSkipList = [
+  'components-choicelist--inverse-option',
   'components-dropdown--inverse-option',
   'components-inlineerror--inverse',
   'components-multiinputdatefield--inverted',

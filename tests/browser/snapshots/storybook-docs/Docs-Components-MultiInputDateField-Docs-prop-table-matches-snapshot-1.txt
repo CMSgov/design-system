@@ -11,7 +11,7 @@
   ],
   [
     "dateFormatter",
-    "Optional method to format the input field values. If this method is provided, the returned value will be passed as a second argument to the onBlur and onChange callbacks. This method receives an object as its only argument, in the shape of: { day, month, year }\n\nBy default dateFormatter will be set to the defaultDateFormatter function, which prevents days/months more than 2 digits & years more than 4 digits.\n\n(...args: any[]) => any",
+    "Optional method to format the input field values. If this method is provided, the returned value will be passed as a second argument to the onBlur and onChange callbacks. This method receives an object as its only argument, in the shape of: { day, month, year }\n\nBy default dateFormatter will be set to the defaultDateFormatter function, which prevents days/months more than 2 digits & years more than 4 digits.\n\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -21,7 +21,7 @@
   ],
   [
     "dayFieldRef",
-    "Access a reference to the day input\n(...args: any[]) => any",
+    "Access a reference to the day input\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -111,7 +111,7 @@
   ],
   [
     "monthFieldRef",
-    "Access a reference to the month input\n(...args: any[]) => any",
+    "Access a reference to the month input\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -136,17 +136,17 @@
   ],
   [
     "onBlur",
-    "Called anytime any date input is blurred\n(...args: any[]) => any",
+    "Called anytime any date input is blurred\n((...args: any[]) => any)",
     "-"
   ],
   [
     "onChange",
-    "Called anytime any date input is changed\n(...args: any[]) => any",
+    "Called anytime any date input is changed\n((...args: any[]) => any)",
     "-"
   ],
   [
     "onComponentBlur",
-    "Called when any date input is blurred and the focus does not land on one of the other date inputs inside this component (i.e., when the whole component loses focus)\n\n(...args: any[]) => any",
+    "Called when any date input is blurred and the focus does not land on one of the other date inputs inside this component (i.e., when the whole component loses focus)\n\n((...args: any[]) => any)",
     "-"
   ],
   [
@@ -161,7 +161,7 @@
   ],
   [
     "yearFieldRef",
-    "Access a reference to the year input\n(...args: any[]) => any",
+    "Access a reference to the year input\n((...args: any[]) => any)",
     "-"
   ],
   [

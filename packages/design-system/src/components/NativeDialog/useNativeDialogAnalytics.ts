@@ -46,7 +46,7 @@ export function useNativeDialogAnalytics({
       onOpen(headingContent);
     } else if (!isOpen && prevIsOpen === true) {
       // Only trigger if it was previously open
-      onClose(headingContent);
+      onClose?.(headingContent);
     }
   }, [isOpen, prevIsOpen]);
 

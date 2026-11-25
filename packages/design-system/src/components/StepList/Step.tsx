@@ -42,7 +42,7 @@ export const Step = ({ step, ...props }: StepProps) => {
     'ds-c-step__content--with-content': step.description || step.steps,
   });
 
-  let linkLabel: string;
+  let linkLabel: string | undefined;
   if (step.completed && !step.steps) {
     linkLabel = step.linkText || props.editText;
   } else if (start) {
@@ -51,7 +51,7 @@ export const Step = ({ step, ...props }: StepProps) => {
     linkLabel = step.linkText || props.resumeText;
   }
 
-  let linkClassName: string;
+  let linkClassName: string | undefined;
   if (start || resume) {
     linkClassName = 'ds-c-button ds-c-button--solid ds-c-button--main ds-c-button--on-light';
   }

@@ -51,6 +51,7 @@ export const TabPanel = (props: TabPanelProps) => {
       className={classes}
       id={props.id}
       role="tabpanel"
+      tabIndex={0}
     >
       {props.children}
     </div>

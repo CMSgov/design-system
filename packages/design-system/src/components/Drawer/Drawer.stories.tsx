@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../Button';
 import { action } from 'storybook/actions';
-import Drawer from './Drawer';
+import Drawer, { DrawerProps } from './Drawer';
 import NoStoryDocTemplate from '../../../../../.storybook/docs/NoStoryDocTemplate.mdx';
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
@@ -40,7 +40,7 @@ const meta: Meta<typeof Drawer> = {
   },
   args: {
     footerTitle: 'Footer Title',
-    footerBody: <p className="ds-text-body--md ds-u-margin--0">Footer content</p>,
+    footerBody: 'Footer body content',
     heading: 'Drawer Heading',
   },
   // The Drawer was overlapping the docs page, so customizing the docs page to remove the examples
@@ -91,21 +91,14 @@ export const Default: Story = {
       updateOpen(true);
     };
 
-    const hideDrawer = (...params) => {
+    const hideDrawer: DrawerProps['onCloseClick'] = (...params) => {
       action('onCloseClick')(...params);
       updateOpen(false);
     };
 
     return (
       <>
-        <Drawer
-          {...args}
-          onCloseClick={hideDrawer}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
-          heading="Drawer Heading"
-          isOpen={drawerOpen}
-        >
+        <Drawer {...args} onCloseClick={hideDrawer} heading="Drawer Heading" isOpen={drawerOpen}>
           {args.children || drawerContent}
         </Drawer>
         <Button
@@ -129,7 +122,7 @@ export const BackdropClickExits: Story = {
       setDrawerOpen(true);
     };
 
-    const hideDrawer = (event) => {
+    const hideDrawer: DrawerProps['onCloseClick'] = (event) => {
       action('onCloseClick')(event);
       setDrawerOpen(false);
     };
@@ -141,8 +134,6 @@ export const BackdropClickExits: Story = {
           isOpen={drawerOpen}
           onCloseClick={hideDrawer}
           backdropClickExits={true}
-          footerTitle="Footer Title"
-          footerBody={<p className="ds-text-body--md ds-u-margin--0">Footer content</p>}
           heading="Drawer with Backdrop Click Exit"
         >
           {args.children || drawerContent}

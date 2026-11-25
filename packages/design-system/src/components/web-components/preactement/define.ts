@@ -1,7 +1,8 @@
-import { h, render, FunctionComponent, VNode } from 'preact';
+import { h, render, Attributes, FunctionComponent, VNode } from 'preact';
 import {
   ErrorTypes,
   CustomElement,
+  IProps,
   isPromise,
   parseJson,
   getElementTag,
@@ -63,7 +64,7 @@ function createServerSideRenderFunction<P = {}>(
   }
 
   const attributes: Record<string, any> = { server: true };
-  return (props: P) =>
+  return (props: Attributes & P) =>
     h(elementTag, attributes, [
       h('script', {
         type: 'application/json',
@@ -88,12 +89,14 @@ function createCustomElement<T>(
   class TheCustomElement extends HTMLElement implements CustomElement {
     __mounted = false;
     __componentFunction = componentFunction;
-    __component;
+    __component?: CustomElement['__component'];
     __properties = {};
     __options = options;
-    __mutationObserver;
-    __propsSignal;
-    __root = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
+    __mutationObserver?: MutationObserver;
+    // Assigned by `renderPreactComponent` during the first render, which completes before
+    // `__mounted` is set. It is only read once `__mounted` is true.
+    __propsSignal!: CustomElement['__propsSignal'];
+    __root: Element | ShadowRoot = options.shadow ? this.attachShadow({ mode: 'open' }) : this;
 
     static observedAttributes = ['props', ...attributes];
 
@@ -144,8 +147,8 @@ function createCustomElement<T>(
  * This was inspired by Voorhoede's register function here:
  * https://github.com/voorhoede/preact-web-components-demo/blob/main/src/lib/register.js#L158
  */
-function proxyEvents(props, events: IOptions['events'], CustomElement) {
-  const callbacks = {};
+function proxyEvents(props: IProps, events: IOptions['events'], CustomElement: HTMLElement) {
+  const callbacks: IProps = {};
 
   (events || []).forEach((nameOrArray) => {
     const name: string = Array.isArray(nameOrArray) ? nameOrArray[0] : nameOrArray;
@@ -159,7 +162,7 @@ function proxyEvents(props, events: IOptions['events'], CustomElement) {
     // Convert the event name to a kebab-case format and replace 'on' with 'ds'
     // This prevents the custom events from conflicting with the native events
     const customName = kebabCaseIt(name.replace('on', 'ds'));
-    let existingCallback = () => null;
+    let existingCallback: () => void = () => null;
 
     // Don't know why `existingCallback` is being defined
     // Why would a callback already be defined in props?
@@ -277,19 +280,27 @@ async function onConnected(this: CustomElement) {
  * See [Custom element lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#custom_element_lifecycle_callbacks)
  * for more details.
  */
-function onAttributeChange(this: CustomElement, name: string, _original: string, updated: string) {
+function onAttributeChange(
+  this: CustomElement,
+  name: string,
+  _original: string | null,
+  updated: string | null
+) {
   if (!this.__mounted) {
     return;
   }
 
-  updated = updated == null ? void 0 : updated;
+  // The browser passes `null` for an attribute that has been removed, but the Preact
+  // components expect a missing prop to be `undefined`.
+  const value = updated ?? undefined;
 
   let props = this.__properties;
 
   if (name === 'props') {
-    props = { ...props, ...parseJson.call(this, updated) };
+    // A removed `props` attribute leaves no JSON to parse, which `parseJson` reports.
+    props = { ...props, ...parseJson.call(this, updated ?? '') };
   } else {
-    props = { ...props, [getPropKey(name)]: updated };
+    props = { ...props, [getPropKey(name)]: value };
   }
 
   this.__properties = props;
@@ -330,8 +341,9 @@ function wrapTemplateHtml(html: string) {
 /**
  * See `wrapTemplateHtml` function.
  */
-function unwrapTemplateVNode(vnode: VNode): VNode {
-  const children = vnode.props.children[0].props.children;
+function unwrapTemplateVNode(vnode: VNode): VNode | undefined {
+  // `wrapTemplateHtml` guarantees a single wrapping element around the content.
+  const children = (vnode.props.children as VNode<any>[])[0].props.children;
   if (Array.isArray(children) && children.length === 0) {
     // This means the HTML inside it was empty, so the intention is for there to be no
     // children content for the component. The Preact components will expect `undefined`
@@ -427,7 +439,7 @@ function renderWithoutShadowDom(this: CustomElement, addedNodes?: Node[]) {
   this.appendChild(template);
 
   // Reinstate the mutation observer to watch for user changes
-  this.__mutationObserver.observe(this, { childList: true });
+  this.__mutationObserver?.observe(this, { childList: true });
 }
 
 function renderWithShadowDom(this: CustomElement) {
@@ -481,7 +493,7 @@ function renderPreactComponent(
     vnode,
     slots,
   }: {
-    vnode: VNode;
+    vnode: VNode | undefined;
     slots: Slots;
   }
 ) {

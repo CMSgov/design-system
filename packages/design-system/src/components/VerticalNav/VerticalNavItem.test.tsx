@@ -169,7 +169,7 @@ describe('VerticalNavItem', () => {
   });
 
   describe('with subnav', () => {
-    let props;
+    let props: Partial<VerticalNavItemProps>;
 
     beforeEach(() => {
       props = {
@@ -206,7 +206,7 @@ describe('VerticalNavItem', () => {
 
     it('is selected', () => {
       props._selectedId = 'selected-child';
-      props.items[0].id = 'selected-child';
+      props.items![0].id = 'selected-child';
       renderVerticalNavItem(props);
 
       const labelEl = screen.getByText('Foo');

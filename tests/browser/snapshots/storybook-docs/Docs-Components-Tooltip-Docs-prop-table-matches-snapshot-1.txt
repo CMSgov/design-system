@@ -86,17 +86,17 @@
   ],
   [
     "onAnalyticsEvent",
-    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nRead more about analytics.\n\n(event: AnalyticsEvent) => void",
+    "Optional callback that will intercept analytics events for this component. If none is specified, the design system will use the default analytics function, which can be overwritten globally with the defaultAnalyticsFunction config property.\n\nRead more about analytics.\n\n((event: AnalyticsEvent) => void)",
     "-"
   ],
   [
     "onClose",
-    "Called when the tooltip is hidden\n() => any",
+    "Called when the tooltip is hidden\n(() => any)",
     "-"
   ],
   [
     "onOpen",
-    "Called when the tooltip is shown\n() => any",
+    "Called when the tooltip is shown\n(() => any)",
     "-"
   ],
   [
