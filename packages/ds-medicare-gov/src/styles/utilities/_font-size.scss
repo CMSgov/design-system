@@ -1,0 +1,15 @@
+@use '../../../../design-system/src/styles/base' as core;
+@use '../../../../design-system/src/styles/utilities/font-size-mixin' as *;
+
+// Re-emits core's font-size utilities with lg pointed at --font-size-xl, so
+// .ds-u-font-size--lg matches .ds-text-body--lg (24px) in Medicare.
+// --font-size-lg stays 20px because the lg heading, Alert and NoteBox headings
+// also use it. The whole set is re-emitted, in core's order and with core's
+// breakpoints, so the responsive utilities still override the lg one at larger
+// breakpoints.
+@include font-size-utilities(
+  core.$breakpoints,
+  (
+    'lg': var(--font-size-xl),
+  )
+);

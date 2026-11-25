@@ -38,19 +38,23 @@ Use the font size utility to make the text larger or smaller.
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--2xl</code>
             <div class="ds-u-font-size--2xl">{loremIpsumGenerator('s')}</div>
         </article>
-        <article>
-            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--xl</code>
-            <div class="ds-u-font-size--xl">{loremIpsumGenerator('s')}</div>
-        </article>
         <ThemeContent onlyThemes={['medicare']}>
         <article>
-            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code> or
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--xl</code> or
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code>
+            <div class="ds-u-font-size--xl">{loremIpsumGenerator('s')}</div>
+        </article>
+        <article>
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--base</code> or
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--md</code>
             <div class="ds-u-font-size--base">{loremIpsumGenerator('s')}</div>
         </article>
         </ThemeContent>
         <ThemeContent neverThemes={['medicare']}>
+        <article>
+            <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--xl</code>
+            <div class="ds-u-font-size--xl">{loremIpsumGenerator('s')}</div>
+        </article>
         <article>
             <code class="ds-u-margin-y--0 ds-u-margin-bottom--1">.ds-u-font-size--lg</code>
             <div class="ds-u-font-size--lg">{loremIpsumGenerator('s')}</div>
@@ -81,16 +85,27 @@ Use a [breakpoint prefix](/foundation/layout-grid/responsive-design/) to change 
 
 The following CSS variables can be overridden to theme the font size utility:
 
+<ThemeContent onlyThemes={['medicare']}>
+
+- `--font-size-5xl`
+- `--font-size-4xl`
+- `--font-size-3xl`
+- `--font-size-2xl`
+- `--font-size-xl`, also used by the `lg` utility in Medicare
+- `--font-size-md` uses `--font-size-base`
+- `--font-size-sm`
+
+</ThemeContent>
+
+<ThemeContent neverThemes={['medicare']}>
+
 - `--font-size-5xl`
 - `--font-size-4xl`
 - `--font-size-3xl`
 - `--font-size-2xl`
 - `--font-size-xl`
-<ThemeContent onlyThemes={['medicare']}>
-- `--font-size-md` & `--font-size-lg` use `--font-size-base`
-</ThemeContent>
-<ThemeContent neverThemes={['medicare']}>
 - `--font-size-lg`
 - `--font-size-md` uses `--font-size-base`
-</ThemeContent>
 - `--font-size-sm`
+
+</ThemeContent>

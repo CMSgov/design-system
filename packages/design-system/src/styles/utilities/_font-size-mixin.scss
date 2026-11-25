@@ -1,0 +1,96 @@
+@use 'sass:map';
+
+// The CSS variable each font-size utility uses by default. A theme can pass
+// overrides to font-size-utilities() to point a utility at a different
+// variable while keeping the rule order the same as core.
+$font-size-utility-defaults: (
+  'sm': var(--font-size-sm),
+  'base': var(--font-size-base),
+  'lg': var(--font-size-lg),
+  'xl': var(--font-size-xl),
+  '2xl': var(--font-size-2xl),
+  '3xl': var(--font-size-3xl),
+  '4xl': var(--font-size-4xl),
+  '5xl': var(--font-size-5xl),
+);
+
+// Emits every .ds-u-font-size--* utility, including the responsive versions.
+// The utilities all use !important, so when two match, the one that comes later
+// in the CSS wins. The responsive rules must come after the base rules, and
+// larger breakpoints after smaller ones. Emitting the full set from one mixin
+// keeps that order, so a theme that re-emits it after core still cascades
+// correctly.
+@mixin font-size-utilities($breakpoints, $overrides: ()) {
+  $sizes: map.merge($font-size-utility-defaults, $overrides);
+
+  .ds-u-font-size--sm {
+    font-size: map.get($sizes, 'sm') !important;
+  }
+
+  .ds-u-font-size--base,
+  .ds-u-font-size--md {
+    font-size: map.get($sizes, 'base') !important;
+  }
+
+  .ds-u-font-size--lg {
+    font-size: map.get($sizes, 'lg') !important;
+  }
+
+  .ds-u-font-size--xl {
+    font-size: map.get($sizes, 'xl') !important;
+  }
+
+  .ds-u-font-size--2xl {
+    font-size: map.get($sizes, '2xl') !important;
+  }
+
+  .ds-u-font-size--3xl {
+    font-size: map.get($sizes, '3xl') !important;
+  }
+
+  .ds-u-font-size--4xl {
+    font-size: map.get($sizes, '4xl') !important;
+  }
+
+  .ds-u-font-size--5xl {
+    font-size: map.get($sizes, '5xl') !important;
+  }
+
+  @each $breakpoint in map.keys($breakpoints) {
+    $value: map.get($breakpoints, $breakpoint);
+
+    @media (min-width: $value) {
+      .ds-u-#{$breakpoint}-font-size--sm {
+        font-size: map.get($sizes, 'sm') !important;
+      }
+      .ds-u-#{$breakpoint}-font-size--md,
+      .ds-u-#{$breakpoint}-font-size--base {
+        font-size: map.get($sizes, 'base') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--lg {
+        font-size: map.get($sizes, 'lg') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--5xl {
+        font-size: map.get($sizes, '5xl') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--4xl {
+        font-size: map.get($sizes, '4xl') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--3xl {
+        font-size: map.get($sizes, '3xl') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--2xl {
+        font-size: map.get($sizes, '2xl') !important;
+      }
+
+      .ds-u-#{$breakpoint}-font-size--xl {
+        font-size: map.get($sizes, 'xl') !important;
+      }
+    }
+  }
+}
